@@ -429,22 +429,51 @@ function showResult(){
     document.getElementById("resultMessage").innerText =
         score === questions.length
         ? "🏆 Byiza cyane!"
-        : "👏 Wakoze neza! Ongera ugerageze.";
+        : "👏 Wakoze neza! Ongera ugerageze.function openPremium(){
+  try {
+    Pi.createPayment(
+      {
+        amount: 0.01,
+        memo: "Premium Quiz",
+        metadata: { app: "Quiz Master" }
+      },
+      {
+        onReadyForServerApproval: function(paymentId){
+          fetch("/api/pi/approve", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({paymentId: paymentId})
+          });
+        },
 
+        onReadyForServerCompletion: function(paymentId, txid){
+          fetch("/api/pi/complete", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify({
+              paymentId: paymentId,
+              txid: txid
+            })
+          }).then(function(){
+            alert("✅ Pi payment completed!");
+          });
+        },
+
+        onCancel: function(){
+          alert("Payment cancelled");
+        },
+
+        onError: function(error){
+          console.error(error);
+          alert("Payment error");
+        }
+      }
+    );
+  catch(error) {
+  console.error(error);
+  alert("Pi payment error: " + error.message);
 }
-
-
-function openPremium(){
-
-    hideAll();
-
-    document
-        .getElementById("premiumScreen")
-        .classList.remove("hidden");
-
 }
-
-
 function showLeaderboard(){
 
     hideAll();
