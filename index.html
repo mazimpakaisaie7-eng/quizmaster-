@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Master</title>
+<style>
+body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; padding: 20px; }
+.quiz-container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+button { display: block; width: 100%; padding: 10px; margin: 10px 0; background-color: #0070f3; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+button:hover { background-color: #0051cb; }
+#result { font-weight: bold; font-size: 18px; margin-top: 20px; color: green; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+<h2>Quiz Master 🇷🇼</h2>
+<p id="question">Ikibazo: Umurwa mukuru w'u Rwanda ni uwuhe?</p>
+<button onclick="checkAnswer(false)">A) Musanze</button>
+<button onclick="checkAnswer(true)">B) Kigali</button>
+<button onclick="checkAnswer(false)">C) Huye</button>
+<p id="result"></p>
+</div>
+<script>
+function checkAnswer(isCorrect) {
+const resultText = document.getElementById("result");
+if (isCorrect) {
+resultText.innerText = "Yego! Ni isubizo ry'ukuri. 🎉";
+resultText.style.color = "green";
+} else {
+resultText.innerText = "Mwongere mugerageze! ❌";
+resultText.style.color = "red";
+}
+}
+</script>
+</body>
+</html>
