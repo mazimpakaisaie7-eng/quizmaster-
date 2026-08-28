@@ -1,378 +1,381 @@
 <!DOCTYPE html>
 <html lang="rw">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Master 🇷🇼🌍</title>
 
-  <title>Quiz Master 🇷🇼</title>
+<style>
+*{box-sizing:border-box}
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#eef3f8;
+    color:#111;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+.container{
+    max-width:700px;
+    margin:20px auto;
+    padding:15px;
+}
 
-    .quiz-container {
-      width: 92%;
-      max-width: 600px;
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+.card{
+    background:white;
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 6px 25px rgba(0,0,0,.10);
+}
 
-    h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
+.hidden{display:none}
 
-    .score {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 25px;
-      color: #333;
-    }
+.logo{
+    text-align:center;
+    font-size:55px;
+}
 
-    .question {
-      font-size: 25px;
-      font-weight: bold;
-      margin-bottom: 25px;
-    }
+h1{
+    text-align:center;
+    font-size:35px;
+}
 
-    .answers button {
-      width: 100%;
-      padding: 17px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 10px;
-      background: #087bea;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-    }
+button{
+    width:100%;
+    border:0;
+    border-radius:14px;
+    padding:16px;
+    margin-top:12px;
+    font-size:18px;
+    cursor:pointer;
+}
 
-    .answers button:hover {
-      background: #005fc7;
-    }
+.primary{
+    background:#1677d2;
+    color:white;
+}
 
-    .answers button.correct {
-      background: #159447;
-    }
+.secondary{
+    background:#222;
+    color:white;
+}
 
-    .answers button.wrong {
-      background: #d93025;
-    }
+.premium{
+    background:#f3b400;
+    color:#111;
+}
 
-    .answers button:disabled {
-      cursor: not-allowed;
-      opacity: 0.9;
-    }
+input{
+    width:100%;
+    padding:16px;
+    border:2px solid #ddd;
+    border-radius:14px;
+    font-size:18px;
+    margin-top:15px;
+}
 
-    #message {
-      font-size: 20px;
-      font-weight: bold;
-      margin: 20px 0;
-      min-height: 30px;
-    }
+.score{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+}
 
-    #nextBtn,
-    #restartBtn {
-      display: none;
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      font-size: 19px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
+.progress{
+    text-align:center;
+    color:#666;
+    margin:15px;
+}
 
-    #nextBtn {
-      background: #16a34a;
-      color: white;
-    }
+.category{
+    text-align:center;
+    color:#777;
+    font-weight:bold;
+}
 
-    #restartBtn {
-      background: #ff9800;
-      color: white;
-    }
+.question{
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    line-height:1.4;
+    margin:25px 0;
+}
 
-    #result {
-      display: none;
-    }
+.answers{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
 
-    #result h2 {
-      font-size: 30px;
-    }
+.answer{
+    background:#1976d2;
+    color:white;
+}
 
-    #finalScore {
-      font-size: 25px;
-      font-weight: bold;
-      margin: 20px;
-    }
+.answer.correct{
+    background:#1ca354;
+}
 
-    .progress {
-      margin-bottom: 20px;
-      color: #666;
-    }
-  </style>
+.answer.wrong{
+    background:#e53935;
+}
+
+.answer:disabled{
+    opacity:.95;
+}
+
+.ad{
+    margin:20px 0;
+    padding:20px;
+    border:2px dashed #aaa;
+    text-align:center;
+    color:#777;
+    border-radius:15px;
+}
+
+.result{
+    text-align:center;
+}
+
+.resultScore{
+    font-size:48px;
+    font-weight:bold;
+}
+
+.player{
+    display:flex;
+    justify-content:space-between;
+    padding:13px;
+    margin:7px 0;
+    background:#f2f4f7;
+    border-radius:10px;
+}
+
+.small{
+    text-align:center;
+    color:#777;
+    font-size:14px;
+}
+
+@media(max-width:500px){
+    h1{font-size:30px}
+    .question{font-size:21px}
+}
+</style>
 </head>
 
 <body>
 
-  <div class="quiz-container">
+<div class="container">
 
-    <div id="quiz">
+<!-- HOME -->
+<div id="homeScreen" class="card">
 
-      <h1>Quiz Master 🇷🇼</h1>
+    <div class="logo">🇷🇼🌍</div>
 
-      <div class="score">
-        Score: <span id="score">0</span>
-      </div>
+    <h1>Quiz Master</h1>
 
-      <div class="progress">
-        Ikibazo <span id="questionNumber">1</span>
-        / <span id="totalQuestions">10</span>
-      </div>
+    <p style="text-align:center">
+        Rwanda • Africa • World • Science • Sports • Technology
+    </p>
 
-      <div class="question" id="question">
-        Ikibazo kiri hano
-      </div>
+    <input
+        id="playerName"
+        type="text"
+        maxlength="25"
+        placeholder="Andika izina ryawe"
+    >
 
-      <div class="answers" id="answers"></div>
+    <button class="primary" onclick="startFreeQuiz()">
+        🆓 Tangira Free Quiz
+    </button>
 
-      <div id="message"></div>
+    <button class="premium" onclick="openPremium()">
+        ⭐ Premium Quiz
+    </button>
 
-      <button id="nextBtn" onclick="nextQuestion()">
+    <button class="secondary" onclick="showLeaderboard()">
+        🥇 Leaderboard
+    </button>
+
+    <div class="ad">
+        📢 ADVERTISEMENT
+        <br>
+        <small>Ads nyazo zizongerwamo nyuma</small>
+    </div>
+
+    <p class="small">
+        Ibibazo 10 • Ibibazo n'ibisubizo bivangavanwa
+    </p>
+
+</div>
+
+
+<!-- QUIZ -->
+<div id="quizScreen" class="card hidden">
+
+    <h1>Quiz Master 🇷🇼🌍</h1>
+
+    <div class="score">
+        🏆 Score:
+        <span id="score">0</span>
+    </div>
+
+    <div class="progress">
+        Ikibazo
+        <span id="current">1</span>
+        / 10
+    </div>
+
+    <div class="category" id="category"></div>
+
+    <div class="question" id="question"></div>
+
+    <div class="answers" id="answers"></div>
+
+    <button
+        id="nextButton"
+        class="secondary hidden"
+        onclick="nextQuestion()"
+    >
         Ikibazo gikurikira ➡️
-      </button>
+    </button>
 
+</div>
+
+
+<!-- RESULT -->
+<div id="resultScreen" class="card hidden result">
+
+    <h1>🎉 Quiz Irangiye!</h1>
+
+    <p id="resultPlayer"></p>
+
+    <div class="resultScore">
+        <span id="finalScore">0</span>/10
     </div>
 
-    <div id="result">
+    <p id="message"></p>
 
-      <h1>Quiz Master 🇷🇼</h1>
-
-      <h2>🎉 Quiz Irarangiye!</h2>
-
-      <div id="finalScore"></div>
-
-      <button id="restartBtn" onclick="restartQuiz()">
-        🔄 Ongera utangire
-      </button>
-
+    <div class="ad">
+        📢 ADVERTISEMENT
     </div>
 
-  </div>
+    <button class="primary" onclick="startFreeQuiz()">
+        🔄 Indi Quiz
+    </button>
+
+    <button class="secondary" onclick="showLeaderboard()">
+        🥇 Leaderboard
+    </button>
+
+    <button class="premium" onclick="openPremium()">
+        ⭐ Premium
+    </button>
+
+    <button class="secondary" onclick="goHome()">
+        🏠 Ahabanza
+    </button>
+
+</div>
+
+
+<!-- LEADERBOARD -->
+<div id="leaderboardScreen" class="card hidden">
+
+    <h1>🥇 Leaderboard</h1>
+
+    <p style="text-align:center">
+        Amanota yabitswe kuri iki gikoresho
+    </p>
+
+    <div id="leaderboardList"></div>
+
+    <button class="primary" onclick="goHome()">
+        🏠 Ahabanza
+    </button>
+
+    <button class="secondary" onclick="clearLeaderboard()">
+        🗑️ Siba Leaderboard
+    </button>
+
+</div>
+
+
+<!-- PREMIUM -->
+<div id="premiumScreen" class="card hidden">
+
+    <h1>⭐ Premium Quiz</h1>
+
+    <div style="text-align:center;font-size:50px">
+        ⭐🏆🌍
+    </div>
+
+    <p style="text-align:center">
+        Premium izaguha ibibazo byinshi n'uburyo bwagutse bwo gukina.
+    </p>
+
+    <ul>
+        <li>⭐ Premium questions</li>
+        <li>🏆 Ibibazo byinshi</li>
+        <li>🌍 Categories nyinshi</li>
+        <li>📢 Ads nke cyangwa nta Ads</li>
+    </ul>
+
+    <button class="premium" onclick="startPremium()">
+        ⭐ Tangira Premium Demo
+    </button>
+
+    <p class="small">
+        Payment nyayo izongerwamo nyuma. Ntukishyure kuri iyi button
+        kugeza payment provider ihujwe neza.
+    </p>
+
+    <button class="secondary" onclick="goHome()">
+        🏠 Garuka
+    </button>
+
+</div>
+
+</div>
+
 
 <script>
 
-const questions = [
+/* =========================
+   SETTINGS
+========================= */
 
-  {
-    question: "Umurwa mukuru w'u Rwanda ni uwuhe?",
-    answers: ["Musanze", "Kigali", "Huye", "Rubavu"],
-    correct: 1
-  },
+const QUESTIONS_PER_QUIZ = 10;
 
-  {
-    question: "U Rwanda rufite uturere tungahe?",
-    answers: ["20", "25", "30", "35"],
-    correct: 2
-  },
-
-  {
-    question: "Ibendera ry'u Rwanda rifite amabara angahe?",
-    answers: ["2", "3", "4", "5"],
-    correct: 1
-  },
-
-  {
-    question: "Ikiyaga kinini mu Rwanda ni ikihe?",
-    answers: ["Ikiyaga cya Kivu", "Ikiyaga cya Muhazi", "Ikiyaga cya Ihema", "Ikiyaga cya Burera"],
-    correct: 0
-  },
-
-  {
-    question: "Ururimi rw'Ikinyarwanda rukoreshwa cyane mu Rwanda ni uruhe?",
-    answers: ["Igifaransa", "Icyongereza", "Ikinyarwanda", "Igiswahili"],
-    correct: 2
-  },
-
-  {
-    question: "Rwanda iri ku mugabane uwuhe?",
-    answers: ["Asia", "Africa", "Europe", "America"],
-    correct: 1
-  },
-
-  {
-    question: "Umunsi wo kwibuka Jenoside yakorewe Abatutsi utangira ryari?",
-    answers: ["1 Mutarama", "7 Mata", "4 Nyakanga", "25 Ukuboza"],
-    correct: 1
-  },
-
-  {
-    question: "Ni uwuhe murenge uzwi cyane nk'ahantu hari Pariki y'Ibirunga?",
-    answers: ["Kinigi", "Kacyiru", "Remera", "Nyamirambo"],
-    correct: 0
-  },
-
-  {
-    question: "Amafaranga akoreshwa mu Rwanda yitwa iki?",
-    answers: ["Dollar", "Euro", "Franc Rwanda", "Pound"],
-    correct: 2
-  },
-
-  {
-    question: "Ikirango cy'inyenyeri iri ku ibendera ry'u Rwanda gifite ibara irihe?",
-    answers: ["Umuhondo", "Umutuku", "Umukara", "Umweru"],
-    correct: 0
-  }
-
-];
-
+let quizQuestions = [];
 let currentQuestion = 0;
 let score = 0;
-let answered = false;
+let playerName = "";
 
-const questionElement = document.getElementById("question");
-const answersElement = document.getElementById("answers");
-const scoreElement = document.getElementById("score");
-const messageElement = document.getElementById("message");
-const nextButton = document.getElementById("nextBtn");
-const questionNumberElement =
-  document.getElementById("questionNumber");
 
-const totalQuestionsElement =
-  document.getElementById("totalQuestions");
+/* =========================
+   QUESTION BANK
+========================= */
 
-totalQuestionsElement.textContent = questions.length;
+const questionBank = [
 
-function showQuestion() {
+/* RWANDA */
 
-  answered = false;
+{
+category:"🇷🇼 Rwanda",
+question:"Umurwa mukuru w'u Rwanda ni uwuhe?",
+answers:["Kigali","Huye","Musanze","Rubavu"],
+correct:"Kigali"
+},
 
-  const q = questions[currentQuestion];
+{
+category:"🇷🇼 Rwanda",
+question:"U Rwanda rufite uturere tungahe?",
+answers:["30","25","35","20"],
+correct:"30"
+},
 
-  questionElement.textContent = q.question;
-
-  questionNumberElement.textContent = currentQuestion + 1;
-
-  answersElement.innerHTML = "";
-
-  messageElement.textContent = "";
-
-  nextButton.style.display = "none";
-
-  q.answers.forEach((answer, index) => {
-
-    const button = document.createElement("button");
-
-    button.textContent =
-      String.fromCharCode(65 + index) + ") " + answer;
-
-    button.onclick = () => checkAnswer(index, button);
-
-    answersElement.appendChild(button);
-
-  });
-}
-
-function checkAnswer(selected, clickedButton) {
-
-  if (answered) return;
-
-  answered = true;
-
-  const correct = questions[currentQuestion].correct;
-
-  const buttons = answersElement.querySelectorAll("button");
-
-  buttons.forEach(button => {
-    button.disabled = true;
-  });
-
-  if (selected === correct) {
-
-    score++;
-
-    scoreElement.textContent = score;
-
-    clickedButton.classList.add("correct");
-
-    messageElement.textContent =
-      "✅ Yego! Ni isubizo ry'ukuri 🎉";
-
-  } else {
-
-    clickedButton.classList.add("wrong");
-
-    buttons[correct].classList.add("correct");
-
-    messageElement.textContent =
-      "❌ Oya! Gerageza ubutaha 😊";
-
-  }
-
-  nextButton.style.display = "block";
-}
-
-function nextQuestion() {
-
-  currentQuestion++;
-
-  if (currentQuestion < questions.length) {
-
-    showQuestion();
-
-  } else {
-
-    finishQuiz();
-
-  }
-}
-
-function finishQuiz() {
-
-  document.getElementById("quiz").style.display = "none";
-
-  document.getElementById("result").style.display = "block";
-
-  document.getElementById("finalScore").textContent =
-    "Wabonye amanota " + score + " / " + questions.length + " 🏆";
-
-  document.getElementById("restartBtn").style.display = "block";
-}
-
-function restartQuiz() {
-
-  currentQuestion = 0;
-
-  score = 0;
-
-  scoreElement.textContent = 0;
-
-  document.getElementById("quiz").style.display = "block";
-
-  document.getElementById("result").style.display = "none";
-
-  showQuestion();
-}
-
-showQuestion();
-
-</script>
-
-</body>
-</html>
+{
+category:"🇷🇼 Rwanda",
+question:"Ikiyaga kinini mu Rwanda ni ikihe?",
+answers:["Ikiyaga cya Kivu","Muhazi","Burera","
