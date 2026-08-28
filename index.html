@@ -30,15 +30,9 @@ body{
 
 .hidden{display:none}
 
-.logo{
-    text-align:center;
-    font-size:55px;
-}
+.logo{text-align:center;font-size:55px}
 
-h1{
-    text-align:center;
-    font-size:35px;
-}
+h1{text-align:center;font-size:35px}
 
 button{
     width:100%;
@@ -50,20 +44,9 @@ button{
     cursor:pointer;
 }
 
-.primary{
-    background:#1677d2;
-    color:white;
-}
-
-.secondary{
-    background:#222;
-    color:white;
-}
-
-.premium{
-    background:#f3b400;
-    color:#111;
-}
+.primary{background:#1677d2;color:white}
+.secondary{background:#222;color:white}
+.premium{background:#f3b400;color:#111}
 
 input{
     width:100%;
@@ -72,12 +55,6 @@ input{
     border-radius:14px;
     font-size:18px;
     margin-top:15px;
-}
-
-.score{
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
 }
 
 .progress{
@@ -111,16 +88,16 @@ input{
     color:white;
 }
 
-.answer.correct{
-    background:#1ca354;
-}
+.answer.correct{background:#1ca354}
+.answer.wrong{background:#e53935}
 
-.answer.wrong{
-    background:#e53935;
-}
+.answer:disabled{opacity:.95}
 
-.answer:disabled{
-    opacity:.95;
+.result{text-align:center}
+
+.resultScore{
+    font-size:48px;
+    font-weight:bold;
 }
 
 .ad{
@@ -132,15 +109,6 @@ input{
     border-radius:15px;
 }
 
-.result{
-    text-align:center;
-}
-
-.resultScore{
-    font-size:48px;
-    font-weight:bold;
-}
-
 .player{
     display:flex;
     justify-content:space-between;
@@ -148,12 +116,6 @@ input{
     margin:7px 0;
     background:#f2f4f7;
     border-radius:10px;
-}
-
-.small{
-    text-align:center;
-    color:#777;
-    font-size:14px;
 }
 
 @media(max-width:500px){
@@ -194,18 +156,13 @@ input{
     </button>
 
     <button class="secondary" onclick="showLeaderboard()">
-        🥇 Leaderboard
+        🏅 Leaderboard
     </button>
 
     <div class="ad">
-        📢 ADVERTISEMENT
-        <br>
-        <small>Ads nyazo zizongerwamo nyuma</small>
+        📢 ADVERTISEMENT<br>
+        Ads nyazo zizongerwamo nyuma
     </div>
-
-    <p class="small">
-        Ibibazo 10 • Ibibazo n'ibisubizo bivangavanwa
-    </p>
 
 </div>
 
@@ -213,18 +170,7 @@ input{
 <!-- QUIZ -->
 <div id="quizScreen" class="card hidden">
 
-    <h1>Quiz Master 🇷🇼🌍</h1>
-
-    <div class="score">
-        🏆 Score:
-        <span id="score">0</span>
-    </div>
-
-    <div class="progress">
-        Ikibazo
-        <span id="current">1</span>
-        / 10
-    </div>
+    <div class="progress" id="progress"></div>
 
     <div class="category" id="category"></div>
 
@@ -232,71 +178,31 @@ input{
 
     <div class="answers" id="answers"></div>
 
-    <button
-        id="nextButton"
-        class="secondary hidden"
-        onclick="nextQuestion()"
-    >
-        Ikibazo gikurikira ➡️
-    </button>
-
 </div>
 
 
 <!-- RESULT -->
-<div id="resultScreen" class="card hidden result">
+<div id="resultScreen" class="card hidden">
 
-    <h1>🎉 Quiz Irangiye!</h1>
+    <div class="result">
 
-    <p id="resultPlayer"></p>
+        <h1>🎉 Quiz Irarangiye!</h1>
 
-    <div class="resultScore">
-        <span id="finalScore">0</span>/10
+        <p id="resultName"></p>
+
+        <div class="resultScore" id="resultScore"></div>
+
+        <p id="resultMessage"></p>
+
+        <button class="primary" onclick="startFreeQuiz()">
+            🔄 Ongera Ukine
+        </button>
+
+        <button class="secondary" onclick="goHome()">
+            🏠 Ahabanza
+        </button>
+
     </div>
-
-    <p id="message"></p>
-
-    <div class="ad">
-        📢 ADVERTISEMENT
-    </div>
-
-    <button class="primary" onclick="startFreeQuiz()">
-        🔄 Indi Quiz
-    </button>
-
-    <button class="secondary" onclick="showLeaderboard()">
-        🥇 Leaderboard
-    </button>
-
-    <button class="premium" onclick="openPremium()">
-        ⭐ Premium
-    </button>
-
-    <button class="secondary" onclick="goHome()">
-        🏠 Ahabanza
-    </button>
-
-</div>
-
-
-<!-- LEADERBOARD -->
-<div id="leaderboardScreen" class="card hidden">
-
-    <h1>🥇 Leaderboard</h1>
-
-    <p style="text-align:center">
-        Amanota yabitswe kuri iki gikoresho
-    </p>
-
-    <div id="leaderboardList"></div>
-
-    <button class="primary" onclick="goHome()">
-        🏠 Ahabanza
-    </button>
-
-    <button class="secondary" onclick="clearLeaderboard()">
-        🗑️ Siba Leaderboard
-    </button>
 
 </div>
 
@@ -306,32 +212,26 @@ input{
 
     <h1>⭐ Premium Quiz</h1>
 
-    <div style="text-align:center;font-size:50px">
-        ⭐🏆🌍
-    </div>
-
     <p style="text-align:center">
-        Premium izaguha ibibazo byinshi n'uburyo bwagutse bwo gukina.
+        Premium Quiz izaza vuba.
     </p>
 
-    <ul>
-        <li>⭐ Premium questions</li>
-        <li>🏆 Ibibazo byinshi</li>
-        <li>🌍 Categories nyinshi</li>
-        <li>📢 Ads nke cyangwa nta Ads</li>
-    </ul>
-
-    <button class="premium" onclick="startPremium()">
-        ⭐ Tangira Premium Demo
+    <button class="primary" onclick="goHome()">
+        🏠 Subira Ahabanza
     </button>
 
-    <p class="small">
-        Payment nyayo izongerwamo nyuma. Ntukishyure kuri iyi button
-        kugeza payment provider ihujwe neza.
-    </p>
+</div>
+
+
+<!-- LEADERBOARD -->
+<div id="leaderboardScreen" class="card hidden">
+
+    <h1>🏅 Leaderboard</h1>
+
+    <div id="leaderboard"></div>
 
     <button class="secondary" onclick="goHome()">
-        🏠 Garuka
+        🏠 Subira Ahabanza
     </button>
 
 </div>
@@ -341,41 +241,240 @@ input{
 
 <script>
 
-/* =========================
-   SETTINGS
-========================= */
-
-const QUESTIONS_PER_QUIZ = 10;
-
-let quizQuestions = [];
-let currentQuestion = 0;
-let score = 0;
-let playerName = "";
-
-
-/* =========================
-   QUESTION BANK
-========================= */
-
-const questionBank = [
-
-/* RWANDA */
+const questions = [
 
 {
 category:"🇷🇼 Rwanda",
 question:"Umurwa mukuru w'u Rwanda ni uwuhe?",
 answers:["Kigali","Huye","Musanze","Rubavu"],
-correct:"Kigali"
+correct:0
 },
 
 {
-category:"🇷🇼 Rwanda",
-question:"U Rwanda rufite uturere tungahe?",
-answers:["30","25","35","20"],
-correct:"30"
+category:"🌍 Africa",
+question:"Ni ikihe gihugu gifite Cairo nk'umurwa mukuru?",
+answers:["Egypt","Kenya","Ghana","Nigeria"],
+correct:0
 },
 
 {
-category:"🇷🇼 Rwanda",
-question:"Ikiyaga kinini mu Rwanda ni ikihe?",
-answers:["Ikiyaga cya Kivu","Muhazi","Burera","
+category:"🔬 Science",
+question:"Amazi agira formula iyihe?",
+answers:["CO2","H2O","O2","NaCl"],
+correct:1
+},
+
+{
+category:"⚽ Sports",
+question:"Ni iyihe sport ikinwa n'abakinnyi 11 kuri buri kipe?",
+answers:["Basketball","Football","Tennis","Volleyball"],
+correct:1
+},
+
+{
+category:"💻 Technology",
+question:"HTML ikoreshwa cyane mu gukora iki?",
+answers:[
+"Web pages",
+"Amavuta",
+"Imodoka",
+"Imiti"
+],
+correct:0
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+let player = "";
+
+
+function hideAll(){
+
+    document.getElementById("homeScreen").classList.add("hidden");
+    document.getElementById("quizScreen").classList.add("hidden");
+    document.getElementById("resultScreen").classList.add("hidden");
+    document.getElementById("premiumScreen").classList.add("hidden");
+    document.getElementById("leaderboardScreen").classList.add("hidden");
+
+}
+
+
+function startFreeQuiz(){
+
+    player =
+        document.getElementById("playerName").value.trim();
+
+    if(player === ""){
+
+        alert("Banza wandike izina ryawe.");
+
+        return;
+    }
+
+    currentQuestion = 0;
+    score = 0;
+
+    hideAll();
+
+    document
+        .getElementById("quizScreen")
+        .classList.remove("hidden");
+
+    showQuestion();
+
+}
+
+
+function showQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("progress").innerText =
+        "Ikibazo " +
+        (currentQuestion + 1) +
+        " / " +
+        questions.length;
+
+    document.getElementById("category").innerText =
+        q.category;
+
+    document.getElementById("question").innerText =
+        q.question;
+
+    const answers =
+        document.getElementById("answers");
+
+    answers.innerHTML = "";
+
+    q.answers.forEach((answer,index)=>{
+
+        const button =
+            document.createElement("button");
+
+        button.className = "answer";
+
+        button.innerText = answer;
+
+        button.onclick = function(){
+
+            checkAnswer(button,index);
+
+        };
+
+        answers.appendChild(button);
+
+    });
+
+}
+
+
+function checkAnswer(button,index){
+
+    const q = questions[currentQuestion];
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach(b => b.disabled = true);
+
+    if(index === q.correct){
+
+        button.classList.add("correct");
+
+        score++;
+
+    }else{
+
+        button.classList.add("wrong");
+
+        buttons[q.correct].classList.add("correct");
+
+    }
+
+    setTimeout(()=>{
+
+        currentQuestion++;
+
+        if(currentQuestion < questions.length){
+
+            showQuestion();
+
+        }else{
+
+            showResult();
+
+        }
+
+    },900);
+
+}
+
+
+function showResult(){
+
+    hideAll();
+
+    document
+        .getElementById("resultScreen")
+        .classList.remove("hidden");
+
+    document.getElementById("resultName").innerText =
+        "Umukinnyi: " + player;
+
+    document.getElementById("resultScore").innerText =
+        score + " / " + questions.length;
+
+    document.getElementById("resultMessage").innerText =
+        score === questions.length
+        ? "🏆 Byiza cyane!"
+        : "👏 Wakoze neza! Ongera ugerageze.";
+
+}
+
+
+function openPremium(){
+
+    hideAll();
+
+    document
+        .getElementById("premiumScreen")
+        .classList.remove("hidden");
+
+}
+
+
+function showLeaderboard(){
+
+    hideAll();
+
+    document
+        .getElementById("leaderboardScreen")
+        .classList.remove("hidden");
+
+    document.getElementById("leaderboard").innerHTML =
+
+        "<div class='player'><b>🥇 Player 1</b><span>5/5</span></div>" +
+
+        "<div class='player'><b>🥈 Player 2</b><span>4/5</span></div>" +
+
+        "<div class='player'><b>🥉 Player 3</b><span>3/5</span></div>";
+
+}
+
+
+function goHome(){
+
+    hideAll();
+
+    document
+        .getElementById("homeScreen")
+        .classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+</html>
