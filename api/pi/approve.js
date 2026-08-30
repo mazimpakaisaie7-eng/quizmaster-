@@ -1,16 +1,28 @@
 export default async function handler(req, res) {
+  // Allow POST only
   if (req.method !== "POST") {
     return res.status(405).json({
-      error: "Method not allowed"
+      success: false,
+      error: "Method Not Allowed"
     });
   }
 
   try {
-    const { paymentId } = req.body;
+    const { paymentId } = req.body || {};
 
     if (!paymentId) {
       return res.status(400).json({
+        success: false,
         error: "paymentId is required"
+      });
+    }
+
+    const API_KEY = process.env.PI_API_KEY;
+
+    if (!API_KEY) {
+      return res.status(500).json({
+        success: false,
+        error: "PI_API_KEY is missing"
       });
     }
 
@@ -19,7 +31,7 @@ export default async function handler(req, res) {
       {
         method: "POST",
         headers: {
-          "Authorization": `Key ${process.env.PI_API_KEY}`,
+          Authorization: `Key ${API_KEY}`,
           "Content-Type": "application/json"
         }
       }
@@ -27,13 +39,24 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    return res.status(response.status).json(data);
+    if (!response.ok) {
+      return res.status(response.status).json({
+        success: false,
+        error: data
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      payment: data
+    });
 
   } catch (error) {
-    console.error(error);
+    console.error("Approve error:", error);
 
     return res.status(500).json({
-      error: "Failed to approve payment"
+      success: false,
+      error: "Internal server error"
     });
   }
 }
