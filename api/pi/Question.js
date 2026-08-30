@@ -1,17 +1,16 @@
 // question.js
+// Quiz Master - 5,000+ Questions System
 
-class QuizQuestionSystem {
+class QuestionManager {
   constructor() {
-    this.questions = [];
-    this.currentQuestions = [];
+    this.allQuestions = [];
+    this.roundQuestions = [];
     this.currentIndex = 0;
     this.score = 0;
-    this.timeLimit = 20;
-    this.timer = null;
-    this.timeLeft = this.timeLimit;
+    this.totalQuestions = 10;
   }
 
-  // Load questions from questions.json
+  // Load 5,000+ questions
   async loadQuestions() {
     try {
       const response = await fetch("./questions.json", {
@@ -19,157 +18,196 @@ class QuizQuestionSystem {
       });
 
       if (!response.ok) {
-        throw new Error("questions.json ntiyabonetse");
+        throw new Error("questions.json ntiyabonetse.");
       }
 
       const data = await response.json();
 
-      // Support both:
-      // [ ...questions ]
-      // and { questions: [ ... ] }
-      this.questions = Array.isArray(data)
-        ? data
-        : Array.isArray(data.questions)
-          ? data.questions
-          : [];
+      // Yemera:
+      // [ {...}, {...} ]
+      // cyangwa
+      // { "questions": [ {...}, {...} ] }
 
-      if (this.questions.length === 0) {
-        throw new Error("Nta bibazo bibonetse muri questions.json");
+      if (Array.isArray(data)) {
+        this.allQuestions = data;
+      } else if (Array.isArray(data.questions)) {
+        this.allQuestions = data.questions;
+      } else {
+        throw new Error("Format ya questions.json ntabwo ari yo.");
       }
 
-      return this.questions;
+      if (this.allQuestions.length < 10) {
+        throw new Error(
+          `Hakenewe nibura questions 10. Hariho ${this.allQuestions.length}.`
+        );
+      }
+
+      console.log(
+        `Loaded ${this.allQuestions.length} questions.`
+      );
+
+      return this.allQuestions;
+
     } catch (error) {
       console.error("Question loading error:", error);
       throw error;
     }
   }
 
-  // Pick 10 different random questions
-  createRound(numberOfQuestions = 10) {
-    if (this.questions.length < numberOfQuestions) {
-      throw new Error(
-        `Hakenewe nibura ${numberOfQuestions} questions. Ufite ${this.questions.length}.`
-      );
-    }
+  // Shuffle questions
+  shuffle(array) {
+    const result = [...array];
 
-    const shuffled = [...this.questions];
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
 
-    // Fisher-Yates shuffle
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const randomIndex = Math.floor(Math.random() * (i + 1));
-
-      [shuffled[i], shuffled[randomIndex]] = [
-        shuffled[randomIndex],
-        shuffled[i]
+      [result[i], result[j]] = [
+        result[j],
+        result[i]
       ];
     }
 
-    this.currentQuestions = shuffled.slice(0, numberOfQuestions);
-    this.currentIndex = 0;
-    this.score = 0;
-
-    return this.currentQuestions;
+    return result;
   }
 
-  // Get current question
-  getCurrentQuestion() {
-    if (
-      this.currentIndex < 0 ||
-      this.currentIndex >= this.currentQuestions.length
-    ) {
-      return null;
+  // Create new round
+  createRound(number = 10) {
+    if (this.allQuestions.length < number) {
+      throw new Error(
+        `Nta questions zihagije. Ziriho: ${this.allQuestions.length}`
+      );
     }
 
-    return this.currentQuestions[this.currentIndex];
+    this.roundQuestions = this.shuffle(
+      this.allQuestions
+    ).slice(0, number);
+
+    this.currentIndex = 0;
+    this.score = 0;
+    this.totalQuestions = number;
+
+    return this.roundQuestions;
   }
 
-  // Get question number
-  getQuestionNumber() {
+  // Current question
+  getCurrentQuestion() {
+    return this.roundQuestions[this.currentIndex] || null;
+  }
+
+  // Current question number
+  getCurrentNumber() {
     return this.currentIndex + 1;
   }
 
-  // Get total questions
-  getTotalQuestions() {
-    return this.currentQuestions.length;
+  // Total
+  getTotal() {
+    return this.roundQuestions.length;
   }
 
   // Check answer
-  checkAnswer(answer) {
+  checkAnswer(userAnswer) {
     const question = this.getCurrentQuestion();
 
     if (!question) {
       return {
         correct: false,
-        message: "Nta kibazo kiriho."
+        message: "Question ntabwo ibonetse."
       };
     }
 
-    const correctAnswer = question.answer ?? question.correctAnswer;
+    const correctAnswer =
+      question.answer ??
+      question.correctAnswer ??
+      question.correct_option;
 
-    const userAnswer = String(answer ?? "")
-      .trim()
-      .toLowerCase();
+    const user =
+      String(userAnswer ?? "")
+        .trim()
+        .toLowerCase();
 
-    const rightAnswer = String(correctAnswer ?? "")
-      .trim()
-      .toLowerCase();
+    const correct =
+      String(correctAnswer ?? "")
+        .trim()
+        .toLowerCase();
 
-    const correct = userAnswer === rightAnswer;
+    const isCorrect = user === correct;
 
-    if (correct) {
+    if (isCorrect) {
       this.score++;
     }
 
     return {
-      correct,
-      correctAnswer,
+      correct: isCorrect,
+      answer: correctAnswer,
       score: this.score
     };
   }
 
-  // Move to next question
-  nextQuestion() {
-    this.stopTimer();
-
-    this.currentIndex++;
-
-    if (this.currentIndex >= this.currentQuestions.length) {
-      return null;
+  // Next question
+  next() {
+    if (
+      this.currentIndex <
+      this.roundQuestions.length - 1
+    ) {
+      this.currentIndex++;
+      return this.getCurrentQuestion();
     }
 
-    return this.getCurrentQuestion();
+    return null;
   }
 
-  // Check if quiz is finished
+  // Is quiz finished?
   isFinished() {
-    return this.currentIndex >= this.currentQuestions.length;
+    return (
+      this.currentIndex >=
+      this.roundQuestions.length - 1
+    );
   }
 
-  // Start 20-second timer
-  startTimer(onTick, onTimeUp) {
-    this.stopTimer();
-
-    this.timeLeft = this.timeLimit;
-
-    if (typeof onTick === "function") {
-      onTick(this.timeLeft);
-    }
-
-    this.timer = setInterval(() => {
-      this.timeLeft--;
-
-      if (typeof onTick === "function") {
-        onTick(this.timeLeft);
-      }
-
-      if (this.timeLeft <= 0) {
-        this.stopTimer();
-
-        if (typeof onTimeUp === "function") {
-          onTimeUp();
-        }
-      }
-    }, 1000);
+  // Get score
+  getScore() {
+    return this.score;
   }
 
-  // Stop timer
+  // Get percentage
+  getPercentage() {
+    if (!this.totalQuestions) return 0;
+
+    return Math.round(
+      (this.score / this.totalQuestions) * 100
+    );
+  }
+
+  // Reset
+  reset() {
+    this.roundQuestions = [];
+    this.currentIndex = 0;
+    this.score = 0;
+  }
+}
+
+
+// Global Quiz Master question manager
+const questionManager = new QuestionManager();
+
+
+// Make available to index.html
+window.questionManager = questionManager;
+
+
+// Automatically load questions
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    await questionManager.loadQuestions();
+
+    console.log(
+      "Quiz Master question system ready."
+    );
+
+  } catch (error) {
+    console.error(
+      "Failed to load questions:",
+      error
+    );
+  }
+});
