@@ -6,11 +6,11 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { paymentId, accessToken } = req.body || {};
+    const { paymentId } = req.body || {};
 
-    if (!paymentId || !accessToken) {
+    if (!paymentId) {
       return res.status(400).json({
-        error: "paymentId na accessToken birakenewe"
+        error: "paymentId irakenewe"
       });
     }
 
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       {
         method: "POST",
         headers: {
-          "Authorization": `Key ${apiKey}`,
+          Authorization: `Key ${apiKey}`,
           "Content-Type": "application/json"
         }
       }
@@ -36,7 +36,10 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
+      console.error("Pi Approve Error:", data);
+
       return res.status(response.status).json({
+        success: false,
         error: data
       });
     }
@@ -50,6 +53,7 @@ export default async function handler(req, res) {
     console.error("Approve error:", error);
 
     return res.status(500).json({
+      success: false,
       error: "Server error",
       message: error.message
     });
