@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // Allow POST requests only
   if (req.method !== "POST") {
     return res.status(405).json({
       success: false,
@@ -10,31 +9,28 @@ export default async function handler(req, res) {
   try {
     const { paymentId } = req.body || {};
 
-    // Check payment ID
     if (!paymentId) {
       return res.status(400).json({
         success: false,
-        error: "paymentId is required"
+        error: "paymentId irakenewe"
       });
     }
 
-    // Get Pi API Key from Vercel Environment Variables
-    const PI_API_KEY = process.env.PI_API_KEY;
+    const apiKey = process.env.PI_API_KEY;
 
-    if (!PI_API_KEY) {
+    if (!apiKey) {
       return res.status(500).json({
         success: false,
-        error: "PI_API_KEY is missing"
+        error: "PI_API_KEY ntabwo yashyizwe muri Vercel Environment Variables"
       });
     }
 
-    // Complete the payment on Pi Network
     const response = await fetch(
-      `https://api.minepi.com/v2/payments/${paymentId}/complete`,
+      `https://api.minepi.com/v2/payments/${encodeURIComponent(paymentId)}/complete`,
       {
         method: "POST",
         headers: {
-          Authorization: `Key ${PI_API_KEY}`,
+          "Authorization": `Key ${apiKey}`,
           "Content-Type": "application/json"
         }
       }
@@ -42,7 +38,6 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    // Pi API returned an error
     if (!response.ok) {
       console.error("Pi Complete Error:", data);
 
@@ -52,18 +47,18 @@ export default async function handler(req, res) {
       });
     }
 
-    // Payment completed successfully
     return res.status(200).json({
       success: true,
       payment: data
     });
 
   } catch (error) {
-    console.error("Complete API Error:", error);
+    console.error("Complete error:", error);
 
     return res.status(500).json({
       success: false,
-      error: "Internal server error"
+      error: "Server error",
+      message: error.message
     });
   }
 }
