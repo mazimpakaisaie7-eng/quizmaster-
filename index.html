@@ -1764,5 +1764,38 @@ initializePi();
 
 </script>
 
+</body><!-- Pi Network SDK -->
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+
+<!-- Quiz questions system -->
+<script src="./question.js"></script>
+
+<!-- Pi payment system -->
+<script src="./payment.js"></script>
+
+<!-- Main app -->
+<script>
+  async function startQuiz() {
+    try {
+      // Load all questions
+      await questionManager.loadQuestions();
+
+      // Select 10 random questions
+      questionManager.createRound(10);
+
+      console.log("Quiz yatangiye!");
+      console.log(
+        "Question 1:",
+        questionManager.getCurrentQuestion()
+      );
+
+    } catch (error) {
+      console.error("Quiz start error:", error);
+      alert("Questions ntizashoboye gufunguka.");
+    }
+  }
+</script>
+
 </body>
+</html>
 </html>
