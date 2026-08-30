@@ -9,8 +9,11 @@
   <meta name="theme-color" content="#111827">
   <meta name="description" content="Quiz Master - Gerageza ubumenyi bwawe">
 
-  <!-- PI NETWORK SDK -->
+  <!-- PI NETWORK SDK: inshuro imwe gusa -->
   <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+
+  <!-- Question system -->
+  <script src="./question.js"></script>
 
   <style>
     * {
@@ -19,7 +22,6 @@
 
     body {
       margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
       background: #eef2ff;
       color: #111827;
@@ -37,12 +39,10 @@
       margin-top: 20px;
       padding: 22px;
       border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+      box-shadow: 0 8px 30px rgba(0,0,0,.10);
     }
 
-    h1,
-    h2,
-    h3 {
+    h1, h2, h3 {
       margin-top: 0;
     }
 
@@ -58,7 +58,7 @@
     }
 
     button:disabled {
-      opacity: 0.55;
+      opacity: .55;
       cursor: not-allowed;
     }
 
@@ -69,11 +69,6 @@
 
     .success {
       background: #16a34a;
-      color: white;
-    }
-
-    .danger {
-      background: #dc2626;
       color: white;
     }
 
@@ -123,7 +118,7 @@
       width: 0%;
       height: 100%;
       background: #2563eb;
-      transition: width 0.3s;
+      transition: width .3s;
     }
 
     .question {
@@ -202,31 +197,19 @@
 <body>
 
 <div class="container">
-
   <div class="card">
 
     <!-- HEADER -->
     <div class="top">
-
       <div>
         <h1>Quiz Master 🇷🇼</h1>
-
-        <div id="userText" class="small">
-          Guest
-        </div>
+        <div id="userText" class="small">Guest</div>
       </div>
 
-      <div id="timer" class="timer hidden">
-        15
-      </div>
-
+      <div id="timer" class="timer hidden">15</div>
     </div>
 
-
-    <!-- =========================
-         HOME SCREEN
-         ========================= -->
-
+    <!-- HOME -->
     <div id="homeScreen">
 
       <p>
@@ -234,168 +217,98 @@
         Gerageza ubumenyi bwawe kandi ubone amanota menshi.
       </p>
 
-      <button
-        id="startBtn"
-        class="primary">
+      <button id="startBtn" class="primary">
         ▶ Tangira Quiz
       </button>
 
-      <button
-        id="loginBtn"
-        class="secondary">
+      <button id="loginBtn" class="secondary">
         🔐 Injira muri Pi
       </button>
 
-      <button
-        id="premiumBtn"
-        class="gold">
+      <button id="premiumBtn" class="gold">
         💎 Premium — 1 Pi
       </button>
 
-      <button
-        id="leaderboardBtn"
-        class="secondary">
+      <button id="leaderboardBtn" class="secondary">
         🏆 Leaderboard
       </button>
 
-      <div
-        id="status"
-        class="status">
+      <div id="status" class="status">
         Quiz Master iriteguye.
       </div>
 
     </div>
 
-
-    <!-- =========================
-         QUIZ SCREEN
-         ========================= -->
-
+    <!-- QUIZ -->
     <div id="quizScreen" class="hidden">
 
       <div class="top">
-
-        <strong id="questionNumber">
-          Ikibazo 1/10
-        </strong>
-
-        <strong id="scoreText">
-          Score: 0
-        </strong>
-
+        <strong id="questionNumber">Ikibazo 1/10</strong>
+        <strong id="scoreText">Score: 0</strong>
       </div>
-
 
       <div class="progress">
-        <div
-          id="progressBar"
-          class="progress-bar">
-        </div>
+        <div id="progressBar" class="progress-bar"></div>
       </div>
 
+      <div id="questionText" class="question"></div>
 
-      <div
-        id="questionText"
-        class="question">
-      </div>
+      <div id="answers"></div>
 
-
-      <div id="answers">
-      </div>
-
-
-      <button
-        id="nextBtn"
-        class="primary hidden">
+      <button id="nextBtn" class="primary hidden">
         Komeza ➜
       </button>
 
     </div>
 
-
-    <!-- =========================
-         RESULT SCREEN
-         ========================= -->
-
+    <!-- RESULT -->
     <div id="resultScreen" class="hidden">
 
       <h2 class="center">
         Quiz Irarangiye 🎉
       </h2>
 
-      <div
-        id="finalScore"
-        class="score">
+      <div id="finalScore" class="score">
         0/10
       </div>
 
-      <p
-        id="finalPercentage"
-        class="center">
+      <p id="finalPercentage" class="center">
         0%
       </p>
 
-      <p
-        id="finalMessage"
-        class="center">
-      </p>
+      <p id="finalMessage" class="center"></p>
 
-      <button
-        id="againBtn"
-        class="primary">
+      <button id="againBtn" class="primary">
         🔄 Ongera Ukine
       </button>
 
-      <button
-        id="homeBtn"
-        class="secondary">
+      <button id="homeBtn" class="secondary">
         🏠 Ahabanza
       </button>
 
     </div>
 
+    <!-- LEADERBOARD -->
+    <div id="leaderboardScreen" class="hidden">
 
-    <!-- =========================
-         LEADERBOARD
-         ========================= -->
+      <h2>🏆 Leaderboard</h2>
 
-    <div
-      id="leaderboardScreen"
-      class="hidden">
+      <div id="leaderboardList"></div>
 
-      <h2>
-        🏆 Leaderboard
-      </h2>
-
-      <div id="leaderboardList">
-      </div>
-
-      <button
-        id="leaderboardBackBtn"
-        class="secondary">
+      <button id="leaderboardBackBtn" class="secondary">
         ← Subira
       </button>
 
     </div>
 
+    <!-- PREMIUM -->
+    <div id="premiumScreen" class="hidden">
 
-    <!-- =========================
-         PREMIUM
-         ========================= -->
-
-    <div
-      id="premiumScreen"
-      class="hidden">
-
-      <h2>
-        💎 Quiz Master Premium
-      </h2>
+      <h2>💎 Quiz Master Premium</h2>
 
       <div class="premium-box">
 
-        <p>
-          <b>Premium irimo:</b>
-        </p>
+        <p><b>Premium irimo:</b></p>
 
         <ul>
           <li>⏱️ Timer kuri buri kibazo</li>
@@ -404,299 +317,360 @@
           <li>💎 Premium access</li>
         </ul>
 
-        <p>
-          <b>Igiciro: 1 Pi</b>
-        </p>
+        <p><b>Igiciro: 1 Pi</b></p>
 
       </div>
 
-
-      <button
-        id="payBtn"
-        class="success">
+      <button id="payBtn" class="success">
         💰 Ishyura 1 Pi
       </button>
 
-
-      <button
-        id="premiumBackBtn"
-        class="secondary">
+      <button id="premiumBackBtn" class="secondary">
         ← Subira
       </button>
 
     </div>
 
   </div>
-
 </div>
 
 
 <script>
-
 /* =====================================================
-   QUIZ MASTER CONFIGURATION
-   ===================================================== */
+   CONFIG
+===================================================== */
 
 const CONFIG = {
-
-  /*
-   * TRUE = Pi Sandbox / testing
-   *
-   * FALSE = production environment
-   *
-   * Ntuhindure ubu niba ukiri testing.
-   */
-
   sandbox: true,
-
-  /*
-   * Igiciro cya Premium
-   */
-
   premiumPrice: 1,
-
-  /*
-   * Igihe kuri buri kibazo
-   */
-
-  secondsPerQuestion: 15
-
+  secondsPerQuestion: 15,
+  questionsPerRound: 10
 };
 
 
 /* =====================================================
-   QUESTIONS
-   ===================================================== */
-
-const questions = [
-
-  {
-    question: "Umurwa mukuru w'u Rwanda ni uwuhe?",
-    answers: [
-      "Musanze",
-      "Kigali",
-      "Huye",
-      "Rubavu"
-    ],
-    correct: 1
-  },
-
-  {
-    question: "Rwanda iri ku mugabane uwuhe?",
-    answers: [
-      "Asia",
-      "Europe",
-      "Africa",
-      "America"
-    ],
-    correct: 2
-  },
-
-  {
-    question: "Amazi abira kuri dogere zingahe ku rwego rusanzwe?",
-    answers: [
-      "50°C",
-      "75°C",
-      "100°C",
-      "150°C"
-    ],
-    correct: 2
-  },
-
-  {
-    question: "Ni uwuhe mubumbe uzwi nka Red Planet?",
-    answers: [
-      "Mars",
-      "Venus",
-      "Jupiter",
-      "Mercury"
-    ],
-    correct: 0
-  },
-
-  {
-    question: "HTML ikoreshwa cyane mu gukora iki?",
-    answers: [
-      "Structure ya webpage",
-      "Kohereza amafaranga",
-      "Gukora battery",
-      "Gucapa"
-    ],
-    correct: 0
-  },
-
-  {
-    question: "CSS ikoreshwa cyane mu gukora iki?",
-    answers: [
-      "Database",
-      "Design ya webpage",
-      "Payment",
-      "Server"
-    ],
-    correct: 1
-  },
-
-  {
-    question: "JavaScript ikoreshwa cyane mu gukora iki?",
-    answers: [
-      "Interactivity",
-      "Gusiga irangi",
-      "Gukora SIM card",
-      "Gukora printer"
-    ],
-    correct: 0
-  },
-
-  {
-    question: "Pi Apps zikoresha iki mu guhuza app na Pi Network?",
-    answers: [
-      "Pi SDK",
-      "Bluetooth",
-      "SMS gusa",
-      "Camera"
-    ],
-    correct: 0
-  },
-
-  {
-    question: "Minute imwe igizwe n'amasegonda angahe?",
-    answers: [
-      "30",
-      "45",
-      "60",
-      "100"
-    ],
-    correct: 2
-  },
-
-  {
-    question: "Ni iki gishobora kongera umutekano wa account?",
-    answers: [
-      "Gusangira password",
-      "2FA/security measures",
-      "Kwandika password ahantu hose",
-      "Guha password inshuti"
-    ],
-    correct: 1
-  },
-
-  {
-    question: "Rwanda ifite intara zingahe?",
-    answers: [
-      "3",
-      "4",
-      "5",
-      "6"
-    ],
-    correct: 1
-  },
-
-  {
-    question: "Ni uruhe rurimi rukoreshwa cyane muri programming?",
-    answers: [
-      "JavaScript",
-      "HTML gusa",
-      "CSS gusa",
-      "JPEG"
-    ],
-    correct: 0
-  }
-
-];
-
-
-/* =====================================================
    VARIABLES
-   ===================================================== */
+===================================================== */
 
 let currentQuestion = 0;
-
 let score = 0;
-
 let timeLeft = CONFIG.secondsPerQuestion;
-
 let timerInterval = null;
-
 let answered = false;
 
 let accessToken = null;
-
 let piUser = null;
+
+let quizQuestions = [];
 
 
 /* =====================================================
    HELPER
-   ===================================================== */
+===================================================== */
 
 function get(id) {
-
   return document.getElementById(id);
-
-}
-
-
-/* =====================================================
-   SCREEN MANAGEMENT
-   ===================================================== */
-
-function showScreen(screenId) {
-
-  const screens = [
-
-    "homeScreen",
-    "quizScreen",
-    "resultScreen",
-    "leaderboardScreen",
-    "premiumScreen"
-
-  ];
-
-  screens.forEach(function(id) {
-
-    get(id).classList.add("hidden");
-
-  });
-
-  get(screenId).classList.remove("hidden");
-
 }
 
 
 /* =====================================================
    STATUS
-   ===================================================== */
+===================================================== */
 
 function setStatus(message) {
-
   get("status").textContent = message;
+}
 
+
+/* =====================================================
+   SCREEN
+===================================================== */
+
+function showScreen(screenId) {
+
+  const screens = [
+    "homeScreen",
+    "quizScreen",
+    "resultScreen",
+    "leaderboardScreen",
+    "premiumScreen"
+  ];
+
+  screens.forEach(function(id) {
+    get(id).classList.add("hidden");
+  });
+
+  get(screenId).classList.remove("hidden");
+}
+
+
+/* =====================================================
+   SHUFFLE
+===================================================== */
+
+function shuffle(array) {
+
+  const copy = [...array];
+
+  for (let i = copy.length - 1; i > 0; i--) {
+
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  return copy;
+}
+
+
+/* =====================================================
+   LOAD QUESTIONS
+===================================================== */
+
+async function loadQuizQuestions() {
+
+  /*
+   * Niba question.js ifite questionManager,
+   * turayikoresha.
+   */
+
+  if (
+    typeof questionManager !== "undefined" &&
+    questionManager &&
+    typeof questionManager.loadQuestions === "function"
+  ) {
+
+    await questionManager.loadQuestions();
+
+    if (
+      typeof questionManager.createRound === "function"
+    ) {
+
+      questionManager.createRound(
+        CONFIG.questionsPerRound
+      );
+
+    }
+
+    if (
+      Array.isArray(questionManager.questions)
+    ) {
+
+      quizQuestions =
+        questionManager.questions.slice(
+          0,
+          CONFIG.questionsPerRound
+        );
+
+    }
+
+  }
+
+
+  /*
+   * Niba questionManager itaboneka,
+   * dukoresha questions zo muri index.html.
+   */
+
+  if (!quizQuestions.length) {
+
+    quizQuestions = shuffle([
+      {
+        question: "Umurwa mukuru w'u Rwanda ni uwuhe?",
+        answers: [
+          "Musanze",
+          "Kigali",
+          "Huye",
+          "Rubavu"
+        ],
+        correct: 1
+      },
+
+      {
+        question: "Rwanda iri ku mugabane uwuhe?",
+        answers: [
+          "Asia",
+          "Europe",
+          "Africa",
+          "America"
+        ],
+        correct: 2
+      },
+
+      {
+        question:
+          "Amazi abira kuri dogere zingahe ku rwego rusanzwe?",
+        answers: [
+          "50°C",
+          "75°C",
+          "100°C",
+          "150°C"
+        ],
+        correct: 2
+      },
+
+      {
+        question:
+          "Ni uwuhe mubumbe uzwi nka Red Planet?",
+        answers: [
+          "Mars",
+          "Venus",
+          "Jupiter",
+          "Mercury"
+        ],
+        correct: 0
+      },
+
+      {
+        question:
+          "HTML ikoreshwa cyane mu gukora iki?",
+        answers: [
+          "Structure ya webpage",
+          "Kohereza amafaranga",
+          "Gukora battery",
+          "Gucapa"
+        ],
+        correct: 0
+      },
+
+      {
+        question:
+          "CSS ikoreshwa cyane mu gukora iki?",
+        answers: [
+          "Database",
+          "Design ya webpage",
+          "Payment",
+          "Server"
+        ],
+        correct: 1
+      },
+
+      {
+        question:
+          "JavaScript ikoreshwa cyane mu gukora iki?",
+        answers: [
+          "Interactivity",
+          "Gusiga irangi",
+          "Gukora SIM card",
+          "Gukora printer"
+        ],
+        correct: 0
+      },
+
+      {
+        question:
+          "Pi Apps zikoresha iki mu guhuza app na Pi Network?",
+        answers: [
+          "Pi SDK",
+          "Bluetooth",
+          "SMS gusa",
+          "Camera"
+        ],
+        correct: 0
+      },
+
+      {
+        question:
+          "Minute imwe igizwe n'amasegonda angahe?",
+        answers: [
+          "30",
+          "45",
+          "60",
+          "100"
+        ],
+        correct: 2
+      },
+
+      {
+        question:
+          "Ni iki gishobora kongera umutekano wa account?",
+        answers: [
+          "Gusangira password",
+          "2FA/security measures",
+          "Kwandika password ahantu hose",
+          "Guha password inshuti"
+        ],
+        correct: 1
+      }
+    ]);
+
+  }
+
+
+  /*
+   * Niba hari questions nyinshi,
+   * hitamo 10 zitandukanye.
+   */
+
+  if (quizQuestions.length > CONFIG.questionsPerRound) {
+
+    quizQuestions =
+      shuffle(quizQuestions)
+        .slice(0, CONFIG.questionsPerRound);
+
+  }
 }
 
 
 /* =====================================================
    START QUIZ
-   ===================================================== */
+===================================================== */
 
-function startQuiz() {
+async function startQuiz() {
 
   clearInterval(timerInterval);
 
-  currentQuestion = 0;
+  try {
 
-  score = 0;
+    get("startBtn").disabled = true;
 
-  answered = false;
+    setStatus("Ibibazo birimo gufunguka...");
 
-  showScreen("quizScreen");
+    quizQuestions = [];
 
-  renderQuestion();
+    await loadQuizQuestions();
 
+    if (!quizQuestions.length) {
+
+      throw new Error(
+        "Nta bibazo byabonetse."
+      );
+
+    }
+
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+
+    get("startBtn").disabled = false;
+
+    showScreen("quizScreen");
+
+    renderQuestion();
+
+  } catch (error) {
+
+    console.error(
+      "Quiz start error:",
+      error
+    );
+
+    get("startBtn").disabled = false;
+
+    showScreen("homeScreen");
+
+    setStatus(
+      "Ibibazo ntibyashoboye gufunguka: " +
+      error.message
+    );
+
+  }
 }
 
 
 /* =====================================================
    RENDER QUESTION
-   ===================================================== */
+===================================================== */
 
 function renderQuestion() {
 
@@ -704,33 +678,41 @@ function renderQuestion() {
 
   answered = false;
 
-  const item = questions[currentQuestion];
+  const item =
+    quizQuestions[currentQuestion];
+
+  if (!item) {
+
+    finishQuiz();
+
+    return;
+  }
 
   get("questionNumber").textContent =
     "Ikibazo " +
     (currentQuestion + 1) +
     "/" +
-    questions.length;
+    quizQuestions.length;
 
   get("scoreText").textContent =
     "Score: " + score;
 
   get("progressBar").style.width =
-    ((currentQuestion / questions.length) * 100) + "%";
-
+    ((currentQuestion / quizQuestions.length) * 100) +
+    "%";
 
   get("questionText").textContent =
     item.question;
 
-
-  const answersBox = get("answers");
+  const answersBox =
+    get("answers");
 
   answersBox.innerHTML = "";
 
-
   item.answers.forEach(function(answer, index) {
 
-    const button = document.createElement("button");
+    const button =
+      document.createElement("button");
 
     button.className = "answer";
 
@@ -746,60 +728,56 @@ function renderQuestion() {
     };
 
     answersBox.appendChild(button);
-
   });
 
 
-  /*
-   * TIMER
-   */
+  get("nextBtn").classList.add("hidden");
 
-  timeLeft = CONFIG.secondsPerQuestion;
+  timeLeft =
+    CONFIG.secondsPerQuestion;
 
-  get("timer").textContent = timeLeft;
+  get("timer").textContent =
+    timeLeft;
 
   get("timer").classList.remove("hidden");
 
   get("timer").classList.remove("warning");
 
 
-  timerInterval = setInterval(function() {
+  timerInterval =
+    setInterval(function() {
 
-    timeLeft--;
+      timeLeft--;
 
-    get("timer").textContent = timeLeft;
+      get("timer").textContent =
+        timeLeft;
 
+      if (timeLeft <= 5) {
 
-    if (timeLeft <= 5) {
+        get("timer").classList.add("warning");
 
-      get("timer").classList.add("warning");
+      }
 
-    }
+      if (timeLeft <= 0) {
 
+        clearInterval(timerInterval);
 
-    if (timeLeft <= 0) {
+        timeoutQuestion();
 
-      clearInterval(timerInterval);
+      }
 
-      timeoutQuestion();
-
-    }
-
-  }, 1000);
-
+    }, 1000);
 }
 
 
 /* =====================================================
    SELECT ANSWER
-   ===================================================== */
+===================================================== */
 
 function selectAnswer(index, clickedButton) {
 
   if (answered) {
-
     return;
-
   }
 
   answered = true;
@@ -807,17 +785,13 @@ function selectAnswer(index, clickedButton) {
   clearInterval(timerInterval);
 
   const correct =
-    questions[currentQuestion].correct;
-
+    quizQuestions[currentQuestion].correct;
 
   const buttons =
     document.querySelectorAll(".answer");
 
-
   buttons.forEach(function(button) {
-
     button.disabled = true;
-
   });
 
 
@@ -831,95 +805,78 @@ function selectAnswer(index, clickedButton) {
 
     clickedButton.classList.add("wrong");
 
-    buttons[correct].classList.add("correct");
-
+    if (buttons[correct]) {
+      buttons[correct].classList.add("correct");
+    }
   }
 
 
   get("scoreText").textContent =
     "Score: " + score;
 
-
   get("nextBtn").classList.remove("hidden");
-
 }
 
 
 /* =====================================================
    TIMEOUT
-   ===================================================== */
+===================================================== */
 
 function timeoutQuestion() {
 
   if (answered) {
-
     return;
-
   }
 
   answered = true;
 
-
   const correct =
-    questions[currentQuestion].correct;
-
+    quizQuestions[currentQuestion].correct;
 
   const buttons =
     document.querySelectorAll(".answer");
 
-
   buttons.forEach(function(button) {
-
     button.disabled = true;
-
   });
 
-
   if (buttons[correct]) {
-
     buttons[correct].classList.add("correct");
-
   }
 
-
   get("nextBtn").classList.remove("hidden");
-
 }
 
 
 /* =====================================================
-   NEXT QUESTION
-   ===================================================== */
+   NEXT
+===================================================== */
 
 function nextQuestion() {
 
   if (!answered) {
-
     return;
-
   }
-
 
   currentQuestion++;
 
-
-  if (currentQuestion >= questions.length) {
+  if (
+    currentQuestion >=
+    quizQuestions.length
+  ) {
 
     finishQuiz();
 
     return;
-
   }
 
-
   renderQuestion();
-
 }
 
 
 /* =====================================================
-   FINISH QUIZ
-   ===================================================== */
+   FINISH
+===================================================== */
 
 function finishQuiz() {
 
@@ -929,25 +886,22 @@ function finishQuiz() {
 
   get("progressBar").style.width = "100%";
 
-
   const total =
-    questions.length;
-
+    quizQuestions.length;
 
   const percentage =
-    Math.round((score / total) * 100);
-
+    Math.round(
+      (score / total) * 100
+    );
 
   get("finalScore").textContent =
     score + "/" + total;
-
 
   get("finalPercentage").textContent =
     percentage + "%";
 
 
-  let message = "";
-
+  let message;
 
   if (percentage >= 80) {
 
@@ -963,24 +917,21 @@ function finishQuiz() {
 
     message =
       "Komeza wige kandi wongere ugerageze 💪";
-
   }
 
 
   get("finalMessage").textContent =
     message;
 
-
   saveScore(score);
 
   showScreen("resultScreen");
-
 }
 
 
 /* =====================================================
    SAVE SCORE
-   ===================================================== */
+===================================================== */
 
 function saveScore(points) {
 
@@ -993,11 +944,11 @@ function saveScore(points) {
         ) || "[]"
       );
 
-
     scores.push({
 
       name:
-        piUser && piUser.username
+        piUser &&
+        piUser.username
           ? piUser.username
           : "Guest",
 
@@ -1005,14 +956,11 @@ function saveScore(points) {
 
       date:
         new Date().toISOString()
-
     });
 
 
     scores.sort(function(a, b) {
-
       return b.score - a.score;
-
     });
 
 
@@ -1031,19 +979,17 @@ function saveScore(points) {
       "Score save error:",
       error
     );
-
   }
-
 }
 
 
 /* =====================================================
    LEADERBOARD
-   ===================================================== */
+===================================================== */
 
 function showLeaderboard() {
 
-  let scores;
+  let scores = [];
 
   try {
 
@@ -1057,30 +1003,29 @@ function showLeaderboard() {
   } catch (error) {
 
     scores = [];
-
   }
 
 
   const box =
     get("leaderboardList");
 
+  box.innerHTML = "";
 
-  if (scores.length === 0) {
+
+  if (!scores.length) {
 
     box.innerHTML =
       "<p>Nta score irabikwa.</p>";
 
   } else {
 
-    box.innerHTML = "";
-
-
     scores.forEach(function(item, index) {
 
       const div =
         document.createElement("div");
 
-      div.className = "leader";
+      div.className =
+        "leader";
 
       div.textContent =
         (index + 1) +
@@ -1089,51 +1034,58 @@ function showLeaderboard() {
         " — " +
         item.score +
         "/" +
-        questions.length;
+        (quizQuestions.length || 10);
 
       box.appendChild(div);
 
     });
-
   }
 
 
   showScreen("leaderboardScreen");
-
 }
 
 
 /* =====================================================
-   PI INITIALIZATION
-   ===================================================== */
+   PI SDK INITIALIZATION
+===================================================== */
+
+let piInitialized = false;
 
 function initializePi() {
 
-  if (!window.Pi) {
+  if (typeof window.Pi === "undefined") {
 
-    setStatus(
-      "Pi SDK ntiboneka. Fungura Quiz Master muri Pi Browser."
+    console.warn(
+      "Pi SDK ntabwo iboneka."
     );
 
-    return;
+    setStatus(
+      "Quiz Master iriteguye. Pi Login ikenera Pi Browser."
+    );
 
+    return false;
   }
 
 
   try {
 
-    Pi.init({
-
+    window.Pi.init({
       version: "2.0",
-
       sandbox: CONFIG.sandbox
-
     });
 
+    piInitialized = true;
+
+    console.log(
+      "Pi SDK initialized successfully."
+    );
 
     setStatus(
-      "Pi SDK yatangiye neza."
+      "Quiz Master iriteguye."
     );
+
+    return true;
 
   } catch (error) {
 
@@ -1142,51 +1094,73 @@ function initializePi() {
       error
     );
 
+    piInitialized = false;
 
     setStatus(
-      "Pi SDK init error."
+      "Pi SDK ntiyatangiye. Quiz iracyakora."
     );
 
+    return false;
   }
-
 }
 
 
 /* =====================================================
    PI LOGIN
-   ===================================================== */
+===================================================== */
 
 async function loginPi() {
 
-  if (!window.Pi) {
+  if (typeof window.Pi === "undefined") {
 
     alert(
-      "Fungura Quiz Master muri Pi Browser."
+      "Fungura Quiz Master muri Pi Browser kugira ngo ukoreshe Pi Login."
     );
 
     return;
-
   }
+
+
+  /*
+   * Banza urebe ko SDK yatangiye.
+   */
+
+  if (!piInitialized) {
+
+    const initialized =
+      initializePi();
+
+    if (!initialized) {
+
+      alert(
+        "Pi SDK ntiyatangiye neza. Ongera ufungure app muri Pi Browser."
+      );
+
+      return;
+    }
+  }
+
+
+  const loginButton =
+    get("loginBtn");
+
+  loginButton.disabled = true;
+
+  loginButton.textContent =
+    "🔐 Birimo kwinjira...";
 
 
   try {
 
     const auth =
-      await Pi.authenticate(
-
-        [
-          "username",
-          "payments"
-        ],
-
+      await window.Pi.authenticate(
+        ["username"],
         onIncompletePaymentFound
-
       );
 
 
     accessToken =
       auth.accessToken;
-
 
     piUser =
       auth.user;
@@ -1194,11 +1168,16 @@ async function loginPi() {
 
     get("userText").textContent =
       "Murakaza neza, @" +
-      (piUser.username || "Pi User");
+      (
+        piUser &&
+        piUser.username
+          ? piUser.username
+          : "Pi User"
+      );
 
 
     setStatus(
-      "Pi login yakoze neza."
+      "Pi login yakoze neza. Murakaza neza!"
     );
 
 
@@ -1209,20 +1188,29 @@ async function loginPi() {
       error
     );
 
-
     setStatus(
       "Pi login yanze: " +
-      (error.message || error)
+      (
+        error &&
+        error.message
+          ? error.message
+          : "ongera ugerageze"
+      )
     );
 
-  }
+  } finally {
 
+    loginButton.disabled = false;
+
+    loginButton.textContent =
+      "🔐 Injira muri Pi";
+  }
 }
 
 
 /* =====================================================
    INCOMPLETE PAYMENT
-   ===================================================== */
+===================================================== */
 
 async function onIncompletePaymentFound(payment) {
 
@@ -1231,18 +1219,12 @@ async function onIncompletePaymentFound(payment) {
     payment
   );
 
-
-  if (!payment) {
-
+  if (!payment || !payment.identifier) {
     return;
-
   }
 
-
-  if (!payment.identifier) {
-
+  if (!accessToken) {
     return;
-
   }
 
 
@@ -1252,14 +1234,11 @@ async function onIncompletePaymentFound(payment) {
       await fetch(
         "/api/pi/complete",
         {
-
           method: "POST",
 
           headers: {
-
             "Content-Type":
               "application/json"
-
           },
 
           body: JSON.stringify({
@@ -1275,9 +1254,7 @@ async function onIncompletePaymentFound(payment) {
 
             accessToken:
               accessToken
-
           })
-
         }
       );
 
@@ -1285,12 +1262,10 @@ async function onIncompletePaymentFound(payment) {
     const data =
       await response.json();
 
-
     console.log(
-      "Payment completion:",
+      "Incomplete payment completion:",
       data
     );
-
 
   } catch (error) {
 
@@ -1298,37 +1273,44 @@ async function onIncompletePaymentFound(payment) {
       "Incomplete payment error:",
       error
     );
-
   }
-
 }
 
 
 /* =====================================================
-   PI PREMIUM PAYMENT
-   ===================================================== */
+   PREMIUM
+===================================================== */
 
 async function payPremium() {
 
-  if (!window.Pi) {
+  if (typeof window.Pi === "undefined") {
 
     alert(
       "Fungura Quiz Master muri Pi Browser."
     );
 
     return;
+  }
 
+
+  if (!piInitialized) {
+
+    const initialized =
+      initializePi();
+
+    if (!initialized) {
+      return;
+    }
   }
 
 
   /*
-   * Banza winjire muri Pi
+   * Login mbere ya payment.
    */
 
   if (!accessToken) {
 
     await loginPi();
-
   }
 
 
@@ -1339,18 +1321,16 @@ async function payPremium() {
     );
 
     return;
-
   }
 
 
   const payButton =
     get("payBtn");
 
-
   payButton.disabled = true;
 
   payButton.textContent =
-    "Birimo gutunganywa...";
+    "💰 Birimo gutunganywa...";
 
 
   const paymentData = {
@@ -1371,18 +1351,11 @@ async function payPremium() {
 
       version:
         "1.0"
-
     }
-
   };
 
 
   const callbacks = {
-
-
-    /* =====================================
-       SERVER APPROVAL
-       ===================================== */
 
     onReadyForServerApproval:
       async function(paymentId) {
@@ -1397,10 +1370,8 @@ async function payPremium() {
                 method: "POST",
 
                 headers: {
-
                   "Content-Type":
                     "application/json"
-
                 },
 
                 body: JSON.stringify({
@@ -1410,9 +1381,7 @@ async function payPremium() {
 
                   accessToken:
                     accessToken
-
                 })
-
               }
             );
 
@@ -1421,14 +1390,12 @@ async function payPremium() {
             await response.json();
 
 
-          if (!response.ok ||
-              data.error) {
+          if (!response.ok || data.error) {
 
             throw new Error(
               data.error ||
               "Payment approval failed"
             );
-
           }
 
 
@@ -1437,7 +1404,6 @@ async function payPremium() {
             data
           );
 
-
         } catch (error) {
 
           console.error(
@@ -1445,20 +1411,13 @@ async function payPremium() {
             error
           );
 
-
           alert(
             "Payment approval yanze: " +
             error.message
           );
-
         }
-
       },
 
-
-    /* =====================================
-       SERVER COMPLETION
-       ===================================== */
 
     onReadyForServerCompletion:
       async function(paymentId, txid) {
@@ -1473,10 +1432,8 @@ async function payPremium() {
                 method: "POST",
 
                 headers: {
-
                   "Content-Type":
                     "application/json"
-
                 },
 
                 body: JSON.stringify({
@@ -1489,9 +1446,7 @@ async function payPremium() {
 
                   accessToken:
                     accessToken
-
                 })
-
               }
             );
 
@@ -1500,20 +1455,14 @@ async function payPremium() {
             await response.json();
 
 
-          if (!response.ok ||
-              data.error) {
+          if (!response.ok || data.error) {
 
             throw new Error(
               data.error ||
               "Payment completion failed"
             );
-
           }
 
-
-          /*
-           * Premium irafungutse
-           */
 
           localStorage.setItem(
             "quizmaster_premium",
@@ -1527,9 +1476,8 @@ async function payPremium() {
 
 
           setStatus(
-            "Premium Completed neza."
+            "Premium yakozwe neza."
           );
-
 
         } catch (error) {
 
@@ -1537,7 +1485,6 @@ async function payPremium() {
             "Completion error:",
             error
           );
-
 
           alert(
             "Payment completion yanze: " +
@@ -1550,15 +1497,9 @@ async function payPremium() {
 
           payButton.textContent =
             "💰 Ishyura 1 Pi";
-
         }
-
       },
 
-
-    /* =====================================
-       CANCEL
-       ===================================== */
 
     onCancel:
       async function(paymentId) {
@@ -1578,10 +1519,8 @@ async function payPremium() {
               method: "POST",
 
               headers: {
-
                 "Content-Type":
                   "application/json"
-
               },
 
               body: JSON.stringify({
@@ -1591,18 +1530,16 @@ async function payPremium() {
 
                 accessToken:
                   accessToken
-
               })
-
             }
           );
 
         } catch (error) {
 
           console.error(
+            "Cancel error:",
             error
           );
-
         }
 
 
@@ -1611,17 +1548,11 @@ async function payPremium() {
         payButton.textContent =
           "💰 Ishyura 1 Pi";
 
-
         setStatus(
           "Payment yahagaritswe."
         );
-
       },
 
-
-    /* =====================================
-       ERROR
-       ===================================== */
 
     onError:
       function(error, payment) {
@@ -1632,37 +1563,28 @@ async function payPremium() {
           payment
         );
 
-
         payButton.disabled = false;
 
         payButton.textContent =
           "💰 Ishyura 1 Pi";
 
-
         setStatus(
           "Pi Payment error yabaye."
         );
-
       },
 
 
-    /* =====================================
-       INCOMPLETE
-       ===================================== */
-
     onIncompletePaymentFound:
       onIncompletePaymentFound
-
   };
 
 
   try {
 
-    Pi.createPayment(
+    window.Pi.createPayment(
       paymentData,
       callbacks
     );
-
 
   } catch (error) {
 
@@ -1671,131 +1593,93 @@ async function payPremium() {
       error
     );
 
-
     alert(
       "Pi payment error: " +
       error.message
     );
 
-
     payButton.disabled = false;
 
     payButton.textContent =
       "💰 Ishyura 1 Pi";
-
   }
-
 }
 
 
 /* =====================================================
    BUTTON EVENTS
-   ===================================================== */
+===================================================== */
 
-get("startBtn").onclick =
-  startQuiz;
+get("startBtn").addEventListener(
+  "click",
+  startQuiz
+);
 
+get("loginBtn").addEventListener(
+  "click",
+  loginPi
+);
 
-get("loginBtn").onclick =
-  loginPi;
-
-
-get("premiumBtn").onclick =
+get("premiumBtn").addEventListener(
+  "click",
   function() {
+    showScreen("premiumScreen");
+  }
+);
 
-    showScreen(
-      "premiumScreen"
-    );
+get("leaderboardBtn").addEventListener(
+  "click",
+  showLeaderboard
+);
 
-  };
+get("nextBtn").addEventListener(
+  "click",
+  nextQuestion
+);
 
+get("againBtn").addEventListener(
+  "click",
+  startQuiz
+);
 
-get("leaderboardBtn").onclick =
-  showLeaderboard;
-
-
-get("nextBtn").onclick =
-  nextQuestion;
-
-
-get("againBtn").onclick =
-  startQuiz;
-
-
-get("homeBtn").onclick =
+get("homeBtn").addEventListener(
+  "click",
   function() {
+    showScreen("homeScreen");
+  }
+);
 
-    showScreen(
-      "homeScreen"
-    );
-
-  };
-
-
-get("leaderboardBackBtn").onclick =
+get("leaderboardBackBtn").addEventListener(
+  "click",
   function() {
+    showScreen("homeScreen");
+  }
+);
 
-    showScreen(
-      "homeScreen"
-    );
-
-  };
-
-
-get("premiumBackBtn").onclick =
+get("premiumBackBtn").addEventListener(
+  "click",
   function() {
+    showScreen("homeScreen");
+  }
+);
 
-    showScreen(
-      "homeScreen"
-    );
-
-  };
-
-
-get("payBtn").onclick =
-  payPremium;
+get("payBtn").addEventListener(
+  "click",
+  payPremium
+);
 
 
 /* =====================================================
    START APP
-   ===================================================== */
+===================================================== */
 
 initializePi();
 
-</script>
+console.log(
+  "Quiz Master app yatangiye."
+);
 
-</body><!-- Pi Network SDK -->
-<script src="https://sdk.minepi.com/pi-sdk.js"></script>
-
-<!-- Quiz questions system -->
-<script src="./question.js"></script>
-
-<!-- Pi payment system -->
-<script src="./payment.js"></script>
-
-<!-- Main app -->
-<script>
-  async function startQuiz() {
-    try {
-      // Load all questions
-      await questionManager.loadQuestions();
-
-      // Select 10 random questions
-      questionManager.createRound(10);
-
-      console.log("Quiz yatangiye!");
-      console.log(
-        "Question 1:",
-        questionManager.getCurrentQuestion()
-      );
-
-    } catch (error) {
-      console.error("Quiz start error:", error);
-      alert("Questions ntizashoboye gufunguka.");
-    }
-  }
 </script>
 
 </body>
-</html>
 </html>
