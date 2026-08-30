@@ -6,19 +6,11 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { paymentId } = req.body || {};
+    const { paymentId } = req.body;
 
     if (!paymentId) {
       return res.status(400).json({
         error: "paymentId is required"
-      });
-    }
-
-    const apiKey = process.env.PI_API_KEY;
-
-    if (!apiKey) {
-      return res.status(500).json({
-        error: "PI_API_KEY is not configured"
       });
     }
 
@@ -27,7 +19,7 @@ export default async function handler(req, res) {
       {
         method: "POST",
         headers: {
-          Authorization: `Key ${apiKey}`,
+          "Authorization": `Key ${process.env.PI_API_KEY}`,
           "Content-Type": "application/json"
         }
       }
@@ -36,9 +28,12 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     return res.status(response.status).json(data);
+
   } catch (error) {
+    console.error(error);
+
     return res.status(500).json({
-      error: error.message
+      error: "Failed to approve payment"
     });
   }
 }
