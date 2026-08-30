@@ -1,109 +1,57 @@
-// api/pi/approve.js
-
-const PI_API_KEY = process.env.PI_API_KEY;
-
-function json(res, status, data) {
-  return res.status(status).json(data);
-}
-
-function getToken(req) {
-  const auth = req.headers.authorization || "";
-
-  if (auth.startsWith("Bearer ")) {
-    return auth.substring(7).trim();
-  }
-
-  return null;
-}
-
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return json(res, 405, {
-      error: "Method not allowed"
-    });
-  }
-
-  if (!PI_API_KEY) {
-    return json(res, 500, {
-      error: "Missing PI_API_KEY environment variable"
+    return res.status(405).json({
+      error: "Method Not Allowed"
     });
   }
 
   try {
     const { paymentId, accessToken } = req.body || {};
 
-    const token =
-      accessToken ||
-      getToken(req);
-
-    if (!paymentId) {
-      return json(res, 400, {
-        error: "paymentId is required"
+    if (!paymentId || !accessToken) {
+      return res.status(400).json({
+        error: "paymentId na accessToken birakenewe"
       });
     }
 
-    if (!token) {
-      return json(res, 401, {
-        error: "Pi access token is required"
+    const apiKey = process.env.PI_API_KEY;
+
+    if (!apiKey) {
+      return res.status(500).json({
+        error: "PI_API_KEY ntabwo yashyizwe muri Vercel Environment Variables"
       });
     }
 
-    // Verify the user's access token with Pi.
-    const userResponse = await fetch(
-      "https://api.minepi.com/v2/me",
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
-    );
-
-    if (!userResponse.ok) {
-      return json(res, 401, {
-        error: "Invalid Pi access token"
-      });
-    }
-
-    const user = await userResponse.json();
-
-    // Approve the payment server-side.
     const response = await fetch(
       `https://api.minepi.com/v2/payments/${encodeURIComponent(paymentId)}/approve`,
       {
         method: "POST",
         headers: {
-          Authorization: `Key ${PI_API_KEY}`,
+          "Authorization": `Key ${apiKey}`,
           "Content-Type": "application/json"
         }
       }
     );
 
-    const data = await response.json().catch(() => ({}));
+    const data = await response.json();
 
     if (!response.ok) {
-      return json(res, response.status, {
-        error:
-          data.error ||
-          data.message ||
-          "Pi payment approval failed",
-        details: data
+      return res.status(response.status).json({
+        error: data
       });
     }
 
-    return json(res, 200, {
+    return res.status(200).json({
       success: true,
-      paymentId,
-      username: user.username || null,
       payment: data
     });
 
   } catch (error) {
-    console.error("APPROVE ERROR:", error);
+    console.error("Approve error:", error);
 
-    return json(res, 500, {
-      error: "Internal server error",
+    return res.status(500).json({
+      error: "Server error",
       message: error.message
     });
   }
-};
+}
