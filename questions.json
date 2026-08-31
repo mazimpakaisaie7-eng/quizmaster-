@@ -1,6 +1,20 @@
-options": ["Kigali", "Huye", "Musanze", "Rubavu"],
+[
+  {
+    "question": "Umurwa mukuru w'u Rwanda ni uwuhe?",
+    "options": ["Kigali", "Huye", "Musanze", "Rubavu"],
     "answer": "Kigali"
   },
+  {
+    "question": "Rwanda yabonye ubwigenge ryari?",
+    "options": ["1962", "1959", "1994", "1973"],
+    "answer": "1962"
+  },
+  {
+    "question": "Ni uruhe rurimi rukoreshwa cyane mu Rwanda?",
+    "options": ["Kinyarwanda", "Igifaransa", "Icyongereza", "Igiswahili"],
+    "answer": "Kinyarwanda"
+  }
+]
   {
     "question": "U Rwanda rufite uturere tungahe?",
     "options": ["25", "30", "35", "40"],
