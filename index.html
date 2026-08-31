@@ -2,6 +2,7 @@
 <html lang="rw">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Quiz Master 🇷🇼</title>
@@ -20,742 +21,237 @@
       background: #111827;
       color: white;
       min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
 
     .container {
       width: 100%;
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .header h1 {
-      margin: 10px 0;
-      font-size: 32px;
-    }
-
-    .header p {
-      color: #d1d5db;
-    }
-
-    .quiz-box {
+      max-width: 650px;
       background: #1f2937;
       border-radius: 18px;
-      padding: 22px;
+      padding: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
-    .top-info {
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    #startBtn {
+      background: #22c55e;
+      color: white;
+    }
+
+    #nextBtn {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .option {
+      background: #374151;
+      color: white;
+      text-align: left;
+    }
+
+    .option:hover {
+      background: #4b5563;
+    }
+
+    .option.correct {
+      background: #16a34a;
+    }
+
+    .option.wrong {
+      background: #dc2626;
+    }
+
+    .option:disabled {
+      cursor: not-allowed;
+      opacity: 0.95;
+    }
+
+    .top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
       margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      background: #374151;
-      padding: 8px 12px;
-      border-radius: 10px;
-      font-size: 14px;
+      gap: 10px;
     }
 
     .timer {
       background: #dc2626;
-      padding: 8px 14px;
-      border-radius: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
       font-weight: bold;
     }
 
     .progress {
-      width: 100%;
-      height: 8px;
-      background: #374151;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 25px;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: #22c55e;
-      transition: width 0.3s ease;
+      color: #d1d5db;
     }
 
     #question {
       font-size: 22px;
-      line-height: 1.5;
+      line-height: 1.4;
       margin-bottom: 20px;
     }
 
-    .answers {
-      display: grid;
-      gap: 12px;
+    #options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .answer-btn {
-      width: 100%;
-      padding: 15px;
-      border: 2px solid #4b5563;
-      border-radius: 12px;
-      background: #374151;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      text-align: left;
-      transition: 0.2s;
+    #nextBtn {
+      display: none;
     }
 
-    .answer-btn:hover {
-      background: #4b5563;
-      transform: translateY(-1px);
-    }
-
-    .answer-btn.correct {
-      background: #166534;
-      border-color: #22c55e;
-    }
-
-    .answer-btn.wrong {
-      background: #991b1b;
-      border-color: #ef4444;
-    }
-
-    .answer-btn:disabled {
-      cursor: not-allowed;
-      opacity: 0.9;
-    }
-
-    .next-btn,
-    .start-btn,
-    .restart-btn {
-      width: 100%;
-      padding: 15px;
-      margin-top: 18px;
-      border: none;
-      border-radius: 12px;
-      background: #2563eb;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .next-btn:hover,
-    .start-btn:hover,
-    .restart-btn:hover {
-      background: #1d4ed8;
-    }
-
-    .screen {
+    .result {
       text-align: center;
     }
 
-    .screen h2 {
-      font-size: 28px;
-    }
-
     .score {
-      font-size: 45px;
+      font-size: 40px;
       font-weight: bold;
       margin: 20px 0;
-      color: #22c55e;
-    }
-
-    .hidden {
-      display: none !important;
     }
 
     .error {
       background: #7f1d1d;
-      border: 1px solid #ef4444;
       padding: 15px;
-      border-radius: 12px;
-      margin-top: 15px;
+      border-radius: 10px;
       line-height: 1.5;
-    }
-
-    @media (max-width: 500px) {
-      .container {
-        padding: 12px;
-      }
-
-      .header h1 {
-        font-size: 26px;
-      }
-
-      #question {
-        font-size: 19px;
-      }
-
-      .quiz-box {
-        padding: 16px;
-      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <div class="header">
-    <h1>🧠 Quiz Master 🇷🇼</h1>
-    <p>Gerageza ubumenyi bwawe</p>
-  </div>
+    <!-- =========================
+         START SCREEN
+         ⬅️ HANO ushobora guhindura title
+         ========================= -->
+    <div id="startScreen" class="screen active">
 
-  <!-- START SCREEN -->
-  <div id="startScreen" class="quiz-box screen">
-    <h2>Murakaza neza!</h2>
-    <p>
-      Uzahabwa ibibazo 10 bitandukanye.
-      Buri kibazo ufite amasegonda 20.
-    </p>
+      <h1>Quiz Master 🇷🇼</h1>
 
-    <button id="startBtn" class="start-btn">
-      Tangira Quiz 🚀
-    </button>
+      <p style="text-align:center;">
+        Gerageza ubumenyi bwawe!
+      </p>
 
-    <div id="startError" class="error hidden"></div>
-  </div>
+      <p style="text-align:center;">
+        Ibibazo: <strong>10</strong>
+      </p>
 
-  <!-- QUIZ SCREEN -->
-  <div id="quizScreen" class="quiz-box hidden">
+      <p style="text-align:center;">
+        Igihe kuri buri kibazo: <strong>20 seconds</strong>
+      </p>
 
-    <div class="top-info">
-      <div id="questionNumber" class="badge">
-        Ikibazo 1 / 10
+      <button id="startBtn">
+        Tangira Quiz
+      </button>
+
+    </div>
+
+
+    <!-- =========================
+         QUIZ SCREEN
+         ========================= -->
+    <div id="quizScreen" class="screen">
+
+      <div class="top-bar">
+
+        <div class="progress">
+          Ikibazo <span id="questionNumber">1</span>/10
+        </div>
+
+        <div class="timer">
+          ⏱️ <span id="timer">20</span>s
+        </div>
+
       </div>
 
-      <div id="timer" class="timer">
-        ⏱️ 20s
+      <div id="question">
+        Loading...
       </div>
+
+      <div id="options"></div>
+
+      <button id="nextBtn">
+        Ikibazo gikurikira
+      </button>
+
     </div>
 
-    <div class="progress">
-      <div id="progressBar" class="progress-bar"></div>
+
+    <!-- =========================
+         RESULT SCREEN
+         ========================= -->
+    <div id="resultScreen" class="screen">
+
+      <div class="result">
+
+        <h1>Quiz irangiye 🎉</h1>
+
+        <p>Amanota yawe:</p>
+
+        <div class="score">
+          <span id="score">0</span>/10
+        </div>
+
+        <p id="resultMessage"></p>
+
+        <button id="restartBtn">
+          Ongera utangire
+        </button>
+
+      </div>
+
     </div>
 
-    <h2 id="question">
-      Gutegereza ikibazo...
-    </h2>
 
-    <div id="answers" class="answers"></div>
+    <!-- =========================
+         ERROR SCREEN
+         ========================= -->
+    <div id="errorScreen" class="screen">
 
-    <button id="nextBtn" class="next-btn hidden">
-      Ikibazo gikurikira ➡️
-    </button>
+      <h2>Habaye ikibazo ❌</h2>
+
+      <div id="errorMessage" class="error"></div>
+
+    </div>
 
   </div>
 
-  <!-- RESULT SCREEN -->
-  <div id="resultScreen" class="quiz-box screen hidden">
 
-    <h2>🎉 Quiz irarangiye!</h2>
-
-    <p>Amanota yawe:</p>
-
-    <div id="score" class="score">
-      0 / 10
-    </div>
-
-    <p id="resultMessage"></p>
-
-    <button id="restartBtn" class="restart-btn">
-      Ongera utangire 🔄
-    </button>
-
-  </div>
-
-</div>
-
-
-<!--
-  IMPORTANT:
-  questions.js igomba kuba iri muri folder imwe na index.html.
--->
-<script src="./questions.js"></script>
-
-<script>
-  let allQuestions = [];
-  let quizQuestions = [];
-
-  let currentQuestion = 0;
-  let score = 0;
-
-  let timer = null;
-  let timeLeft = 20;
-
-  const TOTAL_QUESTIONS = 10;
-  const TIME_PER_QUESTION = 20;
-
-  const startScreen = document.getElementById("startScreen");
-  const quizScreen = document.getElementById("quizScreen");
-  const resultScreen = document.getElementById("resultScreen");
-
-  const startBtn = document.getElementById("startBtn");
-  const restartBtn = document.getElementById("restartBtn");
-
-  const questionNumber = document.getElementById("questionNumber");
-  const timerElement = document.getElementById("timer");
-
-  const progressBar = document.getElementById("progressBar");
-
-  const questionElement = document.getElementById("question");
-  const answersElement = document.getElementById("answers");
-
-  const nextBtn = document.getElementById("nextBtn");
-
-  const scoreElement = document.getElementById("score");
-  const resultMessage = document.getElementById("resultMessage");
-
-  const startError = document.getElementById("startError");
-
-
-  // ==============================
-  // SHUFFLE
-  // ==============================
-
-  function shuffle(array) {
-    const copy = [...array];
-
-    for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-
-    return copy;
-  }
-
-
-  // ==============================
-  // LOAD QUESTIONS.JSON
-  // ==============================
-
-  async function loadQuestions() {
-
-    try {
-
-      const response = await fetch("./questions.json", {
-        cache: "no-store"
-      });
-
-      if (!response.ok) {
-        throw new Error(
-          "questions.json ntiyabonetse. Reba niba iri muri folder imwe na index.html."
-        );
-      }
-
-      const data = await response.json();
-
-      if (!Array.isArray(data)) {
-        throw new Error(
-          "questions.json igomba kuba ari Array y'ibibazo."
-        );
-      }
-
-      if (data.length < TOTAL_QUESTIONS) {
-        throw new Error(
-          "questions.json igomba kuba ifite nibura ibibazo 10."
-        );
-      }
-
-      allQuestions = data;
-
-      return true;
-
-    } catch (error) {
-
-      console.error(error);
-
-      startError.textContent =
-        "❌ Habaye ikibazo mu gufungura ibibazo: " +
-        error.message;
-
-      startError.classList.remove("hidden");
-
-      return false;
-    }
-  }
-
-
-  // ==============================
-  // PREPARE QUIZ
-  // ==============================
-
-  function prepareQuiz() {
-
-    quizQuestions = shuffle(allQuestions)
-      .slice(0, TOTAL_QUESTIONS);
-
-    currentQuestion = 0;
-    score = 0;
-  }
-
-
-  // ==============================
-  // SHOW QUESTION
-  // ==============================
-
-  function showQuestion() {
-
-    clearInterval(timer);
-
-    nextBtn.classList.add("hidden");
-
-    answersElement.innerHTML = "";
-
-    const current = quizQuestions[currentQuestion];
-
-    if (!current) {
-      finishQuiz();
-      return;
-    }
-
-    questionNumber.textContent =
-      `Ikibazo ${currentQuestion + 1} / ${TOTAL_QUESTIONS}`;
-
-    progressBar.style.width =
-      `${((currentQuestion + 1) / TOTAL_QUESTIONS) * 100}%`;
-
-    questionElement.textContent =
-      current.question || "Ikibazo nticyabonetse.";
-
-    let answers = [];
-
-    // Support uburyo butandukanye bwa questions.json
-
-    if (Array.isArray(current.options)) {
-      answers = current.options;
-    }
-
-    else if (Array.isArray(current.answers)) {
-      answers = current.answers;
-    }
-
-    else if (
-      current.options &&
-      typeof current.options === "object"
-    ) {
-      answers = Object.values(current.options);
-    }
-
-    else {
-      answers = [
-        current.optionA,
-        current.optionB,
-        current.optionC,
-        current.optionD
-      ].filter(Boolean);
-    }
-
-    answers = shuffle(answers);
-
-    answers.forEach(answer => {
-
-      const button = document.createElement("button");
-
-      button.className = "answer-btn";
-
-      button.textContent = answer;
-
-      button.addEventListener("click", () => {
-
-        checkAnswer(
-          answer,
-          current
-        );
-
-      });
-
-      answersElement.appendChild(button);
-
-    });
-
-    startTimer();
-  }
-
-
-  // ==============================
-  // CHECK ANSWER
-  // ==============================
-
-  function checkAnswer(selectedAnswer, current) {
-
-    clearInterval(timer);
-
-    const buttons =
-      document.querySelectorAll(".answer-btn");
-
-    buttons.forEach(button => {
-      button.disabled = true;
-    });
-
-    const correctAnswer =
-      current.answer ??
-      current.correctAnswer ??
-      current.correct ??
-      current.correct_answer;
-
-    buttons.forEach(button => {
-
-      if (
-        String(button.textContent).trim() ===
-        String(correctAnswer).trim()
-      ) {
-
-        button.classList.add("correct");
-
-      }
-
-    });
-
-    if (
-      String(selectedAnswer).trim() ===
-      String(correctAnswer).trim()
-    ) {
-
-      score++;
-
-      const selectedButton =
-        [...buttons].find(
-          button =>
-            String(button.textContent).trim() ===
-            String(selectedAnswer).trim()
-        );
-
-      if (selectedButton) {
-        selectedButton.classList.add("correct");
-      }
-
-    } else {
-
-      const selectedButton =
-        [...buttons].find(
-          button =>
-            String(button.textContent).trim() ===
-            String(selectedAnswer).trim()
-        );
-
-      if (selectedButton) {
-        selectedButton.classList.add("wrong");
-      }
-
-    }
-
-    nextBtn.classList.remove("hidden");
-  }
-
-
-  // ==============================
-  // TIMER
-  // ==============================
-
-  function startTimer() {
-
-    timeLeft = TIME_PER_QUESTION;
-
-    updateTimer();
-
-    timer = setInterval(() => {
-
-      timeLeft--;
-
-      updateTimer();
-
-      if (timeLeft <= 0) {
-
-        clearInterval(timer);
-
-        timeUp();
-
-      }
-
-    }, 1000);
-  }
-
-
-  function updateTimer() {
-
-    timerElement.textContent =
-      `⏱️ ${timeLeft}s`;
-  }
-
-
-  // ==============================
-  // TIME UP
-  // ==============================
-
-  function timeUp() {
-
-    const current =
-      quizQuestions[currentQuestion];
-
-    const correctAnswer =
-      current.answer ??
-      current.correctAnswer ??
-      current.correct ??
-      current.correct_answer;
-
-    const buttons =
-      document.querySelectorAll(".answer-btn");
-
-    buttons.forEach(button => {
-
-      button.disabled = true;
-
-      if (
-        String(button.textContent).trim() ===
-        String(correctAnswer).trim()
-      ) {
-
-        button.classList.add("correct");
-
-      }
-
-    });
-
-    nextBtn.classList.remove("hidden");
-  }
-
-
-  // ==============================
-  // NEXT QUESTION
-  // ==============================
-
-  nextBtn.addEventListener("click", () => {
-
-    currentQuestion++;
-
-    if (
-      currentQuestion >=
-      quizQuestions.length
-    ) {
-
-      finishQuiz();
-
-    } else {
-
-      showQuestion();
-
-    }
-
-  });
-
-
-  // ==============================
-  // FINISH QUIZ
-  // ==============================
-
-  function finishQuiz() {
-
-    clearInterval(timer);
-
-    quizScreen.classList.add("hidden");
-
-    resultScreen.classList.remove("hidden");
-
-    scoreElement.textContent =
-      `${score} / ${TOTAL_QUESTIONS}`;
-
-    const percentage =
-      (score / TOTAL_QUESTIONS) * 100;
-
-    if (percentage === 100) {
-
-      resultMessage.textContent =
-        "🏆 Byiza cyane! Watsinze byose!";
-
-    }
-
-    else if (percentage >= 70) {
-
-      resultMessage.textContent =
-        "👏 Wakoze neza cyane!";
-
-    }
-
-    else if (percentage >= 50) {
-
-      resultMessage.textContent =
-        "👍 Ni byiza, ariko ushobora kurushaho!";
-
-    }
-
-    else {
-
-      resultMessage.textContent =
-        "💪 Ongera ugerageze, uzabishobora!";
-    }
-  }
-
-
-  // ==============================
-  // START QUIZ
-  // ==============================
-
-  startBtn.addEventListener("click", async () => {
-
-    startError.classList.add("hidden");
-
-    startBtn.disabled = true;
-
-    startBtn.textContent =
-      "Gutegereza ibibazo...";
-
-    const loaded = await loadQuestions();
-
-    if (!loaded) {
-
-      startBtn.disabled = false;
-
-      startBtn.textContent =
-        "Tangira Quiz 🚀";
-
-      return;
-    }
-
-    prepareQuiz();
-
-    startScreen.classList.add("hidden");
-
-    quizScreen.classList.remove("hidden");
-
-    startBtn.disabled = false;
-
-    startBtn.textContent =
-      "Tangira Quiz 🚀";
-
-    showQuestion();
-
-  });
-
-
-  // ==============================
-  // RESTART
-  // ==============================
-
-  restartBtn.addEventListener("click", () => {
-
-    prepareQuiz();
-
-    resultScreen.classList.add("hidden");
-
-    quizScreen.classList.remove("hidden");
-
-    showQuestion();
-
-  });
-
-</script>
+  <!--
+    ⬅️ HANO NIHO DUHUZA index.html NA questions.js
+  -->
+  <script src="./questions.js"></script>
 
 </body>
 </html>
