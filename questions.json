@@ -2,9 +2,9 @@
   {
     "question": "Umurwa mukuru w'u Rwanda ni uwuhe?",
     "options": [
-      "Kigali",
-      "Huye",
-      "Musanze",
+      "Kigali"
+      "Huye"
+      "Musanze"
       "Rubavu"
     ],
     "answer": "Kigali"
@@ -12,9 +12,9 @@
   {
     "question": "Rwanda ibarizwa ku mugabane uwuhe?",
     "options": [
-      "Afurika",
-      "Uburayi",
-      "Aziya",
+      "Afurika"
+      "Uburayi"
+      "Aziya"
       "Amerika"
     ],
     "answer": "Afurika"
@@ -22,9 +22,9 @@
   {
     "question": "Ibendera ry'u Rwanda rifite amabara angahe?",
     "options": [
-      "2",
-      "3",
-      "4",
+      "2"
+      "3"
+      "4"
       "5"
     ],
     "answer": "3"
@@ -32,9 +32,9 @@
   {
     "question": "Ni uruhe rurimi rukoreshwa cyane mu Rwanda?",
     "options": [
-      "Ikinyarwanda",
-      "Igifaransa",
-      "Igishinwa",
+      "Ikinyarwanda"
+      "Igifaransa"
+      "Igishinwa"
       "Igitaliyani"
     ],
     "answer": "Ikinyarwanda"
