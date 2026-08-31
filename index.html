@@ -1,5 +1,22 @@
-body
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Quiz Master 🇷🇼</title>
+
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Quiz Master - Gerageza ubumenyi bwawe">
+
+  <style>
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
       background: #111827;
       color: white;
@@ -12,71 +29,26 @@ body
 
     .container {
       width: 100%;
-      max-width: 650px;
+      max-width: 600px;
       background: #1f2937;
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     }
 
     h1 {
       text-align: center;
-      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 30px;
     }
 
-    .screen {
-      display: none;
+    .subtitle {
+      text-align: center;
+      color: #d1d5db;
+      margin-bottom: 25px;
     }
 
-    .screen.active {
-      display: block;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 12px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    #startBtn {
-      background: #22c55e;
-      color: white;
-    }
-
-    #nextBtn {
-      background: #3b82f6;
-      color: white;
-    }
-
-    .option {
-      background: #374151;
-      color: white;
-      text-align: left;
-    }
-
-    .option:hover {
-      background: #4b5563;
-    }
-
-    .option.correct {
-      background: #16a34a;
-    }
-
-    .option.wrong {
-      background: #dc2626;
-    }
-
-    .option:disabled {
-      cursor: not-allowed;
-      opacity: 0.95;
-    }
-
-    .top-bar {
+    .top {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -84,158 +56,511 @@ body
       gap: 10px;
     }
 
-    .timer {
+    .badge {
+      background: #374151;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    #timer {
       background: #dc2626;
-      padding: 8px 12px;
-      border-radius: 8px;
+      padding: 10px 15px;
+      border-radius: 10px;
       font-weight: bold;
     }
 
     .progress {
-      color: #d1d5db;
+      height: 8px;
+      background: #374151;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: #22c55e;
+      transition: width 0.3s;
     }
 
     #question {
       font-size: 22px;
-      line-height: 1.4;
+      line-height: 1.5;
       margin-bottom: 20px;
     }
 
-    #options {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .answers {
+      display: grid;
+      gap: 12px;
     }
 
-    #nextBtn {
-      display: none;
+    .answer {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #4b5563;
+      border-radius: 12px;
+      background: #374151;
+      color: white;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
-    .result {
+    .answer:hover {
+      background: #4b5563;
+    }
+
+    .answer.correct {
+      background: #15803d;
+      border-color: #22c55e;
+    }
+
+    .answer.wrong {
+      background: #b91c1c;
+      border-color: #ef4444;
+    }
+
+    .answer:disabled {
+      cursor: not-allowed;
+      opacity: 0.95;
+    }
+
+    #nextBtn,
+    #restartBtn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #2563eb;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #nextBtn:hover,
+    #restartBtn:hover {
+      background: #1d4ed8;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    #result {
       text-align: center;
     }
 
-    .score {
-      font-size: 40px;
-      font-weight: bold;
-      margin: 20px 0;
+    #result h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    #finalScore {
+      font-size: 22px;
+      margin: 15px 0;
     }
 
     .error {
       background: #7f1d1d;
+      border: 1px solid #ef4444;
       padding: 15px;
       border-radius: 10px;
       line-height: 1.5;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 25px;
+      }
+
+      #question {
+        font-size: 19px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <main class="container">
 
-    <!-- =========================
-         START SCREEN
-         ⬅️ HANO ushobora guhindura title
-         ========================= -->
-    <div id="startScreen" class="screen active">
-
+    <!-- START -->
+    <section id="startScreen">
       <h1>Quiz Master 🇷🇼</h1>
-
-      <p style="text-align:center;">
+      <p class="subtitle">
         Gerageza ubumenyi bwawe!
       </p>
 
-      <p style="text-align:center;">
-        Ibibazo: <strong>10</strong>
-      </p>
+      <button id="startBtn">Tangira Quiz</button>
+    </section>
 
-      <p style="text-align:center;">
-        Igihe kuri buri kibazo: <strong>20 seconds</strong>
-      </p>
+    <!-- QUIZ -->
+    <section id="quizScreen" class="hidden">
 
-      <button id="startBtn">
-        Tangira Quiz
-      </button>
-
-    </div>
-
-
-    <!-- =========================
-         QUIZ SCREEN
-         ========================= -->
-    <div id="quizScreen" class="screen">
-
-      <div class="top-bar">
-
-        <div class="progress">
+      <div class="top">
+        <div class="badge">
           Ikibazo <span id="questionNumber">1</span>/10
         </div>
 
-        <div class="timer">
-          ⏱️ <span id="timer">20</span>s
+        <div id="timer">
+          ⏱️ <span id="time">20</span>s
         </div>
-
       </div>
 
-      <div id="question">
-        Loading...
+      <div class="progress">
+        <div id="progressBar"></div>
       </div>
 
-      <div id="options"></div>
+      <h2 id="question">Loading...</h2>
 
-      <button id="nextBtn">
-        Ikibazo gikurikira
+      <div id="answers" class="answers"></div>
+
+      <button id="nextBtn" class="hidden">
+        Ikibazo gikurikira →
       </button>
 
-    </div>
+    </section>
 
+    <!-- RESULT -->
+    <section id="result" class="hidden">
 
-    <!-- =========================
-         RESULT SCREEN
-         ========================= -->
-    <div id="resultScreen" class="screen">
+      <h2>🎉 Quiz Irangiye!</h2>
 
-      <div class="result">
+      <p id="finalScore"></p>
 
-        <h1>Quiz irangiye 🎉</h1>
+      <button id="restartBtn">
+        Ongera utangire
+      </button>
 
-        <p>Amanota yawe:</p>
+    </section>
 
-        <div class="score">
-          <span id="score">0</span>/10
-        </div>
-
-        <p id="resultMessage"></p>
-
-        <button id="restartBtn">
-          Ongera utangire
-        </button>
-
+    <!-- ERROR -->
+    <section id="errorScreen" class="hidden">
+      <div class="error">
+        <strong>Habaye ikibazo.</strong>
+        <br><br>
+        Ntabwo nabashije kubona questions.
+        Reba niba <b>questions.js</b> iri muri folder imwe na
+        <b>index.html</b>.
       </div>
+    </section>
 
-    </div>
-
-
-    <!-- =========================
-         ERROR SCREEN
-         ========================= -->
-    <div id="errorScreen" class="screen">
-
-      <h2>Habaye ikibazo ❌</h2>
-
-      <div id="errorMessage" class="error"></div>
-
-    </div>
-
-  </div>
-
+  </main>
 
   <!--
-    ⬅️ HANO NIHO DUHUZA index.html NA questions.js
+    IMPORTANT:
+    questions.js igomba kuba muri folder imwe na index.html.
   -->
   <script src="./questions.js"></script>
-<script src="./payment.js"></script>
+
+  <script>
+    const TOTAL_QUESTIONS = 10;
+    const TIME_PER_QUESTION = 20;
+
+    let questions = [];
+    let quizQuestions = [];
+    let currentQuestion = 0;
+    let score = 0;
+    let timeLeft = TIME_PER_QUESTION;
+    let timer = null;
+    let answered = false;
+
+    const startScreen = document.getElementById("startScreen");
+    const quizScreen = document.getElementById("quizScreen");
+    const resultScreen = document.getElementById("result");
+    const errorScreen = document.getElementById("errorScreen");
+
+    const startBtn = document.getElementById("startBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    const questionNumber = document.getElementById("questionNumber");
+    const questionText = document.getElementById("question");
+    const answersBox = document.getElementById("answers");
+
+    const timeText = document.getElementById("time");
+    const progressBar = document.getElementById("progressBar");
+    const finalScore = document.getElementById("finalScore");
+
+    /*
+      Emera formats za questions.js:
+
+      const questions = [
+        {
+          question: "Umurwa mukuru w'u Rwanda ni uwuhe?",
+          answers: ["Kigali", "Huye", "Musanze", "Rubavu"],
+          correct: 0
+        }
+      ];
+
+      Cyangwa:
+
+      const questions = [
+        {
+          question: "Umurwa mukuru w'u Rwanda ni uwuhe?",
+          options: ["Kigali", "Huye", "Musanze", "Rubavu"],
+          answer: "Kigali"
+        }
+      ];
+
+      Iyi index.html igerageza kwakira formats zombi.
+    */
+
+    function getQuestions() {
+
+      if (typeof window.questions !== "undefined") {
+        return window.questions;
+      }
+
+      if (typeof window.quizQuestions !== "undefined") {
+        return window.quizQuestions;
+      }
+
+      if (typeof window.QUESTIONS !== "undefined") {
+        return window.QUESTIONS;
+      }
+
+      return [];
+    }
+
+    function shuffle(array) {
+      const copy = [...array];
+
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+
+      return copy;
+    }
+
+    function getQuestionText(q) {
+      return q.question || q.questionText || q.text || "";
+    }
+
+    function getOptions(q) {
+      return q.answers || q.options || q.choices || [];
+    }
+
+    function getCorrectAnswer(q) {
+
+      if (typeof q.correct === "number") {
+        return q.correct;
+      }
+
+      if (typeof q.answer === "number") {
+        return q.answer;
+      }
+
+      const options = getOptions(q);
+
+      if (typeof q.correct === "string") {
+        return options.indexOf(q.correct);
+      }
+
+      if (typeof q.answer === "string") {
+        return options.indexOf(q.answer);
+      }
+
+      return -1;
+    }
+
+    function startQuiz() {
+
+      questions = getQuestions();
+
+      if (!Array.isArray(questions) || questions.length === 0) {
+        startScreen.classList.add("hidden");
+        errorScreen.classList.remove("hidden");
+        return;
+      }
+
+      quizQuestions = shuffle(questions).slice(
+        0,
+        Math.min(TOTAL_QUESTIONS, questions.length)
+      );
+
+      currentQuestion = 0;
+      score = 0;
+
+      startScreen.classList.add("hidden");
+      resultScreen.classList.add("hidden");
+      errorScreen.classList.add("hidden");
+      quizScreen.classList.remove("hidden");
+
+      showQuestion();
+    }
+
+    function showQuestion() {
+
+      clearInterval(timer);
+
+      answered = false;
+      nextBtn.classList.add("hidden");
+
+      const q = quizQuestions[currentQuestion];
+
+      questionNumber.textContent =
+        currentQuestion + 1;
+
+      questionText.textContent =
+        getQuestionText(q);
+
+      progressBar.style.width =
+        ((currentQuestion + 1) / quizQuestions.length * 100) + "%";
+
+      answersBox.innerHTML = "";
+
+      const options = getOptions(q);
+
+      options.forEach((option, index) => {
+
+        const button = document.createElement("button");
+
+        button.className = "answer";
+        button.textContent = option;
+
+        button.addEventListener("click", () => {
+          selectAnswer(button, index);
+        });
+
+        answersBox.appendChild(button);
+      });
+
+      startTimer();
+    }
+
+    function startTimer() {
+
+      timeLeft = TIME_PER_QUESTION;
+      timeText.textContent = timeLeft;
+
+      timer = setInterval(() => {
+
+        timeLeft--;
+
+        timeText.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+
+          clearInterval(timer);
+
+          if (!answered) {
+            selectAnswer(null, -1);
+          }
+        }
+
+      }, 1000);
+    }
+
+    function selectAnswer(selectedButton, selectedIndex) {
+
+      if (answered) return;
+
+      answered = true;
+
+      clearInterval(timer);
+
+      const q = quizQuestions[currentQuestion];
+
+      const correctIndex = getCorrectAnswer(q);
+
+      const buttons =
+        answersBox.querySelectorAll(".answer");
+
+      buttons.forEach((button, index) => {
+
+        button.disabled = true;
+
+        if (index === correctIndex) {
+          button.classList.add("correct");
+        }
+
+      });
+
+      if (selectedIndex === correctIndex) {
+
+        score++;
+
+        if (selectedButton) {
+          selectedButton.classList.add("correct");
+        }
+
+      } else {
+
+        if (selectedButton) {
+          selectedButton.classList.add("wrong");
+        }
+      }
+
+      nextBtn.classList.remove("hidden");
+    }
+
+    function nextQuestion() {
+
+      if (!answered) return;
+
+      currentQuestion++;
+
+      if (currentQuestion >= quizQuestions.length) {
+        finishQuiz();
+      } else {
+        showQuestion();
+      }
+    }
+
+    function finishQuiz() {
+
+      clearInterval(timer);
+
+      quizScreen.classList.add("hidden");
+      resultScreen.classList.remove("hidden");
+
+      finalScore.textContent =
+        `Wabonye ${score} kuri ${quizQuestions.length}.`;
+
+    }
+
+    startBtn.addEventListener("click", startQuiz);
+
+    restartBtn.addEventListener("click", startQuiz);
+
+    nextBtn.addEventListener("click", nextQuestion);
+
+    /*
+      Reba niba questions.js yapakiwe.
+    */
+    window.addEventListener("load", () => {
+
+      questions = getQuestions();
+
+      if (!Array.isArray(questions) || questions.length === 0) {
+
+        console.warn(
+          "questions.js ntiyabonetse cyangwa nta questions zirimo."
+        );
+
+      } else {
+
+        console.log(
+          "Quiz Master: questions loaded =",
+          questions.length
+        );
+
+      }
+
+    });
+  </script>
 
 </body>
 </html>
