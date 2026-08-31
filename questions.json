@@ -1,32 +1,179 @@
-[
-  {
-    "question": "Umurwa mukuru w'u Rwanda ni uwuhe?",
-    "options": [
-      "Kigali",
-      "Huye",
-      "Musanze",
-      "Rubavu"
-    ],
+options": ["Kigali", "Huye", "Musanze", "Rubavu"],
     "answer": "Kigali"
   },
   {
     "question": "U Rwanda rufite uturere tungahe?",
-    "options": [
-      "20",
-      "25",
-      "30",
-      "35"
-    ],
+    "options": ["25", "30", "35", "40"],
     "answer": "30"
   },
   {
-    "question": "Ururimi rw'igihugu rw'u Rwanda ni uruhe?",
+    "question": "Amafaranga akoreshwa mu Rwanda ni ayahe?",
+    "options": ["Dollar", "Euro", "Rwandan Franc", "Pound"],
+    "answer": "Rwandan Franc"
+  },
+  {
+    "question": "Rwanda iherereye kuri iyihe continent?",
+    "options": ["Asia", "Africa", "Europe", "America"],
+    "answer": "Africa"
+  },
+  {
+    "question": "Ni uwuhe mubumbe dutuyemo?",
+    "options": ["Mars", "Venus", "Earth", "Jupiter"],
+    "answer": "Earth"
+  },
+  {
+    "question": "Amazi agira formula iyihe?",
+    "options": ["CO2", "O2", "H2O", "NaCl"],
+    "answer": "H2O"
+  },
+  {
+    "question": "Umubumbe wegereye izuba kurusha indi ni uwuhe?",
+    "options": ["Earth", "Mercury", "Mars", "Venus"],
+    "answer": "Mercury"
+  },
+  {
+    "question": "Umwaka usanzwe ugira iminsi ingahe?",
+    "options": ["360", "364", "365", "366"],
+    "answer": "365"
+  },
+  {
+    "question": "Umwaka usimbuka ugira iminsi ingahe?",
+    "options": ["364", "365", "366", "367"],
+    "answer": "366"
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwi nk'umwami w'ishyamba?",
+    "options": ["Tiger", "Lion", "Elephant", "Leopard"],
+    "answer": "Lion"
+  },
+  {
+    "question": "Ni iyihe nyamaswa nini kurusha izindi ku isi?",
+    "options": ["Elephant", "Blue Whale", "Giraffe", "Shark"],
+    "answer": "Blue Whale"
+  },
+  {
+    "question": "Igitagangurirwa kigira amaguru angahe?",
+    "options": ["6", "8", "10", "12"],
+    "answer": "8"
+  },
+  {
+    "question": "Triangle igira impande zingahe?",
+    "options": ["2", "3", "4", "5"],
+    "answer": "3"
+  },
+  {
+    "question": "Square igira impande zingahe?",
+    "options": ["3", "4", "5", "6"],
+    "answer": "4"
+  },
+  {
+    "question": "2 + 8 bingana iki?",
+    "options": ["8", "10", "12", "16"],
+    "answer": "10"
+  },
+  {
+    "question": "10 × 5 bingana iki?",
+    "options": ["15", "25", "50", "100"],
+    "answer": "50"
+  },
+  {
+    "question": "100 ÷ 10 bingana iki?",
+    "options": ["5", "10", "20", "50"],
+    "answer": "10"
+  },
+  {
+    "question": "15 - 7 bingana iki?",
+    "options": ["6", "7", "8", "9"],
+    "answer": "8"
+  },
+  {
+    "question": "CPU isobanura iki?",
     "options": [
-      "Ikinyarwanda",
-      "Igifaransa",
-      "Icyongereza",
-      "Igiswahili"
+      "Central Processing Unit",
+      "Computer Power Unit",
+      "Central Program Utility",
+      "Computer Processing User"
     ],
-    "answer": "Ikinyarwanda"
+    "answer": "Central Processing Unit"
+  },
+  {
+    "question": "HTML ikoreshwa cyane mu ki?",
+    "options": [
+      "Kubaka structure ya webpage",
+      "Gupima ubushyuhe",
+      "Gukora batteries",
+      "Gukora telephone"
+    ],
+    "answer": "Kubaka structure ya webpage"
+  },
+  {
+    "question": "CSS ikoreshwa cyane mu ki?",
+    "options": [
+      "Gutunganya appearance ya webpage",
+      "Kubika amafaranga",
+      "Gukora internet",
+      "Gupima voltage"
+    ],
+    "answer": "Gutunganya appearance ya webpage"
+  },
+  {
+    "question": "JavaScript ikoreshwa cyane mu ki?",
+    "options": [
+      "Gushyira interaction muri website",
+      "Gukora batteries",
+      "Gupima ubushyuhe",
+      "Gukora printer"
+    ],
+    "answer": "Gushyira interaction muri website"
+  },
+  {
+    "question": "GitHub ikoreshwa cyane mu ki?",
+    "options": [
+      "Kubika no gucunga code",
+      "Gupima ubushyuhe",
+      "Gukora amafoto gusa",
+      "Kureba television"
+    ],
+    "answer": "Kubika no gucunga code"
+  },
+  {
+    "question": "Vercel ikoreshwa cyane mu ki?",
+    "options": [
+      "Gushyira website online",
+      "Gukora keyboard",
+      "Gupima voltage",
+      "Gukora telephone"
+    ],
+    "answer": "Gushyira website online"
+  },
+  {
+    "question": "Umurwa mukuru wa Kenya ni uwuhe?",
+    "options": ["Kampala", "Nairobi", "Kigali", "Dodoma"],
+    "answer": "Nairobi"
+  },
+  {
+    "question": "Umurwa mukuru wa Uganda ni uwuhe?",
+    "options": ["Kampala", "Nairobi", "Kigali", "Bujumbura"],
+    "answer": "Kampala"
+  },
+  {
+    "question": "Umurwa mukuru wa Tanzania ni uwuhe?",
+    "options": ["Dodoma", "Nairobi", "Kampala", "Arusha"],
+    "answer": "Dodoma"
+  },
+  {
+    "question": "Umurwa mukuru wa Burundi ni uwuhe?",
+    "options": ["Gitega", "Bujumbura", "Kigali", "Kampala"],
+    "answer": "Gitega"
+  },
+  {
+    "question": "Inyanja nini ku isi ni iyihe?",
+    "options": [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Pacific Ocean",
+      "Arctic Ocean"
+    ],
+    "answer": "Pacific Ocean"
   }
 ]
