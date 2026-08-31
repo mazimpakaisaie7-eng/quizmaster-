@@ -2,164 +2,31 @@
   {
     "question": "Umurwa mukuru w'u Rwanda ni uwuhe?",
     "options": [
-      "Kigali"
-      "Huye"
-      "Musanze"
+      "Kigali",
+      "Huye",
+      "Musanze",
       "Rubavu"
     ],
     "answer": "Kigali"
   },
   {
-    "question": "Rwanda ibarizwa ku mugabane uwuhe?",
+    "question": "U Rwanda rufite uturere tungahe?",
     "options": [
-      "Afurika"
-      "Uburayi"
-      "Aziya"
-      "Amerika"
+      "20",
+      "25",
+      "30",
+      "35"
     ],
-    "answer": "Afurika"
+    "answer": "30"
   },
   {
-    "question": "Ibendera ry'u Rwanda rifite amabara angahe?",
+    "question": "Ururimi rw'igihugu rw'u Rwanda ni uruhe?",
     "options": [
-      "2"
-      "3"
-      "4"
-      "5"
-    ],
-    "answer": "3"
-  },
-  {
-    "question": "Ni uruhe rurimi rukoreshwa cyane mu Rwanda?",
-    "options": [
-      "Ikinyarwanda"
-      "Igifaransa"
-      "Igishinwa"
-      "Igitaliyani"
+      "Ikinyarwanda",
+      "Igifaransa",
+      "Icyongereza",
+      "Igiswahili"
     ],
     "answer": "Ikinyarwanda"
-  },
-  {
-    "question": "Amazi agira formula iyihe?",
-    "options": [
-      "CO2",
-      "H2O",
-      "O2",
-      "NaCl"
-    ],
-    "answer": "H2O"
-  },
-  {
-    "question": "Umubumbe dutuyemo witwa iki?",
-    "options": [
-      "Mars",
-      "Venus",
-      "Isi",
-      "Jupiter"
-    ],
-    "answer": "Isi"
-  },
-  {
-    "question": "Umwaka ugira amezi angahe?",
-    "options": [
-      "10",
-      "11",
-      "12",
-      "13"
-    ],
-    "answer": "12"
-  },
-  {
-    "question": "Umunsi ugira amasaha angahe?",
-    "options": [
-      "12",
-      "18",
-      "24",
-      "30"
-    ],
-    "answer": "24"
-  },
-  {
-    "question": "Ni uwuhe mubumbe uzwiho kugira impeta nini?",
-    "options": [
-      "Mars",
-      "Saturn",
-      "Mercury",
-      "Venus"
-    ],
-    "answer": "Saturn"
-  },
-  {
-    "question": "Inyamaswa izwiho kuba nini kurusha izindi ku isi ni iyihe?",
-    "options": [
-      "Inzovu",
-      "Ifi nini (Blue whale)",
-      "Imvubu",
-      "Intare"
-    ],
-    "answer": "Ifi nini (Blue whale)"
-  },
-  {
-    "question": "Ni ikihe gihugu kizwiho kuba gifite umunara wa Eiffel?",
-    "options": [
-      "Ubufaransa",
-      "Ubudage",
-      "Espagne",
-      "Portugal"
-    ],
-    "answer": "Ubufaransa"
-  },
-  {
-    "question": "Umubare wa mbere (prime number) ni uwuhe?",
-    "options": [
-      "4",
-      "6",
-      "7",
-      "9"
-    ],
-    "answer": "7"
-  },
-  {
-    "question": "Ni uruhe rugingo rw'umubiri rutuma tubona?",
-    "options": [
-      "Umutima",
-      "Amaso",
-      "Ibihaha",
-      "Amatwi"
-    ],
-    "answer": "Amaso"
-  },
-  {
-    "question": "Ni uruhe rugingo rutuma dutega amatwi?",
-    "options": [
-      "Amazuru",
-      "Amaso",
-      "Amatwi",
-      "Umunwa"
-    ],
-    "answer": "Amatwi"
-  },
-  {
-    "question": "Izuba ni iki?",
-    "options": [
-      "Umubumbe",
-      "Inyenyeri",
-      "Ukwezi",
-      "Asteroide"
-    ],
-    "answer": "Inyenyeri"
-  },
-  {
-    "question": "Ni uwuhe mubumbe wegereye Izuba kurusha iyindi?",
-    "options": [
-      "Mercury",
-      "Isi",
-      "Mars",
-      "Jupiter"
-    ],
-    "answer": "Mercury"
-  },
-  {
-    "question": "Ni uwuhe mubumbe uzwiho kuba utukura?",
-    "options": [
-      "Mars",
+  }
+]
