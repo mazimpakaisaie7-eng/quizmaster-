@@ -1,8 +1,29 @@
-<!DOCTYPE html><html lang="rw">
+!DOCTYPE html>
+<html lang="rw">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Quiz Master Premium 💎</title>  <meta name="theme-color" content="#111827">
-  <meta name="description" content="Quiz Master Premium">  <style>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Quiz Master Premium 💎</title>
+
+  <meta
+    name="theme-color"
+    content="#111827"
+  >
+
+  <meta
+    name="description"
+    content="Quiz Master Premium - Pay with Pi"
+  >
+
+  <!-- Pi Network SDK -->
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+
+  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -12,7 +33,7 @@
     body {
       font-family: Arial, sans-serif;
       background: #111827;
-      color: #fff;
+      color: #ffffff;
       min-height: 100vh;
       padding: 20px;
     }
@@ -81,6 +102,7 @@
     li::before {
       content: "✓ ";
       font-weight: bold;
+      color: #10b981;
     }
 
     button,
@@ -97,13 +119,19 @@
       text-decoration: none;
     }
 
-    .premium-btn {
+    #piPaymentBtn {
       background: #f59e0b;
       color: #111827;
+      margin-top: 10px;
     }
 
-    .premium-btn:hover {
+    #piPaymentBtn:hover {
       opacity: 0.9;
+    }
+
+    #piPaymentBtn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .back {
@@ -121,6 +149,18 @@
       border-radius: 12px;
       margin-bottom: 18px;
       text-align: center;
+      line-height: 1.5;
+    }
+
+    .warning {
+      background: #451a03;
+      border: 1px solid #f59e0b;
+      color: #fde68a;
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      font-size: 14px;
     }
 
     .note {
@@ -130,114 +170,122 @@
       text-align: center;
       margin-top: 20px;
     }
-  </style></head><body>  <main class="container"><header class="header">
-  <div class="logo">💎</div>
-  <h1>Quiz Master Premium</h1>
-  <p class="subtitle">
-    Fungura ubushobozi bwose bwa Quiz Master kandi ukomeze kwiga no gutsinda.
-  </p>
-</header>
+  </style>
+</head>
 
-<div id="status" class="status">
-  🎉 Premium yawe iri gukora!
-</div>
+<body>
 
-<section class="card">
-  <h2>💎 Premium</h2>
+  <main class="container">
 
-  <div class="price">
-    1 Pi
-    <small>/ Premium</small>
-  </div>
+    <header class="header">
 
-  <ul>
-    <li>Ibibazo byinshi bya Quiz</li>
-    <li>Ibibazo bya Premium</li>
-    <li>Gukina nta mbogamizi zashyizwe kuri Premium</li>
-    <li>Gukurikirana amanota yawe</li>
-    <li>Kugera ku bindi bice bya Premium</li>
-  </ul>
+      <div class="logo">💎</div>
 
-  <button
-    class="premium-btn"
-    id="activateBtn"
-    onclick="activatePremium()">
-    💎 Fungura Premium
-  </button>
-</section>
+      <h1>
+        Quiz Master Premium
+      </h1>
 
-<section class="card">
-  <h2>👥 Referral</h2>
+      <p class="subtitle">
+        Fungura ubushobozi bwa Premium
+        ukoresheje Pi.
+      </p>
 
-  <p class="subtitle">
-    Uzazana abandi kuri Quiz Master ashobora kubona rewards
-    hakurikijwe amategeko ya referral azashyirwaho.
-  </p>
+    </header>
 
-  <br>
+    <div
+      id="status"
+      class="status"
+    >
+      🎉 Premium yawe iri gukora!
+    </div>
 
-  <a class="back" href="referral.html">
-    👥 Jya kuri Referral
-  </a>
-</section>
+    <div class="warning">
+      ⚠️ Payment ikorera muri Pi Browser.
+      Ntukishyure umuntu ku giti cye.
+      Koresha gusa payment button iri muri
+      Quiz Master.
+    </div>
 
-<a class="back" href="index.html">
-  ← Subira kuri Quiz Master
-</a>
+    <section class="card">
 
-<p class="note">
-  Payment nyayo izemezwa na payment system ihujwe na Quiz Master.
-  Ntukishyure umuntu utabiherewe amabwiriza n'app.
-</p>
+      <h2>
+        💎 Premium
+      </h2>
 
-  </main>  <script>
-    function activatePremium() {
-      const button = document.getElementById("activateBtn");
-      const status = document.getElementById("status");
+      <div class="price">
+        0.1 Pi
+        <small>/ Premium</small>
+      </div>
 
-      /*
-        AHA NI HO PAYMENT PROVIDER IZAHUZWA.
+      <ul>
+        <li>
+          Ibibazo byinshi bya Quiz
+        </li>
 
-        Kugeza  ubu iyi page ntabwo yemeza ko payment yabaye.
-        Ntabwo dukwiye gufungura Premium nyayo umuntu atarishyura.
+        <li>
+          Ibibazo bya Premium
+        </li>
 
-        Iyo payment system imaze guhuzwa neza,
-        ni yo izahamagarira activatePremiumSuccess()
-        nyuma yo kwemeza payment.
-      */
+        <li>
+          Gukina nta mbogamizi
+        </li>
 
-      button.textContent = "Payment system iracyategurwa...";
-      button.disabled = true;
+        <li>
+          Gukurikirana amanota yawe
+        </li>
 
-      setTimeout(() => {
-        button.textContent = "💎 Fungura Premium";
-        button.disabled = false;
-      }, 2000);
-    }
+        <li>
+          Kugera ku bindi bice bya Premium
+        </li>
+      </ul>
 
-    function activatePremiumSuccess() {
-      localStorage.setItem("quizmasterPremium", "true");
+      <!--
+        payment.js ni yo ishyiramo
+        payment button hano.
+      -->
 
-      document.getElementById("status").style.display = "block";
+      <div id="paymentArea"></div>
 
-      const button = document.getElementById("activateBtn");
-      button.textContent = "✓ Premium irafunguye";
-      button.disabled = true;
-    }
+    </section>
 
-    function checkPremium() {
-      const premium =
-        localStorage.getItem("quizmasterPremium") === "true";
+    <section class="card">
 
-      if (premium) {
-        document.getElementById("status").style.display = "block";
+      <h2>
+        👥 Referral
+      </h2>
 
-        const button = document.getElementById("activateBtn");
-        button.textContent = "✓ Premium irafunguye";
-        button.disabled = true;
-      }
-    }
+      <p class="subtitle">
+        Uzazana abandi kuri Quiz Master
+        ashobora kubona rewards hakurikijwe
+        amategeko ya referral.
+      </p>
 
-    checkPremium();
-  </script></body>
+      <a
+        class="back"
+        href="referral.html"
+      >
+        👥 Jya kuri Referral
+      </a>
+
+    </section>
+
+    <a
+      class="back"
+      href="index.html"
+    >
+      ← Subira kuri Quiz Master
+    </a>
+
+    <p class="note">
+      Payment yemezwa na Pi Network payment
+      system. Premium ifunguka nyuma y’uko
+      server yemeje transaction.
+    </p>
+
+  </main>
+
+  <!-- Quiz Master payment logic -->
+  <script src="payment.js"></script>
+
+</body>
 </html>
