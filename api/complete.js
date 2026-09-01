@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { paymentId } = req.body || {};
+    const { paymentId, txid } = req.body || {};
 
     if (!paymentId) {
       return res.status(400).json({
@@ -16,30 +16,50 @@ export default async function handler(req, res) {
       });
     }
 
+    if (!txid) {
+      return res.status(400).json({
+        success: false,
+        error: "txid irakenewe"
+      });
+    }
+
     const apiKey = process.env.PI_API_KEY;
 
     if (!apiKey) {
       return res.status(500).json({
         success: false,
-        error: "PI_API_KEY ntabwo yashyizwe muri Vercel Environment Variables"
+        error:
+          "PI_API_KEY ntabwo yashyizwe muri Vercel Environment Variables"
       });
     }
 
     const response = await fetch(
-      `https://api.minepi.com/v2/payments/${encodeURIComponent(paymentId)}/complete`,
+      `https://api.minepi.com/v2/payments/${encodeURIComponent(
+        paymentId
+      )}/complete`,
       {
         method: "POST",
+
         headers: {
-          "Authorization": `Key ${apiKey}`,
+          Authorization: `Key ${apiKey}`,
           "Content-Type": "application/json"
-        }
+        },
+
+        body: JSON.stringify({
+          txid: txid
+        })
       }
     );
 
     const data = await response.json();
 
+    console.log("Pi Complete Response:", data);
+
     if (!response.ok) {
-      console.error("Pi Complete Error:", data);
+      console.error(
+        "Pi Complete Error:",
+        data
+      );
 
       return res.status(response.status).json({
         success: false,
@@ -53,7 +73,10 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error("Complete error:", error);
+    console.error(
+      "Complete error:",
+      error
+    );
 
     return res.status(500).json({
       success: false,
