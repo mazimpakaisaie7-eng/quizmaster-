@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Quiz Master Premium 💎</title>  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Quiz Master Premium">  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin: 20px 0 30px;
+    }
+
+    .logo {
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .card {
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .card h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .price small {
+      font-size: 15px;
+      color: #cbd5e1;
+      font-weight: normal;
+    }
+
+    ul {
+      list-style: none;
+      margin: 18px 0;
+    }
+
+    li {
+      padding: 9px 0;
+      color: #e5e7eb;
+    }
+
+    li::before {
+      content: "✓ ";
+      font-weight: bold;
+    }
+
+    button,
+    .back {
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .premium-btn {
+      background: #f59e0b;
+      color: #111827;
+    }
+
+    .premium-btn:hover {
+      opacity: 0.9;
+    }
+
+    .back {
+      background: #374151;
+      color: white;
+      margin-top: 12px;
+    }
+
+    .status {
+      display: none;
+      background: #064e3b;
+      border: 1px solid #10b981;
+      color: #d1fae5;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .note {
+      color: #9ca3af;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style></head><body>  <main class="container"><header class="header">
+  <div class="logo">💎</div>
+  <h1>Quiz Master Premium</h1>
+  <p class="subtitle">
+    Fungura ubushobozi bwose bwa Quiz Master kandi ukomeze kwiga no gutsinda.
+  </p>
+</header>
+
+<div id="status" class="status">
+  🎉 Premium yawe iri gukora!
+</div>
+
+<section class="card">
+  <h2>💎 Premium</h2>
+
+  <div class="price">
+    1 Pi
+    <small>/ Premium</small>
+  </div>
+
+  <ul>
+    <li>Ibibazo byinshi bya Quiz</li>
+    <li>Ibibazo bya Premium</li>
+    <li>Gukina nta mbogamizi zashyizwe kuri Premium</li>
+    <li>Gukurikirana amanota yawe</li>
+    <li>Kugera ku bindi bice bya Premium</li>
+  </ul>
+
+  <button
+    class="premium-btn"
+    id="activateBtn"
+    onclick="activatePremium()">
+    💎 Fungura Premium
+  </button>
+</section>
+
+<section class="card">
+  <h2>👥 Referral</h2>
+
+  <p class="subtitle">
+    Uzazana abandi kuri Quiz Master ashobora kubona rewards
+    hakurikijwe amategeko ya referral azashyirwaho.
+  </p>
+
+  <br>
+
+  <a class="back" href="referral.html">
+    👥 Jya kuri Referral
+  </a>
+</section>
+
+<a class="back" href="index.html">
+  ← Subira kuri Quiz Master
+</a>
+
+<p class="note">
+  Payment nyayo izemezwa na payment system ihujwe na Quiz Master.
+  Ntukishyure umuntu utabiherewe amabwiriza n'app.
+</p>
+
+  </main>  <script>
+    function activatePremium() {
+      const button = document.getElementById("activateBtn");
+      const status = document.getElementById("status");
+
+      /*
+        AHA NI HO PAYMENT PROVIDER IZAHUZWA.
+
+        Kugeza  ubu iyi page ntabwo yemeza ko payment yabaye.
+        Ntabwo dukwiye gufungura Premium nyayo umuntu atarishyura.
+
+        Iyo payment system imaze guhuzwa neza,
+        ni yo izahamagarira activatePremiumSuccess()
+        nyuma yo kwemeza payment.
+      */
+
+      button.textContent = "Payment system iracyategurwa...";
+      button.disabled = true;
+
+      setTimeout(() => {
+        button.textContent = "💎 Fungura Premium";
+        button.disabled = false;
+      }, 2000);
+    }
+
+    function activatePremiumSuccess() {
+      localStorage.setItem("quizmasterPremium", "true");
+
+      document.getElementById("status").style.display = "block";
+
+      const button = document.getElementById("activateBtn");
+      button.textContent = "✓ Premium irafunguye";
+      button.disabled = true;
+    }
+
+    function checkPremium() {
+      const premium =
+        localStorage.getItem("quizmasterPremium") === "true";
+
+      if (premium) {
+        document.getElementById("status").style.display = "block";
+
+        const button = document.getElementById("activateBtn");
+        button.textContent = "✓ Premium irafunguye";
+        button.disabled = true;
+      }
+    }
+
+    checkPremium();
+  </script></body>
+</html>
