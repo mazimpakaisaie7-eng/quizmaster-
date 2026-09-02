@@ -1075,10 +1075,10 @@ question: "Internet ni iki?",
 
 
     function showError(message) {
+  errorMessage.textContent = message;
+  showScreen(errorScreen);
+}
 
-      errorMessage.textContent = message;
-
-      showScreen(errorScreen);
 startBtn.addEventListener("click", startQuiz);
 restartBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", nextQuestion);
@@ -1087,7 +1087,3 @@ nextBtn.addEventListener("click", nextQuestion);
 
 </body>
 </html>
-    }
-
-
-    
