@@ -6,7 +6,7 @@
 (function () {
   "use strict";
 
-  const PAYMENT_AMOUNT = 0.1;
+  const PAYMENT_AMOUNT = 1;
   const PAYMENT_MEMO = "Quiz Master Premium";
 
   let paymentButton = null;
