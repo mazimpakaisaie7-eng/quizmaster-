@@ -1678,9 +1678,7 @@ function shuffleQuestionOptions(question) {
         loadQuestion();
 
       }
-    }
-
-function finishQuiz() {
+ function finishQuiz() {
 
   clearInterval(timer);
 
@@ -1689,24 +1687,19 @@ function finishQuiz() {
   scoreElement.textContent = score;
 
   if (score >= 8) {
-
     resultMessage.textContent =
       "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
-
   } else if (score >= 5) {
-
     resultMessage.textContent =
       "👍 Ni byiza! Komeza witoze.";
-
   } else {
-
     resultMessage.textContent =
       "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
-
   }
 
-  // Erekana Ad nyuma ya buri round
+  // Erekana Ad nyuma ya round
   showRoundAd();
+}
 }
 function showRoundAd() {
   console.log("Ad igiye kwerekanwa nyuma ya round.");
