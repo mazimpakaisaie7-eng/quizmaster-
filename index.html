@@ -1680,8 +1680,6 @@ function shuffleQuestionOptions(question) {
       }
     }
 
-
-    function finishQuiz() {
 function finishQuiz() {
 
   clearInterval(timer);
@@ -1710,7 +1708,12 @@ function finishQuiz() {
   // Erekana Ad nyuma ya buri round
   showRoundAd();
 }
+function showRoundAd() {
+  console.log("Ad igiye kwerekanwa nyuma ya round.");
 
+  // Aha niho ushyira code ya Ad network ukoresha
+  // Urugero: AdMob, Adsterra, Monetag, n'indi.
+}
     function restartQuiz() {
 
       startQuiz();
