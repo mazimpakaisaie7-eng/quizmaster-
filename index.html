@@ -1117,7 +1117,10 @@ question: "Internet ni iki?",
   errorMessage.textContent = message;
   showScreen(errorScreen);
 }
-
+const premiumBtn = document.getElementById("premiumBtn");
+const premiumScreen = document.getElementById("premiumScreen");
+const backBtn = document.getElementById("backBtn");
+const payPremiumBtn = document.getElementById("payPremiumBtn");
 startBtn.addEventListener("click", startQuiz);
 restartBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", nextQuestion);
