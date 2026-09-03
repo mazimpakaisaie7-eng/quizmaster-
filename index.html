@@ -915,18 +915,41 @@ premiumScreen.classList.remove("active");
 
     function startQuiz() {
 
-      if (!questions || questions.length < 10) {
-        showError("Ibibazo ntibihagije.");
-        return;
-      }
+  if (!questions || questions.length < 10) {
+    showError("Ibibazo ntibihagije.");
+    return;
+  }
 
-      currentQuestion = 0;
-      score = 0;
+  currentQuestion = 0;
+  score = 0;
 
-      showScreen(quizScreen);
+  // Shaka ibibazo bitarakoreshejwe
+  let availableQuestions = questions.filter(
+    (_, index) => !usedQuestions.includes(index)
+  );
 
-      loadQuestion();
-    }
+  // Niba hasigaye munsi ya 10, tangira urutonde rushya
+  if (availableQuestions.length < 10) {
+    usedQuestions = [];
+    availableQuestions = [...questions];
+  }
+
+  // Vanga ibibazo
+  availableQuestions.sort(() => Math.random() - 0.5);
+
+  // Fata 10 gusa kuri iyi round
+  roundQuestions = availableQuestions.slice(0, 10);
+
+  // Bika ibibazo byakoreshejwe
+  roundQuestions.forEach(q => {
+    const index = questions.indexOf(q);
+    usedQuestions.push(index);
+  });
+
+  showScreen(quizScreen);
+
+  loadQuestion();
+}
 
 
     function loadQuestion() {
