@@ -266,10 +266,10 @@
   text-align:center;
 ">
   <!-- Ad izashyirwa hano -->
-</div>
+          </div>
         <button id="restartBtn">
-          komeza kubindi bikurikira
-        </button>
+  ▶️ Komeza kuri Round ikurikira
+</button>
 
       </div>
 
@@ -1682,32 +1682,34 @@ function shuffleQuestionOptions(question) {
 
 
     function finishQuiz() {
+function finishQuiz() {
 
-      clearInterval(timer);
+  clearInterval(timer);
 
-      showScreen(resultScreen);
+  showScreen(resultScreen);
 
-      scoreElement.textContent = score;
+  scoreElement.textContent = score;
 
+  if (score >= 8) {
 
-      if (score >= 8) {
+    resultMessage.textContent =
+      "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
 
-        resultMessage.textContent =
-          "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
+  } else if (score >= 5) {
 
-      } else if (score >= 5) {
+    resultMessage.textContent =
+      "👍 Ni byiza! Komeza witoze.";
 
-        resultMessage.textContent =
-          "👍 Ni byiza! Komeza witoze.";
+  } else {
 
-      } else {
+    resultMessage.textContent =
+      "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
 
-        resultMessage.textContent =
-          "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
+  }
 
-      }
-    }
-
+  // Erekana Ad nyuma ya buri round
+  showRoundAd();
+}
 
     function restartQuiz() {
 
