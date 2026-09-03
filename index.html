@@ -160,7 +160,39 @@
 </head>
 
 <body>
+<!-- PREMIUM SCREEN -->
+<div id="premiumScreen" class="screen">
 
+  <h1>⭐ Premium</h1>
+
+  <p class="info">
+    Fungura Premium ya Quiz Master.
+  </p>
+
+  <p class="info">
+    💰 Igiciro: <strong>1 Pi</strong>
+  </p>
+
+  <p class="info">
+    Premium iguha:
+  </p>
+
+  <p class="info">
+    ⏱️ Timer kuri buri kibazo<br>
+    📚 Ibibazo byinshi<br>
+    💾 Kubika amanota<br>
+    ⭐ Premium access
+  </p>
+
+  <button id="payPremiumBtn">
+    ⭐ Komeza wishyure 1 Pi
+  </button>
+
+  <button id="backBtn">
+    ← Subira kuri Home
+  </button>
+
+</div>
   <div class="container">
 
     <!-- START SCREEN -->
@@ -1089,7 +1121,17 @@ question: "Internet ni iki?",
 startBtn.addEventListener("click", startQuiz);
 restartBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", nextQuestion);
+premiumBtn.addEventListener("click", function () {
+  showScreen(premiumScreen);
+});
 
+backBtn.addEventListener("click", function () {
+  showScreen(startScreen);
+});
+
+payPremiumBtn.addEventListener("click", function () {
+  alert("Payment ya Premium ya 1 Pi irategurwa...");
+});
 </script>
 
 </body>
