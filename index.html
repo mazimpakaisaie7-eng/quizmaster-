@@ -912,7 +912,19 @@ premiumScreen.classList.remove("active");
       screen.classList.add("active");
     }
 
+function shuffleQuestionOptions(question) {
+  const correctAnswer = question.options[question.answer];
 
+  const shuffledOptions = [...question.options];
+
+  shuffledOptions.sort(() => Math.random() - 0.5);
+
+  question.options = shuffledOptions;
+
+  question.answer = shuffledOptions.indexOf(correctAnswer);
+
+  return question;
+}
     function startQuiz() {
 
   if (!questions || questions.length < 10) {
@@ -965,7 +977,7 @@ premiumScreen.classList.remove("active");
 
       optionsElement.innerHTML = "";
 
-      const q = roundQuestions[currentQuestion];
+      const q = shuffleQuestionOptions(roundQuestions[currentQuestion]);
 
       questionNumber.textContent = currentQuestion + 1;
 
