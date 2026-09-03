@@ -66,7 +66,7 @@
   --------------------------------------------------------- */
 
   async function approvePayment(paymentId) {
-    const response = await fetch("/api/approve", {
+    const response = await fetch("/api/pi/approve", {
       method: "POST",
 
       headers: {
@@ -99,7 +99,7 @@
   --------------------------------------------------------- */
 
   async function completePayment(paymentId, txid) {
-    const response = await fetch("/api/complete", {
+    const response = await fetch("/api/pi/complete", {
       method: "POST",
 
       headers: {
@@ -134,7 +134,7 @@
 
   async function cancelPayment(paymentId) {
     try {
-      const response = await fetch("/api/cancel", {
+      const response = await fetch("/api/pi/cancel", {
         method: "POST",
 
         headers: {
