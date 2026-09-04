@@ -1748,7 +1748,7 @@ function showError(message) {
 startBtn.addEventListener("click", startQuiz);
 restartBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", nextQuestion);
-premiumBtn.addEventListener("click", function () {
+ {
   
 });
 
@@ -1757,29 +1757,6 @@ backBtn.addEventListener("click",
   showScreen(startScreen);
 });
 
-    if (typeof Pi === "undefined") {
-      alert("Pi SDK ntiboneka. Fungura Quiz Master muri Pi Browser.");
-      return;
-    }
-
-          fetch("/api/pi/approve", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            
-    
-          })
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (data) {
-            console.log("Approval response:", data);
-          })
-          .catch(function (error) {
-            console.error("Approval error:", error);
-          });
-  
 }
 </script>
 
