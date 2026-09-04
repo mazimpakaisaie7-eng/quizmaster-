@@ -1678,17 +1678,129 @@ function shuffleQuestionOptions(question) {
 
     function nextQuestion() {
 
-      currentQuestion++;
+  currentQuestion++;
 
-      if (currentQuestion >= 10) {
+  if (currentQuestion >= roundQuestions.length) {
 
-        finishQuiz();
+    finishQuiz();
 
-      } else {
+  } else {
 
-        loadQuestion();
+    loadQuestion();
 
-      }
+  }
+}
+
+
+function finishQuiz() {
+
+  // Hagarika timer
+  clearInterval(timer);
+
+  // Fungura Result Screen
+  showScreen(resultScreen);
+
+  // Erekana amanota
+  scoreElement.textContent = score;
+
+  // Ubutumwa bitewe n'amanota
+  if (score >= 8) {
+
+    resultMessage.textContent =
+      "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
+
+  } else if (score >= 5) {
+
+    resultMessage.textContent =
+      "👍 Ni byiza! Komeza witoze.";
+
+  } else {
+
+    resultMessage.textContent =
+      "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
+
+  }
+
+  // Erekana Ad nyuma ya Round
+  showRoundAd();
+}
+
+
+function showRoundAd() {
+
+  const adContainer =
+    document.getElementById("adContainer");
+
+  // Niba adContainer itabonetse
+  if (!adContainer) {
+
+    console.error(
+      "adContainer ntiyabonetse."
+    );
+
+    return;
+  }
+
+  // Kuraho ad yari ihari
+  adContainer.innerHTML = "";
+
+  // Kora AdSense ad
+  const ad = document.createElement("ins");
+
+  ad.className = "adsbygoogle";
+
+  ad.style.display = "block";
+
+  ad.setAttribute(
+    "data-ad-client",
+    "ca-pub-2666698676518429"
+  );
+
+  ad.setAttribute(
+    "data-ad-slot",
+    "XXXXXXXXXX"
+  );
+
+  ad.setAttribute(
+    "data-ad-format",
+    "auto"
+  );
+
+  ad.setAttribute(
+    "data-full-width-responsive",
+    "true"
+  );
+
+  // Shyira ad muri container
+  adContainer.appendChild(ad);
+
+  // Saba AdSense kuyerekana
+  try {
+
+    (window.adsbygoogle =
+      window.adsbygoogle || []).push({});
+
+    console.log(
+      "AdSense ad yasabwe nyuma ya Round."
+    );
+
+  } catch (error) {
+
+    console.error(
+      "AdSense error:",
+      error
+    );
+
+  }
+}
+
+
+function restartQuiz() {
+
+  startQuiz();
+
+}
+}
  function finishQuiz() {
 
   clearInterval(timer);
