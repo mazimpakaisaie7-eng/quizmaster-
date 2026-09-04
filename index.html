@@ -1397,12 +1397,7 @@ question: "Internet ni iki?",
     ],
     answer: 1
   }
-];  // ← IYI NI NGOMBWA
-const CONFIG = {
-  premiumPrice: 1,
-  secondsPerQuestion: 20,
-  questionsPerRound: 10
-};
+]
 let currentQuestion = 0;
 let score = 0;
 let timeLeft = 20;
@@ -1749,51 +1744,31 @@ function showError(message) {
 
   showScreen(errorScreen);
 }
-const premiumBtn = document.getElementById("premiumBtn");
-const premiumScreen = document.getElementById("premiumScreen");
-const backBtn = document.getElementById("backBtn");
-const payPremiumBtn = document.getElementById("payPremiumBtn");
+
 startBtn.addEventListener("click", startQuiz);
 restartBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", nextQuestion);
 premiumBtn.addEventListener("click", function () {
-  showScreen(premiumScreen);
+  
 });
 
 backBtn.addEventListener("click", 
    function () {
   showScreen(startScreen);
 });
-payPremiumBtn.addEventListener("click", payPremium);
-function payPremium() {
-
-  try {
 
     if (typeof Pi === "undefined") {
       alert("Pi SDK ntiboneka. Fungura Quiz Master muri Pi Browser.");
       return;
     }
 
-    Pi.createPayment(
-      {
-        amount: CONFIG.premiumPrice,
-        memo: "Quiz Master Premium",
-        metadata: {
-          product: "premium"
-        },
-
-        onReadyForServerApproval: function (paymentId) {
-          console.log("Payment ready for approval:", paymentId);
-
-          // Payment ID yoherezwa kuri API yawe
           fetch("/api/pi/approve", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-              paymentId: paymentId
-            })
+            
+    
           })
           .then(function (response) {
             return response.json();
@@ -1804,79 +1779,7 @@ function payPremium() {
           .catch(function (error) {
             console.error("Approval error:", error);
           });
-        },
-
-        onReadyForServerCompletion: function (paymentId, txid) {
-          console.log(
-            "Payment ready for completion:",
-            paymentId,
-            txid
-          );
-
-          // Payment isozwa kuri API ya complete
-          fetch("/api/pi/complete", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              paymentId: paymentId,
-              txid: txid
-            })
-          })
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (data) {
-            console.log("Completion response:", data);
-
-            if (data.success) {
-              alert("🎉 Premium yafunguwe neza!");
-
-              localStorage.setItem(
-                "quizmaster_premium",
-                "true"
-              );
-            } else {
-              alert("Payment yarangiye ariko Premium ntiyafunguka.");
-            }
-          })
-          .catch(function (error) {
-            console.error("Completion error:", error);
-            alert("Habaye ikibazo mu kurangiza payment.");
-          });
-        },
-
-        onCancel: function (paymentId) {
-          console.log(
-            "Payment canceled:",
-            paymentId
-          );
-
-          alert("Payment yahagaritswe.");
-        },
-
-        onError: function (error) {
-          console.error(
-            "Pi payment error:",
-            error
-          );
-
-          alert(
-            "Payment yanze. Ongera ugerageze."
-          );
-        }
-      }
-    );
-
-  } catch (error) {
-
-    console.error(error);
-
-    alert(
-      "Habaye ikibazo mu gutangiza Premium."
-    );
-  }
+  
 }
 </script>
 
