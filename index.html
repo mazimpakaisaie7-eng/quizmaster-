@@ -1868,12 +1868,103 @@ function showRoundAd() {
 
     console.log("AdSense ad yasabwe.");
 
+function nextQuestion() {
+
+  currentQuestion++;
+
+  if (currentQuestion >= roundQuestions.length) {
+
+    finishQuiz();
+
+  } else {
+
+    loadQuestion();
+
+  }
+}
+
+
+function finishQuiz() {
+
+  clearInterval(timer);
+
+  showScreen(resultScreen);
+
+  scoreElement.textContent = score;
+
+  if (score >= 8) {
+
+    resultMessage.textContent =
+      "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
+
+  } else if (score >= 5) {
+
+    resultMessage.textContent =
+      "👍 Ni byiza! Komeza witoze.";
+
+  } else {
+
+    resultMessage.textContent =
+      "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
+
+  }
+
+  showRoundAd();
+}
+
+
+function showRoundAd() {
+
+  const adContainer =
+    document.getElementById("adContainer");
+
+  if (!adContainer) {
+
+    console.error("adContainer ntiyabonetse.");
+
+    return;
+  }
+
+  adContainer.innerHTML = "";
+
+  const ad = document.createElement("ins");
+
+  ad.className = "adsbygoogle";
+
+  ad.style.display = "block";
+
+  ad.setAttribute(
+    "data-ad-client",
+    "ca-pub-2666698676518429"
+  );
+
+  ad.setAttribute(
+    "data-ad-slot",
+    "XXXXXXXXXX"
+  );
+
+  ad.setAttribute(
+    "data-ad-format",
+    "auto"
+  );
+
+  ad.setAttribute(
+    "data-full-width-responsive",
+    "true"
+  );
+
+  adContainer.appendChild(ad);
+
+  try {
+
+    (window.adsbygoogle =
+      window.adsbygoogle || []).push({});
+
+    console.log("AdSense ad yasabwe.");
+
   } catch (error) {
 
-    console.error(
-      "AdSense error:",
-      error
-    );
+    console.error("AdSense error:", error);
 
   }
 }
