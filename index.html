@@ -1711,12 +1711,60 @@ function shuffleQuestionOptions(question) {
   // Erekana Ad nyuma ya round
   showRoundAd();
 }
-}
 function showRoundAd() {
-  console.log("Ad igiye kwerekanwa nyuma ya round.");
 
-  // Aha niho ushyira code ya Ad network ukoresha
-  // Urugero: AdMob, Adsterra, Monetag, n'indi.
+  const adContainer = document.getElementById("adContainer");
+
+  if (!adContainer) {
+    return;
+  }
+
+  // Kuramo ad ishaje
+  adContainer.innerHTML = "";
+
+  // Shyiramo AdSense ad
+  const ad = document.createElement("ins");
+
+  ad.className = "adsbygoogle";
+
+  ad.style.display = "block";
+
+  ad.setAttribute(
+    "data-ad-client",
+    "ca-pub-2666698676518429"
+  );
+
+  ad.setAttribute(
+    "data-ad-slot",
+    "XXXXXXXXXX"
+  );
+
+  ad.setAttribute(
+    "data-ad-format",
+    "auto"
+  );
+
+  ad.setAttribute(
+    "data-full-width-responsive",
+    "true"
+  );
+
+  adContainer.appendChild(ad);
+
+  try {
+
+    (adsbygoogle = window.adsbygoogle || []).push({});
+
+    console.log("AdSense ad yasabwe.");
+
+  } catch (error) {
+
+    console.error(
+      "AdSense error:",
+      error
+    );
+
+  }
 }
     function restartQuiz() {
 
