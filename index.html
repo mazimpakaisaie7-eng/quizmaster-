@@ -1772,17 +1772,101 @@ function showRoundAd() {
   );
 
   // Shyira ad muri container
+function nextQuestion() {
+
+  currentQuestion++;
+
+  if (currentQuestion >= roundQuestions.length) {
+
+    finishQuiz();
+
+  } else {
+
+    loadQuestion();
+
+  }
+}
+
+
+function finishQuiz() {
+
+  clearInterval(timer);
+
+  showScreen(resultScreen);
+
+  scoreElement.textContent = score;
+
+  if (score >= 8) {
+
+    resultMessage.textContent =
+      "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
+
+  } else if (score >= 5) {
+
+    resultMessage.textContent =
+      "👍 Ni byiza! Komeza witoze.";
+
+  } else {
+
+    resultMessage.textContent =
+      "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
+
+  }
+
+  showRoundAd();
+}
+
+
+function showRoundAd() {
+
+  const adContainer =
+    document.getElementById("adContainer");
+
+  if (!adContainer) {
+
+    console.error("adContainer ntiyabonetse.");
+
+    return;
+  }
+
+  // Kuraho ad ishaje
+  adContainer.innerHTML = "";
+
+  // Kora AdSense ad
+  const ad = document.createElement("ins");
+
+  ad.className = "adsbygoogle";
+
+  ad.style.display = "block";
+
+  ad.setAttribute(
+    "data-ad-client",
+    "ca-pub-2666698676518429"
+  );
+
+  ad.setAttribute(
+    "data-ad-slot",
+    "XXXXXXXXXX"
+  );
+
+  ad.setAttribute(
+    "data-ad-format",
+    "auto"
+  );
+
+  ad.setAttribute(
+    "data-full-width-responsive",
+    "true"
+  );
+
   adContainer.appendChild(ad);
 
-  // Saba AdSense kuyerekana
   try {
 
     (window.adsbygoogle =
       window.adsbygoogle || []).push({});
 
-    console.log(
-      "AdSense ad yasabwe nyuma ya Round."
-    );
+    console.log("AdSense ad yasabwe.");
 
   } catch (error) {
 
@@ -1802,7 +1886,13 @@ function restartQuiz() {
 }
 
 
-    function showError(message) {
+function showError(message) {
+
+  errorMessage.textContent = message;
+
+  showScreen(errorScreen);
+
+}
   errorMessage.textContent = message;
   showScreen(errorScreen);
 }
