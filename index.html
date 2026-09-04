@@ -1443,7 +1443,7 @@ let usedQuestions = [];
       quizScreen.classList.remove("active");
       resultScreen.classList.remove("active");
       errorScreen.classList.remove("active");
-premiumScreen.classList.remove("active");
+
       screen.classList.add("active");
     }
 
@@ -1625,8 +1625,6 @@ function shuffleQuestionOptions(question) {
         if (index === q.answer) {
           button.classList.add("correct");
         }
-
-      });
 
 
       nextBtn.style.display = "block";
