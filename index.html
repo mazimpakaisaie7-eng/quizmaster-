@@ -6,8 +6,12 @@
 
   <title>Quiz Master 🇷🇼</title>
 
+  <meta
+    name="description"
+    content="Quiz Master - Gerageza ubumenyi bwawe ku bibazo bitandukanye byo hirya no hino ku isi."
+  >
+
   <meta name="theme-color" content="#111827">
-  <meta name="description" content="Quiz Master - Gerageza ubumenyi bwawe ku bibazo byo hirya no hino ku isi">
 
   <!-- =====================================================
        GOOGLE ADSENSE
@@ -29,6 +33,7 @@
       font-family: Arial, sans-serif;
       background: #111827;
       color: white;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -37,14 +42,23 @@
     .container {
       width: 100%;
       max-width: 650px;
+
       background: #1f2937;
+
       padding: 25px;
+
       border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.3);
     }
 
     h1 {
       text-align: center;
+      margin-top: 0;
+    }
+
+    h2 {
       margin-top: 0;
     }
 
@@ -58,13 +72,21 @@
 
     button {
       width: 100%;
+
       padding: 14px;
+
       margin-top: 12px;
-      border: 0;
+
+      border: none;
+
       border-radius: 10px;
+
       font-size: 16px;
+
       font-weight: bold;
+
       cursor: pointer;
+
       transition: 0.2s;
     }
 
@@ -77,6 +99,8 @@
       opacity: 0.8;
     }
 
+    /* START */
+
     #startBtn,
     #restartBtn {
       background: #22c55e;
@@ -88,9 +112,13 @@
       background: #16a34a;
     }
 
+    /* NEXT */
+
     #nextBtn {
       display: none;
+
       background: #3b82f6;
+
       color: white;
     }
 
@@ -98,167 +126,236 @@
       background: #2563eb;
     }
 
+    /* TOP BAR */
+
     .top-bar {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
 
-    .progress {
-      color: #d1d5db;
-      font-weight: bold;
-      margin-top: 5px;
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 10px;
+
+      margin-bottom: 20px;
     }
 
     .round {
       color: #93c5fd;
+
       font-weight: bold;
+
       font-size: 18px;
     }
 
+    .progress {
+      color: #d1d5db;
+
+      font-weight: bold;
+
+      margin-top: 5px;
+    }
+
+    /* TIMER */
+
     .timer {
       background: #dc2626;
+
       padding: 8px 12px;
+
       border-radius: 8px;
+
       font-weight: bold;
+
       min-width: 70px;
+
       text-align: center;
     }
 
-    .timer.warning {
-      background: #ea580c;
-    }
-
-    .timer.danger {
-      background: #991b1b;
-      animation: pulse 0.8s infinite;
-    }
-
-    @keyframes pulse {
-      50% {
-        transform: scale(1.05);
-      }
-    }
+    /* QUESTION */
 
     #question {
       font-size: 22px;
+
       line-height: 1.5;
+
       margin-bottom: 20px;
+
       font-weight: bold;
     }
 
     #options {
       display: flex;
+
       flex-direction: column;
+
       gap: 10px;
     }
 
     .option {
       background: #374151;
+
       color: white;
+
       text-align: left;
+
       margin-top: 0;
+
       border: 2px solid transparent;
     }
 
     .option:hover:not(:disabled) {
       background: #4b5563;
+
       border-color: #60a5fa;
     }
 
     .option.correct {
       background: #16a34a;
+
       border-color: #4ade80;
     }
 
     .option.wrong {
       background: #dc2626;
+
       border-color: #f87171;
     }
 
-    .score {
-      text-align: center;
-      font-size: 45px;
-      font-weight: bold;
-      margin: 20px 0;
-    }
+    /* RESULT */
 
     .result {
       text-align: center;
     }
 
-    .info {
+    .score {
       text-align: center;
+
+      font-size: 45px;
+
+      font-weight: bold;
+
+      margin: 20px 0;
+    }
+
+    #resultMessage {
       color: #d1d5db;
+
       line-height: 1.6;
     }
 
-    .error {
-      background: #7f1d1d;
-      padding: 15px;
-      border-radius: 10px;
-      line-height: 1.5;
-    }
+    /* INFO */
 
-    .ad-box {
-      margin: 30px 0;
-      padding: 15px 0;
-      min-height: 90px;
+    .info {
       text-align: center;
-    }
 
-    .ad-label {
-      color: #9ca3af;
-      font-size: 12px;
-      margin-bottom: 10px;
+      color: #d1d5db;
+
+      line-height: 1.6;
     }
 
     .round-info {
       background: #374151;
+
       padding: 15px;
+
       border-radius: 12px;
+
       margin: 20px 0;
+
       text-align: center;
     }
 
     .small {
       font-size: 14px;
+
       color: #d1d5db;
     }
 
+    /* STATS */
+
     .stats {
       display: flex;
+
       justify-content: space-between;
+
       gap: 10px;
+
       margin: 15px 0;
     }
 
     .stat {
       flex: 1;
+
       background: #374151;
+
       padding: 10px;
+
       border-radius: 10px;
+
       text-align: center;
+
       font-size: 13px;
+
       color: #d1d5db;
     }
 
     .stat strong {
       display: block;
+
       color: white;
+
       font-size: 18px;
+
       margin-top: 4px;
     }
 
+    /* CATEGORY */
+
     .category {
       color: #a5b4fc;
+
       font-size: 13px;
+
       margin-bottom: 8px;
     }
 
+    /* ERROR */
+
+    .error {
+      background: #7f1d1d;
+
+      padding: 15px;
+
+      border-radius: 10px;
+
+      line-height: 1.5;
+    }
+
+    /* ADS */
+
+    .ad-box {
+      margin: 25px 0;
+
+      padding: 15px 0;
+
+      min-height: 90px;
+
+      text-align: center;
+    }
+
+    .ad-label {
+      color: #9ca3af;
+
+      font-size: 12px;
+
+      margin-bottom: 10px;
+    }
+
+    /* RESPONSIVE */
+
     @media (max-width: 500px) {
+
       body {
         padding: 10px;
       }
@@ -274,6 +371,11 @@
       .top-bar {
         align-items: flex-start;
       }
+
+      .stats {
+        gap: 6px;
+      }
+
     }
   </style>
 </head>
@@ -285,16 +387,23 @@
   <!-- =====================================================
        START SCREEN
        ===================================================== -->
+
   <div id="startScreen" class="screen active">
 
     <h1>Quiz Master 🇷🇼</h1>
 
     <p class="info">
-      Gerageza ubumenyi bwawe ku bibazo bitandukanye byo hirya no hino ku isi.
+      Gerageza ubumenyi bwawe ku bibazo bitandukanye
+      byo hirya no hino ku isi.
     </p>
 
     <div class="round-info">
-      <strong>🎯 Round: <span id="startRound">1</span></strong>
+
+      <strong>
+        🎯 Round:
+        <span id="startRound">1</span>
+      </strong>
+
       <br><br>
 
       <span class="small">
@@ -304,7 +413,13 @@
       <br>
 
       <span class="small">
-        ⏱️ Amasegonda 30 kuri buri kibazo
+        ⏱️ Amasegonda 20 kuri buri kibazo
+      </span>
+
+      <br>
+
+      <span class="small">
+        🔀 Ibibazo biravangwa
       </span>
 
       <br>
@@ -318,6 +433,7 @@
       <span class="small">
         🆓 Gukina ni FREE
       </span>
+
     </div>
 
     <button id="startBtn">
@@ -330,33 +446,45 @@
   <!-- =====================================================
        QUIZ SCREEN
        ===================================================== -->
+
   <div id="quizScreen" class="screen">
 
     <div class="top-bar">
 
       <div>
+
         <div class="round">
-          Round <span id="roundNumber">1</span>
+          Round
+          <span id="roundNumber">1</span>
         </div>
 
         <div class="progress">
-          Ikibazo <span id="questionNumber">1</span>/10
+          Ikibazo
+          <span id="questionNumber">1</span>/10
         </div>
+
       </div>
 
       <div id="timerBox" class="timer">
-        ⏱️ <span id="timer">30</span>s
+
+        ⏱️
+        <span id="timer">20</span>s
+
       </div>
 
     </div>
 
+
     <div id="category" class="category"></div>
+
 
     <div id="question">
       Loading...
     </div>
 
+
     <div id="options"></div>
+
 
     <button id="nextBtn">
       Ikibazo gikurikira ➡️
@@ -368,64 +496,102 @@
   <!-- =====================================================
        RESULT SCREEN
        ===================================================== -->
+
   <div id="resultScreen" class="screen">
 
     <div class="result">
 
-      <h1>Round irangiye 🎉</h1>
+      <h1>
+        Round irangiye 🎉
+      </h1>
 
       <p>
-        Round <strong><span id="finishedRound">1</span></strong>
+        Round
+        <strong>
+          <span id="finishedRound">1</span>
+        </strong>
       </p>
 
-      <p>Amanota yawe:</p>
+      <p>
+        Amanota yawe:
+      </p>
 
       <div class="score">
+
         <span id="score">0</span>/10
+
       </div>
 
       <p id="resultMessage"></p>
 
     </div>
 
+
+    <!-- =================================================
+         STATS
+         ================================================= -->
+
     <div class="stats">
 
       <div class="stat">
+
         Correct
-        <strong id="correctCount">0</strong>
+
+        <strong id="correctCount">
+          0
+        </strong>
+
       </div>
 
+
       <div class="stat">
+
         Wrong
-        <strong id="wrongCount">0</strong>
+
+        <strong id="wrongCount">
+          0
+        </strong>
+
       </div>
 
+
       <div class="stat">
+
         Time
-        <strong>30s</strong>
+
+        <strong>
+          20s
+        </strong>
+
       </div>
 
     </div>
 
 
     <!-- =================================================
-         ADSENSE AUTO ADS / NATURAL BREAK
-         Google ni yo igenzura niba ad igaragara.
+         ADSENSE
+         =================================================
+
+         Iyi ni ahantu Google ishobora gushyira ad.
+         AdSense ni yo igenzura niba ad igaragara.
+         Ntabwo code ishobora kwemeza ko buri round
+         izagaragaza ad cyangwa amafaranga runaka.
          ================================================= -->
+
     <div class="ad-box">
 
       <div class="ad-label">
         Advertisement
       </div>
 
-      <!--
-        AdSense Auto Ads ikorera kuri script iri muri <head>.
-        Ntabwo dushyiramo push() buri round kuko Google ni yo
-        igenzura placement n'igihe ad igaragara.
-      -->
+      <!-- Google AdSense Auto Ads ishobora gushyira ad hano -->
 
     </div>
 
+
+    <!-- =================================================
+         NEXT ROUND
+         ================================================= -->
 
     <button id="restartBtn">
       ▶️ Komeza kuri Round ikurikira
@@ -437,9 +603,12 @@
   <!-- =====================================================
        ERROR SCREEN
        ===================================================== -->
+
   <div id="errorScreen" class="screen">
 
-    <h2>Habaye ikibazo ❌</h2>
+    <h2>
+      Habaye ikibazo ❌
+    </h2>
 
     <div id="errorMessage" class="error"></div>
 
@@ -452,1996 +621,11 @@
 </div>
 
 
-<script>
+<!-- =====================================================
+     QUESTIONS.JS
+     ===================================================== -->
 
-  /*
-   =========================================================
-   QUIZ MASTER 🇷🇼
-   FILE IMWE GUSA
-   =========================================================
-  */
+<script src="./questions.js"></script>
 
-  const QUESTIONS_PER_ROUND = 10;
-  const SECONDS_PER_QUESTION = 20;
-
-
-  /*
-   =========================================================
-   HELPER YO GUKORA QUESTION
-   =========================================================
-  */
-
-  function q(question, a, b, c, d, answer, category) {
-    return {
-      question: question,
-      options: [a, b, c, d],
-      answer: answer,
-      category: category || "General Knowledge"
-    };
-  }
-
-
-  /*
-   =========================================================
-   QUESTIONS
-   =========================================================
-
-   Ibibazo 120.
-   10 kuri buri round.
-   Round 12 = cycle ya mbere irangiye.
-   Hanyuma cycle nshya iratangira.
-   =========================================================
-  */
-
-  const questions = [
-
-    /* ================= RWANDA ================= */
-
-    q(
-      "Umurwa mukuru w'u Rwanda ni uwuhe?",
-      "Kigali", "Huye", "Musanze", "Rubavu",
-      0, "Rwanda"
-    ),
-
-    q(
-      "U Rwanda ruri ku mugabane uwuhe?",
-      "Asia", "Africa", "Europe", "America",
-      1, "Rwanda"
-    ),
-
-    q(
-      "Ibendera ry'u Rwanda rifite amabara angahe?",
-      "2", "3", "4", "5",
-      1, "Rwanda"
-    ),
-
-    q(
-      "Amafaranga akoreshwa mu Rwanda yitwa iki?",
-      "Dollar", "Euro", "Franc Rwanda", "Pound",
-      2, "Rwanda"
-    ),
-
-    q(
-      "Ikiyaga kinini kiri mu Rwanda ni ikihe?",
-      "Kivu", "Muhazi", "Burera", "Ruhondo",
-      0, "Rwanda"
-    ),
-
-    q(
-      "Pariki y'Igihugu y'Akagera iri mu gice ki cy'u Rwanda?",
-      "Iburasirazuba", "Iburengerazuba", "Amajyaruguru", "Amajyepfo",
-      0, "Rwanda"
-    ),
-
-    q(
-      "Nyungwe izwi cyane kubera iki?",
-      "Amashyamba", "Ubutayu", "Ibiyaga by'umunyu", "Ibibarafu",
-      0, "Rwanda"
-    ),
-
-    q(
-      "Volcanoes National Park izwi cyane ku ki?",
-      "Gorillas zo mu misozi", "Ingamiya", "Penguins", "Tigers",
-      0, "Rwanda"
-    ),
-
-    q(
-      "Rwanda izwi cyane nk'igihugu cy'iki?",
-      "Imisozi igihumbi", "Ibiyaga igihumbi", "Inyanja", "Ubutayu",
-      0, "Rwanda"
-    ),
-
-    q(
-      "Ururimi rw'igihugu rukoreshwa cyane mu Rwanda ni uruhe?",
-      "Kinyarwanda", "Italian", "Chinese", "German",
-      0, "Rwanda"
-    ),
-
-
-    /* ================= AFRICA ================= */
-
-    q(
-      "Ni ikihe gihugu gifite umurwa mukuru Nairobi?",
-      "Kenya", "Uganda", "Tanzania", "Rwanda",
-      0, "Africa"
-    ),
-
-    q(
-      "Umurwa mukuru wa Uganda ni uwuhe?",
-      "Kampala", "Nairobi", "Kigali", "Dodoma",
-      0, "Africa"
-    ),
-
-    q(
-      "Umurwa mukuru wa Tanzania ni uwuhe?",
-      "Arusha", "Dodoma", "Mwanza", "Dar es Salaam",
-      1, "Africa"
-    ),
-
-    q(
-      "Umurwa mukuru wa Ethiopia ni uwuhe?",
-      "Asmara", "Addis Ababa", "Nairobi", "Khartoum",
-      1, "Africa"
-    ),
-
-    q(
-      "Umurwa mukuru wa Ghana ni uwuhe?",
-      "Accra", "Kumasi", "Lagos", "Abuja",
-      0, "Africa"
-    ),
-
-    q(
-      "Umurwa mukuru wa Nigeria ni uwuhe?",
-      "Lagos", "Abuja", "Kano", "Ibadan",
-      1, "Africa"
-    ),
-
-    q(
-      "Umurwa mukuru wa Zambia ni uwuhe?",
-      "Lusaka", "Harare", "Lilongwe", "Maputo",
-      0, "Africa"
-    ),
-
-    q(
-      "Umurwa mukuru wa Zimbabwe ni uwuhe?",
-      "Harare", "Lusaka", "Gaborone", "Windhoek",
-      0, "Africa"
-    ),
-
-    q(
-      "Umurwa mukuru wa Egypt ni uwuhe?",
-      "Alexandria", "Cairo", "Giza", "Luxor",
-      1, "Africa"
-    ),
-
-    q(
-      "Ni ikihe gihugu kirimo pyramids za Giza?",
-      "Egypt", "Sudan", "Morocco", "Tunisia",
-      0, "Africa"
-    ),
-
-
-    /* ================= WORLD GEOGRAPHY ================= */
-
-    q(
-      "Ni uwuhe mugabane munini ku isi?",
-      "Africa", "Asia", "Europe", "Australia",
-      1, "Geography"
-    ),
-
-    q(
-      "Ni uwuhe mugabane muto ku isi?",
-      "Europe", "Australia", "Africa", "Asia",
-      1, "Geography"
-    ),
-
-    q(
-      "Ni iyihe nyanja nini ku isi?",
-      "Atlantic", "Indian", "Pacific", "Arctic",
-      2, "Geography"
-    ),
-
-    q(
-      "Umusozi muremure kurusha indi ku isi ni uwuhe?",
-      "Kilimanjaro", "Everest", "Elbrus", "Fuji",
-      1, "Geography"
-    ),
-
-    q(
-      "Kilimanjaro iri mu gihugu ki?",
-      "Kenya", "Tanzania", "Uganda", "Rwanda",
-      1, "Geography"
-    ),
-
-    q(
-      "Ubutayu bwa Sahara buri ku mugabane uwuhe?",
-      "Asia", "Africa", "Europe", "Australia",
-      1, "Geography"
-    ),
-
-    q(
-      "Ni ikihe gihugu kizwiho umunara wa Eiffel?",
-      "France", "Italy", "Spain", "Germany",
-      0, "Geography"
-    ),
-
-    q(
-      "Umurwa mukuru w'u Buyapani ni uwuhe?",
-      "Kyoto", "Tokyo", "Osaka", "Hiroshima",
-      1, "Geography"
-    ),
-
-    q(
-      "Umurwa mukuru wa Canada ni uwuhe?",
-      "Toronto", "Vancouver", "Ottawa", "Montreal",
-      2, "Geography"
-    ),
-
-    q(
-      "Umurwa mukuru wa Australia ni uwuhe?",
-      "Sydney", "Melbourne", "Perth", "Canberra",
-      3, "Geography"
-    ),
-
-
-    /* ================= PRESIDENTS & LEADERS ================= */
-
-    q(
-      "Nelson Mandela yabaye Perezida w'iki gihugu?",
-      "Kenya", "South Africa", "Ghana", "Nigeria",
-      1, "Leaders"
-    ),
-
-    q(
-      "Julius Nyerere yari umuyobozi w'iki gihugu?",
-      "Tanzania", "Kenya", "Uganda", "Ghana",
-      0, "Leaders"
-    ),
-
-    q(
-      "Jomo Kenyatta yabaye Perezida wa mbere wa Kenya?",
-      "Yego", "Oya", "Yabaye uwa Uganda", "Yabaye uwa Ghana",
-      0, "Leaders"
-    ),
-
-    q(
-      "Kwame Nkrumah yari umuyobozi w'iki gihugu?",
-      "Ghana", "Nigeria", "Egypt", "Ethiopia",
-      0, "Leaders"
-    ),
-
-    q(
-      "George Washington yabaye Perezida wa mbere w'iki gihugu?",
-      "USA", "Canada", "UK", "Australia",
-      0, "Leaders"
-    ),
-
-    q(
-      "Abraham Lincoln yari Perezida w'iki gihugu?",
-      "USA", "France", "Germany", "Brazil",
-      0, "Leaders"
-    ),
-
-    q(
-      "Nelson Mandela yabaye Perezida mu gihe ki?",
-      "1994–1999", "1980–1985", "2000–2005", "1970–1975",
-      0, "Leaders"
-    ),
-
-    q(
-      "Kwame Nkrumah yagize uruhare mu bwigenge bw'iki gihugu?",
-      "Ghana", "Kenya", "Rwanda", "Egypt",
-      0, "Leaders"
-    ),
-
-    q(
-      "Grégoire Kayibanda yabaye Perezida wa mbere w'u Rwanda nyuma y'ubwigenge?",
-      "Nibyo", "Oya", "Yabaye uwa Burundi", "Yabaye uwa Uganda",
-      0, "Leaders"
-    ),
-
-    q(
-      "Pasteur Bizimungu yabaye Perezida w'u Rwanda nyuma ya 1994?",
-      "Nibyo", "Oya", "Yabaye uwa Tanzania", "Yabaye uwa Kenya",
-      0, "Leaders"
-    ),
-
-
-    /* ================= KINGS & MONARCHS ================= */
-
-    q(
-      "Queen Victoria yari umwamikazi w'iki gihugu?",
-      "United Kingdom", "France", "Spain", "Italy",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Elizabeth II yari umwamikazi w'iki gihugu?",
-      "United Kingdom", "Germany", "Brazil", "Canada gusa",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Louis XIV yari umwami w'iki gihugu?",
-      "France", "Spain", "Portugal", "Italy",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Genghis Khan azwi cyane nk'umuyobozi w'iki bwami?",
-      "Mongol Empire", "Roman Empire", "British Empire", "Ottoman Empire",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Mansa Musa yari umutegetsi w'iki gihugu cya kera?",
-      "Mali", "Egypt", "Ethiopia", "Morocco",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Akbar the Great yari umwami w'iki bwami?",
-      "Mughal Empire", "Roman Empire", "Mali Empire", "Aztec Empire",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Ramses II yari Pharaoh w'iki gihugu cya kera?",
-      "Egypt", "Greece", "Rome", "Persia",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Ashoka azwi cyane mu mateka y'iki gihugu?",
-      "India", "China", "Japan", "Egypt",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Hatshepsut yari umutegetsi w'iki gihugu cya kera?",
-      "Egypt", "Greece", "China", "Mali",
-      0, "Monarchs"
-    ),
-
-    q(
-      "Solomon the Great azwi cyane mu mateka y'iki gihugu?",
-      "Ethiopia", "France", "Japan", "Mexico",
-      0, "Monarchs"
-    ),
-
-
-    /* ================= PHYSICS ================= */
-
-    q(
-      "Unit y'imbaraga (force) muri SI ni iyihe?",
-      "Joule", "Newton", "Watt", "Volt",
-      1, "Physics"
-    ),
-
-    q(
-      "Unit y'ingufu (energy) muri SI ni iyihe?",
-      "Newton", "Joule", "Pascal", "Ampere",
-      1, "Physics"
-    ),
-
-    q(
-      "Unit ya power ni iyihe?",
-      "Watt", "Volt", "Joule", "Newton",
-      0, "Physics"
-    ),
-
-    q(
-      "Unit ya voltage ni iyihe?",
-      "Ampere", "Ohm", "Volt", "Watt",
-      2, "Physics"
-    ),
-
-    q(
-      "Ni iki gipima temperature?",
-      "Thermometer", "Barometer", "Ammeter", "Compass",
-      0, "Physics"
-    ),
-
-    q(
-      "Ni iki gipima pressure?",
-      "Barometer", "Thermometer", "Voltmeter", "Ruler",
-      0, "Physics"
-    ),
-
-    q(
-      "Umuvuduko w'urumuri muri vacuum ni hafi ya:",
-      "3,000 km/s", "30,000 km/s", "300,000 km/s", "3,000,000 km/s",
-      2, "Physics"
-    ),
-
-    q(
-      "Ni izihe mbaraga zituma ibintu bigwa hasi?",
-      "Magnetism", "Gravity", "Friction", "Electricity",
-      1, "Physics"
-    ),
-
-    q(
-      "Sound ikenera iki kugira ngo ikwirakwira?",
-      "Medium", "Vacuum gusa", "Umucyo", "Magnet",
-      0, "Physics"
-    ),
-
-    q(
-      "Newton azwi cyane kubera iki mu physics?",
-      "Laws of motion", "Periodic table", "DNA", "Evolution",
-      0, "Physics"
-    ),
-
-
-    /* ================= CHEMISTRY ================= */
-
-    q(
-      "Symbol ya Oxygen ni iyihe?",
-      "O", "Ox", "Og", "C",
-      0, "Chemistry"
-    ),
-
-    q(
-      "Symbol ya Gold ni iyihe?",
-      "Gd", "Au", "Ag", "Go",
-      1, "Chemistry"
-    ),
-
-    q(
-      "Symbol ya Iron ni iyihe?",
-      "Ir", "Fe", "In", "I",
-      1, "Chemistry"
-    ),
-
-    q(
-      "Formula y'amazi ni iyihe?",
-      "CO2", "H2O", "O2", "NaCl",
-      1, "Chemistry"
-    ),
-
-    q(
-      "Formula ya carbon dioxide ni iyihe?",
-      "CO2", "H2O", "O2", "CH4",
-      0, "Chemistry"
-    ),
-
-    q(
-      "NaCl izwi cyane nka iki?",
-      "Sugar", "Salt", "Water", "Oxygen",
-      1, "Chemistry"
-    ),
-
-    q(
-      "pH iri munsi ya 7 isobanura iki?",
-      "Acidic", "Neutral", "Basic", "Metallic",
-      0, "Chemistry"
-    ),
-
-    q(
-      "pH ya 7 muri rusange ifatwa nka:",
-      "Acidic", "Neutral", "Basic", "Toxic",
-      1, "Chemistry"
-    ),
-
-    q(
-      "Particle ifite charge negative ni iyihe?",
-      "Proton", "Neutron", "Electron", "Nucleus",
-      2, "Chemistry"
-    ),
-
-    q(
-      "Particle yo muri nucleus ifite charge positive ni iyihe?",
-      "Electron", "Proton", "Photon", "Neutron",
-      1, "Chemistry"
-    ),
-
-
-    /* ================= BIOLOGY ================= */
-
-    q(
-      "Ni uruhe rugingo rufasha umuntu guhumeka?",
-      "Umutima", "Ibihaha", "Igifu", "Impyiko",
-      1, "Biology"
-    ),
-
-    q(
-      "Umutima w'umuntu ufite ibyumba bingahe?",
-      "2", "3", "4", "5",
-      2, "Biology"
-    ),
-
-    q(
-      "DNA iboneka cyane he muri cell?",
-      "Nucleus", "Igifu", "Ururimi", "Amagufwa gusa",
-      0, "Biology"
-    ),
-
-    q(
-      "Ni iki gifasha ibimera gukora photosynthesis?",
-      "Hemoglobin", "Chlorophyll", "Insulin", "Calcium",
-      1, "Biology"
-    ),
-
-    q(
-      "Ni iki gifasha amaraso gutwara oxygen?",
-      "Hemoglobin", "Insulin", "Calcium", "Glucose",
-      0, "Biology"
-    ),
-
-    q(
-      "White blood cells zifasha iki?",
-      "Kurwanya indwara", "Gutwara oxygen gusa", "Gukora amagufwa", "Gukora umwuka",
-      0, "Biology"
-    ),
-
-    q(
-      "Platelets zifasha iki?",
-      "Gufasha amaraso gufatana", "Guhumeka", "Digestion", "Kureba",
-      0, "Biology"
-    ),
-
-    q(
-      "Ni ikihe gice cy'igihingwa gikurura amazi mu butaka?",
-      "Amababi", "Indabo", "Imizi", "Imbuto",
-      2, "Biology"
-    ),
-
-    q(
-      "Mitochondria zizwi cyane nk'iki muri cell?",
-      "Powerhouse", "Nucleus", "Wall", "Brain",
-      0, "Biology"
-    ),
-
-    q(
-      "Ni ikihe kinyabuzima gikoresha gills kugira ngo gihumeke mu mazi?",
-      "Fish", "Dog", "Eagle", "Giraffe",
-      0, "Biology"
-    ),
-
-
-    /* ================= HUMAN BODY ================= */
-
-    q(
-      "Umubiri w'umuntu usanzwe ugizwe n'amagufa angahe?",
-      "106", "206", "306", "406",
-      1, "Human Body"
-    ),
-
-    q(
-      "Ni uruhe rugingo rufasha gutekereza?",
-      "Umutima", "Ubwonko", "Igifu", "Impyiko",
-      1, "Human Body"
-    ),
-
-    q(
-      "Ni uruhe rugingo rutunganya amaraso kandi rugafasha metabolism?",
-      "Liver", "Lung", "Heart", "Eye",
-      0, "Human Body"
-    ),
-
-    q(
-      "Impyiko zifasha cyane mu ki?",
-      "Gusukura amaraso no gukora inkari", "Kureba", "Guhumeka", "Kumva",
-      0, "Human Body"
-    ),
-
-    q(
-      "Vitamin D iboneka cyane binyuze ku ki?",
-      "Sunlight", "Sound", "Salt", "Iron",
-      0, "Human Body"
-    ),
-
-    q(
-      "Ni uruhe rugingo rutanga insulin?",
-      "Pancreas", "Heart", "Lung", "Kidney",
-      0, "Human Body"
-    ),
-
-    q(
-      "Amaraso atwara oxygen cyane akoresheje iki?",
-      "Hemoglobin", "Keratin", "Insulin", "Bile",
-      0, "Human Body"
-    ),
-
-    q(
-      "Ni uruhe rugingo rufasha gusya ibiryo?",
-      "Stomach", "Lung", "Heart", "Brain",
-      0, "Human Body"
-    ),
-
-    q(
-      "Ni iki gifasha amagufwa gukomera?",
-      "Calcium", "Oxygen", "Carbon dioxide", "Helium",
-      0, "Human Body"
-    ),
-
-    q(
-      "Ni uruhe rugingo rufasha umuntu kumva amajwi?",
-      "Ear", "Eye", "Nose", "Skin",
-      0, "Human Body"
-    ),
-
-
-    /* ================= HISTORY ================= */
-
-    q(
-      "Intambara ya Mbere y'Isi yose yatangiye mu mwaka uwuhe?",
-      "1914", "1918", "1939", "1945",
-      0, "History"
-    ),
-
-    q(
-      "Intambara ya Kabiri y'Isi yose yarangiye mu mwaka uwuhe?",
-      "1940", "1943", "1945", "1950",
-      2, "History"
-    ),
-
-    q(
-      "United Nations yashinzwe mu mwaka uwuhe?",
-      "1919", "1939", "1945", "1960",
-      2, "History"
-    ),
-
-    q(
-      "French Revolution yatangiye mu mwaka uwuhe?",
-      "1689", "1789", "1889", "1899",
-      1, "History"
-    ),
-
-    q(
-      "Berlin Wall yasenywe mu mwaka uwuhe?",
-      "1979", "1989", "1999", "2001",
-      1, "History"
-    ),
-
-    q(
-      "Apollo 11 yazanye abantu bwa mbere ku ki?",
-      "Mars", "Moon", "Venus", "Jupiter",
-      1, "History"
-    ),
-
-    q(
-      "Apollo 11 yageze ku Kwezi mu mwaka uwuhe?",
-      "1959", "1969", "1979", "1989",
-      1, "History"
-    ),
-
-    q(
-      "Magna Carta yashyizweho mu mwaka uwuhe?",
-      "1015", "1115", "1215", "1315",
-      2, "History"
-    ),
-
-    q(
-      "Umwanditsi w'ingenzi mu guteza imbere printing press i Burayi yari nde?",
-      "Johannes Gutenberg", "Isaac Newton", "Galileo", "Einstein",
-      0, "History"
-    ),
-
-    q(
-      "Renaissance yatangiriye cyane hehe?",
-      "Italy", "Canada", "Japan", "Brazil",
-      0, "History"
-    ),
-
-
-    /* ================= ASTRONOMY ================= */
-
-    q(
-      "Ni uwuhe mubumbe wegereye izuba?",
-      "Venus", "Earth", "Mercury", "Mars",
-      2, "Astronomy"
-    ),
-
-    q(
-      "Ni uwuhe mubumbe munini muri Solar System?",
-      "Earth", "Jupiter", "Mars", "Mercury",
-      1, "Astronomy"
-    ),
-
-    q(
-      "Ni uwuhe mubumbe uzwiho impeta nini?",
-      "Mars", "Saturn", "Venus", "Mercury",
-      1, "Astronomy"
-    ),
-
-    q(
-      "Umubumbe dutuyemo ni uwuhe?",
-      "Mars", "Earth", "Venus", "Neptune",
-      1, "Astronomy"
-    ),
-
-    q(
-      "Moon ni iki?",
-      "Satellite karemano y'Isi", "Star", "Planet", "Asteroid",
-      0, "Astronomy"
-    ),
-
-    q(
-      "Izuba ni iki?",
-      "Planet", "Star", "Moon", "Comet",
-      1, "Astronomy"
-    ),
-
-    q(
-      "Galaxy turimo yitwa iki?",
-      "Milky Way", "Andromeda", "Orion", "Sirius",
-      0, "Astronomy"
-    ),
-
-    q(
-      "Ni iki gipima intera urumuri rugenda mu mwaka?",
-      "Light-year", "Kilogram", "Newton", "Pascal",
-      0, "Astronomy"
-    ),
-
-    q(
-      "Black hole ifite gravity imeze ite?",
-      "Nto cyane", "Nta gravity", "Ikomeye cyane", "Ihwanye na Moon",
-      2, "Astronomy"
-    ),
-
-    q(
-      "Comet ikunze kugira iki iyo yegereye izuba?",
-      "Tail", "Gills", "Roots", "Wings",
-      0, "Astronomy"
-    ),
-
-
-    /* ================= TECHNOLOGY ================= */
-
-    q(
-      "CPU ni iki?",
-      "Ubwonko bwa computer", "Keyboard", "Screen", "Printer",
-      0, "Technology"
-    ),
-
-    q(
-      "RAM ikoreshwa cyane iki?",
-      "Kubika data y'igihe gito mu gihe system iri gukora",
-      "Gucapa",
-      "Gukora amashanyarazi",
-      "Gukora internet gusa",
-      0, "Technology"
-    ),
-
-    q(
-      "HTML ikoreshwa cyane mu ki?",
-      "Kubaka structure y'urubuga", "Gukora battery", "Gucapa", "Gukora mouse",
-      0, "Technology"
-    ),
-
-    q(
-      "CSS ikoreshwa cyane mu ki?",
-      "Gutunganya isura y'urubuga", "Kubika database", "Gukora CPU", "Gukora electricity",
-      0, "Technology"
-    ),
-
-    q(
-      "JavaScript ikoreshwa cyane mu ki ku rubuga?",
-      "Gushyiramo interactivity", "Gukora monitor", "Gucapa gusa", "Gukora keyboard",
-      0, "Technology"
-    ),
-
-    q(
-      "Browser ni iki?",
-      "Porogaramu yo kureba websites", "Printer", "CPU", "Cable",
-      0, "Technology"
-    ),
-
-    q(
-      "Google Chrome ni iki?",
-      "Web browser", "Operating system", "Database", "Keyboard",
-      0, "Technology"
-    ),
-
-    q(
-      "GitHub ikoreshwa cyane mu ki?",
-      "Kubika no gucunga source code", "Kureba TV", "Gucapa", "Gukora batteries",
-      0, "Technology"
-    ),
-
-    q(
-      "API ifasha iki?",
-      "Porogaramu kuvugana no guhana amakuru", "Gukora screen", "Gucana bulb", "Gukora keyboard",
-      0, "Technology"
-    ),
-
-    q(
-      "JSON ikoreshwa cyane mu ki?",
-      "Kubika no guhanahana structured data", "Gukora battery", "Gucapa", "Gukora sound",
-      0, "Technology"
-    ),
-
-
-    /* ================= PROGRAMMING ================= */
-
-    q(
-      "Boolean ishobora kuba iki?",
-      "true cyangwa false", "Amafoto gusa", "Amajwi gusa", "HTML gusa",
-      0, "Programming"
-    ),
-
-    q(
-      "Array ni iki muri JavaScript?",
-      "Urutonde rw'ibintu", "Browser", "Server gusa", "Cable",
-      0, "Programming"
-    ),
-
-    q(
-      "Function ni iki?",
-      "Itsinda ry'amabwiriza rikora umurimo runaka",
-      "Monitor",
-      "Keyboard",
-      "Database gusa",
-      0, "Programming"
-    ),
-
-    q(
-      "Bug muri software ni iki?",
-      "Ikosa muri software", "Computer nshya", "Internet", "Keyboard",
-      0, "Programming"
-    ),
-
-    q(
-      "Debugging ni iki?",
-      "Gushaka no gukosora bugs", "Gucapa", "Gukora battery", "Kureba video",
-      0, "Programming"
-    ),
-
-    q(
-      "Variable ikoreshwa iki muri programming?",
-      "Kubikamo value ishobora gukoreshwa", "Gukora screen", "Gukora keyboard", "Gucana internet",
-      0, "Programming"
-    ),
-
-    q(
-      "Loop ikoreshwa cyane mu ki?",
-      "Gusubiramo amabwiriza", "Gusiba computer", "Gukora monitor", "Gucapa gusa",
-      0, "Programming"
-    ),
-
-    q(
-      "Database ikoreshwa iki?",
-      "Kubika no gucunga data", "Gukora mouse", "Kureba TV", "Gukora speaker",
-      0, "Programming"
-    ),
-
-    q(
-      "Password ikomeye igomba kuba imeze ite?",
-      "Ndende kandi itandukanye", "123456", "Izina gusa", "0000",
-      0, "Programming"
-    ),
-
-    q(
-      "Phishing ni iki?",
-      "Gushuka umuntu ngo atange amakuru y'ibanga",
-      "Gukora website",
-      "Gukina game",
-      "Gusana printer",
-      0, "Cybersecurity"
-    ),
-
-
-    /* ================= MATHEMATICS ================= */
-
-    q(
-      "5 + 7 bingana iki?",
-      "10", "11", "12", "13",
-      2, "Mathematics"
-    ),
-
-    q(
-      "9 × 8 bingana iki?",
-      "64", "72", "81", "78",
-      1, "Mathematics"
-    ),
-
-    q(
-      "144 ÷ 12 bingana iki?",
-      "10", "11", "12", "14",
-      2, "Mathematics"
-    ),
-
-    q(
-      "25% ya 200 ni angahe?",
-      "25", "40", "50", "75",
-      2, "Mathematics"
-    ),
-
-    q(
-      "Square root ya 81 ni iyihe?",
-      "7", "8", "9", "10",
-      2, "Mathematics"
-    ),
-
-    q(
-      "Niba x + 5 = 12, x ni angahe?",
-      "5", "6", "7", "8",
-      2, "Mathematics"
-    ),
-
-    q(
-      "Triangle ifite impande zingahe?",
-      "2", "3", "4", "5",
-      1, "Mathematics"
-    ),
-
-    q(
-      "1000 - 375 bingana iki?",
-      "525", "625", "675", "725",
-      1, "Mathematics"
-    ),
-
-    q(
-      "2³ bingana iki?",
-      "4", "6", "8", "9",
-      2, "Mathematics"
-    ),
-
-    q(
-      "15 × 6 bingana iki?",
-      "80", "90", "100", "110",
-      1, "Mathematics"
-    ),
-
-
-    /* ================= ANIMALS ================= */
-
-    q(
-      "Ni iyihe nyamaswa ifite ijosi rirerire?",
-      "Giraffe", "Lion", "Tiger", "Zebra",
-      0, "Animals"
-    ),
-
-    q(
-      "Ni iyihe nyamaswa yihuta cyane mu kwiruka ku butaka?",
-      "Cheetah", "Elephant", "Lion", "Horse",
-      0, "Animals"
-    ),
-
-    q(
-      "Ni iyihe nyamaswa izwiho kuba nini kurusha izindi ku butaka?",
-      "Elephant", "Lion", "Giraffe", "Rhino",
-      0, "Animals"
-    ),
-
-    q(
-      "Penguin ni inyamaswa iboneka cyane he?",
-      "Mu turere dukonje", "Mu butayu", "Mu mashyamba y'imvura gusa", "Mu misozi y'u Rwanda gusa",
-      0, "Animals"
-    ),
-
-    q(
-      "Dolphin iba cyane he?",
-      "Mu mazi", "Mu butayu", "Mu mashyamba", "Mu kirere",
-      0, "Animals"
-    ),
-
-    q(
-      "Bat ni inyamaswa ki?",
-      "Inyoni", "Mammal", "Fish", "Reptile",
-      1, "Animals"
-    ),
-
-    q(
-      "Frog ni iki?",
-      "Amphibian", "Bird", "Mammal", "Fish",
-      0, "Animals"
-    ),
-
-    q(
-      "Snake iri mu itsinda irihe?",
-      "Reptiles", "Mammals", "Birds", "Fish",
-      0, "Animals"
-    ),
-
-    q(
-      "Whale ni iki?",
-      "Fish", "Mammal", "Reptile", "Amphibian",
-      1, "Animals"
-    ),
-
-    q(
-      "Gorilla iri mu itsinda irihe?",
-      "Mammals", "Fish", "Birds", "Insects",
-      0, "Animals"
-    ),
-
-
-    /* ================= CULTURE & GENERAL ================= */
-
-    q(
-      "Ni ikihe gihugu kizwi nk'igihugu cy'izuba riva?",
-      "Japan", "Brazil", "Canada", "Egypt",
-      0, "General"
-    ),
-
-    q(
-      "Ni uruhe rurimi rukoreshwa cyane muri Brazil?",
-      "Spanish", "Portuguese", "French", "English",
-      1, "General"
-    ),
-
-    q(
-      "Ni uruhe rurimi rukoreshwa cyane muri France?",
-      "French", "German", "Italian", "Spanish",
-      0, "General"
-    ),
-
-    q(
-      "Umurwa mukuru wa Italy ni uwuhe?",
-      "Rome", "Milan", "Venice", "Naples",
-      0, "General"
-    ),
-
-    q(
-      "Umurwa mukuru wa Spain ni uwuhe?",
-      "Barcelona", "Madrid", "Seville", "Valencia",
-      1, "General"
-    ),
-
-    q(
-      "Umurwa mukuru wa Germany ni uwuhe?",
-      "Berlin", "Munich", "Hamburg", "Frankfurt",
-      0, "General"
-    ),
-
-    q(
-      "Umurwa mukuru wa China ni uwuhe?",
-      "Shanghai", "Beijing", "Hong Kong", "Shenzhen",
-      1, "General"
-    ),
-
-    q(
-      "Umurwa mukuru wa India ni uwuhe?",
-      "Mumbai", "New Delhi", "Kolkata", "Chennai",
-      1, "General"
-    ),
-
-    q(
-      "Umurwa mukuru wa Brazil ni uwuhe?",
-      "Rio de Janeiro", "São Paulo", "Brasília", "Salvador",
-      2, "General"
-    ),
-
-    q(
-      "Umurwa mukuru wa Mexico ni uwuhe?",
-      "Cancún", "Mexico City", "Monterrey", "Guadalajara",
-      1, "General"
-    )
-
-  ];
-
-
-  /*
-   =========================================================
-   GAME VARIABLES
-   =========================================================
-  */
-
-  let currentQuestion = 0;
-  let score = 0;
-  let timeLeft = SECONDS_PER_QUESTION;
-  let timer = null;
-  let answered = false;
-
-  let roundNumber = 1;
-
-  let roundQuestions = [];
-
-  /*
-    Question bag:
-    Aha ni ho dukorera uburyo bwo kwirinda ko question
-    isubirwamo mbere y'uko cycle irangira.
-  */
-  let questionBag = [];
-  let bagPosition = 0;
-
-
-  /*
-   =========================================================
-   HTML ELEMENTS
-   =========================================================
-  */
-
-  const startScreen =
-    document.getElementById("startScreen");
-
-  const quizScreen =
-    document.getElementById("quizScreen");
-
-  const resultScreen =
-    document.getElementById("resultScreen");
-
-  const errorScreen =
-    document.getElementById("errorScreen");
-
-  const startBtn =
-    document.getElementById("startBtn");
-
-  const restartBtn =
-    document.getElementById("restartBtn");
-
-  const nextBtn =
-    document.getElementById("nextBtn");
-
-  const questionNumber =
-    document.getElementById("questionNumber");
-
-  const roundNumberElement =
-    document.getElementById("roundNumber");
-
-  const finishedRound =
-    document.getElementById("finishedRound");
-
-  const startRound =
-    document.getElementById("startRound");
-
-  const timerElement =
-    document.getElementById("timer");
-
-  const timerBox =
-    document.getElementById("timerBox");
-
-  const questionElement =
-    document.getElementById("question");
-
-  const categoryElement =
-    document.getElementById("category");
-
-  const optionsElement =
-    document.getElementById("options");
-
-  const scoreElement =
-    document.getElementById("score");
-
-  const correctCountElement =
-    document.getElementById("correctCount");
-
-  const wrongCountElement =
-    document.getElementById("wrongCount");
-
-  const resultMessage =
-    document.getElementById("resultMessage");
-
-  const errorMessage =
-    document.getElementById("errorMessage");
-
-
-  /*
-   =========================================================
-   SHOW SCREEN
-   =========================================================
-  */
-
-  function showScreen(screen) {
-
-    startScreen.classList.remove("active");
-    quizScreen.classList.remove("active");
-    resultScreen.classList.remove("active");
-    errorScreen.classList.remove("active");
-
-    screen.classList.add("active");
-  }
-
-
-  /*
-   =========================================================
-   SHUFFLE
-   =========================================================
-  */
-
-  function shuffle(array) {
-
-    const newArray = [...array];
-
-    for (
-      let i = newArray.length - 1;
-      i > 0;
-      i--
-    ) {
-
-      const j =
-        Math.floor(Math.random() * (i + 1));
-
-      [
-        newArray[i],
-        newArray[j]
-      ] =
-      [
-        newArray[j],
-        newArray[i]
-      ];
-    }
-
-    return newArray;
-  }
-
-
-  /*
-   =========================================================
-   PREPARE QUESTION
-   =========================================================
-  */
-
-  function prepareQuestion(question) {
-
-    const correctAnswer =
-      question.options[question.answer];
-
-    const shuffledOptions =
-      shuffle(question.options);
-
-    return {
-      question: question.question,
-      options: shuffledOptions,
-      answer:
-        shuffledOptions.indexOf(correctAnswer),
-      category:
-        question.category
-    };
-  }
-
-
-  /*
-   =========================================================
-   CREATE NEW QUESTION CYCLE
-   =========================================================
-  */
-
-  function createQuestionBag() {
-
-    questionBag =
-      questions.map(
-        (_, index) => index
-      );
-
-    questionBag =
-      shuffle(questionBag);
-
-    bagPosition = 0;
-  }
-
-
-  /*
-   =========================================================
-   GET NEXT 10 QUESTIONS
-   =========================================================
-  */
-
-  function getNextRoundQuestions() {
-
-    /*
-      Niba nta cycle iratangira, tangiza imwe.
-    */
-
-    if (questionBag.length === 0) {
-      createQuestionBag();
-    }
-
-
-    /*
-      Dushyizeho umutekano:
-      niba questions zitari multiple ya 10,
-      tuzuzuza round nshya gusa nyuma yo kurangiza
-      cycle yose. Muri iyi version questions ni nyinshi
-      kandi algorithm irinda duplicates muri cycle.
-    */
-
-    if (
-      questionBag.length - bagPosition <
-      QUESTIONS_PER_ROUND
-    ) {
-
-      /*
-        Ibi bibaho gusa ku musozo wa cycle.
-        Tubanza gufata ibibazo bisigaye.
-      */
-
-      const remaining =
-        questionBag.slice(bagPosition);
-
-      /*
-        Niba hari ibibazo bisigaye, ntabwo tubisimbuka.
-        Tubivanga na cycle nshya ariko tukirinda
-        kongera kimwe mu bisigaye.
-      */
-
-      createQuestionBag();
-
-      const freshIndexes =
-        questionBag.filter(
-          index => !remaining.includes(index)
-        );
-
-      questionBag =
-        remaining.concat(freshIndexes);
-
-      bagPosition = 0;
-    }
-
-
-    const selectedIndexes =
-      questionBag.slice(
-        bagPosition,
-        bagPosition + QUESTIONS_PER_ROUND
-      );
-
-    bagPosition += QUESTIONS_PER_ROUND;
-
-
-    return selectedIndexes.map(
-      index =>
-        prepareQuestion(
-          questions[index]
-        )
-    );
-  }
-
-
-  /*
-   =========================================================
-   START QUIZ
-   =========================================================
-  */
-
-  function startQuiz() {
-  // Reba niba ibibazo byapakiwe
-  if (
-    !Array.isArray(questions) ||
-    questions.length < QUESTIONS_PER_ROUND
-  ) {
-    showError("Ibibazo ntibihagije cyangwa ntibipakiwe.");
-    return;
-  }
-
-  // Hagarika timer ishaje
-  clearInterval(timer);
-
-  // Tangira quiz
-  currentQuestion = 0;
-  score = 0;
-
-  // Niba question bag irimo ubusa, yuzuza
-  if (!Array.isArray(questionBag) || questionBag.length === 0) {
-    createQuestionBag();
-  }
-
-  // Fata ibibazo bya round
-  roundQuestions = getNextRoundQuestions();
-
-  // Reba niba byabonetse
-  if (
-    !Array.isArray(roundQuestions) ||
-    roundQuestions.length !== QUESTIONS_PER_ROUND
-  ) {
-    showError("Habaye ikibazo mu gutegura ibibazo bya round.");
-    return;
-  }
-
-  // Erekana numero ya round
-  if (roundNumberElement) {
-    roundNumberElement.textContent = roundNumber;
-  }
-
-  if (startRound) {
-    startRound.textContent = roundNumber;
-  }
-
-  // Fungura quiz screen
-  showScreen(quizScreen);
-
-  // Erekana ikibazo cya mbere
-  loadQuestion();
-}
-  
-
-    currentQuestion = 0;
-    score = 0;
-
-    roundNumberElement.textContent =
-      roundNumber;
-
-    startRound.textContent =
-      roundNumber;
-
-    showScreen(quizScreen);
-
-    loadQuestion();
-  }
-
-
-  /*
-   =========================================================
-   LOAD QUESTION
-   =========================================================
-  */
-
-  function loadQuestion() {
-
-    clearInterval(timer);
-
-    answered = false;
-
-    timeLeft =
-      SECONDS_PER_QUESTION;
-
-    timerElement.textContent =
-      timeLeft;
-
-    timerBox.classList.remove(
-      "warning",
-      "danger"
-    );
-
-    nextBtn.style.display =
-      "none";
-
-    optionsElement.innerHTML =
-      "";
-
-
-    const q =
-      roundQuestions[currentQuestion];
-
-
-    if (!q) {
-
-      finishQuiz();
-
-      return;
-    }
-
-
-    questionNumber.textContent =
-      currentQuestion + 1;
-
-
-    questionElement.textContent =
-      q.question;
-
-
-    categoryElement.textContent =
-      "📚 " + q.category;
-
-
-    q.options.forEach(
-      (option, index) => {
-
-        const button =
-          document.createElement("button");
-
-        button.className =
-          "option";
-
-        button.textContent =
-          option;
-
-
-        button.addEventListener(
-          "click",
-          function () {
-
-            selectAnswer(index);
-
-          }
-        );
-
-
-        optionsElement.appendChild(
-          button
-        );
-
-      }
-    );
-
-
-    startTimer();
-  }
-
-
-  /*
-   =========================================================
-   TIMER
-   =========================================================
-  */
-
-  function startTimer() {
-
-    clearInterval(timer);
-
-    timer =
-      setInterval(
-        function () {
-
-          timeLeft--;
-
-          timerElement.textContent =
-            timeLeft;
-
-
-          if (timeLeft <= 10) {
-
-            timerBox.classList.add(
-              "warning"
-            );
-
-          }
-
-
-          if (timeLeft <= 5) {
-
-            timerBox.classList.remove(
-              "warning"
-            );
-
-            timerBox.classList.add(
-              "danger"
-            );
-
-          }
-
-
-          if (timeLeft <= 0) {
-
-            clearInterval(timer);
-
-            timeIsOver();
-
-          }
-
-        },
-        1000
-      );
-  }
-
-
-  /*
-   =========================================================
-   SELECT ANSWER
-   =========================================================
-  */
-
-  function selectAnswer(selectedIndex) {
-
-    if (answered) {
-      return;
-    }
-
-    answered = true;
-
-    clearInterval(timer);
-
-
-    const q =
-      roundQuestions[currentQuestion];
-
-
-    const buttons =
-      optionsElement
-        .querySelectorAll(".option");
-
-
-    buttons.forEach(
-      (button, index) => {
-
-        button.disabled = true;
-
-
-        if (
-          index === q.answer
-        ) {
-
-          button.classList.add(
-            "correct"
-          );
-
-        }
-
-      }
-    );
-
-
-    if (
-      selectedIndex === q.answer
-    ) {
-
-      score++;
-
-    } else {
-
-      if (buttons[selectedIndex]) {
-
-        buttons[selectedIndex]
-          .classList.add("wrong");
-
-      }
-
-    }
-
-
-    nextBtn.style.display =
-      "block";
-  }
-
-
-  /*
-   =========================================================
-   TIME OVER
-   =========================================================
-  */
-
-  function timeIsOver() {
-
-    if (answered) {
-      return;
-    }
-
-
-    answered = true;
-
-
-    const q =
-      roundQuestions[currentQuestion];
-
-
-    const buttons =
-      optionsElement
-        .querySelectorAll(".option");
-
-
-    buttons.forEach(
-      (button, index) => {
-
-        button.disabled = true;
-
-
-        if (
-          index === q.answer
-        ) {
-
-          button.classList.add(
-            "correct"
-          );
-
-        }
-
-      }
-    );
-
-
-    nextBtn.style.display =
-      "block";
-  }
-
-
-  /*
-   =========================================================
-   NEXT QUESTION
-   =========================================================
-  */
-
-  function nextQuestion() {
-
-    if (!answered) {
-      return;
-    }
-
-
-    currentQuestion++;
-
-
-    if (
-      currentQuestion >=
-      roundQuestions.length
-    ) {
-
-      finishQuiz();
-
-    } else {
-
-      loadQuestion();
-
-    }
-  }
-
-
-  /*
-   =========================================================
-   FINISH ROUND
-   =========================================================
-  */
-
-  function finishQuiz() {
-
-    clearInterval(timer);
-
-    showScreen(resultScreen);
-
-
-    finishedRound.textContent =
-      roundNumber;
-
-
-    scoreElement.textContent =
-      score;
-
-
-    const wrong =
-      QUESTIONS_PER_ROUND - score;
-
-
-    correctCountElement.textContent =
-      score;
-
-
-    wrongCountElement.textContent =
-      wrong;
-
-
-    if (score === 10) {
-
-      resultMessage.textContent =
-        "🏆 AMAZING! Wabonye 10/10. Uri umuhanga cyane!";
-
-    } else if (score >= 8) {
-
-      resultMessage.textContent =
-        "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
-
-    } else if (score >= 5) {
-
-      resultMessage.textContent =
-        "👍 Ni byiza! Komeza witoze.";
-
-    } else {
-
-      resultMessage.textContent =
-        "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
-
-    }
-
-
-    /*
-      AdSense Auto Ads ishobora gushyira ad kuri page
-      bitewe n'imyanzuro ya Google.
-      Ntabwo duhatira ad kugaragara.
-    */
-  }
-
-
-  /*
-   =========================================================
-   NEXT ROUND
-   =========================================================
-  */
-
-  function startNextRound() {
-
-  clearInterval(timer);
-
-  roundNumber++;
-  currentQuestion = 0;
-  score = 0;
-
-
-  if (
-    const remaining =
-  questionBag.slice(bagPosition);
-
-createQuestionBag();
-
-const freshIndexes =
-  questionBag.filter(
-    index => !remaining.includes(index)
-  );
-
-questionBag =
-  remaining.concat(freshIndexes);
-
-bagPosition = 0;
-    showError(
-      "Habaye ikibazo mu gutegura Round " + roundNumber
-    );
-    return;
-  }
-
-  roundNumberElement.textContent =
-    roundNumber;
-
-  startRound.textContent =
-    roundNumber;
-
-  showScreen(quizScreen);
-
-  loadQuestion();
-  }
-
-  /*
-   =========================================================
-   ERROR
-   =========================================================
-  */
-
-  function showError(message) {
-
-    clearInterval(timer);
-
-    errorMessage.textContent =
-      message;
-
-    showScreen(errorScreen);
-  }
-
-
-  /*
-   =========================================================
-   VALIDATE QUESTIONS
-   =========================================================
-  */
-
-  function validateQuestions() {
-
-    const seen =
-      new Set();
-
-
-    for (
-      let i = 0;
-      i < questions.length;
-      i++
-    ) {
-
-      const item =
-        questions[i];
-
-
-      if (
-        !item ||
-        typeof item.question !== "string" ||
-        !Array.isArray(item.options) ||
-        item.options.length !== 4 ||
-        typeof item.answer !== "number" ||
-        item.answer < 0 ||
-        item.answer > 3
-      ) {
-
-        throw new Error(
-          "Hari ikibazo gifite format itari yo kuri index " + i
-        );
-
-      }
-
-
-      const normalized =
-        item.question
-          .trim()
-          .toLowerCase();
-
-
-      if (
-        seen.has(normalized)
-      ) {
-
-        throw new Error(
-          "Hari ibibazo byasubiwemo: " +
-          item.question
-        );
-
-      }
-
-
-      seen.add(normalized);
-    }
-  }
-
-
-  /*
-   =========================================================
-   BUTTON EVENTS
-   =========================================================
-  */
-
-  startBtn.addEventListener(
-    "click",
-    function () {
-
-      startQuiz();
-
-    }
-  );
-
-
-  restartBtn.addEventListener(
-    "click",
-    function () {
-
-     function startNextRound() {
-
-  clearInterval(timer);
-
-  roundNumber++;
-  currentQuestion = 0;
-  score = 0;
-
-  const remaining =
-    questionBag.slice(bagPosition);
-
-  createQuestionBag();
-
-  const freshIndexes =
-    questionBag.filter(
-      index => !remaining.includes(index)
-    );
-
-  questionBag =
-    remaining.concat(freshIndexes);
-
-  bagPosition = 0;
-
-  roundQuestions =
-    getNextRoundQuestions();
-
-  if (
-    roundQuestions.length !== QUESTIONS_PER_ROUND
-  ) {
-    showError(
-      "Habaye ikibazo mu gutegura Round " + roundNumber
-    );
-    return;
-  }
-
-  roundNumberElement.textContent =
-    roundNumber;
-
-  startRound.textContent =
-    roundNumber;
-
-  showScreen(quizScreen);
-
-  loadQuestion();
-} 
-  );
-
-
-  nextBtn.addEventListener(
-    "click",
-    function () {
-
-      nextQuestion();
-
-    }
-  );
-
-
-  /*
-   =========================================================
-   INITIALIZE
-   =========================================================
-  */
-
-  try {
-
-    validateQuestions();
-
-    console.log(
-      "Quiz Master yatangiye neza.",
-      "Ibibazo byose:",
-      questions.length
-    );
-
-  } catch (error) {
-
-    console.error(error);
-
-    showError(
-      error.message
-    );
-
-  }
-
-</script>
-<script src="questions.js"></script>
 </body>
 </html>
