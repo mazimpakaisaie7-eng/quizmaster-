@@ -13,8 +13,8 @@
     "question": "Ni uruhe rurimi rukoreshwa cyane mu Rwanda?",
     "options": ["Kinyarwanda", "Igifaransa", "Icyongereza", "Igiswahili"],
     "answer": "Kinyarwanda"
-  }
-]
+  },
+
   {
     "question": "U Rwanda rufite uturere tungahe?",
     "options": ["25", "30", "35", "40"],
