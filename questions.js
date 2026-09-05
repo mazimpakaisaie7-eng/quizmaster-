@@ -154,8 +154,6 @@ data.forEach((item, index) => {
 
 });
 
-allQuestions = data;
-
     allQuestions = data;
 
   } catch (error) {
