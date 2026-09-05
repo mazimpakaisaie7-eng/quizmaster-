@@ -1787,6 +1787,15 @@
   */
 
   function startQuiz() {
+  if (
+    typeof questions === "undefined" ||
+    !Array.isArray(questions) ||
+    questions.length < QUESTIONS_PER_ROUND
+  ) {
+    showError("Ibibazo ntibihagije cyangwa ntibipakiwe.");
+    return;
+  }
+
   currentRound = 1;
   currentQuestionIndex = 0;
   score = 0;
@@ -1802,18 +1811,6 @@
   showScreen("quiz-screen");
   showQuestion();
 }
-
-    if (
-      !Array.isArray(questions) ||
-      questions.length < QUESTIONS_PER_ROUND
-    ) {
-
-      showError(
-        "Ibibazo ntibihagije. Hakenewe nibura ibibazo 10."
-      );
-
-      return;
-    }
 
 
     /*
