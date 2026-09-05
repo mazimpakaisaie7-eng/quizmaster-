@@ -1787,8 +1787,8 @@
   */
 
   function startQuiz() {
+  // Reba niba ibibazo byapakiwe
   if (
-    typeof questions === "undefined" ||
     !Array.isArray(questions) ||
     questions.length < QUESTIONS_PER_ROUND
   ) {
@@ -1796,52 +1796,46 @@
     return;
   }
 
-  currentRound = 1;
-  currentQuestionIndex = 0;
+  // Hagarika timer ishaje
+  clearInterval(timer);
+
+  // Tangira quiz
+  currentQuestion = 0;
   score = 0;
 
-  clearInterval(timerInterval);
+  // Niba question bag irimo ubusa, yuzuza
+  if (!Array.isArray(questionBag) || questionBag.length === 0) {
+    createQuestionBag();
+  }
 
-  createQuestionBag();
+  // Fata ibibazo bya round
+  roundQuestions = getNextRoundQuestions();
 
-  bagPosition = 0;
+  // Reba niba byabonetse
+  if (
+    !Array.isArray(roundQuestions) ||
+    roundQuestions.length !== QUESTIONS_PER_ROUND
+  ) {
+    showError("Habaye ikibazo mu gutegura ibibazo bya round.");
+    return;
+  }
 
-  currentRoundQuestions = getNextRoundQuestions();
+  // Erekana numero ya round
+  if (roundNumberElement) {
+    roundNumberElement.textContent = roundNumber;
+  }
 
-  showScreen("quiz-screen");
-  showQuestion();
+  if (startRound) {
+    startRound.textContent = roundNumber;
+  }
+
+  // Fungura quiz screen
+  showScreen(quizScreen);
+
+  // Erekana ikibazo cya mbere
+  loadQuestion();
 }
-
-
-    /*
-      Tangiza question bag bwa mbere.
-    */
-
-    if (questionBag.length === 0) {
-      createQuestionBag();
-    }
-
-
-    /*
-      Fata ibibazo 10.
-    */
-
-    roundQuestions =
-      getNextRoundQuestions();
-
-
-    if (
-      roundQuestions.length !==
-      QUESTIONS_PER_ROUND
-    ) {
-
-      showError(
-        "Habaye ikibazo mu gutegura ibibazo bya round."
-      );
-
-      return;
-    }
-
+  
 
     currentQuestion = 0;
     score = 0;
