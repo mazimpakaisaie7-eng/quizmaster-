@@ -2213,14 +2213,33 @@
 
   function startNextRound() {
 
-    roundNumber++;
+  clearInterval(timer);
 
-    startRound.textContent =
-      roundNumber;
+  roundNumber++;
+  currentQuestion = 0;
+  score = 0;
 
-    startQuiz();
+  roundQuestions = getNextRoundQuestions();
+
+  if (
+    roundQuestions.length !== QUESTIONS_PER_ROUND
+  ) {
+    showError(
+      "Habaye ikibazo mu gutegura Round " + roundNumber
+    );
+    return;
   }
 
+  roundNumberElement.textContent =
+    roundNumber;
+
+  startRound.textContent =
+    roundNumber;
+
+  showScreen(quizScreen);
+
+  loadQuestion();
+  }
 
   /*
    =========================================================
