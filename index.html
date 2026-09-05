@@ -2351,9 +2351,51 @@ bagPosition = 0;
     "click",
     function () {
 
-      startNextRound();
+     function startNextRound() {
 
-    }
+  clearInterval(timer);
+
+  roundNumber++;
+  currentQuestion = 0;
+  score = 0;
+
+  const remaining =
+    questionBag.slice(bagPosition);
+
+  createQuestionBag();
+
+  const freshIndexes =
+    questionBag.filter(
+      index => !remaining.includes(index)
+    );
+
+  questionBag =
+    remaining.concat(freshIndexes);
+
+  bagPosition = 0;
+
+  roundQuestions =
+    getNextRoundQuestions();
+
+  if (
+    roundQuestions.length !== QUESTIONS_PER_ROUND
+  ) {
+    showError(
+      "Habaye ikibazo mu gutegura Round " + roundNumber
+    );
+    return;
+  }
+
+  roundNumberElement.textContent =
+    roundNumber;
+
+  startRound.textContent =
+    roundNumber;
+
+  showScreen(quizScreen);
+
+  loadQuestion();
+} 
   );
 
 
