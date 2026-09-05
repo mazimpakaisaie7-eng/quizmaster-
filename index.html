@@ -442,7 +442,9 @@
 
   </div>
 
-
+<button id="shareBtn" type="button">
+  📤 Sangiza abandi
+</button>
   <!-- =====================================================
        QUIZ SCREEN
        ===================================================== -->
@@ -626,6 +628,41 @@
      ===================================================== -->
 
 <script src="./questions.js"></script>
+<!-- 👇 SHARING CODE ITANGIRA HANO -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+  const shareBtn = document.getElementById("shareBtn");
+
+  if (!shareBtn) return;
+
+  shareBtn.addEventListener("click", async function () {
+
+    const shareData = {
+      title: "Quiz Master 🇷🇼",
+      text: "Gerageza ubumenyi bwawe muri Quiz Master 🇷🇼! Sangiza inshuti zawe maze mukine quiz.",
+      url: window.location.href
+    };
+
+    try {
+
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Link ya Quiz Master yakoporowe. Sangiza abandi!");
+      }
+
+    } catch (error) {
+      console.log("Sharing cancelled:", error);
+    }
+
+  });
+
+});
+</script>
+<!-- 👆 SHARING CODE IRANGIYE HANO -->
+
+</body>
 </body>
 </html>
