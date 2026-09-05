@@ -99,35 +99,40 @@ async function loadQuestions() {
       );
     }
 
-    // Kugenzura ko buri kibazo gifite format ikwiye
-    data.forEach((item, index) => {
+    if (
+  typeof item.answer !== "string" &&
+  typeof item.answer !== "number"
+) {
+  throw new Error(
+    `Ikibazo cya ${index + 1} gifite "answer" itari yo.`
+  );
+}
 
-      if (!item.question) {
-        throw new Error(
-          `Ikibazo cya ${index + 1} nta "question" gifite.`
-        );
-      }
+if (typeof item.answer === "string") {
 
-      if (
-        !Array.isArray(item.options) ||
-        item.options.length < 2
-      ) {
-        throw new Error(
-          `Ikibazo cya ${index + 1} kigomba kugira "options" nibura 2.`
-        );
-      }
+  const answerIndex =
+    item.options.indexOf(item.answer);
 
-      if (
-        typeof item.answer !== "number" ||
-        item.answer < 0 ||
-        item.answer >= item.options.length
-      ) {
-        throw new Error(
-          `Ikibazo cya ${index + 1} gifite "answer" itari yo.`
-        );
-      }
+  if (answerIndex === -1) {
+    throw new Error(
+      `Ikibazo cya ${index + 1} gifite "answer" itari muri options.`
+    );
+  }
 
-    });
+  item.answer = answerIndex;
+}
+
+if (
+  typeof item.answer === "number" &&
+  (
+    item.answer < 0 ||
+    item.answer >= item.options.length
+  )
+) {
+  throw new Error(
+    `Ikibazo cya ${index + 1} gifite "answer" itari yo.`
+  );
+}
 
     allQuestions = data;
 
