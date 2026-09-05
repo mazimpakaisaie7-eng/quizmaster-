@@ -462,7 +462,7 @@
   */
 
   const QUESTIONS_PER_ROUND = 10;
-  const SECONDS_PER_QUESTION = 30;
+  const SECONDS_PER_QUESTION = 20;
 
 
   /*
@@ -2219,11 +2219,22 @@
   currentQuestion = 0;
   score = 0;
 
-  roundQuestions = getNextRoundQuestions();
 
   if (
-    roundQuestions.length !== QUESTIONS_PER_ROUND
-  ) {
+    const remaining =
+  questionBag.slice(bagPosition);
+
+createQuestionBag();
+
+const freshIndexes =
+  questionBag.filter(
+    index => !remaining.includes(index)
+  );
+
+questionBag =
+  remaining.concat(freshIndexes);
+
+bagPosition = 0;
     showError(
       "Habaye ikibazo mu gutegura Round " + roundNumber
     );
