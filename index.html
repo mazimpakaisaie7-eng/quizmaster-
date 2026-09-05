@@ -1787,6 +1787,21 @@
   */
 
   function startQuiz() {
+  currentRound = 1;
+  currentQuestionIndex = 0;
+  score = 0;
+
+  clearInterval(timerInterval);
+
+  createQuestionBag();
+
+  bagPosition = 0;
+
+  currentRoundQuestions = getNextRoundQuestions();
+
+  showScreen("quiz-screen");
+  showQuestion();
+}
 
     if (
       !Array.isArray(questions) ||
