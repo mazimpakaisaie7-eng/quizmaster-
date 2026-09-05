@@ -98,7 +98,8 @@ async function loadQuestions() {
         + `Hakenewe nibura ${QUESTIONS_PER_QUIZ}.`
       );
     }
-
+// Kugenzura ko buri kibazo gifite format ikwiye
+data.forEach((item, index) => {
     if (
   typeof item.answer !== "string" &&
   typeof item.answer !== "number"
