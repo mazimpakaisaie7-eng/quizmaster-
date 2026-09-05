@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="rw">
+<!DOCTYPE html><html lang="rw">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Quiz Master 🇷🇼</title>
-
-  <meta name="theme-color" content="#111827">
-  <meta name="description" content="Quiz Master - Gerageza ubumenyi bwawe">
-<script async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-  crossorigin="anonymous">
-</script>
-  <style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Quiz Master 🇷🇼</title>  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Quiz Master - Gerageza ubumenyi bwawe">  <!-- GOOGLE ADSENSE -->  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
+    crossorigin="anonymous">
+  </script>  <style>
     * {
       box-sizing: border-box;
     }
@@ -24,7 +17,6 @@
       font-family: Arial, sans-serif;
       background: #111827;
       color: white;
-
       display: flex;
       justify-content: center;
       align-items: center;
@@ -36,7 +28,7 @@
       background: #1f2937;
       padding: 25px;
       border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
     h1 {
@@ -69,11 +61,10 @@
     }
 
     #startBtn,
-#restartBtn {
-  background: #22c55e;
-  color: white;
-}
-
+    #restartBtn {
+      background: #22c55e;
+      color: white;
+    }
 
     #nextBtn {
       display: none;
@@ -91,6 +82,11 @@
 
     .progress {
       color: #d1d5db;
+      font-weight: bold;
+    }
+
+    .round {
+      color: #93c5fd;
       font-weight: bold;
     }
 
@@ -143,6 +139,12 @@
       text-align: center;
     }
 
+    .info {
+      text-align: center;
+      color: #d1d5db;
+      line-height: 1.6;
+    }
+
     .error {
       background: #7f1d1d;
       padding: 15px;
@@ -150,1609 +152,1894 @@
       line-height: 1.5;
     }
 
-    .info {
+    .ad-box {
+      margin: 35px 0;
+      padding: 20px 0;
+      min-height: 100px;
       text-align: center;
-      color: #d1d5db;
-      line-height: 1.6;
     }
-  </style>
-</head>
 
-<body>
+    .ad-label {
+      color: #9ca3af;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
 
-    <!-- START SCREEN -->
-    <div id="startScreen" class="screen active">
+    .round-info {
+      background: #374151;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 20px 0;
+      text-align: center;
+    }
 
-      <h1>Quiz Master 🇷🇼</h1>
+    .small {
+      font-size: 14px;
+      color: #d1d5db;
+    }
+  </style></head><body><div class="container">  <!-- START SCREEN -->  <div id="startScreen" class="screen active"><h1>Quiz Master 🇷🇼</h1>
 
-      <p class="info">
-        Gerageza ubumenyi bwawe!
-      </p>
+<p class="info">
+  Gerageza ubumenyi bwawe!
+</p>
 
-      <p class="info">
-        Ibibazo: <strong>10</strong>
-      </p>
+<div class="round-info">
+  <strong>🎯 Round: 1</strong>
+  <br><br>
+  <span class="small">
+    Ibibazo 10 kuri buri round
+  </span>
+  <br>
+  <span class="small">
+    Amasegonda 30 kuri buri kibazo
+  </span>
+</div>
 
-      <p class="info">
-        Igihe kuri buri kibazo: <strong>20 seconds</strong>
-      </p>
 <button id="startBtn">
-    Tangira Quiz 🚀
-  </button>
-    
-    <!-- QUIZ SCREEN -->
-    <div id="quizScreen" class="screen">
+  🚀 Tangira Quiz
+</button>
 
-      <div class="top-bar">
+  </div>  <!-- QUIZ SCREEN -->  <div id="quizScreen" class="screen"><div class="top-bar">
 
-        <div class="progress">
-          Ikibazo <span id="questionNumber">1</span>/10
-        </div>
-
-        <div class="timer">
-          ⏱️ <span id="timer">20</span>s
-        </div>
-
-      </div>
-
-      <div id="question">
-        Loading...
-      </div>
-
-      <div id="options"></div>
-
-      <button id="nextBtn">
-        Ikibazo gikurikira
-      </button>
-
+  <div>
+    <div class="round">
+      Round <span id="roundNumber">1</span>
     </div>
 
+    <div class="progress">
+      Ikibazo <span id="questionNumber">1</span>/10
+    </div>
+  </div>
 
-    <!-- RESULT SCREEN -->
-    <div id="resultScreen" class="screen">
+  <div class="timer">
+    ⏱️ <span id="timer">30</span>s
+  </div>
 
-      <div class="result">
+</div>
 
-        <h1>Quiz irangiye 🎉</h1>
+<div id="question">
+  Loading...
+</div>
 
-        <p>Amanota yawe:</p>
+<div id="options"></div>
 
-        <div class="score">
-          <span id="score">0</span>/10
-        </div>
+<button id="nextBtn">
+  Ikibazo gikurikira ➡️
+</button>
 
-        <p id="resultMessage"></p>
-<div id="adContainer" style="
-  margin:20px 0;
-  min-height:100px;
-  text-align:center;
-">
+  </div>  <!-- RESULT SCREEN -->  <div id="resultScreen" class="screen"><div class="result">
+
+  <h1>Round irangiye 🎉</h1>
+
+  <p>
+    Round <strong><span id="finishedRound">1</span></strong>
+  </p>
+
+  <p>Amanota yawe:</p>
+
+  <div class="score">
+    <span id="score">0</span>/10
+  </div>
+
+  <p id="resultMessage"></p>
+
+</div>
+
+
+<!-- ADSENSE AD -->
+<div class="ad-box">
+
+  <div class="ad-label">
+    Advertisement
+  </div>
 
   <ins class="adsbygoogle"
        style="display:block"
-       data-ad-client="ca-pub-2666698676518429"
-       data-ad-slot="XXXXXXXXXX"
        data-ad-format="auto"
        data-full-width-responsive="true"></ins>
 
-</div> <!-- Ad izashyirwa hano -->
-          </div>
-        <button id="restartBtn">
+</div>
+
+
+<button id="restartBtn">
   ▶️ Komeza kuri Round ikurikira
 </button>
 
-      </div>
+  </div>  <!-- ERROR SCREEN -->  <div id="errorScreen" class="screen"><h2>Habaye ikibazo ❌</h2>
 
-    </div>
+<div id="errorMessage" class="error"></div>
 
-    <!-- ERRbR SCREEN -->
-    <div id="errorScreen" class="screen">
+  </div></div><script>
 
-      <h2>Habaye ikibazo ❌</h2>
+  /*
+   =====================================================
+   QUIZ MASTER 🇷🇼
+   FILE IMWE GUSA
+   =====================================================
+  */
 
-      <div id="errorMessage" class="error"></div>
+  const QUESTIONS_PER_ROUND = 10;
+  const SECONDS_PER_QUESTION = 30;
 
-    </div>
 
-  </div>
-      ==========================================
-      QUIZ MASTER
-      ==========================================
-      Iyi version ikorera muri index.html yonyine.
+  /*
+   =====================================================
+   IBIBAZO
+   =====================================================
+  */
+
+  const questions = [
+
+    {
+      question: "Umurwa mukuru w'u Rwanda ni uwuhe?",
+      options: [
+        "Kigali",
+        "Huye",
+        "Musanze",
+        "Rubavu"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "U Rwanda ruri ku mugabane uwuhe?",
+      options: [
+        "Asia",
+        "Africa",
+        "Europe",
+        "America"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Ibendera ry'u Rwanda rifite amabara angahe?",
+      options: [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Ni uruhe rurimi rukoreshwa cyane mu Rwanda?",
+      options: [
+        "Kinyarwanda",
+        "Igitaliyani",
+        "Igishinwa",
+        "Ikidage"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "U Rwanda ruzwi cyane ku nyamaswa iyihe?",
+      options: [
+        "Ingwe",
+        "Gorilla",
+        "Ingona",
+        "Intare"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Amafaranga akoreshwa mu Rwanda yitwa iki?",
+      options: [
+        "Dollar",
+        "Euro",
+        "Franc Rwanda",
+        "Pound"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Ikiyaga kinini mu Rwanda ni ikihe?",
+      options: [
+        "Ikiyaga cya Kivu",
+        "Ikiyaga cya Muhazi",
+        "Ikiyaga cya Burera",
+        "Ikiyaga cya Ruhondo"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Rwanda iri mu karere akahe ka Afurika?",
+      options: [
+        "Afurika y'Iburasirazuba",
+        "Afurika y'Iburengerazuba",
+        "Afurika y'Amajyaruguru",
+        "Afurika y'Amajyepfo"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "CPU ni iki?",
+      options: [
+        "Ubwonko bwa mudasobwa",
+        "Mugaragaza",
+        "Keyboard",
+        "Mouse"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "RAM ikoreshwa iki?",
+      options: [
+        "Kubika amakuru mu gihe mudasobwa iri gukora",
+        "Gucapa impapuro",
+        "Kwerekana amashusho gusa",
+        "Gukoresha internet gusa"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni iki gikoreshwa kwandika kuri mudasobwa?",
+      options: [
+        "Keyboard",
+        "Speaker",
+        "Monitor",
+        "Printer"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Internet ni iki?",
+      options: [
+        "Urubuga ruhuza mudasobwa n'ibindi bikoresho ku isi",
+        "Ubwoko bwa keyboard",
+        "Ubwoko bwa printer",
+        "Ubwoko bwa screen"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni iki cyerekana amashusho kuri mudasobwa?",
+      options: [
+        "Monitor",
+        "Mouse",
+        "Keyboard",
+        "RAM"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "HTML ikoreshwa cyane mu ki?",
+      options: [
+        "Kubaka imiterere y'urubuga",
+        "Gukora amajwi gusa",
+        "Gusana mudasobwa",
+        "Gucapa amafoto"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "CSS ifasha iki ku rubuga?",
+      options: [
+        "Gutaka no gutunganya uko urubuga rusa",
+        "Kubika amashanyarazi",
+        "Gukora keyboard",
+        "Gusiba internet"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Browser ni iki?",
+      options: [
+        "Porogaramu ikoreshwa kureba imbuga za internet",
+        "Ubwoko bwa keyboard",
+        "Ubwoko bwa hard disk",
+        "Umuyoboro w'amashanyarazi"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Google Chrome ni iki?",
+      options: [
+        "Web browser",
+        "Operating system",
+        "Keyboard",
+        "Antivirus gusa"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni iki DNS ikora?",
+      options: [
+        "Ihuza domain name na IP address",
+        "Ishushanya amafoto",
+        "Icapa documents",
+        "Igenzura keyboard"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni iki GitHub ikoreshwa cyane?",
+      options: [
+        "Kubika no gucunga source code",
+        "Kureba television",
+        "Gukina imikino gusa",
+        "Gukoresha camera"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Vercel ikoreshwa cyane mu ki?",
+      options: [
+        "Kudeploya no kwakira web applications",
+        "Gukora keyboard",
+        "Gusana telefoni",
+        "Gucapa amafoto"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "API ni iki?",
+      options: [
+        "Uburyo porogaramu ziganiriramo kandi zigahana amakuru",
+        "Ubwoko bwa monitor",
+        "Ubwoko bwa mouse",
+        "Ubwoko bwa printer"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "JSON ikoreshwa cyane mu ki?",
+      options: [
+        "Kubika no guhanahana amakuru",
+        "Gukora amashanyarazi",
+        "Gukora screen",
+        "Gucapa impapuro"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Boolean muri programming ishobora kuba iki?",
+      options: [
+        "true cyangwa false",
+        "Amafoto abiri",
+        "Amajwi gusa",
+        "Numbers gusa"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Array muri JavaScript ni iki?",
+      options: [
+        "Urutonde rw'ibintu byinshi",
+        "Server",
+        "Browser",
+        "Database gusa"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Function muri programming ikora iki?",
+      options: [
+        "Itsinda ry'amabwiriza rikora umurimo runaka",
+        "Ni screen ya mudasobwa",
+        "Ni internet provider",
+        "Ni keyboard"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Database ikoreshwa iki?",
+      options: [
+        "Kubika no gucunga amakuru",
+        "Kwerekana amashusho gusa",
+        "Gukora mouse",
+        "Gucana monitor"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Password nziza igomba kuba imeze ite?",
+      options: [
+        "Ndende kandi igizwe n'inyuguti, imibare n'ibimenyetso",
+        "123456 gusa",
+        "Izina gusa",
+        "Ijambo rimwe ryoroshye"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Phishing ni iki?",
+      options: [
+        "Uburyo bwo gushuka umuntu ngo atange amakuru y'ibanga",
+        "Ubwoko bwa printer",
+        "Gukora website",
+        "Gukina online"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "2FA imaze iki?",
+      options: [
+        "Yongerera konti umutekano hifashishijwe uburyo bwa kabiri bwo kwemeza",
+        "Yongera umuvuduko wa internet",
+        "Isiba password",
+        "Ihindura computer"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Cloud storage ni iki?",
+      options: [
+        "Kubika amakuru kuri serivisi zo kuri internet",
+        "Kubika files kuri keyboard",
+        "Kubika amafoto kuri mouse",
+        "Kubika electricity muri computer"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Operating system ifasha iki?",
+      options: [
+        "Gucunga hardware na software bya mudasobwa",
+        "Gukora internet gusa",
+        "Gukora printer gusa",
+        "Gukora keyboard gusa"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni iyihe muri izi ari operating system?",
+      options: [
+        "Linux",
+        "Google Chrome",
+        "JavaScript",
+        "HTML"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Bug muri software ni iki?",
+      options: [
+        "Ikosa rishobora gutuma porogaramu idakora neza",
+        "Ubwoko bwa virus y'inyamaswa",
+        "Keyboard nshya",
+        "Internet yihuta"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Debugging ni iki?",
+      options: [
+        "Gushaka no gukosora amakosa muri software",
+        "Gukora backup gusa",
+        "Gukora website nshya gusa",
+        "Guhindura password"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu kizwi nk'igihugu cy'izuba riva?",
+      options: [
+        "Japan",
+        "Brazil",
+        "Canada",
+        "Egypt"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni iyihe nyamaswa ifite ijosi rirerire cyane?",
+      options: [
+        "Giraffe",
+        "Ingwe",
+        "Intare",
+        "Imbogo"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni iyihe nyamaswa yihuta cyane ku isi mu kwiruka ku butaka?",
+      options: [
+        "Cheetah",
+        "Intare",
+        "Ifarasi",
+        "Imbwa"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umunara wa Eiffel?",
+      options: [
+        "France",
+        "Italy",
+        "Spain",
+        "Germany"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni uruhe ruzi rufatwa nk'urureure ku isi?",
+      options: [
+        "Nile",
+        "Congo",
+        "Amazon",
+        "Zambezi"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni uwuhe mugabane munini ku isi?",
+      options: [
+        "Asia",
+        "Africa",
+        "Europe",
+        "Australia"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni uwuhe mugabane muto ku isi?",
+      options: [
+        "Australia",
+        "Africa",
+        "Asia",
+        "Europe"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe kiyaga kizwiho kuba kinini muri Africa?",
+      options: [
+        "Lake Victoria",
+        "Lake Kivu",
+        "Lake Tanganyika",
+        "Lake Chad"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Nairobi?",
+      options: [
+        "Kenya",
+        "Uganda",
+        "Tanzania",
+        "Rwanda"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Kampala?",
+      options: [
+        "Uganda",
+        "Kenya",
+        "Rwanda",
+        "Burundi"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Addis Ababa?",
+      options: [
+        "Ethiopia",
+        "Eritrea",
+        "Somalia",
+        "Sudan"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Cairo?",
+      options: [
+        "Egypt",
+        "Libya",
+        "Tunisia",
+        "Algeria"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni uwuhe mubumbe uzwiho kugira impeta nyinshi?",
+      options: [
+        "Mars",
+        "Saturn",
+        "Venus",
+        "Mercury"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Amazi agizwe n'ibintu bibiri bya chimie bihe?",
+      options: [
+        "Oxygen na Carbon",
+        "Hydrogen na Oxygen",
+        "Nitrogen na Hydrogen",
+        "Carbon na Nitrogen"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Ni iki gifasha ibimera gukora photosynthesis?",
+      options: [
+        "Chlorophyll",
+        "Hemoglobin",
+        "Calcium",
+        "Insulin"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni uruhe rugingo rw'umubiri rufasha umuntu guhumeka?",
+      options: [
+        "Umutima",
+        "Igifu",
+        "Ibihaha",
+        "Impyiko"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Umutima w'umuntu ufite ibyumba bingahe?",
+      options: [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Ni iyihe vitamine umubiri ubona cyane binyuze ku zuba?",
+      options: [
+        "Vitamin A",
+        "Vitamin B",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      answer: 3
+    },
+
+    {
+      question: "DNA iboneka cyane he mu turemangingo?",
+      options: [
+        "Nucleus",
+        "Ururimi",
+        "Amaraso gusa",
+        "Igifu"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni iki gifasha amaraso gutwara oxygen mu mubiri?",
+      options: [
+        "Hemoglobin",
+        "Calcium",
+        "Glucose",
+        "Insulin"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gice cy'igihingwa gikurura amazi mu butaka?",
+      options: [
+        "Indabo",
+        "Amababi",
+        "Imizi",
+        "Imbuto"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "5 + 7 bingana iki?",
+      options: [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "9 × 8 bingana iki?",
+      options: [
+        "64",
+        "72",
+        "81",
+        "78"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "144 ÷ 12 bingana iki?",
+      options: [
+        "10",
+        "11",
+        "12",
+        "14"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "25% ya 200 ni angahe?",
+      options: [
+        "25",
+        "40",
+        "50",
+        "75"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Square root ya 81 ni iyihe?",
+      options: [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Niba x + 5 = 12, x ni angahe?",
+      options: [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Triangle ifite impande zingahe?",
+      options: [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "1000 - 375 bingana iki?",
+      options: [
+        "525",
+        "625",
+        "675",
+        "725"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "2³ bingana iki?",
+      options: [
+        "4",
+        "6",
+        "8",
+        "9"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "15 × 6 bingana iki?",
+      options: [
+        "80",
+        "90",
+        "100",
+        "110"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Unit y'imbaraga (force) muri SI ni iyihe?",
+      options: [
+        "Watt",
+        "Joule",
+        "Newton",
+        "Volt"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Umuvuduko w'urumuri mu vacuum uba hafi ya:",
+      options: [
+        "3,000 km/s",
+        "30,000 km/s",
+        "300,000 km/s",
+        "3,000,000 km/s"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Ni iki gipima temperature?",
+      options: [
+        "Barometer",
+        "Thermometer",
+        "Voltmeter",
+        "Ammeter"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Gravity ni iki?",
+      options: [
+        "Imbaraga zikurura ibintu bigana ku mubumbe",
+        "Ubushyuhe bw'izuba",
+        "Umuvuduko w'amazi",
+        "Amashanyarazi"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Unit y'amashanyarazi voltage ni iyihe?",
+      options: [
+        "Volt",
+        "Newton",
+        "Kilogram",
+        "Meter"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Unit y'ingufu (energy) muri SI ni iyihe?",
+      options: [
+        "Newton",
+        "Joule",
+        "Watt",
+        "Pascal"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Ni iki gituma ibintu bigwa hasi iyo bibohowe?",
+      options: [
+        "Magnetism",
+        "Gravity",
+        "Light",
+        "Sound"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Sound ikwirakwira neza mu ki?",
+      options: [
+        "Vacuum gusa",
+        "Medium nk'umwuka cyangwa amazi",
+        "Umucyo gusa",
+        "Umwanya utagira ibintu"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Ni iki gipima pressure?",
+      options: [
+        "Barometer",
+        "Thermometer",
+        "Ruler",
+        "Compass"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni uwuhe mubumbe wegereye izuba kurusha indi?",
+      options: [
+        "Earth",
+        "Mars",
+        "Mercury",
+        "Jupiter"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Ni uwuhe mubumbe dutuyemo?",
+      options: [
+        "Mars",
+        "Earth",
+        "Venus",
+        "Saturn"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Paris?",
+      options: [
+        "France",
+        "Germany",
+        "Italy",
+        "Spain"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa London?",
+      options: [
+        "England",
+        "Canada",
+        "United Kingdom",
+        "Ireland"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Abuja?",
+      options: [
+        "Ghana",
+        "Nigeria",
+        "Kenya",
+        "Cameroon"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Accra?",
+      options: [
+        "Ghana",
+        "Nigeria",
+        "Togo",
+        "Benin"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Dodoma?",
+      options: [
+        "Uganda",
+        "Tanzania",
+        "Kenya",
+        "Zambia"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Lusaka?",
+      options: [
+        "Zambia",
+        "Zimbabwe",
+        "Malawi",
+        "Mozambique"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu gifite umurwa mukuru witwa Pretoria?",
+      options: [
+        "South Africa",
+        "Namibia",
+        "Botswana",
+        "Lesotho"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Perezida wa mbere w'u Rwanda nyuma y'ubwigenge yari nde?",
+      options: [
+        "Grégoire Kayibanda",
+        "Juvénal Habyarimana",
+        "Paul Kagame",
+        "Pasteur Bizimungu"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Perezida wa mbere w'u Rwanda nyuma ya Jenoside yakorewe Abatutsi mu 1994 yari nde?",
+      options: [
+        "Paul Kagame",
+        "Pasteur Bizimungu",
+        "Juvénal Habyarimana",
+        "Grégoire Kayibanda"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Perezida wa mbere wa Tanzania yari nde?",
+      options: [
+        "Julius Nyerere",
+        "Nelson Mandela",
+        "Jomo Kenyatta",
+        "Kwame Nkrumah"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Nelson Mandela yabaye Perezida w'iki gihugu?",
+      options: [
+        "Nigeria",
+        "South Africa",
+        "Ghana",
+        "Kenya"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Jomo Kenyatta yabaye Perezida wa mbere wa Kenya?",
+      options: [
+        "Nibyo",
+        "Oya",
+        "Yabaye Perezida wa Uganda",
+        "Yabaye Perezida wa Tanzania"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Kwame Nkrumah yari umuyobozi w'iki gihugu?",
+      options: [
+        "Ghana",
+        "Egypt",
+        "Rwanda",
+        "Ethiopia"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe gihugu kizwiho pyramids za Giza?",
+      options: [
+        "Egypt",
+        "Sudan",
+        "Morocco",
+        "Algeria"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni uwuhe mubumbe munini muri Solar System?",
+      options: [
+        "Earth",
+        "Saturn",
+        "Jupiter",
+        "Neptune"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Ni ikihe gice cy'amaraso gifasha kurwanya indwara?",
+      options: [
+        "White blood cells",
+        "Red blood cells",
+        "Platelets",
+        "Plasma gusa"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Platelets zifasha iki?",
+      options: [
+        "Gufasha amaraso kuvura igikomere",
+        "Gutwara oxygen gusa",
+        "Gukora digestion",
+        "Gukora amagufwa"
+      ],
+      answer: 0
+    },
+
+    {
+      question: "Ni ikihe kintu gifite symbol O muri chemistry?",
+      options: [
+        "Gold",
+        "Oxygen",
+        "Iron",
+        "Hydrogen"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "Symbol ya Gold muri chemistry ni iyihe?",
+      options: [
+        "Gd",
+        "Go",
+        "Au",
+        "Ag"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Symbol ya Iron ni iyihe?",
+      options: [
+        "Ir",
+        "Fe",
+        "In",
+        "I"
+      ],
+      answer: 1
+    }
+
+  ];
+
+
+  /*
+   =====================================================
+   GAME VARIABLES
+   =====================================================
+  */
+
+  let currentQuestion = 0;
+  let score = 0;
+  let timeLeft = SECONDS_PER_QUESTION;
+  let timer = null;
+  let answered = false;
+
+  let roundNumber = 1;
+
+  let roundQuestions = [];
+
+  /*
+    Izi ni indexes z'ibibazo byamaze gukoreshwa.
+    Bizafasha round ikurikira kudasubiramo ibibazo.
+  */
+  let usedQuestionIndexes = [];
+
+
+  /*
+   =====================================================
+   HTML ELEMENTS
+   =====================================================
+  */
+
+  const startScreen =
+    document.getElementById("startScreen");
+
+  const quizScreen =
+    document.getElementById("quizScreen");
+
+  const resultScreen =
+    document.getElementById("resultScreen");
+
+  const errorScreen =
+    document.getElementById("errorScreen");
+
+  const startBtn =
+    document.getElementById("startBtn");
+
+  const restartBtn =
+    document.getElementById("restartBtn");
+
+  const nextBtn =
+    document.getElementById("nextBtn");
+
+  const questionNumber =
+    document.getElementById("questionNumber");
+
+  const roundNumberElement =
+    document.getElementById("roundNumber");
+
+  const finishedRound =
+    document.getElementById("finishedRound");
+
+  const timerElement =
+    document.getElementById("timer");
+
+  const questionElement =
+    document.getElementById("question");
+
+  const optionsElement =
+    document.getElementById("options");
+
+  const scoreElement =
+    document.getElementById("score");
+
+  const resultMessage =
+    document.getElementById("resultMessage");
+
+  const errorMessage =
+    document.getElementById("errorMessage");
+
+
+  /*
+   =====================================================
+   SCREEN
+   =====================================================
+  */
+
+  function showScreen(screen) {
+
+    startScreen.classList.remove("active");
+    quizScreen.classList.remove("active");
+    resultScreen.classList.remove("active");
+    errorScreen.classList.remove("active");
+
+    screen.classList.add("active");
+  }
+
+
+  /*
+   =====================================================
+   SHUFFLE
+   =====================================================
+  */
+
+  function shuffle(array) {
+
+    const newArray = [...array];
+
+    for (
+      let i = newArray.length - 1;
+      i > 0;
+      i--
+    ) {
+
+      const j =
+        Math.floor(Math.random() * (i + 1));
+
+      [
+        newArray[i],
+        newArray[j]
+      ] =
+      [
+        newArray[j],
+        newArray[i]
+      ];
+    }
+
+    return newArray;
+  }
+
+
+  /*
+   =====================================================
+   SHUFFLE OPTIONS
+   =====================================================
+  */
+
+  function prepareQuestion(question) {
+
+    const correctAnswer =
+      question.options[question.answer];
+
+    const shuffledOptions =
+      shuffle(question.options);
+
+    return {
+      question: question.question,
+      options: shuffledOptions,
+      answer:
+        shuffledOptions.indexOf(correctAnswer)
+    };
+  }
+
+
+  /*
+   =====================================================
+   START ROUND
+   =====================================================
+  */
+
+  function startQuiz() {
+
+    if (questions.length < QUESTIONS_PER_ROUND) {
+
+      showError(
+        "Ibibazo ntibihagije. Hakenewe nibura ibibazo 10."
+      );
+
+      return;
+    }
+
+
+    /*
+     Niba ibibazo bisigaye bitarenze 10,
+     dusubizamo urutonde rushya.
     */
 
-    const questions = [
-      {
-        question: "Umurwa mukuru w'u Rwanda ni uwuhe?",
-        options: [
-          "Kigali",
-          "Huye",
-          "Musanze",
-          "Rubavu"
-        ],
-        answer: 0
-      },
-
-      {
-        question: "U Rwanda ruri ku mugabane uwuhe?",
-        options: [
-          "Asia",
-          "Africa",
-          "Europe",
-          "America"
-        ],
-        answer: 1
-      },
-
-      {
-        question: "Ibendera ry'u Rwanda rifite amabara angahe?",
-        options: [
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        answer: 1
-      },
-
-      {
-        question: "Ni uruhe rurimi rukoreshwa cyane mu Rwanda?",
-        options: [
-          "Kinyarwanda",
-          "Igitaliyani",
-          "Igishinwa",
-          "Ikidage"
-        ],
-        answer: 0
-      },
-
-      {
-        question: "U Rwanda ruzwi cyane ku nyamaswa iyihe?",
-        options: [
-          "Ingwe",
-          "Gorilla",
-          "Ingona",
-          "Intare"
-        ],
-        answer: 1
-      },
-
-      {
-        question: "Umubare wa serivisi z'ingenzi muri gahunda ya Leta ushobora kuboneka he?",
-        options: [
-          "Kuri serivisi za Leta",
-          "Mu isoko gusa",
-          "Mu kibuga gusa",
-          "Mu nyanja"
-        ],
-        answer: 0
-      },
-
-      {
-        question: "Amafaranga akoreshwa mu Rwanda yitwa iki?",
-        options: [
-          "Dollar",
-          "Euro",
-          "Franc Rwanda",
-          "Pound"
-        ],
-        answer: 2
-      },
-
-      {
-        question: "Ikiyaga kinini mu Rwanda ni ikihe?",
-        options: [
-          "Ikiyaga cya Kivu",
-          "Ikiyaga cya Muhazi",
-          "Ikiyaga cya Burera",
-          "Ikiyaga cya Ruhondo"
-        ],
-        answer: 0
-      },
-
-      {
-        question: "Rwanda iri mu karere akahe ka Afurika?",
-        options: [
-          "Afurika y'Iburasirazuba",
-          "Afurika y'Iburengerazuba",
-          "Afurika y'Amajyaruguru",
-          "Afurika y'Amajyepfo"
-        ],
-        answer: 0
-      },
-
-      {
-        question: "Ni iki gifasha mudasobwa kubika amakuru?",
-        options: [
-          "Storage",
-          "Keyboard gusa",
-          "Mouse gusa",
-          "Screen gusa"
-        ],
-        answer: 0
-      },
-
-{
-  question: "CPU ni iki?",
-  options: [
-    "Ubwonko bwa mudasobwa",
-    "Mugaragaza",
-    "Keyboard",
-    "Mouse"
-  ],
-  answer: 0
-},
-
-{
-  question: "RAM ikoreshwa iki?",
-  options: [
-    "Kubika amakuru mu gihe mudasobwa iri gukora",
-    "Gucapa impapuro",
-    "Kwerekana amashusho gusa",
-    "Gukoresha internet gusa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iki gikoreshwa kwandika kuri mudasobwa?",
-  options: [
-    "Keyboard",
-    "Speaker",
-    "Monitor",
-    "Printer"
-  ],
-  answer: 0
-}, 
-  
-{
-question: "Internet ni iki?",
-  options: [
-    "Urubuga ruhuza mudasobwa n'ibindi bikoresho ku isi",
-    "Ubwoko bwa keyboard",
-    "Ubwoko bwa printer",
-    "Ubwoko bwa screen"
-  ],
-  answer: 0
-},
-            
-{question: "Ni iki cyerekana amashusho kuri mudasobwa?",
-  options: [
-    "Monitor",
-    "Mouse",
-    "Keyboard",
-    "RAM"
-  ],
-  answer: 0
- },
- 
-{    
- question: "Ni uruhe rurimi rukoreshwa cyane mu gukora imbuga za internet?",
-  options: [
-    "JavaScript",
-    "Excel",
-    "Photoshop",
-    "Windows"
-  ],
-  answer: 0
-},
-
-{
-  question: "HTML ikoreshwa cyane mu ki?",
-  options: [
-    "Kubaka imiterere y'urubuga",
-    "Gukora amajwi gusa",
-    "Gusana mudasobwa",
-    "Gucapa amafoto"
-  ],
-  answer: 0
-},
-
-{
-  question: "CSS ifasha iki ku rubuga?",
-  options: [
-    "Gutaka no gutunganya uko urubuga rusa",
-    "Kubika amashanyarazi",
-    "Gukora keyboard",
-    "Gusiba internet"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iki HTTP ikoreshwa mu itumanaho rya web?",
-  options: [
-    "Kohereza no kwakira amakuru hagati ya browser na server",
-    "Gukoresha printer gusa",
-    "Kuzimya mudasobwa",
-    "Gukora amafoto"
-  ],
-  answer: 0
-},
-
-{
-  question: "Browser ni iki?",
-  options: [
-    "Porogaramu ikoreshwa kureba imbuga za internet",
-    "Ubwoko bwa keyboard",
-    "Ubwoko bwa hard disk",
-    "Umuyoboro w'amashanyarazi"
-  ],
-  answer: 0
-},
-
-{
-  question: "Google Chrome ni iki?",
-  options: [
-    "Web browser",
-    "Operating system",
-    "Keyboard",
-    "Antivirus gusa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iki DNS ikora?",
-  options: [
-    "Ihindura domain name ikayihuza na IP address",
-    "Ishushanya amafoto",
-    "Icapa documents",
-    "Igenzura keyboard"
-  ],
-  answer: 0
-},
-
-{
-  question: "IP address ikoreshwa iki?",
-  options: [
-    "Kumenya cyangwa kumenya aho igikoresho kiri ku muyoboro",
-    "Gukora amajwi",
-    "Guhindura screen",
-    "Gucapa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iki GitHub ikoreshwa cyane?",
-  options: [
-    "Kubika no gucunga source code",
-    "Kureba television",
-    "Gukina imikino gusa",
-    "Gukoresha camera"
-  ],
-  answer: 0
-},
-
-{
-  question: "Vercel ikoreshwa cyane mu ki?",
-  options: [
-    "Kudeploya no kwakira web applications",
-    "Gukora keyboard",
-    "Gusana telefoni",
-    "Gucapa amafoto"
-  ],
-  answer: 0
-},
-
-{
-  question: "API ni iki?",
-  options: [
-    "Uburyo porogaramu ziganiriramo kandi zigahana amakuru",
-    "Ubwoko bwa monitor",
-    "Ubwoko bwa mouse",
-    "Ubwoko bwa printer"
-  ],
-  answer: 0
-},
-
-{
-  question: "JSON ikoreshwa cyane mu ki?",
-  options: [
-    "Kubika no guhanahana amakuru mu buryo bwateguwe",
-    "Gukora amashanyarazi",
-    "Gukora screen",
-    "Gucapa impapuro"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iki boolean ishobora kuba muri programming?",
-  options: [
-    "true cyangwa false",
-    "Amafoto abiri",
-    "Amajwi gusa",
-    "Numbers gusa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Array muri JavaScript ni iki?",
-  options: [
-    "Urutonde rw'ibintu byinshi",
-    "Server",
-    "Browser",
-    "Database gusa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Function muri programming ikora iki?",
-  options: [
-    "Itsinda ry'amabwiriza rikora umurimo runaka",
-    "Ni screen ya mudasobwa",
-    "Ni internet provider",
-    "Ni keyboard"
-  ],
-  answer: 0
-},
-
-{
-  question: "Database ikoreshwa iki?",
-  options: [
-    "Kubika no gucunga amakuru",
-    "Kwerekana amashusho gusa",
-    "Gukora mouse",
-    "Gucana monitor"
-  ],
-  answer: 0
-},
-
-{
-  question: "Password nziza igomba kuba imeze ite?",
-  options: [
-    "Ndende kandi igizwe n'inyuguti, imibare n'ibimenyetso",
-    "123456 gusa",
-    "Izina gusa",
-    "Ijambo rimwe ryoroshye"
-  ],
-  answer: 0
-},
-
-{
-  question: "Phishing ni iki?",
-  options: [
-    "Uburyo bwo gushuka umuntu ngo atange amakuru y'ibanga",
-    "Ubwoko bwa printer",
-    "Gukora website",
-    "Gukina online"
-  ],
-  answer: 0
-},
-
-{
-  question: "Two-factor authentication (2FA) imaze iki?",
-  options: [
-    "Yongerera konti umutekano hifashishijwe uburyo bwa kabiri bwo kwemeza",
-    "Yongera umuvuduko wa internet",
-    "Isiba password",
-    "Ihindura computer"
-  ],
-  answer: 0
-},
-
-{
-  question: "Cloud storage ni iki?",
-  options: [
-    "Kubika amakuru kuri serivisi zo kuri internet",
-    "Kubika files kuri keyboard",
-    "Kubika amafoto kuri mouse",
-    "Kubika electricity muri computer"
-  ],
-  answer: 0
-},
-
-{
-  question: "Operating system ifasha iki?",
-  options: [
-    "Gucunga hardware na software bya mudasobwa",
-    "Gukora internet gusa",
-    "Gukora printer gusa",
-    "Gukora keyboard gusa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iyihe muri izi ari operating system?",
-  options: [
-    "Linux",
-    "Google Chrome",
-    "JavaScript",
-    "HTML"
-  ],
-  answer: 0
-},
-
-{
-  question: "Open-source software bisobanura iki?",
-  options: [
-    "Source code yayo ishobora kuboneka no gukorerwaho hakurikijwe license yayo",
-    "Software ikora nta computer",
-    "Software idakenera internet",
-    "Software ikora kuri telefoni gusa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Bug muri software ni iki?",
-  options: [
-    "Ikosa rishobora gutuma porogaramu idakora neza",
-    "Ubwoko bwa virus y'inyamaswa",
-    "Keyboard nshya",
-    "Internet yihuta"
-  ],
-  answer: 0
-},
-
-{
-  question: "Debugging ni iki?",
-  options: [
-    "Gushaka no gukosora amakosa muri software",
-    "Gukora backup gusa",
-    "Gukora website nshya gusa",
-    "Guhindura password"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu kizwi nk'igihugu cy'izuba riva?",
-  options: [
-    "Japan",
-    "Brazil",
-    "Canada",
-    "Egypt"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iyihe nyamaswa izwiho kugira ijosi rirerire cyane?",
-  options: [
-    "Giraffe",
-    "Ingwe",
-    "Intare",
-    "Imbogo"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iyihe nyamaswa yihuta cyane ku isi mu kwiruka ku butaka?",
-  options: [
-    "Cheetah",
-    "Intare",
-    "Ifarasi",
-    "Imbwa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu gifite umunara wa Eiffel?",
-  options: [
-    "France",
-    "Italy",
-    "Spain",
-    "Germany"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni uruhe ruzi rufatwa nk'urureure ku isi?",
-  options: [
-    "Nile",
-    "Congo",
-    "Amazon",
-    "Zambezi"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni uwuhe mugabane munini ku isi?",
-  options: [
-    "Asia",
-    "Africa",
-    "Europe",
-    "Australia"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni uwuhe mugabane muto ku isi?",
-  options: [
-    "Australia",
-    "Africa",
-    "Asia",
-    "Europe"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe kiyaga kizwiho kuba kinini muri Africa?",
-  options: [
-    "Lake Victoria",
-    "Lake Kivu",
-    "Lake Tanganyika",
-    "Lake Chad"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Nairobi?",
-  options: [
-    "Kenya",
-    "Uganda",
-    "Tanzania",
-    "Rwanda"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Kampala?",
-  options: [
-    "Uganda",
-    "Kenya",
-    "Rwanda",
-    "Burundi"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Addis Ababa?",
-  options: [
-    "Ethiopia",
-    "Eritrea",
-    "Somalia",
-    "Sudan"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Cairo?",
-  options: [
-    "Egypt",
-    "Libya",
-    "Tunisia",
-    "Algeria"
-  ],
-  answer: 0
-},    
-
-{
-  question: "Ni uwuhe mubumbe uzwiho kugira impeta nyinshi?",
-  options: [
-    "Mars",
-    "Saturn",
-    "Venus",
-    "Mercury"
-    ],
-  answer: 1
-},
-
-{
-  question: "Amazi agizwe n'ibintu bibiri bya chimie bihe?",
-  options: [
-    "Oxygen na Carbon",
-    "Hydrogen na Oxygen",
-    "Nitrogen na Hydrogen",
-    "Carbon na Nitrogen"
-  ],
-  answer: 1
-},
-
-{
-  question: "Ni iki gifasha ibimera gukora photosynthesis?",
-  options: [
-    "Chlorophyll",
-    "Hemoglobin",
-    "Calcium",
-    "Insulin"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni uruhe rugingo rw'umubiri rufasha umuntu guhumeka?",
-  options: [
-    "Umutima",
-    "Igifu",
-    "Ibihaha",
-    "Impyiko"
-  ],
-  answer: 2
-},
-
-{
-  question: "Umutima w'umuntu ufite ibyumba bingahe?",
-  options: [
-    "2",
-    "3",
-    "4",
-    "5"
-  ],
-  answer: 2
-},
-
-{
-  question: "Ni iyihe vitamine umubiri ubona cyane binyuze ku zuba?",
-  options: [
-    "Vitamin A",
-    "Vitamin B",
-    "Vitamin C",
-    "Vitamin D"
-  ],
-  answer: 3
-},
-
-{
-  question: "Ni uruhe rugingo rutunganya amaraso kandi rugafasha gukuramo imyanda mu mubiri?",
-  options: [
-    "Impyiko",
-    "Umutima",
-    "Ibihaha",
-    "Amatama"
-  ],
-  answer: 0
-},
-
-{
-  question: "DNA iboneka cyane he mu turemangingo?",
-  options: [
-    "Nucleus",
-    "Ururimi",
-    "Amaraso gusa",
-    "Igifu"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni iki gifasha amaraso gutwara oxygen mu mubiri?",
-  options: [
-    "Hemoglobin",
-    "Calcium",
-    "Glucose",
-    "Insulin"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gice cy'igihingwa gikurura amazi mu butaka?",
-  options: [
-    "Indabo",
-    "Amababi",
-    "Imizi",
-    "Imbuto"
-  ],
-  answer: 2
-},
-
-{
-  question: "5 + 7 bingana iki?",
-  options: [
-    "10",
-    "11",
-    "12",
-    "13"
-  ],
-  answer: 2
-},
-
-{
-  question: "9 × 8 bingana iki?",
-  options: [
-    "64",
-    "72",
-    "81",
-    "78"
-  ],
-  answer: 1
-},
-
-{
-  question: "144 ÷ 12 bingana iki?",
-  options: [
-    "10",
-    "11",
-    "12",
-    "14"
-  ],
-  answer: 2
-},
-
-{
-  question: "25% ya 200 ni angahe?",
-  options: [
-    "25",
-    "40",
-    "50",
-    "75"
-  ],
-  answer: 2
-},
-
-{
-  question: "Square root ya 81 ni iyihe?",
-  options: [
-    "7",
-    "8",
-    "9",
-    "10"
-  ],
-  answer: 2
-},
-
-{
-  question: "Niba x + 5 = 12, x ni angahe?",
-  options: [
-    "5",
-    "6",
-    "7",
-    "8"
-  ],
-  answer: 2
-},
-
-{
-  question: "Triangle ifite impande zingahe?",
-  options: [
-    "2",
-    "3",
-    "4",
-    "5"
-  ],
-  answer: 1
-},
-
-{
-  question: "1000 - 375 bingana iki?",
-  options: [
-    "525",
-    "625",
-    "675",
-    "725"
-  ],
-  answer: 1
-},
-
-{
-  question: "2³ bingana iki?",
-  options: [
-    "4",
-    "6",
-    "8",
-    "9"
-  ],
-  answer: 2
-},
-
-{
-  question: "15 × 6 bingana iki?",
-  options: [
-    "80",
-    "90",
-    "100",
-    "110"
-  ],
-  answer: 1
-},
-
-{
-  question: "Unit y'imbaraga (force) muri SI ni iyihe?",
-  options: [
-    "Watt",
-    "Joule",
-    "Newton",
-    "Volt"
-  ],
-  answer: 2
-},
-
-{
-  question: "Umuvuduko w'urumuri mu vacuum uba hafi ya:",
-  options: [
-    "3,000 km/s",
-    "30,000 km/s",
-    "300,000 km/s",
-    "3,000,000 km/s"
-  ],
-  answer: 2
-},
-
-{
-  question: "Ni iki gipima temperature?",
-  options: [
-    "Barometer",
-    "Thermometer",
-    "Voltmeter",
-    "Ammeter"
-  ],
-  answer: 1
-},
-
-{
-  question: "Gravity ni iki?",
-  options: [
-    "Imbaraga zikurura ibintu bigana ku mubumbe",
-    "Ubushyuhe bw'izuba",
-    "Umuvuduko w'amazi",
-    "Amashanyarazi"
-  ],
-  answer: 0
-},
-
-{
-  question: "Unit y'amashanyarazi voltage ni iyihe?",
-  options: [
-    "Volt",
-    "Newton",
-    "Kilogram",
-    "Meter"
-  ],
-  answer: 0
-},
-
-{
-  question: "Unit y'ingufu (energy) muri SI ni iyihe?",
-  options: [
-    "Newton",
-    "Joule",
-    "Watt",
-    "Pascal"
-  ],
-  answer: 1
-},
-
-{
-  question: "Ni iki gituma ibintu bigwa hasi iyo bibohowe?",
-  options: [
-    "Magnetism",
-    "Gravity",
-    "Light",
-    "Sound"
-  ],
-  answer: 1
-},
-
-{
-  question: "Sound ikwirakwira neza mu ki?",
-  options: [
-    "Vacuum gusa",
-    "Medium nk'umwuka cyangwa amazi",
-    "Umucyo gusa",
-    "Umwanya utagira ibintu"
-  ],
-  answer: 1
-},
-
-{
-  question: "Ni iki gipima pressure?",
-  options: [
-    "Barometer",
-    "Thermometer",
-    "Ruler",
-    "Compass"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni uwuhe mubumbe wegereye izuba kurusha indi?",
-  options: [
-    "Earth",
-    "Mars",
-    "Mercury",
-    "Jupiter"
-  ],
-  answer: 2
-},
-
-{
-  question: "Ni uwuhe mubumbe dutuyemo?",
-  options: [
-    "Mars",
-    "Earth",
-    "Venus",
-    "Saturn"
-  ],
-  answer: 1
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Paris?",
-  options: [
-    "France",
-    "Germany",
-    "Italy",
-    "Spain"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa London?",
-  options: [
-    "England",
-    "Canada",
-    "United Kingdom",
-    "Ireland"
-  ],
-  answer: 2
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Abuja?",
-  options: [
-    "Ghana",
-    "Nigeria",
-    "Kenya",
-    "Cameroon"
-  ],
-  answer: 1
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Accra?",
-  options: [
-    "Ghana",
-    "Nigeria",
-    "Togo",
-    "Benin"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Dodoma?",
-  options: [
-    "Uganda",
-    "Tanzania",
-    "Kenya",
-    "Zambia"
-  ],
-  answer: 1
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Lusaka?",
-  options: [
-    "Zambia",
-    "Zimbabwe",
-    "Malawi",
-    "Mozambique"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu gifite umurwa mukuru witwa Pretoria?",
-  options: [
-    "South Africa",
-    "Namibia",
-    "Botswana",
-    "Lesotho"
-  ],
-  answer: 0
-},
-
-{
-  question: "Perezida wa mbere w'u Rwanda nyuma y'ubwigenge yari nde?",
-  options: [
-    "Grégoire Kayibanda",
-    "Juvénal Habyarimana",
-    "Paul Kagame",
-    "Pasteur Bizimungu"
-  ],
-  answer: 0
-},
-
-{
-  question: "Perezida wa mbere w'u Rwanda nyuma ya Jenoside yakorewe Abatutsi mu 1994 yari nde?",
-  options: [
-    "Paul Kagame",
-    "Pasteur Bizimungu",
-    "Juvénal Habyarimana",
-    "Grégoire Kayibanda"
-  ],
-  answer: 1
-},
-
-{
-  question: "Perezida wa mbere wa Tanzania yari nde?",
-  options: [
-    "Julius Nyerere",
-    "Nelson Mandela",
-    "Jomo Kenyatta",
-    "Kwame Nkrumah"
-  ],
-  answer: 0
-},
-
-{
-  question: "Nelson Mandela yabaye Perezida w'iki gihugu?",
-  options: [
-    "Nigeria",
-    "South Africa",
-    "Ghana",
-    "Kenya"
-  ],
-  answer: 1
-},
-
-{
-  question: "Jomo Kenyatta yabaye Perezida wa mbere wa Kenya?",
-  options: [
-    "Nibyo",
-    "Oya",
-    "Yabaye Perezida wa Uganda",
-    "Yabaye Perezida wa Tanzania"
-  ],
-  answer: 0
-},
-
-{
-  question: "Kwame Nkrumah yari umuyobozi w'iki gihugu?",
-  options: [
-    "Ghana",
-    "Egypt",
-    "Rwanda",
-    "Ethiopia"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe gihugu kizwiho pyramids za Giza?",
-  options: [
-    "Egypt",
-    "Sudan",
-    "Morocco",
-    "Algeria"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni uwuhe mubumbe munini muri Solar System?",
-  options: [
-    "Earth",
-    "Saturn",
-    "Jupiter",
-    "Neptune"
-  ],
-  answer: 2
-},
-
-{
-  question: "Ni ikihe gice cy'amaraso gifasha kurwanya indwara?",
-  options: [
-    "White blood cells",
-    "Red blood cells",
-    "Platelets",
-    "Plasma gusa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Platelets zifasha iki?",
-  options: [
-    "Gufasha amaraso kuvura igikomere",
-    "Gutwara oxygen gusa",
-    "Gukora digestion",
-    "Gukora amagufwa"
-  ],
-  answer: 0
-},
-
-{
-  question: "Ni ikihe kintu gifite symbol O muri chemistry?",
-  options: [
-    "Gold",
-    "Oxygen",
-    "Iron",
-    "Hydrogen"
-  ],
-  answer: 1
-},
-
-{
-  question: "Symbol ya Gold muri chemistry ni iyihe?",
-  options: [
-    "Gd",
-    "Go",
-    "Au",
-    "Ag"
-  ],
-  answer: 2
-},
-
-{
-    question: "Symbol ya Iron ni iyihe?",
-    options: [
-      "Ir",
-      "Fe",
-      "In",
-      "I"
-    ],
-    answer: 1
-  }
-]
-let currentQuestion = 0;
-let score = 0;
-let timeLeft = 20;
-let timer = null;
-let answered = false;
-let roundQuestions = [];
-let usedQuestions = [];
-
-    const startScreen = document.getElementById("startScreen");
-    const quizScreen = document.getElementById("quizScreen");
-    const resultScreen = document.getElementById("resultScreen");
-    const errorScreen = document.getElementById("errorScreen");
-
-    const startBtn = document.getElementById("startBtn");
-    const restartBtn = document.getElementById("restartBtn");
-    const nextBtn = document.getElementById("nextBtn");
-
-    const questionNumber =
-      document.getElementById("questionNumber");
-
-    const timerElement =
-      document.getElementById("timer");
-
-    const questionElement =
-      document.getElementById("question");
-
-    const optionsElement =
-      document.getElementById("options");
-
-    const scoreElement =
-      document.getElementById("score");
-
-    const resultMessage =
-      document.getElementById("resultMessage");
-
-    const errorMessage =
-      document.getElementById("errorMessage");
-
-
-    function showScreen(screen) {
-
-      startScreen.classList.remove("active");
-      quizScreen.classList.remove("active");
-      resultScreen.classList.remove("active");
-      errorScreen.classList.remove("active");
-
-      screen.classList.add("active");
-    }
-
-function shuffleQuestionOptions(question) {
-  const correctAnswer = question.options[question.answer];
-
-  const shuffledOptions = [...question.options];
-
-  shuffledOptions.sort(() => Math.random() - 0.5);
-
-  question.options = shuffledOptions;
-
-  question.answer = shuffledOptions.indexOf(correctAnswer);
-
-  return question;
-}
-    function startQuiz() {
-
-  if (!questions || questions.length < 10) {
-    showError("Ibibazo ntibihagije.");
-    return;
-  }
-
-  currentQuestion = 0;
-  score = 0;
-
-  // Shaka ibibazo bitarakoreshejwe
-  let availableQuestions = questions.filter(
-    (_, index) => !usedQuestions.includes(index)
-  );
-
-  // Niba hasigaye munsi ya 10, tangira urutonde rushya
-  if (availableQuestions.length < 10) {
-    usedQuestions = [];
-    availableQuestions = [...questions];
-  }
-
-  // Vanga ibibazo
-  availableQuestions.sort(() => Math.random() - 0.5);
-
-  // Fata 10 gusa kuri iyi round
-  roundQuestions = availableQuestions.slice(0, 10);
-
-  // Bika ibibazo byakoreshejwe
-  roundQuestions.forEach(q => {
-    const index = questions.indexOf(q);
-    usedQuestions.push(index);
-  });
-
-  showScreen(quizScreen);
-
-  loadQuestion();
-}
-
-
-    function loadQuestion() {
-
-      clearInterval(timer);
-
-      answered = false;
-      timeLeft = 20;
-
-      timerElement.textContent = timeLeft;
-
-      nextBtn.style.display = "none";
-
-      optionsElement.innerHTML = "";
-
-      const q = shuffleQuestionOptions(roundQuestions[currentQuestion]);
-
-      questionNumber.textContent = currentQuestion + 1;
-
-      questionElement.textContent = q.question;
-
-
-      q.options.forEach((option, index) => {
-
-        const button = document.createElement("button");
-
-        button.className = "option";
-
-        button.textContent = option;
-
-        button.addEventListener("click", function () {
-
-          selectAnswer(index);
-
-        });
-
-        optionsElement.appendChild(button);
-
-      });
-
-
-      startTimer();
+    let availableIndexes =
+      questions
+        .map((_, index) => index)
+        .filter(
+          index =>
+            !usedQuestionIndexes.includes(index)
+        );
+
+
+    if (
+      availableIndexes.length <
+      QUESTIONS_PER_ROUND
+    ) {
+
+      /*
+       Ibibazo byose byakoreshejwe.
+       Dutangira cycle nshya.
+      */
+
+      usedQuestionIndexes = [];
+
+      availableIndexes =
+        questions.map(
+          (_, index) => index
+        );
     }
 
 
-    function startTimer() {
+    /*
+     Vanga indexes.
+    */
 
-      timer = setInterval(function () {
-
-        timeLeft--;
-
-        timerElement.textContent = timeLeft;
-
-        if (timeLeft <= 0) {
-
-          clearInterval(timer);
-
-          timeIsOver();
-
-        }
-
-      }, 1000);
-    }
+    availableIndexes =
+      shuffle(availableIndexes);
 
 
-    function selectAnswer(selectedIndex) {
+    /*
+     Fata 10.
+    */
 
-      if (answered) {
-        return;
-      }
-
-      answered = true;
-
-      clearInterval(timer);
-
-      const q = roundQuestions[currentQuestion];
-
-      const buttons =
-        optionsElement.querySelectorAll(".option");
+    const selectedIndexes =
+      availableIndexes.slice(
+        0,
+        QUESTIONS_PER_ROUND
+      );
 
 
-      buttons.forEach((button, index) => {
+    /*
+     Bika ko byakoreshejwe.
+    */
 
-        button.disabled = true;
+    selectedIndexes.forEach(index => {
 
-        if (index === q.answer) {
-          button.classList.add("correct");
-        }
+      if (
+        !usedQuestionIndexes.includes(index)
+      ) {
 
-      });
-
-
-      if (selectedIndex === q.answer) {
-
-        score++;
-
-      } else {
-
-        buttons[selectedIndex].classList.add("wrong");
+        usedQuestionIndexes.push(index);
 
       }
 
-
-      nextBtn.style.display = "block";
-    }
+    });
 
 
-    function timeIsOver() {
+    /*
+     Tegura ibibazo bya round.
+    */
 
-      if (answered) {
-        return;
-      }
-
-      answered = true;
-
-      const q = roundQuestions[currentQuestion];
-
-      const buttons =
-        optionsElement.querySelectorAll(".option");
+    roundQuestions =
+      selectedIndexes.map(index =>
+        prepareQuestion(
+          questions[index]
+        )
+      );
 
 
-      buttons.forEach((button, index) => {
+    currentQuestion = 0;
+    score = 0;
 
-        button.disabled = true;
+    roundNumberElement.textContent =
+      roundNumber;
 
-        if (index === q.answer) {
-          button.classList.add("correct");
-        }
-
-
-      nextBtn.style.display = "block";
-    }
-
-
-    
-
-function nextQuestion() {
-
-  currentQuestion++;
-
-  if (currentQuestion >= roundQuestions.length) {
-
-    finishQuiz();
-
-  } else {
+    showScreen(quizScreen);
 
     loadQuestion();
-
-  }
-}
-
-function finishQuiz() {
-
-  clearInterval(timer);
-
-  showScreen(resultScreen);
-
-  scoreElement.textContent = score;
-
-  if (score >= 8) {
-
-    resultMessage.textContent =
-      "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
-
-  } else if (score >= 5) {
-
-    resultMessage.textContent =
-      "👍 Ni byiza! Komeza witoze.";
-
-  } else {
-
-    resultMessage.textContent =
-      "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
-
   }
 
-  showRoundAd();
-}
+
+  /*
+   =====================================================
+   LOAD QUESTION
+   =====================================================
+  */
+
+  function loadQuestion() {
+
+    clearInterval(timer);
+
+    answered = false;
+
+    timeLeft =
+      SECONDS_PER_QUESTION;
+
+    timerElement.textContent =
+      timeLeft;
+
+    nextBtn.style.display =
+      "none";
+
+    optionsElement.innerHTML =
+      "";
 
 
-function showRoundAd() {
+    const q =
+      roundQuestions[currentQuestion];
 
-  const adContainer =
-    document.getElementById("adContainer");
 
-  if (!adContainer) {
+    questionNumber.textContent =
+      currentQuestion + 1;
 
-    console.error("adContainer ntiyabonetse.");
 
-    return;
+    questionElement.textContent =
+      q.question;
+
+
+    q.options.forEach(
+      (option, index) => {
+
+        const button =
+          document.createElement("button");
+
+        button.className =
+          "option";
+
+        button.textContent =
+          option;
+
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            selectAnswer(index);
+
+          }
+        );
+
+
+        optionsElement.appendChild(
+          button
+        );
+
+      }
+    );
+
+
+    startTimer();
   }
 
-  adContainer.innerHTML = "";
 
-  const ad = document.createElement("ins");
+  /*
+   =====================================================
+   TIMER
+   =====================================================
+  */
 
-  ad.className = "adsbygoogle";
+  function startTimer() {
 
-  ad.style.display = "block";
+    timer =
+      setInterval(
+        function () {
 
-  ad.setAttribute(
-    "data-ad-client",
-    "ca-pub-2666698676518429"
-  );
+          timeLeft--;
 
-  ad.setAttribute(
-    "data-ad-slot",
-    "XXXXXXXXXX"
-  );
+          timerElement.textContent =
+            timeLeft;
 
-  ad.setAttribute(
-    "data-ad-format",
-    "auto"
-  );
 
-  ad.setAttribute(
-    "data-full-width-responsive",
-    "true"
-  );
+          if (timeLeft <= 0) {
 
-  adContainer.appendChild(ad);
+            clearInterval(timer);
 
-  try {
+            timeIsOver();
 
-    (window.adsbygoogle =
-      window.adsbygoogle || []).push({});
+          }
 
-    console.log("AdSense ad yasabwe.");
+        },
+        1000
+      );
+  }
 
-  } catch (error) {
 
-    console.error("AdSense error:", error);
+  /*
+   =====================================================
+   SELECT ANSWER
+   =====================================================
+  */
+
+  function selectAnswer(
+    selectedIndex
+  ) {
+
+    if (answered) {
+      return;
+    }
+
+
+    answered = true;
+
+    clearInterval(timer);
+
+
+    const q =
+      roundQuestions[currentQuestion];
+
+
+    const buttons =
+      optionsElement
+        .querySelectorAll(".option");
+
+
+    buttons.forEach(
+      (button, index) => {
+
+        button.disabled = true;
+
+
+        if (
+          index === q.answer
+        ) {
+
+          button.classList.add(
+            "correct"
+          );
+
+        }
+
+      }
+    );
+
+
+    if (
+      selectedIndex === q.answer
+    ) {
+
+      score++;
+
+    } else {
+
+      buttons[selectedIndex]
+        .classList.add("wrong");
+
+    }
+
+
+    nextBtn.style.display =
+      "block";
+  }
+
+
+  /*
+   =====================================================
+   TIME OVER
+   =====================================================
+  */
+
+  function timeIsOver() {
+
+    if (answered) {
+      return;
+    }
+
+
+    answered = true;
+
+
+    const q =
+      roundQuestions[currentQuestion];
+
+
+    const buttons =
+      optionsElement
+        .querySelectorAll(".option");
+
+
+    buttons.forEach(
+      (button, index) => {
+
+        button.disabled = true;
+
+
+        if (
+          index === q.answer
+        ) {
+
+          button.classList.add(
+            "correct"
+          );
+
+        }
+
+      }
+    );
+
+
+    nextBtn.style.display =
+      "block";
+  }
+
+
+  /*
+   =====================================================
+   NEXT QUESTION
+   =====================================================
+  */
+
+  function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+      currentQuestion >=
+      roundQuestions.length
+    ) {
+
+      finishQuiz();
+
+    } else {
+
+      loadQuestion();
+
+    }
+  }
+
+
+  /*
+   =====================================================
+   FINISH ROUND
+   =====================================================
+  */
+
+  function finishQuiz() {
+
+    clearInterval(timer);
+
+
+    showScreen(resultScreen);
+
+
+    finishedRound.textContent =
+      roundNumber;
+
+
+    scoreElement.textContent =
+      score;
+
+
+    if (score >= 8) {
+
+      resultMessage.textContent =
+        "👏 Wakoze cyane! Amanota yawe ni meza cyane.";
+
+    } else if (score >= 5) {
+
+      resultMessage.textContent =
+        "👍 Ni byiza! Komeza witoze.";
+
+    } else {
+
+      resultMessage.textContent =
+        "💪 Ongera ugerageze. Ushobora kubona amanota menshi.";
+
+    }
+
+
+    /*
+     =================================================
+     ADSENSE
+     =================================================
+
+     Google ni yo igenzura niba ad iboneka.
+     Ntitugerageza kuyihatira kugaragara.
+    */
+
+    showRoundAd();
+  }
+
+
+  /*
+   =====================================================
+   ADSENSE AD
+   =====================================================
+  */
+
+  function showRoundAd() {
+
+    const adBox =
+      document.querySelector(".ad-box");
+
+
+    if (!adBox) {
+      return;
+    }
+
+
+    /*
+     Ntitwongera gusubiramo ad imwe inshuro nyinshi.
+     Dusaba AdSense gutanga ad kuri natural break
+     hagati ya rounds.
+    */
+
+    const existingAd =
+      adBox.querySelector(
+        ".adsbygoogle"
+      );
+
+
+    if (existingAd) {
+
+      try {
+
+        (
+          window.adsbygoogle =
+          window.adsbygoogle || []
+        ).push({});
+
+      } catch (error) {
+
+        console.log(
+          "AdSense:",
+          error
+        );
+
+      }
+
+    }
 
   }
-}
 
 
+  /*
+   =====================================================
+   NEXT ROUND
+   =====================================================
+  */
+
+  function startNextRound() {
+
+    roundNumber++;
+
+    startQuiz();
+  }
 
 
-function showError(message) {
+  /*
+   =====================================================
+   ERROR
+   =====================================================
+  */
 
-  errorMessage.textContent = message;
+  function showError(message) {
 
-  showScreen(errorScreen);
-}
+    errorMessage.textContent =
+      message;
 
-startBtn.addEventListener("click", startQuiz);
-restartBtn.addEventListener("click", startQuiz);
-nextBtn.addEventListener("click", nextQuestion);
- {
-  
-});
+    showScreen(errorScreen);
+  }
 
-backBtn.addEventListener("click", 
-   function () {
-  showScreen(startScreen);
-});
 
-}
-</script>
+  /*
+   =====================================================
+   BUTTON EVENTS
+   =====================================================
+  */
 
-</body>
+  startBtn.addEventListener(
+    "click",
+    function () {
+
+      startQuiz();
+
+    }
+  );
+
+
+  restartBtn.addEventListener(
+    "click",
+    function () {
+
+      startNextRound();
+
+    }
+  );
+
+
+  nextBtn.addEventListener(
+    "click",
+    function () {
+
+      nextQuestion();
+
+    }
+  );
+
+
+  /*
+   =====================================================
+   INITIAL CHECK
+   =====================================================
+  */
+
+  console.log(
+    "Quiz Master yatangiye.",
+    "Ibibazo byose:",
+    questions.length
+  );
+
+</script></body>
 </html>
