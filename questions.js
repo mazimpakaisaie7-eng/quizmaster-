@@ -1,546 +1,1014 @@
-// =====================================================
-// QUIZ MASTER - questions.js
-// Ihuye na index.html watanze
-// =====================================================
+ /* =========================================================
+   QUIZ MASTER - QUESTIONS MANAGER
+   =========================================================
+   - 10 questions per round
+   - 20 seconds per question
+   - Round 1 -> Round 2 -> Round 3 -> ...
+   - Random questions
+   - No duplicate questions inside the same round
+   - Correct / Wrong / Score tracking
+   - Works with questions.json
+   ========================================================= */
 
-// ⬅️ AHA ushobora guhindura umubare w'ibibazo
-const QUESTIONS_PER_QUIZ = 10;
+(function () {
+  "use strict";
 
-// ⬅️ AHA ushobora guhindura igihe kuri buri kibazo
-const TIME_PER_QUESTION = 20;
+  /* =========================
+     CONFIG
+  ========================= */
 
+  const QUESTIONS_PER_ROUND = 10;
+  const SECONDS_PER_QUESTION = 20;
 
-// =====================================================
-// VARIABLES
-// =====================================================
+  const QUESTIONS_FILE = "questions.json";
 
-let allQuestions = [];
-let quizQuestions = [];
+  /* =========================
+     STATE
+  ========================= */
 
-let currentQuestion = 0;
-let score = 0;
+  let allQuestions = [];
 
-let timer = null;
-let timeLeft = TIME_PER_QUESTION;
+  let currentRound = 1;
+  let currentQuestionIndex = 0;
 
-let answered = false;
+  let roundQuestions = [];
 
+  let score = 0;
+  let correctAnswers = 0;
+  let wrongAnswers = 0;
 
-// =====================================================
-// HTML ELEMENTS
-// =====================================================
+  let answered = false;
+  let timer = null;
+  let timeLeft = SECONDS_PER_QUESTION;
 
-const startScreen = document.getElementById("startScreen");
-const quizScreen = document.getElementById("quizScreen");
-const resultScreen = document.getElementById("resultScreen");
-const errorScreen = document.getElementById("errorScreen");
+  let quizStarted = false;
 
-const startBtn = document.getElementById("startBtn");
-const nextBtn = document.getElementById("nextBtn");
-const restartBtn = document.getElementById("restartBtn");
+  /* =========================
+     HELPERS
+  ========================= */
 
-const questionNumber = document.getElementById("questionNumber");
-const timerElement = document.getElementById("timer");
+  function shuffleArray(array) {
+    const arr = Array.isArray(array) ? [...array] : [];
 
-const questionElement = document.getElementById("question");
-const optionsElement = document.getElementById("options");
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
 
-const scoreElement = document.getElementById("score");
-const resultMessage = document.getElementById("resultMessage");
-
-const errorMessage = document.getElementById("errorMessage");
-
-
-// =====================================================
-// SCREEN CONTROL
-// =====================================================
-
-function showScreen(screen) {
-
-  startScreen.classList.remove("active");
-  quizScreen.classList.remove("active");
-  resultScreen.classList.remove("active");
-  errorScreen.classList.remove("active");
-
-  screen.classList.add("active");
-}
-
-
-// =====================================================
-// LOAD QUESTIONS FROM questions.json
-// =====================================================
-
-async function loadQuestions() {
-
-  try {
-
-    const response = await fetch("./questions.json", {
-      cache: "no-store"
-    });
-
-    if (!response.ok) {
-      throw new Error(
-        `questions.json ntiyabonetse. HTTP status: ${response.status}`
-      );
+      [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 
-    const data = await response.json();
+    return arr;
+  }
 
-    if (!Array.isArray(data)) {
-      throw new Error(
-        "questions.json igomba kuba Array/List y'ibibazo."
-      );
+  function normalizeQuestion(question) {
+    if (!question || typeof question !== "object") {
+      return null;
     }
 
-    if (data.length < QUESTIONS_PER_QUIZ) {
-      throw new Error(
-        `questions.json ifite ibibazo ${data.length} gusa. `
-        + `Hakenewe nibura ${QUESTIONS_PER_QUIZ}.`
-      );
-    }
-
-// Kugenzura ko buri kibazo gifite format ikwiye
-data.forEach((item, index) => {
-
-  if (!item.question) {
-    throw new Error(
-      `Ikibazo cya ${index + 1} nta "question" gifite.`
-    );
-  }
-
-  if (
-    !Array.isArray(item.options) ||
-    item.options.length < 2
-  ) {
-    throw new Error(
-      `Ikibazo cya ${index + 1} kigomba kugira "options" nibura 2.`
-    );
-  }
-
-  if (
-    typeof item.answer !== "string" &&
-    typeof item.answer !== "number"
-  ) {
-    throw new Error(
-      `Ikibazo cya ${index + 1} gifite "answer" itari yo.`
-    );
-  }
-
-  if (typeof item.answer === "string") {
-
-    const answerIndex =
-      item.options.indexOf(item.answer);
-
-    if (answerIndex === -1) {
-      throw new Error(
-        `Ikibazo cya ${index + 1} gifite "answer" itari muri options.`
-      );
-    }
-
-    item.answer = answerIndex;
-  }
-
-  if (
-    typeof item.answer === "number" &&
-    (
-      item.answer < 0 ||
-      item.answer >= item.options.length
-    )
-  ) {
-    throw new Error(
-      `Ikibazo cya ${index + 1} gifite "answer" itari yo.`
-    );
-  }
-
-});
-
-    allQuestions = data;
-
-  } catch (error) {
-
-    console.error("Quiz error:", error);
-
-    showError(
-      error.message ||
-      "Habaye ikibazo mu gufungura ibibazo."
-    );
-
-  }
-
-}
-
-
-// =====================================================
-// SHUFFLE ARRAY
-// =====================================================
-
-function shuffle(array) {
-
-  const newArray = [...array];
-
-  for (let i = newArray.length - 1; i > 0; i--) {
-
-    const randomIndex =
-      Math.floor(Math.random() * (i + 1));
-
-    [newArray[i], newArray[randomIndex]] =
-      [newArray[randomIndex], newArray[i]];
-
-  }
-
-  return newArray;
-}
-
-
-// =====================================================
-// START QUIZ
-// =====================================================
-
-function startQuiz() {
-
-  if (allQuestions.length < QUESTIONS_PER_QUIZ) {
-
-    showError(
-      `Ntabwo bishoboka gutangira. `
-      + `Hakenewe nibura ${QUESTIONS_PER_QUIZ} questions.`
-    );
-
-    return;
-  }
-
-  // Hitamo ibibazo 10 bitandukanye
-  quizQuestions = shuffle(allQuestions)
-    .slice(0, QUESTIONS_PER_QUIZ);
-
-  currentQuestion = 0;
-  score = 0;
-
-  showScreen(quizScreen);
-
-  showQuestion();
-
-}
-
-
-// =====================================================
-// SHOW QUESTION
-// =====================================================
-
-function showQuestion() {
-
-  clearInterval(timer);
-
-  answered = false;
-
-  nextBtn.style.display = "none";
-
-  optionsElement.innerHTML = "";
-
-  const questionData =
-    quizQuestions[currentQuestion];
-
-  // Numero y'ikibazo
-  questionNumber.textContent =
-    currentQuestion + 1;
-
-  // Ikibazo
-  questionElement.textContent =
-    questionData.question;
-
-
-  // Shuffling options
-  const optionsWithIndexes =
-    questionData.options.map((option, index) => ({
-      option,
-      originalIndex: index
-    }));
-
-  const shuffledOptions =
-    shuffle(optionsWithIndexes);
-
-
-  // Kora buttons za answers
-  shuffledOptions.forEach(item => {
-
-    const button =
-      document.createElement("button");
-
-    button.className = "option";
-
-    button.textContent = item.option;
-
-    button.dataset.index =
-      item.originalIndex;
-
-    button.addEventListener(
-      "click",
-      () => selectAnswer(button, item.originalIndex)
-    );
-
-    optionsElement.appendChild(button);
-
-  });
-
-
-  // Tangiza timer
-  startTimer();
-
-}
-
-
-// =====================================================
-// TIMER
-// =====================================================
-
-function startTimer() {
-
-  timeLeft = TIME_PER_QUESTION;
-
-  timerElement.textContent = timeLeft;
-
-  timer = setInterval(() => {
-
-    timeLeft--;
-
-    timerElement.textContent = timeLeft;
-
-    if (timeLeft <= 0) {
-
-      clearInterval(timer);
-
-      timeIsUp();
-
-    }
-
-  }, 1000);
-
-}
-
-
-// =====================================================
-// TIME IS UP
-// =====================================================
-
-function timeIsUp() {
-
-  if (answered) {
-    return;
-  }
-
-  answered = true;
-
-  disableOptions();
-
-  const correctAnswer =
-    quizQuestions[currentQuestion].answer;
-
-  const optionButtons =
-    document.querySelectorAll(".option");
-
-  optionButtons.forEach(button => {
-
-    const index =
-      Number(button.dataset.index);
-
-    if (index === correctAnswer) {
-      button.classList.add("correct");
-    }
-
-  });
-
-  nextBtn.style.display = "block";
-
-}
-
-
-// =====================================================
-// SELECT ANSWER
-// =====================================================
-
-function selectAnswer(button, selectedIndex) {
-
-  if (answered) {
-    return;
-  }
-
-  answered = true;
-
-  clearInterval(timer);
-
-  const correctAnswer =
-    quizQuestions[currentQuestion].answer;
-
-
-  // Disable all options
-  disableOptions();
-
-
-  // Check answer
-  if (selectedIndex === correctAnswer) {
-
-    score++;
-
-    button.classList.add("correct");
-
-  } else {
-
-    button.classList.add("wrong");
-
-    // Erekana answer nyayo
-    const optionButtons =
-      document.querySelectorAll(".option");
-
-    optionButtons.forEach(optionButton => {
-
-      const index =
-        Number(optionButton.dataset.index);
-
-      if (index === correctAnswer) {
-        optionButton.classList.add("correct");
+    /*
+      Supports common formats such as:
+
+      {
+        question: "...",
+        options: ["A", "B", "C", "D"],
+        answer: 0
       }
 
+      or:
+
+      {
+        question: "...",
+        answers: ["A", "B", "C", "D"],
+        correctAnswer: 0
+      }
+
+      or:
+
+      {
+        question: "...",
+        options: [...],
+        correct: 0
+      }
+    */
+
+    const text =
+      question.question ??
+      question.questionText ??
+      question.text ??
+      "";
+
+    let options =
+      question.options ??
+      question.answers ??
+      question.choices ??
+      [];
+
+    if (!Array.isArray(options)) {
+      options = [];
+    }
+
+    let answer =
+      question.answer ??
+      question.correctAnswer ??
+      question.correct ??
+      question.correctIndex ??
+      question.answerIndex;
+
+    /*
+      If answer is a letter such as A/B/C/D,
+      convert it to an index.
+    */
+    if (typeof answer === "string") {
+      const clean = answer.trim();
+
+      const letterIndex = {
+        A: 0,
+        B: 1,
+        C: 2,
+        D: 3,
+        E: 4,
+        F: 5
+      };
+
+      if (letterIndex.hasOwnProperty(clean.toUpperCase())) {
+        answer = letterIndex[clean.toUpperCase()];
+      } else {
+        /*
+          Sometimes the correct answer is the actual
+          answer text rather than an index.
+        */
+        const foundIndex = options.findIndex(
+          option =>
+            String(option).trim().toLowerCase() ===
+            clean.toLowerCase()
+        );
+
+        if (foundIndex !== -1) {
+          answer = foundIndex;
+        }
+      }
+    }
+
+    /*
+      Sometimes JSON uses "correct": "answer text"
+      and sometimes correctAnswer is a number.
+    */
+    if (
+      typeof answer !== "number" ||
+      answer < 0 ||
+      answer >= options.length
+    ) {
+      answer = Number(answer);
+    }
+
+    if (
+      !Number.isInteger(answer) ||
+      answer < 0 ||
+      answer >= options.length
+    ) {
+      return null;
+    }
+
+    if (!text || options.length < 2) {
+      return null;
+    }
+
+    return {
+      ...question,
+      question: String(text),
+      options: options.map(option => String(option)),
+      answer: answer
+    };
+  }
+
+  /* =========================
+     LOAD QUESTIONS
+  ========================= */
+
+  async function loadQuestions() {
+    try {
+      const response = await fetch(QUESTIONS_FILE, {
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          "Failed to load questions.json: HTTP " +
+          response.status
+        );
+      }
+
+      const data = await response.json();
+
+      let questions = [];
+
+      /*
+        Supports:
+        [
+          {...},
+          {...}
+        ]
+
+        OR
+
+        {
+          questions: [...]
+        }
+      */
+      if (Array.isArray(data)) {
+        questions = data;
+      } else if (
+        data &&
+        Array.isArray(data.questions)
+      ) {
+        questions = data.questions;
+      }
+
+      allQuestions = questions
+        .map(normalizeQuestion)
+        .filter(Boolean);
+
+      if (allQuestions.length === 0) {
+        throw new Error(
+          "questions.json nta bibazo byemewe irimo."
+        );
+      }
+
+      console.log(
+        "Quiz Master:",
+        allQuestions.length,
+        "questions loaded."
+      );
+
+      return allQuestions;
+    } catch (error) {
+      console.error(
+        "Quiz Master - Error loading questions:",
+        error
+      );
+
+      /*
+        Do not crash the whole application.
+      */
+      allQuestions = [];
+
+      return [];
+    }
+  }
+
+  /* =========================
+     CREATE ROUND
+  ========================= */
+
+  function createRound() {
+    if (allQuestions.length === 0) {
+      roundQuestions = [];
+      return [];
+    }
+
+    /*
+      Shuffle all questions and take 10.
+
+      This means questions inside the current
+      round cannot duplicate each other.
+    */
+    roundQuestions = shuffleArray(allQuestions).slice(
+      0,
+      Math.min(
+        QUESTIONS_PER_ROUND,
+        allQuestions.length
+      )
+    );
+
+    currentQuestionIndex = 0;
+
+    return roundQuestions;
+  }
+
+  /* =========================
+     START QUIZ
+  ========================= */
+
+  async function startQuiz() {
+    stopTimer();
+
+    /*
+      If questions have not loaded yet,
+      load them first.
+    */
+    if (allQuestions.length === 0) {
+      await loadQuestions();
+    }
+
+    if (allQuestions.length === 0) {
+      console.error(
+        "Quiz Master: No questions available."
+      );
+
+      return null;
+    }
+
+    /*
+      Reset everything when a completely new
+      quiz starts.
+    */
+    currentRound = 1;
+    currentQuestionIndex = 0;
+
+    score = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+
+    answered = false;
+    quizStarted = true;
+
+    createRound();
+
+    updateRoundUI();
+    updateScoreUI();
+
+    return getCurrentQuestion();
+  }
+
+  /* =========================
+     START NEXT ROUND
+  ========================= */
+
+  function startNextRound() {
+    stopTimer();
+
+    /*
+      IMPORTANT:
+      Round number increases here.
+
+      Round 1 -> Round 2
+      Round 2 -> Round 3
+      Round 3 -> Round 4
+      etc.
+    */
+    currentRound++;
+
+    currentQuestionIndex = 0;
+
+    answered = false;
+
+    /*
+      Create completely new random questions.
+    */
+    createRound();
+
+    updateRoundUI();
+    updateScoreUI();
+
+    return getCurrentQuestion();
+  }
+
+  /* =========================
+     GET CURRENT QUESTION
+  ========================= */
+
+  function getCurrentQuestion() {
+    if (
+      !roundQuestions.length ||
+      currentQuestionIndex >= roundQuestions.length
+    ) {
+      return null;
+    }
+
+    return roundQuestions[currentQuestionIndex];
+  }
+
+  /* =========================
+     GETTERS
+  ========================= */
+
+  function getCurrentRound() {
+    return currentRound;
+  }
+
+  function getCurrentQuestionIndex() {
+    return currentQuestionIndex;
+  }
+
+  function getQuestionsPerRound() {
+    return roundQuestions.length;
+  }
+
+  function getScore() {
+    return score;
+  }
+
+  function getCorrectCount() {
+    return correctAnswers;
+  }
+
+  function getWrongCount() {
+    return wrongAnswers;
+  }
+
+  function getTimeLeft() {
+    return timeLeft;
+  }
+
+  function getAllQuestions() {
+    return [...allQuestions];
+  }
+
+  function isRoundComplete() {
+    return (
+      currentQuestionIndex >=
+      roundQuestions.length
+    );
+  }
+
+  /* =========================
+     ANSWER QUESTION
+  ========================= */
+
+  function selectAnswer(selectedIndex) {
+    if (answered) {
+      return {
+        correct: false,
+        alreadyAnswered: true,
+        finished: false
+      };
+    }
+
+    const question = getCurrentQuestion();
+
+    if (!question) {
+      return {
+        correct: false,
+        alreadyAnswered: false,
+        finished: true
+      };
+    }
+
+    selectedIndex = Number(selectedIndex);
+
+    if (!Number.isInteger(selectedIndex)) {
+      return {
+        correct: false,
+        alreadyAnswered: false,
+        finished: false
+      };
+    }
+
+    answered = true;
+
+    stopTimer();
+
+    const isCorrect =
+      selectedIndex === question.answer;
+
+    if (isCorrect) {
+      correctAnswers++;
+
+      /*
+        One correct answer = 1 point.
+      */
+      score++;
+
+    } else {
+      wrongAnswers++;
+    }
+
+    updateScoreUI();
+
+    return {
+      correct: isCorrect,
+      selectedIndex: selectedIndex,
+      correctIndex: question.answer,
+      score: score,
+      correctAnswers: correctAnswers,
+      wrongAnswers: wrongAnswers,
+      finished: false
+    };
+  }
+
+  /* =========================
+     TIMEOUT
+  ========================= */
+
+  function timeoutQuestion() {
+    if (answered) {
+      return {
+        timedOut: false,
+        alreadyAnswered: true
+      };
+    }
+
+    const question = getCurrentQuestion();
+
+    if (!question) {
+      return {
+        timedOut: true,
+        correctIndex: null
+      };
+    }
+
+    answered = true;
+
+    stopTimer();
+
+    wrongAnswers++;
+
+    updateScoreUI();
+
+    return {
+      timedOut: true,
+      correct: false,
+      correctIndex: question.answer,
+      score: score,
+      correctAnswers: correctAnswers,
+      wrongAnswers: wrongAnswers
+    };
+  }
+
+  /* =========================
+     NEXT QUESTION
+  ========================= */
+
+  function nextQuestion() {
+    stopTimer();
+
+    currentQuestionIndex++;
+
+    answered = false;
+
+    /*
+      Still questions remaining in this round.
+    */
+    if (
+      currentQuestionIndex <
+      roundQuestions.length
+    ) {
+      return {
+        question: getCurrentQuestion(),
+        roundComplete: false,
+        quizComplete: false
+      };
+    }
+
+    /*
+      The round is finished.
+
+      DO NOT automatically increase the round here.
+
+      The "Komeza kuri Round ikurikira" button
+      can call startNextRound().
+    */
+    updateScoreUI();
+
+    return {
+      question: null,
+      roundComplete: true,
+      quizComplete: false,
+
+      round: currentRound,
+
+      score: score,
+      correctAnswers: correctAnswers,
+      wrongAnswers: wrongAnswers
+    };
+  }
+
+  /* =========================
+     TIMER
+  ========================= */
+
+  function startTimer(callback) {
+    stopTimer();
+
+    timeLeft = SECONDS_PER_QUESTION;
+
+    updateTimerUI();
+
+    timer = setInterval(function () {
+      timeLeft--;
+
+      updateTimerUI();
+
+      if (timeLeft <= 0) {
+        stopTimer();
+
+        const result = timeoutQuestion();
+
+        if (typeof callback === "function") {
+          callback(result);
+        }
+      }
+    }, 1000);
+
+    return timeLeft;
+  }
+
+  function stopTimer() {
+    if (timer !== null) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function resetTimer() {
+    stopTimer();
+
+    timeLeft = SECONDS_PER_QUESTION;
+
+    updateTimerUI();
+  }
+
+  /* =========================
+     UI UPDATES
+     ========================= */
+
+  function findElement(ids) {
+    for (const id of ids) {
+      const element = document.getElementById(id);
+
+      if (element) {
+        return element;
+      }
+    }
+
+    return null;
+  }
+
+  function updateRoundUI() {
+    /*
+      These selectors cover common IDs without
+      changing the design.
+    */
+    const roundElement = findElement([
+      "roundNumber",
+      "roundText",
+      "currentRound",
+      "round"
+    ]);
+
+    if (roundElement) {
+      roundElement.textContent =
+        "Round " + currentRound;
+    }
+
+    /*
+      Also look for an element whose text is
+      exactly "Round 1", "Round 2", etc.
+    */
+    const possibleRoundElements =
+      document.querySelectorAll(
+        "h1, h2, h3, h4, p, div, span"
+      );
+
+    possibleRoundElements.forEach(function (el) {
+      const text = el.textContent.trim();
+
+      if (/^Round\s+\d+$/i.test(text)) {
+        el.textContent =
+          "Round " + currentRound;
+      }
     });
-
   }
 
+  function updateScoreUI() {
+    const scoreElement = findElement([
+      "score",
+      "scoreText",
+      "points",
+      "totalScore"
+    ]);
 
-  nextBtn.style.display = "block";
+    if (scoreElement) {
+      /*
+        Only update if this looks like a score
+        element.
+      */
+      if (
+        scoreElement.id === "scoreText" ||
+        scoreElement.id === "score"
+      ) {
+        scoreElement.textContent = score;
+      }
+    }
 
-}
+    const correctElement = findElement([
+      "correct",
+      "correctCount",
+      "correctAnswers"
+    ]);
 
+    if (correctElement) {
+      correctElement.textContent =
+        correctAnswers;
+    }
 
-// =====================================================
-// DISABLE OPTIONS
-// =====================================================
+    const wrongElement = findElement([
+      "wrong",
+      "wrongCount",
+      "wrongAnswers"
+    ]);
 
-function disableOptions() {
-
-  const optionButtons =
-    document.querySelectorAll(".option");
-
-  optionButtons.forEach(button => {
-    button.disabled = true;
-  });
-
-}
-
-
-// =====================================================
-// NEXT QUESTION
-// =====================================================
-
-function nextQuestion() {
-
-  currentQuestion++;
-
-  if (currentQuestion >= quizQuestions.length) {
-
-    finishQuiz();
-
-    return;
+    if (wrongElement) {
+      wrongElement.textContent =
+        wrongAnswers;
+    }
   }
 
-  showQuestion();
+  function updateTimerUI() {
+    const timerElement = findElement([
+      "timer",
+      "time",
+      "timeLeft",
+      "timerText"
+    ]);
 
-}
+    if (!timerElement) {
+      return;
+    }
 
+    timerElement.textContent =
+      timeLeft + "s";
 
-// =====================================================
-// FINISH QUIZ
-// =====================================================
-
-function finishQuiz() {
-
-  clearInterval(timer);
-
-  showScreen(resultScreen);
-
-  scoreElement.textContent = score;
-
-  let message = "";
-
-  if (score === 10) {
-
-    message =
-      "🎉 Birakomeye cyane! Watsinze neza cyane!";
-
-  } else if (score >= 8) {
-
-    message =
-      "👏 Byiza cyane! Ubumenyi bwawe ni bwiza.";
-
-  } else if (score >= 5) {
-
-    message =
-      "👍 Wakoze neza! Komeza witoze.";
-
-  } else if (score >= 3) {
-
-    message =
-      "💪 Gerageza nanone, ushobora gutsinda byinshi.";
-
-  } else {
-
-    message =
-      "📚 Ongera wige maze wongere ugerageze.";
-
+    /*
+      Also update data attributes if the existing
+      HTML uses them.
+    */
+    timerElement.setAttribute(
+      "data-time-left",
+      String(timeLeft)
+    );
   }
 
-  resultMessage.textContent = message;
+  /* =========================
+     RENDER QUESTION
+     ========================= */
 
-}
+  function renderQuestion(question) {
+    if (!question) {
+      return;
+    }
 
+    const questionElement = findElement([
+      "questionText",
+      "question",
+      "quizQuestion"
+    ]);
 
-// =====================================================
-// RESTART QUIZ
-// =====================================================
+    if (questionElement) {
+      questionElement.textContent =
+        question.question;
+    }
 
-function restartQuiz() {
+    const answersContainer = findElement([
+      "answers",
+      "answerButtons",
+      "options",
+      "choices"
+    ]);
 
-  clearInterval(timer);
+    if (!answersContainer) {
+      return;
+    }
 
-  startQuiz();
+    /*
+      Clear only the answer buttons.
+    */
+    answersContainer.innerHTML = "";
 
-}
+    question.options.forEach(
+      function (option, index) {
+        const button =
+          document.createElement("button");
 
+        button.type = "button";
 
-// =====================================================
-// ERROR
-// =====================================================
+        button.className = "answer";
 
-function showError(message) {
+        button.textContent = option;
 
-  clearInterval(timer);
+        button.dataset.index = String(index);
 
-  errorMessage.textContent = message;
+        button.addEventListener(
+          "click",
+          function () {
+            const result =
+              selectAnswer(index);
 
-  showScreen(errorScreen);
+            /*
+              Give the existing UI a chance
+              to react to the result.
+            */
+            if (result.alreadyAnswered) {
+              return;
+            }
 
-}
+            if (result.correct) {
+              button.classList.add(
+                "correct"
+              );
+            } else {
+              button.classList.add(
+                "wrong"
+              );
 
+              const buttons =
+                answersContainer.querySelectorAll(
+                  "button"
+                );
 
-// =====================================================
-// BUTTON EVENTS
-// =====================================================
+              if (
+                buttons[result.correctIndex]
+              ) {
+                buttons[
+                  result.correctIndex
+                ].classList.add(
+                  "correct"
+                );
+              }
+            }
+          }
+        );
 
-startBtn.addEventListener(
-  "click",
-  startQuiz
-);
+        answersContainer.appendChild(button);
+      }
+    );
 
-nextBtn.addEventListener(
-  "click",
-  nextQuestion
-);
+    updateRoundUI();
+    updateScoreUI();
+  }
 
-restartBtn.addEventListener(
-  "click",
-  restartQuiz
-);
+  /* =========================
+     START CURRENT QUESTION
+  ========================= */
 
+  function showQuestion() {
+    const question =
+      getCurrentQuestion();
 
-// =====================================================
-// LOAD QUESTIONS WHEN PAGE OPENS
-// =====================================================
+    if (!question) {
+      return null;
+    }
 
-loadQuestions();
+    answered = false;
+
+    renderQuestion(question);
+
+    resetTimer();
+
+    return question;
+  }
+
+  /* =========================
+     QUIZ STATUS
+  ========================= */
+
+  function getStatus() {
+    return {
+      round: currentRound,
+
+      questionNumber:
+        currentQuestionIndex + 1,
+
+      totalQuestions:
+        roundQuestions.length,
+
+      score: score,
+
+      correctAnswers:
+        correctAnswers,
+
+      wrongAnswers:
+        wrongAnswers,
+
+      timeLeft: timeLeft,
+
+      answered: answered,
+
+      quizStarted: quizStarted
+    };
+  }
+
+  /* =========================
+     FINISH QUIZ / RESET
+  ========================= */
+
+  function finishQuiz() {
+    stopTimer();
+
+    quizStarted = false;
+
+    return {
+      round: currentRound,
+      score: score,
+      correctAnswers: correctAnswers,
+      wrongAnswers: wrongAnswers
+    };
+  }
+
+  function resetQuiz() {
+    stopTimer();
+
+    currentRound = 1;
+    currentQuestionIndex = 0;
+
+    roundQuestions = [];
+
+    score = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+
+    answered = false;
+
+    quizStarted = false;
+
+    timeLeft = SECONDS_PER_QUESTION;
+
+    updateRoundUI();
+    updateScoreUI();
+    updateTimerUI();
+  }
+
+  /* =========================
+     GLOBAL QUESTION MANAGER
+  ========================= */
+
+  window.questionManager = {
+
+    /* Loading */
+    loadQuestions,
+
+    /* Quiz */
+    startQuiz,
+    finishQuiz,
+    resetQuiz,
+
+    /* Rounds */
+    startNextRound,
+
+    /* Questions */
+    getCurrentQuestion,
+    getCurrentQuestionIndex,
+    getQuestionsPerRound,
+    nextQuestion,
+    showQuestion,
+    renderQuestion,
+
+    /* Answers */
+    selectAnswer,
+    timeoutQuestion,
+
+    /* Timer */
+    startTimer,
+    stopTimer,
+    resetTimer,
+
+    /* Information */
+    getCurrentRound,
+    getScore,
+    getCorrectCount,
+    getWrongCount,
+    getTimeLeft,
+    getAllQuestions,
+    isRoundComplete,
+    getStatus,
+
+    /* Utility */
+    shuffleArray
+  };
+
+  /* =========================
+     GLOBAL COMPATIBILITY
+     ========================= */
+
+  /*
+    These aliases help older versions of
+    Quiz Master continue working.
+  */
+
+  window.loadQuestions = loadQuestions;
+  window.startQuiz = startQuiz;
+  window.startNextRound = startNextRound;
+  window.getCurrentQuestion =
+    getCurrentQuestion;
+  window.selectAnswer = selectAnswer;
+  window.nextQuestion = nextQuestion;
+  window.timeoutQuestion =
+    timeoutQuestion;
+  window.showQuestion = showQuestion;
+
+  /* =========================
+     INITIAL LOAD
+  ========================= */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+      /*
+        Load questions.json once when the page
+        opens. It does NOT automatically start
+        the quiz.
+      */
+      loadQuestions();
+    }
+  );
+
+})();
