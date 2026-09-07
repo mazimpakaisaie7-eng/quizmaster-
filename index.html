@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="rw">
+<!DOCTYPE html><html lang="rw">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Quiz Master 🇷🇼 - Quiz y'Ubumenyi</title><meta
+name="description"
+content="Quiz Master ni urubuga rw'ibibazo by'ubumenyi mu Kinyarwanda n'Icyongereza. Gerageza ubumenyi bwawe muri Geography, History, Science, Technology, Rwanda, Africa n'ibindi."
 
-  <title>Quiz Master 🇷🇼 - Quiz y'Ubumenyi</title>
+«»
 
-  <meta
-    name="description"
-    content="Quiz Master ni urubuga rw'ibibazo by'ubumenyi mu Kinyarwanda n'Icyongereza. Gerageza ubumenyi bwawe muri Geography, History, Science, Technology, Rwanda, Africa n'ibindi."
-  >
-
-  <meta name="theme-color" content="#111827">
-
-  <!-- =====================================================
+  <meta name="theme-color" content="#111827">  <!-- =====================================================
        GOOGLE ADSENSE
-       ===================================================== -->
-  <!-- Google AdSense -->
-  <script async
+       ===================================================== -->  <!-- Google AdSense -->  <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
     crossorigin="anonymous">
-  </script>
-
-  <style>
+  </script>  <style>
     * {
       box-sizing: border-box;
     }
@@ -414,417 +404,382 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <!-- =====================================================
+  </style></head><body><div class="container">  <!-- =====================================================
        START SCREEN
-       ===================================================== -->
+       ===================================================== -->  <div id="startScreen" class="screen active"><h1>Quiz Master 🇷🇼</h1>
 
-  <div id="startScreen" class="screen active">
+<p class="info">
+  Quiz Master ni urubuga rugufasha kugerageza no kongera ubumenyi
+  bwawe binyuze mu bibazo bitandukanye. Ushobora kwiga no kwishimisha
+  usubiza ibibazo bijyanye n'isi, amateka, ubumenyi n'ikoranabuhanga.
+</p>
 
-    <h1>Quiz Master 🇷🇼</h1>
+<div class="round-info">
 
-    <p class="info">
-      Quiz Master ni urubuga rugufasha kugerageza no kongera ubumenyi
-      bwawe binyuze mu bibazo bitandukanye. Ushobora kwiga no kwishimisha
-      usubiza ibibazo bijyanye n'isi, amateka, ubumenyi n'ikoranabuhanga.
+  <strong>
+    🎯 Round:
+    <span id="startRound">1</span>
+  </strong>
+
+  <br><br>
+
+  <span class="small">
+    📝 Ibibazo 10 kuri buri round
+  </span>
+
+  <br>
+
+  <span class="small">
+    ⏱️ Amasegonda 20 kuri buri kibazo
+  </span>
+
+  <br>
+
+  <span class="small">
+    🔀 Ibibazo biravangwa
+  </span>
+
+  <br>
+
+  <span class="small">
+    🔄 Ibibazo ntibisubirwamo kugeza cycle irangiye
+  </span>
+
+  <br>
+
+  <span class="small">
+    🆓 Gukina ni FREE
+  </span>
+
+</div>
+
+<button id="startBtn" type="button">
+  🚀 Tangira Quiz
+</button>
+
+<button id="shareBtn" type="button">
+  📤 Sangiza abandi
+</button>
+
+<!-- =================================================
+     ABOUT / PUBLISHER CONTENT
+     ================================================= -->
+
+<section class="content-section">
+  <h2>ℹ️ Quiz Master ni iki?</h2>
+
+  <p>
+    Quiz Master ni urubuga rwa quiz rugenewe abantu bashaka
+    kugerageza ubumenyi bwabo no kwiga ibintu bishya. Ibibazo
+    bishobora kuba mu byiciro bitandukanye kandi buri round
+    iguha ibibazo 10 byatoranyijwe mu bibazo bihari.
+  </p>
+
+  <p>
+    Intego ya Quiz Master ni ugutanga uburyo bworoshye bwo kwiga
+    no kwidagadura. Iyo usubije neza ubona amanota, naho ibisubizo
+    bitari byo bigufasha kumenya aho wakongera kwiga.
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>📚 Ibyiciro by'ibibazo</h2>
+
+  <p>
+    Quiz Master ishobora kuba irimo ibibazo byo mu byiciro
+    bitandukanye, bitewe n'ibibazo biri muri questions.json.
+  </p>
+
+  <div class="subjects">
+    <div class="subject">🌍 Geography</div>
+    <div class="subject">📜 History</div>
+    <div class="subject">⚛️ Physics</div>
+    <div class="subject">🧬 Biology</div>
+    <div class="subject">🧪 Chemistry</div>
+    <div class="subject">🇷🇼 Rwanda</div>
+    <div class="subject">🌍 Africa</div>
+    <div class="subject">💻 Technology</div>
+    <div class="subject">🔬 Science</div>
+    <div class="subject">🏙️ Countries & Cities</div>
+    <div class="subject">👑 Kings & Queens</div>
+    <div class="subject">🏛️ Presidents</div>
+  </div>
+</section>
+
+<section class="content-section">
+  <h2>🎮 Uko ukoresha Quiz Master</h2>
+
+  <h3>1. Tangira quiz</h3>
+  <p>
+    Kanda kuri <strong>“Tangira Quiz”</strong> kugira ngo utangire
+    round nshya.
+  </p>
+
+  <h3>2. Subiza ibibazo</h3>
+  <p>
+    Buri round igizwe n'ibibazo 10. Soma ikibazo neza, hanyuma
+    uhitemo igisubizo utekereza ko ari cyo.
+  </p>
+
+  <h3>3. Koresha igihe neza</h3>
+  <p>
+    Ufite amasegonda 20 kuri buri kibazo. Niba igihe kirangiye
+    mbere yo guhitamo igisubizo, quiz ikomeza ku kibazo gikurikira
+    hakurikijwe imikorere ya app.
+  </p>
+
+  <h3>4. Reba amanota</h3>
+  <p>
+    Round nirangira, uzabona amanota yawe, umubare w'ibisubizo
+    by'ukuri n'ibisubizo bitari byo.
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>❓ Ibibazo bikunze kubazwa</h2>
+
+  <div class="faq-item">
+    <h3>Quiz Master ni ubuntu?</h3>
+    <p>
+      Yego. Gukina quiz y'ibanze ni FREE nk'uko bigaragara kuri
+      screen yo gutangiriraho.
     </p>
-
-    <div class="round-info">
-
-      <strong>
-        🎯 Round:
-        <span id="startRound">1</span>
-      </strong>
-
-      <br><br>
-
-      <span class="small">
-        📝 Ibibazo 10 kuri buri round
-      </span>
-
-      <br>
-
-      <span class="small">
-        ⏱️ Amasegonda 20 kuri buri kibazo
-      </span>
-
-      <br>
-
-      <span class="small">
-        🔀 Ibibazo biravangwa
-      </span>
-
-      <br>
-
-      <span class="small">
-        🔄 Ibibazo ntibisubirwamo kugeza cycle irangiye
-      </span>
-
-      <br>
-
-      <span class="small">
-        🆓 Gukina ni FREE
-      </span>
-
-    </div>
-
-    <button id="startBtn">
-      🚀 Tangira Quiz
-    </button>
-
-    <button id="shareBtn" type="button">
-      📤 Sangiza abandi
-    </button>
-
-    <!-- =================================================
-         ABOUT / PUBLISHER CONTENT
-         Iyi content iri kuri homepage kandi ntabwo ihindura
-         uburyo quiz ikora.
-         ================================================= -->
-
-    <section class="content-section">
-      <h2>ℹ️ Quiz Master ni iki?</h2>
-
-      <p>
-        Quiz Master ni urubuga rwa quiz rugenewe abantu bashaka
-        kugerageza ubumenyi bwabo no kwiga ibintu bishya. Ibibazo
-        bishobora kuba mu byiciro bitandukanye kandi buri round
-        iguha ibibazo 10 byatoranyijwe mu bibazo bihari.
-      </p>
-
-      <p>
-        Intego ya Quiz Master ni ugutanga uburyo bworoshye bwo kwiga
-        no kwidagadura. Iyo usubije neza ubona amanota, naho ibisubizo
-        bitari byo bigufasha kumenya aho wakongera kwiga.
-      </p>
-    </section>
-
-    <section class="content-section">
-      <h2>📚 Ibyiciro by'ibibazo</h2>
-
-      <p>
-        Quiz Master ishobora kuba irimo ibibazo byo mu byiciro
-        bitandukanye, bitewe n'ibibazo biri muri questions.json.
-      </p>
-
-      <div class="subjects">
-        <div class="subject">🌍 Geography</div>
-        <div class="subject">📜 History</div>
-        <div class="subject">⚛️ Physics</div>
-        <div class="subject">🧬 Biology</div>
-        <div class="subject">🧪 Chemistry</div>
-        <div class="subject">🇷🇼 Rwanda</div>
-        <div class="subject">🌍 Africa</div>
-        <div class="subject">💻 Technology</div>
-        <div class="subject">🔬 Science</div>
-        <div class="subject">🏙️ Countries & Cities</div>
-        <div class="subject">👑 Kings & Queens</div>
-        <div class="subject">🏛️ Presidents</div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <h2>🎮 Uko ukoresha Quiz Master</h2>
-
-      <h3>1. Tangira quiz</h3>
-      <p>
-        Kanda kuri <strong>“Tangira Quiz”</strong> kugira ngo utangire
-        round nshya.
-      </p>
-
-      <h3>2. Subiza ibibazo</h3>
-      <p>
-        Buri round igizwe n'ibibazo 10. Soma ikibazo neza, hanyuma
-        uhitemo igisubizo utekereza ko ari cyo.
-      </p>
-
-      <h3>3. Koresha igihe neza</h3>
-      <p>
-        Ufite amasegonda 20 kuri buri kibazo. Niba igihe kirangiye
-        mbere yo guhitamo igisubizo, quiz ikomeza ku kibazo gikurikira
-        hakurikijwe imikorere ya app.
-      </p>
-
-      <h3>4. Reba amanota</h3>
-      <p>
-        Round nirangira, uzabona amanota yawe, umubare w'ibisubizo
-        by'ukuri n'ibisubizo bitari byo.
-      </p>
-    </section>
-
-    <section class="content-section">
-      <h2>❓ Ibibazo bikunze kubazwa</h2>
-
-      <div class="faq-item">
-        <h3>Quiz Master ni ubuntu?</h3>
-        <p>
-          Yego. Gukina quiz y'ibanze ni FREE nk'uko bigaragara kuri
-          screen yo gutangiriraho.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Buri round iba igizwe n'ibibazo bingahe?</h3>
-        <p>
-          Buri round igizwe n'ibibazo 10.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Ni igihe kingana iki gihabwa ikibazo kimwe?</h3>
-        <p>
-          Uhabwa amasegonda 20 kuri buri kibazo.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Ese ibibazo birasubirwamo ako kanya?</h3>
-        <p>
-          App yawe ikoresha uburyo bwo kuvanga ibibazo kandi igamije
-          kwirinda gusubiramo ibibazo kugeza cycle irangiye, hakurikijwe
-          logic iri muri questions.js.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <h3>Nshobora gusangiza abandi Quiz Master?</h3>
-        <p>
-          Yego. Kanda kuri <strong>“Sangiza abandi”</strong> kugira ngo
-          usangize inshuti cyangwa abandi bakinnyi link ya Quiz Master.
-        </p>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <h2>🔒 Amakuru n'amategeko</h2>
-
-      <p>
-        Mbere yo gukoresha urubuga, ushobora gusoma amabwiriza ajyanye
-        n'imikoreshereze ya service ndetse n'ibijyanye n'ubuzima bwite.
-      </p>
-
-      <div class="site-links">
-        <a href="./Privacy_policy.html">Privacy Policy</a>
-        <a href="./Terms_Of_Services.html">Terms of Service</a>
-      </div>
-    </section>
-
   </div>
 
+  <div class="faq-item">
+    <h3>Buri round iba igizwe n'ibibazo bingahe?</h3>
+    <p>
+      Buri round igizwe n'ibibazo 10.
+    </p>
+  </div>
 
-  <!-- =====================================================
+  <div class="faq-item">
+    <h3>Ni igihe kingana iki gihabwa ikibazo kimwe?</h3>
+    <p>
+      Uhabwa amasegonda 20 kuri buri kibazo.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Ese ibibazo birasubirwamo ako kanya?</h3>
+    <p>
+      App yawe ikoresha uburyo bwo kuvanga ibibazo kandi igamije
+      kwirinda gusubiramo ibibazo kugeza cycle irangiye, hakurikijwe
+      logic iri muri questions.js.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Nshobora gusangiza abandi Quiz Master?</h3>
+    <p>
+      Yego. Kanda kuri <strong>“Sangiza abandi”</strong> kugira ngo
+      usangize inshuti cyangwa abandi bakinnyi link ya Quiz Master.
+    </p>
+  </div>
+</section>
+
+<section class="content-section">
+  <h2>🔒 Amakuru n'amategeko</h2>
+
+  <p>
+    Mbere yo gukoresha urubuga, ushobora gusoma amabwiriza ajyanye
+    n'imikoreshereze ya service ndetse n'ibijyanye n'ubuzima bwite.
+  </p>
+
+  <div class="site-links">
+    <a href="./Privacy_policy.html">Privacy Policy</a>
+    <a href="./Terms_Of_Services.html">Terms of Service</a>
+  </div>
+</section>
+
+  </div>  <!-- =====================================================
        QUIZ SCREEN
-       ===================================================== -->
+       ===================================================== -->  <div id="quizScreen" class="screen"><div class="top-bar">
 
-  <div id="quizScreen" class="screen">
+  <div>
 
-    <div class="top-bar">
-
-      <div>
-
-        <div class="round">
-          Round
-          <span id="roundNumber">1</span>
-        </div>
-
-        <div class="progress">
-          Ikibazo
-          <span id="questionNumber">1</span>/10
-        </div>
-
-      </div>
-
-      <div id="timerBox" class="timer">
-
-        ⏱️
-        <span id="timer">20</span>s
-
-      </div>
-
+    <div class="round">
+      Round
+      <span id="roundNumber">1</span>
     </div>
 
-
-    <div id="category" class="category"></div>
-
-
-    <div id="question">
-      Loading...
+    <div class="progress">
+      Ikibazo
+      <span id="questionNumber">1</span>/10
     </div>
-
-
-    <div id="options"></div>
-
-
-    <button id="nextBtn">
-      Ikibazo gikurikira ➡️
-    </button>
 
   </div>
 
+  <div id="timerBox" class="timer">
 
-  <!-- =====================================================
-       RESULT SCREEN
-       ===================================================== -->
+    ⏱️
+    <span id="timer">20</span>s
 
-  <div id="resultScreen" class="screen">
-
-    <div class="result">
-
-      <h1>
-        Round irangiye 🎉
-      </h1>
-
-      <p>
-        Round
-        <strong>
-          <span id="finishedRound">1</span>
-        </strong>
-      </p>
-
-      <p>
-        Amanota yawe:
-      </p>
-
-      <div class="score">
-
-        <span id="score">0</span>/10
-
-      </div>
-
-      <p id="resultMessage"></p>
-
-    </div>
-
-
-    <!-- =================================================
-         STATS
-         ================================================= -->
-
-    <div class="stats">
-
-      <div class="stat">
-
-        Correct
-
-        <strong id="correctCount">
-          0
-        </strong>
-
-      </div>
-
-
-      <div class="stat">
-
-        Wrong
-
-        <strong id="wrongCount">
-          0
-        </strong>
-
-      </div>
-
-
-      <div class="stat">
-
-        Time
-
-        <strong>
-          20s
-        </strong>
-
-      </div>
-
-    </div>
-
-
-    <!-- =================================================
-         ADSENSE
-         =================================================
-
-         AdSense ni yo igenzura niba ad igaragara.
-         Ntibisobanura ko buri round izagira ad.
-         ================================================= -->
-
-    <div class="ad-box" aria-label="Advertisement">
-
-      <div class="ad-label">
-        Advertisement
-      </div>
-
-      <!--
-        IMPORTANT:
-        Replace 0000000000 below with the Ad Unit ID
-        created for this site in your Google AdSense account.
-        Keep your Publisher ID (ca-pub-2666698676518429) unchanged.
-      -->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-2666698676518429"
-           data-ad-slot="0000000000"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-
-    </div>
-
-
-    <!-- =================================================
-         NEXT ROUND
-         ================================================= -->
-
-    <button id="restartBtn">
-      ▶️ Komeza kuri Round ikurikira
-    </button>
-
-  </div>
-
-
-  <!-- =====================================================
-       ERROR SCREEN
-       ===================================================== -->
-
-  <div id="errorScreen" class="screen">
-
-    <h2>
-      Habaye ikibazo ❌
-    </h2>
-
-    <div id="errorMessage" class="error"></div>
-
-    <button onclick="location.reload()">
-      🔄 Ongera ufungure
-    </button>
-
-  </div>
-
-  <div class="footer">
-    © 2026 Quiz Master 🇷🇼 — Urubuga rwo kugerageza no kongera ubumenyi.
   </div>
 
 </div>
 
 
-<!-- =====================================================
+<div id="category" class="category"></div>
+
+
+<div id="question">
+  Loading...
+</div>
+
+
+<div id="options"></div>
+
+
+<button id="nextBtn">
+  Ikibazo gikurikira ➡️
+</button>
+
+  </div>  <!-- =====================================================
+       RESULT SCREEN
+       ===================================================== -->  <div id="resultScreen" class="screen"><div class="result">
+
+  <h1>
+    Round irangiye 🎉
+  </h1>
+
+  <p>
+    Round
+    <strong>
+      <span id="finishedRound">1</span>
+    </strong>
+  </p>
+
+  <p>
+    Amanota yawe:
+  </p>
+
+  <div class="score">
+
+    <span id="score">0</span>/10
+
+  </div>
+
+  <p id="resultMessage"></p>
+
+</div>
+
+
+<div class="stats">
+
+  <div class="stat">
+
+    Correct
+
+    <strong id="correctCount">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="stat">
+
+    Wrong
+
+    <strong id="wrongCount">
+      0
+    </strong>
+
+  </div>
+
+
+  <div class="stat">
+
+    Time
+
+    <strong>
+      20s
+    </strong>
+
+  </div>
+
+</div>
+
+
+<div class="ad-box" aria-label="Advertisement">
+
+  <div class="ad-label">
+    Advertisement
+  </div>
+
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-2666698676518429"
+       data-ad-slot="0000000000"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+</div>
+
+
+<button id="restartBtn">
+  ▶️ Komeza kuri Round ikurikira
+</button>
+
+  </div>  <!-- =====================================================
+       ERROR SCREEN
+       ===================================================== -->  <div id="errorScreen" class="screen"><h2>
+  Habaye ikibazo ❌
+</h2>
+
+<div id="errorMessage" class="error"></div>
+
+<button onclick="location.reload()">
+  🔄 Ongera ufungure
+</button>
+
+  </div>  <div class="footer">
+    © 2026 Quiz Master 🇷🇼 — Urubuga rwo kugerageza no kongera ubumenyi.
+  </div></div><!-- =====================================================
      QUESTIONS.JS
-     ===================================================== -->
+     ===================================================== --><script src="./questions.js"></script><!-- =====================================================
+     FIX: START QUIZ BUTTON
+     Icyo gice gusa ni cyo cyongeweho.
+     ===================================================== --><script>
+document.addEventListener("DOMContentLoaded", function () {
 
-<script src="./questions.js"></script>
+  const startBtn = document.getElementById("startBtn");
 
+  if (!startBtn) return;
 
-<!-- =====================================================
+  startBtn.addEventListener("click", function () {
+
+    if (typeof window.startQuiz === "function") {
+      window.startQuiz();
+    } else {
+      console.error("startQuiz() ntabwo yabonetse muri questions.js");
+
+      const errorScreen = document.getElementById("errorScreen");
+      const errorMessage = document.getElementById("errorMessage");
+
+      if (errorScreen && errorMessage) {
+        document.querySelectorAll(".screen").forEach(function (screen) {
+          screen.classList.remove("active");
+        });
+
+        errorMessage.textContent =
+          "Quiz ntiyatangira kuko startQuiz() itabonetse muri questions.js. Reba ko questions.js iri muri folder imwe na index.html kandi ko yafungutse neza.";
+
+        errorScreen.classList.add("active");
+      }
+    }
+
+  });
+
+});
+</script><!-- =====================================================
      SHARING CODE
-     ===================================================== -->
-
-<script>
+     ===================================================== --><script>
 document.addEventListener("DOMContentLoaded", function () {
 
   const shareBtn = document.getElementById("shareBtn");
@@ -857,7 +812,5 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
-</script>
-
-</body>
+</script></body>
 </html>
