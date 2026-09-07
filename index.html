@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Quiz Master 🇷🇼</title>
+  <title>Quiz Master 🇷🇼 - Quiz y'Ubumenyi</title>
 
   <meta
     name="description"
-    content="Quiz Master - Gerageza ubumenyi bwawe ku bibazo bitandukanye byo hirya no hino ku isi."
+    content="Quiz Master ni urubuga rw'ibibazo by'ubumenyi mu Kinyarwanda n'Icyongereza. Gerageza ubumenyi bwawe muri Geography, History, Science, Technology, Rwanda, Africa n'ibindi."
   >
 
   <meta name="theme-color" content="#111827">
@@ -16,6 +16,7 @@
   <!-- =====================================================
        GOOGLE ADSENSE
        ===================================================== -->
+  <!-- Google AdSense -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
     crossorigin="anonymous">
@@ -26,6 +27,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       padding: 20px;
@@ -33,24 +38,19 @@
       font-family: Arial, sans-serif;
       background: #111827;
       color: white;
-
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .container {
       width: 100%;
-      max-width: 650px;
-
+      max-width: 700px;
       background: #1f2937;
-
       padding: 25px;
-
       border-radius: 18px;
-
-      box-shadow:
-        0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin: 20px 0;
     }
 
     h1 {
@@ -60,6 +60,14 @@
 
     h2 {
       margin-top: 0;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+    }
+
+    p {
+      line-height: 1.7;
     }
 
     .screen {
@@ -72,21 +80,13 @@
 
     button {
       width: 100%;
-
       padding: 14px;
-
       margin-top: 12px;
-
       border: none;
-
       border-radius: 10px;
-
       font-size: 16px;
-
       font-weight: bold;
-
       cursor: pointer;
-
       transition: 0.2s;
     }
 
@@ -112,13 +112,21 @@
       background: #16a34a;
     }
 
+    #shareBtn {
+      background: #2563eb;
+      color: white;
+      margin-top: 10px;
+    }
+
+    #shareBtn:hover {
+      background: #1d4ed8;
+    }
+
     /* NEXT */
 
     #nextBtn {
       display: none;
-
       background: #3b82f6;
-
       color: white;
     }
 
@@ -130,29 +138,21 @@
 
     .top-bar {
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       gap: 10px;
-
       margin-bottom: 20px;
     }
 
     .round {
       color: #93c5fd;
-
       font-weight: bold;
-
       font-size: 18px;
     }
 
     .progress {
       color: #d1d5db;
-
       font-weight: bold;
-
       margin-top: 5px;
     }
 
@@ -160,15 +160,10 @@
 
     .timer {
       background: #dc2626;
-
       padding: 8px 12px;
-
       border-radius: 8px;
-
       font-weight: bold;
-
       min-width: 70px;
-
       text-align: center;
     }
 
@@ -176,49 +171,37 @@
 
     #question {
       font-size: 22px;
-
       line-height: 1.5;
-
       margin-bottom: 20px;
-
       font-weight: bold;
     }
 
     #options {
       display: flex;
-
       flex-direction: column;
-
       gap: 10px;
     }
 
     .option {
       background: #374151;
-
       color: white;
-
       text-align: left;
-
       margin-top: 0;
-
       border: 2px solid transparent;
     }
 
     .option:hover:not(:disabled) {
       background: #4b5563;
-
       border-color: #60a5fa;
     }
 
     .option.correct {
       background: #16a34a;
-
       border-color: #4ade80;
     }
 
     .option.wrong {
       background: #dc2626;
-
       border-color: #f87171;
     }
 
@@ -230,17 +213,13 @@
 
     .score {
       text-align: center;
-
       font-size: 45px;
-
       font-weight: bold;
-
       margin: 20px 0;
     }
 
     #resultMessage {
       color: #d1d5db;
-
       line-height: 1.6;
     }
 
@@ -248,65 +227,124 @@
 
     .info {
       text-align: center;
-
       color: #d1d5db;
-
       line-height: 1.6;
     }
 
     .round-info {
       background: #374151;
-
       padding: 15px;
-
       border-radius: 12px;
-
       margin: 20px 0;
-
       text-align: center;
     }
 
     .small {
       font-size: 14px;
-
       color: #d1d5db;
+    }
+
+    /* PUBLISHER CONTENT */
+
+    .content-section {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid #4b5563;
+    }
+
+    .content-section h2 {
+      color: #93c5fd;
+      font-size: 23px;
+    }
+
+    .content-section h3 {
+      color: #e5e7eb;
+      font-size: 18px;
+    }
+
+    .content-section p,
+    .content-section li {
+      color: #d1d5db;
+      line-height: 1.7;
+    }
+
+    .content-section ul {
+      padding-left: 22px;
+    }
+
+    .subjects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .subject {
+      background: #374151;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .faq-item {
+      background: #374151;
+      padding: 14px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .faq-item p {
+      margin-bottom: 0;
+    }
+
+    .site-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .site-links a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    .site-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid #4b5563;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     /* STATS */
 
     .stats {
       display: flex;
-
       justify-content: space-between;
-
       gap: 10px;
-
       margin: 15px 0;
     }
 
     .stat {
       flex: 1;
-
       background: #374151;
-
       padding: 10px;
-
       border-radius: 10px;
-
       text-align: center;
-
       font-size: 13px;
-
       color: #d1d5db;
     }
 
     .stat strong {
       display: block;
-
       color: white;
-
       font-size: 18px;
-
       margin-top: 4px;
     }
 
@@ -314,9 +352,7 @@
 
     .category {
       color: #a5b4fc;
-
       font-size: 13px;
-
       margin-bottom: 8px;
     }
 
@@ -324,11 +360,8 @@
 
     .error {
       background: #7f1d1d;
-
       padding: 15px;
-
       border-radius: 10px;
-
       line-height: 1.5;
     }
 
@@ -336,26 +369,27 @@
 
     .ad-box {
       margin: 25px 0;
-
       padding: 15px 0;
-
       min-height: 90px;
-
       text-align: center;
+      overflow: hidden;
+    }
+
+    .ad-box ins.adsbygoogle {
+      display: block;
+      width: 100%;
+      min-height: 50px;
     }
 
     .ad-label {
       color: #9ca3af;
-
       font-size: 12px;
-
       margin-bottom: 10px;
     }
 
     /* RESPONSIVE */
 
     @media (max-width: 500px) {
-
       body {
         padding: 10px;
       }
@@ -376,6 +410,9 @@
         gap: 6px;
       }
 
+      .subjects {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -393,8 +430,9 @@
     <h1>Quiz Master 🇷🇼</h1>
 
     <p class="info">
-      Gerageza ubumenyi bwawe ku bibazo bitandukanye
-      byo hirya no hino ku isi.
+      Quiz Master ni urubuga rugufasha kugerageza no kongera ubumenyi
+      bwawe binyuze mu bibazo bitandukanye. Ushobora kwiga no kwishimisha
+      usubiza ibibazo bijyanye n'isi, amateka, ubumenyi n'ikoranabuhanga.
     </p>
 
     <div class="round-info">
@@ -440,11 +478,146 @@
       🚀 Tangira Quiz
     </button>
 
+    <button id="shareBtn" type="button">
+      📤 Sangiza abandi
+    </button>
+
+    <!-- =================================================
+         ABOUT / PUBLISHER CONTENT
+         Iyi content iri kuri homepage kandi ntabwo ihindura
+         uburyo quiz ikora.
+         ================================================= -->
+
+    <section class="content-section">
+      <h2>ℹ️ Quiz Master ni iki?</h2>
+
+      <p>
+        Quiz Master ni urubuga rwa quiz rugenewe abantu bashaka
+        kugerageza ubumenyi bwabo no kwiga ibintu bishya. Ibibazo
+        bishobora kuba mu byiciro bitandukanye kandi buri round
+        iguha ibibazo 10 byatoranyijwe mu bibazo bihari.
+      </p>
+
+      <p>
+        Intego ya Quiz Master ni ugutanga uburyo bworoshye bwo kwiga
+        no kwidagadura. Iyo usubije neza ubona amanota, naho ibisubizo
+        bitari byo bigufasha kumenya aho wakongera kwiga.
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2>📚 Ibyiciro by'ibibazo</h2>
+
+      <p>
+        Quiz Master ishobora kuba irimo ibibazo byo mu byiciro
+        bitandukanye, bitewe n'ibibazo biri muri questions.json.
+      </p>
+
+      <div class="subjects">
+        <div class="subject">🌍 Geography</div>
+        <div class="subject">📜 History</div>
+        <div class="subject">⚛️ Physics</div>
+        <div class="subject">🧬 Biology</div>
+        <div class="subject">🧪 Chemistry</div>
+        <div class="subject">🇷🇼 Rwanda</div>
+        <div class="subject">🌍 Africa</div>
+        <div class="subject">💻 Technology</div>
+        <div class="subject">🔬 Science</div>
+        <div class="subject">🏙️ Countries & Cities</div>
+        <div class="subject">👑 Kings & Queens</div>
+        <div class="subject">🏛️ Presidents</div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🎮 Uko ukoresha Quiz Master</h2>
+
+      <h3>1. Tangira quiz</h3>
+      <p>
+        Kanda kuri <strong>“Tangira Quiz”</strong> kugira ngo utangire
+        round nshya.
+      </p>
+
+      <h3>2. Subiza ibibazo</h3>
+      <p>
+        Buri round igizwe n'ibibazo 10. Soma ikibazo neza, hanyuma
+        uhitemo igisubizo utekereza ko ari cyo.
+      </p>
+
+      <h3>3. Koresha igihe neza</h3>
+      <p>
+        Ufite amasegonda 20 kuri buri kibazo. Niba igihe kirangiye
+        mbere yo guhitamo igisubizo, quiz ikomeza ku kibazo gikurikira
+        hakurikijwe imikorere ya app.
+      </p>
+
+      <h3>4. Reba amanota</h3>
+      <p>
+        Round nirangira, uzabona amanota yawe, umubare w'ibisubizo
+        by'ukuri n'ibisubizo bitari byo.
+      </p>
+    </section>
+
+    <section class="content-section">
+      <h2>❓ Ibibazo bikunze kubazwa</h2>
+
+      <div class="faq-item">
+        <h3>Quiz Master ni ubuntu?</h3>
+        <p>
+          Yego. Gukina quiz y'ibanze ni FREE nk'uko bigaragara kuri
+          screen yo gutangiriraho.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Buri round iba igizwe n'ibibazo bingahe?</h3>
+        <p>
+          Buri round igizwe n'ibibazo 10.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Ni igihe kingana iki gihabwa ikibazo kimwe?</h3>
+        <p>
+          Uhabwa amasegonda 20 kuri buri kibazo.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Ese ibibazo birasubirwamo ako kanya?</h3>
+        <p>
+          App yawe ikoresha uburyo bwo kuvanga ibibazo kandi igamije
+          kwirinda gusubiramo ibibazo kugeza cycle irangiye, hakurikijwe
+          logic iri muri questions.js.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Nshobora gusangiza abandi Quiz Master?</h3>
+        <p>
+          Yego. Kanda kuri <strong>“Sangiza abandi”</strong> kugira ngo
+          usangize inshuti cyangwa abandi bakinnyi link ya Quiz Master.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>🔒 Amakuru n'amategeko</h2>
+
+      <p>
+        Mbere yo gukoresha urubuga, ushobora gusoma amabwiriza ajyanye
+        n'imikoreshereze ya service ndetse n'ibijyanye n'ubuzima bwite.
+      </p>
+
+      <div class="site-links">
+        <a href="./Privacy_policy.html">Privacy Policy</a>
+        <a href="./Terms_Of_Services.html">Terms of Service</a>
+      </div>
+    </section>
+
   </div>
 
-<button id="shareBtn" type="button">
-  📤 Sangiza abandi
-</button>
+
   <!-- =====================================================
        QUIZ SCREEN
        ===================================================== -->
@@ -574,19 +747,32 @@
          ADSENSE
          =================================================
 
-         Iyi ni ahantu Google ishobora gushyira ad.
          AdSense ni yo igenzura niba ad igaragara.
-         Ntabwo code ishobora kwemeza ko buri round
-         izagaragaza ad cyangwa amafaranga runaka.
+         Ntibisobanura ko buri round izagira ad.
          ================================================= -->
 
-    <div class="ad-box">
+    <div class="ad-box" aria-label="Advertisement">
 
       <div class="ad-label">
         Advertisement
       </div>
 
-      <!-- Google AdSense Auto Ads ishobora gushyira ad hano -->
+      <!--
+        IMPORTANT:
+        Replace 0000000000 below with the Ad Unit ID
+        created for this site in your Google AdSense account.
+        Keep your Publisher ID (ca-pub-2666698676518429) unchanged.
+      -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2666698676518429"
+           data-ad-slot="0000000000"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
 
     </div>
 
@@ -620,6 +806,10 @@
 
   </div>
 
+  <div class="footer">
+    © 2026 Quiz Master 🇷🇼 — Urubuga rwo kugerageza no kongera ubumenyi.
+  </div>
+
 </div>
 
 
@@ -628,7 +818,12 @@
      ===================================================== -->
 
 <script src="./questions.js"></script>
-<!-- 👇 SHARING CODE ITANGIRA HANO -->
+
+
+<!-- =====================================================
+     SHARING CODE
+     ===================================================== -->
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -648,9 +843,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (navigator.share) {
         await navigator.share(shareData);
-      } else {
+      } else if (navigator.clipboard) {
         await navigator.clipboard.writeText(window.location.href);
         alert("Link ya Quiz Master yakoporowe. Sangiza abandi!");
+      } else {
+        prompt("Koporora link ya Quiz Master:", window.location.href);
       }
 
     } catch (error) {
@@ -661,8 +858,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
-<!-- 👆 SHARING CODE IRANGIYE HANO -->
 
-</body>
 </body>
 </html>
