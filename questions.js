@@ -4,17 +4,24 @@
    FIX ONLY:
    🚀 Tangira Quiz
 
+   COMPATIBLE WITH:
+   - Existing index.html
+   - questions.json
+   - question
+   - question_rw
+   - options
+   - answer
+   - category
+
    FEATURES:
    - 10 questions per round
    - 20 seconds per question
    - Random questions
-   - No duplicate questions in same round
+   - No duplicate questions until bank is finished
    - Score tracking
    - Correct / Wrong tracking
-   - Round 1 -> Round 2 -> Round 3 -> ...
-   - Works with questions.json
-   - Compatible with existing index.html
-   - Does NOT modify Premium / Pi / Leaderboard / Share
+   - Round 1 -> Result -> Round 2 -> Result -> ...
+   - Does NOT modify Premium / Pi / Share
    ========================================================= */
 
 (function () {
@@ -47,6 +54,11 @@
 
   let quizRunning = false;
 
+  /*
+   * Questions already used in previous rounds.
+   * They will not be selected again until
+   * the whole question bank has been used.
+   */
   let usedQuestions = new Set();
 
   /* =========================================================
@@ -62,7 +74,7 @@
      ========================================================= */
 
   function shuffle(array) {
-    const copy = [...array];
+    const copy = Array.isArray(array) ? [...array] : [];
 
     for (let i = copy.length - 1; i > 0; i--) {
       const randomIndex =
@@ -73,6 +85,17 @@
     }
 
     return copy;
+  }
+
+  /* =========================================================
+     NORMALIZE TEXT
+     ========================================================= */
+
+  function normalize(value) {
+    return String(value ?? "")
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, " ");
   }
 
   /* =========================================================
@@ -94,10 +117,16 @@
       const data = await response.json();
 
       /*
-       * Support:
+       * Supported formats:
+       *
        * [
-       *   {...},
-       *   {...}
+       *   {
+       *     "question": "...",
+       *     "question_rw": "...",
+       *     "options": ["...", "..."],
+       *     "answer": "...",
+       *     "category": "..."
+       *   }
        * ]
        *
        * OR
@@ -109,7 +138,10 @@
 
       if (Array.isArray(data)) {
         allQuestions = data;
-      } else if (Array.isArray(data.questions)) {
+      } else if (
+        data &&
+        Array.isArray(data.questions)
+      ) {
         allQuestions = data.questions;
       } else {
         throw new Error(
@@ -120,6 +152,41 @@
       if (!allQuestions.length) {
         throw new Error(
           "questions.json nta bibazo irimo."
+        );
+      }
+
+      /*
+       * Remove only completely invalid records.
+       * We do NOT change valid questions.
+       */
+      allQuestions = allQuestions.filter(function (q) {
+        if (!q || typeof q !== "object") {
+          return false;
+        }
+
+        const question =
+          q.question ??
+          q.questionText ??
+          q.text ??
+          q.q ??
+          "";
+
+        const options =
+          q.options ??
+          q.answers ??
+          q.choices ??
+          [];
+
+        return (
+          String(question).trim() !== "" &&
+          Array.isArray(options) &&
+          options.length >= 2
+        );
+      });
+
+      if (!allQuestions.length) {
+        throw new Error(
+          "Nta kibazo gifite format iboneye muri questions.json."
         );
       }
 
@@ -138,9 +205,12 @@
         error
       );
 
+      quizRunning = false;
+
       showError(
         "Ibibazo ntibyashoboye gufunguka. " +
-        "Reba ko questions.json iri kumwe na index.html."
+        "Reba ko questions.json iri kumwe na index.html " +
+        "kandi ko JSON nta makosa irimo."
       );
 
       return false;
@@ -160,6 +230,22 @@
       q.q ??
       "";
 
+    /*
+     * Kinyarwanda question is supported.
+     *
+     * Current index.html uses #question,
+     * so we keep the English/default question
+     * as the main displayed question.
+     *
+     * question_rw remains available as data.
+     */
+
+    const questionRw =
+      q.question_rw ??
+      q.questionRw ??
+      q.rw ??
+      "";
+
     let options =
       q.options ??
       q.answers ??
@@ -167,19 +253,14 @@
       [];
 
     let correct =
+      q.answer ??
       q.correctAnswer ??
       q.correct ??
-      q.answer ??
       q.correctOption ??
       null;
 
     /*
-     * Support answer objects:
-     *
-     * {
-     *   text: "Kigali",
-     *   correct: true
-     * }
+     * Support option objects too.
      */
 
     if (
@@ -214,10 +295,16 @@
 
     return {
       question: String(questionText),
+      question_rw: String(questionRw),
       options: Array.isArray(options)
-        ? options.map(String)
+        ? options.map(function (item) {
+            return String(item);
+          })
         : [],
-      correctAnswer: correct
+      correctAnswer: correct,
+      category: String(
+        q.category ?? ""
+      )
     };
   }
 
@@ -232,8 +319,11 @@
     }
 
     /*
-     * If there aren't enough unused questions,
-     * reset the used list.
+     * If fewer than 10 unused questions remain,
+     * start a new cycle.
+     *
+     * This guarantees that questions can continue
+     * after the whole bank has been consumed.
      */
 
     const remaining =
@@ -250,6 +340,7 @@
       i < allQuestions.length;
       i++
     ) {
+
       if (!usedQuestions.has(i)) {
         availableIndexes.push(i);
       }
@@ -258,23 +349,20 @@
     const randomIndexes =
       shuffle(availableIndexes);
 
-    const numberToTake =
-      Math.min(
-        QUESTIONS_PER_ROUND,
-        randomIndexes.length
-      );
-
     roundQuestions = [];
 
+    /*
+     * Take maximum 10 questions.
+     */
     for (
       let i = 0;
-      i < numberToTake;
+      i < randomIndexes.length &&
+      roundQuestions.length < QUESTIONS_PER_ROUND;
       i++
     ) {
 
-      const index = randomIndexes[i];
-
-      usedQuestions.add(index);
+      const index =
+        randomIndexes[i];
 
       const question =
         normalizeQuestion(
@@ -282,15 +370,16 @@
         );
 
       /*
-       * Only accept questions that have
-       * text + at least 2 options.
+       * Only valid questions are added.
        */
-
       if (
-        question.question &&
+        question.question.trim() &&
         question.options.length >= 2
       ) {
+
         roundQuestions.push(question);
+
+        usedQuestions.add(index);
       }
     }
 
@@ -309,33 +398,30 @@
       "Quiz Master: Tangira Quiz clicked."
     );
 
-    /*
-     * Stop any previous timer.
-     */
-
     stopTimer();
 
     /*
-     * Reset quiz state.
+     * If the quiz is not running,
+     * this is a NEW quiz.
      */
+    if (!quizRunning) {
 
-    score = 0;
-    correctAnswers = 0;
-    wrongAnswers = 0;
+      score = 0;
+      correctAnswers = 0;
+      wrongAnswers = 0;
 
-    currentRound = 1;
-    currentQuestionIndex = 0;
+      currentRound = 1;
 
-    usedQuestions.clear();
+      currentQuestionIndex = 0;
+
+      usedQuestions.clear();
+    }
 
     quizRunning = true;
 
-    updateScore();
-
     /*
-     * Load questions if needed.
+     * Load questions if they are not loaded.
      */
-
     if (!allQuestions.length) {
 
       const loaded =
@@ -348,9 +434,8 @@
     }
 
     /*
-     * Prepare first round.
+     * Prepare round.
      */
-
     const ready =
       prepareRound();
 
@@ -365,26 +450,15 @@
       return;
     }
 
-    /*
-     * Show quiz screen.
-     */
+    updateScore();
 
     showQuizScreen();
-
-    /*
-     * IMPORTANT:
-     * Show FIRST question immediately.
-     */
 
     showQuestion();
   }
 
   /* =========================================================
-     VERY IMPORTANT FIX
-     =========================================================
-     Make startQuiz visible to index.html.
-     This allows:
-     onclick="startQuiz()"
+     MAKE startQuiz AVAILABLE GLOBALLY
      ========================================================= */
 
   window.startQuiz = startQuiz;
@@ -438,15 +512,21 @@
       currentQuestionIndex >=
       roundQuestions.length
     ) {
+
       finishRound();
+
       return;
     }
 
     const current =
-      roundQuestions[currentQuestionIndex];
+      roundQuestions[
+        currentQuestionIndex
+      ];
 
     if (!current) {
+
       finishRound();
+
       return;
     }
 
@@ -470,14 +550,27 @@
     const questionNumberElement =
       el("questionNumber");
 
+    const categoryElement =
+      el("category");
+
     /*
-     * QUESTION TEXT
+     * QUESTION
      */
 
     if (questionElement) {
 
       questionElement.textContent =
         current.question;
+    }
+
+    /*
+     * CATEGORY
+     */
+
+    if (categoryElement) {
+
+      categoryElement.textContent =
+        current.category || "";
     }
 
     /*
@@ -500,50 +593,55 @@
      */
 
     if (!optionsElement) {
+
       console.error(
         "Element #options ntabwo ibonetse."
       );
+
       return;
     }
 
     optionsElement.innerHTML = "";
 
     /*
-     * Shuffle answers without
-     * changing the original question.
+     * Shuffle only the displayed options.
+     * Original JSON is not modified.
      */
 
     const shuffledOptions =
       shuffle(current.options);
 
-    shuffledOptions.forEach(function (answer) {
+    shuffledOptions.forEach(
+      function (answer) {
 
-      const button =
-        document.createElement("button");
+        const button =
+          document.createElement("button");
 
-      button.type = "button";
+        button.type = "button";
 
-      /*
-       * Keep existing CSS working.
-       */
+        /*
+         * Keep existing CSS.
+         */
+        button.className = "option";
 
-      button.className = "option";
+        button.textContent = answer;
 
-      button.textContent = answer;
+        button.addEventListener(
+          "click",
+          function () {
 
-      button.addEventListener(
-        "click",
-        function () {
+            selectAnswer(
+              answer,
+              button
+            );
+          }
+        );
 
-          selectAnswer(
-            answer,
-            button
-          );
-        }
-      );
-
-      optionsElement.appendChild(button);
-    });
+        optionsElement.appendChild(
+          button
+        );
+      }
+    );
   }
 
   /* =========================================================
@@ -562,7 +660,9 @@
     stopTimer();
 
     const current =
-      roundQuestions[currentQuestionIndex];
+      roundQuestions[
+        currentQuestionIndex
+      ];
 
     if (!current) {
       return;
@@ -582,9 +682,11 @@
           "button"
         );
 
-      buttons.forEach(function (button) {
-        button.disabled = true;
-      });
+      buttons.forEach(
+        function (button) {
+          button.disabled = true;
+        }
+      );
     }
 
     /*
@@ -602,13 +704,13 @@
       correctAnswers++;
 
       /*
-       * Keep simple scoring:
+       * Keep original scoring:
        * +10 per correct answer.
        */
-
       score += 10;
 
       if (clickedButton) {
+
         clickedButton.classList.add(
           "correct"
         );
@@ -619,14 +721,11 @@
       wrongAnswers++;
 
       if (clickedButton) {
+
         clickedButton.classList.add(
           "wrong"
         );
       }
-
-      /*
-       * Highlight correct answer.
-       */
 
       showCorrectAnswer(
         current
@@ -636,12 +735,15 @@
     updateScore();
 
     /*
-     * Move to next question.
+     * Move to next question after
+     * short delay.
      */
 
     setTimeout(
       function () {
+
         nextQuestion();
+
       },
       600
     );
@@ -659,19 +761,17 @@
     const correct =
       question.correctAnswer;
 
-    /*
-     * No correct answer supplied.
-     */
-
     if (
       correct === null ||
-      correct === undefined
+      correct === undefined ||
+      String(correct).trim() === ""
     ) {
       return false;
     }
 
     /*
-     * Correct answer can be a number.
+     * If answer is numeric,
+     * treat it as option index.
      */
 
     if (
@@ -679,21 +779,47 @@
     ) {
 
       if (
-        question.options[
-          correct
-        ] !== undefined
+        question.options[correct] !==
+        undefined
       ) {
 
-        return normalize(
-          selectedAnswer
-        ) === normalize(
-          question.options[correct]
+        return (
+          normalize(selectedAnswer) ===
+          normalize(
+            question.options[correct]
+          )
         );
       }
     }
 
     /*
-     * Correct answer can be A/B/C/D.
+     * If answer is numeric text,
+     * e.g. "0", "1", "2", "3".
+     */
+    if (
+      typeof correct === "string" &&
+      /^\d+$/.test(correct.trim())
+    ) {
+
+      const index =
+        Number(correct.trim());
+
+      if (
+        question.options[index] !==
+        undefined
+      ) {
+
+        return (
+          normalize(selectedAnswer) ===
+          normalize(
+            question.options[index]
+          )
+        );
+      }
+    }
+
+    /*
+     * Support A / B / C / D.
      */
 
     if (
@@ -714,35 +840,28 @@
         undefined
       ) {
 
-        return normalize(
-          selectedAnswer
-        ) === normalize(
-          question.options[index]
+        return (
+          normalize(selectedAnswer) ===
+          normalize(
+            question.options[index]
+          )
         );
       }
     }
 
     /*
-     * Normal text answer.
+     * Standard questions.json format:
+     *
+     * "answer": "Kigali"
+     *
+     * Compare answer text with
+     * selected option text.
      */
 
-    return normalize(
-      selectedAnswer
-    ) === normalize(
-      correct
+    return (
+      normalize(selectedAnswer) ===
+      normalize(correct)
     );
-  }
-
-  /* =========================================================
-     NORMALIZE TEXT
-     ========================================================= */
-
-  function normalize(value) {
-
-    return String(value ?? "")
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, " ");
   }
 
   /* =========================================================
@@ -765,20 +884,55 @@
         "button"
       );
 
-    buttons.forEach(function (button) {
+    buttons.forEach(
+      function (button) {
 
-      if (
-        normalize(button.textContent) ===
-        normalize(
-          question.correctAnswer
-        )
-      ) {
+        /*
+         * For normal JSON:
+         * answer = exact option text.
+         */
 
-        button.classList.add(
-          "correct"
-        );
+        if (
+          normalize(button.textContent) ===
+          normalize(
+            question.correctAnswer
+          )
+        ) {
+
+          button.classList.add(
+            "correct"
+          );
+
+          return;
+        }
+
+        /*
+         * Also support answer as
+         * option index.
+         */
+
+        if (
+          typeof question.correctAnswer ===
+          "number"
+        ) {
+
+          const correctText =
+            question.options[
+              question.correctAnswer
+            ];
+
+          if (
+            normalize(button.textContent) ===
+            normalize(correctText)
+          ) {
+
+            button.classList.add(
+              "correct"
+            );
+          }
+        }
       }
-    });
+    );
   }
 
   /* =========================================================
@@ -820,18 +974,26 @@
     updateTimer();
 
     timerInterval =
-      setInterval(function () {
+      setInterval(
+        function () {
 
-        timeLeft--;
+          if (!quizRunning) {
+            stopTimer();
+            return;
+          }
 
-        updateTimer();
+          timeLeft--;
 
-        if (timeLeft <= 0) {
+          updateTimer();
 
-          timeoutQuestion();
-        }
+          if (timeLeft <= 0) {
 
-      }, 1000);
+            timeoutQuestion();
+          }
+
+        },
+        1000
+      );
   }
 
   /* =========================================================
@@ -897,14 +1059,11 @@
 
     updateScore();
 
-    /*
-     * Give user a short moment to see
-     * the correct answer.
-     */
-
     setTimeout(
       function () {
+
         nextQuestion();
+
       },
       600
     );
@@ -935,38 +1094,12 @@
     stopTimer();
 
     /*
-     * Automatically continue:
+     * Do NOT immediately start another round.
      *
-     * Round 1
-     * Round 2
-     * Round 3
-     * ...
+     * Show the existing result screen.
+     * The existing restartBtn will start
+     * the next round.
      */
-
-    currentRound++;
-
-    const ready =
-      prepareRound();
-
-    if (!ready) {
-
-      finishQuiz();
-
-      return;
-    }
-
-    currentQuestionIndex = 0;
-
-    showQuestion();
-  }
-
-  /* =========================================================
-     FINISH QUIZ
-     ========================================================= */
-
-  function finishQuiz() {
-
-    stopTimer();
 
     quizRunning = false;
 
@@ -985,8 +1118,64 @@
     }
 
     /*
-     * Update common result elements
-     * only if they exist.
+     * Existing index.html uses:
+     * #finishedRound
+     * #score
+     * #resultMessage
+     * #correctCount
+     * #wrongCount
+     */
+
+    const finishedRound =
+      el("finishedRound");
+
+    if (finishedRound) {
+
+      finishedRound.textContent =
+        currentRound;
+    }
+
+    const scoreElement =
+      el("score");
+
+    if (scoreElement) {
+
+      scoreElement.textContent =
+        score;
+    }
+
+    const correctCount =
+      el("correctCount");
+
+    if (correctCount) {
+
+      correctCount.textContent =
+        correctAnswers;
+    }
+
+    const wrongCount =
+      el("wrongCount");
+
+    if (wrongCount) {
+
+      wrongCount.textContent =
+        wrongAnswers;
+    }
+
+    const resultMessage =
+      el("resultMessage");
+
+    if (resultMessage) {
+
+      resultMessage.textContent =
+        "Round " +
+        currentRound +
+        " irangiye! " +
+        "Kanda kuri 'Komeza kuri Round ikurikira' gukomeza.";
+    }
+
+    /*
+     * Also support alternate IDs if present.
      */
 
     const finalScore =
@@ -1017,125 +1206,42 @@
   }
 
   /* =========================================================
-     SAVE SCORE
+     START NEXT ROUND
      ========================================================= */
 
-  function saveScore() {
+  function startNextRound() {
 
-    try {
-
-      const oldScores =
-        JSON.parse(
-          localStorage.getItem(
-            "quizmaster_scores"
-          ) || "[]"
-        );
-
-      oldScores.push({
-        score: score,
-        correct: correctAnswers,
-        wrong: wrongAnswers,
-        round: currentRound,
-        date:
-          new Date().toISOString()
-      });
-
-      /*
-       * Keep latest 50 scores.
-       */
-
-      const scores =
-        oldScores.slice(-50);
-
-      localStorage.setItem(
-        "quizmaster_scores",
-        JSON.stringify(scores)
-      );
-
-    } catch (error) {
-
-      console.warn(
-        "Score ntiyabitswe:",
-        error
-      );
-    }
-  }
-
-  /* =========================================================
-     ERROR
-     ========================================================= */
-
-  function showError(message) {
-
-    const errorScreen =
-      el("errorScreen");
-
-    const errorMessage =
-      el("errorMessage");
-
-    if (errorMessage) {
-      errorMessage.textContent =
-        message;
-    }
-
-    if (errorScreen) {
-      errorScreen.style.display = "";
-    }
-  }
-
-  /* =========================================================
-     START BUTTON
-     =========================================================
-     This is the main fix.
-     ========================================================= */
-
-  function connectStartButton() {
-
-    const startButton =
-      el("startBtn");
-
-    if (!startButton) {
-
-      console.warn(
-        "Tangira Quiz button #startBtn ntiyabonetse."
-      );
-
-      return;
-    }
+    stopTimer();
 
     /*
-     * Prevent duplicate listeners.
+     * Move to next round.
      */
+    currentRound++;
 
-    if (
-      startButton.dataset.quizConnected ===
-      "true"
-    ) {
+    /*
+     * Prepare next set.
+     */
+    const ready =
+      prepareRound();
+
+    if (!ready) {
+
+      showError(
+        "Nta bibazo bihagije bibonetse muri questions.json."
+      );
+
       return;
     }
 
-    startButton.dataset.quizConnected =
-      "true";
+    quizRunning = true;
 
-    startButton.addEventListener(
-      "click",
-      function (event) {
+    showQuizScreen();
 
-        event.preventDefault();
-
-        event.stopPropagation();
-
-        startQuiz();
-      }
-    );
-
-    console.log(
-      "Quiz Master: #startBtn connected."
-    );
+    showQuestion();
   }
 
   /* =========================================================
-     RESTART BUTTON
+     RESTART / NEXT ROUND BUTTON
      ========================================================= */
 
   function connectRestartButton() {
@@ -1163,7 +1269,12 @@
 
         event.preventDefault();
 
-        startQuiz();
+        /*
+         * Existing button means:
+         * "Komeza kuri Round ikurikira"
+         */
+
+        startNextRound();
       }
     );
   }
@@ -1203,6 +1314,153 @@
   }
 
   /* =========================================================
+     START BUTTON
+     ========================================================= */
+
+  function connectStartButton() {
+
+    const startButton =
+      el("startBtn");
+
+    if (!startButton) {
+
+      console.warn(
+        "Tangira Quiz button #startBtn ntiyabonetse."
+      );
+
+      return;
+    }
+
+    /*
+     * Prevent duplicate connection
+     * inside questions.js.
+     */
+
+    if (
+      startButton.dataset.quizConnected ===
+      "true"
+    ) {
+      return;
+    }
+
+    startButton.dataset.quizConnected =
+      "true";
+
+    startButton.addEventListener(
+      "click",
+      function (event) {
+
+        event.preventDefault();
+
+        /*
+         * Do not stopPropagation here.
+         *
+         * This allows the existing index.html
+         * start button listener to continue working
+         * if it is present.
+         */
+
+        startQuiz();
+      }
+    );
+
+    console.log(
+      "Quiz Master: #startBtn connected."
+    );
+  }
+
+  /* =========================================================
+     ERROR
+     ========================================================= */
+
+  function showError(message) {
+
+    stopTimer();
+
+    quizRunning = false;
+
+    const startScreen =
+      el("startScreen");
+
+    const quizScreen =
+      el("quizScreen");
+
+    const resultScreen =
+      el("resultScreen");
+
+    const errorScreen =
+      el("errorScreen");
+
+    const errorMessage =
+      el("errorMessage");
+
+    if (startScreen) {
+      startScreen.style.display = "none";
+    }
+
+    if (quizScreen) {
+      quizScreen.style.display = "none";
+    }
+
+    if (resultScreen) {
+      resultScreen.style.display = "none";
+    }
+
+    if (errorMessage) {
+      errorMessage.textContent =
+        message;
+    }
+
+    if (errorScreen) {
+      errorScreen.style.display = "";
+    }
+  }
+
+  /* =========================================================
+     SAVE SCORE
+     ========================================================= */
+
+  function saveScore() {
+
+    try {
+
+      const oldScores =
+        JSON.parse(
+          localStorage.getItem(
+            "quizmaster_scores"
+          ) || "[]"
+        );
+
+      oldScores.push({
+        score: score,
+        correct: correctAnswers,
+        wrong: wrongAnswers,
+        round: currentRound,
+        date:
+          new Date().toISOString()
+      });
+
+      /*
+       * Keep latest 50 records.
+       */
+      const scores =
+        oldScores.slice(-50);
+
+      localStorage.setItem(
+        "quizmaster_scores",
+        JSON.stringify(scores)
+      );
+
+    } catch (error) {
+
+      console.warn(
+        "Score ntiyabitswe:",
+        error
+      );
+    }
+  }
+
+  /* =========================================================
      INITIALIZE
      ========================================================= */
 
@@ -1211,25 +1469,18 @@
     /*
      * Connect buttons.
      */
-
     connectStartButton();
     connectRestartButton();
     connectNextButton();
 
     /*
-     * Load questions in background.
+     * IMPORTANT:
+     * We do NOT show an error just because
+     * questions.json is still loading.
+     *
+     * startQuiz() can load it when the user
+     * presses the button.
      */
-
-    await loadQuestions();
-
-    /*
-     * Connect again in case the HTML
-     * was rendered dynamically.
-     */
-
-    connectStartButton();
-    connectRestartButton();
-    connectNextButton();
 
     console.log(
       "Quiz Master Questions Manager ready."
@@ -1277,7 +1528,7 @@
 
     timeoutQuestion: timeoutQuestion,
 
-    finishQuiz: finishQuiz,
+    finishQuiz: finishRound,
 
     getScore: function () {
       return score;
