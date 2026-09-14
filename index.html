@@ -846,5 +846,66 @@ content="Quiz Master is a free knowledge quiz game covering Geography, History, 
 
       }
     );
-  </script></body>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const shareBtn = document.getElementById("shareBtn");
+
+  if (!shareBtn) return;
+
+  shareBtn.addEventListener("click", async function () {
+
+    const shareUrl = "https://quizmaster-liard-five.vercel.app/";
+
+    const shareData = {
+      title: "Quiz Master 🇷🇼",
+      text: "Test your knowledge with Quiz Master!",
+      url: shareUrl
+    };
+
+    try {
+
+      if (navigator.share) {
+
+        await navigator.share(shareData);
+
+      } else {
+
+        await navigator.clipboard.writeText(shareUrl);
+
+        const oldText = shareBtn.textContent;
+
+        shareBtn.textContent = "✅ Link Copied!";
+
+        setTimeout(function () {
+          shareBtn.textContent = oldText;
+        }, 2000);
+      }
+
+    } catch (error) {
+
+      if (error.name !== "AbortError") {
+
+        try {
+
+          await navigator.clipboard.writeText(shareUrl);
+
+          shareBtn.textContent = "✅ Link Copied!";
+
+          setTimeout(function () {
+            shareBtn.textContent = "📤 Share Quiz Master";
+          }, 2000);
+
+        } catch (copyError) {
+
+          alert("Copy this link:\n" + shareUrl);
+
+        }
+      }
+    }
+
+  });
+
+});
+</script></body>
 </html>
