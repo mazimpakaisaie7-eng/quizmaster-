@@ -1,230 +1,388 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>  <meta name="description" content="Quiz Master is a free knowledge quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and more.">  <meta name="theme-color" content="#111827">  <!-- Google AdSense -->  <script async
+  <meta charset="UTF-8"><meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+«»
+
+  <title>Quiz Master 🇷🇼 - Knowledge Quiz</title><meta
+name="description"
+content="Quiz Master is a free knowledge quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and more."
+
+«»
+
+  <!-- Google AdSense -->  <script
+    async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous"></script>  <style>
+    crossorigin="anonymous">
+  </script>  <style>
     * {
       box-sizing: border-box;
+    }
+
+    html,
+    body {
       margin: 0;
       padding: 0;
+      min-height: 100%;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       background: #111827;
       color: #ffffff;
+
       min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       padding: 20px;
     }
 
-    .container {
+    .app {
       width: 100%;
       max-width: 700px;
       margin: 0 auto;
     }
 
     .card {
+      width: 100%;
       background: #1f2937;
       border-radius: 18px;
       padding: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-      font-size: 30px;
-    }
-
-    h2 {
-      margin-bottom: 15px;
-    }
-
-    p {
-      line-height: 1.6;
-      color: #d1d5db;
-    }
-
-    .subtitle {
-      text-align: center;
-      margin-bottom: 25px;
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
     .hidden {
       display: none !important;
     }
 
-    button {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 15px;
-      margin-top: 15px;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.15s ease, opacity 0.15s ease;
+    /* =========================
+       START SCREEN
+       ========================= */
+
+    .logo {
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 8px;
     }
 
-    button:active {
-      transform: scale(0.98);
+    h1 {
+      text-align: center;
+      margin: 0 0 10px;
+      font-size: 30px;
     }
 
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .primary {
-      background: #2563eb;
-      color: white;
-    }
-
-    .secondary {
-      background: #374151;
-      color: white;
-    }
-
-    .success {
-      background: #16a34a;
-      color: white;
-    }
-
-    .danger {
-      background: #dc2626;
-      color: white;
+    .subtitle {
+      text-align: center;
+      color: #d1d5db;
+      line-height: 1.6;
+      margin-bottom: 25px;
     }
 
     .info-box {
       background: #111827;
-      border-radius: 12px;
-      padding: 15px;
-      margin: 20px 0;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 22px;
     }
 
-    .info-box p {
-      margin: 7px 0;
-    }
-
-    .top-bar {
+    .info-row {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      gap: 15px;
+      padding: 10px 0;
+      border-bottom: 1px solid #374151;
     }
 
-    .badge {
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      color: #9ca3af;
+    }
+
+    .info-value {
+      font-weight: bold;
+      text-align: right;
+    }
+
+    /* =========================
+       BUTTONS
+       ========================= */
+
+    button {
+      font-family: inherit;
+    }
+
+    .primary-btn,
+    .next-btn,
+    .restart-btn,
+    .error-btn {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 15px 18px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .primary-btn {
+      background: #2563eb;
+      color: white;
+    }
+
+    .next-btn {
+      background: #059669;
+      color: white;
+      margin-top: 18px;
+    }
+
+    .restart-btn {
+      background: #2563eb;
+      color: white;
+      margin-top: 20px;
+    }
+
+    .error-btn {
+      background: #dc2626;
+      color: white;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.9;
+    }
+
+    /* =========================
+       QUIZ SCREEN
+       ========================= */
+
+    .quiz-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    #questionNumber {
+      font-weight: bold;
+      color: #d1d5db;
+    }
+
+    .score-box {
       background: #111827;
+      padding: 8px 13px;
       border-radius: 10px;
-      padding: 9px 12px;
-      font-size: 14px;
+      font-weight: bold;
     }
 
-    #timer {
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: #374151;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    #progressBar {
+      width: 0%;
+      height: 100%;
+      background: #2563eb;
+      transition: width 0.25s ease;
+    }
+
+    .timer-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .timer {
+      min-width: 70px;
+      text-align: center;
+      background: #111827;
+      border-radius: 12px;
+      padding: 10px 15px;
+      font-size: 22px;
       font-weight: bold;
     }
 
     #question {
-      font-size: 22px;
-      line-height: 1.5;
-      margin: 20px 0;
+      font-size: 23px;
+      line-height: 1.45;
+      font-weight: bold;
+      margin: 0 0 20px;
+    }
+
+    #options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .option {
       width: 100%;
       text-align: left;
-      background: #374151;
+      background: #111827;
       color: white;
-      border: 2px solid transparent;
-      margin-top: 10px;
-      padding: 14px;
+      border: 2px solid #374151;
       border-radius: 12px;
+      padding: 15px;
       font-size: 16px;
+      cursor: pointer;
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
     }
 
-    .option:hover {
-      border-color: #60a5fa;
+    .option:hover:not(:disabled) {
+      border-color: #2563eb;
     }
 
     .option.correct {
-      background: #166534;
-      border-color: #22c55e;
+      background: #065f46;
+      border-color: #10b981;
     }
 
     .option.wrong {
-      background: #991b1b;
+      background: #7f1d1d;
       border-color: #ef4444;
     }
 
-    .option:disabled {
-      cursor: not-allowed;
-      opacity: 1;
-    }
+    /* =========================
+       RESULT SCREEN
+       ========================= */
 
-    .progress {
-      height: 8px;
-      background: #374151;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-top: 15px;
-    }
-
-    #progressBar {
-      height: 100%;
-      width: 0%;
-      background: #3b82f6;
-      transition: width 0.25s ease;
-    }
-
-    .score {
+    .result-title {
       text-align: center;
-      font-size: 38px;
-      font-weight: bold;
-      margin: 20px 0;
+      font-size: 30px;
+      margin-bottom: 8px;
     }
 
-    .result-stat {
-      display: flex;
-      justify-content: space-between;
-      background: #111827;
-      padding: 12px;
-      border-radius: 10px;
-      margin-top: 8px;
-    }
-
-    .ad-box {
-      min-height: 90px;
-      margin: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer {
+    .result-message {
       text-align: center;
-      margin-top: 25px;
-      font-size: 13px;
-      color: #9ca3af;
-    }
-
-    .rules {
-      margin-top: 15px;
-    }
-
-    .rules li {
-      margin: 9px 0;
       color: #d1d5db;
+      margin-bottom: 25px;
       line-height: 1.5;
     }
 
-    @media (max-width: 500px) {
+    .final-score {
+      text-align: center;
+      font-size: 48px;
+      font-weight: bold;
+      margin: 10px 0 25px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .result-box {
+      background: #111827;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .result-box-label {
+      display: block;
+      color: #9ca3af;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .result-box-value {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    /* =========================
+       ERROR SCREEN
+       ========================= */
+
+    .error-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .error-text {
+      background: #111827;
+      border: 1px solid #7f1d1d;
+      border-radius: 12px;
+      padding: 15px;
+      color: #fecaca;
+      line-height: 1.6;
+      word-break: break-word;
+    }
+
+    /* =========================
+       ADS
+       ========================= */
+
+    .ad-container {
+      margin: 20px 0;
+      text-align: center;
+      min-height: 50px;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    .footer {
+      text-align: center;
+      color: #6b7280;
+      font-size: 13px;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 600px) {
+
       body {
         padding: 12px;
       }
 
       .card {
         padding: 18px;
+        border-radius: 15px;
+      }
+
+      .logo {
+        font-size: 36px;
       }
 
       h1 {
@@ -232,234 +390,461 @@
       }
 
       #question {
-        font-size: 19px;
+        font-size: 20px;
+      }
+
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-row {
+        font-size: 14px;
       }
     }
-  </style></head><body><div class="container">  <!-- START SCREEN -->  <section id="startScreen" class="card"><h1>Quiz Master 🇷🇼</h1>
+  </style></head><body>  <main class="app"><!-- =====================================================
+     START SCREEN
+     ===================================================== -->
 
-<p class="subtitle">
-  Test your knowledge. Learn something new. Have fun!
-</p>
+<section
+  id="startScreen"
+  class="card"
+>
 
-<div class="info-box">
-  <p><strong>Round:</strong> 10 questions</p>
-  <p><strong>Time:</strong> 20 seconds per question</p>
-  <p><strong>Questions:</strong> Randomly selected</p>
-  <p><strong>Scoring:</strong> +10 points for each correct answer</p>
-  <p><strong>Cost:</strong> Free</p>
-</div>
-
-<h2>Quiz Rules</h2>
-
-<ul class="rules">
-  <li>Each round contains 10 questions.</li>
-  <li>You have 20 seconds to answer each question.</li>
-  <li>Choose one answer from the four available options.</li>
-  <li>A correct answer gives you 10 points.</li>
-  <li>An unanswered question or timeout counts as wrong.</li>
-  <li>Questions are randomized.</li>
-  <li>Questions will not repeat until the available question bank has been completed.</li>
-  <li>You can continue to the next round after finishing a round.</li>
-</ul>
-
-<button id="startBtn" class="primary" type="button">
-  🚀 Start Quiz
-</button>
-
-<button id="shareBtn" class="secondary" type="button">
-  Share Quiz
-</button>
-
-<div class="footer">
-  Quiz Master 🇷🇼 — Free Knowledge Quiz
-</div>
-
-  </section>  <!-- QUIZ SCREEN -->  <section id="quizScreen" class="card hidden"><div class="top-bar">
-
-  <div class="badge">
-    <span id="questionNumber">Question 1/10</span>
+  <div class="logo">
+    🇷🇼
   </div>
 
-  <div class="badge">
-    Time: <span id="timer">20</span>s
+  <h1>
+    Quiz Master
+  </h1>
+
+  <p class="subtitle">
+    Test your knowledge with questions
+    from around the world.
+  </p>
+
+  <div class="info-box">
+
+    <div class="info-row">
+      <span class="info-label">
+        Round
+      </span>
+
+      <span class="info-value">
+        10 Questions
+      </span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">
+        Time
+      </span>
+
+      <span class="info-value">
+        20 Seconds / Question
+      </span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">
+        Points
+      </span>
+
+      <span class="info-value">
+        10 Points / Correct Answer
+      </span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">
+        Questions
+      </span>
+
+      <span class="info-value">
+        No Repeats Until Cycle Ends
+      </span>
+    </div>
+
+    <div class="info-row">
+      <span class="info-label">
+        Price
+      </span>
+
+      <span class="info-value">
+        Free
+      </span>
+    </div>
+
   </div>
 
-  <div class="badge">
-    Score: <span id="score">0</span>
+  <!--
+    IMPORTANT:
+    questions.js expects the button with id="startBtn".
+
+    The click handler below calls:
+    window.startQuiz()
+
+    This matches:
+    window.startQuiz = startQuiz;
+    in questions.js.
+  -->
+
+  <button
+    id="startBtn"
+    type="button"
+    class="primary-btn"
+    onclick="window.startQuiz()"
+  >
+    🚀 Start Quiz
+  </button>
+
+  <div class="ad-container">
+
+    <!-- Google AdSense ad -->
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-2666698676518429"
+      data-ad-slot="0000000000"
+      data-ad-format="auto"
+      data-full-width-responsive="true">
+    </ins>
+
   </div>
 
-</div>
+  <div class="footer">
+    Quiz Master 🇷🇼
+    <br>
+    Learn • Think • Challenge Yourself
+  </div>
 
-<div class="progress">
-  <div id="progressBar"></div>
-</div>
+</section>
 
-<div id="question">
-  Loading question...
-</div>
 
-<div id="options"></div>
+<!-- =====================================================
+     QUIZ SCREEN
+     ===================================================== -->
 
-<button id="nextBtn" class="primary hidden" type="button">
-  Next Question
-</button>
+<section
+  id="quizScreen"
+  class="card hidden"
+>
 
-  </section>  <!-- RESULT SCREEN -->  <section id="resultScreen" class="card hidden"><h1>Round Complete!</h1>
+  <div class="quiz-header">
 
-<div class="score">
-  <span id="finalScore">0</span>
-</div>
+    <div id="questionNumber">
+      Question 1/10
+    </div>
 
-<div class="result-stat">
-  <span>Correct Answers</span>
-  <strong id="correctCount">0</strong>
-</div>
+    <div class="score-box">
+      Score:
+      <span id="score">0</span>
+    </div>
 
-<div class="result-stat">
-  <span>Wrong Answers</span>
-  <strong id="wrongCount">0</strong>
-</div>
+  </div>
 
-<div class="result-stat">
-  <span>Questions</span>
-  <strong id="finishedRound">10</strong>
-</div>
 
-<p id="resultMessage" style="text-align:center; margin-top:20px;">
-  Great job!
-</p>
+  <!-- Progress Bar -->
 
-<!-- Ad space -->
-<div class="ad-box">
-  <!-- AdSense ad can be placed here later -->
-</div>
+  <div class="progress-container">
 
-<button id="restartBtn" class="success" type="button">
-  ▶️ Continue to Next Round
-</button>
+    <div
+      id="progressBar"
+    ></div>
 
-<button id="shareResultBtn" class="secondary" type="button">
-  Share Your Result
-</button>
+  </div>
 
-  </section>  <!-- ERROR SCREEN -->  <section id="errorScreen" class="card hidden"><h1>Something Went Wrong</h1>
 
-<p id="errorMessage">
-  We could not start the quiz.
-</p>
+  <!-- Timer -->
 
-<button id="errorRestartBtn" class="primary" type="button">
-  Try Again
-</button>
+  <div class="timer-container">
 
-  </section></div><script src="./questions.js"></script><script>
-document.addEventListener("DOMContentLoaded", function () {
+    <div class="timer">
 
-  const startBtn = document.getElementById("startBtn");
-  const shareBtn = document.getElementById("shareBtn");
-  const shareResultBtn = document.getElementById("shareResultBtn");
-  const errorRestartBtn = document.getElementById("errorRestartBtn");
+      <span id="timer">
+        20
+      </span>
 
-  /*
-   * IMPORTANT:
-   * questions.js must create window.startQuiz.
-   */
+      <span>
+        s
+      </span>
 
-  if (startBtn) {
-    startBtn.addEventListener("click", function () {
+    </div>
 
-      if (typeof window.startQuiz === "function") {
-        window.startQuiz();
-      } else {
-        showError(
-          "The quiz engine could not be loaded. Please make sure questions.js is in the same folder as index.html."
-        );
+  </div>
+
+
+  <!-- Question -->
+
+  <h2 id="question">
+    Loading question...
+  </h2>
+
+
+  <!-- Answer Options -->
+
+  <div id="options"></div>
+
+
+  <!-- Next Button -->
+
+  <button
+    id="nextBtn"
+    type="button"
+    class="next-btn hidden"
+  >
+    Next Question
+  </button>
+
+
+  <div class="ad-container">
+
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-2666698676518429"
+      data-ad-slot="0000000000"
+      data-ad-format="auto"
+      data-full-width-responsive="true">
+    </ins>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     RESULT SCREEN
+     ===================================================== -->
+
+<section
+  id="resultScreen"
+  class="card hidden"
+>
+
+  <h2 class="result-title">
+    🎉 Round Complete!
+  </h2>
+
+  <p
+    id="resultMessage"
+    class="result-message"
+  >
+    Great job!
+  </p>
+
+
+  <div class="final-score">
+
+    <span id="finalScore">
+      0
+    </span>
+
+    <span>
+      Points
+    </span>
+
+  </div>
+
+
+  <div class="result-grid">
+
+    <div class="result-box">
+
+      <span class="result-box-label">
+        Questions
+      </span>
+
+      <span
+        id="finishedRound"
+        class="result-box-value"
+      >
+        0
+      </span>
+
+    </div>
+
+
+    <div class="result-box">
+
+      <span class="result-box-label">
+        Correct
+      </span>
+
+      <span
+        id="correctCount"
+        class="result-box-value"
+      >
+        0
+      </span>
+
+    </div>
+
+
+    <div class="result-box">
+
+      <span class="result-box-label">
+        Wrong
+      </span>
+
+      <span
+        id="wrongCount"
+        class="result-box-value"
+      >
+        0
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <button
+    id="restartBtn"
+    type="button"
+    class="restart-btn"
+  >
+    ▶️ Continue to Next Round
+  </button>
+
+
+  <div class="ad-container">
+
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-2666698676518429"
+      data-ad-slot="0000000000"
+      data-ad-format="auto"
+      data-full-width-responsive="true">
+    </ins>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     ERROR SCREEN
+     ===================================================== -->
+
+<section
+  id="errorScreen"
+  class="card hidden"
+>
+
+  <h2 class="error-title">
+    ⚠️ Quiz Error
+  </h2>
+
+  <p
+    id="errorMessage"
+    class="error-text"
+  >
+    The quiz could not be loaded.
+  </p>
+
+
+  <button
+    id="errorRestartBtn"
+    type="button"
+    class="error-btn"
+  >
+    🔄 Back to Start
+  </button>
+
+</section>
+
+  </main>  <!-- =====================================================
+       QUESTIONS.JS
+       ===================================================== -->  <script src="./questions.js"></script>  <!-- =====================================================
+       START BUTTON SAFETY CHECK
+       ===================================================== -->  <script>
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        const startBtn =
+          document.getElementById("startBtn");
+
+        if (!startBtn) {
+          console.error(
+            "Quiz Master: startBtn was not found."
+          );
+
+          return;
+        }
+
+        /*
+         * questions.js creates:
+         *
+         * window.startQuiz = startQuiz;
+         *
+         * We intentionally do NOT add another
+         * click listener here.
+         *
+         * The button uses:
+         *
+         * onclick="window.startQuiz()"
+         *
+         * This prevents duplicate quiz starts.
+         */
+
+        if (
+          typeof window.startQuiz !==
+          "function"
+        ) {
+
+          console.error(
+            "Quiz Master: questions.js did not create window.startQuiz."
+          );
+
+          startBtn.disabled = true;
+
+          startBtn.textContent =
+            "⚠️ Quiz Failed to Load";
+        }
+
+        /*
+         * Load Google AdSense units safely.
+         */
+
+        try {
+
+          const ads =
+            document.querySelectorAll(
+              ".adsbygoogle"
+            );
+
+          ads.forEach(function () {
+
+            try {
+
+              (window.adsbygoogle =
+                window.adsbygoogle || [])
+                .push({});
+
+            } catch (adError) {
+
+              console.warn(
+                "AdSense:",
+                adError
+              );
+
+            }
+
+          });
+
+        } catch (error) {
+
+          console.warn(
+            "AdSense initialization skipped:",
+            error
+          );
+
+        }
+
       }
-
-    });
-  }
-
-
-  if (shareBtn) {
-    shareBtn.addEventListener("click", shareQuiz);
-  }
-
-
-  if (shareResultBtn) {
-    shareResultBtn.addEventListener("click", shareQuiz);
-  }
-
-
-  if (errorRestartBtn) {
-    errorRestartBtn.addEventListener("click", function () {
-      location.reload();
-    });
-  }
-
-
-  async function shareQuiz() {
-
-    const shareData = {
-      title: "Quiz Master 🇷🇼",
-      text: "Try Quiz Master and test your knowledge!",
-      url: window.location.href
-    };
-
-    try {
-
-      if (navigator.share) {
-        await navigator.share(shareData);
-        return;
-      }
-
-      await navigator.clipboard.writeText(window.location.href);
-
-      alert("Quiz link copied. You can now share it with others.");
-
-    } catch (error) {
-
-      try {
-
-        const input = document.createElement("input");
-        input.value = window.location.href;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand("copy");
-        input.remove();
-
-        alert("Quiz link copied.");
-
-      } catch (copyError) {
-
-        alert("Copy this link and share it: " + window.location.href);
-
-      }
-
-    }
-
-  }
-
-
-  function showError(message) {
-
-    const startScreen = document.getElementById("startScreen");
-    const errorScreen = document.getElementById("errorScreen");
-    const errorMessage = document.getElementById("errorMessage");
-
-    if (startScreen) {
-      startScreen.classList.add("hidden");
-    }
-
-    if (errorMessage) {
-      errorMessage.textContent = message;
-    }
-
-    if (errorScreen) {
-      errorScreen.classList.remove("hidden");
-    }
-
-  }
-
-});
-</script></body>
+    );
+  </script></body>
 </html>
