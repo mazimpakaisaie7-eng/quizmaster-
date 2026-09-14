@@ -1,105 +1,122 @@
 /* =========================================================
-   QUIZ MASTER 🇷🇼 - QUESTIONS.JS
-   =========================================================
-   Stable version
-   - Start Quiz works
-   - 10 questions per round
-   - 20 seconds per question
-   - Random questions
-   - No repeats until question bank is completed
-   - Score tracking
-   - Correct / Wrong tracking
-   - Multiple rounds
-   - Compatible with questions.json
+   QUIZ MASTER 🇷🇼
+   QUESTIONS.JS
+   Fully compatible with the provided index.html
    ========================================================= */
 
 (function () {
   "use strict";
 
-  /* =========================================================
-     CONFIG
-     ========================================================= */
+  /* =========================
+     QUIZ SETTINGS
+     ========================= */
 
   const QUESTIONS_PER_ROUND = 10;
-  const SECONDS_PER_QUESTION = 20;
+  const TIME_PER_QUESTION = 20;
+  const POINTS_PER_CORRECT = 10;
+  const QUESTIONS_FILE = "./questions.json";
 
-  /* =========================================================
-     GAME STATE
-     ========================================================= */
+  /* =========================
+     QUIZ STATE
+     ========================= */
 
-  let allQuestions = [];
-  let roundQuestions = [];
-
+  let questions = [];
+  let currentRoundQuestions = [];
   let currentQuestionIndex = 0;
-  let currentRound = 1;
 
   let score = 0;
   let correctAnswers = 0;
   let wrongAnswers = 0;
 
-  let timeLeft = SECONDS_PER_QUESTION;
+  let roundNumber = 1;
   let timerInterval = null;
+  let timeLeft = TIME_PER_QUESTION;
 
-  let quizRunning = false;
-  let questionsLoaded = false;
+  let answered = false;
+  let quizStarted = false;
 
+  /*
+   * Stores questions already used.
+   * Questions will not repeat until the whole
+   * question bank has been used.
+   */
   let usedQuestionIndexes = new Set();
 
-  /* =========================================================
-     ELEMENT HELPER
-     ========================================================= */
+
+  /* =========================
+     DOM HELPERS
+     ========================= */
 
   function getElement(id) {
     return document.getElementById(id);
   }
 
-  /* =========================================================
-     TEXT NORMALIZER
-     ========================================================= */
 
-  function normalizeText(value) {
-    return String(value ?? "")
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, " ");
-  }
+  function showScreen(screenId) {
+    const screens = [
+      "startScreen",
+      "quizScreen",
+      "resultScreen",
+      "errorScreen"
+    ];
 
-  /* =========================================================
-     SHUFFLE
-     ========================================================= */
+    screens.forEach(function (id) {
+      const element = getElement(id);
 
-  function shuffle(array) {
-    const result = Array.isArray(array) ? [...array] : [];
+      if (element) {
+        element.classList.add("hidden");
+      }
+    });
 
-    for (let i = result.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+    const target = getElement(screenId);
 
-      [result[i], result[j]] = [result[j], result[i]];
+    if (target) {
+      target.classList.remove("hidden");
     }
-
-    return result;
   }
 
-  /* =========================================================
-     LOAD QUESTIONS.JSON
-     ========================================================= */
+
+  /* =========================
+     LOAD QUESTIONS
+     ========================= */
 
   async function loadQuestions() {
+
     try {
-      const response = await fetch("./questions.json", {
-        cache: "no-store"
-      });
+
+      const response = await fetch(
+        QUESTIONS_FILE + "?v=" + Date.now(),
+        {
+          method: "GET",
+          cache: "no-store"
+        }
+      );
 
       if (!response.ok) {
         throw new Error(
-          "Could not load questions.json. HTTP " +
+          "questions.json could not be loaded. HTTP status: " +
           response.status
         );
       }
 
       const data = await response.json();
 
-      let questions;
+      /*
+       * Accept both formats:
+       *
+       * [
+       *   {...},
+       *   {...}
+       * ]
+       *
+       * OR
+       *
+       * {
+       *   "questions": [
+       *     {...}
+       *   ]
+       * }
+       */
 
       if (Array.isArray(data)) {
         questions = data;
@@ -114,776 +131,966 @@
         );
       }
 
-      const validQuestions = questions.filter(function (q) {
+
+      /* Remove invalid questions */
+
+      questions = questions.filter(function (q) {
+
         if (!q || typeof q !== "object") {
           return false;
         }
 
-        const questionText =
-          q.question ??
-          q.questionText ??
-          q.text ??
-          q.q ??
-          "";
+        if (
+          typeof q.question !== "string" ||
+          q.question.trim() === ""
+        ) {
+          return false;
+        }
 
-        const options =
-          q.options ??
-          q.answers ??
-          q.choices ??
-          [];
+        if (
+          !Array.isArray(q.options) ||
+          q.options.length < 2
+        ) {
+          return false;
+        }
 
-        return (
-          String(questionText).trim() !== "" &&
-          Array.isArray(options) &&
-          options.length >= 2
-        );
+        if (
+          typeof q.answer !== "string" ||
+          q.answer.trim() === ""
+        ) {
+          return false;
+        }
+
+        return true;
       });
 
-      if (validQuestions.length === 0) {
+
+      if (questions.length === 0) {
         throw new Error(
           "No valid questions were found in questions.json."
         );
       }
 
-      allQuestions = validQuestions;
-      questionsLoaded = true;
-
-      console.log(
-        "Quiz Master: loaded",
-        allQuestions.length,
-        "questions."
-      );
 
       return true;
 
     } catch (error) {
+
       console.error(
-        "Quiz Master load error:",
+        "Quiz Master question loading error:",
         error
       );
 
       showError(
-        "Questions could not be loaded. " +
-        "Please make sure questions.json is in the same folder as index.html."
+        "The quiz questions could not be loaded. Please check that questions.json is in the same folder as index.html and contains valid JSON."
       );
 
       return false;
     }
   }
 
-  /* =========================================================
-     CONVERT QUESTION
-     ========================================================= */
 
-  function prepareQuestion(raw) {
-    const questionText =
-      raw.question ??
-      raw.questionText ??
-      raw.text ??
-      raw.q ??
-      "";
+  /* =========================
+     SHUFFLE
+     ========================= */
 
-    let options =
-      raw.options ??
-      raw.answers ??
-      raw.choices ??
-      [];
+  function shuffle(array) {
 
-    let answer =
-      raw.answer ??
-      raw.correctAnswer ??
-      raw.correct ??
-      raw.correctOption ??
-      null;
+    const copy = array.slice();
 
-    /*
-     * Support object-style options.
-     */
-
-    if (
-      Array.isArray(options) &&
-      options.length > 0 &&
-      typeof options[0] === "object"
+    for (
+      let i = copy.length - 1;
+      i > 0;
+      i--
     ) {
-      const newOptions = [];
 
-      options.forEach(function (option) {
-        const text =
-          option.text ??
-          option.label ??
-          option.answer ??
-          option.value ??
-          "";
+      const j = Math.floor(
+        Math.random() * (i + 1)
+      );
 
-        if (String(text).trim() !== "") {
-          newOptions.push(String(text));
-        }
-
-        if (
-          option.correct === true ||
-          option.isCorrect === true
-        ) {
-          answer = text;
-        }
-      });
-
-      options = newOptions;
+      const temp = copy[i];
+      copy[i] = copy[j];
+      copy[j] = temp;
     }
 
-    return {
-      question: String(questionText),
-      question_rw: String(
-        raw.question_rw ??
-        raw.questionRw ??
-        raw.rw ??
-        ""
-      ),
-      options: Array.isArray(options)
-        ? options.map(function (option) {
-            return String(option);
-          })
-        : [],
-      answer: answer,
-      category: String(
-        raw.category ?? ""
-      )
-    };
+    return copy;
   }
 
-  /* =========================================================
-     PREPARE ROUND
-     ========================================================= */
 
-  function prepareRound() {
-    if (!allQuestions.length) {
-      return false;
-    }
+  /* =========================
+     GET NEXT QUESTIONS
+     ========================= */
+
+  function createRoundQuestions() {
 
     /*
-     * If there are not enough unused questions
-     * for another complete round, start a new cycle.
+     * If the remaining questions are fewer than
+     * 10, use all remaining questions.
+     *
+     * When there are no remaining questions,
+     * start a new cycle.
      */
-    if (
-      allQuestions.length - usedQuestionIndexes.size <
-      QUESTIONS_PER_ROUND
-    ) {
-      usedQuestionIndexes.clear();
-    }
 
-    const available = [];
+    let availableIndexes = [];
 
     for (
       let i = 0;
-      i < allQuestions.length;
+      i < questions.length;
       i++
     ) {
+
       if (!usedQuestionIndexes.has(i)) {
-        available.push(i);
+        availableIndexes.push(i);
       }
     }
 
-    const selected = shuffle(available).slice(
-      0,
-      Math.min(
-        QUESTIONS_PER_ROUND,
-        available.length
-      )
-    );
-
-    roundQuestions = selected.map(function (index) {
-      usedQuestionIndexes.add(index);
-
-      return prepareQuestion(
-        allQuestions[index]
-      );
-    });
-
-    currentQuestionIndex = 0;
-
-    return roundQuestions.length > 0;
-  }
-
-  /* =========================================================
-     START QUIZ
-     ========================================================= */
-
-  async function startQuiz() {
-    console.log("Quiz Master: Start Quiz clicked.");
-
-    stopTimer();
 
     /*
-     * If this is the first start,
-     * reset the game.
+     * Start a new cycle only after all questions
+     * have been used.
      */
-    if (!questionsLoaded) {
+
+    if (availableIndexes.length === 0) {
+
+      usedQuestionIndexes.clear();
+
+      for (
+        let i = 0;
+        i < questions.length;
+        i++
+      ) {
+        availableIndexes.push(i);
+      }
+    }
+
+
+    availableIndexes = shuffle(
+      availableIndexes
+    );
+
+
+    const selectedIndexes =
+      availableIndexes.slice(
+        0,
+        Math.min(
+          QUESTIONS_PER_ROUND,
+          availableIndexes.length
+        )
+      );
+
+
+    currentRoundQuestions =
+      selectedIndexes.map(function (index) {
+
+        usedQuestionIndexes.add(index);
+
+        return questions[index];
+      });
+
+
+    currentQuestionIndex = 0;
+  }
+
+
+  /* =========================
+     START QUIZ
+     ========================= */
+
+  async function startQuiz() {
+
+    try {
+
+      clearTimer();
+
+      /*
+       * Load questions if they have not been loaded yet.
+       */
+
+      if (!questions.length) {
+
+        const loaded = await loadQuestions();
+
+        if (!loaded) {
+          return;
+        }
+      }
+
+
+      if (!questions.length) {
+
+        showError(
+          "No quiz questions are available."
+        );
+
+        return;
+      }
+
+
+      quizStarted = true;
+
       score = 0;
       correctAnswers = 0;
       wrongAnswers = 0;
-      currentRound = 1;
-      currentQuestionIndex = 0;
-      usedQuestionIndexes.clear();
-    }
 
-    /*
-     * Load questions only once.
-     */
-    if (!questionsLoaded) {
-      const loaded = await loadQuestions();
 
-      if (!loaded) {
+      /*
+       * Create the first round.
+       */
+
+      createRoundQuestions();
+
+
+      if (
+        !currentRoundQuestions ||
+        currentRoundQuestions.length === 0
+      ) {
+
+        showError(
+          "The quiz could not create a question round."
+        );
+
         return;
       }
-    }
 
-    /*
-     * Prepare the round.
-     */
-    const ready = prepareRound();
 
-    if (!ready) {
-      showError(
-        "No questions are available."
+      /*
+       * Reset score display.
+       */
+
+      const scoreElement = getElement("score");
+
+      if (scoreElement) {
+        scoreElement.textContent = "0";
+      }
+
+
+      showScreen("quizScreen");
+
+      displayCurrentQuestion();
+
+    } catch (error) {
+
+      console.error(
+        "Quiz start error:",
+        error
       );
-      return;
-    }
 
-    quizRunning = true;
-
-    showQuizScreen();
-
-    updateScore();
-
-    showQuestion();
-  }
-
-  /*
-   * IMPORTANT:
-   * Make startQuiz available to index.html.
-   */
-  window.startQuiz = startQuiz;
-
-  /* =========================================================
-     SHOW QUIZ SCREEN
-     ========================================================= */
-
-  function showQuizScreen() {
-    const startScreen =
-      getElement("startScreen");
-
-    const quizScreen =
-      getElement("quizScreen");
-
-    const resultScreen =
-      getElement("resultScreen");
-
-    const errorScreen =
-      getElement("errorScreen");
-
-    if (startScreen) {
-      startScreen.style.display = "none";
-    }
-
-    if (resultScreen) {
-      resultScreen.style.display = "none";
-    }
-
-    if (errorScreen) {
-      errorScreen.style.display = "none";
-    }
-
-    if (quizScreen) {
-      quizScreen.style.display = "";
+      showError(
+        "The quiz could not start. Please try again."
+      );
     }
   }
 
-  /* =========================================================
-     SHOW QUESTION
-     ========================================================= */
 
-  function showQuestion() {
-    if (!quizRunning) {
-      return;
-    }
+  /* =========================
+     DISPLAY QUESTION
+     ========================= */
 
-    if (
-      currentQuestionIndex >=
-      roundQuestions.length
-    ) {
-      finishRound();
-      return;
-    }
+  function displayCurrentQuestion() {
+
+    clearTimer();
+
+    answered = false;
+
 
     const question =
-      roundQuestions[currentQuestionIndex];
+      currentRoundQuestions[
+        currentQuestionIndex
+      ];
+
 
     if (!question) {
+
       finishRound();
+
       return;
     }
 
-    renderQuestion(question);
+
+    /* Question number */
+
+    const questionNumber =
+      getElement("questionNumber");
+
+    if (questionNumber) {
+
+      questionNumber.textContent =
+        "Question " +
+        (currentQuestionIndex + 1) +
+        "/" +
+        currentRoundQuestions.length;
+    }
+
+
+    /* Progress bar */
+
+    const progressBar =
+      getElement("progressBar");
+
+    if (progressBar) {
+
+      const progress =
+        (
+          currentQuestionIndex /
+          currentRoundQuestions.length
+        ) * 100;
+
+      progressBar.style.width =
+        progress + "%";
+    }
+
+
+    /* Question text */
+
+    const questionElement =
+      getElement("question");
+
+    if (questionElement) {
+
+      /*
+       * English question is preferred.
+       */
+
+      let questionText =
+        question.question;
+
+      /*
+       * If question.question is missing,
+       * allow question_rw as fallback.
+       */
+
+      if (
+        (!questionText ||
+          typeof questionText !== "string") &&
+        typeof question.question_rw === "string"
+      ) {
+        questionText =
+          question.question_rw;
+      }
+
+
+      questionElement.textContent =
+        questionText || "Question unavailable.";
+    }
+
+
+    /* Options */
+
+    displayOptions(question);
+
+
+    /* Hide Next button until answer */
+
+    const nextBtn =
+      getElement("nextBtn");
+
+    if (nextBtn) {
+      nextBtn.classList.add("hidden");
+    }
+
+
+    /* Timer */
+
+    timeLeft = TIME_PER_QUESTION;
+
+    updateTimerDisplay();
 
     startTimer();
   }
 
-  /* =========================================================
-     RENDER QUESTION
-     ========================================================= */
 
-  function renderQuestion(question) {
-    const questionElement =
-      getElement("question");
+  /* =========================
+     DISPLAY OPTIONS
+     ========================= */
 
-    const optionsElement =
+  function displayOptions(question) {
+
+    const optionsContainer =
       getElement("options");
 
-    const numberElement =
-      getElement("questionNumber");
-
-    const categoryElement =
-      getElement("category");
-
-    /*
-     * Question
-     */
-    if (questionElement) {
-      questionElement.textContent =
-        question.question;
-    }
-
-    /*
-     * Category
-     */
-    if (categoryElement) {
-      categoryElement.textContent =
-        question.category;
-    }
-
-    /*
-     * Question number
-     */
-    if (numberElement) {
-      numberElement.textContent =
-        "Question " +
-        (currentQuestionIndex + 1) +
-        " / " +
-        roundQuestions.length;
-    }
-
-    /*
-     * Options
-     */
-    if (!optionsElement) {
-      console.error(
-        "Element #options was not found."
-      );
+    if (!optionsContainer) {
       return;
     }
 
-    optionsElement.innerHTML = "";
+
+    optionsContainer.innerHTML = "";
+
 
     const options =
       shuffle(question.options);
 
-    options.forEach(function (answer) {
+
+    options.forEach(function (optionText) {
+
       const button =
         document.createElement("button");
 
       button.type = "button";
+
       button.className = "option";
-      button.textContent = answer;
+
+      button.textContent =
+        String(optionText);
+
 
       button.addEventListener(
         "click",
         function () {
-          selectAnswer(
-            answer,
-            button
+
+          handleAnswer(
+            String(optionText),
+            button,
+            question
           );
         }
       );
 
-      optionsElement.appendChild(button);
+
+      optionsContainer.appendChild(button);
     });
   }
 
-  /* =========================================================
-     SELECT ANSWER
-     ========================================================= */
 
-  function selectAnswer(
+  /* =========================
+     ANSWER QUESTION
+     ========================= */
+
+  function handleAnswer(
     selectedAnswer,
-    clickedButton
-  ) {
-    if (!quizRunning) {
-      return;
-    }
-
-    stopTimer();
-
-    const question =
-      roundQuestions[currentQuestionIndex];
-
-    if (!question) {
-      return;
-    }
-
-    /*
-     * Disable all options.
-     */
-    const optionsElement =
-      getElement("options");
-
-    if (optionsElement) {
-      const buttons =
-        optionsElement.querySelectorAll(
-          "button"
-        );
-
-      buttons.forEach(function (button) {
-        button.disabled = true;
-      });
-    }
-
-    const correct =
-      isCorrectAnswer(
-        selectedAnswer,
-        question
-      );
-
-    if (correct) {
-      correctAnswers++;
-      score += 10;
-
-      if (clickedButton) {
-        clickedButton.classList.add(
-          "correct"
-        );
-      }
-    } else {
-      wrongAnswers++;
-
-      if (clickedButton) {
-        clickedButton.classList.add(
-          "wrong"
-        );
-      }
-
-      highlightCorrectAnswer(question);
-    }
-
-    updateScore();
-
-    setTimeout(function () {
-      nextQuestion();
-    }, 700);
-  }
-
-  /* =========================================================
-     CHECK ANSWER
-     ========================================================= */
-
-  function isCorrectAnswer(
-    selectedAnswer,
+    selectedButton,
     question
   ) {
-    const correct =
-      question.answer;
 
-    if (
-      correct === null ||
-      correct === undefined ||
-      String(correct).trim() === ""
-    ) {
-      return false;
-    }
-
-    /*
-     * Numeric index:
-     * 0, 1, 2, 3
-     */
-    if (
-      typeof correct === "number"
-    ) {
-      const correctOption =
-        question.options[correct];
-
-      if (correctOption !== undefined) {
-        return (
-          normalizeText(selectedAnswer) ===
-          normalizeText(correctOption)
-        );
-      }
-    }
-
-    /*
-     * Numeric string:
-     * "0", "1", "2", "3"
-     */
-    if (
-      typeof correct === "string" &&
-      /^\d+$/.test(correct.trim())
-    ) {
-      const index =
-        Number(correct.trim());
-
-      const correctOption =
-        question.options[index];
-
-      if (correctOption !== undefined) {
-        return (
-          normalizeText(selectedAnswer) ===
-          normalizeText(correctOption)
-        );
-      }
-    }
-
-    /*
-     * Letter:
-     * A, B, C, D
-     */
-    if (
-      typeof correct === "string" &&
-      /^[ABCD]$/i.test(correct.trim())
-    ) {
-      const index =
-        correct.trim()
-          .toUpperCase()
-          .charCodeAt(0) - 65;
-
-      const correctOption =
-        question.options[index];
-
-      if (correctOption !== undefined) {
-        return (
-          normalizeText(selectedAnswer) ===
-          normalizeText(correctOption)
-        );
-      }
-    }
-
-    /*
-     * Normal format:
-     * "answer": "Kigali"
-     */
-    return (
-      normalizeText(selectedAnswer) ===
-      normalizeText(correct)
-    );
-  }
-
-  /* =========================================================
-     HIGHLIGHT CORRECT ANSWER
-     ========================================================= */
-
-  function highlightCorrectAnswer(question) {
-    const optionsElement =
-      getElement("options");
-
-    if (!optionsElement) {
+    if (answered) {
       return;
     }
 
-    let correctText =
-      question.answer;
 
-    /*
-     * Numeric answer.
-     */
-    if (
-      typeof correctText === "number"
-    ) {
-      correctText =
-        question.options[correctText];
-    }
+    answered = true;
 
-    /*
-     * Letter answer.
-     */
-    if (
-      typeof correctText === "string" &&
-      /^[ABCD]$/i.test(
-        correctText.trim()
-      )
-    ) {
-      const index =
-        correctText
-          .trim()
-          .toUpperCase()
-          .charCodeAt(0) - 65;
+    clearTimer();
 
-      correctText =
-        question.options[index];
-    }
 
-    const buttons =
-      optionsElement.querySelectorAll(
-        "button"
+    const optionButtons =
+      document.querySelectorAll(
+        "#options .option"
       );
 
-    buttons.forEach(function (button) {
+
+    optionButtons.forEach(function (button) {
+
+      button.disabled = true;
+
+      const buttonText =
+        button.textContent.trim();
+
+      const correctAnswer =
+        String(question.answer).trim();
+
+
       if (
-        normalizeText(button.textContent) ===
-        normalizeText(correctText)
+        buttonText === correctAnswer
       ) {
         button.classList.add(
           "correct"
         );
       }
     });
-  }
 
-  /* =========================================================
-     NEXT QUESTION
-     ========================================================= */
 
-  function nextQuestion() {
-    if (!quizRunning) {
-      return;
+    const correctAnswer =
+      String(question.answer).trim();
+
+
+    const selected =
+      String(selectedAnswer).trim();
+
+
+    if (selected === correctAnswer) {
+
+      correctAnswers++;
+
+      score += POINTS_PER_CORRECT;
+
+      selectedButton.classList.add(
+        "correct"
+      );
+
+    } else {
+
+      wrongAnswers++;
+
+      selectedButton.classList.add(
+        "wrong"
+      );
     }
 
-    currentQuestionIndex++;
 
-    if (
-      currentQuestionIndex >=
-      roundQuestions.length
-    ) {
-      finishRound();
-      return;
+    updateScoreDisplay();
+
+
+    /*
+     * Show Next Question button.
+     */
+
+    const nextBtn =
+      getElement("nextBtn");
+
+    if (nextBtn) {
+
+      nextBtn.textContent =
+        currentQuestionIndex <
+        currentRoundQuestions.length - 1
+          ? "Next Question"
+          : "Finish Round";
+
+      nextBtn.classList.remove(
+        "hidden"
+      );
     }
-
-    showQuestion();
   }
 
-  /* =========================================================
+
+  /* =========================
      TIMER
-     ========================================================= */
+     ========================= */
 
   function startTimer() {
-    stopTimer();
 
-    timeLeft =
-      SECONDS_PER_QUESTION;
+    clearTimer();
 
-    updateTimer();
 
     timerInterval =
       setInterval(function () {
-        if (!quizRunning) {
-          stopTimer();
-          return;
-        }
 
         timeLeft--;
 
-        updateTimer();
+        updateTimerDisplay();
+
 
         if (timeLeft <= 0) {
-          timeoutQuestion();
+
+          clearTimer();
+
+          handleTimeout();
         }
+
       }, 1000);
   }
 
-  /* =========================================================
-     UPDATE TIMER
-     ========================================================= */
 
-  function updateTimer() {
-    const timer =
-      getElement("timer");
+  function clearTimer() {
 
-    if (timer) {
-      timer.textContent =
-        timeLeft + "s";
-    }
-  }
-
-  /* =========================================================
-     STOP TIMER
-     ========================================================= */
-
-  function stopTimer() {
     if (timerInterval !== null) {
-      clearInterval(timerInterval);
+
+      clearInterval(
+        timerInterval
+      );
+
       timerInterval = null;
     }
   }
 
-  /* =========================================================
-     TIMEOUT
-     ========================================================= */
 
-  function timeoutQuestion() {
-    if (!quizRunning) {
+  function updateTimerDisplay() {
+
+    const timer =
+      getElement("timer");
+
+    if (timer) {
+
+      timer.textContent =
+        String(
+          Math.max(0, timeLeft)
+        );
+    }
+  }
+
+
+  /* =========================
+     TIMEOUT
+     ========================= */
+
+  function handleTimeout() {
+
+    if (answered) {
       return;
     }
 
-    stopTimer();
+
+    answered = true;
 
     wrongAnswers++;
 
-    const question =
-      roundQuestions[currentQuestionIndex];
 
-    if (question) {
-      highlightCorrectAnswer(question);
+    const currentQuestion =
+      currentRoundQuestions[
+        currentQuestionIndex
+      ];
+
+
+    const optionButtons =
+      document.querySelectorAll(
+        "#options .option"
+      );
+
+
+    optionButtons.forEach(function (button) {
+
+      button.disabled = true;
+
+
+      if (
+        currentQuestion &&
+        button.textContent.trim() ===
+        String(
+          currentQuestion.answer
+        ).trim()
+      ) {
+
+        button.classList.add(
+          "correct"
+        );
+      }
+    });
+
+
+    updateScoreDisplay();
+
+
+    const nextBtn =
+      getElement("nextBtn");
+
+    if (nextBtn) {
+
+      nextBtn.textContent =
+        currentQuestionIndex <
+        currentRoundQuestions.length - 1
+          ? "Next Question"
+          : "Finish Round";
+
+      nextBtn.classList.remove(
+        "hidden"
+      );
     }
-
-    updateScore();
-
-    setTimeout(function () {
-      nextQuestion();
-    }, 700);
   }
 
-  /* =========================================================
-     UPDATE SCORE
-     ========================================================= */
 
-  function updateScore() {
-    const scoreElement =
-      getElement("score");
+  /* =========================
+     NEXT QUESTION
+     ========================= */
 
-    if (scoreElement) {
-      scoreElement.textContent =
-        score;
+  function nextQuestion() {
+
+    if (!quizStarted) {
+      return;
+    }
+
+
+    clearTimer();
+
+
+    if (
+      currentQuestionIndex <
+      currentRoundQuestions.length - 1
+    ) {
+
+      currentQuestionIndex++;
+
+      displayCurrentQuestion();
+
+    } else {
+
+      finishRound();
     }
   }
 
-  /* =========================================================
+
+  /* =========================
      FINISH ROUND
-     ========================================================= */
+     ========================= */
 
   function finishRound() {
-    stopTimer();
 
-    quizRunning = false;
+    clearTimer();
 
-    const quizScreen =
-      getElement("quizScreen");
+    quizStarted = false;
 
-    const resultScreen =
-      getElement("resultScreen");
+    showScreen("resultScreen");
 
-    if (quizScreen) {
-      quizScreen.style.display = "none";
+
+    const finalScore =
+      getElement("finalScore");
+
+    if (finalScore) {
+      finalScore.textContent =
+        String(score);
     }
 
-    if (resultScreen) {
-      resultScreen.style.display = "";
+
+    const correctCount =
+      getElement("correctCount");
+
+    if (correctCount) {
+      correctCount.textContent =
+        String(correctAnswers);
     }
+
+
+    const wrongCount =
+      getElement("wrongCount");
+
+    if (wrongCount) {
+      wrongCount.textContent =
+        String(wrongAnswers);
+    }
+
 
     const finishedRound =
       getElement("finishedRound");
 
     if (finishedRound) {
       finishedRound.textContent =
-        currentRound;
+        String(
+          currentRoundQuestions.length
+        );
     }
+
+
+    const resultMessage =
+      getElement("resultMessage");
+
+    if (resultMessage) {
+
+      const total =
+        currentRoundQuestions.length;
+
+      const percentage =
+        total > 0
+          ? Math.round(
+              (correctAnswers / total) * 100
+            )
+          : 0;
+
+
+      if (percentage >= 90) {
+
+        resultMessage.textContent =
+          "Excellent! Outstanding performance!";
+
+      } else if (percentage >= 70) {
+
+        resultMessage.textContent =
+          "Great job! Keep learning!";
+
+      } else if (percentage >= 50) {
+
+        resultMessage.textContent =
+          "Good effort! You can do even better!";
+
+      } else {
+
+        resultMessage.textContent =
+          "Keep practicing and try again!";
+      }
+    }
+
+
+    roundNumber++;
+  }
+
+
+  /* =========================
+     UPDATE SCORE
+     ========================= */
+
+  function updateScoreDisplay() {
 
     const scoreElement =
       getElement("score");
 
     if (scoreElement) {
-     
+
+      scoreElement.textContent =
+        String(score);
+    }
+  }
+
+
+  /* =========================
+     CONTINUE NEXT ROUND
+     ========================= */
+
+  function restartQuiz() {
+
+    clearTimer();
+
+    score = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+
+    quizStarted = true;
+
+
+    /*
+     * Do NOT clear usedQuestionIndexes here.
+     *
+     * This prevents questions from repeating
+     * until the entire question bank is used.
+     */
+
+    createRoundQuestions();
+
+
+    const scoreElement =
+      getElement("score");
+
+    if (scoreElement) {
+      scoreElement.textContent = "0";
+    }
+
+
+    showScreen("quizScreen");
+
+    displayCurrentQuestion();
+  }
+
+
+  /* =========================
+     ERROR SCREEN
+     ========================= */
+
+  function showError(message) {
+
+    clearTimer();
+
+    quizStarted = false;
+
+
+    const errorMessage =
+      getElement("errorMessage");
+
+    if (errorMessage) {
+
+      errorMessage.textContent =
+        message;
+    }
+
+
+    showScreen("errorScreen");
+  }
+
+
+  /* =========================
+     BUTTON CONNECTIONS
+     ========================= */
+
+  function connectButtons() {
+
+    /*
+     * START BUTTON
+     *
+     * index.html already calls
+     * window.startQuiz().
+     *
+     * We do not add another click event
+     * here to avoid duplicate starts.
+     */
+
+
+    const nextBtn =
+      getElement("nextBtn");
+
+    if (nextBtn) {
+
+      nextBtn.addEventListener(
+        "click",
+        function () {
+          nextQuestion();
+        }
+      );
+    }
+
+
+    const restartBtn =
+      getElement("restartBtn");
+
+    if (restartBtn) {
+
+      restartBtn.addEventListener(
+        "click",
+        function () {
+          restartQuiz();
+        }
+      );
+    }
+
+
+    const errorRestartBtn =
+      getElement("errorRestartBtn");
+
+    if (errorRestartBtn) {
+
+      errorRestartBtn.addEventListener(
+        "click",
+        function () {
+
+          /*
+           * Try loading the questions again
+           * without requiring a full page reload.
+           */
+
+          showScreen("startScreen");
+        }
+      );
+    }
+  }
+
+
+  /* =========================
+     PUBLIC API
+     ========================= */
+
+  /*
+   * THIS IS THE MOST IMPORTANT PART.
+   *
+   * index.html checks:
+   *
+   * typeof window.startQuiz === "function"
+   *
+   * Therefore startQuiz MUST be global.
+   */
+
+  window.startQuiz = startQuiz;
+
+
+  /*
+   * Optional public functions.
+   */
+
+  window.nextQuestion = nextQuestion;
+
+  window.restartQuiz = restartQuiz;
+
+
+  /* =========================
+     INITIALIZATION
+     ========================= */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+      connectButtons();
+
+      /*
+       * Do not automatically start the quiz.
+       *
+       * The user must press:
+       * 🚀 Start Quiz
+       */
+    }
+  );
+
+
+})();
