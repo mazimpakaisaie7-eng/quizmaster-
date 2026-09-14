@@ -1,796 +1,407 @@
-<!DOCTYPE html><html lang="rw">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Quiz Master 🇷🇼 - Quiz y'Ubumenyi</title><meta
-name="description"
-content="Quiz Master ni urubuga rw'ibibazo by'ubumenyi mu Kinyarwanda n'Icyongereza. Gerageza ubumenyi bwawe muri Geography, History, Science, Technology, Rwanda, Africa n'ibindi."
-
-«»
-
-  <meta name="theme-color" content="#111827">  <!-- =====================================================
-       GOOGLE ADSENSE
-       ===================================================== -->  <!-- Google AdSense -->  <script async
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>  <meta name="description" content="Quiz Master is a free knowledge quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and more.">  <meta name="theme-color" content="#111827">  <!-- Google AdSense -->  <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous">
-  </script>  <style>
+    crossorigin="anonymous"></script>  <style>
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: #111827;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      color: #ffffff;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .container {
       width: 100%;
       max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .card {
       background: #1f2937;
-      padding: 25px;
       border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      margin: 20px 0;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
     h1 {
       text-align: center;
-      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 30px;
     }
 
     h2 {
-      margin-top: 0;
-    }
-
-    h3 {
-      margin-bottom: 8px;
+      margin-bottom: 15px;
     }
 
     p {
-      line-height: 1.7;
+      line-height: 1.6;
+      color: #d1d5db;
     }
 
-    .screen {
-      display: none;
+    .subtitle {
+      text-align: center;
+      margin-bottom: 25px;
     }
 
-    .screen.active {
-      display: block;
+    .hidden {
+      display: none !important;
     }
 
     button {
       width: 100%;
-      padding: 14px;
-      margin-top: 12px;
       border: none;
-      border-radius: 10px;
-      font-size: 16px;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 15px;
+      font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.2s;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
 
     button:active {
       transform: scale(0.98);
     }
 
-    button:disabled {
-      cursor: not-allowed;
-      opacity: 0.8;
+    button:hover {
+      opacity: 0.9;
     }
 
-    /* START */
-
-    #startBtn,
-    #restartBtn {
-      background: #22c55e;
+    .primary {
+      background: #2563eb;
       color: white;
     }
 
-    #startBtn:hover,
-    #restartBtn:hover {
+    .secondary {
+      background: #374151;
+      color: white;
+    }
+
+    .success {
       background: #16a34a;
-    }
-
-    #shareBtn {
-      background: #2563eb;
-      color: white;
-      margin-top: 10px;
-    }
-
-    #shareBtn:hover {
-      background: #1d4ed8;
-    }
-
-    /* NEXT */
-
-    #nextBtn {
-      display: none;
-      background: #3b82f6;
       color: white;
     }
 
-    #nextBtn:hover {
-      background: #2563eb;
+    .danger {
+      background: #dc2626;
+      color: white;
     }
 
-    /* TOP BAR */
+    .info-box {
+      background: #111827;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 20px 0;
+    }
+
+    .info-box p {
+      margin: 7px 0;
+    }
 
     .top-bar {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       gap: 10px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    .round {
-      color: #93c5fd;
+    .badge {
+      background: #111827;
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 14px;
+    }
+
+    #timer {
       font-weight: bold;
-      font-size: 18px;
     }
-
-    .progress {
-      color: #d1d5db;
-      font-weight: bold;
-      margin-top: 5px;
-    }
-
-    /* TIMER */
-
-    .timer {
-      background: #dc2626;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-weight: bold;
-      min-width: 70px;
-      text-align: center;
-    }
-
-    /* QUESTION */
 
     #question {
       font-size: 22px;
       line-height: 1.5;
-      margin-bottom: 20px;
-      font-weight: bold;
-    }
-
-    #options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      margin: 20px 0;
     }
 
     .option {
+      width: 100%;
+      text-align: left;
       background: #374151;
       color: white;
-      text-align: left;
-      margin-top: 0;
       border: 2px solid transparent;
+      margin-top: 10px;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 16px;
     }
 
-    .option:hover:not(:disabled) {
-      background: #4b5563;
+    .option:hover {
       border-color: #60a5fa;
     }
 
     .option.correct {
-      background: #16a34a;
-      border-color: #4ade80;
+      background: #166534;
+      border-color: #22c55e;
     }
 
     .option.wrong {
-      background: #dc2626;
-      border-color: #f87171;
+      background: #991b1b;
+      border-color: #ef4444;
     }
 
-    /* RESULT */
+    .option:disabled {
+      cursor: not-allowed;
+      opacity: 1;
+    }
 
-    .result {
-      text-align: center;
+    .progress {
+      height: 8px;
+      background: #374151;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: #3b82f6;
+      transition: width 0.25s ease;
     }
 
     .score {
       text-align: center;
-      font-size: 45px;
+      font-size: 38px;
       font-weight: bold;
       margin: 20px 0;
     }
 
-    #resultMessage {
-      color: #d1d5db;
-      line-height: 1.6;
-    }
-
-    /* INFO */
-
-    .info {
-      text-align: center;
-      color: #d1d5db;
-      line-height: 1.6;
-    }
-
-    .round-info {
-      background: #374151;
-      padding: 15px;
-      border-radius: 12px;
-      margin: 20px 0;
-      text-align: center;
-    }
-
-    .small {
-      font-size: 14px;
-      color: #d1d5db;
-    }
-
-    /* PUBLISHER CONTENT */
-
-    .content-section {
-      margin-top: 28px;
-      padding-top: 24px;
-      border-top: 1px solid #4b5563;
-    }
-
-    .content-section h2 {
-      color: #93c5fd;
-      font-size: 23px;
-    }
-
-    .content-section h3 {
-      color: #e5e7eb;
-      font-size: 18px;
-    }
-
-    .content-section p,
-    .content-section li {
-      color: #d1d5db;
-      line-height: 1.7;
-    }
-
-    .content-section ul {
-      padding-left: 22px;
-    }
-
-    .subjects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .subject {
-      background: #374151;
+    .result-stat {
+      display: flex;
+      justify-content: space-between;
+      background: #111827;
       padding: 12px;
       border-radius: 10px;
+      margin-top: 8px;
     }
 
-    .faq-item {
-      background: #374151;
-      padding: 14px;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-
-    .faq-item p {
-      margin-bottom: 0;
-    }
-
-    .site-links {
+    .ad-box {
+      min-height: 90px;
+      margin: 20px 0;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .site-links a {
-      color: #93c5fd;
-      text-decoration: none;
-    }
-
-    .site-links a:hover {
-      text-decoration: underline;
+      align-items: center;
+      justify-content: center;
     }
 
     .footer {
-      margin-top: 28px;
-      padding-top: 18px;
-      border-top: 1px solid #4b5563;
       text-align: center;
+      margin-top: 25px;
+      font-size: 13px;
       color: #9ca3af;
-      font-size: 13px;
-      line-height: 1.6;
     }
 
-    /* STATS */
-
-    .stats {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin: 15px 0;
+    .rules {
+      margin-top: 15px;
     }
 
-    .stat {
-      flex: 1;
-      background: #374151;
-      padding: 10px;
-      border-radius: 10px;
-      text-align: center;
-      font-size: 13px;
+    .rules li {
+      margin: 9px 0;
       color: #d1d5db;
-    }
-
-    .stat strong {
-      display: block;
-      color: white;
-      font-size: 18px;
-      margin-top: 4px;
-    }
-
-    /* CATEGORY */
-
-    .category {
-      color: #a5b4fc;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    /* ERROR */
-
-    .error {
-      background: #7f1d1d;
-      padding: 15px;
-      border-radius: 10px;
       line-height: 1.5;
     }
 
-    /* ADS */
-
-    .ad-box {
-      margin: 25px 0;
-      padding: 15px 0;
-      min-height: 90px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .ad-box ins.adsbygoogle {
-      display: block;
-      width: 100%;
-      min-height: 50px;
-    }
-
-    .ad-label {
-      color: #9ca3af;
-      font-size: 12px;
-      margin-bottom: 10px;
-    }
-
-    /* RESPONSIVE */
-
     @media (max-width: 500px) {
       body {
-        padding: 10px;
+        padding: 12px;
       }
 
-      .container {
+      .card {
         padding: 18px;
+      }
+
+      h1 {
+        font-size: 25px;
       }
 
       #question {
         font-size: 19px;
       }
-
-      .top-bar {
-        align-items: flex-start;
-      }
-
-      .stats {
-        gap: 6px;
-      }
-
-      .subjects {
-        grid-template-columns: 1fr;
-      }
     }
-  </style></head><body><div class="container">  <!-- =====================================================
-       START SCREEN
-       ===================================================== -->  <div id="startScreen" class="screen active"><h1>Quiz Master 🇷🇼</h1>
+  </style></head><body><div class="container">  <!-- START SCREEN -->  <section id="startScreen" class="card"><h1>Quiz Master 🇷🇼</h1>
 
-<p class="info">
-  Quiz Master ni urubuga rugufasha kugerageza no kongera ubumenyi
-  bwawe binyuze mu bibazo bitandukanye. Ushobora kwiga no kwishimisha
-  usubiza ibibazo bijyanye n'isi, amateka, ubumenyi n'ikoranabuhanga.
+<p class="subtitle">
+  Test your knowledge. Learn something new. Have fun!
 </p>
 
-<div class="round-info">
-
-  <strong>
-    🎯 Round:
-    <span id="startRound">1</span>
-  </strong>
-
-  <br><br>
-
-  <span class="small">
-    📝 Ibibazo 10 kuri buri round
-  </span>
-
-  <br>
-
-  <span class="small">
-    ⏱️ Amasegonda 20 kuri buri kibazo
-  </span>
-
-  <br>
-
-  <span class="small">
-    🔀 Ibibazo biravangwa
-  </span>
-
-  <br>
-
-  <span class="small">
-    🔄 Ibibazo ntibisubirwamo kugeza cycle irangiye
-  </span>
-
-  <br>
-
-  <span class="small">
-    🆓 Gukina ni FREE
-  </span>
-
+<div class="info-box">
+  <p><strong>Round:</strong> 10 questions</p>
+  <p><strong>Time:</strong> 20 seconds per question</p>
+  <p><strong>Questions:</strong> Randomly selected</p>
+  <p><strong>Scoring:</strong> +10 points for each correct answer</p>
+  <p><strong>Cost:</strong> Free</p>
 </div>
 
-<button id="startBtn" type="button">
-  🚀 Tangira Quiz
+<h2>Quiz Rules</h2>
+
+<ul class="rules">
+  <li>Each round contains 10 questions.</li>
+  <li>You have 20 seconds to answer each question.</li>
+  <li>Choose one answer from the four available options.</li>
+  <li>A correct answer gives you 10 points.</li>
+  <li>An unanswered question or timeout counts as wrong.</li>
+  <li>Questions are randomized.</li>
+  <li>Questions will not repeat until the available question bank has been completed.</li>
+  <li>You can continue to the next round after finishing a round.</li>
+</ul>
+
+<button id="startBtn" class="primary" type="button">
+  🚀 Start Quiz
 </button>
 
-<button id="shareBtn" type="button">
-  📤 Sangiza abandi
+<button id="shareBtn" class="secondary" type="button">
+  Share Quiz
 </button>
 
-<!-- =================================================
-     ABOUT / PUBLISHER CONTENT
-     ================================================= -->
+<div class="footer">
+  Quiz Master 🇷🇼 — Free Knowledge Quiz
+</div>
 
-<section class="content-section">
-  <h2>ℹ️ Quiz Master ni iki?</h2>
+  </section>  <!-- QUIZ SCREEN -->  <section id="quizScreen" class="card hidden"><div class="top-bar">
 
-  <p>
-    Quiz Master ni urubuga rwa quiz rugenewe abantu bashaka
-    kugerageza ubumenyi bwabo no kwiga ibintu bishya. Ibibazo
-    bishobora kuba mu byiciro bitandukanye kandi buri round
-    iguha ibibazo 10 byatoranyijwe mu bibazo bihari.
-  </p>
-
-  <p>
-    Intego ya Quiz Master ni ugutanga uburyo bworoshye bwo kwiga
-    no kwidagadura. Iyo usubije neza ubona amanota, naho ibisubizo
-    bitari byo bigufasha kumenya aho wakongera kwiga.
-  </p>
-</section>
-
-<section class="content-section">
-  <h2>📚 Ibyiciro by'ibibazo</h2>
-
-  <p>
-    Quiz Master ishobora kuba irimo ibibazo byo mu byiciro
-    bitandukanye, bitewe n'ibibazo biri muri questions.json.
-  </p>
-
-  <div class="subjects">
-    <div class="subject">🌍 Geography</div>
-    <div class="subject">📜 History</div>
-    <div class="subject">⚛️ Physics</div>
-    <div class="subject">🧬 Biology</div>
-    <div class="subject">🧪 Chemistry</div>
-    <div class="subject">🇷🇼 Rwanda</div>
-    <div class="subject">🌍 Africa</div>
-    <div class="subject">💻 Technology</div>
-    <div class="subject">🔬 Science</div>
-    <div class="subject">🏙️ Countries & Cities</div>
-    <div class="subject">👑 Kings & Queens</div>
-    <div class="subject">🏛️ Presidents</div>
-  </div>
-</section>
-
-<section class="content-section">
-  <h2>🎮 Uko ukoresha Quiz Master</h2>
-
-  <h3>1. Tangira quiz</h3>
-  <p>
-    Kanda kuri <strong>“Tangira Quiz”</strong> kugira ngo utangire
-    round nshya.
-  </p>
-
-  <h3>2. Subiza ibibazo</h3>
-  <p>
-    Buri round igizwe n'ibibazo 10. Soma ikibazo neza, hanyuma
-    uhitemo igisubizo utekereza ko ari cyo.
-  </p>
-
-  <h3>3. Koresha igihe neza</h3>
-  <p>
-    Ufite amasegonda 20 kuri buri kibazo. Niba igihe kirangiye
-    mbere yo guhitamo igisubizo, quiz ikomeza ku kibazo gikurikira
-    hakurikijwe imikorere ya app.
-  </p>
-
-  <h3>4. Reba amanota</h3>
-  <p>
-    Round nirangira, uzabona amanota yawe, umubare w'ibisubizo
-    by'ukuri n'ibisubizo bitari byo.
-  </p>
-</section>
-
-<section class="content-section">
-  <h2>❓ Ibibazo bikunze kubazwa</h2>
-
-  <div class="faq-item">
-    <h3>Quiz Master ni ubuntu?</h3>
-    <p>
-      Yego. Gukina quiz y'ibanze ni FREE nk'uko bigaragara kuri
-      screen yo gutangiriraho.
-    </p>
+  <div class="badge">
+    <span id="questionNumber">Question 1/10</span>
   </div>
 
-  <div class="faq-item">
-    <h3>Buri round iba igizwe n'ibibazo bingahe?</h3>
-    <p>
-      Buri round igizwe n'ibibazo 10.
-    </p>
+  <div class="badge">
+    Time: <span id="timer">20</span>s
   </div>
 
-  <div class="faq-item">
-    <h3>Ni igihe kingana iki gihabwa ikibazo kimwe?</h3>
-    <p>
-      Uhabwa amasegonda 20 kuri buri kibazo.
-    </p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Ese ibibazo birasubirwamo ako kanya?</h3>
-    <p>
-      App yawe ikoresha uburyo bwo kuvanga ibibazo kandi igamije
-      kwirinda gusubiramo ibibazo kugeza cycle irangiye, hakurikijwe
-      logic iri muri questions.js.
-    </p>
-  </div>
-
-  <div class="faq-item">
-    <h3>Nshobora gusangiza abandi Quiz Master?</h3>
-    <p>
-      Yego. Kanda kuri <strong>“Sangiza abandi”</strong> kugira ngo
-      usangize inshuti cyangwa abandi bakinnyi link ya Quiz Master.
-    </p>
-  </div>
-</section>
-
-<section class="content-section">
-  <h2>🔒 Amakuru n'amategeko</h2>
-
-  <p>
-    Mbere yo gukoresha urubuga, ushobora gusoma amabwiriza ajyanye
-    n'imikoreshereze ya service ndetse n'ibijyanye n'ubuzima bwite.
-  </p>
-
-  <div class="site-links">
-    <a href="./Privacy_policy.html">Privacy Policy</a>
-    <a href="./Terms_Of_Services.html">Terms of Service</a>
-  </div>
-</section>
-
-  </div>  <!-- =====================================================
-       QUIZ SCREEN
-       ===================================================== -->  <div id="quizScreen" class="screen"><div class="top-bar">
-
-  <div>
-
-    <div class="round">
-      Round
-      <span id="roundNumber">1</span>
-    </div>
-
-    <div class="progress">
-      Ikibazo
-      <span id="questionNumber">1</span>/10
-    </div>
-
-  </div>
-
-  <div id="timerBox" class="timer">
-
-    ⏱️
-    <span id="timer">20</span>s
-
+  <div class="badge">
+    Score: <span id="score">0</span>
   </div>
 
 </div>
 
-
-<div id="category" class="category"></div>
-
+<div class="progress">
+  <div id="progressBar"></div>
+</div>
 
 <div id="question">
-  Loading...
+  Loading question...
 </div>
-
 
 <div id="options"></div>
 
-
-<button id="nextBtn">
-  Ikibazo gikurikira ➡️
+<button id="nextBtn" class="primary hidden" type="button">
+  Next Question
 </button>
 
-  </div>  <!-- =====================================================
-       RESULT SCREEN
-       ===================================================== -->  <div id="resultScreen" class="screen"><div class="result">
+  </section>  <!-- RESULT SCREEN -->  <section id="resultScreen" class="card hidden"><h1>Round Complete!</h1>
 
-  <h1>
-    Round irangiye 🎉
-  </h1>
-
-  <p>
-    Round
-    <strong>
-      <span id="finishedRound">1</span>
-    </strong>
-  </p>
-
-  <p>
-    Amanota yawe:
-  </p>
-
-  <div class="score">
-
-    <span id="score">0</span>/10
-
-  </div>
-
-  <p id="resultMessage"></p>
-
+<div class="score">
+  <span id="finalScore">0</span>
 </div>
 
-
-<div class="stats">
-
-  <div class="stat">
-
-    Correct
-
-    <strong id="correctCount">
-      0
-    </strong>
-
-  </div>
-
-
-  <div class="stat">
-
-    Wrong
-
-    <strong id="wrongCount">
-      0
-    </strong>
-
-  </div>
-
-
-  <div class="stat">
-
-    Time
-
-    <strong>
-      20s
-    </strong>
-
-  </div>
-
+<div class="result-stat">
+  <span>Correct Answers</span>
+  <strong id="correctCount">0</strong>
 </div>
 
-
-<div class="ad-box" aria-label="Advertisement">
-
-  <div class="ad-label">
-    Advertisement
-  </div>
-
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-2666698676518429"
-       data-ad-slot="0000000000"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-
+<div class="result-stat">
+  <span>Wrong Answers</span>
+  <strong id="wrongCount">0</strong>
 </div>
 
+<div class="result-stat">
+  <span>Questions</span>
+  <strong id="finishedRound">10</strong>
+</div>
 
-<button id="restartBtn">
-  ▶️ Komeza kuri Round ikurikira
+<p id="resultMessage" style="text-align:center; margin-top:20px;">
+  Great job!
+</p>
+
+<!-- Ad space -->
+<div class="ad-box">
+  <!-- AdSense ad can be placed here later -->
+</div>
+
+<button id="restartBtn" class="success" type="button">
+  ▶️ Continue to Next Round
 </button>
 
-  </div>  <!-- =====================================================
-       ERROR SCREEN
-       ===================================================== -->  <div id="errorScreen" class="screen"><h2>
-  Habaye ikibazo ❌
-</h2>
-
-<div id="errorMessage" class="error"></div>
-
-<button onclick="location.reload()">
-  🔄 Ongera ufungure
+<button id="shareResultBtn" class="secondary" type="button">
+  Share Your Result
 </button>
 
-  </div>  <div class="footer">
-    © 2026 Quiz Master 🇷🇼 — Urubuga rwo kugerageza no kongera ubumenyi.
-  </div></div><!-- =====================================================
-     QUESTIONS.JS
-     ===================================================== --><script src="./questions.js"></script><!-- =====================================================
-     FIX: START QUIZ BUTTON
-     Icyo gice gusa ni cyo cyongeweho.
-     ===================================================== --><script>
+  </section>  <!-- ERROR SCREEN -->  <section id="errorScreen" class="card hidden"><h1>Something Went Wrong</h1>
+
+<p id="errorMessage">
+  We could not start the quiz.
+</p>
+
+<button id="errorRestartBtn" class="primary" type="button">
+  Try Again
+</button>
+
+  </section></div><script src="./questions.js"></script><script>
 document.addEventListener("DOMContentLoaded", function () {
 
   const startBtn = document.getElementById("startBtn");
-
-  if (!startBtn) return;
-
-  startBtn.addEventListener("click", function () {
-
-    if (typeof window.startQuiz === "function") {
-      window.startQuiz();
-    } else {
-      console.error("startQuiz() ntabwo yabonetse muri questions.js");
-
-      const errorScreen = document.getElementById("errorScreen");
-      const errorMessage = document.getElementById("errorMessage");
-
-      if (errorScreen && errorMessage) {
-        document.querySelectorAll(".screen").forEach(function (screen) {
-          screen.classList.remove("active");
-        });
-
-        errorMessage.textContent =
-          "Quiz ntiyatangira kuko startQuiz() itabonetse muri questions.js. Reba ko questions.js iri muri folder imwe na index.html kandi ko yafungutse neza.";
-
-        errorScreen.classList.add("active");
-      }
-    }
-
-  });
-
-});
-</script><!-- =====================================================
-     SHARING CODE
-     ===================================================== --><script>
-document.addEventListener("DOMContentLoaded", function () {
-
   const shareBtn = document.getElementById("shareBtn");
+  const shareResultBtn = document.getElementById("shareResultBtn");
+  const errorRestartBtn = document.getElementById("errorRestartBtn");
 
-  if (!shareBtn) return;
+  /*
+   * IMPORTANT:
+   * questions.js must create window.startQuiz.
+   */
 
-  shareBtn.addEventListener("click", async function () {
+  if (startBtn) {
+    startBtn.addEventListener("click", function () {
+
+      if (typeof window.startQuiz === "function") {
+        window.startQuiz();
+      } else {
+        showError(
+          "The quiz engine could not be loaded. Please make sure questions.js is in the same folder as index.html."
+        );
+      }
+
+    });
+  }
+
+
+  if (shareBtn) {
+    shareBtn.addEventListener("click", shareQuiz);
+  }
+
+
+  if (shareResultBtn) {
+    shareResultBtn.addEventListener("click", shareQuiz);
+  }
+
+
+  if (errorRestartBtn) {
+    errorRestartBtn.addEventListener("click", function () {
+      location.reload();
+    });
+  }
+
+
+  async function shareQuiz() {
 
     const shareData = {
       title: "Quiz Master 🇷🇼",
-      text: "Gerageza ubumenyi bwawe muri Quiz Master 🇷🇼! Sangiza inshuti zawe maze mukine quiz.",
+      text: "Try Quiz Master and test your knowledge!",
       url: window.location.href
     };
 
@@ -798,19 +409,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (navigator.share) {
         await navigator.share(shareData);
-      } else if (navigator.clipboard) {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("Link ya Quiz Master yakoporowe. Sangiza abandi!");
-      } else {
-        prompt("Koporora link ya Quiz Master:", window.location.href);
+        return;
       }
 
+      await navigator.clipboard.writeText(window.location.href);
+
+      alert("Quiz link copied. You can now share it with others.");
+
     } catch (error) {
-      console.log("Sharing cancelled:", error);
+
+      try {
+
+        const input = document.createElement("input");
+        input.value = window.location.href;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+
+        alert("Quiz link copied.");
+
+      } catch (copyError) {
+
+        alert("Copy this link and share it: " + window.location.href);
+
+      }
+
     }
 
-  });
+  }
 
-});<script src="./questions.js" defer>
+
+  function showError(message) {
+
+    const startScreen = document.getElementById("startScreen");
+    const errorScreen = document.getElementById("errorScreen");
+    const errorMessage = document.getElementById("errorMessage");
+
+    if (startScreen) {
+      startScreen.classList.add("hidden");
+    }
+
+    if (errorMessage) {
+      errorMessage.textContent = message;
+    }
+
+    if (errorScreen) {
+      errorScreen.classList.remove("hidden");
+    }
+
+  }
+
+});
 </script></body>
 </html>
