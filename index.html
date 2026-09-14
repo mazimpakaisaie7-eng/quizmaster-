@@ -840,19 +840,8 @@ content="Quiz Master is a free knowledge quiz game covering Geography, History, 
 
             }
 
-          });
+<script src="./questions.js"></script>
 
-        } catch (error) {
-
-          console.warn(
-            "AdSense initialization skipped:",
-            error
-          );
-
-        }
-
-      }
-    );
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -873,46 +862,36 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
 
       if (navigator.share) {
-
         await navigator.share(shareData);
+        return;
+      }
 
-      } else {
-
+      if (navigator.clipboard) {
         await navigator.clipboard.writeText(shareUrl);
-
-        const oldText = shareBtn.textContent;
 
         shareBtn.textContent = "✅ Link Copied!";
 
         setTimeout(function () {
-          shareBtn.textContent = oldText;
+          shareBtn.textContent = "📤 Share Quiz Master";
         }, 2000);
+
+        return;
       }
+
+      window.prompt("Copy this link:", shareUrl);
 
     } catch (error) {
 
-      if (error.name !== "AbortError") {
+      if (error.name === "AbortError") return;
 
-        try {
+      window.prompt("Copy this link:", shareUrl);
 
-          await navigator.clipboard.writeText(shareUrl);
-
-          shareBtn.textContent = "✅ Link Copied!";
-
-          setTimeout(function () {
-            shareBtn.textContent = "📤 Share Quiz Master";
-          }, 2000);
-
-        } catch (copyError) {
-
-          alert("Copy this link:\n" + shareUrl);
-
-        }
-      }
     }
 
   });
 
-});<script>
-</script></body>
+});
+</script>
+
+</body>
 </html>
