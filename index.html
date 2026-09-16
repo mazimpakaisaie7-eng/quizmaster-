@@ -11,12 +11,16 @@
   >
 
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
-<link rel="icon" type="image/png" href="/icon-512.png">
-<link rel="apple-touch-icon" href="/icon-512.png">
+
   <meta
     name="description"
     content="Quiz Master is a free knowledge quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and more."
   >
+
+  <!-- APP ICON -->
+  <link rel="icon" type="image/png" href="/icon-512.png">
+  <link rel="apple-touch-icon" href="/icon-512.png">
+
 
   <!-- =========================
        GOOGLE ADSENSE
@@ -39,7 +43,6 @@
       box-sizing: border-box;
     }
 
-
     html,
     body {
       margin: 0;
@@ -47,16 +50,10 @@
       min-height: 100%;
     }
 
-
     body {
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+      font-family: Arial, Helvetica, sans-serif;
       background: #111827;
       color: #ffffff;
-
       min-height: 100vh;
 
       display: flex;
@@ -66,27 +63,21 @@
       padding: 20px;
     }
 
-
     .app {
       width: 100%;
       max-width: 700px;
       margin: 0 auto;
     }
 
-
     .card {
       width: 100%;
-
       background: #1f2937;
-
       border-radius: 18px;
-
       padding: 25px;
 
       box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.35);
     }
-
 
     .hidden {
       display: none !important;
@@ -103,13 +94,11 @@
       margin-bottom: 8px;
     }
 
-
     h1 {
       text-align: center;
       margin: 0 0 10px;
       font-size: 30px;
     }
-
 
     .subtitle {
       text-align: center;
@@ -118,14 +107,12 @@
       margin-bottom: 25px;
     }
 
-
     .info-box {
       background: #111827;
       border-radius: 14px;
       padding: 18px;
       margin-bottom: 22px;
     }
-
 
     .info-row {
       display: flex;
@@ -134,20 +121,16 @@
 
       padding: 10px 0;
 
-      border-bottom:
-        1px solid #374151;
+      border-bottom: 1px solid #374151;
     }
-
 
     .info-row:last-child {
       border-bottom: none;
     }
 
-
     .info-label {
       color: #9ca3af;
     }
-
 
     .info-value {
       font-weight: bold;
@@ -163,7 +146,6 @@
       font-family: inherit;
       -webkit-tap-highlight-color: transparent;
     }
-
 
     .primary-btn,
     .next-btn,
@@ -189,12 +171,10 @@
         opacity 0.15s ease;
     }
 
-
     .primary-btn {
       background: #2563eb;
       color: white;
     }
-
 
     .next-btn {
       background: #059669;
@@ -202,13 +182,11 @@
       margin-top: 18px;
     }
 
-
     .restart-btn {
       background: #2563eb;
       color: white;
       margin-top: 20px;
     }
-
 
     .error-btn {
       background: #dc2626;
@@ -216,16 +194,13 @@
       margin-top: 20px;
     }
 
-
     button:hover {
       transform: translateY(-1px);
     }
 
-
     button:active {
       transform: translateY(0);
     }
-
 
     button:disabled {
       cursor: not-allowed;
@@ -239,125 +214,82 @@
 
     .quiz-header {
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       gap: 15px;
-
       margin-bottom: 15px;
     }
-
 
     #questionNumber {
       font-weight: bold;
       color: #d1d5db;
     }
 
-
     .score-box {
       background: #111827;
-
       padding: 8px 13px;
-
       border-radius: 10px;
-
       font-weight: bold;
     }
-
 
     .progress-container {
       width: 100%;
-
       height: 8px;
-
       background: #374151;
-
       border-radius: 20px;
-
       overflow: hidden;
-
       margin-bottom: 22px;
     }
 
-
     #progressBar {
       width: 0%;
-
       height: 100%;
-
       background: #2563eb;
-
-      transition:
-        width 0.25s ease;
+      transition: width 0.25s ease;
     }
-
 
     .timer-container {
       display: flex;
-
       justify-content: center;
-
       margin-bottom: 20px;
     }
 
-
     .timer {
       min-width: 70px;
-
       text-align: center;
-
       background: #111827;
-
       border-radius: 12px;
-
       padding: 10px 15px;
-
       font-size: 22px;
-
       font-weight: bold;
     }
-
 
     #question {
       font-size: 23px;
-
       line-height: 1.45;
-
       font-weight: bold;
-
       margin: 0 0 20px;
     }
 
-
     #options {
       display: flex;
-
       flex-direction: column;
-
       gap: 12px;
     }
 
-
     .option {
       width: 100%;
-
       text-align: left;
 
       background: #111827;
-
       color: white;
 
-      border:
-        2px solid #374151;
-
+      border: 2px solid #374151;
       border-radius: 12px;
 
       padding: 15px;
 
       font-size: 16px;
-
       cursor: pointer;
 
       transition:
@@ -365,17 +297,14 @@
         border-color 0.15s ease;
     }
 
-
     .option:hover:not(:disabled) {
       border-color: #2563eb;
     }
-
 
     .option.correct {
       background: #065f46;
       border-color: #10b981;
     }
-
 
     .option.wrong {
       background: #7f1d1d;
@@ -389,73 +318,47 @@
 
     .result-title {
       text-align: center;
-
       font-size: 30px;
-
       margin-bottom: 8px;
     }
 
-
     .result-message {
       text-align: center;
-
       color: #d1d5db;
-
       margin-bottom: 25px;
-
       line-height: 1.5;
     }
 
-
     .final-score {
       text-align: center;
-
       font-size: 48px;
-
       font-weight: bold;
-
-      margin:
-        10px 0 25px;
+      margin: 10px 0 25px;
     }
-
 
     .result-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-
       margin-bottom: 20px;
     }
 
-
     .result-box {
       background: #111827;
-
       border-radius: 12px;
-
       padding: 15px;
-
       text-align: center;
     }
 
-
     .result-box-label {
       display: block;
-
       color: #9ca3af;
-
       font-size: 14px;
-
       margin-bottom: 7px;
     }
 
-
     .result-box-value {
       font-size: 23px;
-
       font-weight: bold;
     }
 
@@ -466,18 +369,14 @@
 
     .error-title {
       text-align: center;
-
       font-size: 28px;
-
       margin-bottom: 15px;
     }
-
 
     .error-text {
       background: #111827;
 
-      border:
-        1px solid #7f1d1d;
+      border: 1px solid #7f1d1d;
 
       border-radius: 12px;
 
@@ -497,10 +396,9 @@
 
     .ad-container {
       margin: 20px 0;
-
       text-align: center;
-
       min-height: 50px;
+      overflow: hidden;
     }
 
 
@@ -531,33 +429,26 @@
         padding: 12px;
       }
 
-
       .card {
         padding: 18px;
-
         border-radius: 15px;
       }
-
 
       .logo {
         font-size: 36px;
       }
 
-
       h1 {
         font-size: 25px;
       }
-
 
       #question {
         font-size: 20px;
       }
 
-
       .result-grid {
         grid-template-columns: 1fr;
       }
-
 
       .info-row {
         font-size: 14px;
@@ -572,13 +463,12 @@
 
 <body>
 
-
   <main class="app">
 
 
-    <!-- =====================================================
+    <!-- =========================
          START SCREEN
-         ===================================================== -->
+         ========================= -->
 
     <section
       id="startScreen"
@@ -589,11 +479,9 @@
         🇷🇼
       </div>
 
-
       <h1>
         Quiz Master
       </h1>
-
 
       <p class="subtitle">
         Test your knowledge with questions
@@ -602,7 +490,6 @@
 
 
       <div class="info-box">
-
 
         <div class="info-row">
 
@@ -668,13 +555,10 @@
 
         </div>
 
-
       </div>
 
 
-      <!-- =========================
-           START BUTTON
-           ========================= -->
+      <!-- START BUTTON -->
 
       <button
         id="startBtn"
@@ -685,9 +569,7 @@
       </button>
 
 
-      <!-- =========================
-           SHARE BUTTON
-           ========================= -->
+      <!-- SHARE BUTTON -->
 
       <button
         id="shareBtn"
@@ -699,9 +581,7 @@
       </button>
 
 
-      <!-- =========================
-           START SCREEN AD
-           ========================= -->
+      <!-- START AD -->
 
       <div class="ad-container">
 
@@ -727,27 +607,23 @@
 
       </div>
 
-
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================
          QUIZ SCREEN
-         ===================================================== -->
+         ========================= -->
 
     <section
       id="quizScreen"
       class="card hidden"
     >
 
-
       <div class="quiz-header">
-
 
         <div id="questionNumber">
           Question 1/10
         </div>
-
 
         <div class="score-box">
 
@@ -759,22 +635,15 @@
 
         </div>
 
-
       </div>
 
-
-      <!-- Progress -->
 
       <div class="progress-container">
 
-        <div
-          id="progressBar"
-        ></div>
+        <div id="progressBar"></div>
 
       </div>
 
-
-      <!-- Timer -->
 
       <div class="timer-container">
 
@@ -793,19 +662,13 @@
       </div>
 
 
-      <!-- Question -->
-
       <h2 id="question">
         Loading question...
       </h2>
 
 
-      <!-- Options -->
-
       <div id="options"></div>
 
-
-      <!-- Next -->
 
       <button
         id="nextBtn"
@@ -816,7 +679,7 @@
       </button>
 
 
-      <!-- Quiz Ad -->
+      <!-- QUIZ AD -->
 
       <div class="ad-container">
 
@@ -831,19 +694,17 @@
 
       </div>
 
-
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================
          RESULT SCREEN
-         ===================================================== -->
+         ========================= -->
 
     <section
       id="resultScreen"
       class="card hidden"
     >
-
 
       <h2 class="result-title">
         🎉 Round Complete!
@@ -872,7 +733,6 @@
 
 
       <div class="result-grid">
-
 
         <div class="result-box">
 
@@ -921,7 +781,6 @@
 
         </div>
 
-
       </div>
 
 
@@ -934,7 +793,7 @@
       </button>
 
 
-      <!-- Result Ad -->
+      <!-- RESULT AD -->
 
       <div class="ad-container">
 
@@ -949,19 +808,17 @@
 
       </div>
 
-
     </section>
 
 
-    <!-- =====================================================
+    <!-- =========================
          ERROR SCREEN
-         ===================================================== -->
+         ========================= -->
 
     <section
       id="errorScreen"
       class="card hidden"
     >
-
 
       <h2 class="error-title">
         ⚠️ Quiz Error
@@ -984,25 +841,22 @@
         🔄 Back to Start
       </button>
 
-
     </section>
-
 
   </main>
 
 
-  <!-- =====================================================
+  <!-- =========================
        QUESTIONS.JS
-       IMPORTANT: ONLY ONCE
-       ===================================================== -->
+       LOADED ONLY ONCE
+       ========================= -->
 
   <script src="./questions.js"></script>
 
 
-  <!-- =====================================================
-       INDEX.JS
-       START + SHARE + ADS
-       ===================================================== -->
+  <!-- =========================
+       INDEX JAVASCRIPT
+       ========================= -->
 
   <script>
 
@@ -1011,14 +865,12 @@
       function () {
 
 
-        /* =================================================
+        /* ==========================================
            START QUIZ
-           ================================================= */
+           ========================================== */
 
         const startBtn =
-          document.getElementById(
-            "startBtn"
-          );
+          document.getElementById("startBtn");
 
 
         if (startBtn) {
@@ -1026,7 +878,6 @@
           startBtn.addEventListener(
             "click",
             function () {
-
 
               if (
                 typeof window.startQuiz ===
@@ -1044,32 +895,9 @@
                     error
                   );
 
-                  const errorScreen =
-                    document.getElementById(
-                      "errorScreen"
-                    );
-
-                  const errorMessage =
-                    document.getElementById(
-                      "errorMessage"
-                    );
-
-
-                  if (errorScreen) {
-
-                    errorScreen.classList.remove(
-                      "hidden"
-                    );
-
-                  }
-
-
-                  if (errorMessage) {
-
-                    errorMessage.textContent =
-                      "Quiz ntiyatangiye neza. Reba questions.js na questions.json.";
-
-                  }
+                  showError(
+                    "Quiz could not start. Please check questions.js and questions.json."
+                  );
 
                 }
 
@@ -1079,33 +907,9 @@
                   "Quiz Master: window.startQuiz is not available."
                 );
 
-
-                const errorScreen =
-                  document.getElementById(
-                    "errorScreen"
-                  );
-
-                const errorMessage =
-                  document.getElementById(
-                    "errorMessage"
-                  );
-
-
-                if (errorScreen) {
-
-                  errorScreen.classList.remove(
-                    "hidden"
-                  );
-
-                }
-
-
-                if (errorMessage) {
-
-                  errorMessage.textContent =
-                    "questions.js ntabwo yashoboye gufunguka cyangwa window.startQuiz ntiboneka.";
-
-                }
+                showError(
+                  "questions.js could not be loaded or window.startQuiz is missing."
+                );
 
               }
 
@@ -1115,23 +919,19 @@
         }
 
 
-        /* =================================================
+        /* ==========================================
            SHARE QUIZ MASTER
-           ================================================= */
+           ========================================== */
 
         const shareBtn =
-          document.getElementById(
-            "shareBtn"
-          );
+          document.getElementById("shareBtn");
 
 
         if (shareBtn) {
 
-
           shareBtn.addEventListener(
             "click",
             async function () {
-
 
               const shareUrl =
                 "https://quizmaster-liard-five.vercel.app/";
@@ -1151,9 +951,7 @@
               };
 
 
-              /* =============================
-                 NATIVE SHARE
-                 ============================= */
+              /* NATIVE SHARE */
 
               if (
                 typeof navigator.share ===
@@ -1169,12 +967,6 @@
                   return;
 
                 } catch (error) {
-
-
-                  /*
-                   * User closed/cancelled
-                   * the share window.
-                   */
 
                   if (
                     error &&
@@ -1196,9 +988,7 @@
               }
 
 
-              /* =============================
-                 CLIPBOARD
-                 ============================= */
+              /* CLIPBOARD */
 
               try {
 
@@ -1242,9 +1032,7 @@
               }
 
 
-              /* =============================
-                 OLD BROWSER FALLBACK
-                 ============================= */
+              /* OLD BROWSER FALLBACK */
 
               try {
 
@@ -1310,16 +1098,14 @@
               } catch (error) {
 
                 console.warn(
-                  "Old clipboard fallback failed:",
+                  "Copy fallback failed:",
                   error
                 );
 
               }
 
 
-              /* =============================
-                 FINAL FALLBACK
-                 ============================= */
+              /* FINAL FALLBACK */
 
               window.prompt(
                 "Copy this Quiz Master link:",
@@ -1332,11 +1118,15 @@
         }
 
 
-        /* =================================================
+        /* ==========================================
            ADSENSE
-           ================================================= */
+           ========================================== */
 
         try {
+
+          window.adsbygoogle =
+            window.adsbygoogle || [];
+
 
           const ads =
             document.querySelectorAll(
@@ -1345,20 +1135,16 @@
 
 
           ads.forEach(
-            function () {
+            function (ad) {
 
               try {
 
-                (
-                  window.adsbygoogle =
-                  window.adsbygoogle || []
-                ).push({});
-
+                window.adsbygoogle.push({});
 
               } catch (adError) {
 
                 console.warn(
-                  "AdSense:",
+                  "AdSense error:",
                   adError
                 );
 
@@ -1378,9 +1164,9 @@
         }
 
 
-        /* =================================================
-           ERROR SCREEN BACK BUTTON
-           ================================================= */
+        /* ==========================================
+           ERROR SCREEN
+           ========================================== */
 
         const errorRestartBtn =
           document.getElementById(
@@ -1393,7 +1179,6 @@
           errorRestartBtn.addEventListener(
             "click",
             function () {
-
 
               const errorScreen =
                 document.getElementById(
@@ -1430,11 +1215,91 @@
         }
 
 
+        /* ==========================================
+           ERROR HELPER
+           ========================================== */
+
+        function showError(message) {
+
+          const startScreen =
+            document.getElementById(
+              "startScreen"
+            );
+
+
+          const quizScreen =
+            document.getElementById(
+              "quizScreen"
+            );
+
+
+          const resultScreen =
+            document.getElementById(
+              "resultScreen"
+            );
+
+
+          const errorScreen =
+            document.getElementById(
+              "errorScreen"
+            );
+
+
+          const errorMessage =
+            document.getElementById(
+              "errorMessage"
+            );
+
+
+          if (startScreen) {
+
+            startScreen.classList.add(
+              "hidden"
+            );
+
+          }
+
+
+          if (quizScreen) {
+
+            quizScreen.classList.add(
+              "hidden"
+            );
+
+          }
+
+
+          if (resultScreen) {
+
+            resultScreen.classList.add(
+              "hidden"
+            );
+
+          }
+
+
+          if (errorScreen) {
+
+            errorScreen.classList.remove(
+              "hidden"
+            );
+
+          }
+
+
+          if (errorMessage) {
+
+            errorMessage.textContent =
+              message;
+
+          }
+
+        }
+
       }
     );
 
   </script>
-
 
 </body>
 
