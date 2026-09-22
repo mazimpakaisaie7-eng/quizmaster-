@@ -150,7 +150,8 @@
     .primary-btn,
     .next-btn,
     .restart-btn,
-    .error-btn {
+    .error-btn,
+    .pause-btn {
 
       width: 100%;
 
@@ -186,6 +187,12 @@
       background: #2563eb;
       color: white;
       margin-top: 20px;
+    }
+
+    .pause-btn {
+      background: #4b5563;
+      color: white;
+      margin-top: 12px;
     }
 
     .error-btn {
@@ -569,6 +576,18 @@
       </button>
 
 
+      <!-- CONTINUE SAVED QUIZ -->
+
+      <button
+        id="continueBtn"
+        type="button"
+        class="primary-btn hidden"
+        style="margin-top:12px;"
+      >
+        ▶️ Continue Quiz
+      </button>
+
+
       <!-- SHARE BUTTON -->
 
       <button
@@ -676,6 +695,17 @@
         class="next-btn hidden"
       >
         Next Question
+      </button>
+
+
+      <!-- PAUSE / SAVE -->
+
+      <button
+        id="pauseBtn"
+        type="button"
+        class="pause-btn"
+      >
+        ⏸️ Pause & Save
       </button>
 
 
@@ -909,6 +939,41 @@
 
                 showError(
                   "questions.js could not be loaded or window.startQuiz is missing."
+                );
+
+              }
+
+            }
+          );
+
+        }
+
+
+        /* ==========================================
+           CONTINUE SAVED QUIZ
+           ========================================== */
+
+        const continueBtn =
+          document.getElementById("continueBtn");
+
+
+        if (continueBtn) {
+
+          continueBtn.addEventListener(
+            "click",
+            function () {
+
+              if (
+                typeof window.continueQuiz ===
+                "function"
+              ) {
+
+                window.continueQuiz();
+
+              } else {
+
+                showError(
+                  "Saved quiz could not be continued."
                 );
 
               }
@@ -1209,6 +1274,16 @@
 
               }
 
+
+              if (
+                typeof window.refreshContinueButton ===
+                "function"
+              ) {
+
+                window.refreshContinueButton();
+
+              }
+
             }
           );
 
@@ -1293,6 +1368,20 @@
               message;
 
           }
+
+        }
+
+
+        /* ==========================================
+           INITIAL CONTINUE BUTTON CHECK
+           ========================================== */
+
+        if (
+          typeof window.refreshContinueButton ===
+          "function"
+        ) {
+
+          window.refreshContinueButton();
 
         }
 
