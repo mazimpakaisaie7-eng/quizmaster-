@@ -9,9 +9,15 @@ const POINTS_PER_CORRECT = 10;
 
 const QUESTIONS_FILE = "./questions.json";
 
+
+/* =====================================================
+   GLOBAL VARIABLES
+   ===================================================== */
+
 let allQuestions = [];
 
 let currentRound = 1;
+
 let currentQuestionIndex = 0;
 
 let currentRoundQuestions = [];
@@ -21,11 +27,18 @@ let score = 0;
 let correctAnswers = 0;
 
 let timer = null;
-let timeLeft = TIME_PER_QUESTION;
+
+let timeLeft =
+  TIME_PER_QUESTION;
 
 let answered = false;
 
 let usedQuestionIndexes = [];
+
+
+/* =====================================================
+   SAVED UNLOCKED ROUNDS
+   ===================================================== */
 
 let unlockedRounds =
   parseInt(
@@ -34,6 +47,48 @@ let unlockedRounds =
     ) || "1",
     10
   );
+
+
+if (
+  isNaN(unlockedRounds) ||
+  unlockedRounds < 1
+) {
+
+  unlockedRounds = 1;
+
+}
+
+
+/* =====================================================
+   COMPLETED ROUNDS
+   ===================================================== */
+
+let completedRounds = [];
+
+try {
+
+  completedRounds =
+    JSON.parse(
+      localStorage.getItem(
+        "quizmasterCompletedRounds"
+      ) || "[]"
+    );
+
+  if (
+    !Array.isArray(
+      completedRounds
+    )
+  ) {
+
+    completedRounds = [];
+
+  }
+
+} catch (error) {
+
+  completedRounds = [];
+
+}
 
 
 /* =====================================================
@@ -46,89 +101,121 @@ async function loadQuestions() {
 
     const response =
       await fetch(
-        QUESTIONS_FILE + "?v=" + Date.now(),
+        QUESTIONS_FILE +
+        "?v=" +
+        Date.now(),
         {
           cache: "no-store"
         }
       );
 
+
     if (!response.ok) {
+
       throw new Error(
         "Could not load questions.json"
       );
+
     }
+
 
     const data =
       await response.json();
 
-    if (Array.isArray(data)) {
+
+    if (
+      Array.isArray(data)
+    ) {
 
       allQuestions = data;
 
     } else if (
       data &&
-      Array.isArray(data.questions)
+      Array.isArray(
+        data.questions
+      )
     ) {
 
-      allQuestions = data.questions;
+      allQuestions =
+        data.questions;
 
     } else {
 
       throw new Error(
         "questions.json must contain an array of questions."
       );
+
     }
 
-    if (allQuestions.length === 0) {
+
+    if (
+      allQuestions.length === 0
+    ) {
 
       throw new Error(
         "No questions found."
       );
+
     }
+
 
     console.log(
       "Loaded questions:",
       allQuestions.length
     );
 
+
     renderRounds();
 
     updateContinueButton();
 
+
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     alert(
       "Unable to load quiz questions. Please check questions.json."
     );
+
   }
+
 }
 
 
 /* =====================================================
-   QUESTION VALIDATION
+   VALIDATE QUESTION
    ===================================================== */
 
-function validQuestion(question) {
+function validQuestion(
+  question
+) {
 
   return (
     question &&
-    typeof question.question === "string" &&
-    Array.isArray(question.options) &&
+    typeof question.question ===
+      "string" &&
+    Array.isArray(
+      question.options
+    ) &&
     question.options.length >= 2 &&
-    typeof question.answer === "string"
+    typeof question.answer ===
+      "string"
   );
+
 }
 
 
 /* =====================================================
-   GET RANDOM QUESTIONS
+   GET QUESTIONS FOR ROUND
    ===================================================== */
 
 function getQuestionsForRound() {
 
-  const available = [];
+  let available = [];
+
 
   for (
     let i = 0;
@@ -138,17 +225,21 @@ function getQuestionsForRound() {
 
     if (
       !usedQuestionIndexes.includes(i) &&
-      validQuestion(allQuestions[i])
+      validQuestion(
+        allQuestions[i]
+      )
     ) {
 
       available.push(i);
+
     }
+
   }
 
 
   /*
-    If all questions have been used,
-    start using them again.
+    If there are not enough unused
+    questions, start another cycle.
   */
 
   if (
@@ -158,16 +249,26 @@ function getQuestionsForRound() {
 
     usedQuestionIndexes = [];
 
+    available = [];
+
     for (
       let i = 0;
       i < allQuestions.length;
       i++
     ) {
 
-      if (validQuestion(allQuestions[i])) {
+      if (
+        validQuestion(
+          allQuestions[i]
+        )
+      ) {
+
         available.push(i);
+
       }
+
     }
+
   }
 
 
@@ -181,8 +282,10 @@ function getQuestionsForRound() {
 
     const j =
       Math.floor(
-        Math.random() * (i + 1)
+        Math.random() *
+        (i + 1)
       );
+
 
     [
       available[i],
@@ -191,6 +294,7 @@ function getQuestionsForRound() {
       available[j],
       available[i]
     ];
+
   }
 
 
@@ -204,15 +308,23 @@ function getQuestionsForRound() {
     );
 
 
-  selected.forEach(function(index) {
+  selected.forEach(
+    function(index) {
 
-    if (
-      !usedQuestionIndexes.includes(index)
-    ) {
+      if (
+        !usedQuestionIndexes.includes(
+          index
+        )
+      ) {
 
-      usedQuestionIndexes.push(index);
+        usedQuestionIndexes.push(
+          index
+        );
+
+      }
+
     }
-  });
+  );
 
 
   localStorage.setItem(
@@ -223,11 +335,16 @@ function getQuestionsForRound() {
   );
 
 
-  return selected.map(function(index) {
+  return selected.map(
+    function(index) {
 
-    return allQuestions[index];
+      return allQuestions[
+        index
+      ];
 
-  });
+    }
+  );
+
 }
 
 
@@ -241,7 +358,9 @@ function saveQuizProgress() {
     !currentRoundQuestions ||
     currentRoundQuestions.length === 0
   ) {
+
     return;
+
   }
 
 
@@ -273,12 +392,14 @@ function saveQuizProgress() {
 
   localStorage.setItem(
     "quizmasterProgress",
-    JSON.stringify(progress)
+    JSON.stringify(
+      progress
+    )
   );
 
-  console.log(
-    "Quiz progress saved."
-  );
+
+  updateContinueButton();
+
 }
 
 
@@ -300,56 +421,68 @@ function continueQuiz() {
 
   if (!saved) {
 
-    renderRounds();
-
-    if (
-      typeof window.showRoundScreen ===
-      "function"
-    ) {
-
-      window.showRoundScreen();
-    }
+    alert(
+      "There is no saved quiz to continue."
+    );
 
     return;
+
   }
 
 
   try {
 
     const progress =
-      JSON.parse(saved);
+      JSON.parse(
+        saved
+      );
 
 
     currentRound =
-      progress.currentRound || 1;
+      progress.currentRound ||
+      1;
+
 
     currentQuestionIndex =
-      progress.currentQuestionIndex || 0;
+      progress.currentQuestionIndex ||
+      0;
+
 
     currentRoundQuestions =
-      progress.currentRoundQuestions || [];
+      progress.currentRoundQuestions ||
+      [];
+
 
     score =
-      progress.score || 0;
+      progress.score ||
+      0;
+
 
     correctAnswers =
-      progress.correctAnswers || 0;
+      progress.correctAnswers ||
+      0;
+
 
     timeLeft =
       progress.timeLeft ||
       TIME_PER_QUESTION;
 
+
     usedQuestionIndexes =
-      progress.usedQuestionIndexes || [];
+      progress.usedQuestionIndexes ||
+      [];
 
 
     if (
       currentRoundQuestions.length === 0
     ) {
 
-      startRound(currentRound);
+      startRound(
+        currentRound
+      );
 
       return;
+
     }
 
 
@@ -359,21 +492,31 @@ function continueQuiz() {
     ) {
 
       window.showQuizScreen();
+
     }
 
 
-    displayQuestion();
+    displayQuestion(
+      true
+    );
+
 
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     localStorage.removeItem(
       "quizmasterProgress"
     );
 
+
     startRound(1);
+
   }
+
 }
 
 
@@ -404,6 +547,7 @@ function startNewQuiz() {
     "quizmasterProgress"
   );
 
+
   localStorage.setItem(
     "quizmasterUsedQuestions",
     JSON.stringify([])
@@ -411,6 +555,7 @@ function startNewQuiz() {
 
 
   startRound(1);
+
 }
 
 
@@ -422,7 +567,9 @@ window.startNewQuiz =
    START ROUND
    ===================================================== */
 
-function startRound(roundNumber) {
+function startRound(
+  roundNumber
+) {
 
   if (
     roundNumber >
@@ -434,17 +581,29 @@ function startRound(roundNumber) {
     );
 
     return;
+
   }
+
+
+  clearInterval(
+    timer
+  );
 
 
   currentRound =
     roundNumber;
 
-  currentQuestionIndex = 0;
+
+  currentQuestionIndex =
+    0;
+
 
   score = 0;
 
-  correctAnswers = 0;
+
+  correctAnswers =
+    0;
+
 
   answered = false;
 
@@ -462,7 +621,12 @@ function startRound(roundNumber) {
     );
 
     return;
+
   }
+
+
+  timeLeft =
+    TIME_PER_QUESTION;
 
 
   saveQuizProgress();
@@ -474,20 +638,27 @@ function startRound(roundNumber) {
   ) {
 
     window.showQuizScreen();
+
   }
 
 
-  displayQuestion();
+  displayQuestion(
+    false
+  );
+
 }
 
 
 /* =====================================================
-   RETRY CURRENT ROUND
+   RETRY ROUND
    ===================================================== */
 
 function retryCurrentRound() {
 
-  startRound(currentRound);
+  startRound(
+    currentRound
+  );
+
 }
 
 
@@ -496,7 +667,7 @@ window.retryCurrentRound =
 
 
 /* =====================================================
-   NEXT ROUND
+   START NEXT ROUND
    ===================================================== */
 
 function startNextRound() {
@@ -509,14 +680,18 @@ function startNextRound() {
     next <= unlockedRounds
   ) {
 
-    startRound(next);
+    startRound(
+      next
+    );
 
   } else {
 
     alert(
       "🔒 Complete this round with at least 60% first."
     );
+
   }
+
 }
 
 
@@ -528,9 +703,14 @@ window.startNextRound =
    DISPLAY QUESTION
    ===================================================== */
 
-function displayQuestion() {
+function displayQuestion(
+  isContinuing
+) {
 
-  clearInterval(timer);
+  clearInterval(
+    timer
+  );
+
 
   answered = false;
 
@@ -546,6 +726,7 @@ function displayQuestion() {
     finishRound();
 
     return;
+
   }
 
 
@@ -554,30 +735,45 @@ function displayQuestion() {
       "questionText"
     );
 
+
   const options =
     document.getElementById(
       "options"
     );
+
 
   const questionNumber =
     document.getElementById(
       "questionNumber"
     );
 
+
   const roundLabel =
     document.getElementById(
       "roundLabel"
     );
+
 
   const scoreLabel =
     document.getElementById(
       "scoreLabel"
     );
 
+
   const progressBar =
     document.getElementById(
       "progressBar"
     );
+
+
+  if (
+    !questionText ||
+    !options
+  ) {
+
+    return;
+
+  }
 
 
   questionText.textContent =
@@ -612,13 +808,16 @@ function displayQuestion() {
     progress + "%";
 
 
-  options.innerHTML = "";
+  options.innerHTML =
+    "";
 
 
-  /* Shuffle answer options */
+  /* Shuffle options */
 
   const shuffledOptions =
-    [...question.options];
+    [
+      ...question.options
+    ];
 
 
   for (
@@ -634,6 +833,7 @@ function displayQuestion() {
         (i + 1)
       );
 
+
     [
       shuffledOptions[i],
       shuffledOptions[j]
@@ -641,6 +841,7 @@ function displayQuestion() {
       shuffledOptions[j],
       shuffledOptions[i]
     ];
+
   }
 
 
@@ -681,15 +882,30 @@ function displayQuestion() {
       options.appendChild(
         button
       );
+
     }
   );
 
 
-  timeLeft =
-    TIME_PER_QUESTION;
+  /*
+    When continuing a saved game,
+    use the saved remaining time.
+  */
+
+  if (
+    !isContinuing ||
+    !timeLeft ||
+    timeLeft <= 0
+  ) {
+
+    timeLeft =
+      TIME_PER_QUESTION;
+
+  }
 
 
   startTimer();
+
 }
 
 
@@ -699,10 +915,20 @@ function displayQuestion() {
 
 function startTimer() {
 
+  clearInterval(
+    timer
+  );
+
+
   const timerElement =
     document.getElementById(
       "timer"
     );
+
+
+  if (!timerElement) {
+    return;
+  }
 
 
   timerElement.textContent =
@@ -711,25 +937,47 @@ function startTimer() {
 
 
   timer =
-    setInterval(function() {
+    setInterval(
+      function() {
 
-      timeLeft--;
-
-
-      timerElement.textContent =
-        "⏱️ " +
-        timeLeft;
+        timeLeft--;
 
 
-      if (timeLeft <= 0) {
+        timerElement.textContent =
+          "⏱️ " +
+          timeLeft;
 
-        clearInterval(timer);
 
-        timeUp();
+        /*
+          Save progress while playing.
+        */
 
-      }
+        if (
+          timeLeft % 5 === 0
+        ) {
 
-    }, 1000);
+          saveQuizProgress();
+
+        }
+
+
+        if (
+          timeLeft <= 0
+        ) {
+
+          clearInterval(
+            timer
+          );
+
+
+          timeUp();
+
+        }
+
+      },
+      1000
+    );
+
 }
 
 
@@ -774,7 +1022,9 @@ function timeUp() {
         button.classList.add(
           "correct"
         );
+
       }
+
     }
   );
 
@@ -783,6 +1033,7 @@ function timeUp() {
     nextQuestion,
     900
   );
+
 }
 
 
@@ -802,7 +1053,10 @@ function selectAnswer(
 
   answered = true;
 
-  clearInterval(timer);
+
+  clearInterval(
+    timer
+  );
 
 
   const buttons =
@@ -826,6 +1080,7 @@ function selectAnswer(
         button.classList.add(
           "correct"
         );
+
       }
 
 
@@ -839,6 +1094,7 @@ function selectAnswer(
         button.classList.add(
           "wrong"
         );
+
       }
 
     }
@@ -853,21 +1109,32 @@ function selectAnswer(
     score +=
       POINTS_PER_CORRECT;
 
+
     correctAnswers++;
 
   }
 
 
-  document.getElementById(
-    "scoreLabel"
-  ).textContent =
-    "Score: " + score;
+  const scoreLabel =
+    document.getElementById(
+      "scoreLabel"
+    );
+
+
+  if (scoreLabel) {
+
+    scoreLabel.textContent =
+      "Score: " +
+      score;
+
+  }
 
 
   setTimeout(
     nextQuestion,
     800
   );
+
 }
 
 
@@ -888,12 +1155,21 @@ function nextQuestion() {
     finishRound();
 
     return;
+
   }
+
+
+  timeLeft =
+    TIME_PER_QUESTION;
 
 
   saveQuizProgress();
 
-  displayQuestion();
+
+  displayQuestion(
+    false
+  );
+
 }
 
 
@@ -903,7 +1179,9 @@ function nextQuestion() {
 
 function finishRound() {
 
-  clearInterval(timer);
+  clearInterval(
+    timer
+  );
 
 
   const total =
@@ -911,10 +1189,12 @@ function finishRound() {
 
 
   const percentage =
-    Math.round(
-      (correctAnswers / total) *
-      100
-    );
+    total > 0
+      ? Math.round(
+          (correctAnswers / total) *
+          100
+        )
+      : 0;
 
 
   const passed =
@@ -922,8 +1202,33 @@ function finishRound() {
 
 
   /*
-    Unlock next round only when
-    score is 60% or more.
+    Mark round as completed.
+  */
+
+  if (
+    !completedRounds.includes(
+      currentRound
+    )
+  ) {
+
+    completedRounds.push(
+      currentRound
+    );
+
+  }
+
+
+  localStorage.setItem(
+    "quizmasterCompletedRounds",
+    JSON.stringify(
+      completedRounds
+    )
+  );
+
+
+  /*
+    Unlock next round
+    when score is 60% or higher.
   */
 
   if (passed) {
@@ -945,9 +1250,16 @@ function finishRound() {
         "quizmasterUnlockedRounds",
         unlockedRounds
       );
+
     }
+
   }
 
+
+  /*
+    Delete active progress
+    after completing the round.
+  */
 
   localStorage.removeItem(
     "quizmasterProgress"
@@ -972,6 +1284,7 @@ function finishRound() {
       passed,
       nextRoundNumber
     );
+
   }
 
 
@@ -981,15 +1294,17 @@ function finishRound() {
   ) {
 
     window.showResultScreen();
+
   }
 
 
   renderRounds();
+
 }
 
 
 /* =====================================================
-   ROUND BUTTONS
+   RENDER ROUNDS
    ===================================================== */
 
 function renderRounds() {
@@ -1005,12 +1320,13 @@ function renderRounds() {
   }
 
 
-  grid.innerHTML = "";
+  grid.innerHTML =
+    "";
 
 
   /*
-    Number of rounds is calculated
-    from the available questions.
+    Number of rounds is based
+    on available questions.
   */
 
   const possibleRounds =
@@ -1022,10 +1338,6 @@ function renderRounds() {
       )
     );
 
-
-  /*
-    Always show all available rounds.
-  */
 
   for (
     let i = 1;
@@ -1039,25 +1351,45 @@ function renderRounds() {
       );
 
 
-    button.className =
-      "round-btn";
-
-
     button.type =
       "button";
 
 
-    if (
-      i <= unlockedRounds
-    ) {
+    button.className =
+      "round-btn";
 
-      button.classList.add(
-        "unlocked"
+
+    const unlocked =
+      i <= unlockedRounds;
+
+
+    const completed =
+      completedRounds.includes(
+        i
       );
 
 
-      button.textContent =
-        "▶️ Round " + i;
+    if (unlocked) {
+
+      if (completed) {
+
+        button.classList.add(
+          "completed"
+        );
+
+        button.textContent =
+          "✅ Round " + i;
+
+      } else {
+
+        button.classList.add(
+          "unlocked"
+        );
+
+        button.textContent =
+          "▶️ Round " + i;
+
+      }
 
 
       button.addEventListener(
@@ -1068,6 +1400,7 @@ function renderRounds() {
 
         }
       );
+
 
     } else {
 
@@ -1090,11 +1423,16 @@ function renderRounds() {
 
         }
       );
+
     }
 
 
-    grid.appendChild(button);
+    grid.appendChild(
+      button
+    );
+
   }
+
 }
 
 
@@ -1130,12 +1468,24 @@ function updateContinueButton() {
     button.style.display =
       "block";
 
+    button.textContent =
+      "▶️ Continue Quiz";
+
   } else {
 
     button.style.display =
       "block";
+
+    button.textContent =
+      "▶️ Continue Quiz";
+
   }
+
 }
+
+
+window.updateContinueButton =
+  updateContinueButton;
 
 
 /* =====================================================
@@ -1157,13 +1507,29 @@ document.addEventListener(
       try {
 
         usedQuestionIndexes =
-          JSON.parse(savedUsed);
+          JSON.parse(
+            savedUsed
+          );
+
+
+        if (
+          !Array.isArray(
+            usedQuestionIndexes
+          )
+        ) {
+
+          usedQuestionIndexes =
+            [];
+
+        }
 
       } catch (error) {
 
-        usedQuestionIndexes = [];
+        usedQuestionIndexes =
+          [];
 
       }
+
     }
 
 
