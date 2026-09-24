@@ -389,7 +389,7 @@
 
     <div class="card">
 
-      <!-- YOUR QUIZ MASTER PHOTO / LOGO -->
+      <!-- QUIZ MASTER LOGO / PHOTO -->
       <img
         src="/icon-512-3.png"
         alt="Quiz Master Logo"
@@ -406,7 +406,6 @@
 
       <div class="home-buttons">
 
-        <!-- START -->
         <button
           id="startBtn"
           type="button"
@@ -414,7 +413,6 @@
           ▶️ Start Quiz
         </button>
 
-        <!-- CONTINUE -->
         <button
           id="continueBtn"
           type="button"
@@ -422,14 +420,12 @@
           ▶️ Continue Quiz
         </button>
 
-        <!-- ROUNDS -->
         <button
           id="roundsBtn"
           type="button">
           🏆 Choose Round
         </button>
 
-        <!-- SETTINGS -->
         <button
           id="settingsBtn"
           type="button"
@@ -437,7 +433,6 @@
           ⚙️ Settings
         </button>
 
-        <!-- SHARE -->
         <button
           id="shareBtn"
           type="button"
@@ -454,4 +449,546 @@
           class="adsbygoogle"
           style="display:block"
           data-ad-client="ca-pub-2666698676518429"
-         
+          data-ad-slot="9045712897"
+          data-ad-format="auto"
+          data-full-width-responsive="true">
+        </ins>
+
+      </div>
+
+      <p class="small-note">
+        Free knowledge quiz game 🇷🇼
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       ROUNDS SCREEN
+       ===================================================== -->
+
+  <section id="roundsScreen" class="screen">
+
+    <div class="card">
+
+      <h2>🏆 Choose Round</h2>
+
+      <p class="subtitle">
+        Select a round to start playing.
+      </p>
+
+      <div id="roundGrid" class="round-grid">
+
+        <button class="round-btn unlocked" data-round="1">
+          Round 1
+        </button>
+
+        <button class="round-btn locked" data-round="2">
+          🔒 Round 2
+        </button>
+
+        <button class="round-btn locked" data-round="3">
+          🔒 Round 3
+        </button>
+
+        <button class="round-btn locked" data-round="4">
+          🔒 Round 4
+        </button>
+
+        <button class="round-btn locked" data-round="5">
+          🔒 Round 5
+        </button>
+
+        <button class="round-btn locked" data-round="6">
+          🔒 Round 6
+        </button>
+
+        <button class="round-btn locked" data-round="7">
+          🔒 Round 7
+        </button>
+
+        <button class="round-btn locked" data-round="8">
+          🔒 Round 8
+        </button>
+
+        <button class="round-btn locked" data-round="9">
+          🔒 Round 9
+        </button>
+
+        <button class="round-btn locked" data-round="10">
+          🔒 Round 10
+        </button>
+
+      </div>
+
+      <button
+        id="roundsBackBtn"
+        type="button"
+        class="secondary">
+        ⬅️ Back Home
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       QUIZ SCREEN
+       ===================================================== -->
+
+  <section id="quizScreen" class="screen">
+
+    <div class="card">
+
+      <div class="topbar">
+
+        <span id="questionNumber">
+          Question 1 / 10
+        </span>
+
+        <span id="scoreDisplay">
+          Score: 0
+        </span>
+
+        <span id="roundDisplay">
+          Round 1
+        </span>
+
+      </div>
+
+      <div class="progress">
+        <div
+          id="progressBar"
+          class="progress-bar">
+        </div>
+      </div>
+
+      <div
+        id="timer"
+        class="timer">
+        ⏱️ 20
+      </div>
+
+      <div
+        id="question"
+        class="question">
+        Loading question...
+      </div>
+
+      <div id="options">
+
+        <button class="option" type="button"></button>
+        <button class="option" type="button"></button>
+        <button class="option" type="button"></button>
+        <button class="option" type="button"></button>
+
+      </div>
+
+      <div
+        id="message"
+        class="message hidden">
+      </div>
+
+      <button
+        id="nextBtn"
+        type="button"
+        class="success"
+        style="display:none;">
+        Next Question ➡️
+      </button>
+
+      <button
+        id="quizHomeBtn"
+        type="button"
+        class="secondary">
+        🏠 Home
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       RESULT SCREEN
+       ===================================================== -->
+
+  <section id="resultScreen" class="screen">
+
+    <div class="card">
+
+      <h2>🎉 Quiz Complete!</h2>
+
+      <div
+        id="finalScore"
+        class="score">
+        Score: 0
+      </div>
+
+      <div
+        id="resultPercent"
+        class="result-percent">
+        0%
+      </div>
+
+      <div
+        id="resultMessage"
+        class="message">
+        Well done!
+      </div>
+
+      <!-- ADSENSE -->
+      <div class="ad-box">
+
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-2666698676518429"
+          data-ad-slot="9045712897"
+          data-ad-format="auto"
+          data-full-width-responsive="true">
+        </ins>
+
+      </div>
+
+      <button
+        id="restartBtn"
+        type="button"
+        class="success">
+        🔄 Play Again
+      </button>
+
+      <button
+        id="resultHomeBtn"
+        type="button"
+        class="secondary">
+        🏠 Back Home
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       SETTINGS SCREEN
+       ===================================================== -->
+
+  <section id="settingsScreen" class="screen">
+
+    <div class="card">
+
+      <h2>⚙️ Settings</h2>
+
+      <div class="settings-row">
+
+        <div class="settings-text">
+
+          <strong>🎵 Quiz Music</strong>
+
+          <small>
+            Turn background music on or off while playing.
+          </small>
+
+        </div>
+
+        <div
+          id="musicSwitch"
+          class="switch"
+          role="button"
+          tabindex="0">
+        </div>
+
+      </div>
+
+      <div class="settings-row">
+
+        <div class="settings-text">
+
+          <strong>🔊 Sound Effects</strong>
+
+          <small>
+            Turn quiz sound effects on or off.
+          </small>
+
+        </div>
+
+        <div
+          id="soundSwitch"
+          class="switch on"
+          role="button"
+          tabindex="0">
+        </div>
+
+      </div>
+
+      <button
+        id="settingsBackBtn"
+        type="button"
+        class="secondary">
+        ⬅️ Back Home
+      </button>
+
+    </div>
+
+  </section>
+
+
+</div>
+
+
+<!-- =====================================================
+     SHARE + BASIC NAVIGATION
+     ===================================================== -->
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+
+    /* =========================
+       SCREEN FUNCTION
+       ========================= */
+
+    function showScreen(id) {
+
+      document.querySelectorAll(".screen").forEach(function (screen) {
+        screen.classList.remove("active");
+      });
+
+      const target = document.getElementById(id);
+
+      if (target) {
+        target.classList.add("active");
+        window.scrollTo(0, 0);
+      }
+    }
+
+
+    /* =========================
+       HOME BUTTONS
+       ========================= */
+
+    const roundsBtn =
+      document.getElementById("roundsBtn");
+
+    const roundsBackBtn =
+      document.getElementById("roundsBackBtn");
+
+    const settingsBtn =
+      document.getElementById("settingsBtn");
+
+    const settingsBackBtn =
+      document.getElementById("settingsBackBtn");
+
+    const quizHomeBtn =
+      document.getElementById("quizHomeBtn");
+
+    const resultHomeBtn =
+      document.getElementById("resultHomeBtn");
+
+
+    if (roundsBtn) {
+      roundsBtn.addEventListener("click", function () {
+        showScreen("roundsScreen");
+      });
+    }
+
+    if (roundsBackBtn) {
+      roundsBackBtn.addEventListener("click", function () {
+        showScreen("homeScreen");
+      });
+    }
+
+    if (settingsBtn) {
+      settingsBtn.addEventListener("click", function () {
+        showScreen("settingsScreen");
+      });
+    }
+
+    if (settingsBackBtn) {
+      settingsBackBtn.addEventListener("click", function () {
+        showScreen("homeScreen");
+      });
+    }
+
+    if (quizHomeBtn) {
+      quizHomeBtn.addEventListener("click", function () {
+        showScreen("homeScreen");
+      });
+    }
+
+    if (resultHomeBtn) {
+      resultHomeBtn.addEventListener("click", function () {
+        showScreen("homeScreen");
+      });
+    }
+
+
+    /* =========================
+       SHARE BUTTON
+       ========================= */
+
+    const shareBtn =
+      document.getElementById("shareBtn");
+
+    const shareUrl =
+      "https://quizmaster-liard-five.vercel.app/";
+
+    if (shareBtn) {
+
+      shareBtn.addEventListener("click", async function () {
+
+        const shareData = {
+          title: "Quiz Master 🇷🇼",
+          text: "Test your knowledge with Quiz Master!",
+          url: shareUrl
+        };
+
+        try {
+
+          if (navigator.share) {
+
+            await navigator.share(shareData);
+
+          } else if (navigator.clipboard) {
+
+            await navigator.clipboard.writeText(shareUrl);
+
+            shareBtn.textContent = "✅ Link Copied!";
+
+            setTimeout(function () {
+              shareBtn.textContent = "📤 Share Quiz Master";
+            }, 2000);
+
+          } else {
+
+            window.prompt(
+              "Copy this Quiz Master link:",
+              shareUrl
+            );
+
+          }
+
+        } catch (error) {
+
+          if (error && error.name === "AbortError") {
+            return;
+          }
+
+          console.log("Share error:", error);
+
+        }
+
+      });
+
+    }
+
+
+    /* =========================
+       SETTINGS SWITCHES
+       ========================= */
+
+    const musicSwitch =
+      document.getElementById("musicSwitch");
+
+    const soundSwitch =
+      document.getElementById("soundSwitch");
+
+
+    if (musicSwitch) {
+
+      musicSwitch.addEventListener("click", function () {
+
+        musicSwitch.classList.toggle("on");
+
+        localStorage.setItem(
+          "quizmasterMusic",
+          musicSwitch.classList.contains("on")
+        );
+
+      });
+
+    }
+
+
+    if (soundSwitch) {
+
+      soundSwitch.addEventListener("click", function () {
+
+        soundSwitch.classList.toggle("on");
+
+        localStorage.setItem(
+          "quizmasterSound",
+          soundSwitch.classList.contains("on")
+        );
+
+      });
+
+    }
+
+
+    /* =========================
+       LOAD SETTINGS
+       ========================= */
+
+    const savedMusic =
+      localStorage.getItem("quizmasterMusic");
+
+    const savedSound =
+      localStorage.getItem("quizmasterSound");
+
+
+    if (savedMusic === "true" && musicSwitch) {
+      musicSwitch.classList.add("on");
+    }
+
+    if (savedMusic === "false" && musicSwitch) {
+      musicSwitch.classList.remove("on");
+    }
+
+    if (savedSound === "false" && soundSwitch) {
+      soundSwitch.classList.remove("on");
+    }
+
+
+    /* =========================
+       ADSENSE
+       ========================= */
+
+    try {
+
+      const ads =
+        document.querySelectorAll(".adsbygoogle");
+
+      ads.forEach(function (ad) {
+
+        if (!ad.getAttribute("data-adsbygoogle-status")) {
+
+          (adsbygoogle = window.adsbygoogle || []).push({});
+
+        }
+
+      });
+
+    } catch (error) {
+
+      console.log("AdSense:", error);
+
+    }
+
+  });
+
+</script>
+
+
+<!-- =====================================================
+     QUIZ QUESTIONS SCRIPT
+     ===================================================== -->
+
+<script src="./questions.js"></script>
+
+</body>
+</html>
