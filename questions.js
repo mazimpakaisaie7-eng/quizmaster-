@@ -17,19 +17,14 @@ const QUESTIONS_FILE = "./questions.json";
 let allQuestions = [];
 
 let currentRound = 1;
-
 let currentQuestionIndex = 0;
-
 let currentRoundQuestions = [];
 
 let score = 0;
-
 let correctAnswers = 0;
 
 let timer = null;
-
-let timeLeft =
-  TIME_PER_QUESTION;
+let timeLeft = TIME_PER_QUESTION;
 
 let answered = false;
 
@@ -37,25 +32,16 @@ let usedQuestionIndexes = [];
 
 
 /* =====================================================
-   SAVED UNLOCKED ROUNDS
+   UNLOCKED ROUNDS
    ===================================================== */
 
-let unlockedRounds =
-  parseInt(
-    localStorage.getItem(
-      "quizmasterUnlockedRounds"
-    ) || "1",
-    10
-  );
+let unlockedRounds = parseInt(
+  localStorage.getItem("quizmasterUnlockedRounds") || "1",
+  10
+);
 
-
-if (
-  isNaN(unlockedRounds) ||
-  unlockedRounds < 1
-) {
-
+if (isNaN(unlockedRounds) || unlockedRounds < 1) {
   unlockedRounds = 1;
-
 }
 
 
@@ -66,28 +52,16 @@ if (
 let completedRounds = [];
 
 try {
+  completedRounds = JSON.parse(
+    localStorage.getItem("quizmasterCompletedRounds") || "[]"
+  );
 
-  completedRounds =
-    JSON.parse(
-      localStorage.getItem(
-        "quizmasterCompletedRounds"
-      ) || "[]"
-    );
-
-  if (
-    !Array.isArray(
-      completedRounds
-    )
-  ) {
-
+  if (!Array.isArray(completedRounds)) {
     completedRounds = [];
-
   }
 
 } catch (error) {
-
   completedRounds = [];
-
 }
 
 
@@ -99,89 +73,57 @@ async function loadQuestions() {
 
   try {
 
-    const response =
-      await fetch(
-        QUESTIONS_FILE +
-        "?v=" +
-        Date.now(),
-        {
-          cache: "no-store"
-        }
-      );
-
+    const response = await fetch(
+      QUESTIONS_FILE + "?v=" + Date.now(),
+      {
+        cache: "no-store"
+      }
+    );
 
     if (!response.ok) {
-
-      throw new Error(
-        "Could not load questions.json"
-      );
-
+      throw new Error("Could not load questions.json");
     }
 
+    const data = await response.json();
 
-    const data =
-      await response.json();
-
-
-    if (
-      Array.isArray(data)
-    ) {
+    if (Array.isArray(data)) {
 
       allQuestions = data;
 
     } else if (
       data &&
-      Array.isArray(
-        data.questions
-      )
+      Array.isArray(data.questions)
     ) {
 
-      allQuestions =
-        data.questions;
+      allQuestions = data.questions;
 
     } else {
 
       throw new Error(
         "questions.json must contain an array of questions."
       );
-
     }
 
-
-    if (
-      allQuestions.length === 0
-    ) {
-
-      throw new Error(
-        "No questions found."
-      );
-
+    if (allQuestions.length === 0) {
+      throw new Error("No questions found.");
     }
-
 
     console.log(
-      "Loaded questions:",
+      "Quiz Master loaded questions:",
       allQuestions.length
     );
 
-
     renderRounds();
-
     updateContinueButton();
-
 
   } catch (error) {
 
-    console.error(
-      error
-    );
+    console.error("Quiz Master error:", error);
 
     alert(
       "Unable to load quiz questions. Please check questions.json."
     );
-
   }
-
 }
 
 
@@ -189,22 +131,15 @@ async function loadQuestions() {
    VALIDATE QUESTION
    ===================================================== */
 
-function validQuestion(
-  question
-) {
+function validQuestion(question) {
 
   return (
     question &&
-    typeof question.question ===
-      "string" &&
-    Array.isArray(
-      question.options
-    ) &&
+    typeof question.question === "string" &&
+    Array.isArray(question.options) &&
     question.options.length >= 2 &&
-    typeof question.answer ===
-      "string"
+    typeof question.answer === "string"
   );
-
 }
 
 
@@ -216,76 +151,45 @@ function getQuestionsForRound() {
 
   let available = [];
 
-
-  for (
-    let i = 0;
-    i < allQuestions.length;
-    i++
-  ) {
+  for (let i = 0; i < allQuestions.length; i++) {
 
     if (
       !usedQuestionIndexes.includes(i) &&
-      validQuestion(
-        allQuestions[i]
-      )
+      validQuestion(allQuestions[i])
     ) {
 
       available.push(i);
-
     }
-
   }
 
 
   /*
-    If there are not enough unused
-    questions, start another cycle.
+    If fewer than 10 unused questions remain,
+    start a new question cycle.
   */
 
-  if (
-    available.length <
-    QUESTIONS_PER_ROUND
-  ) {
+  if (available.length < QUESTIONS_PER_ROUND) {
 
     usedQuestionIndexes = [];
 
     available = [];
 
-    for (
-      let i = 0;
-      i < allQuestions.length;
-      i++
-    ) {
+    for (let i = 0; i < allQuestions.length; i++) {
 
-      if (
-        validQuestion(
-          allQuestions[i]
-        )
-      ) {
-
+      if (validQuestion(allQuestions[i])) {
         available.push(i);
-
       }
-
     }
-
   }
 
 
-  /* Shuffle */
+  /* Shuffle questions */
 
-  for (
-    let i = available.length - 1;
-    i > 0;
-    i--
-  ) {
+  for (let i = available.length - 1; i > 0; i--) {
 
-    const j =
-      Math.floor(
-        Math.random() *
-        (i + 1)
-      );
-
+    const j = Math.floor(
+      Math.random() * (i + 1)
+    );
 
     [
       available[i],
@@ -294,57 +198,36 @@ function getQuestionsForRound() {
       available[j],
       available[i]
     ];
-
   }
 
 
-  const selected =
-    available.slice(
-      0,
-      Math.min(
-        QUESTIONS_PER_ROUND,
-        available.length
-      )
-    );
-
-
-  selected.forEach(
-    function(index) {
-
-      if (
-        !usedQuestionIndexes.includes(
-          index
-        )
-      ) {
-
-        usedQuestionIndexes.push(
-          index
-        );
-
-      }
-
-    }
-  );
-
-
-  localStorage.setItem(
-    "quizmasterUsedQuestions",
-    JSON.stringify(
-      usedQuestionIndexes
+  const selected = available.slice(
+    0,
+    Math.min(
+      QUESTIONS_PER_ROUND,
+      available.length
     )
   );
 
 
-  return selected.map(
-    function(index) {
+  selected.forEach(function(index) {
 
-      return allQuestions[
-        index
-      ];
-
+    if (!usedQuestionIndexes.includes(index)) {
+      usedQuestionIndexes.push(index);
     }
+
+  });
+
+
+  localStorage.setItem(
+    "quizmasterUsedQuestions",
+    JSON.stringify(usedQuestionIndexes)
   );
 
+
+  return selected.map(function(index) {
+    return allQuestions[index];
+  });
 }
 
 
@@ -358,16 +241,13 @@ function saveQuizProgress() {
     !currentRoundQuestions ||
     currentRoundQuestions.length === 0
   ) {
-
     return;
-
   }
 
 
   const progress = {
 
-    currentRound:
-      currentRound,
+    currentRound: currentRound,
 
     currentQuestionIndex:
       currentQuestionIndex,
@@ -375,8 +255,7 @@ function saveQuizProgress() {
     currentRoundQuestions:
       currentRoundQuestions,
 
-    score:
-      score,
+    score: score,
 
     correctAnswers:
       correctAnswers,
@@ -386,20 +265,16 @@ function saveQuizProgress() {
 
     usedQuestionIndexes:
       usedQuestionIndexes
-
   };
 
 
   localStorage.setItem(
     "quizmasterProgress",
-    JSON.stringify(
-      progress
-    )
+    JSON.stringify(progress)
   );
 
 
   updateContinueButton();
-
 }
 
 
@@ -426,63 +301,63 @@ function continueQuiz() {
     );
 
     return;
-
   }
 
 
   try {
 
     const progress =
-      JSON.parse(
-        saved
-      );
+      JSON.parse(saved);
 
 
     currentRound =
-      progress.currentRound ||
-      1;
+      progress.currentRound || 1;
 
 
     currentQuestionIndex =
-      progress.currentQuestionIndex ||
-      0;
+      Number.isInteger(
+        progress.currentQuestionIndex
+      )
+        ? progress.currentQuestionIndex
+        : 0;
 
 
     currentRoundQuestions =
-      progress.currentRoundQuestions ||
-      [];
+      Array.isArray(
+        progress.currentRoundQuestions
+      )
+        ? progress.currentRoundQuestions
+        : [];
 
 
     score =
-      progress.score ||
-      0;
+      progress.score || 0;
 
 
     correctAnswers =
-      progress.correctAnswers ||
-      0;
+      progress.correctAnswers || 0;
 
 
     timeLeft =
-      progress.timeLeft ||
-      TIME_PER_QUESTION;
+      progress.timeLeft > 0
+        ? progress.timeLeft
+        : TIME_PER_QUESTION;
 
 
     usedQuestionIndexes =
-      progress.usedQuestionIndexes ||
-      [];
+      Array.isArray(
+        progress.usedQuestionIndexes
+      )
+        ? progress.usedQuestionIndexes
+        : [];
 
 
     if (
       currentRoundQuestions.length === 0
     ) {
 
-      startRound(
-        currentRound
-      );
-
+      startRound(currentRound);
       return;
-
     }
 
 
@@ -492,18 +367,16 @@ function continueQuiz() {
     ) {
 
       window.showQuizScreen();
-
     }
 
 
-    displayQuestion(
-      true
-    );
+    displayQuestion(true);
 
 
   } catch (error) {
 
     console.error(
+      "Continue error:",
       error
     );
 
@@ -514,9 +387,7 @@ function continueQuiz() {
 
 
     startRound(1);
-
   }
-
 }
 
 
@@ -530,15 +401,21 @@ window.continueQuiz =
 
 function startNewQuiz() {
 
+  clearInterval(timer);
+
   currentRound = 1;
 
   currentQuestionIndex = 0;
+
+  currentRoundQuestions = [];
 
   score = 0;
 
   correctAnswers = 0;
 
   answered = false;
+
+  timeLeft = TIME_PER_QUESTION;
 
   usedQuestionIndexes = [];
 
@@ -555,7 +432,6 @@ function startNewQuiz() {
 
 
   startRound(1);
-
 }
 
 
@@ -567,13 +443,10 @@ window.startNewQuiz =
    START ROUND
    ===================================================== */
 
-function startRound(
-  roundNumber
-) {
+function startRound(roundNumber) {
 
   if (
-    roundNumber >
-    unlockedRounds
+    roundNumber > unlockedRounds
   ) {
 
     alert(
@@ -581,31 +454,29 @@ function startRound(
     );
 
     return;
-
   }
 
 
-  clearInterval(
-    timer
-  );
+  clearInterval(timer);
 
 
   currentRound =
     roundNumber;
 
-
   currentQuestionIndex =
     0;
 
-
-  score = 0;
-
+  score =
+    0;
 
   correctAnswers =
     0;
 
+  answered =
+    false;
 
-  answered = false;
+  timeLeft =
+    TIME_PER_QUESTION;
 
 
   currentRoundQuestions =
@@ -621,12 +492,7 @@ function startRound(
     );
 
     return;
-
   }
-
-
-  timeLeft =
-    TIME_PER_QUESTION;
 
 
   saveQuizProgress();
@@ -638,14 +504,10 @@ function startRound(
   ) {
 
     window.showQuizScreen();
-
   }
 
 
-  displayQuestion(
-    false
-  );
-
+  displayQuestion(false);
 }
 
 
@@ -655,10 +517,7 @@ function startRound(
 
 function retryCurrentRound() {
 
-  startRound(
-    currentRound
-  );
-
+  startRound(currentRound);
 }
 
 
@@ -680,18 +539,14 @@ function startNextRound() {
     next <= unlockedRounds
   ) {
 
-    startRound(
-      next
-    );
+    startRound(next);
 
   } else {
 
     alert(
       "🔒 Complete this round with at least 60% first."
     );
-
   }
-
 }
 
 
@@ -703,14 +558,9 @@ window.startNextRound =
    DISPLAY QUESTION
    ===================================================== */
 
-function displayQuestion(
-  isContinuing
-) {
+function displayQuestion(isContinuing) {
 
-  clearInterval(
-    timer
-  );
-
+  clearInterval(timer);
 
   answered = false;
 
@@ -724,9 +574,7 @@ function displayQuestion(
   if (!question) {
 
     finishRound();
-
     return;
-
   }
 
 
@@ -735,30 +583,25 @@ function displayQuestion(
       "questionText"
     );
 
-
   const options =
     document.getElementById(
       "options"
     );
-
 
   const questionNumber =
     document.getElementById(
       "questionNumber"
     );
 
-
   const roundLabel =
     document.getElementById(
       "roundLabel"
     );
 
-
   const scoreLabel =
     document.getElementById(
       "scoreLabel"
     );
-
 
   const progressBar =
     document.getElementById(
@@ -770,9 +613,7 @@ function displayQuestion(
     !questionText ||
     !options
   ) {
-
     return;
-
   }
 
 
@@ -804,33 +645,31 @@ function displayQuestion(
     ) * 100;
 
 
-  progressBar.style.width =
-    progress + "%";
+  if (progressBar) {
+
+    progressBar.style.width =
+      progress + "%";
+  }
 
 
-  options.innerHTML =
-    "";
+  options.innerHTML = "";
 
 
   /* Shuffle options */
 
   const shuffledOptions =
-    [
-      ...question.options
-    ];
+    [...question.options];
 
 
   for (
-    let i =
-      shuffledOptions.length - 1;
+    let i = shuffledOptions.length - 1;
     i > 0;
     i--
   ) {
 
     const j =
       Math.floor(
-        Math.random() *
-        (i + 1)
+        Math.random() * (i + 1)
       );
 
 
@@ -841,7 +680,6 @@ function displayQuestion(
       shuffledOptions[j],
       shuffledOptions[i]
     ];
-
   }
 
 
@@ -879,17 +717,13 @@ function displayQuestion(
       );
 
 
-      options.appendChild(
-        button
-      );
-
+      options.appendChild(button);
     }
   );
 
 
   /*
-    When continuing a saved game,
-    use the saved remaining time.
+    Continue with saved time.
   */
 
   if (
@@ -900,12 +734,10 @@ function displayQuestion(
 
     timeLeft =
       TIME_PER_QUESTION;
-
   }
 
 
   startTimer();
-
 }
 
 
@@ -915,9 +747,7 @@ function displayQuestion(
 
 function startTimer() {
 
-  clearInterval(
-    timer
-  );
+  clearInterval(timer);
 
 
   const timerElement =
@@ -949,7 +779,7 @@ function startTimer() {
 
 
         /*
-          Save progress while playing.
+          Save every 5 seconds.
         */
 
         if (
@@ -957,7 +787,6 @@ function startTimer() {
         ) {
 
           saveQuizProgress();
-
         }
 
 
@@ -965,19 +794,14 @@ function startTimer() {
           timeLeft <= 0
         ) {
 
-          clearInterval(
-            timer
-          );
-
+          clearInterval(timer);
 
           timeUp();
-
         }
 
       },
       1000
     );
-
 }
 
 
@@ -995,6 +819,9 @@ function timeUp() {
   answered = true;
 
 
+  clearInterval(timer);
+
+
   const question =
     currentRoundQuestions[
       currentQuestionIndex
@@ -1010,8 +837,7 @@ function timeUp() {
   buttons.forEach(
     function(button) {
 
-      button.disabled =
-        true;
+      button.disabled = true;
 
 
       if (
@@ -1022,9 +848,7 @@ function timeUp() {
         button.classList.add(
           "correct"
         );
-
       }
-
     }
   );
 
@@ -1033,7 +857,6 @@ function timeUp() {
     nextQuestion,
     900
   );
-
 }
 
 
@@ -1054,9 +877,7 @@ function selectAnswer(
   answered = true;
 
 
-  clearInterval(
-    timer
-  );
+  clearInterval(timer);
 
 
   const buttons =
@@ -1068,8 +889,7 @@ function selectAnswer(
   buttons.forEach(
     function(button) {
 
-      button.disabled =
-        true;
+      button.disabled = true;
 
 
       if (
@@ -1080,7 +900,6 @@ function selectAnswer(
         button.classList.add(
           "correct"
         );
-
       }
 
 
@@ -1094,9 +913,7 @@ function selectAnswer(
         button.classList.add(
           "wrong"
         );
-
       }
-
     }
   );
 
@@ -1109,9 +926,7 @@ function selectAnswer(
     score +=
       POINTS_PER_CORRECT;
 
-
     correctAnswers++;
-
   }
 
 
@@ -1126,7 +941,6 @@ function selectAnswer(
     scoreLabel.textContent =
       "Score: " +
       score;
-
   }
 
 
@@ -1134,7 +948,6 @@ function selectAnswer(
     nextQuestion,
     800
   );
-
 }
 
 
@@ -1153,9 +966,7 @@ function nextQuestion() {
   ) {
 
     finishRound();
-
     return;
-
   }
 
 
@@ -1166,10 +977,7 @@ function nextQuestion() {
   saveQuizProgress();
 
 
-  displayQuestion(
-    false
-  );
-
+  displayQuestion(false);
 }
 
 
@@ -1179,9 +987,7 @@ function nextQuestion() {
 
 function finishRound() {
 
-  clearInterval(
-    timer
-  );
+  clearInterval(timer);
 
 
   const total =
@@ -1191,8 +997,7 @@ function finishRound() {
   const percentage =
     total > 0
       ? Math.round(
-          (correctAnswers / total) *
-          100
+          (correctAnswers / total) * 100
         )
       : 0;
 
@@ -1202,44 +1007,42 @@ function finishRound() {
 
 
   /*
-    Mark round as completed.
-  */
-
-  if (
-    !completedRounds.includes(
-      currentRound
-    )
-  ) {
-
-    completedRounds.push(
-      currentRound
-    );
-
-  }
-
-
-  localStorage.setItem(
-    "quizmasterCompletedRounds",
-    JSON.stringify(
-      completedRounds
-    )
-  );
-
-
-  /*
-    Unlock next round
-    when score is 60% or higher.
+    Only mark the round completed
+    if the player actually passed it.
   */
 
   if (passed) {
+
+    if (
+      !completedRounds.includes(
+        currentRound
+      )
+    ) {
+
+      completedRounds.push(
+        currentRound
+      );
+    }
+
+
+    localStorage.setItem(
+      "quizmasterCompletedRounds",
+      JSON.stringify(
+        completedRounds
+      )
+    );
+
+
+    /*
+      Unlock next round.
+    */
 
     const nextRound =
       currentRound + 1;
 
 
     if (
-      nextRound >
-      unlockedRounds
+      nextRound > unlockedRounds
     ) {
 
       unlockedRounds =
@@ -1250,15 +1053,14 @@ function finishRound() {
         "quizmasterUnlockedRounds",
         unlockedRounds
       );
-
     }
 
   }
 
 
   /*
-    Delete active progress
-    after completing the round.
+    Remove active progress
+    after the round finishes.
   */
 
   localStorage.removeItem(
@@ -1284,7 +1086,6 @@ function finishRound() {
       passed,
       nextRoundNumber
     );
-
   }
 
 
@@ -1294,12 +1095,10 @@ function finishRound() {
   ) {
 
     window.showResultScreen();
-
   }
 
 
   renderRounds();
-
 }
 
 
@@ -1320,20 +1119,20 @@ function renderRounds() {
   }
 
 
-  grid.innerHTML =
-    "";
+  grid.innerHTML = "";
 
 
-  /*
-    Number of rounds is based
-    on available questions.
-  */
+  const validQuestions =
+    allQuestions.filter(
+      validQuestion
+    );
+
 
   const possibleRounds =
     Math.max(
       1,
       Math.ceil(
-        allQuestions.length /
+        validQuestions.length /
         QUESTIONS_PER_ROUND
       )
     );
@@ -1364,9 +1163,7 @@ function renderRounds() {
 
 
     const completed =
-      completedRounds.includes(
-        i
-      );
+      completedRounds.includes(i);
 
 
     if (unlocked) {
@@ -1388,7 +1185,6 @@ function renderRounds() {
 
         button.textContent =
           "▶️ Round " + i;
-
       }
 
 
@@ -1423,16 +1219,11 @@ function renderRounds() {
 
         }
       );
-
     }
 
 
-    grid.appendChild(
-      button
-    );
-
+    grid.appendChild(button);
   }
-
 }
 
 
@@ -1463,6 +1254,11 @@ function updateContinueButton() {
     );
 
 
+  /*
+    Keep button visible, but tell the
+    player whether there is progress.
+  */
+
   if (saved) {
 
     button.style.display =
@@ -1478,9 +1274,7 @@ function updateContinueButton() {
 
     button.textContent =
       "▶️ Continue Quiz";
-
   }
-
 }
 
 
@@ -1518,22 +1312,16 @@ document.addEventListener(
           )
         ) {
 
-          usedQuestionIndexes =
-            [];
-
+          usedQuestionIndexes = [];
         }
 
       } catch (error) {
 
-        usedQuestionIndexes =
-          [];
-
+        usedQuestionIndexes = [];
       }
-
     }
 
 
     loadQuestions();
-
   }
 );
