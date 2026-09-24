@@ -11,10 +11,11 @@
   <meta name="description"
         content="Quiz Master is a free knowledge quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and more.">
 
+  <!-- APP ICON -->
   <link rel="icon" type="image/png" href="/icon-512-3.png">
   <link rel="apple-touch-icon" href="/icon-512-3.png">
 
-  <!-- Google AdSense -->
+  <!-- GOOGLE ADSENSE -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
     crossorigin="anonymous"></script>
@@ -52,8 +53,12 @@
       border-radius: 18px;
       padding: 24px;
       margin-top: 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.25);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .25);
     }
+
+    /* =========================
+       LOGO
+       ========================= */
 
     .logo {
       width: 120px;
@@ -65,7 +70,9 @@
       border: 4px solid #2563eb;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       text-align: center;
     }
 
@@ -74,6 +81,10 @@
       color: #cbd5e1;
       line-height: 1.5;
     }
+
+    /* =========================
+       BUTTONS
+       ========================= */
 
     button {
       width: 100%;
@@ -117,6 +128,10 @@
       margin-top: 20px;
     }
 
+    /* =========================
+       ROUNDS
+       ========================= */
+
     .round-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -142,12 +157,17 @@
       background: #4b5563;
     }
 
+    /* =========================
+       QUIZ TOP BAR
+       ========================= */
+
     .topbar {
       display: flex;
       justify-content: space-between;
       gap: 10px;
       align-items: center;
       margin-bottom: 15px;
+      flex-wrap: wrap;
     }
 
     .topbar span {
@@ -156,6 +176,10 @@
       border-radius: 10px;
       font-size: 14px;
     }
+
+    /* =========================
+       PROGRESS
+       ========================= */
 
     .progress {
       height: 8px;
@@ -171,6 +195,10 @@
       background: #22c55e;
       transition: width .3s;
     }
+
+    /* =========================
+       QUESTION
+       ========================= */
 
     .question {
       font-size: 21px;
@@ -193,12 +221,20 @@
       background: #dc2626;
     }
 
+    /* =========================
+       TIMER
+       ========================= */
+
     .timer {
       text-align: center;
       font-size: 22px;
       font-weight: bold;
       margin: 10px 0;
     }
+
+    /* =========================
+       SCORE
+       ========================= */
 
     .score {
       text-align: center;
@@ -214,7 +250,19 @@
       border-radius: 10px;
       margin-top: 15px;
       background: #374151;
+      line-height: 1.5;
     }
+
+    .result-percent {
+      text-align: center;
+      font-size: 42px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    /* =========================
+       SETTINGS
+       ========================= */
 
     .settings-row {
       display: flex;
@@ -224,6 +272,7 @@
       padding: 15px;
       border-radius: 12px;
       margin-top: 12px;
+      gap: 15px;
     }
 
     .settings-text {
@@ -234,6 +283,7 @@
 
     .settings-text small {
       color: #cbd5e1;
+      line-height: 1.4;
     }
 
     .switch {
@@ -266,12 +316,20 @@
       left: 28px;
     }
 
+    /* =========================
+       ADSENSE
+       ========================= */
+
     .ad-box {
       margin: 20px 0;
       min-height: 90px;
       text-align: center;
       overflow: hidden;
     }
+
+    /* =========================
+       SMALL TEXT
+       ========================= */
 
     .small-note {
       text-align: center;
@@ -280,18 +338,16 @@
       margin-top: 15px;
     }
 
-    .result-percent {
-      text-align: center;
-      font-size: 42px;
-      font-weight: bold;
-      margin: 15px 0;
-    }
-
     .hidden {
       display: none !important;
     }
 
+    /* =========================
+       MOBILE
+       ========================= */
+
     @media (max-width: 480px) {
+
       .container {
         padding: 14px;
       }
@@ -303,6 +359,20 @@
       .question {
         font-size: 19px;
       }
+
+      .topbar {
+        gap: 6px;
+      }
+
+      .topbar span {
+        font-size: 12px;
+        padding: 7px 9px;
+      }
+
+      .logo {
+        width: 110px;
+        height: 110px;
+      }
     }
   </style>
 </head>
@@ -311,19 +381,20 @@
 
 <div class="container">
 
-  <!-- =========================
+  <!-- =====================================================
        HOME SCREEN
-       ========================= -->
+       ===================================================== -->
+
   <section id="homeScreen" class="screen active">
 
     <div class="card">
 
-<img
-  src="/icon-512-3.png"
-  alt="Quiz Master Logo"
-  class="logo"
->
-      
+      <!-- YOUR QUIZ MASTER PHOTO / LOGO -->
+      <img
+        src="/icon-512-3.png"
+        alt="Quiz Master Logo"
+        class="logo"
+      >
 
       <h1>Quiz Master 🇷🇼</h1>
 
@@ -335,6 +406,7 @@
 
       <div class="home-buttons">
 
+        <!-- START -->
         <button
           id="startBtn"
           type="button"
@@ -342,6 +414,7 @@
           ▶️ Start Quiz
         </button>
 
+        <!-- CONTINUE -->
         <button
           id="continueBtn"
           type="button"
@@ -349,12 +422,14 @@
           ▶️ Continue Quiz
         </button>
 
+        <!-- ROUNDS -->
         <button
           id="roundsBtn"
           type="button">
           🏆 Choose Round
         </button>
 
+        <!-- SETTINGS -->
         <button
           id="settingsBtn"
           type="button"
@@ -362,6 +437,7 @@
           ⚙️ Settings
         </button>
 
+        <!-- SHARE -->
         <button
           id="shareBtn"
           type="button"
@@ -371,981 +447,11 @@
 
       </div>
 
+      <!-- ADSENSE -->
       <div class="ad-box">
 
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-2666698676518429"
-             data-ad-slot="9045712897"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-
-      </div>
-
-      <p class="small-note">
-        Free knowledge quiz • Quiz Master 🇷🇼
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       ROUNDS SCREEN
-       ========================= -->
-  <section id="roundsScreen" class="screen">
-
-    <div class="card">
-
-      <h2>🏆 Quiz Rounds</h2>
-
-      <p class="subtitle">
-        Complete each round with at least
-        60% to unlock the next round.
-      </p>
-
-      <div id="roundGrid" class="round-grid"></div>
-
-      <button
-        id="roundsHomeBtn"
-        type="button"
-        class="secondary">
-        🏠 Back Home
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       QUIZ SCREEN
-       ========================= -->
-  <section id="quizScreen" class="screen">
-
-    <div class="card">
-
-      <div class="topbar">
-
-        <span id="roundLabel">
-          Round 1
-        </span>
-
-        <span id="questionNumber">
-          Question 1/10
-        </span>
-
-        <span id="scoreLabel">
-          Score: 0
-        </span>
-
-      </div>
-
-      <div class="progress">
-        <div
-          id="progressBar"
-          class="progress-bar">
-        </div>
-      </div>
-
-      <div
-        id="timer"
-        class="timer">
-        ⏱️ 20
-      </div>
-
-      <div
-        id="questionText"
-        class="question">
-        Loading question...
-      </div>
-
-      <div id="options"></div>
-
-      <button
-        id="quizHomeBtn"
-        type="button"
-        class="secondary">
-        🏠 Home
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       RESULT SCREEN
-       ========================= -->
-  <section id="resultScreen" class="screen">
-
-    <div class="card">
-
-      <h2>🎉 Round Complete!</h2>
-
-      <div
-        id="resultPercent"
-        class="result-percent">
-        0%
-      </div>
-
-      <p
-        id="resultMessage"
-        class="message">
-        Your result will appear here.
-      </p>
-
-      <p
-        id="resultScore"
-        class="score">
-        Score: 0
-      </p>
-
-      <div class="ad-box">
-
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-2666698676518429"
-             data-ad-slot="9045712897"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-
-      </div>
-
-      <button
-        id="nextRoundBtn"
-        type="button"
-        class="success">
-        ▶️ Next Round
-      </button>
-
-      <button
-        id="retryBtn"
-        type="button"
-        class="warning">
-        🔄 Retry Round
-      </button>
-
-      <button
-        id="resultRoundsBtn"
-        type="button">
-        🏆 Choose Round
-      </button>
-
-      <button
-        id="resultHomeBtn"
-        type="button"
-        class="secondary">
-        🏠 Home
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       SETTINGS SCREEN
-       ========================= -->
-  <section id="settingsScreen" class="screen">
-
-    <div class="card">
-
-      <h2>⚙️ Settings</h2>
-
-      <div class="settings-row">
-
-        <div class="settings-text">
-          <strong>🎵 Quiz Music</strong>
-          <small>
-            Turn background quiz sound on or off.
-          </small>
-        </div>
-
-        <div
-          id="musicSwitch"
-          class="switch"
-          role="switch"
-          aria-checked="false"
-          tabindex="0">
-        </div>
-
-      </div>
-
-      <button
-        id="settingsHomeBtn"
-        type="button"
-        class="secondary">
-        🏠 Back Home
-      </button>
-
-    </div>
-
-  </section>
-
-</div>
-
-
-<script>
-  /* =====================================================
-     SCREEN SYSTEM
-     ===================================================== */
-
-  function showScreen(screenId) {
-
-    document
-      .querySelectorAll(".screen")
-      .forEach(function(screen) {
-
-        screen.classList.remove("active");
-
-      });
-
-    const screen =
-      document.getElementById(screenId);
-
-    if (screen) {
-
-      screen.classList.add("active");
-
-    }
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  }
-
-
-  window.showHomeScreen = function() {
-    showScreen("homeScreen");
-  };
-
-
-  window.showRoundScreen = function() {
-    showScreen("roundsScreen");
-  };
-
-
-  window.showQuizScreen = function() {
-    showScreen("quizScreen");
-  };
-
-
-  window.showResultScreen = function() {
-    showScreen("resultScreen");
-  };
-
-
-  /* =====================================================
-     RESULT
-     ===================================================== */
-
-  window.updateResult = function(
-    correct,
-    total,
-    passed,
-    nextRound
-  ) {
-
-    const percentage =
-      total > 0
-        ? Math.round((correct / total) * 100)
-        : 0;
-
-    document.getElementById(
-      "resultPercent"
-    ).textContent =
-      percentage + "%";
-
-    document.getElementById(
-      "resultScore"
-    ).textContent =
-      "Score: " + (correct * 10);
-
-    const message =
-      document.getElementById(
-        "resultMessage"
-      );
-
-    if (passed) {
-
-      message.textContent =
-        "🎉 Great job! You scored at least 60%. The next round is unlocked.";
-
-      message.style.background =
-        "#065f46";
-
-    } else {
-
-      message.textContent =
-        "Keep practicing. You need at least 60% to unlock the next round.";
-
-      message.style.background =
-        "#7f1d1d";
-    }
-
-    const nextButton =
-      document.getElementById(
-        "nextRoundBtn"
-      );
-
-    if (passed) {
-
-      nextButton.disabled = false;
-
-      nextButton.textContent =
-        "▶️ Next Round";
-
-    } else {
-
-      nextButton.disabled = true;
-
-      nextButton.textContent =
-        "🔒 Next Round Locked";
-    }
-
-  };
-
-
-  /* =====================================================
-     START BUTTON
-     ===================================================== */
-
-  document.getElementById(
-    "startBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      if (
-        typeof window.startNewQuiz ===
-        "function"
-      ) {
-
-        window.startNewQuiz();
-
-      } else {
-
-        alert(
-          "Quiz engine is still loading. Please try again."
-        );
-      }
-
-    }
-  );
-
-
-  /* =====================================================
-     CONTINUE
-     ===================================================== */
-
-  document.getElementById(
-    "continueBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      if (
-        typeof window.continueQuiz ===
-        "function"
-      ) {
-
-        window.continueQuiz();
-
-      }
-
-    }
-  );
-
-
-  /* =====================================================
-     ROUNDS
-     ===================================================== */
-
-  document.getElementById(
-    "roundsBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      showScreen("roundsScreen");
-
-      if (
-        typeof window.renderRounds ===
-        "function"
-      ) {
-
-        window.renderRounds();
-
-      }
-
-    }
-  );
-
-
-  document.getElementById(
-    "roundsHomeBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      showScreen("homeScreen");
-
-    }
-  );
-
-
-  /* =====================================================
-     QUIZ HOME
-     ===================================================== */
-
-  document.getElementById(
-    "quizHomeBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      if (
-        typeof window.saveQuizProgress ===
-        "function"
-      ) {
-
-        window.saveQuizProgress();
-
-      }
-
-      showScreen("homeScreen");
-
-    }
-  );
-
-
-  /* =====================================================
-     RESULT BUTTONS
-     ===================================================== */
-
-  document.getElementById(
-    "nextRoundBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      if (
-        typeof window.startNextRound ===
-        "function"
-      ) {
-
-        window.startNextRound();
-
-      }
-
-    }
-  );
-
-
-  document.getElementById(
-    "retryBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      if (
-        typeof window.retryCurrentRound ===
-        "function"
-      ) {
-
-        window.retryCurrentRound();
-
-      }
-
-    }
-  );
-
-
-  document.getElementById(
-    "resultRoundsBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      showScreen("roundsScreen");
-
-      if (
-        typeof window.renderRounds ===
-        "function"
-      ) {
-
-        window.renderRounds();
-
-      }
-
-    }
-  );
-
-
-  document.getElementById(
-    "resultHomeBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      showScreen("homeScreen");
-
-    }
-  );
-
-
-  /* =====================================================
-     SHARE
-     ===================================================== */
-
-  document.getElementById(
-    "shareBtn"
-  ).addEventListener(
-    "click",
-    async function() {
-
-      const shareUrl =
-        "https://quizmaster-liard-five.vercel.app/";
-
-      const shareData = {
-
-        title:
-          "Quiz Master 🇷🇼",
-
-        text:
-          "Test your knowledge with Quiz Master!",
-
-        url:
-          shareUrl
-
-      };
-
-
-      try {
-
-        if (
-          navigator.share
-        ) {
-
-          await navigator.share(
-            shareData
-          );
-
-        } else if (
-          navigator.clipboard
-        ) {
-
-          await navigator.clipboard.writeText(
-            shareUrl
-          );
-
-          const button =
-            document.getElementById(
-              "shareBtn"
-            );
-
-          const oldText =
-            button.textContent;
-
-          button.textContent =
-            "✅ Link Copied!";
-
-          setTimeout(
-            function() {
-
-              button.textContent =
-                oldText;
-
-            },
-            1800
-          );
-
-        } else {
-
-          alert(
-            "Quiz Master link:\n" +
-            shareUrl
-          );
-
-        }
-
-      } catch (error) {
-
-        if (
-          error.name !==
-          "AbortError"
-        ) {
-
-          console.error(
-            "Share error:",
-            error
-          );
-
-        }
-
-      }
-
-    }
-  );
-
-
-  /* =====================================================
-     SETTINGS
-     ===================================================== */
-
-  document.getElementById(
-    "settingsBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      showScreen("settingsScreen");
-
-    }
-  );
-
-
-  document.getElementById(
-    "settingsHomeBtn"
-  ).addEventListener(
-    "click",
-    function() {
-
-      showScreen("homeScreen");
-
-    }
-  );
-
-
-  /* =====================================================
-     SIMPLE QUIZ MUSIC
-     ===================================================== */
-
-  let audioContext = null;
-  let musicGain = null;
-  let musicOscillator = null;
-  let musicTimer = null;
-
-  let musicEnabled =
-    localStorage.getItem(
-      "quizmasterMusic"
-    ) === "on";
-
-
-  function updateMusicSwitch() {
-
-    const switchElement =
-      document.getElementById(
-        "musicSwitch"
-      );
-
-    if (!switchElement) {
-      return;
-    }
-
-    if (musicEnabled) {
-
-      switchElement.classList.add("on");
-
-      switchElement.setAttribute(
-        "aria-checked",
-        "true"
-      );
-
-    } else {
-
-      switchElement.classList.remove("on");
-
-      switchElement.setAttribute(
-        "aria-checked",
-        "false"
-      );
-
-    }
-
-  }
-
-
-  function startMusic() {
-
-    if (!musicEnabled) {
-      return;
-    }
-
-    try {
-
-      if (!audioContext) {
-
-        audioContext =
-          new (
-            window.AudioContext ||
-            window.webkitAudioContext
-          )();
-
-      }
-
-      if (
-        audioContext.state ===
-        "suspended"
-      ) {
-
-        audioContext.resume();
-
-      }
-
-      if (musicTimer) {
-        return;
-      }
-
-      musicGain =
-        audioContext.createGain();
-
-      musicGain.gain.value =
-        0.025;
-
-      musicGain.connect(
-        audioContext.destination
-      );
-
-      const notes = [
-        261.63,
-        329.63,
-        392.00,
-        329.63
-      ];
-
-      let noteIndex = 0;
-
-      function playNote() {
-
-        if (!musicEnabled) {
-          return;
-        }
-
-        musicOscillator =
-          audioContext.createOscillator();
-
-        musicOscillator.type =
-          "sine";
-
-        musicOscillator.frequency.value =
-          notes[noteIndex];
-
-        musicOscillator.connect(
-          musicGain
-        );
-
-        musicOscillator.start();
-
-        musicOscillator.stop(
-          audioContext.currentTime + 0.45
-        );
-
-        noteIndex =
-          (noteIndex + 1) %
-          notes.length;
-
-      }
-
-      playNote();
-
-      musicTimer =
-        setInterval(
-          playNote,
-          700
-        );
-
-    } catch (error) {
-
-      console.log(
-        "Music unavailable:",
-        error
-      );
-
-    }
-
-  }
-
-
-  function stopMusic() {
-
-    if (musicTimer) {
-
-      clearInterval(
-        musicTimer
-      );
-
-      musicTimer = null;
-
-    }
-
-    if (musicOscillator) {
-
-      try {
-        musicOscillator.stop();
-      } catch (e) {}
-
-      musicOscillator = null;
-
-    }
-
-    if (musicGain) {
-
-      try {
-        musicGain.disconnect();
-      } catch (e) {}
-
-      musicGain = null;
-
-    }
-
-  }
-
-
-  function toggleMusic() {
-
-    musicEnabled =
-      !musicEnabled;
-
-    localStorage.setItem(
-      "quizmasterMusic",
-      musicEnabled
-        ? "on"
-        : "off"
-    );
-
-    updateMusicSwitch();
-
-    if (musicEnabled) {
-
-      startMusic();
-
-    } else {
-
-      stopMusic();
-
-    }
-
-  }
-
-
-  document.getElementById(
-    "musicSwitch"
-  ).addEventListener(
-    "click",
-    toggleMusic
-  );
-
-
-  document.getElementById(
-    "musicSwitch"
-  ).addEventListener(
-    "keydown",
-    function(event) {
-
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-
-        event.preventDefault();
-
-        toggleMusic();
-
-      }
-
-    }
-  );
-
-
-  updateMusicSwitch();
-
-
-  /* Start music after user interaction */
-  document.addEventListener(
-    "click",
-    function() {
-
-      if (
-        musicEnabled
-      ) {
-
-        startMusic();
-
-      }
-
-    },
-    {
-      once: true
-    }
-  );
-
-
-  /* =====================================================
-     ADSENSE
-     ===================================================== */
-
-  function loadAds() {
-
-    try {
-
-      const ads =
-        document.querySelectorAll(
-          ".adsbygoogle"
-        );
-
-      ads.forEach(
-        function(ad) {
-
-          if (
-            !ad.getAttribute(
-              "data-adsbygoogle-status"
-            )
-          ) {
-
-            (
-              window.adsbygoogle =
-              window.adsbygoogle || []
-            ).push({});
-
-          }
-
-        }
-      );
-
-    } catch (error) {
-
-      console.log(
-        "AdSense:",
-        error
-      );
-
-    }
-
-  }
-
-
-  window.addEventListener(
-    "load",
-    function() {
-
-      setTimeout(
-        loadAds,
-        1000
-      );
-
-    }
-  );
-
-</script>
-
-
-<!-- IMPORTANT:
-     questions.js must remain a separate file. -->
-<script src="./questions.js"></script>
-
-</body>
-</html>
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-2666698676518429"
+         
