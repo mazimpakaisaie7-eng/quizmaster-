@@ -40,7 +40,7 @@ let unlockedRounds = parseInt(
   10
 );
 
-if (isNaN(unlockedRounds) || unlockedRounds < 1) {
+if (!Number.isInteger(unlockedRounds) || unlockedRounds < 1) {
   unlockedRounds = 1;
 }
 
@@ -52,9 +52,13 @@ if (isNaN(unlockedRounds) || unlockedRounds < 1) {
 let completedRounds = [];
 
 try {
-  completedRounds = JSON.parse(
-    localStorage.getItem("quizmasterCompletedRounds") || "[]"
-  );
+  const savedCompleted =
+    localStorage.getItem("quizmasterCompletedRounds");
+
+  completedRounds =
+    savedCompleted
+      ? JSON.parse(savedCompleted)
+      : [];
 
   if (!Array.isArray(completedRounds)) {
     completedRounds = [];
@@ -81,10 +85,13 @@ async function loadQuestions() {
     );
 
     if (!response.ok) {
-      throw new Error("Could not load questions.json");
+      throw new Error(
+        "Could not load questions.json"
+      );
     }
 
     const data = await response.json();
+
 
     if (Array.isArray(data)) {
 
@@ -104,21 +111,35 @@ async function loadQuestions() {
       );
     }
 
+
+    allQuestions =
+      allQuestions.filter(validQuestion);
+
+
     if (allQuestions.length === 0) {
-      throw new Error("No questions found.");
+      throw new Error(
+        "No valid questions found."
+      );
     }
+
 
     console.log(
       "Quiz Master loaded questions:",
       allQuestions.length
     );
 
+
     renderRounds();
     updateContinueButton();
 
+
   } catch (error) {
 
-    console.error("Quiz Master error:", error);
+    console.error(
+      "Quiz Master loading error:",
+      error
+    );
+
 
     alert(
       "Unable to load quiz questions. Please check questions.json."
@@ -136,9 +157,16 @@ function validQuestion(question) {
   return (
     question &&
     typeof question.question === "string" &&
+    question.question.trim() !== "" &&
     Array.isArray(question.options) &&
     question.options.length >= 2 &&
-    typeof question.answer === "string"
+    question.options.every(
+      option =>
+        typeof option === "string" &&
+        option.trim() !== ""
+    ) &&
+    typeof question.answer === "string" &&
+    question.answer.trim() !== ""
   );
 }
 
@@ -151,11 +179,15 @@ function getQuestionsForRound() {
 
   let available = [];
 
-  for (let i = 0; i < allQuestions.length; i++) {
+
+  for (
+    let i = 0;
+    i < allQuestions.length;
+    i++
+  ) {
 
     if (
-      !usedQuestionIndexes.includes(i) &&
-      validQuestion(allQuestions[i])
+      !usedQuestionIndexes.includes(i)
     ) {
 
       available.push(i);
@@ -164,32 +196,43 @@ function getQuestionsForRound() {
 
 
   /*
-    If fewer than 10 unused questions remain,
-    start a new question cycle.
+    If there are not enough unused questions
+    for another complete round, start a new cycle.
   */
 
-  if (available.length < QUESTIONS_PER_ROUND) {
+  if (
+    available.length < QUESTIONS_PER_ROUND
+  ) {
 
     usedQuestionIndexes = [];
 
     available = [];
 
-    for (let i = 0; i < allQuestions.length; i++) {
+    for (
+      let i = 0;
+      i < allQuestions.length;
+      i++
+    ) {
 
-      if (validQuestion(allQuestions[i])) {
-        available.push(i);
-      }
+      available.push(i);
     }
   }
 
 
-  /* Shuffle questions */
+  /* ===================================================
+     SHUFFLE QUESTIONS
+     =================================================== */
 
-  for (let i = available.length - 1; i > 0; i--) {
+  for (
+    let i = available.length - 1;
+    i > 0;
+    i--
+  ) {
 
-    const j = Math.floor(
-      Math.random() * (i + 1)
-    );
+    const j =
+      Math.floor(
+        Math.random() * (i + 1)
+      );
 
     [
       available[i],
@@ -201,18 +244,22 @@ function getQuestionsForRound() {
   }
 
 
-  const selected = available.slice(
-    0,
-    Math.min(
-      QUESTIONS_PER_ROUND,
-      available.length
-    )
-  );
+  const selected =
+    available.slice(
+      0,
+      Math.min(
+        QUESTIONS_PER_ROUND,
+        available.length
+      )
+    );
 
 
-  selected.forEach(function(index) {
+  selected.forEach(index => {
 
-    if (!usedQuestionIndexes.includes(index)) {
+    if (
+      !usedQuestionIndexes.includes(index)
+    ) {
+
       usedQuestionIndexes.push(index);
     }
 
@@ -221,13 +268,15 @@ function getQuestionsForRound() {
 
   localStorage.setItem(
     "quizmasterUsedQuestions",
-    JSON.stringify(usedQuestionIndexes)
+    JSON.stringify(
+      usedQuestionIndexes
+    )
   );
 
 
-  return selected.map(function(index) {
-    return allQuestions[index];
-  });
+  return selected.map(
+    index => allQuestions[index]
+  );
 }
 
 
@@ -241,13 +290,15 @@ function saveQuizProgress() {
     !currentRoundQuestions ||
     currentRoundQuestions.length === 0
   ) {
+
     return;
   }
 
 
   const progress = {
 
-    currentRound: currentRound,
+    currentRound:
+      currentRound,
 
     currentQuestionIndex:
       currentQuestionIndex,
@@ -255,7 +306,8 @@ function saveQuizProgress() {
     currentRoundQuestions:
       currentRoundQuestions,
 
-    score: score,
+    score:
+      score,
 
     correctAnswers:
       correctAnswers,
@@ -265,6 +317,7 @@ function saveQuizProgress() {
 
     usedQuestionIndexes:
       usedQuestionIndexes
+
   };
 
 
@@ -311,15 +364,11 @@ function continueQuiz() {
 
 
     currentRound =
-      progress.currentRound || 1;
+      Number(progress.currentRound) || 1;
 
 
     currentQuestionIndex =
-      Number.isInteger(
-        progress.currentQuestionIndex
-      )
-        ? progress.currentQuestionIndex
-        : 0;
+      Number(progress.currentQuestionIndex) || 0;
 
 
     currentRoundQuestions =
@@ -331,16 +380,16 @@ function continueQuiz() {
 
 
     score =
-      progress.score || 0;
+      Number(progress.score) || 0;
 
 
     correctAnswers =
-      progress.correctAnswers || 0;
+      Number(progress.correctAnswers) || 0;
 
 
     timeLeft =
-      progress.timeLeft > 0
-        ? progress.timeLeft
+      Number(progress.timeLeft) > 0
+        ? Number(progress.timeLeft)
         : TIME_PER_QUESTION;
 
 
@@ -358,6 +407,15 @@ function continueQuiz() {
 
       startRound(currentRound);
       return;
+    }
+
+
+    if (
+      currentQuestionIndex >=
+      currentRoundQuestions.length
+    ) {
+
+      currentQuestionIndex = 0;
     }
 
 
@@ -403,6 +461,7 @@ function startNewQuiz() {
 
   clearInterval(timer);
 
+
   currentRound = 1;
 
   currentQuestionIndex = 0;
@@ -415,7 +474,8 @@ function startNewQuiz() {
 
   answered = false;
 
-  timeLeft = TIME_PER_QUESTION;
+  timeLeft =
+    TIME_PER_QUESTION;
 
   usedQuestionIndexes = [];
 
@@ -440,10 +500,28 @@ window.startNewQuiz =
 
 
 /* =====================================================
+   START QUIZ
+   ===================================================== */
+
+function startQuiz() {
+
+  startNewQuiz();
+}
+
+
+window.startQuiz =
+  startQuiz;
+
+
+/* =====================================================
    START ROUND
    ===================================================== */
 
 function startRound(roundNumber) {
+
+  roundNumber =
+    Number(roundNumber);
+
 
   if (
     roundNumber > unlockedRounds
@@ -531,15 +609,15 @@ window.retryCurrentRound =
 
 function startNextRound() {
 
-  const next =
+  const nextRound =
     currentRound + 1;
 
 
   if (
-    next <= unlockedRounds
+    nextRound <= unlockedRounds
   ) {
 
-    startRound(next);
+    startRound(nextRound);
 
   } else {
 
@@ -558,7 +636,9 @@ window.startNextRound =
    DISPLAY QUESTION
    ===================================================== */
 
-function displayQuestion(isContinuing) {
+function displayQuestion(
+  isContinuing = false
+) {
 
   clearInterval(timer);
 
@@ -613,6 +693,11 @@ function displayQuestion(isContinuing) {
     !questionText ||
     !options
   ) {
+
+    console.error(
+      "Quiz elements missing from index.html."
+    );
+
     return;
   }
 
@@ -621,21 +706,30 @@ function displayQuestion(isContinuing) {
     question.question;
 
 
-  questionNumber.textContent =
-    "Question " +
-    (currentQuestionIndex + 1) +
-    "/" +
-    currentRoundQuestions.length;
+  if (questionNumber) {
+
+    questionNumber.textContent =
+      "Question " +
+      (currentQuestionIndex + 1) +
+      "/" +
+      currentRoundQuestions.length;
+  }
 
 
-  roundLabel.textContent =
-    "Round " +
-    currentRound;
+  if (roundLabel) {
+
+    roundLabel.textContent =
+      "Round " +
+      currentRound;
+  }
 
 
-  scoreLabel.textContent =
-    "Score: " +
-    score;
+  if (scoreLabel) {
+
+    scoreLabel.textContent =
+      "Score: " +
+      score;
+  }
 
 
   const progress =
@@ -655,7 +749,9 @@ function displayQuestion(isContinuing) {
   options.innerHTML = "";
 
 
-  /* Shuffle options */
+  /* ===================================================
+     SHUFFLE OPTIONS
+     =================================================== */
 
   const shuffledOptions =
     [...question.options];
@@ -684,7 +780,7 @@ function displayQuestion(isContinuing) {
 
 
   shuffledOptions.forEach(
-    function(option) {
+    option => {
 
       const button =
         document.createElement(
@@ -692,12 +788,12 @@ function displayQuestion(isContinuing) {
         );
 
 
-      button.className =
-        "option";
-
-
       button.type =
         "button";
+
+
+      button.className =
+        "option";
 
 
       button.textContent =
@@ -712,7 +808,6 @@ function displayQuestion(isContinuing) {
             option,
             question.answer
           );
-
         }
       );
 
@@ -722,9 +817,9 @@ function displayQuestion(isContinuing) {
   );
 
 
-  /*
-    Continue with saved time.
-  */
+  /* ===================================================
+     TIMER
+     =================================================== */
 
   if (
     !isContinuing ||
@@ -777,10 +872,6 @@ function startTimer() {
           "⏱️ " +
           timeLeft;
 
-
-        /*
-          Save every 5 seconds.
-        */
 
         if (
           timeLeft % 5 === 0
@@ -835,7 +926,7 @@ function timeUp() {
 
 
   buttons.forEach(
-    function(button) {
+    button => {
 
       button.disabled = true;
 
@@ -887,7 +978,7 @@ function selectAnswer(
 
 
   buttons.forEach(
-    function(button) {
+    button => {
 
       button.disabled = true;
 
@@ -1006,10 +1097,9 @@ function finishRound() {
     percentage >= 60;
 
 
-  /*
-    Only mark the round completed
-    if the player actually passed it.
-  */
+  /* ===================================================
+     SAVE COMPLETED ROUND
+     =================================================== */
 
   if (passed) {
 
@@ -1033,9 +1123,7 @@ function finishRound() {
     );
 
 
-    /*
-      Unlock next round.
-    */
+    /* Unlock next round */
 
     const nextRound =
       currentRound + 1;
@@ -1051,17 +1139,15 @@ function finishRound() {
 
       localStorage.setItem(
         "quizmasterUnlockedRounds",
-        unlockedRounds
+        String(unlockedRounds)
       );
     }
-
   }
 
 
-  /*
-    Remove active progress
-    after the round finishes.
-  */
+  /* ===================================================
+     REMOVE ACTIVE PROGRESS
+     =================================================== */
 
   localStorage.removeItem(
     "quizmasterProgress"
@@ -1122,21 +1208,19 @@ function renderRounds() {
   grid.innerHTML = "";
 
 
-  const validQuestions =
-    allQuestions.filter(
-      validQuestion
-    );
-
-
   const possibleRounds =
     Math.max(
       1,
       Math.ceil(
-        validQuestions.length /
+        allQuestions.length /
         QUESTIONS_PER_ROUND
       )
     );
 
+
+  /*
+    Show all rounds that actually exist.
+  */
 
   for (
     let i = 1;
@@ -1193,7 +1277,6 @@ function renderRounds() {
         function() {
 
           startRound(i);
-
         }
       );
 
@@ -1216,7 +1299,6 @@ function renderRounds() {
           alert(
             "🔒 Locked. Get at least 60% in the previous round to unlock this round."
           );
-
         }
       );
     }
@@ -1248,33 +1330,12 @@ function updateContinueButton() {
   }
 
 
-  const saved =
-    localStorage.getItem(
-      "quizmasterProgress"
-    );
+  button.style.display =
+    "block";
 
 
-  /*
-    Keep button visible, but tell the
-    player whether there is progress.
-  */
-
-  if (saved) {
-
-    button.style.display =
-      "block";
-
-    button.textContent =
-      "▶️ Continue Quiz";
-
-  } else {
-
-    button.style.display =
-      "block";
-
-    button.textContent =
-      "▶️ Continue Quiz";
-  }
+  button.textContent =
+    "▶️ Continue Quiz";
 }
 
 
@@ -1301,9 +1362,7 @@ document.addEventListener(
       try {
 
         usedQuestionIndexes =
-          JSON.parse(
-            savedUsed
-          );
+          JSON.parse(savedUsed);
 
 
         if (
@@ -1325,3 +1384,34 @@ document.addEventListener(
     loadQuestions();
   }
 );
+
+Ikintu cy'ingenzi nakosoye: nongeyemo "window.startQuiz = startQuiz;". Ibi ni ingenzi cyane niba "index.html" yawe ifite button nka:
+
+<button id="startBtn" type="button">▶️ Start Quiz</button>
+
+kandi ikayihamagara:
+
+window.startQuiz()
+
+Noneho "Start Quiz" izatangiza quiz neza.
+
+Ariko hari ikindi tugomba kugenzura
+
+Kugira ngo iyi "questions.js" ikore neza, "index.html" yawe igomba kuba ifite IDs izi:
+
+- "startBtn"
+- "continueBtn"
+- "questionText"
+- "options"
+- "questionNumber"
+- "roundLabel"
+- "scoreLabel"
+- "timer"
+- "progressBar"
+- "roundGrid"
+
+Kandi "index.html" igomba kurangiza ishyiraho:
+
+<script src="./questions.js"></script>
+
+Niba umbwiye ngo "ngenzurira na index.html", nyohereza "index.html" yawe yose. Ndayihuza n'iyi "questions.js" kugira ngo Start Quiz, Continue, Round, Timer, Result na Share bikorere hamwe nta conflict.
