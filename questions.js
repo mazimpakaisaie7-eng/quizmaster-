@@ -1,19 +1,25 @@
-/* =====================================================
+/* =========================================================
    QUIZ MASTER 🇷🇼
-   QUESTIONS + ROUNDS + SAVE / CONTINUE
-   MATCHED WITH CURRENT index.html
-   ===================================================== */
+   QUESTIONS ENGINE
+   MATCHED EXACTLY WITH CURRENT index.html
+   ========================================================= */
+
+"use strict";
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
 
 const QUESTIONS_PER_ROUND = 10;
 const TIME_PER_QUESTION = 20;
 const POINTS_PER_CORRECT = 10;
 const PASS_PERCENTAGE = 60;
+const MAX_ROUNDS = 10;
 const QUESTIONS_FILE = "./questions.json";
 
-
-/* =====================================================
-   GLOBAL VARIABLES
-   ===================================================== */
+/* =========================================================
+   GLOBAL STATE
+   ========================================================= */
 
 let allQuestions = [];
 
@@ -24,114 +30,131 @@ let currentRoundQuestions = [];
 let score = 0;
 let correctAnswers = 0;
 
-let timer = null;
 let timeLeft = TIME_PER_QUESTION;
-
+let timer = null;
 let answered = false;
-
-let usedQuestionIndexes = [];
-
-
-/* =====================================================
-   STORAGE
-   ===================================================== */
 
 let unlockedRounds = 1;
 let completedRounds = [];
+let usedQuestionIndexes = [];
 
-try {
+/* =========================================================
+   SAFE LOCAL STORAGE
+   ========================================================= */
 
-  unlockedRounds = parseInt(
-    localStorage.getItem(
-      "quizmasterUnlockedRounds"
-    ) || "1",
-    10
-  );
-
-  if (
-    !Number.isInteger(unlockedRounds) ||
-    unlockedRounds < 1
-  ) {
-    unlockedRounds = 1;
+function storageGet(key, fallback = null) {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : value;
+  } catch (error) {
+    console.warn("Storage read error:", key, error);
+    return fallback;
   }
-
-} catch (error) {
-
-  unlockedRounds = 1;
-
 }
 
+function storageSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (error) {
+    console.warn("Storage write error:", key, error);
+  }
+}
 
-try {
+function storageRemove(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.warn("Storage remove error:", key, error);
+  }
+}
 
-  const savedCompleted =
-    localStorage.getItem(
-      "quizmasterCompletedRounds"
+/* =========================================================
+   LOAD SAVED SETTINGS
+   ========================================================= */
+
+function loadSavedState() {
+
+  const savedUnlocked =
+    parseInt(
+      storageGet("quizmasterUnlockedRounds", "1"),
+      10
     );
 
-  completedRounds =
-    savedCompleted
-      ? JSON.parse(savedCompleted)
-      : [];
+  unlockedRounds =
+    Number.isInteger(savedUnlocked) && savedUnlocked >= 1
+      ? Math.min(savedUnlocked, MAX_ROUNDS)
+      : 1;
 
-  if (!Array.isArray(completedRounds)) {
+
+  try {
+
+    const savedCompleted =
+      JSON.parse(
+        storageGet(
+          "quizmasterCompletedRounds",
+          "[]"
+        )
+      );
+
+    completedRounds =
+      Array.isArray(savedCompleted)
+        ? savedCompleted.filter(function (round) {
+            return Number.isInteger(round);
+          })
+        : [];
+
+  } catch (error) {
+
     completedRounds = [];
-  }
-
-} catch (error) {
-
-  completedRounds = [];
-
-}
-
-
-try {
-
-  const savedUsed =
-    localStorage.getItem(
-      "quizmasterUsedQuestions"
-    );
-
-  if (savedUsed) {
-
-    const parsed =
-      JSON.parse(savedUsed);
-
-    if (Array.isArray(parsed)) {
-      usedQuestionIndexes = parsed;
-    }
 
   }
 
-} catch (error) {
 
-  usedQuestionIndexes = [];
+  try {
+
+    const savedUsed =
+      JSON.parse(
+        storageGet(
+          "quizmasterUsedQuestions",
+          "[]"
+        )
+      );
+
+    usedQuestionIndexes =
+      Array.isArray(savedUsed)
+        ? savedUsed.filter(function (index) {
+            return Number.isInteger(index);
+          })
+        : [];
+
+  } catch (error) {
+
+    usedQuestionIndexes = [];
+
+  }
 
 }
 
-
-/* =====================================================
+/* =========================================================
    SCREEN CONTROL
-   ===================================================== */
+   ========================================================= */
 
 function showScreen(screenId) {
 
   document
     .querySelectorAll(".screen")
-    .forEach(function(screen) {
-
+    .forEach(function (screen) {
       screen.classList.remove("active");
-
     });
 
 
-  const target =
+  const screen =
     document.getElementById(screenId);
 
 
-  if (target) {
+  if (screen) {
 
-    target.classList.add("active");
+    screen.classList.add("active");
 
     window.scrollTo({
       top: 0,
@@ -163,51 +186,71 @@ function showRoundsScreen() {
 }
 
 
+function showErrorScreen() {
+  showScreen("errorScreen");
+}
+
+
 window.showStartScreen = showStartScreen;
 window.showQuizScreen = showQuizScreen;
 window.showResultScreen = showResultScreen;
 window.showRoundsScreen = showRoundsScreen;
+window.showErrorScreen = showErrorScreen;
 
-
-/* =====================================================
+/* =========================================================
    VALIDATE QUESTION
-   ===================================================== */
+   ========================================================= */
 
 function validQuestion(question) {
 
-  return (
+  if (!question || typeof question !== "object") {
+    return false;
+  }
 
-    question &&
 
-    typeof question.question === "string" &&
+  if (
+    typeof question.question !== "string" ||
+    question.question.trim() === ""
+  ) {
+    return false;
+  }
 
-    question.question.trim() !== "" &&
 
-    Array.isArray(question.options) &&
+  if (
+    !Array.isArray(question.options) ||
+    question.options.length < 2
+  ) {
+    return false;
+  }
 
-    question.options.length >= 2 &&
 
-    question.options.every(function(option) {
+  for (const option of question.options) {
 
-      return (
-        typeof option === "string" &&
-        option.trim() !== ""
-      );
+    if (
+      typeof option !== "string" ||
+      option.trim() === ""
+    ) {
+      return false;
+    }
 
-    }) &&
+  }
 
-    typeof question.answer === "string" &&
 
-    question.answer.trim() !== ""
+  if (
+    typeof question.answer !== "string" ||
+    question.answer.trim() === ""
+  ) {
+    return false;
+  }
 
-  );
+
+  return true;
 
 }
 
-
-/* =====================================================
+/* =========================================================
    LOAD QUESTIONS
-   ===================================================== */
+   ========================================================= */
 
 async function loadQuestions() {
 
@@ -227,7 +270,9 @@ async function loadQuestions() {
     if (!response.ok) {
 
       throw new Error(
-        "Could not load questions.json"
+        "HTTP " +
+        response.status +
+        " while loading questions.json"
       );
 
     }
@@ -237,9 +282,12 @@ async function loadQuestions() {
       await response.json();
 
 
+    let questions = [];
+
+
     if (Array.isArray(data)) {
 
-      allQuestions = data;
+      questions = data;
 
     }
 
@@ -248,39 +296,58 @@ async function loadQuestions() {
       Array.isArray(data.questions)
     ) {
 
-      allQuestions =
-        data.questions;
+      questions = data.questions;
 
     }
 
     else {
 
       throw new Error(
-        "questions.json must contain an array of questions."
+        "questions.json must be an array or contain a questions array."
       );
 
     }
 
 
     allQuestions =
-      allQuestions.filter(
-        validQuestion
-      );
+      questions.filter(validQuestion);
 
 
     if (allQuestions.length === 0) {
 
       throw new Error(
-        "No valid questions were found."
+        "No valid questions were found in questions.json."
       );
 
     }
 
 
     console.log(
-      "Quiz Master loaded:",
+      "Quiz Master:",
       allQuestions.length,
-      "questions"
+      "valid questions loaded."
+    );
+
+
+    /*
+     * If old localStorage contains question
+     * indexes that no longer exist, remove them.
+     */
+
+    usedQuestionIndexes =
+      usedQuestionIndexes.filter(function (index) {
+
+        return (
+          index >= 0 &&
+          index < allQuestions.length
+        );
+
+      });
+
+
+    storageSet(
+      "quizmasterUsedQuestions",
+      JSON.stringify(usedQuestionIndexes)
     );
 
 
@@ -288,22 +355,22 @@ async function loadQuestions() {
     updateContinueButton();
 
 
-    /* Make Start Quiz work */
+    /*
+     * Start button
+     */
 
     const startBtn =
-      document.getElementById(
-        "startBtn"
-      );
+      document.getElementById("startBtn");
 
 
     if (startBtn) {
 
       startBtn.onclick =
-        function(event) {
+        function (event) {
 
           event.preventDefault();
 
-          startQuiz();
+          startNewQuiz();
 
         };
 
@@ -314,8 +381,9 @@ async function loadQuestions() {
       "Quiz Master is ready."
     );
 
+  }
 
-  } catch (error) {
+  catch (error) {
 
     console.error(
       "Quiz Master loading error:",
@@ -332,27 +400,34 @@ async function loadQuestions() {
     if (errorMessage) {
 
       errorMessage.textContent =
-        "Unable to load questions.json. Please make sure questions.json exists in the project root and contains valid questions.";
+        "Unable to load questions.json. Make sure questions.json is in the project root and contains valid questions.";
 
     }
 
 
-    showScreen(
-      "errorScreen"
-    );
+    showErrorScreen();
 
   }
 
 }
 
-
-/* =====================================================
+/* =========================================================
    GET QUESTIONS FOR ROUND
-   ===================================================== */
+   ========================================================= */
 
 function getQuestionsForRound() {
 
-  let available = [];
+  if (allQuestions.length === 0) {
+    return [];
+  }
+
+
+  /*
+   Find unused questions.
+  */
+
+  let availableIndexes =
+    [];
 
 
   for (
@@ -365,7 +440,7 @@ function getQuestionsForRound() {
       !usedQuestionIndexes.includes(i)
     ) {
 
-      available.push(i);
+      availableIndexes.push(i);
 
     }
 
@@ -373,12 +448,12 @@ function getQuestionsForRound() {
 
 
   /*
-   If not enough unused questions remain,
-   reset the question pool.
+   If there are not enough unused questions
+   for another round, start a fresh pool.
   */
 
   if (
-    available.length <
+    availableIndexes.length <
     Math.min(
       QUESTIONS_PER_ROUND,
       allQuestions.length
@@ -387,7 +462,13 @@ function getQuestionsForRound() {
 
     usedQuestionIndexes = [];
 
-    available = [];
+    storageSet(
+      "quizmasterUsedQuestions",
+      "[]"
+    );
+
+
+    availableIndexes = [];
 
     for (
       let i = 0;
@@ -395,17 +476,19 @@ function getQuestionsForRound() {
       i++
     ) {
 
-      available.push(i);
+      availableIndexes.push(i);
 
     }
 
   }
 
 
-  /* Shuffle */
+  /*
+   Shuffle question indexes.
+  */
 
   for (
-    let i = available.length - 1;
+    let i = availableIndexes.length - 1;
     i > 0;
     i--
   ) {
@@ -416,41 +499,52 @@ function getQuestionsForRound() {
       );
 
 
-    [
-      available[i],
-      available[j]
-    ] = [
-      available[j],
-      available[i]
-    ];
+    const temp =
+      availableIndexes[i];
+
+    availableIndexes[i] =
+      availableIndexes[j];
+
+    availableIndexes[j] =
+      temp;
 
   }
 
 
-  const selected =
-    available.slice(
+  /*
+   Select questions for this round.
+  */
+
+  const selectedIndexes =
+    availableIndexes.slice(
       0,
       Math.min(
         QUESTIONS_PER_ROUND,
-        available.length
+        availableIndexes.length
       )
     );
 
 
-  selected.forEach(function(index) {
+  /*
+   Mark them as used.
+  */
 
-    if (
-      !usedQuestionIndexes.includes(index)
-    ) {
+  selectedIndexes.forEach(
+    function (index) {
 
-      usedQuestionIndexes.push(index);
+      if (
+        !usedQuestionIndexes.includes(index)
+      ) {
+
+        usedQuestionIndexes.push(index);
+
+      }
 
     }
+  );
 
-  });
 
-
-  localStorage.setItem(
+  storageSet(
     "quizmasterUsedQuestions",
     JSON.stringify(
       usedQuestionIndexes
@@ -458,23 +552,22 @@ function getQuestionsForRound() {
   );
 
 
-  return selected.map(function(index) {
-
-    return allQuestions[index];
-
-  });
+  return selectedIndexes.map(
+    function (index) {
+      return allQuestions[index];
+    }
+  );
 
 }
 
-
-/* =====================================================
-   SAVE PROGRESS
-   ===================================================== */
+/* =========================================================
+   SAVE QUIZ PROGRESS
+   ========================================================= */
 
 function saveQuizProgress() {
 
   if (
-    !currentRoundQuestions ||
+    !Array.isArray(currentRoundQuestions) ||
     currentRoundQuestions.length === 0
   ) {
 
@@ -509,7 +602,7 @@ function saveQuizProgress() {
   };
 
 
-  localStorage.setItem(
+  storageSet(
     "quizmasterProgress",
     JSON.stringify(progress)
   );
@@ -523,47 +616,53 @@ function saveQuizProgress() {
 window.saveQuizProgress =
   saveQuizProgress;
 
-
-/* =====================================================
-   CONTINUE BUTTON
-   ===================================================== */
+/* =========================================================
+   CONTINUE BUTTON DISPLAY
+   ========================================================= */
 
 function updateContinueButton() {
 
-  const continueBtn =
+  const button =
     document.getElementById(
       "continueBtn"
     );
 
 
-  if (!continueBtn) {
+  if (!button) {
     return;
   }
 
 
   const saved =
-    localStorage.getItem(
-      "quizmasterProgress"
+    storageGet(
+      "quizmasterProgress",
+      null
     );
 
 
   if (saved) {
 
-    continueBtn.style.display =
+    button.style.display =
       "block";
 
-    continueBtn.disabled =
+    button.disabled =
       false;
 
-    continueBtn.textContent =
+    button.textContent =
       "▶️ Continue Quiz";
 
   }
 
   else {
 
-    continueBtn.style.display =
-      "none";
+    button.style.display =
+      "block";
+
+    button.disabled =
+      false;
+
+    button.textContent =
+      "▶️ Continue Quiz";
 
   }
 
@@ -573,24 +672,26 @@ function updateContinueButton() {
 window.updateContinueButton =
   updateContinueButton;
 
-
-/* =====================================================
+/* =========================================================
    CONTINUE SAVED QUIZ
-   ===================================================== */
+   ========================================================= */
 
-function continueQuiz() {
+function continueSavedQuiz() {
 
   const saved =
-    localStorage.getItem(
-      "quizmasterProgress"
+    storageGet(
+      "quizmasterProgress",
+      null
     );
 
 
   if (!saved) {
 
     alert(
-      "There is no saved quiz to continue."
+      "There is no saved quiz to continue. Starting a new quiz."
     );
+
+    startNewQuiz();
 
     return;
 
@@ -603,42 +704,43 @@ function continueQuiz() {
       JSON.parse(saved);
 
 
+    if (
+      !progress ||
+      !Array.isArray(
+        progress.currentRoundQuestions
+      ) ||
+      progress.currentRoundQuestions.length === 0
+    ) {
+
+      throw new Error(
+        "Invalid saved quiz."
+      );
+
+    }
+
+
     currentRound =
-      Number(
-        progress.currentRound
-      ) || 1;
+      Number(progress.currentRound) || 1;
 
 
     currentQuestionIndex =
-      Number(
-        progress.currentQuestionIndex
-      ) || 0;
+      Number(progress.currentQuestionIndex) || 0;
 
 
     currentRoundQuestions =
-      Array.isArray(
-        progress.currentRoundQuestions
-      )
-        ? progress.currentRoundQuestions
-        : [];
+      progress.currentRoundQuestions;
 
 
     score =
-      Number(
-        progress.score
-      ) || 0;
+      Number(progress.score) || 0;
 
 
     correctAnswers =
-      Number(
-        progress.correctAnswers
-      ) || 0;
+      Number(progress.correctAnswers) || 0;
 
 
     timeLeft =
-      Number(
-        progress.timeLeft
-      );
+      Number(progress.timeLeft);
 
 
     if (
@@ -652,23 +754,36 @@ function continueQuiz() {
     }
 
 
-    usedQuestionIndexes =
+    if (
       Array.isArray(
         progress.usedQuestionIndexes
       )
-        ? progress.usedQuestionIndexes
-        : [];
+    ) {
+
+      usedQuestionIndexes =
+        progress.usedQuestionIndexes;
+
+    }
+
+
+    /*
+     * Safety checks.
+     */
+
+    if (
+      currentRound < 1
+    ) {
+
+      currentRound = 1;
+
+    }
 
 
     if (
-      currentRoundQuestions.length === 0
+      currentQuestionIndex < 0
     ) {
 
-      startRound(
-        currentRound
-      );
-
-      return;
+      currentQuestionIndex = 0;
 
     }
 
@@ -689,16 +804,17 @@ function continueQuiz() {
 
     displayQuestion(true);
 
+  }
 
-  } catch (error) {
+  catch (error) {
 
     console.error(
-      "Continue error:",
+      "Continue quiz error:",
       error
     );
 
 
-    localStorage.removeItem(
+    storageRemove(
       "quizmasterProgress"
     );
 
@@ -707,7 +823,7 @@ function continueQuiz() {
 
 
     alert(
-      "Saved quiz data is invalid. Starting a new quiz."
+      "The saved quiz could not be restored. Starting a new quiz."
     );
 
 
@@ -719,12 +835,11 @@ function continueQuiz() {
 
 
 window.continueQuiz =
-  continueQuiz;
+  continueSavedQuiz;
 
-
-/* =====================================================
+/* =========================================================
    START NEW QUIZ
-   ===================================================== */
+   ========================================================= */
 
 function startNewQuiz() {
 
@@ -746,17 +861,27 @@ function startNewQuiz() {
 
   answered = false;
 
+
+  /*
+   New quiz = fresh question pool.
+  */
+
   usedQuestionIndexes = [];
 
 
-  localStorage.removeItem(
+  storageRemove(
     "quizmasterProgress"
   );
 
 
-  localStorage.setItem(
+  storageRemove(
+    "quizmasterSelectedRound"
+  );
+
+
+  storageSet(
     "quizmasterUsedQuestions",
-    JSON.stringify([])
+    "[]"
   );
 
 
@@ -771,22 +896,27 @@ function startNewQuiz() {
 window.startNewQuiz =
   startNewQuiz;
 
-
-/* =====================================================
+/* =========================================================
    START QUIZ
-   ===================================================== */
+   ========================================================= */
 
 function startQuiz() {
 
   /*
-   If a round was selected from the
-   Choose Round screen, use it.
+   This function is used by the current index.html
+   for Continue Quiz and Choose Round.
+
+   If a saved quiz exists and no round was selected,
+   continue it.
+
+   If a round was selected, start that round.
   */
 
   const selectedRound =
     Number(
-      localStorage.getItem(
-        "quizmasterSelectedRound"
+      storageGet(
+        "quizmasterSelectedRound",
+        ""
       )
     );
 
@@ -796,7 +926,7 @@ function startQuiz() {
     selectedRound >= 1
   ) {
 
-    localStorage.removeItem(
+    storageRemove(
       "quizmasterSelectedRound"
     );
 
@@ -805,6 +935,26 @@ function startQuiz() {
       selectedRound
     );
 
+    return;
+
+  }
+
+
+  /*
+   If saved progress exists,
+   continue it.
+  */
+
+  const saved =
+    storageGet(
+      "quizmasterProgress",
+      null
+    );
+
+
+  if (saved) {
+
+    continueSavedQuiz();
 
     return;
 
@@ -812,8 +962,7 @@ function startQuiz() {
 
 
   /*
-   Normal Start Quiz always starts
-   a completely new quiz.
+   No saved progress = new quiz.
   */
 
   startNewQuiz();
@@ -824,12 +973,14 @@ function startQuiz() {
 window.startQuiz =
   startQuiz;
 
-
-/* =====================================================
+/* =========================================================
    START ROUND
-   ===================================================== */
+   ========================================================= */
 
 function startRound(roundNumber) {
+
+  clearInterval(timer);
+
 
   roundNumber =
     Number(roundNumber);
@@ -846,8 +997,20 @@ function startRound(roundNumber) {
 
 
   if (
-    roundNumber >
-    unlockedRounds
+    roundNumber > MAX_ROUNDS
+  ) {
+
+    alert(
+      "That round does not exist."
+    );
+
+    return;
+
+  }
+
+
+  if (
+    roundNumber > unlockedRounds
   ) {
 
     alert(
@@ -860,20 +1023,16 @@ function startRound(roundNumber) {
 
 
   if (
-    !Array.isArray(allQuestions) ||
     allQuestions.length === 0
   ) {
 
     alert(
-      "Questions are still loading. Please try again."
+      "Questions are still loading. Please wait a moment and try again."
     );
 
     return;
 
   }
-
-
-  clearInterval(timer);
 
 
   currentRound =
@@ -900,7 +1059,7 @@ function startRound(roundNumber) {
   ) {
 
     alert(
-      "No questions are available for this round."
+      "No questions are available."
     );
 
     return;
@@ -920,10 +1079,9 @@ function startRound(roundNumber) {
 window.startRound =
   startRound;
 
-
-/* =====================================================
-   RETRY ROUND
-   ===================================================== */
+/* =========================================================
+   RETRY CURRENT ROUND
+   ========================================================= */
 
 function retryCurrentRound() {
 
@@ -937,14 +1095,11 @@ function retryCurrentRound() {
 window.retryCurrentRound =
   retryCurrentRound;
 
-
-/* =====================================================
+/* =========================================================
    DISPLAY QUESTION
-   ===================================================== */
+   ========================================================= */
 
-function displayQuestion(
-  isContinuing
-) {
+function displayQuestion(isContinuing) {
 
   clearInterval(timer);
 
@@ -972,10 +1127,24 @@ function displayQuestion(
     );
 
 
-  const options =
+  const optionsElement =
     document.getElementById(
       "options"
     );
+
+
+  if (
+    !questionElement ||
+    !optionsElement
+  ) {
+
+    console.error(
+      "Quiz HTML elements are missing."
+    );
+
+    return;
+
+  }
 
 
   const questionNumber =
@@ -1008,29 +1177,29 @@ function displayQuestion(
     );
 
 
+  const timerElement =
+    document.getElementById(
+      "timer"
+    );
+
+
   const message =
     document.getElementById(
       "message"
     );
 
 
-  if (
-    !questionElement ||
-    !options
-  ) {
-
-    console.error(
-      "Required quiz elements are missing from index.html."
-    );
-
-    return;
-
-  }
-
+  /*
+   Question
+  */
 
   questionElement.textContent =
     question.question;
 
+
+  /*
+   Question number
+  */
 
   if (questionNumber) {
 
@@ -1043,6 +1212,10 @@ function displayQuestion(
   }
 
 
+  /*
+   Round
+  */
+
   if (roundDisplay) {
 
     roundDisplay.textContent =
@@ -1051,6 +1224,10 @@ function displayQuestion(
 
   }
 
+
+  /*
+   Score
+  */
 
   if (scoreElement) {
 
@@ -1061,6 +1238,10 @@ function displayQuestion(
   }
 
 
+  /*
+   Category
+  */
+
   if (categoryElement) {
 
     categoryElement.textContent =
@@ -1069,6 +1250,10 @@ function displayQuestion(
 
   }
 
+
+  /*
+   Progress
+  */
 
   if (progressBar) {
 
@@ -1085,6 +1270,10 @@ function displayQuestion(
   }
 
 
+  /*
+   Clear message
+  */
+
   if (message) {
 
     message.textContent = "";
@@ -1097,14 +1286,14 @@ function displayQuestion(
 
 
   /*
-   Remove old option buttons.
+   Remove old answer buttons.
   */
 
-  options.innerHTML = "";
+  optionsElement.innerHTML = "";
 
 
   /*
-   Shuffle answers.
+   Shuffle answer choices.
   */
 
   const shuffledOptions =
@@ -1124,13 +1313,14 @@ function displayQuestion(
       );
 
 
-    [
-      shuffledOptions[i],
-      shuffledOptions[j]
-    ] = [
-      shuffledOptions[j],
-      shuffledOptions[i]
-    ];
+    const temp =
+      shuffledOptions[i];
+
+    shuffledOptions[i] =
+      shuffledOptions[j];
+
+    shuffledOptions[j] =
+      temp;
 
   }
 
@@ -1140,7 +1330,7 @@ function displayQuestion(
   */
 
   shuffledOptions.forEach(
-    function(option) {
+    function (option) {
 
       const button =
         document.createElement(
@@ -1160,7 +1350,7 @@ function displayQuestion(
 
       button.addEventListener(
         "click",
-        function() {
+        function () {
 
           selectAnswer(
             option,
@@ -1171,7 +1361,7 @@ function displayQuestion(
       );
 
 
-      options.appendChild(
+      optionsElement.appendChild(
         button
       );
 
@@ -1183,9 +1373,7 @@ function displayQuestion(
    Timer.
   */
 
-  if (
-    !isContinuing
-  ) {
+  if (!isContinuing) {
 
     timeLeft =
       TIME_PER_QUESTION;
@@ -1194,7 +1382,7 @@ function displayQuestion(
 
 
   if (
-    !timeLeft ||
+    !Number.isFinite(timeLeft) ||
     timeLeft <= 0
   ) {
 
@@ -1204,14 +1392,22 @@ function displayQuestion(
   }
 
 
+  if (timerElement) {
+
+    timerElement.textContent =
+      "⏱️ " +
+      timeLeft;
+
+  }
+
+
   startTimer();
 
 }
 
-
-/* =====================================================
+/* =========================================================
    TIMER
-   ===================================================== */
+   ========================================================= */
 
 function startTimer() {
 
@@ -1236,13 +1432,24 @@ function startTimer() {
 
   timer =
     setInterval(
-      function() {
+      function () {
+
+        if (answered) {
+
+          clearInterval(timer);
+
+          return;
+
+        }
+
 
         timeLeft--;
 
 
         if (timeLeft < 0) {
+
           timeLeft = 0;
+
         }
 
 
@@ -1251,7 +1458,12 @@ function startTimer() {
           timeLeft;
 
 
+        /*
+         Save every 5 seconds.
+        */
+
         if (
+          timeLeft > 0 &&
           timeLeft % 5 === 0
         ) {
 
@@ -1276,10 +1488,9 @@ function startTimer() {
 
 }
 
-
-/* =====================================================
+/* =========================================================
    TIME UP
-   ===================================================== */
+   ========================================================= */
 
 function timeUp() {
 
@@ -1315,14 +1526,14 @@ function timeUp() {
 
 
   buttons.forEach(
-    function(button) {
+    function (button) {
 
       button.disabled = true;
 
 
       if (
         button.textContent.trim() ===
-        question.answer.trim()
+        String(question.answer).trim()
       ) {
 
         button.classList.add(
@@ -1357,16 +1568,19 @@ function timeUp() {
 
 
   setTimeout(
-    nextQuestion,
+    function () {
+
+      nextQuestion();
+
+    },
     900
   );
 
 }
 
-
-/* =====================================================
+/* =========================================================
    SELECT ANSWER
-   ===================================================== */
+   ========================================================= */
 
 function selectAnswer(
   selected,
@@ -1398,7 +1612,7 @@ function selectAnswer(
 
 
   buttons.forEach(
-    function(button) {
+    function (button) {
 
       button.disabled = true;
 
@@ -1500,16 +1714,19 @@ function selectAnswer(
 
 
   setTimeout(
-    nextQuestion,
+    function () {
+
+      nextQuestion();
+
+    },
     800
   );
 
 }
 
-
-/* =====================================================
+/* =========================================================
    NEXT QUESTION
-   ===================================================== */
+   ========================================================= */
 
 function nextQuestion() {
 
@@ -1535,33 +1752,15 @@ function nextQuestion() {
     TIME_PER_QUESTION;
 
 
-  const message =
-    document.getElementById(
-      "message"
-    );
-
-
-  if (message) {
-
-    message.textContent = "";
-
-    message.classList.add(
-      "hidden"
-    );
-
-  }
-
-
   saveQuizProgress();
 
   displayQuestion(false);
 
 }
 
-
-/* =====================================================
+/* =========================================================
    FINISH ROUND
-   ===================================================== */
+   ========================================================= */
 
 function finishRound() {
 
@@ -1592,16 +1791,11 @@ function finishRound() {
 
 
   const passed =
-    percentage >=
-    PASS_PERCENTAGE;
-
-
-  const nextRoundNumber =
-    currentRound + 1;
+    percentage >= PASS_PERCENTAGE;
 
 
   /*
-   Unlock next round.
+   Unlock next round if passed.
   */
 
   if (passed) {
@@ -1620,25 +1814,25 @@ function finishRound() {
 
 
     if (
-      nextRoundNumber >
-      unlockedRounds
+      currentRound < MAX_ROUNDS &&
+      currentRound + 1 > unlockedRounds
     ) {
 
       unlockedRounds =
-        nextRoundNumber;
+        currentRound + 1;
 
     }
 
   }
 
 
-  localStorage.setItem(
+  storageSet(
     "quizmasterUnlockedRounds",
     String(unlockedRounds)
   );
 
 
-  localStorage.setItem(
+  storageSet(
     "quizmasterCompletedRounds",
     JSON.stringify(
       completedRounds
@@ -1647,11 +1841,10 @@ function finishRound() {
 
 
   /*
-   Delete saved progress
-   because the round is finished.
+   Remove current saved game.
   */
 
-  localStorage.removeItem(
+  storageRemove(
     "quizmasterProgress"
   );
 
@@ -1668,17 +1861,15 @@ function finishRound() {
   );
 
 
-  showResultScreen();
-
-
   renderRounds();
+
+  showResultScreen();
 
 }
 
-
-/* =====================================================
+/* =========================================================
    UPDATE RESULT
-   ===================================================== */
+   ========================================================= */
 
 function updateResult(
   correct,
@@ -1721,6 +1912,12 @@ function updateResult(
   const finishedRound =
     document.getElementById(
       "finishedRound"
+    );
+
+
+  const restartBtn =
+    document.getElementById(
+      "restartBtn"
     );
 
 
@@ -1777,8 +1974,8 @@ function updateResult(
     if (passed) {
 
       if (
-        currentRound <
-        unlockedRounds
+        currentRound < MAX_ROUNDS &&
+        currentRound < unlockedRounds
       ) {
 
         resultMessage.textContent =
@@ -1821,16 +2018,6 @@ function updateResult(
   }
 
 
-  /*
-   Restart button in current index.html.
-  */
-
-  const restartBtn =
-    document.getElementById(
-      "restartBtn"
-    );
-
-
   if (restartBtn) {
 
     restartBtn.style.display =
@@ -1840,10 +2027,15 @@ function updateResult(
       false;
 
 
-    if (passed) {
+    if (
+      passed &&
+      currentRound < MAX_ROUNDS &&
+      currentRound < unlockedRounds
+    ) {
 
       restartBtn.textContent =
-        "▶️ Continue / Play Again";
+        "▶️ Continue to Round " +
+        (currentRound + 1);
 
     }
 
@@ -1858,11 +2050,9 @@ function updateResult(
 
 }
 
-
-/* =====================================================
+/* =========================================================
    RENDER ROUNDS
-   MATCHES #roundGrid AND .round-btn
-   ===================================================== */
+   ========================================================= */
 
 function renderRounds() {
 
@@ -1889,26 +2079,19 @@ function renderRounds() {
 
   const maxRounds =
     Math.min(
-      10,
+      MAX_ROUNDS,
       totalPossibleRounds
     );
 
 
-  const existingButtons =
-    Array.from(
-      roundGrid.querySelectorAll(
-        ".round-btn"
-      )
+  const buttons =
+    roundGrid.querySelectorAll(
+      ".round-btn"
     );
 
 
-  /*
-   Update the 10 buttons already
-   present in index.html.
-  */
-
-  existingButtons.forEach(
-    function(button, index) {
+  buttons.forEach(
+    function (button, index) {
 
       const round =
         index + 1;
@@ -1930,10 +2113,8 @@ function renderRounds() {
         "block";
 
 
-      button.setAttribute(
-        "data-round",
-        String(round)
-      );
+      button.disabled =
+        false;
 
 
       button.classList.remove(
@@ -1943,22 +2124,23 @@ function renderRounds() {
       );
 
 
-      const unlocked =
-        round <=
-        unlockedRounds;
+      button.setAttribute(
+        "data-round",
+        String(round)
+      );
 
 
-      const completed =
+      const isUnlocked =
+        round <= unlockedRounds;
+
+
+      const isCompleted =
         completedRounds.includes(
           round
         );
 
 
-      button.disabled =
-        !unlocked;
-
-
-      if (completed) {
+      if (isCompleted) {
 
         button.classList.add(
           "completed"
@@ -1968,9 +2150,12 @@ function renderRounds() {
           "✅ Round " +
           round;
 
+        button.disabled =
+          false;
+
       }
 
-      else if (unlocked) {
+      else if (isUnlocked) {
 
         button.classList.add(
           "unlocked"
@@ -1979,6 +2164,9 @@ function renderRounds() {
         button.textContent =
           "▶️ Round " +
           round;
+
+        button.disabled =
+          false;
 
       }
 
@@ -1992,6 +2180,9 @@ function renderRounds() {
           "🔒 Round " +
           round;
 
+        button.disabled =
+          true;
+
       }
 
     }
@@ -2003,33 +2194,32 @@ function renderRounds() {
 window.renderRounds =
   renderRounds;
 
-
-/* =====================================================
-   RESET ALL DATA
-   ===================================================== */
+/* =========================================================
+   RESET ALL QUIZ DATA
+   ========================================================= */
 
 function resetQuizData() {
 
   clearInterval(timer);
 
 
-  localStorage.removeItem(
+  storageRemove(
     "quizmasterProgress"
   );
 
-  localStorage.removeItem(
+  storageRemove(
     "quizmasterUsedQuestions"
   );
 
-  localStorage.removeItem(
+  storageRemove(
     "quizmasterCompletedRounds"
   );
 
-  localStorage.removeItem(
+  storageRemove(
     "quizmasterUnlockedRounds"
   );
 
-  localStorage.removeItem(
+  storageRemove(
     "quizmasterSelectedRound"
   );
 
@@ -2068,11 +2258,9 @@ function resetQuizData() {
 window.resetQuizData =
   resetQuizData;
 
-
-/* =====================================================
+/* =========================================================
    RESULT BUTTONS
-   MATCHES CURRENT index.html
-   ===================================================== */
+   ========================================================= */
 
 function connectResultButtons() {
 
@@ -2088,26 +2276,35 @@ function connectResultButtons() {
     );
 
 
+  const quizHomeBtn =
+    document.getElementById(
+      "quizHomeBtn"
+    );
+
+
   const errorRestartBtn =
     document.getElementById(
       "errorRestartBtn"
     );
 
 
+  const errorHomeBtn =
+    document.getElementById(
+      "errorHomeBtn"
+    );
+
+
+  /*
+   Restart / next round
+  */
+
   if (restartBtn) {
 
-    restartBtn.addEventListener(
-      "click",
-      function(event) {
+    restartBtn.onclick =
+      function (event) {
 
         event.preventDefault();
 
-
-        /*
-         If current round was passed,
-         play the next unlocked round.
-         Otherwise retry same round.
-        */
 
         if (
           completedRounds.includes(
@@ -2128,55 +2325,183 @@ function connectResultButtons() {
 
         }
 
-      }
-    );
+      };
 
   }
 
+
+  /*
+   Result home
+  */
 
   if (resultHomeBtn) {
 
-    resultHomeBtn.addEventListener(
-      "click",
-      function(event) {
+    resultHomeBtn.onclick =
+      function (event) {
 
         event.preventDefault();
 
+        clearInterval(timer);
+
         showStartScreen();
 
-      }
-    );
+      };
 
   }
 
 
+  /*
+   Quiz home
+  */
+
+  if (quizHomeBtn) {
+
+    quizHomeBtn.onclick =
+      function (event) {
+
+        event.preventDefault();
+
+        clearInterval(timer);
+
+        showStartScreen();
+
+      };
+
+  }
+
+
+  /*
+   Error restart
+  */
+
   if (errorRestartBtn) {
 
-    errorRestartBtn.addEventListener(
-      "click",
-      function(event) {
+    errorRestartBtn.onclick =
+      function (event) {
 
         event.preventDefault();
 
         location.reload();
 
-      }
-    );
+      };
+
+  }
+
+
+  /*
+   Error home
+  */
+
+  if (errorHomeBtn) {
+
+    errorHomeBtn.onclick =
+      function (event) {
+
+        event.preventDefault();
+
+        showStartScreen();
+
+      };
 
   }
 
 }
 
+/* =========================================================
+   ROUND BUTTON CONNECTION
+   ========================================================= */
 
-/* =====================================================
+function connectRoundButtons() {
+
+  const buttons =
+    document.querySelectorAll(
+      ".round-btn"
+    );
+
+
+  buttons.forEach(
+    function (button) {
+
+      /*
+       Prevent duplicate listeners by replacing
+       onclick instead of addEventListener.
+      */
+
+      button.onclick =
+        function (event) {
+
+          event.preventDefault();
+
+
+          if (
+            button.disabled ||
+            button.classList.contains("locked")
+          ) {
+
+            return;
+
+          }
+
+
+          const round =
+            Number(
+              button.getAttribute(
+                "data-round"
+              )
+            );
+
+
+          if (
+            !Number.isInteger(round) ||
+            round < 1
+          ) {
+
+            return;
+
+          }
+
+
+          if (
+            round > unlockedRounds
+          ) {
+
+            alert(
+              "🔒 This round is locked."
+            );
+
+            return;
+
+          }
+
+
+          storageSet(
+            "quizmasterSelectedRound",
+            String(round)
+          );
+
+
+          startQuiz();
+
+        };
+
+    }
+  );
+
+}
+
+/* =========================================================
    INITIALIZE
-   ===================================================== */
+   ========================================================= */
 
 document.addEventListener(
   "DOMContentLoaded",
-  function() {
+  function () {
+
+    loadSavedState();
 
     connectResultButtons();
+
+    connectRoundButtons();
 
     loadQuestions();
 
