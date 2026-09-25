@@ -1,12 +1,11 @@
 /* =====================================================
    QUIZ MASTER 🇷🇼
-   QUESTIONS + ROUND SYSTEM
+   QUESTIONS + ROUND + SAVE/CONTINUE SYSTEM
    ===================================================== */
 
 const QUESTIONS_PER_ROUND = 10;
 const TIME_PER_QUESTION = 20;
 const POINTS_PER_CORRECT = 10;
-
 const QUESTIONS_FILE = "./questions.json";
 
 
@@ -32,7 +31,7 @@ let usedQuestionIndexes = [];
 
 
 /* =====================================================
-   UNLOCKED ROUNDS
+   ROUND STORAGE
    ===================================================== */
 
 let unlockedRounds = parseInt(
@@ -45,28 +44,68 @@ if (!Number.isInteger(unlockedRounds) || unlockedRounds < 1) {
 }
 
 
-/* =====================================================
-   COMPLETED ROUNDS
-   ===================================================== */
-
 let completedRounds = [];
 
 try {
-  const savedCompleted =
-    localStorage.getItem("quizmasterCompletedRounds");
+  const savedCompleted = localStorage.getItem(
+    "quizmasterCompletedRounds"
+  );
 
-  completedRounds =
-    savedCompleted
-      ? JSON.parse(savedCompleted)
-      : [];
+  completedRounds = savedCompleted
+    ? JSON.parse(savedCompleted)
+    : [];
 
   if (!Array.isArray(completedRounds)) {
     completedRounds = [];
   }
 
 } catch (error) {
+
   completedRounds = [];
+
 }
+
+
+/* =====================================================
+   SCREEN CONTROL
+   ===================================================== */
+
+function showScreen(screenId) {
+
+  document.querySelectorAll(".screen").forEach(function (screen) {
+    screen.classList.remove("active");
+  });
+
+  const target = document.getElementById(screenId);
+
+  if (target) {
+    target.classList.add("active");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+}
+
+
+function showQuizScreen() {
+  showScreen("quizScreen");
+}
+
+
+function showResultScreen() {
+  showScreen("resultScreen");
+}
+
+
+function showStartScreen() {
+  showScreen("startScreen");
+}
+
+
+window.showQuizScreen = showQuizScreen;
+window.showResultScreen = showResultScreen;
 
 
 /* =====================================================
@@ -109,17 +148,19 @@ async function loadQuestions() {
       throw new Error(
         "questions.json must contain an array of questions."
       );
+
     }
 
 
-    allQuestions =
-      allQuestions.filter(validQuestion);
+    allQuestions = allQuestions.filter(validQuestion);
 
 
     if (allQuestions.length === 0) {
+
       throw new Error(
-        "No valid questions found."
+        "No valid questions were found in questions.json."
       );
+
     }
 
 
@@ -132,7 +173,6 @@ async function loadQuestions() {
     renderRounds();
     updateContinueButton();
 
-
   } catch (error) {
 
     console.error(
@@ -140,11 +180,20 @@ async function loadQuestions() {
       error
     );
 
+    const errorMessage =
+      document.getElementById("errorMessage");
 
-    alert(
-      "Unable to load quiz questions. Please check questions.json."
-    );
+    if (errorMessage) {
+
+      errorMessage.textContent =
+        "Unable to load questions.json. Please make sure the file exists in the project root and contains valid questions.";
+
+    }
+
+    showScreen("errorScreen");
+
   }
+
 }
 
 
@@ -155,19 +204,32 @@ async function loadQuestions() {
 function validQuestion(question) {
 
   return (
+
     question &&
+
     typeof question.question === "string" &&
+
     question.question.trim() !== "" &&
+
     Array.isArray(question.options) &&
+
     question.options.length >= 2 &&
-    question.options.every(
-      option =>
+
+    question.options.every(function (option) {
+
+      return (
         typeof option === "string" &&
         option.trim() !== ""
-    ) &&
+      );
+
+    }) &&
+
     typeof question.answer === "string" &&
+
     question.answer.trim() !== ""
+
   );
+
 }
 
 
@@ -186,22 +248,23 @@ function getQuestionsForRound() {
     i++
   ) {
 
-    if (
-      !usedQuestionIndexes.includes(i)
-    ) {
+    if (!usedQuestionIndexes.includes(i)) {
 
       available.push(i);
+
     }
+
   }
 
 
   /*
-    If there are not enough unused questions
-    for another complete round, start a new cycle.
+   If there are not enough unused questions,
+   allow the question pool to restart.
   */
 
   if (
-    available.length < QUESTIONS_PER_ROUND
+    available.length <
+    QUESTIONS_PER_ROUND
   ) {
 
     usedQuestionIndexes = [];
@@ -215,13 +278,15 @@ function getQuestionsForRound() {
     ) {
 
       available.push(i);
+
     }
+
   }
 
 
-  /* ===================================================
-     SHUFFLE QUESTIONS
-     =================================================== */
+  /*
+   Shuffle questions
+  */
 
   for (
     let i = available.length - 1;
@@ -230,9 +295,7 @@ function getQuestionsForRound() {
   ) {
 
     const j =
-      Math.floor(
-        Math.random() * (i + 1)
-      );
+      Math.floor(Math.random() * (i + 1));
 
     [
       available[i],
@@ -241,26 +304,25 @@ function getQuestionsForRound() {
       available[j],
       available[i]
     ];
+
   }
 
 
-  const selected =
-    available.slice(
-      0,
-      Math.min(
-        QUESTIONS_PER_ROUND,
-        available.length
-      )
-    );
+  const selected = available.slice(
+    0,
+    Math.min(
+      QUESTIONS_PER_ROUND,
+      available.length
+    )
+  );
 
 
-  selected.forEach(index => {
+  selected.forEach(function (index) {
 
-    if (
-      !usedQuestionIndexes.includes(index)
-    ) {
+    if (!usedQuestionIndexes.includes(index)) {
 
       usedQuestionIndexes.push(index);
+
     }
 
   });
@@ -268,20 +330,21 @@ function getQuestionsForRound() {
 
   localStorage.setItem(
     "quizmasterUsedQuestions",
-    JSON.stringify(
-      usedQuestionIndexes
-    )
+    JSON.stringify(usedQuestionIndexes)
   );
 
 
-  return selected.map(
-    index => allQuestions[index]
-  );
+  return selected.map(function (index) {
+
+    return allQuestions[index];
+
+  });
+
 }
 
 
 /* =====================================================
-   SAVE PROGRESS
+   SAVE QUIZ PROGRESS
    ===================================================== */
 
 function saveQuizProgress() {
@@ -292,6 +355,7 @@ function saveQuizProgress() {
   ) {
 
     return;
+
   }
 
 
@@ -328,11 +392,11 @@ function saveQuizProgress() {
 
 
   updateContinueButton();
+
 }
 
 
-window.saveQuizProgress =
-  saveQuizProgress;
+window.saveQuizProgress = saveQuizProgress;
 
 
 /* =====================================================
@@ -350,10 +414,11 @@ function continueQuiz() {
   if (!saved) {
 
     alert(
-      "There is no saved quiz to continue."
+      "There is no saved quiz to continue. Start a new quiz first."
     );
 
     return;
+
   }
 
 
@@ -406,7 +471,9 @@ function continueQuiz() {
     ) {
 
       startRound(currentRound);
+
       return;
+
     }
 
 
@@ -416,17 +483,14 @@ function continueQuiz() {
     ) {
 
       currentQuestionIndex = 0;
+
     }
 
 
-    if (
-      typeof window.showQuizScreen ===
-      "function"
-    ) {
+    answered = false;
 
-      window.showQuizScreen();
-    }
 
+    showQuizScreen();
 
     displayQuestion(true);
 
@@ -434,7 +498,7 @@ function continueQuiz() {
   } catch (error) {
 
     console.error(
-      "Continue error:",
+      "Continue quiz error:",
       error
     );
 
@@ -444,13 +508,19 @@ function continueQuiz() {
     );
 
 
-    startRound(1);
+    alert(
+      "Saved quiz data could not be restored. A new quiz will start."
+    );
+
+
+    startNewQuiz();
+
   }
+
 }
 
 
-window.continueQuiz =
-  continueQuiz;
+window.continueQuiz = continueQuiz;
 
 
 /* =====================================================
@@ -474,8 +544,7 @@ function startNewQuiz() {
 
   answered = false;
 
-  timeLeft =
-    TIME_PER_QUESTION;
+  timeLeft = TIME_PER_QUESTION;
 
   usedQuestionIndexes = [];
 
@@ -492,11 +561,11 @@ function startNewQuiz() {
 
 
   startRound(1);
+
 }
 
 
-window.startNewQuiz =
-  startNewQuiz;
+window.startNewQuiz = startNewQuiz;
 
 
 /* =====================================================
@@ -506,15 +575,15 @@ window.startNewQuiz =
 function startQuiz() {
 
   startNewQuiz();
+
 }
 
 
-window.startQuiz =
-  startQuiz;
+window.startQuiz = startQuiz;
 
 
 /* =====================================================
-   START ROUND
+   START SELECTED ROUND
    ===================================================== */
 
 function startRound(roundNumber) {
@@ -524,7 +593,18 @@ function startRound(roundNumber) {
 
 
   if (
-    roundNumber > unlockedRounds
+    !Number.isInteger(roundNumber) ||
+    roundNumber < 1
+  ) {
+
+    roundNumber = 1;
+
+  }
+
+
+  if (
+    roundNumber >
+    unlockedRounds
   ) {
 
     alert(
@@ -532,6 +612,18 @@ function startRound(roundNumber) {
     );
 
     return;
+
+  }
+
+
+  if (allQuestions.length === 0) {
+
+    alert(
+      "Questions are still loading. Please try again."
+    );
+
+    return;
+
   }
 
 
@@ -541,17 +633,14 @@ function startRound(roundNumber) {
   currentRound =
     roundNumber;
 
-  currentQuestionIndex =
-    0;
 
-  score =
-    0;
+  currentQuestionIndex = 0;
 
-  correctAnswers =
-    0;
+  score = 0;
 
-  answered =
-    false;
+  correctAnswers = 0;
+
+  answered = false;
 
   timeLeft =
     TIME_PER_QUESTION;
@@ -570,32 +659,32 @@ function startRound(roundNumber) {
     );
 
     return;
+
   }
 
 
   saveQuizProgress();
 
 
-  if (
-    typeof window.showQuizScreen ===
-    "function"
-  ) {
-
-    window.showQuizScreen();
-  }
+  showQuizScreen();
 
 
   displayQuestion(false);
+
 }
 
 
+window.startRound = startRound;
+
+
 /* =====================================================
-   RETRY ROUND
+   RETRY CURRENT ROUND
    ===================================================== */
 
 function retryCurrentRound() {
 
   startRound(currentRound);
+
 }
 
 
@@ -624,7 +713,9 @@ function startNextRound() {
     alert(
       "🔒 Complete this round with at least 60% first."
     );
+
   }
+
 }
 
 
@@ -654,33 +745,41 @@ function displayQuestion(
   if (!question) {
 
     finishRound();
+
     return;
+
   }
 
 
-  const questionText =
-    document.getElementById(
-      "questionText"
-    );
+  /*
+   IMPORTANT:
+   These IDs exactly match index.html
+  */
+
+  const questionElement =
+    document.getElementById("question");
 
   const options =
-    document.getElementById(
-      "options"
-    );
+    document.getElementById("options");
 
   const questionNumber =
     document.getElementById(
       "questionNumber"
     );
 
-  const roundLabel =
+  const roundDisplay =
     document.getElementById(
-      "roundLabel"
+      "roundDisplay"
     );
 
-  const scoreLabel =
+  const scoreElement =
     document.getElementById(
-      "scoreLabel"
+      "score"
+    );
+
+  const categoryElement =
+    document.getElementById(
+      "category"
     );
 
   const progressBar =
@@ -690,75 +789,119 @@ function displayQuestion(
 
 
   if (
-    !questionText ||
+    !questionElement ||
     !options
   ) {
 
     console.error(
-      "Quiz elements missing from index.html."
+      "Quiz elements are missing from index.html."
     );
 
     return;
+
   }
 
 
-  questionText.textContent =
+  /*
+   Question
+  */
+
+  questionElement.textContent =
     question.question;
 
+
+  /*
+   Question number
+  */
 
   if (questionNumber) {
 
     questionNumber.textContent =
       "Question " +
       (currentQuestionIndex + 1) +
-      "/" +
+      " / " +
       currentRoundQuestions.length;
+
   }
 
 
-  if (roundLabel) {
+  /*
+   Round
+  */
 
-    roundLabel.textContent =
+  if (roundDisplay) {
+
+    roundDisplay.textContent =
       "Round " +
       currentRound;
+
   }
 
 
-  if (scoreLabel) {
+  /*
+   Score
+  */
 
-    scoreLabel.textContent =
+  if (scoreElement) {
+
+    scoreElement.textContent =
       "Score: " +
       score;
+
   }
 
 
-  const progress =
-    (
-      currentQuestionIndex /
-      currentRoundQuestions.length
-    ) * 100;
+  /*
+   Category
+  */
 
+  if (categoryElement) {
+
+    categoryElement.textContent =
+      question.category
+        ? question.category
+        : "General Knowledge";
+
+  }
+
+
+  /*
+   Progress
+  */
 
   if (progressBar) {
 
+    const progress =
+      (
+        (currentQuestionIndex + 1) /
+        currentRoundQuestions.length
+      ) * 100;
+
+
     progressBar.style.width =
       progress + "%";
+
   }
 
+
+  /*
+   Clear old options
+  */
 
   options.innerHTML = "";
 
 
-  /* ===================================================
-     SHUFFLE OPTIONS
-     =================================================== */
+  /*
+   Shuffle options
+  */
 
   const shuffledOptions =
     [...question.options];
 
 
   for (
-    let i = shuffledOptions.length - 1;
+    let i =
+      shuffledOptions.length - 1;
     i > 0;
     i--
   ) {
@@ -776,11 +919,16 @@ function displayQuestion(
       shuffledOptions[j],
       shuffledOptions[i]
     ];
+
   }
 
 
+  /*
+   Create option buttons
+  */
+
   shuffledOptions.forEach(
-    option => {
+    function (option) {
 
       const button =
         document.createElement(
@@ -788,13 +936,10 @@ function displayQuestion(
         );
 
 
-      button.type =
-        "button";
-
+      button.type = "button";
 
       button.className =
         "option";
-
 
       button.textContent =
         option;
@@ -802,24 +947,28 @@ function displayQuestion(
 
       button.addEventListener(
         "click",
-        function() {
+        function () {
 
           selectAnswer(
             option,
             question.answer
           );
+
         }
       );
 
 
-      options.appendChild(button);
+      options.appendChild(
+        button
+      );
+
     }
   );
 
 
-  /* ===================================================
-     TIMER
-     =================================================== */
+  /*
+   Continue saved timer
+  */
 
   if (
     !isContinuing ||
@@ -829,10 +978,12 @@ function displayQuestion(
 
     timeLeft =
       TIME_PER_QUESTION;
+
   }
 
 
   startTimer();
+
 }
 
 
@@ -852,7 +1003,9 @@ function startTimer() {
 
 
   if (!timerElement) {
+
     return;
+
   }
 
 
@@ -863,7 +1016,7 @@ function startTimer() {
 
   timer =
     setInterval(
-      function() {
+      function () {
 
         timeLeft--;
 
@@ -873,11 +1026,16 @@ function startTimer() {
           timeLeft;
 
 
+        /*
+         Save every 5 seconds
+        */
+
         if (
           timeLeft % 5 === 0
         ) {
 
           saveQuizProgress();
+
         }
 
 
@@ -888,11 +1046,13 @@ function startTimer() {
           clearInterval(timer);
 
           timeUp();
+
         }
 
       },
       1000
     );
+
 }
 
 
@@ -903,12 +1063,13 @@ function startTimer() {
 function timeUp() {
 
   if (answered) {
+
     return;
+
   }
 
 
   answered = true;
-
 
   clearInterval(timer);
 
@@ -926,7 +1087,7 @@ function timeUp() {
 
 
   buttons.forEach(
-    button => {
+    function (button) {
 
       button.disabled = true;
 
@@ -939,15 +1100,36 @@ function timeUp() {
         button.classList.add(
           "correct"
         );
+
       }
+
     }
   );
+
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  if (message) {
+
+    message.textContent =
+      "⏰ Time is up!";
+
+    message.classList.remove(
+      "hidden"
+    );
+
+  }
 
 
   setTimeout(
     nextQuestion,
     900
   );
+
 }
 
 
@@ -961,12 +1143,13 @@ function selectAnswer(
 ) {
 
   if (answered) {
+
     return;
+
   }
 
 
   answered = true;
-
 
   clearInterval(timer);
 
@@ -978,36 +1161,45 @@ function selectAnswer(
 
 
   buttons.forEach(
-    button => {
+    function (button) {
 
       button.disabled = true;
 
 
+      const text =
+        button.textContent.trim();
+
+
       if (
-        button.textContent.trim() ===
-        correct.trim()
+        text === correct.trim()
       ) {
 
         button.classList.add(
           "correct"
         );
+
       }
 
 
       if (
-        button.textContent.trim() ===
-        selected.trim() &&
+        text === selected.trim() &&
         selected.trim() !==
-        correct.trim()
+          correct.trim()
       ) {
 
         button.classList.add(
           "wrong"
         );
+
       }
+
     }
   );
 
+
+  /*
+   Correct answer
+  */
 
   if (
     selected.trim() ===
@@ -1018,27 +1210,80 @@ function selectAnswer(
       POINTS_PER_CORRECT;
 
     correctAnswers++;
+
+
+    const message =
+      document.getElementById(
+        "message"
+      );
+
+
+    if (message) {
+
+      message.textContent =
+        "✅ Correct! +" +
+        POINTS_PER_CORRECT +
+        " points";
+
+      message.classList.remove(
+        "hidden"
+      );
+
+    }
+
+  } else {
+
+    const message =
+      document.getElementById(
+        "message"
+      );
+
+
+    if (message) {
+
+      message.textContent =
+        "❌ Incorrect!";
+
+      message.classList.remove(
+        "hidden"
+      );
+
+    }
+
   }
 
 
-  const scoreLabel =
+  /*
+   Update score immediately
+  */
+
+  const scoreElement =
     document.getElementById(
-      "scoreLabel"
+      "score"
     );
 
 
-  if (scoreLabel) {
+  if (scoreElement) {
 
-    scoreLabel.textContent =
+    scoreElement.textContent =
       "Score: " +
       score;
+
   }
+
+
+  /*
+   Save before moving forward
+  */
+
+  saveQuizProgress();
 
 
   setTimeout(
     nextQuestion,
     800
   );
+
 }
 
 
@@ -1047,6 +1292,9 @@ function selectAnswer(
    ===================================================== */
 
 function nextQuestion() {
+
+  clearInterval(timer);
+
 
   currentQuestionIndex++;
 
@@ -1057,7 +1305,9 @@ function nextQuestion() {
   ) {
 
     finishRound();
+
     return;
+
   }
 
 
@@ -1065,353 +1315,68 @@ function nextQuestion() {
     TIME_PER_QUESTION;
 
 
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  if (message) {
+
+    message.textContent = "";
+
+    message.classList.add(
+      "hidden"
+    );
+
+  }
+
+
   saveQuizProgress();
 
 
   displayQuestion(false);
+
 }
 
 
 /* =====================================================
-   FINISH ROUND
+   RESULT UPDATE
    ===================================================== */
 
-function finishRound() {
+function updateResult(
+  correct,
+  total,
+  passed,
+  nextRoundNumber
+) {
 
-  clearInterval(timer);
-
-
-  const total =
-    currentRoundQuestions.length;
+  const wrong =
+    Math.max(
+      0,
+      total - correct
+    );
 
 
   const percentage =
     total > 0
       ? Math.round(
-          (correctAnswers / total) * 100
+          (correct / total) * 100
         )
       : 0;
 
 
-  const passed =
-    percentage >= 60;
-
-
-  /* ===================================================
-     SAVE COMPLETED ROUND
-     =================================================== */
-
-  if (passed) {
-
-    if (
-      !completedRounds.includes(
-        currentRound
-      )
-    ) {
-
-      completedRounds.push(
-        currentRound
-      );
-    }
-
-
-    localStorage.setItem(
-      "quizmasterCompletedRounds",
-      JSON.stringify(
-        completedRounds
-      )
-    );
-
-
-    /* Unlock next round */
-
-    const nextRound =
-      currentRound + 1;
-
-
-    if (
-      nextRound > unlockedRounds
-    ) {
-
-      unlockedRounds =
-        nextRound;
-
-
-      localStorage.setItem(
-        "quizmasterUnlockedRounds",
-        String(unlockedRounds)
-      );
-    }
-  }
-
-
-  /* ===================================================
-     REMOVE ACTIVE PROGRESS
-     =================================================== */
-
-  localStorage.removeItem(
-    "quizmasterProgress"
-  );
-
-
-  updateContinueButton();
-
-
-  const nextRoundNumber =
-    currentRound + 1;
-
-
-  if (
-    typeof window.updateResult ===
-    "function"
-  ) {
-
-    window.updateResult(
-      correctAnswers,
-      total,
-      passed,
-      nextRoundNumber
-    );
-  }
-
-
-  if (
-    typeof window.showResultScreen ===
-    "function"
-  ) {
-
-    window.showResultScreen();
-  }
-
-
-  renderRounds();
-}
-
-
-/* =====================================================
-   RENDER ROUNDS
-   ===================================================== */
-
-function renderRounds() {
-
-  const grid =
+  const finalScore =
     document.getElementById(
-      "roundGrid"
+      "finalScore"
     );
 
-
-  if (!grid) {
-    return;
-  }
-
-
-  grid.innerHTML = "";
-
-
-  const possibleRounds =
-    Math.max(
-      1,
-      Math.ceil(
-        allQuestions.length /
-        QUESTIONS_PER_ROUND
-      )
-    );
-
-
-  /*
-    Show all rounds that actually exist.
-  */
-
-  for (
-    let i = 1;
-    i <= possibleRounds;
-    i++
-  ) {
-
-    const button =
-      document.createElement(
-        "button"
-      );
-
-
-    button.type =
-      "button";
-
-
-    button.className =
-      "round-btn";
-
-
-    const unlocked =
-      i <= unlockedRounds;
-
-
-    const completed =
-      completedRounds.includes(i);
-
-
-    if (unlocked) {
-
-      if (completed) {
-
-        button.classList.add(
-          "completed"
-        );
-
-        button.textContent =
-          "✅ Round " + i;
-
-      } else {
-
-        button.classList.add(
-          "unlocked"
-        );
-
-        button.textContent =
-          "▶️ Round " + i;
-      }
-
-
-      button.addEventListener(
-        "click",
-        function() {
-
-          startRound(i);
-        }
-      );
-
-
-    } else {
-
-      button.classList.add(
-        "locked"
-      );
-
-
-      button.textContent =
-        "🔒 Round " + i;
-
-
-      button.addEventListener(
-        "click",
-        function() {
-
-          alert(
-            "🔒 Locked. Get at least 60% in the previous round to unlock this round."
-          );
-        }
-      );
-    }
-
-
-    grid.appendChild(button);
-  }
-}
-
-
-window.renderRounds =
-  renderRounds;
-
-
-/* =====================================================
-   CONTINUE BUTTON
-   ===================================================== */
-
-function updateContinueButton() {
-
-  const button =
+  const resultPercent =
     document.getElementById(
-      "continueBtn"
+      "resultPercent"
     );
 
-
-  if (!button) {
-    return;
-  }
-
-
-  button.style.display =
-    "block";
-
-
-  button.textContent =
-    "▶️ Continue Quiz";
-}
-
-
-window.updateContinueButton =
-  updateContinueButton;
-
-
-/* =====================================================
-   INITIALIZE
-   ===================================================== */
-
-document.addEventListener(
-  "DOMContentLoaded",
-  function() {
-
-    const savedUsed =
-      localStorage.getItem(
-        "quizmasterUsedQuestions"
-      );
-
-
-    if (savedUsed) {
-
-      try {
-
-        usedQuestionIndexes =
-          JSON.parse(savedUsed);
-
-
-        if (
-          !Array.isArray(
-            usedQuestionIndexes
-          )
-        ) {
-
-          usedQuestionIndexes = [];
-        }
-
-      } catch (error) {
-
-        usedQuestionIndexes = [];
-      }
-    }
-
-
-    loadQuestions();
-  }
-);
-
-Ikintu cy'ingenzi nakosoye: nongeyemo "window.startQuiz = startQuiz;". Ibi ni ingenzi cyane niba "index.html" yawe ifite button nka:
-
-<button id="startBtn" type="button">▶️ Start Quiz</button>
-
-kandi ikayihamagara:
-
-window.startQuiz()
-
-Noneho "Start Quiz" izatangiza quiz neza.
-
-Ariko hari ikindi tugomba kugenzura
-
-Kugira ngo iyi "questions.js" ikore neza, "index.html" yawe igomba kuba ifite IDs izi:
-
-- "startBtn"
-- "continueBtn"
-- "questionText"
-- "options"
-- "questionNumber"
-- "roundLabel"
-- "scoreLabel"
-- "timer"
-- "progressBar"
-- "roundGrid"
-
-Kandi "index.html" igomba kurangiza ishyiraho:
-
-<script src="./questions.js"></script>
-
-Niba umbwiye ngo "ngenzurira na index.html", nyohereza "index.html" yawe yose. Ndayihuza n'iyi "questions.js" kugira ngo Start Quiz, Continue, Round, Timer, Result na Share bikorere hamwe nta conflict.
+  const resultMessage =
+    document.getElementById(
+      "resultMessage"
+    );
