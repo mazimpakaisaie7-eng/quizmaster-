@@ -11,6 +11,8 @@
   <meta name="description"
         content="Quiz Master is a free knowledge quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and more.">
 
+  <meta name="robots" content="index, follow">
+
   <!-- APP ICON -->
   <link rel="icon"
         type="image/png"
@@ -18,11 +20,6 @@
 
   <link rel="apple-touch-icon"
         href="/icon-512-3.png">
-
-  <!-- GOOGLE ADSENSE -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous"></script>
 
   <style>
     * {
@@ -86,7 +83,7 @@
     .subtitle {
       text-align: center;
       color: #cbd5e1;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     button {
@@ -131,6 +128,82 @@
       margin-top: 20px;
     }
 
+    /* PUBLISHER CONTENT */
+
+    .content-section {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #374151;
+    }
+
+    .content-section h2 {
+      margin-bottom: 12px;
+    }
+
+    .content-section h3 {
+      text-align: left;
+      color: #93c5fd;
+      margin-top: 20px;
+    }
+
+    .content-section p {
+      color: #d1d5db;
+      line-height: 1.7;
+      margin: 10px 0;
+    }
+
+    .content-section ul {
+      color: #d1d5db;
+      line-height: 1.8;
+      padding-left: 22px;
+    }
+
+    .category-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .category-item {
+      background: #374151;
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      color: #e5e7eb;
+    }
+
+    .info-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .info-link {
+      display: block;
+      background: #374151;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 13px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .info-link:hover {
+      background: #4b5563;
+    }
+
+    .small-note {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      margin-top: 25px;
+      line-height: 1.5;
+    }
+
+    /* ROUNDS */
+
     .round-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -155,6 +228,8 @@
     .round-btn.locked {
       background: #4b5563;
     }
+
+    /* QUIZ */
 
     .topbar {
       display: flex;
@@ -367,23 +442,6 @@
       left: 28px;
     }
 
-    /* ADS */
-
-    .ad-box {
-      width: 100%;
-      min-height: 90px;
-      margin: 25px 0;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .small-note {
-      text-align: center;
-      color: #94a3b8;
-      font-size: 13px;
-      margin-top: 15px;
-    }
-
     /* ERROR */
 
     .error-box {
@@ -401,6 +459,7 @@
     }
 
     @media (max-width: 480px) {
+
       .container {
         padding: 14px;
       }
@@ -426,473 +485,632 @@
       .round-grid {
         grid-template-columns: 1fr 1fr;
       }
+
+      .category-list {
+        grid-template-columns: 1fr 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- HOME SCREEN -->
-    <section id="homeScreen" class="screen active">
-      <div class="card">
+  <!-- ========================= -->
+  <!-- HOME SCREEN -->
+  <!-- ========================= -->
 
-        <img
-          src="/icon-512-3.png"
-          alt="Quiz Master Logo"
-          class="logo"
-        >
+  <section id="homeScreen" class="screen active">
 
-        <h1>Quiz Master 🇷🇼</h1>
+    <div class="card">
 
-        <p class="subtitle">
-          Test your knowledge with questions about
-          Geography, History, Science, Technology,
-          Rwanda, Africa, Sports and more.
-        </p>
+      <img
+        src="/icon-512-3.png"
+        alt="Quiz Master Rwanda logo"
+        class="logo"
+      >
 
-        <div class="home-buttons">
+      <h1>Quiz Master 🇷🇼</h1>
 
-          <button
-            id="startBtn"
-            type="button"
-            class="success">
-            ▶️ Start Quiz
-          </button>
+      <p class="subtitle">
+        Test your knowledge with questions about
+        Geography, History, Science, Technology,
+        Rwanda, Africa, Sports and more.
+      </p>
 
-          <button
-            id="continueBtn"
-            type="button"
-            class="warning">
-            ▶️ Continue Quiz
-          </button>
+      <!-- GAME BUTTONS -->
 
-          <button
-            id="roundsBtn"
-            type="button">
-            🏆 Choose Round
-          </button>
-
-          <button
-            id="settingsBtn"
-            type="button"
-            class="secondary">
-            ⚙️ Settings
-          </button>
-
-          <button
-            id="shareBtn"
-            type="button"
-            class="secondary">
-            📤 Share Quiz Master
-          </button>
-
-        </div>
-
-        <!-- ADSENSE -->
-        <div class="ad-box">
-
-          <ins
-            class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-2666698676518429"
-            data-ad-slot="9045712897"
-            data-ad-format="auto"
-            data-full-width-responsive="true">
-          </ins>
-
-        </div>
-
-        <p class="small-note">
-          Free knowledge quiz game 🇷🇼
-        </p>
-
-      </div>
-    </section>
-
-
-    <!-- ROUNDS SCREEN -->
-    <section id="roundsScreen" class="screen">
-      <div class="card">
-
-        <h2>🏆 Choose Round</h2>
-
-        <p class="subtitle">
-          Complete a round with at least 60%
-          to unlock the next round.
-        </p>
-
-        <div id="roundGrid" class="round-grid">
-
-          <button
-            class="round-btn unlocked"
-            data-round="1"
-            type="button">
-            Round 1
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="2"
-            type="button">
-            🔒 Round 2
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="3"
-            type="button">
-            🔒 Round 3
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="4"
-            type="button">
-            🔒 Round 4
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="5"
-            type="button">
-            🔒 Round 5
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="6"
-            type="button">
-            🔒 Round 6
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="7"
-            type="button">
-            🔒 Round 7
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="8"
-            type="button">
-            🔒 Round 8
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="9"
-            type="button">
-            🔒 Round 9
-          </button>
-
-          <button
-            class="round-btn locked"
-            data-round="10"
-            type="button">
-            🔒 Round 10
-          </button>
-
-        </div>
+      <div class="home-buttons">
 
         <button
-          id="roundsBackBtn"
-          type="button"
-          class="secondary">
-          ⬅️ Back Home
-        </button>
-
-      </div>
-    </section>
-
-
-    <!-- QUIZ SCREEN -->
-    <section id="quizScreen" class="screen">
-      <div class="card">
-
-        <div class="topbar">
-
-          <span id="questionNumber">
-            Question 1 / 10
-          </span>
-
-          <span id="score">
-            Score: 0
-          </span>
-
-          <span id="roundDisplay">
-            Round 1
-          </span>
-
-        </div>
-
-        <div
-          id="category"
-          class="category">
-        </div>
-
-        <div class="progress">
-          <div
-            id="progressBar"
-            class="progress-bar">
-          </div>
-        </div>
-
-        <div
-          id="timer"
-          class="timer">
-          ⏱️ 20
-        </div>
-
-        <div
-          id="question"
-          class="question">
-          Loading question...
-        </div>
-
-        <div id="options"></div>
-
-        <div
-          id="message"
-          class="message hidden">
-        </div>
-
-        <button
-          id="nextBtn"
-          type="button"
-          class="success"
-          style="display:none;">
-          Next Question ➡️
-        </button>
-
-        <button
-          id="quizHomeBtn"
-          type="button"
-          class="secondary">
-          🏠 Home
-        </button>
-
-      </div>
-    </section>
-
-
-    <!-- RESULT SCREEN -->
-    <section id="resultScreen" class="screen">
-      <div class="card">
-
-        <h2>🎉 Quiz Complete!</h2>
-
-        <div
-          id="finalScore"
-          class="score">
-          Score: 0
-        </div>
-
-        <div
-          id="resultPercent"
-          class="result-percent">
-          0%
-        </div>
-
-        <div
-          id="resultMessage"
-          class="message">
-          Well done!
-        </div>
-
-        <div class="result-stats">
-
-          <div class="stat">
-            Correct
-            <strong id="correctCount">0</strong>
-          </div>
-
-          <div class="stat">
-            Wrong
-            <strong id="wrongCount">0</strong>
-          </div>
-
-        </div>
-
-        <div
-          id="finishedRound"
-          class="message">
-        </div>
-
-        <!-- ADSENSE -->
-        <div class="ad-box">
-
-          <ins
-            class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-2666698676518429"
-            data-ad-slot="9045712897"
-            data-ad-format="auto"
-            data-full-width-responsive="true">
-          </ins>
-
-        </div>
-
-        <button
-          id="restartBtn"
+          id="startBtn"
           type="button"
           class="success">
-          🔄 Retry This Round
+          ▶️ Start Quiz
         </button>
 
         <button
-          id="reviewBtn"
+          id="continueBtn"
+          type="button"
+          class="warning">
+          ▶️ Continue Quiz
+        </button>
+
+        <button
+          id="roundsBtn"
           type="button">
-          👀 Review Answers
+          🏆 Choose Round
         </button>
 
         <button
-          id="nextRoundBtn"
-          type="button"
-          class="warning"
-          style="display:none;">
-          ➡️ Next Round
-        </button>
-
-        <button
-          id="resultHomeBtn"
+          id="settingsBtn"
           type="button"
           class="secondary">
-          🏠 Back Home
+          ⚙️ Settings
+        </button>
+
+        <button
+          id="shareBtn"
+          type="button"
+          class="secondary">
+          📤 Share Quiz Master
         </button>
 
       </div>
-    </section>
 
 
-    <!-- REVIEW SCREEN -->
-    <section id="reviewScreen" class="screen">
-      <div class="card">
+      <!-- ========================= -->
+      <!-- ORIGINAL PUBLISHER CONTENT -->
+      <!-- ========================= -->
 
-        <h2>👀 Review Answers</h2>
+      <div class="content-section">
 
-        <p
-          id="reviewSummary"
-          class="subtitle">
+        <h2>About Quiz Master</h2>
+
+        <p>
+          Quiz Master is a free knowledge quiz game designed
+          to help users test what they know through short,
+          engaging multiple-choice questions.
         </p>
 
+        <p>
+          The game includes questions from different areas
+          of knowledge. Each round gives players an opportunity
+          to answer questions, earn points and improve their
+          quiz performance.
+        </p>
+
+        <h3>What can you learn about?</h3>
+
+        <div class="category-list">
+
+          <div class="category-item">
+            🌍 Geography
+          </div>
+
+          <div class="category-item">
+            📜 History
+          </div>
+
+          <div class="category-item">
+            🔬 Science
+          </div>
+
+          <div class="category-item">
+            💻 Technology
+          </div>
+
+          <div class="category-item">
+            🇷🇼 Rwanda
+          </div>
+
+          <div class="category-item">
+            🌍 Africa
+          </div>
+
+          <div class="category-item">
+            ⚽ Sports
+          </div>
+
+          <div class="category-item">
+            🧠 General Knowledge
+          </div>
+
+        </div>
+
+
+        <h3>How Quiz Master works</h3>
+
+        <p>
+          Start a quiz and answer each question before the
+          timer runs out. Every correct answer earns points.
+          At the end of a round, your score and percentage
+          are displayed so you can see how you performed.
+        </p>
+
+        <p>
+          A round can contain ten questions. Players who reach
+          the required score can unlock the next round and
+          continue learning through new questions.
+        </p>
+
+
+        <h3>Why play Quiz Master?</h3>
+
+        <ul>
+          <li>Practice general knowledge.</li>
+          <li>Learn about Rwanda and Africa.</li>
+          <li>Explore different knowledge categories.</li>
+          <li>Challenge yourself with timed questions.</li>
+          <li>Track your score after every round.</li>
+          <li>Review your answers after completing a round.</li>
+        </ul>
+
+
+        <h3>Frequently Asked Questions</h3>
+
+        <p>
+          <strong>Is Quiz Master free?</strong><br>
+          Yes. Quiz Master is designed as a free knowledge
+          quiz game.
+        </p>
+
+        <p>
+          <strong>How many questions are in a round?</strong><br>
+          A standard round contains ten questions.
+        </p>
+
+        <p>
+          <strong>How can I unlock another round?</strong><br>
+          Complete the current round and reach the required
+          passing percentage.
+        </p>
+
+        <p>
+          <strong>Can I review my answers?</strong><br>
+          Yes. After completing a round, the Review Answers
+          option allows you to see your answers and the
+          correct answers.
+        </p>
+
+
+        <h3>Useful Information</h3>
+
+        <div class="info-links">
+
+          <a
+            href="/Privacy_policy.html"
+            class="info-link">
+            🔒 Privacy Policy
+          </a>
+
+          <a
+            href="/Terms_Of_Services.html"
+            class="info-link">
+            📄 Terms of Services
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <p class="small-note">
+        Quiz Master 🇷🇼 — Free knowledge quiz game.
+        Test your knowledge, learn and improve.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- ROUNDS SCREEN -->
+  <!-- ========================= -->
+
+  <section id="roundsScreen" class="screen">
+
+    <div class="card">
+
+      <h2>🏆 Choose Round</h2>
+
+      <p class="subtitle">
+        Complete a round with at least 60%
+        to unlock the next round.
+      </p>
+
+      <div id="roundGrid" class="round-grid">
+
+        <button
+          class="round-btn unlocked"
+          data-round="1"
+          type="button">
+          Round 1
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="2"
+          type="button">
+          🔒 Round 2
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="3"
+          type="button">
+          🔒 Round 3
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="4"
+          type="button">
+          🔒 Round 4
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="5"
+          type="button">
+          🔒 Round 5
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="6"
+          type="button">
+          🔒 Round 6
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="7"
+          type="button">
+          🔒 Round 7
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="8"
+          type="button">
+          🔒 Round 8
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="9"
+          type="button">
+          🔒 Round 9
+        </button>
+
+        <button
+          class="round-btn locked"
+          data-round="10"
+          type="button">
+          🔒 Round 10
+        </button>
+
+      </div>
+
+      <button
+        id="roundsBackBtn"
+        type="button"
+        class="secondary">
+        ⬅️ Back Home
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- QUIZ SCREEN -->
+  <!-- ========================= -->
+
+  <section id="quizScreen" class="screen">
+
+    <div class="card">
+
+      <div class="topbar">
+
+        <span id="questionNumber">
+          Question 1 / 10
+        </span>
+
+        <span id="score">
+          Score: 0
+        </span>
+
+        <span id="roundDisplay">
+          Round 1
+        </span>
+
+      </div>
+
+      <div
+        id="category"
+        class="category">
+      </div>
+
+      <div class="progress">
+
         <div
-          id="reviewList"
-          class="review-list">
+          id="progressBar"
+          class="progress-bar">
         </div>
 
-        <button
-          id="reviewRetryBtn"
-          type="button"
-          class="success">
-          🔄 Retry This Round
-        </button>
+      </div>
 
-        <button
-          id="reviewBackBtn"
-          type="button"
-          class="secondary">
-          ⬅️ Back to Result
-        </button>
+      <div
+        id="timer"
+        class="timer">
+        ⏱️ 20
+      </div>
+
+      <div
+        id="question"
+        class="question">
+        Loading question...
+      </div>
+
+      <div id="options"></div>
+
+      <div
+        id="message"
+        class="message hidden">
+      </div>
+
+      <button
+        id="nextBtn"
+        type="button"
+        class="success"
+        style="display:none;">
+        Next Question ➡️
+      </button>
+
+      <button
+        id="quizHomeBtn"
+        type="button"
+        class="secondary">
+        🏠 Home
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- RESULT SCREEN -->
+  <!-- ========================= -->
+
+  <section id="resultScreen" class="screen">
+
+    <div class="card">
+
+      <h2>🎉 Quiz Complete!</h2>
+
+      <div
+        id="finalScore"
+        class="score">
+        Score: 0
+      </div>
+
+      <div
+        id="resultPercent"
+        class="result-percent">
+        0%
+      </div>
+
+      <div
+        id="resultMessage"
+        class="message">
+        Well done!
+      </div>
+
+      <div class="result-stats">
+
+        <div class="stat">
+          Correct
+          <strong id="correctCount">0</strong>
+        </div>
+
+        <div class="stat">
+          Wrong
+          <strong id="wrongCount">0</strong>
+        </div>
 
       </div>
-    </section>
+
+      <div
+        id="finishedRound"
+        class="message">
+      </div>
+
+      <button
+        id="restartBtn"
+        type="button"
+        class="success">
+        🔄 Retry This Round
+      </button>
+
+      <button
+        id="reviewBtn"
+        type="button">
+        👀 Review Answers
+      </button>
+
+      <button
+        id="nextRoundBtn"
+        type="button"
+        class="warning"
+        style="display:none;">
+        ➡️ Next Round
+      </button>
+
+      <button
+        id="resultHomeBtn"
+        type="button"
+        class="secondary">
+        🏠 Back Home
+      </button>
+
+    </div>
+
+  </section>
 
 
-    <!-- ERROR SCREEN -->
-    <section id="errorScreen" class="screen">
-      <div class="card">
+  <!-- ========================= -->
+  <!-- REVIEW SCREEN -->
+  <!-- ========================= -->
 
-        <h2>⚠️ Quiz Error</h2>
+  <section id="reviewScreen" class="screen">
+
+    <div class="card">
+
+      <h2>👀 Review Answers</h2>
+
+      <p
+        id="reviewSummary"
+        class="subtitle">
+      </p>
+
+      <div
+        id="reviewList"
+        class="review-list">
+      </div>
+
+      <button
+        id="reviewRetryBtn"
+        type="button"
+        class="success">
+        🔄 Retry This Round
+      </button>
+
+      <button
+        id="reviewBackBtn"
+        type="button"
+        class="secondary">
+        ⬅️ Back to Result
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- ERROR SCREEN -->
+  <!-- ========================= -->
+
+  <section id="errorScreen" class="screen">
+
+    <div class="card">
+
+      <h2>⚠️ Quiz Error</h2>
+
+      <div
+        id="errorMessage"
+        class="error-box">
+        Something went wrong while loading the quiz.
+      </div>
+
+      <button
+        id="errorRestartBtn"
+        type="button"
+        class="success">
+        🔄 Try Again
+      </button>
+
+      <button
+        id="errorHomeBtn"
+        type="button"
+        class="secondary">
+        🏠 Back Home
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ========================= -->
+  <!-- SETTINGS SCREEN -->
+  <!-- ========================= -->
+
+  <section id="settingsScreen" class="screen">
+
+    <div class="card">
+
+      <h2>⚙️ Settings</h2>
+
+      <div class="settings-row">
+
+        <div class="settings-text">
+
+          <strong>🎵 Quiz Music</strong>
+
+          <small>
+            Turn background music on or off while playing.
+          </small>
+
+        </div>
 
         <div
-          id="errorMessage"
-          class="error-box">
-          Something went wrong while loading the quiz.
+          id="musicSwitch"
+          class="switch"
+          role="button"
+          tabindex="0">
         </div>
-
-        <button
-          id="errorRestartBtn"
-          type="button"
-          class="success">
-          🔄 Try Again
-        </button>
-
-        <button
-          id="errorHomeBtn"
-          type="button"
-          class="secondary">
-          🏠 Back Home
-        </button>
 
       </div>
-    </section>
 
 
-    <!-- SETTINGS SCREEN -->
-    <section id="settingsScreen" class="screen">
-      <div class="card">
+      <div class="settings-row">
 
-        <h2>⚙️ Settings</h2>
+        <div class="settings-text">
 
-        <div class="settings-row">
+          <strong>🔊 Sound Effects</strong>
 
-          <div class="settings-text">
-
-            <strong>🎵 Quiz Music</strong>
-
-            <small>
-              Turn background music on or off while playing.
-            </small>
-
-          </div>
-
-          <div
-            id="musicSwitch"
-            class="switch"
-            role="button"
-            tabindex="0">
-          </div>
+          <small>
+            Turn quiz sound effects on or off.
+          </small>
 
         </div>
 
-        <div class="settings-row">
-
-          <div class="settings-text">
-
-            <strong>🔊 Sound Effects</strong>
-
-            <small>
-              Turn quiz sound effects on or off.
-            </small>
-
-          </div>
-
-          <div
-            id="soundSwitch"
-            class="switch on"
-            role="button"
-            tabindex="0">
-          </div>
-
+        <div
+          id="soundSwitch"
+          class="switch on"
+          role="button"
+          tabindex="0">
         </div>
-
-        <button
-          id="settingsBackBtn"
-          type="button"
-          class="secondary">
-          ⬅️ Back Home
-        </button>
 
       </div>
-    </section>
-
-  </div>
 
 
-  <!-- QUIZ MASTER ENGINE -->
-  <script src="./questions.js" defer></script>
+      <button
+        id="settingsBackBtn"
+        type="button"
+        class="secondary">
+        ⬅️ Back Home
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- QUIZ MASTER ENGINE -->
+<script
+  src="./questions.js"
+  defer>
+</script>
+
 </body>
 </html>
