@@ -2112,3 +2112,719 @@
     "category": "Cities & Countries"
   }
 ]
+,
+{
+"question": "What does a red traffic light normally require a driver to do?",
+"options": ["Stop", "Speed up", "Overtake", "Turn without stopping"],
+"answer": "Stop",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What does a green traffic light normally indicate?",
+"options": ["Proceed when it is safe", "Stop immediately", "Reverse", "Park"],
+"answer": "Proceed when it is safe",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What does a yellow traffic light generally warn drivers to do?",
+"options": ["Prepare to stop when safe", "Always accelerate", "Park immediately", "Overtake"],
+"answer": "Prepare to stop when safe",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do before entering a pedestrian crossing?",
+"options": ["Slow down and check for pedestrians", "Increase speed", "Use the horn continuously", "Overtake another vehicle"],
+"answer": "Slow down and check for pedestrians",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is a zebra crossing primarily intended for?",
+"options": ["Pedestrians to cross the road", "Parking vehicles", "Overtaking", "Emergency vehicle parking"],
+"answer": "Pedestrians to cross the road",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Which side of the road do vehicles generally drive on in Rwanda?",
+"options": ["Right side", "Left side", "Either side", "Road shoulder only"],
+"answer": "Right side",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when an authorized traffic officer gives an instruction?",
+"options": ["Follow the officer's instruction", "Ignore the officer", "Follow another driver's action", "Stop using the road permanently"],
+"answer": "Follow the officer's instruction",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why are road traffic signs important?",
+"options": ["They help regulate and guide road users", "They are only for decoration", "They replace vehicle brakes", "They are only for pedestrians"],
+"answer": "They help regulate and guide road users",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should you do before changing lanes?",
+"options": ["Check mirrors and surroundings and signal", "Turn suddenly", "Close your eyes briefly", "Accelerate without checking"],
+"answer": "Check mirrors and surroundings and signal",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the main purpose of a turn signal?",
+"options": ["To communicate an intended maneuver", "To increase engine power", "To warn of a flat tyre", "To replace headlights"],
+"answer": "To communicate an intended maneuver",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a blind curve?",
+"options": ["Reduce speed and be prepared to stop", "Accelerate strongly", "Overtake immediately", "Drive on the opposite lane"],
+"answer": "Reduce speed and be prepared to stop",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why is overtaking near a blind bend dangerous?",
+"options": ["Oncoming traffic may not be visible", "The road becomes wider", "It always improves visibility", "It reduces stopping distance"],
+"answer": "Oncoming traffic may not be visible",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do before overtaking another vehicle?",
+"options": ["Make sure the maneuver is safe and legal", "Overtake without checking", "Use the sidewalk", "Stop in the middle of the road"],
+"answer": "Make sure the maneuver is safe and legal",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is a safe following distance intended to provide?",
+"options": ["Time and space to react", "More fuel consumption", "A reason to speed", "A place to park"],
+"answer": "Time and space to react",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should you do if the road is wet?",
+"options": ["Reduce speed and increase caution", "Drive faster", "Brake suddenly whenever possible", "Ignore visibility"],
+"answer": "Reduce speed and increase caution",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers use extra caution in heavy rain?",
+"options": ["Visibility and road grip can be reduced", "The road becomes automatically safer", "Braking distance always becomes shorter", "Traffic signs stop working"],
+"answer": "Visibility and road grip can be reduced",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when visibility is poor because of fog?",
+"options": ["Slow down and use appropriate lights", "Accelerate", "Drive without lights", "Follow extremely closely"],
+"answer": "Slow down and use appropriate lights",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the purpose of a speed limit sign?",
+"options": ["To indicate the maximum permitted speed for that section", "To recommend parking", "To indicate fuel level", "To show road ownership"],
+"answer": "To indicate the maximum permitted speed for that section",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Should a driver always travel at the posted maximum speed?",
+"options": ["No, conditions may require a lower safe speed", "Yes, regardless of conditions", "Only at night", "Only in rain"],
+"answer": "No, conditions may require a lower safe speed",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is speeding likely to reduce?",
+"options": ["The time available to react", "Fuel consumption in every situation", "The need for road signs", "The need for brakes"],
+"answer": "The time available to react",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a busy intersection?",
+"options": ["Slow down and observe traffic controls", "Accelerate without looking", "Close the windows", "Park in the intersection"],
+"answer": "Slow down and observe traffic controls",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is a yellow box junction designed to help prevent?",
+"options": ["Blocking an intersection", "Vehicle maintenance", "Fuel shortages", "Pedestrian walking"],
+"answer": "Blocking an intersection",
+"category": "Road Traffic Rules"
+},
+{
+"question": "When should a driver enter a yellow box junction?",
+"options": ["When the exit is clear enough to avoid stopping in the box", "Whenever the vehicle ahead enters", "Only when speeding", "When there is no traffic light"],
+"answer": "When the exit is clear enough to avoid stopping in the box",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should you do if your exit from a junction is blocked?",
+"options": ["Wait until there is enough space to clear the junction", "Enter and block the junction", "Sound the horn continuously", "Drive onto the sidewalk"],
+"answer": "Wait until there is enough space to clear the junction",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching an emergency vehicle using warning signals?",
+"options": ["Give way safely", "Race the emergency vehicle", "Block its path", "Follow it closely"],
+"answer": "Give way safely",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers avoid using a mobile phone while driving?",
+"options": ["It can distract the driver", "It improves concentration", "It shortens braking distance", "It improves road visibility"],
+"answer": "It can distract the driver",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the safest approach to using a phone while driving?",
+"options": ["Do not use it while driving", "Hold it in one hand", "Read messages at traffic speed", "Use it while overtaking"],
+"answer": "Do not use it while driving",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why are seat belts important?",
+"options": ["They help protect occupants during a crash", "They increase engine power", "They improve tyre pressure", "They replace airbags completely"],
+"answer": "They help protect occupants during a crash",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Who should normally wear a seat belt when one is provided?",
+"options": ["Vehicle occupants as required by the rules", "Only pedestrians", "Only people outside the vehicle", "Only passengers in buses"],
+"answer": "Vehicle occupants as required by the rules",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What protective equipment should a motorcycle rider wear?",
+"options": ["A properly fastened helmet", "A seat belt", "A swimming mask", "No protection"],
+"answer": "A properly fastened helmet",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a motorcycle passenger normally wear?",
+"options": ["A properly fastened helmet", "A seat belt attached to the rider", "No protective equipment", "A reflective road sign"],
+"answer": "A properly fastened helmet",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a motorcycle rider avoid?",
+"options": ["Reckless maneuvers", "Wearing a helmet", "Following traffic signs", "Using proper signals"],
+"answer": "Reckless maneuvers",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a school area?",
+"options": ["Slow down and watch carefully for children", "Increase speed", "Ignore pedestrians", "Overtake every vehicle"],
+"answer": "Slow down and watch carefully for children",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should children not play on roads?",
+"options": ["They may be exposed to moving traffic", "Roads are playgrounds", "It improves traffic flow", "It makes vehicles safer"],
+"answer": "They may be exposed to moving traffic",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should pedestrians do before crossing a road?",
+"options": ["Look carefully for approaching traffic", "Run without looking", "Use a phone while crossing", "Stand in the middle of the road"],
+"answer": "Look carefully for approaching traffic",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Where should pedestrians use a crossing when one is provided?",
+"options": ["At the designated pedestrian crossing", "In the middle of moving traffic", "On a vehicle lane whenever possible", "Behind parked vehicles"],
+"answer": "At the designated pedestrian crossing",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should pedestrians avoid while crossing a road?",
+"options": ["Distractions such as using a phone", "Looking for traffic", "Using a designated crossing", "Waiting for a safe opportunity"],
+"answer": "Distractions such as using a phone",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is a road shoulder?",
+"options": ["The area alongside the main roadway", "A traffic light", "A vehicle engine part", "A pedestrian crossing signal"],
+"answer": "The area alongside the main roadway",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when a pedestrian is crossing safely at a designated crossing?",
+"options": ["Slow down or stop as necessary to give way", "Accelerate toward the crossing", "Sound the horn and continue regardless", "Drive onto the crossing"],
+"answer": "Slow down or stop as necessary to give way",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What does a STOP sign require a driver to do?",
+"options": ["Stop and proceed only when safe and permitted", "Slow slightly without stopping", "Accelerate", "Park permanently"],
+"answer": "Stop and proceed only when safe and permitted",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What does a GIVE WAY sign tell a driver?",
+"options": ["Give priority as required before proceeding", "Always accelerate", "Park immediately", "Reverse for a long distance"],
+"answer": "Give priority as required before proceeding",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the purpose of a no-entry sign?",
+"options": ["To prohibit entry in that direction", "To indicate a parking area", "To indicate a fuel station", "To show a hospital"],
+"answer": "To prohibit entry in that direction",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the purpose of a pedestrian warning sign?",
+"options": ["To warn drivers about possible pedestrians", "To authorize speeding", "To indicate a petrol station", "To mark a vehicle inspection centre"],
+"answer": "To warn drivers about possible pedestrians",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the purpose of a speed-limit sign?",
+"options": ["To communicate a speed restriction", "To indicate the vehicle's fuel level", "To show the driver's licence class", "To mark a parking ticket"],
+"answer": "To communicate a speed restriction",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What does a no-overtaking sign generally mean?",
+"options": ["Overtaking is prohibited in the indicated area", "Overtaking is compulsory", "Parking is compulsory", "The road is closed"],
+"answer": "Overtaking is prohibited in the indicated area",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should a driver check mirrors before changing direction?",
+"options": ["To be aware of nearby road users", "To increase engine power", "To reduce tyre pressure", "To turn off the headlights"],
+"answer": "To be aware of nearby road users",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should you do before turning?",
+"options": ["Signal and check that the turn is safe", "Turn suddenly", "Ignore other road users", "Accelerate into pedestrians"],
+"answer": "Signal and check that the turn is safe",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should a driver avoid sudden braking without a safety reason?",
+"options": ["It can surprise following road users", "It always improves traffic flow", "It increases visibility", "It makes tyres larger"],
+"answer": "It can surprise following road users",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should you do if an obstacle suddenly appears on the road?",
+"options": ["Slow down or stop safely while checking surroundings", "Accelerate toward it", "Close your eyes", "Overtake without looking"],
+"answer": "Slow down or stop safely while checking surroundings",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers keep their vehicle in the correct lane?",
+"options": ["To maintain predictable and safe traffic movement", "To use more fuel", "To avoid all road signs", "To prevent pedestrians from walking"],
+"answer": "To maintain predictable and safe traffic movement",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a road with poor visibility?",
+"options": ["Reduce speed and increase attention", "Increase speed", "Overtake continuously", "Ignore road conditions"],
+"answer": "Reduce speed and increase attention",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should vehicle lights be kept in good working condition?",
+"options": ["They help the driver see and be seen", "They increase engine size", "They replace brakes", "They reduce tyre wear"],
+"answer": "They help the driver see and be seen",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do if the vehicle's brakes are not working properly?",
+"options": ["Stop using the vehicle and have it checked", "Drive faster", "Ignore the problem", "Carry more passengers"],
+"answer": "Stop using the vehicle and have it checked",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why is regular vehicle inspection important?",
+"options": ["It helps identify mechanical problems that can affect safety", "It guarantees unlimited speed", "It removes the need for insurance", "It replaces the driving licence"],
+"answer": "It helps identify mechanical problems that can affect safety",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver check about tyres?",
+"options": ["Their condition and proper inflation", "Their colour only", "Their brand name only", "Their age as the only factor"],
+"answer": "Their condition and proper inflation",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do if a tyre suddenly loses pressure while driving?",
+"options": ["Control the vehicle and slow down safely", "Brake violently without control", "Accelerate", "Turn sharply without checking"],
+"answer": "Control the vehicle and slow down safely",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should a driver avoid driving when seriously distracted?",
+"options": ["Distraction reduces attention to the road", "It improves reaction time", "It improves lane control", "It reduces traffic"],
+"answer": "Distraction reduces attention to the road",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is defensive driving?",
+"options": ["Driving while anticipating possible hazards", "Driving aggressively", "Driving without observing signs", "Driving as fast as possible"],
+"answer": "Driving while anticipating possible hazards",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when another vehicle is overtaking?",
+"options": ["Maintain a safe and predictable course", "Move unpredictably", "Race the other vehicle", "Block the other vehicle deliberately"],
+"answer": "Maintain a safe and predictable course",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is a safe reason for using a horn?",
+"options": ["To warn another road user of an immediate potential danger", "To express anger", "To celebrate", "To force pedestrians to run"],
+"answer": "To warn another road user of an immediate potential danger",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should a driver avoid unnecessary use of the horn?",
+"options": ["It can disturb and distract other road users", "It improves braking", "It reduces speed automatically", "It changes traffic lights"],
+"answer": "It can disturb and distract other road users",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a railway crossing?",
+"options": ["Slow down and check for trains and signals", "Speed across without checking", "Park on the tracks", "Overtake on the tracks"],
+"answer": "Slow down and check for trains and signals",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should you do when a railway crossing signal warns that a train is approaching?",
+"options": ["Stop and wait as required", "Cross quickly", "Overtake the train", "Ignore the signal"],
+"answer": "Stop and wait as required",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should drivers do near a bus stop where passengers may be crossing?",
+"options": ["Slow down and watch carefully", "Accelerate", "Drive without observing", "Use the sidewalk"],
+"answer": "Slow down and watch carefully",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers be careful around parked vehicles?",
+"options": ["Pedestrians or other vehicles may emerge unexpectedly", "Parked vehicles always move suddenly", "They increase the speed limit", "They remove all hazards"],
+"answer": "Pedestrians or other vehicles may emerge unexpectedly",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do before opening a vehicle door beside traffic?",
+"options": ["Check for approaching road users", "Open it immediately", "Open both doors at once", "Ignore traffic"],
+"answer": "Check for approaching road users",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should passengers avoid doing in a moving vehicle?",
+"options": ["Distracting the driver", "Remaining seated safely", "Wearing a seat belt when provided", "Following safety instructions"],
+"answer": "Distracting the driver",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should children be properly secured in a vehicle?",
+"options": ["To reduce injury risk during sudden braking or crashes", "To make the vehicle faster", "To improve fuel quality", "To increase road speed"],
+"answer": "To reduce injury risk during sudden braking or crashes",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when carrying passengers?",
+"options": ["Ensure passengers are safely seated and comply with applicable rules", "Allow passengers to interfere with driving", "Allow passengers to stand anywhere", "Ignore safety requirements"],
+"answer": "Ensure passengers are safely seated and comply with applicable rules",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do before reversing?",
+"options": ["Check behind the vehicle and reverse only when safe", "Reverse at high speed", "Ignore pedestrians", "Use the horn continuously instead of checking"],
+"answer": "Check behind the vehicle and reverse only when safe",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why is reversing dangerous in crowded areas?",
+"options": ["People or vehicles may be difficult to see", "The engine becomes larger", "Traffic lights stop working", "Road signs disappear"],
+"answer": "People or vehicles may be difficult to see",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a steep downhill section?",
+"options": ["Reduce speed and remain in control", "Accelerate excessively", "Switch off all control systems", "Overtake without checking"],
+"answer": "Reduce speed and remain in control",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the purpose of road lane markings?",
+"options": ["To guide and organize traffic movement", "To decorate the road", "To increase engine power", "To replace traffic lights everywhere"],
+"answer": "To guide and organize traffic movement",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should drivers do when lane markings indicate that changing lanes is restricted?",
+"options": ["Follow the restriction", "Cross the marking whenever convenient", "Drive on the shoulder", "Ignore the marking"],
+"answer": "Follow the restriction",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers not drive on the wrong side of the road?",
+"options": ["It can create a collision risk with oncoming traffic", "It always saves fuel", "It improves visibility", "It is required for overtaking everywhere"],
+"answer": "It can create a collision risk with oncoming traffic",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do after missing a turn?",
+"options": ["Continue safely and find a legal place to turn or reroute", "Reverse suddenly in traffic", "Make a sudden U-turn anywhere", "Drive against traffic"],
+"answer": "Continue safely and find a legal place to turn or reroute",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why are sudden U-turns dangerous?",
+"options": ["They can surprise other road users", "They always improve traffic flow", "They eliminate blind spots", "They increase visibility"],
+"answer": "They can surprise other road users",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching an intersection without a clear view?",
+"options": ["Reduce speed and proceed only when safe", "Accelerate through it", "Close the windows", "Overtake immediately"],
+"answer": "Reduce speed and proceed only when safe",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should drivers do when road conditions become hazardous?",
+"options": ["Adjust speed and driving behavior to the conditions", "Keep maximum speed regardless", "Ignore the hazard", "Drive without lights"],
+"answer": "Adjust speed and driving behavior to the conditions",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do if a traffic signal is not functioning normally?",
+"options": ["Proceed with extra caution and follow applicable traffic-control instructions", "Accelerate without checking", "Assume every direction has priority", "Ignore other road users"],
+"answer": "Proceed with extra caution and follow applicable traffic-control instructions",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers respect traffic police instructions?",
+"options": ["Authorized officers may issue instructions to control traffic and protect road safety", "Police instructions are only for pedestrians", "They are optional decorations", "They replace vehicle maintenance"],
+"answer": "Authorized officers may issue instructions to control traffic and protect road safety",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is one important reason for obeying road signs?",
+"options": ["They communicate rules, warnings, or guidance to road users", "They increase vehicle horsepower", "They guarantee no accidents", "They replace the need for attention"],
+"answer": "They communicate rules, warnings, or guidance to road users",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a pedestrian area?",
+"options": ["Reduce speed and watch for pedestrians", "Accelerate", "Ignore crossings", "Drive onto the sidewalk"],
+"answer": "Reduce speed and watch for pedestrians",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a pedestrian do if a vehicle has stopped to allow crossing?",
+"options": ["Cross carefully while continuing to check for other traffic", "Run without looking", "Use a phone while crossing", "Walk behind moving vehicles without checking"],
+"answer": "Cross carefully while continuing to check for other traffic",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should pedestrians check both directions before crossing?",
+"options": ["Traffic can approach from either direction", "It makes the road wider", "It changes traffic lights", "It increases vehicle speed"],
+"answer": "Traffic can approach from either direction",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a cyclist do when using the road?",
+"options": ["Follow applicable traffic rules and remain predictable", "Ignore traffic signals", "Ride unpredictably", "Use the opposite lane whenever desired"],
+"answer": "Follow applicable traffic rules and remain predictable",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should cyclists be visible to other road users?",
+"options": ["Visibility helps other road users notice them", "Visibility increases tyre pressure", "Visibility replaces brakes", "Visibility removes all road hazards"],
+"answer": "Visibility helps other road users notice them",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when passing a cyclist?",
+"options": ["Pass only when safe and leave adequate space", "Pass extremely closely", "Force the cyclist off the road", "Sound the horn continuously"],
+"answer": "Pass only when safe and leave adequate space",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching animals near the road?",
+"options": ["Slow down and be prepared to stop", "Accelerate toward them", "Ignore them", "Drive onto the opposite lane without checking"],
+"answer": "Slow down and be prepared to stop",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers slow down near animals?",
+"options": ["Animals may behave unpredictably", "Animals always follow traffic lights", "It increases speed limits", "It removes the need for brakes"],
+"answer": "Animals may behave unpredictably",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do if an object falls from another vehicle onto the road?",
+"options": ["Slow down and avoid it safely if possible", "Accelerate toward it", "Close the eyes", "Stop in the middle of a high-speed lane without reason"],
+"answer": "Slow down and avoid it safely if possible",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should you do if your vehicle breaks down on the road?",
+"options": ["Move to a safe location when possible and warn other road users", "Leave it in a dangerous position without warning", "Accelerate the broken vehicle", "Block the entire road"],
+"answer": "Move to a safe location when possible and warn other road users",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why are warning devices useful when a vehicle has broken down?",
+"options": ["They can alert approaching road users to the hazard", "They increase engine power", "They repair the vehicle", "They change traffic lights"],
+"answer": "They can alert approaching road users to the hazard",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Which documents does Rwanda National Police list as documents a driver is required to have?",
+"options": ["Driving licence, vehicle registration certificate, valid insurance certificate and long book", "Only a mobile phone", "Only a passport", "Only a vehicle key"],
+"answer": "Driving licence, vehicle registration certificate, valid insurance certificate and long book",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is a driving licence primarily used to show?",
+"options": ["Authorization to drive according to the licence", "Vehicle fuel level", "Road ownership", "Insurance price"],
+"answer": "Authorization to drive according to the licence",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should a vehicle have valid insurance as required by law?",
+"options": ["It provides required financial protection under the applicable insurance rules", "It makes the vehicle faster", "It replaces the driving licence", "It guarantees that crashes cannot happen"],
+"answer": "It provides required financial protection under the applicable insurance rules",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a red-light camera intersection?",
+"options": ["Obey the traffic signal and road markings", "Ignore the signal", "Accelerate through the red light", "Drive on the sidewalk"],
+"answer": "Obey the traffic signal and road markings",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What type of traffic violation can a camera detect in Rwanda according to Rwanda National Police?",
+"options": ["Speeding or red-light violations", "Vehicle colour changes", "Driver's favourite route", "Fuel brand"],
+"answer": "Speeding or red-light violations",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What information can a camera-detected speeding ticket include?",
+"options": ["Location speed limit and detected vehicle speed", "Driver's favourite music", "Vehicle owner's favourite colour", "Roadside restaurant menu"],
+"answer": "Location speed limit and detected vehicle speed",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the safest general response when you see a new road hazard?",
+"options": ["Reduce speed, observe carefully and act safely", "Accelerate immediately", "Ignore it", "Overtake without checking"],
+"answer": "Reduce speed, observe carefully and act safely",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers avoid driving under the influence of alcohol or drugs?",
+"options": ["They can impair safe driving ability", "They improve reaction time", "They improve concentration", "They shorten braking distance"],
+"answer": "They can impair safe driving ability",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do if they feel too tired to drive safely?",
+"options": ["Stop and rest before continuing when safe", "Drive faster to arrive sooner", "Ignore the fatigue", "Use the phone while driving"],
+"answer": "Stop and rest before continuing when safe",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why is fatigue dangerous for drivers?",
+"options": ["It can reduce alertness and reaction ability", "It improves concentration", "It makes braking faster", "It improves night vision"],
+"answer": "It can reduce alertness and reaction ability",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching an ambulance with emergency signals?",
+"options": ["Give way safely and avoid blocking it", "Block its path", "Race it", "Follow it closely"],
+"answer": "Give way safely and avoid blocking it",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should emergency vehicles be given priority?",
+"options": ["They may be responding to an urgent emergency", "They are always travelling for entertainment", "They never need to stop", "They are exempt from all safety considerations"],
+"answer": "They may be responding to an urgent emergency",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do before starting a journey?",
+"options": ["Check that the vehicle is safe and roadworthy", "Disable the brakes", "Ignore tyre condition", "Remove working lights"],
+"answer": "Check that the vehicle is safe and roadworthy",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is one purpose of a vehicle's rear-view mirrors?",
+"options": ["To help the driver monitor traffic behind", "To increase engine power", "To measure fuel", "To control traffic lights"],
+"answer": "To help the driver monitor traffic behind",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should a driver check blind spots?",
+"options": ["Some road users may not appear in the mirrors", "Blind spots increase fuel efficiency", "They show traffic-light colours", "They replace turn signals"],
+"answer": "Some road users may not appear in the mirrors",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do before moving from a parked position?",
+"options": ["Check surroundings and signal when required", "Move immediately without checking", "Reverse into traffic quickly", "Ignore pedestrians"],
+"answer": "Check surroundings and signal when required",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers avoid parking where they block traffic?",
+"options": ["It can obstruct other road users and create hazards", "It improves traffic flow", "It increases visibility", "It reduces congestion"],
+"answer": "It can obstruct other road users and create hazards",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do near a narrow road where vehicles approach from opposite directions?",
+"options": ["Slow down and give way as required to pass safely", "Accelerate without checking", "Drive onto pedestrians", "Ignore the other vehicle"],
+"answer": "Slow down and give way as required to pass safely",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why is tailgating dangerous?",
+"options": ["It leaves less time and space to react", "It improves braking distance", "It increases visibility", "It makes traffic safer"],
+"answer": "It leaves less time and space to react",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when following a large vehicle that blocks visibility?",
+"options": ["Keep a safe distance and avoid unsafe overtaking", "Follow extremely closely", "Overtake at a blind bend", "Drive on the shoulder"],
+"answer": "Keep a safe distance and avoid unsafe overtaking",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do before overtaking on a two-way road?",
+"options": ["Check that the opposite lane is clear and the maneuver is permitted", "Assume it is clear", "Overtake near a blind curve", "Ignore oncoming traffic"],
+"answer": "Check that the opposite lane is clear and the maneuver is permitted",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should you do if an oncoming vehicle appears while you are overtaking?",
+"options": ["Return safely to your lane without creating another hazard", "Continue accelerating toward it", "Stop in the opposite lane", "Move onto pedestrians"],
+"answer": "Return safely to your lane without creating another hazard",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should a driver do when approaching a roundabout?",
+"options": ["Slow down, observe signs and give way according to the rules", "Accelerate without looking", "Drive straight through the centre", "Ignore other vehicles"],
+"answer": "Slow down, observe signs and give way according to the rules",
+"category": "Road Traffic Rules"
+},
+{
+"question": "Why should drivers signal before entering or leaving a roundabout when required?",
+"options": ["To communicate their intended movement", "To increase speed", "To stop other drivers permanently", "To change the road markings"],
+"answer": "To communicate their intended movement",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What should drivers do at a pedestrian crossing without traffic lights?",
+"options": ["Approach at a safe speed and give pedestrians the required opportunity to cross", "Accelerate through it", "Ignore pedestrians", "Park on the crossing"],
+"answer": "Approach at a safe speed and give pedestrians the required opportunity to cross",
+"category": "Road Traffic Rules"
+},
+{
+"question": "What is the main goal of road safety rules?",
+"options": ["To reduce crashes and protect road users", "To increase traffic violations", "To make vehicles heavier", "To encourage speeding"],
+"answer": "To reduce crashes and protect road users",
+"category": "Road Traffic Rules"
+}
+]
