@@ -4337,4 +4337,496 @@
     "question_rw": "",
     "options": ["Putting money or resources into something with an expected future benefit", "A bank password", "A receipt", "A daily expense"],
     "answer": "Putting money or
-]
+[
+  {
+    "id": "batch2-q001",
+    "question": "Which organelle controls most activities inside a eukaryotic cell?",
+    "options": ["Nucleus", "Ribosome", "Vacuole", "Cell wall"],
+    "answer": "Nucleus",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q002",
+    "question": "What is the basic unit of heredity?",
+    "options": ["Gene", "Tissue", "Organ", "Enzyme"],
+    "answer": "Gene",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q003",
+    "question": "Which blood cells help defend the body against infections?",
+    "options": ["White blood cells", "Red blood cells", "Platelets", "Plasma cells"],
+    "answer": "White blood cells",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q004",
+    "question": "Which molecule carries genetic instructions in most living organisms?",
+    "options": ["DNA", "Glucose", "Cholesterol", "Starch"],
+    "answer": "DNA",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q005",
+    "question": "Which part of a plant absorbs most water from the soil?",
+    "options": ["Root hairs", "Flowers", "Fruits", "Seeds"],
+    "answer": "Root hairs",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q006",
+    "question": "What type of organism makes its own food using light energy?",
+    "options": ["Autotroph", "Parasite", "Decomposer", "Predator"],
+    "answer": "Autotroph",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q007",
+    "question": "Which human organ produces insulin?",
+    "options": ["Pancreas", "Liver", "Kidney", "Spleen"],
+    "answer": "Pancreas",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q008",
+    "question": "What is the process by which cells divide to produce two genetically similar daughter cells?",
+    "options": ["Mitosis", "Digestion", "Diffusion", "Fermentation"],
+    "answer": "Mitosis",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q009",
+    "question": "Which structure connects a muscle to a bone?",
+    "options": ["Tendon", "Ligament", "Cartilage", "Nerve"],
+    "answer": "Tendon",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q010",
+    "question": "Which structure connects one bone to another bone?",
+    "options": ["Ligament", "Tendon", "Muscle fiber", "Neuron"],
+    "answer": "Ligament",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q011",
+    "question": "Which organ is primarily responsible for filtering waste from the blood and producing urine?",
+    "options": ["Kidney", "Heart", "Lung", "Stomach"],
+    "answer": "Kidney",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q012",
+    "question": "What is the scientific study of fungi called?",
+    "options": ["Mycology", "Ecology", "Botany", "Zoology"],
+    "answer": "Mycology",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q013",
+    "question": "Which type of reproduction involves only one parent?",
+    "options": ["Asexual reproduction", "Sexual reproduction", "Cross-fertilization", "Pollination"],
+    "answer": "Asexual reproduction",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q014",
+    "question": "What is the largest internal organ of the human body?",
+    "options": ["Liver", "Heart", "Lung", "Brain"],
+    "answer": "Liver",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q015",
+    "question": "Which part of the eye controls the amount of light entering it?",
+    "options": ["Iris", "Retina", "Cornea", "Optic nerve"],
+    "answer": "Iris",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q016",
+    "question": "Which cells are responsible for transmitting electrical signals in the nervous system?",
+    "options": ["Neurons", "Platelets", "Osteocytes", "Adipocytes"],
+    "answer": "Neurons",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q017",
+    "question": "What is the process of maintaining a stable internal environment in an organism?",
+    "options": ["Homeostasis", "Evolution", "Mutation", "Respiration"],
+    "answer": "Homeostasis",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q018",
+    "question": "Which component of blood helps it clot?",
+    "options": ["Platelets", "Red blood cells", "Plasma", "White blood cells"],
+    "answer": "Platelets",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q019",
+    "question": "Which biological process converts food into usable energy inside cells?",
+    "options": ["Cellular respiration", "Pollination", "Transpiration", "Osmosis"],
+    "answer": "Cellular respiration",
+    "category": "Biology"
+  },
+  {
+    "id": "batch2-q020",
+    "question": "Which type of tissue covers the outer surface of the human body?",
+    "options": ["Epithelial tissue", "Nervous tissue", "Muscle tissue", "Bone tissue"],
+    "answer": "Epithelial tissue",
+    "category": "Biology"
+  },
+
+  {
+    "id": "batch2-q021",
+    "question": "What is the chemical symbol for potassium?",
+    "options": ["K", "P", "Po", "Pt"],
+    "answer": "K",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q022",
+    "question": "What is the chemical symbol for iron?",
+    "options": ["Fe", "Ir", "In", "I"],
+    "answer": "Fe",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q023",
+    "question": "Which gas makes up the largest portion of Earth's atmosphere?",
+    "options": ["Nitrogen", "Oxygen", "Carbon dioxide", "Argon"],
+    "answer": "Nitrogen",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q024",
+    "question": "What is the pH of a neutral solution at room temperature?",
+    "options": ["7", "0", "14", "10"],
+    "answer": "7",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q025",
+    "question": "Which element has the atomic number 6?",
+    "options": ["Carbon", "Oxygen", "Nitrogen", "Boron"],
+    "answer": "Carbon",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q026",
+    "question": "What is the chemical formula for table salt?",
+    "options": ["NaCl", "KCl", "CaCO3", "H2SO4"],
+    "answer": "NaCl",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q027",
+    "question": "Which state of matter has a fixed volume but takes the shape of its container?",
+    "options": ["Liquid", "Solid", "Gas", "Plasma"],
+    "answer": "Liquid",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q028",
+    "question": "What do we call a substance that speeds up a chemical reaction without being consumed?",
+    "options": ["Catalyst", "Solvent", "Reactant", "Product"],
+    "answer": "Catalyst",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q029",
+    "question": "Which element is represented by the symbol Au?",
+    "options": ["Gold", "Silver", "Copper", "Aluminum"],
+    "answer": "Gold",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q030",
+    "question": "Which element is represented by the symbol Ag?",
+    "options": ["Silver", "Gold", "Argon", "Aluminum"],
+    "answer": "Silver",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q031",
+    "question": "What is the main gas released when many fuels burn completely?",
+    "options": ["Carbon dioxide", "Helium", "Hydrogen", "Neon"],
+    "answer": "Carbon dioxide",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q032",
+    "question": "Which particle has a negative electric charge?",
+    "options": ["Electron", "Proton", "Neutron", "Nucleus"],
+    "answer": "Electron",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q033",
+    "question": "Which particle has no electric charge?",
+    "options": ["Neutron", "Electron", "Proton", "Ion"],
+    "answer": "Neutron",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q034",
+    "question": "What is the chemical formula for water?",
+    "options": ["H2O", "CO2", "O2", "H2"],
+    "answer": "H2O",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q035",
+    "question": "Which acid is naturally present in the stomach?",
+    "options": ["Hydrochloric acid", "Citric acid", "Acetic acid", "Carbonic acid"],
+    "answer": "Hydrochloric acid",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q036",
+    "question": "What is the process of a liquid changing into a gas called?",
+    "options": ["Vaporization", "Freezing", "Condensation", "Melting"],
+    "answer": "Vaporization",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q037",
+    "question": "What is the process of a gas changing into a liquid called?",
+    "options": ["Condensation", "Sublimation", "Melting", "Freezing"],
+    "answer": "Condensation",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q038",
+    "question": "Which element is essential for human bones and teeth?",
+    "options": ["Calcium", "Helium", "Neon", "Argon"],
+    "answer": "Calcium",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q039",
+    "question": "Which gas is commonly used to fill balloons because it is lighter than air and nonflammable?",
+    "options": ["Helium", "Oxygen", "Carbon dioxide", "Chlorine"],
+    "answer": "Helium",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch2-q040",
+    "question": "What is the smallest unit of an element that retains its chemical properties?",
+    "options": ["Atom", "Molecule", "Cell", "Crystal"],
+    "answer": "Atom",
+    "category": "Chemistry"
+  },
+
+  {
+    "id": "batch2-q041",
+    "question": "What SI unit is used to measure force?",
+    "options": ["Newton", "Joule", "Watt", "Pascal"],
+    "answer": "Newton",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q042",
+    "question": "What SI unit is used to measure energy?",
+    "options": ["Joule", "Newton", "Volt", "Ampere"],
+    "answer": "Joule",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q043",
+    "question": "What SI unit is used to measure power?",
+    "options": ["Watt", "Joule", "Newton", "Ohm"],
+    "answer": "Watt",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q044",
+    "question": "What force pulls objects toward the center of Earth?",
+    "options": ["Gravity", "Friction", "Magnetism", "Buoyancy"],
+    "answer": "Gravity",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q045",
+    "question": "Which form of energy is associated with the motion of an object?",
+    "options": ["Kinetic energy", "Chemical energy", "Nuclear energy", "Potential energy"],
+    "answer": "Kinetic energy",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q046",
+    "question": "Which form of energy is stored because of an object's position?",
+    "options": ["Potential energy", "Kinetic energy", "Sound energy", "Thermal energy"],
+    "answer": "Potential energy",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q047",
+    "question": "What device is used to measure temperature?",
+    "options": ["Thermometer", "Barometer", "Ammeter", "Hygrometer"],
+    "answer": "Thermometer",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q048",
+    "question": "What device measures atmospheric pressure?",
+    "options": ["Barometer", "Thermometer", "Voltmeter", "Anemometer"],
+    "answer": "Barometer",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q049",
+    "question": "What is the approximate speed of light in a vacuum?",
+    "options": ["300,000 km/s", "30,000 km/s", "3,000 km/s", "3,000,000 km/s"],
+    "answer": "300,000 km/s",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q050",
+    "question": "Which type of wave requires a medium to travel?",
+    "options": ["Mechanical wave", "Electromagnetic wave", "Light wave", "Radio wave"],
+    "answer": "Mechanical wave",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q051",
+    "question": "Which phenomenon causes a straw to appear bent when placed in water?",
+    "options": ["Refraction", "Reflection", "Diffraction", "Absorption"],
+    "answer": "Refraction",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q052",
+    "question": "What is the bouncing back of light from a surface called?",
+    "options": ["Reflection", "Refraction", "Conduction", "Dispersion"],
+    "answer": "Reflection",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q053",
+    "question": "Which material is generally a good conductor of electricity?",
+    "options": ["Copper", "Rubber", "Glass", "Wood"],
+    "answer": "Copper",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q054",
+    "question": "Which force opposes motion between two surfaces in contact?",
+    "options": ["Friction", "Gravity", "Thrust", "Buoyancy"],
+    "answer": "Friction",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q055",
+    "question": "What is the unit of electrical resistance?",
+    "options": ["Ohm", "Volt", "Ampere", "Watt"],
+    "answer": "Ohm",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q056",
+    "question": "What is the unit of electric current?",
+    "options": ["Ampere", "Volt", "Ohm", "Watt"],
+    "answer": "Ampere",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q057",
+    "question": "What is the unit of electrical potential difference?",
+    "options": ["Volt", "Ampere", "Ohm", "Joule"],
+    "answer": "Volt",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q058",
+    "question": "Which simple machine is a sloping surface used to raise objects?",
+    "options": ["Inclined plane", "Pulley", "Wheel and axle", "Lever"],
+    "answer": "Inclined plane",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q059",
+    "question": "Which type of mirror provides a wider field of view and is often used for security?",
+    "options": ["Convex mirror", "Plane mirror", "Concave mirror", "Parabolic mirror"],
+    "answer": "Convex mirror",
+    "category": "Physics"
+  },
+  {
+    "id": "batch2-q060",
+    "question": "What is the transfer of heat through direct contact called?",
+    "options": ["Conduction", "Convection", "Radiation", "Evaporation"],
+    "answer": "Conduction",
+    "category": "Physics"
+  },
+
+  {
+    "id": "batch2-q061",
+    "question": "Which layer of Earth is made mostly of solid rock and forms the continents and ocean floors?",
+    "options": ["Crust", "Outer core", "Inner core", "Mantle"],
+    "answer": "Crust",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q062",
+    "question": "What instrument records earthquake vibrations?",
+    "options": ["Seismograph", "Barometer", "Thermometer", "Rain gauge"],
+    "answer": "Seismograph",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q063",
+    "question": "What is molten rock beneath Earth's surface called?",
+    "options": ["Magma", "Lava", "Ash", "Basalt"],
+    "answer": "Magma",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q064",
+    "question": "What is molten rock called after it reaches Earth's surface?",
+    "options": ["Lava", "Magma", "Granite", "Quartz"],
+    "answer": "Lava",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q065",
+    "question": "Which type of rock forms from cooled molten material?",
+    "options": ["Igneous rock", "Sedimentary rock", "Metamorphic rock", "Organic rock"],
+    "answer": "Igneous rock",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q066",
+    "question": "Which type of rock forms from compacted and cemented sediments?",
+    "options": ["Sedimentary rock", "Igneous rock", "Metamorphic rock", "Volcanic glass"],
+    "answer": "Sedimentary rock",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q067",
+    "question": "What process changes existing rock through heat and pressure?",
+    "options": ["Metamorphism", "Erosion", "Weathering", "Deposition"],
+    "answer": "Metamorphism",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q068",
+    "question": "What is the wearing away of Earth's surface by wind, water, or ice called?",
+    "options": ["Erosion", "Condensation", "Crystallization", "Fusion"],
+    "answer": "Erosion",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q069",
+    "question": "Which instrument measures wind speed?",
+    "options": ["Anemometer", "Barometer", "Seismograph", "Hygrometer"],
+    "answer": "Anemometer",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch2-q070",
+    "question": "Which instrument measures humidity?",
+    "options": ["Hygrometer", "An
+  },
+  
