@@ -1,628 +1,352 @@
 /* =========================================================
-   QUIZ MASTER 🇷🇼 - QUESTIONS + RETENTION FEATURES
-   File: questions.js
-
-   SAFE VERSION
+   QUIZ MASTER 🇷🇼
+   QUESTIONS ENGINE
    ---------------------------------------------------------
-   - Keeps existing HTML IDs
-   - Keeps existing design/layout
-   - Does NOT inject new CSS
-   - Does NOT inject new visible cards
-   - Uses existing questions.json
-   - Keeps Start Quiz working
-   - Keeps Continue Quiz working
-   - Keeps existing scoring/timer
-   - Adds streaks, stars, achievements
-   - Adds Daily Challenge
-   - Keeps Share button
-   - Keeps AdSense safe
+   SAFE FULL VERSION
+   - Works with existing index.html
+   - Loads ./questions.json
+   - Robust JSON validation
+   - Fixes answer/option spaces and case differences
+   - Start Quiz
+   - Continue Quiz
+   - 10 rounds
+   - 10 questions per round
+   - 20 seconds per question
+   - 10 points per correct answer
+   - 60% required to unlock next round
+   - Question randomization
+   - No question repeats until available questions are used
+   - Score saving
+   - Progress saving
+   - Review answers
+   - Retry round
+   - Next round
+   - Stars
+   - Streak bonus
+   - Achievements
+   - Daily challenge
+   - Music setting
+   - Sound setting
+   - Share button
+   - AdSense-safe
+   - Keeps existing design/CSS
 ========================================================= */
 
 (function () {
   "use strict";
 
-  /* ========================================================
-     CONFIG
-  ======================================================== */
+  /* =======================================================
+     CONFIGURATION
+  ======================================================= */
 
   const QUESTIONS_PER_ROUND = 10;
   const TIME_PER_QUESTION = 20;
   const POINTS_PER_CORRECT = 10;
   const TOTAL_ROUNDS = 10;
   const UNLOCK_PERCENT = 60;
+
   const QUESTIONS_FILE = "./questions.json";
 
   const STORAGE = {
     progress: "quizmasterProgress",
-    unlocked: "quizmasterUnlockedRounds",
+    unlockedRounds: "quizmasterUnlockedRounds",
     currentRound: "quizmasterCurrentRound",
-
+    selectedRound: "quizmasterSelectedRound",
+    completedRounds: "quizmasterCompletedRounds",
+    usedQuestions: "quizmasterUsedQuestions",
     music: "quizmasterMusic",
     sound: "quizmasterSound",
-
-    completed: "quizmasterCompletedRounds",
-    stars: "quizmasterRoundStars",
-    achievements: "quizmasterAchievements",
-    best: "quizmasterPersonalBest",
-    totalScore: "quizmasterTotalScore",
-
+    premium: "quizmasterPremium",
     daily: "quizmasterDailyChallenge",
-    usedQuestions: "quizmasterUsedQuestions"
+    achievements: "quizmasterAchievements"
   };
 
-  /* ========================================================
+  /* =======================================================
      STATE
-  ======================================================== */
+  ======================================================= */
 
   let allQuestions = [];
 
   let currentRound = 1;
-  let currentQuestions = [];
   let currentQuestionIndex = 0;
 
+  let roundQuestions = [];
+
   let score = 0;
-  let correctCount = 0;
-  let wrongCount = 0;
+  let correctAnswers = 0;
+  let wrongAnswers = 0;
+
+  let streak = 0;
+  let bestStreak = 0;
 
   let timer = null;
   let timeLeft = TIME_PER_QUESTION;
 
-  let answered = false;
+  let quizFinished = false;
+  let answerSelected = false;
+
   let quizStarted = false;
 
-  let reviewAnswers = [];
+  let reviewData = [];
 
-  let currentStreak = 0;
-  let bestStreak = 0;
-  let streakBonus = 0;
+  let musicEnabled = true;
+  let soundEnabled = true;
 
-  let quizMode = "round";
-  let dailyDate = "";
+  let backgroundMusic = null;
 
-  /* ========================================================
-     DOM HELPER
-  ======================================================== */
+  /* =======================================================
+     BASIC HELPERS
+  ======================================================= */
 
-  const $ = (id) => document.getElementById(id);
-
-  /* ========================================================
-     SCREEN
-     
-     IMPORTANT:
-     Do not force display:block here.
-     Existing CSS controls the layout.
-  ======================================================== */
-
-  function showScreen(id) {
-    document
-      .querySelectorAll(".screen")
-      .forEach((screen) => {
-        screen.classList.remove("active");
-      });
-
-    const target = $(id);
-
-    if (target) {
-      target.classList.add("active");
-    }
-
-    try {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    } catch (error) {
-      window.scrollTo(0, 0);
-    }
+  function $(id) {
+    return document.getElementById(id);
   }
 
-  /* ========================================================
-     STORAGE
-  ======================================================== */
+  function getElement(...ids) {
+    for (const id of ids) {
+      const el = $(id);
+      if (el) return el;
+    }
+    return null;
+  }
 
-  function readJSON(key, fallback) {
+  function showElement(el) {
+    if (!el) return;
+    el.style.display = "";
+    el.hidden = false;
+  }
+
+  function hideElement(el) {
+    if (!el) return;
+    el.style.display = "none";
+    el.hidden = true;
+  }
+
+  function safeParse(value, fallback) {
     try {
-      const raw = localStorage.getItem(key);
-
-      if (raw === null) {
-        return fallback;
-      }
-
-      return JSON.parse(raw);
-    } catch (error) {
+      return JSON.parse(value);
+    } catch (e) {
       return fallback;
     }
   }
 
-  function writeJSON(key, value) {
-    try {
-      localStorage.setItem(
-        key,
-        JSON.stringify(value)
-      );
-    } catch (error) {
-      console.warn(
-        "Quiz Master storage error:",
-        error
-      );
-    }
-  }
-
-  /* ========================================================
-     DATE
-  ======================================================== */
-
-  function todayKey() {
-    const d = new Date();
-
-    return [
-      d.getFullYear(),
-      String(d.getMonth() + 1).padStart(2, "0"),
-      String(d.getDate()).padStart(2, "0")
-    ].join("-");
-  }
-
-  /* ========================================================
-     SHUFFLE
-  ======================================================== */
-
-  function shuffleArray(array) {
-    const copy = Array.isArray(array)
-      ? array.slice()
-      : [];
+  function shuffle(array) {
+    const copy = Array.isArray(array) ? [...array] : [];
 
     for (let i = copy.length - 1; i > 0; i--) {
-      const j = Math.floor(
-        Math.random() * (i + 1)
-      );
+      const j = Math.floor(Math.random() * (i + 1));
 
-      [
-        copy[i],
-        copy[j]
-      ] = [
-        copy[j],
-        copy[i]
-      ];
+      const temp = copy[i];
+      copy[i] = copy[j];
+      copy[j] = temp;
     }
 
     return copy;
   }
 
-  /* ========================================================
-     UNLOCKED ROUNDS
-  ======================================================== */
-
-  function getUnlockedRounds() {
-    const saved = readJSON(
-      STORAGE.unlocked,
-      [1]
-    );
-
-    const list = Array.isArray(saved)
-      ? saved
-      : [1];
-
-    if (!list.includes(1)) {
-      list.push(1);
-    }
-
-    return [
-      ...new Set(
-        list
-          .map(Number)
-          .filter(
-            (n) =>
-              Number.isInteger(n) &&
-              n >= 1 &&
-              n <= TOTAL_ROUNDS
-          )
-      )
-    ].sort((a, b) => a - b);
+  function normalizeText(value) {
+    return String(value ?? "")
+      .trim()
+      .replace(/\s+/g, " ")
+      .toLowerCase();
   }
 
-  function setUnlockedRounds(list) {
-    const cleaned = [
-      ...new Set(
-        list
-          .map(Number)
-          .filter(
-            (n) =>
-              Number.isInteger(n) &&
-              n >= 1 &&
-              n <= TOTAL_ROUNDS
-          )
-      )
-    ].sort((a, b) => a - b);
+  /* =======================================================
+     STORAGE
+  ======================================================= */
 
-    if (!cleaned.includes(1)) {
-      cleaned.unshift(1);
-    }
+  function getStorageJSON(key, fallback) {
+    const value = localStorage.getItem(key);
 
-    writeJSON(
-      STORAGE.unlocked,
-      cleaned
-    );
+    if (!value) return fallback;
+
+    return safeParse(value, fallback);
   }
 
-  /* ========================================================
-     COMPLETED ROUNDS
-  ======================================================== */
-
-  function getCompletedRounds() {
-    const data = readJSON(
-      STORAGE.completed,
-      []
-    );
-
-    return Array.isArray(data)
-      ? [
-          ...new Set(
-            data
-              .map(Number)
-              .filter(
-                (n) =>
-                  Number.isInteger(n) &&
-                  n >= 1 &&
-                  n <= TOTAL_ROUNDS
-              )
-          )
-        ]
-      : [];
-  }
-
-  function markRoundCompleted(round) {
-    const completed =
-      getCompletedRounds();
-
-    if (!completed.includes(round)) {
-      completed.push(round);
-
-      completed.sort(
-        (a, b) => a - b
-      );
-
-      writeJSON(
-        STORAGE.completed,
-        completed
-      );
+  function setStorageJSON(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.warn("Quiz Master storage error:", error);
     }
   }
 
-  /* ========================================================
-     STARS
-  ======================================================== */
+  /* =======================================================
+     QUESTIONS VALIDATION
+  ======================================================= */
 
-  function getRoundStars() {
-    const data = readJSON(
-      STORAGE.stars,
-      {}
-    );
-
-    return data &&
-      typeof data === "object" &&
-      !Array.isArray(data)
-      ? data
-      : {};
-  }
-
-  function saveRoundStars(round, stars) {
-    const data =
-      getRoundStars();
-
-    const key = String(round);
-
-    data[key] = Math.max(
-      Number(data[key] || 0),
-      Number(stars) || 0
-    );
-
-    writeJSON(
-      STORAGE.stars,
-      data
-    );
-  }
-
-  function starsForPercent(percent) {
-    if (percent >= 80) {
-      return 3;
-    }
-
-    if (percent >= 60) {
-      return 2;
-    }
-
-    return 1;
-  }
-
-  /* ========================================================
-     PERSONAL BEST
-  ======================================================== */
-
-  function getBestData() {
-    const data = readJSON(
-      STORAGE.best,
-      {
-        bestRoundScore: 0,
-        bestPercent: 0,
-        bestStreak: 0,
-        totalCorrect: 0
-      }
-    );
-
-    return {
-      bestRoundScore:
-        Number(data.bestRoundScore) || 0,
-
-      bestPercent:
-        Number(data.bestPercent) || 0,
-
-      bestStreak:
-        Number(data.bestStreak) || 0,
-
-      totalCorrect:
-        Number(data.totalCorrect) || 0
-    };
-  }
-
-  function updatePersonalBest() {
-    const best =
-      getBestData();
-
-    const percent = Math.round(
-      (
-        correctCount /
-        Math.max(
-          currentQuestions.length,
-          1
-        )
-      ) * 100
-    );
-
-    best.bestRoundScore =
-      Math.max(
-        best.bestRoundScore,
-        score
-      );
-
-    best.bestPercent =
-      Math.max(
-        best.bestPercent,
-        percent
-      );
-
-    best.bestStreak =
-      Math.max(
-        best.bestStreak,
-        bestStreak
-      );
-
-    best.totalCorrect +=
-      correctCount;
-
-    writeJSON(
-      STORAGE.best,
-      best
-    );
-
-    return best;
-  }
-
-  /* ========================================================
-     ACHIEVEMENTS
-  ======================================================== */
-
-  function getAchievements() {
-    const data = readJSON(
-      STORAGE.achievements,
-      []
-    );
-
-    return Array.isArray(data)
-      ? data
-      : [];
-  }
-
-  function unlockAchievement(
-    id,
-    title,
-    description
-  ) {
-    const achievements =
-      getAchievements();
-
-    if (
-      achievements.some(
-        (item) =>
-          item &&
-          item.id === id
-      )
-    ) {
+  function validateQuestions(data) {
+    if (!Array.isArray(data)) {
+      console.error("questions.json is not an array.");
       return false;
     }
 
-    achievements.push({
-      id,
-      title,
-      description,
-      date: todayKey()
-    });
-
-    writeJSON(
-      STORAGE.achievements,
-      achievements
-    );
-
-    return true;
-  }
-
-  function checkAchievements(percent) {
-    const completed =
-      getCompletedRounds();
-
-    const best =
-      getBestData();
-
-    const unlocked =
-      getUnlockedRounds();
-
-    const newlyUnlocked = [];
-
-    const candidates = [
-      [
-        "first_round",
-        "🎯 First Round",
-        "Completed your first quiz round.",
-        completed.length >= 1
-      ],
-
-      [
-        "streak_3",
-        "🔥 Hot Streak",
-        "Reached a 3-answer streak.",
-        best.bestStreak >= 3
-      ],
-
-      [
-        "streak_5",
-        "🔥 Streak Master",
-        "Reached a 5-answer streak.",
-        best.bestStreak >= 5
-      ],
-
-      [
-        "rounds_5",
-        "🏆 Five Rounds",
-        "Completed 5 quiz rounds.",
-        completed.length >= 5
-      ],
-
-      [
-        "correct_50",
-        "🥇 50 Correct",
-        "Answered 50 questions correctly.",
-        best.totalCorrect >= 50
-      ],
-
-      [
-        "score_500",
-        "💎 500 Points",
-        "Earned at least 500 points in a round.",
-        best.bestRoundScore >= 500
-      ],
-
-      [
-        "perfect_round",
-        "⭐ Perfect Round",
-        "Scored 100% in a round.",
-        percent === 100
-      ],
-
-      [
-        "all_rounds",
-        "👑 Quiz Master",
-        "Unlocked all 10 rounds.",
-        unlocked.length >= TOTAL_ROUNDS
-      ]
-    ];
-
-    candidates.forEach(
-      (item) => {
-        const [
-          id,
-          title,
-          description,
-          condition
-        ] = item;
-
-        if (
-          condition &&
-          unlockAchievement(
-            id,
-            title,
-            description
-          )
-        ) {
-          newlyUnlocked.push({
-            id,
-            title,
-            description
-          });
-        }
-      }
-    );
-
-    return newlyUnlocked;
-  }
-
-  /* ========================================================
-     STREAK
-  ======================================================== */
-
-  function resetStreak() {
-    currentStreak = 0;
-  }
-
-  function registerCorrectAnswer() {
-    currentStreak += 1;
-
-    bestStreak = Math.max(
-      bestStreak,
-      currentStreak
-    );
-
-    let bonus = 0;
-
-    /*
-      Every 3 consecutive correct
-      answers gives +5 bonus points.
-    */
-
-    if (
-      currentStreak >= 3 &&
-      currentStreak % 3 === 0
-    ) {
-      bonus = 5;
-
-      score += bonus;
-
-      streakBonus += bonus;
+    if (data.length < QUESTIONS_PER_ROUND) {
+      console.error(
+        `Not enough questions. Found ${data.length}, need at least ${QUESTIONS_PER_ROUND}.`
+      );
+      return false;
     }
 
-    return bonus;
+    let valid = true;
+
+    data.forEach((q, index) => {
+      if (!q || typeof q !== "object") {
+        console.error(`Invalid question at index ${index}.`, q);
+        valid = false;
+        return;
+      }
+
+      if (
+        typeof q.question !== "string" ||
+        q.question.trim() === ""
+      ) {
+        console.error(
+          `Question ${index + 1} has no valid "question" field.`,
+          q
+        );
+        valid = false;
+        return;
+      }
+
+      if (
+        !Array.isArray(q.options) ||
+        q.options.length < 2
+      ) {
+        console.error(
+          `Question ${index + 1} has invalid options.`,
+          q
+        );
+        valid = false;
+        return;
+      }
+
+      const validOptions = q.options.every(
+        option =>
+          typeof option === "string" &&
+          option.trim() !== ""
+      );
+
+      if (!validOptions) {
+        console.error(
+          `Question ${index + 1} contains an invalid option.`,
+          q
+        );
+        valid = false;
+        return;
+      }
+
+      if (
+        typeof q.answer !== "string" ||
+        q.answer.trim() === ""
+      ) {
+        console.error(
+          `Question ${index + 1} has no valid answer.`,
+          q
+        );
+        valid = false;
+        return;
+      }
+
+      const answerNormalized = normalizeText(q.answer);
+
+      const answerExists = q.options.some(
+        option => normalizeText(option) === answerNormalized
+      );
+
+      if (!answerExists) {
+        console.error(
+          `Question ${index + 1}: answer "${q.answer}" does not match any option.`,
+          q
+        );
+
+        valid = false;
+      }
+    });
+
+    return valid;
   }
 
-  /* ========================================================
-     QUESTIONS
-  ======================================================== */
+  /* =======================================================
+     NORMALIZE QUESTIONS
+  ======================================================= */
+
+  function normalizeQuestions(data) {
+    return data.map((q, index) => {
+      const options = q.options
+        .map(option => String(option).trim())
+        .filter(Boolean);
+
+      const rawAnswer = String(q.answer).trim();
+
+      const matchingAnswer = options.find(
+        option =>
+          normalizeText(option) === normalizeText(rawAnswer)
+      );
+
+      return {
+        id:
+          q.id ||
+          `question-${index}-${normalizeText(q.question)
+            .slice(0, 30)
+            .replace(/[^a-z0-9]+/g, "-")}`,
+
+        question: String(q.question).trim(),
+
+        question_rw:
+          typeof q.question_rw === "string"
+            ? q.question_rw.trim()
+            : "",
+
+        options: options,
+
+        answer: matchingAnswer || rawAnswer,
+
+        category:
+          typeof q.category === "string" &&
+          q.category.trim()
+            ? q.category.trim()
+            : "General Knowledge"
+      };
+    });
+  }
+
+  /* =======================================================
+     LOAD QUESTIONS
+  ======================================================= */
 
   async function loadQuestions() {
     try {
-      const response =
-        await fetch(
-          QUESTIONS_FILE,
-          {
-            cache: "no-store"
-          }
-        );
+      const response = await fetch(
+        QUESTIONS_FILE,
+        {
+          cache: "no-store"
+        }
+      );
 
       if (!response.ok) {
         throw new Error(
-          "Could not load questions.json"
+          `questions.json returned HTTP ${response.status}`
         );
       }
 
-      const data =
-        await response.json();
+      const data = await response.json();
 
-      if (
-        !validateQuestions(data)
-      ) {
+      if (!validateQuestions(data)) {
         throw new Error(
-          "questions.json format is invalid."
+          "questions.json contains one or more invalid questions."
         );
       }
 
-      allQuestions = data;
+      allQuestions = normalizeQuestions(data);
+
+      console.log(
+        `Quiz Master: ${allQuestions.length} questions loaded successfully.`
+      );
+
+      hideError();
+
+      initializeAfterQuestionsLoaded();
 
       return true;
     } catch (error) {
@@ -632,1164 +356,861 @@
       );
 
       showError(
-        "Quiz questions could not be loaded. Please check that questions.json is in the same folder as questions.js."
+        "Quiz questions could not be loaded. Please check that questions.json is available and correctly formatted."
       );
 
       return false;
     }
   }
 
-  function validateQuestions(data) {
-    if (
-      !Array.isArray(data) ||
-      data.length <
-        QUESTIONS_PER_ROUND
-    ) {
-      return false;
+  /* =======================================================
+     ERROR SCREEN
+  ======================================================= */
+
+  function showError(message) {
+    const errorScreen = getElement("errorScreen");
+
+    if (!errorScreen) {
+      console.error(message);
+      return;
     }
 
-    return data.every(
-      (q) =>
-        q &&
-        typeof q.question ===
-          "string" &&
-        q.question.trim() !== "" &&
-        Array.isArray(q.options) &&
-        q.options.length >= 2 &&
-        typeof q.answer ===
-          "string" &&
-        q.options.includes(
-          q.answer
-        )
+    const errorMessage = getElement(
+      "errorMessage",
+      "quizErrorMessage"
     );
+
+    if (errorMessage) {
+      errorMessage.textContent = message;
+    }
+
+    hideAllScreens();
+
+    showElement(errorScreen);
   }
 
-  /* ========================================================
-     USED QUESTIONS
-  ======================================================== */
+  function hideError() {
+    const errorScreen = getElement("errorScreen");
 
-  function getUsedQuestions() {
-    const data =
-      readJSON(
-        STORAGE.usedQuestions,
-        []
-      );
-
-    return Array.isArray(data)
-      ? data.filter(
-          (item) =>
-            typeof item ===
-            "string"
-        )
-      : [];
+    if (errorScreen) {
+      hideElement(errorScreen);
+    }
   }
 
-  function saveUsedQuestions(list) {
-    const max =
-      Math.max(
-        allQuestions.length,
-        100
-      );
+  /* =======================================================
+     SCREENS
+  ======================================================= */
 
-    /*
-      Keep only unique question names.
-    */
-
-    const cleaned = [
-      ...new Set(
-        list.filter(
-          (item) =>
-            typeof item ===
-            "string"
-        )
-      )
+  function hideAllScreens() {
+    const screens = [
+      "homeScreen",
+      "roundsScreen",
+      "quizScreen",
+      "resultScreen",
+      "reviewScreen",
+      "errorScreen",
+      "settingsScreen"
     ];
 
-    /*
-      If everything has been used,
-      start a new cycle.
-    */
+    screens.forEach(id => {
+      const el = $(id);
 
-    const finalList =
-      cleaned.length >=
-      allQuestions.length
-        ? []
-        : cleaned.slice(-max);
+      if (el) {
+        hideElement(el);
+      }
+    });
+  }
 
-    writeJSON(
-      STORAGE.usedQuestions,
-      finalList
+  function showScreen(id) {
+    hideAllScreens();
+
+    const screen = $(id);
+
+    if (screen) {
+      showElement(screen);
+    }
+  }
+
+  function showHome() {
+    stopTimer();
+
+    quizStarted = false;
+
+    showScreen("homeScreen");
+
+    updateContinueButton();
+
+    updateProgressUI();
+  }
+
+  /* =======================================================
+     ROUND PROGRESS
+  ======================================================= */
+
+  function getUnlockedRounds() {
+    let unlocked = getStorageJSON(
+      STORAGE.unlockedRounds,
+      1
+    );
+
+    unlocked = parseInt(unlocked, 10);
+
+    if (!Number.isFinite(unlocked)) {
+      unlocked = 1;
+    }
+
+    unlocked = Math.max(
+      1,
+      Math.min(TOTAL_ROUNDS, unlocked)
+    );
+
+    return unlocked;
+  }
+
+  function setUnlockedRounds(value) {
+    value = Math.max(
+      1,
+      Math.min(TOTAL_ROUNDS, parseInt(value, 10) || 1)
+    );
+
+    localStorage.setItem(
+      STORAGE.unlockedRounds,
+      String(value)
     );
   }
 
-  function rememberQuestions(questions) {
-    const used =
-      getUsedQuestions();
+  function getCompletedRounds() {
+    return getStorageJSON(
+      STORAGE.completedRounds,
+      []
+    );
+  }
 
-    questions.forEach(
-      (q) => {
-        if (
-          q &&
-          typeof q.question ===
-            "string"
-        ) {
-          if (
-            !used.includes(
-              q.question
-            )
-          ) {
-            used.push(
-              q.question
-            );
-          }
-        }
+  function setCompletedRounds(rounds) {
+    setStorageJSON(
+      STORAGE.completedRounds,
+      rounds
+    );
+  }
+
+  function markRoundCompleted(round) {
+    const completed = getCompletedRounds();
+
+    if (!completed.includes(round)) {
+      completed.push(round);
+      completed.sort((a, b) => a - b);
+      setCompletedRounds(completed);
+    }
+
+    if (round < TOTAL_ROUNDS) {
+      const unlocked = getUnlockedRounds();
+
+      if (round + 1 > unlocked) {
+        setUnlockedRounds(round + 1);
       }
+    }
+  }
+
+  /* =======================================================
+     USED QUESTIONS
+  ======================================================= */
+
+  function getUsedQuestions() {
+    const used = getStorageJSON(
+      STORAGE.usedQuestions,
+      []
     );
 
-    saveUsedQuestions(
+    return Array.isArray(used) ? used : [];
+  }
+
+  function setUsedQuestions(used) {
+    setStorageJSON(
+      STORAGE.usedQuestions,
       used
     );
   }
 
-  /* ========================================================
-     ROUND QUESTIONS
-     
-     Existing 100+ question behavior
-     remains supported.
+  function addUsedQuestions(questions) {
+    const used = getUsedQuestions();
 
-     If enough questions exist,
-     avoid previously completed
-     questions where possible.
-  ======================================================== */
+    questions.forEach(q => {
+      if (!used.includes(q.id)) {
+        used.push(q.id);
+      }
+    });
 
-  function getQuestionsForRound(round) {
+    setUsedQuestions(used);
+  }
+
+  function resetUsedQuestionsIfNecessary() {
+    const used = getUsedQuestions();
+
+    if (used.length >= allQuestions.length) {
+      setUsedQuestions([]);
+    }
+  }
+
+  /* =======================================================
+     SELECT ROUND QUESTIONS
+  ======================================================= */
+
+  function selectQuestionsForRound(round) {
     if (!allQuestions.length) {
       return [];
     }
 
-    const used =
-      new Set(
-        getUsedQuestions()
-      );
+    resetUsedQuestionsIfNecessary();
 
-    let available =
-      allQuestions.filter(
-        (q) =>
-          !used.has(q.question)
-      );
+    let used = getUsedQuestions();
 
-    /*
-      Start a new cycle if there
-      are not enough unused questions.
-    */
+    let available = allQuestions.filter(
+      q => !used.includes(q.id)
+    );
 
-    if (
-      available.length <
+    if (available.length < QUESTIONS_PER_ROUND) {
+      setUsedQuestions([]);
+
+      used = [];
+
+      available = [...allQuestions];
+    }
+
+    let selected = shuffle(available).slice(
+      0,
       QUESTIONS_PER_ROUND
-    ) {
-      available =
-        allQuestions.slice();
+    );
 
-      /*
-        Do not erase storage here.
-        The new cycle will naturally
-        begin with the current round.
-      */
+    /*
+      Safety:
+      If there are fewer than 10 unique questions,
+      reuse questions rather than breaking the quiz.
+    */
 
-      if (
-        allQuestions.length >=
-        QUESTIONS_PER_ROUND
-      ) {
-        writeJSON(
-          STORAGE.usedQuestions,
-          []
-        );
+    if (selected.length < QUESTIONS_PER_ROUND) {
+      const remainingNeeded =
+        QUESTIONS_PER_ROUND - selected.length;
+
+      const additional = shuffle(allQuestions).slice(
+        0,
+        remainingNeeded
+      );
+
+      selected = selected.concat(additional);
+    }
+
+    addUsedQuestions(selected);
+
+    return selected;
+  }
+
+  /* =======================================================
+     ROUND GRID
+  ======================================================= */
+
+  function renderRounds() {
+    const grid = getElement(
+      "roundGrid",
+      "roundsGrid"
+    );
+
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    const unlocked = getUnlockedRounds();
+
+    const completed = getCompletedRounds();
+
+    for (let round = 1; round <= TOTAL_ROUNDS; round++) {
+      const button = document.createElement("button");
+
+      button.type = "button";
+
+      button.className = "round-btn";
+
+      if (round > unlocked) {
+        button.classList.add("locked");
+        button.disabled = true;
       }
+
+      if (completed.includes(round)) {
+        button.classList.add("completed");
+      }
+
+      button.dataset.round = String(round);
+
+      if (round > unlocked) {
+        button.innerHTML = `
+          <span>🔒</span>
+          <span>Round ${round}</span>
+        `;
+      } else if (completed.includes(round)) {
+        button.innerHTML = `
+          <span>⭐</span>
+          <span>Round ${round}</span>
+        `;
+      } else {
+        button.innerHTML = `
+          <span>🎮</span>
+          <span>Round ${round}</span>
+        `;
+      }
+
+      button.addEventListener("click", function () {
+        startRound(round);
+      });
+
+      grid.appendChild(button);
     }
-
-    /*
-      Preserve dedicated round
-      ordering when no used-question
-      cycle is active and enough
-      questions exist.
-    */
-
-    const start =
-      (round - 1) *
-      QUESTIONS_PER_ROUND;
-
-    const end =
-      start +
-      QUESTIONS_PER_ROUND;
-
-    if (
-      allQuestions.length >=
-        end &&
-      getUsedQuestions().length === 0
-    ) {
-      return shuffleArray(
-        allQuestions.slice(
-          start,
-          end
-        )
-      );
-    }
-
-    /*
-      Otherwise select from the
-      unused pool.
-    */
-
-    return shuffleArray(
-      available
-    ).slice(
-      0,
-      Math.min(
-        QUESTIONS_PER_ROUND,
-        available.length
-      )
-    );
   }
 
-  /* ========================================================
-     DAILY CHALLENGE
-  ======================================================== */
-
-  function getDailyQuestions() {
-    const date =
-      todayKey();
-
-    let seed = 0;
-
-    for (
-      let i = 0;
-      i < date.length;
-      i++
-    ) {
-      seed =
-        (
-          (seed << 5) -
-          seed
-        ) +
-        date.charCodeAt(i);
-
-      seed |= 0;
-    }
-
-    const pool =
-      allQuestions.slice();
-
-    function seededRandom() {
-      seed =
-        (
-          seed * 1664525 +
-          1013904223
-        ) >>> 0;
-
-      return (
-        seed /
-        4294967296
-      );
-    }
-
-    for (
-      let i =
-        pool.length - 1;
-      i > 0;
-      i--
-    ) {
-      const j =
-        Math.floor(
-          seededRandom() *
-          (i + 1)
-        );
-
-      [
-        pool[i],
-        pool[j]
-      ] = [
-        pool[j],
-        pool[i]
-      ];
-    }
-
-    return pool.slice(
-      0,
-      Math.min(
-        QUESTIONS_PER_ROUND,
-        pool.length
-      )
-    );
+  function openRounds() {
+    renderRounds();
+    showScreen("roundsScreen");
   }
 
-  /* ========================================================
-     QUIZ STATE
-  ======================================================== */
+  /* =======================================================
+     START QUIZ
+  ======================================================= */
 
-  function resetQuizState() {
+  function startQuiz() {
+    if (!allQuestions.length) {
+      showError(
+        "Quiz questions are not loaded yet."
+      );
+
+      return;
+    }
+
+    const savedRound = parseInt(
+      localStorage.getItem(
+        STORAGE.currentRound
+      ),
+      10
+    );
+
+    const round =
+      Number.isFinite(savedRound) &&
+      savedRound >= 1 &&
+      savedRound <= TOTAL_ROUNDS
+        ? savedRound
+        : 1;
+
+    startRound(round);
+  }
+
+  function startRound(round) {
+    if (!allQuestions.length) {
+      showError(
+        "Quiz questions are not loaded yet."
+      );
+
+      return;
+    }
+
+    const unlocked = getUnlockedRounds();
+
+    if (round > unlocked) {
+      return;
+    }
+
+    currentRound = round;
+
     currentQuestionIndex = 0;
 
     score = 0;
-    correctCount = 0;
-    wrongCount = 0;
 
-    timeLeft =
-      TIME_PER_QUESTION;
+    correctAnswers = 0;
 
-    answered = false;
+    wrongAnswers = 0;
 
-    reviewAnswers = [];
+    streak = 0;
 
-    currentStreak = 0;
     bestStreak = 0;
-    streakBonus = 0;
-  }
 
-  /* ========================================================
-     START NEW QUIZ
-  ======================================================== */
+    quizFinished = false;
 
-  function startNewQuiz(roundNumber) {
-    if (!allQuestions.length) {
-      showMessage(
-        "Questions are still loading. Please try again."
-      );
-      return;
-    }
+    answerSelected = false;
 
-    const round =
-      Number(roundNumber);
+    reviewData = [];
+
+    roundQuestions =
+      selectQuestionsForRound(round);
 
     if (
-      !Number.isInteger(round) ||
-      round < 1 ||
-      round > TOTAL_ROUNDS
-    ) {
-      return;
-    }
-
-    if (
-      !getUnlockedRounds()
-        .includes(round)
-    ) {
-      showMessage(
-        "🔒 This round is still locked."
-      );
-
-      return;
-    }
-
-    stopTimer();
-
-    currentRound =
-      round;
-
-    quizMode =
-      "round";
-
-    dailyDate = "";
-
-    resetQuizState();
-
-    currentQuestions =
-      getQuestionsForRound(
-        currentRound
-      );
-
-    if (
-      currentQuestions.length <
-      QUESTIONS_PER_ROUND
-    ) {
-      /*
-        Safe fallback if the
-        questions file is smaller.
-      */
-
-      const shuffled =
-        shuffleArray(
-          allQuestions
-        );
-
-      currentQuestions = [];
-
-      for (
-        let i = 0;
-        i < QUESTIONS_PER_ROUND;
-        i++
-      ) {
-        currentQuestions.push(
-          shuffled[
-            i %
-            shuffled.length
-          ]
-        );
-      }
-    }
-
-    if (
-      !currentQuestions.length
+      !roundQuestions ||
+      roundQuestions.length === 0
     ) {
       showError(
-        "No questions are available for this round."
+        "No quiz questions are available."
       );
 
       return;
     }
 
-    quizStarted =
-      true;
-
-    saveQuizProgress();
-
-    showScreen(
-      "quizScreen"
-    );
-
-    renderQuestion();
-  }
-
-  /* ========================================================
-     DAILY START
-  ======================================================== */
-
-  function startDailyChallenge() {
-    if (
-      !allQuestions.length
-    ) {
-      showMessage(
-        "Questions are not loaded yet."
-      );
-
-      return;
-    }
-
-    const daily =
-      readJSON(
-        STORAGE.daily,
-        {}
-      );
-
-    if (
-      daily.date === todayKey() &&
-      daily.completed === true
-    ) {
-      showMessage(
-        "✅ Daily Challenge already completed today."
-      );
-
-      return;
-    }
-
-    stopTimer();
-
-    quizMode =
-      "daily";
-
-    dailyDate =
-      todayKey();
-
-    currentRound = 1;
-
-    resetQuizState();
-
-    currentQuestions =
-      getDailyQuestions();
-
-    if (
-      !currentQuestions.length
-    ) {
-      showError(
-        "No questions are available for the Daily Challenge."
-      );
-
-      return;
-    }
-
-    quizStarted =
-      true;
-
-    writeJSON(
-      STORAGE.daily,
-      {
-        date: dailyDate,
-        completed: false
-      }
-    );
-
-    saveQuizProgress();
-
-    showScreen(
-      "quizScreen"
-    );
-
-    renderQuestion();
-  }
-
-  /* ========================================================
-     SAVE PROGRESS
-  ======================================================== */
-
-  function saveQuizProgress() {
-    if (
-      !quizStarted ||
-      !currentQuestions.length
-    ) {
-      return;
-    }
-
-    writeJSON(
-      STORAGE.progress,
-      {
-        mode: quizMode,
-        dailyDate,
-        round: currentRound,
-
-        questionIndex:
-          currentQuestionIndex,
-
-        score,
-        correctCount,
-        wrongCount,
-
-        timeLeft,
-
-        currentStreak,
-        bestStreak,
-        streakBonus,
-
-        reviewAnswers,
-
-        questionIds:
-          currentQuestions.map(
-            (q) => q.question
-          )
-      }
-    );
-
-    writeJSON(
+    localStorage.setItem(
       STORAGE.currentRound,
-      currentRound
+      String(currentRound)
     );
+
+    saveProgress();
+
+    quizStarted = true;
+
+    showScreen("quizScreen");
+
+    renderCurrentQuestion();
+
+    startTimer();
+
+    playBackgroundMusic();
+
+    updateContinueButton();
   }
 
-  /* ========================================================
-     CONTINUE
-  ======================================================== */
+  /* =======================================================
+     CONTINUE QUIZ
+  ======================================================= */
 
   function continueQuiz() {
-    if (!allQuestions.length) {
-      showMessage(
-        "Questions are still loading. Please try again."
-      );
-      return;
-    }
-
-    const saved =
-      readJSON(
-        STORAGE.progress,
-        null
-      );
+    const saved = getStorageJSON(
+      STORAGE.progress,
+      null
+    );
 
     if (
       !saved ||
-      !Array.isArray(
-        saved.questionIds
-      ) ||
-      !saved.questionIds.length
+      !Array.isArray(saved.questions) ||
+      saved.questions.length === 0
     ) {
-      startNewQuiz(
-        getUnlockedRounds()[0] ||
-          1
-      );
-
+      startQuiz();
       return;
     }
 
-    const questionMap =
-      new Map(
-        allQuestions.map(
-          (q) => [
-            q.question,
-            q
-          ]
-        )
-      );
-
-    currentQuestions =
-      saved.questionIds
-        .map(
-          (id) =>
-            questionMap.get(id)
-        )
-        .filter(Boolean);
-
-    if (
-      !currentQuestions.length
-    ) {
-      startNewQuiz(
-        saved.round || 1
-      );
-
-      return;
-    }
-
-    quizMode =
-      saved.mode === "daily"
-        ? "daily"
-        : "round";
-
-    dailyDate =
-      saved.dailyDate || "";
-
-    currentRound =
-      Number(
-        saved.round
-      ) || 1;
+    currentRound = saved.round || 1;
 
     currentQuestionIndex =
-      Number.isFinite(
-        Number(
-          saved.questionIndex
-        )
-      )
-        ? Number(
-            saved.questionIndex
-          )
-        : 0;
+      saved.questionIndex || 0;
 
-    score =
-      Number(
-        saved.score
-      ) || 0;
+    score = saved.score || 0;
 
-    correctCount =
-      Number(
-        saved.correctCount
-      ) || 0;
+    correctAnswers =
+      saved.correctAnswers || 0;
 
-    wrongCount =
-      Number(
-        saved.wrongCount
-      ) || 0;
+    wrongAnswers =
+      saved.wrongAnswers || 0;
 
-    /*
-      IMPORTANT:
-      Do not use || here because
-      timeLeft can legitimately be 0.
-    */
+    streak = saved.streak || 0;
 
-    const savedTime =
-      Number(
-        saved.timeLeft
-      );
+    bestStreak = saved.bestStreak || 0;
 
-    timeLeft =
-      Number.isFinite(savedTime) &&
-      savedTime >= 0 &&
-      savedTime <=
-        TIME_PER_QUESTION
-        ? savedTime
-        : TIME_PER_QUESTION;
+    roundQuestions = saved.questions;
 
-    currentStreak =
-      Number(
-        saved.currentStreak
-      ) || 0;
-
-    bestStreak =
-      Number(
-        saved.bestStreak
-      ) || 0;
-
-    streakBonus =
-      Number(
-        saved.streakBonus
-      ) || 0;
-
-    reviewAnswers =
-      Array.isArray(
-        saved.reviewAnswers
-      )
-        ? saved.reviewAnswers
+    reviewData =
+      Array.isArray(saved.reviewData)
+        ? saved.reviewData
         : [];
 
-    if (
-      currentQuestionIndex < 0
-    ) {
-      currentQuestionIndex = 0;
-    }
+    quizFinished = false;
 
-    if (
-      currentQuestionIndex >=
-      currentQuestions.length
-    ) {
-      currentQuestionIndex =
-        currentQuestions.length - 1;
-    }
+    answerSelected = false;
 
-    quizStarted =
-      true;
+    quizStarted = true;
 
-    showScreen(
-      "quizScreen"
-    );
+    showScreen("quizScreen");
 
-    renderQuestion(
-      true
-    );
-  }
-
-  /* ========================================================
-     RENDER QUESTION
-  ======================================================== */
-
-  function renderQuestion(
-    isContinue = false
-  ) {
-    stopTimer();
-
-    const q =
-      currentQuestions[
-        currentQuestionIndex
-      ];
-
-    if (!q) {
-      finishQuiz();
-      return;
-    }
-
-    answered = false;
-
-    /*
-      New question starts at 20 seconds.
-      Continue keeps its saved timer.
-    */
-
-    if (!isContinue) {
-      timeLeft =
-        TIME_PER_QUESTION;
-    }
-
-    if ($("questionNumber")) {
-      $("questionNumber")
-        .textContent =
-        `${currentQuestionIndex + 1}/${currentQuestions.length}`;
-    }
-
-    if ($("roundDisplay")) {
-      $("roundDisplay")
-        .textContent =
-        quizMode === "daily"
-          ? "📅 Daily Challenge"
-          : `Round ${currentRound}`;
-    }
-
-    if ($("score")) {
-      $("score")
-        .textContent =
-        String(score);
-    }
-
-    if ($("timer")) {
-      $("timer")
-        .textContent =
-        String(
-          Math.max(
-            0,
-            timeLeft
-          )
-        );
-    }
-
-    if ($("category")) {
-      $("category")
-        .textContent =
-        q.category ||
-        "General Knowledge";
-    }
-
-    if ($("question")) {
-      $("question")
-        .textContent =
-        q.question;
-    }
-
-    const progress =
-      Math.round(
-        (
-          currentQuestionIndex /
-          Math.max(
-            currentQuestions.length,
-            1
-          )
-        ) * 100
-      );
-
-    if ($("progressBar")) {
-      $("progressBar")
-        .style.width =
-        `${progress}%`;
-    }
-
-    renderOptions(q);
-
-    updateNextButton(false);
-
-    /*
-      If Continue restores a timer
-      that has already reached 0,
-      finish that question safely.
-    */
-
-    if (timeLeft <= 0) {
-      handleTimeUp();
-      return;
-    }
+    renderCurrentQuestion();
 
     startTimer();
+
+    playBackgroundMusic();
   }
 
-  /* ========================================================
-     OPTIONS
-  ======================================================== */
+  /* =======================================================
+     SAVE PROGRESS
+  ======================================================= */
 
-  function renderOptions(q) {
-    const container =
-      $("options");
+  function saveProgress() {
+    if (!roundQuestions.length) return;
 
-    if (!container) {
-      return;
-    }
+    const data = {
+      round: currentRound,
+      questionIndex: currentQuestionIndex,
+      score: score,
+      correctAnswers: correctAnswers,
+      wrongAnswers: wrongAnswers,
+      streak: streak,
+      bestStreak: bestStreak,
+      questions: roundQuestions,
+      reviewData: reviewData,
+      savedAt: Date.now()
+    };
 
-    container.innerHTML = "";
-
-    shuffleArray(
-      q.options
-    ).forEach(
-      (option) => {
-        const button =
-          document.createElement(
-            "button"
-          );
-
-        button.type =
-          "button";
-
-        /*
-          Keep the existing class
-          expected by the app.
-        */
-
-        button.className =
-          "option-btn";
-
-        button.textContent =
-          option;
-
-        button.addEventListener(
-          "click",
-          () => {
-            selectAnswer(
-              option,
-              button
-            );
-          }
-        );
-
-        container.appendChild(
-          button
-        );
-      }
+    setStorageJSON(
+      STORAGE.progress,
+      data
     );
   }
 
-  /* ========================================================
-     ANSWER
-  ======================================================== */
+  function clearProgress() {
+    localStorage.removeItem(
+      STORAGE.progress
+    );
 
-  function selectAnswer(
-    selected,
-    button
-  ) {
-    if (answered) {
+    localStorage.removeItem(
+      STORAGE.currentRound
+    );
+  }
+
+  /* =======================================================
+     CONTINUE BUTTON
+  ======================================================= */
+
+  function updateContinueButton() {
+    const button = getElement(
+      "continueBtn",
+      "continueQuizBtn"
+    );
+
+    if (!button) return;
+
+    const progress = getStorageJSON(
+      STORAGE.progress,
+      null
+    );
+
+    const hasProgress =
+      progress &&
+      Array.isArray(progress.questions) &&
+      progress.questions.length > 0;
+
+    if (hasProgress) {
+      button.disabled = false;
+      button.style.display = "";
+    } else {
+      button.disabled = true;
+      button.style.display = "none";
+    }
+  }
+
+  /* =======================================================
+     RENDER QUESTION
+  ======================================================= */
+
+  function renderCurrentQuestion() {
+    if (
+      currentQuestionIndex < 0 ||
+      currentQuestionIndex >= roundQuestions.length
+    ) {
+      finishRound();
       return;
     }
 
-    answered = true;
+    const question =
+      roundQuestions[currentQuestionIndex];
 
-    stopTimer();
-
-    const q =
-      currentQuestions[
-        currentQuestionIndex
-      ];
-
-    if (!q) {
+    if (!question) {
+      finishRound();
       return;
     }
 
-    const isCorrect =
-      selected === q.answer;
+    answerSelected = false;
 
-    document
-      .querySelectorAll(
-        "#options button"
-      )
-      .forEach(
-        (btn) => {
-          btn.disabled = true;
+    const questionText = getElement(
+      "question",
+      "questionText",
+      "quizQuestion"
+    );
 
-          if (
-            btn.textContent ===
-            q.answer
-          ) {
-            btn.classList.add(
-              "correct"
-            );
-          }
+    if (questionText) {
+      questionText.textContent =
+        question.question;
+    }
+
+    const categoryElement = getElement(
+      "category",
+      "questionCategory",
+      "quizCategory"
+    );
+
+    if (categoryElement) {
+      categoryElement.textContent =
+        question.category;
+    }
+
+    const questionNumber = getElement(
+      "questionNumber",
+      "questionCount",
+      "currentQuestion"
+    );
+
+    if (questionNumber) {
+      questionNumber.textContent =
+        `Question ${currentQuestionIndex + 1} of ${roundQuestions.length}`;
+    }
+
+    const roundLabel = getElement(
+      "roundNumber",
+      "currentRound",
+      "quizRound"
+    );
+
+    if (roundLabel) {
+      roundLabel.textContent =
+        `Round ${currentRound}`;
+    }
+
+    const progressBar = getElement(
+      "quizProgress",
+      "questionProgress",
+      "progressBar"
+    );
+
+    if (progressBar) {
+      const percent =
+        ((currentQuestionIndex + 1) /
+          roundQuestions.length) *
+        100;
+
+      if (
+        progressBar.tagName === "PROGRESS"
+      ) {
+        progressBar.value = percent;
+      } else {
+        progressBar.style.width =
+          `${percent}%`;
+      }
+    }
+
+    renderOptions(question);
+
+    timeLeft = TIME_PER_QUESTION;
+
+    updateTimerUI();
+  }
+
+  /* =======================================================
+     RENDER OPTIONS
+  ======================================================= */
+
+  function renderOptions(question) {
+    const optionsContainer = getElement(
+      "options",
+      "answerOptions",
+      "optionsContainer"
+    );
+
+    if (!optionsContainer) {
+      console.warn(
+        "Quiz Master: options container not found."
+      );
+
+      return;
+    }
+
+    optionsContainer.innerHTML = "";
+
+    const options = shuffle(
+      question.options
+    );
+
+    options.forEach((option, index) => {
+      const button =
+        document.createElement("button");
+
+      button.type = "button";
+
+      button.className = "option-btn";
+
+      button.dataset.answer = option;
+
+      button.textContent = option;
+
+      button.addEventListener(
+        "click",
+        function () {
+          selectAnswer(
+            option,
+            button
+          );
         }
       );
 
-    if (isCorrect) {
-      correctCount += 1;
+      optionsContainer.appendChild(button);
+    });
+  }
 
-      score +=
+  /* =======================================================
+     SELECT ANSWER
+  ======================================================= */
+
+  function selectAnswer(
+    selectedAnswer,
+    clickedButton
+  ) {
+    if (answerSelected) return;
+
+    if (quizFinished) return;
+
+    answerSelected = true;
+
+    stopTimer();
+
+    const question =
+      roundQuestions[currentQuestionIndex];
+
+    if (!question) return;
+
+    const correct =
+      normalizeText(selectedAnswer) ===
+      normalizeText(question.answer);
+
+    const optionsContainer = getElement(
+      "options",
+      "answerOptions",
+      "optionsContainer"
+    );
+
+    if (optionsContainer) {
+      const buttons =
+        optionsContainer.querySelectorAll(
+          "button"
+        );
+
+      buttons.forEach(button => {
+        const buttonAnswer =
+          button.dataset.answer || "";
+
+        if (
+          normalizeText(buttonAnswer) ===
+          normalizeText(question.answer)
+        ) {
+          button.classList.add(
+            "correct"
+          );
+        }
+
+        if (
+          button === clickedButton &&
+          !correct
+        ) {
+          button.classList.add(
+            "wrong"
+          );
+        }
+
+        button.disabled = true;
+      });
+    }
+
+    let pointsEarned = 0;
+
+    if (correct) {
+      correctAnswers++;
+
+      streak++;
+
+      if (streak > bestStreak) {
+        bestStreak = streak;
+      }
+
+      pointsEarned =
         POINTS_PER_CORRECT;
 
-      const bonus =
-        registerCorrectAnswer();
+      /*
+        Streak bonus:
+        after 3 consecutive correct answers,
+        add a small bonus.
+      */
 
-      button.classList.add(
-        "correct"
-      );
+      if (streak >= 3) {
+        pointsEarned += 5;
+      }
 
-      showMessage(
-        bonus > 0
-          ? `🔥 ${currentStreak} streak! +${bonus} bonus points!`
-          : `✅ Correct! +${POINTS_PER_CORRECT} points`
-      );
+      score += pointsEarned;
 
       playCorrectSound();
-
     } else {
-      wrongCount += 1;
+      wrongAnswers++;
 
-      resetStreak();
-
-      button.classList.add(
-        "wrong"
-      );
-
-      showMessage(
-        `❌ Wrong. Correct answer: ${q.answer}`
-      );
+      streak = 0;
 
       playWrongSound();
     }
 
-    reviewAnswers.push({
-      question:
-        q.question,
-
-      selected,
-
-      correct:
-        q.answer,
-
-      isCorrect,
-
-      timedOut: false
+    reviewData.push({
+      question: question.question,
+      question_rw:
+        question.question_rw || "",
+      selectedAnswer:
+        selectedAnswer,
+      correctAnswer:
+        question.answer,
+      correct: correct,
+      points: pointsEarned,
+      category:
+        question.category
     });
 
-    if ($("score")) {
-      $("score")
-        .textContent =
-        String(score);
-    }
+    updateScoreUI();
 
-    updateNextButton(true);
+    saveProgress();
 
-    saveQuizProgress();
-  }
+    /*
+      Short delay so user can see
+      correct/wrong answer before
+      next question.
+    */
 
-  /* ========================================================
-     TIME UP
-  ======================================================== */
+    setTimeout(() => {
+      if (!quizStarted) return;
 
-  function handleTimeUp() {
-    if (answered) {
-      return;
-    }
+      currentQuestionIndex++;
 
-    answered = true;
-
-    stopTimer();
-
-    const q =
-      currentQuestions[
-        currentQuestionIndex
-      ];
-
-    if (!q) {
-      return;
-    }
-
-    wrongCount += 1;
-
-    resetStreak();
-
-    document
-      .querySelectorAll(
-        "#options button"
-      )
-      .forEach(
-        (btn) => {
-          btn.disabled = true;
-
-          if (
-            btn.textContent ===
-            q.answer
-          ) {
-            btn.classList.add(
-              "correct"
-            );
-          }
-        }
-      );
-
-    reviewAnswers.push({
-      question:
-        q.question,
-
-      selected: "",
-
-      correct:
-        q.answer,
-
-      isCorrect: false,
-
-      timedOut: true
-    });
-
-    showMessage(
-      `⏰ Time up! Correct answer: ${q.answer}`
-    );
-
-    updateNextButton(true);
-
-    saveQuizProgress();
-  }
-
-  /* ========================================================
-     NEXT BUTTON
-  ======================================================== */
-
-  function updateNextButton(enabled) {
-    const button =
-      $("nextBtn");
-
-    if (!button) {
-      return;
-    }
-
-    button.disabled =
-      !enabled;
-
-    if (enabled) {
-      button.textContent =
+      if (
         currentQuestionIndex >=
-        currentQuestions.length - 1
-          ? "Finish Quiz"
-          : "Next Question";
-    } else {
-      button.textContent =
-        "Choose an Answer";
-    }
+        roundQuestions.length
+      ) {
+        finishRound();
+      } else {
+        answerSelected = false;
+
+        saveProgress();
+
+        renderCurrentQuestion();
+
+        startTimer();
+      }
+    }, 700);
   }
 
-  /* ========================================================
-     NEXT QUESTION
-  ======================================================== */
-
-  function nextQuestion() {
-    if (!answered) {
-      return;
-    }
-
-    if (
-      currentQuestionIndex >=
-      currentQuestions.length - 1
-    ) {
-      finishQuiz();
-      return;
-    }
-
-    currentQuestionIndex += 1;
-
-    saveQuizProgress();
-
-    renderQuestion();
-  }
-
-  /* ========================================================
+  /* =======================================================
      TIMER
-  ======================================================== */
+  ======================================================= */
 
   function startTimer() {
     stopTimer();
 
-    if ($("timer")) {
-      $("timer")
-        .textContent =
-        String(
-          Math.max(
-            0,
-            timeLeft
-          )
-        );
-    }
+    timeLeft = TIME_PER_QUESTION;
 
-    timer =
-      setInterval(
-        () => {
-          if (!quizStarted) {
-            stopTimer();
-            return;
-          }
+    updateTimerUI();
 
-          timeLeft -= 1;
+    timer = setInterval(() => {
+      if (answerSelected) {
+        return;
+      }
 
-          if ($("timer")) {
-            $("timer")
-              .textContent =
-              String(
-                Math.max(
-                  0,
-                  timeLeft
-                )
-              );
-          }
+      timeLeft--;
 
-          /*
-            Save occasionally so Continue
-            has current timer progress.
-          */
+      updateTimerUI();
 
-          if (
-            timeLeft > 0 &&
-            timeLeft % 5 === 0
-          ) {
-            saveQuizProgress();
-          }
+      if (timeLeft <= 0) {
+        stopTimer();
 
-          if (
-            timeLeft <= 0
-          ) {
-            handleTimeUp();
-          }
-        },
-        1000
-      );
+        handleTimeUp();
+      }
+    }, 1000);
   }
 
   function stopTimer() {
@@ -1799,1106 +1220,1273 @@
     }
   }
 
-  /* ========================================================
-     UNLOCK NEXT ROUND
-  ======================================================== */
+  function handleTimeUp() {
+    if (answerSelected) return;
 
-  function unlockNextRoundIfNeeded(
-    round,
-    percent
-  ) {
-    const unlocked =
-      getUnlockedRounds();
+    answerSelected = true;
 
-    if (
-      percent >= UNLOCK_PERCENT &&
-      round < TOTAL_ROUNDS &&
-      !unlocked.includes(
-        round + 1
-      )
-    ) {
-      unlocked.push(
-        round + 1
-      );
+    const question =
+      roundQuestions[currentQuestionIndex];
 
-      setUnlockedRounds(
-        unlocked
-      );
-
-      return true;
+    if (!question) {
+      finishRound();
+      return;
     }
 
-    return false;
+    wrongAnswers++;
+
+    streak = 0;
+
+    const optionsContainer = getElement(
+      "options",
+      "answerOptions",
+      "optionsContainer"
+    );
+
+    if (optionsContainer) {
+      const buttons =
+        optionsContainer.querySelectorAll(
+          "button"
+        );
+
+      buttons.forEach(button => {
+        const buttonAnswer =
+          button.dataset.answer || "";
+
+        if (
+          normalizeText(buttonAnswer) ===
+          normalizeText(question.answer)
+        ) {
+          button.classList.add(
+            "correct"
+          );
+        }
+
+        button.disabled = true;
+      });
+    }
+
+    reviewData.push({
+      question: question.question,
+      question_rw:
+        question.question_rw || "",
+      selectedAnswer: null,
+      correctAnswer:
+        question.answer,
+      correct: false,
+      points: 0,
+      category:
+        question.category
+    });
+
+    playWrongSound();
+
+    saveProgress();
+
+    setTimeout(() => {
+      currentQuestionIndex++;
+
+      if (
+        currentQuestionIndex >=
+        roundQuestions.length
+      ) {
+        finishRound();
+      } else {
+        answerSelected = false;
+
+        renderCurrentQuestion();
+
+        startTimer();
+      }
+    }, 700);
   }
 
-  /* ========================================================
-     FINISH QUIZ
-  ======================================================== */
+  function updateTimerUI() {
+    const timerElement = getElement(
+      "timer",
+      "timeLeft",
+      "questionTimer"
+    );
 
-  function finishQuiz() {
+    if (timerElement) {
+      timerElement.textContent =
+        String(timeLeft);
+    }
+
+    const timerBar = getElement(
+      "timerBar",
+      "timeProgress"
+    );
+
+    if (timerBar) {
+      const percent =
+        (timeLeft /
+          TIME_PER_QUESTION) *
+        100;
+
+      if (
+        timerBar.tagName === "PROGRESS"
+      ) {
+        timerBar.value = percent;
+      } else {
+        timerBar.style.width =
+          `${percent}%`;
+      }
+    }
+  }
+
+  /* =======================================================
+     SCORE UI
+  ======================================================= */
+
+  function updateScoreUI() {
+    const scoreElement = getElement(
+      "score",
+      "quizScore",
+      "currentScore"
+    );
+
+    if (scoreElement) {
+      scoreElement.textContent =
+        String(score);
+    }
+
+    const streakElement = getElement(
+      "streak",
+      "quizStreak",
+      "currentStreak"
+    );
+
+    if (streakElement) {
+      streakElement.textContent =
+        String(streak);
+    }
+  }
+
+  /* =======================================================
+     FINISH ROUND
+  ======================================================= */
+
+  function finishRound() {
     stopTimer();
+
+    quizFinished = true;
 
     quizStarted = false;
 
     const total =
-      currentQuestions.length ||
+      roundQuestions.length ||
       QUESTIONS_PER_ROUND;
 
-    const percent =
-      Math.round(
-        (
-          correctCount /
-          total
-        ) * 100
-      );
-
-    const stars =
-      starsForPercent(
-        percent
-      );
-
-    /*
-      Remember questions after
-      completing the quiz.
-    */
-
-    rememberQuestions(
-      currentQuestions
+    const percentage = Math.round(
+      (correctAnswers / total) * 100
     );
 
-    if (
-      quizMode === "round"
-    ) {
+    const passed =
+      percentage >= UNLOCK_PERCENT;
+
+    if (passed) {
       markRoundCompleted(
         currentRound
       );
 
-      saveRoundStars(
+      saveStars(
         currentRound,
-        stars
+        calculateStars(percentage)
       );
 
-      unlockNextRoundIfNeeded(
-        currentRound,
-        percent
-      );
+      checkAchievements();
 
-    } else {
-      const daily =
-        readJSON(
-          STORAGE.daily,
-          {}
-        );
-
-      daily.date =
-        dailyDate ||
-        todayKey();
-
-      daily.completed =
-        true;
-
-      daily.score =
-        score;
-
-      daily.percent =
-        percent;
-
-      writeJSON(
-        STORAGE.daily,
-        daily
-      );
-
-      unlockAchievement(
-        "daily_challenge",
-        "📅 Daily Challenger",
-        "Completed a Daily Challenge."
-      );
+      updateDailyChallenge();
     }
 
-    updatePersonalBest();
+    clearProgress();
 
-    const totalScore =
-      Number(
-        localStorage.getItem(
-          STORAGE.totalScore
-        ) || "0"
-      );
-
-    localStorage.setItem(
-      STORAGE.totalScore,
-      String(
-        totalScore + score
-      )
+    renderResult(
+      percentage,
+      passed
     );
 
-    const newlyUnlocked =
-      checkAchievements(
-        percent
-      );
+    showScreen("resultScreen");
 
-    /*
-      Remove Continue progress
-      ONLY after the quiz is fully
-      completed.
-    */
+    stopBackgroundMusic();
+  }
 
-    localStorage.removeItem(
-      STORAGE.progress
+  /* =======================================================
+     STARS
+  ======================================================= */
+
+  function calculateStars(percentage) {
+    if (percentage >= 90) {
+      return 3;
+    }
+
+    if (percentage >= 75) {
+      return 2;
+    }
+
+    if (percentage >= UNLOCK_PERCENT) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  function getStars() {
+    return getStorageJSON(
+      "quizmasterStars",
+      {}
+    );
+  }
+
+  function saveStars(round, stars) {
+    const data = getStars();
+
+    const previous =
+      parseInt(data[round] || 0, 10);
+
+    if (stars > previous) {
+      data[round] = stars;
+    }
+
+    setStorageJSON(
+      "quizmasterStars",
+      data
+    );
+  }
+
+  function getTotalStars() {
+    const stars = getStars();
+
+    return Object.values(stars).reduce(
+      (sum, value) =>
+        sum + (parseInt(value, 10) || 0),
+      0
+    );
+  }
+
+  /* =======================================================
+     RESULT SCREEN
+  ======================================================= */
+
+  function renderResult(
+    percentage,
+    passed
+  ) {
+    const scoreElement = getElement(
+      "resultScore",
+      "finalScore"
     );
 
-    if ($("finalScore")) {
-      $("finalScore")
-        .textContent =
+    if (scoreElement) {
+      scoreElement.textContent =
         String(score);
     }
 
-    if ($("resultPercent")) {
-      $("resultPercent")
-        .textContent =
-        `${percent}%`;
+    const percentageElement =
+      getElement(
+        "resultPercentage",
+        "finalPercentage"
+      );
+
+    if (percentageElement) {
+      percentageElement.textContent =
+        `${percentage}%`;
     }
 
-    if ($("finishedRound")) {
-      $("finishedRound")
-        .textContent =
-        quizMode === "daily"
-          ? "Daily Challenge"
-          : `Round ${currentRound}`;
+    const correctElement =
+      getElement(
+        "correctAnswers",
+        "resultCorrect"
+      );
+
+    if (correctElement) {
+      correctElement.textContent =
+        String(correctAnswers);
     }
 
-    if ($("correctCount")) {
-      $("correctCount")
-        .textContent =
-        String(correctCount);
+    const wrongElement =
+      getElement(
+        "wrongAnswers",
+        "resultWrong"
+      );
+
+    if (wrongElement) {
+      wrongElement.textContent =
+        String(wrongAnswers);
     }
 
-    if ($("wrongCount")) {
-      $("wrongCount")
-        .textContent =
-        String(wrongCount);
+    const streakElement =
+      getElement(
+        "bestStreak",
+        "resultStreak"
+      );
+
+    if (streakElement) {
+      streakElement.textContent =
+        String(bestStreak);
     }
 
-    if ($("resultMessage")) {
-      if (percent === 100) {
-        $("resultMessage")
-          .textContent =
-          "👑 Perfect! You mastered this round!";
-      } else if (percent >= 80) {
-        $("resultMessage")
-          .textContent =
-          "⭐ Excellent! Keep your streak going!";
-      } else if (percent >= 60) {
-        $("resultMessage")
-          .textContent =
-          "🎉 Great job! The next round is unlocked.";
+    const starsElement =
+      getElement(
+        "resultStars",
+        "stars"
+      );
+
+    if (starsElement) {
+      const stars =
+        calculateStars(percentage);
+
+      starsElement.textContent =
+        "⭐".repeat(stars) +
+        "☆".repeat(3 - stars);
+    }
+
+    const titleElement =
+      getElement(
+        "resultTitle",
+        "resultMessage"
+      );
+
+    if (titleElement) {
+      if (percentage >= 90) {
+        titleElement.textContent =
+          "Excellent! 🎉";
+      } else if (passed) {
+        titleElement.textContent =
+          "Round Completed! 🎉";
       } else {
-        $("resultMessage")
-          .textContent =
-          "💪 Keep practicing and try the round again!";
+        titleElement.textContent =
+          "Keep Practicing! 💪";
       }
     }
 
-    const nextRoundButton =
-      $("nextRoundBtn");
+    const nextButton =
+      getElement(
+        "nextRoundBtn",
+        "nextBtn"
+      );
 
-    if (nextRoundButton) {
-      const unlocked =
-        getUnlockedRounds();
+    if (nextButton) {
+      if (
+        passed &&
+        currentRound < TOTAL_ROUNDS
+      ) {
+        nextButton.style.display = "";
+        nextButton.disabled = false;
+      } else {
+        nextButton.style.display = "none";
+      }
+    }
+  }
 
-      nextRoundButton.style.display =
-        quizMode === "round" &&
-        currentRound < TOTAL_ROUNDS &&
-        unlocked.includes(
-          currentRound + 1
+  /* =======================================================
+     REVIEW
+  ======================================================= */
+
+  function showReview() {
+    const container = getElement(
+      "reviewContent",
+      "reviewList",
+      "reviewAnswers"
+    );
+
+    if (!container) {
+      showScreen("reviewScreen");
+      return;
+    }
+
+    container.innerHTML = "";
+
+    reviewData.forEach(
+      (item, index) => {
+        const wrapper =
+          document.createElement("div");
+
+        wrapper.className =
+          "review-item";
+
+        const status =
+          item.correct
+            ? "✅"
+            : "❌";
+
+        const question =
+          document.createElement("div");
+
+        question.className =
+          "review-question";
+
+        question.textContent =
+          `${status} ${index + 1}. ${item.question}`;
+
+        wrapper.appendChild(question);
+
+        const answer =
+          document.createElement("div");
+
+        answer.className =
+          "review-answer";
+
+        if (item.correct) {
+          answer.textContent =
+            `Your answer: ${item.selectedAnswer}`;
+        } else {
+          answer.textContent =
+            `Correct answer: ${item.correctAnswer}`;
+        }
+
+        wrapper.appendChild(answer);
+
+        if (
+          item.selectedAnswer &&
+          !item.correct
+        ) {
+          const yourAnswer =
+            document.createElement("div");
+
+          yourAnswer.textContent =
+            `Your answer: ${item.selectedAnswer}`;
+
+          wrapper.appendChild(
+            yourAnswer
+          );
+        }
+
+        container.appendChild(
+          wrapper
+        );
+      }
+    );
+
+    showScreen("reviewScreen");
+  }
+
+  /* =======================================================
+     RETRY ROUND
+  ======================================================= */
+
+  function retryRound() {
+    startRound(currentRound);
+  }
+
+  /* =======================================================
+     NEXT ROUND
+  ======================================================= */
+
+  function nextRound() {
+    const next =
+      currentRound + 1;
+
+    if (next > TOTAL_ROUNDS) {
+      showHome();
+      return;
+    }
+
+    if (next > getUnlockedRounds()) {
+      openRounds();
+      return;
+    }
+
+    startRound(next);
+  }
+
+  /* =======================================================
+     ACHIEVEMENTS
+  ======================================================= */
+
+  function getAchievements() {
+    return getStorageJSON(
+      STORAGE.achievements,
+      []
+    );
+  }
+
+  function unlockAchievement(name) {
+    const achievements =
+      getAchievements();
+
+    if (!achievements.includes(name)) {
+      achievements.push(name);
+
+      setStorageJSON(
+        STORAGE.achievements,
+        achievements
+      );
+
+      console.log(
+        `Achievement unlocked: ${name}`
+      );
+    }
+  }
+
+  function checkAchievements() {
+    const completed =
+      getCompletedRounds();
+
+    if (completed.length >= 1) {
+      unlockAchievement(
+        "First Round"
+      );
+    }
+
+    if (completed.length >= 5) {
+      unlockAchievement(
+        "Five Rounds"
+      );
+    }
+
+    if (completed.length >= 10) {
+      unlockAchievement(
+        "Quiz Master"
+      );
+    }
+
+    if (bestStreak >= 3) {
+      unlockAchievement(
+        "Streak Master"
+      );
+    }
+
+    if (getTotalStars() >= 10) {
+      unlockAchievement(
+        "Star Collector"
+      );
+    }
+  }
+
+  /* =======================================================
+     DAILY CHALLENGE
+  ======================================================= */
+
+  function getTodayKey() {
+    const date = new Date();
+
+    return [
+      date.getFullYear(),
+      String(
+        date.getMonth() + 1
+      ).padStart(2, "0"),
+      String(
+        date.getDate()
+      ).padStart(2, "0")
+    ].join("-");
+  }
+
+  function updateDailyChallenge() {
+    const today =
+      getTodayKey();
+
+    const daily =
+      getStorageJSON(
+        STORAGE.daily,
+        {}
+      );
+
+    daily[today] = true;
+
+    setStorageJSON(
+      STORAGE.daily,
+      daily
+    );
+  }
+
+  function hasCompletedDailyChallenge() {
+    const daily =
+      getStorageJSON(
+        STORAGE.daily,
+        {}
+      );
+
+    return Boolean(
+      daily[getTodayKey()]
+    );
+  }
+
+  function startDailyChallenge() {
+    if (!allQuestions.length) {
+      return;
+    }
+
+    const selected =
+      shuffle(allQuestions).slice(
+        0,
+        Math.min(
+          QUESTIONS_PER_ROUND,
+          allQuestions.length
         )
-          ? ""
-          : "none";
+      );
+
+    currentRound = 1;
+
+    currentQuestionIndex = 0;
+
+    score = 0;
+
+    correctAnswers = 0;
+
+    wrongAnswers = 0;
+
+    streak = 0;
+
+    bestStreak = 0;
+
+    reviewData = [];
+
+    roundQuestions = selected;
+
+    quizFinished = false;
+
+    answerSelected = false;
+
+    quizStarted = true;
+
+    showScreen("quizScreen");
+
+    renderCurrentQuestion();
+
+    startTimer();
+
+    playBackgroundMusic();
+  }
+
+  /* =======================================================
+     MUSIC
+  ======================================================= */
+
+  function loadSettings() {
+    const music =
+      localStorage.getItem(
+        STORAGE.music
+      );
+
+    const sound =
+      localStorage.getItem(
+        STORAGE.sound
+      );
+
+    musicEnabled =
+      music === null
+        ? true
+        : music === "true";
+
+    soundEnabled =
+      sound === null
+        ? true
+        : sound === "true";
+
+    updateSettingsUI();
+  }
+
+  function saveSettings() {
+    localStorage.setItem(
+      STORAGE.music,
+      String(musicEnabled)
+    );
+
+    localStorage.setItem(
+      STORAGE.sound,
+      String(soundEnabled)
+    );
+  }
+
+  function updateSettingsUI() {
+    const musicToggle =
+      getElement(
+        "musicToggle",
+        "musicSwitch"
+      );
+
+    if (musicToggle) {
+      if (
+        musicToggle.type ===
+        "checkbox"
+      ) {
+        musicToggle.checked =
+          musicEnabled;
+      }
+    }
+
+    const soundToggle =
+      getElement(
+        "soundToggle",
+        "soundSwitch"
+      );
+
+    if (soundToggle) {
+      if (
+        soundToggle.type ===
+        "checkbox"
+      ) {
+        soundToggle.checked =
+          soundEnabled;
+      }
+    }
+  }
+
+  function initBackgroundMusic() {
+    if (backgroundMusic) {
+      return;
+    }
+
+    backgroundMusic =
+      document.createElement("audio");
+
+    backgroundMusic.src =
+      "./music.mp3";
+
+    backgroundMusic.loop = true;
+
+    backgroundMusic.preload = "auto";
+
+    backgroundMusic.volume = 0.25;
+
+    /*
+      Do not add the audio element visibly.
+    */
+
+    backgroundMusic.style.display =
+      "none";
+
+    document.body.appendChild(
+      backgroundMusic
+    );
+  }
+
+  function playBackgroundMusic() {
+    if (!musicEnabled) {
+      return;
+    }
+
+    initBackgroundMusic();
+
+    if (!backgroundMusic) {
+      return;
+    }
+
+    const promise =
+      backgroundMusic.play();
+
+    if (
+      promise &&
+      typeof promise.catch ===
+        "function"
+    ) {
+      promise.catch(() => {
+        /*
+          Browser may block autoplay.
+          Music will start after a user
+          interaction.
+        */
+      });
+    }
+  }
+
+  function stopBackgroundMusic() {
+    if (!backgroundMusic) {
+      return;
+    }
+
+    backgroundMusic.pause();
+
+    try {
+      backgroundMusic.currentTime = 0;
+    } catch (e) {}
+  }
+
+  /* =======================================================
+     SOUND EFFECTS
+  ======================================================= */
+
+  function playTone(
+    frequency,
+    duration
+  ) {
+    if (!soundEnabled) return;
+
+    try {
+      const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+      if (!AudioContext) return;
+
+      const context =
+        new AudioContext();
+
+      const oscillator =
+        context.createOscillator();
+
+      const gain =
+        context.createGain();
+
+      oscillator.frequency.value =
+        frequency;
+
+      oscillator.type = "sine";
+
+      gain.gain.value = 0.04;
+
+      oscillator.connect(gain);
+
+      gain.connect(
+        context.destination
+      );
+
+      oscillator.start();
+
+      oscillator.stop(
+        context.currentTime +
+          duration
+      );
+
+      oscillator.addEventListener(
+        "ended",
+        () => {
+          try {
+            context.close();
+          } catch (e) {}
+        }
+      );
+    } catch (error) {
+      console.warn(
+        "Sound effect unavailable."
+      );
+    }
+  }
+
+  function playCorrectSound() {
+    playTone(700, 0.12);
+  }
+
+  function playWrongSound() {
+    playTone(250, 0.15);
+  }
+
+  /* =======================================================
+     SETTINGS SCREEN
+  ======================================================= */
+
+  function openSettings() {
+    loadSettings();
+
+    showScreen(
+      "settingsScreen"
+    );
+  }
+
+  /* =======================================================
+     SHARE
+  ======================================================= */
+
+  async function shareQuizMaster() {
+    const shareUrl =
+      "https://quizmaster-liard-five.vercel.app/";
+
+    const shareData = {
+      title:
+        "Quiz Master 🇷🇼",
+      text:
+        "Test your knowledge with Quiz Master!",
+      url: shareUrl
+    };
+
+    try {
+      if (
+        navigator.share
+      ) {
+        await navigator.share(
+          shareData
+        );
+
+        return;
+      }
+    } catch (error) {
+      if (
+        error &&
+        error.name ===
+          "AbortError"
+      ) {
+        return;
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(
+        shareUrl
+      );
+
+      showTemporaryMessage(
+        "✅ Link Copied!"
+      );
+    } catch (error) {
+      showTemporaryMessage(
+        shareUrl
+      );
+    }
+  }
+
+  function showTemporaryMessage(
+    message
+  ) {
+    const existing =
+      document.getElementById(
+        "quizMasterTemporaryMessage"
+      );
+
+    if (existing) {
+      existing.remove();
+    }
+
+    const messageElement =
+      document.createElement(
+        "div"
+      );
+
+    messageElement.id =
+      "quizMasterTemporaryMessage";
+
+    messageElement.textContent =
+      message;
+
+    messageElement.style.position =
+      "fixed";
+
+    messageElement.style.left =
+      "50%";
+
+    messageElement.style.bottom =
+      "25px";
+
+    messageElement.style.transform =
+      "translateX(-50%)";
+
+    messageElement.style.zIndex =
+      "99999";
+
+    messageElement.style.padding =
+      "10px 16px";
+
+    messageElement.style.borderRadius =
+      "10px";
+
+    messageElement.style.background =
+      "rgba(0,0,0,0.85)";
+
+    messageElement.style.color =
+      "#fff";
+
+    document.body.appendChild(
+      messageElement
+    );
+
+    setTimeout(() => {
+      messageElement.remove();
+    }, 1800);
+  }
+
+  /* =======================================================
+     BUTTON EVENTS
+  ======================================================= */
+
+  function bindClick(
+    ids,
+    handler
+  ) {
+    ids.forEach(id => {
+      const el = $(id);
+
+      if (!el) return;
+
+      el.addEventListener(
+        "click",
+        handler
+      );
+    });
+  }
+
+  function initializeEvents() {
+    /*
+      HOME
+    */
+
+    bindClick(
+      [
+        "startBtn",
+        "startQuizBtn"
+      ],
+      startQuiz
+    );
+
+    bindClick(
+      [
+        "continueBtn",
+        "continueQuizBtn"
+      ],
+      continueQuiz
+    );
+
+    bindClick(
+      [
+        "roundsBtn",
+        "quizRoundsBtn",
+        "viewRoundsBtn"
+      ],
+      openRounds
+    );
+
+    bindClick(
+      [
+        "settingsBtn"
+      ],
+      openSettings
+    );
+
+    bindClick(
+      [
+        "shareBtn",
+        "shareQuizBtn"
+      ],
+      shareQuizMaster
+    );
+
+    /*
+      ROUNDS
+    */
+
+    bindClick(
+      [
+        "roundsBackBtn",
+        "backFromRoundsBtn"
+      ],
+      showHome
+    );
+
+    /*
+      RESULT
+    */
+
+    bindClick(
+      [
+        "retryBtn",
+        "retryRoundBtn"
+      ],
+      retryRound
+    );
+
+    bindClick(
+      [
+        "nextRoundBtn",
+        "nextBtn"
+      ],
+      nextRound
+    );
+
+    bindClick(
+      [
+        "reviewBtn",
+        "reviewAnswersBtn"
+      ],
+      showReview
+    );
+
+    bindClick(
+      [
+        "resultHomeBtn",
+        "homeBtn",
+        "backHomeBtn"
+      ],
+      showHome
+    );
+
+    /*
+      REVIEW
+    */
+
+    bindClick(
+      [
+        "reviewBackBtn",
+        "backFromReviewBtn"
+      ],
+      () =>
+        showScreen("resultScreen")
+    );
+
+    /*
+      ERROR
+    */
+
+    bindClick(
+      [
+        "retryLoadBtn",
+        "retryQuestionsBtn",
+        "errorRetryBtn"
+      ],
+      loadQuestions
+    );
+
+    bindClick(
+      [
+        "errorHomeBtn"
+      ],
+      showHome
+    );
+
+    /*
+      SETTINGS
+    */
+
+    bindClick(
+      [
+        "settingsBackBtn",
+        "backFromSettingsBtn"
+      ],
+      showHome
+    );
+
+    /*
+      SHARE
+    */
+
+    bindClick(
+      [
+        "shareBtn",
+        "shareQuizBtn"
+      ],
+      shareQuizMaster
+    );
+
+    /*
+      MUSIC
+    */
+
+    const musicToggle =
+      getElement(
+        "musicToggle",
+        "musicSwitch"
+      );
+
+    if (musicToggle) {
+      musicToggle.addEventListener(
+        "change",
+        function () {
+          musicEnabled =
+            Boolean(
+              musicToggle.checked
+            );
+
+          saveSettings();
+
+          if (
+            musicEnabled
+          ) {
+            playBackgroundMusic();
+          } else {
+            stopBackgroundMusic();
+          }
+        }
+      );
     }
 
     /*
-      Do not add new visible
-      reward panels/cards.
+      SOUND
     */
+
+    const soundToggle =
+      getElement(
+        "soundToggle",
+        "soundSwitch"
+      );
+
+    if (soundToggle) {
+      soundToggle.addEventListener(
+        "change",
+        function () {
+          soundEnabled =
+            Boolean(
+              soundToggle.checked
+            );
+
+          saveSettings();
+
+          if (soundEnabled) {
+            playCorrectSound();
+          }
+        }
+      );
+    }
+
+    /*
+      DAILY CHALLENGE
+    */
+
+    bindClick(
+      [
+        "dailyChallengeBtn",
+        "dailyBtn"
+      ],
+      startDailyChallenge
+    );
+  }
+
+  /* =======================================================
+     INITIALIZATION
+  ======================================================= */
+
+  function initializeAfterQuestionsLoaded() {
+    loadSettings();
 
     renderRounds();
 
     updateContinueButton();
 
-    showScreen(
-      "resultScreen"
-    );
-
-    loadAds();
-
-    window.quizMasterLastRewards = {
-      percent,
-      stars,
-      streak: bestStreak,
-      streakBonus,
-      newlyUnlocked
-    };
+    updateProgressUI();
   }
 
-  /* ========================================================
-     NEXT ROUND
-  ======================================================== */
-
-  function startNextRound() {
-    const next =
-      currentRound + 1;
-
-    if (
-      next > TOTAL_ROUNDS
-    ) {
-      return;
-    }
-
-    if (
-      !getUnlockedRounds()
-        .includes(next)
-    ) {
-      showMessage(
-        "🔒 Finish the current round with at least 60% to unlock it."
-      );
-
-      return;
-    }
-
-    startNewQuiz(next);
-  }
-
-  /* ========================================================
-     RETRY
-  ======================================================== */
-
-  function retryCurrentRound() {
-    if (
-      quizMode === "daily"
-    ) {
-      const daily =
-        readJSON(
-          STORAGE.daily,
-          {}
-        );
-
-      daily.completed =
-        false;
-
-      writeJSON(
-        STORAGE.daily,
-        daily
-      );
-
-      startDailyChallenge();
-
-      return;
-    }
-
-    startNewQuiz(
-      currentRound
-    );
-  }
-
-  /* ========================================================
-     REVIEW
-  ======================================================== */
-
-  function showReview() {
-    const list =
-      $("reviewList");
-
-    const summary =
-      $("reviewSummary");
-
-    if (!list) {
-      return;
-    }
-
-    if (summary) {
-      summary.textContent =
-        `${correctCount} correct • ${wrongCount} wrong`;
-    }
-
-    list.innerHTML = "";
-
-    reviewAnswers.forEach(
-      (item, index) => {
-        const card =
-          document.createElement(
-            "div"
-          );
-
-        card.className =
-          "review-item";
-
-        const question =
-          escapeHTML(
-            item.question
-          );
-
-        const selected =
-          escapeHTML(
-            item.selected ||
-            "No answer"
-          );
-
-        const correct =
-          escapeHTML(
-            item.correct
-          );
-
-        card.innerHTML = `
-          <strong>
-            ${index + 1}.
-            ${question}
-          </strong>
-
-          <div style="margin-top:6px;">
-            Your answer:
-            <strong>
-              ${selected}
-            </strong>
-          </div>
-
-          <div>
-            Correct answer:
-            <strong>
-              ${correct}
-            </strong>
-          </div>
-
-          <div style="margin-top:4px;">
-            ${
-              item.isCorrect
-                ? "✅ Correct"
-                : "❌ Incorrect"
-            }
-
-            ${
-              item.timedOut
-                ? " • ⏰ Time up"
-                : ""
-            }
-          </div>
-        `;
-
-        list.appendChild(
-          card
-        );
-      }
-    );
-
-    showScreen(
-      "reviewScreen"
-    );
-  }
-
-  /* ========================================================
-     HTML ESCAPE
-  ======================================================== */
-
-  function escapeHTML(value) {
-    return String(value)
-      .replaceAll(
-        "&",
-        "&amp;"
-      )
-      .replaceAll(
-        "<",
-        "&lt;"
-      )
-      .replaceAll(
-        ">",
-        "&gt;"
-      )
-      .replaceAll(
-        '"',
-        "&quot;"
-      )
-      .replaceAll(
-        "'",
-        "&#039;"
-      );
-  }
-
-  /* ========================================================
-     MESSAGE
-  ======================================================== */
-
-  function showMessage(text) {
-    const box =
-      $("message");
-
-    if (!box) {
-      return;
-    }
-
-    box.textContent =
-      text;
-
-    box.style.display =
-      "block";
-
-    clearTimeout(
-      showMessage.timeout
-    );
-
-    showMessage.timeout =
-      setTimeout(
-        () => {
-          box.style.display =
-            "none";
-        },
-        2500
-      );
-  }
-
-  /* ========================================================
-     ERROR
-  ======================================================== */
-
-  function showError(text) {
-    const box =
-      $("errorMessage");
-
-    if (box) {
-      box.textContent =
-        text;
-    }
-
-    showScreen(
-      "errorScreen"
-    );
-  }
-
-  /* ========================================================
-     CONTINUE BUTTON
-  ======================================================== */
-
-  function updateContinueButton() {
-    const button =
-      $("continueBtn");
-
-    if (!button) {
-      return;
-    }
-
-    const saved =
-      readJSON(
-        STORAGE.progress,
-        null
-      );
-
-    const hasProgress =
-      saved &&
-      Array.isArray(
-        saved.questionIds
-      ) &&
-      saved.questionIds.length > 0;
-
-    /*
-      Do not change the button text.
-      Only preserve existing visibility.
-    */
-
-    button.style.display =
-      hasProgress
-        ? ""
-        : "none";
-  }
-
-  /* ========================================================
-     ROUNDS
-  ======================================================== */
-
-  function renderRounds() {
-    const grid =
-      $("roundGrid");
-
-    if (!grid) {
-      return;
-    }
+  function updateProgressUI() {
+    const completed =
+      getCompletedRounds();
 
     const unlocked =
       getUnlockedRounds();
 
-    const completed =
-      getCompletedRounds();
+    const completedElement =
+      getElement(
+        "completedRounds",
+        "progressCompleted"
+      );
 
-    const stars =
-      getRoundStars();
-
-    /*
-      Keep the existing round grid
-      container. Only its round
-      buttons are generated here.
-    */
-
-    grid.innerHTML = "";
-
-    for (
-      let i = 1;
-      i <= TOTAL_ROUNDS;
-      i++
-    ) {
-      const button =
-        document.createElement(
-          "button"
+    if (completedElement) {
+      completedElement.textContent =
+        String(
+          completed.length
         );
+    }
 
-      button.type =
-        "button";
-
-      const isUnlocked =
-        unlocked.includes(i);
-
-      const isCompleted =
-        completed.includes(i);
-
-      const roundStars =
-        Number(
-          stars[String(i)] || 0
-        );
-
-      button.disabled =
-        !isUnlocked;
-
-      button.innerHTML = `
-        <span style="font-weight:800;">
-          ${
-            isUnlocked
-              ? "🎮"
-              : "🔒"
-          }
-          Round ${i}
-        </span>
-
-        ${
-          isCompleted &&
-          roundStars > 0
-            ? `<small>
-                ${"⭐".repeat(
-                  Math.min(
-                    3,
-                    roundStars
-                  )
-                )}
-              </small>`
-            : ""
-        }
-      `;
-
-      if (isUnlocked) {
-        button.addEventListener(
-          "click",
-          () =>
-            startNewQuiz(i)
-        );
-      }
-
-      grid.appendChild(
-        button
+    const unlockedElement =
+      getElement(
+        "unlockedRounds",
+        "progressUnlocked"
       );
+
+    if (unlockedElement) {
+      unlockedElement.textContent =
+        String(unlocked);
+    }
+
+    const starsElement =
+      getElement(
+        "totalStars",
+        "starsCount"
+      );
+
+    if (starsElement) {
+      starsElement.textContent =
+        String(getTotalStars());
     }
   }
 
-  /* ========================================================
-     SETTINGS
-  ======================================================== */
-
-  function loadSettings() {
-    const musicEnabled =
-      localStorage.getItem(
-        STORAGE.music
-      ) !== "off";
-
-    const soundEnabled =
-      localStorage.getItem(
-        STORAGE.sound
-      ) !== "off";
-
-    const musicSwitch =
-      $("musicSwitch");
-
-    const soundSwitch =
-      $("soundSwitch");
-
-    if (musicSwitch) {
-      musicSwitch.checked =
-        musicEnabled;
-    }
-
-    if (soundSwitch) {
-      soundSwitch.checked =
-        soundEnabled;
-    }
-  }
-
-  function playCorrectSound() {
-    if (
-      localStorage.getItem(
-        STORAGE.sound
-      ) === "off"
-    ) {
-      return;
-    }
-
-    try {
-      const AudioContext =
-        window.AudioContext ||
-        window.webkitAudioContext;
-
-      if (!AudioContext) {
-        return;
-      }
-
-      const ctx =
-        new AudioContext();
-
-      const osc =
-        ctx.createOscillator();
-
-      const gain =
-        ctx.createGain();
-
-      osc.type =
-        "sine";
-
-      osc.frequency.value =
-        720;
-
-      gain.gain.setValueAtTime(
-        0.08,
-        ctx.currentTime
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.001,
-        ctx.currentTime + 0.15
-      );
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start();
-
-      osc.stop(
-        ctx.currentTime + 0.15
-      );
-
-      setTimeout(
-        () => {
-          try {
-            ctx.close();
-          } catch (error) {}
-        },
-        300
-      );
-
-    } catch (error) {}
-  }
-
-  function playWrongSound() {
-    if (
-      localStorage.getItem(
-        STORAGE.sound
-      ) === "off"
-    ) {
-      return;
-    }
-
-    try {
-      const AudioContext =
-        window.AudioContext ||
-        window.webkitAudioContext;
-
-      if (!AudioContext) {
-        return;
-      }
-
-      const ctx =
-        new AudioContext();
-
-      const osc =
-        ctx.createOscillator();
-
-      const gain =
-        ctx.createGain();
-
-      osc.type =
-        "sine";
-
-      osc.frequency.value =
-        180;
-
-      gain.gain.setValueAtTime(
-        0.06,
-        ctx.currentTime
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.001,
-        ctx.currentTime + 0.18
-      );
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start();
-
-      osc.stop(
-        ctx.currentTime + 0.18
-      );
-
-      setTimeout(
-        () => {
-          try {
-            ctx.close();
-          } catch (error) {}
-        },
-        300
-      );
-
-    } catch (error) {}
-  }
-
-  function setupSettings() {
-    const musicSwitch =
-      $("musicSwitch");
-
-    const soundSwitch =
-      $("soundSwitch");
-
-    if (musicSwitch) {
-      musicSwitch.addEventListener(
-        "change",
-        () => {
-          localStorage.setItem(
-            STORAGE.music,
-            musicSwitch.checked
-              ? "on"
-              : "off"
-          );
-        }
-      );
-    }
-
-    if (soundSwitch) {
-      soundSwitch.addEventListener(
-        "change",
-        () => {
-          localStorage.setItem(
-            STORAGE.sound,
-            soundSwitch.checked
-              ? "on"
-              : "off"
-          );
-        }
-      );
-    }
-
-    loadSettings();
-  }
-
-  /* ========================================================
-     SHARE
-  ======================================================== */
-
-  function setupShare() {
-    const shareButton =
-      Array.from(
-        document.querySelectorAll(
-          "button"
-        )
-      ).find(
-        (button) =>
-          /Share Quiz Master/i.test(
-            button.textContent || ""
-          )
-      );
-
-    if (!shareButton) {
-      return;
-    }
-
-    /*
-      Prevent duplicate listener setup.
-    */
-
-    if (
-      shareButton.dataset
-        .quizMasterShareReady ===
-      "true"
-    ) {
-      return;
-    }
-
-    shareButton.dataset
-      .quizMasterShareReady =
-      "true";
-
-    shareButton.addEventListener(
-      "click",
-      async () => {
-        const shareUrl =
-          window.location.href;
-
-        const shareData = {
-          title:
-            "Quiz Master 🇷🇼",
-
-          text:
-            "Test your knowledge with Quiz Master!",
-
-          url:
-            shareUrl
-        };
-
-        try {
-          if (
-            navigator.share
-          ) {
-            await navigator.share(
-              shareData
-            );
-
-            return;
-          }
-
-          throw new Error(
-            "Native share unavailable"
-          );
-
-        } catch (error) {
-          if (
-            error &&
-            error.name ===
-              "AbortError"
-          ) {
-            return;
-          }
-
-          try {
-            if (
-              navigator.clipboard &&
-              navigator.clipboard.writeText
-            ) {
-              await navigator.clipboard.writeText(
-                shareUrl
-              );
-
-              const oldText =
-                shareButton.textContent;
-
-              shareButton.textContent =
-                "✅ Link Copied!";
-
-              setTimeout(
-                () => {
-                  shareButton.textContent =
-                    oldText;
-                },
-                1800
-              );
-            }
-          } catch (
-            clipboardError
-          ) {
-            console.warn(
-              "Share fallback failed:",
-              clipboardError
-            );
-          }
-        }
-      }
-    );
-  }
-
-  /* ========================================================
-     ADS
-  ======================================================== */
-
-  function loadAds() {
-    try {
-      if (
-        !window.adsbygoogle
-      ) {
-        return;
-      }
-
-      document
-        .querySelectorAll(
-          ".adsbygoogle"
-        )
-        .forEach(
-          (ad) => {
-            /*
-              Prevent duplicate AdSense
-              initialization.
-            */
-
-            if (
-              ad.dataset
-                .quizMasterLoaded ===
-              "true"
-            ) {
-              return;
-            }
-
-            try {
-              (
-                window.adsbygoogle =
-                  window.adsbygoogle ||
-                  []
-              ).push({});
-
-              ad.dataset
-                .quizMasterLoaded =
-                "true";
-
-            } catch (error) {}
-          }
-        );
-
-    } catch (error) {}
-  }
-
-  /* ========================================================
-     EVENTS
-  ======================================================== */
-
-  function setupEvents() {
-    $("startBtn")
-      ?.addEventListener(
-        "click",
-        () => {
-          startNewQuiz(1);
-        }
-      );
-
-    $("continueBtn")
-      ?.addEventListener(
-        "click",
-        continueQuiz
-      );
-
-    $("nextBtn")
-      ?.addEventListener(
-        "click",
-        nextQuestion
-      );
-
-    $("nextRoundBtn")
-      ?.addEventListener(
-        "click",
-        startNextRound
-      );
-
-    $("restartBtn")
-      ?.addEventListener(
-        "click",
-        retryCurrentRound
-      );
-
-    $("reviewBtn")
-      ?.addEventListener(
-        "click",
-        showReview
-      );
-
-    $("reviewRetryBtn")
-      ?.addEventListener(
-        "click",
-        retryCurrentRound
-      );
-
-    $("reviewBackBtn")
-      ?.addEventListener(
-        "click",
-        () => {
-          showScreen(
-            "resultScreen"
-          );
-        }
-      );
-
-    /*
-      Save progress BEFORE
-      quizStarted becomes false.
-    */
-
-    $("quizHomeBtn")
-      ?.addEventListener(
-        "click",
-        () => {
-          stopTimer();
-
-          saveQuizProgress();
-
-          quizStarted = false;
-
-          showScreen(
-            "homeScreen"
-          );
-
-          updateContinueButton();
-        }
-      );
-
-    $("resultHomeBtn")
-      ?.addEventListener(
-        "click",
-        () => {
-          stopTimer();
-
-          quizStarted = false;
-
-          showScreen(
-            "homeScreen"
-          );
-
-          updateContinueButton();
-        }
-      );
-
-    $("errorRestartBtn")
-      ?.addEventListener(
-        "click",
-        async () => {
-          const loaded =
-            await loadQuestions();
-
-          if (loaded) {
-            startNewQuiz(1);
-          }
-        }
-      );
-
-    $("errorHomeBtn")
-      ?.addEventListener(
-        "click",
-        () => {
-          showScreen(
-            "homeScreen"
-          );
-        }
-      );
-
-    setupSettings();
-
-    setupShare();
-  }
-
-  /* ========================================================
-     INITIALIZE
-  ======================================================== */
-
-  async function initialize() {
-    /*
-      Prevent accidental double
-      initialization.
-    */
-
+  function initialize() {
     if (
       window.quizMasterInitialized
     ) {
@@ -2908,92 +2496,64 @@
     window.quizMasterInitialized =
       true;
 
-    /*
-      Round 1 is always unlocked.
-    */
+    console.log(
+      "Quiz Master 🇷🇼 initializing..."
+    );
 
-    if (
-      !localStorage.getItem(
-        STORAGE.unlocked
-      )
-    ) {
-      setUnlockedRounds(
-        [1]
-      );
-    }
+    loadSettings();
 
-    renderRounds();
+    initBackgroundMusic();
+
+    initializeEvents();
 
     updateContinueButton();
 
-    setupEvents();
-
-    const loaded =
-      await loadQuestions();
-
-    if (!loaded) {
-      return;
-    }
-
-    renderRounds();
-
-    updateContinueButton();
-
-    loadAds();
+    loadQuestions();
   }
 
-  /* ========================================================
-     PUBLIC API
-  ======================================================== */
+  /* =======================================================
+     PUBLIC FUNCTIONS
+     ======================================================= */
 
   window.startQuiz =
-    () =>
-      startNewQuiz(1);
-
-  window.startNewQuiz =
-    startNewQuiz;
+    startQuiz;
 
   window.continueQuiz =
     continueQuiz;
 
+  window.startRound =
+    startRound;
+
+  window.openRounds =
+    openRounds;
+
+  window.retryRound =
+    retryRound;
+
+  window.nextRound =
+    nextRound;
+
+  window.showReview =
+    showReview;
+
+  window.showHome =
+    showHome;
+
+  window.openSettings =
+    openSettings;
+
+  window.shareQuizMaster =
+    shareQuizMaster;
+
   window.startDailyChallenge =
     startDailyChallenge;
 
-  window.showQuizRounds =
-    () => {
-      renderRounds();
+  window.loadQuizQuestions =
+    loadQuestions;
 
-      showScreen(
-        "roundsScreen"
-      );
-    };
-
-  window.quizMasterRetention = {
-    getUnlockedRounds,
-
-    getCompletedRounds,
-
-    getRoundStars,
-
-    getAchievements,
-
-    getBestData,
-
-    getUsedQuestions,
-
-    getTotalScore: () =>
-      Number(
-        localStorage.getItem(
-          STORAGE.totalScore
-        ) || "0"
-      ),
-
-    startDailyChallenge
-  };
-
-  /* ========================================================
-     DOM READY
-  ======================================================== */
+  /* =======================================================
+     START
+  ======================================================= */
 
   if (
     document.readyState ===
@@ -3001,10 +2561,7 @@
   ) {
     document.addEventListener(
       "DOMContentLoaded",
-      initialize,
-      {
-        once: true
-      }
+      initialize
     );
   } else {
     initialize();
