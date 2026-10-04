@@ -4829,4 +4829,603 @@
     "question": "Which instrument measures humidity?",
     "options": ["Hygrometer", "An
   },
-  
+    {
+    "id": "batch3-q001",
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Mars", "Venus", "Jupiter", "Mercury"],
+    "answer": "Mars",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q002",
+    "question": "What gas do humans need to breathe to survive?",
+    "options": ["Oxygen", "Helium", "Carbon dioxide", "Hydrogen"],
+    "answer": "Oxygen",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q003",
+    "question": "What is the chemical symbol for gold?",
+    "options": ["Au", "Ag", "Fe", "Cu"],
+    "answer": "Au",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q004",
+    "question": "How many bones are in the adult human body?",
+    "options": ["206", "201", "216", "196"],
+    "answer": "206",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q005",
+    "question": "Which organ pumps blood around the human body?",
+    "options": ["Heart", "Liver", "Lung", "Kidney"],
+    "answer": "Heart",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q006",
+    "question": "What is the boiling point of water at sea level in Celsius?",
+    "options": ["100°C", "90°C", "80°C", "120°C"],
+    "answer": "100°C",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q007",
+    "question": "Which part of a plant absorbs water from the soil?",
+    "options": ["Roots", "Flowers", "Leaves", "Fruits"],
+    "answer": "Roots",
+    "category": "Biology"
+  },
+  {
+    "id": "batch3-q008",
+    "question": "What force pulls objects toward Earth?",
+    "options": ["Gravity", "Magnetism", "Friction", "Electricity"],
+    "answer": "Gravity",
+    "category": "Physics"
+  },
+  {
+    "id": "batch3-q009",
+    "question": "Which blood cells help fight infections?",
+    "options": ["White blood cells", "Red blood cells", "Platelets", "Plasma"],
+    "answer": "White blood cells",
+    "category": "Biology"
+  },
+  {
+    "id": "batch3-q010",
+    "question": "Which vitamin is mainly produced by the skin in sunlight?",
+    "options": ["Vitamin D", "Vitamin C", "Vitamin B12", "Vitamin K"],
+    "answer": "Vitamin D",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q011",
+    "question": "What is H2O commonly known as?",
+    "options": ["Water", "Oxygen", "Hydrogen", "Salt"],
+    "answer": "Water",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch3-q012",
+    "question": "Which natural satellite orbits Earth?",
+    "options": ["Moon", "Mars", "Venus", "Titan"],
+    "answer": "Moon",
+    "category": "Astronomy"
+  },
+  {
+    "id": "batch3-q013",
+    "question": "Which layer of Earth is directly beneath the crust?",
+    "options": ["Mantle", "Inner core", "Outer core", "Atmosphere"],
+    "answer": "Mantle",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch3-q014",
+    "question": "What process do plants use to make food from sunlight?",
+    "options": ["Photosynthesis", "Respiration", "Digestion", "Fermentation"],
+    "answer": "Photosynthesis",
+    "category": "Biology"
+  },
+  {
+    "id": "batch3-q015",
+    "question": "Which particle has a negative electric charge?",
+    "options": ["Electron", "Proton", "Neutron", "Photon"],
+    "answer": "Electron",
+    "category": "Physics"
+  },
+  {
+    "id": "batch3-q016",
+    "question": "What is the largest organ of the human body?",
+    "options": ["Skin", "Liver", "Heart", "Brain"],
+    "answer": "Skin",
+    "category": "Biology"
+  },
+  {
+    "id": "batch3-q017",
+    "question": "Which gas makes up most of Earth's atmosphere?",
+    "options": ["Nitrogen", "Oxygen", "Carbon dioxide", "Argon"],
+    "answer": "Nitrogen",
+    "category": "Earth Science"
+  },
+  {
+    "id": "batch3-q018",
+    "question": "What instrument is used to observe distant objects in space?",
+    "options": ["Telescope", "Microscope", "Barometer", "Thermometer"],
+    "answer": "Telescope",
+    "category": "Astronomy"
+  },
+  {
+    "id": "batch3-q019",
+    "question": "Which planet is closest to the Sun?",
+    "options": ["Mercury", "Venus", "Earth", "Mars"],
+    "answer": "Mercury",
+    "category": "Astronomy"
+  },
+  {
+    "id": "batch3-q020",
+    "question": "What is the center of an atom called?",
+    "options": ["Nucleus", "Electron cloud", "Molecule", "Ion"],
+    "answer": "Nucleus",
+    "category": "Chemistry"
+  },
+  {
+    "id": "batch3-q021",
+    "question": "Which continent is the Sahara Desert located in?",
+    "options": ["Africa", "Asia", "Australia", "South America"],
+    "answer": "Africa",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q022",
+    "question": "Which country has the city of Tokyo as its capital?",
+    "options": ["Japan", "China", "South Korea", "Thailand"],
+    "answer": "Japan",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q023",
+    "question": "Which river flows through Egypt?",
+    "options": ["Nile", "Congo", "Zambezi", "Niger"],
+    "answer": "Nile",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q024",
+    "question": "What is the largest continent by land area?",
+    "options": ["Asia", "Africa", "Europe", "North America"],
+    "answer": "Asia",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q025",
+    "question": "Which ocean lies between Africa and Australia?",
+    "options": ["Indian Ocean", "Atlantic Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "answer": "Indian Ocean",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q026",
+    "question": "What is the capital city of Ethiopia?",
+    "options": ["Addis Ababa", "Nairobi", "Kampala", "Asmara"],
+    "answer": "Addis Ababa",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q027",
+    "question": "Which country is known as the Land of a Thousand Hills?",
+    "options": ["Rwanda", "Burundi", "Uganda", "Kenya"],
+    "answer": "Rwanda",
+    "category": "Rwanda"
+  },
+  {
+    "id": "batch3-q028",
+    "question": "Which lake is shared by Rwanda, Uganda, and Tanzania?",
+    "options": ["Lake Victoria", "Lake Kivu", "Lake Tanganyika", "Lake Malawi"],
+    "answer": "Lake Victoria",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q029",
+    "question": "Which mountain is the highest in Africa?",
+    "options": ["Mount Kilimanjaro", "Mount Kenya", "Mount Elgon", "Mount Meru"],
+    "answer": "Mount Kilimanjaro",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q030",
+    "question": "Which country is directly west of Rwanda?",
+    "options": ["Democratic Republic of the Congo", "Tanzania", "Uganda", "Burundi"],
+    "answer": "Democratic Republic of the Congo",
+    "category": "Rwanda"
+  },
+  {
+    "id": "batch3-q031",
+    "question": "What is the capital of Tanzania?",
+    "options": ["Dodoma", "Dar es Salaam", "Arusha", "Mwanza"],
+    "answer": "Dodoma",
+    "category": "Africa"
+  },
+  {
+    "id": "batch3-q032",
+    "question": "Which country has Nairobi as its capital?",
+    "options": ["Kenya", "Uganda", "Tanzania", "Ethiopia"],
+    "answer": "Kenya",
+    "category": "Africa"
+  },
+  {
+    "id": "batch3-q033",
+    "question": "Which African country is famous for the ancient pyramids of Giza?",
+    "options": ["Egypt", "Morocco", "Sudan", "Libya"],
+    "answer": "Egypt",
+    "category": "Africa"
+  },
+  {
+    "id": "batch3-q034",
+    "question": "Which desert covers much of northern Africa?",
+    "options": ["Sahara Desert", "Kalahari Desert", "Namib Desert", "Danakil Desert"],
+    "answer": "Sahara Desert",
+    "category": "Africa"
+  },
+  {
+    "id": "batch3-q035",
+    "question": "Which country is famous for the city of Marrakech?",
+    "options": ["Morocco", "Algeria", "Tunisia", "Egypt"],
+    "answer": "Morocco",
+    "category": "Africa"
+  },
+  {
+    "id": "batch3-q036",
+    "question": "Which country is shaped roughly like a boot?",
+    "options": ["Italy", "Spain", "Portugal", "Greece"],
+    "answer": "Italy",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q037",
+    "question": "What is the capital of France?",
+    "options": ["Paris", "Madrid", "Rome", "Berlin"],
+    "answer": "Paris",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q038",
+    "question": "Which country has the largest population in Africa?",
+    "options": ["Nigeria", "Egypt", "Ethiopia", "South Africa"],
+    "answer": "Nigeria",
+    "category": "Africa"
+  },
+  {
+    "id": "batch3-q039",
+    "question": "Which sea separates Europe from Africa?",
+    "options": ["Mediterranean Sea", "Red Sea", "Black Sea", "Baltic Sea"],
+    "answer": "Mediterranean Sea",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q040",
+    "question": "Which country is home to the Great Barrier Reef?",
+    "options": ["Australia", "Indonesia", "Philippines", "New Zealand"],
+    "answer": "Australia",
+    "category": "Geography"
+  },
+  {
+    "id": "batch3-q041",
+    "question": "Who was the first person to walk on the Moon?",
+    "options": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "John Glenn"],
+    "answer": "Neil Armstrong",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q042",
+    "question": "Which civilization built Machu Picchu?",
+    "options": ["Inca", "Roman", "Mayan", "Egyptian"],
+    "answer": "Inca",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q043",
+    "question": "Which ancient civilization developed democracy in Athens?",
+    "options": ["Ancient Greeks", "Romans", "Persians", "Phoenicians"],
+    "answer": "Ancient Greeks",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q044",
+    "question": "Who was known as the Maid of Orléans?",
+    "options": ["Joan of Arc", "Cleopatra", "Marie Curie", "Queen Victoria"],
+    "answer": "Joan of Arc",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q045",
+    "question": "Which empire was centered in Rome?",
+    "options": ["Roman Empire", "Ottoman Empire", "Mali Empire", "Mughal Empire"],
+    "answer": "Roman Empire",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q046",
+    "question": "Who was the first president of the United States?",
+    "options": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"],
+    "answer": "George Washington",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q047",
+    "question": "Which event began in 1789 in France?",
+    "options": ["French Revolution", "Industrial Revolution", "American Civil War", "Russian Revolution"],
+    "answer": "French Revolution",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q048",
+    "question": "Which ancient Egyptian ruler was famous for her alliance with Rome?",
+    "options": ["Cleopatra", "Nefertiti", "Hatshepsut", "Tiye"],
+    "answer": "Cleopatra",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q049",
+    "question": "Which famous wall divided Berlin during the Cold War?",
+    "options": ["Berlin Wall", "Great Wall", "Hadrian's Wall", "Western Wall"],
+    "answer": "Berlin Wall",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q050",
+    "question": "In which year did World War II end?",
+    "options": ["1945", "1939", "1941", "1950"],
+    "answer": "1945",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q051",
+    "question": "Which country gave the Statue of Liberty to the United States?",
+    "options": ["France", "Spain", "Italy", "Canada"],
+    "answer": "France",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q052",
+    "question": "Who painted the Mona Lisa?",
+    "options": ["Leonardo da Vinci", "Michelangelo", "Raphael", "Donatello"],
+    "answer": "Leonardo da Vinci",
+    "category": "Art"
+  },
+  {
+    "id": "batch3-q053",
+    "question": "Which ancient people are associated with the city of Troy?",
+    "options": ["Greeks and Trojans", "Vikings and Franks", "Romans and Gauls", "Mongols and Chinese"],
+    "answer": "Greeks and Trojans",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q054",
+    "question": "Who discovered penicillin?",
+    "options": ["Alexander Fleming", "Louis Pasteur", "Isaac Newton", "Albert Einstein"],
+    "answer": "Alexander Fleming",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q055",
+    "question": "Which scientist developed the theory of relativity?",
+    "options": ["Albert Einstein", "Galileo Galilei", "Nikola Tesla", "Charles Darwin"],
+    "answer": "Albert Einstein",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q056",
+    "question": "Who proposed the theory of evolution by natural selection?",
+    "options": ["Charles Darwin", "Gregor Mendel", "Isaac Newton", "Louis Pasteur"],
+    "answer": "Charles Darwin",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q057",
+    "question": "Which scientist is famous for the laws of motion?",
+    "options": ["Isaac Newton", "Albert Einstein", "James Watt", "Michael Faraday"],
+    "answer": "Isaac Newton",
+    "category": "Science"
+  },
+  {
+    "id": "batch3-q058",
+    "question": "Who was the first woman to win a Nobel Prize?",
+    "options": ["Marie Curie", "Ada Lovelace", "Rosalind Franklin", "Jane Goodall"],
+    "answer": "Marie Curie",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q059",
+    "question": "Which invention is associated with Johannes Gutenberg?",
+    "options": ["Printing press", "Steam engine", "Telephone", "Light bulb"],
+    "answer": "Printing press",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q060",
+    "question": "Which civilization used hieroglyphics?",
+    "options": ["Ancient Egyptians", "Vikings", "Romans", "Aztecs"],
+    "answer": "Ancient Egyptians",
+    "category": "History"
+  },
+  {
+    "id": "batch3-q061",
+    "question": "What does CPU stand for?",
+    "options": ["Central Processing Unit", "Computer Power Utility", "Central Program User", "Core Processing Utility"],
+    "answer": "Central Processing Unit",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q062",
+    "question": "What does RAM stand for?",
+    "options": ["Random Access Memory", "Rapid Application Module", "Read Access Machine", "Remote Access Memory"],
+    "answer": "Random Access Memory",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q063",
+    "question": "Which device is primarily used to move a pointer on a computer screen?",
+    "options": ["Mouse", "Printer", "Speaker", "Scanner"],
+    "answer": "Mouse",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q064",
+    "question": "What does URL stand for?",
+    "options": ["Uniform Resource Locator", "Universal Reading Link", "User Resource Language", "Uniform Routing Line"],
+    "answer": "Uniform Resource Locator",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q065",
+    "question": "Which technology is commonly used for short-range wireless connections between devices?",
+    "options": ["Bluetooth", "GPS", "Ethernet", "HDMI"],
+    "answer": "Bluetooth",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q066",
+    "question": "What does Wi-Fi allow devices to do?",
+    "options": ["Connect wirelessly to a network", "Print without electricity", "Store physical books", "Measure temperature"],
+    "answer": "Connect wirelessly to a network",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q067",
+    "question": "Which programming language is commonly used to make web pages interactive?",
+    "options": ["JavaScript", "SQL", "HTML", "XML"],
+    "answer": "JavaScript",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q068",
+    "question": "What does HTML stand for?",
+    "options": ["HyperText Markup Language", "High Technology Machine Language", "Hyperlink Text Management Language", "Home Tool Markup Language"],
+    "answer": "HyperText Markup Language",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q069",
+    "question": "Which company developed the Android operating system with the Android Open Source Project?",
+    "options": ["Google", "IBM", "Nokia", "Adobe"],
+    "answer": "Google",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q070",
+    "question": "Which file extension is commonly used for JavaScript files?",
+    "options": [".js", ".css", ".html", ".json"],
+    "answer": ".js",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q071",
+    "question": "Which file format is commonly used to store structured data in web applications?",
+    "options": ["JSON", "MP3", "PNG", "MP4"],
+    "answer": "JSON",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q072",
+    "question": "What does HTTP stand for?",
+    "options": ["HyperText Transfer Protocol", "High Transfer Text Program", "Hyperlink Transmission Process", "Host Transfer Technology Protocol"],
+    "answer": "HyperText Transfer Protocol",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q073",
+    "question": "Which device stores data permanently using magnetic disks?",
+    "options": ["Hard disk drive", "RAM", "CPU", "Monitor"],
+    "answer": "Hard disk drive",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q074",
+    "question": "What is cloud computing?",
+    "options": ["Using remote internet-based computing resources", "Predicting rain with computers", "Repairing computer screens", "Cleaning computer hardware"],
+    "answer": "Using remote internet-based computing resources",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q075",
+    "question": "Which technology provides location information using satellites?",
+    "options": ["GPS", "Bluetooth", "NFC", "USB"],
+    "answer": "GPS",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q076",
+    "question": "Which social media platform is known for short-form video content?",
+    "options": ["TikTok", "LinkedIn", "Wikipedia", "GitHub"],
+    "answer": "TikTok",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q077",
+    "question": "What does AI stand for?",
+    "options": ["Artificial Intelligence", "Automated Internet", "Advanced Interface", "Applied Information"],
+    "answer": "Artificial Intelligence",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q078",
+    "question": "Which component supplies electrical power to a desktop computer?",
+    "options": ["Power supply unit", "Graphics card", "RAM", "CPU cooler"],
+    "answer": "Power supply unit",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q079",
+    "question": "Which device converts a paper document into a digital image?",
+    "options": ["Scanner", "Router", "Speaker", "Projector"],
+    "answer": "Scanner",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q080",
+    "question": "What is a web browser used for?",
+    "options": ["Accessing websites", "Charging batteries", "Printing money", "Measuring speed"],
+    "answer": "Accessing websites",
+    "category": "Technology"
+  },
+  {
+    "id": "batch3-q081",
+    "question": "How many players are on the field for one soccer team at the start of a standard match?",
+    "options": ["11", "9", "10", "12"],
+    "answer": "11",
+    "category": "Sports"
+  },
+  {
+    "id": "batch3-q082",
+    "question": "How long is a standard soccer match, excluding added time and extra time?",
+    "options": ["90 minutes", "60 minutes", "80 minutes", "120 minutes"],
+    "answer": "90 minutes",
+    "category": "Sports"
+  },
+  {
+    "id": "batch3-q083",
+    "question": "Which country won the 2018 FIFA World Cup?",
+    "options": ["France", "Croatia", "Brazil", "Germany"],
+    "answer": "France",
+    "category": "Sports"
+  },
+  {
+    "id": "batch3-q084",
+    "question": "Which country hosted the 2010 FIFA World Cup?",
+    "options": ["South Africa", "Brazil", "Germany", "Russia"],
+    "answer": "South Africa",
+    "category": "Sports"
+  },
+  {
+    "id": "batch3-q085",
+    "question": "Which sport uses a shuttlecock?",
+    "options": ["Badminton", "Tennis", "Volleyball", "Hockey"],
+    "answer": "Badminton",
+    "category": "Sports"
+  },
+  {
+    "id": "batch3-q086",
+    "question": "How many rings are on the Olympic flag?",
+    "options": ["5", "4", "6",
+    ]
