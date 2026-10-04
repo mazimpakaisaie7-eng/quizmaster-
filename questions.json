@@ -2824,5 +2824,1517 @@
 "options": ["To reduce crashes and protect road users", "To increase traffic violations", "To make vehicles heavier", "To encourage speeding"],
 "answer": "To reduce crashes and protect road users",
 "category": "Road Traffic Rules"
-}
+} 
+[
+  {
+    "question": "Which planet has the largest volcano in the Solar System?",
+    "question_rw": "",
+    "options": ["Mars", "Earth", "Venus", "Jupiter"],
+    "answer": "Mars",
+    "category": "Science"
+  },
+  {
+    "question": "What is the chemical symbol for silver?",
+    "question_rw": "",
+    "options": ["Si", "Ag", "Au", "S"],
+    "answer": "Ag",
+    "category": "Science"
+  },
+  {
+    "question": "Which organ pumps blood throughout the human body?",
+    "question_rw": "",
+    "options": ["Liver", "Heart", "Lung", "Kidney"],
+    "answer": "Heart",
+    "category": "Science"
+  },
+  {
+    "question": "What force keeps objects attracted to Earth?",
+    "question_rw": "",
+    "options": ["Magnetism", "Friction", "Gravity", "Pressure"],
+    "answer": "Gravity",
+    "category": "Science"
+  },
+  {
+    "question": "Which gas makes up most of Earth's atmosphere?",
+    "question_rw": "",
+    "options": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+    "answer": "Nitrogen",
+    "category": "Science"
+  },
+  {
+    "question": "What is the hardest naturally occurring mineral?",
+    "question_rw": "",
+    "options": ["Quartz", "Diamond", "Granite", "Iron"],
+    "answer": "Diamond",
+    "category": "Science"
+  },
+  {
+    "question": "Which part of a plant absorbs most water from the soil?",
+    "question_rw": "",
+    "options": ["Leaves", "Flowers", "Roots", "Stem"],
+    "answer": "Roots",
+    "category": "Science"
+  },
+  {
+    "question": "What is the process by which plants convert light into chemical energy?",
+    "question_rw": "",
+    "options": ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
+    "answer": "Photosynthesis",
+    "category": "Science"
+  },
+  {
+    "question": "Which blood cells help the body fight infections?",
+    "question_rw": "",
+    "options": ["Red blood cells", "White blood cells", "Platelets", "Plasma cells"],
+    "answer": "White blood cells",
+    "category": "Science"
+  },
+  {
+    "question": "What is the approximate speed of light in a vacuum?",
+    "question_rw": "",
+    "options": ["300,000 km/s", "30,000 km/s", "3,000 km/s", "3,000,000 km/s"],
+    "answer": "300,000 km/s",
+    "category": "Science"
+  },
+  {
+    "question": "Which planet is famous for its prominent ring system?",
+    "question_rw": "",
+    "options": ["Mercury", "Saturn", "Mars", "Neptune"],
+    "answer": "Saturn",
+    "category": "Science"
+  },
+  {
+    "question": "What is H2O commonly known as?",
+    "question_rw": "",
+    "options": ["Salt", "Water", "Hydrogen peroxide", "Oxygen"],
+    "answer": "Water",
+    "category": "Science"
+  },
+  {
+    "question": "Which vitamin is mainly produced by the skin when exposed to sunlight?",
+    "question_rw": "",
+    "options": ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"],
+    "answer": "Vitamin D",
+    "category": "Science"
+  },
+  {
+    "question": "Which natural satellite orbits Earth?",
+    "question_rw": "",
+    "options": ["Titan", "Europa", "The Moon", "Phobos"],
+    "answer": "The Moon",
+    "category": "Science"
+  },
+  {
+    "question": "What is the center of an atom called?",
+    "question_rw": "",
+    "options": ["Electron shell", "Nucleus", "Molecule", "Ion"],
+    "answer": "Nucleus",
+    "category": "Science"
+  },
+  {
+    "question": "Which metal is liquid at room temperature?",
+    "question_rw": "",
+    "options": ["Copper", "Mercury", "Aluminum", "Zinc"],
+    "answer": "Mercury",
+    "category": "Science"
+  },
+  {
+    "question": "What type of energy is stored in food?",
+    "question_rw": "",
+    "options": ["Chemical energy", "Sound energy", "Nuclear energy", "Light energy"],
+    "answer": "Chemical energy",
+    "category": "Science"
+  },
+  {
+    "question": "Which organ is primarily responsible for filtering waste from the blood?",
+    "question_rw": "",
+    "options": ["Heart", "Kidneys", "Stomach", "Lungs"],
+    "answer": "Kidneys",
+    "category": "Science"
+  },
+  {
+    "question": "What is the freezing point of pure water at standard atmospheric pressure?",
+    "question_rw": "",
+    "options": ["0°C", "10°C", "32°C", "100°C"],
+    "answer": "0°C",
+    "category": "Science"
+  },
+  {
+    "question": "Which planet is closest to the Sun?",
+    "question_rw": "",
+    "options": ["Venus", "Earth", "Mercury", "Mars"],
+    "answer": "Mercury",
+    "category": "Science"
+  },
+  {
+    "question": "Which particle has a negative electric charge?",
+    "question_rw": "",
+    "options": ["Proton", "Neutron", "Electron", "Nucleus"],
+    "answer": "Electron",
+    "category": "Science"
+  },
+  {
+    "question": "What is the largest organ of the human body?",
+    "question_rw": "",
+    "options": ["Liver", "Skin", "Heart", "Brain"],
+    "answer": "Skin",
+    "category": "Science"
+  },
+  {
+    "question": "Which gas do humans need for cellular respiration?",
+    "question_rw": "",
+    "options": ["Oxygen", "Nitrogen", "Helium", "Neon"],
+    "answer": "Oxygen",
+    "category": "Science"
+  },
+  {
+    "question": "What is the study of earthquakes called?",
+    "question_rw": "",
+    "options": ["Geology", "Seismology", "Ecology", "Meteorology"],
+    "answer": "Seismology",
+    "category": "Science"
+  },
+  {
+    "question": "Which simple machine consists of a wheel and a rope?",
+    "question_rw": "",
+    "options": ["Lever", "Pulley", "Wedge", "Screw"],
+    "answer": "Pulley",
+    "category": "Science"
+  },
+
+  {
+    "question": "Which country is home to the ancient city of Petra?",
+    "question_rw": "",
+    "options": ["Jordan", "Egypt", "Greece", "Lebanon"],
+    "answer": "Jordan",
+    "category": "Geography"
+  },
+  {
+    "question": "Which river flows through the city of London?",
+    "question_rw": "",
+    "options": ["Seine", "Thames", "Danube", "Rhine"],
+    "answer": "Thames",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country has the city of Marrakech?",
+    "question_rw": "",
+    "options": ["Morocco", "Algeria", "Tunisia", "Egypt"],
+    "answer": "Morocco",
+    "category": "Geography"
+  },
+  {
+    "question": "Which ocean lies between Africa and Australia?",
+    "question_rw": "",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "answer": "Indian Ocean",
+    "category": "Geography"
+  },
+  {
+    "question": "Which European country is shaped like a boot?",
+    "question_rw": "",
+    "options": ["Spain", "Italy", "Portugal", "Croatia"],
+    "answer": "Italy",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country is known for the region of Transylvania?",
+    "question_rw": "",
+    "options": ["Romania", "Bulgaria", "Serbia", "Hungary"],
+    "answer": "Romania",
+    "category": "Geography"
+  },
+  {
+    "question": "Which mountain range separates much of Europe from Asia?",
+    "question_rw": "",
+    "options": ["Andes", "Urals", "Alps", "Rockies"],
+    "answer": "Urals",
+    "category": "Geography"
+  },
+  {
+    "question": "Which African country contains the ancient city of Timbuktu?",
+    "question_rw": "",
+    "options": ["Mali", "Niger", "Chad", "Sudan"],
+    "answer": "Mali",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country is famous for the Atacama Desert?",
+    "question_rw": "",
+    "options": ["Chile", "Peru", "Argentina", "Bolivia"],
+    "answer": "Chile",
+    "category": "Geography"
+  },
+  {
+    "question": "Which sea separates Europe and Africa near Gibraltar?",
+    "question_rw": "",
+    "options": ["Red Sea", "Mediterranean Sea", "Black Sea", "Baltic Sea"],
+    "answer": "Mediterranean Sea",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country has the largest number of islands in the world?",
+    "question_rw": "",
+    "options": ["Sweden", "Indonesia", "Japan", "Philippines"],
+    "answer": "Sweden",
+    "category": "Geography"
+  },
+  {
+    "question": "Which African lake is one of the largest freshwater lakes by surface area?",
+    "question_rw": "",
+    "options": ["Lake Victoria", "Lake Kivu", "Lake Chad", "Lake Turkana"],
+    "answer": "Lake Victoria",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country is home to Mount Kilimanjaro?",
+    "question_rw": "",
+    "options": ["Kenya", "Tanzania", "Uganda", "Ethiopia"],
+    "answer": "Tanzania",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country contains the region known as Patagonia?",
+    "question_rw": "",
+    "options": ["Argentina and Chile", "Brazil and Peru", "Bolivia and Paraguay", "Uruguay and Brazil"],
+    "answer": "Argentina and Chile",
+    "category": "Geography"
+  },
+  {
+    "question": "Which capital city is located on the River Seine?",
+    "question_rw": "",
+    "options": ["Madrid", "Paris", "Rome", "Vienna"],
+    "answer": "Paris",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country is famous for the fjords of the western coast?",
+    "question_rw": "",
+    "options": ["Norway", "Poland", "Austria", "Belgium"],
+    "answer": "Norway",
+    "category": "Geography"
+  },
+  {
+    "question": "Which African country is completely surrounded by South Africa?",
+    "question_rw": "",
+    "options": ["Lesotho", "Eswatini", "Botswana", "Namibia"],
+    "answer": "Lesotho",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country has the island of Sicily?",
+    "question_rw": "",
+    "options": ["Italy", "France", "Greece", "Spain"],
+    "answer": "Italy",
+    "category": "Geography"
+  },
+  {
+    "question": "Which continent contains the Sahara Desert?",
+    "question_rw": "",
+    "options": ["Asia", "Africa", "Australia", "South America"],
+    "answer": "Africa",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country is home to the city of Dubrovnik?",
+    "question_rw": "",
+    "options": ["Croatia", "Slovenia", "Albania", "Montenegro"],
+    "answer": "Croatia",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country has the largest land area in South America?",
+    "question_rw": "",
+    "options": ["Argentina", "Brazil", "Peru", "Colombia"],
+    "answer": "Brazil",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country is crossed by the Equator and has Quito as its capital?",
+    "question_rw": "",
+    "options": ["Ecuador", "Colombia", "Peru", "Bolivia"],
+    "answer": "Ecuador",
+    "category": "Geography"
+  },
+  {
+    "question": "Which African country has a coastline along the Gulf of Guinea and includes Accra?",
+    "question_rw": "",
+    "options": ["Ghana", "Togo", "Benin", "Liberia"],
+    "answer": "Ghana",
+    "category": "Geography"
+  },
+  {
+    "question": "Which country is home to the city of Krakow?",
+    "question_rw": "",
+    "options": ["Poland", "Czech Republic", "Slovakia", "Lithuania"],
+    "answer": "Poland",
+    "category": "Geography"
+  },
+  {
+    "question": "Which desert covers much of northern China and southern Mongolia?",
+    "question_rw": "",
+    "options": ["Gobi Desert", "Kalahari Desert", "Namib Desert", "Mojave Desert"],
+    "answer": "Gobi Desert",
+    "category": "Geography"
+  },
+
+  {
+    "question": "Who was the first emperor of unified China?",
+    "question_rw": "",
+    "options": ["Qin Shi Huang", "Sun Yat-sen", "Kublai Khan", "Confucius"],
+    "answer": "Qin Shi Huang",
+    "category": "History"
+  },
+  {
+    "question": "Which civilization built Machu Picchu?",
+    "question_rw": "",
+    "options": ["Maya", "Inca", "Aztec", "Roman"],
+    "answer": "Inca",
+    "category": "History"
+  },
+  {
+    "question": "Which ancient people developed democracy in Athens?",
+    "question_rw": "",
+    "options": ["Greeks", "Romans", "Persians", "Phoenicians"],
+    "answer": "Greeks",
+    "category": "History"
+  },
+  {
+    "question": "Who was known as the Maid of Orléans?",
+    "question_rw": "",
+    "options": ["Joan of Arc", "Cleopatra", "Marie Curie", "Eleanor of Aquitaine"],
+    "answer": "Joan of Arc",
+    "category": "History"
+  },
+  {
+    "question": "Which empire was ruled by Mansa Musa?",
+    "question_rw": "",
+    "options": ["Mali Empire", "Roman Empire", "Ottoman Empire", "Songhai Empire"],
+    "answer": "Mali Empire",
+    "category": "History"
+  },
+  {
+    "question": "Which famous wall was built across northern China over several dynasties?",
+    "question_rw": "",
+    "options": ["Hadrian's Wall", "Great Wall of China", "Berlin Wall", "Western Wall"],
+    "answer": "Great Wall of China",
+    "category": "History"
+  },
+  {
+    "question": "Which ancient city was buried by Mount Vesuvius in AD 79?",
+    "question_rw": "",
+    "options": ["Pompeii", "Sparta", "Carthage", "Alexandria"],
+    "answer": "Pompeii",
+    "category": "History"
+  },
+  {
+    "question": "Who was the first woman to win a Nobel Prize?",
+    "question_rw": "",
+    "options": ["Marie Curie", "Ada Lovelace", "Florence Nightingale", "Jane Austen"],
+    "answer": "Marie Curie",
+    "category": "History"
+  },
+  {
+    "question": "Which explorer is traditionally credited with reaching the Americas in 1492?",
+    "question_rw": "",
+    "options": ["Christopher Columbus", "Ferdinand Magellan", "James Cook", "Marco Polo"],
+    "answer": "Christopher Columbus",
+    "category": "History"
+  },
+  {
+    "question": "Which empire used Constantinople as a major capital before 1453?",
+    "question_rw": "",
+    "options": ["Byzantine Empire", "Mali Empire", "Aztec Empire", "Mongol Empire"],
+    "answer": "Byzantine Empire",
+    "category": "History"
+  },
+  {
+    "question": "Who was the Egyptian queen associated with Julius Caesar and Mark Antony?",
+    "question_rw": "",
+    "options": ["Nefertiti", "Cleopatra VII", "Hatshepsut", "Isis"],
+    "answer": "Cleopatra VII",
+    "category": "History"
+  },
+  {
+    "question": "Which ancient civilization developed the cuneiform writing system?",
+    "question_rw": "",
+    "options": ["Sumerians", "Romans", "Vikings", "Aztecs"],
+    "answer": "Sumerians",
+    "category": "History"
+  },
+  {
+    "question": "Which event began in 1789 and transformed France?",
+    "question_rw": "",
+    "options": ["French Revolution", "Industrial Revolution", "Glorious Revolution", "Russian Revolution"],
+    "answer": "French Revolution",
+    "category": "History"
+  },
+  {
+    "question": "Who was the first president of the United States?",
+    "question_rw": "",
+    "options": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
+    "answer": "George Washington",
+    "category": "History"
+  },
+  {
+    "question": "Which civilization is famous for the Colosseum?",
+    "question_rw": "",
+    "options": ["Roman", "Maya", "Inca", "Egyptian"],
+    "answer": "Roman",
+    "category": "History"
+  },
+  {
+    "question": "Which country was historically known as Persia?",
+    "question_rw": "",
+    "options": ["Iran", "Iraq", "Syria", "Turkey"],
+    "answer": "Iran",
+    "category": "History"
+  },
+  {
+    "question": "Who wrote the famous historical work 'The Histories' in ancient Greece?",
+    "question_rw": "",
+    "options": ["Herodotus", "Plato", "Aristotle", "Homer"],
+    "answer": "Herodotus",
+    "category": "History"
+  },
+  {
+    "question": "Which civilization built the city of Tikal?",
+    "question_rw": "",
+    "options": ["Maya", "Inca", "Roman", "Persian"],
+    "answer": "Maya",
+    "category": "History"
+  },
+  {
+    "question": "Which famous document was signed in England in 1215?",
+    "question_rw": "",
+    "options": ["Magna Carta", "Treaty of Versailles", "Bill of Rights", "Code Napoleon"],
+    "answer": "Magna Carta",
+    "category": "History"
+  },
+  {
+    "question": "Which ancient civilization is associated with the pharaohs?",
+    "question_rw": "",
+    "options": ["Egyptian", "Roman", "Greek", "Carthaginian"],
+    "answer": "Egyptian",
+    "category": "History"
+  },
+  {
+    "question": "Who was the famous Macedonian conqueror who created a vast empire?",
+    "question_rw": "",
+    "options": ["Alexander the Great", "Hannibal", "Julius Caesar", "Cyrus the Great"],
+    "answer": "Alexander the Great",
+    "category": "History"
+  },
+  {
+    "question": "Which country was the center of the Aztec Empire?",
+    "question_rw": "",
+    "options": ["Mexico", "Peru", "Brazil", "Chile"],
+    "answer": "Mexico",
+    "category": "History"
+  },
+  {
+    "question": "Which famous city was the capital of the Aztec Empire?",
+    "question_rw": "",
+    "options": ["Tenochtitlan", "Cusco", "Teotihuacan", "Chichen Itza"],
+    "answer": "Tenochtitlan",
+    "category": "History"
+  },
+  {
+    "question": "Which empire was founded by Genghis Khan?",
+    "question_rw": "",
+    "options": ["Mongol Empire", "Ottoman Empire", "Roman Empire", "Mali Empire"],
+    "answer": "Mongol Empire",
+    "category": "History"
+  },
+  {
+    "question": "Which ancient city was a major center of learning in Egypt?",
+    "question_rw": "",
+    "options": ["Alexandria", "Memphis", "Thebes", "Giza"],
+    "answer": "Alexandria",
+    "category": "History"
+  },
+
+  {
+    "question": "Which football position usually protects the goal?",
+    "question_rw": "",
+    "options": ["Goalkeeper", "Striker", "Winger", "Midfielder"],
+    "answer": "Goalkeeper",
+    "category": "Sports"
+  },
+  {
+    "question": "How many players from one team are normally on the field in association football?",
+    "question_rw": "",
+    "options": ["9", "10", "11", "12"],
+    "answer": "11",
+    "category": "Sports"
+  },
+  {
+    "question": "Which country won the 2018 FIFA World Cup?",
+    "question_rw": "",
+    "options": ["France", "Croatia", "Brazil", "Germany"],
+    "answer": "France",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport uses a shuttlecock?",
+    "question_rw": "",
+    "options": ["Tennis", "Badminton", "Squash", "Volleyball"],
+    "answer": "Badminton",
+    "category": "Sports"
+  },
+  {
+    "question": "How many rings are on the Olympic flag?",
+    "question_rw": "",
+    "options": ["4", "5", "6", "7"],
+    "answer": "5",
+    "category": "Sports"
+  },
+  {
+    "question": "Which country hosted the 2016 Summer Olympics?",
+    "question_rw": "",
+    "options": ["Brazil", "China", "United Kingdom", "Japan"],
+    "answer": "Brazil",
+    "category": "Sports"
+  },
+  {
+    "question": "In basketball, how many points is a free throw worth?",
+    "question_rw": "",
+    "options": ["1", "2", "3", "4"],
+    "answer": "1",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport is associated with Wimbledon?",
+    "question_rw": "",
+    "options": ["Golf", "Tennis", "Cricket", "Rugby"],
+    "answer": "Tennis",
+    "category": "Sports"
+  },
+  {
+    "question": "Which country is strongly associated with the martial art judo?",
+    "question_rw": "",
+    "options": ["Japan", "Brazil", "India", "China"],
+    "answer": "Japan",
+    "category": "Sports"
+  },
+  {
+    "question": "How many points does a touchdown normally score in American football before any extra play?",
+    "question_rw": "",
+    "options": ["3", "5", "6", "7"],
+    "answer": "6",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport is played at the Tour de France?",
+    "question_rw": "",
+    "options": ["Cycling", "Running", "Swimming", "Skiing"],
+    "answer": "Cycling",
+    "category": "Sports"
+  },
+  {
+    "question": "What is the maximum score with one dart in standard darts?",
+    "question_rw": "",
+    "options": ["50", "60", "100", "180"],
+    "answer": "60",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport uses a pommel horse?",
+    "question_rw": "",
+    "options": ["Gymnastics", "Wrestling", "Fencing", "Archery"],
+    "answer": "Gymnastics",
+    "category": "Sports"
+  },
+  {
+    "question": "How long is a standard Olympic swimming pool?",
+    "question_rw": "",
+    "options": ["25 meters", "50 meters", "75 meters", "100 meters"],
+    "answer": "50 meters",
+    "category": "Sports"
+  },
+  {
+    "question": "Which country is the traditional birthplace of modern cricket?",
+    "question_rw": "",
+    "options": ["England", "Australia", "India", "South Africa"],
+    "answer": "England",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport uses terms such as birdie and eagle?",
+    "question_rw": "",
+    "options": ["Golf", "Tennis", "Baseball", "Hockey"],
+    "answer": "Golf",
+    "category": "Sports"
+  },
+  {
+    "question": "What is a score of zero called in tennis?",
+    "question_rw": "",
+    "options": ["Nil", "Love", "Duck", "Blank"],
+    "answer": "Love",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport features a scrum?",
+    "question_rw": "",
+    "options": ["Rugby", "Basketball", "Tennis", "Boxing"],
+    "answer": "Rugby",
+    "category": "Sports"
+  },
+  {
+    "question": "Which country is famous for the sport of sumo wrestling?",
+    "question_rw": "",
+    "options": ["Japan", "Mongolia", "Korea", "Thailand"],
+    "answer": "Japan",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport uses a puck?",
+    "question_rw": "",
+    "options": ["Ice hockey", "Field hockey", "Lacrosse", "Curling"],
+    "answer": "Ice hockey",
+    "category": "Sports"
+  },
+  {
+    "question": "How many players are on the court for one volleyball team at a time?",
+    "question_rw": "",
+    "options": ["5", "6", "7", "8"],
+    "answer": "6",
+    "category": "Sports"
+  },
+  {
+    "question": "Which athletics event combines running, jumping and throwing events over two days?",
+    "question_rw": "",
+    "options": ["Decathlon", "Heptathlon", "Pentathlon", "Triathlon"],
+    "answer": "Decathlon",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport has the positions scrum-half and fly-half?",
+    "question_rw": "",
+    "options": ["Rugby", "Football", "Cricket", "Hockey"],
+    "answer": "Rugby",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport is played on a diamond-shaped field?",
+    "question_rw": "",
+    "options": ["Baseball", "Tennis", "Golf", "Rugby"],
+    "answer": "Baseball",
+    "category": "Sports"
+  },
+  {
+    "question": "Which sport awards a yellow jersey to the overall leader in the Tour de France?",
+    "question_rw": "",
+    "options": ["Cycling", "Motor racing", "Athletics", "Rowing"],
+    "answer": "Cycling",
+    "category": "Sports"
+  },
+
+  {
+    "question": "What does CPU stand for?",
+    "question_rw": "",
+    "options": ["Central Processing Unit", "Computer Power Utility", "Central Program User", "Core Processing Utility"],
+    "answer": "Central Processing Unit",
+    "category": "Technology"
+  },
+  {
+    "question": "What does RAM stand for?",
+    "question_rw": "",
+    "options": ["Random Access Memory", "Rapid Application Module", "Read Access Machine", "Remote Access Memory"],
+    "answer": "Random Access Memory",
+    "category": "Technology"
+  },
+  {
+    "question": "Which device is commonly used to move a pointer on a computer screen?",
+    "question_rw": "",
+    "options": ["Mouse", "Printer", "Speaker", "Router"],
+    "answer": "Mouse",
+    "category": "Technology"
+  },
+  {
+    "question": "What does URL stand for?",
+    "question_rw": "",
+    "options": ["Uniform Resource Locator", "Universal Routing Link", "User Resource Line", "Unified Reference Location"],
+    "answer": "Uniform Resource Locator",
+    "category": "Technology"
+  },
+  {
+    "question": "Which technology is commonly used for short-range wireless connections between devices?",
+    "question_rw": "",
+    "options": ["Bluetooth", "GPS", "Ethernet", "HDMI"],
+    "answer": "Bluetooth",
+    "category": "Technology"
+  },
+  {
+    "question": "What is the main function of a router?",
+    "question_rw": "",
+    "options": ["Direct network traffic", "Print documents", "Store photographs", "Display images"],
+    "answer": "Direct network traffic",
+    "category": "Technology"
+  },
+  {
+    "question": "Which company developed the Android operating system with the Open Handset Alliance?",
+    "question_rw": "",
+    "options": ["Google", "IBM", "Nokia", "Adobe"],
+    "answer": "Google",
+    "category": "Technology"
+  },
+  {
+    "question": "Which file extension is commonly used for a JavaScript file?",
+    "question_rw": "",
+    "options": [".html", ".css", ".js", ".json"],
+    "answer": ".js",
+    "category": "Technology"
+  },
+  {
+    "question": "Which file format is commonly used for structured data in web applications?",
+    "question_rw": "",
+    "options": ["JSON", "MP3", "PNG", "MP4"],
+    "answer": "JSON",
+    "category": "Technology"
+  },
+  {
+    "question": "What does HTML stand for?",
+    "question_rw": "",
+    "options": ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Management Language", "Home Tool Markup Language"],
+    "answer": "HyperText Markup Language",
+    "category": "Technology"
+  },
+  {
+    "question": "What does CSS mainly control on a webpage?",
+    "question_rw": "",
+    "options": ["Presentation and styling", "Database storage", "Server electricity", "Internet speed"],
+    "answer": "Presentation and styling",
+    "category": "Technology"
+  },
+  {
+    "question": "Which protocol is commonly used to transfer webpages securely?",
+    "question_rw": "",
+    "options": ["HTTPS", "FTP", "SMTP", "POP3"],
+    "answer": "HTTPS",
+    "category": "Technology"
+  },
+  {
+    "question": "What does AI stand for?",
+    "question_rw": "",
+    "options": ["Artificial Intelligence", "Automated Internet", "Advanced Interface", "Artificial Internet"],
+    "answer": "Artificial Intelligence",
+    "category": "Technology"
+  },
+  {
+    "question": "Which device converts digital information into a printed document?",
+    "question_rw": "",
+    "options": ["Scanner", "Printer", "Router", "Monitor"],
+    "answer": "Printer",
+    "category": "Technology"
+  },
+  {
+    "question": "Which technology provides location information using satellites?",
+    "question_rw": "",
+    "options": ["GPS", "USB", "NFC", "HDMI"],
+    "answer": "GPS",
+    "category": "Technology"
+  },
+  {
+    "question": "Which storage device has no moving mechanical parts and uses flash memory?",
+    "question_rw": "",
+    "options": ["SSD", "Floppy disk", "Tape drive", "CD-ROM"],
+    "answer": "SSD",
+    "category": "Technology"
+  },
+  {
+    "question": "What is phishing mainly designed to do?",
+    "question_rw": "",
+    "options": ["Trick users into revealing information", "Improve internet speed", "Repair hardware", "Compress files"],
+    "answer": "Trick users into revealing information",
+    "category": "Technology"
+  },
+  {
+    "question": "Which symbol is commonly used in an email address?",
+    "question_rw": "",
+    "options": ["@", "#", "$", "%"],
+    "answer": "@",
+    "category": "Technology"
+  },
+  {
+    "question": "What is cloud computing?",
+    "question_rw": "",
+    "options": ["Using remote internet-based computing resources", "Predicting weather with satellites", "Repairing computers", "Using only offline software"],
+    "answer": "Using remote internet-based computing resources",
+    "category": "Technology"
+  },
+  {
+    "question": "Which language is primarily used to style HTML webpages?",
+    "question_rw": "",
+    "options": ["CSS", "SQL", "Python", "C++"],
+    "answer": "CSS",
+    "category": "Technology"
+  },
+  {
+    "question": "Which programming language is widely used for web browser interactivity?",
+    "question_rw": "",
+    "options": ["JavaScript", "Fortran", "COBOL", "Assembly"],
+    "answer": "JavaScript",
+    "category": "Technology"
+  },
+  {
+    "question": "What is a database used for?",
+    "question_rw": "",
+    "options": ["Organizing and storing data", "Cooling a computer", "Displaying sound", "Charging batteries"],
+    "answer": "Organizing and storing data",
+    "category": "Technology"
+  },
+  {
+    "question": "What does USB commonly allow?",
+    "question_rw": "",
+    "options": ["Connecting and transferring data between devices", "Creating earthquakes", "Increasing screen size", "Measuring temperature"],
+    "answer": "Connecting and transferring data between devices",
+    "category": "Technology"
+  },
+  {
+    "question": "Which device displays visual output from a computer?",
+    "question_rw": "",
+    "options": ["Monitor", "Keyboard", "Microphone", "Router"],
+    "answer": "Monitor",
+    "category": "Technology"
+  },
+  {
+    "question": "What is a strong password generally designed to provide?",
+    "question_rw": "",
+    "options": ["Better account security", "Faster charging", "Higher screen resolution", "More storage"],
+    "answer": "Better account security",
+    "category": "Technology"
+  },
+
+  {
+    "question": "Which African country is famous for the ancient rock churches of Lalibela?",
+    "question_rw": "",
+    "options": ["Ethiopia", "Kenya", "Ghana", "Senegal"],
+    "answer": "Ethiopia",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Lagos?",
+    "question_rw": "",
+    "options": ["Nigeria", "Ghana", "Cameroon", "Benin"],
+    "answer": "Nigeria",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country is home to the Serengeti National Park?",
+    "question_rw": "",
+    "options": ["Tanzania", "Zambia", "Zimbabwe", "Namibia"],
+    "answer": "Tanzania",
+    "category": "Africa"
+  },
+  {
+    "question": "Which country is home to Victoria Falls on the Zambezi River?",
+    "question_rw": "",
+    "options": ["Zambia and Zimbabwe", "Kenya and Uganda", "Ghana and Togo", "Egypt and Sudan"],
+    "answer": "Zambia and Zimbabwe",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Dakar as its capital?",
+    "question_rw": "",
+    "options": ["Senegal", "Gambia", "Mauritania", "Guinea"],
+    "answer": "Senegal",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the largest population?",
+    "question_rw": "",
+    "options": ["Nigeria", "Egypt", "Ethiopia", "South Africa"],
+    "answer": "Nigeria",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country is famous for the Okavango Delta?",
+    "question_rw": "",
+    "options": ["Botswana", "Namibia", "Angola", "Zambia"],
+    "answer": "Botswana",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Casablanca?",
+    "question_rw": "",
+    "options": ["Morocco", "Tunisia", "Algeria", "Libya"],
+    "answer": "Morocco",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country is known for the Great Rift Valley?",
+    "question_rw": "",
+    "options": ["Kenya", "Ghana", "Senegal", "Morocco"],
+    "answer": "Kenya",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the capital city Addis Ababa?",
+    "question_rw": "",
+    "options": ["Ethiopia", "Eritrea", "Somalia", "Djibouti"],
+    "answer": "Ethiopia",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Luanda?",
+    "question_rw": "",
+    "options": ["Angola", "Mozambique", "Namibia", "Zambia"],
+    "answer": "Angola",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Maputo?",
+    "question_rw": "",
+    "options": ["Mozambique", "Malawi", "Zambia", "Tanzania"],
+    "answer": "Mozambique",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country is home to the ancient pyramids of Meroë?",
+    "question_rw": "",
+    "options": ["Sudan", "Egypt", "Libya", "Chad"],
+    "answer": "Sudan",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the capital city Windhoek?",
+    "question_rw": "",
+    "options": ["Namibia", "Botswana", "Zimbabwe", "Zambia"],
+    "answer": "Namibia",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Abidjan?",
+    "question_rw": "",
+    "options": ["Côte d'Ivoire", "Ghana", "Liberia", "Togo"],
+    "answer": "Côte d'Ivoire",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the capital city of Freetown?",
+    "question_rw": "",
+    "options": ["Sierra Leone", "Liberia", "Guinea", "Gambia"],
+    "answer": "Sierra Leone",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the capital city of Monrovia?",
+    "question_rw": "",
+    "options": ["Liberia", "Sierra Leone", "Ghana", "Guinea"],
+    "answer": "Liberia",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country is known for the ancient city of Carthage?",
+    "question_rw": "",
+    "options": ["Tunisia", "Morocco", "Algeria", "Egypt"],
+    "answer": "Tunisia",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Dar es Salaam?",
+    "question_rw": "",
+    "options": ["Tanzania", "Kenya", "Uganda", "Rwanda"],
+    "answer": "Tanzania",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Kampala?",
+    "question_rw": "",
+    "options": ["Uganda", "Kenya", "Rwanda", "Burundi"],
+    "answer": "Uganda",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Lusaka?",
+    "question_rw": "",
+    "options": ["Zambia", "Zimbabwe", "Malawi", "Botswana"],
+    "answer": "Zambia",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the capital city Harare?",
+    "question_rw": "",
+    "options": ["Zimbabwe", "Zambia", "Botswana", "Namibia"],
+    "answer": "Zimbabwe",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country is famous for Table Mountain?",
+    "question_rw": "",
+    "options": ["South Africa", "Lesotho", "Eswatini", "Namibia"],
+    "answer": "South Africa",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country has the city of Antananarivo?",
+    "question_rw": "",
+    "options": ["Madagascar", "Mauritius", "Seychelles", "Comoros"],
+    "answer": "Madagascar",
+    "category": "Africa"
+  },
+  {
+    "question": "Which African country is the largest island country by land area?",
+    "question_rw": "",
+    "options": ["Madagascar", "Mauritius", "Seychelles", "Comoros"],
+    "answer": "Madagascar",
+    "category": "Africa"
+  },
+
+  {
+    "question": "Which language has the largest number of native speakers worldwide?",
+    "question_rw": "",
+    "options": ["Spanish", "Mandarin Chinese", "English", "Arabic"],
+    "answer": "Mandarin Chinese",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which instrument has black and white keys?",
+    "question_rw": "",
+    "options": ["Piano", "Violin", "Trumpet", "Flute"],
+    "answer": "Piano",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "How many sides does a hexagon have?",
+    "question_rw": "",
+    "options": ["5", "6", "7", "8"],
+    "answer": "6",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which color is produced by mixing blue and yellow paint?",
+    "question_rw": "",
+    "options": ["Purple", "Green", "Orange", "Brown"],
+    "answer": "Green",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "How many days are there in a leap year?",
+    "question_rw": "",
+    "options": ["365", "366", "364", "367"],
+    "answer": "366",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which month has the fewest days in a normal year?",
+    "question_rw": "",
+    "options": ["January", "February", "April", "June"],
+    "answer": "February",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "What is the Roman numeral for 50?",
+    "question_rw": "",
+    "options": ["L", "C", "X", "V"],
+    "answer": "L",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "How many degrees are in a full circle?",
+    "question_rw": "",
+    "options": ["90", "180", "270", "360"],
+    "answer": "360",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which shape has three sides?",
+    "question_rw": "",
+    "options": ["Square", "Triangle", "Pentagon", "Circle"],
+    "answer": "Triangle",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "What is the smallest prime number?",
+    "question_rw": "",
+    "options": ["0", "1", "2", "3"],
+    "answer": "2",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which number is known as a dozen?",
+    "question_rw": "",
+    "options": ["10", "11", "12", "13"],
+    "answer": "12",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which continent is the smallest by land area?",
+    "question_rw": "",
+    "options": ["Europe", "Australia", "Antarctica", "South America"],
+    "answer": "Australia",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which animal is commonly called the king of the jungle?",
+    "question_rw": "",
+    "options": ["Tiger", "Lion", "Elephant", "Leopard"],
+    "answer": "Lion",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which mammal is capable of true sustained flight?",
+    "question_rw": "",
+    "options": ["Bat", "Squirrel", "Monkey", "Kangaroo"],
+    "answer": "Bat",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which bird is commonly associated with Antarctica?",
+    "question_rw": "",
+    "options": ["Penguin", "Eagle", "Peacock", "Ostrich"],
+    "answer": "Penguin",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "What do bees collect from flowers to make honey?",
+    "question_rw": "",
+    "options": ["Nectar", "Leaves", "Seeds", "Bark"],
+    "answer": "Nectar",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which animal is the largest land mammal?",
+    "question_rw": "",
+    "options": ["Giraffe", "African elephant", "Hippopotamus", "Rhinoceros"],
+    "answer": "African elephant",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which animal is known for changing its skin color for camouflage?",
+    "question_rw": "",
+    "options": ["Chameleon", "Horse", "Elephant", "Gorilla"],
+    "answer": "Chameleon",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which animal is known for having a long trunk?",
+    "question_rw": "",
+    "options": ["Elephant", "Giraffe", "Rhino", "Camel"],
+    "answer": "Elephant",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which animal is known for its black-and-white stripes?",
+    "question_rw": "",
+    "options": ["Zebra", "Cheetah", "Gorilla", "Buffalo"],
+    "answer": "Zebra",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which animal is famous for its ability to store water in its body adaptations for desert life?",
+    "question_rw": "",
+    "options": ["Camel", "Penguin", "Dolphin", "Panda"],
+    "answer": "Camel",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which sea animal is known for having eight arms?",
+    "question_rw": "",
+    "options": ["Octopus", "Shark", "Dolphin", "Seal"],
+    "answer": "Octopus",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which animal is the fastest land animal?",
+    "question_rw": "",
+    "options": ["Cheetah", "Lion", "Horse", "Leopard"],
+    "answer": "Cheetah",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which animal is known for building dams?",
+    "question_rw": "",
+    "options": ["Beaver", "Otter", "Fox", "Badger"],
+    "answer": "Beaver",
+    "category": "General Knowledge"
+  },
+  {
+    "question": "Which insect produces silk?",
+    "question_rw": "",
+    "options": ["Silkworm", "Ant", "Grasshopper", "Beetle"],
+    "answer": "Silkworm",
+    "category": "General Knowledge"
+  },
+
+  {
+    "question": "What is the main ingredient in traditional bread?",
+    "question_rw": "",
+    "options": ["Flour", "Rice", "Beans", "Corn oil"],
+    "answer": "Flour",
+    "category": "Food"
+  },
+  {
+    "question": "Which fruit is traditionally used to make guacamole?",
+    "question_rw": "",
+    "options": ["Avocado", "Mango", "Apple", "Banana"],
+    "answer": "Avocado",
+    "category": "Food"
+  },
+  {
+    "question": "Which grain is the main ingredient in many types of pasta?",
+    "question_rw": "",
+    "options": ["Wheat", "Rice", "Barley", "Oats"],
+    "answer": "Wheat",
+    "category": "Food"
+  },
+  {
+    "question": "Which fruit is known for having seeds on its outer surface?",
+    "question_rw": "",
+    "options": ["Strawberry", "Apple", "Orange", "Pear"],
+    "answer": "Strawberry",
+    "category": "Food"
+  },
+  {
+    "question": "Which spice is commonly made from dried bark?",
+    "question_rw": "",
+    "options": ["Cinnamon", "Pepper", "Paprika", "Ginger"],
+    "answer": "Cinnamon",
+    "category": "Food"
+  },
+  {
+    "question": "Which country is strongly associated with sushi?",
+    "question_rw": "",
+    "options": ["Japan", "Mexico", "Italy", "India"],
+    "answer": "Japan",
+    "category": "Food"
+  },
+  {
+    "question": "Which fruit is traditionally associated with the production of cider?",
+    "question_rw": "",
+    "options": ["Apple", "Grape", "Peach", "Lemon"],
+    "answer": "Apple",
+    "category": "Food"
+  },
+  {
+    "question": "Which vegetable is commonly used to make french fries?",
+    "question_rw": "",
+    "options": ["Potato", "Carrot", "Cabbage", "Spinach"],
+    "answer": "Potato",
+    "category": "Food"
+  },
+  {
+    "question": "Which dairy product is made by fermenting milk?",
+    "question_rw": "",
+    "options": ["Yogurt", "Butter", "Cream", "Whey"],
+    "answer": "Yogurt",
+    "category": "Food"
+  },
+  {
+    "question": "Which fruit is a major ingredient in traditional orange juice?",
+    "question_rw": "",
+    "options": ["Orange", "Lime", "Grapefruit", "Lemon"],
+    "answer": "Orange",
+    "category": "Food"
+  },
+  {
+    "question": "Which country is associated with the dish paella?",
+    "question_rw": "",
+    "options": ["Spain", "France", "Portugal", "Italy"],
+    "answer": "Spain",
+    "category": "Food"
+  },
+  {
+    "question": "Which food is made from fermented soybeans in many Asian cuisines?",
+    "question_rw": "",
+    "options": ["Soy sauce", "Cornbread", "Pancake", "Cheese"],
+    "answer": "Soy sauce",
+    "category": "Food"
+  },
+  {
+    "question": "Which fruit is dried to make raisins?",
+    "question_rw": "",
+    "options": ["Grape", "Plum", "Apple", "Fig"],
+    "answer": "Grape",
+    "category": "Food"
+  },
+  {
+    "question": "Which nut is traditionally used in marzipan?",
+    "question_rw": "",
+    "options": ["Almond", "Peanut", "Walnut", "Cashew"],
+    "answer": "Almond",
+    "category": "Food"
+  },
+  {
+    "question": "Which herb is traditionally associated with pesto?",
+    "question_rw": "",
+    "options": ["Basil", "Mint", "Parsley", "Thyme"],
+    "answer": "Basil",
+    "category": "Food"
+  },
+  {
+    "question": "Which fruit is known for its high vitamin C content?",
+    "question_rw": "",
+    "options": ["Orange", "Banana", "Grape", "Pear"],
+    "answer": "Orange",
+    "category": "Food"
+  },
+  {
+    "question": "Which grain is commonly used to make risotto?",
+    "question_rw": "",
+    "options": ["Rice", "Wheat", "Corn", "Oats"],
+    "answer": "Rice",
+    "category": "Food"
+  },
+  {
+    "question": "Which food is traditionally made from chickpeas and tahini?",
+    "question_rw": "",
+    "options": ["Hummus", "Paella", "Sushi", "Tacos"],
+    "answer": "Hummus",
+    "category": "Food"
+  },
+  {
+    "question": "Which fruit has varieties such as Granny Smith and Fuji?",
+    "question_rw": "",
+    "options": ["Apple", "Pear", "Peach", "Plum"],
+    "answer": "Apple",
+    "category": "Food"
+  },
+  {
+    "question": "Which spice gives turmeric its characteristic yellow color?",
+    "question_rw": "",
+    "options": ["Curcumin", "Capsaicin", "Caffeine", "Menthol"],
+    "answer": "Curcumin",
+    "category": "Food"
+  },
+  {
+    "question": "Which food is traditionally associated with Mexico and made using a folded tortilla?",
+    "question_rw": "",
+    "options": ["Taco", "Sushi", "Croissant", "Risotto"],
+    "answer": "Taco",
+    "category": "Food"
+  },
+  {
+    "question": "Which fruit grows in bunches and is commonly used to make wine?",
+    "question_rw": "",
+    "options": ["Grape", "Banana", "Pineapple", "Mango"],
+    "answer": "Grape",
+    "category": "Food"
+  },
+  {
+    "question": "Which vegetable is commonly used to make sauerkraut?",
+    "question_rw": "",
+    "options": ["Cabbage", "Carrot", "Potato", "Onion"],
+    "answer": "Cabbage",
+    "category": "Food"
+  },
+  {
+    "question": "Which tropical fruit has a rough exterior and sweet yellow flesh?",
+    "question_rw": "",
+    "options": ["Pineapple", "Apple", "Pear", "Cherry"],
+    "answer": "Pineapple",
+    "category": "Food"
+  },
+  {
+    "question": "Which food is a common source of protein made from curdled milk?",
+    "question_rw": "",
+    "options": ["Cheese", "Bread", "Rice", "Honey"],
+    "answer": "Cheese",
+    "category": "Food"
+  },
+
+  {
+    "question": "Which financial institution typically accepts deposits and provides loans?",
+    "question_rw": "",
+    "options": ["Bank", "Museum", "Library", "Hospital"],
+    "answer": "Bank",
+    "category": "Finance"
+  },
+  {
+    "question": "What is money deposited into a bank account generally called?",
+    "question_rw": "",
+    "options": ["Deposit", "Invoice", "Dividend", "Mortgage"],
+    "answer": "Deposit",
+    "category": "Finance"
+  },
+  {
+    "question": "What is interest?",
+    "question_rw": "",
+    "options": ["A cost or return associated with borrowed or saved money", "A type of currency", "A bank building", "A government tax only"],
+    "answer": "A cost or return associated with borrowed or saved money",
+    "category": "Finance"
+  },
+  {
+    "question": "What does ATM stand for?",
+    "question_rw": "",
+    "options": ["Automated Teller Machine", "Automatic Transfer Method", "Account Transaction Manager", "Automated Tax Machine"],
+    "answer": "Automated Teller Machine",
+    "category": "Finance"
+  },
+  {
+    "question": "What is a budget used for?",
+    "question_rw": "",
+    "options": ["Planning income and expenses", "Printing money", "Measuring temperature", "Calculating distance"],
+    "answer": "Planning income and expenses",
+    "category": "Finance"
+  },
+  {
+    "question": "What is a loan?",
+    "question_rw": "",
+    "options": ["Money borrowed that is generally repaid", "A type of bank card", "A government building", "A savings account"],
+    "answer": "Money borrowed that is generally repaid",
+    "category": "Finance"
+  },
+  {
+    "question": "What is saving money?",
+    "question_rw": "",
+    "options": ["Setting money aside for future use", "Spending all income immediately", "Borrowing from a bank", "Paying a tax"],
+    "answer": "Setting money aside for future use",
+    "category": "Finance"
+  },
+  {
+    "question": "What does a debit card normally allow a customer to do?",
+    "question_rw": "",
+    "options": ["Spend money from a linked account", "Create unlimited money", "Avoid all bank fees", "Guarantee investment profits"],
+    "answer": "Spend money from a linked account",
+    "category": "Finance"
+  },
+  {
+    "question": "What is inflation?",
+    "question_rw": "",
+    "options": ["A general rise in prices over time", "A fall in population", "A type of bank account", "A fixed exchange rate"],
+    "answer": "A general rise in prices over time",
+    "category": "Finance"
+  },
+  {
+    "question": "What is an exchange rate?",
+    "question_rw": "",
+    "options": ["The value of one currency relative to another", "A bank password", "A type of tax", "A loan agreement"],
+    "answer": "The value of one currency relative to another",
+    "category": "Finance"
+  },
+  {
+    "question": "What is a credit card primarily used for?",
+    "question_rw": "",
+    "options": ["Making purchases using a line of credit", "Storing cash physically", "Printing banknotes", "Measuring interest rates"],
+    "answer": "Making purchases using a line of credit",
+    "category": "Finance"
+  },
+  {
+    "question": "What is a transaction?",
+    "question_rw": "",
+    "options": ["An exchange or movement of money or assets", "A type of building", "A bank employee", "A currency symbol"],
+    "answer": "An exchange or movement of money or assets",
+    "category": "Finance"
+  },
+  {
+    "question": "What is a currency?",
+    "question_rw": "",
+    "options": ["A system of money used in a country or region", "A type of loan", "A financial password", "A bank branch"],
+    "answer": "A system of money used in a country or region",
+    "category": "Finance"
+  },
+  {
+    "question": "What is a financial institution?",
+    "question_rw": "",
+    "options": ["An organization that provides financial services", "A school", "A sports club", "A transport company"],
+    "answer": "An organization that provides financial services",
+    "category": "Finance"
+  },
+  {
+    "question": "What is an investment?",
+    "question_rw": "",
+    "options": ["Putting money or resources into something with an expected future benefit", "A bank password", "A receipt", "A daily expense"],
+    "answer": "Putting money or
 ]
