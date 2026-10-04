@@ -34,7 +34,7 @@
   const QUESTIONS_PER_ROUND = 10;
   const TIME_PER_QUESTION = 20;
   const POINTS_PER_CORRECT = 10;
-  const TOTAL_ROUNDS = 500;
+  const TOTAL_ROUNDS = 100;
   const UNLOCK_PERCENT = 60;
 
   const QUESTIONS_FILE = "./questions.json";
