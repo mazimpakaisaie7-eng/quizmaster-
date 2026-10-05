@@ -3,7 +3,8 @@
 
   /* =========================================================
      QUIZ MASTER 🇷🇼
-     QUESTIONS ENGINE - FULL VERSION
+     QUESTIONS ENGINE
+     FULL VERSION + DIFFICULTY
      ========================================================= */
 
   /* =========================
@@ -18,6 +19,36 @@
   const POINTS_PER_CORRECT = 10;
   const UNLOCK_PERCENT = 60;
 
+  /* =========================
+     DIFFICULTIES
+     ========================= */
+
+  const DIFFICULTIES = {
+    easy: {
+      label: "Easy",
+      icon: "🟢",
+      description: "Beginner-friendly questions"
+    },
+
+    medium: {
+      label: "Medium",
+      icon: "🟡",
+      description: "Balanced challenge"
+    },
+
+    hard: {
+      label: "Hard",
+      icon: "🔴",
+      description: "Challenging questions"
+    }
+  };
+
+  const DIFFICULTY_ORDER = ["easy", "medium", "hard"];
+
+  /* =========================
+     STORAGE
+     ========================= */
+
   const STORAGE = {
     progress: "quizmasterProgress",
     unlockedRounds: "quizmasterUnlockedRounds",
@@ -28,10 +59,13 @@
 
     completedRounds: "quizmasterCompletedRounds",
     roundStars: "quizmasterRoundStars",
+
     achievements: "quizmasterAchievements",
     personalBest: "quizmasterPersonalBest",
     totalScore: "quizmasterTotalScore",
-    dailyChallenge: "quizmasterDailyChallenge"
+    dailyChallenge: "quizmasterDailyChallenge",
+
+    difficulty: "quizmasterDifficulty"
   };
 
   /* =========================
@@ -40,6 +74,11 @@
 
   let allQuestions = [];
   let rounds = [];
+
+  let selectedDifficulty =
+    normalizeDifficulty(
+      localStorage.getItem(STORAGE.difficulty) || "medium"
+    );
 
   let currentRound = 1;
   let currentQuestionIndex = 0;
@@ -70,165 +109,170 @@
 
   let musicInteractionListenersAdded = false;
   let musicPlayInProgress = false;
-
   let musicSaveInterval = null;
 
   /* =========================
-     DOM HELPER
+     DOM ELEMENTS
      ========================= */
 
-  const $ = (id) => document.getElementById(id);
-
   const elements = {
-    homeScreen: $("homeScreen"),
-    roundsScreen: $("roundsScreen"),
-    quizScreen: $("quizScreen"),
-    resultScreen: $("resultScreen"),
-    reviewScreen: $("reviewScreen"),
-    errorScreen: $("errorScreen"),
-    settingsScreen: $("settingsScreen"),
+    homeScreen: document.getElementById("homeScreen"),
+    roundsScreen: document.getElementById("roundsScreen"),
+    quizScreen: document.getElementById("quizScreen"),
+    resultScreen: document.getElementById("resultScreen"),
+    reviewScreen: document.getElementById("reviewScreen"),
+    errorScreen: document.getElementById("errorScreen"),
+    settingsScreen: document.getElementById("settingsScreen"),
 
-    startBtn: $("startBtn"),
-    continueBtn: $("continueBtn"),
-    roundsBtn: $("roundsBtn"),
-    settingsBtn: $("settingsBtn"),
-    shareBtn: $("shareBtn"),
+    startBtn: document.getElementById("startBtn"),
+    continueBtn: document.getElementById("continueBtn"),
+    roundsBtn: document.getElementById("roundsBtn"),
+    settingsBtn: document.getElementById("settingsBtn"),
+    shareBtn: document.getElementById("shareBtn"),
 
-    roundsBackBtn: $("roundsBackBtn"),
-    roundGrid: $("roundGrid"),
+    roundsBackBtn: document.getElementById("roundsBackBtn"),
+    roundGrid: document.getElementById("roundGrid"),
 
-    questionNumber: $("questionNumber"),
-    roundDisplay: $("roundDisplay"),
-    score: $("score"),
-    timer: $("timer"),
-    progressBar: $("progressBar"),
-    category: $("category"),
-    question: $("question"),
-    options: $("options"),
-    message: $("message"),
-    nextBtn: $("nextBtn"),
-    quizHomeBtn: $("quizHomeBtn"),
+    questionNumber: document.getElementById("questionNumber"),
+    roundDisplay: document.getElementById("roundDisplay"),
+    score: document.getElementById("score"),
+    timer: document.getElementById("timer"),
+    progressBar: document.getElementById("progressBar"),
+    category: document.getElementById("category"),
+    question: document.getElementById("question"),
+    options: document.getElementById("options"),
+    message: document.getElementById("message"),
+    nextBtn: document.getElementById("nextBtn"),
 
-    nextRoundBtn: $("nextRoundBtn"),
-    restartBtn: $("restartBtn"),
-    reviewBtn: $("reviewBtn"),
-    resultHomeBtn: $("resultHomeBtn"),
+    quizHomeBtn: document.getElementById("quizHomeBtn"),
 
-    correctCount: $("correctCount"),
-    wrongCount: $("wrongCount"),
-    finalScore: $("finalScore"),
-    resultPercent: $("resultPercent"),
-    resultMessage: $("resultMessage"),
-    finishedRound: $("finishedRound"),
+    nextRoundBtn: document.getElementById("nextRoundBtn"),
+    restartBtn: document.getElementById("restartBtn"),
+    reviewBtn: document.getElementById("reviewBtn"),
+    resultHomeBtn: document.getElementById("resultHomeBtn"),
 
-    reviewList: $("reviewList"),
-    reviewSummary: $("reviewSummary"),
-    reviewRetryBtn: $("reviewRetryBtn"),
-    reviewBackBtn: $("reviewBackBtn"),
+    correctCount: document.getElementById("correctCount"),
+    wrongCount: document.getElementById("wrongCount"),
+    finalScore: document.getElementById("finalScore"),
+    resultPercent: document.getElementById("resultPercent"),
+    resultMessage: document.getElementById("resultMessage"),
+    finishedRound: document.getElementById("finishedRound"),
 
-    musicSwitch: $("musicSwitch"),
-    soundSwitch: $("soundSwitch"),
-    settingsBackBtn: $("settingsBackBtn"),
+    reviewList: document.getElementById("reviewList"),
+    reviewSummary: document.getElementById("reviewSummary"),
+    reviewRetryBtn: document.getElementById("reviewRetryBtn"),
+    reviewBackBtn: document.getElementById("reviewBackBtn"),
 
-    errorMessage: $("errorMessage"),
-    errorRestartBtn: $("errorRestartBtn"),
-    errorHomeBtn: $("errorHomeBtn")
+    musicSwitch: document.getElementById("musicSwitch"),
+    soundSwitch: document.getElementById("soundSwitch"),
+    settingsBackBtn: document.getElementById("settingsBackBtn"),
+
+    errorMessage: document.getElementById("errorMessage"),
+    errorRestartBtn: document.getElementById("errorRestartBtn"),
+    errorHomeBtn: document.getElementById("errorHomeBtn")
   };
 
   /* =========================
-     SAFE HELPERS
+     HELPERS
      ========================= */
 
-  function safeText(element, value) {
-    if (!element) return;
-    element.textContent =
-      value == null ? "" : String(value);
+  function $(id) {
+    return document.getElementById(id);
+  }
+
+  function safeText(value) {
+    if (value === null || value === undefined) {
+      return "";
+    }
+
+    return String(value);
   }
 
   function readJSON(key, fallback) {
     try {
-      const value =
-        localStorage.getItem(key);
+      const value = localStorage.getItem(key);
 
       if (!value) {
         return fallback;
       }
 
       return JSON.parse(value);
-
     } catch (error) {
-      console.warn(
-        "Could not read localStorage:",
-        key,
-        error
-      );
-
+      console.warn("Quiz Master JSON read error:", key, error);
       return fallback;
     }
   }
 
   function writeJSON(key, value) {
     try {
-      localStorage.setItem(
-        key,
-        JSON.stringify(value)
-      );
-
-      return true;
-
+      localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-      console.warn(
-        "Could not write localStorage:",
-        key,
-        error
-      );
-
-      return false;
+      console.warn("Quiz Master JSON write error:", key, error);
     }
   }
 
   function clamp(value, min, max) {
-    return Math.min(
-      Math.max(value, min),
-      max
-    );
+    return Math.min(Math.max(value, min), max);
   }
 
-  /* =========================
-     QUESTION TEXT
-     ========================= */
+  function normalizeDifficulty(value) {
+    const difficulty = safeText(value)
+      .trim()
+      .toLowerCase();
 
-  function getQuestionText(question) {
-    if (!question) {
-      return "";
+    if (difficulty === "low") {
+      return "easy";
     }
 
+    if (difficulty === "beginner") {
+      return "easy";
+    }
+
+    if (difficulty === "normal") {
+      return "medium";
+    }
+
+    if (difficulty === "difficult") {
+      return "hard";
+    }
+
+    if (DIFFICULTIES[difficulty]) {
+      return difficulty;
+    }
+
+    return "medium";
+  }
+
+  function difficultyLabel(value) {
+    const difficulty = normalizeDifficulty(value);
+    return DIFFICULTIES[difficulty].label;
+  }
+
+  function difficultyIcon(value) {
+    const difficulty = normalizeDifficulty(value);
+    return DIFFICULTIES[difficulty].icon;
+  }
+
+  function getQuestionText(question) {
     if (
+      question &&
       typeof question.question_rw === "string" &&
       question.question_rw.trim()
     ) {
-      return question.question_rw.trim();
+      return question.question_rw;
     }
 
-    return String(
-      question.question || ""
-    ).trim();
+    return safeText(question && question.question);
   }
 
   /* =========================
      QUESTION VALIDATION
      ========================= */
 
-  function validateQuestion(
-    question,
-    index
-  ) {
-    if (
-      !question ||
-      typeof question !== "object"
-    ) {
+  function validateQuestion(question, index) {
+    if (!question || typeof question !== "object") {
       throw new Error(
-        `Question ${index + 1} is not a valid object.`
+        `Invalid question at position ${index + 1}.`
       );
     }
 
@@ -237,32 +281,24 @@
       !question.question.trim()
     ) {
       throw new Error(
-        `Question ${index + 1} has no valid "question".`
+        `Question ${index + 1} is missing "question".`
       );
     }
-
-    if (!Array.isArray(question.options)) {
-      throw new Error(
-        `Question ${index + 1} must have an "options" array.`
-      );
-    }
-
-    if (question.options.length < 2) {
-      throw new Error(
-        `Question ${index + 1} needs at least 2 options.`
-      );
-    }
-
-    const options =
-      question.options.map((option) =>
-        String(option).trim()
-      );
 
     if (
-      options.some(
-        (option) => !option
-      )
+      !Array.isArray(question.options) ||
+      question.options.length < 2
     ) {
+      throw new Error(
+        `Question ${index + 1} must have at least 2 options.`
+      );
+    }
+
+    const options = question.options.map(option =>
+      safeText(option).trim()
+    );
+
+    if (options.some(option => !option)) {
       throw new Error(
         `Question ${index + 1} contains an empty option.`
       );
@@ -273,115 +309,80 @@
       !question.answer.trim()
     ) {
       throw new Error(
-        `Question ${index + 1} has no valid "answer".`
+        `Question ${index + 1} is missing "answer".`
       );
     }
 
-    if (
-      !options.includes(
-        question.answer.trim()
-      )
-    ) {
+    const answer = question.answer.trim();
+
+    if (!options.includes(answer)) {
       throw new Error(
-        `Question ${index + 1}: answer does not exactly match one of the options.`
+        `Question ${index + 1}: answer must exactly match one of the options.`
       );
     }
+
+    /*
+      IMPORTANT:
+      If old questions do not have difficulty,
+      they automatically become Medium.
+    */
+
+    const difficulty = normalizeDifficulty(
+      question.difficulty || "medium"
+    );
 
     return {
       ...question,
-      options
+      options,
+      answer,
+      difficulty
     };
   }
 
   /* =========================
-     LOAD QUESTIONS
+     DIFFICULTY QUESTIONS
      ========================= */
 
-  async function loadQuestions() {
-    try {
-      showLoadingState();
+  function getQuestionsForDifficulty(difficulty = selectedDifficulty) {
+    const normalized = normalizeDifficulty(difficulty);
 
-      const response =
-        await fetch(
-          `${QUESTIONS_FILE}?v=${Date.now()}`,
-          {
-            method: "GET",
-            cache: "no-store"
-          }
-        );
-
-      if (!response.ok) {
-        throw new Error(
-          `Could not load questions.json (${response.status}).`
-        );
-      }
-
-      const data =
-        await response.json();
-
-      if (!Array.isArray(data)) {
-        throw new Error(
-          "questions.json must contain an array of questions."
-        );
-      }
-
-      if (data.length === 0) {
-        throw new Error(
-          "questions.json contains no questions."
-        );
-      }
-
-      allQuestions =
-        data.map(
-          (question, index) =>
-            validateQuestion(
-              question,
-              index
-            )
-        );
-
-      buildRounds();
-
-      if (rounds.length === 0) {
-        throw new Error(
-          "No quiz rounds could be created."
-        );
-      }
-
-      initializeUnlockedRounds();
-      renderRounds();
-      updateContinueButton();
-
-      showScreen("homeScreen");
-
-      updateRewards();
-
-      console.log(
-        `Quiz Master: loaded ${allQuestions.length} questions in ${rounds.length} rounds.`
-      );
-
-      return true;
-
-    } catch (error) {
-      console.error(
-        "Quiz Master loading error:",
-        error
-      );
-
-      showError(
-        error && error.message
-          ? error.message
-          : "Could not load the quiz."
-      );
-
-      return false;
-    }
+    return allQuestions.filter(
+      question =>
+        normalizeDifficulty(question.difficulty) === normalized
+    );
   }
 
-  function showLoadingState() {
-    if (elements.question) {
-      elements.question.textContent =
-        "Loading questions...";
+  function ensureValidDifficulty() {
+    if (!allQuestions.length) {
+      return;
+    }
+
+    const hasCurrentDifficulty =
+      allQuestions.some(
+        question =>
+          normalizeDifficulty(question.difficulty) ===
+          selectedDifficulty
+      );
+
+    if (hasCurrentDifficulty) {
+      return;
+    }
+
+    const availableDifficulty = DIFFICULTY_ORDER.find(
+      difficulty =>
+        allQuestions.some(
+          question =>
+            normalizeDifficulty(question.difficulty) === difficulty
+        )
+    );
+
+    if (availableDifficulty) {
+      selectedDifficulty = availableDifficulty;
+
+      localStorage.setItem(
+        STORAGE.difficulty,
+        selectedDifficulty
+      );
     }
   }
 
@@ -392,146 +393,335 @@
   function buildRounds() {
     rounds = [];
 
+    const difficultyQuestions =
+      getQuestionsForDifficulty(selectedDifficulty);
+
     for (
       let i = 0;
-      i < allQuestions.length;
+      i < difficultyQuestions.length;
       i += QUESTIONS_PER_ROUND
     ) {
       rounds.push(
-        allQuestions.slice(
+        difficultyQuestions.slice(
           i,
           i + QUESTIONS_PER_ROUND
         )
       );
     }
+
+    return rounds;
   }
 
   /* =========================
-     ROUND UNLOCK SYSTEM
+     DIFFICULTY STORAGE
+     ========================= */
+
+  function difficultyStorageKey(baseKey, difficulty = selectedDifficulty) {
+    return `${baseKey}_${normalizeDifficulty(difficulty)}`;
+  }
+
+  /* =========================
+     UNLOCKED ROUNDS
      ========================= */
 
   function initializeUnlockedRounds() {
-    let unlocked =
-      readJSON(
-        STORAGE.unlockedRounds,
-        null
-      );
+    const key = difficultyStorageKey(
+      STORAGE.unlockedRounds
+    );
+
+    let unlocked = readJSON(key, null);
 
     if (!Array.isArray(unlocked)) {
-      unlocked = [1];
-    }
+      /*
+        Compatibility with the old version.
 
-    unlocked =
-      unlocked
-        .map(Number)
-        .filter(
-          (round) =>
-            Number.isInteger(round) &&
-            round >= 1 &&
-            round <= rounds.length
+        Old progress did not have difficulty.
+        We use it only for Medium.
+      */
+
+      if (selectedDifficulty === "medium") {
+        const oldUnlocked = readJSON(
+          STORAGE.unlockedRounds,
+          null
         );
 
-    if (!unlocked.includes(1)) {
-      unlocked.unshift(1);
-    }
-
-    unlocked =
-      [...new Set(unlocked)]
-        .sort(
-          (a, b) => a - b
-        );
-
-    writeJSON(
-      STORAGE.unlockedRounds,
-      unlocked
-    );
-  }
-
-  function getUnlockedRounds() {
-    let unlocked =
-      readJSON(
-        STORAGE.unlockedRounds,
-        [1]
-      );
-
-    if (!Array.isArray(unlocked)) {
-      unlocked = [1];
-    }
-
-    unlocked =
-      unlocked
-        .map(Number)
-        .filter(
-          (round) =>
-            Number.isInteger(round) &&
-            round >= 1 &&
-            round <= rounds.length
-        );
-
-    if (!unlocked.includes(1)) {
-      unlocked.push(1);
-    }
-
-    return [
-      ...new Set(unlocked)
-    ].sort(
-      (a, b) => a - b
-    );
-  }
-
-  function updateUnlockedRounds(
-    roundNumber,
-    percent
-  ) {
-    const unlocked =
-      getUnlockedRounds();
-
-    if (
-      percent >= UNLOCK_PERCENT &&
-      roundNumber < rounds.length
-    ) {
-      const nextRound =
-        roundNumber + 1;
-
-      if (
-        !unlocked.includes(
-          nextRound
-        )
-      ) {
-        unlocked.push(
-          nextRound
-        );
+        if (Array.isArray(oldUnlocked)) {
+          unlocked = oldUnlocked;
+        }
       }
     }
 
-    unlocked.sort(
+    if (!Array.isArray(unlocked)) {
+      unlocked = [1];
+    }
+
+    unlocked = unlocked
+      .map(Number)
+      .filter(
+        roundNumber =>
+          Number.isInteger(roundNumber) &&
+          roundNumber >= 1 &&
+          roundNumber <= rounds.length
+      );
+
+    if (!unlocked.includes(1) && rounds.length > 0) {
+      unlocked.unshift(1);
+    }
+
+    unlocked = [...new Set(unlocked)].sort(
       (a, b) => a - b
     );
 
-    writeJSON(
-      STORAGE.unlockedRounds,
-      unlocked
-    );
+    writeJSON(key, unlocked);
 
-    renderRounds();
+    return unlocked;
   }
 
-  function isRoundUnlocked(
-    roundNumber
-  ) {
-    return getUnlockedRounds()
-      .includes(
-        Number(roundNumber)
-      );
+  function getUnlockedRounds() {
+    const key = difficultyStorageKey(
+      STORAGE.unlockedRounds
+    );
+
+    let unlocked = readJSON(key, null);
+
+    if (!Array.isArray(unlocked)) {
+      initializeUnlockedRounds();
+      unlocked = readJSON(key, [1]);
+    }
+
+    return unlocked;
+  }
+
+  function isRoundUnlocked(roundNumber) {
+    return getUnlockedRounds().includes(
+      Number(roundNumber)
+    );
+  }
+
+  function updateUnlockedRounds() {
+    if (!rounds.length) {
+      return;
+    }
+
+    const unlocked = getUnlockedRounds();
+
+    const nextRoundNumber = currentRound + 1;
+
+    if (
+      nextRoundNumber <= rounds.length &&
+      !unlocked.includes(nextRoundNumber)
+    ) {
+      const percentage =
+        currentRoundQuestions.length > 0
+          ? Math.round(
+              (correctAnswers /
+                currentRoundQuestions.length) *
+                100
+            )
+          : 0;
+
+      if (percentage >= UNLOCK_PERCENT) {
+        unlocked.push(nextRoundNumber);
+
+        unlocked.sort((a, b) => a - b);
+
+        writeJSON(
+          difficultyStorageKey(
+            STORAGE.unlockedRounds
+          ),
+          unlocked
+        );
+      }
+    }
   }
 
   /* =========================
-     SCREEN MANAGEMENT
+     COMPLETED ROUNDS
+     ========================= */
+
+  function getCompletedRoundsForDifficulty(
+    difficulty = selectedDifficulty
+  ) {
+    const key = difficultyStorageKey(
+      STORAGE.completedRounds,
+      difficulty
+    );
+
+    let completed = readJSON(key, null);
+
+    if (!Array.isArray(completed)) {
+      /*
+        Migrate old completed rounds to Medium.
+      */
+
+      if (normalizeDifficulty(difficulty) === "medium") {
+        const oldCompleted = readJSON(
+          STORAGE.completedRounds,
+          []
+        );
+
+        if (Array.isArray(oldCompleted)) {
+          completed = oldCompleted;
+        }
+      }
+    }
+
+    if (!Array.isArray(completed)) {
+      completed = [];
+    }
+
+    return completed
+      .map(Number)
+      .filter(Number.isInteger);
+  }
+
+  function saveCompletedRound(roundNumber) {
+    const key = difficultyStorageKey(
+      STORAGE.completedRounds
+    );
+
+    const completed =
+      getCompletedRoundsForDifficulty();
+
+    if (!completed.includes(roundNumber)) {
+      completed.push(roundNumber);
+    }
+
+    completed.sort((a, b) => a - b);
+
+    writeJSON(key, completed);
+  }
+
+  /* =========================
+     STARS
+     ========================= */
+
+  function getRoundStarsForDifficulty(
+    difficulty = selectedDifficulty
+  ) {
+    const key = difficultyStorageKey(
+      STORAGE.roundStars,
+      difficulty
+    );
+
+    let stars = readJSON(key, null);
+
+    if (
+      !stars ||
+      typeof stars !== "object" ||
+      Array.isArray(stars)
+    ) {
+      if (normalizeDifficulty(difficulty) === "medium") {
+        const oldStars = readJSON(
+          STORAGE.roundStars,
+          {}
+        );
+
+        if (
+          oldStars &&
+          typeof oldStars === "object" &&
+          !Array.isArray(oldStars)
+        ) {
+          stars = oldStars;
+        }
+      }
+    }
+
+    if (
+      !stars ||
+      typeof stars !== "object" ||
+      Array.isArray(stars)
+    ) {
+      stars = {};
+    }
+
+    return stars;
+  }
+
+  function saveRoundStars(roundNumber, starsCount) {
+    const key = difficultyStorageKey(
+      STORAGE.roundStars
+    );
+
+    const stars = getRoundStarsForDifficulty();
+
+    stars[String(roundNumber)] = starsCount;
+
+    writeJSON(key, stars);
+  }
+
+  /* =========================
+     LOAD QUESTIONS
+     ========================= */
+
+  async function loadQuestions() {
+    try {
+      const response = await fetch(
+        `${QUESTIONS_FILE}?v=${Date.now()}`,
+        {
+          cache: "no-store"
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `Unable to load questions.json (${response.status}).`
+        );
+      }
+
+      const data = await response.json();
+
+      if (!Array.isArray(data)) {
+        throw new Error(
+          "questions.json must contain an array of questions."
+        );
+      }
+
+      if (!data.length) {
+        throw new Error(
+          "questions.json does not contain any questions."
+        );
+      }
+
+      allQuestions = data.map(validateQuestion);
+
+      ensureValidDifficulty();
+
+      buildRounds();
+
+      if (!rounds.length) {
+        throw new Error(
+          `There are no ${difficultyLabel(
+            selectedDifficulty
+          )} questions available.`
+        );
+      }
+
+      initializeUnlockedRounds();
+      renderRounds();
+      updateContinueButton();
+      updateRewards();
+
+      showScreen("homeScreen");
+    } catch (error) {
+      console.error("Quiz Master load error:", error);
+
+      showError(
+        error && error.message
+          ? error.message
+          : "Unable to load quiz questions."
+      );
+    }
+  }
+
+  /* =========================
+     SCREEN SYSTEM
      ========================= */
 
   function showScreen(screenId) {
-    const screens = [
+    const screenIds = [
       "homeScreen",
+      "difficultyScreen",
       "roundsScreen",
       "quizScreen",
       "resultScreen",
@@ -541,22 +731,213 @@
       "rewardsScreen"
     ];
 
-    screens.forEach((id) => {
+    screenIds.forEach(id => {
       const screen = $(id);
 
-      if (!screen) return;
-
-      screen.classList.toggle(
-        "active",
-        id === screenId
-      );
+      if (screen) {
+        screen.classList.toggle(
+          "active",
+          id === screenId
+        );
+      }
     });
+  }
 
-    if (
-      screenId === "rewardsScreen"
-    ) {
-      updateRewards();
+  /* =========================
+     DIFFICULTY UI
+     ========================= */
+
+  function createDifficultyUI() {
+    let screen = $("difficultyScreen");
+
+    if (!screen) {
+      screen = document.createElement("section");
+
+      screen.id = "difficultyScreen";
+      screen.className = "screen";
+
+      screen.innerHTML = `
+        <div class="container">
+
+          <div class="screen-header">
+            <h2>Choose Difficulty</h2>
+            <p>Select how challenging you want the quiz to be.</p>
+          </div>
+
+          <div id="difficultyGrid" class="button-group"></div>
+
+          <button
+            type="button"
+            id="difficultyBackBtn"
+            class="secondary-btn"
+          >
+            ← Back
+          </button>
+
+        </div>
+      `;
+
+      const roundsScreen =
+        $("roundsScreen");
+
+      if (
+        roundsScreen &&
+        roundsScreen.parentElement
+      ) {
+        roundsScreen.parentElement.insertBefore(
+          screen,
+          roundsScreen
+        );
+      } else {
+        document.body.appendChild(screen);
+      }
     }
+
+    elements.difficultyScreen = screen;
+    elements.difficultyGrid =
+      $("difficultyGrid");
+    elements.difficultyBackBtn =
+      $("difficultyBackBtn");
+
+    renderDifficultyOptions();
+  }
+
+  function renderDifficultyOptions(roundNumber = 1) {
+    const grid =
+      elements.difficultyGrid;
+
+    if (!grid) {
+      return;
+    }
+
+    grid.innerHTML = "";
+
+    DIFFICULTY_ORDER.forEach(difficulty => {
+      const info =
+        DIFFICULTIES[difficulty];
+
+      const button =
+        document.createElement("button");
+
+      button.type = "button";
+
+      /*
+        Use the existing Start Quiz button
+        style when available.
+      */
+
+      button.className =
+        elements.startBtn &&
+        elements.startBtn.className
+          ? elements.startBtn.className
+          : "secondary-btn";
+
+      button.innerHTML = `
+        <span>
+          ${info.icon} ${info.label}
+        </span>
+        <small>
+          ${info.description}
+        </small>
+      `;
+
+      button.addEventListener(
+        "click",
+        () => {
+          chooseDifficulty(
+            difficulty,
+            roundNumber
+          );
+        }
+      );
+
+      grid.appendChild(button);
+    });
+  }
+
+  function showDifficultySelection(
+    roundNumber = 1
+  ) {
+    if (!allQuestions.length) {
+      showError(
+        "Questions are still loading. Please try again."
+      );
+      return;
+    }
+
+    renderDifficultyOptions(roundNumber);
+
+    showScreen("difficultyScreen");
+  }
+
+  function chooseDifficulty(
+    difficulty,
+    roundNumber = 1
+  ) {
+    selectedDifficulty =
+      normalizeDifficulty(difficulty);
+
+    localStorage.setItem(
+      STORAGE.difficulty,
+      selectedDifficulty
+    );
+
+    buildRounds();
+
+    if (!rounds.length) {
+      showDifficultyMessage(
+        `No ${difficultyLabel(
+          selectedDifficulty
+        )} questions are available yet. Add "difficulty": "${selectedDifficulty}" to questions.json.`
+      );
+
+      return;
+    }
+
+    initializeUnlockedRounds();
+    renderRounds();
+
+    const requestedRound =
+      Number(roundNumber) || 1;
+
+    const safeRound =
+      requestedRound >= 1 &&
+      requestedRound <= rounds.length &&
+      isRoundUnlocked(requestedRound)
+        ? requestedRound
+        : 1;
+
+    startQuiz(safeRound);
+  }
+
+  function showDifficultyMessage(message) {
+    if (!elements.difficultyGrid) {
+      return;
+    }
+
+    const oldMessage =
+      $("difficultyMessage");
+
+    if (oldMessage) {
+      oldMessage.remove();
+    }
+
+    const messageElement =
+      document.createElement("p");
+
+    messageElement.id =
+      "difficultyMessage";
+
+    messageElement.className =
+      "message";
+
+    messageElement.textContent =
+      message;
+
+    elements.difficultyGrid.parentElement.insertBefore(
+      messageElement,
+      elements.difficultyGrid
+    );
   }
 
   /* =========================
@@ -564,54 +945,53 @@
      ========================= */
 
   function startQuiz(
-    roundNumber = 1
+    roundNumber = 1,
+    difficulty = null
   ) {
-    roundNumber =
-      Number(roundNumber);
+    if (difficulty) {
+      selectedDifficulty =
+        normalizeDifficulty(difficulty);
+
+      localStorage.setItem(
+        STORAGE.difficulty,
+        selectedDifficulty
+      );
+    }
+
+    buildRounds();
+
+    if (!rounds.length) {
+      showError(
+        `No ${difficultyLabel(
+          selectedDifficulty
+        )} questions are available.`
+      );
+
+      return;
+    }
+
+    initializeUnlockedRounds();
+
+    roundNumber = Number(roundNumber) || 1;
 
     if (
-      !Number.isInteger(
-        roundNumber
-      )
+      roundNumber < 1 ||
+      roundNumber > rounds.length
     ) {
       roundNumber = 1;
     }
 
-    if (!rounds.length) {
-      showError(
-        "Questions have not finished loading yet."
-      );
-      return;
-    }
-
-    if (
-      !isRoundUnlocked(
-        roundNumber
-      )
-    ) {
-      return;
+    if (!isRoundUnlocked(roundNumber)) {
+      roundNumber = 1;
     }
 
     stopTimer();
 
-    currentRound =
-      roundNumber;
-
+    currentRound = roundNumber;
     currentQuestionIndex = 0;
 
     currentRoundQuestions =
-      rounds[
-        currentRound - 1
-      ] || [];
-
-    if (
-      !currentRoundQuestions.length
-    ) {
-      showError(
-        "This round does not contain any questions."
-      );
-      return;
-    }
+      [...rounds[currentRound - 1]];
 
     score = 0;
     correctAnswers = 0;
@@ -619,15 +999,14 @@
 
     selectedAnswer = null;
     answered = false;
+
     quizFinished = false;
 
     reviewQuestions = [];
 
-    saveCurrentRound();
+    saveCurrentProgress();
 
-    showScreen(
-      "quizScreen"
-    );
+    showScreen("quizScreen");
 
     renderQuestion();
 
@@ -638,109 +1017,115 @@
      CONTINUE QUIZ
      ========================= */
 
-  function continueQuiz() {
-    const progress =
-      readJSON(
-        STORAGE.progress,
-        null
-      );
-
-    if (!progress) {
-      startQuiz(1);
+  function updateContinueButton() {
+    if (!elements.continueBtn) {
       return;
     }
+
+    const progress =
+      readJSON(STORAGE.progress, null);
+
+    const validProgress =
+      progress &&
+      Number.isInteger(
+        Number(progress.round)
+      ) &&
+      Number.isInteger(
+        Number(progress.questionIndex)
+      );
+
+    elements.continueBtn.style.display =
+      validProgress
+        ? ""
+        : "none";
+  }
+
+  function continueQuiz() {
+    const progress =
+      readJSON(STORAGE.progress, null);
+
+    if (!progress) {
+      showDifficultySelection(1);
+      return;
+    }
+
+    selectedDifficulty =
+      normalizeDifficulty(
+        progress.difficulty ||
+        localStorage.getItem(
+          STORAGE.difficulty
+        ) ||
+        "medium"
+      );
+
+    localStorage.setItem(
+      STORAGE.difficulty,
+      selectedDifficulty
+    );
+
+    buildRounds();
 
     if (!rounds.length) {
       showError(
-        "Questions have not finished loading yet."
+        `No ${difficultyLabel(
+          selectedDifficulty
+        )} questions are available.`
       );
+
       return;
     }
+
+    initializeUnlockedRounds();
 
     const savedRound =
-      Number(progress.round);
+      Number(progress.round) || 1;
 
-    const savedIndex =
-      Number(
-        progress.questionIndex
-      );
+    const savedQuestionIndex =
+      Number(progress.questionIndex) || 0;
 
     if (
-      !Number.isInteger(
-        savedRound
-      ) ||
       savedRound < 1 ||
-      savedRound > rounds.length
+      savedRound > rounds.length ||
+      !isRoundUnlocked(savedRound)
     ) {
-      localStorage.removeItem(
-        STORAGE.progress
-      );
-
       startQuiz(1);
       return;
     }
 
-    if (
-      !isRoundUnlocked(
-        savedRound
-      )
-    ) {
-      localStorage.removeItem(
-        STORAGE.progress
-      );
-
-      startQuiz(1);
-      return;
-    }
-
-    currentRound =
-      savedRound;
+    currentRound = savedRound;
 
     currentRoundQuestions =
-      rounds[
-        currentRound - 1
-      ] || [];
-
-    if (
-      !currentRoundQuestions.length
-    ) {
-      startQuiz(1);
-      return;
-    }
+      [...rounds[currentRound - 1]];
 
     currentQuestionIndex =
       clamp(
-        Number.isInteger(
-          savedIndex
-        )
-          ? savedIndex
-          : 0,
+        savedQuestionIndex,
         0,
-        currentRoundQuestions.length - 1
+        Math.max(
+          0,
+          currentRoundQuestions.length - 1
+        )
       );
 
     score =
       Number(progress.score) || 0;
 
     correctAnswers =
-      Number(
-        progress.correctAnswers
-      ) || 0;
+      Number(progress.correctAnswers) || 0;
 
     wrongAnswers =
-      Number(
-        progress.wrongAnswers
-      ) || 0;
+      Number(progress.wrongAnswers) || 0;
+
+    reviewQuestions =
+      Array.isArray(progress.reviewQuestions)
+        ? progress.reviewQuestions
+        : [];
 
     selectedAnswer = null;
     answered = false;
     quizFinished = false;
 
-    reviewQuestions = [];
-
-    showScreen(
-      "quizScreen"
-    );
+    showScreen("quizScreen");
 
     renderQuestion();
 
@@ -751,81 +1136,40 @@
      SAVE PROGRESS
      ========================= */
 
-  function saveCurrentRound() {
-    try {
-      localStorage.setItem(
-        STORAGE.currentRound,
-        String(currentRound)
-      );
-    } catch (error) {
-      console.warn(error);
-    }
-  }
-
   function saveCurrentProgress() {
-    if (
-      !currentRoundQuestions.length
-    ) {
-      return;
-    }
+    const progress = {
+      difficulty: selectedDifficulty,
+      round: currentRound,
+      questionIndex: currentQuestionIndex,
+      score,
+      correctAnswers,
+      wrongAnswers,
+      reviewQuestions
+    };
 
     writeJSON(
       STORAGE.progress,
-      {
-        round: currentRound,
-        questionIndex:
-          currentQuestionIndex,
-        score,
-        correctAnswers,
-        wrongAnswers,
-        savedAt: Date.now()
-      }
+      progress
     );
 
-    saveCurrentRound();
+    localStorage.setItem(
+      STORAGE.currentRound,
+      String(currentRound)
+    );
+
     updateContinueButton();
   }
 
-  function clearCurrentProgress() {
+  function clearProgress() {
     localStorage.removeItem(
       STORAGE.progress
     );
 
-    updateContinueButton();
-  }
-
-  function hasSavedProgress() {
-    const progress =
-      readJSON(
-        STORAGE.progress,
-        null
-      );
-
-    if (!progress) {
-      return false;
-    }
-
-    return (
-      Number.isInteger(
-        Number(progress.round)
-      ) &&
-      Number.isInteger(
-        Number(
-          progress.questionIndex
-        )
-      )
+    localStorage.removeItem(
+      STORAGE.currentRound
     );
-  }
 
-  function updateContinueButton() {
-    if (!elements.continueBtn) {
-      return;
-    }
-
-    elements.continueBtn.style.display =
-      hasSavedProgress()
-        ? ""
-        : "none";
+    updateContinueButton();
   }
 
   /* =========================
@@ -836,6 +1180,7 @@
     if (
       !currentRoundQuestions.length
     ) {
+      finishRound();
       return;
     }
 
@@ -849,73 +1194,69 @@
       return;
     }
 
-    stopTimer();
-
-    selectedAnswer = null;
     answered = false;
+    selectedAnswer = null;
 
-    const total =
+    const totalQuestions =
       currentRoundQuestions.length;
 
     const questionNumber =
       currentQuestionIndex + 1;
 
-    const progress =
-      (questionNumber / total) *
-      100;
-
-    safeText(
-      elements.questionNumber,
-      `${questionNumber} / ${total}`
-    );
-
-    safeText(
-      elements.roundDisplay,
-      `Round ${currentRound}`
-    );
-
-    safeText(
-      elements.score,
-      String(score)
-    );
-
-    safeText(
-      elements.category,
-      question.category ||
-        "General Knowledge"
-    );
-
-    safeText(
-      elements.question,
-      getQuestionText(question)
-    );
-
-    if (elements.progressBar) {
-      elements.progressBar.style.width =
-        `${progress}%`;
+    if (elements.questionNumber) {
+      elements.questionNumber.textContent =
+        `Question ${questionNumber} of ${totalQuestions}`;
     }
 
-    renderOptions(
-      question.options
-    );
+    if (elements.roundDisplay) {
+      elements.roundDisplay.textContent =
+        `Round ${currentRound} • ${difficultyIcon(
+          selectedDifficulty
+        )} ${difficultyLabel(
+          selectedDifficulty
+        )}`;
+    }
+
+    if (elements.score) {
+      elements.score.textContent =
+        String(score);
+    }
+
+    if (elements.category) {
+      elements.category.textContent =
+        safeText(
+          question.category || "General"
+        );
+    }
+
+    if (elements.question) {
+      elements.question.textContent =
+        getQuestionText(question);
+    }
+
+    if (elements.progressBar) {
+      const percentage =
+        (questionNumber /
+          totalQuestions) *
+        100;
+
+      elements.progressBar.style.width =
+        `${clamp(
+          percentage,
+          0,
+          100
+        )}%`;
+    }
 
     if (elements.message) {
-      elements.message.textContent =
-        "";
-
-      elements.message.classList.remove(
-        "correct",
-        "wrong"
-      );
+      elements.message.textContent = "";
     }
 
     if (elements.nextBtn) {
-      elements.nextBtn.disabled =
-        true;
-
-      elements.nextBtn.style.display =
-        "";
+      elements.nextBtn.disabled = true;
     }
+
+    renderOptions(question);
 
     startTimer();
   }
@@ -924,33 +1265,30 @@
      RENDER OPTIONS
      ========================= */
 
-  function renderOptions(options) {
+  function renderOptions(question) {
     if (!elements.options) {
       return;
     }
 
-    elements.options.innerHTML =
-      "";
+    elements.options.innerHTML = "";
 
-    options.forEach(
+    question.options.forEach(
       (option, index) => {
         const button =
-          document.createElement(
-            "button"
-          );
+          document.createElement("button");
 
         button.type = "button";
+
         button.className =
           "option-btn";
-
-        button.textContent =
-          option;
 
         button.dataset.answer =
           option;
 
-        button.dataset.index =
-          String(index);
+        button.innerHTML =
+          `<span>${String.fromCharCode(
+            65 + index
+          )}.</span> ${safeText(option)}`;
 
         button.addEventListener(
           "click",
@@ -977,10 +1315,7 @@
     answer,
     clickedButton
   ) {
-    if (
-      answered ||
-      quizFinished
-    ) {
+    if (answered) {
       return;
     }
 
@@ -994,77 +1329,63 @@
     }
 
     answered = true;
-    selectedAnswer =
-      answer;
+    selectedAnswer = answer;
 
     stopTimer();
 
     const isCorrect =
-      answer ===
-      question.answer;
+      answer === question.answer;
 
     const optionButtons =
       elements.options
-        ? elements.options
-            .querySelectorAll(
-              ".option-btn"
-            )
+        ? elements.options.querySelectorAll(
+            ".option-btn"
+          )
         : [];
 
-    optionButtons.forEach(
-      (button) => {
-        button.disabled =
-          true;
+    optionButtons.forEach(button => {
+      button.disabled = true;
 
-        const value =
-          button.dataset.answer;
-
-        if (
-          value ===
-          question.answer
-        ) {
-          button.classList.add(
-            "correct"
-          );
-        }
-
-        if (
-          value === answer &&
-          !isCorrect
-        ) {
-          button.classList.add(
-            "wrong"
-          );
-        }
+      if (
+        button.dataset.answer ===
+        question.answer
+      ) {
+        button.classList.add(
+          "correct"
+        );
       }
-    );
+
+      if (
+        button.dataset.answer ===
+          answer &&
+        !isCorrect
+      ) {
+        button.classList.add(
+          "wrong"
+        );
+      }
+    });
 
     if (isCorrect) {
       correctAnswers++;
 
-      score +=
-        POINTS_PER_CORRECT;
+      score += POINTS_PER_CORRECT;
 
-      showMessage(
-        "Correct! 🎉",
-        true
-      );
+      if (elements.message) {
+        elements.message.textContent =
+          "✅ Correct!";
+      }
 
-      playSound(
-        "correct"
-      );
-
+      playSound("correct");
     } else {
       wrongAnswers++;
 
-      showMessage(
-        `Wrong! Correct answer: ${question.answer}`,
-        false
-      );
+      if (elements.message) {
+        elements.message.textContent =
+          `❌ Wrong. Correct answer: ${question.answer}`;
+      }
 
-      playSound(
-        "wrong"
-      );
+      playSound("wrong");
     }
 
     reviewQuestions.push({
@@ -1073,39 +1394,16 @@
       isCorrect
     });
 
-    safeText(
-      elements.score,
-      String(score)
-    );
+    if (elements.score) {
+      elements.score.textContent =
+        String(score);
+    }
 
     if (elements.nextBtn) {
-      elements.nextBtn.disabled =
-        false;
+      elements.nextBtn.disabled = false;
     }
 
     saveCurrentProgress();
-  }
-
-  function showMessage(
-    message,
-    correct
-  ) {
-    if (!elements.message) {
-      return;
-    }
-
-    elements.message.textContent =
-      message;
-
-    elements.message.classList.toggle(
-      "correct",
-      Boolean(correct)
-    );
-
-    elements.message.classList.toggle(
-      "wrong",
-      !correct
-    );
   }
 
   /* =========================
@@ -1118,18 +1416,17 @@
     }
 
     if (
-      currentQuestionIndex >=
+      currentQuestionIndex <
       currentRoundQuestions.length - 1
     ) {
+      currentQuestionIndex++;
+
+      saveCurrentProgress();
+
+      renderQuestion();
+    } else {
       finishRound();
-      return;
     }
-
-    currentQuestionIndex++;
-
-    saveCurrentProgress();
-
-    renderQuestion();
   }
 
   /* =========================
@@ -1139,8 +1436,7 @@
   function startTimer() {
     stopTimer();
 
-    timeLeft =
-      TIME_PER_QUESTION;
+    timeLeft = TIME_PER_QUESTION;
 
     updateTimerDisplay();
 
@@ -1150,38 +1446,24 @@
 
         updateTimerDisplay();
 
-        if (
-          timeLeft <= 0
-        ) {
-          stopTimer();
-
+        if (timeLeft <= 0) {
           timeExpired();
         }
       }, 1000);
   }
 
   function stopTimer() {
-    if (
-      timerInterval !== null
-    ) {
-      clearInterval(
-        timerInterval
-      );
-
+    if (timerInterval) {
+      clearInterval(timerInterval);
       timerInterval = null;
     }
   }
 
   function updateTimerDisplay() {
-    safeText(
-      elements.timer,
-      String(
-        Math.max(
-          0,
-          timeLeft
-        )
-      )
-    );
+    if (elements.timer) {
+      elements.timer.textContent =
+        String(Math.max(0, timeLeft));
+    }
   }
 
   function timeExpired() {
@@ -1199,40 +1481,37 @@
     }
 
     answered = true;
+
     selectedAnswer = null;
+
+    stopTimer();
 
     wrongAnswers++;
 
     const optionButtons =
       elements.options
-        ? elements.options
-            .querySelectorAll(
-              ".option-btn"
-            )
+        ? elements.options.querySelectorAll(
+            ".option-btn"
+          )
         : [];
 
-    optionButtons.forEach(
-      (button) => {
-        button.disabled =
-          true;
+    optionButtons.forEach(button => {
+      button.disabled = true;
 
-        if (
-          button.dataset.answer ===
-          question.answer
-        ) {
-          button.classList.add(
-            "correct"
-          );
-        }
+      if (
+        button.dataset.answer ===
+        question.answer
+      ) {
+        button.classList.add(
+          "correct"
+        );
       }
-    );
+    });
 
-    showMessage(
-      `Time's up! Correct answer: ${question.answer}`,
-      false
-    );
-
-    playSound("wrong");
+    if (elements.message) {
+      elements.message.textContent =
+        `⏰ Time's up! Correct answer: ${question.answer}`;
+    }
 
     reviewQuestions.push({
       ...question,
@@ -1240,9 +1519,10 @@
       isCorrect: false
     });
 
+    playSound("wrong");
+
     if (elements.nextBtn) {
-      elements.nextBtn.disabled =
-        false;
+      elements.nextBtn.disabled = false;
     }
 
     saveCurrentProgress();
@@ -1253,276 +1533,68 @@
      ========================= */
 
   function finishRound() {
-    if (quizFinished) {
-      return;
-    }
+    stopTimer();
 
     quizFinished = true;
 
-    stopTimer();
-
     const total =
-      currentRoundQuestions.length ||
-      1;
+      currentRoundQuestions.length;
 
-    const percent =
-      Math.round(
-        (correctAnswers /
-          total) *
-          100
-      );
+    const percentage =
+      total > 0
+        ? Math.round(
+            (correctAnswers / total) *
+              100
+          )
+        : 0;
 
-    const stars =
-      percent >= 80
-        ? 3
-        : percent >= 60
-        ? 2
-        : 1;
+    let stars = 1;
+
+    if (percentage >= 80) {
+      stars = 3;
+    } else if (
+      percentage >= UNLOCK_PERCENT
+    ) {
+      stars = 2;
+    }
 
     saveRoundResult(
       currentRound,
-      percent,
+      percentage,
       stars
     );
 
-    updateUnlockedRounds(
-      currentRound,
-      percent
-    );
+    updateUnlockedRounds();
 
-    saveTotalScore(
-      score
-    );
+    updateRewards();
 
-    updatePersonalBest(
-      score
-    );
-
-    updateAchievements();
-
-    clearCurrentProgress();
+    clearProgress();
 
     renderResult(
-      percent,
+      percentage,
       stars
     );
 
-    showScreen(
-      "resultScreen"
-    );
+    showScreen("resultScreen");
 
     startMusic();
   }
 
-  /* =========================
-     RESULT
-     ========================= */
-
-  function renderResult(
-    percent,
-    stars
-  ) {
-    safeText(
-      elements.finishedRound,
-      `Round ${currentRound}`
-    );
-
-    safeText(
-      elements.correctCount,
-      String(correctAnswers)
-    );
-
-    safeText(
-      elements.wrongCount,
-      String(wrongAnswers)
-    );
-
-    safeText(
-      elements.finalScore,
-      String(score)
-    );
-
-    safeText(
-      elements.resultPercent,
-      `${percent}%`
-    );
-
-    let message = "";
-
-    if (percent >= 80) {
-      message =
-        `Excellent! 🌟 You mastered this round! ${"★".repeat(stars)}`;
-
-    } else if (
-      percent >= 60
-    ) {
-      message =
-        `Great job! 🎉 The next round is unlocked. ${"★".repeat(stars)}`;
-
-    } else {
-      message =
-        `Keep practicing! 💪 You can try this round again. ${"★".repeat(stars)}`;
-    }
-
-    safeText(
-      elements.resultMessage,
-      message
-    );
-
-    if (elements.nextRoundBtn) {
-      const nextRound =
-        currentRound + 1;
-
-      elements.nextRoundBtn.style.display =
-        nextRound <= rounds.length &&
-        isRoundUnlocked(
-          nextRound
-        )
-          ? ""
-          : "none";
-    }
-
-    if (elements.reviewBtn) {
-      elements.reviewBtn.style.display =
-        reviewQuestions.length
-          ? ""
-          : "none";
-    }
-  }
-
-  /* =========================
-     SAVE ROUND RESULT
-     ========================= */
-
   function saveRoundResult(
     roundNumber,
-    percent,
+    percentage,
     stars
   ) {
-    let completed =
-      readJSON(
-        STORAGE.completedRounds,
-        []
-      );
-
-    if (!Array.isArray(completed)) {
-      completed = [];
-    }
-
-    if (
-      !completed.includes(
-        roundNumber
-      )
-    ) {
-      completed.push(
-        roundNumber
-      );
-    }
-
-    writeJSON(
-      STORAGE.completedRounds,
-      completed
-    );
-
-    let roundStars =
-      readJSON(
-        STORAGE.roundStars,
-        {}
-      );
-
-    if (
-      !roundStars ||
-      typeof roundStars !==
-        "object"
-    ) {
-      roundStars = {};
-    }
-
-    roundStars[
+    saveCompletedRound(
       roundNumber
-    ] =
-      Math.max(
-        Number(
-          roundStars[
-            roundNumber
-          ]
-        ) || 0,
-        stars
-      );
-
-    writeJSON(
-      STORAGE.roundStars,
-      roundStars
     );
 
-    saveDailyChallenge(
+    saveRoundStars(
       roundNumber,
-      percent
+      stars
     );
-  }
 
-  function saveDailyChallenge(
-    roundNumber,
-    percent
-  ) {
-    const today =
-      new Date()
-        .toISOString()
-        .slice(0, 10);
-
-    const daily =
-      readJSON(
-        STORAGE.dailyChallenge,
-        null
-      );
-
-    if (
-      !daily ||
-      daily.date !== today
-    ) {
-      writeJSON(
-        STORAGE.dailyChallenge,
-        {
-          date: today,
-          round: roundNumber,
-          percent,
-          completed: true
-        }
-      );
-
-      return;
-    }
-
-    if (
-      percent >
-      Number(
-        daily.percent || 0
-      )
-    ) {
-      daily.percent =
-        percent;
-
-      daily.round =
-        roundNumber;
-
-      daily.completed =
-        true;
-
-      writeJSON(
-        STORAGE.dailyChallenge,
-        daily
-      );
-    }
-  }
-
-  /* =========================
-     TOTAL SCORE
-     ========================= */
-
-  function saveTotalScore(
-    roundScore
-  ) {
-    const oldTotal =
+    const oldTotalScore =
       Number(
         localStorage.getItem(
           STORAGE.totalScore
@@ -1532,750 +1604,125 @@
     localStorage.setItem(
       STORAGE.totalScore,
       String(
-        oldTotal +
-          roundScore
+        oldTotalScore + score
       )
     );
-  }
 
-  /* =========================
-     PERSONAL BEST
-     ========================= */
-
-  function updatePersonalBest(
-    currentScore
-  ) {
-    const best =
+    const personalBest =
       Number(
         localStorage.getItem(
           STORAGE.personalBest
         )
       ) || 0;
 
-    if (
-      currentScore >
-      best
-    ) {
+    if (score > personalBest) {
       localStorage.setItem(
         STORAGE.personalBest,
-        String(
-          currentScore
-        )
-      );
-    }
-  }
-
-  /* =========================================================
-     ACHIEVEMENTS
-     ========================================================= */
-
-  const ACHIEVEMENTS = [
-    {
-      id: "first-round",
-      title: "First Victory",
-      description:
-        "Complete your first quiz round.",
-      icon: "🎮"
-    },
-    {
-      id: "five-rounds",
-      title: "Five Rounds",
-      description:
-        "Complete five quiz rounds.",
-      icon: "🏆"
-    },
-    {
-      id: "fifty-correct",
-      title: "50 Correct",
-      description:
-        "Answer 50 questions correctly.",
-      icon: "🎯"
-    },
-    {
-      id: "all-rounds",
-      title: "Quiz Master",
-      description:
-        "Complete all available quiz rounds.",
-      icon: "🌟"
-    }
-  ];
-
-  function getAchievements() {
-    let achievements =
-      readJSON(
-        STORAGE.achievements,
-        []
-      );
-
-    if (
-      !Array.isArray(
-        achievements
-      )
-    ) {
-      achievements = [];
-    }
-
-    return [
-      ...new Set(
-        achievements
-          .map(String)
-      )
-    ];
-  }
-
-  function saveAchievements(
-    achievements
-  ) {
-    writeJSON(
-      STORAGE.achievements,
-      [
-        ...new Set(
-          achievements
-        )
-      ]
-    );
-  }
-
-  function unlockAchievement(
-    id
-  ) {
-    const achievements =
-      getAchievements();
-
-    if (
-      !achievements.includes(id)
-    ) {
-      achievements.push(id);
-
-      saveAchievements(
-        achievements
-      );
-
-      console.log(
-        "Quiz Master achievement unlocked:",
-        id
-      );
-    }
-  }
-
-  function updateAchievements() {
-    const completed =
-      readJSON(
-        STORAGE.completedRounds,
-        []
-      );
-
-    const completedRounds =
-      Array.isArray(completed)
-        ? completed
-        : [];
-
-    if (
-      completedRounds.length >= 1
-    ) {
-      unlockAchievement(
-        "first-round"
+        String(score)
       );
     }
 
-    if (
-      completedRounds.length >= 5
-    ) {
-      unlockAchievement(
-        "five-rounds"
-      );
-    }
-
-    const totalCorrect =
-      getTotalCorrectAnswers();
-
-    if (
-      totalCorrect >= 50
-    ) {
-      unlockAchievement(
-        "fifty-correct"
-      );
-    }
-
-    if (
-      rounds.length > 0 &&
-      completedRounds.length >=
-        rounds.length
-    ) {
-      unlockAchievement(
-        "all-rounds"
-      );
-    }
-
-    updateRewards();
-  }
-
-  function getTotalCorrectAnswers() {
-    const completed =
-      readJSON(
-        STORAGE.completedRounds,
-        []
-      );
-
-    const roundStars =
-      readJSON(
-        STORAGE.roundStars,
-        {}
-      );
-
-    /*
-      We calculate a safe estimate from
-      completed round results when possible.
-      The current session is also included.
-    */
-
-    let totalCorrect = 0;
-
-    if (
-      Array.isArray(completed)
-    ) {
-      completed.forEach(
-        (roundNumber) => {
-          const stars =
-            Number(
-              roundStars[
-                roundNumber
-              ]
-            ) || 0;
-
-          /*
-            This is only used for the
-            achievement threshold.
-            A 3-star round is at least
-            8 correct out of 10,
-            2-star is at least 6,
-            1-star is at least 1.
-          */
-
-          if (stars >= 3) {
-            totalCorrect += 8;
-          } else if (
-            stars >= 2
-          ) {
-            totalCorrect += 6;
-          } else if (
-            stars >= 1
-          ) {
-            totalCorrect += 1;
-          }
-        }
-      );
-    }
-
-    return totalCorrect;
-  }
-
-  /* =========================================================
-     REWARDS SYSTEM
-     ========================================================= */
-
-  function createRewardsUI() {
-    /*
-      If the user later adds Rewards directly
-      to index.html, this function will simply
-      use the existing elements.
-    */
-
-    let rewardsBtn =
-      $("rewardsBtn");
-
-    let rewardsScreen =
-      $("rewardsScreen");
-
-    /*
-      Create Rewards button automatically
-      if it does not exist.
-    */
-
-    if (
-      !rewardsBtn &&
-      elements.shareBtn &&
-      elements.shareBtn.parentElement
-    ) {
-      rewardsBtn =
-        document.createElement(
-          "button"
-        );
-
-      rewardsBtn.id =
-        "rewardsBtn";
-
-      rewardsBtn.type =
-        "button";
-
-      rewardsBtn.className =
-        "secondary-btn";
-
-      rewardsBtn.textContent =
-        "🎁 Rewards";
-
-      elements.shareBtn.parentElement.appendChild(
-        rewardsBtn
-      );
-    }
-
-    /*
-      Create Rewards screen automatically.
-    */
-
-    if (!rewardsScreen) {
-      rewardsScreen =
-        document.createElement(
-          "section"
-        );
-
-      rewardsScreen.id =
-        "rewardsScreen";
-
-      rewardsScreen.className =
-        "screen";
-
-      rewardsScreen.innerHTML = `
-        <div class="container">
-
-          <div class="screen-header">
-            <h2>🎁 Rewards</h2>
-            <p>
-              Track your stars, achievements and quiz progress.
-            </p>
-          </div>
-
-          <div class="result-card">
-
-            <div class="result-icon">
-              🎁
-            </div>
-
-            <h2>Your Rewards</h2>
-
-            <div class="result-stats">
-
-              <div class="stat-card">
-                <span>⭐ Total Stars</span>
-                <strong id="rewardsStars">0</strong>
-              </div>
-
-              <div class="stat-card">
-                <span>🏆 Completed Rounds</span>
-                <strong id="rewardsRounds">0</strong>
-              </div>
-
-              <div class="stat-card">
-                <span>🎯 Total Score</span>
-                <strong id="rewardsScore">0</strong>
-              </div>
-
-              <div class="stat-card">
-                <span>🏅 Achievements</span>
-                <strong id="rewardsAchievements">0</strong>
-              </div>
-
-            </div>
-
-            <div
-              id="rewardsAchievementList"
-              class="review-list">
-            </div>
-
-            <div class="button-group">
-
-              <button
-                id="rewardsBackBtn"
-                type="button"
-                class="secondary-btn">
-                ← Back Home
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-      `;
-
-      /*
-        Put the new screen before the settings
-        screen so existing screens stay intact.
-      */
-
-      const settingsScreen =
-        $("settingsScreen");
-
-      if (
-        settingsScreen &&
-        settingsScreen.parentElement
-      ) {
-        settingsScreen.parentElement.insertBefore(
-          rewardsScreen,
-          settingsScreen
-        );
-      } else {
-        document.body.appendChild(
-          rewardsScreen
-        );
-      }
-    }
-
-    /*
-      Refresh element references.
-    */
-
-    elements.rewardsBtn =
-      $("rewardsBtn");
-
-    elements.rewardsScreen =
-      $("rewardsScreen");
-
-    elements.rewardsStars =
-      $("rewardsStars");
-
-    elements.rewardsRounds =
-      $("rewardsRounds");
-
-    elements.rewardsScore =
-      $("rewardsScore");
-
-    elements.rewardsAchievements =
-      $("rewardsAchievements");
-
-    elements.rewardsAchievementList =
-      $(
-        "rewardsAchievementList"
-      );
-
-    elements.rewardsBackBtn =
-      $("rewardsBackBtn");
-
-    /*
-      Add listeners only once.
-    */
-
-    if (
-      elements.rewardsBtn &&
-      !elements.rewardsBtn.dataset.listenerAdded
-    ) {
-      elements.rewardsBtn.addEventListener(
-        "click",
-        () => {
-          updateRewards();
-          showScreen(
-            "rewardsScreen"
-          );
-          window.scrollTo(
-            0,
-            0
-          );
-        }
-      );
-
-      elements.rewardsBtn.dataset.listenerAdded =
-        "true";
-    }
-
-    if (
-      elements.rewardsBackBtn &&
-      !elements.rewardsBackBtn.dataset.listenerAdded
-    ) {
-      elements.rewardsBackBtn.addEventListener(
-        "click",
-        () => {
-          showScreen(
-            "homeScreen"
-          );
-
-          updateContinueButton();
-
-          startMusic();
-
-          window.scrollTo(
-            0,
-            0
-          );
-        }
-      );
-
-      elements.rewardsBackBtn.dataset.listenerAdded =
-        "true";
-    }
-  }
-
-  function updateRewards() {
-    const completed =
-      readJSON(
-        STORAGE.completedRounds,
-        []
-      );
-
-    const roundStars =
-      readJSON(
-        STORAGE.roundStars,
-        {}
-      );
-
-    const achievements =
-      getAchievements();
-
-    let totalStars = 0;
-
-    if (
-      roundStars &&
-      typeof roundStars ===
-        "object"
-    ) {
-      Object.values(
-        roundStars
-      ).forEach(
-        (value) => {
-          const stars =
-            Number(value);
-
-          if (
-            Number.isFinite(
-              stars
-            )
-          ) {
-            totalStars +=
-              stars;
-          }
-        }
-      );
-    }
-
-    const completedRounds =
-      Array.isArray(completed)
-        ? completed.length
-        : 0;
-
-    const totalScore =
-      Number(
-        localStorage.getItem(
-          STORAGE.totalScore
-        )
-      ) || 0;
-
-    safeText(
-      elements.rewardsStars,
-      totalStars
-    );
-
-    safeText(
-      elements.rewardsRounds,
-      completedRounds
-    );
-
-    safeText(
-      elements.rewardsScore,
-      totalScore
-    );
-
-    safeText(
-      elements.rewardsAchievements,
-      achievements.length
-    );
-
-    renderAchievements();
-  }
-
-  function renderAchievements() {
-    const container =
-      elements.rewardsAchievementList;
-
-    if (!container) {
-      return;
-    }
-
-    container.innerHTML = "";
-
-    const unlocked =
-      getAchievements();
-
-    ACHIEVEMENTS.forEach(
-      (achievement) => {
-        const isUnlocked =
-          unlocked.includes(
-            achievement.id
-          );
-
-        const item =
-          document.createElement(
-            "div"
-          );
-
-        item.style.padding =
-          "16px";
-
-        item.style.borderRadius =
-          "16px";
-
-        item.style.background =
-          isUnlocked
-            ? "#f0fdf4"
-            : "#f8fafc";
-
-        item.style.border =
-          isUnlocked
-            ? "1px solid #86efac"
-            : "1px solid #e5e7eb";
-
-        item.style.opacity =
-          isUnlocked
-            ? "1"
-            : "0.65";
-
-        item.innerHTML = `
-          <strong style="display:block;margin-bottom:5px;color:#111827;">
-            ${
-              isUnlocked
-                ? "✅"
-                : "🔒"
-            }
-            ${achievement.icon}
-            ${achievement.title}
-          </strong>
-
-          <span style="color:#6b7280;font-size:14px;">
-            ${achievement.description}
-          </span>
-        `;
-
-        container.appendChild(
-          item
-        );
-      }
-    );
+    updateAchievements();
   }
 
   /* =========================
-     REVIEW
+     RESULT
      ========================= */
 
-  function showReview() {
-    stopTimer();
+  function renderResult(
+    percentage,
+    stars
+  ) {
+    if (elements.correctCount) {
+      elements.correctCount.textContent =
+        String(correctAnswers);
+    }
 
-    renderReview();
+    if (elements.wrongCount) {
+      elements.wrongCount.textContent =
+        String(wrongAnswers);
+    }
 
-    showScreen(
-      "reviewScreen"
+    if (elements.finalScore) {
+      elements.finalScore.textContent =
+        String(score);
+    }
+
+    if (elements.resultPercent) {
+      elements.resultPercent.textContent =
+        `${percentage}%`;
+    }
+
+    if (elements.finishedRound) {
+      elements.finishedRound.textContent =
+        `Round ${currentRound} • ${difficultyIcon(
+          selectedDifficulty
+        )} ${difficultyLabel(
+          selectedDifficulty
+        )}`;
+    }
+
+    if (elements.resultMessage) {
+      if (percentage >= 80) {
+        elements.resultMessage.textContent =
+          "🌟 Excellent work!";
+      } else if (
+        percentage >= UNLOCK_PERCENT
+      ) {
+        elements.resultMessage.textContent =
+          "🎉 Great job! You unlocked the next round.";
+      } else {
+        elements.resultMessage.textContent =
+          "💪 Keep practicing and try again!";
+      }
+    }
+
+    if (elements.nextRoundBtn) {
+      const nextRound =
+        currentRound + 1;
+
+      const canContinue =
+        nextRound <= rounds.length &&
+        isRoundUnlocked(nextRound);
+
+      elements.nextRoundBtn.style.display =
+        canContinue ? "" : "none";
+    }
+
+    if (elements.reviewBtn) {
+      elements.reviewBtn.style.display =
+        reviewQuestions.length
+          ? ""
+          : "none";
+    }
+
+    renderStars(
+      stars
     );
-
-    startMusic();
   }
 
-  function renderReview() {
-    if (!elements.reviewList) {
+  function renderStars(stars) {
+    const starContainer =
+      $("resultStars");
+
+    if (!starContainer) {
       return;
     }
 
-    elements.reviewList.innerHTML =
-      "";
-
-    let correct = 0;
-    let wrong = 0;
-
-    reviewQuestions.forEach(
-      (item, index) => {
-        if (item.isCorrect) {
-          correct++;
-        } else {
-          wrong++;
-        }
-
-        const wrapper =
-          document.createElement(
-            "div"
-          );
-
-        wrapper.className =
-          "review-item";
-
-        const number =
-          document.createElement(
-            "div"
-          );
-
-        number.className =
-          "review-number";
-
-        number.textContent =
-          `Question ${index + 1}`;
-
-        const question =
-          document.createElement(
-            "div"
-          );
-
-        question.className =
-          "review-question";
-
-        question.textContent =
-          getQuestionText(
-            item
-          );
-
-        const userAnswer =
-          document.createElement(
-            "div"
-          );
-
-        userAnswer.className =
-          "review-user-answer";
-
-        userAnswer.textContent =
-          item.userAnswer
-            ? `Your answer: ${item.userAnswer}`
-            : "Your answer: No answer";
-
-        const correctAnswer =
-          document.createElement(
-            "div"
-          );
-
-        correctAnswer.className =
-          "review-correct-answer";
-
-        correctAnswer.textContent =
-          `Correct answer: ${item.answer}`;
-
-        wrapper.appendChild(
-          number
-        );
-
-        wrapper.appendChild(
-          question
-        );
-
-        wrapper.appendChild(
-          userAnswer
-        );
-
-        wrapper.appendChild(
-          correctAnswer
-        );
-
-        elements.reviewList.appendChild(
-          wrapper
-        );
-      }
-    );
-
-    safeText(
-      elements.reviewSummary,
-      `Correct: ${correct} • Wrong: ${wrong}`
-    );
+    starContainer.textContent =
+      "⭐".repeat(
+        clamp(stars, 1, 3)
+      );
   }
 
   /* =========================
-     RETRY ROUND
+     RETRY
      ========================= */
 
   function retryRound() {
     startQuiz(
-      currentRound
+      currentRound,
+      selectedDifficulty
     );
   }
 
@@ -2288,53 +1735,130 @@
       currentRound + 1;
 
     if (
-      next > rounds.length ||
-      !isRoundUnlocked(
-        next
-      )
+      next <= rounds.length &&
+      isRoundUnlocked(next)
     ) {
-      return;
+      startQuiz(
+        next,
+        selectedDifficulty
+      );
     }
-
-    startQuiz(next);
   }
 
   /* =========================
-     ROUNDS SCREEN
+     REVIEW
      ========================= */
 
-  function showRounds() {
-    renderRounds();
+  function showReview() {
+    if (!reviewQuestions.length) {
+      return;
+    }
+
+    renderReview();
 
     showScreen(
-      "roundsScreen"
+      "reviewScreen"
     );
-
-    startMusic();
   }
+
+  function renderReview() {
+    if (elements.reviewSummary) {
+      elements.reviewSummary.textContent =
+        `${correctAnswers} correct • ${wrongAnswers} wrong • ${difficultyLabel(
+          selectedDifficulty
+        )}`;
+    }
+
+    if (!elements.reviewList) {
+      return;
+    }
+
+    elements.reviewList.innerHTML = "";
+
+    reviewQuestions.forEach(
+      (item, index) => {
+        const card =
+          document.createElement("div");
+
+        card.className =
+          "review-item";
+
+        const questionText =
+          getQuestionText(item);
+
+        const userAnswer =
+          item.userAnswer === null ||
+          item.userAnswer === undefined
+            ? "No answer"
+            : item.userAnswer;
+
+        card.innerHTML = `
+          <div class="review-number">
+            Question ${index + 1}
+          </div>
+
+          <div class="review-question">
+            ${escapeHTML(questionText)}
+          </div>
+
+          <div class="review-answer">
+            Your answer:
+            <strong>
+              ${escapeHTML(userAnswer)}
+            </strong>
+          </div>
+
+          <div class="review-correct-answer">
+            Correct answer:
+            <strong>
+              ${escapeHTML(item.answer)}
+            </strong>
+          </div>
+
+          <div class="review-status">
+            ${
+              item.isCorrect
+                ? "✅ Correct"
+                : "❌ Incorrect"
+            }
+          </div>
+        `;
+
+        elements.reviewList.appendChild(
+          card
+        );
+      }
+    );
+  }
+
+  function escapeHTML(value) {
+    return safeText(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  /* =========================
+     ROUNDS
+     ========================= */
 
   function renderRounds() {
     if (!elements.roundGrid) {
       return;
     }
 
-    elements.roundGrid.innerHTML =
-      "";
+    elements.roundGrid.innerHTML = "";
 
     const unlocked =
       getUnlockedRounds();
 
     const completed =
-      readJSON(
-        STORAGE.completedRounds,
-        []
-      );
+      getCompletedRoundsForDifficulty();
 
-    const roundStars =
-      readJSON(
-        STORAGE.roundStars,
-        {}
-      );
+    const stars =
+      getRoundStarsForDifficulty();
 
     rounds.forEach(
       (roundQuestions, index) => {
@@ -2342,9 +1866,7 @@
           index + 1;
 
         const button =
-          document.createElement(
-            "button"
-          );
+          document.createElement("button");
 
         button.type = "button";
 
@@ -2357,17 +1879,14 @@
           );
 
         const isCompleted =
-          Array.isArray(
-            completed
-          ) &&
           completed.includes(
             roundNumber
           );
 
-        const stars =
+        const roundStars =
           Number(
-            roundStars[
-              roundNumber
+            stars[
+              String(roundNumber)
             ]
           ) || 0;
 
@@ -2383,36 +1902,43 @@
           );
         }
 
-        let starText = "";
+        button.innerHTML = `
+          <span>
+            ${
+              isUnlocked
+                ? "🎯"
+                : "🔒"
+            }
+          </span>
 
-        if (stars > 0) {
-          starText =
-            " " +
-            "★".repeat(
-              stars
-            ) +
-            "☆".repeat(
-              3 - stars
-            );
-        }
+          <strong>
+            Round ${roundNumber}
+          </strong>
 
-        button.textContent =
-          isUnlocked
-            ? `Round ${roundNumber}${starText}`
-            : `🔒 Round ${roundNumber}`;
-
-        button.disabled =
-          !isUnlocked;
+          <small>
+            ${roundQuestions.length} questions
+            ${
+              roundStars
+                ? ` • ${"⭐".repeat(
+                    roundStars
+                  )}`
+                : ""
+            }
+          </small>
+        `;
 
         if (isUnlocked) {
           button.addEventListener(
             "click",
             () => {
               startQuiz(
-                roundNumber
+                roundNumber,
+                selectedDifficulty
               );
             }
           );
+        } else {
+          button.disabled = true;
         }
 
         elements.roundGrid.appendChild(
@@ -2420,22 +1946,484 @@
         );
       }
     );
+
+    updateRoundsHeader();
+  }
+
+  function updateRoundsHeader() {
+    const oldLabel =
+      $("roundDifficultyLabel");
+
+    if (oldLabel) {
+      oldLabel.remove();
+    }
+
+    const grid =
+      elements.roundGrid;
+
+    if (!grid || !grid.parentElement) {
+      return;
+    }
+
+    const label =
+      document.createElement("p");
+
+    label.id =
+      "roundDifficultyLabel";
+
+    label.className =
+      "message";
+
+    label.textContent =
+      `${difficultyIcon(
+        selectedDifficulty
+      )} ${difficultyLabel(
+        selectedDifficulty
+      )} difficulty`;
+
+    grid.parentElement.insertBefore(
+      label,
+      grid
+    );
   }
 
   /* =========================
-     HOME
+     REWARDS UI
      ========================= */
 
-  function goHome() {
-    stopTimer();
+  function createRewardsUI() {
+    let rewardsScreen =
+      $("rewardsScreen");
 
-    showScreen(
-      "homeScreen"
+    if (!rewardsScreen) {
+      rewardsScreen =
+        document.createElement("section");
+
+      rewardsScreen.id =
+        "rewardsScreen";
+
+      rewardsScreen.className =
+        "screen";
+
+      rewardsScreen.innerHTML = `
+        <div class="container">
+
+          <div class="screen-header">
+            <h2>🏆 Rewards</h2>
+            <p>
+              Track your stars, progress and achievements.
+            </p>
+          </div>
+
+          <div
+            id="rewardsStats"
+            class="result-stats"
+          ></div>
+
+          <div
+            id="achievementList"
+            class="review-list"
+          ></div>
+
+          <div class="button-group">
+            <button
+              type="button"
+              id="rewardsBackBtn"
+              class="secondary-btn"
+            >
+              ← Back
+            </button>
+          </div>
+
+        </div>
+      `;
+
+      const homeScreen =
+        $("homeScreen");
+
+      if (
+        homeScreen &&
+        homeScreen.parentElement
+      ) {
+        homeScreen.parentElement.appendChild(
+          rewardsScreen
+        );
+      } else {
+        document.body.appendChild(
+          rewardsScreen
+        );
+      }
+    }
+
+    elements.rewardsScreen =
+      rewardsScreen;
+
+    elements.rewardsStats =
+      $("rewardsStats");
+
+    elements.achievementList =
+      $("achievementList");
+
+    elements.rewardsBackBtn =
+      $("rewardsBackBtn");
+
+    let rewardsBtn =
+      $("rewardsBtn");
+
+    if (!rewardsBtn) {
+      rewardsBtn =
+        document.createElement("button");
+
+      rewardsBtn.type = "button";
+      rewardsBtn.id = "rewardsBtn";
+
+      rewardsBtn.className =
+        elements.roundsBtn &&
+        elements.roundsBtn.className
+          ? elements.roundsBtn.className
+          : "secondary-btn";
+
+      rewardsBtn.textContent =
+        "🏆 Rewards";
+
+      if (
+        elements.shareBtn &&
+        elements.shareBtn.parentElement
+      ) {
+        elements.shareBtn.parentElement.appendChild(
+          rewardsBtn
+        );
+      }
+    }
+
+    elements.rewardsBtn =
+      rewardsBtn;
+  }
+
+  function getAllCompletedRoundEntries() {
+    const entries = [];
+
+    DIFFICULTY_ORDER.forEach(
+      difficulty => {
+        const completed =
+          getCompletedRoundsForDifficulty(
+            difficulty
+          );
+
+        completed.forEach(round => {
+          entries.push(
+            `${difficulty}-${round}`
+          );
+        });
+      }
     );
 
-    updateContinueButton();
+    return [
+      ...new Set(entries)
+    ];
+  }
 
-    startMusic();
+  function getAllStars() {
+    let total = 0;
+
+    DIFFICULTY_ORDER.forEach(
+      difficulty => {
+        const stars =
+          getRoundStarsForDifficulty(
+            difficulty
+          );
+
+        Object.values(stars).forEach(
+          value => {
+            total +=
+              Number(value) || 0;
+          }
+        );
+      }
+    );
+
+    return total;
+  }
+
+  function updateRewards() {
+    if (!elements.rewardsStats) {
+      return;
+    }
+
+    const completed =
+      getAllCompletedRoundEntries();
+
+    const totalStars =
+      getAllStars();
+
+    const totalScore =
+      Number(
+        localStorage.getItem(
+          STORAGE.totalScore
+        )
+      ) || 0;
+
+    const personalBest =
+      Number(
+        localStorage.getItem(
+          STORAGE.personalBest
+        )
+      ) || 0;
+
+    elements.rewardsStats.innerHTML = `
+      <div class="stat-card">
+        <strong>
+          ${completed.length}
+        </strong>
+        <span>
+          Completed
+        </span>
+      </div>
+
+      <div class="stat-card">
+        <strong>
+          ${totalStars}
+        </strong>
+        <span>
+          Stars
+        </span>
+      </div>
+
+      <div class="stat-card">
+        <strong>
+          ${totalScore}
+        </strong>
+        <span>
+          Total Score
+        </span>
+      </div>
+
+      <div class="stat-card">
+        <strong>
+          ${personalBest}
+        </strong>
+        <span>
+          Personal Best
+        </span>
+      </div>
+    `;
+
+    renderAchievements();
+  }
+
+  function renderAchievements() {
+    if (!elements.achievementList) {
+      return;
+    }
+
+    const achievements =
+      readJSON(
+        STORAGE.achievements,
+        []
+      );
+
+    const achievementDefinitions = [
+      {
+        id: "first-round",
+        icon: "🎯",
+        title: "First Round",
+        description:
+          "Complete your first quiz round."
+      },
+
+      {
+        id: "five-rounds",
+        icon: "🔥",
+        title: "Five Rounds",
+        description:
+          "Complete five quiz rounds."
+      },
+
+      {
+        id: "fifty-correct",
+        icon: "🧠",
+        title: "50 Correct",
+        description:
+          "Reach an estimated 50 correct answers."
+      },
+
+      {
+        id: "all-rounds",
+        icon: "👑",
+        title: "All Rounds",
+        description:
+          "Complete all rounds in a difficulty."
+      }
+    ];
+
+    elements.achievementList.innerHTML = "";
+
+    achievementDefinitions.forEach(
+      achievement => {
+        const unlocked =
+          achievements.includes(
+            achievement.id
+          );
+
+        const item =
+          document.createElement("div");
+
+        item.className =
+          "review-item";
+
+        item.innerHTML = `
+          <div>
+            ${
+              unlocked
+                ? "🏆"
+                : "🔒"
+            }
+            <strong>
+              ${achievement.icon}
+              ${achievement.title}
+            </strong>
+          </div>
+
+          <small>
+            ${achievement.description}
+          </small>
+        `;
+
+        elements.achievementList.appendChild(
+          item
+        );
+      }
+    );
+  }
+
+  /* =========================
+     ACHIEVEMENTS
+     ========================= */
+
+  function updateAchievements() {
+    let achievements =
+      readJSON(
+        STORAGE.achievements,
+        []
+      );
+
+    if (!Array.isArray(achievements)) {
+      achievements = [];
+    }
+
+    const completed =
+      getAllCompletedRoundEntries();
+
+    if (
+      completed.length >= 1 &&
+      !achievements.includes(
+        "first-round"
+      )
+    ) {
+      achievements.push(
+        "first-round"
+      );
+    }
+
+    if (
+      completed.length >= 5 &&
+      !achievements.includes(
+        "five-rounds"
+      )
+    ) {
+      achievements.push(
+        "five-rounds"
+      );
+    }
+
+    const estimatedCorrect =
+      getTotalCorrectAnswers();
+
+    if (
+      estimatedCorrect >= 50 &&
+      !achievements.includes(
+        "fifty-correct"
+      )
+    ) {
+      achievements.push(
+        "fifty-correct"
+      );
+    }
+
+    if (
+      rounds.length > 0
+    ) {
+      const completedCurrentDifficulty =
+        getCompletedRoundsForDifficulty();
+
+      if (
+        completedCurrentDifficulty.length >=
+          rounds.length &&
+        !achievements.includes(
+          "all-rounds"
+        )
+      ) {
+        achievements.push(
+          "all-rounds"
+        );
+      }
+    }
+
+    writeJSON(
+      STORAGE.achievements,
+      [...new Set(achievements)]
+    );
+  }
+
+  function getTotalCorrectAnswers() {
+    let estimated = 0;
+
+    DIFFICULTY_ORDER.forEach(
+      difficulty => {
+        const stars =
+          getRoundStarsForDifficulty(
+            difficulty
+          );
+
+        Object.values(stars).forEach(
+          value => {
+            const starCount =
+              Number(value) || 0;
+
+            /*
+              Approximation used by the
+              previous version.
+
+              3 stars ≈ 8 correct
+              2 stars ≈ 6 correct
+              1 star  ≈ 1 correct
+            */
+
+            if (starCount >= 3) {
+              estimated += 8;
+            } else if (
+              starCount === 2
+            ) {
+              estimated += 6;
+            } else if (
+              starCount === 1
+            ) {
+              estimated += 1;
+            }
+          }
+        );
+      }
+    );
+
+    return estimated;
+  }
+
+  function showRewards() {
+    updateRewards();
+
+    showScreen(
+      "rewardsScreen"
+    );
   }
 
   /* =========================
@@ -2448,577 +2436,33 @@
     showScreen(
       "settingsScreen"
     );
-
-    startMusic();
   }
 
   function updateSettingsUI() {
     if (elements.musicSwitch) {
-      if (
-        elements.musicSwitch.type ===
-        "checkbox"
-      ) {
-        elements.musicSwitch.checked =
-          musicEnabled;
-      } else {
-        elements.musicSwitch.classList.toggle(
-          "on",
-          musicEnabled
-        );
-      }
+      elements.musicSwitch.checked =
+        musicEnabled;
     }
 
     if (elements.soundSwitch) {
-      if (
-        elements.soundSwitch.type ===
-        "checkbox"
-      ) {
-        elements.soundSwitch.checked =
-          soundEnabled;
-      } else {
-        elements.soundSwitch.classList.toggle(
-          "on",
-          soundEnabled
-        );
-      }
+      elements.soundSwitch.checked =
+        soundEnabled;
     }
-  }
-
-  function toggleMusic() {
-    if (
-      elements.musicSwitch &&
-      elements.musicSwitch.type ===
-        "checkbox"
-    ) {
-      musicEnabled =
-        elements.musicSwitch.checked;
-    } else {
-      musicEnabled =
-        !musicEnabled;
-    }
-
-    localStorage.setItem(
-      STORAGE.music,
-      String(musicEnabled)
-    );
-
-    updateSettingsUI();
-
-    if (musicEnabled) {
-      startMusic(true);
-    } else {
-      /*
-        IMPORTANT:
-        Music position is saved.
-        It is NOT reset to zero.
-      */
-      stopMusic();
-    }
-  }
-
-  function toggleSound() {
-    if (
-      elements.soundSwitch &&
-      elements.soundSwitch.type ===
-        "checkbox"
-    ) {
-      soundEnabled =
-        elements.soundSwitch.checked;
-    } else {
-      soundEnabled =
-        !soundEnabled;
-    }
-
-    localStorage.setItem(
-      STORAGE.sound,
-      String(soundEnabled)
-    );
-
-    updateSettingsUI();
-  }
-
-  /* =========================================================
-     MUSIC SYSTEM
-     ========================================================= */
-
-  function getSavedMusicPosition() {
-    const position =
-      Number(
-        localStorage.getItem(
-          STORAGE.musicPosition
-        )
-      );
-
-    return Number.isFinite(
-      position
-    ) && position >= 0
-      ? position
-      : 0;
-  }
-
-  function saveMusicPosition() {
-    if (!backgroundMusic) {
-      return;
-    }
-
-    try {
-      const current =
-        Number(
-          backgroundMusic.currentTime
-        );
-
-      if (
-        Number.isFinite(
-          current
-        ) &&
-        current >= 0
-      ) {
-        localStorage.setItem(
-          STORAGE.musicPosition,
-          String(current)
-        );
-      }
-    } catch (error) {
-      console.warn(
-        "Quiz Master: Could not save music position:",
-        error
-      );
-    }
-  }
-
-  function restoreMusicPosition() {
-    if (!backgroundMusic) {
-      return;
-    }
-
-    try {
-      const saved =
-        getSavedMusicPosition();
-
-      if (
-        !Number.isFinite(
-          backgroundMusic.duration
-        ) ||
-        backgroundMusic.duration <= 0
-      ) {
-        return;
-      }
-
-      if (
-        saved >= 0 &&
-        saved < backgroundMusic.duration
-      ) {
-        backgroundMusic.currentTime =
-          saved;
-      }
-
-    } catch (error) {
-      console.warn(
-        "Quiz Master: Could not restore music position:",
-        error
-      );
-    }
-  }
-
-  function initializeMusic() {
-    try {
-      if (backgroundMusic) {
-        return;
-      }
-
-      backgroundMusic =
-        new Audio(
-          MUSIC_FILE
-        );
-
-      backgroundMusic.loop =
-        true;
-
-      backgroundMusic.volume =
-        0.35;
-
-      backgroundMusic.preload =
-        "auto";
-
-      backgroundMusic.setAttribute(
-        "playsinline",
-        ""
-      );
-
-      backgroundMusic.addEventListener(
-        "loadedmetadata",
-        () => {
-          restoreMusicPosition();
-        }
-      );
-
-      backgroundMusic.addEventListener(
-        "canplay",
-        () => {
-          restoreMusicPosition();
-        },
-        {
-          once: true
-        }
-      );
-
-      backgroundMusic.addEventListener(
-        "ended",
-        () => {
-          if (
-            musicEnabled
-          ) {
-            /*
-              loop=true normally handles this.
-              This is only a safety fallback.
-            */
-            try {
-              backgroundMusic.currentTime =
-                0;
-            } catch (error) {}
-
-            startMusic();
-          }
-        }
-      );
-
-      backgroundMusic.addEventListener(
-        "error",
-        () => {
-          console.error(
-            "Quiz Master: Could not load music:",
-            MUSIC_FILE
-          );
-        }
-      );
-
-      backgroundMusic.addEventListener(
-        "timeupdate",
-        () => {
-          /*
-            Save playback position periodically.
-          */
-          if (
-            backgroundMusic &&
-            !backgroundMusic.paused
-          ) {
-            saveMusicPosition();
-          }
-        }
-      );
-
-      backgroundMusic.addEventListener(
-        "pause",
-        () => {
-          saveMusicPosition();
-        }
-      );
-
-      backgroundMusic.load();
-
-    } catch (error) {
-      console.error(
-        "Quiz Master: Music initialization failed:",
-        error
-      );
-
-      backgroundMusic =
-        null;
-    }
-  }
-
-  function startMusic(
-    fromUserGesture = false
-  ) {
-    if (!musicEnabled) {
-      return;
-    }
-
-    if (!backgroundMusic) {
-      initializeMusic();
-    }
-
-    if (!backgroundMusic) {
-      return;
-    }
-
-    if (
-      !backgroundMusic.paused &&
-      !backgroundMusic.ended
-    ) {
-      return;
-    }
-
-    if (
-      musicPlayInProgress
-    ) {
-      return;
-    }
-
-    /*
-      Restore the saved position
-      before trying to play.
-    */
-
-    try {
-      const saved =
-        getSavedMusicPosition();
-
-      if (
-        Number.isFinite(
-          backgroundMusic.duration
-        ) &&
-        backgroundMusic.duration >
-          0 &&
-        saved <
-          backgroundMusic.duration
-      ) {
-        backgroundMusic.currentTime =
-          saved;
-      }
-    } catch (error) {
-      console.warn(
-        "Quiz Master: Could not prepare music position:",
-        error
-      );
-    }
-
-    musicPlayInProgress =
-      true;
-
-    try {
-      const playPromise =
-        backgroundMusic.play();
-
-      if (
-        playPromise &&
-        typeof playPromise.then ===
-          "function"
-      ) {
-        playPromise
-          .then(() => {
-            musicPlayInProgress =
-              false;
-
-            console.log(
-              "Quiz Master: Music is playing from saved position."
-            );
-
-            removeMusicInteractionListeners();
-
-            startMusicPositionSaver();
-          })
-          .catch((error) => {
-            musicPlayInProgress =
-              false;
-
-            console.warn(
-              "Quiz Master: Music playback was blocked:",
-              error
-            );
-
-            addMusicInteractionListeners();
-          });
-      } else {
-        musicPlayInProgress =
-          false;
-
-        startMusicPositionSaver();
-      }
-
-    } catch (error) {
-      musicPlayInProgress =
-        false;
-
-      console.warn(
-        "Quiz Master: Music play error:",
-        error
-      );
-
-      addMusicInteractionListeners();
-    }
-  }
-
-  function stopMusic(
-    reset = false
-  ) {
-    if (!backgroundMusic) {
-      return;
-    }
-
-    /*
-      IMPORTANT:
-      The reset argument is intentionally
-      ignored.
-
-      Music position is always preserved.
-      This means existing calls such as
-      stopMusic(true) cannot accidentally
-      reset the song to 0.
-    */
-
-    try {
-      saveMusicPosition();
-
-      backgroundMusic.pause();
-
-    } catch (error) {
-      console.warn(
-        "Quiz Master: Could not stop music:",
-        error
-      );
-    }
-
-    musicPlayInProgress =
-      false;
-
-    stopMusicPositionSaver();
-  }
-
-  function startMusicPositionSaver() {
-    if (
-      musicSaveInterval !== null
-    ) {
-      return;
-    }
-
-    musicSaveInterval =
-      setInterval(() => {
-        if (
-          backgroundMusic &&
-          !backgroundMusic.paused
-        ) {
-          saveMusicPosition();
-        }
-      }, 2000);
-  }
-
-  function stopMusicPositionSaver() {
-    if (
-      musicSaveInterval !== null
-    ) {
-      clearInterval(
-        musicSaveInterval
-      );
-
-      musicSaveInterval =
-        null;
-    }
-  }
-
-  function addMusicInteractionListeners() {
-    if (
-      musicInteractionListenersAdded
-    ) {
-      return;
-    }
-
-    document.addEventListener(
-      "pointerdown",
-      handleFirstMusicInteraction,
-      {
-        passive: true
-      }
-    );
-
-    document.addEventListener(
-      "touchstart",
-      handleFirstMusicInteraction,
-      {
-        passive: true
-      }
-    );
-
-    document.addEventListener(
-      "click",
-      handleFirstMusicInteraction,
-      {
-        passive: true
-      }
-    );
-
-    musicInteractionListenersAdded =
-      true;
-  }
-
-  function removeMusicInteractionListeners() {
-    if (
-      !musicInteractionListenersAdded
-    ) {
-      return;
-    }
-
-    document.removeEventListener(
-      "pointerdown",
-      handleFirstMusicInteraction
-    );
-
-    document.removeEventListener(
-      "touchstart",
-      handleFirstMusicInteraction
-    );
-
-    document.removeEventListener(
-      "click",
-      handleFirstMusicInteraction
-    );
-
-    musicInteractionListenersAdded =
-      false;
-  }
-
-  function handleFirstMusicInteraction() {
-    if (!musicEnabled) {
-      return;
-    }
-
-    startMusic(true);
-  }
-
-  function setupMusicInteractionListeners() {
-    addMusicInteractionListeners();
-  }
-
-  /* =========================================================
-     SAVE MUSIC WHEN PAGE IS HIDDEN/CLOSED
-     ========================================================= */
-
-  function setupMusicPersistence() {
-    document.addEventListener(
-      "visibilitychange",
-      () => {
-        if (
-          document.visibilityState ===
-          "hidden"
-        ) {
-          saveMusicPosition();
-        }
-      }
-    );
-
-    window.addEventListener(
-      "pagehide",
-      () => {
-        saveMusicPosition();
-      }
-    );
-
-    window.addEventListener(
-      "beforeunload",
-      () => {
-        saveMusicPosition();
-      }
-    );
   }
 
   /* =========================
-     SOUND EFFECTS
+     SOUND
      ========================= */
 
   function playSound(type) {
     if (!soundEnabled) {
       return;
     }
+
+    /*
+      No external sound files are required.
+      Use a short Web Audio beep.
+    */
 
     try {
       const AudioContext =
@@ -3043,66 +2487,299 @@
         context.destination
       );
 
-      if (
+      oscillator.frequency.value =
         type === "correct"
-      ) {
-        oscillator.frequency.value =
-          880;
-      } else {
-        oscillator.frequency.value =
-          220;
-      }
+          ? 880
+          : 220;
 
       oscillator.type =
         "sine";
 
       gain.gain.setValueAtTime(
-        0.0001,
+        0.08,
         context.currentTime
       );
 
       gain.gain.exponentialRampToValueAtTime(
-        0.08,
-        context.currentTime +
-          0.02
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        context.currentTime +
-          0.18
+        0.001,
+        context.currentTime + 0.15
       );
 
       oscillator.start();
 
       oscillator.stop(
-        context.currentTime +
-          0.2
+        context.currentTime + 0.15
       );
-
-      oscillator.addEventListener(
-        "ended",
-        () => {
-          if (
-            context &&
-            typeof context.close ===
-              "function"
-          ) {
-            context
-              .close()
-              .catch(
-                () => {}
-              );
-          }
-        }
-      );
-
     } catch (error) {
       console.warn(
-        "Sound effect error:",
+        "Sound unavailable:",
         error
       );
     }
+  }
+
+  function toggleSound() {
+    soundEnabled =
+      elements.soundSwitch
+        ? elements.soundSwitch.checked
+        : !soundEnabled;
+
+    localStorage.setItem(
+      STORAGE.sound,
+      String(soundEnabled)
+    );
+  }
+
+  /* =========================
+     MUSIC
+     ========================= */
+
+  function initializeMusic() {
+    if (backgroundMusic) {
+      return;
+    }
+
+    backgroundMusic =
+      new Audio(MUSIC_FILE);
+
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.35;
+    backgroundMusic.preload = "auto";
+
+    restoreMusicPosition();
+
+    backgroundMusic.addEventListener(
+      "timeupdate",
+      saveMusicPosition
+    );
+
+    backgroundMusic.addEventListener(
+      "loadedmetadata",
+      restoreMusicPosition
+    );
+
+    backgroundMusic.addEventListener(
+      "canplay",
+      restoreMusicPosition,
+      {
+        once: true
+      }
+    );
+  }
+
+  function saveMusicPosition() {
+    if (!backgroundMusic) {
+      return;
+    }
+
+    if (
+      !Number.isFinite(
+        backgroundMusic.currentTime
+      )
+    ) {
+      return;
+    }
+
+    try {
+      localStorage.setItem(
+        STORAGE.musicPosition,
+        String(
+          backgroundMusic.currentTime
+        )
+      );
+    } catch (error) {
+      console.warn(
+        "Unable to save music position:",
+        error
+      );
+    }
+  }
+
+  function restoreMusicPosition() {
+    if (!backgroundMusic) {
+      return;
+    }
+
+    const saved =
+      Number(
+        localStorage.getItem(
+          STORAGE.musicPosition
+        )
+      );
+
+    if (
+      Number.isFinite(saved) &&
+      saved >= 0
+    ) {
+      try {
+        if (
+          !Number.isFinite(
+            backgroundMusic.duration
+          ) ||
+          saved <
+            backgroundMusic.duration
+        ) {
+          backgroundMusic.currentTime =
+            saved;
+        }
+      } catch (error) {
+        console.warn(
+          "Unable to restore music position:",
+          error
+        );
+      }
+    }
+  }
+
+  async function startMusic() {
+    if (!musicEnabled) {
+      return;
+    }
+
+    initializeMusic();
+
+    if (!backgroundMusic) {
+      return;
+    }
+
+    if (
+      !backgroundMusic.paused ||
+      musicPlayInProgress
+    ) {
+      return;
+    }
+
+    musicPlayInProgress = true;
+
+    try {
+      await backgroundMusic.play();
+    } catch (error) {
+      /*
+        Browser autoplay policies may block
+        automatic playback.
+
+        We do not treat AbortError as an error.
+      */
+
+      if (
+        error &&
+        error.name !== "AbortError"
+      ) {
+        console.warn(
+          "Music autoplay blocked:",
+          error
+        );
+      }
+
+      addMusicInteractionListeners();
+    } finally {
+      musicPlayInProgress = false;
+    }
+  }
+
+  function stopMusic(reset = false) {
+    if (!backgroundMusic) {
+      return;
+    }
+
+    saveMusicPosition();
+
+    backgroundMusic.pause();
+
+    /*
+      IMPORTANT:
+      Do not reset currentTime.
+      This keeps mythica.mp3 at the same position.
+    */
+
+    if (reset) {
+      /*
+        Intentionally not resetting position.
+      */
+    }
+  }
+
+  function toggleMusic() {
+    musicEnabled =
+      elements.musicSwitch
+        ? elements.musicSwitch.checked
+        : !musicEnabled;
+
+    localStorage.setItem(
+      STORAGE.music,
+      String(musicEnabled)
+    );
+
+    if (musicEnabled) {
+      startMusic();
+    } else {
+      stopMusic();
+    }
+  }
+
+  function addMusicInteractionListeners() {
+    if (
+      musicInteractionListenersAdded
+    ) {
+      return;
+    }
+
+    musicInteractionListenersAdded =
+      true;
+
+    const tryStart = () => {
+      if (musicEnabled) {
+        startMusic();
+      }
+    };
+
+    [
+      "pointerdown",
+      "touchstart",
+      "click"
+    ].forEach(eventName => {
+      document.addEventListener(
+        eventName,
+        tryStart,
+        {
+          passive: true
+        }
+      );
+    });
+  }
+
+  function startMusicPersistence() {
+    if (musicSaveInterval) {
+      return;
+    }
+
+    musicSaveInterval =
+      setInterval(
+        saveMusicPosition,
+        2000
+      );
+
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (
+          document.visibilityState ===
+          "hidden"
+        ) {
+          saveMusicPosition();
+        }
+      }
+    );
+
+    window.addEventListener(
+      "pagehide",
+      saveMusicPosition
+    );
+
+    window.addEventListener(
+      "beforeunload",
+      saveMusicPosition
+    );
   }
 
   /* =========================
@@ -3110,159 +2787,101 @@
      ========================= */
 
   async function shareQuiz() {
-    const shareData = {
-      title:
-        "Quiz Master 🇷🇼",
-      text:
-        "Test your knowledge with Quiz Master!",
-      url:
-        window.location.href
-    };
+    const shareUrl =
+      window.location.href;
 
-    try {
-      if (
-        navigator.share &&
-        typeof navigator.share ===
-          "function"
-      ) {
-        await navigator.share(
-          shareData
-        );
+    const shareText =
+      "Test your knowledge with Quiz Master!";
+
+    if (
+      navigator.share
+    ) {
+      try {
+        await navigator.share({
+          title:
+            "Quiz Master 🇷🇼",
+          text: shareText,
+          url: shareUrl
+        });
 
         return;
-      }
-
-    } catch (error) {
-      if (
-        error &&
-        error.name ===
-          "AbortError"
-      ) {
-        return;
+      } catch (error) {
+        if (
+          error &&
+          error.name ===
+            "AbortError"
+        ) {
+          return;
+        }
       }
     }
 
     try {
-      if (
-        navigator.clipboard &&
-        typeof navigator.clipboard.writeText ===
-          "function"
-      ) {
-        await navigator.clipboard.writeText(
-          window.location.href
-        );
-
-        showTemporaryShareMessage(
-          "✅ Link Copied!"
-        );
-
-        return;
-      }
-
-    } catch (error) {
-      console.warn(
-        "Clipboard failed:",
-        error
-      );
-    }
-
-    try {
-      const textarea =
-        document.createElement(
-          "textarea"
-        );
-
-      textarea.value =
-        window.location.href;
-
-      textarea.style.position =
-        "fixed";
-
-      textarea.style.opacity =
-        "0";
-
-      document.body.appendChild(
-        textarea
+      await navigator.clipboard.writeText(
+        shareUrl
       );
 
-      textarea.focus();
-      textarea.select();
+      if (elements.shareBtn) {
+        const oldText =
+          elements.shareBtn.textContent;
 
-      document.execCommand(
-        "copy"
-      );
-
-      textarea.remove();
-
-      showTemporaryShareMessage(
-        "✅ Link Copied!"
-      );
-
-    } catch (error) {
-      console.warn(
-        "Share fallback failed:",
-        error
-      );
-    }
-  }
-
-  function showTemporaryShareMessage(
-    message
-  ) {
-    if (!elements.shareBtn) {
-      return;
-    }
-
-    const original =
-      elements.shareBtn.textContent;
-
-    elements.shareBtn.textContent =
-      message;
-
-    setTimeout(() => {
-      if (
-        elements.shareBtn
-      ) {
         elements.shareBtn.textContent =
-          original;
+          "✅ Link Copied!";
+
+        setTimeout(() => {
+          elements.shareBtn.textContent =
+            oldText;
+        }, 1800);
       }
-    }, 1800);
+    } catch (error) {
+      console.warn(
+        "Unable to copy share link:",
+        error
+      );
+    }
   }
 
   /* =========================
-     ERROR SCREEN
+     HOME
+     ========================= */
+
+  function goHome() {
+    stopTimer();
+
+    saveMusicPosition();
+
+    showScreen(
+      "homeScreen"
+    );
+
+    updateContinueButton();
+  }
+
+  function showRounds() {
+    buildRounds();
+    initializeUnlockedRounds();
+    renderRounds();
+
+    showScreen(
+      "roundsScreen"
+    );
+  }
+
+  /* =========================
+     ERROR
      ========================= */
 
   function showError(message) {
     stopTimer();
 
-    if (
-      elements.errorMessage
-    ) {
+    if (elements.errorMessage) {
       elements.errorMessage.textContent =
-        message;
+        safeText(message);
     }
 
     showScreen(
       "errorScreen"
     );
-
-    startMusic();
-  }
-
-  async function retryLoadingQuestions() {
-    const success =
-      await loadQuestions();
-
-    if (success) {
-      showScreen(
-        "homeScreen"
-      );
-
-      updateContinueButton();
-
-      startMusic();
-    }
   }
 
   /* =========================
@@ -3270,112 +2889,79 @@
      ========================= */
 
   function setupEventListeners() {
-
-    /* HOME */
-
     if (elements.startBtn) {
       elements.startBtn.addEventListener(
         "click",
         () => {
-          startQuiz(1);
+          showDifficultySelection(1);
         }
       );
     }
 
-    if (
-      elements.continueBtn
-    ) {
+    if (elements.continueBtn) {
       elements.continueBtn.addEventListener(
         "click",
-        () => {
-          continueQuiz();
-        }
+        continueQuiz
       );
     }
 
     if (elements.roundsBtn) {
       elements.roundsBtn.addEventListener(
         "click",
-        () => {
-          showRounds();
-        }
+        showRounds
       );
     }
 
-    if (
-      elements.settingsBtn
-    ) {
+    if (elements.settingsBtn) {
       elements.settingsBtn.addEventListener(
         "click",
-        () => {
-          showSettings();
-        }
+        showSettings
       );
     }
 
     if (elements.shareBtn) {
       elements.shareBtn.addEventListener(
         "click",
-        () => {
-          shareQuiz();
-        }
+        shareQuiz
       );
     }
 
-    /* ROUNDS */
-
-    if (
-      elements.roundsBackBtn
-    ) {
+    if (elements.roundsBackBtn) {
       elements.roundsBackBtn.addEventListener(
         "click",
-        () => {
-          goHome();
-        }
+        goHome
       );
     }
-
-    /* QUIZ */
 
     if (elements.nextBtn) {
       elements.nextBtn.addEventListener(
         "click",
-        () => {
-          nextQuestion();
-        }
+        nextQuestion
       );
     }
 
-    if (
-      elements.quizHomeBtn
-    ) {
+    if (elements.quizHomeBtn) {
       elements.quizHomeBtn.addEventListener(
         "click",
-        () => {
-          saveCurrentProgress();
-          goHome();
-        }
+        goHome
       );
     }
 
-    /* RESULT */
+    if (elements.nextRoundBtn) {
+      elements.nextRoundBtn.addEventListener(
+        "click",
+        nextRound
+      );
+    }
 
     if (elements.restartBtn) {
       elements.restartBtn.addEventListener(
         "click",
         () => {
-          retryRound();
-        }
-      );
-    }
-
-    if (
-      elements.nextRoundBtn
-    ) {
-      elements.nextRoundBtn.addEventListener(
-        "click",
-        () => {
-          nextRound();
+          startQuiz(
+            currentRound,
+            selectedDifficulty
+          );
         }
       );
     }
@@ -3383,107 +2969,99 @@
     if (elements.reviewBtn) {
       elements.reviewBtn.addEventListener(
         "click",
-        () => {
-          showReview();
-        }
+        showReview
       );
     }
 
-    if (
-      elements.resultHomeBtn
-    ) {
+    if (elements.resultHomeBtn) {
       elements.resultHomeBtn.addEventListener(
         "click",
-        () => {
-          goHome();
-        }
+        goHome
       );
     }
 
-    /* REVIEW */
-
-    if (
-      elements.reviewRetryBtn
-    ) {
+    if (elements.reviewRetryBtn) {
       elements.reviewRetryBtn.addEventListener(
         "click",
         () => {
-          retryRound();
+          startQuiz(
+            currentRound,
+            selectedDifficulty
+          );
         }
       );
     }
 
-    if (
-      elements.reviewBackBtn
-    ) {
+    if (elements.reviewBackBtn) {
       elements.reviewBackBtn.addEventListener(
         "click",
         () => {
           showScreen(
             "resultScreen"
           );
-
-          startMusic();
         }
       );
     }
 
-    /* SETTINGS */
+    if (elements.musicSwitch) {
+      elements.musicSwitch.checked =
+        musicEnabled;
 
-    if (
-      elements.musicSwitch
-    ) {
       elements.musicSwitch.addEventListener(
-        "click",
-        () => {
-          toggleMusic();
-        }
+        "change",
+        toggleMusic
       );
     }
 
-    if (
-      elements.soundSwitch
-    ) {
+    if (elements.soundSwitch) {
+      elements.soundSwitch.checked =
+        soundEnabled;
+
       elements.soundSwitch.addEventListener(
-        "click",
-        () => {
-          toggleSound();
-        }
+        "change",
+        toggleSound
       );
     }
 
-    if (
-      elements.settingsBackBtn
-    ) {
+    if (elements.settingsBackBtn) {
       elements.settingsBackBtn.addEventListener(
         "click",
-        () => {
-          goHome();
-        }
+        goHome
       );
     }
 
-    /* ERROR */
-
-    if (
-      elements.errorRestartBtn
-    ) {
+    if (elements.errorRestartBtn) {
       elements.errorRestartBtn.addEventListener(
         "click",
-        () => {
-          retryLoadingQuestions();
-        }
+        loadQuestions
       );
     }
 
-    if (
-      elements.errorHomeBtn
-    ) {
+    if (elements.errorHomeBtn) {
       elements.errorHomeBtn.addEventListener(
         "click",
-        () => {
-          goHome();
-        }
+        goHome
+      );
+    }
+
+    if (elements.difficultyBackBtn) {
+      elements.difficultyBackBtn.addEventListener(
+        "click",
+        goHome
+      );
+    }
+
+    if (elements.rewardsBtn) {
+      elements.rewardsBtn.addEventListener(
+        "click",
+        showRewards
+      );
+    }
+
+    if (elements.rewardsBackBtn) {
+      elements.rewardsBackBtn.addEventListener(
+        "click",
+        goHome
       );
     }
   }
@@ -3492,46 +3070,32 @@
      INITIALIZE
      ========================= */
 
-  async function initialize() {
-
-    /*
-      Create the Rewards UI before
-      setting up the buttons.
-    */
+  function initialize() {
+    createDifficultyUI();
 
     createRewardsUI();
 
     initializeMusic();
 
-    updateSettingsUI();
-
-    setupMusicInteractionListeners();
-
-    setupMusicPersistence();
+    startMusicPersistence();
 
     setupEventListeners();
 
-    showScreen(
-      "homeScreen"
-    );
-
-    updateRewards();
-
-    await loadQuestions();
+    updateSettingsUI();
 
     updateContinueButton();
 
     updateRewards();
 
-    /*
-      No forced autoplay.
-      Browser/mobile policy requires
-      user interaction.
-    */
+    showScreen(
+      "homeScreen"
+    );
+
+    loadQuestions();
   }
 
   /* =========================
-     PUBLIC FUNCTIONS
+     PUBLIC API
      ========================= */
 
   window.startQuiz =
@@ -3580,15 +3144,13 @@
     loadQuestions;
 
   window.showRewards =
-    () => {
-      updateRewards();
-      showScreen(
-        "rewardsScreen"
-      );
-    };
+    showRewards;
+
+  window.showDifficultySelection =
+    showDifficultySelection;
 
   /* =========================
-     START APP
+     START
      ========================= */
 
   if (
@@ -3597,10 +3159,7 @@
   ) {
     document.addEventListener(
       "DOMContentLoaded",
-      initialize,
-      {
-        once: true
-      }
+      initialize
     );
   } else {
     initialize();
