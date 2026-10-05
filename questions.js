@@ -11,7 +11,7 @@
      ========================= */
 
   const QUESTIONS_FILE = "./questions.json";
-  const MUSIC_FILE = "./music.mp3";
+const MUSIC_FILE = "./mythica.mp3";
 
   const QUESTIONS_PER_ROUND = 10;
   const TIME_PER_QUESTION = 20;
