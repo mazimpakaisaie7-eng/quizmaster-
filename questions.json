@@ -1713,4 +1713,830 @@
     "options": [
       "Gufata ingamba zo kukimenyekanisha no gukura ikinyabiziga ahantu hateje akaga igihe bish  }
 
+[
+  {
+    "id": "famous-001",
+    "question": "Who developed the theory of relativity?",
+    "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
+    "answer": "Albert Einstein",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-002",
+    "question": "Who formulated the laws of motion and universal gravitation?",
+    "options": ["Isaac Newton", "Albert Einstein", "Marie Curie", "Charles Darwin"],
+    "answer": "Isaac Newton",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-003",
+    "question": "Who is famous for pioneering research on radioactivity?",
+    "options": ["Marie Curie", "Ada Lovelace", "Jane Goodall", "Rosalind Franklin"],
+    "answer": "Marie Curie",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-004",
+    "question": "Who proposed the theory of evolution by natural selection?",
+    "options": ["Charles Darwin", "Louis Pasteur", "Gregor Mendel", "James Watt"],
+    "answer": "Charles Darwin",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-005",
+    "question": "Who is often called the father of modern chemistry?",
+    "options": ["Antoine Lavoisier", "Isaac Newton", "Galileo Galilei", "Michael Faraday"],
+    "answer": "Antoine Lavoisier",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-006",
+    "question": "Who discovered penicillin?",
+    "options": ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Jonas Salk"],
+    "answer": "Alexander Fleming",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-007",
+    "question": "Who discovered the first widely recognized vaccine against smallpox?",
+    "options": ["Edward Jenner", "Alexander Fleming", "Louis Pasteur", "Robert Hooke"],
+    "answer": "Edward Jenner",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-008",
+    "question": "Who is associated with the discovery of electromagnetic induction?",
+    "options": ["Michael Faraday", "Charles Darwin", "Gregor Mendel", "Niels Bohr"],
+    "answer": "Michael Faraday",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-009",
+    "question": "Who is known for discovering the laws of planetary motion?",
+    "options": ["Johannes Kepler", "Galileo Galilei", "Isaac Newton", "Copernicus"],
+    "answer": "Johannes Kepler",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-010",
+    "question": "Who proposed that the Earth and other planets orbit the Sun?",
+    "options": ["Nicolaus Copernicus", "Aristotle", "Ptolemy", "Isaac Newton"],
+    "answer": "Nicolaus Copernicus",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-011",
+    "question": "Who was the first person to receive two Nobel Prizes?",
+    "options": ["Marie Curie", "Albert Einstein", "Linus Pauling", "John Bardeen"],
+    "answer": "Marie Curie",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-012",
+    "question": "Who is known for pioneering work in computer programming in the 19th century?",
+    "options": ["Ada Lovelace", "Marie Curie", "Jane Goodall", "Dorothy Hodgkin"],
+    "answer": "Ada Lovelace",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-013",
+    "question": "Who is famous for the discovery of the structure of DNA using X-ray diffraction evidence?",
+    "options": ["Rosalind Franklin", "Marie Curie", "Ada Lovelace", "Jane Goodall"],
+    "answer": "Rosalind Franklin",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-014",
+    "question": "Who studied chimpanzees extensively in Tanzania?",
+    "options": ["Jane Goodall", "Marie Curie", "Rachel Carson", "Rosalind Franklin"],
+    "answer": "Jane Goodall",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-015",
+    "question": "Who developed the first successful polio vaccine?",
+    "options": ["Jonas Salk", "Alexander Fleming", "Edward Jenner", "Louis Pasteur"],
+    "answer": "Jonas Salk",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-016",
+    "question": "Who is known for the three laws describing planetary motion?",
+    "options": ["Johannes Kepler", "Galileo Galilei", "Isaac Newton", "Albert Einstein"],
+    "answer": "Johannes Kepler",
+    "category": "Famous Scientists"
+  },
+  {
+    "id": "famous-017",
+    "question": "Who invented the World Wide Web?",
+    "options": ["Tim Berners-Lee", "Bill Gates", "Steve Jobs", "Mark Zuckerberg"],
+    "answer": "Tim Berners-Lee",
+    "category": "Technology Pioneers"
+  },
+  {
+    "id": "famous-018",
+    "question": "Who co-founded Microsoft with Paul Allen?",
+    "options": ["Bill Gates", "Steve Jobs", "Larry Page", "Jeff Bezos"],
+    "answer": "Bill Gates",
+    "category": "Technology Pioneers"
+  },
+  {
+    "id": "famous-019",
+    "question": "Who co-founded Apple with Steve Wozniak and Ronald Wayne?",
+    "options": ["Steve Jobs", "Bill Gates", "Elon Musk", "Larry Ellison"],
+    "answer": "Steve Jobs",
+    "category": "Technology Pioneers"
+  },
+  {
+    "id": "famous-020",
+    "question": "Who co-founded Google with Sergey Brin?",
+    "options": ["Larry Page", "Jeff Bezos", "Bill Gates", "Steve Jobs"],
+    "answer": "Larry Page",
+    "category": "Technology Pioneers"
+  },
+  {
+    "id": "famous-021",
+    "question": "Who co-founded Google with Larry Page?",
+    "options": ["Sergey Brin", "Mark Zuckerberg", "Elon Musk", "Jack Ma"],
+    "answer": "Sergey Brin",
+    "category": "Technology Pioneers"
+  },
+  {
+    "id": "famous-022",
+    "question": "Who founded Amazon?",
+    "options": ["Jeff Bezos", "Bill Gates", "Larry Page", "Michael Dell"],
+    "answer": "Jeff Bezos",
+    "category": "Business Leaders"
+  },
+  {
+    "id": "famous-023",
+    "question": "Who founded Facebook, now known as Meta?",
+    "options": ["Mark Zuckerberg", "Jeff Bezos", "Bill Gates", "Larry Page"],
+    "answer": "Mark Zuckerberg",
+    "category": "Technology Pioneers"
+  },
+  {
+    "id": "famous-024",
+    "question": "Which company was founded by Elon Musk, Martin Eberhard and others?",
+    "options": ["Tesla", "Google", "Amazon", "Netflix"],
+    "answer": "Tesla",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-025",
+    "question": "Which company is associated with the iPhone?",
+    "options": ["Apple", "Microsoft", "Samsung", "Google"],
+    "answer": "Apple",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-026",
+    "question": "Which company developed the Windows operating system?",
+    "options": ["Microsoft", "Apple", "IBM", "Oracle"],
+    "answer": "Microsoft",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-027",
+    "question": "Which company is famous for the Android operating system?",
+    "options": ["Google", "Microsoft", "Apple", "IBM"],
+    "answer": "Google",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-028",
+    "question": "Which company is famous for the Galaxy smartphone series?",
+    "options": ["Samsung", "Apple", "Sony", "Nokia"],
+    "answer": "Samsung",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-029",
+    "question": "Which company is famous for the PlayStation gaming console?",
+    "options": ["Sony", "Nintendo", "Microsoft", "Sega"],
+    "answer": "Sony",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-030",
+    "question": "Which company developed the Xbox?",
+    "options": ["Microsoft", "Sony", "Nintendo", "Sega"],
+    "answer": "Microsoft",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-031",
+    "question": "Which company created the Windows and Office product families?",
+    "options": ["Microsoft", "Apple", "Amazon", "Netflix"],
+    "answer": "Microsoft",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-032",
+    "question": "Which company is famous for the streaming service Netflix?",
+    "options": ["Netflix", "Spotify", "Disney", "Amazon"],
+    "answer": "Netflix",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-033",
+    "question": "Which company owns the Pixar animation studio?",
+    "options": ["Disney", "Microsoft", "Sony", "Netflix"],
+    "answer": "Disney",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-034",
+    "question": "Which company is strongly associated with the search engine Google?",
+    "options": ["Alphabet", "Microsoft", "Apple", "Amazon"],
+    "answer": "Alphabet",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-035",
+    "question": "Which company is famous for the social media platform Instagram?",
+    "options": ["Meta", "Apple", "Microsoft", "Sony"],
+    "answer": "Meta",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-036",
+    "question": "Which company operates the professional networking platform LinkedIn?",
+    "options": ["Microsoft", "Google", "Meta", "Amazon"],
+    "answer": "Microsoft",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-037",
+    "question": "Which company is famous for the music streaming service Spotify?",
+    "options": ["Spotify", "Netflix", "Disney", "Adobe"],
+    "answer": "Spotify",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-038",
+    "question": "Which company is famous for the Photoshop software?",
+    "options": ["Adobe", "Google", "Apple", "IBM"],
+    "answer": "Adobe",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-039",
+    "question": "Which company created the Chrome web browser?",
+    "options": ["Google", "Microsoft", "Apple", "Mozilla"],
+    "answer": "Google",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-040",
+    "question": "Which company is associated with the Firefox web browser?",
+    "options": ["Mozilla", "Google", "Apple", "Microsoft"],
+    "answer": "Mozilla",
+    "category": "Companies"
+  },
+  {
+    "id": "famous-041",
+    "question": "Who was the first emperor of Rome?",
+    "options": ["Augustus", "Julius Caesar", "Nero", "Constantine"],
+    "answer": "Augustus",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-042",
+    "question": "Who was known as the first emperor of China?",
+    "options": ["Qin Shi Huang", "Confucius", "Sun Tzu", "Kublai Khan"],
+    "answer": "Qin Shi Huang",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-043",
+    "question": "Who was the famous queen of ancient Egypt associated with Julius Caesar and Mark Antony?",
+    "options": ["Cleopatra VII", "Nefertiti", "Hatshepsut", "Artemisia"],
+    "answer": "Cleopatra VII",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-044",
+    "question": "Who was the famous king of Macedonia who created a vast ancient empire?",
+    "options": ["Alexander the Great", "Leonidas", "Pericles", "Hammurabi"],
+    "answer": "Alexander the Great",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-045",
+    "question": "Who was the king of Babylon associated with an ancient code of laws?",
+    "options": ["Hammurabi", "Cyrus the Great", "Darius I", "Ramses II"],
+    "answer": "Hammurabi",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-046",
+    "question": "Who was the Persian ruler known as Cyrus the Great?",
+    "options": ["Founder of the Achaemenid Empire", "Roman emperor", "Egyptian pharaoh", "Greek philosopher"],
+    "answer": "Founder of the Achaemenid Empire",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-047",
+    "question": "Which Egyptian ruler was known as Ramses II?",
+    "options": ["A famous pharaoh", "A Roman emperor", "A Greek philosopher", "A Chinese emperor"],
+    "answer": "A famous pharaoh",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-048",
+    "question": "Who was the English king who established the Norman dynasty after the Battle of Hastings?",
+    "options": ["William the Conqueror", "Henry VIII", "Richard III", "Edward I"],
+    "answer": "William the Conqueror",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-049",
+    "question": "Which English king is famous for having six wives?",
+    "options": ["Henry VIII", "Henry V", "Richard I", "Edward III"],
+    "answer": "Henry VIII",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-050",
+    "question": "Which French ruler was known as the Sun King?",
+    "options": ["Louis XIV", "Napoleon Bonaparte", "Louis XVI", "Charlemagne"],
+    "answer": "Louis XIV",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-051",
+    "question": "Who was crowned emperor of the French in 1804?",
+    "options": ["Napoleon Bonaparte", "Louis XIV", "Charlemagne", "Julius Caesar"],
+    "answer": "Napoleon Bonaparte",
+    "category": "Historical Leaders"
+  },
+  {
+    "id": "famous-052",
+    "question": "Who was the first president of the United States?",
+    "options": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"],
+    "answer": "George Washington",
+    "category": "Historical Leaders"
+  },
+  {
+    "id": "famous-053",
+    "question": "Which U.S. president led the country during the American Civil War?",
+    "options": ["Abraham Lincoln", "George Washington", "Theodore Roosevelt", "John F. Kennedy"],
+    "answer": "Abraham Lincoln",
+    "category": "Historical Leaders"
+  },
+  {
+    "id": "famous-054",
+    "question": "Who was a major leader of India's independence movement using nonviolent resistance?",
+    "options": ["Mahatma Gandhi", "Jawaharlal Nehru", "Subhas Chandra Bose", "B. R. Ambedkar"],
+    "answer": "Mahatma Gandhi",
+    "category": "Historical Leaders"
+  },
+  {
+    "id": "famous-055",
+    "question": "Who became South Africa's first Black president?",
+    "options": ["Nelson Mandela", "Desmond Tutu", "Thabo Mbeki", "Oliver Tambo"],
+    "answer": "Nelson Mandela",
+    "category": "Historical Leaders"
+  },
+  {
+    "id": "famous-056",
+    "question": "Who was the British prime minister during much of World War II?",
+    "options": ["Winston Churchill", "Tony Blair", "Neville Chamberlain", "Clement Attlee"],
+    "answer": "Winston Churchill",
+    "category": "Historical Leaders"
+  },
+  {
+    "id": "famous-057",
+    "question": "Who was the first emperor of the unified Carolingian Empire to be crowned emperor in 800?",
+    "options": ["Charlemagne", "William the Conqueror", "Louis XIV", "Napoleon"],
+    "answer": "Charlemagne",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-058",
+    "question": "Which ancient Greek king is famous for the stand at Thermopylae?",
+    "options": ["Leonidas I", "Alexander the Great", "Pericles", "Solon"],
+    "answer": "Leonidas I",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-059",
+    "question": "Who was the first emperor of the Mughal Empire?",
+    "options": ["Babur", "Akbar", "Shah Jahan", "Aurangzeb"],
+    "answer": "Babur",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-060",
+    "question": "Which Mughal emperor commissioned the Taj Mahal?",
+    "options": ["Shah Jahan", "Akbar", "Babur", "Aurangzeb"],
+    "answer": "Shah Jahan",
+    "category": "Kings and Historical Leaders"
+  },
+  {
+    "id": "famous-061",
+    "question": "Which famous footballer is known as CR7?",
+    "options": ["Cristiano Ronaldo", "Lionel Messi", "Neymar", "Kylian Mbappe"],
+    "answer": "Cristiano Ronaldo",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-062",
+    "question": "Which footballer is widely known as Lionel Messi?",
+    "options": ["Lionel Messi", "Luka Modric", "Karim Benzema", "Erling Haaland"],
+    "answer": "Lionel Messi",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-063",
+    "question": "Which Brazilian footballer became famous for his skills and was known as Ronaldinho?",
+    "options": ["Ronaldinho", "Rivaldo", "Kaka", "Romario"],
+    "answer": "Ronaldinho",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-064",
+    "question": "Which French footballer captained France to the 1998 World Cup title?",
+    "options": ["Didier Deschamps", "Zinedine Zidane", "Thierry Henry", "Michel Platini"],
+    "answer": "Didier Deschamps",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-065",
+    "question": "Which French football legend scored twice in the 1998 World Cup final?",
+    "options": ["Zinedine Zidane", "Thierry Henry", "Kylian Mbappe", "Karim Benzema"],
+    "answer": "Zinedine Zidane",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-066",
+    "question": "Which Norwegian striker is famous for scoring many goals for Manchester City?",
+    "options": ["Erling Haaland", "Martin Odegaard", "Alexander Isak", "Harry Kane"],
+    "answer": "Erling Haaland",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-067",
+    "question": "Which French player became a major star for Paris Saint-Germain and France?",
+    "options": ["Kylian Mbappe", "Paul Pogba", "N'Golo Kante", "Antoine Griezmann"],
+    "answer": "Kylian Mbappe",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-068",
+    "question": "Which Croatian midfielder won the Ballon d'Or in 2018?",
+    "options": ["Luka Modric", "Ivan Rakitic", "Mario Mandzukic", "Mateo Kovacic"],
+    "answer": "Luka Modric",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-069",
+    "question": "Which English striker is known for his long career with Tottenham Hotspur and England?",
+    "options": ["Harry Kane", "Wayne Rooney", "David Beckham", "Alan Shearer"],
+    "answer": "Harry Kane",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-070",
+    "question": "Which English footballer was famous for his crossing and free kicks and played for Manchester United and Real Madrid?",
+    "options": ["David Beckham", "Steven Gerrard", "Frank Lampard", "Paul Scholes"],
+    "answer": "David Beckham",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-071",
+    "question": "Which Brazilian football legend won three FIFA World Cups?",
+    "options": ["Pelé", "Neymar", "Ronaldinho", "Ronaldo Nazario"],
+    "answer": "Pelé",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-072",
+    "question": "Which Brazilian striker was nicknamed Ronaldo Nazario?",
+    "options": ["Ronaldo Luís Nazário de Lima", "Rivaldo", "Romario", "Kaka"],
+    "answer": "Ronaldo Luís Nazário de Lima",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-073",
+    "question": "Which goalkeeper is famous for a long career with Spain and Real Madrid?",
+    "options": ["Iker Casillas", "Gianluigi Buffon", "Manuel Neuer", "Peter Schmeichel"],
+    "answer": "Iker Casillas",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-074",
+    "question": "Which Italian goalkeeper is famous for a legendary career with Juventus and Italy?",
+    "options": ["Gianluigi Buffon", "Iker Casillas", "Dino Zoff", "Walter Zenga"],
+    "answer": "Gianluigi Buffon",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-075",
+    "question": "Which German goalkeeper is famous for his sweeper-keeper style?",
+    "options": ["Manuel Neuer", "Oliver Kahn", "Marc-Andre ter Stegen", "Jens Lehmann"],
+    "answer": "Manuel Neuer",
+    "category": "Football Players"
+  },
+  {
+    "id": "famous-076",
+    "question": "Who is the head coach who led Manchester United to many major trophies during the 1990s and 2000s?",
+    "options": ["Alex Ferguson", "Jose Mourinho", "Pep Guardiola", "Arsene Wenger"],
+    "answer": "Alex Ferguson",
+    "category": "Football Coaches"
+  },
+  {
+    "id": "famous-077",
+    "question": "Which Spanish coach became famous for winning major trophies with Barcelona and Manchester City?",
+    "options": ["Pep Guardiola", "Luis Enrique", "Vicente del Bosque", "Carlo Ancelotti"],
+    "answer": "Pep Guardiola",
+    "category": "Football Coaches"
+  },
+  {
+    "id": "famous-078",
+    "question": "Which Italian coach is famous for winning major European trophies with several clubs?",
+    "options": ["Carlo Ancelotti", "Roberto Mancini", "Fabio Capello", "Marcello Lippi"],
+    "answer": "Carlo Ancelotti",
+    "category": "Football Coaches"
+  },
+  {
+    "id": "famous-079",
+    "question": "Which Portuguese coach is known for managing Porto, Chelsea, Inter Milan and Real Madrid?",
+    "options": ["Jose Mourinho", "Fernando Santos", "Andre Villas-Boas", "Paulo Bento"],
+    "answer": "Jose Mourinho",
+    "category": "Football Coaches"
+  },
+  {
+    "id": "famous-080",
+    "question": "Which French coach led France to the 2018 FIFA World Cup title?",
+    "options": ["Didier Deschamps", "Zinedine Zidane", "Laurent Blanc", "Arsene Wenger"],
+    "answer": "Didier Deschamps",
+    "category": "Football Coaches"
+  },
+  {
+    "id": "famous-081",
+    "question": "Who directed the film Titanic?",
+    "options": ["James Cameron", "Steven Spielberg", "Christopher Nolan", "Martin Scorsese"],
+    "answer": "James Cameron",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-082",
+    "question": "Who directed Jurassic Park?",
+    "options": ["Steven Spielberg", "James Cameron", "George Lucas", "Peter Jackson"],
+    "answer": "Steven Spielberg",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-083",
+    "question": "Who directed The Lord of the Rings film trilogy?",
+    "options": ["Peter Jackson", "James Cameron", "Christopher Nolan", "George Lucas"],
+    "answer": "Peter Jackson",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-084",
+    "question": "Who directed the Dark Knight trilogy?",
+    "options": ["Christopher Nolan", "Tim Burton", "James Cameron", "Ridley Scott"],
+    "answer": "Christopher Nolan",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-085",
+    "question": "Who directed the Star Wars film released in 1977?",
+    "options": ["George Lucas", "Steven Spielberg", "Peter Jackson", "James Cameron"],
+    "answer": "George Lucas",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-086",
+    "question": "Who directed the film The Godfather?",
+    "options": ["Francis Ford Coppola", "Martin Scorsese", "Steven Spielberg", "Ridley Scott"],
+    "answer": "Francis Ford Coppola",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-087",
+    "question": "Who directed Pulp Fiction?",
+    "options": ["Quentin Tarantino", "Martin Scorsese", "Christopher Nolan", "David Fincher"],
+    "answer": "Quentin Tarantino",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-088",
+    "question": "Who directed Avatar?",
+    "options": ["James Cameron", "Steven Spielberg", "Peter Jackson", "Ridley Scott"],
+    "answer": "James Cameron",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-089",
+    "question": "Who directed The Shawshank Redemption?",
+    "options": ["Frank Darabont", "Christopher Nolan", "Steven Spielberg", "David Fincher"],
+    "answer": "Frank Darabont",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-090",
+    "question": "Who directed the film Oppenheimer?",
+    "options": ["Christopher Nolan", "Denis Villeneuve", "James Cameron", "Steven Spielberg"],
+    "answer": "Christopher Nolan",
+    "category": "Filmmakers"
+  },
+  {
+    "id": "famous-091",
+    "question": "Who played Jack Dawson in Titanic?",
+    "options": ["Leonardo DiCaprio", "Brad Pitt", "Tom Hanks", "Matt Damon"],
+    "answer": "Leonardo DiCaprio",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-092",
+    "question": "Who played Forrest Gump in the film Forrest Gump?",
+    "options": ["Tom Hanks", "Tom Cruise", "Brad Pitt", "Denzel Washington"],
+    "answer": "Tom Hanks",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-093",
+    "question": "Who played Iron Man in the Marvel Cinematic Universe?",
+    "options": ["Robert Downey Jr.", "Chris Evans", "Chris Hemsworth", "Mark Ruffalo"],
+    "answer": "Robert Downey Jr.",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-094",
+    "question": "Who played Captain America in the Marvel Cinematic Universe?",
+    "options": ["Chris Evans", "Chris Hemsworth", "Robert Downey Jr.", "Jeremy Renner"],
+    "answer": "Chris Evans",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-095",
+    "question": "Who played Thor in the Marvel Cinematic Universe?",
+    "options": ["Chris Hemsworth", "Chris Evans", "Tom Holland", "Mark Ruffalo"],
+    "answer": "Chris Hemsworth",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-096",
+    "question": "Who played Spider-Man in the Marvel Cinematic Universe's main Spider-Man films?",
+    "options": ["Tom Holland", "Andrew Garfield", "Tobey Maguire", "Chris Evans"],
+    "answer": "Tom Holland",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-097",
+    "question": "Who played Black Panther in the Marvel Cinematic Universe?",
+    "options": ["Chadwick Boseman", "Michael B. Jordan", "Anthony Mackie", "Samuel L. Jackson"],
+    "answer": "Chadwick Boseman",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-098",
+    "question": "Who played the Joker in The Dark Knight?",
+    "options": ["Heath Ledger", "Joaquin Phoenix", "Jack Nicholson", "Jared Leto"],
+    "answer": "Heath Ledger",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-099",
+    "question": "Who played the title character in the 2019 film Joker?",
+    "options": ["Joaquin Phoenix", "Heath Ledger", "Jack Nicholson", "Christian Bale"],
+    "answer": "Joaquin Phoenix",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-100",
+    "question": "Who played Hermione Granger in the Harry Potter film series?",
+    "options": ["Emma Watson", "Emma Stone", "Natalie Portman", "Keira Knightley"],
+    "answer": "Emma Watson",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-101",
+    "question": "Who played Harry Potter in the Harry Potter film series?",
+    "options": ["Daniel Radcliffe", "Rupert Grint", "Tom Felton", "Elijah Wood"],
+    "answer": "Daniel Radcliffe",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-102",
+    "question": "Who played Frodo Baggins in The Lord of the Rings film trilogy?",
+    "options": ["Elijah Wood", "Daniel Radcliffe", "Orlando Bloom", "Ian McKellen"],
+    "answer": "Elijah Wood",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-103",
+    "question": "Who played Gandalf in The Lord of the Rings film trilogy?",
+    "options": ["Ian McKellen", "Christopher Lee", "Hugo Weaving", "Viggo Mortensen"],
+    "answer": "Ian McKellen",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-104",
+    "question": "Who played Jack Sparrow in the Pirates of the Caribbean films?",
+    "options": ["Johnny Depp", "Brad Pitt", "Orlando Bloom", "Tom Cruise"],
+    "answer": "Johnny Depp",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-105",
+    "question": "Who played the main character in the Mission: Impossible film series?",
+    "options": ["Tom Cruise", "Matt Damon", "Brad Pitt", "Keanu Reeves"],
+    "answer": "Tom Cruise",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-106",
+    "question": "Who played Neo in The Matrix?",
+    "options": ["Keanu Reeves", "Tom Cruise", "Brad Pitt", "Christian Bale"],
+    "answer": "Keanu Reeves",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-107",
+    "question": "Who played Batman in The Dark Knight trilogy?",
+    "options": ["Christian Bale", "Ben Affleck", "Michael Keaton", "Robert Pattinson"],
+    "answer": "Christian Bale",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-108",
+    "question": "Who played the title role in Black Panther?",
+    "options": ["Chadwick Boseman", "Denzel Washington", "Idris Elba", "Michael B. Jordan"],
+    "answer": "Chadwick Boseman",
+    "category": "Actors"
+  },
+  {
+    "id": "famous-109",
+    "question": "Which company is famous for making the Corolla?",
+    "options": ["Toyota", "Honda", "Ford", "BMW"],
+    "answer": "Toyota",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-110",
+    "question": "Which company is associated with the Civic model?",
+    "options": ["Honda", "Toyota", "Ford", "Volkswagen"],
+    "answer": "Honda",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-111",
+    "question": "Which company produces the Mustang?",
+    "options": ["Ford", "Toyota", "Honda", "Nissan"],
+    "answer": "Ford",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-112",
+    "question": "Which German company produces the 3 Series?",
+    "options": ["BMW", "Audi", "Mercedes-Benz", "Volkswagen"],
+    "answer": "BMW",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-113",
+    "question": "Which German company produces the Golf?",
+    "options": ["Volkswagen", "BMW", "Audi", "Porsche"],
+    "answer": "Volkswagen",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-114",
+    "question": "Which company is famous for the PlayStation 5?",
+    "options": ["Sony", "Microsoft", "Nintendo", "Sega"],
+    "answer": "Sony",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-115",
+    "question": "Which company developed the Nintendo Switch?",
+    "options": ["Nintendo", "Sony", "Microsoft", "Sega"],
+    "answer": "Nintendo",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-116",
+    "question": "Which company developed the Windows operating system?",
+    "options": ["Microsoft", "Google", "Apple", "IBM"],
+    "answer": "Microsoft",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-117",
+    "question": "Which company owns YouTube?",
+    "options": ["Google", "Meta", "Microsoft", "Amazon"],
+    "answer": "Google",
+    "category": "Major Companies"
+  },
+  {
+    "id": "famous-118",
+    "question": "Which company owns WhatsApp?",
+    "options": ["Meta", "Google", "Microsoft", "Apple"],
+    "answer": "Meta",
+    "category": "Major
 ]
