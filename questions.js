@@ -3,7 +3,7 @@
 
   /* =========================================================
      QUIZ MASTER 🇷🇼
-     questions.js
+     QUESTIONS ENGINE - FULL VERSION
      ========================================================= */
 
   /* =========================
@@ -11,7 +11,7 @@
      ========================= */
 
   const QUESTIONS_FILE = "./questions.json";
-const MUSIC_FILE = "./mythica.mp3";
+  const MUSIC_FILE = "./mythica.mp3";
 
   const QUESTIONS_PER_ROUND = 10;
   const TIME_PER_QUESTION = 20;
@@ -24,6 +24,8 @@ const MUSIC_FILE = "./mythica.mp3";
     currentRound: "quizmasterCurrentRound",
     music: "quizmasterMusic",
     sound: "quizmasterSound",
+    musicPosition: "quizmasterMusicPosition",
+
     completedRounds: "quizmasterCompletedRounds",
     roundStars: "quizmasterRoundStars",
     achievements: "quizmasterAchievements",
@@ -68,6 +70,8 @@ const MUSIC_FILE = "./mythica.mp3";
 
   let musicInteractionListenersAdded = false;
   let musicPlayInProgress = false;
+
+  let musicSaveInterval = null;
 
   /* =========================
      DOM HELPER
@@ -137,36 +141,57 @@ const MUSIC_FILE = "./mythica.mp3";
 
   function safeText(element, value) {
     if (!element) return;
-    element.textContent = value == null ? "" : String(value);
+    element.textContent =
+      value == null ? "" : String(value);
   }
 
   function readJSON(key, fallback) {
     try {
-      const value = localStorage.getItem(key);
+      const value =
+        localStorage.getItem(key);
 
       if (!value) {
         return fallback;
       }
 
       return JSON.parse(value);
+
     } catch (error) {
-      console.warn("Could not read localStorage:", key, error);
+      console.warn(
+        "Could not read localStorage:",
+        key,
+        error
+      );
+
       return fallback;
     }
   }
 
   function writeJSON(key, value) {
     try {
-      localStorage.setItem(key, JSON.stringify(value));
+      localStorage.setItem(
+        key,
+        JSON.stringify(value)
+      );
+
       return true;
+
     } catch (error) {
-      console.warn("Could not write localStorage:", key, error);
+      console.warn(
+        "Could not write localStorage:",
+        key,
+        error
+      );
+
       return false;
     }
   }
 
   function clamp(value, min, max) {
-    return Math.min(Math.max(value, min), max);
+    return Math.min(
+      Math.max(value, min),
+      max
+    );
   }
 
   /* =========================
@@ -178,10 +203,6 @@ const MUSIC_FILE = "./mythica.mp3";
       return "";
     }
 
-    /*
-      If question_rw exists, it is used.
-      If not, normal English question is used.
-    */
     if (
       typeof question.question_rw === "string" &&
       question.question_rw.trim()
@@ -189,15 +210,23 @@ const MUSIC_FILE = "./mythica.mp3";
       return question.question_rw.trim();
     }
 
-    return String(question.question || "").trim();
+    return String(
+      question.question || ""
+    ).trim();
   }
 
   /* =========================
      QUESTION VALIDATION
      ========================= */
 
-  function validateQuestion(question, index) {
-    if (!question || typeof question !== "object") {
+  function validateQuestion(
+    question,
+    index
+  ) {
+    if (
+      !question ||
+      typeof question !== "object"
+    ) {
       throw new Error(
         `Question ${index + 1} is not a valid object.`
       );
@@ -224,11 +253,16 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    const options = question.options.map((option) =>
-      String(option).trim()
-    );
+    const options =
+      question.options.map((option) =>
+        String(option).trim()
+      );
 
-    if (options.some((option) => !option)) {
+    if (
+      options.some(
+        (option) => !option
+      )
+    ) {
       throw new Error(
         `Question ${index + 1} contains an empty option.`
       );
@@ -243,7 +277,11 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (!options.includes(question.answer.trim())) {
+    if (
+      !options.includes(
+        question.answer.trim()
+      )
+    ) {
       throw new Error(
         `Question ${index + 1}: answer does not exactly match one of the options.`
       );
@@ -263,13 +301,14 @@ const MUSIC_FILE = "./mythica.mp3";
     try {
       showLoadingState();
 
-      const response = await fetch(
-        `${QUESTIONS_FILE}?v=${Date.now()}`,
-        {
-          method: "GET",
-          cache: "no-store"
-        }
-      );
+      const response =
+        await fetch(
+          `${QUESTIONS_FILE}?v=${Date.now()}`,
+          {
+            method: "GET",
+            cache: "no-store"
+          }
+        );
 
       if (!response.ok) {
         throw new Error(
@@ -277,7 +316,8 @@ const MUSIC_FILE = "./mythica.mp3";
         );
       }
 
-      const data = await response.json();
+      const data =
+        await response.json();
 
       if (!Array.isArray(data)) {
         throw new Error(
@@ -291,9 +331,14 @@ const MUSIC_FILE = "./mythica.mp3";
         );
       }
 
-      allQuestions = data.map((question, index) =>
-        validateQuestion(question, index)
-      );
+      allQuestions =
+        data.map(
+          (question, index) =>
+            validateQuestion(
+              question,
+              index
+            )
+        );
 
       buildRounds();
 
@@ -309,19 +354,19 @@ const MUSIC_FILE = "./mythica.mp3";
 
       showScreen("homeScreen");
 
+      updateRewards();
+
       console.log(
         `Quiz Master: loaded ${allQuestions.length} questions in ${rounds.length} rounds.`
       );
 
-      /*
-        Do NOT automatically call play() here.
-        Mobile browsers may block autoplay.
-        Music starts after a real user interaction.
-      */
-
       return true;
+
     } catch (error) {
-      console.error("Quiz Master loading error:", error);
+      console.error(
+        "Quiz Master loading error:",
+        error
+      );
 
       showError(
         error && error.message
@@ -335,7 +380,8 @@ const MUSIC_FILE = "./mythica.mp3";
 
   function showLoadingState() {
     if (elements.question) {
-      elements.question.textContent = "Loading questions...";
+      elements.question.textContent =
+        "Loading questions...";
     }
   }
 
@@ -365,31 +411,35 @@ const MUSIC_FILE = "./mythica.mp3";
      ========================= */
 
   function initializeUnlockedRounds() {
-    let unlocked = readJSON(
-      STORAGE.unlockedRounds,
-      null
-    );
+    let unlocked =
+      readJSON(
+        STORAGE.unlockedRounds,
+        null
+      );
 
     if (!Array.isArray(unlocked)) {
       unlocked = [1];
     }
 
-    unlocked = unlocked
-      .map(Number)
-      .filter(
-        (round) =>
-          Number.isInteger(round) &&
-          round >= 1 &&
-          round <= rounds.length
-      );
+    unlocked =
+      unlocked
+        .map(Number)
+        .filter(
+          (round) =>
+            Number.isInteger(round) &&
+            round >= 1 &&
+            round <= rounds.length
+        );
 
     if (!unlocked.includes(1)) {
       unlocked.unshift(1);
     }
 
-    unlocked = [...new Set(unlocked)].sort(
-      (a, b) => a - b
-    );
+    unlocked =
+      [...new Set(unlocked)]
+        .sort(
+          (a, b) => a - b
+        );
 
     writeJSON(
       STORAGE.unlockedRounds,
@@ -398,48 +448,65 @@ const MUSIC_FILE = "./mythica.mp3";
   }
 
   function getUnlockedRounds() {
-    let unlocked = readJSON(
-      STORAGE.unlockedRounds,
-      [1]
-    );
+    let unlocked =
+      readJSON(
+        STORAGE.unlockedRounds,
+        [1]
+      );
 
     if (!Array.isArray(unlocked)) {
       unlocked = [1];
     }
 
-    unlocked = unlocked
-      .map(Number)
-      .filter(
-        (round) =>
-          Number.isInteger(round) &&
-          round >= 1 &&
-          round <= rounds.length
-      );
+    unlocked =
+      unlocked
+        .map(Number)
+        .filter(
+          (round) =>
+            Number.isInteger(round) &&
+            round >= 1 &&
+            round <= rounds.length
+        );
 
     if (!unlocked.includes(1)) {
       unlocked.push(1);
     }
 
-    return [...new Set(unlocked)].sort(
+    return [
+      ...new Set(unlocked)
+    ].sort(
       (a, b) => a - b
     );
   }
 
-  function updateUnlockedRounds(roundNumber, percent) {
-    const unlocked = getUnlockedRounds();
+  function updateUnlockedRounds(
+    roundNumber,
+    percent
+  ) {
+    const unlocked =
+      getUnlockedRounds();
 
     if (
       percent >= UNLOCK_PERCENT &&
       roundNumber < rounds.length
     ) {
-      const nextRound = roundNumber + 1;
+      const nextRound =
+        roundNumber + 1;
 
-      if (!unlocked.includes(nextRound)) {
-        unlocked.push(nextRound);
+      if (
+        !unlocked.includes(
+          nextRound
+        )
+      ) {
+        unlocked.push(
+          nextRound
+        );
       }
     }
 
-    unlocked.sort((a, b) => a - b);
+    unlocked.sort(
+      (a, b) => a - b
+    );
 
     writeJSON(
       STORAGE.unlockedRounds,
@@ -449,10 +516,13 @@ const MUSIC_FILE = "./mythica.mp3";
     renderRounds();
   }
 
-  function isRoundUnlocked(roundNumber) {
-    return getUnlockedRounds().includes(
-      Number(roundNumber)
-    );
+  function isRoundUnlocked(
+    roundNumber
+  ) {
+    return getUnlockedRounds()
+      .includes(
+        Number(roundNumber)
+      );
   }
 
   /* =========================
@@ -467,7 +537,8 @@ const MUSIC_FILE = "./mythica.mp3";
       "resultScreen",
       "reviewScreen",
       "errorScreen",
-      "settingsScreen"
+      "settingsScreen",
+      "rewardsScreen"
     ];
 
     screens.forEach((id) => {
@@ -480,16 +551,29 @@ const MUSIC_FILE = "./mythica.mp3";
         id === screenId
       );
     });
+
+    if (
+      screenId === "rewardsScreen"
+    ) {
+      updateRewards();
+    }
   }
 
   /* =========================
      START QUIZ
      ========================= */
 
-  function startQuiz(roundNumber = 1) {
-    roundNumber = Number(roundNumber);
+  function startQuiz(
+    roundNumber = 1
+  ) {
+    roundNumber =
+      Number(roundNumber);
 
-    if (!Number.isInteger(roundNumber)) {
+    if (
+      !Number.isInteger(
+        roundNumber
+      )
+    ) {
       roundNumber = 1;
     }
 
@@ -500,19 +584,29 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    if (!isRoundUnlocked(roundNumber)) {
+    if (
+      !isRoundUnlocked(
+        roundNumber
+      )
+    ) {
       return;
     }
 
     stopTimer();
 
-    currentRound = roundNumber;
+    currentRound =
+      roundNumber;
+
     currentQuestionIndex = 0;
 
     currentRoundQuestions =
-      rounds[currentRound - 1] || [];
+      rounds[
+        currentRound - 1
+      ] || [];
 
-    if (!currentRoundQuestions.length) {
+    if (
+      !currentRoundQuestions.length
+    ) {
       showError(
         "This round does not contain any questions."
       );
@@ -531,15 +625,12 @@ const MUSIC_FILE = "./mythica.mp3";
 
     saveCurrentRound();
 
-    showScreen("quizScreen");
+    showScreen(
+      "quizScreen"
+    );
 
     renderQuestion();
 
-    /*
-      This call is safe:
-      if music cannot autoplay, the interaction listener
-      will start it after the user's gesture.
-    */
     startMusic();
   }
 
@@ -548,10 +639,11 @@ const MUSIC_FILE = "./mythica.mp3";
      ========================= */
 
   function continueQuiz() {
-    const progress = readJSON(
-      STORAGE.progress,
-      null
-    );
+    const progress =
+      readJSON(
+        STORAGE.progress,
+        null
+      );
 
     if (!progress) {
       startQuiz(1);
@@ -565,16 +657,18 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    const savedRound = Number(
-      progress.round
-    );
+    const savedRound =
+      Number(progress.round);
 
-    const savedIndex = Number(
-      progress.questionIndex
-    );
+    const savedIndex =
+      Number(
+        progress.questionIndex
+      );
 
     if (
-      !Number.isInteger(savedRound) ||
+      !Number.isInteger(
+        savedRound
+      ) ||
       savedRound < 1 ||
       savedRound > rounds.length
     ) {
@@ -586,7 +680,11 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    if (!isRoundUnlocked(savedRound)) {
+    if (
+      !isRoundUnlocked(
+        savedRound
+      )
+    ) {
       localStorage.removeItem(
         STORAGE.progress
       );
@@ -595,28 +693,44 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    currentRound = savedRound;
-    currentRoundQuestions =
-      rounds[currentRound - 1] || [];
+    currentRound =
+      savedRound;
 
-    if (!currentRoundQuestions.length) {
+    currentRoundQuestions =
+      rounds[
+        currentRound - 1
+      ] || [];
+
+    if (
+      !currentRoundQuestions.length
+    ) {
       startQuiz(1);
       return;
     }
 
-    currentQuestionIndex = clamp(
-      Number.isInteger(savedIndex)
-        ? savedIndex
-        : 0,
-      0,
-      currentRoundQuestions.length - 1
-    );
+    currentQuestionIndex =
+      clamp(
+        Number.isInteger(
+          savedIndex
+        )
+          ? savedIndex
+          : 0,
+        0,
+        currentRoundQuestions.length - 1
+      );
 
-    score = Number(progress.score) || 0;
+    score =
+      Number(progress.score) || 0;
+
     correctAnswers =
-      Number(progress.correctAnswers) || 0;
+      Number(
+        progress.correctAnswers
+      ) || 0;
+
     wrongAnswers =
-      Number(progress.wrongAnswers) || 0;
+      Number(
+        progress.wrongAnswers
+      ) || 0;
 
     selectedAnswer = null;
     answered = false;
@@ -624,7 +738,9 @@ const MUSIC_FILE = "./mythica.mp3";
 
     reviewQuestions = [];
 
-    showScreen("quizScreen");
+    showScreen(
+      "quizScreen"
+    );
 
     renderQuestion();
 
@@ -647,18 +763,24 @@ const MUSIC_FILE = "./mythica.mp3";
   }
 
   function saveCurrentProgress() {
-    if (!currentRoundQuestions.length) {
+    if (
+      !currentRoundQuestions.length
+    ) {
       return;
     }
 
-    writeJSON(STORAGE.progress, {
-      round: currentRound,
-      questionIndex: currentQuestionIndex,
-      score,
-      correctAnswers,
-      wrongAnswers,
-      savedAt: Date.now()
-    });
+    writeJSON(
+      STORAGE.progress,
+      {
+        round: currentRound,
+        questionIndex:
+          currentQuestionIndex,
+        score,
+        correctAnswers,
+        wrongAnswers,
+        savedAt: Date.now()
+      }
+    );
 
     saveCurrentRound();
     updateContinueButton();
@@ -673,18 +795,25 @@ const MUSIC_FILE = "./mythica.mp3";
   }
 
   function hasSavedProgress() {
-    const progress = readJSON(
-      STORAGE.progress,
-      null
-    );
+    const progress =
+      readJSON(
+        STORAGE.progress,
+        null
+      );
 
     if (!progress) {
       return false;
     }
 
     return (
-      Number.isInteger(Number(progress.round)) &&
-      Number.isInteger(Number(progress.questionIndex))
+      Number.isInteger(
+        Number(progress.round)
+      ) &&
+      Number.isInteger(
+        Number(
+          progress.questionIndex
+        )
+      )
     );
   }
 
@@ -704,7 +833,9 @@ const MUSIC_FILE = "./mythica.mp3";
      ========================= */
 
   function renderQuestion() {
-    if (!currentRoundQuestions.length) {
+    if (
+      !currentRoundQuestions.length
+    ) {
       return;
     }
 
@@ -730,7 +861,8 @@ const MUSIC_FILE = "./mythica.mp3";
       currentQuestionIndex + 1;
 
     const progress =
-      (questionNumber / total) * 100;
+      (questionNumber / total) *
+      100;
 
     safeText(
       elements.questionNumber,
@@ -749,7 +881,8 @@ const MUSIC_FILE = "./mythica.mp3";
 
     safeText(
       elements.category,
-      question.category || "General Knowledge"
+      question.category ||
+        "General Knowledge"
     );
 
     safeText(
@@ -762,15 +895,26 @@ const MUSIC_FILE = "./mythica.mp3";
         `${progress}%`;
     }
 
-    renderOptions(question.options);
+    renderOptions(
+      question.options
+    );
 
     if (elements.message) {
-      elements.message.textContent = "";
+      elements.message.textContent =
+        "";
+
+      elements.message.classList.remove(
+        "correct",
+        "wrong"
+      );
     }
 
     if (elements.nextBtn) {
-      elements.nextBtn.disabled = true;
-      elements.nextBtn.style.display = "";
+      elements.nextBtn.disabled =
+        true;
+
+      elements.nextBtn.style.display =
+        "";
     }
 
     startTimer();
@@ -785,36 +929,58 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    elements.options.innerHTML = "";
+    elements.options.innerHTML =
+      "";
 
-    options.forEach((option, index) => {
-      const button =
-        document.createElement("button");
+    options.forEach(
+      (option, index) => {
+        const button =
+          document.createElement(
+            "button"
+          );
 
-      button.type = "button";
-      button.className = "option-btn";
-      button.textContent = option;
+        button.type = "button";
+        button.className =
+          "option-btn";
 
-      button.dataset.answer = option;
-      button.dataset.index = String(index);
+        button.textContent =
+          option;
 
-      button.addEventListener(
-        "click",
-        () => {
-          selectAnswer(option, button);
-        }
-      );
+        button.dataset.answer =
+          option;
 
-      elements.options.appendChild(button);
-    });
+        button.dataset.index =
+          String(index);
+
+        button.addEventListener(
+          "click",
+          () => {
+            selectAnswer(
+              option,
+              button
+            );
+          }
+        );
+
+        elements.options.appendChild(
+          button
+        );
+      }
+    );
   }
 
   /* =========================
      SELECT ANSWER
      ========================= */
 
-  function selectAnswer(answer, clickedButton) {
-    if (answered || quizFinished) {
+  function selectAnswer(
+    answer,
+    clickedButton
+  ) {
+    if (
+      answered ||
+      quizFinished
+    ) {
       return;
     }
 
@@ -828,48 +994,66 @@ const MUSIC_FILE = "./mythica.mp3";
     }
 
     answered = true;
-    selectedAnswer = answer;
+    selectedAnswer =
+      answer;
 
     stopTimer();
 
     const isCorrect =
-      answer === question.answer;
+      answer ===
+      question.answer;
 
     const optionButtons =
       elements.options
-        ? elements.options.querySelectorAll(
-            ".option-btn"
-          )
+        ? elements.options
+            .querySelectorAll(
+              ".option-btn"
+            )
         : [];
 
-    optionButtons.forEach((button) => {
-      button.disabled = true;
+    optionButtons.forEach(
+      (button) => {
+        button.disabled =
+          true;
 
-      const value =
-        button.dataset.answer;
+        const value =
+          button.dataset.answer;
 
-      if (value === question.answer) {
-        button.classList.add("correct");
+        if (
+          value ===
+          question.answer
+        ) {
+          button.classList.add(
+            "correct"
+          );
+        }
+
+        if (
+          value === answer &&
+          !isCorrect
+        ) {
+          button.classList.add(
+            "wrong"
+          );
+        }
       }
-
-      if (
-        value === answer &&
-        !isCorrect
-      ) {
-        button.classList.add("wrong");
-      }
-    });
+    );
 
     if (isCorrect) {
       correctAnswers++;
-      score += POINTS_PER_CORRECT;
+
+      score +=
+        POINTS_PER_CORRECT;
 
       showMessage(
         "Correct! 🎉",
         true
       );
 
-      playSound("correct");
+      playSound(
+        "correct"
+      );
+
     } else {
       wrongAnswers++;
 
@@ -878,7 +1062,9 @@ const MUSIC_FILE = "./mythica.mp3";
         false
       );
 
-      playSound("wrong");
+      playSound(
+        "wrong"
+      );
     }
 
     reviewQuestions.push({
@@ -893,13 +1079,17 @@ const MUSIC_FILE = "./mythica.mp3";
     );
 
     if (elements.nextBtn) {
-      elements.nextBtn.disabled = false;
+      elements.nextBtn.disabled =
+        false;
     }
 
     saveCurrentProgress();
   }
 
-  function showMessage(message, correct) {
+  function showMessage(
+    message,
+    correct
+  ) {
     if (!elements.message) {
       return;
     }
@@ -949,25 +1139,35 @@ const MUSIC_FILE = "./mythica.mp3";
   function startTimer() {
     stopTimer();
 
-    timeLeft = TIME_PER_QUESTION;
+    timeLeft =
+      TIME_PER_QUESTION;
 
     updateTimerDisplay();
 
-    timerInterval = setInterval(() => {
-      timeLeft--;
+    timerInterval =
+      setInterval(() => {
+        timeLeft--;
 
-      updateTimerDisplay();
+        updateTimerDisplay();
 
-      if (timeLeft <= 0) {
-        stopTimer();
-        timeExpired();
-      }
-    }, 1000);
+        if (
+          timeLeft <= 0
+        ) {
+          stopTimer();
+
+          timeExpired();
+        }
+      }, 1000);
   }
 
   function stopTimer() {
-    if (timerInterval !== null) {
-      clearInterval(timerInterval);
+    if (
+      timerInterval !== null
+    ) {
+      clearInterval(
+        timerInterval
+      );
+
       timerInterval = null;
     }
   }
@@ -975,7 +1175,12 @@ const MUSIC_FILE = "./mythica.mp3";
   function updateTimerDisplay() {
     safeText(
       elements.timer,
-      String(Math.max(0, timeLeft))
+      String(
+        Math.max(
+          0,
+          timeLeft
+        )
+      )
     );
   }
 
@@ -1000,21 +1205,27 @@ const MUSIC_FILE = "./mythica.mp3";
 
     const optionButtons =
       elements.options
-        ? elements.options.querySelectorAll(
-            ".option-btn"
-          )
+        ? elements.options
+            .querySelectorAll(
+              ".option-btn"
+            )
         : [];
 
-    optionButtons.forEach((button) => {
-      button.disabled = true;
+    optionButtons.forEach(
+      (button) => {
+        button.disabled =
+          true;
 
-      if (
-        button.dataset.answer ===
-        question.answer
-      ) {
-        button.classList.add("correct");
+        if (
+          button.dataset.answer ===
+          question.answer
+        ) {
+          button.classList.add(
+            "correct"
+          );
+        }
       }
-    });
+    );
 
     showMessage(
       `Time's up! Correct answer: ${question.answer}`,
@@ -1030,7 +1241,8 @@ const MUSIC_FILE = "./mythica.mp3";
     });
 
     if (elements.nextBtn) {
-      elements.nextBtn.disabled = false;
+      elements.nextBtn.disabled =
+        false;
     }
 
     saveCurrentProgress();
@@ -1050,11 +1262,15 @@ const MUSIC_FILE = "./mythica.mp3";
     stopTimer();
 
     const total =
-      currentRoundQuestions.length || 1;
+      currentRoundQuestions.length ||
+      1;
 
-    const percent = Math.round(
-      (correctAnswers / total) * 100
-    );
+    const percent =
+      Math.round(
+        (correctAnswers /
+          total) *
+          100
+      );
 
     const stars =
       percent >= 80
@@ -1074,8 +1290,15 @@ const MUSIC_FILE = "./mythica.mp3";
       percent
     );
 
-    saveTotalScore(score);
-    updatePersonalBest(score);
+    saveTotalScore(
+      score
+    );
+
+    updatePersonalBest(
+      score
+    );
+
+    updateAchievements();
 
     clearCurrentProgress();
 
@@ -1084,15 +1307,9 @@ const MUSIC_FILE = "./mythica.mp3";
       stars
     );
 
-    showScreen("resultScreen");
-
-    /*
-      IMPORTANT:
-      Music is NOT stopped here.
-      It continues playing while the user moves
-      through result/review/home, as long as Music
-      is enabled.
-    */
+    showScreen(
+      "resultScreen"
+    );
 
     startMusic();
   }
@@ -1101,7 +1318,10 @@ const MUSIC_FILE = "./mythica.mp3";
      RESULT
      ========================= */
 
-  function renderResult(percent, stars) {
+  function renderResult(
+    percent,
+    stars
+  ) {
     safeText(
       elements.finishedRound,
       `Round ${currentRound}`
@@ -1131,13 +1351,17 @@ const MUSIC_FILE = "./mythica.mp3";
 
     if (percent >= 80) {
       message =
-        "Excellent! 🌟 You mastered this round!";
-    } else if (percent >= 60) {
+        `Excellent! 🌟 You mastered this round! ${"★".repeat(stars)}`;
+
+    } else if (
+      percent >= 60
+    ) {
       message =
-        "Great job! 🎉 The next round is unlocked.";
+        `Great job! 🎉 The next round is unlocked. ${"★".repeat(stars)}`;
+
     } else {
       message =
-        "Keep practicing! 💪 You can try this round again.";
+        `Keep practicing! 💪 You can try this round again. ${"★".repeat(stars)}`;
     }
 
     safeText(
@@ -1151,7 +1375,9 @@ const MUSIC_FILE = "./mythica.mp3";
 
       elements.nextRoundBtn.style.display =
         nextRound <= rounds.length &&
-        isRoundUnlocked(nextRound)
+        isRoundUnlocked(
+          nextRound
+        )
           ? ""
           : "none";
     }
@@ -1173,18 +1399,24 @@ const MUSIC_FILE = "./mythica.mp3";
     percent,
     stars
   ) {
-    const completed =
+    let completed =
       readJSON(
         STORAGE.completedRounds,
         []
       );
 
     if (!Array.isArray(completed)) {
-      return;
+      completed = [];
     }
 
-    if (!completed.includes(roundNumber)) {
-      completed.push(roundNumber);
+    if (
+      !completed.includes(
+        roundNumber
+      )
+    ) {
+      completed.push(
+        roundNumber
+      );
     }
 
     writeJSON(
@@ -1192,15 +1424,29 @@ const MUSIC_FILE = "./mythica.mp3";
       completed
     );
 
-    const roundStars =
+    let roundStars =
       readJSON(
         STORAGE.roundStars,
         {}
       );
 
-    roundStars[roundNumber] =
+    if (
+      !roundStars ||
+      typeof roundStars !==
+        "object"
+    ) {
+      roundStars = {};
+    }
+
+    roundStars[
+      roundNumber
+    ] =
       Math.max(
-        Number(roundStars[roundNumber]) || 0,
+        Number(
+          roundStars[
+            roundNumber
+          ]
+        ) || 0,
         stars
       );
 
@@ -1220,7 +1466,9 @@ const MUSIC_FILE = "./mythica.mp3";
     percent
   ) {
     const today =
-      new Date().toISOString().slice(0, 10);
+      new Date()
+        .toISOString()
+        .slice(0, 10);
 
     const daily =
       readJSON(
@@ -1241,13 +1489,24 @@ const MUSIC_FILE = "./mythica.mp3";
           completed: true
         }
       );
+
       return;
     }
 
-    if (percent > Number(daily.percent || 0)) {
-      daily.percent = percent;
-      daily.round = roundNumber;
-      daily.completed = true;
+    if (
+      percent >
+      Number(
+        daily.percent || 0
+      )
+    ) {
+      daily.percent =
+        percent;
+
+      daily.round =
+        roundNumber;
+
+      daily.completed =
+        true;
 
       writeJSON(
         STORAGE.dailyChallenge,
@@ -1260,7 +1519,9 @@ const MUSIC_FILE = "./mythica.mp3";
      TOTAL SCORE
      ========================= */
 
-  function saveTotalScore(roundScore) {
+  function saveTotalScore(
+    roundScore
+  ) {
     const oldTotal =
       Number(
         localStorage.getItem(
@@ -1270,7 +1531,10 @@ const MUSIC_FILE = "./mythica.mp3";
 
     localStorage.setItem(
       STORAGE.totalScore,
-      String(oldTotal + roundScore)
+      String(
+        oldTotal +
+          roundScore
+      )
     );
   }
 
@@ -1278,7 +1542,9 @@ const MUSIC_FILE = "./mythica.mp3";
      PERSONAL BEST
      ========================= */
 
-  function updatePersonalBest(currentScore) {
+  function updatePersonalBest(
+    currentScore
+  ) {
     const best =
       Number(
         localStorage.getItem(
@@ -1286,12 +1552,602 @@ const MUSIC_FILE = "./mythica.mp3";
         )
       ) || 0;
 
-    if (currentScore > best) {
+    if (
+      currentScore >
+      best
+    ) {
       localStorage.setItem(
         STORAGE.personalBest,
-        String(currentScore)
+        String(
+          currentScore
+        )
       );
     }
+  }
+
+  /* =========================================================
+     ACHIEVEMENTS
+     ========================================================= */
+
+  const ACHIEVEMENTS = [
+    {
+      id: "first-round",
+      title: "First Victory",
+      description:
+        "Complete your first quiz round.",
+      icon: "🎮"
+    },
+    {
+      id: "five-rounds",
+      title: "Five Rounds",
+      description:
+        "Complete five quiz rounds.",
+      icon: "🏆"
+    },
+    {
+      id: "fifty-correct",
+      title: "50 Correct",
+      description:
+        "Answer 50 questions correctly.",
+      icon: "🎯"
+    },
+    {
+      id: "all-rounds",
+      title: "Quiz Master",
+      description:
+        "Complete all available quiz rounds.",
+      icon: "🌟"
+    }
+  ];
+
+  function getAchievements() {
+    let achievements =
+      readJSON(
+        STORAGE.achievements,
+        []
+      );
+
+    if (
+      !Array.isArray(
+        achievements
+      )
+    ) {
+      achievements = [];
+    }
+
+    return [
+      ...new Set(
+        achievements
+          .map(String)
+      )
+    ];
+  }
+
+  function saveAchievements(
+    achievements
+  ) {
+    writeJSON(
+      STORAGE.achievements,
+      [
+        ...new Set(
+          achievements
+        )
+      ]
+    );
+  }
+
+  function unlockAchievement(
+    id
+  ) {
+    const achievements =
+      getAchievements();
+
+    if (
+      !achievements.includes(id)
+    ) {
+      achievements.push(id);
+
+      saveAchievements(
+        achievements
+      );
+
+      console.log(
+        "Quiz Master achievement unlocked:",
+        id
+      );
+    }
+  }
+
+  function updateAchievements() {
+    const completed =
+      readJSON(
+        STORAGE.completedRounds,
+        []
+      );
+
+    const completedRounds =
+      Array.isArray(completed)
+        ? completed
+        : [];
+
+    if (
+      completedRounds.length >= 1
+    ) {
+      unlockAchievement(
+        "first-round"
+      );
+    }
+
+    if (
+      completedRounds.length >= 5
+    ) {
+      unlockAchievement(
+        "five-rounds"
+      );
+    }
+
+    const totalCorrect =
+      getTotalCorrectAnswers();
+
+    if (
+      totalCorrect >= 50
+    ) {
+      unlockAchievement(
+        "fifty-correct"
+      );
+    }
+
+    if (
+      rounds.length > 0 &&
+      completedRounds.length >=
+        rounds.length
+    ) {
+      unlockAchievement(
+        "all-rounds"
+      );
+    }
+
+    updateRewards();
+  }
+
+  function getTotalCorrectAnswers() {
+    const completed =
+      readJSON(
+        STORAGE.completedRounds,
+        []
+      );
+
+    const roundStars =
+      readJSON(
+        STORAGE.roundStars,
+        {}
+      );
+
+    /*
+      We calculate a safe estimate from
+      completed round results when possible.
+      The current session is also included.
+    */
+
+    let totalCorrect = 0;
+
+    if (
+      Array.isArray(completed)
+    ) {
+      completed.forEach(
+        (roundNumber) => {
+          const stars =
+            Number(
+              roundStars[
+                roundNumber
+              ]
+            ) || 0;
+
+          /*
+            This is only used for the
+            achievement threshold.
+            A 3-star round is at least
+            8 correct out of 10,
+            2-star is at least 6,
+            1-star is at least 1.
+          */
+
+          if (stars >= 3) {
+            totalCorrect += 8;
+          } else if (
+            stars >= 2
+          ) {
+            totalCorrect += 6;
+          } else if (
+            stars >= 1
+          ) {
+            totalCorrect += 1;
+          }
+        }
+      );
+    }
+
+    return totalCorrect;
+  }
+
+  /* =========================================================
+     REWARDS SYSTEM
+     ========================================================= */
+
+  function createRewardsUI() {
+    /*
+      If the user later adds Rewards directly
+      to index.html, this function will simply
+      use the existing elements.
+    */
+
+    let rewardsBtn =
+      $("rewardsBtn");
+
+    let rewardsScreen =
+      $("rewardsScreen");
+
+    /*
+      Create Rewards button automatically
+      if it does not exist.
+    */
+
+    if (
+      !rewardsBtn &&
+      elements.shareBtn &&
+      elements.shareBtn.parentElement
+    ) {
+      rewardsBtn =
+        document.createElement(
+          "button"
+        );
+
+      rewardsBtn.id =
+        "rewardsBtn";
+
+      rewardsBtn.type =
+        "button";
+
+      rewardsBtn.className =
+        "secondary-btn";
+
+      rewardsBtn.textContent =
+        "🎁 Rewards";
+
+      elements.shareBtn.parentElement.appendChild(
+        rewardsBtn
+      );
+    }
+
+    /*
+      Create Rewards screen automatically.
+    */
+
+    if (!rewardsScreen) {
+      rewardsScreen =
+        document.createElement(
+          "section"
+        );
+
+      rewardsScreen.id =
+        "rewardsScreen";
+
+      rewardsScreen.className =
+        "screen";
+
+      rewardsScreen.innerHTML = `
+        <div class="container">
+
+          <div class="screen-header">
+            <h2>🎁 Rewards</h2>
+            <p>
+              Track your stars, achievements and quiz progress.
+            </p>
+          </div>
+
+          <div class="result-card">
+
+            <div class="result-icon">
+              🎁
+            </div>
+
+            <h2>Your Rewards</h2>
+
+            <div class="result-stats">
+
+              <div class="stat-card">
+                <span>⭐ Total Stars</span>
+                <strong id="rewardsStars">0</strong>
+              </div>
+
+              <div class="stat-card">
+                <span>🏆 Completed Rounds</span>
+                <strong id="rewardsRounds">0</strong>
+              </div>
+
+              <div class="stat-card">
+                <span>🎯 Total Score</span>
+                <strong id="rewardsScore">0</strong>
+              </div>
+
+              <div class="stat-card">
+                <span>🏅 Achievements</span>
+                <strong id="rewardsAchievements">0</strong>
+              </div>
+
+            </div>
+
+            <div
+              id="rewardsAchievementList"
+              class="review-list">
+            </div>
+
+            <div class="button-group">
+
+              <button
+                id="rewardsBackBtn"
+                type="button"
+                class="secondary-btn">
+                ← Back Home
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      `;
+
+      /*
+        Put the new screen before the settings
+        screen so existing screens stay intact.
+      */
+
+      const settingsScreen =
+        $("settingsScreen");
+
+      if (
+        settingsScreen &&
+        settingsScreen.parentElement
+      ) {
+        settingsScreen.parentElement.insertBefore(
+          rewardsScreen,
+          settingsScreen
+        );
+      } else {
+        document.body.appendChild(
+          rewardsScreen
+        );
+      }
+    }
+
+    /*
+      Refresh element references.
+    */
+
+    elements.rewardsBtn =
+      $("rewardsBtn");
+
+    elements.rewardsScreen =
+      $("rewardsScreen");
+
+    elements.rewardsStars =
+      $("rewardsStars");
+
+    elements.rewardsRounds =
+      $("rewardsRounds");
+
+    elements.rewardsScore =
+      $("rewardsScore");
+
+    elements.rewardsAchievements =
+      $("rewardsAchievements");
+
+    elements.rewardsAchievementList =
+      $(
+        "rewardsAchievementList"
+      );
+
+    elements.rewardsBackBtn =
+      $("rewardsBackBtn");
+
+    /*
+      Add listeners only once.
+    */
+
+    if (
+      elements.rewardsBtn &&
+      !elements.rewardsBtn.dataset.listenerAdded
+    ) {
+      elements.rewardsBtn.addEventListener(
+        "click",
+        () => {
+          updateRewards();
+          showScreen(
+            "rewardsScreen"
+          );
+          window.scrollTo(
+            0,
+            0
+          );
+        }
+      );
+
+      elements.rewardsBtn.dataset.listenerAdded =
+        "true";
+    }
+
+    if (
+      elements.rewardsBackBtn &&
+      !elements.rewardsBackBtn.dataset.listenerAdded
+    ) {
+      elements.rewardsBackBtn.addEventListener(
+        "click",
+        () => {
+          showScreen(
+            "homeScreen"
+          );
+
+          updateContinueButton();
+
+          startMusic();
+
+          window.scrollTo(
+            0,
+            0
+          );
+        }
+      );
+
+      elements.rewardsBackBtn.dataset.listenerAdded =
+        "true";
+    }
+  }
+
+  function updateRewards() {
+    const completed =
+      readJSON(
+        STORAGE.completedRounds,
+        []
+      );
+
+    const roundStars =
+      readJSON(
+        STORAGE.roundStars,
+        {}
+      );
+
+    const achievements =
+      getAchievements();
+
+    let totalStars = 0;
+
+    if (
+      roundStars &&
+      typeof roundStars ===
+        "object"
+    ) {
+      Object.values(
+        roundStars
+      ).forEach(
+        (value) => {
+          const stars =
+            Number(value);
+
+          if (
+            Number.isFinite(
+              stars
+            )
+          ) {
+            totalStars +=
+              stars;
+          }
+        }
+      );
+    }
+
+    const completedRounds =
+      Array.isArray(completed)
+        ? completed.length
+        : 0;
+
+    const totalScore =
+      Number(
+        localStorage.getItem(
+          STORAGE.totalScore
+        )
+      ) || 0;
+
+    safeText(
+      elements.rewardsStars,
+      totalStars
+    );
+
+    safeText(
+      elements.rewardsRounds,
+      completedRounds
+    );
+
+    safeText(
+      elements.rewardsScore,
+      totalScore
+    );
+
+    safeText(
+      elements.rewardsAchievements,
+      achievements.length
+    );
+
+    renderAchievements();
+  }
+
+  function renderAchievements() {
+    const container =
+      elements.rewardsAchievementList;
+
+    if (!container) {
+      return;
+    }
+
+    container.innerHTML = "";
+
+    const unlocked =
+      getAchievements();
+
+    ACHIEVEMENTS.forEach(
+      (achievement) => {
+        const isUnlocked =
+          unlocked.includes(
+            achievement.id
+          );
+
+        const item =
+          document.createElement(
+            "div"
+          );
+
+        item.style.padding =
+          "16px";
+
+        item.style.borderRadius =
+          "16px";
+
+        item.style.background =
+          isUnlocked
+            ? "#f0fdf4"
+            : "#f8fafc";
+
+        item.style.border =
+          isUnlocked
+            ? "1px solid #86efac"
+            : "1px solid #e5e7eb";
+
+        item.style.opacity =
+          isUnlocked
+            ? "1"
+            : "0.65";
+
+        item.innerHTML = `
+          <strong style="display:block;margin-bottom:5px;color:#111827;">
+            ${
+              isUnlocked
+                ? "✅"
+                : "🔒"
+            }
+            ${achievement.icon}
+            ${achievement.title}
+          </strong>
+
+          <span style="color:#6b7280;font-size:14px;">
+            ${achievement.description}
+          </span>
+        `;
+
+        container.appendChild(
+          item
+        );
+      }
+    );
   }
 
   /* =========================
@@ -1303,7 +2159,9 @@ const MUSIC_FILE = "./mythica.mp3";
 
     renderReview();
 
-    showScreen("reviewScreen");
+    showScreen(
+      "reviewScreen"
+    );
 
     startMusic();
   }
@@ -1313,7 +2171,8 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    elements.reviewList.innerHTML = "";
+    elements.reviewList.innerHTML =
+      "";
 
     let correct = 0;
     let wrong = 0;
@@ -1327,13 +2186,17 @@ const MUSIC_FILE = "./mythica.mp3";
         }
 
         const wrapper =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         wrapper.className =
           "review-item";
 
         const number =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         number.className =
           "review-number";
@@ -1342,16 +2205,22 @@ const MUSIC_FILE = "./mythica.mp3";
           `Question ${index + 1}`;
 
         const question =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         question.className =
           "review-question";
 
         question.textContent =
-          getQuestionText(item);
+          getQuestionText(
+            item
+          );
 
         const userAnswer =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         userAnswer.className =
           "review-user-answer";
@@ -1362,7 +2231,9 @@ const MUSIC_FILE = "./mythica.mp3";
             : "Your answer: No answer";
 
         const correctAnswer =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         correctAnswer.className =
           "review-correct-answer";
@@ -1370,10 +2241,21 @@ const MUSIC_FILE = "./mythica.mp3";
         correctAnswer.textContent =
           `Correct answer: ${item.answer}`;
 
-        wrapper.appendChild(number);
-        wrapper.appendChild(question);
-        wrapper.appendChild(userAnswer);
-        wrapper.appendChild(correctAnswer);
+        wrapper.appendChild(
+          number
+        );
+
+        wrapper.appendChild(
+          question
+        );
+
+        wrapper.appendChild(
+          userAnswer
+        );
+
+        wrapper.appendChild(
+          correctAnswer
+        );
 
         elements.reviewList.appendChild(
           wrapper
@@ -1392,7 +2274,9 @@ const MUSIC_FILE = "./mythica.mp3";
      ========================= */
 
   function retryRound() {
-    startQuiz(currentRound);
+    startQuiz(
+      currentRound
+    );
   }
 
   /* =========================
@@ -1405,7 +2289,9 @@ const MUSIC_FILE = "./mythica.mp3";
 
     if (
       next > rounds.length ||
-      !isRoundUnlocked(next)
+      !isRoundUnlocked(
+        next
+      )
     ) {
       return;
     }
@@ -1420,7 +2306,9 @@ const MUSIC_FILE = "./mythica.mp3";
   function showRounds() {
     renderRounds();
 
-    showScreen("roundsScreen");
+    showScreen(
+      "roundsScreen"
+    );
 
     startMusic();
   }
@@ -1430,7 +2318,8 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    elements.roundGrid.innerHTML = "";
+    elements.roundGrid.innerHTML =
+      "";
 
     const unlocked =
       getUnlockedRounds();
@@ -1453,7 +2342,9 @@ const MUSIC_FILE = "./mythica.mp3";
           index + 1;
 
         const button =
-          document.createElement("button");
+          document.createElement(
+            "button"
+          );
 
         button.type = "button";
 
@@ -1466,22 +2357,30 @@ const MUSIC_FILE = "./mythica.mp3";
           );
 
         const isCompleted =
-          Array.isArray(completed) &&
+          Array.isArray(
+            completed
+          ) &&
           completed.includes(
             roundNumber
           );
 
         const stars =
           Number(
-            roundStars[roundNumber]
+            roundStars[
+              roundNumber
+            ]
           ) || 0;
 
         if (!isUnlocked) {
-          button.classList.add("locked");
+          button.classList.add(
+            "locked"
+          );
         }
 
         if (isCompleted) {
-          button.classList.add("completed");
+          button.classList.add(
+            "completed"
+          );
         }
 
         let starText = "";
@@ -1489,8 +2388,12 @@ const MUSIC_FILE = "./mythica.mp3";
         if (stars > 0) {
           starText =
             " " +
-            "★".repeat(stars) +
-            "☆".repeat(3 - stars);
+            "★".repeat(
+              stars
+            ) +
+            "☆".repeat(
+              3 - stars
+            );
         }
 
         button.textContent =
@@ -1505,7 +2408,9 @@ const MUSIC_FILE = "./mythica.mp3";
           button.addEventListener(
             "click",
             () => {
-              startQuiz(roundNumber);
+              startQuiz(
+                roundNumber
+              );
             }
           );
         }
@@ -1524,14 +2429,12 @@ const MUSIC_FILE = "./mythica.mp3";
   function goHome() {
     stopTimer();
 
-    showScreen("homeScreen");
+    showScreen(
+      "homeScreen"
+    );
 
     updateContinueButton();
 
-    /*
-      Do not restart/reset music here.
-      If it is already playing, it keeps playing.
-    */
     startMusic();
   }
 
@@ -1542,7 +2445,9 @@ const MUSIC_FILE = "./mythica.mp3";
   function showSettings() {
     updateSettingsUI();
 
-    showScreen("settingsScreen");
+    showScreen(
+      "settingsScreen"
+    );
 
     startMusic();
   }
@@ -1588,7 +2493,8 @@ const MUSIC_FILE = "./mythica.mp3";
       musicEnabled =
         elements.musicSwitch.checked;
     } else {
-      musicEnabled = !musicEnabled;
+      musicEnabled =
+        !musicEnabled;
     }
 
     localStorage.setItem(
@@ -1601,7 +2507,12 @@ const MUSIC_FILE = "./mythica.mp3";
     if (musicEnabled) {
       startMusic(true);
     } else {
-      stopMusic(true);
+      /*
+        IMPORTANT:
+        Music position is saved.
+        It is NOT reset to zero.
+      */
+      stopMusic();
     }
   }
 
@@ -1614,7 +2525,8 @@ const MUSIC_FILE = "./mythica.mp3";
       soundEnabled =
         elements.soundSwitch.checked;
     } else {
-      soundEnabled = !soundEnabled;
+      soundEnabled =
+        !soundEnabled;
     }
 
     localStorage.setItem(
@@ -1626,8 +2538,87 @@ const MUSIC_FILE = "./mythica.mp3";
   }
 
   /* =========================================================
-   MUSIC SYSTEM
-   ========================================================= */
+     MUSIC SYSTEM
+     ========================================================= */
+
+  function getSavedMusicPosition() {
+    const position =
+      Number(
+        localStorage.getItem(
+          STORAGE.musicPosition
+        )
+      );
+
+    return Number.isFinite(
+      position
+    ) && position >= 0
+      ? position
+      : 0;
+  }
+
+  function saveMusicPosition() {
+    if (!backgroundMusic) {
+      return;
+    }
+
+    try {
+      const current =
+        Number(
+          backgroundMusic.currentTime
+        );
+
+      if (
+        Number.isFinite(
+          current
+        ) &&
+        current >= 0
+      ) {
+        localStorage.setItem(
+          STORAGE.musicPosition,
+          String(current)
+        );
+      }
+    } catch (error) {
+      console.warn(
+        "Quiz Master: Could not save music position:",
+        error
+      );
+    }
+  }
+
+  function restoreMusicPosition() {
+    if (!backgroundMusic) {
+      return;
+    }
+
+    try {
+      const saved =
+        getSavedMusicPosition();
+
+      if (
+        !Number.isFinite(
+          backgroundMusic.duration
+        ) ||
+        backgroundMusic.duration <= 0
+      ) {
+        return;
+      }
+
+      if (
+        saved >= 0 &&
+        saved < backgroundMusic.duration
+      ) {
+        backgroundMusic.currentTime =
+          saved;
+      }
+
+    } catch (error) {
+      console.warn(
+        "Quiz Master: Could not restore music position:",
+        error
+      );
+    }
+  }
 
   function initializeMusic() {
     try {
@@ -1635,29 +2626,57 @@ const MUSIC_FILE = "./mythica.mp3";
         return;
       }
 
-      backgroundMusic = new Audio(MUSIC_FILE);
+      backgroundMusic =
+        new Audio(
+          MUSIC_FILE
+        );
 
-      backgroundMusic.loop = true;
-      backgroundMusic.volume = 0.35;
-      backgroundMusic.preload = "auto";
+      backgroundMusic.loop =
+        true;
 
-      /*
-        Helps Android/mobile browsers.
-      */
+      backgroundMusic.volume =
+        0.35;
+
+      backgroundMusic.preload =
+        "auto";
+
       backgroundMusic.setAttribute(
         "playsinline",
         ""
       );
 
-      /*
-        If the audio finishes unexpectedly,
-        try to continue playing.
-      */
+      backgroundMusic.addEventListener(
+        "loadedmetadata",
+        () => {
+          restoreMusicPosition();
+        }
+      );
+
+      backgroundMusic.addEventListener(
+        "canplay",
+        () => {
+          restoreMusicPosition();
+        },
+        {
+          once: true
+        }
+      );
+
       backgroundMusic.addEventListener(
         "ended",
         () => {
-          if (musicEnabled) {
-            backgroundMusic.currentTime = 0;
+          if (
+            musicEnabled
+          ) {
+            /*
+              loop=true normally handles this.
+              This is only a safety fallback.
+            */
+            try {
+              backgroundMusic.currentTime =
+                0;
+            } catch (error) {}
+
             startMusic();
           }
         }
@@ -1674,16 +2693,24 @@ const MUSIC_FILE = "./mythica.mp3";
       );
 
       backgroundMusic.addEventListener(
-        "pause",
+        "timeupdate",
         () => {
           /*
-            Do not immediately restart here.
-            Browser autoplay policies can cause
-            an endless play/pause loop.
+            Save playback position periodically.
           */
-          console.log(
-            "Quiz Master: Music paused."
-          );
+          if (
+            backgroundMusic &&
+            !backgroundMusic.paused
+          ) {
+            saveMusicPosition();
+          }
+        }
+      );
+
+      backgroundMusic.addEventListener(
+        "pause",
+        () => {
+          saveMusicPosition();
         }
       );
 
@@ -1695,11 +2722,14 @@ const MUSIC_FILE = "./mythica.mp3";
         error
       );
 
-      backgroundMusic = null;
+      backgroundMusic =
+        null;
     }
   }
 
-  function startMusic(fromUserGesture = false) {
+  function startMusic(
+    fromUserGesture = false
+  ) {
     if (!musicEnabled) {
       return;
     }
@@ -1712,9 +2742,6 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    /*
-      Already playing.
-    */
     if (
       !backgroundMusic.paused &&
       !backgroundMusic.ended
@@ -1722,59 +2749,86 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    if (musicPlayInProgress) {
+    if (
+      musicPlayInProgress
+    ) {
       return;
     }
 
-    musicPlayInProgress = true;
+    /*
+      Restore the saved position
+      before trying to play.
+    */
 
     try {
-      /*
-        Make sure the audio position is valid.
-      */
-      if (
-        backgroundMusic.currentTime >=
-        backgroundMusic.duration
-      ) {
-        backgroundMusic.currentTime = 0;
-      }
+      const saved =
+        getSavedMusicPosition();
 
+      if (
+        Number.isFinite(
+          backgroundMusic.duration
+        ) &&
+        backgroundMusic.duration >
+          0 &&
+        saved <
+          backgroundMusic.duration
+      ) {
+        backgroundMusic.currentTime =
+          saved;
+      }
+    } catch (error) {
+      console.warn(
+        "Quiz Master: Could not prepare music position:",
+        error
+      );
+    }
+
+    musicPlayInProgress =
+      true;
+
+    try {
       const playPromise =
         backgroundMusic.play();
 
       if (
         playPromise &&
-        typeof playPromise.then === "function"
+        typeof playPromise.then ===
+          "function"
       ) {
         playPromise
           .then(() => {
-            musicPlayInProgress = false;
+            musicPlayInProgress =
+              false;
 
             console.log(
-              "Quiz Master: Music is playing."
+              "Quiz Master: Music is playing from saved position."
             );
 
             removeMusicInteractionListeners();
+
+            startMusicPositionSaver();
           })
           .catch((error) => {
-            musicPlayInProgress = false;
+            musicPlayInProgress =
+              false;
 
             console.warn(
               "Quiz Master: Music playback was blocked:",
               error
             );
 
-            /*
-              Browser requires a real user interaction.
-            */
             addMusicInteractionListeners();
           });
       } else {
-        musicPlayInProgress = false;
+        musicPlayInProgress =
+          false;
+
+        startMusicPositionSaver();
       }
 
     } catch (error) {
-      musicPlayInProgress = false;
+      musicPlayInProgress =
+        false;
 
       console.warn(
         "Quiz Master: Music play error:",
@@ -1785,17 +2839,28 @@ const MUSIC_FILE = "./mythica.mp3";
     }
   }
 
-  function stopMusic(reset = true) {
+  function stopMusic(
+    reset = false
+  ) {
     if (!backgroundMusic) {
       return;
     }
 
-    try {
-      backgroundMusic.pause();
+    /*
+      IMPORTANT:
+      The reset argument is intentionally
+      ignored.
 
-      if (reset) {
-        backgroundMusic.currentTime = 0;
-      }
+      Music position is always preserved.
+      This means existing calls such as
+      stopMusic(true) cannot accidentally
+      reset the song to 0.
+    */
+
+    try {
+      saveMusicPosition();
+
+      backgroundMusic.pause();
 
     } catch (error) {
       console.warn(
@@ -1804,17 +2869,50 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    musicPlayInProgress = false;
+    musicPlayInProgress =
+      false;
+
+    stopMusicPositionSaver();
+  }
+
+  function startMusicPositionSaver() {
+    if (
+      musicSaveInterval !== null
+    ) {
+      return;
+    }
+
+    musicSaveInterval =
+      setInterval(() => {
+        if (
+          backgroundMusic &&
+          !backgroundMusic.paused
+        ) {
+          saveMusicPosition();
+        }
+      }, 2000);
+  }
+
+  function stopMusicPositionSaver() {
+    if (
+      musicSaveInterval !== null
+    ) {
+      clearInterval(
+        musicSaveInterval
+      );
+
+      musicSaveInterval =
+        null;
+    }
   }
 
   function addMusicInteractionListeners() {
-    if (musicInteractionListenersAdded) {
+    if (
+      musicInteractionListenersAdded
+    ) {
       return;
     }
 
-    /*
-      Use pointerdown as the main mobile gesture.
-    */
     document.addEventListener(
       "pointerdown",
       handleFirstMusicInteraction,
@@ -1839,11 +2937,14 @@ const MUSIC_FILE = "./mythica.mp3";
       }
     );
 
-    musicInteractionListenersAdded = true;
+    musicInteractionListenersAdded =
+      true;
   }
 
   function removeMusicInteractionListeners() {
-    if (!musicInteractionListenersAdded) {
+    if (
+      !musicInteractionListenersAdded
+    ) {
       return;
     }
 
@@ -1862,7 +2963,8 @@ const MUSIC_FILE = "./mythica.mp3";
       handleFirstMusicInteraction
     );
 
-    musicInteractionListenersAdded = false;
+    musicInteractionListenersAdded =
+      false;
   }
 
   function handleFirstMusicInteraction() {
@@ -1870,17 +2972,45 @@ const MUSIC_FILE = "./mythica.mp3";
       return;
     }
 
-    /*
-      This function is called directly from a
-      user's touch/click, which gives the browser
-      permission to start audio.
-    */
     startMusic(true);
   }
 
   function setupMusicInteractionListeners() {
     addMusicInteractionListeners();
   }
+
+  /* =========================================================
+     SAVE MUSIC WHEN PAGE IS HIDDEN/CLOSED
+     ========================================================= */
+
+  function setupMusicPersistence() {
+    document.addEventListener(
+      "visibilitychange",
+      () => {
+        if (
+          document.visibilityState ===
+          "hidden"
+        ) {
+          saveMusicPosition();
+        }
+      }
+    );
+
+    window.addEventListener(
+      "pagehide",
+      () => {
+        saveMusicPosition();
+      }
+    );
+
+    window.addEventListener(
+      "beforeunload",
+      () => {
+        saveMusicPosition();
+      }
+    );
+  }
+
   /* =========================
      SOUND EFFECTS
      ========================= */
@@ -1909,15 +3039,22 @@ const MUSIC_FILE = "./mythica.mp3";
         context.createGain();
 
       oscillator.connect(gain);
-      gain.connect(context.destination);
+      gain.connect(
+        context.destination
+      );
 
-      if (type === "correct") {
-        oscillator.frequency.value = 880;
+      if (
+        type === "correct"
+      ) {
+        oscillator.frequency.value =
+          880;
       } else {
-        oscillator.frequency.value = 220;
+        oscillator.frequency.value =
+          220;
       }
 
-      oscillator.type = "sine";
+      oscillator.type =
+        "sine";
 
       gain.gain.setValueAtTime(
         0.0001,
@@ -1926,18 +3063,21 @@ const MUSIC_FILE = "./mythica.mp3";
 
       gain.gain.exponentialRampToValueAtTime(
         0.08,
-        context.currentTime + 0.02
+        context.currentTime +
+          0.02
       );
 
       gain.gain.exponentialRampToValueAtTime(
         0.0001,
-        context.currentTime + 0.18
+        context.currentTime +
+          0.18
       );
 
       oscillator.start();
 
       oscillator.stop(
-        context.currentTime + 0.2
+        context.currentTime +
+          0.2
       );
 
       oscillator.addEventListener(
@@ -1948,10 +3088,15 @@ const MUSIC_FILE = "./mythica.mp3";
             typeof context.close ===
               "function"
           ) {
-            context.close().catch(() => {});
+            context
+              .close()
+              .catch(
+                () => {}
+              );
           }
         }
       );
+
     } catch (error) {
       console.warn(
         "Sound effect error:",
@@ -1966,10 +3111,12 @@ const MUSIC_FILE = "./mythica.mp3";
 
   async function shareQuiz() {
     const shareData = {
-      title: "Quiz Master 🇷🇼",
+      title:
+        "Quiz Master 🇷🇼",
       text:
         "Test your knowledge with Quiz Master!",
-      url: window.location.href
+      url:
+        window.location.href
     };
 
     try {
@@ -1984,14 +3131,12 @@ const MUSIC_FILE = "./mythica.mp3";
 
         return;
       }
+
     } catch (error) {
-      /*
-        AbortError simply means the user closed
-        the native share window.
-      */
       if (
         error &&
-        error.name === "AbortError"
+        error.name ===
+          "AbortError"
       ) {
         return;
       }
@@ -2013,6 +3158,7 @@ const MUSIC_FILE = "./mythica.mp3";
 
         return;
       }
+
     } catch (error) {
       console.warn(
         "Clipboard failed:",
@@ -2020,9 +3166,6 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    /*
-      Final fallback for older browsers.
-    */
     try {
       const textarea =
         document.createElement(
@@ -2034,7 +3177,9 @@ const MUSIC_FILE = "./mythica.mp3";
 
       textarea.style.position =
         "fixed";
-      textarea.style.opacity = "0";
+
+      textarea.style.opacity =
+        "0";
 
       document.body.appendChild(
         textarea
@@ -2052,6 +3197,7 @@ const MUSIC_FILE = "./mythica.mp3";
       showTemporaryShareMessage(
         "✅ Link Copied!"
       );
+
     } catch (error) {
       console.warn(
         "Share fallback failed:",
@@ -2074,7 +3220,9 @@ const MUSIC_FILE = "./mythica.mp3";
       message;
 
     setTimeout(() => {
-      if (elements.shareBtn) {
+      if (
+        elements.shareBtn
+      ) {
         elements.shareBtn.textContent =
           original;
       }
@@ -2088,12 +3236,16 @@ const MUSIC_FILE = "./mythica.mp3";
   function showError(message) {
     stopTimer();
 
-    if (elements.errorMessage) {
+    if (
+      elements.errorMessage
+    ) {
       elements.errorMessage.textContent =
         message;
     }
 
-    showScreen("errorScreen");
+    showScreen(
+      "errorScreen"
+    );
 
     startMusic();
   }
@@ -2103,8 +3255,12 @@ const MUSIC_FILE = "./mythica.mp3";
       await loadQuestions();
 
     if (success) {
-      showScreen("homeScreen");
+      showScreen(
+        "homeScreen"
+      );
+
       updateContinueButton();
+
       startMusic();
     }
   }
@@ -2114,9 +3270,8 @@ const MUSIC_FILE = "./mythica.mp3";
      ========================= */
 
   function setupEventListeners() {
-    /*
-      HOME
-    */
+
+    /* HOME */
 
     if (elements.startBtn) {
       elements.startBtn.addEventListener(
@@ -2127,7 +3282,9 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (elements.continueBtn) {
+    if (
+      elements.continueBtn
+    ) {
       elements.continueBtn.addEventListener(
         "click",
         () => {
@@ -2145,7 +3302,9 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (elements.settingsBtn) {
+    if (
+      elements.settingsBtn
+    ) {
       elements.settingsBtn.addEventListener(
         "click",
         () => {
@@ -2163,11 +3322,11 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    /*
-      ROUNDS
-    */
+    /* ROUNDS */
 
-    if (elements.roundsBackBtn) {
+    if (
+      elements.roundsBackBtn
+    ) {
       elements.roundsBackBtn.addEventListener(
         "click",
         () => {
@@ -2176,9 +3335,7 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    /*
-      QUIZ
-    */
+    /* QUIZ */
 
     if (elements.nextBtn) {
       elements.nextBtn.addEventListener(
@@ -2189,7 +3346,9 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (elements.quizHomeBtn) {
+    if (
+      elements.quizHomeBtn
+    ) {
       elements.quizHomeBtn.addEventListener(
         "click",
         () => {
@@ -2199,9 +3358,7 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    /*
-      RESULT
-    */
+    /* RESULT */
 
     if (elements.restartBtn) {
       elements.restartBtn.addEventListener(
@@ -2212,7 +3369,9 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (elements.nextRoundBtn) {
+    if (
+      elements.nextRoundBtn
+    ) {
       elements.nextRoundBtn.addEventListener(
         "click",
         () => {
@@ -2230,7 +3389,9 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (elements.resultHomeBtn) {
+    if (
+      elements.resultHomeBtn
+    ) {
       elements.resultHomeBtn.addEventListener(
         "click",
         () => {
@@ -2239,11 +3400,11 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    /*
-      REVIEW
-    */
+    /* REVIEW */
 
-    if (elements.reviewRetryBtn) {
+    if (
+      elements.reviewRetryBtn
+    ) {
       elements.reviewRetryBtn.addEventListener(
         "click",
         () => {
@@ -2252,34 +3413,37 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (elements.reviewBackBtn) {
+    if (
+      elements.reviewBackBtn
+    ) {
       elements.reviewBackBtn.addEventListener(
         "click",
         () => {
-          showScreen("resultScreen");
+          showScreen(
+            "resultScreen"
+          );
+
           startMusic();
         }
       );
     }
 
-    /*
-      SETTINGS
-    */
+    /* SETTINGS */
 
-    if (elements.musicSwitch) {
+    if (
+      elements.musicSwitch
+    ) {
       elements.musicSwitch.addEventListener(
         "click",
         () => {
-          /*
-            For checkbox inputs, the browser changes
-            checked before this handler runs.
-          */
           toggleMusic();
         }
       );
     }
 
-    if (elements.soundSwitch) {
+    if (
+      elements.soundSwitch
+    ) {
       elements.soundSwitch.addEventListener(
         "click",
         () => {
@@ -2288,7 +3452,9 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (elements.settingsBackBtn) {
+    if (
+      elements.settingsBackBtn
+    ) {
       elements.settingsBackBtn.addEventListener(
         "click",
         () => {
@@ -2297,11 +3463,11 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    /*
-      ERROR
-    */
+    /* ERROR */
 
-    if (elements.errorRestartBtn) {
+    if (
+      elements.errorRestartBtn
+    ) {
       elements.errorRestartBtn.addEventListener(
         "click",
         () => {
@@ -2310,7 +3476,9 @@ const MUSIC_FILE = "./mythica.mp3";
       );
     }
 
-    if (elements.errorHomeBtn) {
+    if (
+      elements.errorHomeBtn
+    ) {
       elements.errorHomeBtn.addEventListener(
         "click",
         () => {
@@ -2325,23 +3493,40 @@ const MUSIC_FILE = "./mythica.mp3";
      ========================= */
 
   async function initialize() {
+
+    /*
+      Create the Rewards UI before
+      setting up the buttons.
+    */
+
+    createRewardsUI();
+
     initializeMusic();
 
     updateSettingsUI();
 
     setupMusicInteractionListeners();
 
+    setupMusicPersistence();
+
     setupEventListeners();
 
-    showScreen("homeScreen");
+    showScreen(
+      "homeScreen"
+    );
+
+    updateRewards();
 
     await loadQuestions();
 
     updateContinueButton();
 
+    updateRewards();
+
     /*
-      We intentionally do not force autoplay here.
-      The first user interaction starts music.
+      No forced autoplay.
+      Browser/mobile policy requires
+      user interaction.
     */
   }
 
@@ -2349,21 +3534,58 @@ const MUSIC_FILE = "./mythica.mp3";
      PUBLIC FUNCTIONS
      ========================= */
 
-  window.startQuiz = startQuiz;
-  window.continueQuiz = continueQuiz;
-  window.nextQuestion = nextQuestion;
-  window.showRounds = showRounds;
-  window.showSettings = showSettings;
-  window.showReview = showReview;
-  window.retryRound = retryRound;
-  window.nextRound = nextRound;
-  window.goHome = goHome;
-  window.shareQuiz = shareQuiz;
-  window.startMusic = startMusic;
-  window.stopMusic = stopMusic;
-  window.toggleMusic = toggleMusic;
-  window.toggleSound = toggleSound;
-  window.loadQuestions = loadQuestions;
+  window.startQuiz =
+    startQuiz;
+
+  window.continueQuiz =
+    continueQuiz;
+
+  window.nextQuestion =
+    nextQuestion;
+
+  window.showRounds =
+    showRounds;
+
+  window.showSettings =
+    showSettings;
+
+  window.showReview =
+    showReview;
+
+  window.retryRound =
+    retryRound;
+
+  window.nextRound =
+    nextRound;
+
+  window.goHome =
+    goHome;
+
+  window.shareQuiz =
+    shareQuiz;
+
+  window.startMusic =
+    startMusic;
+
+  window.stopMusic =
+    stopMusic;
+
+  window.toggleMusic =
+    toggleMusic;
+
+  window.toggleSound =
+    toggleSound;
+
+  window.loadQuestions =
+    loadQuestions;
+
+  window.showRewards =
+    () => {
+      updateRewards();
+      showScreen(
+        "rewardsScreen"
+      );
+    };
 
   /* =========================
      START APP
@@ -2383,4 +3605,5 @@ const MUSIC_FILE = "./mythica.mp3";
   } else {
     initialize();
   }
+
 })();
