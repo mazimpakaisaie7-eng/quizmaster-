@@ -1,43 +1,22 @@
-/* =========================================================
-   QUIZ MASTER 🇷🇼
-   QUESTIONS ENGINE - FULL COMPATIBLE VERSION
-   ---------------------------------------------------------
-   Compatible with existing index.html + questions.json
-   ---------------------------------------------------------
-   ✓ English + Kinyarwanda questions
-   ✓ Reads questions exactly as stored in questions.json
-   ✓ No index.html changes
-   ✓ No CSS/design changes
-   ✓ Dynamic rounds
-   ✓ 10 questions per round
-   ✓ Start / Continue / Rounds
-   ✓ Next Question
-   ✓ Result
-   ✓ Review
-   ✓ Retry
-   ✓ Next Round
-   ✓ Error Retry / Home
-   ✓ Settings
-   ✓ Music / Sound
-   ✓ Saved progress
-   ✓ Round unlocking
-   ========================================================= */
-
 (() => {
   "use strict";
 
   /* =========================================================
-     CONFIG
+     QUIZ MASTER 🇷🇼
+     questions.js
      ========================================================= */
 
+  /* =========================
+     CONFIGURATION
+     ========================= */
+
   const QUESTIONS_FILE = "./questions.json";
+  const MUSIC_FILE = "./music.mp3";
 
   const QUESTIONS_PER_ROUND = 10;
   const TIME_PER_QUESTION = 20;
   const POINTS_PER_CORRECT = 10;
   const UNLOCK_PERCENT = 60;
-
-  const MUSIC_FILE = "./music.mp3";
 
   const STORAGE = {
     progress: "quizmasterProgress",
@@ -50,13 +29,12 @@
     achievements: "quizmasterAchievements",
     personalBest: "quizmasterPersonalBest",
     totalScore: "quizmasterTotalScore",
-    dailyChallenge: "quizmasterDailyChallenge",
-    usedQuestions: "quizmasterUsedQuestions"
+    dailyChallenge: "quizmasterDailyChallenge"
   };
 
-  /* =========================================================
+  /* =========================
      STATE
-     ========================================================= */
+     ========================= */
 
   let allQuestions = [];
   let rounds = [];
@@ -80,21 +58,20 @@
 
   let reviewQuestions = [];
 
-  let musicEnabled = getStoredBoolean(
-    STORAGE.music,
-    true
-  );
+  let musicEnabled =
+    localStorage.getItem(STORAGE.music) !== "false";
 
-  let soundEnabled = getStoredBoolean(
-    STORAGE.sound,
-    true
-  );
+  let soundEnabled =
+    localStorage.getItem(STORAGE.sound) !== "false";
 
   let backgroundMusic = null;
 
-  /* =========================================================
-     DOM HELPERS
-     ========================================================= */
+  let musicInteractionListenersAdded = false;
+  let musicPlayInProgress = false;
+
+  /* =========================
+     DOM HELPER
+     ========================= */
 
   const $ = (id) => document.getElementById(id);
 
@@ -154,55 +131,18 @@
     errorHomeBtn: $("errorHomeBtn")
   };
 
-  /* =========================================================
-     SAFE TEXT
-     ========================================================= */
+  /* =========================
+     SAFE HELPERS
+     ========================= */
 
   function safeText(element, value) {
     if (!element) return;
-
-    element.textContent =
-      value === undefined || value === null
-        ? ""
-        : String(value);
+    element.textContent = value == null ? "" : String(value);
   }
 
-  /* =========================================================
-     STORAGE
-     ========================================================= */
-
-  function getStoredBoolean(key, defaultValue) {
+  function readJSON(key, fallback) {
     try {
       const value = localStorage.getItem(key);
-
-      if (value === null) {
-        return defaultValue;
-      }
-
-      return value === "true";
-    } catch (error) {
-      return defaultValue;
-    }
-  }
-
-  function saveJSON(key, value) {
-    try {
-      localStorage.setItem(
-        key,
-        JSON.stringify(value)
-      );
-    } catch (error) {
-      console.warn(
-        "Quiz Master storage save error:",
-        error
-      );
-    }
-  }
-
-  function loadJSON(key, fallback) {
-    try {
-      const value =
-        localStorage.getItem(key);
 
       if (!value) {
         return fallback;
@@ -210,166 +150,138 @@
 
       return JSON.parse(value);
     } catch (error) {
-      console.warn(
-        "Quiz Master storage read error:",
-        error
-      );
-
+      console.warn("Could not read localStorage:", key, error);
       return fallback;
     }
   }
 
-  /* =========================================================
-     QUESTION LANGUAGE
-     ========================================================= */
+  function writeJSON(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+      return true;
+    } catch (error) {
+      console.warn("Could not write localStorage:", key, error);
+      return false;
+    }
+  }
 
-  /*
-    IMPORTANT:
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
 
-    The engine does NOT translate questions.
-
-    It displays exactly what is stored in questions.json.
-
-    Example:
-
-    English:
-    "What is the capital city of Rwanda?"
-
-    Kinyarwanda:
-    "Itara ritukura risobanura iki?"
-
-    Both can exist in the same questions.json.
-
-    If question_rw exists, it is used first.
-    Otherwise question is used.
-  */
+  /* =========================
+     QUESTION TEXT
+     ========================= */
 
   function getQuestionText(question) {
     if (!question) {
       return "";
     }
 
+    /*
+      If question_rw exists, it is used.
+      If not, normal English question is used.
+    */
     if (
       typeof question.question_rw === "string" &&
-      question.question_rw.trim() !== ""
+      question.question_rw.trim()
     ) {
-      return question.question_rw;
+      return question.question_rw.trim();
     }
 
-    if (
-      typeof question.question === "string"
-    ) {
-      return question.question;
-    }
-
-    return "";
+    return String(question.question || "").trim();
   }
 
-  function getOptions(question) {
-    if (
-      !question ||
-      !Array.isArray(question.options)
-    ) {
-      return [];
-    }
-
-    return question.options;
-  }
-
-  function getAnswer(question) {
-    if (!question) {
-      return "";
-    }
-
-    return typeof question.answer === "string"
-      ? question.answer
-      : "";
-  }
-
-  /* =========================================================
-     VALIDATE QUESTION
-     ========================================================= */
+  /* =========================
+     QUESTION VALIDATION
+     ========================= */
 
   function validateQuestion(question, index) {
-    if (
-      !question ||
-      typeof question !== "object"
-    ) {
+    if (!question || typeof question !== "object") {
       throw new Error(
         `Question ${index + 1} is not a valid object.`
       );
     }
 
-    const questionText =
-      getQuestionText(question);
-
-    if (!questionText) {
+    if (
+      typeof question.question !== "string" ||
+      !question.question.trim()
+    ) {
       throw new Error(
-        `Question ${index + 1} has no question text.`
+        `Question ${index + 1} has no valid "question".`
       );
     }
 
     if (!Array.isArray(question.options)) {
       throw new Error(
-        `Question ${index + 1} has no valid options.`
+        `Question ${index + 1} must have an "options" array.`
       );
     }
 
     if (question.options.length < 2) {
       throw new Error(
-        `Question ${index + 1} must have at least 2 options.`
+        `Question ${index + 1} needs at least 2 options.`
+      );
+    }
+
+    const options = question.options.map((option) =>
+      String(option).trim()
+    );
+
+    if (options.some((option) => !option)) {
+      throw new Error(
+        `Question ${index + 1} contains an empty option.`
       );
     }
 
     if (
       typeof question.answer !== "string" ||
-      question.answer.trim() === ""
+      !question.answer.trim()
     ) {
       throw new Error(
-        `Question ${index + 1} has no valid answer.`
+        `Question ${index + 1} has no valid "answer".`
       );
     }
 
-    if (
-      !question.options.includes(
-        question.answer
-      )
-    ) {
+    if (!options.includes(question.answer.trim())) {
       throw new Error(
-        `Question ${index + 1}: answer does not match any option.`
+        `Question ${index + 1}: answer does not exactly match one of the options.`
       );
     }
 
-    return true;
+    return {
+      ...question,
+      options
+    };
   }
 
-  /* =========================================================
+  /* =========================
      LOAD QUESTIONS
-     ========================================================= */
+     ========================= */
 
   async function loadQuestions() {
     try {
+      showLoadingState();
+
       const response = await fetch(
-        QUESTIONS_FILE +
-          "?v=" +
-          Date.now(),
+        `${QUESTIONS_FILE}?v=${Date.now()}`,
         {
+          method: "GET",
           cache: "no-store"
         }
       );
 
       if (!response.ok) {
         throw new Error(
-          `Unable to load questions.json (${response.status})`
+          `Could not load questions.json (${response.status}).`
         );
       }
 
-      const data =
-        await response.json();
+      const data = await response.json();
 
       if (!Array.isArray(data)) {
         throw new Error(
-          "questions.json must contain an array."
+          "questions.json must contain an array of questions."
         );
       }
 
@@ -379,47 +291,57 @@
         );
       }
 
-      data.forEach(
-        (question, index) =>
-          validateQuestion(
-            question,
-            index
-          )
+      allQuestions = data.map((question, index) =>
+        validateQuestion(question, index)
       );
-
-      allQuestions = data;
 
       buildRounds();
 
+      if (rounds.length === 0) {
+        throw new Error(
+          "No quiz rounds could be created."
+        );
+      }
+
       initializeUnlockedRounds();
-
       renderRounds();
-
       updateContinueButton();
 
-      console.log(
-        `Quiz Master: ${allQuestions.length} questions loaded.`
-      );
+      showScreen("homeScreen");
 
       console.log(
-        `Quiz Master: ${rounds.length} rounds created.`
+        `Quiz Master: loaded ${allQuestions.length} questions in ${rounds.length} rounds.`
       );
 
+      /*
+        Do NOT automatically call play() here.
+        Mobile browsers may block autoplay.
+        Music starts after a real user interaction.
+      */
+
+      return true;
     } catch (error) {
-      console.error(
-        "Quiz Master loading error:",
-        error
-      );
+      console.error("Quiz Master loading error:", error);
 
       showError(
-        "Unable to load the quiz questions. Please check questions.json."
+        error && error.message
+          ? error.message
+          : "Could not load the quiz."
       );
+
+      return false;
     }
   }
 
-  /* =========================================================
+  function showLoadingState() {
+    if (elements.question) {
+      elements.question.textContent = "Loading questions...";
+    }
+  }
+
+  /* =========================
      BUILD ROUNDS
-     ========================================================= */
+     ========================= */
 
   function buildRounds() {
     rounds = [];
@@ -438,94 +360,107 @@
     }
   }
 
-  /* =========================================================
-     UNLOCKED ROUNDS
-     ========================================================= */
+  /* =========================
+     ROUND UNLOCK SYSTEM
+     ========================= */
 
   function initializeUnlockedRounds() {
-    let unlocked =
-      Number(
-        localStorage.getItem(
-          STORAGE.unlockedRounds
-        )
-      );
-
-    if (
-      !Number.isFinite(unlocked) ||
-      unlocked < 1
-    ) {
-      unlocked = 1;
-    }
-
-    unlocked = Math.min(
-      unlocked,
-      rounds.length
+    let unlocked = readJSON(
+      STORAGE.unlockedRounds,
+      null
     );
 
-    localStorage.setItem(
+    if (!Array.isArray(unlocked)) {
+      unlocked = [1];
+    }
+
+    unlocked = unlocked
+      .map(Number)
+      .filter(
+        (round) =>
+          Number.isInteger(round) &&
+          round >= 1 &&
+          round <= rounds.length
+      );
+
+    if (!unlocked.includes(1)) {
+      unlocked.unshift(1);
+    }
+
+    unlocked = [...new Set(unlocked)].sort(
+      (a, b) => a - b
+    );
+
+    writeJSON(
       STORAGE.unlockedRounds,
-      String(unlocked)
+      unlocked
     );
   }
 
   function getUnlockedRounds() {
-    let unlocked =
-      Number(
-        localStorage.getItem(
-          STORAGE.unlockedRounds
-        )
-      );
+    let unlocked = readJSON(
+      STORAGE.unlockedRounds,
+      [1]
+    );
 
-    if (
-      !Number.isFinite(unlocked) ||
-      unlocked < 1
-    ) {
-      unlocked = 1;
+    if (!Array.isArray(unlocked)) {
+      unlocked = [1];
     }
 
-    return Math.min(
-      unlocked,
-      Math.max(rounds.length, 1)
+    unlocked = unlocked
+      .map(Number)
+      .filter(
+        (round) =>
+          Number.isInteger(round) &&
+          round >= 1 &&
+          round <= rounds.length
+      );
+
+    if (!unlocked.includes(1)) {
+      unlocked.push(1);
+    }
+
+    return [...new Set(unlocked)].sort(
+      (a, b) => a - b
     );
   }
 
-  function updateUnlockedRounds() {
-    const percent =
-      currentRoundQuestions.length > 0
-        ? (
-            correctAnswers /
-            currentRoundQuestions.length
-          ) * 100
-        : 0;
-
-    let unlocked =
-      getUnlockedRounds();
+  function updateUnlockedRounds(roundNumber, percent) {
+    const unlocked = getUnlockedRounds();
 
     if (
       percent >= UNLOCK_PERCENT &&
-      currentRound >= unlocked
+      roundNumber < rounds.length
     ) {
-      unlocked =
-        Math.min(
-          currentRound + 1,
-          rounds.length
-        );
+      const nextRound = roundNumber + 1;
 
-      localStorage.setItem(
-        STORAGE.unlockedRounds,
-        String(unlocked)
-      );
+      if (!unlocked.includes(nextRound)) {
+        unlocked.push(nextRound);
+      }
     }
+
+    unlocked.sort((a, b) => a - b);
+
+    writeJSON(
+      STORAGE.unlockedRounds,
+      unlocked
+    );
 
     renderRounds();
   }
 
-  /* =========================================================
-     SCREEN CONTROL
-     ========================================================= */
+  function isRoundUnlocked(roundNumber) {
+    return getUnlockedRounds().includes(
+      Number(roundNumber)
+    );
+  }
+
+  /* =========================
+     SCREEN MANAGEMENT
+     ========================= */
 
   function showScreen(screenId) {
-    const screenIds = [
+    const screens = [
       "homeScreen",
       "roundsScreen",
       "quizScreen",
@@ -535,7 +470,7 @@
       "settingsScreen"
     ];
 
-    screenIds.forEach((id) => {
+    screens.forEach((id) => {
       const screen = $(id);
 
       if (!screen) return;
@@ -547,68 +482,42 @@
     });
   }
 
-  /* =========================================================
+  /* =========================
      START QUIZ
-     ========================================================= */
+     ========================= */
 
   function startQuiz(roundNumber = 1) {
-    stopTimer();
+    roundNumber = Number(roundNumber);
+
+    if (!Number.isInteger(roundNumber)) {
+      roundNumber = 1;
+    }
 
     if (!rounds.length) {
       showError(
-        "No quiz rounds are available."
+        "Questions have not finished loading yet."
       );
       return;
     }
 
-    let selectedRound =
-      Number(roundNumber);
-
-    if (
-      !Number.isFinite(selectedRound)
-    ) {
-      selectedRound = 1;
-    }
-
-    if (selectedRound < 1) {
-      selectedRound = 1;
-    }
-
-    if (
-      selectedRound > rounds.length
-    ) {
-      selectedRound =
-        rounds.length;
-    }
-
-    const unlocked =
-      getUnlockedRounds();
-
-    if (selectedRound > unlocked) {
-      showError(
-        "This round is locked. Complete previous rounds to unlock it."
-      );
+    if (!isRoundUnlocked(roundNumber)) {
       return;
     }
 
-    currentRound = selectedRound;
+    stopTimer();
+
+    currentRound = roundNumber;
+    currentQuestionIndex = 0;
 
     currentRoundQuestions =
-      rounds[currentRound - 1];
+      rounds[currentRound - 1] || [];
 
-    if (
-      !Array.isArray(
-        currentRoundQuestions
-      ) ||
-      currentRoundQuestions.length === 0
-    ) {
+    if (!currentRoundQuestions.length) {
       showError(
-        "This round has no questions."
+        "This round does not contain any questions."
       );
       return;
     }
-
-    currentQuestionIndex = 0;
 
     score = 0;
     correctAnswers = 0;
@@ -620,83 +529,97 @@
 
     reviewQuestions = [];
 
-    saveCurrentProgress();
+    saveCurrentRound();
 
     showScreen("quizScreen");
 
     renderQuestion();
 
+    /*
+      This call is safe:
+      if music cannot autoplay, the interaction listener
+      will start it after the user's gesture.
+    */
     startMusic();
   }
 
-  /* =========================================================
+  /* =========================
      CONTINUE QUIZ
-     ========================================================= */
+     ========================= */
 
   function continueQuiz() {
-    const saved =
-      loadJSON(
-        STORAGE.progress,
-        null
+    const progress = readJSON(
+      STORAGE.progress,
+      null
+    );
+
+    if (!progress) {
+      startQuiz(1);
+      return;
+    }
+
+    if (!rounds.length) {
+      showError(
+        "Questions have not finished loading yet."
       );
-
-    if (!saved) {
-      startQuiz(1);
       return;
     }
 
-    const savedRound =
-      Number(saved.round);
+    const savedRound = Number(
+      progress.round
+    );
 
-    const savedIndex =
-      Number(saved.questionIndex);
-
-    if (
-      !Number.isFinite(savedRound) ||
-      !Number.isFinite(savedIndex)
-    ) {
-      startQuiz(1);
-      return;
-    }
+    const savedIndex = Number(
+      progress.questionIndex
+    );
 
     if (
+      !Number.isInteger(savedRound) ||
       savedRound < 1 ||
       savedRound > rounds.length
     ) {
+      localStorage.removeItem(
+        STORAGE.progress
+      );
+
+      startQuiz(1);
+      return;
+    }
+
+    if (!isRoundUnlocked(savedRound)) {
+      localStorage.removeItem(
+        STORAGE.progress
+      );
+
       startQuiz(1);
       return;
     }
 
     currentRound = savedRound;
-
     currentRoundQuestions =
-      rounds[currentRound - 1];
+      rounds[currentRound - 1] || [];
 
-    if (
-      !currentRoundQuestions ||
-      currentRoundQuestions.length === 0
-    ) {
+    if (!currentRoundQuestions.length) {
       startQuiz(1);
       return;
     }
 
-    currentQuestionIndex =
-      Math.min(
-        Math.max(savedIndex, 0),
-        currentRoundQuestions.length - 1
-      );
+    currentQuestionIndex = clamp(
+      Number.isInteger(savedIndex)
+        ? savedIndex
+        : 0,
+      0,
+      currentRoundQuestions.length - 1
+    );
 
-    score =
-      Number(saved.score) || 0;
-
+    score = Number(progress.score) || 0;
     correctAnswers =
-      Number(saved.correctAnswers) || 0;
-
+      Number(progress.correctAnswers) || 0;
     wrongAnswers =
-      Number(saved.wrongAnswers) || 0;
+      Number(progress.wrongAnswers) || 0;
 
-    answered = false;
     selectedAnswer = null;
+    answered = false;
     quizFinished = false;
 
     reviewQuestions = [];
@@ -708,77 +631,80 @@
     startMusic();
   }
 
-  /* =========================================================
+  /* =========================
      SAVE PROGRESS
-     ========================================================= */
+     ========================= */
 
-  function saveCurrentProgress() {
-    saveJSON(
-      STORAGE.progress,
-      {
-        round: currentRound,
-        questionIndex:
-          currentQuestionIndex,
-        score: score,
-        correctAnswers:
-          correctAnswers,
-        wrongAnswers:
-          wrongAnswers
-      }
-    );
-
-    localStorage.setItem(
-      STORAGE.currentRound,
-      String(currentRound)
-    );
+  function saveCurrentRound() {
+    try {
+      localStorage.setItem(
+        STORAGE.currentRound,
+        String(currentRound)
+      );
+    } catch (error) {
+      console.warn(error);
+    }
   }
 
-  function clearProgress() {
+  function saveCurrentProgress() {
+    if (!currentRoundQuestions.length) {
+      return;
+    }
+
+    writeJSON(STORAGE.progress, {
+      round: currentRound,
+      questionIndex: currentQuestionIndex,
+      score,
+      correctAnswers,
+      wrongAnswers,
+      savedAt: Date.now()
+    });
+
+    saveCurrentRound();
+    updateContinueButton();
+  }
+
+  function clearCurrentProgress() {
     localStorage.removeItem(
       STORAGE.progress
     );
+
+    updateContinueButton();
   }
 
-  /* =========================================================
-     CONTINUE BUTTON
-     ========================================================= */
+  function hasSavedProgress() {
+    const progress = readJSON(
+      STORAGE.progress,
+      null
+    );
+
+    if (!progress) {
+      return false;
+    }
+
+    return (
+      Number.isInteger(Number(progress.round)) &&
+      Number.isInteger(Number(progress.questionIndex))
+    );
+  }
 
   function updateContinueButton() {
     if (!elements.continueBtn) {
       return;
     }
 
-    const saved =
-      loadJSON(
-        STORAGE.progress,
-        null
-      );
-
-    if (
-      saved &&
-      typeof saved === "object"
-    ) {
-      elements.continueBtn.style.display =
-        "";
-    } else {
-      elements.continueBtn.style.display =
-        "none";
-    }
+    elements.continueBtn.style.display =
+      hasSavedProgress()
+        ? ""
+        : "none";
   }
 
-  /* =========================================================
+  /* =========================
      RENDER QUESTION
-     ========================================================= */
+     ========================= */
 
   function renderQuestion() {
-    stopTimer();
-
-    if (
-      !currentRoundQuestions ||
-      currentQuestionIndex >=
-        currentRoundQuestions.length
-    ) {
-      finishRound();
+    if (!currentRoundQuestions.length) {
       return;
     }
 
@@ -787,12 +713,28 @@
         currentQuestionIndex
       ];
 
+    if (!question) {
+      finishRound();
+      return;
+    }
+
+    stopTimer();
+
     selectedAnswer = null;
     answered = false;
 
+    const total =
+      currentRoundQuestions.length;
+
+    const questionNumber =
+      currentQuestionIndex + 1;
+
+    const progress =
+      (questionNumber / total) * 100;
+
     safeText(
       elements.questionNumber,
-      `Question ${currentQuestionIndex + 1} / ${currentRoundQuestions.length}`
+      `${questionNumber} / ${total}`
     );
 
     safeText(
@@ -802,121 +744,86 @@
 
     safeText(
       elements.score,
-      `Score: ${score}`
-    );
-
-    safeText(
-      elements.timer,
-      `⏱️ ${TIME_PER_QUESTION}`
+      String(score)
     );
 
     safeText(
       elements.category,
-      question.category ||
-        "General"
+      question.category || "General Knowledge"
     );
-
-    /*
-      This is what allows English + Kinyarwanda
-      in the same questions.json.
-    */
 
     safeText(
       elements.question,
       getQuestionText(question)
     );
 
-    renderOptions(question);
+    if (elements.progressBar) {
+      elements.progressBar.style.width =
+        `${progress}%`;
+    }
 
-    updateProgress();
+    renderOptions(question.options);
 
     if (elements.message) {
-      elements.message.textContent =
-        "";
-
-      elements.message.classList.add(
-        "hidden"
-      );
-
-      elements.message.classList.remove(
-        "correct",
-        "wrong"
-      );
+      elements.message.textContent = "";
     }
 
     if (elements.nextBtn) {
-      elements.nextBtn.style.display =
-        "none";
+      elements.nextBtn.disabled = true;
+      elements.nextBtn.style.display = "";
     }
 
     startTimer();
   }
 
-  /* =========================================================
+  /* =========================
      RENDER OPTIONS
-     ========================================================= */
+     ========================= */
 
-  function renderOptions(question) {
+  function renderOptions(options) {
     if (!elements.options) {
       return;
     }
 
-    elements.options.innerHTML =
-      "";
+    elements.options.innerHTML = "";
 
-    const options =
-      getOptions(question);
+    options.forEach((option, index) => {
+      const button =
+        document.createElement("button");
 
-    options.forEach(
-      (option) => {
-        const button =
-          document.createElement(
-            "button"
-          );
+      button.type = "button";
+      button.className = "option-btn";
+      button.textContent = option;
 
-        button.type = "button";
+      button.dataset.answer = option;
+      button.dataset.index = String(index);
 
-        /*
-          IMPORTANT:
-          Your existing CSS expects .option-btn.
-          We add only the existing class.
-          No new CSS is created.
-        */
+      button.addEventListener(
+        "click",
+        () => {
+          selectAnswer(option, button);
+        }
+      );
 
-        button.className =
-          "option-btn";
-
-        button.textContent =
-          String(option);
-
-        button.dataset.answer =
-          String(option);
-
-        button.addEventListener(
-          "click",
-          () =>
-            selectAnswer(
-              option,
-              button
-            )
-        );
-
-        elements.options.appendChild(
-          button
-        );
-      }
-    );
+      elements.options.appendChild(button);
+    });
   }
 
-  /* =========================================================
+  /* =========================
      SELECT ANSWER
-     ========================================================= */
+     ========================= */
 
-  function selectAnswer(
-    answer,
-    button
-  ) {
-    if (answered) {
+  function selectAnswer(answer, clickedButton) {
+    if (answered || quizFinished) {
+      return;
+    }
+
+    const question =
+      currentRoundQuestions[
+        currentQuestionIndex
+      ];
+
+    if (!question) {
       return;
     }
 
@@ -925,278 +832,74 @@
 
     stopTimer();
 
-    const question =
-      currentRoundQuestions[
-        currentQuestionIndex
-      ];
-
-    const correctAnswer =
-      getAnswer(question);
+    const isCorrect =
+      answer === question.answer;
 
     const optionButtons =
       elements.options
         ? elements.options.querySelectorAll(
-            "button"
+            ".option-btn"
           )
         : [];
 
-    optionButtons.forEach(
-      (btn) => {
-        btn.disabled = true;
+    optionButtons.forEach((button) => {
+      button.disabled = true;
 
-        if (
-          btn.dataset.answer ===
-          String(correctAnswer)
-        ) {
-          btn.classList.add(
-            "correct"
-          );
-        }
+      const value =
+        button.dataset.answer;
 
-        if (
-          btn.dataset.answer ===
-            String(answer) &&
-          String(answer) !==
-            String(correctAnswer)
-        ) {
-          btn.classList.add(
-            "wrong"
-          );
-        }
+      if (value === question.answer) {
+        button.classList.add("correct");
       }
-    );
 
-    const isCorrect =
-      String(answer) ===
-      String(correctAnswer);
+      if (
+        value === answer &&
+        !isCorrect
+      ) {
+        button.classList.add("wrong");
+      }
+    });
 
     if (isCorrect) {
       correctAnswers++;
+      score += POINTS_PER_CORRECT;
 
-      score +=
-        POINTS_PER_CORRECT;
-
-      setMessage(
-        "Correct!",
-        "correct"
+      showMessage(
+        "Correct! 🎉",
+        true
       );
 
       playSound("correct");
-
     } else {
       wrongAnswers++;
 
-      setMessage(
-        `Incorrect. Correct answer: ${correctAnswer}`,
-        "wrong"
+      showMessage(
+        `Wrong! Correct answer: ${question.answer}`,
+        false
       );
 
       playSound("wrong");
     }
 
     reviewQuestions.push({
-      question: question,
-      selectedAnswer:
-        answer,
-      correctAnswer:
-        correctAnswer,
-      isCorrect:
-        isCorrect
+      ...question,
+      userAnswer: answer,
+      isCorrect
     });
 
     safeText(
       elements.score,
-      `Score: ${score}`
+      String(score)
     );
 
     if (elements.nextBtn) {
-      elements.nextBtn.style.display =
-        "";
+      elements.nextBtn.disabled = false;
     }
 
     saveCurrentProgress();
   }
 
-  /* =========================================================
-     NEXT QUESTION
-     ========================================================= */
-
-  function nextQuestion() {
-    if (!answered) {
-      return;
-    }
-
-    currentQuestionIndex++;
-
-    saveCurrentProgress();
-
-    if (
-      currentQuestionIndex >=
-      currentRoundQuestions.length
-    ) {
-      finishRound();
-      return;
-    }
-
-    renderQuestion();
-  }
-
-  /* =========================================================
-     TIMER
-     ========================================================= */
-
-  function startTimer() {
-    stopTimer();
-
-    timeLeft =
-      TIME_PER_QUESTION;
-
-    updateTimer();
-
-    timerInterval =
-      setInterval(
-        () => {
-          if (answered) {
-            stopTimer();
-            return;
-          }
-
-          timeLeft--;
-
-          updateTimer();
-
-          if (timeLeft <= 0) {
-            stopTimer();
-
-            if (!answered) {
-              timeExpired();
-            }
-          }
-        },
-        1000
-      );
-  }
-
-  function stopTimer() {
-    if (timerInterval) {
-      clearInterval(
-        timerInterval
-      );
-
-      timerInterval = null;
-    }
-  }
-
-  function updateTimer() {
-    safeText(
-      elements.timer,
-      `⏱️ ${timeLeft}`
-    );
-  }
-
-  /* =========================================================
-     TIME EXPIRED
-     ========================================================= */
-
-  function timeExpired() {
-    if (answered) {
-      return;
-    }
-
-    answered = true;
-
-    const question =
-      currentRoundQuestions[
-        currentQuestionIndex
-      ];
-
-    const correctAnswer =
-      getAnswer(question);
-
-    wrongAnswers++;
-
-    reviewQuestions.push({
-      question: question,
-      selectedAnswer: null,
-      correctAnswer:
-        correctAnswer,
-      isCorrect: false
-    });
-
-    setMessage(
-      `Time is up. Correct answer: ${correctAnswer}`,
-      "wrong"
-    );
-
-    playSound("wrong");
-
-    const optionButtons =
-      elements.options
-        ? elements.options.querySelectorAll(
-            "button"
-          )
-        : [];
-
-    optionButtons.forEach(
-      (btn) => {
-        btn.disabled = true;
-
-        if (
-          btn.dataset.answer ===
-          String(correctAnswer)
-        ) {
-          btn.classList.add(
-            "correct"
-          );
-        }
-      }
-    );
-
-    if (elements.nextBtn) {
-      elements.nextBtn.style.display =
-        "";
-    }
-
-    saveCurrentProgress();
-  }
-
-  /* =========================================================
-     PROGRESS BAR
-     ========================================================= */
-
-  function updateProgress() {
-    if (!elements.progressBar) {
-      return;
-    }
-
-    const total =
-      currentRoundQuestions.length;
-
-    const current =
-      currentQuestionIndex + 1;
-
-    const percent =
-      total > 0
-        ? (current / total) * 100
-        : 0;
-
-    /*
-      Existing index.html uses a DIV.
-      We update its width only.
-    */
-
-    elements.progressBar.style.width =
-      percent + "%";
-  }
-
-  /* =========================================================
-     MESSAGE
-     ========================================================= */
-
-  function setMessage(
-    message,
-    type = ""
-  ) {
+  function showMessage(message, correct) {
     if (!elements.message) {
       return;
     }
@@ -1204,36 +907,154 @@
     elements.message.textContent =
       message;
 
-    elements.message.classList.remove(
-      "hidden",
+    elements.message.classList.toggle(
       "correct",
-      "wrong"
+      Boolean(correct)
     );
 
-    if (type) {
-      elements.message.classList.add(
-        type
-      );
+    elements.message.classList.toggle(
+      "wrong",
+      !correct
+    );
+  }
+
+  /* =========================
+     NEXT QUESTION
+     ========================= */
+
+  function nextQuestion() {
+    if (!answered) {
+      return;
+    }
+
+    if (
+      currentQuestionIndex >=
+      currentRoundQuestions.length - 1
+    ) {
+      finishRound();
+      return;
+    }
+
+    currentQuestionIndex++;
+
+    saveCurrentProgress();
+
+    renderQuestion();
+  }
+
+  /* =========================
+     TIMER
+     ========================= */
+
+  function startTimer() {
+    stopTimer();
+
+    timeLeft = TIME_PER_QUESTION;
+
+    updateTimerDisplay();
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+
+      updateTimerDisplay();
+
+      if (timeLeft <= 0) {
+        stopTimer();
+        timeExpired();
+      }
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timerInterval !== null) {
+      clearInterval(timerInterval);
+      timerInterval = null;
     }
   }
 
-  /* =========================================================
+  function updateTimerDisplay() {
+    safeText(
+      elements.timer,
+      String(Math.max(0, timeLeft))
+    );
+  }
+
+  function timeExpired() {
+    if (answered) {
+      return;
+    }
+
+    const question =
+      currentRoundQuestions[
+        currentQuestionIndex
+      ];
+
+    if (!question) {
+      return;
+    }
+
+    answered = true;
+    selectedAnswer = null;
+
+    wrongAnswers++;
+
+    const optionButtons =
+      elements.options
+        ? elements.options.querySelectorAll(
+            ".option-btn"
+          )
+        : [];
+
+    optionButtons.forEach((button) => {
+      button.disabled = true;
+
+      if (
+        button.dataset.answer ===
+        question.answer
+      ) {
+        button.classList.add("correct");
+      }
+    });
+
+    showMessage(
+      `Time's up! Correct answer: ${question.answer}`,
+      false
+    );
+
+    playSound("wrong");
+
+    reviewQuestions.push({
+      ...question,
+      userAnswer: null,
+      isCorrect: false
+    });
+
+    if (elements.nextBtn) {
+      elements.nextBtn.disabled = false;
+    }
+
+    saveCurrentProgress();
+  }
+
+  /* =========================
      FINISH ROUND
-     ========================================================= */
+     ========================= */
 
   function finishRound() {
-    stopTimer();
+    if (quizFinished) {
+      return;
+    }
 
     quizFinished = true;
 
-    const total =
-      currentRoundQuestions.length;
+    stopTimer();
 
-    const percent =
-      total > 0
-        ? (correctAnswers / total) *
-          100
-        : 0;
+    const total =
+      currentRoundQuestions.length || 1;
+
+    const percent = Math.round(
+      (correctAnswers / total) * 100
+    );
 
     const stars =
       percent >= 80
@@ -1248,100 +1069,104 @@
       stars
     );
 
-    updateUnlockedRounds();
+    updateUnlockedRounds(
+      currentRound,
+      percent
+    );
 
-    clearProgress();
+    saveTotalScore(score);
+    updatePersonalBest(score);
 
-    updateResultScreen(
+    clearCurrentProgress();
+
+    renderResult(
       percent,
       stars
     );
 
-    updateContinueButton();
+    showScreen("resultScreen");
 
-    showScreen(
-      "resultScreen"
-    );
+    /*
+      IMPORTANT:
+      Music is NOT stopped here.
+      It continues playing while the user moves
+      through result/review/home, as long as Music
+      is enabled.
+    */
 
-    stopMusic();
+    startMusic();
   }
 
-  /* =========================================================
+  /* =========================
      RESULT
-     ========================================================= */
+     ========================= */
 
-  function updateResultScreen(
-    percent,
-    stars
-  ) {
+  function renderResult(percent, stars) {
     safeText(
-      elements.finalScore,
-      `Score: ${score}`
-    );
-
-    safeText(
-      elements.resultPercent,
-      `${Math.round(percent)}%`
+      elements.finishedRound,
+      `Round ${currentRound}`
     );
 
     safeText(
       elements.correctCount,
-      correctAnswers
+      String(correctAnswers)
     );
 
     safeText(
       elements.wrongCount,
-      wrongAnswers
+      String(wrongAnswers)
     );
 
     safeText(
-      elements.finishedRound,
-      `Round ${currentRound} completed`
+      elements.finalScore,
+      String(score)
     );
 
-    if (elements.resultMessage) {
-      if (percent >= 80) {
-        elements.resultMessage.textContent =
-          "Excellent! You earned 3 stars.";
-      } else if (
-        percent >= 60
-      ) {
-        elements.resultMessage.textContent =
-          "Great job! You earned 2 stars and unlocked the next round.";
-      } else {
-        elements.resultMessage.textContent =
-          "Keep practicing! You can retry this round.";
-      }
+    safeText(
+      elements.resultPercent,
+      `${percent}%`
+    );
+
+    let message = "";
+
+    if (percent >= 80) {
+      message =
+        "Excellent! 🌟 You mastered this round!";
+    } else if (percent >= 60) {
+      message =
+        "Great job! 🎉 The next round is unlocked.";
+    } else {
+      message =
+        "Keep practicing! 💪 You can try this round again.";
     }
+
+    safeText(
+      elements.resultMessage,
+      message
+    );
 
     if (elements.nextRoundBtn) {
       const nextRound =
         currentRound + 1;
 
-      const unlocked =
-        getUnlockedRounds();
-
-      if (
-        nextRound <=
-          rounds.length &&
-        nextRound <=
-          unlocked
-      ) {
-        elements.nextRoundBtn.style.display =
-          "";
-      } else {
-        elements.nextRoundBtn.style.display =
-          "none";
-      }
+      elements.nextRoundBtn.style.display =
+        nextRound <= rounds.length &&
+        isRoundUnlocked(nextRound)
+          ? ""
+          : "none";
     }
 
-    saveTotalScore();
-    updatePersonalBest();
+    if (elements.reviewBtn) {
+      elements.reviewBtn.style.display =
+        reviewQuestions.length
+          ? ""
+          : "none";
+    }
   }
 
-  /* =========================================================
-     ROUND RESULTS
-     ========================================================= */
+  /* =========================
+     SAVE ROUND RESULT
+     ========================= */
 
   function saveRoundResult(
     roundNumber,
@@ -1349,68 +1174,94 @@
     stars
   ) {
     const completed =
-      loadJSON(
+      readJSON(
         STORAGE.completedRounds,
         []
       );
 
-    if (
-      !Array.isArray(completed)
-    ) {
+    if (!Array.isArray(completed)) {
       return;
     }
 
-    if (
-      !completed.includes(
-        roundNumber
-      )
-    ) {
-      completed.push(
-        roundNumber
-      );
+    if (!completed.includes(roundNumber)) {
+      completed.push(roundNumber);
     }
 
-    saveJSON(
+    writeJSON(
       STORAGE.completedRounds,
       completed
     );
 
     const roundStars =
-      loadJSON(
+      readJSON(
         STORAGE.roundStars,
         {}
       );
 
-    roundStars[
-      String(roundNumber)
-    ] = stars;
+    roundStars[roundNumber] =
+      Math.max(
+        Number(roundStars[roundNumber]) || 0,
+        stars
+      );
 
-    saveJSON(
+    writeJSON(
       STORAGE.roundStars,
       roundStars
     );
 
-    saveJSON(
-      STORAGE.dailyChallenge,
-      {
-        date:
-          new Date()
-            .toISOString()
-            .slice(0, 10),
-        round:
-          roundNumber,
-        percent:
-          Math.round(percent)
-      }
+    saveDailyChallenge(
+      roundNumber,
+      percent
     );
   }
 
-  /* =========================================================
-     TOTAL SCORE
-     ========================================================= */
+  function saveDailyChallenge(
+    roundNumber,
+    percent
+  ) {
+    const today =
+      new Date().toISOString().slice(0, 10);
 
-  function saveTotalScore() {
-    const oldScore =
+    const daily =
+      readJSON(
+        STORAGE.dailyChallenge,
+        null
+      );
+
+    if (
+      !daily ||
+      daily.date !== today
+    ) {
+      writeJSON(
+        STORAGE.dailyChallenge,
+        {
+          date: today,
+          round: roundNumber,
+          percent,
+          completed: true
+        }
+      );
+      return;
+    }
+
+    if (percent > Number(daily.percent || 0)) {
+      daily.percent = percent;
+      daily.round = roundNumber;
+      daily.completed = true;
+
+      writeJSON(
+        STORAGE.dailyChallenge,
+        daily
+      );
+    }
+  }
+
+  /* =========================
+     TOTAL SCORE
+     ========================= */
+
+  function saveTotalScore(roundScore) {
+    const oldTotal =
       Number(
         localStorage.getItem(
           STORAGE.totalScore
@@ -1419,17 +1270,15 @@
 
     localStorage.setItem(
       STORAGE.totalScore,
-      String(
-        oldScore + score
-      )
+      String(oldTotal + roundScore)
     );
   }
 
-  /* =========================================================
+  /* =========================
      PERSONAL BEST
-     ========================================================= */
+     ========================= */
 
-  function updatePersonalBest() {
+  function updatePersonalBest(currentScore) {
     const best =
       Number(
         localStorage.getItem(
@@ -1437,26 +1286,26 @@
         )
       ) || 0;
 
-    if (score > best) {
+    if (currentScore > best) {
       localStorage.setItem(
         STORAGE.personalBest,
-        String(score)
+        String(currentScore)
       );
     }
   }
 
-  /* =========================================================
+  /* =========================
      REVIEW
-     ========================================================= */
+     ========================= */
 
   function showReview() {
     stopTimer();
 
-    showScreen(
-      "reviewScreen"
-    );
-
     renderReview();
+
+    showScreen("reviewScreen");
+
+    startMusic();
   }
 
   function renderReview() {
@@ -1464,139 +1313,136 @@
       return;
     }
 
-    elements.reviewList.innerHTML =
-      "";
+    elements.reviewList.innerHTML = "";
 
-    safeText(
-      elements.reviewSummary,
-      `Round ${currentRound}: ${correctAnswers}/${currentRoundQuestions.length} correct`
-    );
+    let correct = 0;
+    let wrong = 0;
 
     reviewQuestions.forEach(
       (item, index) => {
-        const div =
-          document.createElement(
-            "div"
-          );
+        if (item.isCorrect) {
+          correct++;
+        } else {
+          wrong++;
+        }
 
-        div.className =
-          item.isCorrect
-            ? "review-item review-correct"
-            : "review-item review-wrong";
+        const wrapper =
+          document.createElement("div");
 
-        const title =
-          document.createElement(
-            "strong"
-          );
+        wrapper.className =
+          "review-item";
 
-        title.textContent =
-          `Question ${index + 1}: ${getQuestionText(item.question)}`;
+        const number =
+          document.createElement("div");
 
-        div.appendChild(
-          title
-        );
+        number.className =
+          "review-number";
 
-        const selected =
-          document.createElement(
-            "p"
-          );
+        number.textContent =
+          `Question ${index + 1}`;
 
-        selected.textContent =
-          item.selectedAnswer ===
-          null
-            ? "Your answer: No answer"
-            : `Your answer: ${item.selectedAnswer}`;
+        const question =
+          document.createElement("div");
 
-        div.appendChild(
-          selected
-        );
+        question.className =
+          "review-question";
 
-        const correct =
-          document.createElement(
-            "p"
-          );
+        question.textContent =
+          getQuestionText(item);
 
-        correct.textContent =
-          `Correct answer: ${item.correctAnswer}`;
+        const userAnswer =
+          document.createElement("div");
 
-        div.appendChild(
-          correct
-        );
+        userAnswer.className =
+          "review-user-answer";
+
+        userAnswer.textContent =
+          item.userAnswer
+            ? `Your answer: ${item.userAnswer}`
+            : "Your answer: No answer";
+
+        const correctAnswer =
+          document.createElement("div");
+
+        correctAnswer.className =
+          "review-correct-answer";
+
+        correctAnswer.textContent =
+          `Correct answer: ${item.answer}`;
+
+        wrapper.appendChild(number);
+        wrapper.appendChild(question);
+        wrapper.appendChild(userAnswer);
+        wrapper.appendChild(correctAnswer);
 
         elements.reviewList.appendChild(
-          div
+          wrapper
         );
       }
     );
-  }
 
-  /* =========================================================
-     RETRY
-     ========================================================= */
-
-  function retryRound() {
-    stopTimer();
-
-    startQuiz(
-      currentRound
+    safeText(
+      elements.reviewSummary,
+      `Correct: ${correct} • Wrong: ${wrong}`
     );
   }
 
-  /* =========================================================
+  /* =========================
+     RETRY ROUND
+     ========================= */
+
+  function retryRound() {
+    startQuiz(currentRound);
+  }
+
+  /* =========================
      NEXT ROUND
-     ========================================================= */
+     ========================= */
 
   function nextRound() {
     const next =
       currentRound + 1;
 
-    const unlocked =
-      getUnlockedRounds();
-
     if (
-      next > rounds.length
+      next > rounds.length ||
+      !isRoundUnlocked(next)
     ) {
-      showScreen(
-        "resultScreen"
-      );
-      return;
-    }
-
-    if (
-      next > unlocked
-    ) {
-      showError(
-        "Complete the current round with at least 60% to unlock the next round."
-      );
       return;
     }
 
     startQuiz(next);
   }
 
-  /* =========================================================
+  /* =========================
      ROUNDS SCREEN
-     ========================================================= */
+     ========================= */
+
+  function showRounds() {
+    renderRounds();
+
+    showScreen("roundsScreen");
+
+    startMusic();
+  }
 
   function renderRounds() {
     if (!elements.roundGrid) {
       return;
     }
 
-    elements.roundGrid.innerHTML =
-      "";
+    elements.roundGrid.innerHTML = "";
 
     const unlocked =
       getUnlockedRounds();
 
     const completed =
-      loadJSON(
+      readJSON(
         STORAGE.completedRounds,
         []
       );
 
     const roundStars =
-      loadJSON(
+      readJSON(
         STORAGE.roundStars,
         {}
       );
@@ -1607,15 +1453,17 @@
           index + 1;
 
         const button =
-          document.createElement(
-            "button"
-          );
+          document.createElement("button");
 
         button.type = "button";
 
+        button.className =
+          "round-btn";
+
         const isUnlocked =
-          roundNumber <=
-          unlocked;
+          unlocked.includes(
+            roundNumber
+          );
 
         const isCompleted =
           Array.isArray(completed) &&
@@ -1623,61 +1471,44 @@
             roundNumber
           );
 
-        button.className =
-          isUnlocked
-            ? "round-btn unlocked"
-            : "round-btn locked";
+        const stars =
+          Number(
+            roundStars[roundNumber]
+          ) || 0;
 
-        let label =
-          `Round ${roundNumber}`;
-
-        if (
-          isCompleted
-        ) {
-          const stars =
-            Number(
-              roundStars[
-                String(
-                  roundNumber
-                )
-              ]
-            ) || 1;
-
-          label +=
-            ` ⭐ ${stars}/3`;
+        if (!isUnlocked) {
+          button.classList.add("locked");
         }
 
-        if (
-          !isUnlocked
-        ) {
-          label +=
-            " 🔒";
+        if (isCompleted) {
+          button.classList.add("completed");
         }
 
-        label +=
-          `\n${roundQuestions.length} Questions`;
+        let starText = "";
+
+        if (stars > 0) {
+          starText =
+            " " +
+            "★".repeat(stars) +
+            "☆".repeat(3 - stars);
+        }
 
         button.textContent =
-          label;
+          isUnlocked
+            ? `Round ${roundNumber}${starText}`
+            : `🔒 Round ${roundNumber}`;
 
-        button.addEventListener(
-          "click",
-          () => {
-            if (
-              roundNumber >
-              getUnlockedRounds()
-            ) {
-              showError(
-                "This round is locked. Complete previous rounds to unlock it."
-              );
-              return;
+        button.disabled =
+          !isUnlocked;
+
+        if (isUnlocked) {
+          button.addEventListener(
+            "click",
+            () => {
+              startQuiz(roundNumber);
             }
-
-            startQuiz(
-              roundNumber
-            );
-          }
-        );
+          );
+        }
 
         elements.roundGrid.appendChild(
           button
@@ -1686,64 +1517,79 @@
     );
   }
 
-  /* =========================================================
+  /* =========================
      HOME
-     ========================================================= */
+     ========================= */
 
   function goHome() {
     stopTimer();
-    stopMusic();
 
-    showScreen(
-      "homeScreen"
-    );
+    showScreen("homeScreen");
 
     updateContinueButton();
+
+    /*
+      Do not restart/reset music here.
+      If it is already playing, it keeps playing.
+    */
+    startMusic();
   }
 
-  /* =========================================================
+  /* =========================
      SETTINGS
-     ========================================================= */
+     ========================= */
 
-  function openSettings() {
-    stopTimer();
-
-    showScreen(
-      "settingsScreen"
-    );
-
+  function showSettings() {
     updateSettingsUI();
+
+    showScreen("settingsScreen");
+
+    startMusic();
   }
 
   function updateSettingsUI() {
     if (elements.musicSwitch) {
-      elements.musicSwitch.classList.toggle(
-        "on",
-        musicEnabled
-      );
-
-      elements.musicSwitch.setAttribute(
-        "aria-pressed",
-        String(musicEnabled)
-      );
+      if (
+        elements.musicSwitch.type ===
+        "checkbox"
+      ) {
+        elements.musicSwitch.checked =
+          musicEnabled;
+      } else {
+        elements.musicSwitch.classList.toggle(
+          "on",
+          musicEnabled
+        );
+      }
     }
 
     if (elements.soundSwitch) {
-      elements.soundSwitch.classList.toggle(
-        "on",
-        soundEnabled
-      );
-
-      elements.soundSwitch.setAttribute(
-        "aria-pressed",
-        String(soundEnabled)
-      );
+      if (
+        elements.soundSwitch.type ===
+        "checkbox"
+      ) {
+        elements.soundSwitch.checked =
+          soundEnabled;
+      } else {
+        elements.soundSwitch.classList.toggle(
+          "on",
+          soundEnabled
+        );
+      }
     }
   }
 
   function toggleMusic() {
-    musicEnabled =
-      !musicEnabled;
+    if (
+      elements.musicSwitch &&
+      elements.musicSwitch.type ===
+        "checkbox"
+    ) {
+      musicEnabled =
+        elements.musicSwitch.checked;
+    } else {
+      musicEnabled = !musicEnabled;
+    }
 
     localStorage.setItem(
       STORAGE.music,
@@ -1753,15 +1599,23 @@
     updateSettingsUI();
 
     if (musicEnabled) {
-      startMusic();
+      startMusic(true);
     } else {
-      stopMusic();
+      stopMusic(true);
     }
   }
 
   function toggleSound() {
-    soundEnabled =
-      !soundEnabled;
+    if (
+      elements.soundSwitch &&
+      elements.soundSwitch.type ===
+        "checkbox"
+    ) {
+      soundEnabled =
+        elements.soundSwitch.checked;
+    } else {
+      soundEnabled = !soundEnabled;
+    }
 
     localStorage.setItem(
       STORAGE.sound,
@@ -1772,91 +1626,205 @@
   }
 
   /* =========================================================
-     MUSIC
+     MUSIC SYSTEM
      ========================================================= */
 
   function initializeMusic() {
     try {
       backgroundMusic =
-        new Audio(
-          MUSIC_FILE
-        );
+        new Audio(MUSIC_FILE);
 
-      backgroundMusic.loop =
-        true;
+      backgroundMusic.loop = true;
+      backgroundMusic.volume = 0.35;
+      backgroundMusic.preload = "auto";
+      backgroundMusic.autoplay = false;
 
-      backgroundMusic.volume =
-        0.35;
+      /*
+        Useful for mobile browsers.
+      */
+      backgroundMusic.playsInline = true;
 
-      backgroundMusic.preload =
-        "auto";
-
+      backgroundMusic.addEventListener(
+        "error",
+        () => {
+          console.warn(
+            "Quiz Master: music.mp3 could not be loaded."
+          );
+        }
+      );
     } catch (error) {
       console.warn(
-        "Music initialization warning:",
+        "Could not initialize background music:",
         error
       );
+
+      backgroundMusic = null;
     }
   }
 
-  function startMusic() {
-    if (
-      !musicEnabled ||
-      !backgroundMusic
-    ) {
+  function startMusic(fromUserGesture = false) {
+    if (!musicEnabled) {
       return;
     }
 
-    const promise =
+    if (!backgroundMusic) {
+      return;
+    }
+
+    /*
+      If music is already playing, do nothing.
+      This is the important fix that prevents music
+      from restarting on every button click.
+    */
+    if (!backgroundMusic.paused) {
+      return;
+    }
+
+    if (musicPlayInProgress) {
+      return;
+    }
+
+    musicPlayInProgress = true;
+
+    const playPromise =
       backgroundMusic.play();
 
     if (
-      promise &&
-      typeof promise.catch ===
+      playPromise &&
+      typeof playPromise.then ===
         "function"
     ) {
-      promise.catch(
-        () => {
+      playPromise
+        .then(() => {
+          musicPlayInProgress = false;
+
           /*
-            Browser autoplay policy may block
-            music until the user interacts.
-            This is normal.
+            Once browser accepts playback,
+            remove the temporary interaction listeners.
           */
-        }
-      );
+          removeMusicInteractionListeners();
+        })
+        .catch(() => {
+          musicPlayInProgress = false;
+
+          /*
+            Autoplay may be blocked.
+            Keep the interaction listeners active.
+          */
+
+          if (!fromUserGesture) {
+            addMusicInteractionListeners();
+          }
+        });
+    } else {
+      musicPlayInProgress = false;
     }
   }
 
-  function stopMusic() {
+  function stopMusic(reset = true) {
     if (!backgroundMusic) {
       return;
     }
 
     try {
       backgroundMusic.pause();
-      backgroundMusic.currentTime =
-        0;
+
+      if (reset) {
+        backgroundMusic.currentTime = 0;
+      }
     } catch (error) {
       console.warn(
-        "Music stop warning:",
+        "Could not stop music:",
         error
       );
     }
+
+    musicPlayInProgress = false;
   }
 
-  /* =========================================================
+  /*
+    Mobile browsers often reject audio until the user
+    touches/clicks the page.
+
+    We therefore listen for ONE genuine user interaction.
+    We do NOT call play() for every click forever.
+  */
+
+  function addMusicInteractionListeners() {
+    if (musicInteractionListenersAdded) {
+      return;
+    }
+
+    document.addEventListener(
+      "pointerdown",
+      handleFirstMusicInteraction,
+      {
+        passive: true
+      }
+    );
+
+    document.addEventListener(
+      "touchstart",
+      handleFirstMusicInteraction,
+      {
+        passive: true
+      }
+    );
+
+    document.addEventListener(
+      "click",
+      handleFirstMusicInteraction,
+      {
+        passive: true
+      }
+    );
+
+    musicInteractionListenersAdded = true;
+  }
+
+  function removeMusicInteractionListeners() {
+    if (!musicInteractionListenersAdded) {
+      return;
+    }
+
+    document.removeEventListener(
+      "pointerdown",
+      handleFirstMusicInteraction
+    );
+
+    document.removeEventListener(
+      "touchstart",
+      handleFirstMusicInteraction
+    );
+
+    document.removeEventListener(
+      "click",
+      handleFirstMusicInteraction
+    );
+
+    musicInteractionListenersAdded = false;
+  }
+
+  function handleFirstMusicInteraction() {
+    if (!musicEnabled) {
+      return;
+    }
+
+    startMusic(true);
+  }
+
+  function setupMusicInteractionListeners() {
+    addMusicInteractionListeners();
+  }
+
+  /* =========================
      SOUND EFFECTS
-     ========================================================= */
+     ========================= */
 
   function playSound(type) {
     if (!soundEnabled) {
       return;
     }
-
-    /*
-      Uses Web Audio only for short answer sounds.
-      Background music uses music.mp3.
-    */
 
     try {
       const AudioContext =
@@ -1876,219 +1844,286 @@
       const gain =
         context.createGain();
 
-      oscillator.connect(
-        gain
-      );
-
-      gain.connect(
-        context.destination
-      );
+      oscillator.connect(gain);
+      gain.connect(context.destination);
 
       if (type === "correct") {
-        oscillator.frequency.value =
-          880;
+        oscillator.frequency.value = 880;
       } else {
-        oscillator.frequency.value =
-          220;
+        oscillator.frequency.value = 220;
       }
 
+      oscillator.type = "sine";
+
       gain.gain.setValueAtTime(
-        0.08,
+        0.0001,
         context.currentTime
       );
 
       gain.gain.exponentialRampToValueAtTime(
-        0.001,
+        0.08,
+        context.currentTime + 0.02
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001,
         context.currentTime + 0.18
       );
 
       oscillator.start();
 
       oscillator.stop(
-        context.currentTime +
-          0.18
+        context.currentTime + 0.2
       );
 
       oscillator.addEventListener(
         "ended",
         () => {
-          context.close().catch(
-            () => {}
-          );
+          if (
+            context &&
+            typeof context.close ===
+              "function"
+          ) {
+            context.close().catch(() => {});
+          }
         }
       );
-
     } catch (error) {
       console.warn(
-        "Sound effect warning:",
+        "Sound effect error:",
         error
       );
     }
   }
 
-  /* =========================================================
+  /* =========================
      SHARE
-     ========================================================= */
+     ========================= */
 
   async function shareQuiz() {
-    const shareText =
-      "Test your knowledge with Quiz Master!";
+    const shareData = {
+      title: "Quiz Master 🇷🇼",
+      text:
+        "Test your knowledge with Quiz Master!",
+      url: window.location.href
+    };
 
-    const shareUrl =
-      window.location.href;
-
-    if (
-      navigator.share
-    ) {
-      try {
-        await navigator.share({
-          title:
-            "Quiz Master 🇷🇼",
-          text:
-            shareText,
-          url:
-            shareUrl
-        });
+    try {
+      if (
+        navigator.share &&
+        typeof navigator.share ===
+          "function"
+      ) {
+        await navigator.share(
+          shareData
+        );
 
         return;
-
-      } catch (error) {
-        if (
-          error &&
-          error.name ===
-            "AbortError"
-        ) {
-          return;
-        }
+      }
+    } catch (error) {
+      /*
+        AbortError simply means the user closed
+        the native share window.
+      */
+      if (
+        error &&
+        error.name === "AbortError"
+      ) {
+        return;
       }
     }
 
     try {
-      await navigator.clipboard.writeText(
-        shareUrl
+      if (
+        navigator.clipboard &&
+        typeof navigator.clipboard.writeText ===
+          "function"
+      ) {
+        await navigator.clipboard.writeText(
+          window.location.href
+        );
+
+        showTemporaryShareMessage(
+          "✅ Link Copied!"
+        );
+
+        return;
+      }
+    } catch (error) {
+      console.warn(
+        "Clipboard failed:",
+        error
+      );
+    }
+
+    /*
+      Final fallback for older browsers.
+    */
+    try {
+      const textarea =
+        document.createElement(
+          "textarea"
+        );
+
+      textarea.value =
+        window.location.href;
+
+      textarea.style.position =
+        "fixed";
+      textarea.style.opacity = "0";
+
+      document.body.appendChild(
+        textarea
       );
 
-      const oldText =
-        elements.shareBtn
-          ? elements.shareBtn.textContent
-          : "";
+      textarea.focus();
+      textarea.select();
 
-      if (elements.shareBtn) {
-        elements.shareBtn.textContent =
-          "✅ Link Copied!";
+      document.execCommand(
+        "copy"
+      );
 
-        setTimeout(
-          () => {
-            elements.shareBtn.textContent =
-              oldText ||
-              "📤 Share Quiz Master";
-          },
-          2000
-        );
-      }
+      textarea.remove();
 
+      showTemporaryShareMessage(
+        "✅ Link Copied!"
+      );
     } catch (error) {
-      window.prompt(
-        "Copy this Quiz Master link:",
-        shareUrl
+      console.warn(
+        "Share fallback failed:",
+        error
       );
     }
   }
 
-  /* =========================================================
+  function showTemporaryShareMessage(
+    message
+  ) {
+    if (!elements.shareBtn) {
+      return;
+    }
+
+    const original =
+      elements.shareBtn.textContent;
+
+    elements.shareBtn.textContent =
+      message;
+
+    setTimeout(() => {
+      if (elements.shareBtn) {
+        elements.shareBtn.textContent =
+          original;
+      }
+    }, 1800);
+  }
+
+  /* =========================
      ERROR SCREEN
-     ========================================================= */
+     ========================= */
 
   function showError(message) {
     stopTimer();
-    stopMusic();
 
-    safeText(
-      elements.errorMessage,
-      message
-    );
+    if (elements.errorMessage) {
+      elements.errorMessage.textContent =
+        message;
+    }
 
-    showScreen(
-      "errorScreen"
-    );
+    showScreen("errorScreen");
+
+    startMusic();
   }
 
-  /* =========================================================
+  async function retryLoadingQuestions() {
+    const success =
+      await loadQuestions();
+
+    if (success) {
+      showScreen("homeScreen");
+      updateContinueButton();
+      startMusic();
+    }
+  }
+
+  /* =========================
      EVENT LISTENERS
-     ========================================================= */
+     ========================= */
 
   function setupEventListeners() {
-
-    /* Start */
+    /*
+      HOME
+    */
 
     if (elements.startBtn) {
       elements.startBtn.addEventListener(
         "click",
-        () => startQuiz(1)
+        () => {
+          startQuiz(1);
+        }
       );
     }
-
-    /* Continue */
 
     if (elements.continueBtn) {
       elements.continueBtn.addEventListener(
         "click",
-        continueQuiz
+        () => {
+          continueQuiz();
+        }
       );
     }
-
-    /* Rounds */
 
     if (elements.roundsBtn) {
       elements.roundsBtn.addEventListener(
         "click",
         () => {
-          renderRounds();
-
-          showScreen(
-            "roundsScreen"
-          );
+          showRounds();
         }
       );
     }
 
-    /* Settings */
-
     if (elements.settingsBtn) {
       elements.settingsBtn.addEventListener(
         "click",
-        openSettings
+        () => {
+          showSettings();
+        }
       );
     }
-
-    /* Share */
 
     if (elements.shareBtn) {
       elements.shareBtn.addEventListener(
         "click",
-        shareQuiz
+        () => {
+          shareQuiz();
+        }
       );
     }
 
-    /* Rounds Back */
+    /*
+      ROUNDS
+    */
 
     if (elements.roundsBackBtn) {
       elements.roundsBackBtn.addEventListener(
         "click",
-        goHome
+        () => {
+          goHome();
+        }
       );
     }
 
-    /* Next Question */
+    /*
+      QUIZ
+    */
 
     if (elements.nextBtn) {
       elements.nextBtn.addEventListener(
         "click",
-        nextQuestion
+        () => {
+          nextQuestion();
+        }
       );
     }
-
-    /* Quiz Home */
 
     if (elements.quizHomeBtn) {
       elements.quizHomeBtn.addEventListener(
@@ -2100,170 +2135,175 @@
       );
     }
 
-    /* Next Round */
-
-    if (elements.nextRoundBtn) {
-      elements.nextRoundBtn.addEventListener(
-        "click",
-        nextRound
-      );
-    }
-
-    /* Retry */
+    /*
+      RESULT
+    */
 
     if (elements.restartBtn) {
       elements.restartBtn.addEventListener(
         "click",
-        retryRound
+        () => {
+          retryRound();
+        }
       );
     }
 
-    /* Review */
+    if (elements.nextRoundBtn) {
+      elements.nextRoundBtn.addEventListener(
+        "click",
+        () => {
+          nextRound();
+        }
+      );
+    }
 
     if (elements.reviewBtn) {
       elements.reviewBtn.addEventListener(
         "click",
-        showReview
+        () => {
+          showReview();
+        }
       );
     }
-
-    /* Result Home */
 
     if (elements.resultHomeBtn) {
       elements.resultHomeBtn.addEventListener(
         "click",
-        goHome
+        () => {
+          goHome();
+        }
       );
     }
 
-    /* Review Retry */
+    /*
+      REVIEW
+    */
 
     if (elements.reviewRetryBtn) {
       elements.reviewRetryBtn.addEventListener(
         "click",
-        retryRound
+        () => {
+          retryRound();
+        }
       );
     }
-
-    /* Review Back */
 
     if (elements.reviewBackBtn) {
       elements.reviewBackBtn.addEventListener(
         "click",
         () => {
-          showScreen(
-            "resultScreen"
-          );
+          showScreen("resultScreen");
+          startMusic();
         }
       );
     }
 
-    /* Music */
+    /*
+      SETTINGS
+    */
 
     if (elements.musicSwitch) {
       elements.musicSwitch.addEventListener(
         "click",
-        toggleMusic
+        () => {
+          /*
+            For checkbox inputs, the browser changes
+            checked before this handler runs.
+          */
+          toggleMusic();
+        }
       );
     }
-
-    /* Sound */
 
     if (elements.soundSwitch) {
       elements.soundSwitch.addEventListener(
         "click",
-        toggleSound
+        () => {
+          toggleSound();
+        }
       );
     }
-
-    /* Settings Back */
 
     if (elements.settingsBackBtn) {
       elements.settingsBackBtn.addEventListener(
         "click",
-        goHome
+        () => {
+          goHome();
+        }
       );
     }
 
-    /* Error Retry */
+    /*
+      ERROR
+    */
 
     if (elements.errorRestartBtn) {
       elements.errorRestartBtn.addEventListener(
         "click",
         () => {
-          showScreen(
-            "homeScreen"
-          );
-
-          loadQuestions();
+          retryLoadingQuestions();
         }
       );
     }
 
-    /* Error Home */
-
     if (elements.errorHomeBtn) {
       elements.errorHomeBtn.addEventListener(
         "click",
-        goHome
+        () => {
+          goHome();
+        }
       );
     }
   }
 
-  /* =========================================================
+  /* =========================
      INITIALIZE
-     ========================================================= */
+     ========================= */
 
-  function initialize() {
+  async function initialize() {
     initializeMusic();
 
     updateSettingsUI();
 
+    setupMusicInteractionListeners();
+
     setupEventListeners();
 
-    showScreen(
-      "homeScreen"
-    );
+    showScreen("homeScreen");
 
-    loadQuestions();
+    await loadQuestions();
+
+    updateContinueButton();
+
+    /*
+      We intentionally do not force autoplay here.
+      The first user interaction starts music.
+    */
   }
 
-  /* =========================================================
+  /* =========================
      PUBLIC FUNCTIONS
-     ========================================================= */
+     ========================= */
 
-  /*
-    These are exposed globally as an extra safety measure.
-    They do not change index.html.
-  */
+  window.startQuiz = startQuiz;
+  window.continueQuiz = continueQuiz;
+  window.nextQuestion = nextQuestion;
+  window.showRounds = showRounds;
+  window.showSettings = showSettings;
+  window.showReview = showReview;
+  window.retryRound = retryRound;
+  window.nextRound = nextRound;
+  window.goHome = goHome;
+  window.shareQuiz = shareQuiz;
+  window.startMusic = startMusic;
+  window.stopMusic = stopMusic;
+  window.toggleMusic = toggleMusic;
+  window.toggleSound = toggleSound;
+  window.loadQuestions = loadQuestions;
 
-  window.startQuiz =
-    startQuiz;
-
-  window.continueQuiz =
-    continueQuiz;
-
-  window.nextQuestion =
-    nextQuestion;
-
-  window.nextRound =
-    nextRound;
-
-  window.retryRound =
-    retryRound;
-
-  window.showReview =
-    showReview;
-
-  window.goHome =
-    goHome;
-
-  window.loadQuestions =
-    loadQuestions;
-
-  /* =========================================================
-     START
-     ========================================================= */
+  /* =========================
+     START APP
+     ========================= */
 
   if (
     document.readyState ===
@@ -2271,10 +2311,12 @@
   ) {
     document.addEventListener(
       "DOMContentLoaded",
-      initialize
+      initialize,
+      {
+        once: true
+      }
     );
   } else {
     initialize();
   }
-
 })();
