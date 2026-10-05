@@ -1624,219 +1624,263 @@ const MUSIC_FILE = "./mythica.mp3";
 
     updateSettingsUI();
   }
-/* =========================================================
+
+  /* =========================================================
    MUSIC SYSTEM
    ========================================================= */
 
-function initializeMusic() {
-  try {
-    backgroundMusic = new Audio();
+  function initializeMusic() {
+    try {
+      if (backgroundMusic) {
+        return;
+      }
 
-    backgroundMusic.src = MUSIC_FILE;
-    backgroundMusic.loop = true;
-    backgroundMusic.volume = 0.35;
-    backgroundMusic.preload = "auto";
+      backgroundMusic = new Audio(MUSIC_FILE);
+
+      backgroundMusic.loop = true;
+      backgroundMusic.volume = 0.35;
+      backgroundMusic.preload = "auto";
+
+      /*
+        Helps Android/mobile browsers.
+      */
+      backgroundMusic.setAttribute(
+        "playsinline",
+        ""
+      );
+
+      /*
+        If the audio finishes unexpectedly,
+        try to continue playing.
+      */
+      backgroundMusic.addEventListener(
+        "ended",
+        () => {
+          if (musicEnabled) {
+            backgroundMusic.currentTime = 0;
+            startMusic();
+          }
+        }
+      );
+
+      backgroundMusic.addEventListener(
+        "error",
+        () => {
+          console.error(
+            "Quiz Master: Could not load music:",
+            MUSIC_FILE
+          );
+        }
+      );
+
+      backgroundMusic.addEventListener(
+        "pause",
+        () => {
+          /*
+            Do not immediately restart here.
+            Browser autoplay policies can cause
+            an endless play/pause loop.
+          */
+          console.log(
+            "Quiz Master: Music paused."
+          );
+        }
+      );
+
+      backgroundMusic.load();
+
+    } catch (error) {
+      console.error(
+        "Quiz Master: Music initialization failed:",
+        error
+      );
+
+      backgroundMusic = null;
+    }
+  }
+
+  function startMusic(fromUserGesture = false) {
+    if (!musicEnabled) {
+      return;
+    }
+
+    if (!backgroundMusic) {
+      initializeMusic();
+    }
+
+    if (!backgroundMusic) {
+      return;
+    }
 
     /*
-      Important for Android/mobile browsers.
+      Already playing.
     */
-    backgroundMusic.setAttribute(
-      "playsinline",
-      ""
-    );
+    if (
+      !backgroundMusic.paused &&
+      !backgroundMusic.ended
+    ) {
+      return;
+    }
 
-    backgroundMusic.addEventListener(
-      "canplaythrough",
-      () => {
-        console.log(
-          "Quiz Master: mythica.mp3 is ready."
-        );
-      },
-      { once: true }
-    );
+    if (musicPlayInProgress) {
+      return;
+    }
 
-    backgroundMusic.addEventListener(
-      "error",
-      (error) => {
-        console.error(
-          "Quiz Master: Could not load:",
-          MUSIC_FILE,
-          error
-        );
+    musicPlayInProgress = true;
+
+    try {
+      /*
+        Make sure the audio position is valid.
+      */
+      if (
+        backgroundMusic.currentTime >=
+        backgroundMusic.duration
+      ) {
+        backgroundMusic.currentTime = 0;
+      }
+
+      const playPromise =
+        backgroundMusic.play();
+
+      if (
+        playPromise &&
+        typeof playPromise.then === "function"
+      ) {
+        playPromise
+          .then(() => {
+            musicPlayInProgress = false;
+
+            console.log(
+              "Quiz Master: Music is playing."
+            );
+
+            removeMusicInteractionListeners();
+          })
+          .catch((error) => {
+            musicPlayInProgress = false;
+
+            console.warn(
+              "Quiz Master: Music playback was blocked:",
+              error
+            );
+
+            /*
+              Browser requires a real user interaction.
+            */
+            addMusicInteractionListeners();
+          });
+      } else {
+        musicPlayInProgress = false;
+      }
+
+    } catch (error) {
+      musicPlayInProgress = false;
+
+      console.warn(
+        "Quiz Master: Music play error:",
+        error
+      );
+
+      addMusicInteractionListeners();
+    }
+  }
+
+  function stopMusic(reset = true) {
+    if (!backgroundMusic) {
+      return;
+    }
+
+    try {
+      backgroundMusic.pause();
+
+      if (reset) {
+        backgroundMusic.currentTime = 0;
+      }
+
+    } catch (error) {
+      console.warn(
+        "Quiz Master: Could not stop music:",
+        error
+      );
+    }
+
+    musicPlayInProgress = false;
+  }
+
+  function addMusicInteractionListeners() {
+    if (musicInteractionListenersAdded) {
+      return;
+    }
+
+    /*
+      Use pointerdown as the main mobile gesture.
+    */
+    document.addEventListener(
+      "pointerdown",
+      handleFirstMusicInteraction,
+      {
+        passive: true
       }
     );
 
-    backgroundMusic.load();
-
-  } catch (error) {
-    console.error(
-      "Quiz Master: Music initialization failed:",
-      error
+    document.addEventListener(
+      "touchstart",
+      handleFirstMusicInteraction,
+      {
+        passive: true
+      }
     );
 
-    backgroundMusic = null;
-  }
-}
+    document.addEventListener(
+      "click",
+      handleFirstMusicInteraction,
+      {
+        passive: true
+      }
+    );
 
-function startMusic(fromUserGesture = false) {
-  if (!musicEnabled) {
-    return;
-  }
-
-  if (!backgroundMusic) {
-    initializeMusic();
+    musicInteractionListenersAdded = true;
   }
 
-  if (!backgroundMusic) {
-    return;
-  }
-
-  /*
-    Already playing = do nothing.
-  */
-  if (!backgroundMusic.paused) {
-    return;
-  }
-
-  if (musicPlayInProgress) {
-    return;
-  }
-
-  musicPlayInProgress = true;
-
-  try {
-    const promise =
-      backgroundMusic.play();
-
-    if (
-      promise &&
-      typeof promise.then === "function"
-    ) {
-      promise
-        .then(() => {
-          musicPlayInProgress = false;
-
-          console.log(
-            "Quiz Master: Background music started."
-          );
-
-          removeMusicInteractionListeners();
-        })
-        .catch((error) => {
-          musicPlayInProgress = false;
-
-          console.warn(
-            "Quiz Master: Browser blocked music playback:",
-            error
-          );
-
-          addMusicInteractionListeners();
-        });
-    } else {
-      musicPlayInProgress = false;
+  function removeMusicInteractionListeners() {
+    if (!musicInteractionListenersAdded) {
+      return;
     }
 
-  } catch (error) {
-    musicPlayInProgress = false;
-
-    console.warn(
-      "Quiz Master: Music play error:",
-      error
+    document.removeEventListener(
+      "pointerdown",
+      handleFirstMusicInteraction
     );
 
+    document.removeEventListener(
+      "touchstart",
+      handleFirstMusicInteraction
+    );
+
+    document.removeEventListener(
+      "click",
+      handleFirstMusicInteraction
+    );
+
+    musicInteractionListenersAdded = false;
+  }
+
+  function handleFirstMusicInteraction() {
+    if (!musicEnabled) {
+      return;
+    }
+
+    /*
+      This function is called directly from a
+      user's touch/click, which gives the browser
+      permission to start audio.
+    */
+    startMusic(true);
+  }
+
+  function setupMusicInteractionListeners() {
     addMusicInteractionListeners();
   }
-}
-
-function stopMusic(reset = true) {
-  if (!backgroundMusic) {
-    return;
-  }
-
-  try {
-    backgroundMusic.pause();
-
-    if (reset) {
-      backgroundMusic.currentTime = 0;
-    }
-
-  } catch (error) {
-    console.warn(
-      "Quiz Master: Could not stop music:",
-      error
-    );
-  }
-
-  musicPlayInProgress = false;
-}
-
-function addMusicInteractionListeners() {
-  if (musicInteractionListenersAdded) {
-    return;
-  }
-
-  document.addEventListener(
-    "pointerdown",
-    handleFirstMusicInteraction,
-    {
-      passive: true
-    }
-  );
-
-  document.addEventListener(
-    "touchstart",
-    handleFirstMusicInteraction,
-    {
-      passive: true
-    }
-  );
-
-  document.addEventListener(
-    "click",
-    handleFirstMusicInteraction,
-    {
-      passive: true
-    }
-  );
-
-  musicInteractionListenersAdded = true;
-}
-
-function removeMusicInteractionListeners() {
-  if (!musicInteractionListenersAdded) {
-    return;
-  }
-
-  document.removeEventListener(
-    "pointerdown",
-    handleFirstMusicInteraction
-  );
-
-  document.removeEventListener(
-    "touchstart",
-    handleFirstMusicInteraction
-  );
-
-  document.removeEventListener(
-    "click",
-    handleFirstMusicInteraction
-  );
-
-  musicInteractionListenersAdded = false;
-}
-
-function handleFirstMusicInteraction() {
-  if (!musicEnabled) {
-    return;
-  }
-
-  startMusic(true);
-}
-
-function setupMusicInteractionListeners() {
-  addMusicInteractionListeners();
-}
-
   /* =========================
      SOUND EFFECTS
      ========================= */
