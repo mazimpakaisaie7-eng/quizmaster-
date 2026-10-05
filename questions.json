@@ -1,2548 +1,1052 @@
 [
-  {
-    "id": "q001",
-    "question": "What is the capital city of Rwanda?",
-    "options": ["Kigali", "Huye", "Musanze", "Rubavu"],
-    "answer": "Kigali",
-    "category": "Geography"
-  },
-  {
-    "id": "q002",
-    "question": "Which planet is known as the Red Planet?",
-    "options": ["Venus", "Mars", "Jupiter", "Mercury"],
-    "answer": "Mars",
-    "category": "Science"
-  },
-  {
-    "id": "q003",
-    "question": "How many continents are there on Earth?",
-    "options": ["5", "6", "7", "8"],
-    "answer": "7",
-    "category": "Geography"
-  },
-  {
-    "id": "q004",
-    "question": "What is the largest ocean on Earth?",
-    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
-    "answer": "Pacific Ocean",
-    "category": "Geography"
-  },
-  {
-    "id": "q005",
-    "question": "Which gas do humans need to breathe?",
-    "options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen"],
-    "answer": "Oxygen",
-    "category": "Science"
-  },
-  {
-    "id": "q006",
-    "question": "What is 12 multiplied by 8?",
-    "options": ["86", "96", "108", "112"],
-    "answer": "96",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q007",
-    "question": "Which country is famous for the Great Pyramid of Giza?",
-    "options": ["Egypt", "Kenya", "Greece", "Morocco"],
-    "answer": "Egypt",
-    "category": "History"
-  },
-  {
-    "id": "q008",
-    "question": "Who wrote Romeo and Juliet?",
-    "options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Leo Tolstoy"],
-    "answer": "William Shakespeare",
-    "category": "Literature"
-  },
-  {
-    "id": "q009",
-    "question": "Which organ pumps blood around the human body?",
-    "options": ["Liver", "Lung", "Heart", "Kidney"],
-    "answer": "Heart",
-    "category": "Science"
-  },
-  {
-    "id": "q010",
-    "question": "What is the largest planet in the Solar System?",
-    "options": ["Earth", "Saturn", "Jupiter", "Neptune"],
-    "answer": "Jupiter",
-    "category": "Science"
-  },
-  {
-    "id": "q011",
-    "question": "What is the currency of Rwanda?",
-    "options": ["Franc", "Rwandan franc", "Dollar", "Shilling"],
-    "answer": "Rwandan franc",
-    "category": "Rwanda"
-  },
-  {
-    "id": "q012",
-    "question": "Which African country is known as the Rainbow Nation?",
-    "options": ["Nigeria", "South Africa", "Ghana", "Ethiopia"],
-    "answer": "South Africa",
-    "category": "Africa"
-  },
-  {
-    "id": "q013",
-    "question": "What is the chemical symbol for gold?",
-    "options": ["Ag", "Au", "Fe", "Gd"],
-    "answer": "Au",
-    "category": "Science"
-  },
-  {
-    "id": "q014",
-    "question": "How many sides does a hexagon have?",
-    "options": ["5", "6", "7", "8"],
-    "answer": "6",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q015",
-    "question": "Which planet is closest to the Sun?",
-    "options": ["Venus", "Earth", "Mercury", "Mars"],
-    "answer": "Mercury",
-    "category": "Science"
-  },
-  {
-    "id": "q016",
-    "question": "What is the longest river in Africa?",
-    "options": ["Congo River", "Nile River", "Zambezi River", "Niger River"],
-    "answer": "Nile River",
-    "category": "Geography"
-  },
-  {
-    "id": "q017",
-    "question": "Which country has Tokyo as its capital?",
-    "options": ["China", "South Korea", "Japan", "Thailand"],
-    "answer": "Japan",
-    "category": "Geography"
-  },
-  {
-    "id": "q018",
-    "question": "What is the freezing point of water in Celsius?",
-    "options": ["0°C", "10°C", "32°C", "100°C"],
-    "answer": "0°C",
-    "category": "Science"
-  },
-  {
-    "id": "q019",
-    "question": "Which sport uses a bat, ball, and wickets?",
-    "options": ["Baseball", "Cricket", "Tennis", "Hockey"],
-    "answer": "Cricket",
-    "category": "Sports"
-  },
-  {
-    "id": "q020",
-    "question": "How many players are on the field for one soccer team during normal play?",
-    "options": ["9", "10", "11", "12"],
-    "answer": "11",
-    "category": "Sports"
-  },
-  {
-    "id": "q021",
-    "question": "What is the largest mammal in the world?",
-    "options": ["Elephant", "Blue whale", "Giraffe", "Hippopotamus"],
-    "answer": "Blue whale",
-    "category": "Animals"
-  },
-  {
-    "id": "q022",
-    "question": "Which animal is commonly called the king of the jungle?",
-    "options": ["Tiger", "Lion", "Leopard", "Elephant"],
-    "answer": "Lion",
-    "category": "Animals"
-  },
-  {
-    "id": "q023",
-    "question": "What process do plants use to make food from sunlight?",
-    "options": ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
-    "answer": "Photosynthesis",
-    "category": "Science"
-  },
-  {
-    "id": "q024",
-    "question": "Which part of a plant absorbs water from the soil?",
-    "options": ["Flower", "Leaf", "Root", "Fruit"],
-    "answer": "Root",
-    "category": "Science"
-  },
-  {
-    "id": "q025",
-    "question": "What is the main language spoken in Brazil?",
-    "options": ["Spanish", "Portuguese", "English", "French"],
-    "answer": "Portuguese",
-    "category": "Geography"
-  },
-  {
-    "id": "q026",
-    "question": "Which country is the largest by land area?",
-    "options": ["Canada", "China", "Russia", "United States"],
-    "answer": "Russia",
-    "category": "Geography"
-  },
-  {
-    "id": "q027",
-    "question": "On which continent is the Sahara Desert located?",
-    "options": ["Asia", "Africa", "Australia", "South America"],
-    "answer": "Africa",
-    "category": "Geography"
-  },
-  {
-    "id": "q028",
-    "question": "What is the hardest natural substance?",
-    "options": ["Iron", "Diamond", "Gold", "Quartz"],
-    "answer": "Diamond",
-    "category": "Science"
-  },
-  {
-    "id": "q029",
-    "question": "How many days are there in a leap year?",
-    "options": ["364", "365", "366", "367"],
-    "answer": "366",
-    "category": "General Knowledge"
-  },
-  {
-    "id": "q030",
-    "question": "How many hours are there in one day?",
-    "options": ["12", "18", "24", "48"],
-    "answer": "24",
-    "category": "General Knowledge"
-  },
-  {
-    "id": "q031",
-    "question": "Which device is commonly used to type text into a computer?",
-    "options": ["Monitor", "Keyboard", "Speaker", "Printer"],
-    "answer": "Keyboard",
-    "category": "Technology"
-  },
-  {
-    "id": "q032",
-    "question": "What does CPU stand for?",
-    "options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Computer Processing Utility"],
-    "answer": "Central Processing Unit",
-    "category": "Technology"
-  },
-  {
-    "id": "q033",
-    "question": "Which device displays images and text from a computer?",
-    "options": ["Keyboard", "Monitor", "Mouse", "Microphone"],
-    "answer": "Monitor",
-    "category": "Technology"
-  },
-  {
-    "id": "q034",
-    "question": "What does WWW stand for?",
-    "options": ["World Wide Web", "World Web Window", "Wide World Website", "Web World Wide"],
-    "answer": "World Wide Web",
-    "category": "Technology"
-  },
-  {
-    "id": "q035",
-    "question": "Which company developed Android?",
-    "options": ["Google", "Microsoft", "IBM", "Intel"],
-    "answer": "Google",
-    "category": "Technology"
-  },
-  {
-    "id": "q036",
-    "question": "What technology is commonly used to connect a device to a wireless network?",
-    "options": ["Wi-Fi", "HDMI", "USB", "VGA"],
-    "answer": "Wi-Fi",
-    "category": "Technology"
-  },
-  {
-    "id": "q037",
-    "question": "What does HTML stand for?",
-    "options": ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Management Language", "Home Tool Markup Language"],
-    "answer": "HyperText Markup Language",
-    "category": "Technology"
-  },
-  {
-    "id": "q038",
-    "question": "Which symbol is commonly used to start a hashtag?",
-    "options": ["@", "#", "$", "&"],
-    "answer": "#",
-    "category": "Technology"
-  },
-  {
-    "id": "q039",
-    "question": "What is a smartphone primarily used for?",
-    "options": ["Only making calls", "Only taking photos", "Communication and many digital tasks", "Only playing music"],
-    "answer": "Communication and many digital tasks",
-    "category": "Technology"
-  },
-  {
-    "id": "q040",
-    "question": "Which of these is a web browser?",
-    "options": ["Chrome", "Windows", "Android", "Linux"],
-    "answer": "Chrome",
-    "category": "Technology"
-  },
-  {
-    "id": "q041",
-    "question": "Which country is home to Mount Kilimanjaro?",
-    "options": ["Kenya", "Tanzania", "Uganda", "Rwanda"],
-    "answer": "Tanzania",
-    "category": "Africa"
-  },
-  {
-    "id": "q042",
-    "question": "What is the capital of Kenya?",
-    "options": ["Mombasa", "Nairobi", "Kisumu", "Nakuru"],
-    "answer": "Nairobi",
-    "category": "Africa"
-  },
-  {
-    "id": "q043",
-    "question": "What is the capital of Uganda?",
-    "options": ["Kampala", "Entebbe", "Jinja", "Gulu"],
-    "answer": "Kampala",
-    "category": "Africa"
-  },
-  {
-    "id": "q044",
-    "question": "What is the capital of Tanzania?",
-    "options": ["Arusha", "Dodoma", "Mwanza", "Zanzibar City"],
-    "answer": "Dodoma",
-    "category": "Africa"
-  },
-  {
-    "id": "q045",
-    "question": "Which large lake is shared by Tanzania, the Democratic Republic of the Congo, Burundi, and Zambia?",
-    "options": ["Lake Victoria", "Lake Kivu", "Lake Tanganyika", "Lake Turkana"],
-    "answer": "Lake Tanganyika",
-    "category": "Geography"
-  },
-  {
-    "id": "q046",
-    "question": "Which country is directly west of Rwanda?",
-    "options": ["Uganda", "Tanzania", "Burundi", "Democratic Republic of the Congo"],
-    "answer": "Democratic Republic of the Congo",
-    "category": "Rwanda"
-  },
-  {
-    "id": "q047",
-    "question": "Which country is directly north of Rwanda?",
-    "options": ["Burundi", "Uganda", "Tanzania", "Democratic Republic of the Congo"],
-    "answer": "Uganda",
-    "category": "Rwanda"
-  },
-  {
-    "id": "q048",
-    "question": "Which country is directly south of Rwanda?",
-    "options": ["Uganda", "Tanzania", "Burundi", "Kenya"],
-    "answer": "Burundi",
-    "category": "Rwanda"
-  },
-  {
-    "id": "q049",
-    "question": "What is Rwanda commonly called because of its many hills?",
-    "options": ["Land of a Thousand Hills", "Land of Gold", "Land of Rivers", "Land of Deserts"],
-    "answer": "Land of a Thousand Hills",
-    "category": "Rwanda"
-  },
-  {
-    "id": "q050",
-    "question": "Which type of gorilla can be found in Rwanda's Volcanoes National Park?",
-    "options": ["Mountain gorilla", "Lowland gorilla", "Desert gorilla", "River gorilla"],
-    "answer": "Mountain gorilla",
-    "category": "Rwanda"
-  },
-  {
-    "id": "q051",
-    "question": "Which major football competition is played between African national teams?",
-    "options": ["AFCON", "NBA", "Wimbledon", "Super Bowl"],
-    "answer": "AFCON",
-    "category": "Sports"
-  },
-  {
-    "id": "q052",
-    "question": "How long is a standard football match, excluding added time and extra time?",
-    "options": ["60 minutes", "75 minutes", "90 minutes", "120 minutes"],
-    "answer": "90 minutes",
-    "category": "Sports"
-  },
-  {
-    "id": "q053",
-    "question": "How many halves are there in a standard football match?",
-    "options": ["1", "2", "3", "4"],
-    "answer": "2",
-    "category": "Sports"
-  },
-  {
-    "id": "q054",
-    "question": "Which player is normally allowed to use their hands inside their own penalty area?",
-    "options": ["Striker", "Goalkeeper", "Defender", "Midfielder"],
-    "answer": "Goalkeeper",
-    "category": "Sports"
-  },
-  {
-    "id": "q055",
-    "question": "What card normally means a player is sent off in football?",
-    "options": ["Blue card", "Yellow card", "Red card", "Green card"],
-    "answer": "Red card",
-    "category": "Sports"
-  },
-  {
-    "id": "q056",
-    "question": "Which sport is associated with Wimbledon?",
-    "options": ["Football", "Tennis", "Cricket", "Golf"],
-    "answer": "Tennis",
-    "category": "Sports"
-  },
-  {
-    "id": "q057",
-    "question": "How many rings are on the Olympic symbol?",
-    "options": ["4", "5", "6", "7"],
-    "answer": "5",
-    "category": "Sports"
-  },
-  {
-    "id": "q058",
-    "question": "Which sport uses a basketball hoop?",
-    "options": ["Basketball", "Volleyball", "Handball", "Tennis"],
-    "answer": "Basketball",
-    "category": "Sports"
-  },
-  {
-    "id": "q059",
-    "question": "FC Barcelona is a famous football club from which country?",
-    "options": ["Italy", "Spain", "France", "Portugal"],
-    "answer": "Spain",
-    "category": "Sports"
-  },
-  {
-    "id": "q060",
-    "question": "Which sport is featured in the Tour de France?",
-    "options": ["Cycling", "Running", "Swimming", "Boxing"],
-    "answer": "Cycling",
-    "category": "Sports"
-  },
-  {
-    "id": "q061",
-    "question": "What does a red traffic light mean?",
-    "options": ["Go", "Stop", "Speed up", "Turn anywhere"],
-    "answer": "Stop",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q062",
-    "question": "What does a green traffic light normally mean?",
-    "options": ["Stop immediately", "Proceed when safe", "Reverse", "Park"],
-    "answer": "Proceed when safe",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q063",
-    "question": "What does a yellow traffic light generally warn drivers to do?",
-    "options": ["Prepare to stop", "Speed up", "Park", "Reverse"],
-    "answer": "Prepare to stop",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q064",
-    "question": "Why is a seat belt important?",
-    "options": ["It increases fuel consumption", "It helps protect occupants during a crash", "It makes the car faster", "It improves the radio signal"],
-    "answer": "It helps protect occupants during a crash",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q065",
-    "question": "What should a driver do before changing lanes?",
-    "options": ["Check mirrors and blind spots", "Close their eyes", "Accelerate without checking", "Use the horn continuously"],
-    "answer": "Check mirrors and blind spots",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q066",
-    "question": "What should a driver do when approaching a pedestrian crossing?",
-    "options": ["Slow down and be prepared to stop", "Speed up", "Ignore pedestrians", "Drive on the sidewalk"],
-    "answer": "Slow down and be prepared to stop",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q067",
-    "question": "Why should drivers avoid using a mobile phone while driving?",
-    "options": ["It can distract the driver", "It makes the vehicle heavier", "It increases tire pressure", "It changes the road signs"],
-    "answer": "It can distract the driver",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q068",
-    "question": "What should a driver do when an emergency vehicle approaches with its warning signals on?",
-    "options": ["Give way when safe", "Race the vehicle", "Block the road", "Ignore it"],
-    "answer": "Give way when safe",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q069",
-    "question": "What does a speed limit sign indicate?",
-    "options": ["The minimum fuel level", "The maximum permitted speed", "The number of passengers", "The road width"],
-    "answer": "The maximum permitted speed",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q070",
-    "question": "What should you do before opening a car door on a busy road?",
-    "options": ["Check for approaching traffic and cyclists", "Open it immediately", "Honk continuously", "Turn off all lights"],
-    "answer": "Check for approaching traffic and cyclists",
-    "category": "Road Traffic"
-  },
-  {
-    "id": "q071",
-    "question": "What is the basic unit of life?",
-    "options": ["Atom", "Cell", "Organ", "Tissue"],
-    "answer": "Cell",
-    "category": "Science"
-  },
-  {
-    "id": "q072",
-    "question": "Which organ is mainly responsible for breathing?",
-    "options": ["Heart", "Lungs", "Kidney", "Stomach"],
-    "answer": "Lungs",
-    "category": "Science"
-  },
-  {
-    "id": "q073",
-    "question": "What force pulls objects toward Earth?",
-    "options": ["Magnetism", "Gravity", "Friction", "Electricity"],
-    "answer": "Gravity",
-    "category": "Science"
-  },
-  {
-    "id": "q074",
-    "question": "At what temperature does water normally boil at sea level?",
-    "options": ["0°C", "50°C", "100°C", "150°C"],
-    "answer": "100°C",
-    "category": "Science"
-  },
-  {
-    "id": "q075",
-    "question": "Which vitamin is commonly produced by the body through exposure to sunlight?",
-    "options": ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"],
-    "answer": "Vitamin D",
-    "category": "Science"
-  },
-  {
-    "id": "q076",
-    "question": "What is H2O commonly known as?",
-    "options": ["Oxygen", "Water", "Hydrogen", "Salt"],
-    "answer": "Water",
-    "category": "Science"
-  },
-  {
-    "id": "q077",
-    "question": "Which metal is liquid at room temperature?",
-    "options": ["Iron", "Mercury", "Copper", "Aluminium"],
-    "answer": "Mercury",
-    "category": "Science"
-  },
-  {
-    "id": "q078",
-    "question": "What is the center of an atom called?",
-    "options": ["Electron", "Nucleus", "Shell", "Molecule"],
-    "answer": "Nucleus",
-    "category": "Science"
-  },
-  {
-    "id": "q079",
-    "question": "Which natural satellite orbits Earth?",
-    "options": ["Mars", "Moon", "Venus", "Sun"],
-    "answer": "Moon",
-    "category": "Science"
-  },
-  {
-    "id": "q080",
-    "question": "Which gas is most abundant in Earth's atmosphere?",
-    "options": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
-    "answer": "Nitrogen",
-    "category": "Science"
-  },
-  {
-    "id": "q081",
-    "question": "What is 15 + 27?",
-    "options": ["32", "40", "42", "45"],
-    "answer": "42",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q082",
-    "question": "What is 100 divided by 4?",
-    "options": ["20", "25", "30", "40"],
-    "answer": "25",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q083",
-    "question": "What is 9 multiplied by 9?",
-    "options": ["72", "81", "90", "99"],
-    "answer": "81",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q084",
-    "question": "What is half of 50?",
-    "options": ["20", "25", "30", "35"],
-    "answer": "25",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q085",
-    "question": "How many degrees are in a right angle?",
-    "options": ["45", "90", "180", "360"],
-    "answer": "90",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q086",
-    "question": "What is 7 squared?",
-    "options": ["14", "42", "49", "56"],
-    "answer": "49",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q087",
-    "question": "Which number is a prime number?",
-    "options": ["9", "15", "17", "21"],
-    "answer": "17",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q088",
-    "question": "What is 1,000 minus 375?",
-    "options": ["525", "625", "675", "725"],
-    "answer": "625",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q089",
-    "question": "How many meters are in one kilometer?",
-    "options": ["100", "500", "1,000", "10,000"],
-    "answer": "1,000",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q090",
-    "question": "What is 20% of 100?",
-    "options": ["10", "20", "25", "50"],
-    "answer": "20",
-    "category": "Mathematics"
-  },
-  {
-    "id": "q091",
-    "question": "Which country is known for the Eiffel Tower?",
-    "options": ["France", "Italy", "Germany", "Spain"],
-    "answer": "France",
-    "category": "Geography"
-  },
-  {
-    "id": "q092",
-    "question": "What is the capital city of Ethiopia?",
-    "options": ["Nairobi", "Addis Ababa", "Kampala", "Accra"],
-    "answer": "Addis Ababa",
-    "category": "Africa"
-  },
-  {
-    "id": "q093",
-    "question": "Which ocean lies between Africa and Australia?",
-    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
-    "answer": "Indian Ocean",
-    "category": "Geography"
-  },
-  {
-    "id": "q094",
-    "question": "Which country is famous for the pyramids of Giza?",
-    "options": ["Egypt", "Sudan", "Tunisia", "Algeria"],
-    "answer": "Egypt",
-    "category": "History"
-  },
-  {
-    "id": "q095",
-    "question": "Who was the first person to walk on the Moon?",
-    "options": ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "John Glenn"],
-    "answer": "Neil Armstrong",
-    "category": "History"
-  },
-  {
-    "id": "q096",
-    "question": "Which ancient civilization built the Colosseum?",
-    "options": ["Roman", "Mayan", "Incan", "Egyptian"],
-    "answer": "Roman",
-    "category": "History"
-  },
-  {
-    "id": "q097",
-    "question": "Which instrument has black and white keys?",
-    "options": ["Guitar", "Piano", "Drum", "Violin"],
-    "answer": "Piano",
-    "category": "General Knowledge"
-  },
-  {
-    "id": "q098",
-    "question": "How many colors are traditionally listed in a rainbow?",
-    "options": ["5", "6", "7", "8"],
-    "answer": "7",
-    "category": "General Knowledge"
-  },
-  {
-    "id": "q099",
-    "question": "Which animal is the fastest land animal?",
-    "options": ["Lion", "Cheetah", "Horse", "Leopard"],
-    "answer": "Cheetah",
-    "category": "Animals"
-  },
-  {
-    "id": "q100",
-    "question": "Which language is primarily used to structure the content of web pages?",
-    "options": ["HTML", "CSS", "SQL", "Python"],
-    "answer": "HTML",
-    "category": "Technology"
-  },
-  {
-    "id": "rwanda-road-rw-001",
-    "question": "Umuntu ushaka gutwara ikinyabiziga gifite moteri mu muhanda nyabagendwa agomba kuba afite iki?",
-    "options": [
-      "Uruhushya rwo gutwara ikinyabiziga",
-      "Indangamuntu gusa",
-      "Pasiporo gusa",
-      "Ikarita y'akazi"
-    ],
-    "answer": "Uruhushya rwo gutwara ikinyabiziga",
-    "category": "Amategeko y'umuhanda mu Rwanda"
-  },
-  {
-    "id": "rwanda-road-rw-002",
-    "question": "Ni nde utanga uruhushya rwo gutwara ikinyabiziga mu Rwanda?",
-    "options": [
-      "Polisi y'u Rwanda",
-      "Ibitaro",
-      "Banki",
-      "Akarere"
-    ],
-    "answer": "Polisi y'u Rwanda",
-    "category": "Amategeko y'umuhanda mu Rwanda"
-  },
-  {
-    "id": "rwanda-road-rw-003",
-    "question": "Umuyobozi w'ikinyabiziga agomba gukora iki iyo umukozi ubifitiye ububasha amusabye uruhushya rwo gutwara?",
-    "options": [
-      "Kurwerekana",
-      "Kurwihisha",
-      "Kuvuga ko yarutaye",
-      "Kureka ikinyabiziga akagenda"
-    ],
-    "answer": "Kurwerekana",
-    "category": "Amategeko y'umuhanda mu Rwanda"
-  },
-  {
-    "id": "rwanda-road-rw-004",
-    "question": "Ni iki umuyobozi agomba kwirinda igihe atwaye ikinyabiziga?",
-    "options": [
-      "Gukoresha telefoni mu gihe atwaye",
-      "Kureba imbere",
-      "Kugenzura ibimenyetso byo mu muhanda",
-      "Kugabanya umuvuduko"
-    ],
-    "answer": "Gukoresha telefoni mu gihe atwaye",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-005",
-    "question": "Umuyobozi w'ikinyabiziga agomba gukora iki ku muvuduko?",
-    "options": [
-      "Kubahiriza umuvuduko wemewe",
-      "Gutwara ku muvuduko uko yishakiye",
-      "Guhora atwara ku muvuduko mwinshi",
-      "Kwirengagiza ibyapa by'umuvuduko"
-    ],
-    "answer": "Kubahiriza umuvuduko wemewe",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-006",
-    "question": "Ni iki Polisi y'u Rwanda isaba umuyobozi gukora ku mukandara w'umutekano?",
-    "options": [
-      "Kuwambara igihe atwaye",
-      "Kuwambara nijoro gusa",
-      "Kuwambara mu gihe cy'imvura gusa",
-      "Kutawambara"
-    ],
-    "answer": "Kuwambara igihe atwaye",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-007",
-    "question": "Umuntu utwaye moto agomba kwambara iki?",
-    "options": [
-      "Ingofero yabugenewe (helmet)",
-      "Ingofero y'ubwoya gusa",
-      "Indorerwamo gusa",
-      "Ikoti gusa"
-    ],
-    "answer": "Ingofero yabugenewe (helmet)",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-008",
-    "question": "Umugenzi uri kuri moto agomba kwambara iki?",
-    "options": [
-      "Ingofero yabugenewe (helmet)",
-      "Ingofero isanzwe gusa",
-      "Nta kintu",
-      "Ikarita y'akazi"
-    ],
-    "answer": "Ingofero yabugenewe (helmet)",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-009",
-    "question": "Umuyobozi wa moto agomba gukora iki ku mutekano w'umugenzi we?",
-    "options": [
-      "Kumuha helmet kandi akayambara",
-      "Kumureka akagenda nta helmet",
-      "Kumwemerera guhagarara kuri moto",
-      "Kumwemerera gukoresha telefoni"
-    ],
-    "answer": "Kumuha helmet kandi akayambara",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-010",
-    "question": "Ni iki umuyobozi wa moto agomba kwirinda?",
-    "options": [
-      "Gukoresha telefoni ari gutwara",
-      "Kwambara helmet",
-      "Kubahiriza ibyapa",
-      "Kugabanya umuvuduko"
-    ],
-    "answer": "Gukoresha telefoni ari gutwara",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-011",
-    "question": "Iyo utwaye moto, ni abahe bantu bagomba kwirinda kunywa inzoga mbere yo gutwara?",
-    "options": [
-      "Umuyobozi wa moto",
-      "Umugenzi gusa",
-      "Umupagasi gusa",
-      "Nta muntu"
-    ],
-    "answer": "Umuyobozi wa moto",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-012",
-    "question": "Umuyobozi w'ikinyabiziga agomba gukora iki ku bimenyetso byo mu muhanda?",
-    "options": [
-      "Kububahiriza",
-      "Kubirengagiza",
-      "Kubihisha",
-      "Kubisenya"
-    ],
-    "answer": "Kububahiriza",
-    "category": "Ibimenyetso byo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-013",
-    "question": "Itara ritukura kuri feux tricolore risobanura iki?",
-    "options": [
-      "Guhagarara",
-      "Kwihuta",
-      "Kugenda nta kureba",
-      "Guhindura lane gusa"
-    ],
-    "answer": "Guhagarara",
-    "category": "Amatara yo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-014",
-    "question": "Ni iki umuyobozi agomba gukora iyo itara ritukura rimweretse ko agomba guhagarara?",
-    "options": [
-      "Guhagarara no kubahiriza itara",
-      "Gukomeza yihuta",
-      "Kunyura hagati y'imodoka",
-      "Kuzimya amatara y'imodoka"
-    ],
-    "answer": "Guhagarara no kubahiriza itara",
-    "category": "Amatara yo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-015",
-    "question": "Ni iki umuhanda ugenewe yellow box ushinzwe gukumira?",
-    "options": [
-      "Gufunga cyangwa kubuza intersection gukora neza",
-      "Guhagarika abanyamaguru",
-      "Kugeneza parking y'amamoto",
-      "Kugabanya uburebure bw'umuhanda"
-    ],
-    "answer": "Gufunga cyangwa kubuza intersection gukora neza",
-    "category": "Ibimenyetso byo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-016",
-    "question": "Iyo winjiye muri yellow box, ni ryari ugomba kubikora?",
-    "options": [
-      "Iyo inzira yo gusohokamo ifunguye",
-      "Igihe cyose ushaka",
-      "Iyo imodoka iri imbere yahagaze",
-      "Iyo umuhanda wuzuye"
-    ],
-    "answer": "Iyo inzira yo gusohokamo ifunguye",
-    "category": "Yellow Box"
-  },
-  {
-    "id": "rwanda-road-rw-017",
-    "question": "Ese umuyobozi yemerewe guhagarika ikinyabiziga muri yellow box?",
-    "options": [
-      "Oya",
-      "Yego buri gihe",
-      "Yego nijoro gusa",
-      "Yego ku cyumweru gusa"
-    ],
-    "answer": "Oya",
-    "category": "Yellow Box"
-  },
-  {
-    "id": "rwanda-road-rw-018",
-    "question": "Yellow box ikunze gushyirwa hehe?",
-    "options": [
-      "Ku masangano y'imihanda (intersections)",
-      "Mu ngo gusa",
-      "Mu mirima gusa",
-      "Mu ma parking gusa"
-    ],
-    "answer": "Ku masangano y'imihanda (intersections)",
-    "category": "Yellow Box"
-  },
-  {
-    "id": "rwanda-road-rw-019",
-    "question": "Kuki yellow box ikoreshwa?",
-    "options": [
-      "Kugira ngo intersection idafungwa n'imodoka",
-      "Kugira ngo imodoka zihagararemo",
-      "Kugira ngo abanyamaguru bayipakiramo",
-      "Kugira ngo moto zihagararemo"
-    ],
-    "answer": "Kugira ngo intersection idafungwa n'imodoka",
-    "category": "Yellow Box"
-  },
-  {
-    "id": "rwanda-road-rw-020",
-    "question": "Ni iki umuyobozi agomba gukora mbere yo kwinjira muri yellow box?",
-    "options": [
-      "Kureba ko ashobora gusohoka atabujije traffic",
-      "Kongera umuvuduko gusa",
-      "Gufunga amadirishya",
-      "Kuzimya amatara"
-    ],
-    "answer": "Kureba ko ashobora gusohoka atabujije traffic",
-    "category": "Yellow Box"
-  },
-  {
-    "id": "rwanda-road-rw-021",
-    "question": "Zebra crossing ikoreshwa cyane cyane na bande?",
-    "options": [
-      "Abanyamaguru",
-      "Indege",
-      "Amato",
-      "Gari ya moshi"
-    ],
-    "answer": "Abanyamaguru",
-    "category": "Zebra Crossing"
-  },
-  {
-    "id": "rwanda-road-rw-022",
-    "question": "Iyo umuyobozi ageze kuri zebra crossing agomba gukora iki?",
-    "options": [
-      "Kugabanya umuvuduko no guha abanyamaguru inzira",
-      "Kwihuta",
-      "Kunyura hejuru yayo",
-      "Kuzimya imodoka"
-    ],
-    "answer": "Kugabanya umuvuduko no guha abanyamaguru inzira",
-    "category": "Zebra Crossing"
-  },
-  {
-    "id": "rwanda-road-rw-023",
-    "question": "Ese guhagarika imodoka kuri zebra crossing biremewe?",
-    "options": [
-      "Oya",
-      "Yego igihe cyose",
-      "Yego mu masaha ya saa sita gusa",
-      "Yego ku cyumweru gusa"
-    ],
-    "answer": "Oya",
-    "category": "Zebra Crossing"
-  },
-  {
-    "id": "rwanda-road-rw-024",
-    "question": "Iyo abanyamaguru bari kwambuka kuri zebra crossing, umuyobozi agomba gukora iki?",
-    "options": [
-      "Kubaha inzira",
-      "Kubatera ubwoba",
-      "Kwihuta",
-      "Kunyura hagati yabo"
-    ],
-    "answer": "Kubaha inzira",
-    "category": "Zebra Crossing"
-  },
-  {
-    "id": "rwanda-road-rw-025",
-    "question": "Umuyobozi agomba kugabanya umuvuduko ryari hafi ya zebra crossing?",
-    "options": [
-      "Buri gihe ayegereye",
-      "Nijoro gusa",
-      "Iyo hari imvura gusa",
-      "Iyo Polisi ihari gusa"
-    ],
-    "answer": "Buri gihe ayegereye",
-    "category": "Zebra Crossing"
-  },
-  {
-    "id": "rwanda-road-rw-026",
-    "question": "Umuntu uri n'amaguru asabwa kugendera ku ruhe ruhande rw'umuhanda iyo nta pavement ihari?",
-    "options": [
-      "Ku ruhande rw'ibumoso areba ibinyabiziga biza bimureba",
-      "Ku ruhande rw'iburyo gusa",
-      "Hagati mu muhanda",
-      "Aho ashaka hose"
-    ],
-    "answer": "Ku ruhande rw'ibumoso areba ibinyabiziga biza bimureba",
-    "category": "Abanyamaguru"
-  },
-  {
-    "id": "rwanda-road-rw-027",
-    "question": "Ni he abanyamaguru bagomba kwambukira igihe hari zebra crossing?",
-    "options": [
-      "Kuri zebra crossing",
-      "Aho ariho hose",
-      "Hagati mu masangano gusa",
-      "Mu muhanda munini gusa"
-    ],
-    "answer": "Kuri zebra crossing",
-    "category": "Abanyamaguru"
-  },
-  {
-    "id": "rwanda-road-rw-028",
-    "question": "Mbere yo kwambuka umuhanda, umunyamaguru agomba gukora iki?",
-    "options": [
-      "Kureba impande zombi no kwemeza ko ari umutekano",
-      "Kwiruka atarebye",
-      "Gukoresha telefoni",
-      "Gufunga amaso"
-    ],
-    "answer": "Kureba impande zombi no kwemeza ko ari umutekano",
-    "category": "Abanyamaguru"
-  },
-  {
-    "id": "rwanda-road-rw-029",
-    "question": "Ni iki umunyamaguru agomba kwirinda igihe yambuka umuhanda?",
-    "options": [
-      "Gukoresha telefoni cyangwa earphones bimurangaza",
-      "Kureba ibinyabiziga",
-      "Gukoresha zebra crossing",
-      "Gutegereza imodoka zigahagarara"
-    ],
-    "answer": "Gukoresha telefoni cyangwa earphones bimurangaza",
-    "category": "Abanyamaguru"
-  },
-  {
-    "id": "rwanda-road-rw-030",
-    "question": "Iyo umwana ari hafi y'umuhanda, ni iki gishobora kumurinda impanuka?",
-    "options": [
-      "Kugumana n'umuntu mukuru ubishinzwe",
-      "Kwiruka mu muhanda",
-      "Gukina mu muhanda",
-      "Kugenda atareba"
-    ],
-    "answer": "Kugumana n'umuntu mukuru ubishinzwe",
-    "category": "Abanyamaguru"
-  },
-  {
-    "id": "rwanda-road-rw-031",
-    "question": "Abana bari mu modoka bagomba kwicara he kandi bakagira iki?",
-    "options": [
-      "Kwicara inyuma no gukoresha umukandara w'umutekano",
-      "Guhagarara",
-      "Kwicara ku musozo w'imodoka",
-      "Kugira umutwe hanze"
-    ],
-    "answer": "Kwicara inyuma no gukoresha umukandara w'umutekano",
-    "category": "Umutekano w'abana"
-  },
-  {
-    "id": "rwanda-road-rw-032",
-    "question": "Ese abana bemerewe gukina mu muhanda?",
-    "options": [
-      "Oya",
-      "Yego",
-      "Yego iyo nta modoka ihari",
-      "Yego nijoro"
-    ],
-    "answer": "Oya",
-    "category": "Umutekano w'abana"
-  },
-  {
-    "id": "rwanda-road-rw-033",
-    "question": "Umugenzi uri mu modoka agomba gukora iki ku mukandara w'umutekano?",
-    "options": [
-      "Kuwambara igihe usabwa",
-      "Kuwufungura",
-      "Kuwushyira ku ntebe",
-      "Kutawambara"
-    ],
-    "answer": "Kuwambara igihe usabwa",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-034",
-    "question": "Ni iki umugenzi atagomba gukora ku muyobozi uri gutwara?",
-    "options": [
-      "Kumuhatira gutwara ku muvuduko mwinshi",
-      "Kumwibutsa umutekano",
-      "Kumubwira kugabanya umuvuduko",
-      "Kumwibutsa gukurikiza ibyapa"
-    ],
-    "answer": "Kumuhatira gutwara ku muvuduko mwinshi",
-    "category": "Abagenzi"
-  },
-  {
-    "id": "rwanda-road-rw-035",
-    "question": "Umugenzi abonye umuyobozi atwaye nabi agomba gukora iki?",
-    "options": [
-      "Kumugira inama yo kubahiriza umutekano",
-      "Kumushishikariza kwihuta",
-      "Kumutesha umutwe",
-      "Kumubwira gukoresha telefoni"
-    ],
-    "answer": "Kumugira inama yo kubahiriza umutekano",
-    "category": "Abagenzi"
-  },
-  {
-    "id": "rwanda-road-rw-036",
-    "question": "Ni ruhande ki rwo kunyuramo iyo urenze ikindi kinyabiziga mu buryo busanzwe?",
-    "options": [
-      "Ibumoso",
-      "Iburyo",
-      "Hagati",
-      "Aho ushaka"
-    ],
-    "answer": "Ibumoso",
-    "category": "Kurenza ibindi binyabiziga"
-  },
-  {
-    "id": "rwanda-road-rw-037",
-    "question": "Mbere yo kurenza ikindi kinyabiziga, umuyobozi agomba kubanza gukora iki?",
-    "options": [
-      "Kureba ko inzira itekanye kandi ntawe uri gutangira kumurenga",
-      "Kwihuta gusa",
-      "Kuzimya amatara",
-      "Gukoresha telefoni"
-    ],
-    "answer": "Kureba ko inzira itekanye kandi ntawe uri gutangira kumurenga",
-    "category": "Kurenza ibindi binyabiziga"
-  },
-  {
-    "id": "rwanda-road-rw-038",
-    "question": "Ni ryari kurenza ikindi kinyabiziga bishobora kuba biteje akaga?",
-    "options": [
-      "Iyo inzira itagaragara cyangwa itekanye",
-      "Iyo umuhanda ufunguye neza",
-      "Iyo hari umwanya uhagije",
-      "Iyo traffic ituje"
-    ],
-    "answer": "Iyo inzira itagaragara cyangwa itekanye",
-    "category": "Kurenza ibindi binyabiziga"
-  },
-  {
-    "id": "rwanda-road-rw-039",
-    "question": "Umuyobozi agomba kwirinda kurenza ikindi kinyabiziga igihe inzira itamwemerera kubona neza kubera iki?",
-    "options": [
-      "Kugira ngo atashyira abandi mu kaga",
-      "Kugira ngo azigame essence gusa",
-      "Kugira ngo imodoka ye igende gahoro",
-      "Kugira ngo imodoka ibone parking"
-    ],
-    "answer": "Kugira ngo atashyira abandi mu kaga",
-    "category": "Kurenza ibindi binyabiziga"
-  },
-  {
-    "id": "rwanda-road-rw-040",
-    "question": "Iyo umuhanda ufite umurongo wera ukomeza (continuous white line), usanzwe usobanura iki?",
-    "options": [
-      "Ko kurenga uwo murongo bibujijwe",
-      "Ko ugomba kuwurenga",
-      "Ko ari parking",
-      "Ko ari zebra crossing"
-    ],
-    "answer": "Ko kurenga uwo murongo bibujijwe",
-    "category": "Imirongo yo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-041",
-    "question": "Umurongo wera ucagaguye (broken white line) ushobora kwambukwa mu bihe byemewe n'amategeko n'umutekano. Ni iki muri ibi gishobora kuba impamvu?",
-    "options": [
-      "Kurenga ikinyabiziga mu buryo bwemewe",
-      "Guhagarara hagati mu muhanda",
-      "Gukina mu muhanda",
-      "Guhagarika traffic"
-    ],
-    "answer": "Kurenga ikinyabiziga mu buryo bwemewe",
-    "category": "Imirongo yo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-042",
-    "question": "Iyo umurongo ukomeza n'umurongo ucagaguye biri hamwe, umuyobozi areba cyane cyane uwuhe murongo?",
-    "options": [
-      "Uwo ari hafi y'ikinyabiziga cye",
-      "Uwo ari kure",
-      "Umurongo wose uko waba umeze",
-      "Nta murongo"
-    ],
-    "answer": "Uwo ari hafi y'ikinyabiziga cye",
-    "category": "Imirongo yo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-043",
-    "question": "Umurongo uri ku muhanda ugamije iki muri rusange?",
-    "options": [
-      "Kuyobora no kugenzura uko abakoresha umuhanda bagenda",
-      "Gushushanya umuhanda gusa",
-      "Gushyiraho amatangazo",
-      "Kwerekana amazina y'abashoferi"
-    ],
-    "answer": "Kuyobora no kugenzura uko abakoresha umuhanda bagenda",
-    "category": "Imirongo yo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-044",
-    "question": "Iyo umuhanda ufunganye cyane ku buryo imodoka ebyiri zitanyurana neza, abashoferi bagomba gukora iki?",
-    "options": [
-      "Koroherezanya kunyurana mu mutekano",
-      "Kwihuta bombi",
-      "Guhagarika umuhanda burundu",
-      "Kunyura kuri sidewalk"
-    ],
-    "answer": "Koroherezanya kunyurana mu mutekano",
-    "category": "Uko imodoka zihura"
-  },
-  {
-    "id": "rwanda-road-rw-045",
-    "question": "Ku muhanda w'imisozi ufite ahantu hahanamye kandi imodoka zikaba zitanyurana neza, ni iyihe modoka isanzwe igomba korohereza iyizamuka?",
-    "options": [
-      "Iyimanuka",
-      "Iyizamuka",
-      "Zombi zigomba kwihuta",
-      "Nta n'imwe"
-    ],
-    "answer": "Iyimanuka",
-    "category": "Uko imodoka zihura"
-  },
-  {
-    "id": "rwanda-road-rw-046",
-    "question": "Ni iki umuyobozi agomba gukora iyo ageze ahantu hari ibimenyetso bimutegeka kugabanya umuvuduko?",
-    "options": [
-      "Kugabanya umuvuduko",
-      "Kongera umuvuduko",
-      "Kwirengagiza ikimenyetso",
-      "Gukoresha telefoni"
-    ],
-    "answer": "Kugabanya umuvuduko",
-    "category": "Ibimenyetso byo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-047",
-    "question": "Ikimenyetso cyo guhagarara (STOP) gisaba iki?",
-    "options": [
-      "Guhagarara no kureba ko gukomeza ari umutekano",
-      "Kugenda utagabanije umuvuduko",
-      "Kunyura kuri sidewalk",
-      "Kuzimya imodoka burundu"
-    ],
-    "answer": "Guhagarara no kureba ko gukomeza ari umutekano",
-    "category": "Ibimenyetso byo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-048",
-    "question": "Ikimenyetso cyerekana ko kunyura mu cyerekezo runaka bibujijwe kigomba gukorwa iki?",
-    "options": [
-      "Kubahirizwa",
-      "Kwirengagizwa",
-      "Gukurwaho n'umuyobozi",
-      "Kujyaho imodoka"
-    ],
-    "answer": "Kubahirizwa",
-    "category": "Ibimenyetso byo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-049",
-    "question": "Ni iki umuyobozi agomba gukora iyo abonye ikimenyetso cyerekana ko parking ibujijwe?",
-    "options": [
-      "Kutahaparika",
-      "Guhaparika igihe kirekire",
-      "Guhaparika hagati mu muhanda",
-      "Gusiga imodoka idafunze"
-    ],
-    "answer": "Kutahaparika",
-    "category": "Ibimenyetso byo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-050",
-    "question": "Kuki ibyapa byo mu muhanda ari ingenzi?",
-    "options": [
-      "Bitanga amabwiriza kandi bigafasha kugenzura traffic",
-      "Bikorwa gusa mu gushariza umuhanda",
-      "Bikoreshwa mu kwamamaza gusa",
-      "Nta kamaro bifite"
-    ],
-    "answer": "Bitanga amabwiriza kandi bigafasha kugenzura traffic",
-    "category": "Ibimenyetso byo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-051",
-    "question": "Umuyobozi agomba gukora iki iyo ageze ku masangano agenzurwa n'amatara yo mu muhanda?",
-    "options": [
-      "Gukurikiza amabwiriza y'amatara",
-      "Gukurikira imodoka iri imbere gusa",
-      "Kwirengagiza amatara",
-      "Gukomeza uko yishakiye"
-    ],
-    "answer": "Gukurikiza amabwiriza y'amatara",
-    "category": "Amatara yo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-052",
-    "question": "Kuki kamera zitukura (red-light cameras) zikoreshwa ku masangano amwe?",
-    "options": [
-      "Kugenzura no gufata amakosa yo kutubahiriza amatara n'amabwiriza",
-      "Kwerekana ikirere",
-      "Gupima uburebure bw'imodoka",
-      "Gufotora ba mukerarugendo"
-    ],
-    "answer": "Kugenzura no gufata amakosa yo kutubahiriza amatara n'amabwiriza",
-    "category": "Kamera zo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-053",
-    "question": "Kamera zipima umuvuduko zifasha iki?",
-    "options": [
-      "Kumenya imodoka zirenze umuvuduko wemewe",
-      "Kumenya ibara ry'imodoka gusa",
-      "Guhindura amatara yo mu muhanda",
-      "Gutanga uruhushya rwo gutwara"
-    ],
-    "answer": "Kumenya imodoka zirenze umuvuduko wemewe",
-    "category": "Kamera zo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-054",
-    "question": "Iyo ikinyabiziga gifashwe na kamera kubera kurenza umuvuduko, amakuru ashobora koherezwa ate?",
-    "options": [
-      "Binyuze mu butumwa bugenewe nyir'ikinyabiziga",
-      "Binyuze kuri radiyo gusa",
-      "Binyuze ku ishuri",
-      "Nta makuru atangwa"
-    ],
-    "answer": "Binyuze mu butumwa bugenewe nyir'ikinyabiziga",
-    "category": "Amategeko n'ibihano"
-  },
-  {
-    "id": "rwanda-road-rw-055",
-    "question": "Ni ayahe makosa kamera z'umuhanda zishobora gufasha gutahura?",
-    "options": [
-      "Kurenga umuvuduko no kutubahiriza itara ritukura",
-      "Kudatanga umusoro gusa",
-      "Kutagira inzu",
-      "Kudafata amazi"
-    ],
-    "answer": "Kurenga umuvuduko no kutubahiriza itara ritukura",
-    "category": "Kamera zo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-056",
-    "question": "Umuyobozi agomba gutwara imodoka imeze ite?",
-    "options": [
-      "Imeze neza kandi ishobora kugenda mu mutekano",
-      "Ifite ikibazo gikomeye cya feri",
-      "Ifite amatara yose yangiritse",
-      "Ifite steering idakora"
-    ],
-    "answer": "Imeze neza kandi ishobora kugenda mu mutekano",
-    "category": "Ubugenzuzi bw'ikinyabiziga"
-  },
-  {
-    "id": "rwanda-road-rw-057",
-    "question": "Polisi y'u Rwanda isaba abashoferi gukora iki ku igenzura ry'ikinyabiziga?",
-    "options": [
-      "Kugenzura ikinyabiziga no kwemeza ko giteye neza",
-      "Kutagira icyo bagenzura",
-      "Kugenzura gusa iyo imvura iguye",
-      "Kugenzura gusa nijoro"
-    ],
-    "answer": "Kugenzura ikinyabiziga no kwemeza ko giteye neza",
-    "category": "Ubugenzuzi bw'ikinyabiziga"
-  },
-  {
-    "id": "rwanda-road-rw-058",
-    "question": "Ni iki gishobora guteza impanuka iyo imodoka ifite ikibazo cya feri?",
-    "options": [
-      "Kugabanya ubushobozi bwo guhagarara neza",
-      "Kongera umutekano",
-      "Kugabanya traffic",
-      "Kongera visibility"
-    ],
-    "answer": "Kugabanya ubushobozi bwo guhagarara neza",
-    "category": "Umutekano w'ikinyabiziga"
-  },
-  {
-    "id": "rwanda-road-rw-059",
-    "question": "Ni iki umuyobozi agomba gukora mbere yo gutangira urugendo rurerure?",
-    "options": [
-      "Kugenzura uko ikinyabiziga giteye",
-      "Kwirengagiza feri",
-      "Kwirengagiza amapine",
-      "Gukuraho umukandara"
-    ],
-    "answer": "Kugenzura uko ikinyabiziga giteye",
-    "category": "Umutekano w'ikinyabiziga"
-  },
-  {
-    "id": "rwanda-road-rw-060",
-    "question": "Ni iki umuyobozi agomba kwirinda igihe atwaye imodoka?",
-    "options": [
-      "Kugira ibimurangaza",
-      "Kureba umuhanda",
-      "Kugenzura ibyapa",
-      "Kugenzura umuvuduko"
-    ],
-    "answer": "Kugira ibimurangaza",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-061",
-    "question": "Kuki gukoresha telefoni uri gutwara ari bibi?",
-    "options": [
-      "Kuko bigutesha kwita ku muhanda",
-      "Kuko byongera visibility",
-      "Kuko bigabanya traffic",
-      "Kuko bifasha feri"
-    ],
-    "answer": "Kuko bigutesha kwita ku muhanda",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-062",
-    "question": "Umuyobozi utangiye kumva ananiwe cyane agomba gukora iki?",
-    "options": [
-      "Kugabanya ibyago no gufata akaruhuko ahantu hizewe",
-      "Kongera umuvuduko",
-      "Gukoresha telefoni",
-      "Gukomeza atitaye ku munaniro"
-    ],
-    "answer": "Kugabanya ibyago no gufata akaruhuko ahantu hizewe",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-063",
-    "question": "Kuki gutwara ufite ibimurangaza bishobora guteza impanuka?",
-    "options": [
-      "Bituma utita bihagije ku muhanda n'ibibera imbere",
-      "Bituma imodoka ihagarara neza",
-      "Bituma feri ikora neza",
-      "Bituma traffic igabanuka"
-    ],
-    "answer": "Bituma utita bihagije ku muhanda n'ibibera imbere",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-064",
-    "question": "Ni iki umuyobozi agomba gukora iyo abonye abanyamaguru hafi y'umuhanda?",
-    "options": [
-      "Kugabanya umuvuduko no kwitegura kubaha inzira",
-      "Kwihuta",
-      "Kuvuza ihoni ubudahagarara",
-      "Kunyura kuri sidewalk"
-    ],
-    "answer": "Kugabanya umuvuduko no kwitegura kubaha inzira",
-    "category": "Abanyamaguru"
-  },
-  {
-    "id": "rwanda-road-rw-065",
-    "question": "Ese umuyobozi yemerewe gutwara ku muhanda w'abanyamaguru (sidewalk) nk'uko asanzwe agenda?",
-    "options": [
-      "Oya",
-      "Yego buri gihe",
-      "Yego iyo traffic nyinshi",
-      "Yego nijoro"
-    ],
-    "answer": "Oya",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-066",
-    "question": "Umumotari agomba kwirinda iki ku mihanda y'abanyamaguru?",
-    "options": [
-      "Kuyigendaho aho kuba mu muhanda wabugenewe",
-      "Kubaha abanyamaguru",
-      "Kubahiriza zebra crossing",
-      "Kugabanya umuvuduko"
-    ],
-    "answer": "Kuyigendaho aho kuba mu muhanda wabugenewe",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-067",
-    "question": "Umumotari agomba gutwara abantu bangana iki ku buryo busanzwe?",
-    "options": [
-      "Atarenze umubare wemewe, kandi amabwiriza asaba taxi-moto kutarenza umugenzi umwe",
-      "Abantu batatu",
-      "Abantu bane",
-      "Abantu benshi uko bishakiye"
-    ],
-    "answer": "Atarenze umubare wemewe, kandi amabwiriza asaba taxi-moto kutarenza umugenzi umwe",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-068",
-    "question": "Umumotari agomba gukora iki ku numero cyangwa plaque ya moto?",
-    "options": [
-      "Kugira plaque igaragara kandi itahinduwe cyangwa ngo ihishwe",
-      "Kuyihisha",
-      "Kuyikuraho",
-      "Kuyipfuka"
-    ],
-    "answer": "Kugira plaque igaragara kandi itahinduwe cyangwa ngo ihishwe",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-069",
-    "question": "Ni iki umumotari agomba gukora igihe apakiye moto?",
-    "options": [
-      "Gupakira ahantu hagenwe kandi hatekanye",
-      "Guhagarara hagati muri zebra crossing",
-      "Guhagarara hagati mu muhanda",
-      "Guhagarara muri yellow box"
-    ],
-    "answer": "Gupakira ahantu hagenwe kandi hatekanye",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-070",
-    "question": "Umuyobozi wa moto agomba gukora iki ku muvuduko?",
-    "options": [
-      "Kubahiriza umuvuduko wemewe",
-      "Guhora yihuta",
-      "Kwirengagiza ibyapa",
-      "Kugenda uko ashaka"
-    ],
-    "answer": "Kubahiriza umuvuduko wemewe",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-071",
-    "question": "Ni iki umumotari agomba kwirinda mu gihe atwaye?",
-    "options": [
-      "Kugenda asimbagurika hagati y'imodoka cyangwa akora maneuvers ziteje akaga",
-      "Kuguma muri lane ye",
-      "Kubahiriza ibyapa",
-      "Kugabanya umuvuduko"
-    ],
-    "answer": "Kugenda asimbagurika hagati y'imodoka cyangwa akora maneuvers ziteje akaga",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-072",
-    "question": "Umuyobozi wa moto agomba kuguma he mu muhanda?",
-    "options": [
-      "Mu murongo cyangwa lane ye mu buryo bwizewe",
-      "Hagati y'imodoka zose",
-      "Kuri sidewalk",
-      "Muri zebra crossing"
-    ],
-    "answer": "Mu murongo cyangwa lane ye mu buryo bwizewe",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-073",
-    "question": "Ni iki umuyobozi wa moto agomba gukora kuri helmet?",
-    "options": [
-      "Kuyambara no kuyifunga neza",
-      "Kuyitwara mu ntoki",
-      "Kuyishyira kuri moto gusa",
-      "Kuyambara ariko ntayifunge"
-    ],
-    "answer": "Kuyambara no kuyifunga neza",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-074",
-    "question": "Ni iki umuyobozi wa moto agomba kwirinda ku byerekeye inzoga?",
-    "options": [
-      "Gutwara moto nyuma yo kunywa inzoga",
-      "Kunywa amazi",
-      "Kuruhuka",
-      "Kugenzura moto"
-    ],
-    "answer": "Gutwara moto nyuma yo kunywa inzoga",
-    "category": "Moto"
-  },
-  {
-    "id": "rwanda-road-rw-075",
-    "question": "Ni iki umuyobozi w'imodoka agomba kwirinda ku byerekeye inzoga?",
-    "options": [
-      "Gutwara nyuma yo kunywa inzoga",
-      "Kuruhuka mbere y'urugendo",
-      "Kugenzura imodoka",
-      "Kugabanya umuvuduko"
-    ],
-    "answer": "Gutwara nyuma yo kunywa inzoga",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-076",
-    "question": "Iyo imodoka yihuta cyane, ni iki gishobora kwiyongera?",
-    "options": [
-      "Ibyago byo gukora impanuka",
-      "Umutekano buri gihe",
-      "Ubushobozi bwo kubona neza",
-      "Umutekano w'abanyamaguru"
-    ],
-    "answer": "Ibyago byo gukora impanuka",
-    "category": "Umuvuduko"
-  },
-  {
-    "id": "rwanda-road-rw-077",
-    "question": "Ni iki gishobora gutuma umuyobozi atabona neza cyangwa atitaho umuhanda?",
-    "options": [
-      "Gukoresha telefoni igihe atwaye",
-      "Kureba imbere",
-      "Kugabanya umuvuduko",
-      "Kugenzura ibyapa"
-    ],
-    "answer": "Gukoresha telefoni igihe atwaye",
-    "category": "Umutekano wo mu muhanda"
-  },
-  {
-    "id": "rwanda-road-rw-078",
-    "question": "Iyo umuhanda utose kubera imvura, umuyobozi akwiye gukora iki?",
-    "options": [
-      "Kugabanya umuvuduko no kongera ubushishozi",
-      "Kwihuta cyane",
-      "Gukoresha telefoni",
-      "Kurenza imodoka zose"
-    ],
-    "answer": "Kugabanya umuvuduko no kongera ubushishozi",
-    "category": "Gutwara mu bihe bibi"
-  },
-  {
-    "id": "rwanda-road-rw-079",
-    "question": "Iyo visibility ari nkeya, umuyobozi agomba gukora iki?",
-    "options": [
-      "Kugabanya umuvuduko no gutwara yitonze",
-      "Kwihuta",
-      "Kwirengagiza ibyapa",
-      "Kunyura kuri sidewalk"
-    ],
-    "answer": "Kugabanya umuvuduko no gutwara yitonze",
-    "category": "Gutwara mu bihe bibi"
-  },
-  {
-    "id": "rwanda-road-rw-080",
-    "question": "Iyo umuhanda unyerera, ni iki umuyobozi agomba kwirinda?",
-    "options": [
-      "Maneuvers zikomeye no kwihuta cyane",
-      "Kugabanya umuvuduko",
-      "Kongera intera",
-      "Gutwara yitonze"
-    ],
-    "answer": "Maneuvers zikomeye no kwihuta cyane",
-    "category": "Gutwara mu bihe bibi"
-  },
-  {
-    "id": "rwanda-road-rw-081",
-    "question": "Ni iki umuyobozi agomba gukora kugira ngo agire umwanya uhagije wo guhagarara?",
-    "options": [
-      "Kugumana intera ihagije n'ikinyabiziga kiri imbere",
-      "Kukigenderaho cyane",
-      "Kugenda kuri bumper yacyo",
-      "Kwirengagiza umuvuduko"
-    ],
-    "answer": "Kugumana intera ihagije n'ikinyabiziga kiri imbere",
-    "category": "Intera y'umutekano"
-  },
-  {
-    "id": "rwanda-road-rw-082",
-    "question": "Kuki gukurikira imodoka iri imbere cyane bishobora guteza impanuka?",
-    "options": [
-      "Bitanga umwanya muto wo guhagarara iyo ibonye ikibazo",
-      "Bituma traffic igabanuka",
-      "Bituma feri ikora neza",
-      "Bituma umuhanda uba muremure"
-    ],
-    "answer": "Bitanga umwanya muto wo guhagarara iyo ibonye ikibazo",
-    "category": "Intera y'umutekano"
-  },
-  {
-    "id": "rwanda-road-rw-083",
-    "question": "Ni iki umuyobozi agomba gukora igihe imodoka itwaye ibikoresho cyangwa imizigo?",
-    "options": [
-      "Kugenzura ko imizigo ipakiwe kandi ifunze neza",
-      "Kuyireka ikamanuka mu muhanda",
-      "Kuyishyira hejuru y'ikirahure cy'imbere",
-      "Kuyireka iteye akaga"
-    ],
-    "answer": "Kugenzura ko imizigo ipakiwe kandi ifunze neza",
-    "category": "Umutekano w'imizigo"
-  },
-  {
-    "id": "rwanda-road-rw-084",
-    "question": "Ni iki umuyobozi agomba kwirinda ku mizigo itwaye?",
-    "options": [
-      "Kurekura imizigo ishobora kugwa mu muhanda",
-      "Kuyifunga neza",
-      "Kuyigenzura",
-      "Kuyipakira neza"
-    ],
-    "answer": "Kurekura imizigo ishobora kugwa mu muhanda",
-    "category": "Umutekano w'imizigo"
-  },
-  {
-  "id": "rwanda-road-rw-085",
-  "question": "Iyo ikinyabiziga gihagaze ahantu hashobora guteza abandi ibyago, umuyobozi agomba gukora iki?",
-  "options": [
-    "Gufata ingamba zo kukimenyekanisha no gukura ikinyabiziga ahantu hateje akaga igihe bishoboka",
-    "Kukireka aho kiri nta kindi akoze",
-    "Kukimura gusa iyo hari undi muntu ubimusabye",
-    "Kugenda agakomeza urugendo"
-  ],
-  "answer": "Gufata ingamba zo kukimenyekanisha no gukura ikinyabiziga ahantu hateje akaga igihe bishoboka",
-  "category": "Rwanda Road Traffic Rules"
+{
+"id": "q001",
+"question": "Which ancient civilization built the pyramids of Giza?",
+"options": ["Egyptian civilization", "Roman civilization", "Mayan civilization", "Viking civilization"],
+"answer": "Egyptian civilization",
+"category": "World History"
 },
 {
-    "id": "famous-001",
-    "question": "Who developed the theory of relativity?",
-    "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
-    "answer": "Albert Einstein",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-002",
-    "question": "Who formulated the laws of motion and universal gravitation?",
-    "options": ["Isaac Newton", "Albert Einstein", "Marie Curie", "Charles Darwin"],
-    "answer": "Isaac Newton",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-003",
-    "question": "Who is famous for pioneering research on radioactivity?",
-    "options": ["Marie Curie", "Ada Lovelace", "Jane Goodall", "Rosalind Franklin"],
-    "answer": "Marie Curie",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-004",
-    "question": "Who proposed the theory of evolution by natural selection?",
-    "options": ["Charles Darwin", "Louis Pasteur", "Gregor Mendel", "James Watt"],
-    "answer": "Charles Darwin",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-005",
-    "question": "Who is often called the father of modern chemistry?",
-    "options": ["Antoine Lavoisier", "Isaac Newton", "Galileo Galilei", "Michael Faraday"],
-    "answer": "Antoine Lavoisier",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-006",
-    "question": "Who discovered penicillin?",
-    "options": ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Jonas Salk"],
-    "answer": "Alexander Fleming",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-007",
-    "question": "Who discovered the first widely recognized vaccine against smallpox?",
-    "options": ["Edward Jenner", "Alexander Fleming", "Louis Pasteur", "Robert Hooke"],
-    "answer": "Edward Jenner",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-008",
-    "question": "Who is associated with the discovery of electromagnetic induction?",
-    "options": ["Michael Faraday", "Charles Darwin", "Gregor Mendel", "Niels Bohr"],
-    "answer": "Michael Faraday",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-009",
-    "question": "Who is known for discovering the laws of planetary motion?",
-    "options": ["Johannes Kepler", "Galileo Galilei", "Isaac Newton", "Copernicus"],
-    "answer": "Johannes Kepler",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-010",
-    "question": "Who proposed that the Earth and other planets orbit the Sun?",
-    "options": ["Nicolaus Copernicus", "Aristotle", "Ptolemy", "Isaac Newton"],
-    "answer": "Nicolaus Copernicus",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-011",
-    "question": "Who was the first person to receive two Nobel Prizes?",
-    "options": ["Marie Curie", "Albert Einstein", "Linus Pauling", "John Bardeen"],
-    "answer": "Marie Curie",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-012",
-    "question": "Who is known for pioneering work in computer programming in the 19th century?",
-    "options": ["Ada Lovelace", "Marie Curie", "Jane Goodall", "Dorothy Hodgkin"],
-    "answer": "Ada Lovelace",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-013",
-    "question": "Who is famous for the discovery of the structure of DNA using X-ray diffraction evidence?",
-    "options": ["Rosalind Franklin", "Marie Curie", "Ada Lovelace", "Jane Goodall"],
-    "answer": "Rosalind Franklin",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-014",
-    "question": "Who studied chimpanzees extensively in Tanzania?",
-    "options": ["Jane Goodall", "Marie Curie", "Rachel Carson", "Rosalind Franklin"],
-    "answer": "Jane Goodall",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-015",
-    "question": "Who developed the first successful polio vaccine?",
-    "options": ["Jonas Salk", "Alexander Fleming", "Edward Jenner", "Louis Pasteur"],
-    "answer": "Jonas Salk",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-016",
-    "question": "Who is known for the three laws describing planetary motion?",
-    "options": ["Johannes Kepler", "Galileo Galilei", "Isaac Newton", "Albert Einstein"],
-    "answer": "Johannes Kepler",
-    "category": "Famous Scientists"
-  },
-  {
-    "id": "famous-017",
-    "question": "Who invented the World Wide Web?",
-    "options": ["Tim Berners-Lee", "Bill Gates", "Steve Jobs", "Mark Zuckerberg"],
-    "answer": "Tim Berners-Lee",
-    "category": "Technology Pioneers"
-  },
-  {
-    "id": "famous-018",
-    "question": "Who co-founded Microsoft with Paul Allen?",
-    "options": ["Bill Gates", "Steve Jobs", "Larry Page", "Jeff Bezos"],
-    "answer": "Bill Gates",
-    "category": "Technology Pioneers"
-  },
-  {
-    "id": "famous-019",
-    "question": "Who co-founded Apple with Steve Wozniak and Ronald Wayne?",
-    "options": ["Steve Jobs", "Bill Gates", "Elon Musk", "Larry Ellison"],
-    "answer": "Steve Jobs",
-    "category": "Technology Pioneers"
-  },
-  {
-    "id": "famous-020",
-    "question": "Who co-founded Google with Sergey Brin?",
-    "options": ["Larry Page", "Jeff Bezos", "Bill Gates", "Steve Jobs"],
-    "answer": "Larry Page",
-    "category": "Technology Pioneers"
-  },
-  {
-    "id": "famous-021",
-    "question": "Who co-founded Google with Larry Page?",
-    "options": ["Sergey Brin", "Mark Zuckerberg", "Elon Musk", "Jack Ma"],
-    "answer": "Sergey Brin",
-    "category": "Technology Pioneers"
-  },
-  {
-    "id": "famous-022",
-    "question": "Who founded Amazon?",
-    "options": ["Jeff Bezos", "Bill Gates", "Larry Page", "Michael Dell"],
-    "answer": "Jeff Bezos",
-    "category": "Business Leaders"
-  },
-  {
-    "id": "famous-023",
-    "question": "Who founded Facebook, now known as Meta?",
-    "options": ["Mark Zuckerberg", "Jeff Bezos", "Bill Gates", "Larry Page"],
-    "answer": "Mark Zuckerberg",
-    "category": "Technology Pioneers"
-  },
-  {
-    "id": "famous-024",
-    "question": "Which company was founded by Elon Musk, Martin Eberhard and others?",
-    "options": ["Tesla", "Google", "Amazon", "Netflix"],
-    "answer": "Tesla",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-025",
-    "question": "Which company is associated with the iPhone?",
-    "options": ["Apple", "Microsoft", "Samsung", "Google"],
-    "answer": "Apple",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-026",
-    "question": "Which company developed the Windows operating system?",
-    "options": ["Microsoft", "Apple", "IBM", "Oracle"],
-    "answer": "Microsoft",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-027",
-    "question": "Which company is famous for the Android operating system?",
-    "options": ["Google", "Microsoft", "Apple", "IBM"],
-    "answer": "Google",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-028",
-    "question": "Which company is famous for the Galaxy smartphone series?",
-    "options": ["Samsung", "Apple", "Sony", "Nokia"],
-    "answer": "Samsung",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-029",
-    "question": "Which company is famous for the PlayStation gaming console?",
-    "options": ["Sony", "Nintendo", "Microsoft", "Sega"],
-    "answer": "Sony",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-030",
-    "question": "Which company developed the Xbox?",
-    "options": ["Microsoft", "Sony", "Nintendo", "Sega"],
-    "answer": "Microsoft",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-031",
-    "question": "Which company created the Windows and Office product families?",
-    "options": ["Microsoft", "Apple", "Amazon", "Netflix"],
-    "answer": "Microsoft",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-032",
-    "question": "Which company is famous for the streaming service Netflix?",
-    "options": ["Netflix", "Spotify", "Disney", "Amazon"],
-    "answer": "Netflix",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-033",
-    "question": "Which company owns the Pixar animation studio?",
-    "options": ["Disney", "Microsoft", "Sony", "Netflix"],
-    "answer": "Disney",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-034",
-    "question": "Which company is strongly associated with the search engine Google?",
-    "options": ["Alphabet", "Microsoft", "Apple", "Amazon"],
-    "answer": "Alphabet",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-035",
-    "question": "Which company is famous for the social media platform Instagram?",
-    "options": ["Meta", "Apple", "Microsoft", "Sony"],
-    "answer": "Meta",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-036",
-    "question": "Which company operates the professional networking platform LinkedIn?",
-    "options": ["Microsoft", "Google", "Meta", "Amazon"],
-    "answer": "Microsoft",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-037",
-    "question": "Which company is famous for the music streaming service Spotify?",
-    "options": ["Spotify", "Netflix", "Disney", "Adobe"],
-    "answer": "Spotify",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-038",
-    "question": "Which company is famous for the Photoshop software?",
-    "options": ["Adobe", "Google", "Apple", "IBM"],
-    "answer": "Adobe",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-039",
-    "question": "Which company created the Chrome web browser?",
-    "options": ["Google", "Microsoft", "Apple", "Mozilla"],
-    "answer": "Google",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-040",
-    "question": "Which company is associated with the Firefox web browser?",
-    "options": ["Mozilla", "Google", "Apple", "Microsoft"],
-    "answer": "Mozilla",
-    "category": "Companies"
-  },
-  {
-    "id": "famous-041",
-    "question": "Who was the first emperor of Rome?",
-    "options": ["Augustus", "Julius Caesar", "Nero", "Constantine"],
-    "answer": "Augustus",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-042",
-    "question": "Who was known as the first emperor of China?",
-    "options": ["Qin Shi Huang", "Confucius", "Sun Tzu", "Kublai Khan"],
-    "answer": "Qin Shi Huang",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-043",
-    "question": "Who was the famous queen of ancient Egypt associated with Julius Caesar and Mark Antony?",
-    "options": ["Cleopatra VII", "Nefertiti", "Hatshepsut", "Artemisia"],
-    "answer": "Cleopatra VII",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-044",
-    "question": "Who was the famous king of Macedonia who created a vast ancient empire?",
-    "options": ["Alexander the Great", "Leonidas", "Pericles", "Hammurabi"],
-    "answer": "Alexander the Great",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-045",
-    "question": "Who was the king of Babylon associated with an ancient code of laws?",
-    "options": ["Hammurabi", "Cyrus the Great", "Darius I", "Ramses II"],
-    "answer": "Hammurabi",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-046",
-    "question": "Who was the Persian ruler known as Cyrus the Great?",
-    "options": ["Founder of the Achaemenid Empire", "Roman emperor", "Egyptian pharaoh", "Greek philosopher"],
-    "answer": "Founder of the Achaemenid Empire",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-047",
-    "question": "Which Egyptian ruler was known as Ramses II?",
-    "options": ["A famous pharaoh", "A Roman emperor", "A Greek philosopher", "A Chinese emperor"],
-    "answer": "A famous pharaoh",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-048",
-    "question": "Who was the English king who established the Norman dynasty after the Battle of Hastings?",
-    "options": ["William the Conqueror", "Henry VIII", "Richard III", "Edward I"],
-    "answer": "William the Conqueror",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-049",
-    "question": "Which English king is famous for having six wives?",
-    "options": ["Henry VIII", "Henry V", "Richard I", "Edward III"],
-    "answer": "Henry VIII",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-050",
-    "question": "Which French ruler was known as the Sun King?",
-    "options": ["Louis XIV", "Napoleon Bonaparte", "Louis XVI", "Charlemagne"],
-    "answer": "Louis XIV",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-051",
-    "question": "Who was crowned emperor of the French in 1804?",
-    "options": ["Napoleon Bonaparte", "Louis XIV", "Charlemagne", "Julius Caesar"],
-    "answer": "Napoleon Bonaparte",
-    "category": "Historical Leaders"
-  },
-  {
-    "id": "famous-052",
-    "question": "Who was the first president of the United States?",
-    "options": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"],
-    "answer": "George Washington",
-    "category": "Historical Leaders"
-  },
-  {
-    "id": "famous-053",
-    "question": "Which U.S. president led the country during the American Civil War?",
-    "options": ["Abraham Lincoln", "George Washington", "Theodore Roosevelt", "John F. Kennedy"],
-    "answer": "Abraham Lincoln",
-    "category": "Historical Leaders"
-  },
-  {
-    "id": "famous-054",
-    "question": "Who was a major leader of India's independence movement using nonviolent resistance?",
-    "options": ["Mahatma Gandhi", "Jawaharlal Nehru", "Subhas Chandra Bose", "B. R. Ambedkar"],
-    "answer": "Mahatma Gandhi",
-    "category": "Historical Leaders"
-  },
-  {
-    "id": "famous-055",
-    "question": "Who became South Africa's first Black president?",
-    "options": ["Nelson Mandela", "Desmond Tutu", "Thabo Mbeki", "Oliver Tambo"],
-    "answer": "Nelson Mandela",
-    "category": "Historical Leaders"
-  },
-  {
-    "id": "famous-056",
-    "question": "Who was the British prime minister during much of World War II?",
-    "options": ["Winston Churchill", "Tony Blair", "Neville Chamberlain", "Clement Attlee"],
-    "answer": "Winston Churchill",
-    "category": "Historical Leaders"
-  },
-  {
-    "id": "famous-057",
-    "question": "Who was the first emperor of the unified Carolingian Empire to be crowned emperor in 800?",
-    "options": ["Charlemagne", "William the Conqueror", "Louis XIV", "Napoleon"],
-    "answer": "Charlemagne",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-058",
-    "question": "Which ancient Greek king is famous for the stand at Thermopylae?",
-    "options": ["Leonidas I", "Alexander the Great", "Pericles", "Solon"],
-    "answer": "Leonidas I",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-059",
-    "question": "Who was the first emperor of the Mughal Empire?",
-    "options": ["Babur", "Akbar", "Shah Jahan", "Aurangzeb"],
-    "answer": "Babur",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-060",
-    "question": "Which Mughal emperor commissioned the Taj Mahal?",
-    "options": ["Shah Jahan", "Akbar", "Babur", "Aurangzeb"],
-    "answer": "Shah Jahan",
-    "category": "Kings and Historical Leaders"
-  },
-  {
-    "id": "famous-061",
-    "question": "Which famous footballer is known as CR7?",
-    "options": ["Cristiano Ronaldo", "Lionel Messi", "Neymar", "Kylian Mbappe"],
-    "answer": "Cristiano Ronaldo",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-062",
-    "question": "Which footballer is widely known as Lionel Messi?",
-    "options": ["Lionel Messi", "Luka Modric", "Karim Benzema", "Erling Haaland"],
-    "answer": "Lionel Messi",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-063",
-    "question": "Which Brazilian footballer became famous for his skills and was known as Ronaldinho?",
-    "options": ["Ronaldinho", "Rivaldo", "Kaka", "Romario"],
-    "answer": "Ronaldinho",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-064",
-    "question": "Which French footballer captained France to the 1998 World Cup title?",
-    "options": ["Didier Deschamps", "Zinedine Zidane", "Thierry Henry", "Michel Platini"],
-    "answer": "Didier Deschamps",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-065",
-    "question": "Which French football legend scored twice in the 1998 World Cup final?",
-    "options": ["Zinedine Zidane", "Thierry Henry", "Kylian Mbappe", "Karim Benzema"],
-    "answer": "Zinedine Zidane",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-066",
-    "question": "Which Norwegian striker is famous for scoring many goals for Manchester City?",
-    "options": ["Erling Haaland", "Martin Odegaard", "Alexander Isak", "Harry Kane"],
-    "answer": "Erling Haaland",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-067",
-    "question": "Which French player became a major star for Paris Saint-Germain and France?",
-    "options": ["Kylian Mbappe", "Paul Pogba", "N'Golo Kante", "Antoine Griezmann"],
-    "answer": "Kylian Mbappe",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-068",
-    "question": "Which Croatian midfielder won the Ballon d'Or in 2018?",
-    "options": ["Luka Modric", "Ivan Rakitic", "Mario Mandzukic", "Mateo Kovacic"],
-    "answer": "Luka Modric",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-069",
-    "question": "Which English striker is known for his long career with Tottenham Hotspur and England?",
-    "options": ["Harry Kane", "Wayne Rooney", "David Beckham", "Alan Shearer"],
-    "answer": "Harry Kane",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-070",
-    "question": "Which English footballer was famous for his crossing and free kicks and played for Manchester United and Real Madrid?",
-    "options": ["David Beckham", "Steven Gerrard", "Frank Lampard", "Paul Scholes"],
-    "answer": "David Beckham",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-071",
-    "question": "Which Brazilian football legend won three FIFA World Cups?",
-    "options": ["Pelé", "Neymar", "Ronaldinho", "Ronaldo Nazario"],
-    "answer": "Pelé",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-072",
-    "question": "Which Brazilian striker was nicknamed Ronaldo Nazario?",
-    "options": ["Ronaldo Luís Nazário de Lima", "Rivaldo", "Romario", "Kaka"],
-    "answer": "Ronaldo Luís Nazário de Lima",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-073",
-    "question": "Which goalkeeper is famous for a long career with Spain and Real Madrid?",
-    "options": ["Iker Casillas", "Gianluigi Buffon", "Manuel Neuer", "Peter Schmeichel"],
-    "answer": "Iker Casillas",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-074",
-    "question": "Which Italian goalkeeper is famous for a legendary career with Juventus and Italy?",
-    "options": ["Gianluigi Buffon", "Iker Casillas", "Dino Zoff", "Walter Zenga"],
-    "answer": "Gianluigi Buffon",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-075",
-    "question": "Which German goalkeeper is famous for his sweeper-keeper style?",
-    "options": ["Manuel Neuer", "Oliver Kahn", "Marc-Andre ter Stegen", "Jens Lehmann"],
-    "answer": "Manuel Neuer",
-    "category": "Football Players"
-  },
-  {
-    "id": "famous-076",
-    "question": "Who is the head coach who led Manchester United to many major trophies during the 1990s and 2000s?",
-    "options": ["Alex Ferguson", "Jose Mourinho", "Pep Guardiola", "Arsene Wenger"],
-    "answer": "Alex Ferguson",
-    "category": "Football Coaches"
-  },
-  {
-    "id": "famous-077",
-    "question": "Which Spanish coach became famous for winning major trophies with Barcelona and Manchester City?",
-    "options": ["Pep Guardiola", "Luis Enrique", "Vicente del Bosque", "Carlo Ancelotti"],
-    "answer": "Pep Guardiola",
-    "category": "Football Coaches"
-  },
-  {
-    "id": "famous-078",
-    "question": "Which Italian coach is famous for winning major European trophies with several clubs?",
-    "options": ["Carlo Ancelotti", "Roberto Mancini", "Fabio Capello", "Marcello Lippi"],
-    "answer": "Carlo Ancelotti",
-    "category": "Football Coaches"
-  },
-  {
-    "id": "famous-079",
-    "question": "Which Portuguese coach is known for managing Porto, Chelsea, Inter Milan and Real Madrid?",
-    "options": ["Jose Mourinho", "Fernando Santos", "Andre Villas-Boas", "Paulo Bento"],
-    "answer": "Jose Mourinho",
-    "category": "Football Coaches"
-  },
-  {
-    "id": "famous-080",
-    "question": "Which French coach led France to the 2018 FIFA World Cup title?",
-    "options": ["Didier Deschamps", "Zinedine Zidane", "Laurent Blanc", "Arsene Wenger"],
-    "answer": "Didier Deschamps",
-    "category": "Football Coaches"
-  },
-  {
-    "id": "famous-081",
-    "question": "Who directed the film Titanic?",
-    "options": ["James Cameron", "Steven Spielberg", "Christopher Nolan", "Martin Scorsese"],
-    "answer": "James Cameron",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-082",
-    "question": "Who directed Jurassic Park?",
-    "options": ["Steven Spielberg", "James Cameron", "George Lucas", "Peter Jackson"],
-    "answer": "Steven Spielberg",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-083",
-    "question": "Who directed The Lord of the Rings film trilogy?",
-    "options": ["Peter Jackson", "James Cameron", "Christopher Nolan", "George Lucas"],
-    "answer": "Peter Jackson",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-084",
-    "question": "Who directed the Dark Knight trilogy?",
-    "options": ["Christopher Nolan", "Tim Burton", "James Cameron", "Ridley Scott"],
-    "answer": "Christopher Nolan",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-085",
-    "question": "Who directed the Star Wars film released in 1977?",
-    "options": ["George Lucas", "Steven Spielberg", "Peter Jackson", "James Cameron"],
-    "answer": "George Lucas",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-086",
-    "question": "Who directed the film The Godfather?",
-    "options": ["Francis Ford Coppola", "Martin Scorsese", "Steven Spielberg", "Ridley Scott"],
-    "answer": "Francis Ford Coppola",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-087",
-    "question": "Who directed Pulp Fiction?",
-    "options": ["Quentin Tarantino", "Martin Scorsese", "Christopher Nolan", "David Fincher"],
-    "answer": "Quentin Tarantino",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-088",
-    "question": "Who directed Avatar?",
-    "options": ["James Cameron", "Steven Spielberg", "Peter Jackson", "Ridley Scott"],
-    "answer": "James Cameron",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-089",
-    "question": "Who directed The Shawshank Redemption?",
-    "options": ["Frank Darabont", "Christopher Nolan", "Steven Spielberg", "David Fincher"],
-    "answer": "Frank Darabont",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-090",
-    "question": "Who directed the film Oppenheimer?",
-    "options": ["Christopher Nolan", "Denis Villeneuve", "James Cameron", "Steven Spielberg"],
-    "answer": "Christopher Nolan",
-    "category": "Filmmakers"
-  },
-  {
-    "id": "famous-091",
-    "question": "Who played Jack Dawson in Titanic?",
-    "options": ["Leonardo DiCaprio", "Brad Pitt", "Tom Hanks", "Matt Damon"],
-    "answer": "Leonardo DiCaprio",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-092",
-    "question": "Who played Forrest Gump in the film Forrest Gump?",
-    "options": ["Tom Hanks", "Tom Cruise", "Brad Pitt", "Denzel Washington"],
-    "answer": "Tom Hanks",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-093",
-    "question": "Who played Iron Man in the Marvel Cinematic Universe?",
-    "options": ["Robert Downey Jr.", "Chris Evans", "Chris Hemsworth", "Mark Ruffalo"],
-    "answer": "Robert Downey Jr.",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-094",
-    "question": "Who played Captain America in the Marvel Cinematic Universe?",
-    "options": ["Chris Evans", "Chris Hemsworth", "Robert Downey Jr.", "Jeremy Renner"],
-    "answer": "Chris Evans",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-095",
-    "question": "Who played Thor in the Marvel Cinematic Universe?",
-    "options": ["Chris Hemsworth", "Chris Evans", "Tom Holland", "Mark Ruffalo"],
-    "answer": "Chris Hemsworth",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-096",
-    "question": "Who played Spider-Man in the Marvel Cinematic Universe's main Spider-Man films?",
-    "options": ["Tom Holland", "Andrew Garfield", "Tobey Maguire", "Chris Evans"],
-    "answer": "Tom Holland",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-097",
-    "question": "Who played Black Panther in the Marvel Cinematic Universe?",
-    "options": ["Chadwick Boseman", "Michael B. Jordan", "Anthony Mackie", "Samuel L. Jackson"],
-    "answer": "Chadwick Boseman",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-098",
-    "question": "Who played the Joker in The Dark Knight?",
-    "options": ["Heath Ledger", "Joaquin Phoenix", "Jack Nicholson", "Jared Leto"],
-    "answer": "Heath Ledger",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-099",
-    "question": "Who played the title character in the 2019 film Joker?",
-    "options": ["Joaquin Phoenix", "Heath Ledger", "Jack Nicholson", "Christian Bale"],
-    "answer": "Joaquin Phoenix",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-100",
-    "question": "Who played Hermione Granger in the Harry Potter film series?",
-    "options": ["Emma Watson", "Emma Stone", "Natalie Portman", "Keira Knightley"],
-    "answer": "Emma Watson",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-101",
-    "question": "Who played Harry Potter in the Harry Potter film series?",
-    "options": ["Daniel Radcliffe", "Rupert Grint", "Tom Felton", "Elijah Wood"],
-    "answer": "Daniel Radcliffe",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-102",
-    "question": "Who played Frodo Baggins in The Lord of the Rings film trilogy?",
-    "options": ["Elijah Wood", "Daniel Radcliffe", "Orlando Bloom", "Ian McKellen"],
-    "answer": "Elijah Wood",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-103",
-    "question": "Who played Gandalf in The Lord of the Rings film trilogy?",
-    "options": ["Ian McKellen", "Christopher Lee", "Hugo Weaving", "Viggo Mortensen"],
-    "answer": "Ian McKellen",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-104",
-    "question": "Who played Jack Sparrow in the Pirates of the Caribbean films?",
-    "options": ["Johnny Depp", "Brad Pitt", "Orlando Bloom", "Tom Cruise"],
-    "answer": "Johnny Depp",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-105",
-    "question": "Who played the main character in the Mission: Impossible film series?",
-    "options": ["Tom Cruise", "Matt Damon", "Brad Pitt", "Keanu Reeves"],
-    "answer": "Tom Cruise",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-106",
-    "question": "Who played Neo in The Matrix?",
-    "options": ["Keanu Reeves", "Tom Cruise", "Brad Pitt", "Christian Bale"],
-    "answer": "Keanu Reeves",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-107",
-    "question": "Who played Batman in The Dark Knight trilogy?",
-    "options": ["Christian Bale", "Ben Affleck", "Michael Keaton", "Robert Pattinson"],
-    "answer": "Christian Bale",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-108",
-    "question": "Who played the title role in Black Panther?",
-    "options": ["Chadwick Boseman", "Denzel Washington", "Idris Elba", "Michael B. Jordan"],
-    "answer": "Chadwick Boseman",
-    "category": "Actors"
-  },
-  {
-    "id": "famous-109",
-    "question": "Which company is famous for making the Corolla?",
-    "options": ["Toyota", "Honda", "Ford", "BMW"],
-    "answer": "Toyota",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-110",
-    "question": "Which company is associated with the Civic model?",
-    "options": ["Honda", "Toyota", "Ford", "Volkswagen"],
-    "answer": "Honda",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-111",
-    "question": "Which company produces the Mustang?",
-    "options": ["Ford", "Toyota", "Honda", "Nissan"],
-    "answer": "Ford",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-112",
-    "question": "Which German company produces the 3 Series?",
-    "options": ["BMW", "Audi", "Mercedes-Benz", "Volkswagen"],
-    "answer": "BMW",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-113",
-    "question": "Which German company produces the Golf?",
-    "options": ["Volkswagen", "BMW", "Audi", "Porsche"],
-    "answer": "Volkswagen",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-114",
-    "question": "Which company is famous for the PlayStation 5?",
-    "options": ["Sony", "Microsoft", "Nintendo", "Sega"],
-    "answer": "Sony",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-115",
-    "question": "Which company developed the Nintendo Switch?",
-    "options": ["Nintendo", "Sony", "Microsoft", "Sega"],
-    "answer": "Nintendo",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-116",
-    "question": "Which company developed the Windows operating system?",
-    "options": ["Microsoft", "Google", "Apple", "IBM"],
-    "answer": "Microsoft",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-117",
-    "question": "Which company owns YouTube?",
-    "options": ["Google", "Meta", "Microsoft", "Amazon"],
-    "answer": "Google",
-    "category": "Major Companies"
-  },
-  {
-    "id": "famous-118",
-    "question": "Which company owns WhatsApp?",
-    "options": ["Meta", "Google", "Microsoft", "Apple"],
-    "answer": "Meta",
-    "category": "Major Companies"
-  } 
+"id": "q002",
+"question": "In which year did World War II end?",
+"options": ["1943", "1945", "1947", "1950"],
+"answer": "1945",
+"category": "World History"
+},
+{
+"id": "q003",
+"question": "Who was the first emperor of Rome?",
+"options": ["Julius Caesar", "Augustus", "Nero", "Constantine"],
+"answer": "Augustus",
+"category": "World History"
+},
+{
+"id": "q004",
+"question": "The French Revolution began in which year?",
+"options": ["1776", "1789", "1804", "1815"],
+"answer": "1789",
+"category": "World History"
+},
+{
+"id": "q005",
+"question": "Which city was divided by a famous wall during the Cold War?",
+"options": ["Paris", "Berlin", "London", "Madrid"],
+"answer": "Berlin",
+"category": "World History"
+},
+{
+"id": "q006",
+"question": "Who was the first person to travel into space?",
+"options": ["Neil Armstrong", "Yuri Gagarin", "Buzz Aldrin", "John Glenn"],
+"answer": "Yuri Gagarin",
+"category": "World History"
+},
+{
+"id": "q007",
+"question": "Which empire was ruled by Genghis Khan?",
+"options": ["Mongol Empire", "Roman Empire", "Ottoman Empire", "British Empire"],
+"answer": "Mongol Empire",
+"category": "World History"
+},
+{
+"id": "q008",
+"question": "The ancient city of Rome is located in which modern country?",
+"options": ["Greece", "Italy", "Spain", "France"],
+"answer": "Italy",
+"category": "World History"
+},
+{
+"id": "q009",
+"question": "Which event is commonly considered the start of World War I?",
+"options": ["The invasion of Poland", "The assassination of Archduke Franz Ferdinand", "The bombing of Pearl Harbor", "The fall of Berlin"],
+"answer": "The assassination of Archduke Franz Ferdinand",
+"category": "World History"
+},
+{
+"id": "q010",
+"question": "Who led the Indian independence movement using nonviolent resistance?",
+"options": ["Nelson Mandela", "Mahatma Gandhi", "Winston Churchill", "Abraham Lincoln"],
+"answer": "Mahatma Gandhi",
+"category": "World History"
+},
+{
+"id": "q011",
+"question": "What is the SI unit of force?",
+"options": ["Joule", "Newton", "Watt", "Pascal"],
+"answer": "Newton",
+"category": "Physics"
+},
+{
+"id": "q012",
+"question": "What is the approximate acceleration due to gravity on Earth?",
+"options": ["3.8 m/s²", "9.8 m/s²", "15 m/s²", "20 m/s²"],
+"answer": "9.8 m/s²",
+"category": "Physics"
+},
+{
+"id": "q013",
+"question": "Which physical quantity is measured in watts?",
+"options": ["Power", "Force", "Mass", "Pressure"],
+"answer": "Power",
+"category": "Physics"
+},
+{
+"id": "q014",
+"question": "What is the speed of light in a vacuum approximately?",
+"options": ["3,000 km/s", "30,000 km/s", "300,000 km/s", "3,000,000 km/s"],
+"answer": "300,000 km/s",
+"category": "Physics"
+},
+{
+"id": "q015",
+"question": "Which instrument measures electric current?",
+"options": ["Voltmeter", "Ammeter", "Thermometer", "Barometer"],
+"answer": "Ammeter",
+"category": "Physics"
+},
+{
+"id": "q016",
+"question": "What type of energy is stored in a stretched rubber band?",
+"options": ["Chemical energy", "Elastic potential energy", "Nuclear energy", "Sound energy"],
+"answer": "Elastic potential energy",
+"category": "Physics"
+},
+{
+"id": "q017",
+"question": "What happens to an object's acceleration when the net force increases while its mass stays constant?",
+"options": ["It decreases", "It increases", "It becomes zero", "It remains exactly the same"],
+"answer": "It increases",
+"category": "Physics"
+},
+{
+"id": "q018",
+"question": "Which law states that every action has an equal and opposite reaction?",
+"options": ["Newton's First Law", "Newton's Second Law", "Newton's Third Law", "Ohm's Law"],
+"answer": "Newton's Third Law",
+"category": "Physics"
+},
+{
+"id": "q019",
+"question": "What is the unit of electrical resistance?",
+"options": ["Ohm", "Volt", "Ampere", "Watt"],
+"answer": "Ohm",
+"category": "Physics"
+},
+{
+"id": "q020",
+"question": "Which type of wave can travel through empty space?",
+"options": ["Sound wave", "Water wave", "Electromagnetic wave", "Seismic wave"],
+"answer": "Electromagnetic wave",
+"category": "Physics"
+},
+{
+"id": "q021",
+"question": "What is the largest continent by area?",
+"options": ["Africa", "Asia", "Europe", "North America"],
+"answer": "Asia",
+"category": "World Geography"
+},
+{
+"id": "q022",
+"question": "What is the largest ocean on Earth?",
+"options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+"answer": "Pacific Ocean",
+"category": "World Geography"
+},
+{
+"id": "q023",
+"question": "What is the capital city of Australia?",
+"options": ["Sydney", "Melbourne", "Canberra", "Perth"],
+"answer": "Canberra",
+"category": "World Geography"
+},
+{
+"id": "q024",
+"question": "Which river is traditionally regarded as the longest river in Africa?",
+"options": ["Congo River", "Nile River", "Zambezi River", "Niger River"],
+"answer": "Nile River",
+"category": "World Geography"
+},
+{
+"id": "q025",
+"question": "Mount Everest lies in which mountain range?",
+"options": ["Andes", "Alps", "Himalayas", "Rocky Mountains"],
+"answer": "Himalayas",
+"category": "World Geography"
+},
+{
+"id": "q026",
+"question": "Which country has the largest land area in the world?",
+"options": ["Canada", "China", "United States", "Russia"],
+"answer": "Russia",
+"category": "World Geography"
+},
+{
+"id": "q027",
+"question": "Which desert is the largest hot desert in the world?",
+"options": ["Gobi Desert", "Sahara Desert", "Kalahari Desert", "Atacama Desert"],
+"answer": "Sahara Desert",
+"category": "World Geography"
+},
+{
+"id": "q028",
+"question": "Which country is known as the Land of the Rising Sun?",
+"options": ["China", "Japan", "South Korea", "Thailand"],
+"answer": "Japan",
+"category": "World Geography"
+},
+{
+"id": "q029",
+"question": "Which African country has Cairo as its capital?",
+"options": ["Egypt", "Morocco", "Sudan", "Tunisia"],
+"answer": "Egypt",
+"category": "World Geography"
+},
+{
+"id": "q030",
+"question": "What is the capital city of Canada?",
+"options": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+"answer": "Ottawa",
+"category": "World Geography"
+},
+{
+"id": "q031",
+"question": "What is the chemical symbol for oxygen?",
+"options": ["O", "Ox", "C", "N"],
+"answer": "O",
+"category": "Chemistry"
+},
+{
+"id": "q032",
+"question": "What is the chemical formula for water?",
+"options": ["CO2", "H2O", "O2", "NaCl"],
+"answer": "H2O",
+"category": "Chemistry"
+},
+{
+"id": "q033",
+"question": "What is the atomic number of carbon?",
+"options": ["4", "6", "8", "12"],
+"answer": "6",
+"category": "Chemistry"
+},
+{
+"id": "q034",
+"question": "Which gas is most abundant in Earth's atmosphere?",
+"options": ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+"answer": "Nitrogen",
+"category": "Chemistry"
+},
+{
+"id": "q035",
+"question": "A substance with a pH below 7 is generally what?",
+"options": ["Acidic", "Neutral", "Alkaline", "Metallic"],
+"answer": "Acidic",
+"category": "Chemistry"
+},
+{
+"id": "q036",
+"question": "What is the chemical symbol for gold?",
+"options": ["Ag", "Au", "Gd", "Go"],
+"answer": "Au",
+"category": "Chemistry"
+},
+{
+"id": "q037",
+"question": "What gas do humans exhale in relatively large amounts?",
+"options": ["Oxygen", "Carbon dioxide", "Helium", "Neon"],
+"answer": "Carbon dioxide",
+"category": "Chemistry"
+},
+{
+"id": "q038",
+"question": "Which element has the chemical symbol Na?",
+"options": ["Nitrogen", "Sodium", "Neon", "Nickel"],
+"answer": "Sodium",
+"category": "Chemistry"
+},
+{
+"id": "q039",
+"question": "What is table salt commonly called chemically?",
+"options": ["Sodium chloride", "Calcium carbonate", "Potassium nitrate", "Magnesium sulfate"],
+"answer": "Sodium chloride",
+"category": "Chemistry"
+},
+{
+"id": "q040",
+"question": "Which particle has a negative electric charge?",
+"options": ["Proton", "Neutron", "Electron", "Nucleus"],
+"answer": "Electron",
+"category": "Chemistry"
+},
+{
+"id": "q041",
+"question": "In Rwanda, what does a red traffic light require a driver to do?",
+"options": ["Stop", "Speed up", "Overtake", "Turn on hazard lights"],
+"answer": "Stop",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q042",
+"question": "In Rwanda, which side of the road do vehicles normally drive on?",
+"options": ["Left", "Right", "Either side", "Middle only"],
+"answer": "Right",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q043",
+"question": "What should a driver do when approaching a pedestrian crossing where pedestrians are crossing?",
+"options": ["Give way and stop if necessary", "Speed up", "Honk continuously and continue", "Drive around the pedestrians"],
+"answer": "Give way and stop if necessary",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q044",
+"question": "What is the main purpose of a seat belt?",
+"options": ["To reduce injury risk in a crash", "To increase fuel consumption", "To improve engine power", "To control traffic lights"],
+"answer": "To reduce injury risk in a crash",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q045",
+"question": "What should a driver do before changing lanes?",
+"options": ["Check mirrors and blind spots and signal", "Accelerate without checking", "Close the windows", "Turn off the headlights"],
+"answer": "Check mirrors and blind spots and signal",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q046",
+"question": "What does a triangular road sign generally indicate?",
+"options": ["Warning", "Parking", "Motorway", "Fuel station"],
+"answer": "Warning",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q047",
+"question": "Why should drivers maintain a safe following distance?",
+"options": ["To allow enough time to react and stop", "To use more fuel", "To make overtaking impossible", "To block other vehicles"],
+"answer": "To allow enough time to react and stop",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q048",
+"question": "What should a driver do when an emergency vehicle approaches using warning signals?",
+"options": ["Give it a safe and clear passage", "Race it", "Block its path", "Ignore it"],
+"answer": "Give it a safe and clear passage",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q049",
+"question": "Why is driving while distracted dangerous?",
+"options": ["It reduces the driver's attention to the road", "It improves reaction time", "It makes traffic signs clearer", "It reduces stopping distance"],
+"answer": "It reduces the driver's attention to the road",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q050",
+"question": "What should a driver do when road conditions become dangerous because of heavy rain?",
+"options": ["Reduce speed and increase caution", "Drive faster", "Ignore visibility", "Drive without lights at night"],
+"answer": "Reduce speed and increase caution",
+"category": "Rwanda Road Traffic Rules"
+},
+{
+"id": "q051",
+"question": "Who was the first emperor of the Mongol Empire?",
+"options": ["Genghis Khan", "Kublai Khan", "Attila", "Alexander the Great"],
+"answer": "Genghis Khan",
+"category": "World Kings and Rulers"
+},
+{
+"id": "q052",
+"question": "Who was known as Alexander the Great?",
+"options": ["A Macedonian king and military leader", "A Roman senator", "An Egyptian pharaoh", "A Chinese emperor"],
+"answer": "A Macedonian king and military leader",
+"category": "World Kings and Rulers"
+},
+{
+"id": "q053",
+"question": "Which English king is associated with the signing of the Magna Carta in 1215?",
+"options": ["King John", "Henry VIII", "Richard III", "Edward I"],
+"answer": "King John",
+"category": "World Kings and Rulers"
+},
+{
+"id": "q054",
+"question": "Who was the first emperor of China to unify much of China in 221 BCE?",
+"options": ["Qin Shi Huang", "Han Wudi", "Kublai Khan", "Sun Yat-sen"],
+"answer": "Qin Shi Huang",
+"category": "World Kings and Rulers"
+},
+{
+"id": "q055",
+"question": "Which famous queen ruled ancient Egypt during the first century BCE?",
+"options": ["Cleopatra VII", "Nefertiti", "Hatshepsut", "Boudica"],
+"answer": "Cleopatra VII",
+"category": "World Kings and Rulers"
+},
+{
+"id": "q056",
+"question": "Who was the first president of the United States?",
+"options": ["George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams"],
+"answer": "George Washington",
+"category": "World Presidents"
+},
+{
+"id": "q057",
+"question": "Who was the 16th president of the United States?",
+"options": ["Abraham Lincoln", "George Washington", "Theodore Roosevelt", "John F. Kennedy"],
+"answer": "Abraham Lincoln",
+"category": "World Presidents"
+},
+{
+"id": "q058",
+"question": "Who became South Africa's first Black president in 1994?",
+"options": ["Nelson Mandela", "F. W. de Klerk", "Thabo Mbeki", "Jacob Zuma"],
+"answer": "Nelson Mandela",
+"category": "World Presidents"
+},
+{
+"id": "q059",
+"question": "Who became the first prime minister of independent Ghana in 1957?",
+"options": ["Kwame Nkrumah", "Jomo Kenyatta", "Julius Nyerere", "Patrice Lumumba"],
+"answer": "Kwame Nkrumah",
+"category": "World Presidents and Leaders"
+},
+{
+"id": "q060",
+"question": "Who was the first president of Tanzania?",
+"options": ["Julius Nyerere", "Jomo Kenyatta", "Kenneth Kaunda", "Haile Selassie"],
+"answer": "Julius Nyerere",
+"category": "World Presidents"
+},
+{
+"id": "q061",
+"question": "Which organ pumps blood throughout the human body?",
+"options": ["Heart", "Liver", "Lung", "Kidney"],
+"answer": "Heart",
+"category": "Biology"
+},
+{
+"id": "q062",
+"question": "Which organ is primarily responsible for filtering waste from the blood and producing urine?",
+"options": ["Kidney", "Heart", "Stomach", "Pancreas"],
+"answer": "Kidney",
+"category": "Biology"
+},
+{
+"id": "q063",
+"question": "What is the basic unit of life?",
+"options": ["Cell", "Tissue", "Organ", "Atom"],
+"answer": "Cell",
+"category": "Biology"
+},
+{
+"id": "q064",
+"question": "Which part of a plant carries out most photosynthesis?",
+"options": ["Leaves", "Roots", "Flowers", "Seeds"],
+"answer": "Leaves",
+"category": "Biology"
+},
+{
+"id": "q065",
+"question": "Which molecule carries genetic information in most living organisms?",
+"options": ["DNA", "Glucose", "Water", "Oxygen"],
+"answer": "DNA",
+"category": "Biology"
+},
+{
+"id": "q066",
+"question": "Which blood cells help the body fight infections?",
+"options": ["White blood cells", "Red blood cells", "Platelets", "Plasma"],
+"answer": "White blood cells",
+"category": "Biology"
+},
+{
+"id": "q067",
+"question": "Which gas do plants mainly take in during photosynthesis?",
+"options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen"],
+"answer": "Carbon dioxide",
+"category": "Biology"
+},
+{
+"id": "q068",
+"question": "Which system controls and coordinates many activities of the human body?",
+"options": ["Nervous system", "Digestive system", "Respiratory system", "Skeletal system"],
+"answer": "Nervous system",
+"category": "Biology"
+},
+{
+"id": "q069",
+"question": "What is the largest organ of the human body?",
+"options": ["Skin", "Liver", "Heart", "Brain"],
+"answer": "Skin",
+"category": "Biology"
+},
+{
+"id": "q070",
+"question": "Which organs are mainly responsible for gas exchange in humans?",
+"options": ["Lungs", "Kidneys", "Liver", "Stomach"],
+"answer": "Lungs",
+"category": "Biology"
+},
+{
+"id": "q071",
+"question": "What is 12 × 12?",
+"options": ["124", "144", "154", "164"],
+"answer": "144",
+"category": "Mathematics"
+},
+{
+"id": "q072",
+"question": "What is the square root of 81?",
+"options": ["7", "8", "9", "10"],
+"answer": "9",
+"category": "Mathematics"
+},
+{
+"id": "q073",
+"question": "What is 25% of 200?",
+"options": ["25", "40", "50", "75"],
+"answer": "50",
+"category": "Mathematics"
+},
+{
+"id": "q074",
+"question": "What is the value of 7²?",
+"options": ["14", "42", "49", "56"],
+"answer": "49",
+"category": "Mathematics"
+},
+{
+"id": "q075",
+"question": "What is the perimeter of a square with a side length of 5 cm?",
+"options": ["10 cm", "15 cm", "20 cm", "25 cm"],
+"answer": "20 cm",
+"category": "Mathematics"
+},
+{
+"id": "q076",
+"question": "What is 3/4 expressed as a decimal?",
+"options": ["0.25", "0.5", "0.75", "1.25"],
+"answer": "0.75",
+"category": "Mathematics"
+},
+{
+"id": "q077",
+"question": "What is the next prime number after 7?",
+"options": ["8", "9", "10", "11"],
+"answer": "11",
+"category": "Mathematics"
+},
+{
+"id": "q078",
+"question": "If x + 8 = 15, what is x?",
+"options": ["5", "6", "7", "8"],
+"answer": "7",
+"category": "Mathematics"
+},
+{
+"id": "q079",
+"question": "What is the area of a rectangle that is 8 cm long and 5 cm wide?",
+"options": ["13 cm²", "26 cm²", "40 cm²", "80 cm²"],
+"answer": "40 cm²",
+"category": "Mathematics"
+},
+{
+"id": "q080",
+"question": "What is 1000 ÷ 10?",
+"options": ["10", "50", "100", "1000"],
+"answer": "100",
+"category": "Mathematics"
+},
+{
+"id": "q081",
+"question": "Which country won the 2022 FIFA World Cup?",
+"options": ["Argentina", "France", "Brazil", "Germany"],
+"answer": "Argentina",
+"category": "World Sports"
+},
+{
+"id": "q082",
+"question": "How many players does one football team normally have on the field at the start of a match?",
+"options": ["9", "10", "11", "12"],
+"answer": "11",
+"category": "World Sports"
+},
+{
+"id": "q083",
+"question": "Where were the ancient Olympic Games held?",
+"options": ["Greece", "Italy", "Egypt", "Persia"],
+"answer": "Greece",
+"category": "World Sports"
+},
+{
+"id": "q084",
+"question": "Which sport uses a racket and a shuttlecock?",
+"options": ["Tennis", "Badminton", "Golf", "Hockey"],
+"answer": "Badminton",
+"category": "World Sports"
+},
+{
+"id": "q085",
+"question": "In basketball, how many points is a free throw worth?",
+"options": ["1", "2", "3", "4"],
+"answer": "1",
+"category": "World Sports"
+},
+{
+"id": "q086",
+"question": "Which athlete holds the men's 100-meter world record?",
+"options": ["Usain Bolt", "Mo Farah", "Michael Phelps", "Roger Federer"],
+"answer": "Usain Bolt",
+"category": "World Sports"
+},
+{
+"id": "q087",
+"question": "Which sport is associated with Wimbledon?",
+"options": ["Tennis", "Cricket", "Rugby", "Boxing"],
+"answer": "Tennis",
+"category": "World Sports"
+},
+{
+"id": "q088",
+"question": "Which country has won the most men's FIFA World Cup titles?",
+"options": ["Brazil", "Germany", "Argentina", "France"],
+"answer": "Brazil",
+"category": "World Sports"
+},
+{
+"id": "q089",
+"question": "Who won eight gold medals in swimming at the 2008 Beijing Olympics?",
+"options": ["Michael Phelps", "Usain Bolt", "Ryan Lochte", "Mark Spitz"],
+"answer": "Michael Phelps",
+"category": "World Sports"
+},
+{
+"id": "q090",
+"question": "Which sport is played in the Tour de France?",
+"options": ["Cycling", "Running", "Swimming", "Rowing"],
+"answer": "Cycling",
+"category": "World Sports"
+},
+{
+"id": "q091",
+"question": "Which city is the capital of France?",
+"options": ["Paris", "Rome", "Berlin", "Lisbon"],
+"answer": "Paris",
+"category": "World Geography"
+},
+{
+"id": "q092",
+"question": "Which country is home to the Great Barrier Reef?",
+"options": ["Australia", "Indonesia", "South Africa", "Mexico"],
+"answer": "Australia",
+"category": "World Geography"
+},
+{
+"id": "q093",
+"question": "Which is the smallest continent by land area?",
+"options": ["Europe", "Australia", "Antarctica", "South America"],
+"answer": "Australia",
+"category": "World Geography"
+},
+{
+"id": "q094",
+"question": "Which country contains the city of Marrakech?",
+"options": ["Morocco", "Egypt", "Algeria", "Tunisia"],
+"answer": "Morocco",
+"category": "World Geography"
+},
+{
+"id": "q095",
+"question": "Which ocean lies between Africa and Australia?",
+"options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+"answer": "Indian Ocean",
+"category": "World Geography"
+},
+{
+"id": "q096",
+"question": "Which country has the city of Rio de Janeiro?",
+"options": ["Brazil", "Argentina", "Chile", "Peru"],
+"answer": "Brazil",
+"category": "World Geography"
+},
+{
+"id": "q097",
+"question": "What is the capital of Kenya?",
+"options": ["Mombasa", "Nairobi", "Kisumu", "Nakuru"],
+"answer": "Nairobi",
+"category": "World Geography"
+},
+{
+"id": "q098",
+"question": "Which country is famous for the ancient city of Petra?",
+"options": ["Jordan", "Lebanon", "Turkey", "Iran"],
+"answer": "Jordan",
+"category": "World Geography"
+},
+{
+"id": "q099",
+"question": "Which continent contains the Amazon Rainforest?",
+"options": ["South America", "Africa", "Asia", "North America"],
+"answer": "South America",
+"category": "World Geography"
+},
+{
+"id": "q100",
+"question": "What is the capital of Rwanda?",
+"options": ["Kigali", "Huye", "Musanze", "Rubavu"],
+"answer": "Kigali",
+"category": "Rwanda Geography"
+},
+{
+"id": "q101",
+"question": "Which planet is known as the Red Planet?",
+"options": ["Mars", "Venus", "Jupiter", "Mercury"],
+"answer": "Mars",
+"category": "Science"
+},
+{
+"id": "q102",
+"question": "Which planet is the largest in our Solar System?",
+"options": ["Earth", "Saturn", "Jupiter", "Neptune"],
+"answer": "Jupiter",
+"category": "Science"
+},
+{
+"id": "q103",
+"question": "What is the closest star to Earth?",
+"options": ["Sirius", "The Sun", "Polaris", "Betelgeuse"],
+"answer": "The Sun",
+"category": "Science"
+},
+{
+"id": "q104",
+"question": "How many planets are officially recognized in our Solar System?",
+"options": ["7", "8", "9", "10"],
+"answer": "8",
+"category": "Science"
+},
+{
+"id": "q105",
+"question": "What force keeps planets in orbit around the Sun?",
+"options": ["Magnetism", "Gravity", "Friction", "Electricity"],
+"answer": "Gravity",
+"category": "Science"
+},
+{
+"id": "q106",
+"question": "What is the main purpose of vaccines?",
+"options": ["To help the immune system recognize specific diseases", "To replace blood", "To increase height", "To strengthen bones instantly"],
+"answer": "To help the immune system recognize specific diseases",
+"category": "Health and Biology"
+},
+{
+"id": "q107",
+"question": "Which vitamin is commonly produced by the skin after exposure to sunlight?",
+"options": ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"],
+"answer": "Vitamin D",
+"category": "Health and Biology"
+},
+{
+"id": "q108",
+"question": "Which nutrient is especially important for building and repairing body tissues?",
+"options": ["Protein", "Water", "Salt", "Fiber"],
+"answer": "Protein",
+"category": "Health and Biology"
+},
+{
+"id": "q109",
+"question": "Which organ produces bile to help with digestion?",
+"options": ["Liver", "Heart", "Lung", "Kidney"],
+"answer": "Liver",
+"category": "Health and Biology"
+},
+{
+"id": "q110",
+"question": "Which practice is important for preventing the spread of many infectious diseases?",
+"options": ["Regular handwashing", "Avoiding all exercise", "Sleeping only two hours", "Skipping meals"],
+"answer": "Regular handwashing",
+"category": "Health and Biology"
+},
+{
+"id": "q111",
+"question": "Which structure carries sperm from the testes toward the urethra?",
+"options": ["Vas deferens", "Trachea", "Esophagus", "Ureter"],
+"answer": "Vas deferens",
+"category": "Human Reproductive Health"
+},
+{
+"id": "q112",
+"question": "Which organs produce eggs in the female reproductive system?",
+"options": ["Ovaries", "Uterus", "Cervix", "Vagina"],
+"answer": "Ovaries",
+"category": "Human Reproductive Health"
+},
+{
+"id": "q113",
+"question": "Where does fertilization normally occur in the human female reproductive system?",
+"options": ["Fallopian tube", "Uterus", "Cervix", "Vagina"],
+"answer": "Fallopian tube",
+"category": "Human Reproductive Health"
+},
+{
+"id": "q114",
+"question": "Which hormone is primarily associated with male reproductive development?",
+"options": ["Testosterone", "Insulin", "Adrenaline", "Melatonin"],
+"answer": "Testosterone",
+"category": "Human Reproductive Health"
+},
+{
+"id": "q115",
+"question": "Which hormone is important in regulating the menstrual cycle and female reproductive functions?",
+"options": ["Estrogen", "Insulin", "Adrenaline", "Thyroxine"],
+"answer": "Estrogen",
+"category": "Human Reproductive Health"
+},
+{
+"id": "q116",
+"question": "Which company developed the Windows operating system?",
+"options": ["Microsoft", "Apple", "Google", "IBM"],
+"answer": "Microsoft",
+"category": "Technology"
+},
+{
+"id": "q117",
+"question": "Which company developed the Android operating system?",
+"options": ["Google", "Microsoft", "Sony", "Nokia"],
+"answer": "Google",
+"category": "Technology"
+},
+{
+"id": "q118",
+"question": "What does CPU stand for?",
+"options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Computer Processing Utility"],
+"answer": "Central Processing Unit",
+"category": "Technology"
+},
+{
+"id": "q119",
+"question": "Which technology is primarily used to connect devices wirelessly over a short distance?",
+"options": ["Bluetooth", "HDMI", "Ethernet cable", "USB"],
+"answer": "Bluetooth",
+"category": "Technology"
+},
+{
+"id": "q120",
+"question": "What does URL stand for?",
+"options": ["Uniform Resource Locator", "Universal Record Link", "User Resource Language", "Unified Routing Location"],
+"answer": "Uniform Resource Locator",
+"category": "Technology"
+},
+{
+"id": "q121",
+"question": "Which company owns YouTube?",
+"options": ["Google", "Meta", "Microsoft", "Amazon"],
+"answer": "Google",
+"category": "Major Companies"
+},
+{
+"id": "q122",
+"question": "Which company owns WhatsApp?",
+"options": ["Meta", "Google", "Microsoft", "Apple"],
+"answer": "Meta",
+"category": "Major Companies"
+},
+{
+"id": "q123",
+"question": "Which company makes the PlayStation gaming console?",
+"options": ["Sony", "Microsoft", "Nintendo", "Sega"],
+"answer": "Sony",
+"category": "Major Companies"
+},
+{
+"id": "q124",
+"question": "Which company is known for producing the iPhone?",
+"options": ["Apple", "Samsung", "Google", "Huawei"],
+"answer": "Apple",
+"category": "Major Companies"
+},
+{
+"id": "q125",
+"question": "Which company is associated with the Galaxy smartphone series?",
+"options": ["Samsung", "Apple", "Nokia", "Sony"],
+"answer": "Samsung",
+"category": "Major Companies"
+},
+{
+"id": "q126",
+"question": "Who played the title character in the film Black Panther?",
+"options": ["Chadwick Boseman", "Will Smith", "Denzel Washington", "Chris Evans"],
+"answer": "Chadwick Boseman",
+"category": "Famous People and Film"
+},
+{
+"id": "q127",
+"question": "Who directed the film Titanic?",
+"options": ["James Cameron", "Steven Spielberg", "Christopher Nolan", "Peter Jackson"],
+"answer": "James Cameron",
+"category": "Famous People and Film"
+},
+{
+"id": "q128",
+"question": "Which actor played Jack Dawson in Titanic?",
+"options": ["Leonardo DiCaprio", "Tom Hanks", "Brad Pitt", "Johnny Depp"],
+"answer": "Leonardo DiCaprio",
+"category": "Famous People and Film"
+},
+{
+"id": "q129",
+"question": "Which actress played Hermione Granger in the Harry Potter films?",
+"options": ["Emma Watson", "Natalie Portman", "Scarlett Johansson", "Anne Hathaway"],
+"answer": "Emma Watson",
+"category": "Famous People and Film"
+},
+{
+"id": "q130",
+"question": "Who played Tony Stark in the Marvel Cinematic Universe?",
+"options": ["Robert Downey Jr.", "Chris Hemsworth", "Chris Evans", "Mark Ruffalo"],
+"answer": "Robert Downey Jr.",
+"category": "Famous People and Film"
+},
+{
+"id": "q131",
+"question": "Which country hosted the 2016 Summer Olympics?",
+"options": ["Brazil", "China", "United Kingdom", "Japan"],
+"answer": "Brazil",
+"category": "World Sports"
+},
+{
+"id": "q132",
+"question": "Which football club is based at Camp Nou?",
+"options": ["FC Barcelona", "Real Madrid", "Manchester United", "AC Milan"],
+"answer": "FC Barcelona",
+"category": "World Football"
+},
+{
+"id": "q133",
+"question": "Which football club is traditionally associated with the Santiago Bernabéu Stadium?",
+"options": ["Real Madrid", "FC Barcelona", "Chelsea", "Bayern Munich"],
+"answer": "Real Madrid",
+"category": "World Football"
+},
+{
+"id": "q134",
+"question": "Which football player is widely known by the nickname CR7?",
+"options": ["Cristiano Ronaldo", "Lionel Messi", "Neymar", "Kylian Mbappé"],
+"answer": "Cristiano Ronaldo",
+"category": "World Football"
+},
+{
+"id": "q135",
+"question": "Who was the captain of Argentina when they won the 2022 FIFA World Cup?",
+"options": ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappé"],
+"answer": "Lionel Messi",
+"category": "World Football"
+},
+{
+"id": "q136",
+"question": "Which country is known as the Land of a Thousand Hills?",
+"options": ["Rwanda", "Kenya", "Ghana", "Nigeria"],
+"answer": "Rwanda",
+"category": "Rwanda"
+},
+{
+"id": "q137",
+"question": "What is the official currency of Rwanda?",
+"options": ["Rwandan franc", "Kenyan shilling", "Ugandan shilling", "Tanzanian shilling"],
+"answer": "Rwandan franc",
+"category": "Rwanda"
+},
+{
+"id": "q138",
+"question": "Which is the highest mountain in Rwanda?",
+"options": ["Mount Karisimbi", "Mount Everest", "Mount Meru", "Mount Kenya"],
+"answer": "Mount Karisimbi",
+"category": "Rwanda"
+},
+{
+"id": "q139",
+"question": "Which lake is shared by Rwanda and the Democratic Republic of the Congo?",
+"options": ["Lake Kivu", "Lake Victoria", "Lake Tanganyika", "Lake Turkana"],
+"answer": "Lake Kivu",
+"category": "Rwanda"
+},
+{
+"id": "q140",
+"question": "Which national park in Rwanda is famous for mountain gorillas?",
+"options": ["Volcanoes National Park", "Akagera National Park", "Nyungwe National Park", "Gishwati-Mukura National Park"],
+"answer": "Volcanoes National Park",
+"category": "Rwanda"
+},
+{
+"id": "q141",
+"question": "Which institution is Rwanda's central bank?",
+"options": ["National Bank of Rwanda", "World Bank", "African Development Bank", "International Monetary Fund"],
+"answer": "National Bank of Rwanda",
+"category": "Rwanda Finance"
+},
+{
+"id": "q142",
+"question": "What does IMF stand for?",
+"options": ["International Monetary Fund", "International Market Federation", "International Money Foundation", "Intercontinental Monetary Forum"],
+"answer": "International Monetary Fund",
+"category": "World Finance"
+},
+{
+"id": "q143",
+"question": "What does GDP commonly measure?",
+"options": ["The value of goods and services produced in an economy", "The population of a country", "The size of a country's army", "The number of schools"],
+"answer": "The value of goods and services produced in an economy",
+"category": "World Finance"
+},
+{
+"id": "q144",
+"question": "What is the World Bank primarily known for?",
+"options": ["Providing development financing and assistance", "Operating national elections", "Organizing football tournaments", "Manufacturing smartphones"],
+"answer": "Providing development financing and assistance",
+"category": "World Finance"
+},
+{
+"id": "q145",
+"question": "What is inflation?",
+"options": ["A general increase in prices over time", "A decrease in population", "A fall in rainfall", "An increase in exports only"],
+"answer": "A general increase in prices over time",
+"category": "World Finance"
+},
+{
+"id": "q146",
+"question": "Which civilization developed democracy in ancient Athens?",
+"options": ["Ancient Greeks", "Ancient Romans", "Ancient Egyptians", "Ancient Persians"],
+"answer": "Ancient Greeks",
+"category": "World History"
+},
+{
+"id": "q147",
+"question": "Who painted the Mona Lisa?",
+"options": ["Leonardo da Vinci", "Michelangelo", "Pablo Picasso", "Vincent van Gogh"],
+"answer": "Leonardo da Vinci",
+"category": "Famous People"
+},
+{
+"id": "q148",
+"question": "Who wrote the play Romeo and Juliet?",
+"options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Homer"],
+"answer": "William Shakespeare",
+"category": "Famous People"
+},
+{
+"id": "q149",
+"question": "Which scientist developed the theory of general relativity?",
+"options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
+"answer": "Albert Einstein",
+"category": "Famous Scientists"
+},
+{
+"id": "q150",
+"question": "Who discovered penicillin?",
+"options": ["Alexander Fleming", "Louis Pasteur", "Marie Curie", "Gregor Mendel"],
+"answer": "Alexander Fleming",
+"category": "Famous Scientists"
+}
 ]
