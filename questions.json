@@ -1708,13 +1708,18 @@
     "category": "Umutekano w'imizigo"
   },
   {
-    "id": "rwanda-road-rw-085",
-    "question": "Iyo ikinyabiziga gihagaze ahantu hashobora guteza abandi ibyago, umuyobozi agomba gukora iki?",
-    "options": [
-      "Gufata ingamba zo kukimenyekanisha no gukura ikinyabiziga ahantu hateje akaga igihe bish  }
-
-[
-  {
+  "id": "rwanda-road-rw-085",
+  "question": "Iyo ikinyabiziga gihagaze ahantu hashobora guteza abandi ibyago, umuyobozi agomba gukora iki?",
+  "options": [
+    "Gufata ingamba zo kukimenyekanisha no gukura ikinyabiziga ahantu hateje akaga igihe bishoboka",
+    "Kukireka aho kiri nta kindi akoze",
+    "Kukimura gusa iyo hari undi muntu ubimusabye",
+    "Kugenda agakomeza urugendo"
+  ],
+  "answer": "Gufata ingamba zo kukimenyekanisha no gukura ikinyabiziga ahantu hateje akaga igihe bishoboka",
+  "category": "Rwanda Road Traffic Rules"
+},
+{
     "id": "famous-001",
     "question": "Who developed the theory of relativity?",
     "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"],
