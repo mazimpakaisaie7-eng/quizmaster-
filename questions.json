@@ -1,6 +1,14 @@
 [
   {
     "id": "q001",
+    "question": "What is the capital city of France?",
+    "options": ["Paris", "London", "Rome", "Berlin"],
+    "answer": "Paris",
+    "category": "Geography",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q002",
     "question": "Which country is famous for the pyramids of Giza?",
     "options": ["Egypt", "Greece", "Mexico", "India"],
     "answer": "Egypt",
@@ -8,1763 +16,709 @@
     "difficulty": "easy"
   },
   {
-    "id": "q002",
-    "question": "What is the capital city of France?",
-    "options": ["Paris", "Rome", "Madrid", "Berlin"],
-    "answer": "Paris",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
     "id": "q003",
-    "question": "What is the largest planet in our solar system?",
-    "options": ["Jupiter", "Earth", "Mars", "Venus"],
-    "answer": "Jupiter",
-    "category": "Science",
+    "question": "What is the largest ocean on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "answer": "Pacific Ocean",
+    "category": "Geography",
     "difficulty": "easy"
   },
   {
     "id": "q004",
-    "question": "What gas do humans need to breathe?",
+    "question": "How many continents are there?",
+    "options": ["5", "6", "7", "8"],
+    "answer": "7",
+    "category": "Geography",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q005",
+    "question": "What is the chemical symbol for water?",
+    "options": ["CO2", "H2O", "O2", "NaCl"],
+    "answer": "H2O",
+    "category": "Chemistry",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q006",
+    "question": "What planet is known as the Red Planet?",
+    "options": ["Venus", "Mars", "Jupiter", "Mercury"],
+    "answer": "Mars",
+    "category": "Science",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q007",
+    "question": "What is 12 × 5?",
+    "options": ["50", "60", "70", "80"],
+    "answer": "60",
+    "category": "Mathematics",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q008",
+    "question": "Which organ pumps blood around the human body?",
+    "options": ["Lungs", "Brain", "Heart", "Kidney"],
+    "answer": "Heart",
+    "category": "Biology",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q009",
+    "question": "What is the capital city of Rwanda?",
+    "options": ["Butare", "Kigali", "Gisenyi", "Musanze"],
+    "answer": "Kigali",
+    "category": "Rwanda",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q010",
+    "question": "What currency is used in Rwanda?",
+    "options": ["Rwandan franc", "Kenyan shilling", "Ugandan shilling", "Tanzanian shilling"],
+    "answer": "Rwandan franc",
+    "category": "Rwanda",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q011",
+    "question": "Which sport is played at the FIFA World Cup?",
+    "options": ["Basketball", "Football", "Tennis", "Cricket"],
+    "answer": "Football",
+    "category": "Sports",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q012",
+    "question": "Which country is Lionel Messi from?",
+    "options": ["Brazil", "Argentina", "Spain", "Portugal"],
+    "answer": "Argentina",
+    "category": "Football",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q013",
+    "question": "Which country is Cristiano Ronaldo from?",
+    "options": ["Portugal", "Brazil", "France", "Italy"],
+    "answer": "Portugal",
+    "category": "Football",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q014",
+    "question": "What color means stop at a standard traffic light?",
+    "options": ["Green", "Yellow", "Red", "Blue"],
+    "answer": "Red",
+    "category": "Road Traffic Rules",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q015",
+    "question": "What should a pedestrian generally do before crossing a road?",
+    "options": ["Run without looking", "Look for traffic and cross safely", "Stand in the middle of the road", "Close their eyes"],
+    "answer": "Look for traffic and cross safely",
+    "category": "Road Traffic Rules",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q016",
+    "question": "Which gas do humans need to breathe to stay alive?",
     "options": ["Oxygen", "Carbon dioxide", "Hydrogen", "Helium"],
     "answer": "Oxygen",
     "category": "Biology",
     "difficulty": "easy"
   },
   {
-    "id": "q005",
-    "question": "What is 10 × 5?",
-    "options": ["50", "15", "40", "55"],
-    "answer": "50",
-    "category": "Mathematics",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q006",
-    "question": "Which ocean is the largest on Earth?",
-    "options": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
-    "answer": "Pacific Ocean",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q007",
-    "question": "What is the chemical symbol for water?",
-    "options": ["H2O", "CO2", "O2", "NaCl"],
-    "answer": "H2O",
-    "category": "Chemistry",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q008",
-    "question": "Which planet is known as the Red Planet?",
-    "options": ["Mars", "Venus", "Jupiter", "Saturn"],
-    "answer": "Mars",
-    "category": "Science",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q009",
-    "question": "What is the capital city of Rwanda?",
-    "options": ["Kigali", "Butare", "Musanze", "Rubavu"],
-    "answer": "Kigali",
-    "category": "Rwanda Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q010",
-    "question": "How many continents are there on Earth?",
-    "options": ["7", "5", "6", "8"],
-    "answer": "7",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q011",
-    "question": "Which instrument is used to measure temperature?",
-    "options": ["Thermometer", "Barometer", "Compass", "Speedometer"],
-    "answer": "Thermometer",
-    "category": "Science",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q012",
-    "question": "Which country is home to the Eiffel Tower?",
-    "options": ["France", "Italy", "Spain", "Germany"],
-    "answer": "France",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q013",
-    "question": "What is the nearest star to Earth?",
-    "options": ["The Sun", "Sirius", "Polaris", "Betelgeuse"],
-    "answer": "The Sun",
-    "category": "Astronomy",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q014",
-    "question": "Which organ pumps blood around the human body?",
-    "options": ["Heart", "Lung", "Kidney", "Liver"],
-    "answer": "Heart",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q015",
-    "question": "What is 100 ÷ 10?",
-    "options": ["10", "20", "5", "100"],
-    "answer": "10",
-    "category": "Mathematics",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q016",
-    "question": "Which country is known as the Land of the Rising Sun?",
-    "options": ["Japan", "China", "South Korea", "Thailand"],
-    "answer": "Japan",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
     "id": "q017",
-    "question": "Which gas do plants absorb from the atmosphere?",
-    "options": ["Carbon dioxide", "Oxygen", "Nitrogen", "Hydrogen"],
-    "answer": "Carbon dioxide",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q018",
-    "question": "Who was the first person to walk on the Moon?",
-    "options": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"],
-    "answer": "Neil Armstrong",
-    "category": "World History",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q019",
-    "question": "How many players are on the field for one soccer team during a normal match?",
-    "options": ["11", "9", "10", "12"],
-    "answer": "11",
-    "category": "World Sports",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q020",
-    "question": "Which device is mainly used to enter text into a computer?",
-    "options": ["Keyboard", "Monitor", "Speaker", "Printer"],
-    "answer": "Keyboard",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q021",
-    "question": "Which country is home to Mount Kilimanjaro?",
-    "options": ["Tanzania", "Kenya", "Uganda", "Ethiopia"],
-    "answer": "Tanzania",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q022",
     "question": "What is the boiling point of water at standard atmospheric pressure?",
-    "options": ["100°C", "50°C", "0°C", "150°C"],
+    "options": ["50°C", "75°C", "100°C", "150°C"],
     "answer": "100°C",
     "category": "Physics",
     "difficulty": "easy"
   },
   {
-    "id": "q023",
-    "question": "Which metal is represented by the chemical symbol Fe?",
-    "options": ["Iron", "Gold", "Silver", "Copper"],
-    "answer": "Iron",
-    "category": "Chemistry",
+    "id": "q018",
+    "question": "Who was the first president of the United States?",
+    "options": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
+    "answer": "George Washington",
+    "category": "Presidents",
     "difficulty": "easy"
   },
   {
-    "id": "q024",
-    "question": "What is the largest mammal in the world?",
-    "options": ["Blue whale", "Elephant", "Giraffe", "Hippopotamus"],
-    "answer": "Blue whale",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q025",
-    "question": "Which country hosted the 2016 Summer Olympics?",
-    "options": ["Brazil", "China", "United Kingdom", "Japan"],
-    "answer": "Brazil",
-    "category": "World Sports",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q026",
-    "question": "What is the capital of Italy?",
-    "options": ["Rome", "Milan", "Venice", "Naples"],
-    "answer": "Rome",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q027",
-    "question": "Which force pulls objects toward the Earth?",
-    "options": ["Gravity", "Friction", "Magnetism", "Electricity"],
-    "answer": "Gravity",
-    "category": "Physics",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q028",
-    "question": "Which blood cells help fight infections?",
-    "options": ["White blood cells", "Red blood cells", "Platelets", "Plasma"],
-    "answer": "White blood cells",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q029",
-    "question": "What is 7 + 8?",
-    "options": ["15", "14", "16", "17"],
-    "answer": "15",
-    "category": "Mathematics",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q030",
-    "question": "Which country is home to the Great Wall?",
-    "options": ["China", "India", "Japan", "Mongolia"],
-    "answer": "China",
-    "category": "World History",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q031",
-    "question": "What is the chemical symbol for oxygen?",
-    "options": ["O", "Ox", "C", "H"],
-    "answer": "O",
-    "category": "Chemistry",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q032",
-    "question": "Which planet is famous for its prominent rings?",
-    "options": ["Saturn", "Mars", "Mercury", "Venus"],
-    "answer": "Saturn",
-    "category": "Astronomy",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q033",
-    "question": "What is the capital city of Kenya?",
-    "options": ["Nairobi", "Mombasa", "Kisumu", "Nakuru"],
-    "answer": "Nairobi",
-    "category": "Africa Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q034",
-    "question": "Which sport uses a racket and a shuttlecock?",
-    "options": ["Badminton", "Tennis", "Golf", "Basketball"],
-    "answer": "Badminton",
-    "category": "World Sports",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q035",
-    "question": "Which organ is mainly responsible for breathing?",
-    "options": ["Lungs", "Heart", "Stomach", "Brain"],
-    "answer": "Lungs",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q036",
-    "question": "What is the square root of 64?",
-    "options": ["8", "6", "7", "9"],
-    "answer": "8",
-    "category": "Mathematics",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q037",
-    "question": "Which country is famous for the city of Rio de Janeiro?",
-    "options": ["Brazil", "Argentina", "Chile", "Peru"],
-    "answer": "Brazil",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q038",
-    "question": "What is the freezing point of water?",
-    "options": ["0°C", "10°C", "50°C", "100°C"],
-    "answer": "0°C",
-    "category": "Physics",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q039",
-    "question": "Which planet is closest to the Sun?",
-    "options": ["Mercury", "Venus", "Earth", "Mars"],
-    "answer": "Mercury",
-    "category": "Astronomy",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q040",
-    "question": "Who painted the Mona Lisa?",
-    "options": ["Leonardo da Vinci", "Pablo Picasso", "Vincent van Gogh", "Michelangelo"],
-    "answer": "Leonardo da Vinci",
+    "id": "q019",
+    "question": "Who was Nelson Mandela?",
+    "options": ["A South African leader", "A French king", "A Brazilian footballer", "A Greek philosopher"],
+    "answer": "A South African leader",
     "category": "Famous People",
     "difficulty": "easy"
   },
   {
-    "id": "q041",
-    "question": "What is the capital of Uganda?",
-    "options": ["Kampala", "Entebbe", "Jinja", "Gulu"],
-    "answer": "Kampala",
-    "category": "Africa Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q042",
-    "question": "Which vitamin is commonly produced by the skin in sunlight?",
-    "options": ["Vitamin D", "Vitamin C", "Vitamin B12", "Vitamin K"],
-    "answer": "Vitamin D",
-    "category": "Health and Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q043",
-    "question": "Which computer component displays images and text?",
-    "options": ["Monitor", "Keyboard", "Mouse", "Microphone"],
-    "answer": "Monitor",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q044",
+    "id": "q020",
     "question": "How many sides does a triangle have?",
-    "options": ["3", "4", "5", "6"],
+    "options": ["2", "3", "4", "5"],
     "answer": "3",
     "category": "Mathematics",
     "difficulty": "easy"
   },
   {
-    "id": "q045",
-    "question": "Which African country is known as the Rainbow Nation?",
-    "options": ["South Africa", "Rwanda", "Ghana", "Nigeria"],
-    "answer": "South Africa",
-    "category": "Africa Geography",
+    "id": "q021",
+    "question": "Which is the largest planet in our solar system?",
+    "options": ["Earth", "Saturn", "Jupiter", "Neptune"],
+    "answer": "Jupiter",
+    "category": "Science",
     "difficulty": "easy"
   },
   {
-    "id": "q046",
-    "question": "Which substance has the chemical formula CO2?",
-    "options": ["Carbon dioxide", "Oxygen", "Water", "Hydrogen"],
-    "answer": "Carbon dioxide",
-    "category": "Chemistry",
+    "id": "q022",
+    "question": "Which animal is commonly called the king of the jungle?",
+    "options": ["Tiger", "Lion", "Elephant", "Giraffe"],
+    "answer": "Lion",
+    "category": "Animals",
     "difficulty": "easy"
   },
   {
-    "id": "q047",
-    "question": "Which sport is associated with Wimbledon?",
-    "options": ["Tennis", "Football", "Cricket", "Rugby"],
-    "answer": "Tennis",
-    "category": "World Sports",
+    "id": "q023",
+    "question": "Which lake is shared by Rwanda and the Democratic Republic of the Congo?",
+    "options": ["Lake Victoria", "Lake Kivu", "Lake Tanganyika", "Lake Malawi"],
+    "answer": "Lake Kivu",
+    "category": "Rwanda",
     "difficulty": "easy"
   },
   {
-    "id": "q048",
-    "question": "What is the largest continent by land area?",
-    "options": ["Asia", "Africa", "Europe", "North America"],
-    "answer": "Asia",
-    "category": "World Geography",
+    "id": "q024",
+    "question": "What is the main language spoken by Rwandans?",
+    "options": ["Kinyarwanda", "Portuguese", "Arabic", "German"],
+    "answer": "Kinyarwanda",
+    "category": "Rwanda",
     "difficulty": "easy"
   },
   {
-    "id": "q049",
-    "question": "Which part of a plant usually absorbs water from the soil?",
-    "options": ["Roots", "Leaves", "Flowers", "Fruit"],
-    "answer": "Roots",
+    "id": "q025",
+    "question": "What do plants mainly use to make food?",
+    "options": ["Photosynthesis", "Digestion", "Respiration only", "Fermentation"],
+    "answer": "Photosynthesis",
     "category": "Biology",
     "difficulty": "easy"
   },
   {
-    "id": "q050",
-    "question": "What does CPU stand for?",
-    "options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Computer Processing User"],
-    "answer": "Central Processing Unit",
-    "category": "Technology",
+    "id": "q026",
+    "question": "Which tennis player is associated with 23 Grand Slam singles titles in the women's game?",
+    "options": ["Serena Williams", "Maria Sharapova", "Naomi Osaka", "Venus Williams"],
+    "answer": "Serena Williams",
+    "category": "Sports",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q027",
+    "question": "Which country is home to Mount Everest?",
+    "options": ["Nepal and China", "India and Pakistan", "Japan and China", "Bhutan and India"],
+    "answer": "Nepal and China",
+    "category": "Geography",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q028",
+    "question": "What is the nearest star to Earth?",
+    "options": ["Sirius", "The Sun", "Polaris", "Betelgeuse"],
+    "answer": "The Sun",
+    "category": "Astronomy",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q029",
+    "question": "What is the basic unit of life?",
+    "options": ["Organ", "Cell", "Tissue", "Bone"],
+    "answer": "Cell",
+    "category": "Biology",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q030",
+    "question": "What should a driver do when a traffic light is red?",
+    "options": ["Stop", "Speed up", "Overtake", "Reverse immediately"],
+    "answer": "Stop",
+    "category": "Road Traffic Rules",
     "difficulty": "easy"
   },
 
   {
-    "id": "q051",
-    "question": "Who was the first emperor of the Roman Empire?",
-    "options": ["Augustus", "Julius Caesar", "Nero", "Constantine"],
-    "answer": "Augustus",
-    "category": "Kings and Rulers",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q052",
-    "question": "Which ancient civilization developed democracy in Athens?",
-    "options": ["Ancient Greeks", "Romans", "Persians", "Egyptians"],
-    "answer": "Ancient Greeks",
-    "category": "World History",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q053",
-    "question": "Who was the first President of the United States?",
-    "options": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"],
-    "answer": "George Washington",
-    "category": "World Leaders",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q054",
-    "question": "Which organelle is known as the powerhouse of the cell?",
-    "options": ["Mitochondria", "Nucleus", "Ribosome", "Golgi apparatus"],
-    "answer": "Mitochondria",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q055",
-    "question": "What is 12 × 12?",
-    "options": ["144", "124", "132", "154"],
-    "answer": "144",
-    "category": "Mathematics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q056",
-    "question": "Which country won the FIFA World Cup in 2022?",
-    "options": ["Argentina", "France", "Brazil", "Germany"],
-    "answer": "Argentina",
-    "category": "World Sports",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q057",
-    "question": "Which is the longest river in Africa?",
-    "options": ["Nile River", "Congo River", "Zambezi River", "Niger River"],
-    "answer": "Nile River",
-    "category": "Africa Geography",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q058",
-    "question": "What is the SI unit of force?",
-    "options": ["Newton", "Joule", "Watt", "Pascal"],
-    "answer": "Newton",
-    "category": "Physics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q059",
-    "question": "What is the pH of a neutral solution at room temperature?",
-    "options": ["7", "0", "14", "5"],
-    "answer": "7",
-    "category": "Chemistry",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q060",
-    "question": "Which blood type is commonly called the universal red-cell donor?",
-    "options": ["O negative", "AB positive", "A positive", "B negative"],
-    "answer": "O negative",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q061",
-    "question": "Who was known as the Maid of Orléans?",
-    "options": ["Joan of Arc", "Cleopatra", "Marie Curie", "Queen Victoria"],
-    "answer": "Joan of Arc",
-    "category": "World History",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q062",
-    "question": "Which ruler is associated with the Mali Empire and a famous pilgrimage to Mecca?",
-    "options": ["Mansa Musa", "Shaka Zulu", "Sundiata Keita", "Askia Muhammad"],
-    "answer": "Mansa Musa",
-    "category": "Kings and Rulers",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q063",
-    "question": "Who was the first female Prime Minister of the United Kingdom?",
-    "options": ["Margaret Thatcher", "Theresa May", "Angela Merkel", "Indira Gandhi"],
-    "answer": "Margaret Thatcher",
-    "category": "World Leaders",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q064",
-    "question": "Which molecule carries genetic information in most living organisms?",
-    "options": ["DNA", "ATP", "Glucose", "Hemoglobin"],
-    "answer": "DNA",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q065",
-    "question": "What is the value of 15²?",
-    "options": ["225", "215", "250", "125"],
-    "answer": "225",
-    "category": "Mathematics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q066",
-    "question": "Which country has won the most men's FIFA World Cup titles?",
-    "options": ["Brazil", "Germany", "Argentina", "Italy"],
-    "answer": "Brazil",
-    "category": "World Sports",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q067",
-    "question": "Which lake is shared by Rwanda, Burundi, Tanzania and the Democratic Republic of the Congo?",
-    "options": ["Lake Tanganyika", "Lake Victoria", "Lake Kivu", "Lake Albert"],
-    "answer": "Lake Tanganyika",
-    "category": "Africa Geography",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q068",
-    "question": "What is the SI unit of energy?",
-    "options": ["Joule", "Newton", "Watt", "Volt"],
-    "answer": "Joule",
-    "category": "Physics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q069",
-    "question": "What is the atomic number of carbon?",
-    "options": ["6", "8", "12", "14"],
-    "answer": "6",
-    "category": "Chemistry",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q070",
-    "question": "Which part of the brain is mainly responsible for balance and coordination?",
-    "options": ["Cerebellum", "Cerebrum", "Medulla", "Hypothalamus"],
-    "answer": "Cerebellum",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q071",
-    "question": "Which empire built the Colosseum?",
-    "options": ["Roman Empire", "Mali Empire", "Ottoman Empire", "Mughal Empire"],
-    "answer": "Roman Empire",
-    "category": "World History",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q072",
-    "question": "Who was the British queen for most of the Victorian era?",
-    "options": ["Queen Victoria", "Elizabeth I", "Mary I", "Anne"],
-    "answer": "Queen Victoria",
-    "category": "Kings and Rulers",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q073",
-    "question": "Who became South Africa's first Black president in 1994?",
-    "options": ["Nelson Mandela", "Thabo Mbeki", "Desmond Tutu", "F. W. de Klerk"],
-    "answer": "Nelson Mandela",
-    "category": "World Leaders",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q074",
-    "question": "What process do plants use to convert light energy into chemical energy?",
-    "options": ["Photosynthesis", "Respiration", "Digestion", "Fermentation"],
-    "answer": "Photosynthesis",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q075",
-    "question": "If x + 7 = 20, what is x?",
-    "options": ["13", "12", "14", "27"],
-    "answer": "13",
-    "category": "Mathematics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q076",
-    "question": "Which athlete is famous for the 100-meter sprint and multiple Olympic gold medals?",
-    "options": ["Usain Bolt", "Michael Phelps", "Roger Federer", "Mo Farah"],
-    "answer": "Usain Bolt",
-    "category": "World Sports",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q077",
-    "question": "What is the capital of Tanzania?",
-    "options": ["Dodoma", "Dar es Salaam", "Arusha", "Mwanza"],
-    "answer": "Dodoma",
-    "category": "Africa Geography",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q078",
-    "question": "What is the speed of light in vacuum approximately?",
-    "options": ["300,000 km/s", "30,000 km/s", "3,000 km/s", "3,000,000 km/s"],
-    "answer": "300,000 km/s",
-    "category": "Physics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q079",
-    "question": "Which element has the chemical symbol Na?",
-    "options": ["Sodium", "Nitrogen", "Neon", "Nickel"],
-    "answer": "Sodium",
-    "category": "Chemistry",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q080",
-    "question": "Which human organ filters waste from the blood to produce urine?",
-    "options": ["Kidneys", "Lungs", "Heart", "Stomach"],
-    "answer": "Kidneys",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q081",
+    "id": "q031",
     "question": "In which year did World War II end?",
-    "options": ["1945", "1939", "1944", "1950"],
+    "options": ["1939", "1942", "1945", "1950"],
     "answer": "1945",
     "category": "World History",
     "difficulty": "medium"
   },
   {
-    "id": "q082",
-    "question": "Which ancient Egyptian ruler was famously named Cleopatra VII?",
-    "options": ["Cleopatra", "Nefertiti", "Hatshepsut", "Ankhesenamun"],
-    "answer": "Cleopatra",
-    "category": "Kings and Rulers",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q083",
-    "question": "Who was the first woman to win a Nobel Prize?",
-    "options": ["Marie Curie", "Rosalind Franklin", "Ada Lovelace", "Jane Goodall"],
-    "answer": "Marie Curie",
-    "category": "Famous Scientists",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q084",
-    "question": "Which cell structure contains chromosomes?",
-    "options": ["Nucleus", "Cell membrane", "Cytoplasm", "Vacuole"],
-    "answer": "Nucleus",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q085",
-    "question": "What is 25% of 200?",
-    "options": ["50", "25", "75", "100"],
-    "answer": "50",
-    "category": "Mathematics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q086",
-    "question": "Which country hosted the 2018 FIFA World Cup?",
-    "options": ["Russia", "Brazil", "Germany", "France"],
-    "answer": "Russia",
-    "category": "World Sports",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q087",
-    "question": "Which mountain is the highest in Africa?",
-    "options": ["Mount Kilimanjaro", "Mount Kenya", "Mount Elgon", "Mount Meru"],
-    "answer": "Mount Kilimanjaro",
-    "category": "Africa Geography",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q088",
-    "question": "What happens to most metals when they are heated?",
-    "options": ["They expand", "They disappear", "They freeze", "They lose all mass"],
-    "answer": "They expand",
-    "category": "Physics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q089",
-    "question": "Which gas is most abundant in Earth's atmosphere?",
-    "options": ["Nitrogen", "Oxygen", "Carbon dioxide", "Hydrogen"],
-    "answer": "Nitrogen",
-    "category": "Chemistry",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q090",
-    "question": "Which organ produces insulin?",
-    "options": ["Pancreas", "Liver", "Kidney", "Heart"],
-    "answer": "Pancreas",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q091",
-    "question": "Which civilization built Machu Picchu?",
-    "options": ["Inca", "Roman", "Maya", "Egyptian"],
-    "answer": "Inca",
+    "id": "q032",
+    "question": "Which ancient civilization developed democracy in Athens?",
+    "options": ["Greek", "Roman", "Egyptian", "Persian"],
+    "answer": "Greek",
     "category": "World History",
     "difficulty": "medium"
   },
   {
-    "id": "q092",
-    "question": "Which famous ruler was associated with the Mughal Empire and commissioned the Taj Mahal?",
-    "options": ["Shah Jahan", "Akbar", "Babur", "Aurangzeb"],
-    "answer": "Shah Jahan",
-    "category": "Kings and Rulers",
+    "id": "q033",
+    "question": "Which river is generally considered the longest river in Africa?",
+    "options": ["Congo River", "Nile River", "Zambezi River", "Niger River"],
+    "answer": "Nile River",
+    "category": "Geography",
     "difficulty": "medium"
   },
   {
-    "id": "q093",
-    "question": "Who served as the first President of Ghana?",
-    "options": ["Kwame Nkrumah", "Jomo Kenyatta", "Julius Nyerere", "Haile Selassie"],
-    "answer": "Kwame Nkrumah",
-    "category": "World Leaders",
+    "id": "q034",
+    "question": "Which country has the largest land area in the world?",
+    "options": ["Canada", "China", "United States", "Russia"],
+    "answer": "Russia",
+    "category": "Geography",
     "difficulty": "medium"
   },
   {
-    "id": "q094",
-    "question": "Which molecule is the main energy currency of cells?",
-    "options": ["ATP", "DNA", "RNA", "CO2"],
-    "answer": "ATP",
-    "category": "Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q095",
-    "question": "What is the perimeter of a square with a side length of 6 cm?",
-    "options": ["24 cm", "12 cm", "36 cm", "18 cm"],
-    "answer": "24 cm",
-    "category": "Mathematics",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q096",
-    "question": "Which football club is based at Old Trafford?",
-    "options": ["Manchester United", "Liverpool", "Chelsea", "Arsenal"],
-    "answer": "Manchester United",
-    "category": "World Sports",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q097",
-    "question": "Which country borders Rwanda to the west?",
-    "options": ["Democratic Republic of the Congo", "Uganda", "Tanzania", "Burundi"],
-    "answer": "Democratic Republic of the Congo",
-    "category": "Rwanda Geography",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q098",
-    "question": "What is the unit of electrical resistance?",
-    "options": ["Ohm", "Volt", "Ampere", "Watt"],
-    "answer": "Ohm",
+    "id": "q035",
+    "question": "What is the SI unit of force?",
+    "options": ["Joule", "Newton", "Watt", "Pascal"],
+    "answer": "Newton",
     "category": "Physics",
     "difficulty": "medium"
   },
   {
-    "id": "q099",
-    "question": "Which acid is present in vinegar?",
-    "options": ["Acetic acid", "Sulfuric acid", "Hydrochloric acid", "Nitric acid"],
-    "answer": "Acetic acid",
+    "id": "q036",
+    "question": "What is the SI unit of electrical power?",
+    "options": ["Volt", "Ampere", "Watt", "Ohm"],
+    "answer": "Watt",
+    "category": "Physics",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q037",
+    "question": "What is the atomic number of oxygen?",
+    "options": ["6", "7", "8", "9"],
+    "answer": "8",
     "category": "Chemistry",
     "difficulty": "medium"
   },
   {
-    "id": "q100",
-    "question": "Which type of blood vessel carries blood away from the heart?",
-    "options": ["Artery", "Vein", "Capillary", "Valve"],
-    "answer": "Artery",
+    "id": "q038",
+    "question": "What is the pH of a neutral solution at room temperature?",
+    "options": ["1", "5", "7", "14"],
+    "answer": "7",
+    "category": "Chemistry",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q039",
+    "question": "Which organelle is known as the powerhouse of the cell?",
+    "options": ["Nucleus", "Mitochondrion", "Ribosome", "Golgi apparatus"],
+    "answer": "Mitochondrion",
     "category": "Biology",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q040",
+    "question": "Which blood cells help the body fight infections?",
+    "options": ["Red blood cells", "White blood cells", "Platelets", "Plasma cells only"],
+    "answer": "White blood cells",
+    "category": "Biology",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q041",
+    "question": "What is the square root of 144?",
+    "options": ["10", "11", "12", "14"],
+    "answer": "12",
+    "category": "Mathematics",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q042",
+    "question": "If a triangle has angles of 60°, 60°, and 60°, what type of triangle is it?",
+    "options": ["Right triangle", "Scalene triangle", "Equilateral triangle", "Obtuse triangle"],
+    "answer": "Equilateral triangle",
+    "category": "Mathematics",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q043",
+    "question": "Which national park in Rwanda is famous for mountain gorillas?",
+    "options": ["Akagera National Park", "Nyungwe National Park", "Volcanoes National Park", "Gishwati-Mukura National Park"],
+    "answer": "Volcanoes National Park",
+    "category": "Rwanda",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q044",
+    "question": "Which Rwandan national park is especially known for savannah wildlife?",
+    "options": ["Akagera National Park", "Volcanoes National Park", "Nyungwe National Park", "Gishwati-Mukura National Park"],
+    "answer": "Akagera National Park",
+    "category": "Rwanda",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q045",
+    "question": "What is Umuganda in Rwanda?",
+    "options": ["A monthly community service activity", "A national football league", "A type of currency", "A mountain"],
+    "answer": "A monthly community service activity",
+    "category": "Rwanda",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q046",
+    "question": "Who wrote the play Romeo and Juliet?",
+    "options": ["William Shakespeare", "Charles Dickens", "Leo Tolstoy", "Mark Twain"],
+    "answer": "William Shakespeare",
+    "category": "Famous People",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q047",
+    "question": "Which scientist developed the theory of relativity?",
+    "options": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"],
+    "answer": "Albert Einstein",
+    "category": "Famous People",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q048",
+    "question": "Which country won the 2018 FIFA World Cup?",
+    "options": ["Brazil", "France", "Germany", "Argentina"],
+    "answer": "France",
+    "category": "Football",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q049",
+    "question": "How many players from one team are normally on the field in association football?",
+    "options": ["9", "10", "11", "12"],
+    "answer": "11",
+    "category": "Football",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q050",
+    "question": "Which athlete is famous for multiple Olympic sprint records?",
+    "options": ["Usain Bolt", "Michael Phelps", "Roger Federer", "Tiger Woods"],
+    "answer": "Usain Bolt",
+    "category": "Sports",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q051",
+    "question": "What does a yellow traffic light generally warn drivers about?",
+    "options": ["A change toward stopping", "A free parking zone", "A fuel station", "A pedestrian-only road"],
+    "answer": "A change toward stopping",
+    "category": "Road Traffic Rules",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q052",
+    "question": "Why are seat belts important in vehicles?",
+    "options": ["They reduce the risk of injury in a crash", "They increase engine power", "They reduce fuel quality", "They make tires larger"],
+    "answer": "They reduce the risk of injury in a crash",
+    "category": "Road Traffic Rules",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q053",
+    "question": "What is the main function of red blood cells?",
+    "options": ["Carry oxygen", "Produce bones", "Digest food", "Control body temperature"],
+    "answer": "Carry oxygen",
+    "category": "Biology",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q054",
+    "question": "Which process changes a liquid into a gas?",
+    "options": ["Freezing", "Condensation", "Evaporation", "Melting"],
+    "answer": "Evaporation",
+    "category": "Physics",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q055",
+    "question": "Which metal is liquid at ordinary room temperature?",
+    "options": ["Iron", "Mercury", "Copper", "Aluminium"],
+    "answer": "Mercury",
+    "category": "Chemistry",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q056",
+    "question": "Which strait separates Europe from Africa?",
+    "options": ["Strait of Gibraltar", "Strait of Malacca", "Bering Strait", "Bosporus Strait"],
+    "answer": "Strait of Gibraltar",
+    "category": "Geography",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q057",
+    "question": "Which country is known as the Land of the Rising Sun?",
+    "options": ["China", "Japan", "South Korea", "Thailand"],
+    "answer": "Japan",
+    "category": "Geography",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q058",
+    "question": "Which branch of government generally interprets laws?",
+    "options": ["Executive", "Legislative", "Judicial", "Electoral"],
+    "answer": "Judicial",
+    "category": "Civics",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q059",
+    "question": "Which molecule carries genetic information in most living organisms?",
+    "options": ["DNA", "Glucose", "Water", "Oxygen"],
+    "answer": "DNA",
+    "category": "Biology",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q060",
+    "question": "What is the main purpose of a pedestrian crossing?",
+    "options": ["To provide a safer place for pedestrians to cross", "To allow cars to park", "To increase vehicle speed", "To mark a fuel station"],
+    "answer": "To provide a safer place for pedestrians to cross",
+    "category": "Road Traffic Rules",
     "difficulty": "medium"
   },
 
   {
-    "id": "q101",
-    "question": "What is the SI unit of power?",
-    "options": ["Watt", "Joule", "Newton", "Pascal"],
-    "answer": "Watt",
-    "category": "Physics",
+    "id": "q061",
+    "question": "Which treaty is commonly associated with ending the Thirty Years' War in 1648?",
+    "options": ["Treaty of Versailles", "Peace of Westphalia", "Treaty of Paris", "Treaty of Tordesillas"],
+    "answer": "Peace of Westphalia",
+    "category": "World History",
     "difficulty": "hard"
   },
   {
-    "id": "q102",
-    "question": "What is Newton's second law of motion commonly written as?",
+    "id": "q062",
+    "question": "The Battle of Hastings took place in which year?",
+    "options": ["1066", "1215", "1492", "1648"],
+    "answer": "1066",
+    "category": "World History",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q063",
+    "question": "Which document was sealed by King John of England in 1215?",
+    "options": ["Magna Carta", "Domesday Book", "Bill of Rights", "Act of Union"],
+    "answer": "Magna Carta",
+    "category": "World History",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q064",
+    "question": "Which ancient city became the capital of the Byzantine Empire?",
+    "options": ["Athens", "Constantinople", "Alexandria", "Sparta"],
+    "answer": "Constantinople",
+    "category": "World History",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q065",
+    "question": "Which civilization built Machu Picchu?",
+    "options": ["Maya", "Inca", "Roman", "Persian"],
+    "answer": "Inca",
+    "category": "World History",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q066",
+    "question": "Which African empire was famously associated with Mansa Musa?",
+    "options": ["Mali Empire", "Zulu Kingdom", "Songhai Empire", "Aksumite Empire"],
+    "answer": "Mali Empire",
+    "category": "African History",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q067",
+    "question": "Which lake is the deepest freshwater lake in the world?",
+    "options": ["Lake Victoria", "Lake Baikal", "Lake Tanganyika", "Lake Superior"],
+    "answer": "Lake Baikal",
+    "category": "Geography",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q068",
+    "question": "Which is the world's largest inland body of water by surface area?",
+    "options": ["Lake Superior", "Caspian Sea", "Lake Victoria", "Lake Baikal"],
+    "answer": "Caspian Sea",
+    "category": "Geography",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q069",
+    "question": "Which desert is one of the driest non-polar deserts on Earth?",
+    "options": ["Sahara", "Atacama", "Gobi", "Kalahari"],
+    "answer": "Atacama",
+    "category": "Geography",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q070",
+    "question": "Which strait connects the Mediterranean Sea with the Atlantic Ocean?",
+    "options": ["Bering Strait", "Strait of Gibraltar", "Strait of Malacca", "Dardanelles"],
+    "answer": "Strait of Gibraltar",
+    "category": "Geography",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q071",
+    "question": "What is Newton's second law commonly written as?",
     "options": ["F = ma", "E = mc²", "V = IR", "P = VI"],
     "answer": "F = ma",
     "category": "Physics",
     "difficulty": "hard"
   },
   {
-    "id": "q103",
-    "question": "Which phenomenon explains the bending of light when it passes between different media?",
-    "options": ["Refraction", "Reflection", "Diffraction", "Polarization"],
+    "id": "q072",
+    "question": "What phenomenon explains the bending of light when it passes from one medium into another?",
+    "options": ["Reflection", "Refraction", "Diffraction", "Polarization"],
     "answer": "Refraction",
     "category": "Physics",
     "difficulty": "hard"
   },
   {
-    "id": "q104",
-    "question": "Which particle has a negative electric charge?",
-    "options": ["Electron", "Proton", "Neutron", "Photon"],
-    "answer": "Electron",
-    "category": "Physics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q105",
-    "question": "What is the approximate acceleration due to gravity near Earth's surface?",
-    "options": ["9.8 m/s²", "5.0 m/s²", "15 m/s²", "20 m/s²"],
-    "answer": "9.8 m/s²",
-    "category": "Physics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q106",
-    "question": "Which organelle is the primary site of photosynthesis in plant cells?",
-    "options": ["Chloroplast", "Mitochondrion", "Nucleus", "Ribosome"],
-    "answer": "Chloroplast",
-    "category": "Biology",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q107",
-    "question": "Which process produces two genetically identical daughter cells?",
-    "options": ["Mitosis", "Meiosis", "Fertilization", "Mutation"],
-    "answer": "Mitosis",
-    "category": "Biology",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q108",
-    "question": "Which molecule carries amino acids to the ribosome during protein synthesis?",
-    "options": ["tRNA", "mRNA", "DNA", "ATP"],
-    "answer": "tRNA",
-    "category": "Biology",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q109",
-    "question": "What is the basic unit of heredity?",
-    "options": ["Gene", "Cell", "Organ", "Protein"],
-    "answer": "Gene",
-    "category": "Biology",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q110",
-    "question": "Which blood component is mainly responsible for clotting?",
-    "options": ["Platelets", "Red blood cells", "White blood cells", "Plasma"],
-    "answer": "Platelets",
-    "category": "Biology",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q111",
-    "question": "What is the derivative of x²?",
-    "options": ["2x", "x", "x³", "2"],
-    "answer": "2x",
-    "category": "Mathematics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q112",
-    "question": "What is the value of 2⁵?",
-    "options": ["32", "16", "25", "64"],
-    "answer": "32",
-    "category": "Mathematics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q113",
-    "question": "What is the probability of rolling a six on a fair six-sided die?",
-    "options": ["1/6", "1/3", "1/2", "1/12"],
-    "answer": "1/6",
-    "category": "Mathematics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q114",
-    "question": "What is the area of a circle with radius r?",
-    "options": ["πr²", "2πr", "πr", "r²/π"],
-    "answer": "πr²",
-    "category": "Mathematics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q115",
-    "question": "What is the solution to 3x - 9 = 0?",
-    "options": ["3", "9", "0", "-3"],
-    "answer": "3",
-    "category": "Mathematics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q116",
-    "question": "Which team won the 2023 Africa Cup of Nations?",
-    "options": ["Côte d'Ivoire", "Nigeria", "Senegal", "Morocco"],
-    "answer": "Côte d'Ivoire",
-    "category": "African Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q117",
-    "question": "Which country won the 2014 FIFA World Cup?",
-    "options": ["Germany", "Argentina", "Brazil", "Spain"],
-    "answer": "Germany",
-    "category": "Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q118",
-    "question": "Which player is known for winning multiple Ballon d'Or awards and playing for Argentina?",
-    "options": ["Lionel Messi", "Luka Modrić", "Neymar", "Kylian Mbappé"],
-    "answer": "Lionel Messi",
-    "category": "Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q119",
-    "question": "Which African country was the first to reach a FIFA World Cup semi-final?",
-    "options": ["Morocco", "Ghana", "Cameroon", "Senegal"],
-    "answer": "Morocco",
-    "category": "African Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q120",
-    "question": "Who coached Real Madrid to three consecutive UEFA Champions League titles from 2016 to 2018?",
-    "options": ["Zinedine Zidane", "Carlo Ancelotti", "Pep Guardiola", "José Mourinho"],
-    "answer": "Zinedine Zidane",
-    "category": "Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q121",
-    "question": "What is the main function of a central bank?",
-    "options": ["Manage monetary policy", "Sell clothing", "Build houses", "Operate airlines"],
-    "answer": "Manage monetary policy",
-    "category": "World Finance",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q122",
-    "question": "What is the official English name of Rwanda's central bank?",
-    "options": ["National Bank of Rwanda", "Rwanda Central Bank Ltd", "Bank of Kigali", "Rwanda Reserve Bank"],
-    "answer": "National Bank of Rwanda",
-    "category": "Rwanda Finance",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q123",
-    "question": "Which institution is responsible for setting monetary policy in Rwanda?",
-    "options": ["National Bank of Rwanda", "Rwanda Revenue Authority", "Rwanda Development Board", "Ministry of Sports"],
-    "answer": "National Bank of Rwanda",
-    "category": "Rwanda Finance",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q124",
-    "question": "What does GDP stand for?",
-    "options": ["Gross Domestic Product", "General Development Price", "Global Domestic Payment", "Gross Development Plan"],
-    "answer": "Gross Domestic Product",
-    "category": "World Finance",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q125",
-    "question": "What does inflation generally mean?",
-    "options": ["A sustained rise in general price levels", "A fall in population", "A rise in rainfall", "A decrease in all wages"],
-    "answer": "A sustained rise in general price levels",
-    "category": "World Finance",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q126",
-    "question": "Who developed the theory of relativity?",
-    "options": ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Niels Bohr"],
+    "id": "q073",
+    "question": "Which scientist is strongly associated with the photoelectric effect explanation?",
+    "options": ["Albert Einstein", "James Watt", "Robert Hooke", "Archimedes"],
     "answer": "Albert Einstein",
-    "category": "Famous Scientists",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q127",
-    "question": "Who formulated the laws of motion and universal gravitation?",
-    "options": ["Isaac Newton", "Albert Einstein", "James Clerk Maxwell", "Michael Faraday"],
-    "answer": "Isaac Newton",
-    "category": "Famous Scientists",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q128",
-    "question": "Who discovered penicillin?",
-    "options": ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Edward Jenner"],
-    "answer": "Alexander Fleming",
-    "category": "Famous Scientists",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q129",
-    "question": "Who developed the first successful polio vaccine?",
-    "options": ["Jonas Salk", "Alexander Fleming", "Marie Curie", "Gregor Mendel"],
-    "answer": "Jonas Salk",
-    "category": "Famous Scientists",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q130",
-    "question": "Which scientist is associated with the laws of planetary motion?",
-    "options": ["Johannes Kepler", "Charles Darwin", "Dmitri Mendeleev", "Louis Pasteur"],
-    "answer": "Johannes Kepler",
-    "category": "Famous Scientists",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q131",
-    "question": "Which scientist proposed the theory of evolution by natural selection?",
-    "options": ["Charles Darwin", "Gregor Mendel", "Isaac Newton", "Nikola Tesla"],
-    "answer": "Charles Darwin",
-    "category": "Famous Scientists",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q132",
-    "question": "Which scientist is famous for pioneering research on radioactivity with Pierre Curie?",
-    "options": ["Marie Curie", "Ada Lovelace", "Jane Goodall", "Rosalind Franklin"],
-    "answer": "Marie Curie",
-    "category": "Famous Scientists",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q133",
-    "question": "Which scientist is associated with the periodic table?",
-    "options": ["Dmitri Mendeleev", "Robert Boyle", "Antoine Lavoisier", "Erwin Schrödinger"],
-    "answer": "Dmitri Mendeleev",
-    "category": "Chemistry",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q134",
-    "question": "What is the chemical symbol for potassium?",
-    "options": ["K", "P", "Pt", "Po"],
-    "answer": "K",
-    "category": "Chemistry",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q135",
-    "question": "Which subatomic particle has no electric charge?",
-    "options": ["Neutron", "Electron", "Proton", "Positron"],
-    "answer": "Neutron",
     "category": "Physics",
     "difficulty": "hard"
   },
   {
-    "id": "q136",
-    "question": "Which law states that energy cannot be created or destroyed in an isolated system?",
-    "options": ["Law of conservation of energy", "Ohm's law", "Hooke's law", "Boyle's law"],
-    "answer": "Law of conservation of energy",
+    "id": "q074",
+    "question": "What is the SI unit of electric charge?",
+    "options": ["Volt", "Coulomb", "Ohm", "Tesla"],
+    "answer": "Coulomb",
     "category": "Physics",
     "difficulty": "hard"
   },
   {
-    "id": "q137",
-    "question": "What is the approximate value of Avogadro's constant?",
+    "id": "q075",
+    "question": "Which principle states that pressure applied to a confined fluid is transmitted throughout the fluid?",
+    "options": ["Pascal's principle", "Archimedes' principle", "Bernoulli's principle", "Ohm's law"],
+    "answer": "Pascal's principle",
+    "category": "Physics",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q076",
+    "question": "What is the atomic number of carbon?",
+    "options": ["4", "6", "8", "12"],
+    "answer": "6",
+    "category": "Chemistry",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q077",
+    "question": "Which process is used industrially to produce ammonia from nitrogen and hydrogen?",
+    "options": ["Haber process", "Solvay process", "Contact process", "Hall-Héroult process"],
+    "answer": "Haber process",
+    "category": "Chemistry",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q078",
+    "question": "What is Avogadro's number approximately?",
     "options": ["6.022 × 10²³", "9.81 × 10²", "3.00 × 10⁸", "1.602 × 10⁻¹⁹"],
     "answer": "6.022 × 10²³",
     "category": "Chemistry",
     "difficulty": "hard"
   },
   {
-    "id": "q138",
-    "question": "Which type of chemical bond involves sharing electrons?",
-    "options": ["Covalent bond", "Ionic bond", "Metallic bond", "Hydrogen bond"],
-    "answer": "Covalent bond",
+    "id": "q079",
+    "question": "Which particle determines the atomic number of an element?",
+    "options": ["Electron", "Neutron", "Proton", "Photon"],
+    "answer": "Proton",
     "category": "Chemistry",
     "difficulty": "hard"
   },
   {
-    "id": "q139",
-    "question": "What is the derivative of sin(x)?",
-    "options": ["cos(x)", "-cos(x)", "sin(x)", "-sin(x)"],
-    "answer": "cos(x)",
-    "category": "Mathematics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q140",
-    "question": "What is the integral of 2x with respect to x?",
-    "options": ["x² + C", "2x² + C", "x + C", "2 + C"],
-    "answer": "x² + C",
-    "category": "Mathematics",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q141",
-    "question": "Which football competition is organized by UEFA for European national teams?",
-    "options": ["UEFA European Championship", "Copa América", "Africa Cup of Nations", "AFC Asian Cup"],
-    "answer": "UEFA European Championship",
-    "category": "Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q142",
-    "question": "Which club is traditionally known as the home of the 'Galácticos'?",
-    "options": ["Real Madrid", "Barcelona", "AC Milan", "Bayern Munich"],
-    "answer": "Real Madrid",
-    "category": "Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q143",
-    "question": "Which African nation won the Africa Cup of Nations in 2019?",
-    "options": ["Algeria", "Senegal", "Egypt", "Cameroon"],
-    "answer": "Algeria",
-    "category": "African Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q144",
-    "question": "Which player is nicknamed 'The Pharaoh'?",
-    "options": ["Mohamed Salah", "Sadio Mané", "Riyad Mahrez", "Didier Drogba"],
-    "answer": "Mohamed Salah",
-    "category": "African Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q145",
-    "question": "Which footballer won the 2005 Ballon d'Or?",
-    "options": ["Ronaldinho", "Kaká", "Zinedine Zidane", "Thierry Henry"],
-    "answer": "Ronaldinho",
-    "category": "Football",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q146",
-    "question": "Which country is home to the football club Ajax?",
-    "options": ["Netherlands", "Belgium", "Germany", "Denmark"],
-    "answer": "Netherlands",
-    "category": "World Sports",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q147",
-    "question": "Which financial institution is headquartered in Washington, D.C. and focuses on global monetary cooperation?",
-    "options": ["International Monetary Fund", "African Union", "FIFA", "UNESCO"],
-    "answer": "International Monetary Fund",
-    "category": "World Finance",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q148",
-    "question": "What does IMF stand for?",
-    "options": ["International Monetary Fund", "International Market Federation", "Internal Money Foundation", "International Management Finance"],
-    "answer": "International Monetary Fund",
-    "category": "World Finance",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q149",
-    "question": "Which organization is primarily responsible for international financial stability and monetary cooperation?",
-    "options": ["IMF", "FIFA", "WHO", "UNICEF"],
-    "answer": "IMF",
-    "category": "World Finance",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q150",
-    "question": "Which scientist used X-ray diffraction data that contributed to understanding DNA structure?",
-    "options": ["Rosalind Franklin", "Marie Curie", "Ada Lovelace", "Rachel Carson"],
-    "answer": "Rosalind Franklin",
-    "category": "Famous Scientists",
-    "difficulty": "hard"
-  },
-
-  {
-    "id": "q151",
-    "question": "Which organ helps digest food by producing bile?",
-    "options": ["Liver", "Heart", "Lung", "Brain"],
-    "answer": "Liver",
+    "id": "q080",
+    "question": "Which organelle is primarily responsible for protein synthesis?",
+    "options": ["Ribosome", "Lysosome", "Mitochondrion", "Vacuole"],
+    "answer": "Ribosome",
     "category": "Biology",
-    "difficulty": "easy"
+    "difficulty": "hard"
   },
   {
-    "id": "q152",
-    "question": "Which vitamin is commonly associated with citrus fruits?",
-    "options": ["Vitamin C", "Vitamin D", "Vitamin B12", "Vitamin K"],
-    "answer": "Vitamin C",
-    "category": "Health and Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q153",
-    "question": "What is the main function of red blood cells?",
-    "options": ["Carry oxygen", "Fight infections", "Clot blood", "Digest food"],
-    "answer": "Carry oxygen",
+    "id": "q081",
+    "question": "What is the functional unit of the kidney?",
+    "options": ["Neuron", "Nephron", "Alveolus", "Villus"],
+    "answer": "Nephron",
     "category": "Biology",
-    "difficulty": "easy"
+    "difficulty": "hard"
   },
   {
-    "id": "q154",
-    "question": "Which organ is the largest internal organ in the human body?",
-    "options": ["Liver", "Heart", "Kidney", "Lung"],
-    "answer": "Liver",
+    "id": "q082",
+    "question": "Which DNA base pairs with adenine?",
+    "options": ["Cytosine", "Guanine", "Thymine", "Uracil"],
+    "answer": "Thymine",
     "category": "Biology",
-    "difficulty": "easy"
+    "difficulty": "hard"
   },
   {
-    "id": "q155",
-    "question": "Which part of the human body is responsible for vision?",
-    "options": ["Eyes", "Ears", "Nose", "Skin"],
-    "answer": "Eyes",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q156",
-    "question": "What is the normal number of chromosomes in most human body cells?",
-    "options": ["46", "23", "44", "48"],
-    "answer": "46",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q157",
-    "question": "Which sense organ is used for hearing?",
-    "options": ["Ear", "Eye", "Nose", "Tongue"],
-    "answer": "Ear",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q158",
-    "question": "Which organ stores and concentrates bile?",
-    "options": ["Gallbladder", "Pancreas", "Kidney", "Stomach"],
-    "answer": "Gallbladder",
-    "category": "Biology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q159",
-    "question": "At standard atmospheric pressure, water freezes at what temperature?",
-    "options": ["0°C", "50°C", "100°C", "-100°C"],
-    "answer": "0°C",
-    "category": "Science",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q160",
-    "question": "Which planet is known for its Great Red Spot?",
-    "options": ["Jupiter", "Saturn", "Mars", "Neptune"],
-    "answer": "Jupiter",
-    "category": "Astronomy",
-    "difficulty": "easy"
-  },
-
-  {
-    "id": "q161",
-    "question": "What is puberty?",
-    "options": ["A period of physical and biological development toward adulthood", "A type of disease", "A type of sport", "A type of medicine"],
-    "answer": "A period of physical and biological development toward adulthood",
-    "category": "Human Development",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q162",
-    "question": "Which hormone is strongly associated with the development of male reproductive characteristics?",
-    "options": ["Testosterone", "Insulin", "Adrenaline", "Melatonin"],
-    "answer": "Testosterone",
-    "category": "Human Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q163",
-    "question": "Which hormone is strongly associated with the development of female reproductive characteristics?",
-    "options": ["Estrogen", "Insulin", "Adrenaline", "Glucagon"],
-    "answer": "Estrogen",
-    "category": "Human Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q164",
-    "question": "Where does fertilization normally occur in the human female reproductive system?",
-    "options": ["Fallopian tube", "Uterus", "Cervix", "Vagina"],
-    "answer": "Fallopian tube",
-    "category": "Human Reproductive Health",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q165",
-    "question": "Which organ supports the development of a fetus during pregnancy?",
-    "options": ["Uterus", "Liver", "Kidney", "Pancreas"],
-    "answer": "Uterus",
-    "category": "Human Reproductive Health",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q166",
-    "question": "What is menstruation?",
-    "options": ["The periodic shedding of the uterine lining", "The release of insulin", "The digestion of food", "The growth of bones"],
-    "answer": "The periodic shedding of the uterine lining",
-    "category": "Human Reproductive Health",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q167",
-    "question": "Which structure connects the fetus to the placenta?",
-    "options": ["Umbilical cord", "Fallopian tube", "Cervix", "Esophagus"],
-    "answer": "Umbilical cord",
-    "category": "Human Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q168",
-    "question": "Which gland produces hormones that regulate metabolism?",
-    "options": ["Thyroid gland", "Pituitary gland", "Pancreas", "Adrenal gland"],
-    "answer": "Thyroid gland",
-    "category": "Human Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q169",
-    "question": "Which hormone helps regulate blood glucose levels by lowering them?",
-    "options": ["Insulin", "Adrenaline", "Estrogen", "Testosterone"],
+    "id": "q083",
+    "question": "Which hormone helps regulate blood glucose by lowering it?",
+    "options": ["Insulin", "Adrenaline", "Thyroxine", "Melatonin"],
     "answer": "Insulin",
-    "category": "Human Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q170",
-    "question": "Which organ produces sperm in males?",
-    "options": ["Testes", "Prostate", "Kidneys", "Liver"],
-    "answer": "Testes",
-    "category": "Human Reproductive Health",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q171",
-    "question": "Which organ produces eggs in females?",
-    "options": ["Ovaries", "Uterus", "Cervix", "Fallopian tubes"],
-    "answer": "Ovaries",
-    "category": "Human Reproductive Health",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q172",
-    "question": "What is the main role of the placenta during pregnancy?",
-    "options": ["Exchange nutrients, gases and waste between mother and fetus", "Digest food", "Pump blood around the mother", "Produce urine"],
-    "answer": "Exchange nutrients, gases and waste between mother and fetus",
-    "category": "Human Reproductive Health",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q173",
-    "question": "Which hormone is associated with ovulation?",
-    "options": ["Luteinizing hormone", "Insulin", "Melatonin", "Thyroxine"],
-    "answer": "Luteinizing hormone",
-    "category": "Human Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q174",
-    "question": "Which part of the male reproductive system transports sperm from the testes?",
-    "options": ["Vas deferens", "Ureter", "Trachea", "Esophagus"],
-    "answer": "Vas deferens",
-    "category": "Human Reproductive Health",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q175",
-    "question": "Which structure is the lower opening of the uterus?",
-    "options": ["Cervix", "Ovary", "Fallopian tube", "Placenta"],
-    "answer": "Cervix",
-    "category": "Human Reproductive Health",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q176",
-    "question": "Which nutrient is especially important for building and repairing body tissues?",
-    "options": ["Protein", "Water", "Salt", "Fiber"],
-    "answer": "Protein",
-    "category": "Health and Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q177",
-    "question": "Which mineral is important for strong bones and teeth?",
-    "options": ["Calcium", "Sodium", "Chlorine", "Iodine"],
-    "answer": "Calcium",
-    "category": "Health and Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q178",
-    "question": "Which organ is mainly responsible for filtering wastes from the blood?",
-    "options": ["Kidneys", "Lungs", "Stomach", "Heart"],
-    "answer": "Kidneys",
-    "category": "Health and Biology",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q179",
-    "question": "Which body system is responsible for transporting blood?",
-    "options": ["Circulatory system", "Digestive system", "Respiratory system", "Skeletal system"],
-    "answer": "Circulatory system",
     "category": "Biology",
-    "difficulty": "medium"
+    "difficulty": "hard"
   },
   {
-    "id": "q180",
-    "question": "Which body system is mainly responsible for breathing?",
-    "options": ["Respiratory system", "Digestive system", "Nervous system", "Skeletal system"],
-    "answer": "Respiratory system",
+    "id": "q084",
+    "question": "Which tissue transports water upward from plant roots?",
+    "options": ["Phloem", "Xylem", "Epidermis", "Cambium"],
+    "answer": "Xylem",
     "category": "Biology",
-    "difficulty": "medium"
-  },
-
-  {
-    "id": "q181",
-    "question": "What does WWW stand for?",
-    "options": ["World Wide Web", "World Web Window", "Wide World Website", "Web World Wide"],
-    "answer": "World Wide Web",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q182",
-    "question": "Which company developed the Windows operating system?",
-    "options": ["Microsoft", "Apple", "Google", "IBM"],
-    "answer": "Microsoft",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q183",
-    "question": "Which company developed the Android operating system after acquiring Android Inc.?",
-    "options": ["Google", "Microsoft", "Apple", "IBM"],
-    "answer": "Google",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q184",
-    "question": "What is used to connect a computer to the internet wirelessly?",
-    "options": ["Wi-Fi", "HDMI", "USB", "VGA"],
-    "answer": "Wi-Fi",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q185",
-    "question": "What does USB stand for?",
-    "options": ["Universal Serial Bus", "United System Board", "Universal System Box", "User Serial Base"],
-    "answer": "Universal Serial Bus",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q186",
-    "question": "Which device is used to move the pointer on a computer screen?",
-    "options": ["Mouse", "Printer", "Speaker", "Scanner"],
-    "answer": "Mouse",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q187",
-    "question": "Which company created the iPhone?",
-    "options": ["Apple", "Samsung", "Google", "Nokia"],
-    "answer": "Apple",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q188",
-    "question": "What is an email mainly used for?",
-    "options": ["Sending electronic messages", "Printing documents", "Playing football", "Measuring temperature"],
-    "answer": "Sending electronic messages",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q189",
-    "question": "Which technology is commonly used for short-range wireless connections between devices?",
-    "options": ["Bluetooth", "GPS", "HDMI", "Ethernet"],
-    "answer": "Bluetooth",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q190",
-    "question": "What is a web browser used for?",
-    "options": ["Accessing websites", "Cooking food", "Measuring weight", "Charging batteries"],
-    "answer": "Accessing websites",
-    "category": "Technology",
-    "difficulty": "easy"
-  },
-
-  {
-    "id": "q191",
-    "question": "Which company is famous for the PlayStation?",
-    "options": ["Sony", "Microsoft", "Nintendo", "Sega"],
-    "answer": "Sony",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q192",
-    "question": "Which company is famous for the Xbox?",
-    "options": ["Microsoft", "Sony", "Nintendo", "Apple"],
-    "answer": "Microsoft",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q193",
-    "question": "Which company created the iPhone?",
-    "options": ["Apple", "Samsung", "Google", "Huawei"],
-    "answer": "Apple",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q194",
-    "question": "Which company is known for the search engine Google?",
-    "options": ["Google", "Amazon", "Meta", "Netflix"],
-    "answer": "Google",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q195",
-    "question": "Which company operates the online marketplace Amazon?",
-    "options": ["Amazon", "eBay", "Microsoft", "Alibaba"],
-    "answer": "Amazon",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q196",
-    "question": "Which company owns Facebook and Instagram?",
-    "options": ["Meta", "Google", "Apple", "Microsoft"],
-    "answer": "Meta",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q197",
-    "question": "Which company is associated with the Windows operating system?",
-    "options": ["Microsoft", "Apple", "Sony", "Nvidia"],
-    "answer": "Microsoft",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q198",
-    "question": "Which company is famous for the Galaxy smartphone series?",
-    "options": ["Samsung", "Apple", "Nokia", "Sony"],
-    "answer": "Samsung",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q199",
-    "question": "Which company is famous for the electric car brand Tesla?",
-    "options": ["Tesla", "Toyota", "Ford", "Honda"],
-    "answer": "Tesla",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-  {
-    "id": "q200",
-    "question": "Which company is famous for the Windows and Xbox brands?",
-    "options": ["Microsoft", "Sony", "Nintendo", "Apple"],
-    "answer": "Microsoft",
-    "category": "Major Companies",
-    "difficulty": "medium"
-  },
-
-  {
-    "id": "q201",
-    "question": "Who wrote the play Romeo and Juliet?",
-    "options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Leo Tolstoy"],
-    "answer": "William Shakespeare",
-    "category": "Famous People and Art",
     "difficulty": "hard"
   },
   {
-    "id": "q202",
-    "question": "Who painted The Starry Night?",
-    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Claude Monet"],
-    "answer": "Vincent van Gogh",
-    "category": "Famous People and Art",
+    "id": "q085",
+    "question": "What is the derivative of x²?",
+    "options": ["x", "2x", "x²", "2"],
+    "answer": "2x",
+    "category": "Mathematics",
     "difficulty": "hard"
   },
   {
-    "id": "q203",
-    "question": "Who composed the Ninth Symphony?",
-    "options": ["Ludwig van Beethoven", "Mozart", "Bach", "Chopin"],
-    "answer": "Ludwig van Beethoven",
-    "category": "Famous People and Art",
+    "id": "q086",
+    "question": "What is the value of 2⁵?",
+    "options": ["10", "16", "32", "64"],
+    "answer": "32",
+    "category": "Mathematics",
     "difficulty": "hard"
   },
   {
-    "id": "q204",
-    "question": "Which scientist discovered the laws of electromagnetic induction?",
-    "options": ["Michael Faraday", "Isaac Newton", "Albert Einstein", "Charles Darwin"],
-    "answer": "Michael Faraday",
-    "category": "Famous Scientists",
+    "id": "q087",
+    "question": "Which football club competition is organized by UEFA for European clubs?",
+    "options": ["UEFA Champions League", "Copa América", "Africa Cup of Nations", "AFC Asian Cup"],
+    "answer": "UEFA Champions League",
+    "category": "Football",
     "difficulty": "hard"
   },
   {
-    "id": "q205",
-    "question": "Who is often called the father of modern computing?",
-    "options": ["Alan Turing", "Bill Gates", "Steve Jobs", "Tim Berners-Lee"],
-    "answer": "Alan Turing",
-    "category": "Technology History",
+    "id": "q088",
+    "question": "Which basketball player is strongly associated with the Chicago Bulls' six NBA championships in the 1990s?",
+    "options": ["Michael Jordan", "LeBron James", "Kobe Bryant", "Stephen Curry"],
+    "answer": "Michael Jordan",
+    "category": "Basketball",
     "difficulty": "hard"
   },
   {
-    "id": "q206",
-    "question": "Who is credited with inventing the World Wide Web?",
-    "options": ["Tim Berners-Lee", "Alan Turing", "Steve Wozniak", "Dennis Ritchie"],
-    "answer": "Tim Berners-Lee",
-    "category": "Technology History",
+    "id": "q089",
+    "question": "What is the safest general action when an emergency vehicle approaches with warning signals?",
+    "options": ["Give way safely", "Race ahead of it", "Block its path", "Follow it closely"],
+    "answer": "Give way safely",
+    "category": "Road Traffic Rules",
     "difficulty": "hard"
   },
   {
-    "id": "q207",
-    "question": "Who is widely credited with improving the practical incandescent light bulb?",
-    "options": ["Thomas Edison", "Nikola Tesla", "James Watt", "Alexander Fleming"],
-    "answer": "Thomas Edison",
-    "category": "Famous Inventors",
+    "id": "q090",
+    "question": "During puberty, which is a normal biological change that can occur?",
+    "options": ["Growth and hormonal changes", "Permanent stopping of growth in everyone", "Loss of all body hair", "Complete absence of hormonal activity"],
+    "answer": "Growth and hormonal changes",
+    "category": "Human Biology",
     "difficulty": "hard"
-  },
-  {
-    "id": "q208",
-    "question": "Who developed the alternating-current induction motor and made major contributions to AC power systems?",
-    "options": ["Nikola Tesla", "Thomas Edison", "James Watt", "Alexander Graham Bell"],
-    "answer": "Nikola Tesla",
-    "category": "Famous Inventors",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q209",
-    "question": "Who invented the telephone and received a famous patent for it in 1876?",
-    "options": ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "Guglielmo Marconi"],
-    "answer": "Alexander Graham Bell",
-    "category": "Famous Inventors",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q210",
-    "question": "Who is associated with the invention of the printing press in Europe?",
-    "options": ["Johannes Gutenberg", "Galileo Galilei", "Isaac Newton", "James Watt"],
-    "answer": "Johannes Gutenberg",
-    "category": "Technology History",
-    "difficulty": "hard"
-  },
-
-  {
-    "id": "q211",
-    "question": "What is the capital of Ethiopia?",
-    "options": ["Addis Ababa", "Nairobi", "Asmara", "Khartoum"],
-    "answer": "Addis Ababa",
-    "category": "Africa Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q212",
-    "question": "Which country has Cairo as its capital?",
-    "options": ["Egypt", "Sudan", "Libya", "Morocco"],
-    "answer": "Egypt",
-    "category": "Africa Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q213",
-    "question": "Which country is home to the Sahara Desert?",
-    "options": ["Several countries in North Africa", "South Africa only", "Rwanda only", "Kenya only"],
-    "answer": "Several countries in North Africa",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q214",
-    "question": "Which is the largest desert in Africa?",
-    "options": ["Sahara Desert", "Kalahari Desert", "Namib Desert", "Danakil Desert"],
-    "answer": "Sahara Desert",
-    "category": "Africa Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q215",
-    "question": "Which country is famous for the Amazon rainforest?",
-    "options": ["Brazil", "Egypt", "Spain", "Canada"],
-    "answer": "Brazil",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q216",
-    "question": "Which ocean lies between Africa and Australia?",
-    "options": ["Indian Ocean", "Atlantic Ocean", "Pacific Ocean", "Arctic Ocean"],
-    "answer": "Indian Ocean",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q217",
-    "question": "Which country is home to the city of New York?",
-    "options": ["United States", "Canada", "United Kingdom", "Australia"],
-    "answer": "United States",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q218",
-    "question": "Which country is home to Mount Kilimanjaro?",
-    "options": ["Tanzania", "Kenya", "Uganda", "Ethiopia"],
-    "answer": "Tanzania",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q219",
-    "question": "Which ocean is the largest on Earth?",
-    "options": ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
-    "answer": "Pacific Ocean",
-    "category": "World Geography",
-    "difficulty": "easy"
-  },
-  {
-    "id": "q220",
-    "question": "Which country is home to the city of Rio de Janeiro?",
-    "options": ["Brazil", "Argentina", "Chile", "Peru"],
-    "answer": "Brazil",
-    "category": "World Geography",
-    "difficulty": "easy"
   }
 ]
