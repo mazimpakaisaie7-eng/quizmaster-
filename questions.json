@@ -69,7 +69,6 @@
     "answer": "Jupiter",
     "category": "Science"
   },
-
   {
     "id": "q011",
     "question": "What is the currency of Rwanda?",
@@ -114,7 +113,7 @@
   },
   {
     "id": "q017",
-    "question": "Which country has the city of Tokyo as its capital?",
+    "question": "Which country has Tokyo as its capital?",
     "options": ["China", "South Korea", "Japan", "Thailand"],
     "answer": "Japan",
     "category": "Geography"
@@ -140,7 +139,6 @@
     "answer": "11",
     "category": "Sports"
   },
-
   {
     "id": "q021",
     "question": "What is the largest mammal in the world?",
@@ -150,7 +148,7 @@
   },
   {
     "id": "q022",
-    "question": "Which animal is known as the king of the jungle?",
+    "question": "Which animal is commonly called the king of the jungle?",
     "options": ["Tiger", "Lion", "Leopard", "Elephant"],
     "answer": "Lion",
     "category": "Animals"
@@ -185,7 +183,7 @@
   },
   {
     "id": "q027",
-    "question": "Which continent is the Sahara Desert located in?",
+    "question": "On which continent is the Sahara Desert located?",
     "options": ["Asia", "Africa", "Australia", "South America"],
     "answer": "Africa",
     "category": "Geography"
@@ -211,7 +209,6 @@
     "answer": "24",
     "category": "General Knowledge"
   },
-
   {
     "id": "q031",
     "question": "Which device is commonly used to type text into a computer?",
@@ -242,14 +239,14 @@
   },
   {
     "id": "q035",
-    "question": "Which company developed the Android operating system?",
+    "question": "Which company developed Android?",
     "options": ["Google", "Microsoft", "IBM", "Intel"],
     "answer": "Google",
     "category": "Technology"
   },
   {
     "id": "q036",
-    "question": "What is used to connect a computer to a wireless network?",
+    "question": "What technology is commonly used to connect a device to a wireless network?",
     "options": ["Wi-Fi", "HDMI", "USB", "VGA"],
     "answer": "Wi-Fi",
     "category": "Technology"
@@ -282,7 +279,6 @@
     "answer": "Chrome",
     "category": "Technology"
   },
-
   {
     "id": "q041",
     "question": "Which country is home to Mount Kilimanjaro?",
@@ -313,7 +309,7 @@
   },
   {
     "id": "q045",
-    "question": "Which lake is shared by Rwanda, Burundi, Tanzania, and the Democratic Republic of the Congo?",
+    "question": "Which large lake is shared by Tanzania, the Democratic Republic of the Congo, Burundi, and Zambia?",
     "options": ["Lake Victoria", "Lake Kivu", "Lake Tanganyika", "Lake Turkana"],
     "answer": "Lake Tanganyika",
     "category": "Geography"
@@ -341,22 +337,21 @@
   },
   {
     "id": "q049",
-    "question": "What is Rwanda commonly called because of its green hills?",
+    "question": "What is Rwanda commonly called because of its many hills?",
     "options": ["Land of a Thousand Hills", "Land of Gold", "Land of Rivers", "Land of Deserts"],
     "answer": "Land of a Thousand Hills",
     "category": "Rwanda"
   },
   {
     "id": "q050",
-    "question": "Which famous mountain gorillas can be found in Rwanda?",
-    "options": ["Mountain gorillas", "Lowland gorillas", "Western gorillas only", "Desert gorillas"],
-    "answer": "Mountain gorillas",
+    "question": "Which type of gorilla can be found in Rwanda's Volcanoes National Park?",
+    "options": ["Mountain gorilla", "Lowland gorilla", "Desert gorilla", "River gorilla"],
+    "answer": "Mountain gorilla",
     "category": "Rwanda"
   },
-
   {
     "id": "q051",
-    "question": "Which football competition is played between national teams in Africa?",
+    "question": "Which major football competition is played between African national teams?",
     "options": ["AFCON", "NBA", "Wimbledon", "Super Bowl"],
     "answer": "AFCON",
     "category": "Sports"
@@ -412,19 +407,18 @@
   },
   {
     "id": "q059",
-    "question": "Which country is famous for the football club FC Barcelona?",
+    "question": "FC Barcelona is a famous football club from which country?",
     "options": ["Italy", "Spain", "France", "Portugal"],
     "answer": "Spain",
     "category": "Sports"
   },
   {
     "id": "q060",
-    "question": "Which sport is played at the Tour de France?",
+    "question": "Which sport is featured in the Tour de France?",
     "options": ["Cycling", "Running", "Swimming", "Boxing"],
     "answer": "Cycling",
     "category": "Sports"
   },
-
   {
     "id": "q061",
     "question": "What does a red traffic light mean?",
@@ -457,4 +451,252 @@
     "id": "q065",
     "question": "What should a driver do before changing lanes?",
     "options": ["Check mirrors and blind spots", "Close their eyes", "Accelerate without checking", "Use the horn continuously"],
-    "
+    "answer": "Check mirrors and blind spots",
+    "category": "Road Traffic"
+  },
+  {
+    "id": "q066",
+    "question": "What should a driver do when approaching a pedestrian crossing?",
+    "options": ["Slow down and be prepared to stop", "Speed up", "Ignore pedestrians", "Drive on the sidewalk"],
+    "answer": "Slow down and be prepared to stop",
+    "category": "Road Traffic"
+  },
+  {
+    "id": "q067",
+    "question": "Why should drivers avoid using a mobile phone while driving?",
+    "options": ["It can distract the driver", "It makes the vehicle heavier", "It increases tire pressure", "It changes the road signs"],
+    "answer": "It can distract the driver",
+    "category": "Road Traffic"
+  },
+  {
+    "id": "q068",
+    "question": "What should a driver do when an emergency vehicle approaches with its warning signals on?",
+    "options": ["Give way when safe", "Race the vehicle", "Block the road", "Ignore it"],
+    "answer": "Give way when safe",
+    "category": "Road Traffic"
+  },
+  {
+    "id": "q069",
+    "question": "What does a speed limit sign indicate?",
+    "options": ["The minimum fuel level", "The maximum permitted speed", "The number of passengers", "The road width"],
+    "answer": "The maximum permitted speed",
+    "category": "Road Traffic"
+  },
+  {
+    "id": "q070",
+    "question": "What should you do before opening a car door on a busy road?",
+    "options": ["Check for approaching traffic and cyclists", "Open it immediately", "Honk continuously", "Turn off all lights"],
+    "answer": "Check for approaching traffic and cyclists",
+    "category": "Road Traffic"
+  },
+  {
+    "id": "q071",
+    "question": "What is the basic unit of life?",
+    "options": ["Atom", "Cell", "Organ", "Tissue"],
+    "answer": "Cell",
+    "category": "Science"
+  },
+  {
+    "id": "q072",
+    "question": "Which organ is mainly responsible for breathing?",
+    "options": ["Heart", "Lungs", "Kidney", "Stomach"],
+    "answer": "Lungs",
+    "category": "Science"
+  },
+  {
+    "id": "q073",
+    "question": "What force pulls objects toward Earth?",
+    "options": ["Magnetism", "Gravity", "Friction", "Electricity"],
+    "answer": "Gravity",
+    "category": "Science"
+  },
+  {
+    "id": "q074",
+    "question": "At what temperature does water normally boil at sea level?",
+    "options": ["0°C", "50°C", "100°C", "150°C"],
+    "answer": "100°C",
+    "category": "Science"
+  },
+  {
+    "id": "q075",
+    "question": "Which vitamin is commonly produced by the body through exposure to sunlight?",
+    "options": ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"],
+    "answer": "Vitamin D",
+    "category": "Science"
+  },
+  {
+    "id": "q076",
+    "question": "What is H2O commonly known as?",
+    "options": ["Oxygen", "Water", "Hydrogen", "Salt"],
+    "answer": "Water",
+    "category": "Science"
+  },
+  {
+    "id": "q077",
+    "question": "Which metal is liquid at room temperature?",
+    "options": ["Iron", "Mercury", "Copper", "Aluminium"],
+    "answer": "Mercury",
+    "category": "Science"
+  },
+  {
+    "id": "q078",
+    "question": "What is the center of an atom called?",
+    "options": ["Electron", "Nucleus", "Shell", "Molecule"],
+    "answer": "Nucleus",
+    "category": "Science"
+  },
+  {
+    "id": "q079",
+    "question": "Which natural satellite orbits Earth?",
+    "options": ["Mars", "Moon", "Venus", "Sun"],
+    "answer": "Moon",
+    "category": "Science"
+  },
+  {
+    "id": "q080",
+    "question": "Which gas is most abundant in Earth's atmosphere?",
+    "options": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+    "answer": "Nitrogen",
+    "category": "Science"
+  },
+  {
+    "id": "q081",
+    "question": "What is 15 + 27?",
+    "options": ["32", "40", "42", "45"],
+    "answer": "42",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q082",
+    "question": "What is 100 divided by 4?",
+    "options": ["20", "25", "30", "40"],
+    "answer": "25",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q083",
+    "question": "What is 9 multiplied by 9?",
+    "options": ["72", "81", "90", "99"],
+    "answer": "81",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q084",
+    "question": "What is half of 50?",
+    "options": ["20", "25", "30", "35"],
+    "answer": "25",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q085",
+    "question": "How many degrees are in a right angle?",
+    "options": ["45", "90", "180", "360"],
+    "answer": "90",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q086",
+    "question": "What is 7 squared?",
+    "options": ["14", "42", "49", "56"],
+    "answer": "49",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q087",
+    "question": "Which number is a prime number?",
+    "options": ["9", "15", "17", "21"],
+    "answer": "17",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q088",
+    "question": "What is 1,000 minus 375?",
+    "options": ["525", "625", "675", "725"],
+    "answer": "625",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q089",
+    "question": "How many meters are in one kilometer?",
+    "options": ["100", "500", "1,000", "10,000"],
+    "answer": "1,000",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q090",
+    "question": "What is 20% of 100?",
+    "options": ["10", "20", "25", "50"],
+    "answer": "20",
+    "category": "Mathematics"
+  },
+  {
+    "id": "q091",
+    "question": "Which country is known for the Eiffel Tower?",
+    "options": ["France", "Italy", "Germany", "Spain"],
+    "answer": "France",
+    "category": "Geography"
+  },
+  {
+    "id": "q092",
+    "question": "What is the capital city of Ethiopia?",
+    "options": ["Nairobi", "Addis Ababa", "Kampala", "Accra"],
+    "answer": "Addis Ababa",
+    "category": "Africa"
+  },
+  {
+    "id": "q093",
+    "question": "Which ocean lies between Africa and Australia?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "answer": "Indian Ocean",
+    "category": "Geography"
+  },
+  {
+    "id": "q094",
+    "question": "Which country is famous for the pyramids of Giza?",
+    "options": ["Egypt", "Sudan", "Tunisia", "Algeria"],
+    "answer": "Egypt",
+    "category": "History"
+  },
+  {
+    "id": "q095",
+    "question": "Who was the first person to walk on the Moon?",
+    "options": ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "John Glenn"],
+    "answer": "Neil Armstrong",
+    "category": "History"
+  },
+  {
+    "id": "q096",
+    "question": "Which ancient civilization built the Colosseum?",
+    "options": ["Roman", "Mayan", "Incan", "Egyptian"],
+    "answer": "Roman",
+    "category": "History"
+  },
+  {
+    "id": "q097",
+    "question": "Which instrument has black and white keys?",
+    "options": ["Guitar", "Piano", "Drum", "Violin"],
+    "answer": "Piano",
+    "category": "General Knowledge"
+  },
+  {
+    "id": "q098",
+    "question": "How many colors are traditionally listed in a rainbow?",
+    "options": ["5", "6", "7", "8"],
+    "answer": "7",
+    "category": "General Knowledge"
+  },
+  {
+    "id": "q099",
+    "question": "Which animal is the fastest land animal?",
+    "options": ["Lion", "Cheetah", "Horse", "Leopard"],
+    "answer": "Cheetah",
+    "category": "Animals"
+  },
+  {
+    "id": "q100",
+    "question": "Which language is primarily used to structure the content of web pages?",
+    "options": ["HTML", "CSS", "SQL", "Python"],
+    "answer": "HTML",
+    "category": "Technology"
+  }
+]
