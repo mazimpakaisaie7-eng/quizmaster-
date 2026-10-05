@@ -698,5 +698,1019 @@
     "options": ["HTML", "CSS", "SQL", "Python"],
     "answer": "HTML",
     "category": "Technology"
-  }
+[
+  {
+    "id": "rwanda-road-rw-001",
+    "question": "Umuntu ushaka gutwara ikinyabiziga gifite moteri mu muhanda nyabagendwa agomba kuba afite iki?",
+    "options": [
+      "Uruhushya rwo gutwara ikinyabiziga",
+      "Indangamuntu gusa",
+      "Pasiporo gusa",
+      "Ikarita y'akazi"
+    ],
+    "answer": "Uruhushya rwo gutwara ikinyabiziga",
+    "category": "Amategeko y'umuhanda mu Rwanda"
+  },
+  {
+    "id": "rwanda-road-rw-002",
+    "question": "Ni nde utanga uruhushya rwo gutwara ikinyabiziga mu Rwanda?",
+    "options": [
+      "Polisi y'u Rwanda",
+      "Ibitaro",
+      "Banki",
+      "Akarere"
+    ],
+    "answer": "Polisi y'u Rwanda",
+    "category": "Amategeko y'umuhanda mu Rwanda"
+  },
+  {
+    "id": "rwanda-road-rw-003",
+    "question": "Umuyobozi w'ikinyabiziga agomba gukora iki iyo umukozi ubifitiye ububasha amusabye uruhushya rwo gutwara?",
+    "options": [
+      "Kurwerekana",
+      "Kurwihisha",
+      "Kuvuga ko yarutaye",
+      "Kureka ikinyabiziga akagenda"
+    ],
+    "answer": "Kurwerekana",
+    "category": "Amategeko y'umuhanda mu Rwanda"
+  },
+  {
+    "id": "rwanda-road-rw-004",
+    "question": "Ni iki umuyobozi agomba kwirinda igihe atwaye ikinyabiziga?",
+    "options": [
+      "Gukoresha telefoni mu gihe atwaye",
+      "Kureba imbere",
+      "Kugenzura ibimenyetso byo mu muhanda",
+      "Kugabanya umuvuduko"
+    ],
+    "answer": "Gukoresha telefoni mu gihe atwaye",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-005",
+    "question": "Umuyobozi w'ikinyabiziga agomba gukora iki ku muvuduko?",
+    "options": [
+      "Kubahiriza umuvuduko wemewe",
+      "Gutwara ku muvuduko uko yishakiye",
+      "Guhora atwara ku muvuduko mwinshi",
+      "Kwirengagiza ibyapa by'umuvuduko"
+    ],
+    "answer": "Kubahiriza umuvuduko wemewe",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-006",
+    "question": "Ni iki Polisi y'u Rwanda isaba umuyobozi gukora ku mukandara w'umutekano?",
+    "options": [
+      "Kuwambara igihe atwaye",
+      "Kuwambara nijoro gusa",
+      "Kuwambara mu gihe cy'imvura gusa",
+      "Kutawambara"
+    ],
+    "answer": "Kuwambara igihe atwaye",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-007",
+    "question": "Umuntu utwaye moto agomba kwambara iki?",
+    "options": [
+      "Ingofero yabugenewe (helmet)",
+      "Ingofero y'ubwoya gusa",
+      "Indorerwamo gusa",
+      "Ikoti gusa"
+    ],
+    "answer": "Ingofero yabugenewe (helmet)",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-008",
+    "question": "Umugenzi uri kuri moto agomba kwambara iki?",
+    "options": [
+      "Ingofero yabugenewe (helmet)",
+      "Ingofero isanzwe gusa",
+      "Nta kintu",
+      "Ikarita y'akazi"
+    ],
+    "answer": "Ingofero yabugenewe (helmet)",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-009",
+    "question": "Umuyobozi wa moto agomba gukora iki ku mutekano w'umugenzi we?",
+    "options": [
+      "Kumuha helmet kandi akayambara",
+      "Kumureka akagenda nta helmet",
+      "Kumwemerera guhagarara kuri moto",
+      "Kumwemerera gukoresha telefoni"
+    ],
+    "answer": "Kumuha helmet kandi akayambara",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-010",
+    "question": "Ni iki umuyobozi wa moto agomba kwirinda?",
+    "options": [
+      "Gukoresha telefoni ari gutwara",
+      "Kwambara helmet",
+      "Kubahiriza ibyapa",
+      "Kugabanya umuvuduko"
+    ],
+    "answer": "Gukoresha telefoni ari gutwara",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-011",
+    "question": "Iyo utwaye moto, ni abahe bantu bagomba kwirinda kunywa inzoga mbere yo gutwara?",
+    "options": [
+      "Umuyobozi wa moto",
+      "Umugenzi gusa",
+      "Umupagasi gusa",
+      "Nta muntu"
+    ],
+    "answer": "Umuyobozi wa moto",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-012",
+    "question": "Umuyobozi w'ikinyabiziga agomba gukora iki ku bimenyetso byo mu muhanda?",
+    "options": [
+      "Kububahiriza",
+      "Kubirengagiza",
+      "Kubihisha",
+      "Kubisenya"
+    ],
+    "answer": "Kububahiriza",
+    "category": "Ibimenyetso byo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-013",
+    "question": "Itara ritukura kuri feux tricolore risobanura iki?",
+    "options": [
+      "Guhagarara",
+      "Kwihuta",
+      "Kugenda nta kureba",
+      "Guhindura lane gusa"
+    ],
+    "answer": "Guhagarara",
+    "category": "Amatara yo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-014",
+    "question": "Ni iki umuyobozi agomba gukora iyo itara ritukura rimweretse ko agomba guhagarara?",
+    "options": [
+      "Guhagarara no kubahiriza itara",
+      "Gukomeza yihuta",
+      "Kunyura hagati y'imodoka",
+      "Kuzimya amatara y'imodoka"
+    ],
+    "answer": "Guhagarara no kubahiriza itara",
+    "category": "Amatara yo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-015",
+    "question": "Ni iki umuhanda ugenewe yellow box ushinzwe gukumira?",
+    "options": [
+      "Gufunga cyangwa kubuza intersection gukora neza",
+      "Guhagarika abanyamaguru",
+      "Kugeneza parking y'amamoto",
+      "Kugabanya uburebure bw'umuhanda"
+    ],
+    "answer": "Gufunga cyangwa kubuza intersection gukora neza",
+    "category": "Ibimenyetso byo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-016",
+    "question": "Iyo winjiye muri yellow box, ni ryari ugomba kubikora?",
+    "options": [
+      "Iyo inzira yo gusohokamo ifunguye",
+      "Igihe cyose ushaka",
+      "Iyo imodoka iri imbere yahagaze",
+      "Iyo umuhanda wuzuye"
+    ],
+    "answer": "Iyo inzira yo gusohokamo ifunguye",
+    "category": "Yellow Box"
+  },
+  {
+    "id": "rwanda-road-rw-017",
+    "question": "Ese umuyobozi yemerewe guhagarika ikinyabiziga muri yellow box?",
+    "options": [
+      "Oya",
+      "Yego buri gihe",
+      "Yego nijoro gusa",
+      "Yego ku cyumweru gusa"
+    ],
+    "answer": "Oya",
+    "category": "Yellow Box"
+  },
+  {
+    "id": "rwanda-road-rw-018",
+    "question": "Yellow box ikunze gushyirwa hehe?",
+    "options": [
+      "Ku masangano y'imihanda (intersections)",
+      "Mu ngo gusa",
+      "Mu mirima gusa",
+      "Mu ma parking gusa"
+    ],
+    "answer": "Ku masangano y'imihanda (intersections)",
+    "category": "Yellow Box"
+  },
+  {
+    "id": "rwanda-road-rw-019",
+    "question": "Kuki yellow box ikoreshwa?",
+    "options": [
+      "Kugira ngo intersection idafungwa n'imodoka",
+      "Kugira ngo imodoka zihagararemo",
+      "Kugira ngo abanyamaguru bayipakiramo",
+      "Kugira ngo moto zihagararemo"
+    ],
+    "answer": "Kugira ngo intersection idafungwa n'imodoka",
+    "category": "Yellow Box"
+  },
+  {
+    "id": "rwanda-road-rw-020",
+    "question": "Ni iki umuyobozi agomba gukora mbere yo kwinjira muri yellow box?",
+    "options": [
+      "Kureba ko ashobora gusohoka atabujije traffic",
+      "Kongera umuvuduko gusa",
+      "Gufunga amadirishya",
+      "Kuzimya amatara"
+    ],
+    "answer": "Kureba ko ashobora gusohoka atabujije traffic",
+    "category": "Yellow Box"
+  },
+  {
+    "id": "rwanda-road-rw-021",
+    "question": "Zebra crossing ikoreshwa cyane cyane na bande?",
+    "options": [
+      "Abanyamaguru",
+      "Indege",
+      "Amato",
+      "Gari ya moshi"
+    ],
+    "answer": "Abanyamaguru",
+    "category": "Zebra Crossing"
+  },
+  {
+    "id": "rwanda-road-rw-022",
+    "question": "Iyo umuyobozi ageze kuri zebra crossing agomba gukora iki?",
+    "options": [
+      "Kugabanya umuvuduko no guha abanyamaguru inzira",
+      "Kwihuta",
+      "Kunyura hejuru yayo",
+      "Kuzimya imodoka"
+    ],
+    "answer": "Kugabanya umuvuduko no guha abanyamaguru inzira",
+    "category": "Zebra Crossing"
+  },
+  {
+    "id": "rwanda-road-rw-023",
+    "question": "Ese guhagarika imodoka kuri zebra crossing biremewe?",
+    "options": [
+      "Oya",
+      "Yego igihe cyose",
+      "Yego mu masaha ya saa sita gusa",
+      "Yego ku cyumweru gusa"
+    ],
+    "answer": "Oya",
+    "category": "Zebra Crossing"
+  },
+  {
+    "id": "rwanda-road-rw-024",
+    "question": "Iyo abanyamaguru bari kwambuka kuri zebra crossing, umuyobozi agomba gukora iki?",
+    "options": [
+      "Kubaha inzira",
+      "Kubatera ubwoba",
+      "Kwihuta",
+      "Kunyura hagati yabo"
+    ],
+    "answer": "Kubaha inzira",
+    "category": "Zebra Crossing"
+  },
+  {
+    "id": "rwanda-road-rw-025",
+    "question": "Umuyobozi agomba kugabanya umuvuduko ryari hafi ya zebra crossing?",
+    "options": [
+      "Buri gihe ayegereye",
+      "Nijoro gusa",
+      "Iyo hari imvura gusa",
+      "Iyo Polisi ihari gusa"
+    ],
+    "answer": "Buri gihe ayegereye",
+    "category": "Zebra Crossing"
+  },
+  {
+    "id": "rwanda-road-rw-026",
+    "question": "Umuntu uri n'amaguru asabwa kugendera ku ruhe ruhande rw'umuhanda iyo nta pavement ihari?",
+    "options": [
+      "Ku ruhande rw'ibumoso areba ibinyabiziga biza bimureba",
+      "Ku ruhande rw'iburyo gusa",
+      "Hagati mu muhanda",
+      "Aho ashaka hose"
+    ],
+    "answer": "Ku ruhande rw'ibumoso areba ibinyabiziga biza bimureba",
+    "category": "Abanyamaguru"
+  },
+  {
+    "id": "rwanda-road-rw-027",
+    "question": "Ni he abanyamaguru bagomba kwambukira igihe hari zebra crossing?",
+    "options": [
+      "Kuri zebra crossing",
+      "Aho ariho hose",
+      "Hagati mu masangano gusa",
+      "Mu muhanda munini gusa"
+    ],
+    "answer": "Kuri zebra crossing",
+    "category": "Abanyamaguru"
+  },
+  {
+    "id": "rwanda-road-rw-028",
+    "question": "Mbere yo kwambuka umuhanda, umunyamaguru agomba gukora iki?",
+    "options": [
+      "Kureba impande zombi no kwemeza ko ari umutekano",
+      "Kwiruka atarebye",
+      "Gukoresha telefoni",
+      "Gufunga amaso"
+    ],
+    "answer": "Kureba impande zombi no kwemeza ko ari umutekano",
+    "category": "Abanyamaguru"
+  },
+  {
+    "id": "rwanda-road-rw-029",
+    "question": "Ni iki umunyamaguru agomba kwirinda igihe yambuka umuhanda?",
+    "options": [
+      "Gukoresha telefoni cyangwa earphones bimurangaza",
+      "Kureba ibinyabiziga",
+      "Gukoresha zebra crossing",
+      "Gutegereza imodoka zigahagarara"
+    ],
+    "answer": "Gukoresha telefoni cyangwa earphones bimurangaza",
+    "category": "Abanyamaguru"
+  },
+  {
+    "id": "rwanda-road-rw-030",
+    "question": "Iyo umwana ari hafi y'umuhanda, ni iki gishobora kumurinda impanuka?",
+    "options": [
+      "Kugumana n'umuntu mukuru ubishinzwe",
+      "Kwiruka mu muhanda",
+      "Gukina mu muhanda",
+      "Kugenda atareba"
+    ],
+    "answer": "Kugumana n'umuntu mukuru ubishinzwe",
+    "category": "Abanyamaguru"
+  },
+  {
+    "id": "rwanda-road-rw-031",
+    "question": "Abana bari mu modoka bagomba kwicara he kandi bakagira iki?",
+    "options": [
+      "Kwicara inyuma no gukoresha umukandara w'umutekano",
+      "Guhagarara",
+      "Kwicara ku musozo w'imodoka",
+      "Kugira umutwe hanze"
+    ],
+    "answer": "Kwicara inyuma no gukoresha umukandara w'umutekano",
+    "category": "Umutekano w'abana"
+  },
+  {
+    "id": "rwanda-road-rw-032",
+    "question": "Ese abana bemerewe gukina mu muhanda?",
+    "options": [
+      "Oya",
+      "Yego",
+      "Yego iyo nta modoka ihari",
+      "Yego nijoro"
+    ],
+    "answer": "Oya",
+    "category": "Umutekano w'abana"
+  },
+  {
+    "id": "rwanda-road-rw-033",
+    "question": "Umugenzi uri mu modoka agomba gukora iki ku mukandara w'umutekano?",
+    "options": [
+      "Kuwambara igihe usabwa",
+      "Kuwufungura",
+      "Kuwushyira ku ntebe",
+      "Kutawambara"
+    ],
+    "answer": "Kuwambara igihe usabwa",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-034",
+    "question": "Ni iki umugenzi atagomba gukora ku muyobozi uri gutwara?",
+    "options": [
+      "Kumuhatira gutwara ku muvuduko mwinshi",
+      "Kumwibutsa umutekano",
+      "Kumubwira kugabanya umuvuduko",
+      "Kumwibutsa gukurikiza ibyapa"
+    ],
+    "answer": "Kumuhatira gutwara ku muvuduko mwinshi",
+    "category": "Abagenzi"
+  },
+  {
+    "id": "rwanda-road-rw-035",
+    "question": "Umugenzi abonye umuyobozi atwaye nabi agomba gukora iki?",
+    "options": [
+      "Kumugira inama yo kubahiriza umutekano",
+      "Kumushishikariza kwihuta",
+      "Kumutesha umutwe",
+      "Kumubwira gukoresha telefoni"
+    ],
+    "answer": "Kumugira inama yo kubahiriza umutekano",
+    "category": "Abagenzi"
+  },
+  {
+    "id": "rwanda-road-rw-036",
+    "question": "Ni ruhande ki rwo kunyuramo iyo urenze ikindi kinyabiziga mu buryo busanzwe?",
+    "options": [
+      "Ibumoso",
+      "Iburyo",
+      "Hagati",
+      "Aho ushaka"
+    ],
+    "answer": "Ibumoso",
+    "category": "Kurenza ibindi binyabiziga"
+  },
+  {
+    "id": "rwanda-road-rw-037",
+    "question": "Mbere yo kurenza ikindi kinyabiziga, umuyobozi agomba kubanza gukora iki?",
+    "options": [
+      "Kureba ko inzira itekanye kandi ntawe uri gutangira kumurenga",
+      "Kwihuta gusa",
+      "Kuzimya amatara",
+      "Gukoresha telefoni"
+    ],
+    "answer": "Kureba ko inzira itekanye kandi ntawe uri gutangira kumurenga",
+    "category": "Kurenza ibindi binyabiziga"
+  },
+  {
+    "id": "rwanda-road-rw-038",
+    "question": "Ni ryari kurenza ikindi kinyabiziga bishobora kuba biteje akaga?",
+    "options": [
+      "Iyo inzira itagaragara cyangwa itekanye",
+      "Iyo umuhanda ufunguye neza",
+      "Iyo hari umwanya uhagije",
+      "Iyo traffic ituje"
+    ],
+    "answer": "Iyo inzira itagaragara cyangwa itekanye",
+    "category": "Kurenza ibindi binyabiziga"
+  },
+  {
+    "id": "rwanda-road-rw-039",
+    "question": "Umuyobozi agomba kwirinda kurenza ikindi kinyabiziga igihe inzira itamwemerera kubona neza kubera iki?",
+    "options": [
+      "Kugira ngo atashyira abandi mu kaga",
+      "Kugira ngo azigame essence gusa",
+      "Kugira ngo imodoka ye igende gahoro",
+      "Kugira ngo imodoka ibone parking"
+    ],
+    "answer": "Kugira ngo atashyira abandi mu kaga",
+    "category": "Kurenza ibindi binyabiziga"
+  },
+  {
+    "id": "rwanda-road-rw-040",
+    "question": "Iyo umuhanda ufite umurongo wera ukomeza (continuous white line), usanzwe usobanura iki?",
+    "options": [
+      "Ko kurenga uwo murongo bibujijwe",
+      "Ko ugomba kuwurenga",
+      "Ko ari parking",
+      "Ko ari zebra crossing"
+    ],
+    "answer": "Ko kurenga uwo murongo bibujijwe",
+    "category": "Imirongo yo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-041",
+    "question": "Umurongo wera ucagaguye (broken white line) ushobora kwambukwa mu bihe byemewe n'amategeko n'umutekano. Ni iki muri ibi gishobora kuba impamvu?",
+    "options": [
+      "Kurenga ikinyabiziga mu buryo bwemewe",
+      "Guhagarara hagati mu muhanda",
+      "Gukina mu muhanda",
+      "Guhagarika traffic"
+    ],
+    "answer": "Kurenga ikinyabiziga mu buryo bwemewe",
+    "category": "Imirongo yo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-042",
+    "question": "Iyo umurongo ukomeza n'umurongo ucagaguye biri hamwe, umuyobozi areba cyane cyane uwuhe murongo?",
+    "options": [
+      "Uwo ari hafi y'ikinyabiziga cye",
+      "Uwo ari kure",
+      "Umurongo wose uko waba umeze",
+      "Nta murongo"
+    ],
+    "answer": "Uwo ari hafi y'ikinyabiziga cye",
+    "category": "Imirongo yo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-043",
+    "question": "Umurongo uri ku muhanda ugamije iki muri rusange?",
+    "options": [
+      "Kuyobora no kugenzura uko abakoresha umuhanda bagenda",
+      "Gushushanya umuhanda gusa",
+      "Gushyiraho amatangazo",
+      "Kwerekana amazina y'abashoferi"
+    ],
+    "answer": "Kuyobora no kugenzura uko abakoresha umuhanda bagenda",
+    "category": "Imirongo yo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-044",
+    "question": "Iyo umuhanda ufunganye cyane ku buryo imodoka ebyiri zitanyurana neza, abashoferi bagomba gukora iki?",
+    "options": [
+      "Koroherezanya kunyurana mu mutekano",
+      "Kwihuta bombi",
+      "Guhagarika umuhanda burundu",
+      "Kunyura kuri sidewalk"
+    ],
+    "answer": "Koroherezanya kunyurana mu mutekano",
+    "category": "Uko imodoka zihura"
+  },
+  {
+    "id": "rwanda-road-rw-045",
+    "question": "Ku muhanda w'imisozi ufite ahantu hahanamye kandi imodoka zikaba zitanyurana neza, ni iyihe modoka isanzwe igomba korohereza iyizamuka?",
+    "options": [
+      "Iyimanuka",
+      "Iyizamuka",
+      "Zombi zigomba kwihuta",
+      "Nta n'imwe"
+    ],
+    "answer": "Iyimanuka",
+    "category": "Uko imodoka zihura"
+  },
+  {
+    "id": "rwanda-road-rw-046",
+    "question": "Ni iki umuyobozi agomba gukora iyo ageze ahantu hari ibimenyetso bimutegeka kugabanya umuvuduko?",
+    "options": [
+      "Kugabanya umuvuduko",
+      "Kongera umuvuduko",
+      "Kwirengagiza ikimenyetso",
+      "Gukoresha telefoni"
+    ],
+    "answer": "Kugabanya umuvuduko",
+    "category": "Ibimenyetso byo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-047",
+    "question": "Ikimenyetso cyo guhagarara (STOP) gisaba iki?",
+    "options": [
+      "Guhagarara no kureba ko gukomeza ari umutekano",
+      "Kugenda utagabanije umuvuduko",
+      "Kunyura kuri sidewalk",
+      "Kuzimya imodoka burundu"
+    ],
+    "answer": "Guhagarara no kureba ko gukomeza ari umutekano",
+    "category": "Ibimenyetso byo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-048",
+    "question": "Ikimenyetso cyerekana ko kunyura mu cyerekezo runaka bibujijwe kigomba gukorwa iki?",
+    "options": [
+      "Kubahirizwa",
+      "Kwirengagizwa",
+      "Gukurwaho n'umuyobozi",
+      "Kujyaho imodoka"
+    ],
+    "answer": "Kubahirizwa",
+    "category": "Ibimenyetso byo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-049",
+    "question": "Ni iki umuyobozi agomba gukora iyo abonye ikimenyetso cyerekana ko parking ibujijwe?",
+    "options": [
+      "Kutahaparika",
+      "Guhaparika igihe kirekire",
+      "Guhaparika hagati mu muhanda",
+      "Gusiga imodoka idafunze"
+    ],
+    "answer": "Kutahaparika",
+    "category": "Ibimenyetso byo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-050",
+    "question": "Kuki ibyapa byo mu muhanda ari ingenzi?",
+    "options": [
+      "Bitanga amabwiriza kandi bigafasha kugenzura traffic",
+      "Bikorwa gusa mu gushariza umuhanda",
+      "Bikoreshwa mu kwamamaza gusa",
+      "Nta kamaro bifite"
+    ],
+    "answer": "Bitanga amabwiriza kandi bigafasha kugenzura traffic",
+    "category": "Ibimenyetso byo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-051",
+    "question": "Umuyobozi agomba gukora iki iyo ageze ku masangano agenzurwa n'amatara yo mu muhanda?",
+    "options": [
+      "Gukurikiza amabwiriza y'amatara",
+      "Gukurikira imodoka iri imbere gusa",
+      "Kwirengagiza amatara",
+      "Gukomeza uko yishakiye"
+    ],
+    "answer": "Gukurikiza amabwiriza y'amatara",
+    "category": "Amatara yo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-052",
+    "question": "Kuki kamera zitukura (red-light cameras) zikoreshwa ku masangano amwe?",
+    "options": [
+      "Kugenzura no gufata amakosa yo kutubahiriza amatara n'amabwiriza",
+      "Kwerekana ikirere",
+      "Gupima uburebure bw'imodoka",
+      "Gufotora ba mukerarugendo"
+    ],
+    "answer": "Kugenzura no gufata amakosa yo kutubahiriza amatara n'amabwiriza",
+    "category": "Kamera zo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-053",
+    "question": "Kamera zipima umuvuduko zifasha iki?",
+    "options": [
+      "Kumenya imodoka zirenze umuvuduko wemewe",
+      "Kumenya ibara ry'imodoka gusa",
+      "Guhindura amatara yo mu muhanda",
+      "Gutanga uruhushya rwo gutwara"
+    ],
+    "answer": "Kumenya imodoka zirenze umuvuduko wemewe",
+    "category": "Kamera zo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-054",
+    "question": "Iyo ikinyabiziga gifashwe na kamera kubera kurenza umuvuduko, amakuru ashobora koherezwa ate?",
+    "options": [
+      "Binyuze mu butumwa bugenewe nyir'ikinyabiziga",
+      "Binyuze kuri radiyo gusa",
+      "Binyuze ku ishuri",
+      "Nta makuru atangwa"
+    ],
+    "answer": "Binyuze mu butumwa bugenewe nyir'ikinyabiziga",
+    "category": "Amategeko n'ibihano"
+  },
+  {
+    "id": "rwanda-road-rw-055",
+    "question": "Ni ayahe makosa kamera z'umuhanda zishobora gufasha gutahura?",
+    "options": [
+      "Kurenga umuvuduko no kutubahiriza itara ritukura",
+      "Kudatanga umusoro gusa",
+      "Kutagira inzu",
+      "Kudafata amazi"
+    ],
+    "answer": "Kurenga umuvuduko no kutubahiriza itara ritukura",
+    "category": "Kamera zo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-056",
+    "question": "Umuyobozi agomba gutwara imodoka imeze ite?",
+    "options": [
+      "Imeze neza kandi ishobora kugenda mu mutekano",
+      "Ifite ikibazo gikomeye cya feri",
+      "Ifite amatara yose yangiritse",
+      "Ifite steering idakora"
+    ],
+    "answer": "Imeze neza kandi ishobora kugenda mu mutekano",
+    "category": "Ubugenzuzi bw'ikinyabiziga"
+  },
+  {
+    "id": "rwanda-road-rw-057",
+    "question": "Polisi y'u Rwanda isaba abashoferi gukora iki ku igenzura ry'ikinyabiziga?",
+    "options": [
+      "Kugenzura ikinyabiziga no kwemeza ko giteye neza",
+      "Kutagira icyo bagenzura",
+      "Kugenzura gusa iyo imvura iguye",
+      "Kugenzura gusa nijoro"
+    ],
+    "answer": "Kugenzura ikinyabiziga no kwemeza ko giteye neza",
+    "category": "Ubugenzuzi bw'ikinyabiziga"
+  },
+  {
+    "id": "rwanda-road-rw-058",
+    "question": "Ni iki gishobora guteza impanuka iyo imodoka ifite ikibazo cya feri?",
+    "options": [
+      "Kugabanya ubushobozi bwo guhagarara neza",
+      "Kongera umutekano",
+      "Kugabanya traffic",
+      "Kongera visibility"
+    ],
+    "answer": "Kugabanya ubushobozi bwo guhagarara neza",
+    "category": "Umutekano w'ikinyabiziga"
+  },
+  {
+    "id": "rwanda-road-rw-059",
+    "question": "Ni iki umuyobozi agomba gukora mbere yo gutangira urugendo rurerure?",
+    "options": [
+      "Kugenzura uko ikinyabiziga giteye",
+      "Kwirengagiza feri",
+      "Kwirengagiza amapine",
+      "Gukuraho umukandara"
+    ],
+    "answer": "Kugenzura uko ikinyabiziga giteye",
+    "category": "Umutekano w'ikinyabiziga"
+  },
+  {
+    "id": "rwanda-road-rw-060",
+    "question": "Ni iki umuyobozi agomba kwirinda igihe atwaye imodoka?",
+    "options": [
+      "Kugira ibimurangaza",
+      "Kureba umuhanda",
+      "Kugenzura ibyapa",
+      "Kugenzura umuvuduko"
+    ],
+    "answer": "Kugira ibimurangaza",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-061",
+    "question": "Kuki gukoresha telefoni uri gutwara ari bibi?",
+    "options": [
+      "Kuko bigutesha kwita ku muhanda",
+      "Kuko byongera visibility",
+      "Kuko bigabanya traffic",
+      "Kuko bifasha feri"
+    ],
+    "answer": "Kuko bigutesha kwita ku muhanda",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-062",
+    "question": "Umuyobozi utangiye kumva ananiwe cyane agomba gukora iki?",
+    "options": [
+      "Kugabanya ibyago no gufata akaruhuko ahantu hizewe",
+      "Kongera umuvuduko",
+      "Gukoresha telefoni",
+      "Gukomeza atitaye ku munaniro"
+    ],
+    "answer": "Kugabanya ibyago no gufata akaruhuko ahantu hizewe",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-063",
+    "question": "Kuki gutwara ufite ibimurangaza bishobora guteza impanuka?",
+    "options": [
+      "Bituma utita bihagije ku muhanda n'ibibera imbere",
+      "Bituma imodoka ihagarara neza",
+      "Bituma feri ikora neza",
+      "Bituma traffic igabanuka"
+    ],
+    "answer": "Bituma utita bihagije ku muhanda n'ibibera imbere",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-064",
+    "question": "Ni iki umuyobozi agomba gukora iyo abonye abanyamaguru hafi y'umuhanda?",
+    "options": [
+      "Kugabanya umuvuduko no kwitegura kubaha inzira",
+      "Kwihuta",
+      "Kuvuza ihoni ubudahagarara",
+      "Kunyura kuri sidewalk"
+    ],
+    "answer": "Kugabanya umuvuduko no kwitegura kubaha inzira",
+    "category": "Abanyamaguru"
+  },
+  {
+    "id": "rwanda-road-rw-065",
+    "question": "Ese umuyobozi yemerewe gutwara ku muhanda w'abanyamaguru (sidewalk) nk'uko asanzwe agenda?",
+    "options": [
+      "Oya",
+      "Yego buri gihe",
+      "Yego iyo traffic nyinshi",
+      "Yego nijoro"
+    ],
+    "answer": "Oya",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-066",
+    "question": "Umumotari agomba kwirinda iki ku mihanda y'abanyamaguru?",
+    "options": [
+      "Kuyigendaho aho kuba mu muhanda wabugenewe",
+      "Kubaha abanyamaguru",
+      "Kubahiriza zebra crossing",
+      "Kugabanya umuvuduko"
+    ],
+    "answer": "Kuyigendaho aho kuba mu muhanda wabugenewe",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-067",
+    "question": "Umumotari agomba gutwara abantu bangana iki ku buryo busanzwe?",
+    "options": [
+      "Atarenze umubare wemewe, kandi amabwiriza asaba taxi-moto kutarenza umugenzi umwe",
+      "Abantu batatu",
+      "Abantu bane",
+      "Abantu benshi uko bishakiye"
+    ],
+    "answer": "Atarenze umubare wemewe, kandi amabwiriza asaba taxi-moto kutarenza umugenzi umwe",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-068",
+    "question": "Umumotari agomba gukora iki ku numero cyangwa plaque ya moto?",
+    "options": [
+      "Kugira plaque igaragara kandi itahinduwe cyangwa ngo ihishwe",
+      "Kuyihisha",
+      "Kuyikuraho",
+      "Kuyipfuka"
+    ],
+    "answer": "Kugira plaque igaragara kandi itahinduwe cyangwa ngo ihishwe",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-069",
+    "question": "Ni iki umumotari agomba gukora igihe apakiye moto?",
+    "options": [
+      "Gupakira ahantu hagenwe kandi hatekanye",
+      "Guhagarara hagati muri zebra crossing",
+      "Guhagarara hagati mu muhanda",
+      "Guhagarara muri yellow box"
+    ],
+    "answer": "Gupakira ahantu hagenwe kandi hatekanye",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-070",
+    "question": "Umuyobozi wa moto agomba gukora iki ku muvuduko?",
+    "options": [
+      "Kubahiriza umuvuduko wemewe",
+      "Guhora yihuta",
+      "Kwirengagiza ibyapa",
+      "Kugenda uko ashaka"
+    ],
+    "answer": "Kubahiriza umuvuduko wemewe",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-071",
+    "question": "Ni iki umumotari agomba kwirinda mu gihe atwaye?",
+    "options": [
+      "Kugenda asimbagurika hagati y'imodoka cyangwa akora maneuvers ziteje akaga",
+      "Kuguma muri lane ye",
+      "Kubahiriza ibyapa",
+      "Kugabanya umuvuduko"
+    ],
+    "answer": "Kugenda asimbagurika hagati y'imodoka cyangwa akora maneuvers ziteje akaga",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-072",
+    "question": "Umuyobozi wa moto agomba kuguma he mu muhanda?",
+    "options": [
+      "Mu murongo cyangwa lane ye mu buryo bwizewe",
+      "Hagati y'imodoka zose",
+      "Kuri sidewalk",
+      "Muri zebra crossing"
+    ],
+    "answer": "Mu murongo cyangwa lane ye mu buryo bwizewe",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-073",
+    "question": "Ni iki umuyobozi wa moto agomba gukora kuri helmet?",
+    "options": [
+      "Kuyambara no kuyifunga neza",
+      "Kuyitwara mu ntoki",
+      "Kuyishyira kuri moto gusa",
+      "Kuyambara ariko ntayifunge"
+    ],
+    "answer": "Kuyambara no kuyifunga neza",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-074",
+    "question": "Ni iki umuyobozi wa moto agomba kwirinda ku byerekeye inzoga?",
+    "options": [
+      "Gutwara moto nyuma yo kunywa inzoga",
+      "Kunywa amazi",
+      "Kuruhuka",
+      "Kugenzura moto"
+    ],
+    "answer": "Gutwara moto nyuma yo kunywa inzoga",
+    "category": "Moto"
+  },
+  {
+    "id": "rwanda-road-rw-075",
+    "question": "Ni iki umuyobozi w'imodoka agomba kwirinda ku byerekeye inzoga?",
+    "options": [
+      "Gutwara nyuma yo kunywa inzoga",
+      "Kuruhuka mbere y'urugendo",
+      "Kugenzura imodoka",
+      "Kugabanya umuvuduko"
+    ],
+    "answer": "Gutwara nyuma yo kunywa inzoga",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-076",
+    "question": "Iyo imodoka yihuta cyane, ni iki gishobora kwiyongera?",
+    "options": [
+      "Ibyago byo gukora impanuka",
+      "Umutekano buri gihe",
+      "Ubushobozi bwo kubona neza",
+      "Umutekano w'abanyamaguru"
+    ],
+    "answer": "Ibyago byo gukora impanuka",
+    "category": "Umuvuduko"
+  },
+  {
+    "id": "rwanda-road-rw-077",
+    "question": "Ni iki gishobora gutuma umuyobozi atabona neza cyangwa atitaho umuhanda?",
+    "options": [
+      "Gukoresha telefoni igihe atwaye",
+      "Kureba imbere",
+      "Kugabanya umuvuduko",
+      "Kugenzura ibyapa"
+    ],
+    "answer": "Gukoresha telefoni igihe atwaye",
+    "category": "Umutekano wo mu muhanda"
+  },
+  {
+    "id": "rwanda-road-rw-078",
+    "question": "Iyo umuhanda utose kubera imvura, umuyobozi akwiye gukora iki?",
+    "options": [
+      "Kugabanya umuvuduko no kongera ubushishozi",
+      "Kwihuta cyane",
+      "Gukoresha telefoni",
+      "Kurenza imodoka zose"
+    ],
+    "answer": "Kugabanya umuvuduko no kongera ubushishozi",
+    "category": "Gutwara mu bihe bibi"
+  },
+  {
+    "id": "rwanda-road-rw-079",
+    "question": "Iyo visibility ari nkeya, umuyobozi agomba gukora iki?",
+    "options": [
+      "Kugabanya umuvuduko no gutwara yitonze",
+      "Kwihuta",
+      "Kwirengagiza ibyapa",
+      "Kunyura kuri sidewalk"
+    ],
+    "answer": "Kugabanya umuvuduko no gutwara yitonze",
+    "category": "Gutwara mu bihe bibi"
+  },
+  {
+    "id": "rwanda-road-rw-080",
+    "question": "Iyo umuhanda unyerera, ni iki umuyobozi agomba kwirinda?",
+    "options": [
+      "Maneuvers zikomeye no kwihuta cyane",
+      "Kugabanya umuvuduko",
+      "Kongera intera",
+      "Gutwara yitonze"
+    ],
+    "answer": "Maneuvers zikomeye no kwihuta cyane",
+    "category": "Gutwara mu bihe bibi"
+  },
+  {
+    "id": "rwanda-road-rw-081",
+    "question": "Ni iki umuyobozi agomba gukora kugira ngo agire umwanya uhagije wo guhagarara?",
+    "options": [
+      "Kugumana intera ihagije n'ikinyabiziga kiri imbere",
+      "Kukigenderaho cyane",
+      "Kugenda kuri bumper yacyo",
+      "Kwirengagiza umuvuduko"
+    ],
+    "answer": "Kugumana intera ihagije n'ikinyabiziga kiri imbere",
+    "category": "Intera y'umutekano"
+  },
+  {
+    "id": "rwanda-road-rw-082",
+    "question": "Kuki gukurikira imodoka iri imbere cyane bishobora guteza impanuka?",
+    "options": [
+      "Bitanga umwanya muto wo guhagarara iyo ibonye ikibazo",
+      "Bituma traffic igabanuka",
+      "Bituma feri ikora neza",
+      "Bituma umuhanda uba muremure"
+    ],
+    "answer": "Bitanga umwanya muto wo guhagarara iyo ibonye ikibazo",
+    "category": "Intera y'umutekano"
+  },
+  {
+    "id": "rwanda-road-rw-083",
+    "question": "Ni iki umuyobozi agomba gukora igihe imodoka itwaye ibikoresho cyangwa imizigo?",
+    "options": [
+      "Kugenzura ko imizigo ipakiwe kandi ifunze neza",
+      "Kuyireka ikamanuka mu muhanda",
+      "Kuyishyira hejuru y'ikirahure cy'imbere",
+      "Kuyireka iteye akaga"
+    ],
+    "answer": "Kugenzura ko imizigo ipakiwe kandi ifunze neza",
+    "category": "Umutekano w'imizigo"
+  },
+  {
+    "id": "rwanda-road-rw-084",
+    "question": "Ni iki umuyobozi agomba kwirinda ku mizigo itwaye?",
+    "options": [
+      "Kurekura imizigo ishobora kugwa mu muhanda",
+      "Kuyifunga neza",
+      "Kuyigenzura",
+      "Kuyipakira neza"
+    ],
+    "answer": "Kurekura imizigo ishobora kugwa mu muhanda",
+    "category": "Umutekano w'imizigo"
+  },
+  {
+    "id": "rwanda-road-rw-085",
+    "question": "Iyo ikinyabiziga gihagaze ahantu hashobora guteza abandi ibyago, umuyobozi agomba gukora iki?",
+    "options": [
+      "Gufata ingamba zo kukimenyekanisha no gukura ikinyabiziga ahantu hateje akaga igihe bish  }
+
 ]
