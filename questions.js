@@ -2417,6 +2417,10 @@ async function shareQuiz() {
    EVENT SETUP
    ========================================================= */
 
+/* =========================================================
+   EVENT SETUP
+   ========================================================= */
+
 function setupEvents() {
 
   /* -----------------------------------------
@@ -2470,4 +2474,419 @@ function setupEvents() {
   const shareBtn =
     getElement("shareBtn");
 
- 
+  if (shareBtn) {
+    shareBtn.addEventListener(
+      "click",
+      shareQuiz
+    );
+  }
+
+
+  /* -----------------------------------------
+     QUIZ
+     ----------------------------------------- */
+
+  const nextBtn =
+    getElement("nextBtn");
+
+  if (nextBtn) {
+    nextBtn.addEventListener(
+      "click",
+      nextQuestion
+    );
+  }
+
+
+  /* -----------------------------------------
+     RESULT
+     ----------------------------------------- */
+
+  const retryBtn =
+    getElement("retryBtn");
+
+  if (retryBtn) {
+    retryBtn.addEventListener(
+      "click",
+      retryRound
+    );
+  }
+
+
+  const nextRoundBtn =
+    getElement("nextRoundBtn");
+
+  if (nextRoundBtn) {
+    nextRoundBtn.addEventListener(
+      "click",
+      nextRound
+    );
+  }
+
+
+  const reviewBtn =
+    getElement("reviewBtn");
+
+  if (reviewBtn) {
+    reviewBtn.addEventListener(
+      "click",
+      openReview
+    );
+  }
+
+
+  /* -----------------------------------------
+     REVIEW
+     ----------------------------------------- */
+
+  const reviewRetryBtn =
+    getElement(
+      "reviewRetryBtn",
+      "retryReviewBtn"
+    );
+
+  if (reviewRetryBtn) {
+    reviewRetryBtn.addEventListener(
+      "click",
+      reviewRetry
+    );
+  }
+
+
+  const reviewBackBtn =
+    getElement(
+      "reviewBackBtn",
+      "backFromReviewBtn"
+    );
+
+  if (reviewBackBtn) {
+    reviewBackBtn.addEventListener(
+      "click",
+      () => {
+        playSound("click");
+
+        showScreen(
+          getResultScreen()
+        );
+      }
+    );
+  }
+
+
+  /* -----------------------------------------
+     ERROR
+     ----------------------------------------- */
+
+  const errorRetryBtn =
+    getElement(
+      "errorRetryBtn",
+      "errorRetry",
+      "retryErrorBtn"
+    );
+
+  if (errorRetryBtn) {
+    errorRetryBtn.addEventListener(
+      "click",
+      () => {
+        playSound("click");
+
+        loadQuestions().then(
+          loaded => {
+            if (loaded) {
+              showScreen(
+                getHomeScreen()
+              );
+
+              updateContinueButton();
+
+              renderRounds();
+            }
+          }
+        );
+      }
+    );
+  }
+
+
+  /* -----------------------------------------
+     SETTINGS
+     ----------------------------------------- */
+
+  const musicSwitch =
+    getElement("musicSwitch");
+
+  if (musicSwitch) {
+    musicSwitch.addEventListener(
+      "change",
+      event => {
+        setMusicEnabled(
+          event.target.checked
+        );
+      }
+    );
+  }
+
+
+  const soundSwitch =
+    getElement("soundSwitch");
+
+  if (soundSwitch) {
+    soundSwitch.addEventListener(
+      "change",
+      event => {
+        setSoundEnabled(
+          event.target.checked
+        );
+      }
+    );
+  }
+
+
+  /* -----------------------------------------
+     SETTINGS BACK
+     ----------------------------------------- */
+
+  const settingsBackBtn =
+    getElement(
+      "settingsBackBtn",
+      "backFromSettingsBtn"
+    );
+
+  if (settingsBackBtn) {
+    settingsBackBtn.addEventListener(
+      "click",
+      () => {
+        playSound("click");
+
+        showScreen(
+          getHomeScreen()
+        );
+      }
+    );
+  }
+
+
+  /* -----------------------------------------
+     ROUNDS BACK
+     ----------------------------------------- */
+
+  const roundsBackBtn =
+    getElement(
+      "roundsBackBtn",
+      "backFromRoundsBtn"
+    );
+
+  if (roundsBackBtn) {
+    roundsBackBtn.addEventListener(
+      "click",
+      () => {
+        playSound("click");
+
+        showScreen(
+          getHomeScreen()
+        );
+      }
+    );
+  }
+
+
+  /* -----------------------------------------
+     ERROR BACK
+     ----------------------------------------- */
+
+  const errorBackBtn =
+    getElement(
+      "errorBackBtn",
+      "backFromErrorBtn"
+    );
+
+  if (errorBackBtn) {
+    errorBackBtn.addEventListener(
+      "click",
+      () => {
+        playSound("click");
+
+        showScreen(
+          getHomeScreen()
+        );
+      }
+    );
+  }
+
+
+  /* -----------------------------------------
+     REVIEW / RESULT HOME
+     ----------------------------------------- */
+
+  const resultHomeBtn =
+    getElement(
+      "resultHomeBtn",
+      "homeBtn",
+      "backHomeBtn"
+    );
+
+  if (resultHomeBtn) {
+    resultHomeBtn.addEventListener(
+      "click",
+      goHome
+    );
+  }
+
+
+  const reviewHomeBtn =
+    getElement(
+      "reviewHomeBtn"
+    );
+
+  if (reviewHomeBtn) {
+    reviewHomeBtn.addEventListener(
+      "click",
+      goHome
+    );
+  }
+}
+
+
+/* =========================================================
+   INITIALIZE APP
+   ========================================================= */
+
+async function initializeQuizMaster() {
+
+  try {
+
+    loadAudioSettings();
+
+    updateContinueButton();
+
+    /*
+      Load questions.json before rendering
+      the rounds screen.
+    */
+
+    const loaded =
+      await loadQuestions();
+
+    if (!loaded) {
+      return;
+    }
+
+    /*
+      Now TOTAL_ROUNDS is known from
+      questions.json.
+    */
+
+    renderRounds();
+
+    updateContinueButton();
+
+    /*
+      Always begin on Home screen.
+    */
+
+    showScreen(
+      getHomeScreen()
+    );
+
+    console.log(
+      "Quiz Master initialized successfully."
+    );
+
+    console.log(
+      `Questions: ${allQuestions.length}`
+    );
+
+    console.log(
+      `Rounds: ${TOTAL_ROUNDS}`
+    );
+
+  } catch (error) {
+
+    console.error(
+      "Quiz Master initialization error:",
+      error
+    );
+
+    showError(
+      "Quiz Master could not start. Please check your files."
+    );
+  }
+}
+
+
+/* =========================================================
+   GLOBAL FUNCTIONS
+   ---------------------------------------------------------
+   These make the buttons work even if index.html
+   uses onclick="..." attributes.
+   ========================================================= */
+
+window.startQuiz =
+  startQuiz;
+
+window.continueQuiz =
+  continueQuiz;
+
+window.openRounds =
+  openRounds;
+
+window.openSettings =
+  openSettings;
+
+window.shareQuiz =
+  shareQuiz;
+
+window.nextQuestion =
+  nextQuestion;
+
+window.retryRound =
+  retryRound;
+
+window.nextRound =
+  nextRound;
+
+window.openReview =
+  openReview;
+
+window.reviewRetry =
+  reviewRetry;
+
+window.goHome =
+  goHome;
+
+window.setMusicEnabled =
+  setMusicEnabled;
+
+window.setSoundEnabled =
+  setSoundEnabled;
+
+window.showScreen =
+  showScreen;
+
+
+/* =========================================================
+   START APP
+   ========================================================= */
+
+if (
+  document.readyState ===
+  "loading"
+) {
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+      setupEvents();
+      initializeQuizMaster();
+    },
+    {
+      once: true
+    }
+  );
+
+} else {
+
+  setupEvents();
+
+  initializeQuizMaster();
+},
+]
