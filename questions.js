@@ -3135,8 +3135,6 @@
   function goHome() {
     stopTimer();
 
-    stopMusic();
-
     showScreen(
       "homeScreen"
     );
