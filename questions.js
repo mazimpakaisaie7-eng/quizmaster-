@@ -1,6 +1,20 @@
 (() => {
   "use strict";
+/* =========================
+   PWA INSTALL SUPPORT
+   ========================= */
 
+const manifestLink = document.createElement("link");
+manifestLink.rel = "manifest";
+manifestLink.href = "./manifest.webmanifest";
+document.head.appendChild(manifestLink);
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => console.error("Service Worker registration failed:", error));
+  });
+}
   /* =========================================================
      QUIZ MASTER 🇷🇼
      QUESTIONS ENGINE
