@@ -2210,8 +2210,6 @@
 
     stopTimer();
 
-    stopMusic();
-
     if (
       !currentRoundQuestions ||
       !currentRoundQuestions.length
