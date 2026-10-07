@@ -1,68 +1,25 @@
 (() => {
   "use strict";
-/* =========================
-   PWA INSTALL SUPPORT
-   ========================= */
 
-const manifestLink = document.createElement("link");
-manifestLink.rel = "manifest";
-manifestLink.href = "./manifest.webmanifest";
-document.head.appendChild(manifestLink);
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js")
-      .catch(error => console.error("Service Worker registration failed:", error));
-  });
-}
   /* =========================================================
      QUIZ MASTER 🇷🇼
-     QUESTIONS ENGINE
-     FULL STABLE VERSION
-     Compatible with supplied index.html
+     questions.js
+     Compatible with the existing index.html
      ========================================================= */
 
-  /* =========================
-     CONFIGURATION
-     ========================= */
+  const CONFIG = {
+    QUESTIONS_FILE: "./questions.json",
 
-  const QUESTIONS_FILE = "./questions.json";
-  const MUSIC_FILE = "./mythica.mp3";
+    QUESTIONS_PER_ROUND: 10,
+    TOTAL_ROUNDS: 10,
 
-  const QUESTIONS_PER_ROUND = 10;
-  const TIME_PER_QUESTION = 20;
-  const POINTS_PER_CORRECT = 10;
-  const UNLOCK_PERCENT = 60;
+    TIME_PER_QUESTION: 20,
+    POINTS_PER_CORRECT: 10,
 
-  const DIFFICULTIES = [
-    "easy",
-    "medium",
-    "hard"
-  ];
+    UNLOCK_PERCENT: 60,
 
-  const DIFFICULTY_INFO = {
-    easy: {
-      label: "Easy",
-      icon: "🟢",
-      description: "Good for beginners"
-    },
-
-    medium: {
-      label: "Medium",
-      icon: "🟡",
-      description: "Test your general knowledge"
-    },
-
-    hard: {
-      label: "Hard",
-      icon: "🔴",
-      description: "Challenge yourself"
-    }
+    MUSIC_FILE: "./mythica.mp3"
   };
-
-  /* =========================
-     STORAGE KEYS
-     ========================= */
 
   const KEYS = {
     progress: "quizmasterProgress",
@@ -72,71 +29,57 @@ if ("serviceWorker" in navigator) {
 
     music: "quizmasterMusic",
     sound: "quizmasterSound",
-    musicPosition: "quizmasterMusicPosition",
 
     completedRounds: "quizmasterCompletedRounds",
     roundStars: "quizmasterRoundStars",
     achievements: "quizmasterAchievements",
+
     personalBest: "quizmasterPersonalBest",
     totalScore: "quizmasterTotalScore",
-    totalCorrect: "quizmasterTotalCorrect",
+
     dailyChallenge: "quizmasterDailyChallenge",
     usedQuestions: "quizmasterUsedQuestions"
   };
 
-  /* =========================
+  /* =========================================================
      STATE
-     ========================= */
+     ========================================================= */
 
-  let allQuestions = [];
+  const state = {
+    initialized: false,
+    questionsLoaded: false,
 
-  let rounds = {
-    easy: [],
-    medium: [],
-    hard: []
+    questions: [],
+    rounds: [],
+
+    currentRound: 1,
+    currentQuestionIndex: 0,
+
+    currentDifficulty: "mixed",
+    currentQuestions: [],
+
+    score: 0,
+    correct: 0,
+    wrong: 0,
+
+    answered: false,
+    quizFinished: false,
+    paused: false,
+
+    reviewQuestions: [],
+
+    timeLeft: CONFIG.TIME_PER_QUESTION,
+    timer: null,
+
+    musicEnabled: true,
+    soundEnabled: true,
+
+    audio: null
   };
 
-  let selectedDifficulty = "medium";
-
-  let currentRound = 1;
-  let currentQuestionIndex = 0;
-
-  let currentRoundQuestions = [];
-
-  let score = 0;
-  let correctAnswers = 0;
-  let wrongAnswers = 0;
-
-  let selectedAnswer = null;
-  let answered = false;
-
-  let timer = null;
-  let timeLeft = TIME_PER_QUESTION;
-
-  let reviewQuestions = [];
-
-  let lastResult = null;
-
-  let musicEnabled = false;
-  let soundEnabled = true;
-
-  let audio = null;
-
-  let initialized = false;
-
-  /*
-    Prevents finishRound() from being executed twice.
-  */
-  let quizFinished = false;
-
-  /*
-    Prevents total correct / score from being counted twice.
-  */
-  let resultSaved = false;
-
-  /* =========================
-     DOM
-     ========================= */
+  /* =========================================================
+     ELEMENTS
+     ========================================================= */
 
   const elements = {};
 
@@ -204,24 +147,23 @@ if ("serviceWorker" in navigator) {
     });
   }
 
-  /* =========================
-     SAFE STORAGE
-     ========================= */
+  /* =========================================================
+     STORAGE
+     ========================================================= */
 
   function readJSON(key, fallback) {
     try {
       const value =
         localStorage.getItem(key);
 
-      if (!value) {
+      if (value === null) {
         return fallback;
       }
 
       return JSON.parse(value);
     } catch (error) {
-      console.warn(
-        "Storage read error:",
-        key,
+      console.error(
+        "Quiz Master storage read error:",
         error
       );
 
@@ -235,12 +177,15 @@ if ("serviceWorker" in navigator) {
         key,
         JSON.stringify(value)
       );
+
+      return true;
     } catch (error) {
-      console.warn(
-        "Storage write error:",
-        key,
+      console.error(
+        "Quiz Master storage write error:",
         error
       );
+
+      return false;
     }
   }
 
@@ -248,66 +193,361 @@ if ("serviceWorker" in navigator) {
     try {
       localStorage.removeItem(key);
     } catch (error) {
-      console.warn(
-        "Storage remove error:",
-        key,
+      console.error(
+        "Quiz Master storage remove error:",
         error
       );
     }
   }
 
-  /* =========================
-     HELPERS
-     ========================= */
+  function getNumber(key, fallback = 0) {
+    try {
+      const value =
+        Number(
+          localStorage.getItem(key)
+        );
 
-  function normalizeDifficulty(value) {
-    const difficulty =
-      String(value || "")
-        .trim()
-        .toLowerCase();
+      return Number.isFinite(value)
+        ? value
+        : fallback;
+    } catch (error) {
+      return fallback;
+    }
+  }
 
+  function setNumber(key, value) {
+    try {
+      localStorage.setItem(
+        key,
+        String(value)
+      );
+    } catch (error) {
+      console.error(
+        "Quiz Master number storage error:",
+        error
+      );
+    }
+  }
+
+  /* =========================================================
+     SCREEN
+     ========================================================= */
+
+  function showScreen(screenId) {
+    document
+      .querySelectorAll(".screen")
+      .forEach((screen) => {
+        screen.classList.remove("active");
+      });
+
+    const screen =
+      document.getElementById(
+        screenId
+      );
+
+    if (screen) {
+      screen.classList.add("active");
+    }
+  }
+
+  /* =========================================================
+     DIFFICULTY SCREEN
+     ========================================================= */
+
+  function createDifficultyScreen() {
     if (
-      DIFFICULTIES.includes(
-        difficulty
+      document.getElementById(
+        "difficultyScreen"
       )
     ) {
-      return difficulty;
+      return;
     }
 
-    return "medium";
-  }
-
-  function safeText(value) {
-    return value == null
-      ? ""
-      : String(value);
-  }
-
-  function getQuestionText(question) {
-    if (!question) {
-      return "";
+    if (
+      !elements.roundsScreen ||
+      !elements.roundsScreen.parentNode
+    ) {
+      return;
     }
 
-    return safeText(
-      question.question
+    const screen =
+      document.createElement("section");
+
+    screen.id =
+      "difficultyScreen";
+
+    screen.className =
+      "screen";
+
+    screen.innerHTML = `
+      <div class="container">
+        <h2>Select Difficulty</h2>
+
+        <div
+          id="difficultyGrid"
+          style="
+            display:grid;
+            gap:12px;
+            margin-top:20px;
+          "
+        >
+          <button
+            type="button"
+            class="main-btn"
+            data-difficulty="easy"
+          >
+            🟢 Easy
+          </button>
+
+          <button
+            type="button"
+            class="main-btn"
+            data-difficulty="medium"
+          >
+            🟡 Medium
+          </button>
+
+          <button
+            type="button"
+            class="main-btn"
+            data-difficulty="hard"
+          >
+            🔴 Hard
+          </button>
+
+          <button
+            type="button"
+            class="secondary-btn"
+            data-difficulty="mixed"
+          >
+            🎯 Mixed
+          </button>
+
+          <button
+            type="button"
+            class="secondary-btn"
+            id="difficultyBackBtn"
+          >
+            ← Back
+          </button>
+        </div>
+      </div>
+    `;
+
+    elements.roundsScreen.parentNode.insertBefore(
+      screen,
+      elements.roundsScreen
+    );
+
+    screen
+      .querySelectorAll(
+        "[data-difficulty]"
+      )
+      .forEach((button) => {
+        button.type = "button";
+
+        button.addEventListener(
+          "click",
+          () => {
+            const difficulty =
+              button.getAttribute(
+                "data-difficulty"
+              );
+
+            state.currentDifficulty =
+              difficulty;
+
+            writeJSON(
+              KEYS.difficulty,
+              difficulty
+            );
+
+            buildRounds();
+
+            showRounds();
+          }
+        );
+      });
+
+    const back =
+      screen.querySelector(
+        "#difficultyBackBtn"
+      );
+
+    if (back) {
+      back.type = "button";
+
+      back.addEventListener(
+        "click",
+        () => {
+          showScreen(
+            "homeScreen"
+          );
+        }
+      );
+    }
+  }
+
+  function showDifficultySelection() {
+    if (!state.questionsLoaded) {
+      showError(
+        "Questions are still loading. Please try again."
+      );
+
+      return;
+    }
+
+    const screen =
+      document.getElementById(
+        "difficultyScreen"
+      );
+
+    if (!screen) {
+      showRounds();
+      return;
+    }
+
+    showScreen(
+      "difficultyScreen"
     );
   }
 
-  function clamp(value, min, max) {
-    return Math.max(
-      min,
-      Math.min(max, value)
-    );
+  /* =========================================================
+     QUESTION VALIDATION
+     ========================================================= */
+
+  function normalizeQuestion(item) {
+    if (
+      !item ||
+      typeof item !== "object"
+    ) {
+      return null;
+    }
+
+    if (
+      typeof item.question !==
+      "string"
+    ) {
+      return null;
+    }
+
+    if (
+      !Array.isArray(item.options)
+    ) {
+      return null;
+    }
+
+    const question =
+      item.question.trim();
+
+    const options =
+      item.options
+        .filter(
+          (option) =>
+            typeof option ===
+              "string" &&
+            option.trim()
+        )
+        .map(
+          (option) =>
+            option.trim()
+        );
+
+    const answer =
+      typeof item.answer ===
+        "string"
+        ? item.answer.trim()
+        : "";
+
+    if (
+      !question ||
+      options.length < 2 ||
+      !answer
+    ) {
+      return null;
+    }
+
+    if (
+      !options.includes(answer)
+    ) {
+      return null;
+    }
+
+    let difficulty =
+      typeof item.difficulty ===
+        "string"
+        ? item.difficulty
+            .trim()
+            .toLowerCase()
+        : "medium";
+
+    if (
+      ![
+        "easy",
+        "medium",
+        "hard"
+      ].includes(difficulty)
+    ) {
+      difficulty = "medium";
+    }
+
+    return {
+      question,
+      question_rw:
+        typeof item.question_rw ===
+          "string"
+          ? item.question_rw.trim()
+          : "",
+      options,
+      answer,
+      category:
+        typeof item.category ===
+          "string" &&
+        item.category.trim()
+          ? item.category.trim()
+          : "General Knowledge",
+      difficulty
+    };
   }
+
+  function validateQuestions(data) {
+    if (!Array.isArray(data)) {
+      throw new Error(
+        "questions.json must contain an array."
+      );
+    }
+
+    const valid = [];
+
+    data.forEach((item) => {
+      const question =
+        normalizeQuestion(item);
+
+      if (question) {
+        valid.push(question);
+      }
+    });
+
+    if (valid.length === 0) {
+      throw new Error(
+        "No valid questions were found in questions.json."
+      );
+    }
+
+    return valid;
+  }
+
+  /* =========================================================
+     SHUFFLE
+     ========================================================= */
 
   function shuffle(array) {
-    const copy =
-      Array.isArray(array)
-        ? [...array]
-        : [];
+    const result = Array.isArray(array)
+      ? [...array]
+      : [];
 
     for (
-      let i = copy.length - 1;
+      let i = result.length - 1;
       i > 0;
       i--
     ) {
@@ -318,701 +558,382 @@ if ("serviceWorker" in navigator) {
         );
 
       [
-        copy[i],
-        copy[j]
+        result[i],
+        result[j]
       ] = [
-        copy[j],
-        copy[i]
+        result[j],
+        result[i]
       ];
     }
 
-    return copy;
+    return result;
   }
 
-  /* =========================
-     QUESTION VALIDATION
-     ========================= */
+  /* =========================================================
+     QUESTION ID
+     ========================================================= */
 
-  function validateQuestion(
-    item,
-    index
-  ) {
-    if (
-      !item ||
-      typeof item !== "object"
-    ) {
-      return (
-        `Question ${index + 1} ` +
-        `is not a valid object.`
-      );
-    }
-
-    if (
-      typeof item.question !==
-        "string" ||
-      !item.question.trim()
-    ) {
-      return (
-        `Question ${index + 1} ` +
-        `has no valid question text.`
-      );
-    }
-
-    if (
-      !Array.isArray(
-        item.options
-      ) ||
-      item.options.length < 2
-    ) {
-      return (
-        `Question ${index + 1} ` +
-        `must have at least 2 options.`
-      );
-    }
-
-    const options =
-      item.options.map(
-        (option) =>
-          safeText(option).trim()
-      );
-
-    if (
-      options.some(
-        (option) => !option
-      )
-    ) {
-      return (
-        `Question ${index + 1} ` +
-        `contains an empty option.`
-      );
-    }
-
-    if (
-      typeof item.answer !==
-        "string" ||
-      !item.answer.trim()
-    ) {
-      return (
-        `Question ${index + 1} ` +
-        `has no valid answer.`
-      );
-    }
-
-    if (
-      !options.includes(
-        item.answer.trim()
-      )
-    ) {
-      return (
-        `Question ${index + 1}: ` +
-        `answer "${item.answer}" ` +
-        `does not exactly match any option.`
-      );
-    }
-
-    return null;
+  function questionId(question) {
+    return [
+      question.question,
+      question.answer,
+      question.category
+    ]
+      .join("|||")
+      .toLowerCase();
   }
 
-  /* =========================
-     BUILD ROUNDS
-     ========================= */
+  /* =========================================================
+     USED QUESTIONS
+     ========================================================= */
 
-  function buildRounds() {
-    rounds = {
-      easy: [],
-      medium: [],
-      hard: []
-    };
+  function getUsedQuestions() {
+    const used =
+      readJSON(
+        KEYS.usedQuestions,
+        []
+      );
 
-    const grouped = {
-      easy: [],
-      medium: [],
-      hard: []
-    };
+    return Array.isArray(used)
+      ? used
+      : [];
+  }
 
-    allQuestions.forEach(
+  function selectFreshQuestions(pool) {
+    if (!pool.length) {
+      return [];
+    }
+
+    const required =
+      CONFIG.QUESTIONS_PER_ROUND;
+
+    let used =
+      getUsedQuestions();
+
+    let available =
+      pool.filter(
+        (question) =>
+          !used.includes(
+            questionId(question)
+          )
+      );
+
+    /*
+     * Start a new cycle when the old
+     * cycle does not contain enough
+     * unused questions.
+     */
+    if (
+      available.length <
+      required
+    ) {
+      used = [];
+
+      available = [...pool];
+    }
+
+    const selected =
+      shuffle(available).slice(
+        0,
+        Math.min(
+          required,
+          available.length
+        )
+      );
+
+    selected.forEach(
       (question) => {
-        const difficulty =
-          normalizeDifficulty(
-            question.difficulty
-          );
+        const id =
+          questionId(question);
 
-        grouped[difficulty].push(
-          question
-        );
-      }
-    );
-
-    DIFFICULTIES.forEach(
-      (difficulty) => {
-        const questions =
-          shuffle(
-            grouped[difficulty]
-          );
-
-        for (
-          let i = 0;
-          i < questions.length;
-          i += QUESTIONS_PER_ROUND
-        ) {
-          const roundQuestions =
-            questions.slice(
-              i,
-              i +
-                QUESTIONS_PER_ROUND
-            );
-
-          /*
-            Only complete rounds are created.
-            100 questions = 10 complete rounds.
-          */
-          if (
-            roundQuestions.length ===
-            QUESTIONS_PER_ROUND
-          ) {
-            rounds[difficulty].push(
-              roundQuestions
-            );
-          }
+        if (!used.includes(id)) {
+          used.push(id);
         }
       }
     );
 
-    console.log(
-      "Quiz Master rounds:",
-      {
-        easy:
-          rounds.easy.length,
-        medium:
-          rounds.medium.length,
-        hard:
-          rounds.hard.length
-      }
+    writeJSON(
+      KEYS.usedQuestions,
+      used
     );
+
+    return selected;
   }
 
-  /* =========================
-     UNLOCKED ROUNDS
-     ========================= */
+  /* =========================================================
+     DIFFICULTY
+     ========================================================= */
 
-  function getUnlockedRounds(
-    difficulty
-  ) {
-    difficulty =
-      normalizeDifficulty(
-        difficulty
-      );
+  function getDifficultyPool() {
+    if (
+      state.currentDifficulty ===
+      "mixed"
+    ) {
+      return [...state.questions];
+    }
 
-    const maxRounds =
-      Math.max(
-        1,
-        rounds[difficulty]
-          ? rounds[difficulty].length
-          : 1
-      );
-
-    const stored =
-      readJSON(
-        KEYS.unlockedRounds,
-        null
+    const filtered =
+      state.questions.filter(
+        (question) =>
+          question.difficulty ===
+          state.currentDifficulty
       );
 
     if (
-      stored &&
-      typeof stored ===
-        "object" &&
-      !Array.isArray(stored)
+      filtered.length >=
+      CONFIG.QUESTIONS_PER_ROUND
     ) {
-      const value =
-        Number(
-          stored[difficulty]
+      return filtered;
+    }
+
+    return [...state.questions];
+  }
+
+  /* =========================================================
+     ROUNDS
+     ========================================================= */
+
+  function buildRounds() {
+    state.rounds = [];
+
+    const pool =
+      getDifficultyPool();
+
+    const shuffled =
+      shuffle(pool);
+
+    const count =
+      Math.floor(
+        shuffled.length /
+          CONFIG.QUESTIONS_PER_ROUND
+      );
+
+    const rounds =
+      Math.min(
+        CONFIG.TOTAL_ROUNDS,
+        count
+      );
+
+    for (
+      let i = 0;
+      i < rounds;
+      i++
+    ) {
+      const start =
+        i *
+        CONFIG.QUESTIONS_PER_ROUND;
+
+      const end =
+        start +
+        CONFIG.QUESTIONS_PER_ROUND;
+
+      state.rounds.push(
+        shuffled.slice(
+          start,
+          end
+        )
+      );
+    }
+  }
+
+  /* =========================================================
+     LOAD QUESTIONS
+     ========================================================= */
+
+  async function loadQuestions() {
+    try {
+      const response =
+        await fetch(
+          `${CONFIG.QUESTIONS_FILE}?v=${Date.now()}`,
+          {
+            cache: "no-store"
+          }
+        );
+
+      if (!response.ok) {
+        throw new Error(
+          `Unable to load questions.json (${response.status}).`
+        );
+      }
+
+      const data =
+        await response.json();
+
+      state.questions =
+        validateQuestions(data);
+
+      const savedDifficulty =
+        readJSON(
+          KEYS.difficulty,
+          "mixed"
         );
 
       if (
-        Number.isFinite(value) &&
-        value >= 1
+        [
+          "easy",
+          "medium",
+          "hard",
+          "mixed"
+        ].includes(
+          savedDifficulty
+        )
       ) {
-        return clamp(
-          Math.floor(value),
-          1,
-          maxRounds
+        state.currentDifficulty =
+          savedDifficulty;
+      }
+
+      initializeUnlockedRounds();
+
+      buildRounds();
+
+      if (
+        state.rounds.length === 0
+      ) {
+        throw new Error(
+          "There are not enough questions to create a round."
         );
       }
-    }
 
-    /*
-      Old storage format migration.
-    */
-    const oldValue =
-      Number(
-        localStorage.getItem(
-          KEYS.unlockedRounds
-        )
+      state.questionsLoaded =
+        true;
+
+      renderRounds();
+
+      updateContinueButton();
+
+      showScreen(
+        "homeScreen"
       );
 
-    if (
-      Number.isFinite(oldValue) &&
-      oldValue >= 1 &&
-      difficulty === "medium"
-    ) {
-      return clamp(
-        Math.floor(oldValue),
-        1,
-        maxRounds
+      console.log(
+        "Quiz Master: questions loaded:",
+        state.questions.length
+      );
+    } catch (error) {
+      console.error(
+        "Quiz Master:",
+        error
+      );
+
+      state.questionsLoaded =
+        false;
+
+      showError(
+        error.message ||
+          "Unable to load questions."
       );
     }
-
-    return 1;
   }
 
-  function saveUnlockedRounds(
-    difficulty,
-    value
-  ) {
-    difficulty =
-      normalizeDifficulty(
-        difficulty
-      );
+  /* =========================================================
+     UNLOCKS
+     ========================================================= */
 
-    let data =
+  function initializeUnlockedRounds() {
+    let unlocked =
       readJSON(
         KEYS.unlockedRounds,
-        {}
+        [1]
       );
 
-    /*
-      FIX:
-      Do not recursively call the same function.
-    */
     if (
-      !data ||
-      typeof data !==
-        "object" ||
-      Array.isArray(data)
+      !Array.isArray(unlocked)
     ) {
-      data = {};
+      unlocked = [1];
     }
 
-    const maxRounds =
-      Math.max(
-        1,
-        rounds[difficulty]
-          ? rounds[difficulty].length
-          : 1
-      );
+    if (
+      !unlocked.includes(1)
+    ) {
+      unlocked.push(1);
+    }
 
-    data[difficulty] =
-      clamp(
-        Math.floor(
-          Number(value) || 1
-        ),
-        1,
-        maxRounds
-      );
+    unlocked =
+      unlocked
+        .filter(
+          (round) =>
+            Number.isInteger(
+              round
+            ) &&
+            round >= 1 &&
+            round <=
+              CONFIG.TOTAL_ROUNDS
+        )
+        .sort(
+          (a, b) => a - b
+        );
 
     writeJSON(
       KEYS.unlockedRounds,
-      data
+      unlocked
     );
   }
 
-  function initializeUnlocks() {
-    DIFFICULTIES.forEach(
-      (difficulty) => {
-        if (
-          rounds[difficulty] &&
-          rounds[difficulty]
-            .length > 0
-        ) {
-          const unlocked =
-            getUnlockedRounds(
-              difficulty
-            );
-
-          saveUnlockedRounds(
-            difficulty,
-            unlocked
-          );
-        }
-      }
-    );
-  }
-
-  /* =========================
-     COMPLETED ROUNDS
-     ========================= */
-
-  function getCompletedRounds() {
-    const data =
+  function getUnlockedRounds() {
+    const unlocked =
       readJSON(
-        KEYS.completedRounds,
-        {}
+        KEYS.unlockedRounds,
+        [1]
       );
+
+    return Array.isArray(unlocked)
+      ? unlocked
+      : [1];
+  }
+
+  function isRoundUnlocked(round) {
+    return getUnlockedRounds().includes(
+      round
+    );
+  }
+
+  function unlockRound(round) {
+    if (
+      round < 1 ||
+      round >
+        CONFIG.TOTAL_ROUNDS
+    ) {
+      return;
+    }
+
+    const unlocked =
+      getUnlockedRounds();
 
     if (
-      !data ||
-      typeof data !==
-        "object" ||
-      Array.isArray(data)
+      !unlocked.includes(round)
     ) {
-      return {
-        easy: [],
-        medium: [],
-        hard: []
-      };
-    }
+      unlocked.push(round);
 
-    return {
-      easy:
-        Array.isArray(
-          data.easy
-        )
-          ? data.easy
-          : [],
-
-      medium:
-        Array.isArray(
-          data.medium
-        )
-          ? data.medium
-          : [],
-
-      hard:
-        Array.isArray(
-          data.hard
-        )
-          ? data.hard
-          : []
-    };
-  }
-
-  function saveCompletedRound(
-    difficulty,
-    roundNumber
-  ) {
-    const data =
-      getCompletedRounds();
-
-    difficulty =
-      normalizeDifficulty(
-        difficulty
+      unlocked.sort(
+        (a, b) => a - b
       );
 
-    if (
-      !data[difficulty].includes(
-        roundNumber
-      )
-    ) {
-      data[difficulty].push(
-        roundNumber
+      writeJSON(
+        KEYS.unlockedRounds,
+        unlocked
       );
-    }
-
-    writeJSON(
-      KEYS.completedRounds,
-      data
-    );
-  }
-
-  /* =========================
-     STARS
-     ========================= */
-
-  function getRoundStars() {
-    const data =
-      readJSON(
-        KEYS.roundStars,
-        {}
-      );
-
-    if (
-      !data ||
-      typeof data !==
-        "object" ||
-      Array.isArray(data)
-    ) {
-      return {};
-    }
-
-    return data;
-  }
-
-  function saveRoundStars(
-    difficulty,
-    roundNumber,
-    stars
-  ) {
-    const data =
-      getRoundStars();
-
-    if (
-      !data[difficulty]
-    ) {
-      data[difficulty] =
-        {};
-    }
-
-    data[difficulty][
-      roundNumber
-    ] = stars;
-
-    writeJSON(
-      KEYS.roundStars,
-      data
-    );
-  }
-
-  /* =========================
-     SCREEN CONTROL
-     ========================= */
-
-  function showScreen(
-    screenId
-  ) {
-    const screens =
-      document.querySelectorAll(
-        ".screen"
-      );
-
-    screens.forEach(
-      (screen) => {
-        screen.classList.remove(
-          "active"
-        );
-      }
-    );
-
-    const target =
-      document.getElementById(
-        screenId
-      );
-
-    if (target) {
-      target.classList.add(
-        "active"
-      );
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
     }
   }
 
-  /* =========================
-     DIFFICULTY SCREEN
-     ========================= */
+  /* =========================================================
+     ROUND BUTTONS
+     ========================================================= */
 
-  function createDifficultyScreen() {
-    let screen =
-      document.getElementById(
-        "difficultyScreen"
+  function showRounds() {
+    if (!state.questionsLoaded) {
+      showError(
+        "Questions are not loaded yet."
       );
 
-    if (screen) {
-      return screen;
+      return;
     }
-
-    screen =
-      document.createElement(
-        "section"
-      );
-
-    screen.id =
-      "difficultyScreen";
-
-    screen.className =
-      "screen";
-
-    screen.innerHTML = `
-      <div class="container">
-
-        <div class="screen-header">
-          <h2>🎯 Choose Difficulty</h2>
-          <p>Select the difficulty level for your quiz.</p>
-        </div>
-
-        <div
-          id="difficultyGrid"
-          style="
-            display:grid;
-            grid-template-columns:
-              repeat(
-                auto-fit,
-                minmax(220px,1fr)
-              );
-            gap:14px;
-            max-width:760px;
-            margin:20px auto;
-          ">
-        </div>
-
-        <div class="button-group">
-
-          <button
-            id="difficultyBackBtn"
-            type="button"
-            class="secondary-btn">
-            ← Back Home
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-    const roundsScreen =
-      document.getElementById(
-        "roundsScreen"
-      );
-
-    if (roundsScreen) {
-      roundsScreen.parentNode.insertBefore(
-        screen,
-        roundsScreen
-      );
-    } else {
-      document.body.appendChild(
-        screen
-      );
-    }
-
-    const grid =
-      document.getElementById(
-        "difficultyGrid"
-      );
-
-    if (!grid) {
-      return screen;
-    }
-
-    DIFFICULTIES.forEach(
-      (difficulty) => {
-        const info =
-          DIFFICULTY_INFO[
-            difficulty
-          ];
-
-        const button =
-          document.createElement(
-            "button"
-          );
-
-        button.type =
-          "button";
-
-        button.style.cssText = `
-          min-height:130px;
-          border:1px solid #e5e7eb;
-          border-radius:20px;
-          background:#fff;
-          cursor:pointer;
-          padding:20px;
-          font-family:inherit;
-          box-shadow:
-            0 8px 20px
-            rgba(0,0,0,.06);
-          transition:
-            transform .15s ease,
-            box-shadow .15s ease;
-        `;
-
-        button.innerHTML = `
-          <div style="font-size:32px;">
-            ${info.icon}
-          </div>
-
-          <div style="
-            font-size:21px;
-            font-weight:900;
-            color:#172554;
-            margin-top:5px;">
-            ${info.label}
-          </div>
-
-          <div style="
-            color:#6b7280;
-            font-size:13px;
-            margin-top:4px;">
-            ${info.description}
-          </div>
-        `;
-
-        button.addEventListener(
-          "click",
-          () => {
-            chooseDifficulty(
-              difficulty
-            );
-          }
-        );
-
-        grid.appendChild(
-          button
-        );
-      }
-    );
-
-    const back =
-      document.getElementById(
-        "difficultyBackBtn"
-      );
-
-    if (back) {
-      back.addEventListener(
-        "click",
-        goHome
-      );
-    }
-
-    return screen;
-  }
-
-  function showDifficultySelection() {
-    createDifficultyScreen();
-
-    showScreen(
-      "difficultyScreen"
-    );
-  }
-
-  function chooseDifficulty(
-    difficulty,
-    roundNumber = 1
-  ) {
-    difficulty =
-      normalizeDifficulty(
-        difficulty
-      );
-
-    selectedDifficulty =
-      difficulty;
-
-    localStorage.setItem(
-      KEYS.difficulty,
-      difficulty
-    );
-
-    /*
-      Rebuild once so questions are
-      freshly organized for the selected
-      difficulty.
-    */
-    buildRounds();
-
-    initializeUnlocks();
 
     renderRounds();
 
-    startQuiz(
-      roundNumber,
-      difficulty
+    showScreen(
+      "roundsScreen"
     );
   }
-
-  /* =========================
-     ROUNDS UI
-     ========================= */
 
   function renderRounds() {
     const grid =
@@ -1024,457 +945,169 @@ if ("serviceWorker" in navigator) {
 
     grid.innerHTML = "";
 
-    const difficulty =
-      normalizeDifficulty(
-        selectedDifficulty
-      );
-
-    const availableRounds =
-      rounds[difficulty] || [];
-
-    const unlocked =
-      getUnlockedRounds(
-        difficulty
-      );
-
-    const completed =
-      getCompletedRounds();
-
-    const stars =
-      getRoundStars();
-
-    const info =
-      DIFFICULTY_INFO[
-        difficulty
-      ];
-
-    const header =
-      document.createElement(
-        "div"
-      );
-
-    header.style.cssText = `
-      grid-column:1/-1;
-      text-align:center;
-      font-weight:900;
-      color:#172554;
-      font-size:18px;
-      margin-bottom:2px;
-    `;
-
-    header.textContent =
-      `${info.icon} ${info.label} Difficulty`;
-
-    grid.appendChild(
-      header
-    );
-
-    if (
-      availableRounds.length ===
-      0
+    for (
+      let round = 1;
+      round <= CONFIG.TOTAL_ROUNDS;
+      round++
     ) {
-      const empty =
+      const button =
         document.createElement(
-          "p"
+          "button"
         );
 
-      empty.style.cssText =
-        "grid-column:1/-1;text-align:center;color:#6b7280;";
+      button.type = "button";
 
-      empty.textContent =
-        `No complete ${info.label} rounds are available yet.`;
+      button.className =
+        "secondary-btn";
 
-      grid.appendChild(
-        empty
-      );
+      const available =
+        round <=
+        state.rounds.length;
 
-      return;
-    }
+      const unlocked =
+        available &&
+        isRoundUnlocked(round);
 
-    availableRounds.forEach(
-      (questions, index) => {
-        const roundNumber =
-          index + 1;
+      const stars =
+        getRoundStars(round);
 
-        const isUnlocked =
-          roundNumber <=
-          unlocked;
+      if (unlocked) {
+        button.disabled = false;
 
-        const isCompleted =
-          completed[difficulty] &&
-          completed[difficulty].includes(
-            roundNumber
-          );
-
-        const starCount =
-          stars[difficulty] &&
-          stars[difficulty][
-            roundNumber
-          ]
-            ? Number(
-                stars[difficulty][
-                  roundNumber
-                ]
-              )
-            : 0;
-
-        const button =
-          document.createElement(
-            "button"
-          );
-
-        button.type =
-          "button";
-
-        button.className =
-          "round-btn " +
-          (
-            isUnlocked
-              ? "unlocked"
-              : "locked"
-          );
-
-        if (isUnlocked) {
-          let starText =
-            "";
-
-          if (
-            starCount > 0
-          ) {
-            starText =
-              " " +
-              "⭐".repeat(
-                clamp(
-                  starCount,
-                  0,
-                  3
-                )
-              );
-          }
-
-          button.innerHTML =
-            `${
-              isCompleted
-                ? "✅ "
-                : "🎯 "
-            }Round ${roundNumber}${starText}`;
-        } else {
-          button.innerHTML =
-            `🔒 Round ${roundNumber}`;
-        }
+        button.textContent =
+          stars > 0
+            ? `Round ${round} ${"⭐".repeat(stars)}`
+            : `Round ${round}`;
 
         button.addEventListener(
           "click",
           () => {
-            if (!isUnlocked) {
-              alert(
-                `Complete the previous round with at least ${UNLOCK_PERCENT}% to unlock this round.`
-              );
-
-              return;
-            }
-
-            startQuiz(
-              roundNumber,
-              difficulty
-            );
+            startRound(round);
           }
         );
-
-        grid.appendChild(
-          button
-        );
-      }
-    );
-  }
-
-  function showRounds() {
-    renderRounds();
-
-    showScreen(
-      "roundsScreen"
-    );
-  }
-
-  /* =========================
-     LOAD QUESTIONS
-     ========================= */
-
-  async function loadQuestions() {
-    try {
-      const response =
-        await fetch(
-          `${QUESTIONS_FILE}?v=${Date.now()}`,
-          {
-            cache: "no-store"
-          }
-        );
-
-      if (!response.ok) {
-        throw new Error(
-          `questions.json could not be loaded. HTTP ${response.status}`
-        );
-      }
-
-      const data =
-        await response.json();
-
-      if (
-        !Array.isArray(data)
-      ) {
-        throw new Error(
-          "questions.json must contain a JSON array."
-        );
-      }
-
-      if (
-        data.length === 0
-      ) {
-        throw new Error(
-          "questions.json contains no questions."
-        );
-      }
-
-      const validQuestions =
-        [];
-
-      for (
-        let i = 0;
-        i < data.length;
-        i++
-      ) {
-        const error =
-          validateQuestion(
-            data[i],
-            i
-          );
-
-        if (error) {
-          throw new Error(
-            error
-          );
-        }
-
-        const question = {
-          ...data[i],
-
-          id:
-            data[i].id ||
-            `question-${i + 1}`,
-
-          question:
-            data[i].question.trim(),
-
-          options:
-            data[i].options.map(
-              (option) =>
-                safeText(
-                  option
-                ).trim()
-            ),
-
-          answer:
-            data[i].answer.trim(),
-
-          category:
-            safeText(
-              data[i].category ||
-              "General Knowledge"
-            ).trim(),
-
-          difficulty:
-            normalizeDifficulty(
-              data[i].difficulty
-            )
-        };
-
-        validQuestions.push(
-          question
-        );
-      }
-
-      allQuestions =
-        validQuestions;
-
-      buildRounds();
-
-      initializeUnlocks();
-
-      const savedDifficulty =
-        normalizeDifficulty(
-          localStorage.getItem(
-            KEYS.difficulty
-          )
-        );
-
-      if (
-        rounds[savedDifficulty] &&
-        rounds[savedDifficulty]
-          .length > 0
-      ) {
-        selectedDifficulty =
-          savedDifficulty;
-      } else if (
-        rounds.medium.length >
-        0
-      ) {
-        selectedDifficulty =
-          "medium";
-      } else if (
-        rounds.easy.length >
-        0
-      ) {
-        selectedDifficulty =
-          "easy";
       } else {
-        selectedDifficulty =
-          "hard";
+        button.disabled = true;
+
+        button.textContent =
+          `🔒 Round ${round}`;
+
+        button.style.opacity =
+          "0.55";
       }
 
-      renderRounds();
-
-      updateContinueButton();
-
-      showScreen(
-        "homeScreen"
-      );
-
-      console.log(
-        `Quiz Master loaded ${allQuestions.length} questions.`
-      );
-
-      console.log(
-        "Available rounds:",
-        {
-          easy:
-            rounds.easy.length,
-          medium:
-            rounds.medium.length,
-          hard:
-            rounds.hard.length
-        }
-      );
-
-    } catch (error) {
-      console.error(
-        "Quiz loading error:",
-        error
-      );
-
-      showError(
-        error.message ||
-        "Unable to load quiz questions."
-      );
+      grid.appendChild(button);
     }
   }
 
-  /* =========================
-     START QUIZ
-     ========================= */
+  /* =========================================================
+     START ROUND
+     ========================================================= */
 
-  function startQuiz(
-    roundNumber = 1,
-    difficulty =
-      selectedDifficulty
-  ) {
-    difficulty =
-      normalizeDifficulty(
-        difficulty
-      );
-
-    const number =
-      Math.max(
-        1,
-        Math.floor(
-          Number(
-            roundNumber
-          ) || 1
-        )
-      );
-
-    if (
-      !rounds[difficulty] ||
-      !rounds[difficulty]
-        .length
-    ) {
-      alert(
-        `There are no complete ${DIFFICULTY_INFO[difficulty].label} rounds available.`
+  function startRound(round) {
+    if (!state.questionsLoaded) {
+      showError(
+        "Questions are still loading."
       );
 
       return;
     }
 
-    const unlocked =
-      getUnlockedRounds(
-        difficulty
-      );
-
-    if (
-      number > unlocked
-    ) {
-      alert(
-        `Round ${number} is locked. Score at least ${UNLOCK_PERCENT}% in the previous round.`
-      );
-
+    if (!isRoundUnlocked(round)) {
       return;
     }
 
     if (
-      !rounds[difficulty][
-        number - 1
-      ]
+      round < 1 ||
+      round >
+        state.rounds.length
     ) {
-      alert(
+      showError(
         "This round is not available yet."
       );
 
       return;
     }
 
-    selectedDifficulty =
-      difficulty;
+    state.currentRound =
+      round;
 
-    currentRound =
-      number;
+    writeJSON(
+      KEYS.currentRound,
+      round
+    );
 
-    currentQuestionIndex =
-      0;
+    startQuiz();
+  }
 
-    currentRoundQuestions =
-      shuffle(
-        rounds[difficulty][
-          number - 1
-        ]
+  /* =========================================================
+     START QUIZ
+     ========================================================= */
+
+  function startQuiz() {
+    if (!state.questionsLoaded) {
+      showError(
+        "Questions are not loaded yet."
       );
 
-    score = 0;
-    correctAnswers = 0;
-    wrongAnswers = 0;
+      return;
+    }
 
-    selectedAnswer = null;
-    answered = false;
+    stopTimer();
 
-    reviewQuestions = [];
+    state.quizFinished = false;
+    state.paused = false;
+    state.answered = false;
 
-    lastResult = null;
+    state.score = 0;
+    state.correct = 0;
+    state.wrong = 0;
 
-    quizFinished = false;
+    state.currentQuestionIndex = 0;
 
-    resultSaved = false;
+    state.reviewQuestions = [];
 
-    localStorage.setItem(
-      KEYS.difficulty,
-      selectedDifficulty
-    );
+    let roundQuestions =
+      state.rounds[
+        state.currentRound - 1
+      ];
 
-    localStorage.setItem(
-      KEYS.currentRound,
-      String(
-        currentRound
-      )
-    );
+    /*
+     * If the selected round does not
+     * have a valid set, safely create
+     * one from the question pool.
+     */
+    if (
+      !Array.isArray(
+        roundQuestions
+      ) ||
+      roundQuestions.length === 0
+    ) {
+      roundQuestions =
+        selectFreshQuestions(
+          getDifficultyPool()
+        );
+    } else {
+      roundQuestions =
+        shuffle(
+          roundQuestions
+        );
+    }
 
-    saveCurrentProgress();
+    if (
+      roundQuestions.length === 0
+    ) {
+      showError(
+        "No questions are available for this round."
+      );
+
+      return;
+    }
+
+    state.currentQuestions =
+      roundQuestions.slice(
+        0,
+        CONFIG.QUESTIONS_PER_ROUND
+      );
 
     showScreen(
       "quizScreen"
@@ -1485,9 +1118,9 @@ if ("serviceWorker" in navigator) {
     startMusic();
   }
 
-  /* =========================
+  /* =========================================================
      CONTINUE
-     ========================= */
+     ========================================================= */
 
   function hasSavedProgress() {
     const progress =
@@ -1496,29 +1129,76 @@ if ("serviceWorker" in navigator) {
         null
       );
 
-    return (
+    return Boolean(
       progress &&
       Array.isArray(
         progress.questions
       ) &&
-      progress.questions.length >
-        0
+      progress.questions.length > 0 &&
+      Number.isInteger(
+        progress.questionIndex
+      )
     );
-      }
-function updateContinueButton() {
-  const button = elements.continueBtn;
-
-  if (!button) {
-    return;
   }
 
-  button.type = "button";
+  function updateContinueButton() {
+    const button =
+      elements.continueBtn;
 
-  button.style.display =
-    hasSavedProgress()
-      ? "block"
-      : "none";
-}
+    if (!button) {
+      return;
+    }
+
+    button.type = "button";
+
+    button.style.display =
+      hasSavedProgress()
+        ? "block"
+        : "none";
+  }
+
+  function saveCurrentProgress() {
+    if (
+      state.quizFinished ||
+      !state.currentQuestions.length
+    ) {
+      return;
+    }
+
+    writeJSON(
+      KEYS.progress,
+      {
+        difficulty:
+          state.currentDifficulty,
+
+        round:
+          state.currentRound,
+
+        questionIndex:
+          state.currentQuestionIndex,
+
+        questions:
+          state.currentQuestions,
+
+        score:
+          state.score,
+
+        correct:
+          state.correct,
+
+        wrong:
+          state.wrong,
+
+        reviewQuestions:
+          state.reviewQuestions,
+
+        timeLeft:
+          state.timeLeft
+      }
+    );
+
+    updateContinueButton();
+  }
 
   function continueQuiz() {
     const progress =
@@ -1532,87 +1212,76 @@ function updateContinueButton() {
       !Array.isArray(
         progress.questions
       ) ||
-      progress.questions.length ===
-        0
+      !progress.questions.length
     ) {
-      startQuiz(
-        1,
-        selectedDifficulty
-      );
+      updateContinueButton();
+
+      showDifficultySelection();
 
       return;
     }
 
-    selectedDifficulty =
-      normalizeDifficulty(
-        progress.difficulty ||
-        localStorage.getItem(
-          KEYS.difficulty
-        )
-      );
+    stopTimer();
 
-    currentRound =
-      Math.max(
-        1,
-        Number(
-          progress.round
-        ) || 1
-      );
+    state.currentDifficulty =
+      [
+        "easy",
+        "medium",
+        "hard",
+        "mixed"
+      ].includes(
+        progress.difficulty
+      )
+        ? progress.difficulty
+        : "mixed";
 
-    currentQuestionIndex =
-      Math.max(
-        0,
-        Number(
-          progress.questionIndex
-        ) || 0
-      );
+    state.currentRound =
+      Number.isInteger(
+        progress.round
+      )
+        ? progress.round
+        : 1;
 
-    currentRoundQuestions =
+    state.currentQuestionIndex =
+      Number.isInteger(
+        progress.questionIndex
+      )
+        ? progress.questionIndex
+        : 0;
+
+    state.currentQuestions =
       progress.questions;
 
-    score =
-      Number(
-        progress.score
-      ) || 0;
+    state.score =
+      Number(progress.score) || 0;
 
-    correctAnswers =
-      Number(
-        progress.correctAnswers
-      ) || 0;
+    state.correct =
+      Number(progress.correct) || 0;
 
-    wrongAnswers =
-      Number(
-        progress.wrongAnswers
-      ) || 0;
+    state.wrong =
+      Number(progress.wrong) || 0;
 
-    reviewQuestions =
+    state.reviewQuestions =
       Array.isArray(
         progress.reviewQuestions
       )
         ? progress.reviewQuestions
         : [];
 
-    answered = false;
+    state.timeLeft =
+      Number(progress.timeLeft) > 0
+        ? Number(progress.timeLeft)
+        : CONFIG.TIME_PER_QUESTION;
 
-    selectedAnswer = null;
-
-    quizFinished = false;
-
-    resultSaved = false;
-
-    if (
-      currentQuestionIndex >=
-      currentRoundQuestions.length
-    ) {
-      currentQuestionIndex =
-        currentRoundQuestions.length -
-        1;
-    }
+    state.quizFinished = false;
+    state.paused = false;
+    state.answered = false;
 
     if (
-      currentQuestionIndex < 0
+      state.currentQuestionIndex >=
+      state.currentQuestions.length
     ) {
-      currentQuestionIndex = 0;
+      state.currentQuestionIndex = 0;
     }
 
     showScreen(
@@ -1620,170 +1289,102 @@ function updateContinueButton() {
     );
 
     renderQuestion();
-
     startMusic();
   }
 
-  /* =========================
-     SAVE PROGRESS
-     ========================= */
-
-  function saveCurrentProgress() {
-    if (
-      !currentRoundQuestions ||
-      !currentRoundQuestions.length
-    ) {
-      return;
-    }
-
-    const progress = {
-      difficulty:
-        selectedDifficulty,
-
-      round:
-        currentRound,
-
-      questionIndex:
-        currentQuestionIndex,
-
-      questions:
-        currentRoundQuestions,
-
-      score:
-        score,
-
-      correctAnswers:
-        correctAnswers,
-
-      wrongAnswers:
-        wrongAnswers,
-
-      reviewQuestions:
-        reviewQuestions,
-
-      savedAt:
-        Date.now()
-    };
-
-    writeJSON(
-      KEYS.progress,
-      progress
-    );
-
-    updateContinueButton();
-  }
-
-  /* =========================
+  /* =========================================================
      RENDER QUESTION
-     ========================= */
+     ========================================================= */
 
   function renderQuestion() {
     stopTimer();
 
-    if (
-      !currentRoundQuestions ||
-      !currentRoundQuestions.length
-    ) {
-      return;
-    }
+    state.answered = false;
+    state.paused = false;
 
-    const question =
-      currentRoundQuestions[
-        currentQuestionIndex
+    const current =
+      state.currentQuestions[
+        state.currentQuestionIndex
       ];
 
-    if (!question) {
+    if (!current) {
       finishRound();
-
       return;
     }
-
-    answered = false;
-
-    selectedAnswer = null;
 
     if (
       elements.questionNumber
     ) {
       elements.questionNumber.textContent =
         `Question ${
-          currentQuestionIndex + 1
-        } / ${
-          currentRoundQuestions.length
-        }`;
+          state.currentQuestionIndex + 1
+        }/${state.currentQuestions.length}`;
     }
 
     if (
       elements.roundDisplay
     ) {
-      const info =
-        DIFFICULTY_INFO[
-          selectedDifficulty
-        ];
-
       elements.roundDisplay.textContent =
-        `${info.icon} ${info.label} • Round ${currentRound}`;
+        `Round ${state.currentRound}`;
     }
 
-    if (
-      elements.score
-    ) {
+    if (elements.score) {
       elements.score.textContent =
-        `Score: ${score}`;
+        String(state.score);
     }
 
-    if (
-      elements.category
-    ) {
+    if (elements.category) {
       elements.category.textContent =
-        question.category ||
-        "General Knowledge";
+        current.category;
     }
 
-    if (
-      elements.question
-    ) {
+    if (elements.question) {
       elements.question.textContent =
-        getQuestionText(
-          question
-        );
+        current.question;
     }
 
-    if (
-      elements.progressBar
-    ) {
+    if (elements.message) {
+      elements.message.textContent =
+        "";
+    }
+
+    if (elements.progressBar) {
       const percent =
         (
-          (currentQuestionIndex +
-            1) /
-          currentRoundQuestions.length
+          state.currentQuestionIndex /
+          state.currentQuestions.length
         ) *
         100;
 
       elements.progressBar.style.width =
-        `${percent}%`;
+        `${Math.max(
+          0,
+          Math.min(
+            100,
+            percent
+          )
+        )}%`;
     }
 
-    hideMessage();
-
-    renderOptions(
-      question
-    );
+    renderOptions(current);
 
     hideNextButton();
+
+    state.timeLeft =
+      CONFIG.TIME_PER_QUESTION;
+
+    updatePauseButton();
 
     startTimer();
 
     saveCurrentProgress();
   }
 
-  /* =========================
+  /* =========================================================
      OPTIONS
-     ========================= */
+     ========================================================= */
 
-  function renderOptions(
-    question
-  ) {
+  function renderOptions(question) {
     const container =
       elements.options;
 
@@ -1791,156 +1392,152 @@ function updateContinueButton() {
       return;
     }
 
-    container.innerHTML =
-      "";
+    container.innerHTML = "";
 
-    const options =
-      shuffle(
-        question.options
+    shuffle(
+      question.options
+    ).forEach((option) => {
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.type = "button";
+
+      button.className =
+        "option-btn";
+
+      button.textContent =
+        option;
+
+      button.addEventListener(
+        "click",
+        () => {
+          selectAnswer(
+            option,
+            button
+          );
+        }
       );
 
-    options.forEach(
-      (option) => {
-        const button =
-          document.createElement(
-            "button"
-          );
-
-        button.type =
-          "button";
-
-        button.className =
-          "option-btn";
-
-        button.textContent =
-          option;
-
-        button.addEventListener(
-          "click",
-          (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-
-            selectAnswer(
-              option
-            );
-          }
-        );
-
-        container.appendChild(
-          button
-        );
-      }
-    );
+      container.appendChild(
+        button
+      );
+    });
   }
 
-  /* =========================
+  /* =========================================================
      ANSWER
-     ========================= */
+     ========================================================= */
 
   function selectAnswer(
-    option
+    selectedAnswer,
+    selectedButton
   ) {
-    if (answered) {
+    if (
+      state.answered ||
+      state.quizFinished ||
+      state.paused
+    ) {
       return;
     }
 
-    if (quizFinished) {
-      return;
-    }
-
-    const question =
-      currentRoundQuestions[
-        currentQuestionIndex
+    const current =
+      state.currentQuestions[
+        state.currentQuestionIndex
       ];
 
-    if (!question) {
+    if (!current) {
       return;
     }
 
-    answered = true;
-
-    selectedAnswer =
-      option;
+    state.answered = true;
 
     stopTimer();
 
-    const isCorrect =
-      option ===
-      question.answer;
-
-    const optionButtons =
+    const buttons =
       elements.options
         ? elements.options.querySelectorAll(
-            ".option-btn"
+            "button"
           )
         : [];
 
-    optionButtons.forEach(
+    buttons.forEach(
       (button) => {
-        button.disabled =
-          true;
-
-        if (
-          button.textContent ===
-          question.answer
-        ) {
-          button.classList.add(
-            "correct"
-          );
-        }
-
-        if (
-          button.textContent ===
-            option &&
-          !isCorrect
-        ) {
-          button.classList.add(
-            "wrong"
-          );
-        }
+        button.disabled = true;
       }
     );
 
-    if (isCorrect) {
-      correctAnswers++;
+    const correct =
+      selectedAnswer ===
+      current.answer;
 
-      score +=
-        POINTS_PER_CORRECT;
+    if (correct) {
+      state.correct++;
 
-      showMessage(
-        `✅ Correct! +${POINTS_PER_CORRECT} points`,
+      state.score +=
+        CONFIG.POINTS_PER_CORRECT;
+
+      selectedButton.classList.add(
         "correct"
       );
 
-      playAnswerSound(
-        true
-      );
+      if (elements.message) {
+        elements.message.textContent =
+          "✅ Correct!";
+      }
 
+      playSound("correct");
     } else {
-      wrongAnswers++;
+      state.wrong++;
 
-      showMessage(
-        `❌ Wrong! Correct answer: ${question.answer}`,
+      selectedButton.classList.add(
         "wrong"
       );
 
-      playAnswerSound(
-        false
+      buttons.forEach(
+        (button) => {
+          if (
+            button.textContent ===
+            current.answer
+          ) {
+            button.classList.add(
+              "correct"
+            );
+          }
+        }
       );
+
+      if (elements.message) {
+        elements.message.textContent =
+          `❌ Correct answer: ${current.answer}`;
+      }
+
+      playSound("wrong");
     }
 
-    addReviewItem(
-      question,
-      option,
-      isCorrect
-    );
+    state.reviewQuestions.push({
+      question:
+        current.question,
 
-    if (
-      elements.score
-    ) {
+      question_rw:
+        current.question_rw,
+
+      selectedAnswer,
+
+      correctAnswer:
+        current.answer,
+
+      isCorrect:
+        correct,
+
+      category:
+        current.category
+    });
+
+    if (elements.score) {
       elements.score.textContent =
-        `Score: ${score}`;
+        String(state.score);
     }
 
     showNextButton();
@@ -1948,73 +1545,33 @@ function updateContinueButton() {
     saveCurrentProgress();
   }
 
-  /* =========================
-     REVIEW DATA
-     ========================= */
-
-  function addReviewItem(
-    question,
-    userAnswer,
-    isCorrect
-  ) {
-    reviewQuestions.push({
-      question:
-        question.question,
-
-      question_rw:
-        question.question_rw ||
-        "",
-
-      userAnswer:
-        userAnswer,
-
-      correctAnswer:
-        question.answer,
-
-      category:
-        question.category ||
-        "General Knowledge",
-
-      isCorrect:
-        isCorrect
-    });
-  }
-
-  /* =========================
-     NEXT BUTTON
-     ========================= */
+  /* =========================================================
+     NEXT
+     ========================================================= */
 
   function showNextButton() {
     const button =
       elements.nextBtn;
 
     if (!button) {
-      console.error(
-        "Quiz Master: nextBtn was not found."
-      );
-
       return;
     }
 
-    /*
-      Important:
-      Force button to never submit a form.
-    */
-    button.type =
-      "button";
+    button.type = "button";
 
     button.style.display =
       "block";
 
-    button.disabled =
-      false;
-
-    button.textContent =
-      currentQuestionIndex <
-      currentRoundQuestions.length -
-        1
-        ? "➡️ Next Question"
-        : "🏆 Finish Round";
+    if (
+      state.currentQuestionIndex <
+      state.currentQuestions.length - 1
+    ) {
+      button.textContent =
+        "➡️ Next Question";
+    } else {
+      button.textContent =
+        "🏁 Finish Round";
+    }
   }
 
   function hideNextButton() {
@@ -2025,179 +1582,154 @@ function updateContinueButton() {
       return;
     }
 
-    button.type =
-      "button";
-
-    button.disabled =
-      true;
+    button.type = "button";
 
     button.style.display =
       "none";
   }
 
-  function nextQuestion(
-    event
-  ) {
-    /*
-      This is the important Next fix.
-    */
+  function nextQuestion(event) {
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
 
-    if (quizFinished) {
-      return false;
-    }
-
-    if (!answered) {
-      return false;
+    if (
+      state.quizFinished ||
+      !state.answered
+    ) {
+      return;
     }
 
     if (
-      !currentRoundQuestions ||
-      !currentRoundQuestions.length
+      state.currentQuestionIndex <
+      state.currentQuestions.length - 1
     ) {
-      return false;
-    }
-
-    if (
-      currentQuestionIndex <
-      currentRoundQuestions.length -
-        1
-    ) {
-      currentQuestionIndex++;
-
-      answered = false;
-
-      selectedAnswer = null;
-
-      saveCurrentProgress();
+      state.currentQuestionIndex++;
 
       renderQuestion();
 
-      return false;
+      return;
     }
 
     finishRound();
-
-    return false;
   }
 
-  /* =========================
+  /* =========================================================
      TIMER
-     ========================= */
+     ========================================================= */
 
   function startTimer() {
     stopTimer();
 
-    timeLeft =
-      TIME_PER_QUESTION;
+    if (
+      state.quizFinished ||
+      state.paused ||
+      state.answered
+    ) {
+      return;
+    }
+
+    if (
+      !Number.isFinite(
+        state.timeLeft
+      ) ||
+      state.timeLeft <= 0
+    ) {
+      state.timeLeft =
+        CONFIG.TIME_PER_QUESTION;
+    }
 
     updateTimerDisplay();
 
-    timer =
-      setInterval(
-        () => {
-          if (quizFinished) {
-            stopTimer();
-            return;
-          }
+    state.timer =
+      setInterval(() => {
+        if (
+          state.quizFinished ||
+          state.paused ||
+          state.answered
+        ) {
+          return;
+        }
 
-          timeLeft--;
+        state.timeLeft--;
 
-          updateTimerDisplay();
+        updateTimerDisplay();
 
-          if (
-            timeLeft <= 0
-          ) {
-            stopTimer();
+        if (
+          state.timeLeft <= 0
+        ) {
+          stopTimer();
 
-            timeExpired();
-          }
-        },
-        1000
-      );
+          timeExpired();
+        }
+      }, 1000);
   }
 
   function stopTimer() {
     if (
-      timer !== null
+      state.timer !== null
     ) {
       clearInterval(
-        timer
+        state.timer
       );
 
-      timer = null;
+      state.timer = null;
     }
   }
-function togglePause() {
-  const button = elements.pauseBtn;
 
-  if (!button) {
-    return;
-  }
-
-  if (timer !== null) {
-    stopTimer();
-    button.textContent = "▶️ Resume";
-  } else {
-    startTimer();
-    button.textContent = "⏸️ Pause";
-  }
-}
   function updateTimerDisplay() {
     if (!elements.timer) {
       return;
     }
 
     elements.timer.textContent =
-      `⏱️ ${Math.max(
-        0,
-        timeLeft
-      )}`;
+      String(
+        Math.max(
+          0,
+          state.timeLeft
+        )
+      );
   }
 
+  /* =========================================================
+     TIME EXPIRED
+     ========================================================= */
+
   function timeExpired() {
-    if (answered) {
+    if (
+      state.answered ||
+      state.quizFinished
+    ) {
       return;
     }
 
-    if (quizFinished) {
-      return;
-    }
-
-    const question =
-      currentRoundQuestions[
-        currentQuestionIndex
+    const current =
+      state.currentQuestions[
+        state.currentQuestionIndex
       ];
 
-    if (!question) {
+    if (!current) {
       return;
     }
 
-    answered = true;
+    state.answered = true;
+    state.wrong++;
 
-    wrongAnswers++;
-
-    selectedAnswer =
-      null;
-
-    const optionButtons =
+    const buttons =
       elements.options
         ? elements.options.querySelectorAll(
-            ".option-btn"
+            "button"
           )
         : [];
 
-    optionButtons.forEach(
+    buttons.forEach(
       (button) => {
-        button.disabled =
-          true;
+        button.disabled = true;
 
         if (
           button.textContent ===
-          question.answer
+          current.answer
         ) {
           button.classList.add(
             "correct"
@@ -2206,167 +1738,147 @@ function togglePause() {
       }
     );
 
-    showMessage(
-      `⏰ Time's up! Correct answer: ${question.answer}`,
-      "wrong"
-    );
+    if (elements.message) {
+      elements.message.textContent =
+        `⏰ Time's up! Correct answer: ${current.answer}`;
+    }
 
-    addReviewItem(
-      question,
-      "No answer",
-      false
-    );
+    state.reviewQuestions.push({
+      question:
+        current.question,
 
-    playAnswerSound(
-      false
-    );
+      question_rw:
+        current.question_rw,
+
+      selectedAnswer:
+        null,
+
+      correctAnswer:
+        current.answer,
+
+      isCorrect: false,
+
+      category:
+        current.category
+    });
+
+    playSound("wrong");
 
     showNextButton();
 
     saveCurrentProgress();
   }
 
-  /* =========================
-     FINISH ROUND
-     ========================= */
+  /* =========================================================
+     PAUSE / RESUME
+     ========================================================= */
 
-  function finishRound() {
-    if (quizFinished) {
+  function togglePause(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    if (
+      state.quizFinished ||
+      state.answered ||
+      !state.currentQuestions.length
+    ) {
       return;
     }
 
-    quizFinished = true;
+    if (state.paused) {
+      /*
+       * IMPORTANT:
+       * Resume continues from the existing
+       * timeLeft. It does NOT reset to 20.
+       */
+      state.paused = false;
+
+      updatePauseButton();
+
+      if (elements.message) {
+        elements.message.textContent =
+          "";
+      }
+
+      startTimer();
+
+      return;
+    }
+
+    state.paused = true;
 
     stopTimer();
 
-    if (
-      !currentRoundQuestions ||
-      !currentRoundQuestions.length
-    ) {
+    updatePauseButton();
+
+    if (elements.message) {
+      elements.message.textContent =
+        "⏸️ Quiz paused";
+    }
+  }
+
+  function updatePauseButton() {
+    const button =
+      elements.pauseBtn;
+
+    if (!button) {
       return;
     }
 
-    const total =
-      currentRoundQuestions.length;
+    button.type = "button";
 
-    const percent =
-      Math.round(
-        (
-          correctAnswers /
-          total
-        ) *
-        100
-      );
+    button.textContent =
+      state.paused
+        ? "▶️ Resume"
+        : "⏸️ Pause";
+  }
 
-    let stars = 1;
+  /* =========================================================
+     FINISH ROUND
+     ========================================================= */
 
-    if (
-      percent >= 80
-    ) {
-      stars = 3;
-
-    } else if (
-      percent >= 60
-    ) {
-      stars = 2;
+  function finishRound() {
+    if (state.quizFinished) {
+      return;
     }
 
-    const unlockedBefore =
-      getUnlockedRounds(
-        selectedDifficulty
-      );
+    state.quizFinished = true;
 
-    let unlockedAfter =
-      unlockedBefore;
+    stopTimer();
+
+    state.paused = false;
+
+    const total =
+      state.currentQuestions.length;
+
+    const percent =
+      total > 0
+        ? Math.round(
+            (state.correct / total) *
+              100
+          )
+        : 0;
+
+    const starCount =
+      calculateStars(percent);
+
+    saveRoundResult(
+      state.currentRound,
+      starCount
+    );
 
     if (
       percent >=
-      UNLOCK_PERCENT
+      CONFIG.UNLOCK_PERCENT
     ) {
-      unlockedAfter =
-        Math.max(
-          unlockedBefore,
-          currentRound + 1
-        );
-
-      if (
-        rounds[
-          selectedDifficulty
-        ] &&
-        unlockedAfter >
-          rounds[
-            selectedDifficulty
-          ].length
-      ) {
-        unlockedAfter =
-          rounds[
-            selectedDifficulty
-          ].length;
-      }
-
-      saveUnlockedRounds(
-        selectedDifficulty,
-        unlockedAfter
+      unlockRound(
+        state.currentRound + 1
       );
     }
 
-    saveCompletedRound(
-      selectedDifficulty,
-      currentRound
-    );
-
-    saveRoundStars(
-      selectedDifficulty,
-      currentRound,
-      stars
-    );
-
-    /*
-      Save global counters only once.
-    */
-    if (!resultSaved) {
-      resultSaved = true;
-
-      updateTotalScore();
-
-      updatePersonalBest(
-        score
-      );
-
-      updateCorrectCounter();
-
-      checkAchievements();
-    }
-
-    lastResult = {
-      difficulty:
-        selectedDifficulty,
-
-      round:
-        currentRound,
-
-      score:
-        score,
-
-      correct:
-        correctAnswers,
-
-      wrong:
-        wrongAnswers,
-
-      total:
-        total,
-
-      percent:
-        percent,
-
-      stars:
-        stars,
-
-      unlockedNext:
-        percent >=
-        UNLOCK_PERCENT
-    };
+    updateGlobalStats();
 
     removeStorage(
       KEYS.progress
@@ -2374,700 +1886,544 @@ function togglePause() {
 
     updateContinueButton();
 
-    renderResult();
+    stopMusic();
+
+    renderResult(
+      percent,
+      starCount
+    );
 
     showScreen(
       "resultScreen"
     );
+
+    playSound("finish");
   }
 
-  /* =========================
-     RESULT
-     ========================= */
+  function calculateStars(percent) {
+    if (percent >= 80) {
+      return 3;
+    }
 
-  function renderResult() {
-    if (!lastResult) {
+    if (
+      percent >=
+      CONFIG.UNLOCK_PERCENT
+    ) {
+      return 2;
+    }
+
+    return 1;
+  }
+
+  /* =========================================================
+     ROUND RESULTS
+     ========================================================= */
+
+  function getRoundStars(round) {
+    const allStars =
+      readJSON(
+        KEYS.roundStars,
+        {}
+      );
+
+    if (
+      !allStars ||
+      typeof allStars !==
+        "object"
+    ) {
+      return 0;
+    }
+
+    return (
+      Number(
+        allStars[String(round)]
+      ) || 0
+    );
+  }
+
+  function saveRoundResult(
+    round,
+    starCount
+  ) {
+    /*
+     * This deliberately uses different
+     * variable names to avoid the
+     * duplicate "stars" bug.
+     */
+    const roundStars =
+      readJSON(
+        KEYS.roundStars,
+        {}
+      );
+
+    if (
+      !roundStars ||
+      typeof roundStars !==
+        "object"
+    ) {
       return;
     }
 
-    const result =
-      lastResult;
+    const previous =
+      Number(
+        roundStars[String(round)]
+      ) || 0;
 
     if (
-      elements.finalScore
+      starCount > previous
     ) {
+      roundStars[
+        String(round)
+      ] = starCount;
+
+      writeJSON(
+        KEYS.roundStars,
+        roundStars
+      );
+    }
+
+    const completed =
+      readJSON(
+        KEYS.completedRounds,
+        []
+      );
+
+    const completedList =
+      Array.isArray(completed)
+        ? completed
+        : [];
+
+    if (
+      !completedList.includes(
+        round
+      )
+    ) {
+      completedList.push(
+        round
+      );
+
+      completedList.sort(
+        (a, b) => a - b
+      );
+
+      writeJSON(
+        KEYS.completedRounds,
+        completedList
+      );
+    }
+  }
+
+  function renderResult(
+    percent,
+    starCount
+  ) {
+    if (elements.finalScore) {
       elements.finalScore.textContent =
-        `Score: ${result.score}`;
+        String(state.score);
     }
 
     if (
       elements.resultPercent
     ) {
       elements.resultPercent.textContent =
-        `${result.percent}%`;
+        `${percent}%`;
+    }
+
+    if (
+      elements.finishedRound
+    ) {
+      elements.finishedRound.textContent =
+        String(
+          state.currentRound
+        );
     }
 
     if (
       elements.correctCount
     ) {
       elements.correctCount.textContent =
-        result.correct;
+        String(
+          state.correct
+        );
     }
 
     if (
       elements.wrongCount
     ) {
       elements.wrongCount.textContent =
-        result.wrong;
-    }
-
-    if (
-      elements.finishedRound
-    ) {
-      const info =
-        DIFFICULTY_INFO[
-          result.difficulty
-        ];
-
-      elements.finishedRound.textContent =
-        `${info.icon} ${info.label} • Round ${result.round}`;
+        String(
+          state.wrong
+        );
     }
 
     if (
       elements.resultMessage
     ) {
-      if (
-        result.percent >=
-        80
-      ) {
+      if (percent >= 80) {
         elements.resultMessage.textContent =
-          `Excellent! You earned ${result.stars} stars. 🌟`;
-
+          `Excellent! ${"⭐".repeat(starCount)}`;
       } else if (
-        result.percent >=
-        60
+        percent >=
+        CONFIG.UNLOCK_PERCENT
       ) {
         elements.resultMessage.textContent =
-          `Great job! You unlocked the next round. ⭐⭐`;
-
+          `Great job! ${"⭐".repeat(starCount)}`;
       } else {
         elements.resultMessage.textContent =
-          `Keep practicing! Score at least ${UNLOCK_PERCENT}% to unlock the next round.`;
+          `Keep learning and try again! ${"⭐".repeat(starCount)}`;
       }
     }
 
     if (
       elements.nextRoundBtn
     ) {
-      const canNext =
-        result.unlockedNext &&
-        result.round <
-          (
-            rounds[
-              result.difficulty
-            ] || []
-          ).length;
+      elements.nextRoundBtn.type =
+        "button";
+
+      const next =
+        state.currentRound + 1;
+
+      const canContinue =
+        percent >=
+          CONFIG.UNLOCK_PERCENT &&
+        next <=
+          CONFIG.TOTAL_ROUNDS &&
+        next <=
+          state.rounds.length;
 
       elements.nextRoundBtn.style.display =
-        canNext
+        canContinue
           ? "block"
           : "none";
 
-      elements.nextRoundBtn.textContent =
-        canNext
-          ? `🔓 Round ${
-              result.round + 1
-            }`
-          : "🔓 Next Round";
-    }
-
-    if (
-      elements.restartBtn
-    ) {
-      elements.restartBtn.style.display =
-        "block";
-    }
-
-    if (
-      elements.reviewBtn
-    ) {
-      elements.reviewBtn.style.display =
-        reviewQuestions.length
-          ? "block"
-          : "none";
+      elements.nextRoundBtn.disabled =
+        !canContinue;
     }
   }
 
-  /* =========================
+  /* =========================================================
      NEXT ROUND
-     ========================= */
+     ========================================================= */
 
   function nextRound() {
-    if (!lastResult) {
-      return;
-    }
-
     const next =
-      lastResult.round + 1;
-
-    const difficulty =
-      lastResult.difficulty;
+      state.currentRound + 1;
 
     if (
       next >
-      getUnlockedRounds(
-        difficulty
-      )
+      CONFIG.TOTAL_ROUNDS
     ) {
+      goHome();
+
       return;
     }
 
     if (
-      !rounds[difficulty] ||
-      !rounds[difficulty][
-        next - 1
-      ]
+      next >
+      state.rounds.length
     ) {
+      showRounds();
+
       return;
     }
 
-    startQuiz(
-      next,
-      difficulty
+    if (
+      !isRoundUnlocked(next)
+    ) {
+      showRounds();
+
+      return;
+    }
+
+    state.currentRound =
+      next;
+
+    writeJSON(
+      KEYS.currentRound,
+      next
+    );
+
+    startQuiz();
+  }
+
+  /* =========================================================
+     RESTART
+     ========================================================= */
+
+  function restartRound() {
+    removeStorage(
+      KEYS.progress
+    );
+
+    state.quizFinished = false;
+    state.paused = false;
+
+    startRound(
+      state.currentRound
     );
   }
 
-  /* =========================
-     RETRY
-     ========================= */
-
-  function retryRound() {
-    const difficulty =
-      lastResult
-        ? lastResult.difficulty
-        : selectedDifficulty;
-
-    const round =
-      lastResult
-        ? lastResult.round
-        : currentRound;
-
-    startQuiz(
-      round,
-      difficulty
-    );
-  }
-
-  /* =========================
-     REVIEW SCREEN
-     ========================= */
+  /* =========================================================
+     REVIEW
+     ========================================================= */
 
   function showReview() {
-    if (
-      !elements.reviewList
-    ) {
-      return;
-    }
-
-    elements.reviewList.innerHTML =
-      "";
-
-    if (
-      elements.reviewSummary
-    ) {
-      elements.reviewSummary.textContent =
-        `${correctAnswers} correct • ${wrongAnswers} wrong`;
-    }
-
-    reviewQuestions.forEach(
-      (item, index) => {
-        const div =
-          document.createElement(
-            "div"
-          );
-
-        div.className =
-          "review-item " +
-          (
-            item.isCorrect
-              ? "review-correct"
-              : "review-wrong"
-          );
-
-        const questionTitle =
-          document.createElement(
-            "strong"
-          );
-
-        questionTitle.textContent =
-          `${index + 1}. ${item.question}`;
-
-        const category =
-          document.createElement(
-            "p"
-          );
-
-        category.textContent =
-          `Category: ${item.category}`;
-
-        const yourAnswer =
-          document.createElement(
-            "p"
-          );
-
-        yourAnswer.textContent =
-          `Your answer: ${item.userAnswer}`;
-
-        const correctAnswer =
-          document.createElement(
-            "p"
-          );
-
-        correctAnswer.textContent =
-          `Correct answer: ${item.correctAnswer}`;
-
-        div.appendChild(
-          questionTitle
-        );
-
-        div.appendChild(
-          category
-        );
-
-        div.appendChild(
-          yourAnswer
-        );
-
-        div.appendChild(
-          correctAnswer
-        );
-
-        elements.reviewList.appendChild(
-          div
-        );
-      }
-    );
+    renderReview();
 
     showScreen(
       "reviewScreen"
     );
   }
 
-  /* =========================
-     MESSAGES
-     ========================= */
+  function renderReview() {
+    if (
+      elements.reviewSummary
+    ) {
+      elements.reviewSummary.textContent =
+        `${state.correct} correct • ${state.wrong} wrong`;
+    }
 
-  function showMessage(
-    text,
-    type
-  ) {
-    if (!elements.message) {
+    const list =
+      elements.reviewList;
+
+    if (!list) {
       return;
     }
 
-    elements.message.textContent =
-      text;
+    list.innerHTML = "";
 
-    elements.message.className =
-      `message ${
-        type || ""
-      }`;
-  }
-
-  function hideMessage() {
-    if (!elements.message) {
-      return;
-    }
-
-    elements.message.textContent =
-      "";
-
-    elements.message.className =
-      "message hidden";
-  }
-
-  /* =========================
-     SCORE
-     ========================= */
-
-  function updateTotalScore() {
-    const oldScore =
-      Number(
-        localStorage.getItem(
-          KEYS.totalScore
-        )
-      ) || 0;
-
-    const newScore =
-      oldScore + score;
-
-    localStorage.setItem(
-      KEYS.totalScore,
-      String(newScore)
-    );
-  }
-
-  function updatePersonalBest(
-    roundScore
-  ) {
-    const oldBest =
-      Number(
-        localStorage.getItem(
-          KEYS.personalBest
-        )
-      ) || 0;
-
-    if (
-      roundScore >
-      oldBest
-    ) {
-      localStorage.setItem(
-        KEYS.personalBest,
-        String(
-          roundScore
-        )
-      );
-    }
-  }
-
-  function updateCorrectCounter() {
-    const old =
-      Number(
-        localStorage.getItem(
-          KEYS.totalCorrect
-        )
-      ) || 0;
-
-    localStorage.setItem(
-      KEYS.totalCorrect,
-      String(
-        old + correctAnswers
-      )
-    );
-  }
-
-  /* =========================
-     ACHIEVEMENTS
-     ========================= */
-
-  function checkAchievements() {
-    const data =
-      readJSON(
-        KEYS.achievements,
-        []
-      );
-
-    const achievements =
-      Array.isArray(data)
-        ? data
-        : [];
-
-    const completed =
-      getCompletedRounds();
-
-    const totalCompleted =
-      completed.easy.length +
-      completed.medium.length +
-      completed.hard.length;
-
-    const totalCorrect =
-      Number(
-        localStorage.getItem(
-          KEYS.totalCorrect
-        )
-      ) || 0;
-
-    if (
-      currentRound === 1 &&
-      !achievements.includes(
-        "first_round"
-      )
-    ) {
-      achievements.push(
-        "first_round"
-      );
-    }
-
-    if (
-      totalCompleted >= 5 &&
-      !achievements.includes(
-        "five_rounds"
-      )
-    ) {
-      achievements.push(
-        "five_rounds"
-      );
-    }
-
-    if (
-      totalCorrect >= 50 &&
-      !achievements.includes(
-        "fifty_correct"
-      )
-    ) {
-      achievements.push(
-        "fifty_correct"
-      );
-    }
-
-    if (
-      totalCompleted >= 10 &&
-      !achievements.includes(
-        "ten_rounds"
-      )
-    ) {
-      achievements.push(
-        "ten_rounds"
-      );
-    }
-
-    writeJSON(
-      KEYS.achievements,
-      achievements
-    );
-  }
-
-  /* =========================
-     DAILY CHALLENGE
-     ========================= */
-
-  function updateDailyChallenge() {
-    /*
-      Use local calendar date rather than
-      changing the user's date because of UTC.
-    */
-    const now =
-      new Date();
-
-    const year =
-      now.getFullYear();
-
-    const month =
-      String(
-        now.getMonth() + 1
-      ).padStart(
-        2,
-        "0"
-      );
-
-    const day =
-      String(
-        now.getDate()
-      ).padStart(
-        2,
-        "0"
-      );
-
-    const today =
-      `${year}-${month}-${day}`;
-
-    const data =
-      readJSON(
-        KEYS.dailyChallenge,
-        {}
-      );
-
-    if (
-      !data ||
-      data.date !== today
-    ) {
-      writeJSON(
-        KEYS.dailyChallenge,
-        {
-          date:
-            today,
-
-          completed:
-            false
-        }
-      );
-    }
-  }
-
-  /* =========================
-     MUSIC
-     ========================= */
-
-  function initializeMusic() {
-    musicEnabled =
-      localStorage.getItem(
-        KEYS.music
-      ) === "true";
-
-    const savedSound =
-      localStorage.getItem(
-        KEYS.sound
-      );
-
-    soundEnabled =
-      savedSound === null
-        ? true
-        : savedSound === "true";
-
-    audio =
-      new Audio(
-        MUSIC_FILE
-      );
-
-    audio.loop =
-      true;
-
-    audio.preload =
-      "auto";
-
-    const position =
-      Number(
-        localStorage.getItem(
-          KEYS.musicPosition
-        )
-      );
-
-    if (
-      Number.isFinite(
-        position
-      ) &&
-      position >= 0
-    ) {
-      try {
-        audio.currentTime =
-          position;
-      } catch (error) {}
-    }
-
-    updateMusicSwitch();
-
-    updateSoundSwitch();
-
-    audio.addEventListener(
-      "timeupdate",
-      () => {
-        try {
-          localStorage.setItem(
-            KEYS.musicPosition,
-            String(
-              audio.currentTime
-            )
+    state.reviewQuestions.forEach(
+      (item, index) => {
+        const wrapper =
+          document.createElement(
+            "div"
           );
-        } catch (error) {}
-      }
-    );
 
-    audio.addEventListener(
-      "error",
-      () => {
-        console.warn(
-          `Music file could not be loaded: ${MUSIC_FILE}`
+        wrapper.className =
+          "review-item";
+
+        const title =
+          document.createElement(
+            "h3"
+          );
+
+        title.textContent =
+          `${index + 1}. ${item.question}`;
+
+        const result =
+          document.createElement(
+            "p"
+          );
+
+        result.textContent =
+          item.isCorrect
+            ? "✅ Correct"
+            : "❌ Incorrect";
+
+        const answer =
+          document.createElement(
+            "p"
+          );
+
+        answer.textContent =
+          `Correct answer: ${item.correctAnswer}`;
+
+        wrapper.appendChild(
+          title
+        );
+
+        wrapper.appendChild(
+          result
+        );
+
+        wrapper.appendChild(
+          answer
+        );
+
+        if (
+          item.selectedAnswer &&
+          item.selectedAnswer !==
+            item.correctAnswer
+        ) {
+          const selected =
+            document.createElement(
+              "p"
+            );
+
+          selected.textContent =
+            `Your answer: ${item.selectedAnswer}`;
+
+          wrapper.appendChild(
+            selected
+          );
+        }
+
+        list.appendChild(
+          wrapper
         );
       }
     );
   }
 
+  function retryFromReview() {
+    restartRound();
+  }
+
+  /* =========================================================
+     SETTINGS
+     ========================================================= */
+
+  function initializeSettings() {
+    state.musicEnabled =
+      readJSON(
+        KEYS.music,
+        true
+      ) !== false;
+
+    state.soundEnabled =
+      readJSON(
+        KEYS.sound,
+        true
+      ) !== false;
+
+    if (
+      elements.musicSwitch
+    ) {
+      elements.musicSwitch.checked =
+        state.musicEnabled;
+    }
+
+    if (
+      elements.soundSwitch
+    ) {
+      elements.soundSwitch.checked =
+        state.soundEnabled;
+    }
+  }
+
+  function showSettings() {
+    initializeSettings();
+
+    showScreen(
+      "settingsScreen"
+    );
+  }
+
+  function setMusicEnabled(value) {
+    state.musicEnabled =
+      Boolean(value);
+
+    writeJSON(
+      KEYS.music,
+      state.musicEnabled
+    );
+
+    if (!state.musicEnabled) {
+      stopMusic();
+    } else {
+      startMusic();
+    }
+  }
+
+  function setSoundEnabled(value) {
+    state.soundEnabled =
+      Boolean(value);
+
+    writeJSON(
+      KEYS.sound,
+      state.soundEnabled
+    );
+  }
+
+  /* =========================================================
+     MUSIC
+     ========================================================= */
+
+  function initializeMusic() {
+    try {
+      state.audio =
+        new Audio(
+          CONFIG.MUSIC_FILE
+        );
+
+      state.audio.loop =
+        true;
+
+      state.audio.preload =
+        "auto";
+
+      state.audio.volume =
+        0.35;
+    } catch (error) {
+      state.audio = null;
+
+      console.warn(
+        "Music initialization failed:",
+        error
+      );
+    }
+
+    initializeSettings();
+  }
+
   function startMusic() {
     if (
-      !musicEnabled ||
-      !audio
+      !state.musicEnabled ||
+      !state.audio
     ) {
       return;
     }
 
-    audio.play().catch(
-      () => {
-        /*
-          Browser autoplay policy may
-          block music until the user interacts.
-        */
+    try {
+      const promise =
+        state.audio.play();
+
+      if (
+        promise &&
+        typeof promise.catch ===
+          "function"
+      ) {
+        promise.catch(
+          () => {
+            /*
+             * Browser autoplay restrictions
+             * must never stop the quiz.
+             */
+          }
+        );
       }
-    );
+    } catch (error) {
+      console.warn(
+        "Music play failed:",
+        error
+      );
+    }
   }
 
   function stopMusic() {
-    if (!audio) {
+    if (!state.audio) {
       return;
     }
 
-    audio.pause();
-  }
+    try {
+      state.audio.pause();
 
-  function toggleMusic() {
-    musicEnabled =
-      !musicEnabled;
-
-    localStorage.setItem(
-      KEYS.music,
-      String(
-        musicEnabled
-      )
-    );
-
-    updateMusicSwitch();
-
-    if (
-      musicEnabled
-    ) {
-      startMusic();
-    } else {
-      stopMusic();
+      state.audio.currentTime =
+        0;
+    } catch (error) {
+      console.warn(
+        "Music stop failed:",
+        error
+      );
     }
   }
 
-  function toggleSound() {
-    soundEnabled =
-      !soundEnabled;
+  /* =========================================================
+     SOUND
+     ========================================================= */
 
-    localStorage.setItem(
-      KEYS.sound,
-      String(
-        soundEnabled
-      )
-    );
-
-    updateSoundSwitch();
-  }
-
-  function updateMusicSwitch() {
-    if (
-      !elements.musicSwitch
-    ) {
-      return;
-    }
-
-    elements.musicSwitch.classList.toggle(
-      "on",
-      musicEnabled
-    );
-
-    elements.musicSwitch.setAttribute(
-      "aria-pressed",
-      String(
-        musicEnabled
-      )
-    );
-  }
-
-  function updateSoundSwitch() {
-    if (
-      !elements.soundSwitch
-    ) {
-      return;
-    }
-
-    elements.soundSwitch.classList.toggle(
-      "on",
-      soundEnabled
-    );
-
-    elements.soundSwitch.setAttribute(
-      "aria-pressed",
-      String(
-        soundEnabled
-      )
-    );
-  }
-
-  function playAnswerSound(
-    correct
-  ) {
-    if (!soundEnabled) {
+  function playSound(type) {
+    if (!state.soundEnabled) {
       return;
     }
 
@@ -3089,124 +2445,301 @@ function togglePause() {
       const gain =
         context.createGain();
 
-      oscillator.connect(
-        gain
-      );
+      let frequency = 600;
+      let duration = 0.08;
 
-      gain.connect(
-        context.destination
-      );
+      if (
+        type === "correct"
+      ) {
+        frequency = 800;
+        duration = 0.1;
+      }
 
-      oscillator.frequency.value =
-        correct
-          ? 660
-          : 220;
+      if (
+        type === "wrong"
+      ) {
+        frequency = 250;
+        duration = 0.15;
+      }
+
+      if (
+        type === "finish"
+      ) {
+        frequency = 1000;
+        duration = 0.18;
+      }
 
       oscillator.type =
         "sine";
 
-      gain.gain.setValueAtTime(
-        0.08,
-        context.currentTime
-      );
+      oscillator.frequency.value =
+        frequency;
 
-      gain.gain.exponentialRampToValueAtTime(
-        0.001,
-        context.currentTime +
-          0.18
+      gain.gain.value =
+        0.05;
+
+      oscillator.connect(gain);
+
+      gain.connect(
+        context.destination
       );
 
       oscillator.start();
 
       oscillator.stop(
         context.currentTime +
-          0.18
+          duration
       );
 
-      /*
-        Close context after sound.
-      */
-      setTimeout(
+      oscillator.addEventListener(
+        "ended",
         () => {
-          try {
-            context.close();
-          } catch (error) {}
+          context
+            .close()
+            .catch(() => {});
         },
-        300
+        {
+          once: true
+        }
       );
-
     } catch (error) {
       console.warn(
-        "Sound unavailable:",
+        "Sound error:",
         error
       );
     }
   }
 
-  /* =========================
-     SETTINGS
-     ========================= */
+  /* =========================================================
+     DAILY CHALLENGE
+     ========================================================= */
 
-  function showSettings() {
-    updateMusicSwitch();
+  function getTodayKey() {
+    const date =
+      new Date();
 
-    updateSoundSwitch();
+    return [
+      date.getFullYear(),
+      String(
+        date.getMonth() + 1
+      ).padStart(2, "0"),
+      String(
+        date.getDate()
+      ).padStart(2, "0")
+    ].join("-");
+  }
 
-    showScreen(
-      "settingsScreen"
+  function updateDailyChallenge() {
+    const today =
+      getTodayKey();
+
+    const saved =
+      readJSON(
+        KEYS.dailyChallenge,
+        null
+      );
+
+    if (
+      saved &&
+      saved.date === today
+    ) {
+      return;
+    }
+
+    writeJSON(
+      KEYS.dailyChallenge,
+      {
+        date: today,
+        completed: false,
+        score: 0
+      }
     );
   }
 
-  /* =========================
-     HOME
-     ========================= */
+  /* =========================================================
+     GLOBAL STATS
+     ========================================================= */
 
-  function goHome() {
+  function updateGlobalStats() {
+    const oldTotal =
+      getNumber(
+        KEYS.totalScore,
+        0
+      );
+
+    setNumber(
+      KEYS.totalScore,
+      oldTotal + state.score
+    );
+
+    const best =
+      getNumber(
+        KEYS.personalBest,
+        0
+      );
+
+    if (
+      state.score > best
+    ) {
+      setNumber(
+        KEYS.personalBest,
+        state.score
+      );
+    }
+
+    updateAchievements();
+  }
+
+  /* =========================================================
+     ACHIEVEMENTS
+     ========================================================= */
+
+  function getAchievements() {
+    const achievements =
+      readJSON(
+        KEYS.achievements,
+        []
+      );
+
+    return Array.isArray(
+      achievements
+    )
+      ? achievements
+      : [];
+  }
+
+  function addAchievement(name) {
+    const achievements =
+      getAchievements();
+
+    if (
+      !achievements.includes(name)
+    ) {
+      achievements.push(name);
+
+      writeJSON(
+        KEYS.achievements,
+        achievements
+      );
+    }
+  }
+
+  function updateAchievements() {
+    const completed =
+      readJSON(
+        KEYS.completedRounds,
+        []
+      );
+
+    const count =
+      Array.isArray(completed)
+        ? completed.length
+        : 0;
+
+    if (count >= 1) {
+      addAchievement(
+        "first_round"
+      );
+    }
+
+    if (count >= 5) {
+      addAchievement(
+        "five_rounds"
+      );
+    }
+
+    if (count >= 10) {
+      addAchievement(
+        "all_rounds"
+      );
+    }
+
+    /*
+     * Count total correct answers
+     * from completed round progress.
+     */
+    const currentCorrect =
+      state.correct;
+
+    if (
+      currentCorrect >= 50
+    ) {
+      addAchievement(
+        "fifty_correct"
+      );
+    }
+  }
+
+  /* =========================================================
+     HOME
+     ========================================================= */
+
+  function goHome(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    /*
+     * Save the current quiz before
+     * leaving, so Continue can work.
+     */
+    if (
+      !state.quizFinished &&
+      state.currentQuestions.length
+    ) {
+      saveCurrentProgress();
+    }
+
     stopTimer();
+
+    state.paused = false;
+
+    stopMusic();
+
+    updateContinueButton();
 
     showScreen(
       "homeScreen"
     );
-
-    updateContinueButton();
   }
 
-  /* =========================
+  /* =========================================================
      SHARE
-     ========================= */
+     ========================================================= */
 
-  async function shareQuiz() {
-    const shareUrl =
+  async function shareQuiz(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    const url =
       window.location.href;
 
-    const shareText =
+    const text =
       "Test your knowledge with Quiz Master!";
 
-    if (
-      navigator.share
-    ) {
-      try {
+    try {
+      if (
+        navigator.share
+      ) {
         await navigator.share({
           title:
             "Quiz Master 🇷🇼",
-
-          text:
-            shareText,
-
-          url:
-            shareUrl
+          text,
+          url
         });
 
         return;
-
-      } catch (error) {
-        if (
-          error &&
-          error.name ===
-            "AbortError"
-        ) {
-          return;
-        }
+      }
+    } catch (error) {
+      if (
+        error &&
+        error.name ===
+          "AbortError"
+      ) {
+        return;
       }
     }
 
@@ -3216,96 +2749,87 @@ function togglePause() {
         navigator.clipboard.writeText
       ) {
         await navigator.clipboard.writeText(
-          shareUrl
+          url
         );
 
-        showCopiedMessage();
+        showShareSuccess();
 
         return;
       }
-
     } catch (error) {
       console.warn(
-        "Clipboard unavailable:",
+        "Clipboard failed:",
         error
       );
     }
 
     try {
-      const textarea =
+      const input =
         document.createElement(
-          "textarea"
+          "input"
         );
 
-      textarea.value =
-        shareUrl;
+      input.value = url;
 
-      textarea.style.position =
+      input.style.position =
         "fixed";
 
-      textarea.style.opacity =
+      input.style.opacity =
         "0";
 
       document.body.appendChild(
-        textarea
+        input
       );
 
-      textarea.select();
+      input.select();
 
       document.execCommand(
         "copy"
       );
 
-      textarea.remove();
+      input.remove();
 
-      showCopiedMessage();
-
+      showShareSuccess();
     } catch (error) {
-      alert(
-        "Copy this link to share Quiz Master:\n\n" +
-        shareUrl
+      console.warn(
+        "Share fallback failed:",
+        error
       );
     }
   }
 
-  function showCopiedMessage() {
-    if (
-      !elements.shareBtn
-    ) {
+  function showShareSuccess() {
+    if (!elements.shareBtn) {
       return;
     }
 
-    const oldText =
+    const original =
       elements.shareBtn.textContent;
 
     elements.shareBtn.textContent =
       "✅ Link Copied!";
 
-    setTimeout(
-      () => {
-        if (
-          elements.shareBtn
-        ) {
-          elements.shareBtn.textContent =
-            oldText;
-        }
-      },
-      1800
-    );
+    setTimeout(() => {
+      elements.shareBtn.textContent =
+        original;
+    }, 2000);
   }
 
-  /* =========================
+  /* =========================================================
      ERROR
-     ========================= */
+     ========================================================= */
 
-  function showError(
-    message
-  ) {
+  function showError(message) {
+    stopTimer();
+
+    stopMusic();
+
     if (
       elements.errorMessage
     ) {
       elements.errorMessage.textContent =
-        message;
+        message ||
+        "Something went wrong.";
     }
 
     showScreen(
@@ -3313,27 +2837,33 @@ function togglePause() {
     );
   }
 
-  /* =========================
+  /* =========================================================
      EVENT LISTENERS
-     ========================= */
+     ========================================================= */
 
   function setupEventListeners() {
-    if (
-      elements.startBtn
-    ) {
+    /*
+     * START
+     */
+    if (elements.startBtn) {
+      elements.startBtn.type =
+        "button";
+
       elements.startBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
           showDifficultySelection();
         }
       );
     }
 
-    if (
-      elements.continueBtn
-    ) {
+    /*
+     * CONTINUE
+     */
+    if (elements.continueBtn) {
       elements.continueBtn.type =
         "button";
 
@@ -3341,196 +2871,211 @@ function togglePause() {
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
           continueQuiz();
         }
       );
     }
 
-    if (
-      elements.roundsBtn
-    ) {
+    /*
+     * ROUNDS
+     */
+    if (elements.roundsBtn) {
+      elements.roundsBtn.type =
+        "button";
+
       elements.roundsBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
           showRounds();
         }
       );
     }
 
-    if (
-      elements.settingsBtn
-    ) {
+    /*
+     * SETTINGS
+     */
+    if (elements.settingsBtn) {
+      elements.settingsBtn.type =
+        "button";
+
       elements.settingsBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
           showSettings();
         }
       );
     }
 
-    if (
-      elements.shareBtn
-    ) {
+    /*
+     * SHARE
+     */
+    if (elements.shareBtn) {
+      elements.shareBtn.type =
+        "button";
+
       elements.shareBtn.addEventListener(
         "click",
-        (event) => {
-          event.preventDefault();
-
-          shareQuiz();
-        }
-      );
-    }
-
-    if (
-      elements.roundsBackBtn
-    ) {
-      elements.roundsBackBtn.addEventListener(
-        "click",
-        (event) => {
-          event.preventDefault();
-
-          goHome();
-        }
+        shareQuiz
       );
     }
 
     /*
-      =======================================================
-      NEXT BUTTON — IMPORTANT FIX
-      =======================================================
-    */
-
-    if (
-      elements.nextBtn
-    ) {
-      elements.nextBtn.type =
+     * ROUNDS BACK
+     */
+    if (elements.roundsBackBtn) {
+      elements.roundsBackBtn.type =
         "button";
 
-      /*
-        Make sure the browser does not
-        treat this button as a form submit.
-      */
-      elements.nextBtn.setAttribute(
-        "type",
-        "button"
+      elements.roundsBackBtn.addEventListener(
+        "click",
+        goHome
       );
+    }
+
+    /*
+     * NEXT
+     */
+    if (elements.nextBtn) {
+      elements.nextBtn.type =
+        "button";
 
       elements.nextBtn.addEventListener(
         "click",
         nextQuestion
       );
-    } else {
-      console.error(
-        "Quiz Master: #nextBtn not found in index.html"
+    }
+
+    /*
+     * PAUSE
+     */
+    if (elements.pauseBtn) {
+      elements.pauseBtn.type =
+        "button";
+
+      elements.pauseBtn.addEventListener(
+        "click",
+        togglePause
       );
     }
-if (
-  elements.pauseBtn
-) {
-  elements.pauseBtn.type = "button";
 
-  elements.pauseBtn.addEventListener(
-    "click",
-    (event) => {
-      event.preventDefault();
-      event.stopPropagation();
+    /*
+     * QUIZ HOME
+     */
+    if (elements.quizHomeBtn) {
+      elements.quizHomeBtn.type =
+        "button";
 
-      togglePause();
-    }
-  );
-}
-    if (
-      elements.quizHomeBtn
-    ) {
       elements.quizHomeBtn.addEventListener(
         "click",
-        (event) => {
-          event.preventDefault();
-
-          goHome();
-        }
+        goHome
       );
     }
 
-    if (
-      elements.nextRoundBtn
-    ) {
+    /*
+     * NEXT ROUND
+     */
+    if (elements.nextRoundBtn) {
+      elements.nextRoundBtn.type =
+        "button";
+
       elements.nextRoundBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
           nextRound();
         }
       );
     }
 
-    if (
-      elements.restartBtn
-    ) {
+    /*
+     * RESTART
+     */
+    if (elements.restartBtn) {
+      elements.restartBtn.type =
+        "button";
+
       elements.restartBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
-          retryRound();
+          restartRound();
         }
       );
     }
 
-    if (
-      elements.reviewBtn
-    ) {
+    /*
+     * REVIEW
+     */
+    if (elements.reviewBtn) {
+      elements.reviewBtn.type =
+        "button";
+
       elements.reviewBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
           showReview();
         }
       );
     }
 
-    if (
-      elements.resultHomeBtn
-    ) {
+    /*
+     * RESULT HOME
+     */
+    if (elements.resultHomeBtn) {
+      elements.resultHomeBtn.type =
+        "button";
+
       elements.resultHomeBtn.addEventListener(
         "click",
-        (event) => {
-          event.preventDefault();
-
-          goHome();
-        }
+        goHome
       );
     }
 
-    if (
-      elements.reviewRetryBtn
-    ) {
+    /*
+     * REVIEW RETRY
+     */
+    if (elements.reviewRetryBtn) {
+      elements.reviewRetryBtn.type =
+        "button";
+
       elements.reviewRetryBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
-          retryRound();
+          retryFromReview();
         }
       );
     }
 
-    if (
-      elements.reviewBackBtn
-    ) {
+    /*
+     * REVIEW BACK
+     */
+    if (elements.reviewBackBtn) {
+      elements.reviewBackBtn.type =
+        "button";
+
       elements.reviewBackBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
-
-          renderResult();
+          event.stopPropagation();
 
           showScreen(
             "resultScreen"
@@ -3539,82 +3084,150 @@ if (
       );
     }
 
-    if (
-      elements.musicSwitch
-    ) {
+    /*
+     * MUSIC
+     */
+    if (elements.musicSwitch) {
       elements.musicSwitch.addEventListener(
-        "click",
-        (event) => {
-          event.preventDefault();
-
-          toggleMusic();
+        "change",
+        () => {
+          setMusicEnabled(
+            elements.musicSwitch.checked
+          );
         }
       );
     }
 
-    if (
-      elements.soundSwitch
-    ) {
+    /*
+     * SOUND
+     */
+    if (elements.soundSwitch) {
       elements.soundSwitch.addEventListener(
-        "click",
-        (event) => {
-          event.preventDefault();
-
-          toggleSound();
+        "change",
+        () => {
+          setSoundEnabled(
+            elements.soundSwitch.checked
+          );
         }
       );
     }
 
-    if (
-      elements.settingsBackBtn
-    ) {
+    /*
+     * SETTINGS BACK
+     */
+    if (elements.settingsBackBtn) {
+      elements.settingsBackBtn.type =
+        "button";
+
       elements.settingsBackBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
-          goHome();
+          showScreen(
+            "homeScreen"
+          );
         }
       );
     }
 
-    if (
-      elements.errorRestartBtn
-    ) {
+    /*
+     * ERROR RESTART
+     */
+    if (elements.errorRestartBtn) {
+      elements.errorRestartBtn.type =
+        "button";
+
       elements.errorRestartBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
+
+          showScreen(
+            "homeScreen"
+          );
 
           loadQuestions();
         }
       );
     }
 
-    if (
-      elements.errorHomeBtn
-    ) {
+    /*
+     * ERROR HOME
+     */
+    if (elements.errorHomeBtn) {
+      elements.errorHomeBtn.type =
+        "button";
+
       elements.errorHomeBtn.addEventListener(
         "click",
         (event) => {
           event.preventDefault();
+          event.stopPropagation();
 
-          goHome();
+          showScreen(
+            "homeScreen"
+          );
         }
       );
     }
   }
 
-  /* =========================
-     INITIALIZATION
-     ========================= */
+  /* =========================================================
+     PUBLIC FUNCTIONS
+     ========================================================= */
+
+  window.startQuiz =
+    startQuiz;
+
+  window.continueQuiz =
+    continueQuiz;
+
+  window.nextQuestion =
+    nextQuestion;
+
+  window.togglePause =
+    togglePause;
+
+  window.stopTimer =
+    stopTimer;
+
+  window.startTimer =
+    startTimer;
+
+  window.showRounds =
+    showRounds;
+
+  window.showSettings =
+    showSettings;
+
+  window.goHome =
+    goHome;
+
+  window.shareQuiz =
+    shareQuiz;
+
+  window.finishRound =
+    finishRound;
+
+  window.showReview =
+    showReview;
+
+  window.renderReview =
+    renderReview;
+
+  /* =========================================================
+     INITIALIZE
+     ========================================================= */
 
   function initialize() {
-    if (initialized) {
+    if (state.initialized) {
       return;
     }
 
-    initialized = true;
+    state.initialized = true;
 
     cacheElements();
 
@@ -3635,61 +3248,9 @@ if (
     loadQuestions();
   }
 
-  /* =========================
-     PUBLIC API
-     ========================= */
-
-  window.startQuiz =
-    startQuiz;
-
-  window.continueQuiz =
-    continueQuiz;
-
-  window.nextQuestion =
-    nextQuestion;
-
-  window.showRounds =
-    showRounds;
-
-  window.showSettings =
-    showSettings;
-
-  window.showReview =
-    showReview;
-
-  window.retryRound =
-    retryRound;
-
-  window.nextRound =
-    nextRound;
-
-  window.goHome =
-    goHome;
-
-  window.shareQuiz =
-    shareQuiz;
-
-  window.startMusic =
-    startMusic;
-
-  window.stopMusic =
-    stopMusic;
-
-  window.toggleMusic =
-    toggleMusic;
-
-  window.toggleSound =
-    toggleSound;
-
-  window.loadQuestions =
-    loadQuestions;
-
-  window.showDifficultySelection =
-    showDifficultySelection;
-
-  /* =========================
+  /* =========================================================
      START
-     ========================= */
+     ========================================================= */
 
   if (
     document.readyState ===
@@ -3697,7 +3258,10 @@ if (
   ) {
     document.addEventListener(
       "DOMContentLoaded",
-      initialize
+      initialize,
+      {
+        once: true
+      }
     );
   } else {
     initialize();
