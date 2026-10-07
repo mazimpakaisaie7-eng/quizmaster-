@@ -1503,21 +1503,20 @@ if ("serviceWorker" in navigator) {
       progress.questions.length >
         0
     );
+function updateContinueButton() {
+  const button = elements.continueBtn;
+
+  if (!button) {
+    return;
   }
 
-  function updateContinueButton() {
-    const button =
-      elements.continueBtn;
+  button.type = "button";
 
-    if (!button) {
-      return;
-    }
-
-    button.style.display =
-      hasSavedProgress()
-        ? "block"
-        : "none";
-  }
+  button.style.display =
+    hasSavedProgress()
+      ? "block"
+      : "none";
+}
 
   function continueQuiz() {
     const progress =
