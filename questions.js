@@ -169,6 +169,7 @@ if ("serviceWorker" in navigator) {
       "options",
       "message",
       "nextBtn",
+      "pauseBtn",
       "quizHomeBtn",
 
       "finalScore",
