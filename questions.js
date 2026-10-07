@@ -1503,6 +1503,7 @@ if ("serviceWorker" in navigator) {
       progress.questions.length >
         0
     );
+      }
 function updateContinueButton() {
   const button = elements.continueBtn;
 
