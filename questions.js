@@ -3429,7 +3429,21 @@ function togglePause() {
         "Quiz Master: #nextBtn not found in index.html"
       );
     }
+if (
+  elements.pauseBtn
+) {
+  elements.pauseBtn.type = "button";
 
+  elements.pauseBtn.addEventListener(
+    "click",
+    (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      togglePause();
+    }
+  );
+}
     if (
       elements.quizHomeBtn
     ) {
