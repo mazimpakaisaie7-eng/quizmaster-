@@ -2131,7 +2131,21 @@ function updateContinueButton() {
       timer = null;
     }
   }
+function togglePause() {
+  const button = elements.pauseBtn;
 
+  if (!button) {
+    return;
+  }
+
+  if (timer !== null) {
+    stopTimer();
+    button.textContent = "▶️ Resume";
+  } else {
+    startTimer();
+    button.textContent = "⏸️ Pause";
+  }
+}
   function updateTimerDisplay() {
     if (!elements.timer) {
       return;
