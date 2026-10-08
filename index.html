@@ -8,29 +8,66 @@
 
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
+  <meta name="description"
+        content="Quiz Master is a free knowledge quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and General Knowledge. Test your knowledge, learn new facts, earn points and unlock quiz rounds.">
+
+  <meta name="keywords"
+        content="Quiz Master, knowledge quiz, quiz game, Rwanda quiz, Africa quiz, geography quiz, history quiz, science quiz, technology quiz, sports quiz, general knowledge">
+
+  <meta name="author"
+        content="Mazimpaka Isaie">
+
+  <meta name="robots"
+        content="index, follow">
+
+  <meta name="googlebot"
+        content="index, follow">
+
+  <meta name="theme-color"
+        content="#111827">
+
+  <link rel="icon"
+        type="image/png"
+        href="/icon-512-3.png">
+
+  <link rel="apple-touch-icon"
+        href="/icon-512-3.png">
+
+
+  <!-- =========================================================
+       GOOGLE ANALYTICS
+       ========================================================= -->
+  <script async
+          src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P">
+  </script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
+
     gtag('config', 'G-2W9SXBBH1P');
   </script>
 
-  <meta name="description"
-        content="Quiz Master is a free knowledge quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and more. Test your knowledge, learn new facts, earn points and unlock new quiz rounds.">
 
-  <meta name="robots" content="index, follow">
-
-  <link rel="icon" href="/icon-512-3.png">
-  <link rel="apple-touch-icon" href="/icon-512-3.png">
-
-  <!-- Google AdSense -->
+  <!-- =========================================================
+       GOOGLE ADSENSE
+       ========================================================= -->
   <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous"></script>
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
+          crossorigin="anonymous">
+  </script>
 
+
+  <!-- =========================================================
+       PAGE STYLE
+       ========================================================= -->
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -42,754 +79,547 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
       background:
-        radial-gradient(circle at top left, #dbeafe 0, transparent 32%),
-        radial-gradient(circle at top right, #e0e7ff 0, transparent 30%),
-        #f5f7fb;
-      color: #172033;
+        linear-gradient(
+          135deg,
+          #0f172a,
+          #111827,
+          #172554
+        );
+      color: #f8fafc;
+      min-height: 100vh;
       line-height: 1.6;
     }
 
-    button {
+    button,
+    a {
       font-family: inherit;
     }
 
-    button:focus-visible {
-      outline: 3px solid #93c5fd;
-      outline-offset: 2px;
+    button {
+      cursor: pointer;
     }
+
+    a {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .app {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, 94%);
+      margin: 0 auto;
+    }
+
+
+    /* =========================================================
+       SCREENS
+       ========================================================= */
 
     .screen {
       display: none;
+      width: 100%;
       min-height: 100vh;
-      padding: 20px 14px 40px;
+      padding: 25px 0 40px;
     }
 
     .screen.active {
       display: block;
     }
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-    }
 
-    .home-container {
-      max-width: 950px;
-      margin: 0 auto;
-    }
-
-    /* =========================
+    /* =========================================================
        HOME
-       ========================= */
+       ========================================================= */
 
     .hero {
-      position: relative;
-      overflow: hidden;
       text-align: center;
-      background: rgba(255,255,255,.96);
-      border: 1px solid #e5e7eb;
-      border-radius: 28px;
-      padding: 32px 20px 28px;
-      margin-bottom: 20px;
-      box-shadow: 0 15px 40px rgba(30, 64, 175, .10);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: #dbeafe;
-      top: -80px;
-      left: -80px;
-      opacity: .65;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background: #e0e7ff;
-      bottom: -80px;
-      right: -60px;
-      opacity: .65;
-    }
-
-    .hero > * {
-      position: relative;
-      z-index: 1;
+      padding: 35px 15px 20px;
     }
 
     .logo {
-      width: 135px;
-      height: 135px;
+      width: 110px;
+      height: 110px;
       object-fit: contain;
-      display: block;
-      margin: 0 auto 16px;
-      filter: drop-shadow(0 10px 15px rgba(37,99,235,.18));
+      border-radius: 24px;
+      margin-bottom: 12px;
     }
 
     .hero h1 {
-      margin: 0 0 8px;
-      font-size: clamp(30px, 7vw, 44px);
-      color: #172554;
-      font-weight: 900;
-      letter-spacing: -1px;
+      margin: 5px 0;
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 800;
     }
 
-    .hero .tagline {
-      margin: 0 auto 14px;
-      max-width: 700px;
-      font-size: 18px;
-      color: #4b5563;
-      font-weight: 600;
+    .tagline {
+      margin: 8px auto;
+      color: #93c5fd;
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      font-weight: 700;
     }
 
     .hero-description {
-      max-width: 760px;
-      margin: 0 auto;
-      color: #374151;
-      font-size: 15px;
+      max-width: 780px;
+      margin: 15px auto 25px;
+      color: #cbd5e1;
+      font-size: 1rem;
     }
+
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
 
     .button-group {
-      display: grid;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
-      margin: 24px auto;
-      max-width: 430px;
-    }
-
-    .main-btn,
-    .secondary-btn,
-    .danger-btn {
-      width: 100%;
-      border: 0;
-      border-radius: 14px;
-      padding: 15px 18px;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+      margin: 20px auto 30px;
     }
 
     .main-btn {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: #fff;
-      box-shadow: 0 8px 18px rgba(37,99,235,.25);
+      border: none;
+      border-radius: 12px;
+      padding: 13px 19px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: #2563eb;
+      transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
+    }
+
+    .main-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .main-btn:active {
+      transform: translateY(0);
     }
 
     .secondary-btn {
-      background: #eef2f7;
-      color: #111827;
+      background: #334155;
+    }
+
+    .success-btn {
+      background: #059669;
     }
 
     .danger-btn {
       background: #dc2626;
-      color: #fff;
     }
 
-    .main-btn:hover,
-    .secondary-btn:hover,
-    .danger-btn:hover {
-      transform: translateY(-2px);
-      opacity: .95;
+    .warning-btn {
+      background: #d97706;
     }
 
-    .main-btn:active,
-    .secondary-btn:active,
-    .danger-btn:active {
-      transform: translateY(0);
+
+    /* =========================================================
+       CONTENT
+       ========================================================= */
+
+    .content-section {
+      margin: 35px auto;
     }
 
-    /* =========================
-       AD
-       ========================= */
+    .content-section h2 {
+      text-align: center;
+      font-size: 1.65rem;
+      margin-bottom: 18px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .content-card {
+      background: rgba(30, 41, 59, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .content-card h3 {
+      margin-top: 0;
+      color: #bfdbfe;
+      font-size: 1.12rem;
+    }
+
+    .content-card p {
+      margin-bottom: 0;
+      color: #cbd5e1;
+    }
+
+
+    /* =========================================================
+       CATEGORIES
+       ========================================================= */
+
+    .category-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(145px, 1fr));
+      gap: 12px;
+    }
+
+    .category-card {
+      padding: 18px 10px;
+      text-align: center;
+      border-radius: 14px;
+      background: rgba(30, 41, 59, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+    }
+
+    .category-card strong {
+      display: block;
+      color: #e2e8f0;
+    }
+
+    .category-card span {
+      display: block;
+      margin-top: 5px;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+
+
+    /* =========================================================
+       ADS
+       ========================================================= */
 
     .ad-section {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 12px;
-      margin: 20px 0;
-      min-height: 90px;
-      box-shadow: 0 5px 18px rgba(0,0,0,.04);
+      width: 100%;
+      margin: 30px auto;
+      text-align: center;
     }
 
     .ad-label {
-      text-align: center;
-      font-size: 11px;
-      color: #9ca3af;
-      margin-bottom: 5px;
+      margin-bottom: 7px;
+      color: #94a3b8;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .ad-box {
       width: 100%;
+      min-height: 90px;
       overflow: hidden;
-      min-height: 50px;
     }
 
-    /* =========================
-       CONTENT
-       ========================= */
-
-    .content-card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 20px;
-      padding: 24px;
-      margin: 20px 0;
-      box-shadow: 0 5px 18px rgba(0,0,0,.05);
+    .adsbygoogle {
+      display: block;
+      width: 100%;
     }
 
-    .content-card h2 {
-      margin-top: 0;
-      color: #172554;
-      font-size: 24px;
-    }
 
-    .content-card h3 {
-      color: #1e3a8a;
-      margin-bottom: 6px;
-    }
+    /* =========================================================
+       GENERIC CARDS
+       ========================================================= */
 
-    .content-card p {
-      margin-top: 7px;
-      color: #374151;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-      margin-top: 15px;
-    }
-
-    .category-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 14px;
-      padding: 16px;
-      background: #f9fafb;
-    }
-
-    .category-card h3 {
-      margin-top: 0;
-      font-size: 17px;
-    }
-
-    .category-card p {
-      margin-bottom: 0;
-      font-size: 14px;
-    }
-
-    .steps {
-      padding-left: 22px;
-    }
-
-    .steps li {
-      margin-bottom: 9px;
-    }
-
-    .info-list {
-      padding-left: 20px;
-    }
-
-    .info-list li {
-      margin-bottom: 8px;
-    }
-
-    /* =========================
-       SCREEN HEADER
-       ========================= */
-
-    .screen-header {
-      text-align: center;
-      margin: 0 auto 18px;
-      max-width: 760px;
-    }
-
-    .screen-header h2 {
-      margin: 0 0 5px;
-      color: #172554;
-      font-size: clamp(26px, 6vw, 36px);
-    }
-
-    .screen-header p {
-      margin: 0;
-      color: #6b7280;
-    }
-
-    /* =========================
-       ROUNDS
-       ========================= */
-
-    .round-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      max-width: 700px;
+    .panel {
+      width: min(900px, 94%);
       margin: 20px auto;
-    }
-
-    .round-btn {
-      min-height: 76px;
+      padding: 22px;
+      background: rgba(30, 41, 59, 0.92);
       border-radius: 18px;
-      border: 1px solid #e5e7eb;
-      font-size: 17px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: transform .15s ease, box-shadow .15s ease;
+      border: 1px solid rgba(148, 163, 184, 0.15);
     }
 
-    .round-btn.unlocked {
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
-      color: #1d4ed8;
-      border-color: #bfdbfe;
+    .screen-title {
+      text-align: center;
+      margin: 5px 0 20px;
+      font-size: 1.9rem;
     }
 
-    .round-btn.locked {
-      background: #f3f4f6;
-      color: #9ca3af;
-      cursor: pointer;
+
+    /* =========================================================
+       ROUND SCREEN
+       ========================================================= */
+
+    #roundGrid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
     }
 
-    .round-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(0,0,0,.08);
+    .round-card {
+      min-height: 80px;
+      border: none;
+      border-radius: 14px;
+      padding: 14px;
+      background: #1e293b;
+      color: #ffffff;
+      font-weight: 700;
     }
 
-    /* =========================
-       QUIZ CARD
-       ========================= */
 
-    .quiz-card {
-      background: #fff;
-      border-radius: 24px;
-      padding: 20px;
-      box-shadow: 0 12px 35px rgba(30,64,175,.10);
-      border: 1px solid #e5e7eb;
-    }
+    /* =========================================================
+       QUIZ
+       ========================================================= */
 
-    .quiz-top {
-      display: flex;
+    .quiz-header {
+      display: grid;
+      grid-template-columns:
+        repeat(4, 1fr);
       gap: 8px;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
-    .quiz-badge {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #eff6ff;
-      color: #1d4ed8;
-      font-weight: 800;
-      font-size: 13px;
+    .quiz-stat {
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      background: #1e293b;
+      color: #e2e8f0;
+      font-size: 0.9rem;
     }
 
-    .score-badge {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #fef3c7;
-      color: #92400e;
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    .timer-badge {
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: #f3f4f6;
-      color: #111827;
-      font-weight: 900;
-      font-size: 14px;
-    }
-
-    .progress-track {
+    .progress-container {
       width: 100%;
       height: 9px;
-      background: #e5e7eb;
+      margin: 12px 0 20px;
+      background: #334155;
       border-radius: 999px;
       overflow: hidden;
-      margin: 10px 0 18px;
     }
 
     #progressBar {
+      width: 0%;
       height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, #2563eb, #60a5fa);
-      border-radius: 999px;
-      transition: width .25s ease;
+      background: #2563eb;
+      transition: width 0.2s ease;
     }
 
     #category {
-      text-align: center;
-      color: #6b7280;
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #1d4ed8;
+      color: #ffffff;
+      font-size: 0.8rem;
       font-weight: 700;
-      font-size: 14px;
-      min-height: 22px;
     }
 
     #question {
-      margin: 15px 0 20px;
-      text-align: center;
-      font-size: clamp(21px, 5vw, 29px);
-      line-height: 1.35;
-      color: #111827;
+      font-size: clamp(1.2rem, 4vw, 1.7rem);
+      margin: 10px 0 20px;
     }
 
-    .options {
+    #options {
       display: grid;
-      gap: 12px;
+      gap: 11px;
     }
 
-    .option-btn {
+    #options button {
       width: 100%;
+      border: 1px solid #475569;
+      border-radius: 12px;
+      padding: 14px;
       text-align: left;
-      padding: 15px 16px;
-      background: #f8fafc;
-      color: #172033;
-      border: 2px solid #e5e7eb;
-      border-radius: 14px;
-      font-size: 16px;
+      background: #1e293b;
+      color: #f8fafc;
+      font-size: 1rem;
+    }
+
+    #options button:hover {
+      background: #334155;
+    }
+
+    #message {
+      min-height: 30px;
+      margin: 15px 0;
+      text-align: center;
       font-weight: 700;
-      cursor: pointer;
-      transition: background .15s ease, border-color .15s ease, transform .15s ease;
     }
 
-    .option-btn:hover:not(:disabled) {
-      background: #eff6ff;
-      border-color: #93c5fd;
-      transform: translateY(-1px);
+    .quiz-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    .option-btn:disabled {
-      cursor: default;
-    }
 
-    .option-btn.correct {
-      background: #dcfce7;
-      border-color: #22c55e;
-      color: #166534;
-    }
-
-    .option-btn.wrong {
-      background: #fee2e2;
-      border-color: #ef4444;
-      color: #991b1b;
-    }
-
-    .message {
-      margin: 16px 0;
-      padding: 13px 15px;
-      border-radius: 13px;
-      text-align: center;
-      font-weight: 800;
-    }
-
-    .message.hidden {
-      display: none;
-    }
-
-    .message.correct {
-      background: #dcfce7;
-      color: #166534;
-    }
-
-    .message.wrong {
-      background: #fee2e2;
-      color: #991b1b;
-    }
-
-    /* =========================
+    /* =========================================================
        RESULT
-       ========================= */
+       ========================================================= */
 
-    .result-card {
-      background: #fff;
-      border-radius: 24px;
-      padding: 28px 20px;
+    .result-score {
       text-align: center;
-      border: 1px solid #e5e7eb;
-      box-shadow: 0 12px 35px rgba(30,64,175,.10);
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .result-icon {
-      font-size: 52px;
-      margin-bottom: 4px;
-    }
-
-    #finalScore {
-      font-size: 30px;
-      font-weight: 900;
-      color: #1d4ed8;
-      margin: 5px 0;
-    }
-
-    #resultPercent {
-      font-size: 54px;
-      line-height: 1;
-      font-weight: 900;
-      color: #172554;
+      font-size: 2.5rem;
+      font-weight: 800;
       margin: 15px 0;
     }
 
-    #resultMessage,
-    #finishedRound {
-      color: #4b5563;
-      font-weight: 700;
-    }
-
-    .result-stats {
+    .result-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns:
+        repeat(auto-fit, minmax(140px, 1fr));
       gap: 12px;
-      margin: 22px 0;
+      margin: 20px 0;
     }
 
-    .stat-card {
-      background: #f8fafc;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
+    .result-stat {
       padding: 15px;
+      text-align: center;
+      background: #1e293b;
+      border-radius: 12px;
     }
 
-    .stat-card span {
-      display: block;
-      color: #6b7280;
-      font-size: 13px;
-      font-weight: 700;
-    }
 
-    .stat-card strong {
-      display: block;
-      margin-top: 3px;
-      font-size: 28px;
-    }
-
-    /* =========================
+    /* =========================================================
        REVIEW
-       ========================= */
+       ========================================================= */
 
-    .review-list {
+    #reviewList {
       display: grid;
-      gap: 14px;
+      gap: 13px;
     }
 
     .review-item {
-      padding: 17px;
-      border-radius: 16px;
-      background: #f8fafc;
-      border: 2px solid #e5e7eb;
+      padding: 15px;
+      border-radius: 12px;
+      background: #1e293b;
     }
 
-    .review-item strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #111827;
-    }
 
-    .review-item p {
-      margin: 5px 0;
-      color: #4b5563;
-    }
-
-    .review-correct {
-      border-color: #86efac;
-      background: #f0fdf4;
-    }
-
-    .review-wrong {
-      border-color: #fca5a5;
-      background: #fef2f2;
-    }
-
-    /* =========================
+    /* =========================================================
        SETTINGS
-       ========================= */
-
-    .settings-card {
-      max-width: 650px;
-      margin: 0 auto;
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 22px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.06);
-    }
+       ========================================================= */
 
     .setting-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 15px;
-      padding: 17px 5px;
-      border-bottom: 1px solid #e5e7eb;
+      padding: 15px 0;
+      border-bottom: 1px solid #334155;
     }
 
     .setting-row:last-child {
-      border-bottom: 0;
+      border-bottom: none;
     }
 
-    .setting-title {
-      font-weight: 900;
-      color: #111827;
-    }
 
-    .setting-description {
-      font-size: 13px;
-      color: #6b7280;
-      margin-top: 2px;
-    }
-
-    .switch {
-      width: 58px;
-      height: 32px;
-      border: 0;
-      border-radius: 999px;
-      background: #d1d5db;
-      padding: 3px;
-      cursor: pointer;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .switch::after {
-      content: "";
-      width: 26px;
-      height: 26px;
-      position: absolute;
-      left: 3px;
-      top: 3px;
-      background: #fff;
-      border-radius: 50%;
-      transition: transform .2s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,.15);
-    }
-
-    .switch.on {
-      background: #2563eb;
-    }
-
-    .switch.on::after {
-      transform: translateX(26px);
-    }
-
-    /* =========================
+    /* =========================================================
        ERROR
-       ========================= */
-
-    .error-card {
-      max-width: 650px;
-      margin: 60px auto 0;
-      background: #fff;
-      border: 1px solid #fecaca;
-      border-radius: 22px;
-      padding: 28px 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(220,38,38,.08);
-    }
-
-    .error-icon {
-      font-size: 48px;
-    }
+       ========================================================= */
 
     #errorMessage {
-      color: #991b1b;
-      margin: 15px 0 20px;
+      margin: 15px 0;
+      padding: 15px;
+      border-radius: 12px;
+      background: rgba(127, 29, 29, 0.5);
+      color: #fecaca;
     }
 
-    /* =========================
+
+    /* =========================================================
        FOOTER
-       ========================= */
+       ========================================================= */
 
     .footer {
+      width: min(1000px, 94%);
+      margin: 45px auto 0;
+      padding: 25px 15px 35px;
       text-align: center;
-      color: #6b7280;
-      font-size: 13px;
-      padding: 20px 10px 0;
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
+      color: #94a3b8;
+      font-size: 0.9rem;
     }
 
-    /* =========================
-       MOBILE
-       ========================= */
+    .footer-links {
+      margin: 12px 0;
+    }
 
-    @media (max-width: 600px) {
+    .footer-links a {
+      margin: 0 5px;
+    }
+
+    .footer-contact {
+      margin-top: 10px;
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @media (max-width: 650px) {
+
       .screen {
-        padding: 12px 10px 30px;
+        padding-top: 15px;
       }
 
       .hero {
-        padding: 25px 15px;
-        border-radius: 22px;
+        padding-top: 20px;
       }
 
       .logo {
-        width: 110px;
-        height: 110px;
+        width: 90px;
+        height: 90px;
       }
 
-      .content-card {
-        padding: 19px;
+      .button-group {
+        flex-direction: column;
+        align-items: stretch;
       }
 
-      .round-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+      .main-btn {
+        width: 100%;
       }
 
-      .round-btn {
-        min-height: 68px;
-        font-size: 15px;
+      .quiz-header {
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
-      .quiz-card {
-        padding: 15px;
-        border-radius: 20px;
+      .panel {
+        padding: 17px;
       }
 
-      .quiz-top {
-        gap: 6px;
-      }
-
-      .quiz-badge,
-      .score-badge,
-      .timer-badge {
-        font-size: 12px;
-        padding: 7px 9px;
-      }
-
-      .option-btn {
-        padding: 14px;
-        font-size: 15px;
-      }
-
-      .result-card {
-        padding: 24px 15px;
-      }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- =====================================================
+<div class="app">
+
+
+  <!-- =========================================================
        HOME SCREEN
-       ===================================================== -->
+       ========================================================= -->
 
   <section id="homeScreen" class="screen active">
 
-    <div class="home-container">
+    <div class="container">
 
-      <div class="hero">
+      <header class="hero">
 
         <img
           src="/icon-512-3.png"
@@ -799,16 +629,20 @@
 
         <h1>Quiz Master 🇷🇼</h1>
 
-        <p class="tagline">
+        <div class="tagline">
           Test Your Knowledge. Learn. Score. Unlock.
-        </p>
+        </div>
 
         <p class="hero-description">
           Quiz Master is a free knowledge quiz game covering
           Geography, History, Science, Technology, Rwanda,
-          Africa, Sports and more. Test your knowledge,
-          learn new facts, earn points and unlock new quiz rounds.
+          Africa, Sports, General Knowledge and more.
+          Test what you know, learn new facts, earn points
+          and unlock new quiz rounds.
         </p>
+
+
+        <!-- MAIN NAVIGATION -->
 
         <div class="button-group">
 
@@ -822,7 +656,7 @@
           <button
             id="continueBtn"
             type="button"
-            class="secondary-btn"
+            class="main-btn success-btn"
             style="display:none;">
             ▶️ Continue Quiz
           </button>
@@ -830,112 +664,32 @@
           <button
             id="roundsBtn"
             type="button"
-            class="secondary-btn">
+            class="main-btn secondary-btn">
             🏆 Quiz Rounds
           </button>
 
           <button
             id="settingsBtn"
             type="button"
-            class="secondary-btn">
+            class="main-btn secondary-btn">
             ⚙️ Settings
           </button>
 
           <button
             id="shareBtn"
             type="button"
-            class="main-btn">
+            class="main-btn secondary-btn">
             📤 Share Quiz Master
           </button>
 
         </div>
 
-      </div>
+      </header>
 
-      <!-- =================================================
-           ORIGINAL PUBLISHER CONTENT
-           ================================================= -->
 
-      <div class="content-card">
-
-        <h2>What Is Quiz Master?</h2>
-
-        <p>
-          Quiz Master 🇷🇼 is an educational knowledge quiz designed
-          for people who enjoy learning through questions and challenges.
-          The game brings together topics from everyday knowledge,
-          school-related subjects, Rwanda, Africa and the wider world.
-        </p>
-
-        <p>
-          Each quiz question gives you an opportunity to recall what
-          you already know and discover information you may not have
-          known before. Questions are organized into different topics
-          so that players can explore a variety of subjects instead of
-          focusing on only one area.
-        </p>
-
-        <p>
-          Quiz Master is designed around learning, practice and
-          friendly personal progress. Players can answer questions,
-          earn points, complete rounds and work toward unlocking
-          additional rounds.
-        </p>
-
-      </div>
-
-      <!-- =================================================
-           LEARNING VALUE
-           ================================================= -->
-
-      <div class="content-card">
-
-        <h2>Learning With Quiz Master</h2>
-
-        <p>
-          Quiz Master can be used as a simple way to practice general
-          knowledge and review facts. The questions cover subjects that
-          can encourage curiosity about the world, science, technology,
-          history, geography, sports and African knowledge.
-        </p>
-
-        <ul class="info-list">
-
-          <li>
-            <strong>Practice recall:</strong>
-            Answering questions helps you practice remembering facts
-            and information.
-          </li>
-
-          <li>
-            <strong>Explore different subjects:</strong>
-            Move between several categories instead of concentrating
-            on a single topic.
-          </li>
-
-          <li>
-            <strong>Learn from mistakes:</strong>
-            Review your answers after a round and identify questions
-            that you answered incorrectly.
-          </li>
-
-          <li>
-            <strong>Track progress:</strong>
-            Points, completed rounds and unlocked rounds provide
-            simple ways to follow your progress.
-          </li>
-
-          <li>
-            <strong>Build curiosity:</strong>
-            Questions about Rwanda, Africa and the wider world can
-            encourage players to explore subjects beyond the quiz.
-          </li>
-
-        </ul>
-
-      </div>
-
-      <!-- HOME AD -->
+      <!-- =====================================================
+           ADVERTISEMENT
+           ===================================================== -->
 
       <div class="ad-section">
 
@@ -958,187 +712,317 @@
 
       </div>
 
-      <!-- ABOUT -->
 
-      <div class="content-card">
+      <!-- =====================================================
+           ABOUT / ORIGINAL CONTENT
+           ===================================================== -->
+
+      <section class="content-section">
 
         <h2>About Quiz Master</h2>
 
-        <p>
-          Quiz Master is a free knowledge game designed to
-          help players test their knowledge, discover new facts
-          and improve their general knowledge through fun quiz rounds.
-        </p>
+        <div class="content-grid">
+
+          <article class="content-card">
+
+            <h3>What Is Quiz Master?</h3>
+
+            <p>
+              Quiz Master 🇷🇼 is an educational knowledge quiz
+              game designed to help players test their knowledge
+              while discovering useful facts from different
+              subjects and regions around the world.
+            </p>
+
+          </article>
+
+
+          <article class="content-card">
+
+            <h3>Learning With Quiz Master</h3>
+
+            <p>
+              Each quiz question gives players an opportunity
+              to recall information, learn from correct answers,
+              and improve their knowledge through repeated
+              practice.
+            </p>
+
+          </article>
+
+
+          <article class="content-card">
+
+            <h3>How to Play</h3>
+
+            <p>
+              Start a quiz, read each question carefully,
+              choose the answer you think is correct, and
+              continue through the round. Your score depends
+              on the answers you give.
+            </p>
+
+          </article>
+
+
+          <article class="content-card">
+
+            <h3>Quiz Progress</h3>
+
+            <p>
+              Quiz Master organizes gameplay into rounds.
+              Completing rounds allows players to track their
+              progress and work toward unlocking additional
+              challenges.
+            </p>
+
+          </article>
+
+
+          <article class="content-card">
+
+            <h3>Why Play Quiz Master?</h3>
+
+            <p>
+              Quiz games can make learning interactive and
+              enjoyable. Quiz Master brings together questions
+              from several knowledge areas so players can
+              challenge themselves across different subjects.
+            </p>
+
+          </article>
+
+
+          <article class="content-card">
+
+            <h3>Built for Knowledge</h3>
+
+            <p>
+              The goal of Quiz Master is to provide a simple,
+              accessible and enjoyable way to practice general
+              knowledge and discover information about Rwanda,
+              Africa and the wider world.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           CATEGORIES
+           ===================================================== -->
+
+      <section class="content-section">
+
+        <h2>Explore Quiz Categories</h2>
 
         <div class="category-grid">
 
           <div class="category-card">
-            <h3>🌍 Geography</h3>
-            <p>
-              Explore countries, capitals, cities and places around the world.
-            </p>
+            <strong>🌍 Geography</strong>
+            <span>Countries, places and the world</span>
           </div>
 
           <div class="category-card">
-            <h3>📜 History</h3>
-            <p>
-              Test your knowledge of important historical events and people.
-            </p>
+            <strong>📜 History</strong>
+            <span>Historical events and people</span>
           </div>
 
           <div class="category-card">
-            <h3>🔬 Science</h3>
-            <p>
-              Challenge yourself with questions about science and nature.
-            </p>
+            <strong>🔬 Science</strong>
+            <span>Science and natural knowledge</span>
           </div>
 
           <div class="category-card">
-            <h3>💻 Technology</h3>
-            <p>
-              Answer questions about technology, computers and innovation.
-            </p>
+            <strong>💻 Technology</strong>
+            <span>Technology and digital knowledge</span>
           </div>
 
           <div class="category-card">
-            <h3>🇷🇼 Rwanda</h3>
-            <p>
-              Learn more about Rwanda through dedicated quiz questions.
-            </p>
+            <strong>🇷🇼 Rwanda</strong>
+            <span>Knowledge about Rwanda</span>
           </div>
 
           <div class="category-card">
-            <h3>🌍 Africa</h3>
-            <p>
-              Discover facts about African countries, culture and geography.
-            </p>
+            <strong>🌍 Africa</strong>
+            <span>African countries and facts</span>
           </div>
 
           <div class="category-card">
-            <h3>⚽ Sports</h3>
-            <p>
-              Test your knowledge of sports, teams and competitions.
-            </p>
+            <strong>⚽ Sports</strong>
+            <span>Sports, players and competitions</span>
           </div>
 
           <div class="category-card">
-            <h3>🧠 General Knowledge</h3>
-            <p>
-              Challenge yourself with interesting questions from many topics.
-            </p>
+            <strong>🧠 General Knowledge</strong>
+            <span>Interesting facts and information</span>
           </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           RESPONSIBLE USE / INFORMATION
+           ===================================================== -->
+
+      <section class="content-section">
+
+        <h2>Quiz Master Features</h2>
+
+        <div class="content-grid">
+
+          <article class="content-card">
+
+            <h3>🎯 Score Points</h3>
+
+            <p>
+              Answer questions correctly to earn points and
+              measure your performance during each quiz round.
+            </p>
+
+          </article>
+
+
+          <article class="content-card">
+
+            <h3>🏆 Unlock Rounds</h3>
+
+            <p>
+              Progress through the available quiz rounds by
+              completing earlier challenges and meeting the
+              required performance level.
+            </p>
+
+          </article>
+
+
+          <article class="content-card">
+
+            <h3>📚 Learn From Questions</h3>
+
+            <p>
+              Quiz Master is designed not only for competition,
+              but also as an interactive way to review facts
+              and learn new information.
+            </p>
+
+          </article>
+
+
+          <article class="content-card">
+
+            <h3>📱 Mobile Friendly</h3>
+
+            <p>
+              The interface is designed to work on phones,
+              tablets and larger screens so that the quiz can
+              be accessed on different devices.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           SECOND ADVERTISEMENT
+           ===================================================== -->
+
+      <div class="ad-section">
+
+        <div class="ad-label">
+          Advertisement
+        </div>
+
+        <div class="ad-box">
+
+          <ins
+            class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-2666698676518429"
+            data-ad-slot="9045712897"
+            data-ad-format="auto"
+            data-full-width-responsive="true">
+          </ins>
 
         </div>
 
       </div>
 
-      <!-- HOW TO PLAY -->
 
-      <div class="content-card">
+      <!-- =====================================================
+           FOOTER
+           ===================================================== -->
 
-        <h2>How to Play</h2>
+      <footer class="footer">
 
-        <ol class="steps">
+        <div>
+          © 2026 Quiz Master 🇷🇼 — Knowledge Quiz
+        </div>
 
-          <li>
-            Press <strong>Start Quiz</strong> to begin.
-          </li>
+        <div class="footer-links">
 
-          <li>
-            Each round contains 10 questions.
-          </li>
+          <a href="/Privacy_policy.html">
+            Privacy Policy
+          </a>
 
-          <li>
-            You have 20 seconds to answer each question.
-          </li>
+          |
 
-          <li>
-            A correct answer gives you 10 points.
-          </li>
+          <a href="/Terms_Of_Services.html">
+            Terms of Service
+          </a>
 
-          <li>
-            Score at least 60% to unlock the next round.
-          </li>
+        </div>
 
-          <li>
-            Use <strong>Continue Quiz</strong> to resume saved progress.
-          </li>
+        <div class="footer-contact">
 
-        </ol>
+          Contact:
+          <a href="mailto:mazimpakaisaie7@gmail.com">
+            mazimpakaisaie7@gmail.com
+          </a>
 
-      </div>
+        </div>
 
-      <!-- EDUCATIONAL NOTE -->
-
-      <div class="content-card">
-
-        <h2>Why Play Quiz Master?</h2>
-
-        <p>
-          Quiz Master combines short questions with immediate
-          feedback to make learning more interactive. Instead of
-          simply reading information, players actively try to recall
-          an answer and can review their performance after completing
-          a round.
-        </p>
-
-        <p>
-          The game is especially useful for people who enjoy
-          general-knowledge challenges and want a simple way to
-          practice facts about Rwanda, Africa and the world.
-          It is intended as a learning and entertainment experience,
-          not as a replacement for formal education or professional
-          advice.
-        </p>
-
-        <p>
-          New questions and topics can make each quiz experience
-          different. The goal is simple: answer questions, learn
-          something useful, improve your score and keep exploring.
-        </p>
-
-      </div>
-
-      <div class="footer">
-        © 2026 Quiz Master 🇷🇼 — Knowledge Quiz
-      </div>
+      </footer>
 
     </div>
 
   </section>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
        ROUNDS SCREEN
-       ===================================================== -->
+       ========================================================= -->
 
   <section id="roundsScreen" class="screen">
 
     <div class="container">
 
-      <div class="screen-header">
+      <div class="panel">
 
-        <h2>🏆 Quiz Rounds</h2>
+        <h2 class="screen-title">
+          🏆 Quiz Rounds
+        </h2>
 
-        <p>
-          Complete rounds and score at least 60% to unlock the next one.
-        </p>
+        <div id="roundGrid"></div>
 
-      </div>
+        <div class="button-group">
 
-      <div
-        id="roundGrid"
-        class="round-grid">
-      </div>
+          <button
+            id="roundsBackBtn"
+            type="button"
+            class="main-btn secondary-btn">
+            ← Back
+          </button>
 
-      <div class="button-group">
-
-        <button
-          id="roundsBackBtn"
-          type="button"
-          class="secondary-btn">
-          ← Back Home
-        </button>
+        </div>
 
       </div>
 
@@ -1147,86 +1031,93 @@
   </section>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
        QUIZ SCREEN
-       ===================================================== -->
+       ========================================================= -->
 
   <section id="quizScreen" class="screen">
 
     <div class="container">
 
-      <div class="quiz-card">
+      <div class="panel">
 
-        <div class="quiz-top">
+        <div class="quiz-header">
 
-          <div
-            id="questionNumber"
-            class="quiz-badge">
-            Question 1 / 10
+          <div class="quiz-stat">
+            Question
+            <strong id="questionNumber">
+              1
+            </strong>
           </div>
 
-          <div
-            id="roundDisplay"
-            class="quiz-badge">
-            Round 1
+          <div class="quiz-stat">
+            Round
+            <strong id="roundDisplay">
+              1
+            </strong>
           </div>
 
-          <div
-            id="score"
-            class="score-badge">
-            Score: 0
+          <div class="quiz-stat">
+            Score
+            <strong id="score">
+              0
+            </strong>
           </div>
 
-          <div
-            id="timer"
-            class="timer-badge">
-            ⏱️ 20
+          <div class="quiz-stat">
+            Time
+            <strong id="timer">
+              20
+            </strong>
           </div>
 
         </div>
 
-        <div class="progress-track">
+
+        <div class="progress-container">
+
           <div id="progressBar"></div>
+
         </div>
 
-        <div id="category"></div>
+
+        <div id="category">
+          General Knowledge
+        </div>
+
 
         <h2 id="question">
-          Loading question...
+          Question
         </h2>
 
-        <div
-          id="options"
-          class="options">
-        </div>
 
-        <div
-          id="message"
-          class="message hidden">
-        </div>
+        <div id="options"></div>
 
-        <div class="button-group">
+
+        <div id="message"></div>
+
+
+        <div class="quiz-controls">
 
           <button
             id="nextBtn"
             type="button"
-            class="main-btn"
-            style="display:none;">
-            ➡️ Next Question
+            class="main-btn">
+            Next
           </button>
 
           <button
             id="pauseBtn"
             type="button"
-            class="secondary-btn">
-            ⏸️ Pause
+            class="main-btn warning-btn">
+            Pause
           </button>
 
           <button
             id="quizHomeBtn"
             type="button"
-            class="secondary-btn">
-            🏠 Exit to Home
+            class="main-btn secondary-btn">
+            Home
           </button>
 
         </div>
@@ -1238,77 +1129,109 @@
   </section>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
        RESULT SCREEN
-       ===================================================== -->
+       ========================================================= -->
 
   <section id="resultScreen" class="screen">
 
     <div class="container">
 
-      <div class="result-card">
+      <div class="panel">
 
-        <div class="result-icon">
-          🏆
+        <h2 class="screen-title">
+          🎉 Quiz Result
+        </h2>
+
+        <div
+          id="finalScore"
+          class="result-score">
+          0
         </div>
 
-        <h2>Round Complete!</h2>
-
-        <div id="finalScore">
-          Score: 0
-        </div>
-
-        <div id="resultPercent">
+        <div
+          id="resultPercent"
+          style="text-align:center;">
           0%
         </div>
 
-        <p id="resultMessage"></p>
+        <p
+          id="resultMessage"
+          style="text-align:center;">
+        </p>
 
-        <p id="finishedRound"></p>
 
-        <div class="result-stats">
+        <div class="result-grid">
 
-          <div class="stat-card">
-            <span>Correct</span>
-            <strong id="correctCount">0</strong>
+          <div class="result-stat">
+
+            <strong id="finishedRound">
+              1
+            </strong>
+
+            <div>
+              Round
+            </div>
+
           </div>
 
-          <div class="stat-card">
-            <span>Wrong</span>
-            <strong id="wrongCount">0</strong>
+
+          <div class="result-stat">
+
+            <strong id="correctCount">
+              0
+            </strong>
+
+            <div>
+              Correct
+            </div>
+
+          </div>
+
+
+          <div class="result-stat">
+
+            <strong id="wrongCount">
+              0
+            </strong>
+
+            <div>
+              Wrong
+            </div>
+
           </div>
 
         </div>
+
 
         <div class="button-group">
 
           <button
             id="nextRoundBtn"
             type="button"
-            class="main-btn"
-            style="display:none;">
-            🔓 Next Round
+            class="main-btn success-btn">
+            Next Round
           </button>
 
           <button
             id="restartBtn"
             type="button"
-            class="secondary-btn">
-            🔄 Retry Round
+            class="main-btn">
+            Retry
           </button>
 
           <button
             id="reviewBtn"
             type="button"
-            class="secondary-btn">
-            📋 Review Answers
+            class="main-btn secondary-btn">
+            Review Answers
           </button>
 
           <button
             id="resultHomeBtn"
             type="button"
-            class="secondary-btn">
-            🏠 Home
+            class="main-btn secondary-btn">
+            Home
           </button>
 
         </div>
@@ -1320,42 +1243,42 @@
   </section>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
        REVIEW SCREEN
-       ===================================================== -->
+       ========================================================= -->
 
   <section id="reviewScreen" class="screen">
 
     <div class="container">
 
-      <div class="screen-header">
+      <div class="panel">
 
-        <h2>📋 Review Answers</h2>
+        <h2 class="screen-title">
+          📖 Review Answers
+        </h2>
 
-        <p id="reviewSummary"></p>
+        <div id="reviewSummary"></div>
 
-      </div>
+        <div id="reviewList"></div>
 
-      <div
-        id="reviewList"
-        class="review-list">
-      </div>
 
-      <div class="button-group">
+        <div class="button-group">
 
-        <button
-          id="reviewRetryBtn"
-          type="button"
-          class="main-btn">
-          🔄 Retry Round
-        </button>
+          <button
+            id="reviewRetryBtn"
+            type="button"
+            class="main-btn">
+            Retry
+          </button>
 
-        <button
-          id="reviewBackBtn"
-          type="button"
-          class="secondary-btn">
-          ← Back to Result
-        </button>
+          <button
+            id="reviewBackBtn"
+            type="button"
+            class="main-btn secondary-btn">
+            Back
+          </button>
+
+        </div>
 
       </div>
 
@@ -1364,82 +1287,65 @@
   </section>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
        SETTINGS SCREEN
-       ===================================================== -->
+       ========================================================= -->
 
   <section id="settingsScreen" class="screen">
 
     <div class="container">
 
-      <div class="screen-header">
+      <div class="panel">
 
-        <h2>⚙️ Settings</h2>
+        <h2 class="screen-title">
+          ⚙️ Settings
+        </h2>
 
-        <p>
-          Customize your Quiz Master experience.
-        </p>
-
-      </div>
-
-      <div class="settings-card">
 
         <div class="setting-row">
 
           <div>
-
-            <div class="setting-title">
-              🎵 Background Music
+            <strong>Music</strong>
+            <div>
+              Background music
             </div>
-
-            <div class="setting-description">
-              Turn quiz background music on or off.
-            </div>
-
           </div>
 
-          <button
+          <input
             id="musicSwitch"
-            type="button"
-            class="switch"
-            aria-label="Toggle background music">
-          </button>
+            type="checkbox"
+            aria-label="Toggle music">
 
         </div>
+
 
         <div class="setting-row">
 
           <div>
-
-            <div class="setting-title">
-              🔊 Sound Effects
+            <strong>Sound Effects</strong>
+            <div>
+              Quiz sound effects
             </div>
-
-            <div class="setting-description">
-              Enable or disable correct and wrong answer sounds.
-            </div>
-
           </div>
 
-          <button
+          <input
             id="soundSwitch"
-            type="button"
-            class="switch on"
+            type="checkbox"
             aria-label="Toggle sound effects">
-          </button>
 
         </div>
 
-      </div>
 
-      <div class="button-group">
+        <div class="button-group">
 
-        <button
-          id="settingsBackBtn"
-          type="button"
-          class="secondary-btn">
-          ← Back Home
-        </button>
+          <button
+            id="settingsBackBtn"
+            type="button"
+            class="main-btn secondary-btn">
+            ← Back
+          </button>
+
+        </div>
 
       </div>
 
@@ -1448,25 +1354,24 @@
   </section>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
        ERROR SCREEN
-       ===================================================== -->
+       ========================================================= -->
 
   <section id="errorScreen" class="screen">
 
     <div class="container">
 
-      <div class="error-card">
+      <div class="panel">
 
-        <div class="error-icon">
-          ⚠️
+        <h2 class="screen-title">
+          ⚠️ Something Went Wrong
+        </h2>
+
+        <div id="errorMessage">
+          Quiz Master could not load correctly.
         </div>
 
-        <h2>Quiz Loading Error</h2>
-
-        <p id="errorMessage">
-          Unable to load quiz questions.
-        </p>
 
         <div class="button-group">
 
@@ -1474,14 +1379,14 @@
             id="errorRestartBtn"
             type="button"
             class="main-btn">
-            🔄 Try Again
+            Restart
           </button>
 
           <button
             id="errorHomeBtn"
             type="button"
-            class="secondary-btn">
-            🏠 Home
+            class="main-btn secondary-btn">
+            Home
           </button>
 
         </div>
@@ -1493,45 +1398,55 @@
   </section>
 
 
-  <!-- =====================================================
-       ADS INITIALIZATION
-       ===================================================== -->
+</div>
 
-  <script>
-    window.addEventListener("load", function () {
-      try {
-        if (window.adsbygoogle) {
-          document
-            .querySelectorAll(".adsbygoogle")
-            .forEach(function (ad) {
 
-              if (
-                !ad.getAttribute(
-                  "data-adsbygoogle-status"
-                )
-              ) {
-                (window.adsbygoogle =
-                  window.adsbygoogle || []
-                ).push({});
-              }
+<!-- =========================================================
+     ADSENSE INITIALIZATION
+     ========================================================= -->
 
-            });
+<script>
+  window.addEventListener("load", function () {
+
+    try {
+
+      const ads =
+        document.querySelectorAll(".adsbygoogle");
+
+      ads.forEach(function (ad) {
+
+        if (
+          !ad.getAttribute(
+            "data-adsbygoogle-status"
+          )
+        ) {
+
+          (window.adsbygoogle =
+            window.adsbygoogle || []).push({});
+
         }
-      } catch (error) {
-        console.warn(
-          "AdSense initialization warning:",
-          error
-        );
-      }
-    });
-  </script>
+
+      });
+
+    } catch (error) {
+
+      console.warn(
+        "Quiz Master: Ad initialization warning.",
+        error
+      );
+
+    }
+
+  });
+</script>
 
 
-  <!-- =====================================================
-       QUIZ MASTER QUESTIONS.JS
-       ===================================================== -->
+<!-- =========================================================
+     QUIZ MASTER APPLICATION
+     ========================================================= -->
 
-  <script src="./questions.js"></script>
+<script src="./questions.js"></script>
+
 
 </body>
 </html>
