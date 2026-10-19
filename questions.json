@@ -841,4 +841,117 @@
     "explanation": "Gari ya moshi ntishobora guhagarara vuba nk'imodoka. Ntugomba kunyura ku nzitizi ziri kumanuka cyangwa kwinjira ku murongo igihe kunyuraho bitizewe."
   }
 
+[
+  {
+    "question": "Ni iki umushoferi agomba gukora iyo abonye ikimenyetso cyo kugabanya umuvuduko?",
+    "options": [
+      "Kugikurikiza gusa iyo abonye polisi",
+      "Kugabanya umuvuduko hakurikijwe amabwiriza y'ikimenyetso",
+      "Kongera umuvuduko mbere y'uko agerayo",
+      "Kugihindukirira kugira ngo agisome neza"
+    ],
+    "answer": "Kugabanya umuvuduko hakurikijwe amabwiriza y'ikimenyetso",
+    "explanation": "Ibimenyetso by'umuhanda bitanga amabwiriza agomba gukurikizwa. Umuvuduko ugomba kuba ukurikije ikimenyetso n'imiterere y'umuhanda."
+  },
+  {
+    "question": "Kuki umushoferi agomba kugenzura feri z'imodoka buri gihe?",
+    "options": [
+      "Kugira ngo imodoka ikoreshe lisansi nyinshi",
+      "Kugira ngo amahembe yumvikane cyane",
+      "Kugira ngo imodoka igende nta mapine",
+      "Kugira ngo amenye ko ishobora kugabanya umuvuduko no guhagarara neza"
+    ],
+    "answer": "Kugira ngo amenye ko ishobora kugabanya umuvuduko no guhagarara neza",
+    "explanation": "Feri zidakora neza zongera ibyago byo kugonga ikinyabiziga cyangwa umuntu. Iyo ubonye ikibazo kuri feri, ntukomeze urugendo nk'aho imodoka imeze neza."
+  },
+  {
+    "question": "Iyo ubonye umunyamaguru atangiye kwambuka ahagenewe kwambukira, ugomba gukora iki?",
+    "options": [
+      "Kugabanya umuvuduko no kumuha inzira nk'uko amategeko abiteganya",
+      "Kongera umuvuduko kugira ngo umunyamaguru ategereze",
+      "Kumunyuraho hafi ye",
+      "Guhagarara ku murongo wambukiranya umuhanda"
+    ],
+    "answer": "Kugabanya umuvuduko no kumuha inzira nk'uko amategeko abiteganya",
+    "explanation": "Ahagenewe kwambukira abanyamaguru ni ahantu hakenera ubwitonzi. Umushoferi agomba gukurikiza amategeko yo gutanga inzira no kwirinda gushyira umunyamaguru mu kaga."
+  },
+  {
+    "question": "Ni iki gituma intera yo guhagarara yiyongera?",
+    "options": [
+      "Kugenda buhoro ku muhanda wumye",
+      "Kugenzura indorerwamo",
+      "Umuvuduko mwinshi, umuhanda unyerera cyangwa feri zitameze neza",
+      "Gukoresha itara ry'icyerekezo"
+    ],
+    "answer": "Umuvuduko mwinshi, umuhanda unyerera cyangwa feri zitameze neza",
+    "explanation": "Umuvuduko mwinshi wongera intera imodoka ikenera kugira ngo ihagarare. Umuhanda unyerera n'ibibazo bya feri na byo bishobora gutuma guhagarara bigorana."
+  },
+  {
+    "question": "Iyo ugiye kunyura ku kindi kinyabiziga, ni iki ugomba kubanza kugenzura?",
+    "options": [
+      "Ko ufite lisansi nyinshi gusa",
+      "Ko umuhanda imbere ufunguye, ko nta kimenyetso kibibuza kandi ko kunyura ari umutekano",
+      "Ko umushoferi w'ikinyabiziga unyuraho akureba",
+      "Ko ushobora kwihuta utitaye ku bandi"
+    ],
+    "answer": "Ko umuhanda imbere ufunguye, ko nta kimenyetso kibibuza kandi ko kunyura ari umutekano",
+    "explanation": "Kunyura ku kindi kinyabiziga bisaba kubona neza imbere, kugira umwanya uhagije no kubahiriza ibimenyetso. Ntugomba kunyura aho bishobora guteza impanuka."
+  },
+  {
+    "question": "Kuki umushoferi atagomba gutwara imodoka ananiwe cyane?",
+    "options": [
+      "Kuko umunaniro ushobora kugabanya ubwitonzi no gutinza uko yitwara ku kaga",
+      "Kuko imodoka ihita izimya amatara",
+      "Kuko amapine ahita avaho",
+      "Kuko umuhanda uhita ufungwa"
+    ],
+    "answer": "Kuko umunaniro ushobora kugabanya ubwitonzi no gutinza uko yitwara ku kaga",
+    "explanation": "Umunaniro ugabanya ubushobozi bwo kwibanda no gufata ibyemezo. Umushoferi wumva ananiwe agomba guhagarara ahatekanye akaruhuka mbere yo gukomeza."
+  },
+  {
+    "question": "Iyo ubonye ikimenyetso kibuza kunyura ku kindi kinyabiziga, ugomba gukora iki?",
+    "options": [
+      "Kunyura gusa iyo uri mu bwihisho",
+      "Kunyura imodoka nini gusa",
+      "Kugikurikiza no kuguma inyuma y'ikinyabiziga kugeza kunyura byemewe",
+      "Kongera umuvuduko kugira ngo urangize vuba"
+    ],
+    "answer": "Kugikurikiza no kuguma inyuma y'ikinyabiziga kugeza kunyura byemewe",
+    "explanation": "Ikimenyetso kibuzanya kunyura gishyirwaho ahantu icyo gikorwa gishobora guteza akaga. Tegereza ahantu kunyura byemewe kandi bitekanye."
+  },
+  {
+    "question": "Ni iki ugomba gukora iyo ubonye ikimenyetso cy'umuhanda kitagaragara neza kubera ibiti?",
+    "options": [
+      "Kwirengagiza ibimenyetso byose",
+      "Kugabanya ubwitonzi",
+      "Guhagarara hagati y'umuhanda",
+      "Kugenda witonze, ugasuzuma uko umuhanda umeze kandi ugakurikiza amabwiriza uzi"
+    ],
+    "answer": "Kugenda witonze, ugasuzuma uko umuhanda umeze kandi ugakurikiza amabwiriza uzi",
+    "explanation": "Ikimenyetso kitagaragara neza ntigisobanura ko nta kaga gahari. Kugenda witonze no kwitegereza umuhanda bifasha kwirinda impanuka."
+  },
+  {
+    "question": "Ni iki umushoferi agomba gukora mbere yo gufungura urugi rw'imodoka yahagaze ku ruhande rw'umuhanda?",
+    "options": [
+      "Gufungura urugi ako kanya",
+      "Kureba niba nta mumotari, umunyegare cyangwa ikindi kinyabiziga kiza inyuma",
+      "Kurekera urugi hagati y'umuhanda",
+      "Kuvuza ihoni gusa"
+    ],
+    "answer": "Kureba niba nta mumotari, umunyegare cyangwa ikindi kinyabiziga kiza inyuma",
+    "explanation": "Urugi rufunguwe rutunguranye rushobora kugonga umunyegare cyangwa umumotari. Banza urebe inyuma n'uruhande rw'urugi mbere yo kurufungura."
+  },
+  {
+    "question": "Kuki umushoferi agomba guhanagura ikirahuri cy'imbere mbere yo gutwara?",
+    "options": [
+      "Kugira ngo moteri yihute",
+      "Kugira ngo amapine arambe",
+      "Kugira ngo abone umuhanda, ibimenyetso n'abandi bakoresha umuhanda neza",
+      "Kugira ngo imodoka itagire intebe"
+    ],
+    "answer": "Kugira ngo abone umuhanda, ibimenyetso n'abandi bakoresha umuhanda neza",
+    "explanation": "Ikirahuri kirimo umwanda, igihu cyangwa amazi gishobora kubangamira kureba. Kubona neza ni ingenzi mu gufata ibyemezo bikwiye igihe utwaye."
+  }
+
+
 
