@@ -3385,8 +3385,7 @@
 "options": ["Burundi / Burundi", "Rwanda / Rwanda", "Uganda / Uganda", "Tanzania / Tanzania"],
 "answer": 1,
 "explanation": "Kigali ni umurwa mukuru w'u Rwanda. / Kigali is the capital of Rwanda."
-}
-[
+},
 {
 "question": "Ni uwuhe mubumbe uzwiho kugira ibara ritukura? / Which planet is known as the Red Planet?",
 "options": ["Venusi / Venus", "Mars / Mars", "Jupiter / Jupiter", "Neptune / Neptune"],
