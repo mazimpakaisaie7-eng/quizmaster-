@@ -640,7 +640,47 @@
           Test what you know, learn new facts, earn points
           and unlock new quiz rounds.
         </p>
+<!-- LANGUAGE AND GAME MODE SELECTION -->
+    <section id="gameSetup" class="content-card">
+      <h2 id="setupTitle">🎮 Prepare Your Quiz</h2>
 
+      <p id="languageLabel">1. Choose your preferred language</p>
+
+      <div class="button-group">
+        <button type="button" class="main-btn language-btn"
+                data-language="rw">
+          🇷🇼 Ikinyarwanda
+        </button>
+
+        <button type="button" class="main-btn language-btn"
+                data-language="en">
+          🇬🇧 English
+        </button>
+      </div>
+
+      <p id="modeLabel">2. Choose the quiz you want to play</p>
+
+      <div class="button-group">
+        <button type="button" class="main-btn mode-btn"
+                data-mode="traffic">
+          🚦 Amategeko y'umuhanda
+        </button>
+
+        <button type="button" class="main-btn mode-btn"
+                data-mode="general">
+          🧠 Ibibazo rusange
+        </button>
+      </div>
+
+      <p id="selectionSummary" aria-live="polite">
+        Hitamo ururimi n'ubwoko bw'ibibazo mbere yo gukina.
+      </p>
+
+      <button id="confirmSetupBtn" type="button"
+              class="main-btn success-btn" disabled>
+        ▶️ Tangira gukina
+      </button>
+    </section>
 
         <!-- MAIN NAVIGATION -->
 
