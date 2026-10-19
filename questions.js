@@ -11,7 +11,7 @@
     QUESTIONS_FILE: "./questions.json",
 
     QUESTIONS_PER_ROUND: 10,
-    TOTAL_ROUNDS: infinity,
+    TOTAL_ROUNDS:infinity,
 
     TIME_PER_QUESTION: 30,
     POINTS_PER_CORRECT: 10,
@@ -693,48 +693,41 @@
      ROUNDS
      ========================================================= */
 
-  function buildRounds() {
-    state.rounds = [];
+  
+function buildRounds() {
+  state.rounds = [];
 
-    const pool =
-      getDifficultyPool();
+  const pool = getDifficultyPool();
 
-    const shuffled =
-      shuffle(pool);
+  if (pool.length === 0) {
+    return;
+  }
 
-    const count =
-      Math.floor(
-        shuffled.length /
-          CONFIG.QUESTIONS_PER_ROUND
-      );
+  const questionsPerRound =
+    CONFIG.QUESTIONS_PER_ROUND;
 
-    const rounds =
-      Math.min(
-        CONFIG.TOTAL_ROUNDS,
-        count
-      );
+  const count = Math.ceil(
+    pool.length / questionsPerRound
+  );
 
-    for (
-      let i = 0;
-      i < rounds;
-      i++
-    ) {
-      const start =
-        i *
-        CONFIG.QUESTIONS_PER_ROUND;
+  const shuffled = shuffle(pool);
 
-      const end =
-        start +
-        CONFIG.QUESTIONS_PER_ROUND;
+  for (let i = 0; i < count; i++) {
+    const start = i * questionsPerRound;
+    const end = start + questionsPerRound;
 
-      state.rounds.push(
-        shuffled.slice(
-          start,
-          end
-        )
-      );
+    const roundQuestions = shuffled.slice(
+      start,
+      end
+    );
+
+    if (roundQuestions.length > 0) {
+      state.rounds.push(roundQuestions);
     }
   }
+}
+
+  
 
   /* =========================================================
      LOAD QUESTIONS
