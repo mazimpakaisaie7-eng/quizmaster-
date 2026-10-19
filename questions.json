@@ -2479,6 +2479,307 @@
     "explanation": "Guhumuka ni igihe amazi ahinduka umwuka, urugero nk'amazi yo mu kidendezi agenda agabanuka bitewe n'izuba."
   }
 
+[
+  {
+    "question": "What is the largest planet in our Solar System?",
+    "options": ["Earth", "Jupiter", "Saturn", "Mars"],
+    "answer": "Jupiter",
+    "explanation": "Jupiter is the largest planet in our Solar System, with a much greater size and mass than Earth."
+  },
+  {
+    "question": "What is the capital city of Rwanda?",
+    "options": ["Huye", "Musanze", "Kigali", "Rubavu"],
+    "answer": "Kigali",
+    "explanation": "Kigali is the capital and largest city of Rwanda."
+  },
+  {
+    "question": "Which organ pumps blood throughout the human body?",
+    "options": ["Lungs", "Brain", "Liver", "Heart"],
+    "answer": "Heart",
+    "explanation": "The heart contracts to pump blood, delivering oxygen and nutrients throughout the body."
+  },
+  {
+    "question": "Which gas do plants absorb during photosynthesis?",
+    "options": ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+    "answer": "Carbon dioxide",
+    "explanation": "Plants use carbon dioxide, water, and light energy to produce sugars during photosynthesis."
+  },
+  {
+    "question": "How many continents are commonly recognized on Earth?",
+    "options": ["Five", "Six", "Seven", "Eight"],
+    "answer": "Seven",
+    "explanation": "The commonly taught model recognizes seven continents: Africa, Antarctica, Asia, Europe, North America, South America, and Australia."
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Venus", "Mars", "Mercury", "Neptune"],
+    "answer": "Mars",
+    "explanation": "Mars appears reddish because iron minerals in its surface dust have oxidized, forming iron oxides."
+  },
+  {
+    "question": "What is the main source of energy for Earth?",
+    "options": ["The Moon", "The Sun", "Volcanoes", "The oceans"],
+    "answer": "The Sun",
+    "explanation": "Sunlight supplies most of the energy that drives Earth's climate, weather, and photosynthesis."
+  },
+  {
+    "question": "Which is the largest ocean on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "answer": "Pacific Ocean",
+    "explanation": "The Pacific Ocean covers more area than any other ocean on Earth."
+  },
+  {
+    "question": "What is the chemical symbol for water?",
+    "options": ["CO2", "O2", "H2O", "NaCl"],
+    "answer": "H2O",
+    "explanation": "A water molecule contains two hydrogen atoms and one oxygen atom."
+  },
+  {
+    "question": "Which animal is the tallest living land animal?",
+    "options": ["Elephant", "Giraffe", "Ostrich", "Camel"],
+    "answer": "Giraffe",
+    "explanation": "The giraffe is the tallest living land animal because of its exceptionally long legs and neck."
+  },
+  {
+    "question": "How many days are there in a leap year?",
+    "options": ["364", "365", "366", "367"],
+    "answer": "366",
+    "explanation": "A leap year has 366 days because February has 29 days instead of 28."
+  },
+  {
+    "question": "Which language is primarily spoken in Brazil?",
+    "options": ["Spanish", "Portuguese", "French", "Italian"],
+    "answer": "Portuguese",
+    "explanation": "Portuguese is the official language of Brazil, reflecting the country's colonial history."
+  },
+  {
+    "question": "Which instrument is used to measure temperature?",
+    "options": ["Barometer", "Thermometer", "Compass", "Speedometer"],
+    "answer": "Thermometer",
+    "explanation": "A thermometer measures temperature, often in degrees Celsius or Fahrenheit."
+  },
+  {
+    "question": "What is the hardest naturally occurring mineral commonly known?",
+    "options": ["Gold", "Quartz", "Diamond", "Silver"],
+    "answer": "Diamond",
+    "explanation": "Diamond ranks highest on the traditional Mohs hardness scale because it resists scratching by other minerals."
+  },
+  {
+    "question": "Which part of a plant usually absorbs water from the soil?",
+    "options": ["Flower", "Leaf", "Root", "Fruit"],
+    "answer": "Root",
+    "explanation": "Roots absorb water and dissolved minerals from the soil and help anchor the plant."
+  },
+  {
+    "question": "What is the currency of Japan?",
+    "options": ["Won", "Yuan", "Yen", "Rupee"],
+    "answer": "Yen",
+    "explanation": "The yen is the official currency of Japan."
+  },
+  {
+    "question": "Which is the largest mammal in the world?",
+    "options": ["African elephant", "Blue whale", "Giraffe", "Hippopotamus"],
+    "answer": "Blue whale",
+    "explanation": "The blue whale is the largest known animal, reaching greater lengths and masses than any other living animal."
+  },
+  {
+    "question": "What is the freezing point of pure water at standard atmospheric pressure?",
+    "options": ["0°C", "10°C", "32°C", "100°C"],
+    "answer": "0°C",
+    "explanation": "Pure water freezes at 0 degrees Celsius under standard atmospheric pressure."
+  },
+  {
+    "question": "Which country is famous for the ancient pyramids of Giza?",
+    "options": ["Greece", "Egypt", "Mexico", "India"],
+    "answer": "Egypt",
+    "explanation": "The Giza pyramids are ancient Egyptian monuments built as royal tombs."
+  },
+  {
+    "question": "How many sides does a hexagon have?",
+    "options": ["Five", "Six", "Seven", "Eight"],
+    "answer": "Six",
+    "explanation": "A hexagon is a polygon with six sides and six angles."
+  },
+  {
+    "question": "Which blood cells help the body fight infections?",
+    "options": ["Red blood cells", "White blood cells", "Platelets", "Plasma only"],
+    "answer": "White blood cells",
+    "explanation": "White blood cells are part of the immune system and help defend the body against pathogens."
+  },
+  {
+    "question": "Which is the closest star to Earth?",
+    "options": ["Sirius", "The Sun", "Polaris", "Alpha Centauri A"],
+    "answer": "The Sun",
+    "explanation": "The Sun is Earth's nearest star and provides the light and heat needed for life."
+  },
+  {
+    "question": "What is the capital city of Kenya?",
+    "options": ["Mombasa", "Kisumu", "Nairobi", "Nakuru"],
+    "answer": "Nairobi",
+    "explanation": "Nairobi is the capital and largest city of Kenya."
+  },
+  {
+    "question": "Which device is mainly used to enter text into a computer?",
+    "options": ["Monitor", "Keyboard", "Speaker", "Printer"],
+    "answer": "Keyboard",
+    "explanation": "A keyboard allows users to enter letters, numbers, and commands into a computer."
+  },
+  {
+    "question": "What is the process by which liquid water changes into water vapor?",
+    "options": ["Freezing", "Condensation", "Evaporation", "Melting"],
+    "answer": "Evaporation",
+    "explanation": "Evaporation occurs when liquid water gains enough energy for molecules to escape into the air as vapor."
+  },
+  {
+    "question": "Which sport uses a racket and a shuttlecock?",
+    "options": ["Tennis", "Badminton", "Volleyball", "Basketball"],
+    "answer": "Badminton",
+    "explanation": "Badminton players use rackets to hit a feathered or synthetic shuttlecock over a net."
+  },
+  {
+    "question": "What is the largest hot desert in the world?",
+    "options": ["Gobi Desert", "Sahara Desert", "Kalahari Desert", "Arabian Desert"],
+    "answer": "Sahara Desert",
+    "explanation": "The Sahara is the world's largest hot desert and covers a vast region of North Africa."
+  },
+  {
+    "question": "Which vitamin can the human body produce when skin is exposed to sunlight?",
+    "options": ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"],
+    "answer": "Vitamin D",
+    "explanation": "Sunlight enables the skin to produce vitamin D, which helps the body absorb calcium."
+  },
+  {
+    "question": "How many players from one team are on the field in a standard soccer match?",
+    "options": ["Nine", "Ten", "Eleven", "Twelve"],
+    "answer": "Eleven",
+    "explanation": "A standard soccer team has eleven players on the field, including the goalkeeper."
+  },
+  {
+    "question": "Which metal is liquid at ordinary room temperature?",
+    "options": ["Iron", "Mercury", "Copper", "Aluminium"],
+    "answer": "Mercury",
+    "explanation": "Mercury is a metal that remains liquid at ordinary room temperature."
+  },
+  {
+    "question": "Which country is home to the Great Wall?",
+    "options": ["Japan", "China", "Thailand", "South Korea"],
+    "answer": "China",
+    "explanation": "The Great Wall is a historic system of fortifications built across parts of northern China."
+  },
+  {
+    "question": "What is the basic unit of life?",
+    "options": ["Atom", "Organ", "Cell", "Tissue"],
+    "answer": "Cell",
+    "explanation": "The cell is the smallest basic structural and functional unit of living organisms."
+  },
+  {
+    "question": "Which planet is famous for its prominent ring system?",
+    "options": ["Earth", "Mars", "Saturn", "Mercury"],
+    "answer": "Saturn",
+    "explanation": "Saturn has a large and bright ring system made mainly of ice particles, rocky material, and dust."
+  },
+  {
+    "question": "What is the capital city of Uganda?",
+    "options": ["Entebbe", "Kampala", "Jinja", "Gulu"],
+    "answer": "Kampala",
+    "explanation": "Kampala is the capital city of Uganda."
+  },
+  {
+    "question": "Which natural force pulls objects toward Earth?",
+    "options": ["Magnetism only", "Friction", "Gravity", "Electricity"],
+    "answer": "Gravity",
+    "explanation": "Gravity is the attractive force between objects with mass and keeps people and objects on Earth's surface."
+  },
+  {
+    "question": "Which organ helps humans breathe by exchanging oxygen and carbon dioxide?",
+    "options": ["Stomach", "Lungs", "Kidneys", "Pancreas"],
+    "answer": "Lungs",
+    "explanation": "The lungs exchange oxygen from inhaled air with carbon dioxide from the blood."
+  },
+  {
+    "question": "What is the official currency of the United States?",
+    "options": ["Euro", "Pound", "US dollar", "Franc"],
+    "answer": "US dollar",
+    "explanation": "The US dollar is the official monetary unit of the United States."
+  },
+  {
+    "question": "Which bird is well known for being unable to fly and for living in Antarctica?",
+    "options": ["Eagle", "Penguin", "Falcon", "Swallow"],
+    "answer": "Penguin",
+    "explanation": "Penguins are flightless birds, and several species live in Antarctica or nearby regions."
+  },
+  {
+    "question": "What is the chemical symbol for gold?",
+    "options": ["Go", "Gd", "Au", "Ag"],
+    "answer": "Au",
+    "explanation": "Au is the chemical symbol for gold, derived from its Latin name, aurum."
+  },
+  {
+    "question": "Which ocean lies between Africa and Australia?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Southern Ocean"],
+    "answer": "Indian Ocean",
+    "explanation": "The Indian Ocean lies between eastern Africa, southern Asia, and western Australia."
+  },
+  {
+    "question": "Which part of the human body contains the brain?",
+    "options": ["Chest", "Skull", "Pelvis", "Spine only"],
+    "answer": "Skull",
+    "explanation": "The skull surrounds and protects the brain."
+  },
+  {
+    "question": "What is the name of the galaxy that contains our Solar System?",
+    "options": ["Andromeda", "Milky Way", "Whirlpool", "Sombrero"],
+    "answer": "Milky Way",
+    "explanation": "Our Solar System is located in the Milky Way, a barred spiral galaxy."
+  },
+  {
+    "question": "Which country is known for the Eiffel Tower?",
+    "options": ["Italy", "France", "Germany", "Belgium"],
+    "answer": "France",
+    "explanation": "The Eiffel Tower is a famous landmark in Paris, the capital of France."
+  },
+  {
+    "question": "How many minutes are there in one hour?",
+    "options": ["30", "45", "60", "100"],
+    "answer": "60",
+    "explanation": "One hour is divided into 60 minutes."
+  },
+  {
+    "question": "Which gas do humans need to breathe to support normal cellular respiration?",
+    "options": ["Helium", "Oxygen", "Carbon dioxide", "Neon"],
+    "answer": "Oxygen",
+    "explanation": "Most human cells use oxygen to release energy efficiently from nutrients during cellular respiration."
+  },
+  {
+    "question": "Which African country is especially known for the ancient rock-hewn churches of Lalibela?",
+    "options": ["Rwanda", "Ethiopia", "Ghana", "Senegal"],
+    "answer": "Ethiopia",
+    "explanation": "Lalibela in Ethiopia is famous for its medieval churches carved directly into rock."
+  },
+  {
+    "question": "What is the main function of a computer's CPU?",
+    "options": ["Print documents", "Process instructions", "Display images only", "Provide internet service"],
+    "answer": "Process instructions",
+    "explanation": "The central processing unit executes instructions and performs calculations that help a computer run programs."
+  },
+  {
+    "question": "Which shape has three sides?",
+    "options": ["Square", "Triangle", "Pentagon", "Circle"],
+    "answer": "Triangle",
+    "explanation": "A triangle is a polygon with three sides and three interior angles."
+  },
+  {
+    "question": "Which is the largest continent by land area?",
+    "options": ["Africa", "Europe", "Asia", "South America"],
+    "answer": "Asia",
+    "explanation": "Asia is the largest continent by land area and is also the most populous."
+  },
+  {
+    "question": "What do bees commonly collect from flowers to make honey?",
+    "options": ["Sand and water", "Nectar", "Tree bark", "Leaves only"],
+    "answer": "Nectar",
+    "explanation": "Honeybees collect nectar from flowers and transform it into honey through enzymatic processing and water removal."
+  }
 
 
 
