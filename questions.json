@@ -1189,6 +1189,361 @@
     "answer": "Kugabanya umuvuduko no kwitegura guhagarara",
     "explanation": "Ahari abantu benshi hakenerwa umuvuduko muke n'ubwitonzi. Abanyamaguru bashobora guhindura icyerekezo cyangwa kwambuka batunguranye."
   }
+[
+  {
+    "question": "Iyo wegereye umuhanda wambukirwamo abanyamaguru, ugomba gukora iki?",
+    "options": ["Kongera umuvuduko", "Kugabanya umuvuduko no kwitegura guhagarara", "Kuvuza ihoni igihe cyose", "Guhagarara hagati mu muhanda"],
+    "answer": "Kugabanya umuvuduko no kwitegura guhagarara",
+    "explanation": "Abanyamaguru bashobora kwambuka batunguranye. Kugabanya umuvuduko biguha umwanya wo guhagarara no kubarinda impanuka."
+  },
+  {
+    "question": "Iyo imodoka iri imbere yawe ihagaze kugira ngo abanyamaguru bambuke, wakora iki?",
+    "options": ["Kuyinyuraho wihuta", "Kuvuza ihoni ukayinyuraho", "Guhagarara cyangwa gutegereza mu mutekano", "Kuyinyuraho unyuze ku ruhande urwo ari rwo rwose"],
+    "answer": "Guhagarara cyangwa gutegereza mu mutekano",
+    "explanation": "Imodoka ihagaze ishobora kuba ihaye abanyamaguru inzira. Kuyinyuraho bishobora kugonga umuntu utagaragara imbere yayo."
+  },
+  {
+    "question": "Kuki ari ngombwa kugenzura indorerwamo mbere yo guhindura icyerekezo?",
+    "options": ["Kugira ngo urebe isura yawe", "Kugira ngo umenye ibinyabiziga n'abantu bari inyuma cyangwa iruhande rwawe", "Kugira ngo wongere umuvuduko", "Kugira ngo wirinde gukoresha amatara"],
+    "answer": "Kugira ngo umenye ibinyabiziga n'abantu bari inyuma cyangwa iruhande rwawe",
+    "explanation": "Kugenzura indorerwamo bigufasha kumenya ibiri hafi yawe. Ugomba no kugenzura ahatagaragara mu ndorerwamo mbere yo kwimukira mu yindi nzira."
+  },
+  {
+    "question": "Iyo ushaka guhindura umurongo ugenderamo, ni iki cy'ingenzi?",
+    "options": ["Guhita uhindura nta kimenyetso", "Gutanga ikimenyetso, kugenzura ko inzira ifunguye no kwimuka witonze", "Kuvuza ihoni gusa", "Kwishingikiriza ku muvuduko w'ikinyabiziga cyawe"],
+    "answer": "Gutanga ikimenyetso, kugenzura ko inzira ifunguye no kwimuka witonze",
+    "explanation": "Ikimenyetso kimenyekanisha umugambi wawe, ariko ntiguha uburenganzira bwo kwimuka igihe inzira idafunguye."
+  },
+  {
+    "question": "Iyo ubonye ikimenyetso kiburira ko imbere hari ishuri, wakora iki?",
+    "options": ["Kongera umuvuduko", "Kugabanya umuvuduko no kwitegura abana bashobora kwambuka", "Gukoresha amatara maremare gusa", "Kwirengagiza ikimenyetso igihe nta bana ubona"],
+    "answer": "Kugabanya umuvuduko no kwitegura abana bashobora kwambuka",
+    "explanation": "Abana bashobora kwinjira mu muhanda batabanje kureba neza. Gutwara witonze hafi y'ishuri bigabanya ibyago by'impanuka."
+  },
+  {
+    "question": "Iyo utwaye mu mvura nyinshi, kuki ugomba kongera intera hagati yawe n'imodoka iri imbere?",
+    "options": ["Kugira ngo abandi bakunyureho", "Kuko umuhanda ushobora kunyerera kandi gufata feri bikarushaho gufata igihe", "Kugira ngo ukoreshe lisansi nyinshi", "Kugira ngo uhishe amatara yawe"],
+    "answer": "Kuko umuhanda ushobora kunyerera kandi gufata feri bikarushaho gufata igihe",
+    "explanation": "Amazi agabanya ubushobozi bw'amapine bwo gufata umuhanda. Intera nini iguha umwanya uhagije wo kugabanya umuvuduko no guhagarara."
+  },
+  {
+    "question": "Ni iki ukwiye gukora iyo imodoka itangiye kunyerera kubera amazi menshi ku muhanda?",
+    "options": ["Gukata volante mu buryo bukaze", "Gukanda feri cyane ako kanya", "Kugabanya umuvuduko buhoro no kwirinda ibikorwa bikaze", "Kongera umuvuduko cyane"],
+    "answer": "Kugabanya umuvuduko buhoro no kwirinda ibikorwa bikaze",
+    "explanation": "Ibikorwa bikaze kuri volante cyangwa feri bishobora gutuma imodoka irushaho kunyerera. Gabanya umuvuduko witonze kandi ukurikize icyerekezo cy'umuhanda."
+  },
+  {
+    "question": "Ni ryari ugomba gukoresha amatara y'imodoka mu gihe cy'igihu?",
+    "options": ["Gusa nijoro mu muhanda urimo abantu benshi", "Iyo igihu kibangamiye kureba, ukoreshe amatara akwiriye igihu niba ahari", "Nta gihe na kimwe", "Gusa iyo uri inyuma y'ikamyo"],
+    "answer": "Iyo igihu kibangamiye kureba, ukoreshe amatara akwiriye igihu niba ahari",
+    "explanation": "Amatara akwiriye igihu afasha kubona no kugaragara. Amatara maremare ashobora kugarura urumuri mu maso kubera igihu, bikagabanya kureba."
+  },
+  {
+    "question": "Iyo urumuri rw'izuba rukubangamiye ukabona umuhanda nabi, wakora iki?",
+    "options": ["Gukomeza umuvuduko usanzwe", "Kureba ku ruhande aho kureba umuhanda", "Kugabanya umuvuduko no gukoresha ibikoresho bifasha kureba neza", "Gufunga amaso akanya gato"],
+    "answer": "Kugabanya umuvuduko no gukoresha ibikoresho bifasha kureba neza",
+    "explanation": "Iyo utabona umuhanda neza, ugomba kugenda ku muvuduko ushobora kugenzura. Ntugafunge amaso cyangwa ngo ureke kureba imbere."
+  },
+  {
+    "question": "Kuki utagomba gutwara imodoka uri kunanirwa cyane cyangwa usinziriye?",
+    "options": ["Kuko imodoka ishobora gukoresha lisansi nyinshi", "Kuko ibitotsi bigabanya ubushobozi bwo kwitondera no kwihutira gufata icyemezo", "Kuko amapine ashobora guhindura ibara", "Kuko umuhanda uba muto"],
+    "answer": "Kuko ibitotsi bigabanya ubushobozi bwo kwitondera no kwihutira gufata icyemezo",
+    "explanation": "Umunaniro ugabanya ubushobozi bwo kubona ibyago no kubyitwaramo vuba. Niba usinziriye, hagarara ahatekanye uruhuke mbere yo gukomeza."
+  },
+  {
+    "question": "Ni iki cyiza gukora mbere y'urugendo rurerure?",
+    "options": ["Kugenzura amapine, feri, amatara n'ibindi by'ingenzi", "Gushyira ibintu byinshi ku kirahure cy'imbere", "Kuzuza imodoka abagenzi barenze ubushobozi bwayo", "Kwirengagiza urwego rwa lisansi"],
+    "answer": "Kugenzura amapine, feri, amatara n'ibindi by'ingenzi",
+    "explanation": "Kugenzura imodoka mbere y'urugendo bifasha kumenya ibibazo bishobora guteza impanuka cyangwa gutuma imodoka ihagarara mu nzira."
+  },
+  {
+    "question": "Iyo feri z'imodoka zigaragaje ko zitagikora neza, wakora iki?",
+    "options": ["Gukomeza urugendo uko biri kose", "Kongera umuvuduko kugira ngo ugere vuba", "Guhagarara ahatekanye no gusaba gusanwa mbere yo gukomeza", "Gusaba abagenzi gufungura imiryango"],
+    "answer": "Guhagarara ahatekanye no gusaba gusanwa mbere yo gukomeza",
+    "explanation": "Feri ni kimwe mu bikoresho by'ingenzi mu mutekano. Gukomeza gutwara imodoka ifite feri zangiritse bishobora guteza impanuka ikomeye."
+  },
+  {
+    "question": "Kuki amapine agomba kugira umwuka ukwiye?",
+    "options": ["Kugira ngo imodoka igende neza kandi amapine afate umuhanda uko bikwiye", "Kugira ngo imodoka irusheho kugira urusaku", "Kugira ngo feri ziveho", "Kugira ngo amatara akomere"],
+    "answer": "Kugira ngo imodoka igende neza kandi amapine afate umuhanda uko bikwiye",
+    "explanation": "Umwuka muke cyangwa mwinshi ukabije ushobora kwangiza uko imodoka igenzurwa, kongera kwangirika kw'amapine no guteza impanuka."
+  },
+  {
+    "question": "Iyo ipine ritobotse uri mu rugendo, ni ikihe gikorwa cy'umutekano?",
+    "options": ["Gukata volante mu buryo bukaze", "Gufata volante neza, kugabanya umuvuduko buhoro no guhagarara ahatekanye", "Gukanda gaze cyane", "Guhita uhagarara hagati mu muhanda utitaye ku bandi"],
+    "answer": "Gufata volante neza, kugabanya umuvuduko buhoro no guhagarara ahatekanye",
+    "explanation": "Gufata volante neza no kugabanya umuvuduko buhoro bifasha gukomeza kugenzura imodoka. Hagarara ahantu hatabangamira abandi kandi usabe ubufasha."
+  },
+  {
+    "question": "Ni iki ugomba gukora iyo imodoka yawe ipfuye mu muhanda ahashobora guteza impanuka?",
+    "options": ["Kuyireka hagati mu muhanda ukagenda", "Kuyimura ukayigeza ahatekanye niba bishoboka, ugatanga umuburo ku bandi", "Kuzimya amatara yose ugategereza", "Gusunika imodoka mu nzira y'abanyamaguru"],
+    "answer": "Kuyimura ukayigeza ahatekanye niba bishoboka, ugatanga umuburo ku bandi",
+    "explanation": "Imodoka ihagaze mu nzira ishobora guteza impanuka. Niba bishoboka, yishyire ahatabangamira abandi kandi ukoreshe ibimenyetso by'umutekano bikenewe."
+  },
+  {
+    "question": "Iyo ugeze ahari inzira ya gari ya moshi, ni iki ugomba kwitondera?",
+    "options": ["Kwambuka vuba utarebye", "Gukurikiza ibimenyetso, kureba no kumva niba hari gari ya moshi, ugategereza igihe bikenewe", "Guhagarara ku murongo wa gari ya moshi", "Kwambuka igihe inzitizi ziri kumanuka"],
+    "answer": "Gukurikiza ibimenyetso, kureba no kumva niba hari gari ya moshi, ugategereza igihe bikenewe",
+    "explanation": "Gari ya moshi ntishobora guhagarara vuba nk'imodoka. Ntukambuke igihe ibimenyetso bibujije cyangwa inzitizi ziri kumanuka."
+  },
+  {
+    "question": "Ni iki umushoferi agomba gukora iyo inzitizi z'inzira ya gari ya moshi ziri kumanuka?",
+    "options": ["Kugerageza kunyura munsi yazo", "Guhagarara mbere y'inzira ya gari ya moshi no gutegereza", "Gukoresha ihoni kugira ngo zizamuke", "Gukurikira imodoka iri imbere nubwo inzitizi zifunze"],
+    "answer": "Guhagarara mbere y'inzira ya gari ya moshi no gutegereza",
+    "explanation": "Inzitizi ziri kumanuka cyangwa zafunze zigaragaza akaga. Gutegereza kugeza igihe byemewe kongera kwambuka birinda kugongana na gari ya moshi."
+  },
+  {
+    "question": "Iyo ugiye kwinjira mu muhanda munini uvuye mu muhanda muto, ugomba gukora iki?",
+    "options": ["Kwinjira utitaye ku binyabiziga", "Kureba ibimenyetso, guha inzira abafite uburenganzira no kwinjira igihe bifite umutekano", "Guhita wihuta cyane", "Gukoresha ihoni gusa ugahita winjira"],
+    "answer": "Kureba ibimenyetso, guha inzira abafite uburenganzira no kwinjira igihe bifite umutekano",
+    "explanation": "Kwinjira mu muhanda utagenzuye bishobora gutuma ugongana n'ibinyabiziga biri kuwugenderamo. Kurikiza ibimenyetso by'uko umuhanda ugomba gutambukwamo."
+  },
+  {
+    "question": "Iyo ugeze ku masangano y'imihanda kandi utazi neza uwemerewe kubanza, wakora iki?",
+    "options": ["Kugenda mbere y'abandi", "Kongera umuvuduko kugira ngo abandi baguhunge", "Kugabanya umuvuduko, kureba ibimenyetso no gukurikiza amategeko agenga ayo masangano", "Gufunga amaso ukambuka"],
+    "answer": "Kugabanya umuvuduko, kureba ibimenyetso no gukurikiza amategeko agenga ayo masangano",
+    "explanation": "Kugabanya umuvuduko no kugenzura ibimenyetso bigufasha kumenya uko ugomba gutambuka. Ntukishingikirize ku kwihuta cyangwa gukeka."
+  },
+  {
+    "question": "Kuki ugomba kwirinda guhagarara mu masangano y'imihanda?",
+    "options": ["Kuko bituma imodoka isaza vuba gusa", "Kuko bishobora kubuza ibindi binyabiziga n'abanyamaguru gutambuka", "Kuko amatara ahita azima", "Kuko umuhanda uhita ufungeka burundu"],
+    "answer": "Kuko bishobora kubuza ibindi binyabiziga n'abanyamaguru gutambuka",
+    "explanation": "Ntukinjire mu masangano niba imbere yawe hatari umwanya uhagije wo kuyambuka. Ibi birinda gufunga inzira y'abandi."
+  },
+  {
+    "question": "Iyo ubonye ikimenyetso cyerekana ko ugomba guhagarara, ugomba gukora iki?",
+    "options": ["Kugabanya umuvuduko gusa ukomeza", "Guhagarara neza aho ikimenyetso kibitegeka no gukomeza igihe byemewe", "Kuvuza ihoni ukambuka", "Guhagarara gusa niba hari imodoka"],
+    "answer": "Guhagarara neza aho ikimenyetso kibitegeka no gukomeza igihe byemewe",
+    "explanation": "Ikimenyetso cyo guhagarara gisaba guhagarara byuzuye, kugenzura umutekano no gukomeza igihe inzira ifunguye kandi amategeko abyemera."
+  },
+  {
+    "question": "Ni iki ugomba gukora iyo umupolisi wo mu muhanda aguhaye amabwiriza atandukanye n'ibimenyetso bisanzwe?",
+    "options": ["Kwirengagiza umupolisi", "Gukurikiza amabwiriza y'umupolisi ubifitiye ububasha", "Gukurikiza gusa ibimenyetso biri kure", "Gukora ibyo abandi bashoferi bakora"],
+    "answer": "Gukurikiza amabwiriza y'umupolisi ubifitiye ububasha",
+    "explanation": "Umupolisi uyobora urujya n'uruza ashobora gutanga amabwiriza ajyanye n'uko ibintu bimeze icyo gihe. Kurikiza amabwiriza ye mu buryo bwizewe."
+  },
+  {
+    "question": "Ni ryari gukoresha ihoni bikwiriye?",
+    "options": ["Kugira ngo urakaze abandi", "Kugira ngo ugaragaze uburakari", "Iyo bikenewe kuburira abandi ku kaga, hakurikijwe amategeko", "Buri gihe uri inyuma y'umuntu"],
+    "answer": "Iyo bikenewe kuburira abandi ku kaga, hakurikijwe amategeko",
+    "explanation": "Ihoni rigenewe kuburira abandi igihe bibaye ngombwa. Kurikoresha bidakenewe bishobora kurangaza abandi no guteza urusaku."
+  },
+  {
+    "question": "Kuki utagomba gukoresha terefone uyifashe mu ntoki utwaye?",
+    "options": ["Kuko ishobora guhindura ibara ry'imodoka", "Kuko ikurangaza kandi ikagabanya ubushobozi bwo kugenzura imodoka", "Kuko ituma amapine apfa", "Kuko ihagarika amatara"],
+    "answer": "Kuko ikurangaza kandi ikagabanya ubushobozi bwo kugenzura imodoka",
+    "explanation": "Kureba cyangwa gukoresha terefone bikurangaza ku muhanda. Iyo ukeneye kuyikoresha, banza uhagarare ahatekanye kandi amategeko abyemera."
+  },
+  {
+    "question": "Iyo umugenzi akuvugisha ibintu bigusaba kwibanda kuri we, wakora iki?",
+    "options": ["Kureka kureba umuhanda", "Gukomeza kugenzura umuhanda no gusubiza mu buryo butakurangaza", "Guhindukiza umubiri ukamureba", "Kureka gufata volante"],
+    "answer": "Gukomeza kugenzura umuhanda no gusubiza mu buryo butakurangaza",
+    "explanation": "Umushoferi agomba guhora yitaye ku muhanda. Niba ikiganiro gikurangaza, saba umugenzi gutegereza kugeza igihe bitazabangamira gutwara."
+  },
+  {
+    "question": "Kuki ibintu bidafatanye neza bitagomba gushyirwa aho bishobora kugwa imbere y'umushoferi?",
+    "options": ["Kuko bishobora kumurangaza cyangwa kubangamira gukoresha feri na pedali", "Kuko bituma lisansi yiyongera gusa", "Kuko bituma imodoka ihindura umurongo yonyine", "Kuko bituma umuhanda ucika"],
+    "answer": "Kuko bishobora kumurangaza cyangwa kubangamira gukoresha feri na pedali",
+    "explanation": "Ibintu bigwa imbere y'umushoferi bishobora kumubuza gukoresha ibikoresho by'imodoka neza. Bishyire ahafunze kandi hatekanye."
+  },
+  {
+    "question": "Ni iki ugomba gukora mbere yo gusubiza imodoka inyuma?",
+    "options": ["Kwishingikiriza ku ndorerwamo imwe gusa", "Kugenzura impande zose n'inyuma, ukareba ko nta muntu cyangwa ikintu kiri mu nzira", "Kongera umuvuduko", "Kuvuza ihoni ugahita usubira inyuma"],
+    "answer": "Kugenzura impande zose n'inyuma, ukareba ko nta muntu cyangwa ikintu kiri mu nzira",
+    "explanation": "Abanyamaguru, abana cyangwa ibintu bishobora kuba inyuma y'imodoka. Reba neza impande zose kandi usubire inyuma buhoro."
+  },
+  {
+    "question": "Iyo uri gusubiza imodoka inyuma ukabona ko utabona neza, wakora iki?",
+    "options": ["Gukomeza uko biri kose", "Gusubiza inyuma vuba", "Guhagarara no gushaka uburyo bwizewe bwo kubona cyangwa ubufasha", "Gufunga indorerwamo"],
+    "answer": "Guhagarara no gushaka uburyo bwizewe bwo kubona cyangwa ubufasha",
+    "explanation": "Ntukomeze kugenda mu cyerekezo utabona neza. Hagarara, genzura aho unyura cyangwa usabe umuntu ubishoboye kugufasha mu mutekano."
+  },
+  {
+    "question": "Kuki ugomba kwitondera cyane hafi y'imodoka zihagaritse ku muhanda?",
+    "options": ["Kuko imodoka zihagaritse zidashobora kugira uwo zibangamira", "Kuko umuryango ushobora gufungurwa cyangwa umuntu agasohoka mu buryo butunguranye", "Kuko imodoka zihagaritse ziba zifite uburenganzira bwo kugenda", "Kuko bigusaba guhora uvuza ihoni"],
+    "answer": "Kuko umuryango ushobora gufungurwa cyangwa umuntu agasohoka mu buryo butunguranye",
+    "explanation": "Umuntu ashobora gufungura umuryango atabanje kureba cyangwa akinjira mu muhanda. Gabanya umuvuduko kandi ugire intera ihagije."
+  },
+  {
+    "question": "Ni iki cy'ingenzi iyo utwaye hafi y'abanyamaguru n'abatwara amagare?",
+    "options": ["Kugenda hafi yabo uko bishoboka", "Kubanyuraho utabasigiye umwanya", "Kubasigira umwanya uhagije kandi ukagabanya umuvuduko igihe bikenewe", "Kubahatira kuva mu muhanda ukoresheje ihoni"],
+    "answer": "Kubasigira umwanya uhagije kandi ukagabanya umuvuduko igihe bikenewe",
+    "explanation": "Abanyamaguru n'abatwara amagare ntibakingiwe nk'abari mu modoka. Umwanya uhagije n'umuvuduko ukwiye birinda impanuka."
+  },
+  {
+    "question": "Iyo uri kunyura ku muntu utwaye igare, ni iki ugomba kubanza kureba?",
+    "options": ["Niba imodoka yawe ari nshya", "Niba imbere n'inyuma hari umutekano uhagije wo kunyura kandi ukamusigira umwanya ukwiye", "Niba igare rifite ibara ryiza", "Niba ushobora kwihuta cyane"],
+    "answer": "Niba imbere n'inyuma hari umutekano uhagije wo kunyura kandi ukamusigira umwanya ukwiye",
+    "explanation": "Ntukanyure ku muntu utwaye igare igihe umwanya udahagije. Reba ibinyabiziga bindi kandi ukurikize amategeko agenga kunyuranaho."
+  },
+  {
+    "question": "Kuki utagomba kunyuranaho mu muhanda utabona neza imbere?",
+    "options": ["Kuko bishobora kugutwara igihe", "Kuko ushobora kugongana n'ikinyabiziga kiri imbere utarabona", "Kuko moteri ihita izima", "Kuko ibimenyetso by'umuhanda bihinduka"],
+    "answer": "Kuko ushobora kugongana n'ikinyabiziga kiri imbere utarabona",
+    "explanation": "Kunyuranaho bisaba kubona neza inzira iri imbere n'umwanya wo gusubira mu murongo. Ntukabikore ahantu hatabona neza cyangwa habujijwe."
+  },
+  {
+    "question": "Ni iki ukwiye gukora iyo ikinyabiziga kiri imbere yawe gitangiye kugabanya umuvuduko?",
+    "options": ["Kukegera cyane", "Guhita unyura utagenzuye", "Kugabanya umuvuduko no gukomeza intera y'umutekano", "Kureba gusa ku ruhande"],
+    "answer": "Kugabanya umuvuduko no gukomeza intera y'umutekano",
+    "explanation": "Imodoka iri imbere ishobora guhagarara kubera impamvu utarabona. Intera y'umutekano iguha umwanya wo kwitwara neza."
+  },
+  {
+    "question": "Ni ikihe kibazo gishobora guterwa no gukurikira imodoka iri imbere hafi cyane?",
+    "options": ["Kugira umwanya munini wo guhagarara", "Kugabanya ibyago byose", "Kutabona neza ibiri imbere no kubura umwanya wo guhagarara igihe ihagaze gitunguranye", "Gutuma imodoka ikoresha amatara make"],
+    "answer": "Kutabona neza ibiri imbere no kubura umwanya wo guhagarara igihe ihagaze gitunguranye",
+    "explanation": "Kugendera hafi cyane byongera ibyago byo kugonga imodoka iri imbere. Komeza intera ihuye n'umuvuduko n'imiterere y'umuhanda."
+  },
+  {
+    "question": "Iyo utwaye nijoro mu muhanda utagira amatara ahagije, ugomba gukora iki?",
+    "options": ["Kugenda ku muvuduko mwinshi", "Gukoresha amatara akwiriye no kugabanya umuvuduko ukurikije uko ubona", "Kuzimya amatara kugira ngo abandi batakubona", "Kureba gusa amatara y'imodoka ikuri imbere"],
+    "answer": "Gukoresha amatara akwiriye no kugabanya umuvuduko ukurikije uko ubona",
+    "explanation": "Nijoro, ubushobozi bwo kubona ibyago buba buke. Umuvuduko ugomba kuba utuma ushobora guhagarara mu ntera ubasha kubona neza."
+  },
+  {
+    "question": "Iyo ikinyabiziga kije kigana nawe nijoro gifite amatara akubangamiye, wakora iki?",
+    "options": ["Kureba mu matara yacyo", "Kugabanya umuvuduko no kwerekeza amaso ku ruhande rw'iburyo rw'umuhanda utaretse kuwugenzura", "Kuzimya amatara yawe yose", "Kwimukira mu murongo wacyo"],
+    "answer": "Kugabanya umuvuduko no kwerekeza amaso ku ruhande rw'iburyo rw'umuhanda utaretse kuwugenzura",
+    "explanation": "Kureba mu matara akomeye bishobora kuguhuma by'agateganyo. Reba aho ushobora kugenzura neza umuhanda kandi ugabanye umuvuduko."
+  },
+  {
+    "question": "Kuki ugomba guhanagura ikirahure cy'imbere n'inyuma mbere yo gutwara?",
+    "options": ["Kugira ngo imodoka irusheho kuba nziza gusa", "Kugira ngo ubone umuhanda n'ibiri inyuma yawe neza", "Kugira ngo feri zikorere mu buryo bwihuse", "Kugira ngo amapine adashyuha"],
+    "answer": "Kugira ngo ubone umuhanda n'ibiri inyuma yawe neza",
+    "explanation": "Ibirahure byanduye cyangwa bitabona neza bigabanya ubushobozi bwo kubona abanyamaguru, ibimenyetso n'ibindi binyabiziga."
+  },
+  {
+    "question": "Iyo ikirahure cy'imodoka kibayeho umwuka utuma utabona neza, wakora iki?",
+    "options": ["Gukomeza gutwara utareba neza", "Gukoresha uburyo bwo gukuraho uwo mwuka no guhagarara ahatekanye niba bikenewe", "Gufunga indorerwamo zose", "Kongera umuvuduko"],
+    "answer": "Gukoresha uburyo bwo gukuraho uwo mwuka no guhagarara ahatekanye niba bikenewe",
+    "explanation": "Umwuka ku kirahure ugabanya ubushobozi bwo kubona umuhanda. Banza usubizeho ubushobozi bwo kubona neza mbere yo gukomeza."
+  },
+  {
+    "question": "Kuki ibintu biremereye bigomba gufatanywa neza mu modoka?",
+    "options": ["Kugira ngo bitanyerera cyangwa ngo bigwe bigateza akaga", "Kugira ngo bihishe indorerwamo", "Kugira ngo imodoka igende ku ruhande rumwe", "Kugira ngo umushoferi atabona imbere"],
+    "answer": "Kugira ngo bitanyerera cyangwa ngo bigwe bigateza akaga",
+    "explanation": "Ibintu bitafashwe neza bishobora kwimuka igihe feri ikanzwe cyangwa imodoka ihindura icyerekezo, bikabangamira abagenzi n'umushoferi."
+  },
+  {
+    "question": "Ni iki ugomba gukora mbere yo gufungura umuryango w'imodoka uri ku ruhande rw'umuhanda?",
+    "options": ["Gufungura umuryango vuba", "Kureba niba nta muntu, igare cyangwa ikinyabiziga cyegera", "Kuvuza ihoni", "Kureba imbere gusa"],
+    "answer": "Kureba niba nta muntu, igare cyangwa ikinyabiziga cyegera",
+    "explanation": "Gufungura umuryango utagenzuye bishobora gukomeretsa umunyamaguru cyangwa umutwaye igare. Banza urebe inyuma n'uruhande."
+  },
+  {
+    "question": "Kuki utagomba guhagarika imodoka ahantu hafunga umuhanda w'abanyamaguru?",
+    "options": ["Kuko bituma imodoka igenda buhoro", "Kuko bihatira abanyamaguru kujya mu nzira y'ibinyabiziga", "Kuko bituma amatara azima", "Kuko bituma umuhanda uba mugari"],
+    "answer": "Kuko bihatira abanyamaguru kujya mu nzira y'ibinyabiziga",
+    "explanation": "Abanyamaguru bakeneye inzira itekanye. Kuyifunga bishobora kubahatira kunyura aho imodoka zigendera, bikongera ibyago by'impanuka."
+  },
+  {
+    "question": "Iyo uhagaze ku muhanda ugategereza umuntu, ni iki ugomba kwitondera?",
+    "options": ["Guhagarara aho ari ho hose", "Guhitamo ahantu hemewe kandi hatekanye hatabuza abandi gutambuka", "Guhagarara ku masangano", "Guhagarara ku nzira ya gari ya moshi"],
+    "answer": "Guhitamo ahantu hemewe kandi hatekanye hatabuza abandi gutambuka",
+    "explanation": "Guhagarara ahatemewe bishobora guteza akaga no kubangamira urujya n'uruza. Hitamo ahantu hemewe kandi hatabangamira abandi."
+  },
+  {
+    "question": "Ni iki ugomba gukora igihe utwaye imodoka mu gace karimo abantu benshi?",
+    "options": ["Kugabanya umuvuduko no gukomeza kwitegereza ibiri hafi", "Kugenda ku muvuduko wo hejuru", "Kuvuza ihoni igihe cyose", "Kureba gusa ibiri kure"],
+    "answer": "Kugabanya umuvuduko no gukomeza kwitegereza ibiri hafi",
+    "explanation": "Abantu bashobora kwambuka cyangwa kwinjira mu muhanda batunguranye. Umuvuduko muke no kwitonda bifasha kwirinda impanuka."
+  },
+  {
+    "question": "Kuki utagomba gutwara imodoka irenze umubare w'abagenzi yemerewe?",
+    "options": ["Kuko byongera umutekano", "Kuko bishobora kubangamira kuringaniza imodoka no gushyira abagenzi mu kaga", "Kuko bituma imodoka ihagarara neza kurushaho", "Kuko bigabanya uburemere bwayo"],
+    "answer": "Kuko bishobora kubangamira kuringaniza imodoka no gushyira abagenzi mu kaga",
+    "explanation": "Imodoka igomba gutwara umubare w'abagenzi n'umutwaro yemerewe. Kurenza ubushobozi bishobora kugira ingaruka ku igenzura ry'imodoka no ku mutekano."
+  },
+  {
+    "question": "Kuki umukandara w'umutekano ugomba kwambarwa neza?",
+    "options": ["Kugira ngo umuntu yirinde igihano gusa", "Kugira ngo ugabanye ibyago byo gukomereka igihe habaye impanuka", "Kugira ngo imodoka yihute", "Kugira ngo feri zikore"],
+    "answer": "Kugira ngo ugabanye ibyago byo gukomereka igihe habaye impanuka",
+    "explanation": "Umukandara ugabanya ibyago byo kujugunywa imbere cyangwa hanze y'imodoka igihe habaye impanuka. Ugomba kwambarwa neza kandi ugafungwa."
+  },
+  {
+    "question": "Ni ikihe gikorwa cy'umutekano ku muntu utwaye moto?",
+    "options": ["Kugenda atambaye ingofero yabugenewe", "Kwambara ingofero y'umutekano ifunze neza no gukurikiza amategeko y'umuhanda", "Kugenda hagati y'imodoka zose uko abyifuza", "Gukoresha terefone mu ntoki"],
+    "answer": "Kwambara ingofero y'umutekano ifunze neza no gukurikiza amategeko y'umuhanda",
+    "explanation": "Ingofero y'umutekano ifunze neza igabanya ibyago byo gukomereka mu mutwe. Umutwaye moto agomba kandi gukurikiza ibimenyetso n'amategeko y'umuhanda."
+  },
+  {
+    "question": "Iyo utwaye moto mu mvura, ni iki ugomba gukora?",
+    "options": ["Kugabanya intera n'ikinyabiziga kiri imbere", "Kugabanya umuvuduko, kongera intera no kwirinda gufata feri mu buryo bukaze", "Kugenda mu mazi menshi ku muvuduko mwinshi", "Kureka gukoresha amatara"],
+    "answer": "Kugabanya umuvuduko, kongera intera no kwirinda gufata feri mu buryo bukaze",
+    "explanation": "Umuhanda utose uranyerera kandi moto ishobora gutakaza uburinganire. Kugenda witonze no gukoresha feri buhoro bifasha kugenzura moto."
+  },
+  {
+    "question": "Kuki umushoferi agomba kwitondera imodoka nini n'amakamyo?",
+    "options": ["Kuko zidashobora guhindura icyerekezo", "Kuko zishobora kugira ahantu henshi umushoferi atabona kandi zigakenera umwanya munini wo guhindukira no guhagarara", "Kuko zidakoresha feri", "Kuko zitemerewe kugenda mu muhanda"],
+    "answer": "Kuko zishobora kugira ahantu henshi umushoferi atabona kandi zigakenera umwanya munini wo guhindukira no guhagarara",
+    "explanation": "Imodoka nini zifite ahantu hatagaragara mu ndorerwamo kandi zishobora gukenera umwanya munini. Irinde kuzegera cyane cyangwa kuguma ahatagaragara."
+  },
+  {
+    "question": "Iyo uri hafi y'imodoka nini igiye guhindukira, wakora iki?",
+    "options": ["Kunyura hagati yayo n'inkombe y'umuhanda", "Kuyegera cyane kugira ngo uyinyure", "Kuyisigira umwanya uhagije no kwirinda ahantu umushoferi wayo atakubona", "Gukata imbere yayo"],
+    "answer": "Kuyisigira umwanya uhagije no kwirinda ahantu umushoferi wayo atakubona",
+    "explanation": "Imodoka nini ishobora gukenera umwanya munini iyo ihindukira. Kwinjira mu mwanya wayo bishobora kugutera akaga kuko umushoferi ashobora kutakubona."
+  },
+  {
+    "question": "Iyo ubonye ikinyabiziga cy'abatabazi gifite amatara n'ibimenyetso byihutirwa, ugomba gukora iki?",
+    "options": ["Kugihagarika ukakibaza aho kigana", "Gukomeza uko biri kose", "Kugikundira inzira mu buryo butekanye ukurikije amategeko", "Kugikurikira kugira ngo ugere vuba"],
+    "answer": "Kugikundira inzira mu buryo butekanye ukurikije amategeko",
+    "explanation": "Ikinyabiziga cy'abatabazi gishobora kuba kijya gufasha umuntu uri mu kaga. Kora ibishoboka mu buryo butekanye kugira ngo kibone inzira, utateje impanuka."
+  },
+  {
+    "question": "Iyo ubonye impanuka yabereye imbere yawe, ni iki ugomba gukora mbere na mbere?",
+    "options": ["Guhagarara mu buryo bufunga umuhanda", "Kugabanya umuvuduko, kwirinda indi mpanuka no guhagarara ahatekanye niba ushaka gutanga ubufasha", "Gufata amashusho uri gutwara", "Kunyura hagati y'abantu n'imodoka zangiritse"],
+    "answer": "Kugabanya umuvuduko, kwirinda indi mpanuka no guhagarara ahatekanye niba ushaka gutanga ubufasha",
+    "explanation": "Umutekano wawe n'uw'abandi ni wo ubanza. Ntuhagarare ahateza indi mpanuka; hamagara ubutabazi bukenewe kandi ukurikize amabwiriza y'abashinzwe umutekano."
+  },
+  {
+    "question": "Ni iki ugomba gukora niba ubonye umuntu wakomeretse mu mpanuka yo mu muhanda?",
+    "options": ["Kumwimura ukoresheje imbaraga uko byagenda kose", "Kumufasha mu mutekano, guhamagara ubutabazi no kwirinda kumwimura bitari ngombwa", "Kumureka utabwiye umuntu", "Kumuha imiti iyo ari yo yose utabizi"],
+    "answer": "Kumufasha mu mutekano, guhamagara ubutabazi no kwirinda kumwimura bitari ngombwa",
+    "explanation": "Umuntu wakomeretse ashobora kuba afite ibikomere bitagaragara. Hamagara ubutabazi kandi wirinde kumwimura keretse hari akaga gahita kamugeraho cyangwa ubifitiye ubumenyi bukenewe."
+  },
+  {
+    "question": "Kuki ari ngombwa kumenya ibimenyetso by'umuhanda mbere yo gutwara?",
+    "options": ["Kugira ngo wirinde kureba imbere", "Kugira ngo umenye ibyago, amabwiriza n'uburenganzira bwo gutambuka", "Kugira ngo uhitemo ibimenyetso ukurikiza", "Kugira ngo wongere umuvuduko"],
+    "answer": "Kugira ngo umenye ibyago, amabwiriza n'uburenganzira bwo gutambuka",
+    "explanation": "Ibimenyetso by'umuhanda bitanga amakuru y'ingenzi ku mabwiriza, ibyago n'icyerekezo. Kubisobanukirwa bifasha gufata ibyemezo byizewe."
+  },
+  {
+    "question": "Iyo ikimenyetso cy'umuhanda kitagaragara neza kubera umwanda cyangwa kwangirika, wakora iki?",
+    "options": ["Gukeka icyo kivuga ugakomeza ku muvuduko mwinshi", "Kugabanya umuvuduko, kwitonda no kureba ibindi bimenyetso cyangwa uko umuhanda uteye", "Kwirengagiza ibimenyetso byose", "Guhagarara hagati mu muhanda"],
+    "answer": "Kugabanya umuvuduko, kwitonda no kureba ibindi bimenyetso cyangwa uko umuhanda uteye",
+    "explanation": "Iyo ikimenyetso kitumvikana neza, kwitonda bigabanya ibyago. Ntukishingikirize ku gukeka; genzura ibindi bimenyetso n'imiterere y'umuhanda."
+  },
+  {
+    "question": "Kuki ugomba gukurikiza umurongo ugaragara ku muhanda?",
+    "options": ["Kuko umurongo ari umutako gusa", "Kuko ushobora kwerekana aho ugomba kugendera, guhagarara cyangwa aho kunyuranaho bibujijwe", "Kuko ugenewe abanyamaguru gusa", "Kuko ushobora kuwurenga igihe cyose"],
+    "answer": "Kuko ushobora kwerekana aho ugomba kugendera, guhagarara cyangwa aho kunyuranaho bibujijwe",
+    "explanation": "Imirongo yo ku muhanda ifasha gutandukanya inzira no kugaragaza amabwiriza. Ugomba kuyubahiriza kandi ukurikiza ibindi bimenyetso bireba aho uri."
+  },
+  {
+    "question": "Ni iki ugomba gukora iyo utwaye imodoka mu muhanda ufite amabuye cyangwa ibyobo byinshi?",
+    "options": ["Kongera umuvuduko kugira ngo ubirenge vuba", "Kugabanya umuvuduko, kureba imbere no kwirinda ibikorwa bikaze", "Kureba gusa imodoka iri inyuma", "Gufata feri cyane uri mu cyobo"],
+    "answer": "Kugabanya umuvuduko, kureba imbere no kwirinda ibikorwa bikaze",
+    "explanation": "Umuhanda wangiritse ushobora gutuma imodoka itakaza uburinganire cyangwa amapine akangirika. Gabanya umuvuduko kandi wirinde guhindura icyerekezo mu buryo butunguranye."
+  },
+  {
+    "question": "Iyo ubonye icyobo kinini imbere yawe, ni ikihe cyemezo cyiza?",
+    "options": ["Guhita ukata volante utarebye", "Kureba niba hari inzira yizewe yo kukirinda, ugakomeza kugenzura ibindi binyabiziga", "Gufunga amaso ukakinyuramo", "Kongera umuvuduko cyane"],
+    "answer": "Kureba niba hari inzira yizewe yo kukirinda, ugakomeza kugenzura ibindi binyabiziga",
+    "explanation": "Kwirinda icyobo ni byiza gusa iyo bitashyira abandi mu kaga. Ntugahindure umurongo mu buryo butunguranye utagenzuye ibiri inyuma n'iruhande."
+  },
+  {
+    "question": "Kuki ari ngombwa guhuza umuvuduko n'imiterere y'umuhanda aho gukurikiza gusa umuvuduko ntarengwa?",
+    "options": ["Kuko umuvuduko ntarengwa usobanura ko ugomba kuwugeraho buri gihe", "Kuko imvura, igihu, abantu n'imiterere y'umuhanda bishobora gusaba umuvuduko muto kurushaho", "Kuko umuvuduko udafite aho uhuriye n'umutekano", "Kuko umushoferi ashobora guhitamo amategeko"],
+    "answer": "Kuko imvura, igihu, abantu n'imiterere y'umuhanda bishobora gusaba umuvuduko muto kurushaho",
+    "explanation": "Umuvuduko ntarengwa si umuvuduko ugomba kugenderwaho buri gihe. Ugomba kugenda ku muvuduko ujyanye n'uko ubona n'uko ushobora kugenzura imodoka."
+  },
+  {
+    "question": "Ni iki ugomba gukora igihe ugiye gutwara imodoka ariko ukabona ko udashobora kwibanda neza?",
+    "options": ["Gutwara uko biri kose", "Kongera umuziki cyane", "Kutayitwara kugeza igihe ushobora kwibanda neza, cyangwa ugasaba undi muntu ubifitiye uburenganzira kuyitwara", "Gukoresha ihoni kenshi"],
+    "answer": "Kutitwara kugeza igihe ushobora kwibanda neza, cyangwa ugasaba undi muntu ubifitiye uburenganzira kuyitwara",
+    "explanation": "Gutwara bisaba kwitonda no gufata ibyemezo vuba. Niba hari ikikubuza kwibanda neza, byaba byiza udatwaye kugeza igihe ubishoboye."
+  }
 ]
 
 
