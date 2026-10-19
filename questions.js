@@ -11,7 +11,7 @@
     QUESTIONS_FILE: "./questions.json",
 
     QUESTIONS_PER_ROUND: 10,
-    TOTAL_ROUNDS:..,
+    TOTAL_ROUNDS: infinity,
 
     TIME_PER_QUESTION: 30,
     POINTS_PER_CORRECT: 10,
