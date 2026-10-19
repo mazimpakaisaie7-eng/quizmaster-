@@ -423,8 +423,7 @@
 "question": "Ni iki ukwiye gukora igihe ubonye ikimenyetso cy'igihe gito kiyobora ibinyabiziga mu gihe cy'ibirori cyangwa igikorwa rusange?",
 "options": ["Gukurikiza icyerekezo cy'agateganyo no kwitegereza abashinzwe kuyobora urujya n'uruza", "Kugikurikiza gusa igihe hari imodoka nyinshi", "Kunyura ahafunzwe niba uri mu rugendo rwihutirwa rutari ubutabazi", "Kwirengagiza amabwiriza kuko atari ahoraho"],
 "answer": "Gukurikiza icyerekezo cy'agateganyo no kwitegereza abashinzwe kuyobora urujya n'uruza",
-"explanation": "Ibimenyetso by'agateganyo bishyirwaho kugira ngo umutekano n'uruhererekane rw'ibinyabiziga birindwe mu bihe byihariye. Kubahiriza ibyo bimenyetso bifasha kwirinda urujijo no kugongana.",
-"category": "Road Safety"
+"explanation": "Ibimenyetso by'agateganyo bishyirwaho kugira ngo umutekano n'uruhererekane rw'ibinyabiziga birindwe mu bihe byihariye. Kubahiriza ibyo bimenyetso bifasha kwirinda urujijo no kugongana.","category": "Road Safety"
 },
 {
 "question": "101. Iyo ugeze ku itara ritukura ryo mu muhanda, ugomba gukora iki?",
