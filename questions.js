@@ -695,36 +695,40 @@
 
   
 function buildRounds() {
+
+function buildRounds() {
   state.rounds = [];
 
   const pool = getDifficultyPool();
 
-  if (pool.length === 0) {
+  if (!Array.isArray(pool) || pool.length === 0) {
     return;
   }
 
   const questionsPerRound =
     CONFIG.QUESTIONS_PER_ROUND;
 
-  const count = Math.ceil(
-    pool.length / questionsPerRound
-  );
-
   const shuffled = shuffle(pool);
 
-  for (let i = 0; i < count; i++) {
-    const start = i * questionsPerRound;
-    const end = start + questionsPerRound;
-
+  for (
+    let i = 0;
+    i < shuffled.length;
+    i += questionsPerRound
+  ) {
     const roundQuestions = shuffled.slice(
-      start,
-      end
+      i,
+      i + questionsPerRound
     );
 
     if (roundQuestions.length > 0) {
       state.rounds.push(roundQuestions);
     }
   }
+
+  console.log(
+    "Quiz Master: rounds created:",
+    state.rounds.length
+  );
 }
 
   
