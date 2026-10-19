@@ -1544,6 +1544,303 @@
     "answer": "Kutitwara kugeza igihe ushobora kwibanda neza, cyangwa ugasaba undi muntu ubifitiye uburenganzira kuyitwara",
     "explanation": "Gutwara bisaba kwitonda no gufata ibyemezo vuba. Niba hari ikikubuza kwibanda neza, byaba byiza udatwaye kugeza igihe ubishoboye."
   }
+
+[
+  {
+    "question": "Ni ikihe gihugu kizwiho umurwa mukuru wa Madrid?",
+    "options": ["Portugal", "Espagne", "Italy", "Greece"],
+    "answer": "Espagne",
+    "explanation": "Madrid ni umurwa mukuru wa Espagne, igihugu giherereye mu majyepfo ashyira uburengerazuba bw'Uburayi."
+  },
+  {
+    "question": "Ni uwuhe mugabane igihugu cya Egypt giherereyemo ahanini?",
+    "options": ["Afurika", "Aziya", "Uburayi", "Amerika y'Epfo"],
+    "answer": "Afurika",
+    "explanation": "Egypt iherereye ahanini mu majyaruguru y'uburasirazuba bwa Afurika. Agace kayo ka Sinai kari muri Aziya."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Oslo?",
+    "options": ["Sweden", "Norway", "Finland", "Denmark"],
+    "answer": "Norway",
+    "explanation": "Oslo ni umurwa mukuru wa Norway, igihugu cyo mu majyaruguru y'Uburayi."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Stockholm?",
+    "options": ["Norway", "Sweden", "Denmark", "Iceland"],
+    "answer": "Sweden",
+    "explanation": "Stockholm ni umurwa mukuru wa Sweden kandi ni umujyi ukomeye mu bukungu n'umuco."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho umurwa mukuru wa Mexico City?",
+    "options": ["Mexico", "Brazil", "Colombia", "Cuba"],
+    "answer": "Mexico",
+    "explanation": "Mexico City ni umurwa mukuru wa Mexico, igihugu kiri muri Amerika ya Ruguru."
+  },
+  {
+    "question": "Ni uwuhe mugezi uzwiho kunyura mu mujyi wa London?",
+    "options": ["Nile", "Thames", "Amazon", "Congo"],
+    "answer": "Thames",
+    "explanation": "Umugezi wa Thames unyura i London mu Bwongereza kandi ufite amateka akomeye mu iterambere ry'uwo mujyi."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Ankara?",
+    "options": ["Turkey", "Greece", "Iran", "Egypt"],
+    "answer": "Turkey",
+    "explanation": "Ankara ni umurwa mukuru wa Turkey. Istanbul ni wo mujyi munini kurusha indi muri icyo gihugu."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho umurwa mukuru wa Kathmandu?",
+    "options": ["Nepal", "Bhutan", "Pakistan", "Sri Lanka"],
+    "answer": "Nepal",
+    "explanation": "Kathmandu ni umurwa mukuru wa Nepal, igihugu kirimo igice kinini cy'imisozi miremire ya Himalaya."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Havana?",
+    "options": ["Cuba", "Jamaica", "Haiti", "Dominica"],
+    "answer": "Cuba",
+    "explanation": "Havana ni umurwa mukuru wa Cuba, igihugu kiri mu birwa bya Karayibe."
+  },
+  {
+    "question": "Ni uwuhe mugabane uzwiho kuba urimo igihugu cya New Zealand?",
+    "options": ["Afurika", "Oseyaniya", "Uburayi", "Aziya"],
+    "answer": "Oseyaniya",
+    "explanation": "New Zealand ni igihugu cyo mu karere ka Oseyaniya, mu majyepfo ashyira uburasirazuba bwa Australia."
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwiho kuba inyamaswa y'inyamabere nini mu nyanja?",
+    "options": ["Dolphin", "Ifi y'ubururu", "Shark y'umweru", "Ingwe yo mu mazi"],
+    "answer": "Ifi y'ubururu",
+    "explanation": "Ifi y'ubururu ni inyamaswa nini kurusha izindi zose zizwiho kubaho ku Isi."
+  },
+  {
+    "question": "Ni ikihe gice cy'ubwonko gishinzwe cyane kugenzura ibikorwa by'ubushake no gutekereza?",
+    "options": ["Cerebrum", "Cerebellum gusa", "Uruti rw'umugongo gusa", "Impyiko"],
+    "answer": "Cerebrum",
+    "explanation": "Cerebrum igira uruhare mu gutekereza, kwibuka, kumva no kugenzura ibikorwa byinshi umuntu akora abishaka."
+  },
+  {
+    "question": "Ni iyihe vitamin umubiri ushobora gukora iyo uruhu ruhuye n'imirasire y'izuba mu buryo bukwiye?",
+    "options": ["Vitamin A", "Vitamin B12", "Vitamin C", "Vitamin D"],
+    "answer": "Vitamin D",
+    "explanation": "Uruhu rushobora gukora vitamin D iyo ruhuye n'imirasire ya ultraviolet B. Iyi vitamin ifasha umubiri gukoresha calcium no kubungabunga amagufa."
+  },
+  {
+    "question": "Ni ikihe kintu gitwara oxygen mu maraso?",
+    "options": ["Hemoglobin", "Insulin", "Amylase", "Keratin"],
+    "answer": "Hemoglobin",
+    "explanation": "Hemoglobin ni poroteyine iri mu turemangingo tw'amaraso dutukura ifata oxygen mu bihaha ikayigeza mu bice by'umubiri."
+  },
+  {
+    "question": "Ni iyihe ndwara ishobora gukwirakwizwa n'umubu wanduye parasite ya Plasmodium?",
+    "options": ["Malaria", "Diabetes", "Asthma", "Hypertension"],
+    "answer": "Malaria",
+    "explanation": "Malaria iterwa na parasite za Plasmodium zikwirakwizwa n'imibu y'ingore yo mu bwoko bwa Anopheles yanduye."
+  },
+  {
+    "question": "Ni ikihe gice cy'umubiri gifasha mu guhumeka kandi kigahinduranya oxygen na carbon dioxide n'amaraso?",
+    "options": ["Ibihaha", "Igifu", "Impyiko", "Urwagashya"],
+    "answer": "Ibihaha",
+    "explanation": "Mu bihaha, cyane cyane mu dusabo duto twitwa alveoli, oxygen yinjira mu maraso naho carbon dioxide ikavamo kugira ngo isohorwe."
+  },
+  {
+    "question": "Ni ikihe kintu cy'ingenzi ibimera bikenera kugira ngo bikure neza?",
+    "options": ["Amazi, urumuri n'intungamubiri", "Amavuta gusa", "Umucanga gusa", "Umwijima gusa"],
+    "answer": "Amazi, urumuri n'intungamubiri",
+    "explanation": "Ibimera byinshi bikenera amazi, urumuri, carbon dioxide n'intungamubiri zo mu butaka kugira ngo bikure kandi bikore ibiryo byabyo."
+  },
+  {
+    "question": "Ni ikihe gipimo gikunze gukoreshwa mu gupima ubushyuhe?",
+    "options": ["Celsius", "Kilometero", "Litiro", "Kilogramu"],
+    "answer": "Celsius",
+    "explanation": "Celsius ni kimwe mu bipimo by'ubushyuhe bikoreshwa cyane. Ibindi birimo Fahrenheit na Kelvin."
+  },
+  {
+    "question": "Ni ikihe kintu gituma ikintu kigwa hasi iyo kirekuwe?",
+    "options": ["Rukuruzi", "Urumuri", "Ijwi", "Amashanyarazi gusa"],
+    "answer": "Rukuruzi",
+    "explanation": "Rukuruzi ni imbaraga zituma ibintu bikururana. Rukuruzi y'Isi ikurura ibintu bikabasha kugwa hasi."
+  },
+  {
+    "question": "Ni ikihe kinyabutabire gifite ikimenyetso O muri shimi?",
+    "options": ["Gold", "Oxygen", "Iron", "Silver"],
+    "answer": "Oxygen",
+    "explanation": "O ni ikimenyetso cya shimi cya oxygen. Ni ikinyabutabire gifite uruhare rukomeye mu guhumeka kw'ibinyabuzima byinshi."
+  },
+  {
+    "question": "Ni ikihe kinyabutabire gifite ikimenyetso Fe?",
+    "options": ["Iron", "Fluorine", "Francium", "Phosphorus"],
+    "answer": "Iron",
+    "explanation": "Fe ni ikimenyetso cya shimi cy'icyuma cya iron. Icyo kimenyetso gikomoka ku izina ryacyo rya kilatini, ferrum."
+  },
+  {
+    "question": "Ni ikihe kinyabutabire gifite ikimenyetso Au?",
+    "options": ["Silver", "Gold", "Aluminium", "Argon"],
+    "answer": "Gold",
+    "explanation": "Au ni ikimenyetso cya shimi cya zahabu, kizwi kandi nka gold. Izina Au rikomoka ku ijambo rya kilatini aurum."
+  },
+  {
+    "question": "Ni ikihe gipimo gikoreshwa mu gupima ingufu z'amashanyarazi zikoreshwa mu rugo?",
+    "options": ["Kilowatt-hour", "Kilometero", "Litiro", "Hectare"],
+    "answer": "Kilowatt-hour",
+    "explanation": "Kilowatt-hour ni igipimo cy'ingufu z'amashanyarazi zikoreshwa mu gihe runaka, kandi gikunze gukoreshwa mu kubara fagitire z'amashanyarazi."
+  },
+  {
+    "question": "Ni iyihe nyenyeri yegereye Isi kurusha izindi nyenyeri?",
+    "options": ["Sirius", "Izuba", "Polaris", "Vega"],
+    "answer": "Izuba",
+    "explanation": "Izuba ni inyenyeri yegereye Isi. Izindi nyenyeri zigaragara nijoro ziri kure cyane ugereranyije na ryo."
+  },
+  {
+    "question": "Ni uwuhe mubumbe uzwiho kuba utukura iyo urebye uko ugaragara?",
+    "options": ["Mars", "Neptune", "Venus", "Uranus"],
+    "answer": "Mars",
+    "explanation": "Mars yitwa umubumbe utukura kubera imyunyungugu irimo ubutare bwahindutse ingese ku buso bwayo."
+  },
+  {
+    "question": "Ni iyihe nyanja nini kurusha izindi ku Isi?",
+    "options": ["Atlantika", "Pasifika", "Ubuhinde", "Arctique"],
+    "answer": "Pasifika",
+    "explanation": "Inyanja ya Pasifika ni yo nini kurusha izindi kandi iri hagati ya Aziya na Oseyaniya ku ruhande rumwe na Amerika ku rundi."
+  },
+  {
+    "question": "Ni uwuhe murongo w'ibitekerezo unyura kuri Greenwich ugabanya Isi mu burebure bw'iburasirazuba n'iburengerazuba?",
+    "options": ["Ekwateri", "Meridian ya Greenwich", "Tropic of Cancer", "Tropic of Capricorn"],
+    "answer": "Meridian ya Greenwich",
+    "explanation": "Meridian ya Greenwich ni umurongo wa dogere 0 z'uburebure bw'Isi, ufasha gupima aho ahantu hari mu burasirazuba cyangwa mu burengerazuba."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Maputo?",
+    "options": ["Mozambique", "Angola", "Zambia", "Namibia"],
+    "answer": "Mozambique",
+    "explanation": "Maputo ni umurwa mukuru wa Mozambique, igihugu cyo mu majyepfo ashyira uburasirazuba bwa Afurika gifite inkombe ku Nyanja y'Ubuhinde."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Antananarivo?",
+    "options": ["Mauritius", "Madagascar", "Seychelles", "Comoros"],
+    "answer": "Madagascar",
+    "explanation": "Antananarivo ni umurwa mukuru wa Madagascar, ikirwa kinini kiri mu burasirazuba bwa Afurika."
+  },
+  {
+    "question": "Ni ikihe gihugu cyo muri Afurika gifite umurwa mukuru wa Kigali?",
+    "options": ["Rwanda", "Uganda", "Kenya", "Burundi"],
+    "answer": "Rwanda",
+    "explanation": "Kigali ni umurwa mukuru w'u Rwanda. Iki kibazo kirongera ingingo y'ingenzi y'ubumenyi rusange, ariko mu byiciro bizakurikiraho tuzirinda gusubiramo ibibazo bimwe."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Gaborone?",
+    "options": ["Botswana", "Namibia", "Lesotho", "Eswatini"],
+    "answer": "Botswana",
+    "explanation": "Gaborone ni umurwa mukuru wa Botswana, igihugu cyo mu majyepfo ya Afurika."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Windhoek?",
+    "options": ["Namibia", "Angola", "Zambia", "Malawi"],
+    "answer": "Namibia",
+    "explanation": "Windhoek ni umurwa mukuru wa Namibia, igihugu gifite ubutayu bwa Namib ku nkombe zacyo zo mu burengerazuba."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Tripoli?",
+    "options": ["Libya", "Tunisia", "Algeria", "Morocco"],
+    "answer": "Libya",
+    "explanation": "Tripoli ni umurwa mukuru wa Libya, igihugu cyo mu majyaruguru ya Afurika."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Tunis?",
+    "options": ["Tunisia", "Libya", "Egypt", "Mauritania"],
+    "answer": "Tunisia",
+    "explanation": "Tunis ni umurwa mukuru wa Tunisia, igihugu kiri ku nkombe z'inyanja ya Mediterane mu majyaruguru ya Afurika."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Kigali kandi kiri mu karere ka Afurika y'Iburasirazuba?",
+    "options": ["Rwanda", "Ghana", "Senegal", "Morocco"],
+    "answer": "Rwanda",
+    "explanation": "U Rwanda ruri mu karere ka Afurika y'Iburasirazuba kandi umurwa mukuru warwo ni Kigali."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho umurwa mukuru wa Kinshasa?",
+    "options": ["Repubulika Iharanira Demokarasi ya Congo", "Repubulika ya Congo", "Gabon", "Cameroon"],
+    "answer": "Repubulika Iharanira Demokarasi ya Congo",
+    "explanation": "Kinshasa ni umurwa mukuru wa Repubulika Iharanira Demokarasi ya Congo. Brazzaville ni umurwa mukuru w'igihugu cy'abaturanyi cya Repubulika ya Congo."
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwiho kugira umunwa muremure n'amaguru maremare kandi ikaba iboneka cyane muri Afurika?",
+    "options": ["Flamingo", "Ingamiya", "Giraffe", "Imvubu"],
+    "answer": "Giraffe",
+    "explanation": "Giraffe ni inyamaswa yo muri Afurika ifite ijosi n'amaguru maremare, bigatuma ishobora kurya amababi yo hejuru mu biti."
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwiho kuba ifite imirongo y'umukara n'umweru ku mubiri?",
+    "options": ["Zebra", "Intare", "Ingwe", "Imbogo"],
+    "answer": "Zebra",
+    "explanation": "Zebra ni inyamaswa yo mu muryango w'amafarashi izwiho imirongo y'umukara n'umweru. Imirongo ya buri zebra iba ifite umwihariko."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Accra?",
+    "options": ["Ghana", "Togo", "Benin", "Liberia"],
+    "answer": "Ghana",
+    "explanation": "Accra ni umurwa mukuru wa Ghana, igihugu cyo muri Afurika y'Iburengerazuba."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Luanda?",
+    "options": ["Angola", "Mozambique", "Zambia", "Zimbabwe"],
+    "answer": "Angola",
+    "explanation": "Luanda ni umurwa mukuru wa Angola, igihugu cyo mu burengerazuba bwo hagati bwa Afurika."
+  },
+  {
+    "question": "Ni iyihe ndimi ikoreshwa mu bihugu byinshi bya Afurika y'Iburengerazuba kubera amateka y'ubukoloni bw'u Bufaransa?",
+    "options": ["Igifaransa", "Ikiyapani", "Igisuwede", "Igiportugal gusa"],
+    "answer": "Igifaransa",
+    "explanation": "Igifaransa ni ururimi rukoreshwa mu bihugu byinshi byo muri Afurika y'Iburengerazuba, nubwo indimi kavukire zikomeza kugira uruhare rukomeye."
+  },
+  {
+    "question": "Ni iyihe nyamaswa yo mu mazi izwiho kugira amaguru umunani?",
+    "options": ["Octopus", "Dolphin", "Shark", "Tuna"],
+    "answer": "Octopus",
+    "explanation": "Octopus ni inyamaswa yo mu bwoko bw'ibinyamushongo ifite amaboko umunani kandi ifite ubushobozi bwo gukoresha ibara n'imiterere by'umubiri mu kwihisha."
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwiho kuba ifite igikonoshwa ikagenda buhoro?",
+    "options": ["Akanyamasyo", "Giraffe", "Intare", "Zebra"],
+    "answer": "Akanyamasyo",
+    "explanation": "Akanyamasyo gafite igikonoshwa kirinda umubiri wako. Amoko menshi agenda buhoro, nubwo umuvuduko utandukana bitewe n'ubwoko."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa New Delhi?",
+    "options": ["India", "Pakistan", "Bangladesh", "Nepal"],
+    "answer": "India",
+    "explanation": "New Delhi ni umurwa mukuru w'Ubuhinde, igihugu gifite abaturage benshi kandi gifite imico n'indimi bitandukanye."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Jakarta?",
+    "options": ["Indonesia", "Malaysia", "Singapore", "Philippines"],
+    "answer": "Indonesia",
+    "explanation": "Jakarta ni umujyi umaze igihe kirekire ari ihuriro rikomeye rya Indonesia. Igihugu cyatangiye gahunda yo kwimurira umurwa mukuru mushya muri Nusantara, bityo amakuru y'umurwa mukuru agomba kugenzurwa uko igihe gihita."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho umurwa mukuru wa Manila?",
+    "options": ["Philippines", "Indonesia", "Japan", "Thailand"],
+    "answer": "Philippines",
+    "explanation": "Manila ni umurwa mukuru wa Philippines, igihugu kigizwe n'ibirwa byinshi byo mu majyepfo ashyira uburasirazuba bwa Aziya."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Kuala Lumpur?",
+    "options": ["Malaysia", "Vietnam", "Laos", "Myanmar"],
+    "answer": "Malaysia",
+    "explanation": "Kuala Lumpur ni umujyi mukuru wa Malaysia kandi ni ihuriro rikomeye ry'ubucuruzi n'umuco. Putrajaya ni ihuriro ry'ibiro byinshi bya leta."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru wa Singapore?",
+    "options": ["Singapore", "Malaysia", "Brunei", "Cambodia"],
+    "answer": "Singapore",
+    "explanation": "Singapore ni igihugu cy'umujyi gifite izina rimwe n'umurwa mukuru wacyo, kiri mu majyepfo ashyira uburasirazuba bwa Aziya."
+  },
+  {
+    "question": "Ni uwuhe mukino ukinwa ku kibaho gifite utuzu 64 kandi ukaba usaba gutekereza ku ngamba?",
+    "options": ["Chess", "Rugby", "Volleyball", "Swimming"],
+    "answer": "Chess",
+    "explanation": "Chess ni umukino w'ingamba aho buri mukinnyi agerageza gushyira umwami w'undi mukinnyi mu mimerere ya checkmate."
+  }
 ]
+
 
 
