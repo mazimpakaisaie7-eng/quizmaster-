@@ -3094,5 +3094,318 @@
     "answer": "Argentina",
     "explanation": "Buenos Aires ni umurwa mukuru wa Argentina, igihugu cyo muri Amerika y'Epfo."
   }
+[
+{
+"question": "Ni uwuhe mubumbe wegereye Izuba? / Which planet is closest to the Sun?",
+"options": ["Isi / Earth", "Mars / Mars", "Merkuri / Mercury", "Venusi / Venus"],
+"answer": 2,
+"explanation": "Merkuri ni wo mubumbe wegereye Izuba. / Mercury is the closest planet to the Sun."
+},
+{
+"question": "Umurwa mukuru wa Kenya ni uwuhe? / What is the capital of Kenya?",
+"options": ["Kampala / Kampala", "Nairobi / Nairobi", "Kigali / Kigali", "Dodoma / Dodoma"],
+"answer": 1,
+"explanation": "Nairobi ni wo murwa mukuru wa Kenya. / Nairobi is the capital of Kenya."
+},
+{
+"question": "Amazi agizwe n'ibintu bibiri by'ingenzi bya shimi ibihe? / Which two chemical elements make up water?",
+"options": ["Oxygene na azote / Oxygen and nitrogen", "Hydrogène na oxygene / Hydrogen and oxygen", "Carbone na helium / Carbon and helium", "Fer na oxygene / Iron and oxygen"],
+"answer": 1,
+"explanation": "Amazi afite formula H2O: hydrogen ebyiri na oxygen imwe. / Water has the formula H2O: two hydrogen atoms and one oxygen atom."
+},
+{
+"question": "Ni uwuhe mubumbe uzwiho impeta nini? / Which planet is famous for its rings?",
+"options": ["Saturne / Saturn", "Mars / Mars", "Merkuri / Mercury", "Isi / Earth"],
+"answer": 0,
+"explanation": "Saturne izwi cyane kubera impeta zayo. / Saturn is especially famous for its rings."
+},
+{
+"question": "Ni iyihe nyamaswa nini kurusha izindi ku Isi? / What is the largest animal on Earth?",
+"options": ["Inzovu / Elephant", "Agashyingwe / Giraffe", "Ifi nini y'ubururu / Blue whale", "Imvubu / Hippopotamus"],
+"answer": 2,
+"explanation": "Ifi nini y'ubururu ni yo nyamaswa nini izwi ku Isi. / The blue whale is the largest known animal on Earth."
+},
+{
+"question": "Ni uwuhe mugabane u Rwanda ruherereyemo? / On which continent is Rwanda located?",
+"options": ["Aziya / Asia", "Afurika / Africa", "Uburayi / Europe", "Amerika y'Epfo / South America"],
+"answer": 1,
+"explanation": "U Rwanda ruherereye muri Afurika. / Rwanda is located in Africa."
+},
+{
+"question": "Ni ikihe gikoresho gipima ubushyuhe? / Which instrument measures temperature?",
+"options": ["Barometer / Barometer", "Thermometer / Thermometer", "Compass / Compass", "Microscope / Microscope"],
+"answer": 1,
+"explanation": "Thermometer ni igikoresho gipima ubushyuhe. / A thermometer measures temperature."
+},
+{
+"question": "Ni uwuhe mubare uza nyuma ya 144 muri uru ruhererekane: 12, 24, 48, 96, ...? / What comes next: 12, 24, 48, 96, ...?",
+"options": ["108", "172", "192", "196"],
+"answer": 2,
+"explanation": "Buri mubare wikuba kabiri, bityo 96 x 2 = 192. / Each number doubles, so 96 x 2 = 192."
+},
+{
+"question": "Ni ikihe gice cy'igihingwa gikurura amazi mu butaka? / Which part of a plant absorbs water from the soil?",
+"options": ["Amababi / Leaves", "Indabo / Flowers", "Imizi / Roots", "Imbuto / Fruits"],
+"answer": 2,
+"explanation": "Imizi ikurura amazi n'imyunyu ngugu mu butaka. / Roots absorb water and minerals from the soil."
+},
+{
+"question": "Ni uruhe rurimi rukoreshwa cyane muri Brazil? / Which language is mainly spoken in Brazil?",
+"options": ["Icyesipanyolo / Spanish", "Igiporutigali / Portuguese", "Igifaransa / French", "Icyongereza / English"],
+"answer": 1,
+"explanation": "Igiporutigali ni rwo rurimi rwemewe kandi rukoreshwa cyane muri Brazil. / Portuguese is Brazil's official and most widely spoken language."
+},
+{
+"question": "Ni uwuhe mubumbe uzwiho kuba dutuyeho? / Which planet do we live on?",
+"options": ["Mars / Mars", "Jupiter / Jupiter", "Isi / Earth", "Neptune / Neptune"],
+"answer": 2,
+"explanation": "Abantu batuye ku mubumbe w'Isi. / Humans live on planet Earth."
+},
+{
+"question": "Ni iyihe nyoni izwiho kudashobora kuguruka ariko ikiruka vuba? / Which bird cannot fly but can run very fast?",
+"options": ["Inkona / Eagle", "Inyombya / Ostrich", "Inuma / Pigeon", "Igikona / Crow"],
+"answer": 1,
+"explanation": "Inyombya ntishobora kuguruka, ariko iriruka cyane. / The ostrich cannot fly, but it can run very fast."
+},
+{
+"question": "Ni iyihe nyanja nini kurusha izindi ku Isi? / What is the largest ocean on Earth?",
+"options": ["Inyanja ya Atlantika / Atlantic Ocean", "Inyanja y'Abahinde / Indian Ocean", "Inyanja ya Pasifika / Pacific Ocean", "Inyanja ya Arctique / Arctic Ocean"],
+"answer": 2,
+"explanation": "Inyanja ya Pasifika ni yo nini kurusha izindi. / The Pacific Ocean is the largest ocean."
+},
+{
+"question": "Ni iyihe vitamine umubiri ukora iyo uruhu ruhuye n'izuba? / Which vitamin can the body produce when skin is exposed to sunlight?",
+"options": ["Vitamine A / Vitamin A", "Vitamine B12 / Vitamin B12", "Vitamine C / Vitamin C", "Vitamine D / Vitamin D"],
+"answer": 3,
+"explanation": "Imirasire y'izuba ifasha uruhu gukora vitamine D. / Sunlight helps the skin produce vitamin D."
+},
+{
+"question": "Ni ikihe gikoresho kibika kandi kigatunganya amakuru ya mudasobwa? / Which device processes information in a computer?",
+"options": ["CPU / CPU", "Mwandikisho / Keyboard", "Mugaragaza / Monitor", "Imashini icapa / Printer"],
+"answer": 0,
+"explanation": "CPU ikora amabwiriza kandi igatunganya amakuru. / The CPU executes instructions and processes data."
+},
+{
+"question": "Umurwa mukuru wa Uganda ni uwuhe? / What is the capital of Uganda?",
+"options": ["Kigali / Kigali", "Kampala / Kampala", "Nairobi / Nairobi", "Bujumbura / Bujumbura"],
+"answer": 1,
+"explanation": "Kampala ni wo murwa mukuru wa Uganda. / Kampala is the capital of Uganda."
+},
+{
+"question": "Ni ikihe kinyabutabire gifasha abantu guhumeka? / Which gas do humans need for respiration?",
+"options": ["Oxygene / Oxygen", "Helium / Helium", "Hydrogène / Hydrogen", "Neon / Neon"],
+"answer": 0,
+"explanation": "Umubiri ukenera oxygene kugira ngo ukore neza. / The body needs oxygen to function properly."
+},
+{
+"question": "Ni iyihe mibare ibiri iyo uyiteranyije igatanga 100? / Which two numbers add up to 100?",
+"options": ["35 na 55 / 35 and 55", "45 na 55 / 45 and 55", "60 na 30 / 60 and 30", "25 na 65 / 25 and 65"],
+"answer": 1,
+"explanation": "45 + 55 = 100. / 45 plus 55 equals 100."
+},
+{
+"question": "Ni ikihe gihugu kizwiho piramide za kera za Giza? / Which country is famous for the ancient pyramids of Giza?",
+"options": ["Misiri / Egypt", "Ubugereki / Greece", "Ubushinwa / China", "Ubuhinde / India"],
+"answer": 0,
+"explanation": "Piramide za Giza ziri mu Misiri. / The pyramids of Giza are in Egypt."
+},
+{
+"question": "Ni iyihe nyama ikora amaraso mu mubiri w'umuntu? / Which organ pumps blood through the human body?",
+"options": ["Ibihaha / Lungs", "Umutima / Heart", "Umwijima / Liver", "Impyiko / Kidneys"],
+"answer": 1,
+"explanation": "Umutima usunika amaraso akagera mu bice bitandukanye by'umubiri. / The heart pumps blood throughout the body."
+},
+{
+"question": "Ni uwuhe mugabane ufite ibihugu byinshi kurusha indi? / Which continent has the most countries?",
+"options": ["Aziya / Asia", "Afurika / Africa", "Uburayi / Europe", "Amerika y'Amajyaruguru / North America"],
+"answer": 1,
+"explanation": "Afurika ni wo mugabane ufite ibihugu byinshi. / Africa has the most countries."
+},
+{
+"question": "Ni ikihe gikoresho gifasha kumenya icyerekezo? / Which instrument helps identify direction?",
+"options": ["Compass / Compass", "Thermometer / Thermometer", "Calculator / Calculator", "Telescope / Telescope"],
+"answer": 0,
+"explanation": "Compass ifasha kumenya amajyaruguru, amajyepfo, iburasirazuba n'iburengerazuba. / A compass helps identify north, south, east, and west."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Paris? / Which country has Paris as its capital?",
+"options": ["Ubutaliyani / Italy", "Ubufaransa / France", "Espagne / Spain", "Ububiligi / Belgium"],
+"answer": 1,
+"explanation": "Paris ni umurwa mukuru w'Ubufaransa. / Paris is the capital of France."
+},
+{
+"question": "Ni ikihe gice cy'umubiri gifasha kureba? / Which body part is responsible for sight?",
+"options": ["Amatwi / Ears", "Amaso / Eyes", "Izuru / Nose", "Ururimi / Tongue"],
+"answer": 1,
+"explanation": "Amaso ni yo adufasha kubona. / Eyes allow us to see."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho kugira ijosi rirerire cyane? / Which animal is known for having a very long neck?",
+"options": ["Intare / Lion", "Imparage / Giraffe", "Zebra / Zebra", "Impongo / Antelope"],
+"answer": 1,
+"explanation": "Imparage izwiho kugira ijosi rirerire. / The giraffe is known for its long neck."
+},
+{
+"question": "Ni uwuhe mubumbe munini kurusha indi muri Solar System? / What is the largest planet in the Solar System?",
+"options": ["Isi / Earth", "Jupiter / Jupiter", "Venusi / Venus", "Mars / Mars"],
+"answer": 1,
+"explanation": "Jupiter ni wo mubumbe munini muri Solar System. / Jupiter is the largest planet in the Solar System."
+},
+{
+"question": "Ni uruhe rwego rw'ubushyuhe amazi atangiraho kubira ku nyanja? / At what temperature does water boil at sea level?",
+"options": ["50°C", "75°C", "100°C", "150°C"],
+"answer": 2,
+"explanation": "Amazi asanzwe abira kuri 100°C ku muvuduko usanzwe w'ikirere. / Water normally boils at 100°C at standard atmospheric pressure."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Tokyo? / Which country has Tokyo as its capital?",
+"options": ["Koreya y'Epfo / South Korea", "Ubuyapani / Japan", "Ubushinwa / China", "Tayilande / Thailand"],
+"answer": 1,
+"explanation": "Tokyo ni umurwa mukuru w'Ubuyapani. / Tokyo is the capital of Japan."
+},
+{
+"question": "Ni ikihe gice cy'igihingwa gikora ibiryo hifashishijwe urumuri rw'izuba? / Which plant part makes food using sunlight?",
+"options": ["Imizi / Roots", "Amababi / Leaves", "Imbuto / Seeds", "Indabo / Flowers"],
+"answer": 1,
+"explanation": "Amababi akoresha urumuri rw'izuba mu gukora ibiryo binyuze muri photosynthesis. / Leaves use sunlight to make food through photosynthesis."
+},
+{
+"question": "Ni iyihe nyamaswa y'inyamabere iguruka? / Which mammal can fly?",
+"options": ["Igihunyira / Owl", "Agaca / Bat", "Inyoni y'igishwi / Sparrow", "Inkoko / Chicken"],
+"answer": 1,
+"explanation": "Agaca ni inyamabere ishobora kuguruka. / A bat is a mammal capable of flight."
+},
+{
+"question": "Ni ikihe gihugu kizwiho umunara wa Eiffel? / Which country is home to the Eiffel Tower?",
+"options": ["Ubufaransa / France", "Ubudage / Germany", "Ubusuwisi / Switzerland", "Porutigali / Portugal"],
+"answer": 0,
+"explanation": "Umunara wa Eiffel uri i Paris mu Bufaransa. / The Eiffel Tower is in Paris, France."
+},
+{
+"question": "Ni ikihe kinyabutabire gifite ikimenyetso O? / Which chemical element has the symbol O?",
+"options": ["Zahabu / Gold", "Oxygene / Oxygen", "Hydrogène / Hydrogen", "Icyuma / Iron"],
+"answer": 1,
+"explanation": "Ikimenyetso cya oxygene ni O. / The chemical symbol for oxygen is O."
+},
+{
+"question": "Ni angahe mu ijana angana na kimwe cya kabiri? / What percentage is one half?",
+"options": ["25%", "40%", "50%", "75%"],
+"answer": 2,
+"explanation": "Kimwe cya kabiri kingana na 50%. / One half equals 50%."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Addis Ababa? / Which country has Addis Ababa as its capital?",
+"options": ["Ethiopia / Ethiopia", "Eritrea / Eritrea", "Somalia / Somalia", "Sudani / Sudan"],
+"answer": 0,
+"explanation": "Addis Ababa ni umurwa mukuru wa Ethiopia. / Addis Ababa is the capital of Ethiopia."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho guhindura amabara kugira ngo yihishe? / Which animal is famous for changing color to camouflage?",
+"options": ["Ingwe / Leopard", "Chameleon / Chameleon", "Imbwa / Dog", "Intama / Sheep"],
+"answer": 1,
+"explanation": "Chameleon ishobora guhindura amabara bitewe n'imiterere n'ubutumwa bw'umubiri. / Chameleons can change color depending on their surroundings and physiological state."
+},
+{
+"question": "Ni uwuhe mubumbe ufite ubuso bunini bw'amazi? / Which planet has large bodies of liquid water on its surface?",
+"options": ["Isi / Earth", "Mars / Mars", "Jupiter / Jupiter", "Merkuri / Mercury"],
+"answer": 0,
+"explanation": "Isi ni wo mubumbe uzwiho kugira inyanja nini z'amazi ku buso bwayo. / Earth is known for its large surface oceans of water."
+},
+{
+"question": "Ni iyihe ndimi ikoreshwa cyane muri Mexico? / Which language is most widely spoken in Mexico?",
+"options": ["Igiporutigali / Portuguese", "Icyesipanyolo / Spanish", "Igifaransa / French", "Ikidage / German"],
+"answer": 1,
+"explanation": "Icyesipanyolo ni rwo rurimi rukoreshwa cyane muri Mexico. / Spanish is the most widely spoken language in Mexico."
+},
+{
+"question": "Ni iyihe nyama ifasha kuyungurura amaraso no gukuramo imyanda? / Which organs filter blood and remove waste?",
+"options": ["Impyiko / Kidneys", "Amaso / Eyes", "Amagufa / Bones", "Amatwi / Ears"],
+"answer": 0,
+"explanation": "Impyiko ziyungurura amaraso kandi zigafasha gukora inkari. / The kidneys filter blood and help produce urine."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Beijing? / Which country has Beijing as its capital?",
+"options": ["Ubuyapani / Japan", "Ubushinwa / China", "Mongolia / Mongolia", "Nepal / Nepal"],
+"answer": 1,
+"explanation": "Beijing ni umurwa mukuru w'Ubushinwa. / Beijing is the capital of China."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho kubika amazi n'ibinure mu mibiri yayo kugira ngo ibashe kubaho mu butayu? / Which animal stores fat in its hump to help it survive desert conditions?",
+"options": ["Ingamiya / Camel", "Ifarashi / Horse", "Inka / Cow", "Imbogo / Buffalo"],
+"answer": 0,
+"explanation": "Ingamiya ibika ibinure mu busebe bwayo, bikayifasha kubona ingufu igihe ibiryo bibaye bike. / A camel stores fat in its hump, providing energy when food is scarce."
+},
+{
+"question": "Ni iyihe mibare iva kuri 9 x 8? / What is 9 times 8?",
+"options": ["64", "72", "81", "89"],
+"answer": 1,
+"explanation": "9 x 8 = 72. / Nine times eight equals 72."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Canberra? / Which country has Canberra as its capital?",
+"options": ["Nouvelle-Zélande / New Zealand", "Australia / Australia", "Canada / Canada", "Irlande / Ireland"],
+"answer": 1,
+"explanation": "Canberra ni umurwa mukuru wa Australia. / Canberra is the capital of Australia."
+},
+{
+"question": "Ni ikihe gikoresho gikoreshwa mu kureba ibintu biri kure cyane mu isanzure? / Which instrument helps observe very distant objects in space?",
+"options": ["Microscope / Microscope", "Telescope / Telescope", "Thermometer / Thermometer", "Compass / Compass"],
+"answer": 1,
+"explanation": "Telescope ifasha abahanga kureba inyenyeri n'ibindi biri kure mu isanzure. / A telescope helps scientists observe stars and distant objects in space."
+},
+{
+"question": "Ni iyihe nyamaswa y'inyamabere ifite amaboko maremare kandi ikunda kumanika ku biti? / Which mammal has long arms and often hangs from trees?",
+"options": ["Ingagi / Gorilla", "Gibon / Gibbon", "Imparage / Giraffe", "Intare / Lion"],
+"answer": 1,
+"explanation": "Gibon ifite amaboko maremare ayifasha kunyeganyega iva ku giti ijya ku kindi. / Gibbons have long arms that help them swing between trees."
+},
+{
+"question": "Ni uwuhe mugezi uzwi cyane unyura mu Misiri? / Which famous river flows through Egypt?",
+"options": ["Nile / Nile", "Congo / Congo", "Niger / Niger", "Zambezi / Zambezi"],
+"answer": 0,
+"explanation": "Umugezi wa Nile ni ingenzi cyane mu mateka no mu buzima bwo mu Misiri. / The Nile River is vital to Egypt's history and life."
+},
+{
+"question": "Ni iyihe gaze ibimera bifata mu kirere kugira ngo bikore photosynthesis? / Which gas do plants absorb from the air for photosynthesis?",
+"options": ["Oxygene / Oxygen", "Carbone dioxide / Carbon dioxide", "Helium / Helium", "Hydrogène / Hydrogen"],
+"answer": 1,
+"explanation": "Ibimera bifata carbone dioxide mu gukora ibiryo bifashishije urumuri. / Plants absorb carbon dioxide to make food using light."
+},
+{
+"question": "Ni ikihe gihugu kizwiho urukuta runini rwa kera? / Which country is home to the Great Wall?",
+"options": ["Ubushinwa / China", "Ubuhinde / India", "Misiri / Egypt", "Turukiya / Turkey"],
+"answer": 0,
+"explanation": "Urukuta runini ruzwi nka Great Wall ruherereye mu Bushinwa. / The Great Wall is located in China."
+},
+{
+"question": "Ni uwuhe mubare w'iminsi igize umwaka usanzwe utari uw'inyongera? / How many days are in a common year?",
+"options": ["360", "364", "365", "366"],
+"answer": 2,
+"explanation": "Umwaka usanzwe ugira iminsi 365. / A common year has 365 days."
+},
+{
+"question": "Ni ikihe gice cy'umubiri gikoreshwa cyane mu kumva amajwi? / Which body part is mainly used for hearing?",
+"options": ["Izuru / Nose", "Amatwi / Ears", "Amaso / Eyes", "Uruhu / Skin"],
+"answer": 1,
+"explanation": "Amatwi afasha kwakira amajwi no kumva. / Ears receive sound and enable hearing."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho kuba ifite umuvuduko mwinshi ku butaka? / Which land animal is known for its very high running speed?",
+"options": ["Cheetah / Cheetah", "Inzovu / Elephant", "Imvubu / Hippopotamus", "Inzoka / Snake"],
+"answer": 0,
+"explanation": "Cheetah ni yo nyamaswa izwiho kwiruka cyane ku butaka. / The cheetah is known as the fastest land animal."
+},
+{
+"question": "Ni uwuhe mubare ukurikira muri uru ruhererekane: 5, 10, 15, 20, ...? / What number comes next: 5, 10, 15, 20, ...?",
+"options": ["22", "24", "25", "30"],
+"answer": 2,
+"explanation": "Buri gihe hongerwaho 5, bityo 20 + 5 = 25. / Five is added each time, so 20 + 5 = 25."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Kigali? / Which country has Kigali as its capital?",
+"options": ["Burundi / Burundi", "Rwanda / Rwanda", "Uganda / Uganda", "Tanzania / Tanzania"],
+"answer": 1,
+"explanation": "Kigali ni umurwa mukuru w'u Rwanda. / Kigali is the capital of Rwanda."
+}
 
 
