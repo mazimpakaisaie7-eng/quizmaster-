@@ -62,7 +62,32 @@
           crossorigin="anonymous">
   </script>
 
+#gameSetup {
+  max-width: 760px;
+  margin: 20px auto;
+  text-align: center;
+  border: 1px solid rgba(147, 197, 253, 0.35);
+}
 
+#gameSetup p {
+  color: #cbd5e1;
+}
+
+#gameSetup .button-group {
+  margin: 12px auto 20px;
+}
+
+#gameSetup .language-btn.selected,
+#gameSetup .mode-btn.selected {
+  outline: 3px solid #93c5fd;
+  background: #047857;
+}
+
+#confirmSetupBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
   <!-- =========================================================
        PAGE STYLE
        ========================================================= -->
