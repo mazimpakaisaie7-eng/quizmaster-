@@ -726,11 +726,9 @@
 "options": ["Kwibwira ko abandi bose bagomba kumuharira inzira", "Kubahiriza amategeko, kwitwararika no kwita ku bandi bakoresha umuhanda", "Gukoresha umuvuduko mwinshi igihe cyose", "Kwirengagiza ibyapa iyo umuhanda usa n'utuje"],
 "answer": "Kubahiriza amategeko, kwitwararika no kwita ku bandi bakoresha umuhanda",
 "explanation": "Gutwara neza bisaba kubahiriza amategeko, kwitegura ibyago, kwirinda kurangara no kubaha umutekano w'abandi bose bakoresha umuhanda."
-}
-
-[
-  {
-    "question": "Kuki umushoferi agomba kugenzura indorerwamo mbere yo guhindura icyerekezo?",
+},
+{
+  "question": "Kuki umushoferi agomba kugenzura indorerwamo mbere yo guhindura icyerekezo?",
     "options": [
       "Kugira ngo arebe niba nta kinyabiziga cyangwa undi ukoresha umuhanda uri hafi",
       "Kugira ngo arebe niba imodoka ye isukuye",
@@ -838,9 +836,7 @@
     ],
     "answer": "Guhagarara ahatekanye mbere y'umurongo no gutegereza",
     "explanation": "Gari ya moshi ntishobora guhagarara vuba nk'imodoka. Ntugomba kunyura ku nzitizi ziri kumanuka cyangwa kwinjira ku murongo igihe kunyuraho bitizewe."
-  }
-
-[
+  },
   {
     "question": "Ni iki umushoferi agomba gukora iyo abonye ikimenyetso cyo kugabanya umuvuduko?",
     "options": [
@@ -950,10 +946,7 @@
     ],
     "answer": "Kugira ngo abone umuhanda, ibimenyetso n'abandi bakoresha umuhanda neza",
     "explanation": "Ikirahuri kirimo umwanda, igihu cyangwa amazi gishobora kubangamira kureba. Kubona neza ni ingenzi mu gufata ibyemezo bikwiye igihe utwaye."
-  }
-
-
-[
+  },
   {
     "question": "Iyo ubonye umwana ari hafi y'umuhanda, ni iyihe myitwarire ikwiye?",
     "options": [
@@ -1074,10 +1067,7 @@
     ],
     "answer": "Kuba wasize intera ihagije kandi ugenda ku muvuduko ukwiye",
     "explanation": "Intera n'umuvuduko bikwiye biha umushoferi umwanya wo kubona ibyago, gufata icyemezo no guhagarara. Gukurikira hafi bigabanya cyane amahirwe yo kwirinda impanuka."
-  }
-
-
-[
+  },
   {
     "question": "Ni iki umushoferi agomba gukora iyo abonye ikimenyetso cy'umuhanda w'icyerekezo kimwe?",
     "options": [
@@ -1187,8 +1177,7 @@
     ],
     "answer": "Kugabanya umuvuduko no kwitegura guhagarara",
     "explanation": "Ahari abantu benshi hakenerwa umuvuduko muke n'ubwitonzi. Abanyamaguru bashobora guhindura icyerekezo cyangwa kwambuka batunguranye."
-  }
-[
+  },
   {
     "question": "Iyo wegereye umuhanda wambukirwamo abanyamaguru, ugomba gukora iki?",
     "options": ["Kongera umuvuduko", "Kugabanya umuvuduko no kwitegura guhagarara", "Kuvuza ihoni igihe cyose", "Guhagarara hagati mu muhanda"],
@@ -1542,9 +1531,7 @@
     "options": ["Gutwara uko biri kose", "Kongera umuziki cyane", "Kutayitwara kugeza igihe ushobora kwibanda neza, cyangwa ugasaba undi muntu ubifitiye uburenganzira kuyitwara", "Gukoresha ihoni kenshi"],
     "answer": "Kutitwara kugeza igihe ushobora kwibanda neza, cyangwa ugasaba undi muntu ubifitiye uburenganzira kuyitwara",
     "explanation": "Gutwara bisaba kwitonda no gufata ibyemezo vuba. Niba hari ikikubuza kwibanda neza, byaba byiza udatwaye kugeza igihe ubishoboye."
-  }
-
-[
+  },
   {
     "question": "Ni ikihe gihugu kizwiho umurwa mukuru wa Madrid?",
     "options": ["Portugal", "Espagne", "Italy", "Greece"],
@@ -1838,8 +1825,7 @@
     "options": ["Chess", "Rugby", "Volleyball", "Swimming"],
     "answer": "Chess",
     "explanation": "Chess ni umukino w'ingamba aho buri mukinnyi agerageza gushyira umwami w'undi mukinnyi mu mimerere ya checkmate."
-  }
-[
+  },
   {
     "question": "Ni uruhe rurimi rukoreshwa cyane muri Mozambique?",
     "options": ["Icyongereza", "Igiporutugali", "Igifaransa", "Icyarabu"],
@@ -2163,8 +2149,7 @@
     "options": ["Kuyifungura ako kanya", "Kugenzura inkomoko yayo no kuyisuzumisha porogaramu y’umutekano", "Kuyohereza ku bantu bose", "Guhagarika antivirus"],
     "answer": "Kugenzura inkomoko yayo no kuyisuzumisha porogaramu y’umutekano",
     "explanation": "Dosiye ziturutse ahantu hatizewe zishobora kuba zirimo porogaramu mbi; kugenzura inkomoko no kuyisuzuma bigabanya ibyago."
-  }
-[
+  },
   {
     "question": "Ni uwuhe mubumbe uzwiho kugira impeta nini kandi zigaragara neza?",
     "options": ["Mars", "Saturne", "Venus", "Mercure"],
@@ -2476,9 +2461,7 @@
     "options": ["Gukonja", "Guhumuka", "Gukomera", "Gushonga"],
     "answer": "Guhumuka",
     "explanation": "Guhumuka ni igihe amazi ahinduka umwuka, urugero nk'amazi yo mu kidendezi agenda agabanuka bitewe n'izuba."
-  }
-
-[
+  },
   {
     "question": "What is the largest planet in our Solar System?",
     "options": ["Earth", "Jupiter", "Saturn", "Mars"],
@@ -2778,9 +2761,7 @@
     "options": ["Sand and water", "Nectar", "Tree bark", "Leaves only"],
     "answer": "Nectar",
     "explanation": "Honeybees collect nectar from flowers and transform it into honey through enzymatic processing and water removal."
-  }
-
-[
+  },
   {
     "question": "Ni uwuhe mubumbe wegereye Izuba kurusha indi?",
     "options": ["Venusi", "Merkire", "Mars", "Jupiter"],
@@ -3092,8 +3073,7 @@
     "options": ["Chile", "Argentina", "Peru", "Boliviya"],
     "answer": "Argentina",
     "explanation": "Buenos Aires ni umurwa mukuru wa Argentina, igihugu cyo muri Amerika y'Epfo."
-  }
-[
+  },
 {
 "question": "Ni uwuhe mubumbe wegereye Izuba? / Which planet is closest to the Sun?",
 "options": ["Isi / Earth", "Mars / Mars", "Merkuri / Mercury", "Venusi / Venus"],
