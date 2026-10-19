@@ -928,69 +928,46 @@ function buildRounds() {
     );
   }
 
-  function renderRounds() {
-    const grid =
-      elements.roundGrid;
+function renderRounds() {
+  const grid = elements.roundGrid;
+  if (!grid) return;
 
-    if (!grid) {
-      return;
+  grid.innerHTML = "";
+
+  // Erekana rounds zose zifite ibibazo.
+  const totalAvailableRounds = Array.isArray(state.rounds)
+    ? state.rounds.length
+    : 0;
+
+  for (let index = 0; index < totalAvailableRounds; index++) {
+    const round = index + 1;
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "secondary-btn";
+
+    const unlocked = isRoundUnlocked(round);
+    const stars = getRoundStars(round);
+
+    if (unlocked) {
+      button.disabled = false;
+      button.textContent = stars > 0
+        ? `Round ${round} ${"⭐".repeat(stars)}`
+        : `Round ${round}`;
+
+      button.addEventListener("click", () => {
+        startRound(round);
+      });
+    } else {
+      button.disabled = true;
+      button.textContent = `🔒 Round ${round}`;
+      button.style.opacity = "0.55";
     }
 
-    grid.innerHTML = "";
-
-    for (
-      let round = 1;
-      round <= CONFIG.TOTAL_ROUNDS;
-      round++
-    ) {
-      const button =
-        document.createElement(
-          "button"
-        );
-
-      button.type = "button";
-
-      button.className =
-        "secondary-btn";
-
-      const available =
-        round <=
-        state.rounds.length;
-
-      const unlocked =
-        available &&
-        isRoundUnlocked(round);
-
-      const stars =
-        getRoundStars(round);
-
-      if (unlocked) {
-        button.disabled = false;
-
-        button.textContent =
-          stars > 0
-            ? `Round ${round} ${"⭐".repeat(stars)}`
-            : `Round ${round}`;
-
-        button.addEventListener(
-          "click",
-          () => {
-            startRound(round);
-          }
-        );
-      } else {
-        button.disabled = true;
-
-        button.textContent =
-          `🔒 Round ${round}`;
-
-        button.style.opacity =
-          "0.55";
-      }
-
-      grid.appendChild(button);
-    }
+    grid.appendChild(button);
   }
+}
+
 
   /* =========================================================
      START ROUND
