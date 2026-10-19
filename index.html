@@ -1414,7 +1414,170 @@
   });
 </script>
 
+<script>
+(function () {
+  "use strict";
 
+  const setup = document.getElementById("gameSetup");
+  const confirmBtn = document.getElementById("confirmSetupBtn");
+  const summary = document.getElementById("selectionSummary");
+
+  if (!setup || !confirmBtn || !summary) return;
+
+  let selectedLanguage = "";
+  let selectedMode = "";
+
+  const translations = {
+    rw: {
+      title: "🎮 Tegura umukino wawe",
+      language: "1. Hitamo ururimi wumva neza",
+      mode: "2. Hitamo umukino ushaka gukina",
+      traffic: "🚦 Amategeko y'umuhanda",
+      general: "🧠 Ibibazo rusange",
+      choose: "Banza uhitemo ururimi n'ubwoko bw'ibibazo.",
+      start: "▶️ Tangira gukina",
+      ready: "Wahisemo",
+      error: "Hitamo ururimi n'umukino mbere yo gukomeza."
+    },
+    en: {
+      title: "🎮 Prepare Your Quiz",
+      language: "1. Choose your preferred language",
+      mode: "2. Choose the quiz you want to play",
+      traffic: "🚦 Road Traffic Rules",
+      general: "🧠 General Knowledge",
+      choose: "Choose a language and a quiz category first.",
+      start: "▶️ Start Quiz",
+      ready: "Your selection",
+      error: "Choose a language and a quiz before continuing."
+    }
+  };
+
+  function updateSummary() {
+    const t = translations[selectedLanguage || "rw"];
+
+    if (!selectedLanguage || !selectedMode) {
+      summary.textContent = t.choose;
+      confirmBtn.disabled = true;
+      return;
+    }
+
+    const modeName = selectedMode === "traffic"
+      ? t.traffic
+      : t.general;
+
+    summary.textContent =
+      t.ready + ": " +
+      (selectedLanguage === "rw" ? "Ikinyarwanda" : "English") +
+      " — " + modeName;
+
+    confirmBtn.disabled = false;
+  }
+
+  function updateLanguage(language) {
+    selectedLanguage = language;
+    const t = translations[language];
+
+    document.documentElement.lang = language;
+
+    document.getElementById("setupTitle").textContent = t.title;
+    document.getElementById("languageLabel").textContent = t.language;
+    document.getElementById("modeLabel").textContent = t.mode;
+    confirmBtn.textContent = t.start;
+
+    document.querySelectorAll(".language-btn").forEach(function (button) {
+      button.classList.toggle(
+        "selected",
+        button.dataset.language === language
+      );
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.language === language)
+      );
+    });
+
+    document.querySelector('[data-mode="traffic"]').textContent = t.traffic;
+    document.querySelector('[data-mode="general"]').textContent = t.general;
+
+    updateSummary();
+  }
+
+  document.querySelectorAll(".language-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
+      updateLanguage(button.dataset.language);
+    });
+  });
+
+  document.querySelectorAll(".mode-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
+      selectedMode = button.dataset.mode;
+
+      document.querySelectorAll(".mode-btn").forEach(function (item) {
+        const selected = item.dataset.mode === selectedMode;
+        item.classList.toggle("selected", selected);
+        item.setAttribute("aria-pressed", String(selected));
+      });
+
+      updateSummary();
+    });
+  });
+
+  confirmBtn.addEventListener("click", function () {
+    if (!selectedLanguage || !selectedMode) {
+      summary.textContent =
+        translations[selectedLanguage || "rw"].error;
+      return;
+    }
+
+    try {
+      localStorage.setItem("quizmasterLanguage", selectedLanguage);
+      localStorage.setItem("quizmasterMode", selectedMode);
+      localStorage.setItem("quizmasterSetupComplete", "true");
+    } catch (error) {
+      console.warn("Could not save quiz preferences.", error);
+    }
+
+    /*
+      This saves the choices. The questions.js game engine
+      must read these settings before loading questions.
+    */
+    window.dispatchEvent(new CustomEvent("quizmaster:setup", {
+      detail: {
+        language: selectedLanguage,
+        mode: selectedMode
+      }
+    }));
+
+    const startButton = document.getElementById("startBtn");
+
+    if (startButton) {
+      startButton.click();
+    }
+  });
+
+  try {
+    const savedLanguage = localStorage.getItem("quizmasterLanguage");
+    const savedMode = localStorage.getItem("quizmasterMode");
+
+    if (savedLanguage === "rw" || savedLanguage === "en") {
+      updateLanguage(savedLanguage);
+    }
+
+    if (savedMode === "traffic" || savedMode === "general") {
+      selectedMode = savedMode;
+
+      document.querySelectorAll(".mode-btn").forEach(function (button) {
+        const selected = button.dataset.mode === savedMode;
+        button.classList.toggle("selected", selected);
+        button.setAttribute("aria-pressed", String(selected));
+      });
+
+      updateSummary();
+    }
+  } catch (error) {
+    console.warn("Could not load saved quiz preferences.", error);
+  }
+})();
+</script>
 <!-- =========================================================
      QUIZ MASTER APPLICATION
      ========================================================= -->
