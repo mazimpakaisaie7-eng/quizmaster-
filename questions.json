@@ -2781,5 +2781,318 @@
     "explanation": "Honeybees collect nectar from flowers and transform it into honey through enzymatic processing and water removal."
   }
 
+[
+  {
+    "question": "Ni uwuhe mubumbe wegereye Izuba kurusha indi?",
+    "options": ["Venusi", "Merkire", "Mars", "Jupiter"],
+    "answer": "Merkire",
+    "explanation": "Merkire ni umubumbe wa mbere uvuye ku Izuba, ni yo mpamvu ari wo uryegereye kurusha indi mibumbe."
+  },
+  {
+    "question": "Umurwa mukuru wa Kenya ni uwuhe?",
+    "options": ["Mombasa", "Kampala", "Nairobi", "Dodoma"],
+    "answer": "Nairobi",
+    "explanation": "Nairobi ni umurwa mukuru wa Kenya kandi ni umwe mu mijyi ikomeye mu karere ka Afurika y'Iburasirazuba."
+  },
+  {
+    "question": "Amazi agira iyihe formula muri siyansi?",
+    "options": ["CO2", "H2O", "O2", "NaCl"],
+    "answer": "H2O",
+    "explanation": "Molekile imwe y'amazi igizwe na atome ebyiri za hydrogène na atome imwe ya oxygène."
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwiho kugira ijosi rirerire cyane?",
+    "options": ["Imbogo", "Intare", "Twiga", "Impara"],
+    "answer": "Twiga",
+    "explanation": "Twiga ifite ijosi rirerire rimufasha kugera ku mababi yo ku biti birebire."
+  },
+  {
+    "question": "Ni uwuhe mugabane munini ku isi?",
+    "options": ["Afurika", "Aziya", "Uburayi", "Oseyaniya"],
+    "answer": "Aziya",
+    "explanation": "Aziya ni wo mugabane munini ku isi haba ku buso ndetse no ku mubare w'abaturage."
+  },
+  {
+    "question": "Ni uruhe rurimi rukoreshwa cyane muri Brazil?",
+    "options": ["Icyesipanyolo", "Igifaransa", "Igiporutigali", "Icyongereza"],
+    "answer": "Igiporutigali",
+    "explanation": "Igiporutigali ni rwo rurimi rwemewe kandi rukoreshwa cyane muri Brazil kubera amateka y'ubukoloni bw'Abanyaporutigali."
+  },
+  {
+    "question": "Ni ikihe gice cy'umubiri gifasha umuntu guhumeka?",
+    "options": ["Ibihaha", "Igifu", "Impyiko", "Umutima"],
+    "answer": "Ibihaha",
+    "explanation": "Ibihaha bifasha umubiri kwakira oxygène no gusohora umwuka wa dioxyde de carbone."
+  },
+  {
+    "question": "Ni iyihe nyenyeri itanga urumuri n'ubushyuhe ku Isi?",
+    "options": ["Ukwezi", "Izuba", "Sirius", "Mars"],
+    "answer": "Izuba",
+    "explanation": "Izuba ni inyenyeri iri hagati muri sisitemu y'imibumbe yacu kandi ritanga ingufu zituma ubuzima bushoboka ku Isi."
+  },
+  {
+    "question": "Umurwa mukuru wa Uganda ni uwuhe?",
+    "options": ["Kigali", "Kampala", "Nairobi", "Juba"],
+    "answer": "Kampala",
+    "explanation": "Kampala ni umurwa mukuru wa Uganda, igihugu gihana imbibi n'u Rwanda."
+  },
+  {
+    "question": "Ni ikihe gikoresho gipima ubushyuhe?",
+    "options": ["Barometero", "Termometero", "Kompas", "Telesikopi"],
+    "answer": "Termometero",
+    "explanation": "Termometero ikoreshwa mu gupima ubushyuhe bw'umubiri, bw'ikirere cyangwa bw'ibintu."
+  },
+  {
+    "question": "Ni iyihe nyamaswa yitwa umwami w'ishyamba mu mvugo isanzwe?",
+    "options": ["Ingwe", "Intare", "Inzovu", "Imbogo"],
+    "answer": "Intare",
+    "explanation": "Intare ikunze kwitwa umwami w'ishyamba mu mvugo isanzwe kubera imbaraga zayo n'uko izwi cyane, nubwo itaba mu mashyamba gusa."
+  },
+  {
+    "question": "Umubumbe uzwiho kugira impeta zigaragara cyane ni uwuhe?",
+    "options": ["Saturne", "Merkire", "Venusi", "Mars"],
+    "answer": "Saturne",
+    "explanation": "Saturne izwiho impeta nini zigizwe ahanini n'ibice by'urubura n'ibindi bikoresho bito."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umujyi wa Tokyo nk'umurwa mukuru?",
+    "options": ["Ubushinwa", "Ubuyapani", "Koreya y'Epfo", "Tayilande"],
+    "answer": "Ubuyapani",
+    "explanation": "Tokyo ni umurwa mukuru w'Ubuyapani kandi ni umwe mu mijyi minini ku isi."
+  },
+  {
+    "question": "Ni ikihe gice cy'igihingwa gikurura amazi mu butaka?",
+    "options": ["Indabo", "Amababi", "Imizi", "Imbuto"],
+    "answer": "Imizi",
+    "explanation": "Imizi ikurura amazi n'intungamubiri mu butaka kandi igafasha igihingwa gukomera mu butaka."
+  },
+  {
+    "question": "Ni iyihe nyamaswa nini kurusha izindi ziba ku butaka?",
+    "options": ["Imvubu", "Inzovu yo muri Afurika", "Inyamaswa y'ingwe", "Twiga"],
+    "answer": "Inzovu yo muri Afurika",
+    "explanation": "Inzovu yo muri Afurika ni yo nyamaswa nini kurusha izindi ziba ku butaka muri iki gihe."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho piramide za kera zo muri Giza?",
+    "options": ["Misiri", "Maroke", "Sudani y'Epfo", "Etiyopiya"],
+    "answer": "Misiri",
+    "explanation": "Piramide za Giza ziri mu Misiri kandi ni ibisigisigi bikomeye by'umuco wa kera w'Abanyamisiri."
+  },
+  {
+    "question": "Ni ikihe kintu ibimera bikenera kugira ngo bikore ibiryo byabyo hakoreshejwe urumuri?",
+    "options": ["Umucanga gusa", "Urumuri rw'Izuba", "Umunyu gusa", "Umwotsi"],
+    "answer": "Urumuri rw'Izuba",
+    "explanation": "Ibimera bikoresha urumuri mu gikorwa cyitwa fotosinteze, aho bikora ibiryo bivuye ku mazi na dioxyde de carbone."
+  },
+  {
+    "question": "Ni uwuhe mubumbe uzwiho kuba Umunyagazi Utukura?",
+    "options": ["Mars", "Jupiter", "Uranus", "Merkire"],
+    "answer": "Mars",
+    "explanation": "Mars yitwa umubumbe utukura kubera imyunyungugu y'icyuma iri ku buso bwayo ituma igira ibara ritukura."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Paris?",
+    "options": ["Ubutaliyani", "Ubufaransa", "Ububiligi", "Porutugali"],
+    "answer": "Ubufaransa",
+    "explanation": "Paris ni umurwa mukuru w'Ubufaransa kandi uzwiho amateka, ubuhanzi n'ubwubatsi."
+  },
+  {
+    "question": "Ni ikihe gice cy'umubiri gisukura amaraso kigakuramo imyanda?",
+    "options": ["Impyiko", "Amaso", "Amatwi", "Amenyo"],
+    "answer": "Impyiko",
+    "explanation": "Impyiko zungurura amaraso, zigakuramo imyanda n'amazi arenze bikavamo inkari."
+  },
+  {
+    "question": "Ni ikihe gikoresho gifasha kureba ibintu biri kure cyane mu isanzure?",
+    "options": ["Mikrosikopi", "Telesikopi", "Termometero", "Kalukulatori"],
+    "answer": "Telesikopi",
+    "explanation": "Telesikopi ifasha abahanga kureba inyenyeri, imibumbe n'ibindi bintu biri kure mu isanzure."
+  },
+  {
+    "question": "Ni uwuhe mugabane urimo igihugu cya Argentina?",
+    "options": ["Aziya", "Afurika", "Amerika y'Epfo", "Uburayi"],
+    "answer": "Amerika y'Epfo",
+    "explanation": "Argentina iherereye mu majyepfo y'umugabane wa Amerika y'Epfo."
+  },
+  {
+    "question": "Ni ikihe kinyabutabire gifite ikimenyetso O?",
+    "options": ["Zahabu", "Oxygène", "Icyuma", "Hydrogène"],
+    "answer": "Oxygène",
+    "explanation": "O ni ikimenyetso cya oxygène, gaze ikenerwa n'abantu benshi n'inyamaswa mu guhumeka."
+  },
+  {
+    "question": "Ni uwuhe mujyi uzwiho kuba umurwa mukuru w'Ubushinwa?",
+    "options": ["Shanghai", "Beijing", "Hong Kong", "Wuhan"],
+    "answer": "Beijing",
+    "explanation": "Beijing ni umurwa mukuru w'Ubushinwa kandi ni ihuriro rikomeye ry'ubutegetsi n'amateka."
+  },
+  {
+    "question": "Ni iyihe nyamaswa ifite umunwa muremure kandi ikunda gufata amafi mu mazi?",
+    "options": ["Ingamiya", "Ingona", "Intama", "Inkwavu"],
+    "answer": "Ingona",
+    "explanation": "Ingona ni inyamaswa y'inyamanswa zibasha guhiga mu mazi no ku nkengero zayo, kandi akenshi zirya amafi."
+  },
+  {
+    "question": "Ni ikihe gipimo gikoreshwa mu gupima uburemere mu buryo bwa siyansi?",
+    "options": ["Metero", "Kilogarama", "Litiro", "Sekonde"],
+    "answer": "Kilogarama",
+    "explanation": "Kilogarama ni igipimo fatizo cy'uburemere bw'ibintu mu buryo bukoreshwa mu buzima bwa buri munsi; muri siyansi, ubwinshi bw'ikintu ni bwo bupimwa muri kilogarama."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Addis Ababa?",
+    "options": ["Eritereya", "Etiyopiya", "Somaliya", "Kenya"],
+    "answer": "Etiyopiya",
+    "explanation": "Addis Ababa ni umurwa mukuru wa Etiyopiya kandi ni ihuriro rikomeye ry'imiryango mpuzamahanga muri Afurika."
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwiho guhindura amabara kugira ngo yihishe?",
+    "options": ["Inzovu", "Uruvu", "Inka", "Ifarashi"],
+    "answer": "Urivu",
+    "explanation": "Urivu rushobora guhindura amabara bitewe n'uburyo rumeze n'ibidukikije, bikarufasha mu itumanaho no kwirwanaho."
+  },
+  {
+    "question": "Ni iyihe mibumbe izwiho kuba nini kurusha indi muri sisitemu y'Izuba?",
+    "options": ["Mars", "Jupiter", "Venusi", "Merkire"],
+    "answer": "Jupiter",
+    "explanation": "Jupiter ni umubumbe munini kurusha indi yose muri sisitemu y'Izuba."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Ottawa?",
+    "options": ["Kanada", "Amerika", "Meksiko", "Irilande"],
+    "answer": "Kanada",
+    "explanation": "Ottawa ni umurwa mukuru wa Kanada, igihugu giherereye mu majyaruguru ya Amerika."
+  },
+  {
+    "question": "Ni ikihe gice cy'igihingwa gikunze gukora fotosinteze nyinshi?",
+    "options": ["Imizi", "Amababi", "Imbuto", "Indabo gusa"],
+    "answer": "Amababi",
+    "explanation": "Amababi menshi aba arimo chlorophylle ifata urumuri rw'Izuba kugira ngo igihingwa gikore ibiryo."
+  },
+  {
+    "question": "Ni iyihe nyamaswa ifite umuvuduko mwinshi cyane mu kwiruka ku butaka?",
+    "options": ["Intare", "Cheetah", "Inzovu", "Imbogo"],
+    "answer": "Cheetah",
+    "explanation": "Cheetah izwiho kwiruka ku muvuduko mwinshi cyane mu ntera ngufi iyo iri guhiga."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Rome?",
+    "options": ["Ubugereki", "Ubutaliyani", "Espanye", "Ubudage"],
+    "answer": "Ubutaliyani",
+    "explanation": "Rome ni umurwa mukuru w'Ubutaliyani kandi ifite amateka akomeye y'Ubwami bw'Abaroma."
+  },
+  {
+    "question": "Ni iyihe gaze abantu bahumeka bakenera kugira ngo babone ingufu mu ngirabuzimafatizo?",
+    "options": ["Helium", "Oxygène", "Azote gusa", "Dioxyde de carbone"],
+    "answer": "Oxygène",
+    "explanation": "Oxygène ikoreshwa mu guhumeka kw'ingirabuzimafatizo, gufasha guhindura ibiryo ingufu."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho umunara wa Eiffel?",
+    "options": ["Ubufaransa", "Ubwongereza", "Ubudage", "Ububiligi"],
+    "answer": "Ubufaransa",
+    "explanation": "Umunara wa Eiffel uri i Paris mu Bufaransa kandi ni kimwe mu bimenyetso bizwi cyane by'icyo gihugu."
+  },
+  {
+    "question": "Ni iyihe nyamaswa yonsa abana bayo kandi ikaba iba mu nyanja?",
+    "options": ["Shaki", "Dauphin", "Octopus", "Toni"],
+    "answer": "Dauphin",
+    "explanation": "Dauphin ni inyamaswa y'inyamabere iba mu mazi, ihumeka umwuka kandi yonsa abana bayo."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Dakar?",
+    "options": ["Senegali", "Gana", "Nigeriya", "Mali"],
+    "answer": "Senegali",
+    "explanation": "Dakar ni umurwa mukuru wa Senegali, igihugu giherereye mu burengerazuba bwa Afurika."
+  },
+  {
+    "question": "Ni iyihe mibumbe izwiho kuba ifite amazi menshi ku buso bwayo?",
+    "options": ["Isi", "Merkire", "Mars", "Jupiter"],
+    "answer": "Isi",
+    "explanation": "Hafi 71% by'ubuso bw'Isi butwikiriwe n'amazi, ahanini akaba ari amazi y'inyanja."
+  },
+  {
+    "question": "Ni ikihe gikoresho gikoreshwa mu kumenya icyerekezo cy'amajyaruguru?",
+    "options": ["Kompas", "Telesikopi", "Mikrosikopi", "Barometero"],
+    "answer": "Kompas",
+    "explanation": "Kompas ifite urushinge rwerekana icyerekezo cy'amajyaruguru ya rukuruzi, igafasha abantu kwiyobora."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Accra?",
+    "options": ["Gana", "Togo", "Benin", "Liberiya"],
+    "answer": "Gana",
+    "explanation": "Accra ni umurwa mukuru wa Gana, igihugu cyo mu burengerazuba bwa Afurika."
+  },
+  {
+    "question": "Ni ikihe gice cy'umubiri gituma umuntu abona?",
+    "options": ["Amatwi", "Amaso", "Izuru", "Ururimi"],
+    "answer": "Amaso",
+    "explanation": "Amaso afata urumuri akohereza amakuru ku bwonko, bigatuma umuntu abona ibintu."
+  },
+  {
+    "question": "Ni uwuhe mubumbe ufite izina rihuye n'Imana y'intambara mu migani y'Abaroma?",
+    "options": ["Mars", "Venusi", "Neptune", "Saturne"],
+    "answer": "Mars",
+    "explanation": "Mars yahawe izina ry'Imana y'intambara mu migani y'Abaroma; ni na yo mpamvu umubumbe witwa gutyo."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Madrid?",
+    "options": ["Espanye", "Porutugali", "Ubufaransa", "Andora"],
+    "answer": "Espanye",
+    "explanation": "Madrid ni umurwa mukuru wa Espanye kandi ni ihuriro rikomeye ry'ubutegetsi n'umuco."
+  },
+  {
+    "question": "Ni ikihe kintu gituma imvura igwa mu bicu?",
+    "options": ["Amazi yegerana mu bitonyanga biremereye", "Umucanga uzamuka", "Izuba rizima", "Umuyaga uhagarara burundu"],
+    "answer": "Amazi yegerana mu bitonyanga biremereye",
+    "explanation": "Iyo umwuka wuzuye ubuhehere ukonje, umwuka w'amazi uhinduka ibitonyanga cyangwa ibibarafu bito. Iyo biremereye bihagije, bigwa nk'imvura cyangwa urubura."
+  },
+  {
+    "question": "Ni iyihe nyamaswa ifite umufuka ku nda itwaramo umwana wayo?",
+    "options": ["Kangaroo", "Ingwe", "Imbogo", "Twiga"],
+    "answer": "Kangaroo",
+    "explanation": "Kangaroo ni inyamaswa yo mu itsinda rya marsupial, ifite umufuka aho umwana akurira nyuma yo kuvuka."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Berlin?",
+    "options": ["Ubudage", "Otirishiya", "Polonye", "Ubusuwisi"],
+    "answer": "Ubudage",
+    "explanation": "Berlin ni umurwa mukuru w'Ubudage kandi ni umwe mu mijyi ifite amateka akomeye mu Burayi."
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwiho kugira ururimi rurerure rufasha gufata ibimonyo?",
+    "options": ["Anteater", "Intare", "Imvubu", "Inzovu"],
+    "answer": "Anteater",
+    "explanation": "Anteater ifite ururimi rurerure kandi rufashe ruyifasha gufata ibimonyo n'utundi dukoko."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Rabat?",
+    "options": ["Tuniziya", "Maroke", "Alijeriya", "Libiya"],
+    "answer": "Maroke",
+    "explanation": "Rabat ni umurwa mukuru wa Maroke, igihugu giherereye mu majyaruguru y'uburengerazuba bwa Afurika."
+  },
+  {
+    "question": "Ni ikihe gice cy'umubiri gitera amaraso kuzenguruka?",
+    "options": ["Umutima", "Igifu", "Ibihaha gusa", "Ubwonko"],
+    "answer": "Umutima",
+    "explanation": "Umutima usunika amaraso mu miyoboro y'amaraso kugira ngo ajyane oxygène n'intungamubiri mu mubiri."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Canberra?",
+    "options": ["Australiya", "Nouvelle-Zélande", "Fiji", "Papouasie-Nouvelle-Guinée"],
+    "answer": "Australiya",
+    "explanation": "Canberra ni umurwa mukuru wa Australiya; ntabwo ari Sydney cyangwa Melbourne."
+  },
+  {
+    "question": "Ni ikihe gikoresho gikoreshwa mu kureba utuntu duto cyane tutagaragara n'amaso?",
+    "options": ["Telesikopi", "Mikrosikopi", "Kompas", "Termometero"],
+    "answer": "Mikrosikopi",
+    "explanation": "Mikrosikopi yongera ishusho y'utuntu duto nk'uturemangingo kugira ngo dushobore kwigwa."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Buenos Aires?",
+    "options": ["Chile", "Argentina", "Peru", "Boliviya"],
+    "answer": "Argentina",
+    "explanation": "Buenos Aires ni umurwa mukuru wa Argentina, igihugu cyo muri Amerika y'Epfo."
+  }
 
 
