@@ -2165,6 +2165,319 @@
     "answer": "Kugenzura inkomoko yayo no kuyisuzumisha porogaramu y’umutekano",
     "explanation": "Dosiye ziturutse ahantu hatizewe zishobora kuba zirimo porogaramu mbi; kugenzura inkomoko no kuyisuzuma bigabanya ibyago."
   }
+[
+  {
+    "question": "Ni uwuhe mubumbe uzwiho kugira impeta nini kandi zigaragara neza?",
+    "options": ["Mars", "Saturne", "Venus", "Mercure"],
+    "answer": "Saturne",
+    "explanation": "Saturne izwiho impeta zigizwe ahanini n'ibice by'urubura n'ibimenyetso by'ibitare bito."
+  },
+  {
+    "question": "Amazi agira ubushyuhe bungana iki iyo abira ku muvuduko usanzwe wo ku isi?",
+    "options": ["50°C", "75°C", "100°C", "150°C"],
+    "answer": "100°C",
+    "explanation": "Ku muvuduko usanzwe wo ku nyanja, amazi meza abira kuri dogere Celsius 100."
+  },
+  {
+    "question": "Ni ikihe gikoresho gipima ubushyuhe?",
+    "options": ["Barometero", "Termometere", "Telesikopi", "Kompas"],
+    "answer": "Termometere",
+    "explanation": "Termometere ikoreshwa mu gupima ubushyuhe bw'umubiri, bw'ikirere cyangwa bw'ibindi bintu."
+  },
+  {
+    "question": "Ni uwuhe mubumbe wegereye izuba kurusha indi?",
+    "options": ["Isi", "Venus", "Mars", "Mercure"],
+    "answer": "Mercure",
+    "explanation": "Mercure ni wo mubumbe wa mbere ubarwa uhereye ku zuba."
+  },
+  {
+    "question": "Ni iyihe nyamaswa izwiho kugira ijosi rirerire cyane?",
+    "options": ["Zebra", "Ingwe", "Giraffe", "Imvubu"],
+    "answer": "Giraffe",
+    "explanation": "Giraffe ifite ijosi rirerire rimufasha kugera ku mababi yo ku biti birebire."
+  },
+  {
+    "question": "Ni ikihe gice cy'umubiri w'umuntu gifasha kuvoma amaraso?",
+    "options": ["Ibihaha", "Umutima", "Igifu", "Impyiko"],
+    "answer": "Umutima",
+    "explanation": "Umutima utera ugasunika amaraso kugira ngo agere mu bice bitandukanye by'umubiri."
+  },
+  {
+    "question": "Ni iyihe nyanja nini kurusha izindi ku isi?",
+    "options": ["Inyanja y'Abahinde", "Inyanja ya Atalantika", "Inyanja ya Pasifika", "Inyanja ya Arctique"],
+    "answer": "Inyanja ya Pasifika",
+    "explanation": "Inyanja ya Pasifika ni yo nini kurusha izindi, ikaba iri hagati ya Aziya, Ositaraliya n'Umugabane w'Amerika."
+  },
+  {
+    "question": "Ni uwuhe mubumbe uzwiho kuba utukura?",
+    "options": ["Mars", "Jupiter", "Uranus", "Neptune"],
+    "answer": "Mars",
+    "explanation": "Mars yitwa umubumbe utukura kubera ubutare bw'icyuma bwagiye buhinduka ingese mu butaka bwayo."
+  },
+  {
+    "question": "Ni ikihe gice cy'igihingwa gikurura amazi n'intungamubiri mu butaka?",
+    "options": ["Indabo", "Amababi", "Imizi", "Imbuto"],
+    "answer": "Imizi",
+    "explanation": "Imizi ifata igihingwa mu butaka kandi ikagikururira amazi n'imyunyu ngugu."
+  },
+  {
+    "question": "Ni uwuhe muyoboro w'amaraso utwara amaraso ava ku mutima ajya mu mubiri?",
+    "options": ["Imitsi itwara amaraso agaruka ku mutima", "Imiyoboro y'amaraso ijya hanze y'umutima", "Imiyoboro y'inkari", "Imiyoboro y'ibiryo"],
+    "answer": "Imiyoboro y'amaraso ijya hanze y'umutima",
+    "explanation": "Imiyoboro yitwa arteries itwara amaraso ava ku mutima ajya mu bice by'umubiri."
+  },
+  {
+    "question": "Ni uwuhe mubumbe munini kurusha indi yose mu zuba ryacu?",
+    "options": ["Isi", "Saturne", "Jupiter", "Neptune"],
+    "answer": "Jupiter",
+    "explanation": "Jupiter ni wo mubumbe munini muri gahunda y'imibumbe izenguruka izuba."
+  },
+  {
+    "question": "Ni ikihe gice cy'igihingwa gikora ibiryo hifashishijwe urumuri rw'izuba?",
+    "options": ["Imizi", "Amababi", "Indabo", "Imbuto"],
+    "answer": "Amababi",
+    "explanation": "Amababi menshi akora fotosinteze, aho igihingwa gikoresha urumuri, amazi na gaze ya karuboni."
+  },
+  {
+    "question": "Ni iyihe gaze abantu bahumeka bakenera kugira ngo ubuzima bukomeze?",
+    "options": ["Ogisijeni", "Heliyumu", "Neoni", "Hydrojeni"],
+    "answer": "Ogisijeni",
+    "explanation": "Uturemangingo twinshi two mu mubiri dukoresha ogisijeni mu kubyaza ingufu ibiryo."
+  },
+  {
+    "question": "Ni ikihe gikoresho gifasha kureba ibintu biri kure cyane mu kirere?",
+    "options": ["Mikrosikopi", "Telesikopi", "Termometere", "Igipimo cy'uburemere"],
+    "answer": "Telesikopi",
+    "explanation": "Telesikopi ifasha kureba ibintu byo mu kirere nk'imibumbe, inyenyeri n'inyenyeri nyinshi ziri kure."
+  },
+  {
+    "question": "Ni ikihe gice cy'umubiri gitunganya ibiryo nyuma yo kumira?",
+    "options": ["Igifu", "Umutima", "Uruhu", "Ugutwi"],
+    "answer": "Igifu",
+    "explanation": "Igifu kivanga ibiryo n'umutobe wacyo kugira ngo igogorwa rikomeze."
+  },
+  {
+    "question": "Ni uwuhe mubumbe tugezemo ubuzima tuzi kugeza ubu?",
+    "options": ["Venus", "Mars", "Isi", "Mercure"],
+    "answer": "Isi",
+    "explanation": "Isi ni wo mubumbe uzwi kugeza ubu ko ufite ubuzima busanzwe, harimo amazi y'amazi ku buso bwayo."
+  },
+  {
+    "question": "Ni ikihe kinyabuzima gikora ubuki?",
+    "options": ["Isazi", "Inzuki", "Imibu", "Ibinyugunyugu"],
+    "answer": "Inzuki",
+    "explanation": "Inzuki zikura umutobe mu ndabo zikawutunganya zikawubika nk'ubuki."
+  },
+  {
+    "question": "Ni iyihe nyamaswa y'inyamabere itera amagi?",
+    "options": ["Inka", "Intare", "Platipusi", "Inguge"],
+    "answer": "Platipusi",
+    "explanation": "Platipusi ni inyamabere idasanzwe itera amagi aho kubyara ibyana bizima."
+  },
+  {
+    "question": "Ni iyihe ngingo ifasha umuntu kumva amajwi?",
+    "options": ["Amaso", "Amatwi", "Izuru", "Ururimi"],
+    "answer": "Amatwi",
+    "explanation": "Amatwi yakira amajwi kandi akohereza ibimenyetso mu bwonko kugira ngo umuntu ayumve."
+  },
+  {
+    "question": "Ni iyihe ngingo igenzura ibikorwa byinshi by'umubiri n'ibitekerezo?",
+    "options": ["Umutima", "Umwijima", "Ubwonko", "Igifu"],
+    "answer": "Ubwonko",
+    "explanation": "Ubwonko butunganya amakuru kandi bugafasha kugenzura imikorere y'umubiri, kwibuka no gutekereza."
+  },
+  {
+    "question": "Ni uwuhe mugabane urimo igihugu cya Misiri?",
+    "options": ["Aziya gusa", "Afurika", "Uburayi", "Amerika y'Epfo"],
+    "answer": "Afurika",
+    "explanation": "Igice kinini cya Misiri kiri mu majyaruguru y'uburasirazuba bwa Afurika; igice cya Sinayi kiri muri Aziya."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Tokyo?",
+    "options": ["Ubushinwa", "Koreya y'Epfo", "Ubuyapani", "Tayilande"],
+    "answer": "Ubuyapani",
+    "explanation": "Tokyo ni umurwa mukuru w'Ubuyapani kandi ni umwe mu mijyi ikomeye ku isi."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Nairobi?",
+    "options": ["Uganda", "Kenya", "Tanzaniya", "Rwanda"],
+    "answer": "Kenya",
+    "explanation": "Nairobi ni umurwa mukuru wa Kenya, igihugu cyo muri Afurika y'Iburasirazuba."
+  },
+  {
+    "question": "Ni uwuhe mugezi uzwi cyane unyura muri Misiri?",
+    "options": ["Niger", "Nil", "Congo", "Zambezi"],
+    "answer": "Nil",
+    "explanation": "Umugezi wa Nil ufite uruhare rukomeye mu buzima, ubuhinzi n'amateka ya Misiri."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho umunara wa Eiffel?",
+    "options": ["Ubutaliyani", "Ubufaransa", "Espanye", "Ubudage"],
+    "answer": "Ubufaransa",
+    "explanation": "Umunara wa Eiffel uherereye i Paris, umurwa mukuru w'Ubufaransa."
+  },
+  {
+    "question": "Ni uwuhe mugabane urimo igihugu cya Brazil?",
+    "options": ["Afurika", "Aziya", "Amerika y'Epfo", "Uburayi"],
+    "answer": "Amerika y'Epfo",
+    "explanation": "Brazil ni igihugu kinini cyo muri Amerika y'Epfo kandi gifite igice kinini cy'ishyamba rya Amazone."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Canberra?",
+    "options": ["Nouvelle-Zélande", "Ositaraliya", "Kanada", "Irlande"],
+    "answer": "Ositaraliya",
+    "explanation": "Canberra ni umurwa mukuru wa Ositaraliya, nubwo Sydney na Melbourne ari imijyi izwi cyane."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho kuba gifite piramide za kera za Giza?",
+    "options": ["Misiri", "Maroc", "Etiyopiya", "Gana"],
+    "answer": "Misiri",
+    "explanation": "Piramide za Giza ni inyubako za kera zo muri Misiri zubatswe mu gihe cy'abafarawo."
+  },
+  {
+    "question": "Ni uwuhe mugabane ukonje cyane ku isi?",
+    "options": ["Afurika", "Antaragitika", "Aziya", "Amerika y'Amajyaruguru"],
+    "answer": "Antaragitika",
+    "explanation": "Antaragitika ni umugabane ukikijwe n'urubura kandi ufite ubushyuhe buri hasi cyane."
+  },
+  {
+    "question": "Ni ikihe gihugu kizwiho umurwa mukuru witwa Kigali?",
+    "options": ["Burundi", "Rwanda", "Uganda", "Malawi"],
+    "answer": "Rwanda",
+    "explanation": "Kigali ni umurwa mukuru w'u Rwanda, uri hagati mu gihugu."
+  },
+  {
+    "question": "Ni ikihe gihugu gifite umurwa mukuru witwa Addis Ababa?",
+    "options": ["Eritereya", "Somaliya", "Etiyopiya", "Sudani"],
+    "answer": "Etiyopiya",
+    "explanation": "Addis Ababa ni umurwa mukuru wa Etiyopiya kandi ni ihuriro rikomeye ry'imiryango mpuzamahanga muri Afurika."
+  },
+  {
+    "question": "Ni uruhe rurimi ruvugwa cyane muri Brazil?",
+    "options": ["Icyesipanyolo", "Igifaransa", "Igiporutigali", "Icyongereza"],
+    "answer": "Igiporutigali",
+    "explanation": "Igiporutigali ni rwo rurimi rwemewe kandi ruvugwa cyane muri Brazil kubera amateka y'ubukoloni bw'Abanyaporutigali."
+  },
+  {
+    "question": "Ni uwuhe mubare ukurikira 99?",
+    "options": ["98", "100", "101", "90"],
+    "answer": "100",
+    "explanation": "Iyo wongeyeho 1 kuri 99 ubona 100."
+  },
+  {
+    "question": "Igice cya kabiri cya 48 ni angahe?",
+    "options": ["12", "18", "24", "36"],
+    "answer": "24",
+    "explanation": "Kugabanya 48 kabiri ni ukubara 48 ÷ 2, bikangana na 24."
+  },
+  {
+    "question": "Inshuro 7 za 8 zingana iki?",
+    "options": ["48", "54", "56", "64"],
+    "answer": "56",
+    "explanation": "7 × 8 = 56. Kumenya imbonerahamwe yo gukuba bifasha kubara vuba."
+  },
+  {
+    "question": "Ni ikihe kimenyetso cy'imibare gisobanura guteranya?",
+    "options": ["−", "×", "+", "÷"],
+    "answer": "+",
+    "explanation": "Ikimenyetso + gikoreshwa mu guteranya imibare."
+  },
+  {
+    "question": "Inyabutatu ifite impande zingahe?",
+    "options": ["2", "3", "4", "5"],
+    "answer": "3",
+    "explanation": "Inyabutatu ni ishusho ifite impande eshatu n'uturemangingo dutatu."
+  },
+  {
+    "question": "Isaha imwe igira iminota ingahe?",
+    "options": ["30", "45", "60", "100"],
+    "answer": "60",
+    "explanation": "Isaha imwe igizwe n'iminota 60."
+  },
+  {
+    "question": "Icyumweru kigira iminsi ingahe?",
+    "options": ["5", "6", "7", "8"],
+    "answer": "7",
+    "explanation": "Icyumweru kigizwe n'iminsi irindwi, kuva ku wa mbere kugeza ku cyumweru."
+  },
+  {
+    "question": "Ni iyihe mibare iri hagati ya 20 na 22?",
+    "options": ["19", "21", "23", "24"],
+    "answer": "21",
+    "explanation": "Mu mibare ikurikirana, 21 iza nyuma ya 20 na mbere ya 22."
+  },
+  {
+    "question": "Ni iyihe mibare ingana na 5 × 5?",
+    "options": ["10", "15", "20", "25"],
+    "answer": "25",
+    "explanation": "5 × 5 = 25, bivuga guteranya gatanu inshuro eshanu."
+  },
+  {
+    "question": "Ni ikihe gikoresho gikoreshwa mu kwandika inyandiko kuri mudasobwa?",
+    "options": ["Mwandikisho", "Indangururamajwi", "Mugaragaza", "Printer"],
+    "answer": "Mwandikisho",
+    "explanation": "Mwandikisho (keyboard) ituma umuntu yandika inyuguti, imibare n'andi mabwiriza muri mudasobwa."
+  },
+  {
+    "question": "Ni ikihe gikoresho gisohora inyandiko ya mudasobwa ku rupapuro?",
+    "options": ["Mouse", "Printer", "Scanner", "Router"],
+    "answer": "Printer",
+    "explanation": "Printer icapa inyandiko n'amashusho biva muri mudasobwa ku rupapuro."
+  },
+  {
+    "question": "Ni iki interineti ifasha abantu gukora?",
+    "options": ["Gusa guteka", "Gusangira amakuru no kuvugana", "Gusimbuza amashanyarazi yose", "Guhagarika itumanaho"],
+    "answer": "Gusangira amakuru no kuvugana",
+    "explanation": "Interineti ituma abantu bashakisha amakuru, biga, bohererezanya ubutumwa kandi bavugana bari ahantu hatandukanye."
+  },
+  {
+    "question": "Ni ikihe gikoresho kigenda ku murongo w'ibiziga bibiri kandi gikoreshwa n'imbaraga z'umuntu?",
+    "options": ["Igare", "Imodoka", "Indege", "Ubwato"],
+    "answer": "Igare",
+    "explanation": "Igare rigendeshwa no gukanda amapederi, akazengurutsa ibiziga."
+  },
+  {
+    "question": "Ni ikihe gikoresho cyifashishwa mu kumenya icyerekezo cy'amajyaruguru?",
+    "options": ["Kompas", "Termometere", "Mikrosikopi", "Kalukireter"],
+    "answer": "Kompas",
+    "explanation": "Kompas ifasha kumenya icyerekezo, cyane cyane amajyaruguru, ikoresheje urushinge rwerekana umurima wa rukuruzi w'isi."
+  },
+  {
+    "question": "Ni ikihe kintu gitanga urumuri n'ubushyuhe ku isi ku manywa?",
+    "options": ["Ukwezi", "Izuba", "Mars", "Saturne"],
+    "answer": "Izuba",
+    "explanation": "Izuba ni inyenyeri itanga ingufu z'urumuri n'ubushyuhe, bigafasha ubuzima ku isi."
+  },
+  {
+    "question": "Ni ikihe gihe cy'umwaka kirangwa n'imvura nyinshi mu bice byinshi by'u Rwanda?",
+    "options": ["Igihe cy'imvura", "Igihe cy'izuba gusa", "Igihe cy'ubukonje bukabije", "Igihe cy'urubura ruhoraho"],
+    "answer": "Igihe cy'imvura",
+    "explanation": "Mu Rwanda, ibihe by'imvura bisanzwe birimo igihe cy'imvura nyinshi kuva ahagana muri Werurwe kugeza muri Gicurasi n'ikindi kuva ahagana muri Nzeri kugeza mu Ukuboza, nubwo bishobora guhinduka."
+  },
+  {
+    "question": "Ni ikihe gikorwa gifasha kurinda isuku y'amenyo?",
+    "options": ["Kuyakaragata n'amazi gusa rimwe mu kwezi", "Kuyasukura buri munsi ukoresheje uburoso n'umuti w'amenyo", "Kwirinda kunywa amazi", "Kutarya imboga"],
+    "answer": "Kuyasukura buri munsi ukoresheje uburoso n'umuti w'amenyo",
+    "explanation": "Gusukura amenyo nibura kabiri ku munsi ukoresheje umuti urimo fluoride bifasha kugabanya imyanda, amenyo kwangirika n'indwara z'ishinya."
+  },
+  {
+    "question": "Ni ikihe kinyobwa gifasha umubiri kutagira umwuma?",
+    "options": ["Amazi", "Amavuta", "Umusenyi", "Irangi"],
+    "answer": "Amazi",
+    "explanation": "Amazi afasha umubiri gukora imirimo yawo no gusimbuza amazi yatakaye."
+  },
+  {
+    "question": "Ni iyihe myitwarire ifasha kubungabunga ibidukikije?",
+    "options": ["Guta imyanda mu migezi", "Gutema ibiti byose", "Gutandukanya no kujugunya imyanda ahabugenewe", "Gutwika plastiki ahantu hose"],
+    "answer": "Gutandukanya no kujugunya imyanda ahabugenewe",
+    "explanation": "Gucunga imyanda neza bigabanya umwanda, kurinda amazi n'ubutaka kandi bigafasha kongera gukoresha ibishobora gusubirwamo."
+  },
+  {
+    "question": "Ni ikihe gikorwa kiba iyo amazi ahindutse umwuka bitewe n'ubushyuhe?",
+    "options": ["Gukonja", "Guhumuka", "Gukomera", "Gushonga"],
+    "answer": "Guhumuka",
+    "explanation": "Guhumuka ni igihe amazi ahinduka umwuka, urugero nk'amazi yo mu kidendezi agenda agabanuka bitewe n'izuba."
+  }
 
 
 
