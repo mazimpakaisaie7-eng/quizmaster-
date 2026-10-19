@@ -203,20 +203,6 @@
 "category": "Road Safety"
 },
 {
-"question": "Iyo ugeze ku ruziga rw'amasangano (roundabout), ni iki ugomba gukora mbere yo kwinjira?",
-"options": ["Kugabanya umuvuduko, kureba ibinyabiziga biri imbere no kubaha uburenganzira bwo kunyura hakurikijwe ibimenyetso", "Kwinjira utarebye kuko buri gihe ari wowe unyura mbere", "Guhagarara hagati y'uruziga kugira ngo utegure icyerekezo", "Kunyura mu cyerekezo icyo ari cyo cyose"],
-"answer": "Kugabanya umuvuduko, kureba ibinyabiziga biri imbere no kubaha uburenganzira bwo kunyura hakurikijwe ibimenyetso",
-"explanation": "Uruziga rw'amasangano rusaba kugenzura ibinyabiziga biri hafi no gukurikiza ibimenyetso bigena uburenganzira bwo kunyura. Tegura icyerekezo cyawe kandi utange ikimenyetso igihe bikenewe.",
-"category": "Road Safety"
-},
-{
-"question": "Iyo ugeze ku ruziga rw'amasangano ukaba ushaka gusohokera ku nzira ikurikira, ni iki kigufasha kubikora neza?",
-"options": ["Gukurikiza umurongo wawe, kugenzura impande no gutanga ikimenyetso mu gihe gikwiye", "Guhindura imirongo ako kanya utarebye", "Guhagarara mu ruziga kugira ngo abandi bagutambuke", "Gusohoka utitaye ku banyamaguru"],
-"answer": "Gukurikiza umurongo wawe, kugenzura impande no gutanga ikimenyetso mu gihe gikwiye",
-"explanation": "Gutegura aho usohokera no kugenzura impande bigufasha kutabangamira ibindi binyabiziga. Ikimenyetso kigomba gutangwa ku gihe kugira ngo abandi bumve icyerekezo cyawe.",
-"category": "Road Safety"
-},
-{
 "question": "Iyo umuhanda ugabanyijwemo imirongo myinshi igana mu cyerekezo kimwe, ugomba guhitamo umurongo ute?",
 "options": ["Umurongo uhuye n'icyerekezo cyawe n'ibikorwa uteganya, ukurikije ibimenyetso", "Umurongo urimo imodoka nyinshi buri gihe", "Umurongo uwo ari wo wose nta kugenzura", "Umurongo wo ku ruhande rw'abanyamaguru"],
 "answer": "Umurongo uhuye n'icyerekezo cyawe n'ibikorwa uteganya, ukurikije ibimenyetso",
