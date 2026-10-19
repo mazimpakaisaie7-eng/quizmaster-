@@ -3407,5 +3407,306 @@
 "answer": 1,
 "explanation": "Kigali ni umurwa mukuru w'u Rwanda. / Kigali is the capital of Rwanda."
 }
-
+[
+{
+"question": "Ni uwuhe mubumbe uzwiho kugira ibara ritukura? / Which planet is known as the Red Planet?",
+"options": ["Venusi / Venus", "Mars / Mars", "Jupiter / Jupiter", "Neptune / Neptune"],
+"answer": 1,
+"explanation": "Mars izwi nk'umubumbe utukura kubera ubutaka bwayo burimo oxyde y'icyuma. / Mars is called the Red Planet because its surface contains iron oxide."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Tanzania? / What is the capital of Tanzania?",
+"options": ["Arusha / Arusha", "Dodoma / Dodoma", "Dar es Salaam / Dar es Salaam", "Mwanza / Mwanza"],
+"answer": 1,
+"explanation": "Dodoma ni umurwa mukuru wa Tanzania. / Dodoma is the capital of Tanzania."
+},
+{
+"question": "Ni ikihe gice cy'amaraso gifasha gutwara oxygene? / Which component of blood carries oxygen?",
+"options": ["Uturemangingo dutukura / Red blood cells", "Uruzi rw'amaraso / Plasma", "Uturemangingo twera / White blood cells", "Udufashi tw'amaraso / Platelets"],
+"answer": 0,
+"explanation": "Uturemangingo dutukura turimo hemoglobine ifata oxygene. / Red blood cells contain hemoglobin, which carries oxygen."
+},
+{
+"question": "Ni uwuhe mugabane urimo ubutayu bwa Sahara? / Which continent contains the Sahara Desert?",
+"options": ["Afurika / Africa", "Aziya / Asia", "Uburayi / Europe", "Amerika y'Epfo / South America"],
+"answer": 0,
+"explanation": "Ubutayu bwa Sahara buri muri Afurika. / The Sahara Desert is in Africa."
+},
+{
+"question": "Ni ikihe gikoresho gipima uburemere bw'ikintu? / Which instrument is commonly used to measure an object's mass?",
+"options": ["Telesikopi / Telescope", "Balance / Balance scale", "Compass / Compass", "Thermometer / Thermometer"],
+"answer": 1,
+"explanation": "Balance ikoreshwa mu kugereranya cyangwa gupima uburemere bw'ibintu. / A balance is used to measure or compare the mass of objects."
+},
+{
+"question": "Ni uruhe rurimi rukoreshwa cyane muri Angola? / Which language is the official language of Angola?",
+"options": ["Igifaransa / French", "Igiporutigali / Portuguese", "Icyongereza / English", "Icyarabu / Arabic"],
+"answer": 1,
+"explanation": "Igiporutigali ni rwo rurimi rwemewe muri Angola. / Portuguese is the official language of Angola."
+},
+{
+"question": "Ni angahe 144 ugabanyije na 12? / What is 144 divided by 12?",
+"options": ["10", "11", "12", "14"],
+"answer": 2,
+"explanation": "144 ÷ 12 = 12. / 144 divided by 12 equals 12."
+},
+{
+"question": "Ni ikihe kinyabutabire gifite ikimenyetso Fe? / Which chemical element has the symbol Fe?",
+"options": ["Fer / Iron", "Zahabu / Gold", "Ifeza / Silver", "Umuringa / Copper"],
+"answer": 0,
+"explanation": "Fe ni ikimenyetso cya shimi cya fer. / Fe is the chemical symbol for iron."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho kugira urushinge rwinshi ku mubiri? / Which animal is known for having many spines on its body?",
+"options": ["Urukwavu / Rabbit", "Ingeregere / Porcupine", "Inka / Cow", "Imbwa / Dog"],
+"answer": 1,
+"explanation": "Ingeregere ifite amahwa maremare ayifasha kwirinda abanzi. / A porcupine has sharp quills that help protect it."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Ethiopia? / What is the capital of Ethiopia?",
+"options": ["Nairobi / Nairobi", "Khartoum / Khartoum", "Addis Ababa / Addis Ababa", "Kampala / Kampala"],
+"answer": 2,
+"explanation": "Addis Ababa ni umurwa mukuru wa Ethiopia. / Addis Ababa is the capital of Ethiopia."
+},
+{
+"question": "Ni ikihe gice cy'umubiri kirinda ubwonko? / Which part of the body protects the brain?",
+"options": ["Urubavu / Rib cage", "Igihanga / Skull", "Igituza / Chest", "Urutirigongo / Spine"],
+"answer": 1,
+"explanation": "Igihanga kizengurutse ubwonko kikaburinda. / The skull surrounds and protects the brain."
+},
+{
+"question": "Ni uwuhe mubare ungana na 7 ikubye na 6? / What is 7 multiplied by 6?",
+"options": ["36", "40", "42", "48"],
+"answer": 2,
+"explanation": "7 × 6 = 42. / Seven times six equals 42."
+},
+{
+"question": "Ni ikihe gihugu kizwiho umujyi wa Rio de Janeiro? / Which country is home to Rio de Janeiro?",
+"options": ["Brazil / Brazil", "Argentina / Argentina", "Chile / Chile", "Peru / Peru"],
+"answer": 0,
+"explanation": "Rio de Janeiro ni umujyi wo muri Brazil. / Rio de Janeiro is a city in Brazil."
+},
+{
+"question": "Ni ikihe kinyabutabire gifasha amagufa gukomera? / Which mineral is important for strong bones?",
+"options": ["Kalisiyumu / Calcium", "Helium / Helium", "Mercury / Mercury", "Chlorine / Chlorine"],
+"answer": 0,
+"explanation": "Kalisiyumu ni ingenzi mu mikurire no gukomera kw'amagufa. / Calcium is important for bone growth and strength."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Seoul? / Which country has Seoul as its capital?",
+"options": ["Koreya y'Epfo / South Korea", "Koreya ya Ruguru / North Korea", "Ubuyapani / Japan", "Ubushinwa / China"],
+"answer": 0,
+"explanation": "Seoul ni umurwa mukuru wa Koreya y'Epfo. / Seoul is the capital of South Korea."
+},
+{
+"question": "Ni iyihe nyamaswa irya ibimera gusa? / Which animal is a herbivore?",
+"options": ["Intare / Lion", "Ingwe / Leopard", "Inka / Cow", "Ingona / Crocodile"],
+"answer": 2,
+"explanation": "Inka irya ibimera nk'ibyatsi. / Cows eat plants such as grass."
+},
+{
+"question": "Ni iyihe nyanja iri hagati ya Afurika n'Uburayi? / Which sea lies between Africa and Europe?",
+"options": ["Inyanja Itukura / Red Sea", "Inyanja ya Mediterane / Mediterranean Sea", "Inyanja ya Karayibe / Caribbean Sea", "Inyanja ya Arabiya / Arabian Sea"],
+"answer": 1,
+"explanation": "Inyanja ya Mediterane iri hagati ya Afurika n'Uburayi. / The Mediterranean Sea lies between Africa and Europe."
+},
+{
+"question": "Ni ikihe gikoresho gikoreshwa mu kureba utunyabuzima duto cyane? / Which instrument is used to observe very small organisms?",
+"options": ["Telesikopi / Telescope", "Mikrosikopi / Microscope", "Periskopi / Periscope", "Compass / Compass"],
+"answer": 1,
+"explanation": "Mikrosikopi yongera ishusho y'ibintu bito cyane. / A microscope magnifies very small objects."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Accra? / Which country has Accra as its capital?",
+"options": ["Ghana / Ghana", "Nigeria / Nigeria", "Senegal / Senegal", "Mali / Mali"],
+"answer": 0,
+"explanation": "Accra ni umurwa mukuru wa Ghana. / Accra is the capital of Ghana."
+},
+{
+"question": "Ni iyihe mibare ikurikira muri uru ruhererekane: 3, 6, 12, 24, ...? / What comes next: 3, 6, 12, 24, ...?",
+"options": ["30", "36", "48", "52"],
+"answer": 2,
+"explanation": "Buri mubare wikuba kabiri, bityo 24 × 2 = 48. / Each number doubles, so 24 × 2 = 48."
+},
+{
+"question": "Ni iyihe nyamaswa ifite imirongo y'umukara n'umweru? / Which animal has black and white stripes?",
+"options": ["Zebra / Zebra", "Ingwe / Leopard", "Imparage / Giraffe", "Imbogo / Buffalo"],
+"answer": 0,
+"explanation": "Zebra izwiho kugira imirongo y'umukara n'umweru. / Zebras are known for their black and white stripes."
+},
+{
+"question": "Ni ikihe gihugu kizwiho umunara wa Pisa uhetamye? / Which country is home to the Leaning Tower of Pisa?",
+"options": ["Ubutaliyani / Italy", "Espagne / Spain", "Ubugereki / Greece", "Austria / Austria"],
+"answer": 0,
+"explanation": "Umunara wa Pisa uri mu Butaliyani. / The Leaning Tower of Pisa is in Italy."
+},
+{
+"question": "Ni ikihe gice cy'igihingwa gikurura urumuri rw'izuba? / Which plant part mainly captures sunlight?",
+"options": ["Imizi / Roots", "Amababi / Leaves", "Imbuto / Seeds", "Imizi mito / Root hairs"],
+"answer": 1,
+"explanation": "Amababi akurura urumuri rukenerwa muri photosynthesis. / Leaves capture light needed for photosynthesis."
+},
+{
+"question": "Ni angahe iminota iri mu masaha atatu? / How many minutes are in three hours?",
+"options": ["120", "150", "180", "240"],
+"answer": 2,
+"explanation": "Isaha imwe ifite iminota 60; 3 × 60 = 180. / One hour has 60 minutes; 3 × 60 = 180."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Senegal? / What is the capital of Senegal?",
+"options": ["Dakar / Dakar", "Bamako / Bamako", "Conakry / Conakry", "Lomé / Lomé"],
+"answer": 0,
+"explanation": "Dakar ni umurwa mukuru wa Senegal. / Dakar is the capital of Senegal."
+},
+{
+"question": "Ni ikihe kinyabutabire gifite ikimenyetso Au? / Which chemical element has the symbol Au?",
+"options": ["Ifaranga / Silver", "Zahabu / Gold", "Fer / Iron", "Umuringa / Copper"],
+"answer": 1,
+"explanation": "Au ni ikimenyetso cya shimi cya zahabu. / Au is the chemical symbol for gold."
+},
+{
+"question": "Ni iyihe nyamaswa ikoresha ururimi rurerure mu gufata ibimonyo? / Which animal uses a long tongue to catch ants?",
+"options": ["Aardvark / Aardvark", "Ifarashi / Horse", "Intama / Sheep", "Imvubu / Hippopotamus"],
+"answer": 0,
+"explanation": "Aardvark ikoresha ururimi rwayo rurerure mu kurya ibimonyo n'utundi dukoko. / The aardvark uses its long tongue to eat ants and other insects."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Maroc? / What is the capital of Morocco?",
+"options": ["Casablanca / Casablanca", "Rabat / Rabat", "Marrakech / Marrakech", "Tangier / Tangier"],
+"answer": 1,
+"explanation": "Rabat ni umurwa mukuru wa Maroc. / Rabat is the capital of Morocco."
+},
+{
+"question": "Ni ikihe gikoresho gifasha kugena uburebure cyangwa intera? / Which tool is commonly used to measure length or distance?",
+"options": ["Igipimo / Measuring tape", "Thermometer / Thermometer", "Compass / Compass", "Barometer / Barometer"],
+"answer": 0,
+"explanation": "Igipimo gikoreshwa mu gupima uburebure n'intera. / A measuring tape is used to measure length and distance."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Buenos Aires? / Which country has Buenos Aires as its capital?",
+"options": ["Argentina / Argentina", "Uruguay / Uruguay", "Brazil / Brazil", "Colombia / Colombia"],
+"answer": 0,
+"explanation": "Buenos Aires ni umurwa mukuru wa Argentina. / Buenos Aires is the capital of Argentina."
+},
+{
+"question": "Ni iyihe gaze iboneka cyane mu kirere duhumeka? / Which gas makes up most of the air we breathe?",
+"options": ["Oxygene / Oxygen", "Azote / Nitrogen", "Carbone dioxide / Carbon dioxide", "Hydrogène / Hydrogen"],
+"answer": 1,
+"explanation": "Azote igize hafi 78% by'ikirere cy'Isi. / Nitrogen makes up about 78% of Earth's atmosphere."
+},
+{
+"question": "Ni iyihe nyamaswa ibarirwa mu nyamaswa zo mu mazi kandi ihumeka ikoresheje ibihaha? / Which aquatic mammal breathes using lungs?",
+"options": ["Dolphin / Dolphin", "Shark / Shark", "Octopus / Octopus", "Trout / Trout"],
+"answer": 0,
+"explanation": "Dolphin ni inyamabere yo mu mazi izamuka hejuru kugira ngo ihumeke. / A dolphin is an aquatic mammal that surfaces to breathe."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Lusaka? / Which country has Lusaka as its capital?",
+"options": ["Zambia / Zambia", "Zimbabwe / Zimbabwe", "Malawi / Malawi", "Mozambique / Mozambique"],
+"answer": 0,
+"explanation": "Lusaka ni umurwa mukuru wa Zambia. / Lusaka is the capital of Zambia."
+},
+{
+"question": "Ni ikihe gice cy'ubwonko gifasha kugenzura kuringaniza umubiri no guhuza ibikorwa by'imikaya? / Which part of the brain helps control balance and coordinate movement?",
+"options": ["Cerebellum / Cerebellum", "Retina / Retina", "Pancreas / Pancreas", "Trachea / Trachea"],
+"answer": 0,
+"explanation": "Cerebellum ifasha kuringaniza umubiri no guhuza ibikorwa by'imikaya. / The cerebellum helps control balance and coordinate movements."
+},
+{
+"question": "Ni angahe 15% bya 200? / What is 15% of 200?",
+"options": ["15", "20", "30", "40"],
+"answer": 2,
+"explanation": "15% bya 200 ni 0.15 × 200 = 30. / 15% of 200 is 0.15 × 200 = 30."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Zimbabwe? / What is the capital of Zimbabwe?",
+"options": ["Harare / Harare", "Lusaka / Lusaka", "Gaborone / Gaborone", "Maputo / Maputo"],
+"answer": 0,
+"explanation": "Harare ni umurwa mukuru wa Zimbabwe. / Harare is the capital of Zimbabwe."
+},
+{
+"question": "Ni iyihe nyamaswa ifite umufuka ku nda aho ibyana byayo bikurira? / Which animal carries its young in a pouch?",
+"options": ["Kangaroo / Kangaroo", "Zebra / Zebra", "Rhino / Rhino", "Gorilla / Gorilla"],
+"answer": 0,
+"explanation": "Kangaroo ni inyamabere ifite umufuka aho umwana wayo akurira nyuma yo kuvuka. / A kangaroo is a mammal whose young develop in a pouch after birth."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Ottawa? / Which country has Ottawa as its capital?",
+"options": ["Canada / Canada", "Australia / Australia", "Ireland / Ireland", "Iceland / Iceland"],
+"answer": 0,
+"explanation": "Ottawa ni umurwa mukuru wa Canada. / Ottawa is the capital of Canada."
+},
+{
+"question": "Ni ikihe kinyabutabire gituma ibimera byinshi bigira ibara ry'icyatsi? / Which pigment gives many plants their green color?",
+"options": ["Hemoglobine / Hemoglobin", "Chlorophyll / Chlorophyll", "Melanin / Melanin", "Keratin / Keratin"],
+"answer": 1,
+"explanation": "Chlorophyll ni pigment ifasha ibimera gufata urumuri mu gukora photosynthesis. / Chlorophyll is a pigment that helps plants absorb light for photosynthesis."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Pakistan? / What is the capital of Pakistan?",
+"options": ["Karachi / Karachi", "Lahore / Lahore", "Islamabad / Islamabad", "Peshawar / Peshawar"],
+"answer": 2,
+"explanation": "Islamabad ni umurwa mukuru wa Pakistan. / Islamabad is the capital of Pakistan."
+},
+{
+"question": "Ni iyihe mibare iza gukurikira: 100, 90, 80, 70, ...? / What number comes next: 100, 90, 80, 70, ...?",
+"options": ["65", "60", "55", "50"],
+"answer": 1,
+"explanation": "Buri mubare ugabanukaho 10, bityo 70 - 10 = 60. / Each number decreases by 10, so 70 - 10 = 60."
+},
+{
+"question": "Ni ikihe gihugu kizwiho umusozi wa Kilimanjaro? / Which country is home to Mount Kilimanjaro?",
+"options": ["Kenya / Kenya", "Tanzania / Tanzania", "Uganda / Uganda", "Rwanda / Rwanda"],
+"answer": 1,
+"explanation": "Umusozi wa Kilimanjaro uri muri Tanzania. / Mount Kilimanjaro is in Tanzania."
+},
+{
+"question": "Ni iyihe nyamaswa ikoresha amashanyarazi y'umubiri kugira ngo ibone aho iri mu mazi? / Which fish uses electrical signals to sense its surroundings?",
+"options": ["Electric eel / Electric eel", "Salmon / Salmon", "Tuna / Tuna", "Clownfish / Clownfish"],
+"answer": 0,
+"explanation": "Electric eel ishobora gukora amashanyarazi kandi ikayakoresha mu gufata umuhigo no kwiyobora. / An electric eel can generate electricity and use electrical signals for hunting and navigation."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Thailand? / What is the capital of Thailand?",
+"options": ["Bangkok / Bangkok", "Hanoi / Hanoi", "Manila / Manila", "Jakarta / Jakarta"],
+"answer": 0,
+"explanation": "Bangkok ni umurwa mukuru wa Thailand. / Bangkok is the capital of Thailand."
+},
+{
+"question": "Ni ikihe gikoresho kibika amakuru mu buryo bwa digitale kandi kigakoreshwa muri mudasobwa? / Which device stores digital data in a computer?",
+"options": ["Hard drive / Hard drive", "Speaker / Speaker", "Microphone / Microphone", "Webcam / Webcam"],
+"answer": 0,
+"explanation": "Hard drive ikoreshwa mu kubika dosiye n'andi makuru ya mudasobwa. / A hard drive stores files and other computer data."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho kubaka ingomero mu migezi? / Which animal is known for building dams in rivers?",
+"options": ["Beaver / Beaver", "Otter / Otter", "Fox / Fox", "Badger / Badger"],
+"answer": 0,
+"explanation": "Beaver ikoresha amashami n'ibindi bikoresho mu kubaka ingomero. / Beavers use branches and other materials to build dams."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Hanoi? / Which country has Hanoi as its capital?",
+"options": ["Vietnam / Vietnam", "Laos / Laos", "Cambodia / Cambodia", "Malaysia / Malaysia"],
+"answer": 0,
+"explanation": "Hanoi ni umurwa mukuru wa Vietnam. / Hanoi is the capital of Vietnam."
+},
+{
+"question": "Ni iyihe nyamaswa ifite amahembe abiri ku zuru? / Which animal usually has two horns on its nose?",
+"options": ["Rhinoceros / Rhinoceros", "Elephant / Elephant", "Giraffe / Giraffe", "Hippo / Hippopotamus"],
+"answer": 0,
+"explanation": "Ubwoko bwinshi bw'inkura bufite amahembe abiri ku zuru. / Many rhinoceros species have two horns on their nose."
+},
+{
+"question": "Ni uwuhe mubare ungana na kare ya 9? / What is 9 squared?",
+"options": ["18", "72", "81", "99"],
+"answer": 2,
+"explanation": "9 × 9 = 81. / Nine squared equals 81."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Finland? / What is the capital of Finland?",
+"options": ["Oslo / Oslo", "Stockholm / Stockholm", "Helsinki / Helsinki", "Copenhagen / Copenhagen"],
+"answer": 2,
+"explanation": "Helsinki ni umurwa mukuru wa Finland. / Helsinki is the capital of Finland."
+}
+]
 
