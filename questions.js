@@ -11,12 +11,12 @@
     QUESTIONS_FILE: "./questions.json",
 
     QUESTIONS_PER_ROUND: 10,
-    TOTAL_ROUNDS: 10,
+    TOTAL_ROUNDS:..,
 
-    TIME_PER_QUESTION: 20,
+    TIME_PER_QUESTION: 30,
     POINTS_PER_CORRECT: 10,
 
-    UNLOCK_PERCENT: 60,
+    UNLOCK_PERCENT: 70,
 
     MUSIC_FILE: "./mythica.mp3"
   };
