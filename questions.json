@@ -1,458 +1,430 @@
-
 [
-  {
-    "question": "Iyo ubonye itara ritukura ku masangano y'umuhanda, ukora iki?",
-    "options": ["Guhagarara mbere y'umurongo wabigenewe", "Kwihuta ukambuka", "Kuvuza ihoni ugakomeza", "Guhindukira ako kanya"],
-    "answer": "Guhagarara mbere y'umurongo wabigenewe",
-    "explanation": "Itara ritukura risaba guhagarara no gutegereza ko wemerewe gukomeza.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Itara ry'umuhondo ku masangano y'umuhanda risobanura iki?",
-    "options": ["Kwitegura guhagarara niba bishoboka mu mutekano", "Kwihuta uko ushoboye", "Gusubira inyuma", "Kwirengagiza irindi tara"],
-    "answer": "Kwitegura guhagarara niba bishoboka mu mutekano",
-    "explanation": "Itara ry'umuhondo riburira ko ibimenyetso bigiye guhinduka. Ugomba kwitonda no guhagarara niba bishoboka mu mutekano.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo itara ry'icyatsi ryatse, umushoferi agomba gukora iki?",
-    "options": ["Gukomeza yitonze igihe inzira ifunguye", "Guhagarara burundu", "Kunyura atarebye", "Kwirengagiza abanyamaguru"],
-    "answer": "Gukomeza yitonze igihe inzira ifunguye",
-    "explanation": "Icyatsi cyemerera gukomeza, ariko ugomba kugenzura ko inzira itabangamiwe.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki ugomba kwambara umukandara w'umutekano mu modoka?",
-    "options": ["Kugabanya ibyago byo gukomereka mu mpanuka", "Kongera umuvuduko", "Kugabanya lisansi", "Gufasha imodoka guhindukira"],
-    "answer": "Kugabanya ibyago byo gukomereka mu mpanuka",
-    "explanation": "Umukandara w'umutekano ufasha kurinda abagenzi igihe habaye impanuka cyangwa imodoka ihagaze gitunguranye.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo wegereye ahambukirwa n'abanyamaguru, ugomba gukora iki?",
-    "options": ["Kugabanya umuvuduko no kwitegura guhagarara", "Kwihuta ngo uharenge", "Kuvuza ihoni ugakomeza", "Kunyura ku ruhande utarebye"],
-    "answer": "Kugabanya umuvuduko no kwitegura guhagarara",
-    "explanation": "Ahambukirwa n'abanyamaguru hasaba ubwitonzi. Bahe inzira igihe amategeko abiteganya.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Mbere yo guhindura icyerekezo, ni iki ugomba gukora?",
-    "options": ["Kureba indorerwamo, kugenzura ahatagaragara no gutanga ikimenyetso", "Guhindukira ako kanya", "Kuvuza ihoni gusa", "Gufata feri utarebye"],
-    "answer": "Kureba indorerwamo, kugenzura ahatagaragara no gutanga ikimenyetso",
-    "explanation": "Ibi bifasha kumenya abandi bakoresha umuhanda no kubamenyesha icyerekezo ugiye gufata.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo utwaye imodoka mu mvura nyinshi, ni iki ukwiye gukora?",
-    "options": ["Kugabanya umuvuduko no kongera intera", "Kongera umuvuduko", "Kwegera imodoka ikuri imbere", "Gukoresha telefoni"],
-    "answer": "Kugabanya umuvuduko no kongera intera",
-    "explanation": "Umuhanda utose ushobora kunyerera kandi feri zigatinda gufata. Umuvuduko muke n'intera ihagije bifasha kwirinda impanuka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki bidakwiye gukoresha telefoni uyitunze mu ntoki utwaye?",
-    "options": ["Kuko ikurangaza kandi ikagabanya kwita ku muhanda", "Kuko ituma imodoka ihagarara", "Kuko yangiza amapine", "Kuko ituma umuhanda uba muto"],
-    "answer": "Kuko ikurangaza kandi ikagabanya kwita ku muhanda",
-    "explanation": "Gukoresha telefoni utwaye bikurangaza kandi bikongera ibyago by'impanuka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ikinyabiziga cy'ubutabazi gifite sireni cyegereye, ukora iki?",
-    "options": ["Kugikorera inzira mu mutekano", "Kukiruka inyuma", "Gufunga inzira yacyo", "Kwihuta kugira ngo ugihige"],
-    "answer": "Kugikorera inzira mu mutekano",
-    "explanation": "Ikinyabiziga cy'ubutabazi gikeneye kunyura vuba. Gabanya umuvuduko kandi ukorere inzira mu buryo butabangamira abandi.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ukwiye kugenzura mbere y'urugendo?",
-    "options": ["Amapine, feri, amatara n'ibindi bikoresho by'ingenzi", "Ibara ry'imodoka gusa", "Radiyo gusa", "Intebe y'umushoferi gusa"],
-    "answer": "Amapine, feri, amatara n'ibindi bikoresho by'ingenzi",
-    "explanation": "Kugenzura uko ikinyabiziga kimeze mbere y'urugendo bifasha gutahura ibibazo bishobora guteza impanuka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ubonye abana hafi y'umuhanda, ugomba gukora iki?",
-    "options": ["Kugabanya umuvuduko no kwitegura guhagarara", "Kwihuta", "Kunyura hafi yabo", "Kureba imbere gusa"],
-    "answer": "Kugabanya umuvuduko no kwitegura guhagarara",
-    "explanation": "Abana bashobora kwinjira mu muhanda batabanje kureba neza, bityo umushoferi agomba kugenda yitonze.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ikimenyetso kibuza kunyura mu cyerekezo runaka gisaba iki?",
-    "options": ["Gukurikiza ikimenyetso no guhitamo indi nzira yemewe", "Kunyuramo niba nta modoka ihari", "Kukirengagiza nijoro", "Kuhagarara hagati mu muhanda"],
-    "answer": "Gukurikiza ikimenyetso no guhitamo indi nzira yemewe",
-    "explanation": "Ibimenyetso bibuza icyerekezo runaka bigomba kubahirizwa kugira ngo urujya n'uruza rugende neza kandi mu mutekano.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni ryari amatara y'imodoka aba ingenzi cyane?",
-    "options": ["Mu mwijima cyangwa igihe utabona neza", "Ku manywa gusa", "Iyo umuhanda nta bandi urimo gusa", "Iyo imodoka ihagaze gusa"],
-    "answer": "Mu mwijima cyangwa igihe utabona neza",
-    "explanation": "Amatara afasha umushoferi kubona umuhanda no gutuma abandi bakoresha umuhanda babona ikinyabiziga.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo imodoka ikuri imbere ihagaze gitunguranye, ukwiye gukora iki?",
-    "options": ["Kugumana intera ihagije no gufata feri mu buryo bugenzuwe", "Kuyegera cyane", "Guhindukira utarebye", "Gukomeza umuvuduko"],
-    "answer": "Kugumana intera ihagije no gufata feri mu buryo bugenzuwe",
-    "explanation": "Intera ihagije iguha umwanya wo kwitabara igihe ikinyabiziga kiri imbere kigabanyije umuvuduko cyangwa gihagaze.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki utagomba gutwara imodoka unaniwe cyane cyangwa usinziriye?",
-    "options": ["Kuko bigabanya ubushishozi n'ubushobozi bwo kwitabara", "Kuko bituma amapine aba mato", "Kuko bituma imodoka ihita izima", "Kuko bituma umuhanda ugabanuka"],
-    "answer": "Kuko bigabanya ubushishozi n'ubushobozi bwo kwitabara",
-    "explanation": "Umunaniro n'ibitotsi bituma utinda kubona ibyago no gufata ibyemezo. Ruhuka mbere yo gukomeza urugendo.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ubonye ikimenyetso kiburira ko umuhanda uhetamye imbere, ukora iki?",
-    "options": ["Kugabanya umuvuduko mbere yo kugera aho uhetamye", "Kongera umuvuduko", "Gufunga amatara", "Kureba inyuma gusa"],
-    "answer": "Kugabanya umuvuduko mbere yo kugera aho uhetamye",
-    "explanation": "Kugabanya umuvuduko mbere y'ahantu h'ikoni bifasha kugenzura ikinyabiziga no kuguma mu nzira yawe.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Mbere yo gusubiza imodoka inyuma, ugomba gukora iki?",
-    "options": ["Kugenzura inyuma n'impande zose no kugenda buhoro", "Gusubira inyuma wihuta", "Kureba imbere gusa", "Kwirengagiza abantu bari hafi"],
-    "answer": "Kugenzura inyuma n'impande zose no kugenda buhoro",
-    "explanation": "Abantu cyangwa ibintu bishobora kuba ahatagaragara mu ndorerwamo. Kugenzura neza bigabanya ibyago byo kubigonga.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ikimenyetso gisaba kugabanya umuvuduko gihari, ukora iki?",
-    "options": ["Kugabanya umuvuduko no kubahiriza ikimenyetso", "Kukirengagiza", "Kongera umuvuduko", "Guhagarara hagati mu muhanda buri gihe"],
-    "answer": "Kugabanya umuvuduko no kubahiriza ikimenyetso",
-    "explanation": "Ibimenyetso by'umuvuduko bishyirwaho bitewe n'imiterere y'umuhanda n'umutekano w'abawukoresha.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo imodoka itangiye kunyerera ku muhanda utose, ukwiye gukora iki?",
-    "options": ["Kugabanya umuvuduko buhoro no kwirinda ibikorwa bitunguranye", "Gukata uruziga cyane", "Gufata feri mu buryo butunguranye", "Kureka kugenzura uruziga"],
-    "answer": "Kugabanya umuvuduko buhoro no kwirinda ibikorwa bitunguranye",
-    "explanation": "Ibikorwa bitunguranye bishobora gutuma ikinyabiziga kinyerera kurushaho. Gerageza kugenzura uruziga no kugabanya umuvuduko witonze.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki ugomba kugumana intera ihagije n'imodoka ikuri imbere?",
-    "options": ["Kugira umwanya wo kwitabara", "Kugira ngo utabona ibimenyetso", "Kugira ngo abandi batakubona", "Kugira ngo ufate feri buri kanya"],
-    "answer": "Kugira umwanya wo kwitabara",
-    "explanation": "Intera ihagije iguha igihe cyo kugabanya umuvuduko cyangwa guhagarara igihe habaye ikibazo.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Mbere yo guca ku kindi kinyabiziga, ugomba gukora iki?",
-    "options": ["Kugenzura ko amategeko abyemera kandi inzira ifunguye", "Guca aho ari ho hose", "Kunyura utarebye", "Gukomeza mu murongo wo hagati igihe cyose"],
-    "answer": "Kugenzura ko amategeko abyemera kandi inzira ifunguye",
-    "explanation": "Guca ku kindi kinyabiziga bigomba gukorwa gusa igihe byemewe kandi bishobora gukorwa mu mutekano.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ugeze ku masangano adafite amatara, ugomba gukora iki?",
-    "options": ["Kugabanya umuvuduko, kureba impande zose no gukurikiza amategeko y'uburenganzira bwo kunyura", "Kunyura wihuta", "Gutekereza ko ufite inzira buri gihe", "Kwirengagiza ibindi binyabiziga"],
-    "answer": "Kugabanya umuvuduko, kureba impande zose no gukurikiza amategeko y'uburenganzira bwo kunyura",
-    "explanation": "Masangano asaba kwitonda no kugenzura ibyerekezo byose mbere yo kwinjira cyangwa gukomeza.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo umupolisi uyobora umuhanda agusabye guhagarara, ukora iki?",
-    "options": ["Guhagarara mu mutekano no gukurikiza amabwiriza ye", "Gukomeza kuko itara ari icyatsi", "Kongera umuvuduko", "Guhindukira kugira ngo umucike"],
-    "answer": "Guhagarara mu mutekano no gukurikiza amabwiriza ye",
-    "explanation": "Amabwiriza y'umupolisi uyobora umuhanda agomba kubahirizwa. Hagarara ahatekanye kandi ukurikize amabwiriza.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki gutwara imodoka nyuma yo kunywa inzoga ari bibi?",
-    "options": ["Kuko inzoga zigabanya ubushishozi n'ubushobozi bwo kwitabara", "Kuko zituma umuhanda uba muto", "Kuko zituma amatara azima", "Kuko zituma imodoka iba yoroshye"],
-    "answer": "Kuko inzoga zigabanya ubushishozi n'ubushobozi bwo kwitabara",
-    "explanation": "Inzoga zigira ingaruka ku mitekerereze no ku bushobozi bwo gutwara neza. Ntugatware nyuma yo kunywa inzoga.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ubonye ikimenyetso gisaba guhagarara burundu, ukora iki?",
-    "options": ["Guhagarara neza, kugenzura inzira, hanyuma ugakomeza mu mutekano", "Kugabanya umuvuduko gusa", "Kuvuza ihoni ugakomeza", "Guhagarara gusa iyo hari imodoka"],
-    "answer": "Guhagarara neza, kugenzura inzira, hanyuma ugakomeza mu mutekano",
-    "explanation": "Ikimenyetso cyo guhagarara burundu gisaba guhagarara mbere yo gukomeza, nubwo waba ubona nta kindi kinyabiziga kiri hafi.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo utwaye igare nijoro, ni iki cyongera umutekano wawe?",
-    "options": ["Gukoresha amatara n'ibikoresho bigaragara", "Kugenda utagaragara", "Kuzimya amatara yose", "Kugenda hagati mu muhanda utitaye ku bandi"],
-    "answer": "Gukoresha amatara n'ibikoresho bigaragara",
-    "explanation": "Amatara n'ibikoresho bigaragara bifasha abandi bakoresha umuhanda kubona uri ku igare, cyane cyane nijoro.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki bidakwiye gutwara abantu barenze ubushobozi bw'ikinyabiziga?",
-    "options": ["Kuko bishobora kubangamira kugenzura ikinyabiziga no gushyira abagenzi mu kaga", "Kuko bituma imodoka igira amabara menshi", "Kuko bituma umuhanda uba mugari", "Kuko feri zitagikenewe"],
-    "answer": "Kuko bishobora kubangamira kugenzura ikinyabiziga no gushyira abagenzi mu kaga",
-    "explanation": "Kurenza ubushobozi bw'ikinyabiziga bishobora kugira ingaruka ku buringanire, feri n'umutekano w'abagenzi.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo wegereye inzira ya gari ya moshi, ukwiye gukora iki?",
-    "options": ["Kugabanya umuvuduko no kubahiriza ibimenyetso n'inzitizi", "Kunyura vuba utarebye", "Guhagarara ku murongo wa gari ya moshi", "Kwirengagiza amatara n'inzogera"],
-    "answer": "Kugabanya umuvuduko no kubahiriza ibimenyetso n'inzitizi",
-    "explanation": "Ntukambuke inzira ya gari ya moshi igihe inzitizi zifunze cyangwa ibimenyetso bikubuza gukomeza.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo feri z'imodoka zitangiye gukora nabi uri mu rugendo, ukwiye gukora iki?",
-    "options": ["Kugabanya umuvuduko witonze, guhagarara ahatekanye no gusaba ubufasha", "Gukomeza nk'ibisanzwe", "Kongera umuvuduko", "Kwirengagiza ikibazo"],
-    "answer": "Kugabanya umuvuduko witonze, guhagarara ahatekanye no gusaba ubufasha",
-    "explanation": "Ikibazo cya feri ni akaga gakomeye. Gerageza guhagarara mu mutekano kandi ntukomeze urugendo imodoka itarakosorwa.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ubonye abana hafi y'umuhanda, ni iyihe myitwarire ikwiye?",
-    "options": ["Kugabanya umuvuduko no kwitegura guhagarara", "Kwegera abana cyane", "Kwihuta", "Kureba imbere gusa"],
-    "answer": "Kugabanya umuvuduko no kwitegura guhagarara",
-    "explanation": "Abana bashobora kwambuka batabanje kureba. Kugenda witonze bifasha kubarinda impanuka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ikimenyetso kiburira ahanyerera gihari, ukwiye gukora iki?",
-    "options": ["Kugabanya umuvuduko no kwirinda ibikorwa bitunguranye", "Kongera umuvuduko", "Gukata uruziga cyane", "Kwegera imodoka ikuri imbere"],
-    "answer": "Kugabanya umuvuduko no kwirinda ibikorwa bitunguranye",
-    "explanation": "Ahanyerera hasaba umuvuduko muke n'ibikorwa bituje kugira ngo ikinyabiziga kidatakaza ubushobozi bwo kugenzurwa.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki ugomba gukoresha indorerwamo z'imodoka?",
-    "options": ["Kugenzura ibiri inyuma no ku mpande", "Kureba uko umushoferi asa gusa", "Kongera umuvuduko", "Kugabanya uburemere bw'imodoka"],
-    "answer": "Kugenzura ibiri inyuma no ku mpande",
-    "explanation": "Indorerwamo zigufasha kumenya ibiri inyuma no ku mpande mbere yo guhindura icyerekezo cyangwa guhagarara.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo utwaye mu gihu cyangwa ahatabona neza, ukwiye gukora iki?",
-    "options": ["Kugabanya umuvuduko no gukoresha amatara akwiriye", "Kongera umuvuduko", "Kwegera imodoka ikuri imbere", "Kuzimya amatara yose"],
-    "answer": "Kugabanya umuvuduko no gukoresha amatara akwiriye",
-    "explanation": "Kugenda buhoro no gukoresha amatara akwiriye bifasha kubona umuhanda no gutuma abandi bakubona.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo imodoka ipfiriye mu muhanda, ukwiye gukora iki?",
-    "options": ["Kuyishyira ahatekanye niba bishoboka no gusaba ubufasha", "Kuyireka hagati mu muhanda nta kimenyetso", "Guhunga utaburiye abandi", "Kuguma mu nzira y'ibindi binyabiziga"],
-    "answer": "Kuyishyira ahatekanye niba bishoboka no gusaba ubufasha",
-    "explanation": "Imodoka yapfiriye mu muhanda ishobora guteza impanuka. Yishyire ahatekanye niba bishoboka kandi uburire abandi mu buryo bukwiye.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo imodoka ikuri imbere itanze ikimenyetso cyo gukata, ukora iki?",
-    "options": ["Kugabanya umuvuduko no kuyihaho umwanya", "Kuyinyura hafi cyane", "Kwihuta ngo uyibuze gukata", "Kuyikurikira utarebye"],
-    "answer": "Kugabanya umuvuduko no kuyihaho umwanya",
-    "explanation": "Gutanga umwanya ku kinyabiziga kiri gukata bifasha kwirinda kugongana no gukomeza kugenda mu mutekano.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki ari ngombwa gufunga neza imiryango y'imodoka mbere yo kugenda?",
-    "options": ["Kugira ngo abagenzi bagende mu mutekano", "Kugira ngo imodoka yihute", "Kugira ngo amapine adashyuha", "Kugira ngo amatara akomeze kwaka"],
-    "answer": "Kugira ngo abagenzi bagende mu mutekano",
-    "explanation": "Imiryango ifunze neza igabanya ibyago byo gufunguka mu rugendo no gutuma umugenzi agwa cyangwa akomereka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ugenda ahari abanyamaguru benshi, ukwiye gukora iki?",
-    "options": ["Kugabanya umuvuduko no kugenda witonze", "Kuvuza ihoni ubudacogora", "Kwegera abanyamaguru cyane", "Kunyura utarebye"],
-    "answer": "Kugabanya umuvuduko no kugenda witonze",
-    "explanation": "Ahari abanyamaguru benshi hasaba ubwitonzi kugira ngo wirinde kubagonga.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ubonye ikimenyetso kibuza guhagarara, ukora iki?",
-    "options": ["Gukomeza ugashaka ahantu hemewe guhagarara", "Guhagarara aho ushakiye", "Kuhagarara ku murongo w'abanyamaguru", "Kwirengagiza ikimenyetso nijoro"],
-    "answer": "Gukomeza ugashaka ahantu hemewe guhagarara",
-    "explanation": "Ibimenyetso bibuza guhagarara bigomba kubahirizwa. Shaka ahantu hemewe kandi hatekanye.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Mbere yo gufungura umuryango w'imodoka ihagaze ku ruhande rw'umuhanda, ukora iki?",
-    "options": ["Kureba niba nta kinyabiziga cyangwa umunyamaguru wegereye", "Gufungura ako kanya", "Kureba imbere gusa", "Kuvuza ihoni gusa"],
-    "answer": "Kureba niba nta kinyabiziga cyangwa umunyamaguru wegereye",
-    "explanation": "Kugenzura mbere yo gufungura umuryango birinda kugonga cyangwa kubangamira abandi bakoresha umuhanda.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo unyura ku muntu uri ku igare, ni iki ugomba gukora?",
-    "options": ["Kugumana umuvuduko utekanye no kumuhaho intera ihagije", "Kumunyura hafi cyane", "Kumuhatira kuva mu muhanda", "Kumuvuza ihoni hafi y'amatwi"],
-    "answer": "Kugumana umuvuduko utekanye no kumuhaho intera ihagije",
-    "explanation": "Gutanga intera ihagije ku muntu uri ku igare bifasha kwirinda impanuka. Nyura gusa igihe bishoboka mu mutekano.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo habaye impanuka yo mu muhanda, ni iki ugomba gukora?",
-    "options": ["Guhagarara mu mutekano no gusaba ubutabazi igihe bikenewe", "Guhita uhunga", "Gukomeza urugendo utitaye ku bakomeretse", "Kwimura abakomeretse bose utabanje kureba"],
-    "answer": "Guhagarara mu mutekano no gusaba ubutabazi igihe bikenewe",
-    "explanation": "Nyuma y'impanuka, irinde guteza akaga gakomeye kurushaho, hamagara ubutabazi igihe bikenewe kandi ukurikize amabwiriza y'abashinzwe umutekano.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ugeze ku murongo w'abanyamaguru, ni iki utagomba gukora?",
-    "options": ["Guhagarika imodoka hejuru y'umurongo w'abanyamaguru", "Kugabanya umuvuduko", "Kureba niba hari abambuka", "Kubaha abanyamaguru inzira igihe bikenewe"],
-    "answer": "Guhagarika imodoka hejuru y'umurongo w'abanyamaguru",
-    "explanation": "Ntugomba guhagarika ikinyabiziga ku murongo w'abanyamaguru. Uwo murongo ugomba kuguma ufunguye kugira ngo abantu bashobore kwambuka neza.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ugiye kwinjira mu masangano ariko aho ugiye kunyura huzuye imodoka, ukwiye gukora iki?",
-    "options": ["Gutegereza kugeza aho ugiye kunyura habonetse umwanya", "Kwinjira ugafunga abandi", "Guhagarara hagati mu masangano", "Kuvuza ihoni ugahatira abandi kugenda"],
-    "answer": "Gutegereza kugeza aho ugiye kunyura habonetse umwanya",
-    "explanation": "Ntukinjire mu masangano niba udashobora kuyavamo utabangamiye urujya n'uruza. Ibi birinda gufunga umuhanda no guteza impanuka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iyihe myitwarire ikwiye y'umugenzi uri kuri moto?",
-    "options": ["Kwambara ingofero yabugenewe no kuyifunga neza", "Guhagarara kuri moto igenda", "Kwirengagiza amabwiriza y'umutekano", "Kuvugana n'umushoferi amurangaza"],
-    "answer": "Kwambara ingofero yabugenewe no kuyifunga neza",
-    "explanation": "Ingofero y'umutekano ifasha kurinda umutwe igihe habaye impanuka. Umugenzi agomba kuyambara no kuyifunga neza.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki umunyamaguru agomba gukora mbere yo kwambuka umuhanda?",
-    "options": ["Kureba impande zombi no kwambuka igihe ari umutekano", "Kwambuka yitegereza telefoni gusa", "Kwiruka hagati y'imodoka", "Kwambuka ahantu hose atarebye"],
-    "answer": "Kureba impande zombi no kwambuka igihe ari umutekano",
-    "explanation": "Umunyamaguru agomba kureba neza ko nta kinyabiziga kiri hafi kandi agahitamo ahantu hemewe kwambukira igihe bihari.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki ari bibi kugendera ku muvuduko urenze uwemerewe?",
-    "options": ["Kuko bigabanya igihe cyo kwitabara kandi bikongera ubukana bw'impanuka", "Kuko bituma imodoka iba nto", "Kuko bituma umuhanda uba mugari", "Kuko bituma amatara adakora"],
-    "answer": "Kuko bigabanya igihe cyo kwitabara kandi bikongera ubukana bw'impanuka",
-    "explanation": "Umuvuduko mwinshi utuma imodoka ikenera umwanya munini kugira ngo ihagarare kandi ukongera ubukana bw'impanuka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ukwiye gukora igihe ubonye ikimenyetso kiburira ko imbere hari ibikorwa byo gusana umuhanda?",
-    "options": ["Kugabanya umuvuduko no gukurikiza ibimenyetso by'agateganyo", "Kwirengagiza ibimenyetso", "Kongera umuvuduko", "Kunyura ahafunzwe"],
-    "answer": "Kugabanya umuvuduko no gukurikiza ibimenyetso by'agateganyo",
-    "explanation": "Ahari imirimo yo gusana umuhanda hashobora kuba abakozi n'inzitizi. Kurikiza ibimenyetso kandi ugende witonze.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo utwaye imodoka ukabona umuntu ushaka kwambuka umuhanda, ugomba gukora iki?",
-    "options": ["Kugabanya umuvuduko no kumuha inzira igihe amategeko abiteganya", "Kumwihutisha umuvuza ihoni gusa", "Kwihuta ngo umurenze", "Kwegera aho ari cyane"],
-    "answer": "Kugabanya umuvuduko no kumuha inzira igihe amategeko abiteganya",
-    "explanation": "Abashoferi bagomba kwitondera abanyamaguru no kubaha inzira mu bihe biteganywa n'amategeko y'umuhanda.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki cyafasha kwirinda impanuka mu gihe cy'ijoro?",
-    "options": ["Gukoresha amatara akwiriye no kugenda ku muvuduko utekanye", "Kugenda utitaye ku matara", "Kureba telefoni", "Kugendera hafi cyane y'imodoka ikuri imbere"],
-    "answer": "Gukoresha amatara akwiriye no kugenda ku muvuduko utekanye",
-    "explanation": "Mu ijoro, ubushobozi bwo kubona buragabanuka. Amatara akwiriye n'umuvuduko utekanye bifasha kwirinda impanuka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Iyo ubonye ikimenyetso kigaragaza umuhanda unyerera, ugomba kwibuka iki?",
-    "options": ["Kwirinda gufata feri cyangwa gukata uruziga mu buryo butunguranye", "Kongera umuvuduko", "Gukurikira imodoka iri imbere hafi cyane", "Kwirengagiza ikimenyetso"],
-    "answer": "Kwirinda gufata feri cyangwa gukata uruziga mu buryo butunguranye",
-    "explanation": "Ibikorwa bitunguranye bishobora gutuma imodoka inyerera. Gabanya umuvuduko kandi uyigenzure witonze.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki umushoferi agomba gukora igihe abona ikinyabiziga kiri imbere kigenda gahoro cyane?",
-    "options": ["Kugumana intera no guca gusa igihe amategeko n'umutekano bibyemera", "Kugica aho ari ho hose", "Kugikurikira hafi cyane", "Kuvuza ihoni ubudacogora"],
-    "answer": "Kugumana intera no guca gusa igihe amategeko n'umutekano bibyemera",
-    "explanation": "Ntugomba guca ku kindi kinyabiziga keretse igihe inzira ifunguye, amategeko abyemera kandi nta bandi ukoresha umuhanda ushyira mu kaga.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ugomba gukora igihe ubonye umunyamaguru utangiye kwambuka imbere yawe?",
-    "options": ["Kugabanya umuvuduko cyangwa guhagarara kugira ngo umutekano we urindwe", "Kwihuta ngo umurenze", "Kumuvuza ihoni ugakomeza", "Kunyura inyuma ye utarebye"],
-    "answer": "Kugabanya umuvuduko cyangwa guhagarara kugira ngo umutekano we urindwe",
-    "explanation": "Umushoferi agomba kurinda abanyamaguru bari kwambuka kandi akirinda ibikorwa bishobora kubateza akaga.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ugomba gukora igihe ubonye ikimenyetso kiburira ko imbere hari ibindi binyabiziga byinjira mu muhanda?",
-    "options": ["Kugabanya umuvuduko no kwitegura kubaha umwanya", "Kwihuta", "Kwirengagiza ibinyabiziga bishya", "Guhagarara hagati mu muhanda"],
-    "answer": "Kugabanya umuvuduko no kwitegura kubaha umwanya",
-    "explanation": "Ikimenyetso cyo kuburira ibinyabiziga byinjira mu muhanda gisaba kwitonda no kureba neza uko urujya n'uruza rumeze.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iyihe myitwarire ikwiye igihe utwaye imodoka mu gace gatuwe n'abantu benshi?",
-    "options": ["Kugendera ku muvuduko utekanye no kwitegereza abanyamaguru", "Kugenda wihuta", "Kuvuza ihoni igihe cyose", "Kwirengagiza ibimenyetso"],
-    "answer": "Kugendera ku muvuduko utekanye no kwitegereza abanyamaguru",
-    "explanation": "Mu gace gatuwe, hashobora kuba abanyamaguru, abana n'ibindi binyabiziga. Kugenda witonze birinda impanuka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ugomba gukora igihe ubonye ibimenyetso by'agateganyo bihindura icyerekezo cy'umuhanda?",
-    "options": ["Kubikurikiza no kugenda witonze", "Kubirengagiza kuko ari iby'agateganyo", "Kunyura ahafunzwe", "Kongera umuvuduko"],
-    "answer": "Kubikurikiza no kugenda witonze",
-    "explanation": "Ibimenyetso by'agateganyo biba byashyizweho kugira ngo urujya n'uruza rugende mu mutekano mu gihe hari imirimo cyangwa izindi mpinduka.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ugomba gukora igihe utwaye imodoka ukabona ko utangiye kunanirwa cyane?",
-    "options": ["Guhagarara ahantu hatekanye ukaruhuka mbere yo gukomeza", "Gukomeza uko byagenda kose", "Kongera umuvuduko", "Gukoresha telefoni kugira ngo utasinzira"],
-    "answer": "Guhagarara ahantu hatekanye ukaruhuka mbere yo gukomeza",
-    "explanation": "Umunaniro ugabanya ubushishozi. Ruhukira ahatekanye mbere yo gukomeza urugendo.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iyihe myitwarire ikwiye igihe uri gutwara imodoka hafi y'igare cyangwa moto?",
-    "options": ["Kureba neza, kugumana intera no kwirinda kuyinyura hafi cyane", "Kuyegera cyane", "Kuyihatira kuva mu muhanda", "Kwirengagiza uko igenda"],
-    "answer": "Kureba neza, kugumana intera no kwirinda kuyinyura hafi cyane",
-    "explanation": "Amagare na moto ni abatari bake mu bakoresha umuhanda. Kubaha intera ihagije bigabanya ibyago byo kugongana.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ukwiye gukora igihe ubonye inzitizi mu muhanda?",
-    "options": ["Kugabanya umuvuduko, kugenzura ibindi binyabiziga no kuyizenguruka mu mutekano niba byemewe", "Kuyinyura utarebye", "Kongera umuvuduko", "Guhita ukata uruziga cyane"],
-    "answer": "Kugabanya umuvuduko, kugenzura ibindi binyabiziga no kuyizenguruka mu mutekano niba byemewe",
-    "explanation": "Inzitizi ishobora gutuma uhindura icyerekezo. Banza urebe ko inzira itabangamiwe kandi ukore igikorwa mu mutekano.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ugomba gukora igihe ugeze ku masangano kandi hari abanyamaguru bashaka kwambuka?",
-    "options": ["Kugabanya umuvuduko no kubaha inzira igihe amategeko abiteganya", "Kwinjira mu masangano utarebye", "Kubahutaza ngo bahagarare", "Kuvuza ihoni ugakomeza"],
-    "answer": "Kugabanya umuvuduko no kubaha inzira igihe amategeko abiteganya",
-    "explanation": "Masangano ni ahantu hakunze guhura abakoresha umuhanda benshi. Witondere abanyamaguru kandi ukurikize ibimenyetso.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Kuki ugomba kwirinda guhagarara ku murongo w'abanyamaguru?",
-    "options": ["Kuko ubangamira abanyamaguru n'umutekano wabo", "Kuko bituma imodoka yihuta", "Kuko bigabanya uburemere bw'imodoka", "Kuko bituma itara ry'icyatsi rizima"],
-    "answer": "Kuko ubangamira abanyamaguru n'umutekano wabo",
-    "explanation": "Umurongo w'abanyamaguru ugomba kuguma ufunguye kugira ngo bashobore kwambuka neza kandi mu mutekano.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ukwiye gukora mbere yo gutangira gutwara ikinyabiziga?",
-    "options": ["Kureba ko witeguye, ko ikinyabiziga kimeze neza kandi ko abagenzi bafite umutekano", "Gutangirira urugendo utagenzuye", "Kureka imiryango ifunguye", "Kwirengagiza ibikoresho by'umutekano"],
-    "answer": "Kureba ko witeguye, ko ikinyabiziga kimeze neza kandi ko abagenzi bafite umutekano",
-    "explanation": "Kugenzura ikinyabiziga n'umutekano w'abagenzi mbere y'urugendo bifasha kwirinda ibibazo byo mu muhanda.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iyihe myitwarire ikwiye igihe uri gutwara ikinyabiziga mu muhanda utamenyereye?",
-    "options": ["Kugenda witonze, kwitegereza ibimenyetso no kugabanya umuvuduko igihe bikenewe", "Kugenda wihuta", "Kwirengagiza ibimenyetso", "Gukurikira imodoka ikuri imbere hafi cyane"],
-    "answer": "Kugenda witonze, kwitegereza ibimenyetso no kugabanya umuvuduko igihe bikenewe",
-    "explanation": "Umuhanda utamenyereye ushobora kugira impinduka cyangwa ibyago utazi. Kugenda witonze bifasha kubimenya hakiri kare.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ukwiye gukora igihe ubona ko ikindi kinyabiziga kiri kugenda mu buryo butekanye buke?",
-    "options": ["Kugumana intera, kwirinda kugihangana no kugikuraho mu mutekano", "Kukirukaho", "Kukinyura hafi cyane", "Gukora nkacyo"],
-    "answer": "Kugumana intera, kwirinda kugihangana no kugikuraho mu mutekano",
-    "explanation": "Irinde kwinjira mu myitwarire iteje akaga. Komeza kugumana intera kandi ushake uburyo bwizewe bwo kwirinda ikibazo.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iki ugomba gukora igihe ubonye ikimenyetso kiburira ko imbere hari umuhanda muto cyangwa ikiraro gito?",
-    "options": ["Kugabanya umuvuduko no kugenzura ko kunyura bishoboka mu mutekano", "Kongera umuvuduko", "Kunyura utarebye", "Kwirengagiza ikimenyetso"],
-    "answer": "Kugabanya umuvuduko no kugenzura ko kunyura bishoboka mu mutekano",
-    "explanation": "Umuhanda muto cyangwa ikiraro gito bishobora kugabanya umwanya wo kunyuramo. Kugenda witonze bifasha kwirinda kugongana.",
-    "category": "Road Safety"
-  },
-  {
-    "question": "Ni iyihe myitwarire ikwiye igihe uri kugera ahari urujya n'uruza rwinshi?",
-    "options": ["Kugabanya umuvuduko, kwihangana no gukurikiza ibimenyetso", "Kunyura aho ushakiye", "Gukoresha telefoni", "Kuvuza ihoni kugira ngo abandi bagende"],
-    "answer": "Kugabanya umuvuduko, kwihangana no gukurikiza ibimenyetso",
-    "explanation": "Urujya n'uruza rwinshi rusaba kwihangana no gukurikiza ibimenyetso kugira ngo hirindwe impanuka no gufunga umuhanda.",
-    "category": "Road Safety"
-  }
+{
+"question": "Ikimenyetso cy'umuhanda kiri mu ishusho ya mpandeshatu ifite umupaka utukura akenshi kiba gisobanura iki?",
+"options": ["Kuburira ibyago cyangwa imiterere y'umuhanda iri imbere", "Gutegeka guhagarara burundu aho kiri", "Kwerekana aho imodoka ziparika gusa", "Kwerekana intera isigaye gusa"],
+"answer": "Kuburira ibyago cyangwa imiterere y'umuhanda iri imbere",
+"explanation": "Ibimenyetso byinshi byo kuburira bikoresha ishusho ya mpandeshatu n'umupaka utukura. Ishusho iri imbere ni yo igaragaza akaga kagomba kwitabwaho. Buri gihe soma ikimenyetso uko cyateganyijwe.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso cy'uruziga rufite umupaka utukura gishobora kugaragaza iki?",
+"options": ["Itegeko ribuza cyangwa rigena uburyo bwo gukoresha umuhanda", "Ahantu nyaburanga gusa", "Izina ry'umujyi gusa", "Ahantu ho kuruhukira gusa"],
+"answer": "Itegeko ribuza cyangwa rigena uburyo bwo gukoresha umuhanda",
+"explanation": "Ibimenyetso byinshi bizengurutse bifite umupaka utukura bigaragaza ibibujijwe cyangwa imipaka igomba kubahirizwa. Soma ikimenyetso cyose kugira ngo umenye icyo gisaba.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso cy'ubururu gifite ishusho yera yerekana icyerekezo gitegetswe gisobanura iki?",
+"options": ["Gukurikiza icyerekezo kigaragajwe", "Guhitamo icyerekezo icyo ari cyo cyose", "Guhagarika imodoka aho kiri hose", "Kwirengagiza icyerekezo iyo umuhanda ubonetsemo ubusa"],
+"answer": "Gukurikiza icyerekezo kigaragajwe",
+"explanation": "Ibimenyetso by'itegeko bitegeka icyerekezo bigaragaza aho ugomba kunyura. Ugomba kubikurikiza kandi ugategura urugendo rwawe mbere yo kugera aho icyerekezo gihindukira.",
+"category": "Road Safety"
+},
+{
+"question": "Umurongo uciyeho udacagaguye hagati y'imirongo y'ibinyabiziga ushobora gusobanura iki?",
+"options": ["Ko guca uwo murongo bibujijwe mu bihe uteganywa", "Ko buri kinyabiziga kigomba kuwunyuraho", "Ko ari ahantu ho guhagarara igihe cyose", "Ko nta mategeko agenga uwo murongo"],
+"answer": "Ko guca uwo murongo bibujijwe mu bihe uteganywa",
+"explanation": "Imirongo idacagaguye ikoreshwa mu kugabanya cyangwa gutandukanya aho ibinyabiziga bigenda, kandi akenshi igabanya uburenganzira bwo kuyambuka. Kurikiza imiterere y'umurongo n'amabwiriza awugenga.",
+"category": "Road Safety"
+},
+{
+"question": "Umurongo wera ucagaguye utandukanya imirongo y'ibinyabiziga ugufasha kumenya iki?",
+"options": ["Aho imirongo y'ibinyabiziga itandukaniye kandi aho guhindura umurongo bishobora kwemerwa", "Aho ugomba guhagarara burundu igihe cyose", "Aho abanyamaguru bagomba gutegereza gusa", "Aho umuhanda urangirira buri gihe"],
+"answer": "Aho imirongo y'ibinyabiziga itandukaniye kandi aho guhindura umurongo bishobora kwemerwa",
+"explanation": "Umurongo ucagaguye utandukanya imirongo y'ibinyabiziga. Guhindura umurongo byemerwa gusa igihe amategeko abiteganya kandi nta kaga biteje.",
+"category": "Road Safety"
+},
+{
+"question": "Umurongo wera mugari uri ku muhanda mbere y'amasangano ushobora gusobanura iki?",
+"options": ["Aho ikinyabiziga kigomba guhagarara igihe amabwiriza abisaba", "Aho imodoka zigomba kwihutisha", "Aho imodoka zose zigomba guhindukira", "Aho abanyamaguru babujijwe kwambukira"],
+"answer": "Aho ikinyabiziga kigomba guhagarara igihe amabwiriza abisaba",
+"explanation": "Umurongo wo guhagararaho werekana aho ikinyabiziga kigomba guhagarara iyo itara, ikimenyetso cyangwa umukozi ubifitiye ububasha abisabye. Guhagarara neza bifasha gusigasira umutekano w'amasangano.",
+"category": "Road Safety"
+},
+{
+"question": "Umushoferi ugeze ku cyapa cya GIVE WAY agomba gukora iki?",
+"options": ["Kugabanya umuvuduko no guha inzira abafite uburenganzira bwo kunyura", "Guhita yinjira mu masangano atarebye", "Gufunga inzira y'abandi kugira ngo anyure mbere", "Guhagarara umwanya uhamye nubwo nta kinyabiziga kiri hafi"],
+"answer": "Kugabanya umuvuduko no guha inzira abafite uburenganzira bwo kunyura",
+"explanation": "Icyapa cya GIVE WAY gisaba guha inzira ibinyabiziga bifite uburenganzira bwo kunyura. Ugomba kugenzura urujya n'uruza no guhagarara igihe bibaye ngombwa kugira ngo unyure mu mutekano.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ubonye icyapa cya NO ENTRY imbere yawe, ukwiye gukora iki?",
+"options": ["Kutinjira muri iyo nzira no gushaka indi nzira yemewe", "Kwinjira niba nta modoka igaragara", "Kwinjira gusa nijoro", "Kwinjira ugendeye ku muvuduko muke"],
+"answer": "Kutinjira muri iyo nzira no gushaka indi nzira yemewe",
+"explanation": "NO ENTRY ni ikimenyetso kibuza kwinjira mu nzira cyerekezaho. Kwinjira bishobora gutuma uhura n'ibinyabiziga biva mu cyerekezo kitagenewe wowe.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kibuza guhindukira ukora U-turn kigomba kubahirizwa gute?",
+"options": ["Kwirinda gukora U-turn aho icyo kimenyetso kibereye", "Guhindukira niba umuhanda ugaragara nk'ubusa", "Guhindukira gusa iyo nta mupolisi uhari", "Guhindukira ukoresheje amatara yo kuburira"],
+"answer": "Kwirinda gukora U-turn aho icyo kimenyetso kibereye",
+"explanation": "Ikimenyetso kibuza U-turn kigomba kubahirizwa. Guhindukira aho bibujijwe bishobora gutungura abandi bakoresha umuhanda no guteza impanuka.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kibuza guhindukira ibumoso gisobanura iki?",
+"options": ["Ko udakwiye guhindukira ibumoso aho icyo kimenyetso gikurikizwa", "Ko ugomba guhindukira ibumoso ako kanya", "Ko ushobora guhindukira ibumoso igihe cyose nta modoka ihari", "Ko umuhanda ufunze mu byerekezo byose"],
+"answer": "Ko udakwiye guhindukira ibumoso aho icyo kimenyetso gikurikizwa",
+"explanation": "Ikimenyetso kibuza guhindukira ibumoso kibuza icyo gikorwa aho cyashyizwe. Tegura icyerekezo cyawe hakiri kare kugira ngo utagira igikorwa giteje akaga.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kibuza guhindukira iburyo kigomba kugufasha gufata uwuhe mwanzuro?",
+"options": ["Gukomeza mu cyerekezo cyemewe cyangwa gushaka indi nzira", "Guhindukira iburyo buhoro cyane", "Guhagarara hagati mu masangano", "Kunyura ku ruhande rw'umuhanda utabanje kugenzura"],
+"answer": "Gukomeza mu cyerekezo cyemewe cyangwa gushaka indi nzira",
+"explanation": "Iyo guhindukira iburyo bibujijwe, ugomba guhitamo icyerekezo cyemewe. Guhindukira buhoro ntibihindura igikorwa kibujijwe ngo cyemewe.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ubonye ikimenyetso kibuza kunyura ku kindi kinyabiziga, ni iki ukwiye gukora?",
+"options": ["Kuguma mu murongo wawe no kutarenza ikinyabiziga kiri imbere aho bibujijwe", "Kunyura ku ruhande igihe cyose nta modoka ihari", "Kunyura niba ikinyabiziga kiri imbere kigenda buhoro", "Kunyura ukoresheje ihoni gusa"],
+"answer": "Kuguma mu murongo wawe no kutarenza ikinyabiziga kiri imbere aho bibujijwe",
+"explanation": "Ikimenyetso kibuza kurenza ikinyabiziga kigamije kugabanya ibyago byo kugongana. Tegereza kugeza ugeze ahantu amategeko yemera ko urenga ikindi kinyabiziga kandi ukabikora mu mutekano.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso cy'umuvuduko ntarengwa wa 40 km/h gisobanura iki?",
+"options": ["Ko utagomba kurenza 40 km/h aho icyo kimenyetso gikurikizwa", "Ko ugomba kugendera kuri 40 km/h buri gihe", "Ko umuvuduko muto wemewe ari 40 km/h", "Ko ushobora kugendera kuri 60 km/h iyo umuhanda ari ubusa"],
+"answer": "Ko utagomba kurenza 40 km/h aho icyo kimenyetso gikurikizwa",
+"explanation": "Umubare uri ku kimenyetso cy'umuvuduko ntarengwa ugaragaza umuvuduko utagomba kurengwa. Nubwo utarenga uwo mubare, ushobora gukenera kugenda buhoro bitewe n'ikirere, umuhanda n'abantu bawukoresha.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ikimenyetso kigaragaza ko umuvuduko ntarengwa warangiye, umushoferi agomba gukora iki?",
+"options": ["Gukurikiza umuvuduko wemewe ku gice cy'umuhanda arimo no kugendana n'imiterere yawo", "Guhita agendera ku muvuduko wo hejuru cyane", "Gutekereza ko nta mipaka y'umuvuduko isigaye", "Guhagarara kugeza habonetse ikindi kimenyetso"],
+"answer": "Gukurikiza umuvuduko wemewe ku gice cy'umuhanda arimo no kugendana n'imiterere yawo",
+"explanation": "Kurangira kw'ikimenyetso runaka ntibivuga ko umuvuduko uwo ari wo wose wemerewe. Umushoferi agomba gukurikiza amabwiriza akurikizwa kuri uwo muhanda no kugenda mu buryo butekanye.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kiburira ko imbere hari ishuri kigamije kukumenyesha iki?",
+"options": ["Ko hashobora kuba abana bambuka cyangwa begereye umuhanda", "Ko abana bemerewe gukina hagati mu muhanda", "Ko ugomba guhagarara umunsi wose", "Ko ibinyabiziga bidashobora kunyura muri ako gace"],
+"answer": "Ko hashobora kuba abana bambuka cyangwa begereye umuhanda",
+"explanation": "Ahari ishuri hashobora kuba abana bagenda cyangwa bambuka mu buryo butunguranye. Gabanya umuvuduko kandi urebe neza impande z'umuhanda.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kiburira ko imbere hari aho abanyamaguru bambukira kigomba kugutera gukora iki?",
+"options": ["Kugabanya umuvuduko no kwitegura guha abanyamaguru inzira", "Kunyura hejuru y'umurongo w'abanyamaguru", "Kongera umuvuduko kugira ngo uharenge vuba", "Gukoresha ihoni aho guhagarara igihe bikenewe"],
+"answer": "Kugabanya umuvuduko no kwitegura guha abanyamaguru inzira",
+"explanation": "Ikimenyetso kiburira aho abanyamaguru bambukira kigusaba kwitegura ko hashobora kuba abantu mu nzira. Witondere kandi ukurikize amabwiriza agenga uburenganzira bwo kwambuka.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kiburira ko imbere hari amatungo ashobora kwambuka umuhanda gisobanura iki?",
+"options": ["Ko ugomba kwitegura kugabanya umuvuduko kubera amatungo ashobora kuba mu nzira", "Ko amatungo afite uburenganzira bwo kwinjira mu modoka", "Ko ugomba gukoresha ihoni udahagarara", "Ko umuhanda ugenewe amatungo gusa"],
+"answer": "Ko ugomba kwitegura kugabanya umuvuduko kubera amatungo ashobora kuba mu nzira",
+"explanation": "Amatungo ashobora kwambuka cyangwa kwinjira mu muhanda mu buryo butunguranye. Kugenda witonze biguha umwanya wo kwitabara no kwirinda kuyagonga.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kiburira ko imbere hari umuhanda unyura kuri gari ya moshi nta nzitizi gisaba iki?",
+"options": ["Kugera aho unyura witonze, kureba no kumva niba gari ya moshi iri hafi, no kubahiriza ibimenyetso", "Kunyura vuba utarebye", "Guhagarara ku murongo wa gari ya moshi kugira ngo urebe neza", "Kwirengagiza inzogera kuko nta nzitizi ihari"],
+"answer": "Kugera aho unyura witonze, kureba no kumva niba gari ya moshi iri hafi, no kubahiriza ibimenyetso",
+"explanation": "Iyo nta nzitizi ihari, ibyo ntibivuga ko nta gari ya moshi ishobora kuza. Kurikiza ibimenyetso n'amabwiriza kandi ntukambuke igihe bitari mu mutekano.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kiburira ko imbere hari umusozi umanuka cyane kigamije kukumenyesha iki?",
+"options": ["Ko ugomba kugabanya umuvuduko hakiri kare no kugenzura ikinyabiziga igihe umanuka", "Ko ugomba kuzimya moteri igihe umanuka", "Ko ugomba gushyira ikinyabiziga muri neutral kugira ngo cyihute", "Ko ugomba guhagarara hagati mu muhanda"],
+"answer": "Ko ugomba kugabanya umuvuduko hakiri kare no kugenzura ikinyabiziga igihe umanuka",
+"explanation": "Umusozi umanuka cyane ushobora gutuma ikinyabiziga cyongera umuvuduko. Gukoresha uburyo bukwiye bwo kugenzura umuvuduko no gukurikiza amabwiriza y'ikinyabiziga bifasha kwirinda gutakaza ubushobozi bwo kugenzura.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kiburira ko imbere hari ikoni rikaze kigamije kukumenyesha iki?",
+"options": ["Ko ugomba kugabanya umuvuduko mbere yo kugera ku ikoni", "Ko ugomba gufata feri cyane uri hagati mu ikoni uko bishoboka kose", "Ko ugomba kunyura mu murongo w'abandi", "Ko ushobora kurenza ikinyabiziga uri mu ikoni"],
+"answer": "Ko ugomba kugabanya umuvuduko mbere yo kugera ku ikoni",
+"explanation": "Kugabanya umuvuduko mbere y'ikoni bigufasha kugumana ubushobozi bwo kugenzura ikinyabiziga. Gufata ibyemezo bitunguranye uri mu ikoni bishobora gutuma utakaza uburinganire.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ikimenyetso kiburira ko imbere umuhanda ugabanyuka ubugari ku ruhande rumwe gihari, ukwiye gukora iki?",
+"options": ["Kugabanya umuvuduko no kwitegura guhindura uko unyura mu mutekano", "Kuguma ku muvuduko umwe utitaye ku bandi", "Kunyura ku ruhande rufunze", "Guhatira ibinyabiziga biri imbere kuva mu nzira"],
+"answer": "Kugabanya umuvuduko no kwitegura guhindura uko unyura mu mutekano",
+"explanation": "Umuhanda ugabanyutse ubugari ugabanya umwanya wo kunyuramo. Reba ibinyabiziga biri hafi, ukurikize ibimenyetso kandi wirinde kwinjira mu mwanya utagufitiye umutekano.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso kiburira ko imbere hari umuhanda uhuye n'undi mu buryo bwa T kigufasha gukora iki?",
+"options": ["Kwitegura kugabanya umuvuduko no kugenzura icyerekezo ugomba gukurikiza", "Gukomeza ugororotse nubwo umuhanda urangirira aho", "Guhindukira utarebye", "Gutekereza ko ufite uburenganzira bwo kunyura mbere ya bose"],
+"answer": "Kwitegura kugabanya umuvuduko no kugenzura icyerekezo ugomba gukurikiza",
+"explanation": "Amasangano ameze nka T asaba gutegura aho ugiye kunyura no kugenzura ibinyabiziga biva mu byerekezo bihura. Ntukinjire mu nzira utabanje kureba ko bishoboka mu mutekano.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ubonye icyapa cyerekana ko umuhanda ari icyerekezo kimwe, ukwiye kumva iki?",
+"options": ["Ko ibinyabiziga bigomba kugendera mu cyerekezo cyagenwe", "Ko ibinyabiziga bishobora kugendera mu byerekezo byombi", "Ko imodoka zose zigomba gusubira inyuma", "Ko amategeko y'ibimenyetso atagikurikizwa"],
+"answer": "Ko ibinyabiziga bigomba kugendera mu cyerekezo cyagenwe",
+"explanation": "Umuhanda w'icyerekezo kimwe ugenewe urujya n'uruza mu cyerekezo cyagaragajwe. Kwinjira mu cyerekezo kitari cyo bishobora guteza impanuka ikomeye.",
+"category": "Road Safety"
+},
+{
+"question": "Ikimenyetso cyerekana ahantu imodoka zemerewe guhagarara kigufasha kumenya iki?",
+"options": ["Ahantu hagenwe ho guhagarika ikinyabiziga hakurikijwe amabwiriza ahari", "Ahantu hose ushobora guhagarara nta mbogamizi", "Ahantu ho kunyura gusa", "Ahantu abanyamaguru bagomba gutegereza"],
+"answer": "Ahantu hagenwe ho guhagarika ikinyabiziga hakurikijwe amabwiriza ahari",
+"explanation": "Ikimenyetso cya parikingi kigaragaza ahantu hagenewe guhagarika ikinyabiziga. Reba niba hari amasaha, ubwoko bw'ikinyabiziga cyangwa andi mabwiriza agenga aho hantu.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ubonye icyapa cyerekana ibitaro hafi y'umuhanda, icyo kimenyetso kiba kigamije iki?",
+"options": ["Kukwereka aho ibitaro biherereye cyangwa icyerekezo kibijyamo", "Kukubwira guhagarika imodoka hagati mu muhanda", "Kukwereka ko umuhanda ufunze", "Kukubwira ko ugomba gukoresha ihoni"],
+"answer": "Kukwereka aho ibitaro biherereye cyangwa icyerekezo kibijyamo",
+"explanation": "Ibimenyetso by'amakuru bigaragaza ahantu cyangwa serivisi ziri hafi. Bikurikirane kugira ngo ubone aho ugiye utabangamiye urujya n'uruza.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ubonye icyapa cyerekana ahantu ho gutanga lisansi, icyo kimenyetso gisobanura iki?",
+"options": ["Ko hari sitasiyo ya lisansi ahagaragajwe cyangwa hafi aho", "Ko ugomba guhita uhagarara mu murongo urimo", "Ko ushobora kuzuza lisansi uri mu muhanda", "Ko umuvuduko ntarengwa uhindutse byanze bikunze"],
+"answer": "Ko hari sitasiyo ya lisansi ahagaragajwe cyangwa hafi aho",
+"explanation": "Ibimenyetso by'amakuru bifasha abagenzi kubona serivisi. Guhagarara cyangwa kwinjira muri sitasiyo bigomba gukorwa ahabugenewe kandi bitabangamiye abandi.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ubonye icyapa cyerekana aho abanyamaguru bagenewe kunyura, ni iyihe myitwarire ikwiye?",
+"options": ["Gukoresha inzira yagenewe abanyamaguru no kwirinda kuyihagarikamo ikinyabiziga", "Gupakira imodoka kuri iyo nzira igihe cyose", "Gukoresha inzira y'abanyamaguru mu guca ku zindi modoka", "Kwirengagiza icyo kimenyetso iyo umuhanda ugaragara nk'ubusa"],
+"answer": "Gukoresha inzira yagenewe abanyamaguru no kwirinda kuyihagarikamo ikinyabiziga",
+"explanation": "Inzira y'abanyamaguru yagenewe kubafasha kugenda batabangamiwe n'ibinyabiziga. Kuyifunga bishobora kubahatira kwinjira mu muhanda w'ibinyabiziga.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ubonye icyapa cyerekana inzira yihariye y'amagare, ugomba kwitondera iki?",
+"options": ["Kwirinda kwinjira cyangwa guhagarara muri iyo nzira mu buryo butemewe", "Kuyikoresha nk'ahantu ho guhagarara igihe cyose", "Kuyifata nk'umurongo wo guca ku zindi modoka", "Kuyifunga igihe utegereje umugenzi"],
+"answer": "Kwirinda kwinjira cyangwa guhagarara muri iyo nzira mu buryo butemewe",
+"explanation": "Inzira yihariye y'amagare igamije kurinda abayakoresha no kubaha umwanya. Kuyinjiramo utabyemerewe bishobora kubateza akaga.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ikimenyetso kigaragaza ko umuhanda ufunze imbere gihari, ukwiye gukora iki?",
+"options": ["Gukurikiza inzira y'inyongera cyangwa icyerekezo cyemewe", "Kunyura ahafunzwe niba imodoka ari nto", "Gukurikira imodoka iyobye", "Gusunika inzitizi utabifitiye uburenganzira"],
+"answer": "Gukurikiza inzira y'inyongera cyangwa icyerekezo cyemewe",
+"explanation": "Umuhanda ushobora gufungwa kubera imirimo, impanuka cyangwa izindi mpamvu z'umutekano. Kurikiza ibimenyetso biyobora abandi bakoresha umuhanda mu nzira yemewe.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ugeze ku ruziga rw'amasangano (roundabout), ni iki ugomba gukora mbere yo kwinjira?",
+"options": ["Kugabanya umuvuduko, kureba ibinyabiziga biri imbere no kubaha uburenganzira bwo kunyura hakurikijwe ibimenyetso", "Kwinjira utarebye kuko buri gihe ari wowe unyura mbere", "Guhagarara hagati y'uruziga kugira ngo utegure icyerekezo", "Kunyura mu cyerekezo icyo ari cyo cyose"],
+"answer": "Kugabanya umuvuduko, kureba ibinyabiziga biri imbere no kubaha uburenganzira bwo kunyura hakurikijwe ibimenyetso",
+"explanation": "Uruziga rw'amasangano rusaba kugenzura ibinyabiziga biri hafi no gukurikiza ibimenyetso bigena uburenganzira bwo kunyura. Tegura icyerekezo cyawe kandi utange ikimenyetso igihe bikenewe.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ugeze ku ruziga rw'amasangano ukaba ushaka gusohokera ku nzira ikurikira, ni iki kigufasha kubikora neza?",
+"options": ["Gukurikiza umurongo wawe, kugenzura impande no gutanga ikimenyetso mu gihe gikwiye", "Guhindura imirongo ako kanya utarebye", "Guhagarara mu ruziga kugira ngo abandi bagutambuke", "Gusohoka utitaye ku banyamaguru"],
+"answer": "Gukurikiza umurongo wawe, kugenzura impande no gutanga ikimenyetso mu gihe gikwiye",
+"explanation": "Gutegura aho usohokera no kugenzura impande bigufasha kutabangamira ibindi binyabiziga. Ikimenyetso kigomba gutangwa ku gihe kugira ngo abandi bumve icyerekezo cyawe.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo umuhanda ugabanyijwemo imirongo myinshi igana mu cyerekezo kimwe, ugomba guhitamo umurongo ute?",
+"options": ["Umurongo uhuye n'icyerekezo cyawe n'ibikorwa uteganya, ukurikije ibimenyetso", "Umurongo urimo imodoka nyinshi buri gihe", "Umurongo uwo ari wo wose nta kugenzura", "Umurongo wo ku ruhande rw'abanyamaguru"],
+"answer": "Umurongo uhuye n'icyerekezo cyawe n'ibikorwa uteganya, ukurikije ibimenyetso",
+"explanation": "Guhitamo umurongo hakiri kare bigabanya guhindura imirongo mu buryo butunguranye. Kurikiza imyambi n'ibimenyetso bigaragaza aho buri murongo werekeza.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo umurongo urimo ugenewe gusa ibinyabiziga bihindukira ibumoso, ukwiye gukora iki?",
+"options": ["Kuwukoresha gusa niba icyerekezo cyawe gihuye n'icyo werekezamo", "Kuwukoresha kugira ngo urenge umurongo w'imodoka", "Kuwukoresha ugakomeza ugororotse nubwo imyambi ibibuza", "Kuwukoresha kugira ngo uhagarare utegereje umugenzi"],
+"answer": "Kuwukoresha gusa niba icyerekezo cyawe gihuye n'icyo werekezamo",
+"explanation": "Imyambi iri mu murongo igaragaza icyerekezo ibinyabiziga bigomba gukurikiza. Gukoresha umurongo utagenewe icyerekezo cyawe bishobora kubangamira abandi no guteza impanuka.",
+"category": "Road Safety"
+},
+{
+"question": "Ni iki umushoferi agomba gukora igihe ageze ku masangano aho umukozi ubifitiye ububasha ari kuyobora urujya n'uruza?",
+"options": ["Gukurikiza amabwiriza y'uwo mukozi no kugenzura umutekano mbere yo gukomeza", "Gukurikiza itara gusa nubwo umukozi amutegeka ikindi", "Kwirengagiza amabwiriza niba nta modoka ihari", "Kugendera ku bimenyetso by'abandi bashoferi gusa"],
+"answer": "Gukurikiza amabwiriza y'uwo mukozi no kugenzura umutekano mbere yo gukomeza",
+"explanation": "Umukozi ubifitiye ububasha ashobora kuyobora urujya n'uruza bitewe n'imiterere y'aho hantu. Witondere amabwiriza ye kandi wirinde gukomeza igihe bitari mu mutekano.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo amatara yo ku masangano adakora, ni iyihe myitwarire ikwiye?",
+"options": ["Kugabanya umuvuduko, kureba ibyerekezo byose no gukurikiza ibindi bimenyetso cyangwa amabwiriza ahari", "Kwemera ko ufite uburenganzira bwo kunyura mbere ya bose", "Kunyura wihuta kugira ngo ugere hakurya", "Gukurikira imodoka iri imbere utarebye"],
+"answer": "Kugabanya umuvuduko, kureba ibyerekezo byose no gukurikiza ibindi bimenyetso cyangwa amabwiriza ahari",
+"explanation": "Amatara adakora ashobora gutuma urujya n'uruza rudakurikiza gahunda isanzwe. Komeza witonze, wite ku bimenyetso bihari no ku bandi bakoresha umuhanda.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ibinyabiziga bibiri bigeze ku masangano icyarimwe kandi nta kimenyetso gihari, umushoferi agomba gukora iki?",
+"options": ["Kugabanya umuvuduko no gukurikiza itegeko ry'uburenganzira bwo kunyura rikurikizwa aho hantu", "Kunyura mbere kubera ko yageze ahantu hihuta", "Kuvuga ko imodoka nini ari yo ihora inyura mbere", "Kwinjira mu masangano utarebye"],
+"answer": "Kugabanya umuvuduko no gukurikiza itegeko ry'uburenganzira bwo kunyura rikurikizwa aho hantu",
+"explanation": "Uburenganzira bwo kunyura mu masangano bugengwa n'amategeko y'umuhanda n'imiterere y'amasangano. Ntukishingikirize ku bunini bw'imodoka cyangwa ku kwihuta; genzura inzira kandi witonde.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo uri mu murongo w'ibinyabiziga kandi ushaka guhindura umurongo, ni iki ugomba kugenzura mbere?",
+"options": ["Indorerwamo, ahatagaragara n'umwanya uhagije wo kwinjiramo", "Ibara ry'imodoka ikuri inyuma gusa", "Imodoka iri imbere gusa", "Umuvuduko w'imodoka yawe gusa"],
+"answer": "Indorerwamo, ahatagaragara n'umwanya uhagije wo kwinjiramo",
+"explanation": "Indorerwamo ntizerekana buri kintu cyose kiri hafi y'imodoka. Kugenzura ahatagaragara no kureba ko hari umwanya bihashya ibyago byo kugongana mu gihe uhindura umurongo.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye mu muhanda ufite imirongo igenewe ibinyabiziga bihindukira, ni ryari ugomba kwinjira mu murongo ujyanye n'icyerekezo cyawe?",
+"options": ["Hakiri kare kandi igihe byemewe, utabangamiye abandi", "Mu kanya ka nyuma uri hagati mu masangano", "Nyuma yo kurenga umurongo wo guhagararaho", "Igihe cyose nubwo umurongo udakwemerera kwinjiramo"],
+"answer": "Hakiri kare kandi igihe byemewe, utabangamiye abandi",
+"explanation": "Kwinjira mu murongo ukwiye hakiri kare bituma abandi bamenya aho ugiye. Ntugahindure umurongo mu buryo butunguranye cyangwa ahatemewe.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo umuhanda ufite ahantu hagenewe imodoka zitwara abantu benshi gusa, umushoferi w'imodoka isanzwe agomba gukora iki?",
+"options": ["Kwirinda gukoresha iyo nzira keretse amategeko cyangwa ibimenyetso bibimwemerera", "Kuyikoresha igihe cyose umurongo usanzwe urimo imodoka nyinshi", "Kuyikoresha kugira ngo ahagarare", "Kuyikoresha nijoro atabanje kureba ibimenyetso"],
+"answer": "Kwirinda gukoresha iyo nzira keretse amategeko cyangwa ibimenyetso bibimwemerera",
+"explanation": "Imirongo yihariye iba yagenewe ubwoko runaka bw'ibinyabiziga cyangwa ikoreshwa ryihariye. Kubahiriza icyo igenewe bituma urujya n'uruza rukomeza gukora neza.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ubonye ikimenyetso kigaragaza ko imbere hari ahantu ho kwambukira hakoreshejwe ikiraro cy'abanyamaguru, ni ikihe cyemezo cyiza ku munya­maguru?",
+"options": ["Gukoresha ikiraro cyagenewe kwambuka igihe giteganyijwe kandi gishobora gukoreshwa", "Kwambuka mu muhanda hagati y'ibinyabiziga", "Guhagarara mu murongo w'ibinyabiziga", "Kwambuka atarebye kuko ikiraro kiri hafi"],
+"answer": "Gukoresha ikiraro cyagenewe kwambuka igihe giteganyijwe kandi gishobora gukoreshwa",
+"explanation": "Ikiraro cy'abanyamaguru gitandukanya abanyamaguru n'ibinyabiziga. Kugikoresha aho giteganyijwe bifasha kugabanya ibyago byo kugongwa.",
+"category": "Road Safety"
+},
+{
+"question": "Ni iki umushoferi agomba gukora igihe abona ko umugenzi atarafunga neza umukandara w'umutekano?",
+"options": ["Kumwibutsa kuwufunga neza mbere yo gutangira urugendo", "Gutangira urugendo kuko umugenzi ari we ubazwa umutekano", "Kongera umuvuduko kugira ngo urugendo rurangire vuba", "Gusaba umugenzi kuwufunga imodoka igenda"],
+"answer": "Kumwibutsa kuwufunga neza mbere yo gutangira urugendo",
+"explanation": "Abagenzi bagomba kwicara neza no gukoresha ibikoresho by'umutekano bibagenewe. Gukemura icyo kibazo mbere yo kugenda birinda kurangara no kugabanya ibyago byo gukomereka.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye ikinyabiziga gifite umutwaro utwikira amatara cyangwa icyapa kiranga ikinyabiziga, ugomba gukora iki?",
+"options": ["Kugena no gufunga umutwaro mu buryo butazitira ibikoresho by'umutekano cyangwa ibiranga ikinyabiziga", "Kugenda uko biri kuko umutwaro ari muto", "Kuzimya amatara kugira ngo atagaragara", "Gukomeza niba nta mupolisi ugaragara"],
+"answer": "Kugena no gufunga umutwaro mu buryo butazitira ibikoresho by'umutekano cyangwa ibiranga ikinyabiziga",
+"explanation": "Umutwaro ugomba gutwarwa mu buryo butabangamira kubona amatara, ibimenyetso cyangwa icyapa kiranga ikinyabiziga. Gutunganya umutwaro neza bifasha abandi bakoresha umuhanda kumenya ikinyabiziga no kugabanya ibyago.",
+"category": "Road Safety"
+},
+{
+"question": "Ni ikihe kibazo gishobora guterwa no gutwara umutwaro utaringaniye ku kinyabiziga?",
+"options": ["Kugabanya uburinganire no gutuma kugenzura ikinyabiziga bigorana", "Kongera ubushobozi bwa feri buri gihe", "Kugabanya ibyago byo kunyerera", "Guhindura ibimenyetso by'umuhanda"],
+"answer": "Kugabanya uburinganire no gutuma kugenzura ikinyabiziga bigorana",
+"explanation": "Umutwaro utaringaniye ushobora guhindura uko ikinyabiziga cyitwara, cyane cyane mu guhindukira cyangwa gufata feri. Umutwaro ugomba kugabanywa no gufungwa neza hakurikijwe ubushobozi bw'ikinyabiziga.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye ikinyabiziga gifite umutwaro ushobora kugwa cyangwa kuguruka, ni iki ugomba gukora mbere yo kugenda?",
+"options": ["Kuwufunga no kugenzura ko ushobora gutwarwa utabangamiye abandi", "Kugenda buhoro gusa utawufunze", "Gusaba abagenzi kuwufata mu ntoki igihe cyose", "Gufungura amadirishya kugira ngo umwuka winjire"],
+"answer": "Kuwufunga no kugenzura ko ushobora gutwarwa utabangamiye abandi",
+"explanation": "Umutwaro utarinzwe ushobora kugwa mu muhanda cyangwa ugateza abandi ibibazo. Kugenzura uburyo ufungishijwe mbere y'urugendo birinda impanuka.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye ikinyabiziga gifite romoruki, ni iki ugomba kwitondera cyane?",
+"options": ["Uburebure bw'ikinyabiziga, intera yo guhagarara n'umwanya ukenewe mu guhindukira", "Ibara rya romoruki gusa", "Gukoresha feri buri segonda", "Kwegera imodoka ikuri imbere cyane"],
+"answer": "Uburebure bw'ikinyabiziga, intera yo guhagarara n'umwanya ukenewe mu guhindukira",
+"explanation": "Romoruki ihindura uburebure n'uburyo ikinyabiziga cyitwara. Umushoferi agomba guha umwanya uhagije guhindukira, guhagarara no kugenzura ko romoruki ihujwe neza n'ikinyabiziga kiyikurura.",
+"category": "Road Safety"
+},
+{
+"question": "Ni iki ukwiye gukora igihe utwaye ikinyabiziga kigenda gahoro kubera ikibazo cya tekiniki?",
+"options": ["Kwirinda kubangamira abandi, kugenda ahatekanye no gushaka ubufasha bwo kugikoresha neza", "Kuguma hagati mu muhanda utanga ibimenyetso", "Guhatira abandi kugenda ku muvuduko wawe", "Gukomeza urugendo uko byagenda kose"],
+"answer": "Kwirinda kubangamira abandi, kugenda ahatekanye no gushaka ubufasha bwo kugikoresha neza",
+"explanation": "Ikibazo cya tekiniki gishobora kugabanya ubushobozi bwo kugenda no kugenzura ikinyabiziga. Shaka ahantu hatekanye, uburire abandi igihe bikenewe kandi ntukomeze urugendo rudatekanye.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ikinyabiziga gifite itara ry'inyuma ritaka nabi, ni iki ukwiye gukora?",
+"options": ["Kugikoresha mu buryo butekanye no kugisana vuba mbere yo gukomeza urugendo rudatekanye", "Kwirengagiza ikibazo kuko amatara y'imbere akora", "Kuzimya andi matara yose", "Gukoresha ihoni mu mwanya w'itara"],
+"answer": "Kugikoresha mu buryo butekanye no kugisana vuba mbere yo gukomeza urugendo rudatekanye",
+"explanation": "Amatara y'inyuma afasha abandi kumenya aho ikinyabiziga kiri n'ibikorwa byacyo, cyane cyane mu mwijima. Ibikoresho byangiritse bigomba gukosorwa kugira ngo ikinyabiziga gikomeze kuba mu mutekano.",
+"category": "Road Safety"
+},
+{
+"question": "Ni iki umushoferi agomba gukora iyo abonye ko ikirahure cy'imbere kitakimwemerera kubona umuhanda neza?",
+"options": ["Guhagarara ahatekanye no gukemura ikibazo mbere yo gukomeza", "Gukomeza yishingikirije ku ndorerwamo gusa", "Kongera umuvuduko kugira ngo ave muri ako gace", "Kureba mu idirishya gusa igihe cyose"],
+"answer": "Guhagarara ahatekanye no gukemura ikibazo mbere yo gukomeza",
+"explanation": "Ikirahure cy'imbere gifasha umushoferi kubona umuhanda n'ibyago biri imbere. Iyo atakibona neza, agomba gukemura ikibazo ahatekanye kugira ngo atabangamira abandi cyangwa ngo ateze impanuka.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye ikinyabiziga gifite indorerwamo yangiritse ku buryo utabona neza inyuma, ni iki ukwiye gukora?",
+"options": ["Gukemura ikibazo no kwemeza ko ushobora gutwara mu mutekano mbere yo gukomeza", "Guhindura umurongo utarebye", "Kugendera ku bimenyetso by'ihoni gusa", "Kwegera ikinyabiziga kiri imbere kugira ngo ukibonereho"],
+"answer": "Gukemura ikibazo no kwemeza ko ushobora gutwara mu mutekano mbere yo gukomeza",
+"explanation": "Indorerwamo zigufasha kumenya ibiri inyuma no ku mpande. Iyo zitagikora neza, kugenzura ibindi binyabiziga biragorana kandi ibyago byo kugongana biriyongera.",
+"category": "Road Safety"
+},
+{
+"question": "Ni ikihe gikorwa gifasha umushoferi gukoresha neza amatara y'ikinyabiziga mu ijoro?",
+"options": ["Kugenzura ko amatara akora no guhitamo ayo gukoresha bitewe n'aho ari n'ibinyabiziga bihari", "Gukoresha amatara maremare igihe cyose nubwo ahumye abandi", "Kuzimya amatara igihe umuhanda ufite ibimenyetso", "Gukoresha amatara yo kuburira mu mwanya w'amatara yose"],
+"answer": "Kugenzura ko amatara akora no guhitamo ayo gukoresha bitewe n'aho ari n'ibinyabiziga bihari",
+"explanation": "Amatara agomba gufasha kubona no kugaragara atabangamiye abandi bashoferi. Hitamo amatara akwiye ukurikije uko umuhanda umeze n'amabwiriza abigenga.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye imodoka ugasanga amatara y'ikinyabiziga giturutse imbere akuhumye, ni ikihe gikorwa gifasha kugumana umutekano?",
+"options": ["Kugabanya umuvuduko, kureba aho umuhanda ugaragara neza no kwirinda kureba amatara aturutse imbere", "Gufunga amaso kugeza kinyuze", "Kongera umuvuduko kugira ngo muhure vuba", "Kugana hagati mu muhanda utabanje kugenzura"],
+"answer": "Kugabanya umuvuduko, kureba aho umuhanda ugaragara neza no kwirinda kureba amatara aturutse imbere",
+"explanation": "Amatara akomeye ashobora kugabanya ubushobozi bwo kubona by'agateganyo. Gabanya umuvuduko kandi ukomeze kugenzura aho unyura utavuye mu murongo wawe.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye imodoka mu muhanda unyuramo ibinyabiziga biremereye, ni ikihe kintu cy'ingenzi ugomba kwitondera?",
+"options": ["Kugumana intera ihagije no kwirinda kuguma ahatagaragara umushoferi w'ikinyabiziga kinini", "Kugenda hafi y'inyuma y'ikamyo kugira ngo ubone umuhanda", "Kunyura imbere y'ikamyo utabanje kugenzura", "Gutekereza ko ikinyabiziga kinini gihagarara vuba kurusha gito"],
+"answer": "Kugumana intera ihagije no kwirinda kuguma ahatagaragara umushoferi w'ikinyabiziga kinini",
+"explanation": "Ibinyabiziga binini bishobora kugira ahantu henshi umushoferi atabona neza kandi bishobora gukenera umwanya munini wo guhagarara. Intera ihagije no kwirinda ahatagaragara bigabanya ibyago byo kugongana.",
+"category": "Road Safety"
+},
+{
+"question": "Ni ikihe kibazo gishobora guterwa no gutwara imodoka hafi cyane y'inyuma y'ikamyo?",
+"options": ["Kutabona neza ibyago biri imbere no kubura intera yo kwitabara", "Kongera ubushobozi bwo kubona umuhanda", "Kugabanya igihe feri zifata", "Gutuma ikamyo ihagarara vuba"],
+"answer": "Kutabona neza ibyago biri imbere no kubura intera yo kwitabara",
+"explanation": "Kwegera cyane ikinyabiziga kinini bigabanya ibyo ubona imbere kandi bikagabanya igihe cyo kwitabara. Komeza intera ihagije kugira ngo ubone umuhanda kandi ubashe guhagarara mu mutekano.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo ugiye kunyura ku kinyabiziga kinini, ni iki ugomba kubanza kugenzura?",
+"options": ["Ko kunyura byemewe, inzira ifunguye kandi ushobora kurangiza igikorwa mu mutekano", "Ko ikinyabiziga kinini gifite ibara ryiza", "Ko ushobora kuguma mu murongo utarebye imbere", "Ko ushobora kunyura nubwo ikimenyetso kibibuza"],
+"answer": "Ko kunyura byemewe, inzira ifunguye kandi ushobora kurangiza igikorwa mu mutekano",
+"explanation": "Kunyura ku kinyabiziga kinini bishobora gufata umwanya munini kandi bigasaba kureba intera ihagije. Ntutangire kunyura niba utabona neza imbere cyangwa niba amategeko abibuza.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye mu muhanda urimo ibinogo byinshi, ni ikihe cyemezo gifasha kurinda umutekano?",
+"options": ["Kugabanya umuvuduko no guhitamo inzira ishoboka mu mutekano utabangamiye abandi", "Kugenda wihuta kugira ngo imodoka itanyeganyega", "Gukata uruziga gitunguranye utarebye", "Gukoresha umurongo w'ibinyabiziga bihanganye igihe cyose"],
+"answer": "Kugabanya umuvuduko no guhitamo inzira ishoboka mu mutekano utabangamiye abandi",
+"explanation": "Ibinogo bishobora kwangiza amapine cyangwa gutuma ikinyabiziga gitakaza uburinganire. Gabanya umuvuduko kandi ntukore igikorwa gitunguranye gishobora gushyira abandi mu kaga.",
+"category": "Road Safety"
+},
+{
+"question": "Ni iki umushoferi agomba gukora igihe umukungugu mwinshi uturutse ku modoka iri imbere ugabanya uko abona umuhanda?",
+"options": ["Kugabanya umuvuduko no kongera intera kugeza abonye neza", "Kwegera imodoka iri imbere", "Gukomeza ku muvuduko wari usanzwe", "Kunyura ku ruhande utabanje kureba"],
+"answer": "Kugabanya umuvuduko no kongera intera kugeza abonye neza",
+"explanation": "Umukungugu ugabanya ubushobozi bwo kubona ibiri imbere n'ibiri ku mpande. Kugabanya umuvuduko no kongera intera biguha umwanya wo kwitabara mu gihe hagize ikintu kigaragara gitunguranye.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo amazi yarenze ku muhanda ku buryo utazi ubujyakuzimu bwayo, ni ikihe cyemezo cyiza?",
+"options": ["Kwirinda kwinjiramo kugeza umenye ko kunyuramo ari umutekano", "Kongera umuvuduko kugira ngo usohoke vuba", "Gukurikira imodoka iri imbere utitaye ku bujyakuzimu", "Guhagarara hagati mu mazi kugira ngo urebe moteri"],
+"answer": "Kwirinda kwinjiramo kugeza umenye ko kunyuramo ari umutekano",
+"explanation": "Amazi ashobora kuba maremare kurusha uko agaragara cyangwa akaba afite umuvuduko ukomeye. Ntukinjire ahantu hatagaragara neza cyangwa hashobora gutuma ikinyabiziga gitakaza ubushobozi bwo kugenzurwa.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo utwaye imodoka ugasanga hari amabuye cyangwa ibindi bintu byaguye mu muhanda, ukwiye gukora iki?",
+"options": ["Kugabanya umuvuduko no guhitamo igikorwa cyizewe nyuma yo kugenzura ibindi binyabiziga", "Kuyazenguruka ako kanya utarebye", "Kunyura mu murongo uhanganye n'ibindi binyabiziga", "Gufata feri gitunguranye utitaye ku bakuri inyuma"],
+"answer": "Kugabanya umuvuduko no guhitamo igikorwa cyizewe nyuma yo kugenzura ibindi binyabiziga",
+"explanation": "Inzitizi zishobora gutuma ugomba guhindura icyerekezo cyangwa guhagarara. Reba ibiri inyuma no ku mpande, gabanya umuvuduko kandi uhitemo uburyo butabangamira abandi.",
+"category": "Road Safety"
+},
+{
+"question": "Ni iki umushoferi agomba gukora igihe abona ko imodoka iri inyuma imukurikiye hafi cyane?",
+"options": ["Kugumana umuvuduko utekanye, kwirinda gufata feri gitunguranye no guha umwanya uwo mushoferi kunyura igihe byemewe", "Kongera umuvuduko urenze uwemerewe", "Gufata feri gitunguranye kugira ngo amwigishe", "Guhagarara hagati mu murongo"],
+"answer": "Kugumana umuvuduko utekanye, kwirinda gufata feri gitunguranye no guha umwanya uwo mushoferi kunyura igihe byemewe",
+"explanation": "Guhangana n'umushoferi ugukurikiye hafi bishobora guteza impanuka. Komeza utuje, wirinde ibikorwa bitunguranye kandi umuhe amahirwe yo kunyura mu buryo bwemewe igihe bishoboka.",
+"category": "Road Safety"
+},
+{
+"question": "Iyo uri gutwara imodoka ugasanga urumuri rw'izuba rukubuza kubona neza, ni iki ukwiye gukora?",
+"options": ["Kugabanya umuvuduko, gukoresha ibikoresho bikwiye byo kurinda amaso no kongera kwitonda", "Gukomeza ku muvuduko umwe utitaye ku byo ubona", "Gufunga amaso igihe urumuri rukaze", "Kugenda wegereye ikinyabiziga kiri imbere"],
+"answer": "Kugabanya umuvuduko, gukoresha ibikoresho bikwiye byo kurinda amaso no kongera kwitonda",
+"explanation": "Urumuri rukaze rushobora kugabanya ubushobozi bwo kubona ibimenyetso n'ibyago. Gabanya umuvuduko kandi ukoreshe uburyo bwemewe bwo kurinda amaso utabangamiye kubona umuhanda.",
+"category": "Road Safety"
+},
+{
+"question": "Ni iki ukwiye gukora igihe ubonye ikimenyetso cy'igihe gito kiyobora ibinyabiziga mu gihe cy'ibirori cyangwa igikorwa rusange?",
+"options": ["Gukurikiza icyerekezo cy'agateganyo no kwitegereza abashinzwe kuyobora urujya n'uruza", "Kugikurikiza gusa igihe hari imodoka nyinshi", "Kunyura ahafunzwe niba uri mu rugendo rwihutirwa rutari ubutabazi", "Kwirengagiza amabwiriza kuko atari ahoraho"],
+"answer": "Gukurikiza icyerekezo cy'agateganyo no kwitegereza abashinzwe kuyobora urujya n'uruza",
+"explanation": "Ibimenyetso by'agateganyo bishyirwaho kugira ngo umutekano n'uruhererekane rw'ibinyabiziga birindwe mu bihe byihariye. Kubahiriza ibyo bimenyetso bifasha kwirinda urujijo no kugongana."
+,
+"category": "Road Safety"
+}
 ]
