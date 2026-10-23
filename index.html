@@ -4,1088 +4,787 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10233f">
+  <meta name="description" content="Quiz Master Rwanda — test your knowledge with road safety and general knowledge questions.">
+  <meta name="robots" content="index, follow">
 
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
-  <meta name="description" content="Quiz Master is a free knowledge quiz game. Test your knowledge of road traffic rules and general knowledge in English or Kinyarwanda.">
-  <meta name="keywords" content="Quiz Master, Rwanda quiz, road traffic rules, driving theory, general knowledge, Ikinyarwanda quiz">
-  <meta name="author" content="Mazimpaka Isaie">
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow">
-  <meta name="theme-color" content="#111827">
 
-  <link rel="icon" type="image/png" href="/icon-512-3.png">
-  <link rel="apple-touch-icon" href="/icon-512-3.png">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-2W9SXBBH1P');
-  </script>
-
-  <!-- Google AdSense -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous"></script>
+  <link rel="icon" href="./icon-512-3.png">
+  <link rel="manifest" href="./manifest.json">
 
   <style>
+    :root {
+      --bg: #f2f5fb;
+      --card: #ffffff;
+      --text: #15233b;
+      --muted: #63718a;
+      --primary: #155eef;
+      --border: #dbe3ef;
+      --success: #16834a;
+      --danger: #c93636;
+    }
+
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      padding: 0;
+      background: var(--bg);
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #111827, #172554);
-      color: #f8fafc;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    button, a {
-      font-family: inherit;
+      line-height: 1.5;
     }
 
     button {
+      font: inherit;
       cursor: pointer;
     }
 
     button:disabled {
       cursor: not-allowed;
-    }
-
-    a {
-      color: #93c5fd;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+      opacity: .55;
     }
 
     .app {
-      width: 100%;
-      min-height: 100vh;
+      width: min(100% - 24px, 760px);
+      margin: 0 auto;
+      padding: 20px 0 36px;
     }
 
-    .container {
-      width: min(1100px, 94%);
-      margin: 0 auto;
+    header {
+      text-align: center;
+      padding: 12px 0 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(27px, 5vw, 38px);
+    }
+
+    header p {
+      color: var(--muted);
+      margin: 8px 0 0;
     }
 
     .screen {
       display: none;
-      width: 100%;
-      min-height: 100vh;
-      padding: 25px 0 40px;
     }
 
     .screen.active {
       display: block;
     }
 
-    .hero {
-      text-align: center;
-      padding: 35px 15px 20px;
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: clamp(16px, 4vw, 26px);
+      margin-bottom: 16px;
+      box-shadow: 0 5px 22px rgba(23, 45, 80, .05);
     }
 
-    .logo {
-      width: 110px;
-      height: 110px;
-      object-fit: contain;
-      border-radius: 24px;
-      margin-bottom: 12px;
+    h2, h3 {
+      margin-top: 0;
     }
 
-    .hero h1 {
-      margin: 5px 0;
-      font-size: clamp(2rem, 6vw, 3.4rem);
-      font-weight: 800;
-    }
-
-    .tagline {
-      margin: 8px auto;
-      color: #93c5fd;
-      font-size: clamp(1rem, 3vw, 1.35rem);
-      font-weight: 700;
-    }
-
-    .hero-description {
-      max-width: 780px;
-      margin: 15px auto 25px;
-      color: #cbd5e1;
+    .muted {
+      color: var(--muted);
     }
 
     .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin: 20px auto 30px;
-    }
-
-    .main-btn {
-      border: none;
-      border-radius: 12px;
-      padding: 13px 19px;
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: #fff;
-      background: #2563eb;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-
-    .main-btn:hover:not(:disabled) {
-      transform: translateY(-2px);
-      opacity: 0.92;
-    }
-
-    .main-btn:disabled {
-      opacity: 0.45;
-      transform: none;
-    }
-
-    .secondary-btn {
-      background: #334155;
-    }
-
-    .success-btn {
-      background: #059669;
-    }
-
-    .danger-btn {
-      background: #dc2626;
-    }
-
-    .warning-btn {
-      background: #d97706;
-    }
-
-    .content-section {
-      margin: 35px auto;
-    }
-
-    .content-section h2 {
-      text-align: center;
-      font-size: 1.65rem;
-      margin-bottom: 18px;
-    }
-
-    .content-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-    }
-
-    .content-card {
-      background: rgba(30, 41, 59, 0.88);
-      border: 1px solid rgba(148, 163, 184, 0.16);
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .content-card h3 {
-      margin-top: 0;
-      color: #bfdbfe;
-      font-size: 1.12rem;
-    }
-
-    .content-card p {
-      margin-bottom: 0;
-      color: #cbd5e1;
-    }
-
-    #gameSetup {
-      max-width: 760px;
-      margin: 20px auto;
-      text-align: center;
-      border: 1px solid rgba(147, 197, 253, 0.35);
-    }
-
-    #gameSetup p {
-      color: #cbd5e1;
-    }
-
-    #gameSetup .button-group {
-      margin: 12px auto 20px;
-    }
-
-    #gameSetup .language-btn.selected,
-    #gameSetup .mode-btn.selected {
-      outline: 3px solid #93c5fd;
-      background: #047857;
-    }
-
-    #confirmSetupBtn:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-      gap: 12px;
-    }
-
-    .category-card {
-      padding: 18px 10px;
-      text-align: center;
-      border-radius: 14px;
-      background: rgba(30, 41, 59, 0.88);
-      border: 1px solid rgba(148, 163, 184, 0.14);
-    }
-
-    .category-card strong {
-      display: block;
-      color: #e2e8f0;
-    }
-
-    .category-card span {
-      display: block;
-      margin-top: 5px;
-      color: #94a3b8;
-      font-size: 0.85rem;
-    }
-
-    .ad-section {
-      width: 100%;
-      margin: 30px auto;
-      text-align: center;
-    }
-
-    .ad-label {
-      margin-bottom: 7px;
-      color: #94a3b8;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .ad-box {
-      width: 100%;
-      min-height: 90px;
-      overflow: hidden;
-    }
-
-    .adsbygoogle {
-      display: block;
-      width: 100%;
-    }
-
-    .panel {
-      width: min(900px, 94%);
-      margin: 20px auto;
-      padding: 22px;
-      background: rgba(30, 41, 59, 0.92);
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.15);
-    }
-
-    .screen-title {
-      text-align: center;
-      margin: 5px 0 20px;
-      font-size: 1.9rem;
-    }
-
-    #roundGrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 12px;
-    }
-
-    .round-card {
-      min-height: 80px;
-      border: none;
-      border-radius: 14px;
-      padding: 14px;
-      background: #1e293b;
-      color: #fff;
-      font-weight: 700;
-    }
-
-    .quiz-header {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 15px;
-    }
-
-    .quiz-stat {
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-      background: #1e293b;
-      color: #e2e8f0;
-      font-size: 0.9rem;
-    }
-
-    .progress-container {
-      width: 100%;
-      height: 9px;
-      margin: 12px 0 20px;
-      background: #334155;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    #progressBar {
-      width: 0%;
-      height: 100%;
-      background: #2563eb;
-      transition: width 0.2s ease;
-    }
-
-    #category {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: #1d4ed8;
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-
-    #question {
-      font-size: clamp(1.2rem, 4vw, 1.7rem);
-      margin: 10px 0 20px;
-    }
-
-    #options {
-      display: grid;
-      gap: 11px;
-    }
-
-    #options button {
-      width: 100%;
-      border: 1px solid #475569;
-      border-radius: 12px;
-      padding: 14px;
-      text-align: left;
-      background: #1e293b;
-      color: #f8fafc;
-      font-size: 1rem;
-    }
-
-    #options button:hover:not(:disabled) {
-      background: #334155;
-    }
-
-    #options button:disabled {
-      opacity: 0.85;
-    }
-
-    #message {
-      min-height: 30px;
-      margin: 15px 0;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .quiz-controls {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 18px;
+      margin: 12px 0 22px;
     }
 
-    .result-score {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin: 15px 0;
-    }
-
-    .result-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin: 20px 0;
-    }
-
-    .result-stat {
-      padding: 15px;
-      text-align: center;
-      background: #1e293b;
+    .btn,
+    .language-btn,
+    .mode-btn,
+    .answer-btn,
+    .round-btn {
+      border: 1px solid var(--border);
       border-radius: 12px;
-    }
-
-    #reviewList {
-      display: grid;
-      gap: 13px;
-    }
-
-    .review-item {
-      padding: 15px;
-      border-radius: 12px;
-      background: #1e293b;
+      padding: 13px 15px;
+      background: white;
+      color: var(--text);
+      min-height: 48px;
+      text-align: center;
       overflow-wrap: anywhere;
     }
 
-    .setting-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      padding: 15px 0;
-      border-bottom: 1px solid #334155;
+    .btn-primary {
+      color: white;
+      background: var(--primary);
+      border-color: var(--primary);
     }
 
-    .setting-row:last-child {
-      border-bottom: none;
+    .btn-secondary {
+      background: #edf3ff;
+      border-color: #cbdcff;
+      color: #1548a0;
     }
 
-    #errorMessage {
-      margin: 15px 0;
-      padding: 15px;
-      border-radius: 12px;
-      background: rgba(127, 29, 29, 0.5);
-      color: #fecaca;
-      overflow-wrap: anywhere;
-    }
-
-    .footer {
-      width: min(1000px, 94%);
-      margin: 45px auto 0;
-      padding: 25px 15px 35px;
-      text-align: center;
-      border-top: 1px solid rgba(148, 163, 184, 0.18);
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-
-    .footer-links {
-      margin: 12px 0;
-    }
-
-    .footer-links a {
-      margin: 0 5px;
-    }
-
-    .footer-contact {
+    .btn-block {
+      display: block;
+      width: 100%;
       margin-top: 10px;
     }
 
-    @media (max-width: 650px) {
-      .screen {
-        padding-top: 15px;
-      }
+    .language-btn.selected,
+    .mode-btn.selected {
+      background: #e9f1ff;
+      border: 2px solid var(--primary);
+      color: #1548a0;
+      font-weight: bold;
+    }
 
-      .hero {
-        padding-top: 20px;
-      }
+    .answer-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 10px 0;
+      background: #fff;
+    }
 
-      .logo {
-        width: 90px;
-        height: 90px;
-      }
+    .answer-btn.correct {
+      background: #e4f8eb;
+      border-color: var(--success);
+      color: #126738;
+    }
 
+    .answer-btn.incorrect {
+      background: #ffebeb;
+      border-color: var(--danger);
+      color: #a22020;
+    }
+
+    .answer-btn:disabled {
+      opacity: 1;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 12px 8px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      background: #f8faff;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 22px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .progress-track {
+      height: 8px;
+      background: #e4eaf3;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 12px 0 20px;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0;
+      background: var(--primary);
+      transition: width .2s ease;
+    }
+
+    .timer-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .timer-pill {
+      border-radius: 12px;
+      background: #fff0cf;
+      color: #825400;
+      font-weight: bold;
+      padding: 7px 13px;
+      white-space: nowrap;
+    }
+
+    #explanation {
+      display: none;
+      background: #f0f6ff;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 14px;
+    }
+
+    #quizError,
+    #errorMessage {
+      display: none;
+      background: #fff0f0;
+      border: 1px solid #f0bcbc;
+      color: #a22020;
+      padding: 12px;
+      border-radius: 10px;
+      overflow-wrap: anywhere;
+      margin-bottom: 14px;
+    }
+
+    #roundsContainer,
+    #roundsList {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .round-btn {
+      width: 100%;
+    }
+
+    .round-btn:not(:disabled):hover,
+    .btn:hover,
+    .answer-btn:not(:disabled):hover {
+      filter: brightness(.97);
+    }
+
+    .result-number {
+      font-size: 42px;
+      font-weight: bold;
+      margin: 6px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--primary);
+      margin: 0 7px;
+    }
+
+    @media (max-width: 420px) {
       .button-group {
-        flex-direction: column;
-        align-items: stretch;
+        grid-template-columns: 1fr;
       }
 
-      .main-btn {
-        width: 100%;
+      .stats {
+        gap: 6px;
       }
 
-      .quiz-header {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .panel {
-        padding: 17px;
+      .stat strong {
+        font-size: 19px;
       }
     }
   </style>
 </head>
 
 <body>
-<div class="app">
+  <div class="app">
+    <header>
+      <h1>Quiz Master 🇷🇼</h1>
+      <p id="headerSubtitle">Test your knowledge and learn something new.</p>
+    </header>
 
-  <!-- HOME SCREEN -->
-  <section id="homeScreen" class="screen active">
-    <div class="container">
-      <header class="hero">
-        <img src="/icon-512-3.png"
-             alt="Quiz Master Rwanda logo"
-             class="logo">
+    <div id="quizError" role="alert"></div>
+    <div id="errorMessage" role="alert"></div>
 
-        <h1>Quiz Master 🇷🇼</h1>
-
-        <div class="tagline">
-          Test Your Knowledge. Learn. Score. Unlock.
-        </div>
-
-        <p class="hero-description">
-          Choose your language and quiz category, answer questions,
-          earn points and progress through quiz rounds.
+    <!-- HOME -->
+    <section id="homeScreen" class="screen active">
+      <div class="card">
+        <h2 id="homeTitle">Welcome to Quiz Master!</h2>
+        <p id="homeDescription" class="muted">
+          Choose your language and quiz category to begin.
         </p>
 
-        <!-- LANGUAGE AND CATEGORY SETUP -->
-        <section id="gameSetup" class="content-card">
-          <h2 id="setupTitle">🎮 Prepare Your Quiz</h2>
+        <button id="startBtn" class="btn btn-primary btn-block" type="button">
+          Start Quiz
+        </button>
 
-          <p id="languageLabel">1. Choose your preferred language</p>
+        <button id="continueBtn" class="btn btn-secondary btn-block" type="button">
+          Continue Quiz
+        </button>
 
-          <div class="button-group">
-            <button type="button"
-                    class="main-btn language-btn"
-                    data-language="rw"
-                    aria-pressed="false">
-              🇷🇼 Ikinyarwanda
-            </button>
+        <button id="roundsBtn" class="btn btn-block" type="button">
+          View Rounds
+        </button>
 
-            <button type="button"
-                    class="main-btn language-btn"
-                    data-language="en"
-                    aria-pressed="false">
-              🇬🇧 English
-            </button>
-          </div>
+        <button id="settingsBtn" class="btn btn-block" type="button">
+          Settings
+        </button>
 
-          <p id="modeLabel">2. Choose the quiz category</p>
-
-          <div class="button-group">
-            <button type="button"
-                    class="main-btn mode-btn"
-                    data-mode="traffic"
-                    aria-pressed="false">
-              🚦 Road Traffic Rules
-            </button>
-
-            <button type="button"
-                    class="main-btn mode-btn"
-                    data-mode="general"
-                    aria-pressed="false">
-              🧠 General Knowledge
-            </button>
-          </div>
-
-          <p id="selectionSummary" aria-live="polite">
-            Choose a language and category before starting.
-          </p>
-
-          <button id="confirmSetupBtn"
-                  type="button"
-                  class="main-btn success-btn"
-                  disabled>
-            ▶️ Start Quiz
-          </button>
-        </section>
-
-        <div class="button-group">
-          <button id="startBtn" type="button" class="main-btn">
-            🎮 Start Quiz
-          </button>
-
-          <button id="continueBtn"
-                  type="button"
-                  class="main-btn success-btn"
-                  style="display:none;">
-            ▶️ Continue Quiz
-          </button>
-
-          <button id="roundsBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            🏆 Quiz Rounds
-          </button>
-
-          <button id="settingsBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            ⚙️ Settings
-          </button>
-
-          <button id="shareBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            📤 Share Quiz Master
-          </button>
-        </div>
-      </header>
-
-      <!-- ADVERTISEMENT -->
-      <div class="ad-section">
-        <div class="ad-label">Advertisement</div>
-        <div class="ad-box">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-2666698676518429"
-               data-ad-slot="9045712897"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-        </div>
+        <button id="shareBtn" class="btn btn-block" type="button">
+          Share Quiz Master
+        </button>
       </div>
+    </section>
 
-      <!-- ABOUT -->
-      <section class="content-section">
-        <h2>About Quiz Master</h2>
-        <div class="content-grid">
-          <article class="content-card">
-            <h3>What Is Quiz Master?</h3>
-            <p>
-              Quiz Master 🇷🇼 is an educational quiz game that helps
-              players test their knowledge and learn useful facts.
-            </p>
-          </article>
+    <!-- LANGUAGE AND CATEGORY SETUP -->
+    <section id="gameSetup" class="screen">
+      <div class="card">
+        <h2 id="setupTitle">Set up your quiz</h2>
 
-          <article class="content-card">
-            <h3>Learn While Playing</h3>
-            <p>
-              Read each question carefully, choose an answer and
-              learn from the explanation when one is available.
-            </p>
-          </article>
-
-          <article class="content-card">
-            <h3>How to Play</h3>
-            <p>
-              Choose your language and category, then answer ten
-              questions per round. Each question has a 30-second timer.
-            </p>
-          </article>
-
-          <article class="content-card">
-            <h3>Quiz Progress</h3>
-            <p>
-              Earn points and work through the available quiz rounds
-              as you improve your results.
-            </p>
-          </article>
-
-          <article class="content-card">
-            <h3>Road Traffic Rules</h3>
-            <p>
-              Practise road signs, road safety and traffic-rule
-              knowledge with questions in your chosen language.
-            </p>
-          </article>
-
-          <article class="content-card">
-            <h3>General Knowledge</h3>
-            <p>
-              Explore questions about geography, science, history,
-              Rwanda, Africa, sports and other subjects.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section">
-        <h2>Quiz Master Features</h2>
-        <div class="content-grid">
-          <article class="content-card">
-            <h3>🎯 Score Points</h3>
-            <p>Answer questions correctly to earn points.</p>
-          </article>
-
-          <article class="content-card">
-            <h3>🏆 Unlock Rounds</h3>
-            <p>Progress through rounds according to your results.</p>
-          </article>
-
-          <article class="content-card">
-            <h3>📚 Learn From Questions</h3>
-            <p>Use questions and explanations to practise knowledge.</p>
-          </article>
-
-          <article class="content-card">
-            <h3>📱 Mobile Friendly</h3>
-            <p>Play on phones, tablets and larger screens.</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- FOOTER -->
-      <footer class="footer">
-        <div>© 2026 Quiz Master 🇷🇼 — Knowledge Quiz</div>
-
-        <div class="footer-links">
-          <a href="/privacy-policy.html">Privacy Policy</a>
-          |
-          <a href="/terms.html">Terms of Service</a>
-        </div>
-
-        <div class="footer-contact">
-          Contact:
-          <a href="mailto:mazimpakaisaie7@gmail.com">
-            mazimpakaisaie7@gmail.com
-          </a>
-        </div>
-      </footer>
-    </div>
-  </section>
-
-  <!-- ROUNDS SCREEN -->
-  <section id="roundsScreen" class="screen">
-    <div class="container">
-      <div class="panel">
-        <h2 class="screen-title">🏆 Quiz Rounds</h2>
-        <div id="roundGrid"></div>
-
+        <h3 id="languageHeading">Choose language</h3>
         <div class="button-group">
-          <button id="roundsBackBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            ← Back
+          <button class="language-btn selected" type="button" data-language="rw">
+            🇷🇼 Ikinyarwanda
+          </button>
+
+          <button class="language-btn" type="button" data-language="en">
+            🇬🇧 English
           </button>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- QUIZ SCREEN -->
-  <section id="quizScreen" class="screen">
-    <div class="container">
-      <div class="panel">
-        <div class="quiz-header">
-          <div class="quiz-stat">
-            Question <strong id="questionNumber">1</strong>
+        <h3 id="modeHeading">Choose category</h3>
+        <div class="button-group">
+          <button class="mode-btn selected" type="button" data-mode="traffic">
+            🚦 Amategeko y'umuhanda
+          </button>
+
+          <button class="mode-btn" type="button" data-mode="general">
+            🌍 Ubumenyi rusange
+          </button>
+        </div>
+
+        <p id="setupSummary" class="muted">
+          Ikinyarwanda · Amategeko y'umuhanda
+        </p>
+
+        <button id="confirmSetupBtn" class="btn btn-primary btn-block" type="button">
+          Emeza utangire
+        </button>
+
+        <button id="setupBackBtn" class="btn btn-block" type="button">
+          Subira inyuma
+        </button>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quizScreen" class="screen">
+      <div class="card">
+        <div class="stats">
+          <div class="stat">
+            <strong id="currentRound">1</strong>
+            <span>Round</span>
           </div>
-          <div class="quiz-stat">
-            Round <strong id="roundDisplay">1</strong>
+          <div class="stat">
+            <strong id="currentQuestionNumber">1</strong>
+            <span id="questionCount">Question</span>
           </div>
-          <div class="quiz-stat">
-            Score <strong id="score">0</strong>
-          </div>
-          <div class="quiz-stat">
-            Time <strong id="timer">30</strong>
+          <div class="stat">
+            <strong id="score">0</strong>
+            <span>Score</span>
           </div>
         </div>
 
-        <div class="progress-container">
+        <div class="progress-track">
           <div id="progressBar"></div>
         </div>
 
-        <div id="category">General Knowledge</div>
-        <h2 id="question">Question</h2>
-        <div id="options"></div>
-        <div id="message" aria-live="polite"></div>
-
-        <div class="quiz-controls">
-          <button id="nextBtn" type="button" class="main-btn">Next</button>
-          <button id="pauseBtn" type="button" class="main-btn warning-btn">Pause</button>
-          <button id="quizHomeBtn" type="button" class="main-btn secondary-btn">Home</button>
+        <div class="timer-line">
+          <span id="questionLabel">Question</span>
+          <span class="timer-pill">
+            ⏱ <span id="timer">30</span>s
+          </span>
         </div>
+
+        <h2 id="questionText">Loading question...</h2>
+
+        <div id="optionsContainer"></div>
+
+        <div id="explanation"></div>
+
+        <button id="nextQuestionBtn" class="btn btn-primary btn-block" type="button" style="display:none">
+          Next Question
+        </button>
+
+        <button id="quizHomeBtn" class="btn btn-block" type="button">
+          Home
+        </button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- RESULT SCREEN -->
-  <section id="resultScreen" class="screen">
-    <div class="container">
-      <div class="panel">
-        <h2 class="screen-title">🎉 Quiz Result</h2>
+    <!-- ROUND RESULTS -->
+    <section id="resultScreen" class="screen">
+      <div class="card">
+        <h2 id="resultTitle">Round Complete!</h2>
 
-        <div id="finalScore" class="result-score">0</div>
-        <div id="resultPercent" style="text-align:center;">0%</div>
-        <p id="resultMessage" style="text-align:center;"></p>
+        <p id="resultMessage" class="muted"></p>
 
-        <div class="result-grid">
-          <div class="result-stat">
-            <strong id="finishedRound">1</strong>
-            <div>Round</div>
+        <p>Round <strong id="resultRound">1</strong></p>
+
+        <div class="result-number" id="resultPercent">0%</div>
+        <p id="roundStars">★</p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong id="resultScore">0</strong>
+            <span>Score</span>
           </div>
-          <div class="result-stat">
-            <strong id="correctCount">0</strong>
-            <div>Correct</div>
+          <div class="stat">
+            <strong id="correctAnswers">0</strong>
+            <span>Correct</span>
           </div>
-          <div class="result-stat">
-            <strong id="wrongCount">0</strong>
-            <div>Wrong</div>
+          <div class="stat">
+            <strong id="totalQuestionsResult">10</strong>
+            <span>Questions</span>
           </div>
         </div>
 
-        <div class="button-group">
-          <button id="nextRoundBtn" type="button" class="main-btn success-btn">Next Round</button>
-          <button id="restartBtn" type="button" class="main-btn">Retry</button>
-          <button id="reviewBtn" type="button" class="main-btn secondary-btn">Review Answers</button>
-          <button id="resultHomeBtn" type="button" class="main-btn secondary-btn">Home</button>
-        </div>
+        <button id="retryBtn" class="btn btn-primary btn-block" type="button">
+          Retry Round
+        </button>
+
+        <button id="resultNextBtn" class="btn btn-secondary btn-block" type="button">
+          Next Round
+        </button>
+
+        <button id="resultHomeBtn" class="btn btn-block" type="button">
+          Home
+        </button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- REVIEW SCREEN -->
-  <section id="reviewScreen" class="screen">
-    <div class="container">
-      <div class="panel">
-        <h2 class="screen-title">📖 Review Answers</h2>
-        <div id="reviewSummary"></div>
-        <div id="reviewList"></div>
+    <!-- ROUNDS -->
+    <section id="roundsScreen" class="screen">
+      <div class="card">
+        <h2>Quiz Rounds</h2>
+        <p class="muted">
+          Rounds are created automatically from the valid questions in your JSON file.
+        </p>
 
-        <div class="button-group">
-          <button id="reviewRetryBtn" type="button" class="main-btn">Retry</button>
-          <button id="reviewBackBtn" type="button" class="main-btn secondary-btn">Back</button>
-        </div>
+        <p>Total rounds: <strong id="totalRounds">0</strong></p>
+
+        <div id="roundsContainer"></div>
+
+        <button id="roundsHomeBtn" class="btn btn-block" type="button">
+          Home
+        </button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SETTINGS SCREEN -->
-  <section id="settingsScreen" class="screen">
-    <div class="container">
-      <div class="panel">
-        <h2 class="screen-title">⚙️ Settings</h2>
+    <!-- SETTINGS -->
+    <section id="settingsScreen" class="screen">
+      <div class="card">
+        <h2 id="settingsTitle">Settings</h2>
+        <p id="settingsDescription" class="muted">
+          Change your quiz language and category from the setup screen.
+        </p>
 
-        <div class="setting-row">
-          <div>
-            <strong>Music</strong>
-            <div>Background music</div>
-          </div>
-          <input id="musicSwitch" type="checkbox" aria-label="Toggle music">
-        </div>
+        <button id="changeSetupBtn" class="btn btn-primary btn-block" type="button">
+          Change language / category
+        </button>
 
-        <div class="setting-row">
-          <div>
-            <strong>Sound Effects</strong>
-            <div>Quiz sound effects</div>
-          </div>
-          <input id="soundSwitch" type="checkbox" aria-label="Toggle sound effects">
-        </div>
-
-        <div class="button-group">
-          <button id="settingsBackBtn" type="button" class="main-btn secondary-btn">← Back</button>
-        </div>
+        <button id="settingsHomeBtn" class="btn btn-block" type="button">
+          Home
+        </button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ERROR SCREEN -->
-  <section id="errorScreen" class="screen">
-    <div class="container">
-      <div class="panel">
-        <h2 class="screen-title">⚠️ Something Went Wrong</h2>
-        <div id="errorMessage">Quiz Master could not load correctly.</div>
+    <footer>
+      <p>Quiz Master 🇷🇼</p>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="./terms.html">Terms of Service</a>
+    </footer>
+  </div>
 
-        <div class="button-group">
-          <button id="errorRestartBtn" type="button" class="main-btn">Restart</button>
-          <button id="errorHomeBtn" type="button" class="main-btn secondary-btn">Home</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Setup selection logic -->
+  <script>
+    (() => {
+      "use strict";
 
-</div>
+      const $ = (id) => document.getElementById(id);
 
-<!-- AdSense initialization -->
-<script>
-  window.addEventListener("load", function () {
-    try {
-      document.querySelectorAll(".adsbygoogle").forEach(function (ad) {
-        if (!ad.getAttribute("data-adsbygoogle-status")) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
+      let selectedLanguage =
+        localStorage.getItem("quizmasterLanguage") === "en" ? "en" : "rw";
+
+      let selectedMode =
+        localStorage.getItem("quizmasterMode") === "general"
+          ? "general"
+          : "traffic";
+
+      const translations = {
+        rw: {
+          subtitle: "Gerageza ubumenyi bwawe wige ibishya.",
+          homeTitle: "Murakaza neza kuri Quiz Master!",
+          homeDescription: "Hitamo ururimi n'icyiciro kugira ngo utangire.",
+          start: "Tangira umukino",
+          continue: "Komeza umukino",
+          rounds: "Reba rounds",
+          settings: "Igenamiterere",
+          share: "Sangiza abandi Quiz Master",
+          setup: "Tegura umukino wawe",
+          language: "Hitamo ururimi",
+          category: "Hitamo icyiciro",
+          traffic: "🚦 Amategeko y'umuhanda",
+          general: "🌍 Ubumenyi rusange",
+          confirm: "Emeza utangire",
+          back: "Subira inyuma",
+          question: "Ikibazo",
+          next: "Ikibazo gikurikira",
+          result: "Round irarangiye!",
+          retry: "Ongera ukine iyi round",
+          nextRound: "Round ikurikira",
+          home: "Ahabanza",
+          change: "Hindura ururimi / icyiciro",
+          settingsDesc: "Hindura ururimi n'icyiciro ukoresheje setup.",
+          summaryTraffic: "Amategeko y'umuhanda",
+          summaryGeneral: "Ubumenyi rusange"
+        },
+        en: {
+          subtitle: "Test your knowledge and learn something new.",
+          homeTitle: "Welcome to Quiz Master!",
+          homeDescription: "Choose your language and category to begin.",
+          start: "Start Quiz",
+          continue: "Continue Quiz",
+          rounds: "View Rounds",
+          settings: "Settings",
+          share: "Share Quiz Master",
+          setup: "Set up your quiz",
+          language: "Choose language",
+          category: "Choose category",
+          traffic: "🚦 Road Traffic Rules",
+          general: "🌍 General Knowledge",
+          confirm: "Confirm and Start",
+          back: "Go Back",
+          question: "Question",
+          next: "Next Question",
+          result: "Round Complete!",
+          retry: "Retry Round",
+          nextRound: "Next Round",
+          home: "Home",
+          change: "Change language / category",
+          settingsDesc: "Change your language and category using setup.",
+          summaryTraffic: "Road Traffic Rules",
+          summaryGeneral: "General Knowledge"
+        }
+      };
+
+      function updateSetupUI() {
+        const t = translations[selectedLanguage];
+
+        const textMap = {
+          headerSubtitle: t.subtitle,
+          homeTitle: t.homeTitle,
+          homeDescription: t.homeDescription,
+          startBtn: t.start,
+          continueBtn: t.continue,
+          roundsBtn: t.rounds,
+          settingsBtn: t.settings,
+          shareBtn: t.share,
+          setupTitle: t.setup,
+          languageHeading: t.language,
+          modeHeading: t.category,
+          confirmSetupBtn: t.confirm,
+          setupBackBtn: t.back,
+          questionLabel: t.question,
+          nextQuestionBtn: t.next,
+          resultTitle: t.result,
+          retryBtn: t.retry,
+          resultNextBtn: t.nextRound,
+          quizHomeBtn: t.home,
+          resultHomeBtn: t.home,
+          roundsHomeBtn: t.home,
+          settingsHomeBtn: t.home,
+          changeSetupBtn: t.change,
+          settingsDescription: t.settingsDesc
+        };
+
+        Object.entries(textMap).forEach(([id, value]) => {
+          const element = $(id);
+          if (element) element.textContent = value;
+        });
+
+        document.querySelectorAll("[data-language]").forEach((button) => {
+          button.classList.toggle(
+            "selected",
+            button.dataset.language === selectedLanguage
+          );
+        });
+
+        document.querySelectorAll("[data-mode]").forEach((button) => {
+          button.classList.toggle(
+            "selected",
+            button.dataset.mode === selectedMode
+          );
+
+          if (button.dataset.mode === "traffic") {
+            button.textContent = t.traffic;
+          }
+
+          if (button.dataset.mode === "general") {
+            button.textContent = t.general;
+          }
+        });
+
+        const summary = $("setupSummary");
+        if (summary) {
+          const languageName =
+            selectedLanguage === "en" ? "English" : "Ikinyarwanda";
+
+          const categoryName = selectedMode === "traffic"
+            ? t.summaryTraffic
+            : t.summaryGeneral;
+
+          summary.textContent = `${languageName} · ${categoryName}`;
+        }
+      }
+
+      document.querySelectorAll("[data-language]").forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedLanguage = button.dataset.language;
+          updateSetupUI();
+        });
+      });
+
+      document.querySelectorAll("[data-mode]").forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedMode = button.dataset.mode;
+          updateSetupUI();
+        });
+      });
+
+      $("startBtn").addEventListener("click", () => {
+        $("gameSetup").style.display = "block";
+        $("gameSetup").classList.add("active");
+        $("homeScreen").style.display = "none";
+        $("homeScreen").classList.remove("active");
+      });
+
+      $("confirmSetupBtn").addEventListener("click", () => {
+        localStorage.setItem("quizmasterLanguage", selectedLanguage);
+        localStorage.setItem("quizmasterMode", selectedMode);
+        localStorage.setItem("quizmasterSetupComplete", "true");
+
+        // Iyi event igomba kujya kuri window kuko questions.js iyumva kuri window.
+        window.dispatchEvent(
+          new CustomEvent("quizmaster:setup", {
+            detail: {
+              language: selectedLanguage,
+              mode: selectedMode
+            }
+          })
+        );
+      });
+
+      $("setupBackBtn").addEventListener("click", () => {
+        $("gameSetup").style.display = "none";
+        $("gameSetup").classList.remove("active");
+        $("homeScreen").style.display = "block";
+        $("homeScreen").classList.add("active");
+      });
+
+      $("settingsBtn").addEventListener("click", () => {
+        document.querySelectorAll(".screen").forEach((screen) => {
+          screen.style.display = "none";
+          screen.classList.remove("active");
+        });
+
+        $("settingsScreen").style.display = "block";
+        $("settingsScreen").classList.add("active");
+      });
+
+      $("changeSetupBtn").addEventListener("click", () => {
+        document.querySelectorAll(".screen").forEach((screen) => {
+          screen.style.display = "none";
+          screen.classList.remove("active");
+        });
+
+        $("gameSetup").style.display = "block";
+        $("gameSetup").classList.add("active");
+      });
+
+      $("shareBtn").addEventListener("click", async () => {
+        const shareData = {
+          title: "Quiz Master 🇷🇼",
+          text: "Test your knowledge with Quiz Master!",
+          url: window.location.href
+        };
+
+        try {
+          if (navigator.share) {
+            await navigator.share(shareData);
+          } else {
+            await navigator.clipboard.writeText(shareData.url);
+            alert("✅ Link Copied!");
+          }
+        } catch (error) {
+          if (error.name === "AbortError") return;
+
+          try {
+            await navigator.clipboard.writeText(shareData.url);
+            alert("✅ Link Copied!");
+          } catch {
+            prompt("Copy this link:", shareData.url);
+          }
         }
       });
-    } catch (error) {
-      console.warn("Ad initialization warning:", error);
-    }
-  });
-</script>
 
-<!-- Language and category selection -->
-<script>
-(function () {
-  "use strict";
+      updateSetupUI();
+    })();
+  </script>
 
-  const setup = document.getElementById("gameSetup");
-  const confirmBtn = document.getElementById("confirmSetupBtn");
-  const summary = document.getElementById("selectionSummary");
-  const startBtn = document.getElementById("startBtn");
+  <!-- Quiz engine -->
+  <script src="./questions.js"></script>
 
-  if (!setup || !confirmBtn || !summary || !startBtn) return;
+  <!-- Connect additional navigation buttons -->
+  <script>
+    (() => {
+      "use strict";
 
-  let selectedLanguage = "";
-  let selectedMode = "";
-  let setupConfirmed = false;
+      const $ = (id) => document.getElementById(id);
 
-  const translations = {
-    rw: {
-      title: "🎮 Tegura umukino wawe",
-      language: "1. Hitamo ururimi wumva neza",
-      mode: "2. Hitamo ubwoko bw'ibibazo",
-      traffic: "🚦 Amategeko y'umuhanda",
-      general: "🧠 Ubumenyi rusange",
-      choose: "Banza uhitemo ururimi n'icyiciro.",
-      start: "▶️ Tangira gukina",
-      ready: "Wahisemo",
-      error: "Hitamo ururimi n'icyiciro mbere yo gukomeza."
-    },
-    en: {
-      title: "🎮 Prepare Your Quiz",
-      language: "1. Choose your preferred language",
-      mode: "2. Choose a quiz category",
-      traffic: "🚦 Road Traffic Rules",
-      general: "🧠 General Knowledge",
-      choose: "Choose a language and category first.",
-      start: "▶️ Start Quiz",
-      ready: "Your selection",
-      error: "Choose a language and category before continuing."
-    }
-  };
+      function showScreen(id) {
+        document.querySelectorAll(".screen").forEach((screen) => {
+          screen.classList.remove("active");
+          screen.style.display = "none";
+        });
 
-  function updateSummary() {
-    const t = translations[selectedLanguage || "en"];
-
-    if (!selectedLanguage || !selectedMode) {
-      summary.textContent = t.choose;
-      confirmBtn.disabled = true;
-      return;
-    }
-
-    const languageName =
-      selectedLanguage === "rw" ? "Ikinyarwanda" : "English";
-
-    const modeName =
-      selectedMode === "traffic" ? t.traffic : t.general;
-
-    summary.textContent =
-      t.ready + ": " + languageName + " — " + modeName;
-
-    confirmBtn.disabled = false;
-  }
-
-  function updateLanguage(language) {
-    if (language !== "rw" && language !== "en") return;
-
-    selectedLanguage = language;
-    const t = translations[language];
-
-    document.documentElement.lang = language;
-    document.getElementById("setupTitle").textContent = t.title;
-    document.getElementById("languageLabel").textContent = t.language;
-    document.getElementById("modeLabel").textContent = t.mode;
-    confirmBtn.textContent = t.start;
-
-    document.querySelectorAll(".language-btn").forEach(function (button) {
-      const selected = button.dataset.language === language;
-      button.classList.toggle("selected", selected);
-      button.setAttribute("aria-pressed", String(selected));
-    });
-
-    document.querySelector('[data-mode="traffic"]').textContent = t.traffic;
-    document.querySelector('[data-mode="general"]').textContent = t.general;
-
-    updateSummary();
-  }
-
-  function updateMode(mode) {
-    if (mode !== "traffic" && mode !== "general") return;
-
-    selectedMode = mode;
-
-    document.querySelectorAll(".mode-btn").forEach(function (button) {
-      const selected = button.dataset.mode === mode;
-      button.classList.toggle("selected", selected);
-      button.setAttribute("aria-pressed", String(selected));
-    });
-
-    updateSummary();
-  }
-
-  document.querySelectorAll(".language-btn").forEach(function (button) {
-    button.addEventListener("click", function () {
-      setupConfirmed = false;
-      updateLanguage(button.dataset.language);
-    });
-  });
-
-  document.querySelectorAll(".mode-btn").forEach(function (button) {
-    button.addEventListener("click", function () {
-      setupConfirmed = false;
-      updateMode(button.dataset.mode);
-    });
-  });
-
-  confirmBtn.addEventListener("click", function () {
-    if (!selectedLanguage || !selectedMode) {
-      summary.textContent =
-        translations[selectedLanguage || "en"].error;
-      return;
-    }
-
-    try {
-      localStorage.setItem("quizmasterLanguage", selectedLanguage);
-      localStorage.setItem("quizmasterMode", selectedMode);
-      localStorage.setItem("quizmasterSetupComplete", "true");
-    } catch (error) {
-      summary.textContent =
-        "Could not save your selection. Check browser settings.";
-      console.error("Preference storage error:", error);
-      return;
-    }
-
-    setupConfirmed = true;
-
-    /*
-     * questions.js listens for this event on document.
-     */
-    document.dispatchEvent(new CustomEvent("quizmaster:setup", {
-      detail: {
-        language: selectedLanguage,
-        mode: selectedMode
+        const screen = $(id);
+        if (screen) {
+          screen.classList.add("active");
+          screen.style.display = "block";
+        }
       }
-    }));
 
-    /*
-     * Start the existing quiz engine without replacing it.
-     */
-    startBtn.click();
-  });
+      $("quizHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
+      $("resultHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
+      $("roundsHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
+      $("settingsHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
 
-  /*
-   * Block starting a new quiz until both choices are confirmed.
-   */
-  startBtn.addEventListener("click", function (event) {
-    if (setupConfirmed) return;
+      $("resultNextBtn").addEventListener("click", () => {
+        const completedRound = Number($("resultRound").textContent || 1);
+        const totalRounds = Number($("totalRounds").textContent || 0);
 
-    event.preventDefault();
-    event.stopImmediatePropagation();
-
-    summary.textContent =
-      translations[selectedLanguage || "en"].error;
-
-    setup.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-  }, true);
-
-  /*
-   * Restore saved choices, but require confirmation for a new quiz.
-   */
-  try {
-    const savedLanguage = localStorage.getItem("quizmasterLanguage");
-    const savedMode = localStorage.getItem("quizmasterMode");
-
-    if (savedLanguage === "rw" || savedLanguage === "en") {
-      updateLanguage(savedLanguage);
-    }
-
-    if (savedMode === "traffic" || savedMode === "general") {
-      updateMode(savedMode);
-    }
-  } catch (error) {
-    console.warn("Could not restore quiz preferences:", error);
-  }
-})();
-</script>
-
-<!-- Quiz engine: keep this after the HTML elements and setup script -->
-<script src="./questions.js"></script>
-
+        if (completedRound < totalRounds) {
+          // questions.js checks whether the next round is unlocked.
+          window.dispatchEvent(
+            new CustomEvent("quizmaster:start-round", {
+              detail: { round: completedRound + 1 }
+            })
+          );
+        } else {
+          showScreen("homeScreen");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
