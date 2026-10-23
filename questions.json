@@ -203,13 +203,6 @@
 "category": "Road Safety"
 },
 {
-"question": "Ni iki umushoferi agomba gukora igihe ageze ku masangano aho umukozi ubifitiye ububasha ari kuyobora urujya n'uruza?",
-"options": ["Gukurikiza amabwiriza y'uwo mukozi no kugenzura umutekano mbere yo gukomeza", "Gukurikiza itara gusa nubwo umukozi amutegeka ikindi", "Kwirengagiza amabwiriza niba nta modoka ihari", "Kugendera ku bimenyetso by'abandi bashoferi gusa"],
-"answer": "Gukurikiza amabwiriza y'uwo mukozi no kugenzura umutekano mbere yo gukomeza",
-"explanation": "Umukozi ubifitiye ububasha ashobora kuyobora urujya n'uruza bitewe n'imiterere y'aho hantu. Witondere amabwiriza ye kandi wirinde gukomeza igihe bitari mu mutekano.",
-"category": "Road Safety"
-},
-{
 "question": "Iyo amatara yo ku masangano adakora, ni iyihe myitwarire ikwiye?",
 "options": ["Kugabanya umuvuduko, kureba ibyerekezo byose no gukurikiza ibindi bimenyetso cyangwa amabwiriza ahari", "Kwemera ko ufite uburenganzira bwo kunyura mbere ya bose", "Kunyura wihuta kugira ngo ugere hakurya", "Gukurikira imodoka iri imbere utarebye"],
 "answer": "Kugabanya umuvuduko, kureba ibyerekezo byose no gukurikiza ibindi bimenyetso cyangwa amabwiriza ahari",
