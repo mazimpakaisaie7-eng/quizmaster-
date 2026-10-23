@@ -2132,3 +2132,322 @@
 "answer": "Tanzaniya",
 "explanation": "Umusozi wa Kilimanjaro uherereye muri Tanzaniya."
 },
+{
+"question": "Ni uwuhe mubumbe uzwiho kuba ufite umubare munini w'ukwezi kwawo muri Solar System?",
+"options": ["Isi", "Jupiter", "Mercure", "Venus"],
+"answer": "Jupiter",
+"explanation": "Jupiter iri mu mibumbe ifite ukwezi kwinshi; umubare w'ukwezi kwemejwe ushobora guhinduka uko ubushakashatsi bushya buboneka."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Kigali?",
+"options": ["Uganda", "Rwanda", "Burundi", "Kenya"],
+"answer": "Rwanda",
+"explanation": "Kigali ni umurwa mukuru w'u Rwanda."
+},
+{
+"question": "Ni ikihe kinyabuzima gikora ubuki?",
+"options": ["Isazi", "Inzuki", "Ibinyugunyugu", "Imiswa"],
+"answer": "Inzuki",
+"explanation": "Inzuki zikora ubuki zikoresheje ubuki bw'ibimera n'ibindi zikusanya mu ndabo."
+},
+{
+"question": "Ni iyihe gaze ibimera bikoresha mu gukora fotosinteze?",
+"options": ["Oxygène", "Dioxyde de carbone", "Hélium", "Hydrogène"],
+"answer": "Dioxyde de carbone",
+"explanation": "Ibimera bikoresha dioxyde de carbone, amazi n'urumuri mu gukora ibiryo byabyo."
+},
+{
+"question": "Ni ikihe gice cy'ijisho gifasha kugenzura ingano y'urumuri rwinjiramo?",
+"options": ["Iris", "Retine", "Nerf optique", "Cristallin"],
+"answer": "Iris",
+"explanation": "Iris ihindura ubunini bw'umwenge w'ijisho kugira ngo igenzure urumuri rwinjira."
+},
+{
+"question": "Amagufa agize umubiri w'umuntu mukuru aba hafi angahe?",
+"options": ["106", "206", "306", "406"],
+"answer": "206",
+"explanation": "Umuntu mukuru usanzwe agira amagufa agera kuri 206."
+},
+{
+"question": "Ni ikihe gice cy'umubiri gitangira igogorwa ry'ibiryo mu kanwa?",
+"options": ["Amenyo n'amacandwe", "Impyiko", "Ibihaha", "Umutima"],
+"answer": "Amenyo n'amacandwe",
+"explanation": "Amenyo asya ibiryo, naho amacandwe agatangiza igogorwa ry'ibinyasukari bimwe."
+},
+{
+"question": "Ni iyihe vitamine umubiri ushobora gukora ku ruhu iyo urumuri rw'izuba ruhari?",
+"options": ["Vitamine A", "Vitamine B12", "Vitamine C", "Vitamine D"],
+"answer": "Vitamine D",
+"explanation": "Uruhu rushobora gukora vitamine D iyo rwagezweho n'urumuri rukwiye rw'izuba."
+},
+{
+"question": "Ni ikihe kintu gituma icyuma gikururwa na rukuruzi?",
+"options": ["Gukomera kwacyo gusa", "Imiterere yacyo ya magnetique", "Ibara ryacyo", "Uburebure bwacyo gusa"],
+"answer": "Imiterere yacyo ya magnetique",
+"explanation": "Ibyuma bimwe nk'icyuma gisanzwe, nickel na cobalt bikururwa na rukuruzi."
+},
+{
+"question": "Amazi abira ku bushyuhe bungana iki ku muvuduko usanzwe wo ku nyanja?",
+"options": ["0°C", "50°C", "100°C", "150°C"],
+"answer": "100°C",
+"explanation": "Amazi meza abira kuri 100°C ku muvuduko usanzwe wo ku nyanja."
+},
+{
+"question": "Ni ikihe gihugu kizwiho umunara wa Eiffel?",
+"options": ["Ubufaransa", "Ubudage", "Ubutaliyani", "Espagne"],
+"answer": "Ubufaransa",
+"explanation": "Umunara wa Eiffel uherereye i Paris mu Bufaransa."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Nigeria?",
+"options": ["Lagos", "Abuja", "Kano", "Ibadan"],
+"answer": "Abuja",
+"explanation": "Abuja ni umurwa mukuru wa Nigeria."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Senegal?",
+"options": ["Bamako", "Dakar", "Conakry", "Lomé"],
+"answer": "Dakar",
+"explanation": "Dakar ni umurwa mukuru wa Senegal."
+},
+{
+"question": "Ni ikihe gihugu cya Afurika kizwiho umurwa mukuru witwa Kigali?",
+"options": ["Rwanda", "Tanzaniya", "Gabon", "Zambia"],
+"answer": "Rwanda",
+"explanation": "Kigali ni umurwa mukuru w'u Rwanda."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Rabat?",
+"options": ["Tunisia", "Maroc", "Libya", "Algeria"],
+"answer": "Maroc",
+"explanation": "Rabat ni umurwa mukuru wa Maroc."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Lisbon?",
+"options": ["Espagne", "Portugal", "Greece", "Croatia"],
+"answer": "Portugal",
+"explanation": "Lisbon ni umurwa mukuru wa Portugal."
+},
+{
+"question": "Ni uwuhe murwa mukuru w'Ubushinwa?",
+"options": ["Shanghai", "Beijing", "Hong Kong", "Wuhan"],
+"answer": "Beijing",
+"explanation": "Beijing ni umurwa mukuru w'Ubushinwa."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Seoul?",
+"options": ["Koreya y'Epfo", "Koreya ya Ruguru", "Ubuyapani", "Mongolia"],
+"answer": "Koreya y'Epfo",
+"explanation": "Seoul ni umurwa mukuru wa Koreya y'Epfo."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Ethiopia?",
+"options": ["Nairobi", "Addis Ababa", "Khartoum", "Kampala"],
+"answer": "Addis Ababa",
+"explanation": "Addis Ababa ni umurwa mukuru wa Ethiopia."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Zambia?",
+"options": ["Lusaka", "Harare", "Gaborone", "Lilongwe"],
+"answer": "Lusaka",
+"explanation": "Lusaka ni umurwa mukuru wa Zambia."
+},
+{
+"question": "Ni iyihe nyanja iri hagati ya Afurika n'Ubushinwa bwo mu burengerazuba bw'Aziya?",
+"options": ["Inyanja ya Mediterane", "Inyanja ya Karayibe", "Inyanja ya Baltique", "Inyanja ya Bering"],
+"answer": "Inyanja ya Mediterane",
+"explanation": "Inyanja ya Mediterane iri hagati ya Afurika, Aziya n'Uburayi."
+},
+{
+"question": "Ni uwuhe mugabane ukonje cyane ku isi?",
+"options": ["Afurika", "Antarctica", "Aziya", "Amerika y'Epfo"],
+"answer": "Antarctica",
+"explanation": "Antarctica ni wo mugabane ukonje cyane ku isi."
+},
+{
+"question": "Ni ikihe gihugu gifite umusozi wa Everest ku mupaka wacyo na Tibet?",
+"options": ["Nepal", "Egypte", "Nigeria", "Australiya"],
+"answer": "Nepal",
+"explanation": "Umusozi wa Everest uri ku mupaka uhuza Nepal n'akarere ka Tibet mu Bushinwa."
+},
+{
+"question": "Ni uruhe rurimi rukoreshwa cyane muri Argentina?",
+"options": ["Igisipanyolo", "Igifaransa", "Igiporutugali", "Igidage"],
+"answer": "Igisipanyolo",
+"explanation": "Igisipanyolo ni rwo rurimi rukoreshwa cyane muri Argentina."
+},
+{
+"question": "Ni ikihe gihugu kizwiho ikirwa cya Madagascar?",
+"options": ["Madagascar", "Mauritius", "Seychelles", "Comores"],
+"answer": "Madagascar",
+"explanation": "Madagascar ni igihugu kiri ku kirwa kinini mu nyanja y'Ubuhinde, hafi y'inkombe z'Afurika y'Iburasirazuba."
+},
+{
+"question": "Ni nde wabaye umuntu wa mbere wagendeye ku Kwezi?",
+"options": ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "John Glenn"],
+"answer": "Neil Armstrong",
+"explanation": "Neil Armstrong ni we muntu wa mbere wakandagiye ku Kwezi mu 1969."
+},
+{
+"question": "Ni uwuhe mwaka umuntu wa mbere yakandagiye ku Kwezi?",
+"options": ["1959", "1969", "1979", "1989"],
+"answer": "1969",
+"explanation": "Neil Armstrong yakandagiye ku Kwezi mu butumwa bwa Apollo 11 mu 1969."
+},
+{
+"question": "Ni ikihe gikoresho gifasha kureba ibintu biri kure cyane mu isanzure?",
+"options": ["Telesikopi", "Microscope", "Thermomètre", "Balance"],
+"answer": "Telesikopi",
+"explanation": "Telesikopi ifasha kwitegereza inyenyeri, imibumbe n'ibindi bintu byo mu isanzure."
+},
+{
+"question": "Ni iyihe nyenyeri iri hafi y'Isi kurusha izindi?",
+"options": ["Sirius", "Izuba", "Polaris", "Betelgeuse"],
+"answer": "Izuba",
+"explanation": "Izuba ni inyenyeri yegereye Isi kurusha izindi."
+},
+{
+"question": "Ni ikihe gikoresho gipima umuvuduko w'amashanyarazi hagati y'uduce tubiri tw'umuzunguruko?",
+"options": ["Voltmètre", "Thermomètre", "Anémomètre", "Hygromètre"],
+"answer": "Voltmètre",
+"explanation": "Voltmètre gipima voltage, ari yo tandukaniro ry'ubushobozi bw'amashanyarazi."
+},
+{
+"question": "Ni ikihe kinyabutabire gifite formule CO₂?",
+"options": ["Dioxyde de carbone", "Oxygène", "Amazi", "Chlorure de sodium"],
+"answer": "Dioxyde de carbone",
+"explanation": "CO₂ igizwe na atome imwe ya carbone na atome ebyiri za oxygène."
+},
+{
+"question": "Ni ikihe kinyabutabire kizwi nka NaCl?",
+"options": ["Isukari", "Umunyu wo mu gikoni", "Amazi", "Vinegre"],
+"answer": "Umunyu wo mu gikoni",
+"explanation": "NaCl ni sodium chloride, umunyu usanzwe ukoreshwa mu biryo."
+},
+{
+"question": "Ni ikihe gice cy'umubiri gifasha guhumeka kandi kigakuramo oxygène mu mwuka?",
+"options": ["Ibihaha", "Igifu", "Umwijima", "Impyiko"],
+"answer": "Ibihaha",
+"explanation": "Ibihaha bifasha kwinjiza oxygène mu maraso no gusohora dioxyde de carbone."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho guhindura ibara kugira ngo yihishe cyangwa ivugane n'ibindi?",
+"options": ["Chameleon", "Intare", "Imvubu", "Inzovu"],
+"answer": "Chameleon",
+"explanation": "Amoko menshi ya chameleon ashobora guhindura ibara bitewe n'imiterere y'umubiri, ubushyuhe cyangwa uburyo avugana n'ibindi."
+},
+{
+"question": "Ni iyihe nyamaswa ifite urusaku rwitwa 'croassement' mu Gifaransa?",
+"options": ["Igikeri", "Intama", "Ifarashi", "Inka"],
+"answer": "Igikeri",
+"explanation": "Ijwi ry'igikeri mu Gifaransa ryitwa croassement."
+},
+{
+"question": "Ni ikihe kinyabuzima gifite amababa ariko kikaba inyamabere?",
+"options": ["Agacurama", "Igishuhe", "Inkoko", "Ikinyugunyugu"],
+"answer": "Agacurama",
+"explanation": "Agacurama ni inyamabere ishobora kuguruka kandi ikonsa abana bayo."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho kubika amazi n'ibinure mu mubiri wayo kugira ngo imenyere ubuzima bwo mu butayu?",
+"options": ["Ingamiya", "Imvubu", "Inzovu", "Gorilla"],
+"answer": "Ingamiya",
+"explanation": "Ingamiya ibika ibinure mu ibondo ryayo, bikayifasha kubona ingufu igihe ibiryo bibaye bike."
+},
+{
+"question": "Ni iyihe nyoni izwiho kutaguruka ariko ikaba ishobora koga neza?",
+"options": ["Penguin", "Inuma", "Uko", "Igishwi"],
+"answer": "Penguin",
+"explanation": "Penguin ntiguruka, ariko amababa yayo ameze nk'ibipfukisho byo koga ayifasha mu mazi."
+},
+{
+"question": "Ni ikihe gikoresho gifasha kumenya uburebure bw'igihe?",
+"options": ["Chronomètre", "Boussole", "Baromètre", "Microscope"],
+"answer": "Chronomètre",
+"explanation": "Chronomètre ikoreshwa mu gupima igihe cyashize."
+},
+{
+"question": "Niba 12 × 8 = 96, 96 ÷ 12 bingana iki?",
+"options": ["6", "7", "8", "9"],
+"answer": "8",
+"explanation": "96 ugabanyije na 12 bingana na 8."
+},
+{
+"question": "Ni ikihe gisubizo cya 125 + 275?",
+"options": ["300", "350", "400", "450"],
+"answer": "400",
+"explanation": "125 + 275 = 400."
+},
+{
+"question": "Ni ikihe gisubizo cya 15 × 6?",
+"options": ["80", "90", "100", "110"],
+"answer": "90",
+"explanation": "15 × 6 = 90."
+},
+{
+"question": "Niba ikintu kigura amafaranga 2,500 kikagabanyirizwa 500, igiciro gishya ni angahe?",
+"options": ["1,500", "2,000", "2,500", "3,000"],
+"answer": "2,000",
+"explanation": "2,500 − 500 = 2,000."
+},
+{
+"question": "Ni ikihe gipimo gikoreshwa mu gupima ubushyuhe mu bihugu byinshi, harimo n'u Rwanda?",
+"options": ["Celsius", "Kilometre", "Litre", "Kilogramme"],
+"answer": "Celsius",
+"explanation": "Celsius ni kimwe mu bipimo by'ubushyuhe bikoreshwa cyane mu Rwanda no mu bindi bihugu byinshi."
+},
+{
+"question": "Ni ikihe gipimo gikoreshwa mu gupima uburebure mu buryo mpuzamahanga?",
+"options": ["Metre", "Litre", "Kilogramme", "Seconde"],
+"answer": "Metre",
+"explanation": "Metre ni cyo gipimo fatizo cy'uburebure muri sisitemu mpuzamahanga y'ibipimo."
+},
+{
+"question": "Ni ikihe gipimo gikoreshwa mu gupima ubwinshi bw'ibintu mu buryo bwa misa?",
+"options": ["Kilogramme", "Litre", "Metre", "Celsius"],
+"answer": "Kilogramme",
+"explanation": "Kilogramme ni igipimo fatizo cya misa muri sisitemu mpuzamahanga y'ibipimo."
+},
+{
+"question": "Ni ikihe gihugu cyakiriye imikino Olempike yo mu mpeshyi yo mu 2020 yabaye mu 2021?",
+"options": ["Ubuyapani", "Brazil", "Ubwongereza", "Ubufaransa"],
+"answer": "Ubuyapani",
+"explanation": "Imikino Olempike ya Tokyo 2020 yasubitswe kubera icyorezo cya COVID-19, ibera mu Buyapani mu 2021."
+},
+{
+"question": "Mu mupira w'amaguru, ikipe imwe itangirana abakinnyi bangahe mu kibuga?",
+"options": ["9", "10", "11", "12"],
+"answer": "11",
+"explanation": "Ikipe isanzwe y'umupira w'amaguru itangirana abakinnyi 11 mu kibuga, harimo umunyezamu."
+},
+{
+"question": "Mu mukino wa basketball, amanota aboneka iyo umukinnyi atsindishije umupira uri inyuma y'umurongo w'amanota atatu ni angahe?",
+"options": ["1", "2", "3", "4"],
+"answer": "3",
+"explanation": "Igitego cyatsinzwe inyuma y'umurongo w'amanota atatu gitanga amanota 3."
+},
+{
+"question": "Ni ikihe gikoresho gikoreshwa mu kubika no gutunganya amakuru ya mudasobwa mu gihe iri gukora?",
+"options": ["RAM", "Mwandikisho", "Mousi", "Printer"],
+"answer": "RAM",
+"explanation": "RAM ibika by'agateganyo amakuru na porogaramu mudasobwa ikeneye mu gihe iri gukora."
+},
+{
+"question": "Ni ikihe gikoresho gikoreshwa mu kwandika inyuguti kuri mudasobwa?",
+"options": ["Mwandikisho (Keyboard)", "Printer", "Speaker", "Scanner"],
+"answer": "Mwandikisho (Keyboard)",
+"explanation": "Mwandikisho ikoreshwa mu kwinjiza inyuguti, imibare n'andi mabwiriza muri mudasobwa."
+},
+{
+"question": "Ni ikihe gikorwa cyo kohereza ubutumwa hakoreshejwe interineti mu buryo bw'inyandiko, amashusho cyangwa amadosiye?",
+"options": ["Email", "Gusikana", "Gucapa", "Gusubiramo mudasobwa"],
+"answer": "Email",
+"explanation": "Email ni uburyo bwo kohereza no kwakira ubutumwa hakoreshejwe interineti."
+},
+{
+"question": "Ni iyihe sosiyete yaremye sisitemu y'imikorere ya Android ifatanyije n'abafatanyabikorwa bayo?",
+"options": ["Google", "Nintendo", "Adobe", "Nokia gusa"],
+"answer": "Google",
+"explanation": "Google iyobora iterambere rya Android, sisitemu y'imikorere ikoreshwa cyane kuri telefoni."
+}
+]
