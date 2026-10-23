@@ -1826,3 +1826,309 @@
   "answer": "Kugabanya umuvuduko, kukirinda mu mutekano no gutanga amakuru ku babishinzwe igihe bikenewe",
   "explanation": "Kwita ku mbogamizi no gutanga amakuru bishobora gufasha kurinda abandi bakoresha umuhanda."
 },
+{
+"question": "Umurwa mukuru w'u Rwanda ni uwuhe?",
+"options": ["Kigali", "Huye", "Musanze", "Rubavu"],
+"answer": "Kigali",
+"explanation": "Kigali ni wo murwa mukuru w'u Rwanda."
+},
+{
+"question": "Umubumbe dutuyeho witwa nde?",
+"options": ["Mars", "Isi", "Venus", "Jupiter"],
+"answer": "Isi",
+"explanation": "Isi ni umubumbe abantu n'ibindi binyabuzima dutuyeho."
+},
+{
+"question": "Amazi agizwe n'ibihe bintu bibiri by'ibanze?",
+"options": ["Hydrogène na oxygène", "Azote na fer", "Carbone na cuivre", "Hélium na argent"],
+"answer": "Hydrogène na oxygène",
+"explanation": "Amazi afite formule chimique H₂O, igizwe na hydrogène ebyiri na oxygène imwe."
+},
+{
+"question": "Ni uwuhe mubumbe uzwiho kugira impeta nini zigaragara?",
+"options": ["Mercure", "Saturne", "Mars", "Venus"],
+"answer": "Saturne",
+"explanation": "Saturne izwi cyane kubera impeta ziyikikije."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho kugira ijosi rirerire cyane?",
+"options": ["Intare", "Imvubu", "Giraffe", "Ingwe"],
+"answer": "Giraffe",
+"explanation": "Giraffe ifite ijosi rirerire rifasha kugera ku mababi yo hejuru y'ibiti."
+},
+{
+"question": "Umubumbe munini kurusha iyindi muri Solar System ni uwuhe?",
+"options": ["Isi", "Jupiter", "Mars", "Neptune"],
+"answer": "Jupiter",
+"explanation": "Jupiter ni wo mubumbe munini muri Solar System."
+},
+{
+"question": "Ni uwuhe mubiri wo mu muntu ushinzwe gutera amaraso mu mubiri?",
+"options": ["Ibihaha", "Umutima", "Igifu", "Impyiko"],
+"answer": "Umutima",
+"explanation": "Umutima usunika amaraso kugira ngo agere mu bice bitandukanye by'umubiri."
+},
+{
+"question": "Ni iyihe nyamaswa yonsa abana bayo kandi ikaba imara igihe kinini mu mazi?",
+"options": ["Ingona", "Dauphin", "Ifi isanzwe", "Inzoka"],
+"answer": "Dauphin",
+"explanation": "Dauphin ni inyamaswa y'inyamabere ibaho mu mazi kandi yonsa abana bayo."
+},
+{
+"question": "Ni ikihe gikoresho gipima ubushyuhe?",
+"options": ["Thermomètre", "Baromètre", "Boussole", "Microscope"],
+"answer": "Thermomètre",
+"explanation": "Thermomètre ni igikoresho gipima ubushyuhe."
+},
+{
+"question": "Ni uwuhe mubumbe wegereye izuba kurusha iyindi?",
+"options": ["Venus", "Isi", "Mercure", "Mars"],
+"answer": "Mercure",
+"explanation": "Mercure ni wo mubumbe wegereye izuba muri Solar System."
+},
+{
+"question": "Ni ikihe gihugu kizwiho kuba gifite piramide za kera zo muri Giza?",
+"options": ["Misiri", "Kenya", "Brazil", "Ubuhinde"],
+"answer": "Misiri",
+"explanation": "Piramide za Giza ziherereye mu Misiri."
+},
+{
+"question": "Umugabane Afurika ufite ibihugu bigera kuri bingahe byigenga?",
+"options": ["44", "54", "64", "34"],
+"answer": "54",
+"explanation": "Afurika ikunze kubarwaho ibihugu 54 byigenga byemewe n'umuryango w'Abibumbye."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru witwa Tokyo?",
+"options": ["Ubushinwa", "Ubuyapani", "Koreya y'Epfo", "Tayilande"],
+"answer": "Ubuyapani",
+"explanation": "Tokyo ni umurwa mukuru w'Ubuyapani."
+},
+{
+"question": "Ni uwuhe mugabane urimo igihugu cya Brazil?",
+"options": ["Afurika", "Aziya", "Amerika y'Epfo", "Uburayi"],
+"answer": "Amerika y'Epfo",
+"explanation": "Brazil iherereye muri Amerika y'Epfo."
+},
+{
+"question": "Ni ikihe gihugu kizwiho kuba gifite umurwa mukuru witwa Nairobi?",
+"options": ["Uganda", "Kenya", "Tanzaniya", "Rwanda"],
+"answer": "Kenya",
+"explanation": "Nairobi ni umurwa mukuru wa Kenya."
+},
+{
+"question": "Ni uruhe rurimi rukoreshwa cyane muri Brazil?",
+"options": ["Icyesipanyolo", "Igifaransa", "Igiporutugali", "Icyongereza"],
+"answer": "Igiporutugali",
+"explanation": "Igiporutugali ni rwo rurimi rwemewe kandi rukoreshwa cyane muri Brazil."
+},
+{
+"question": "Ni ikihe gihugu kizwiho urukuta runini rwa Great Wall?",
+"options": ["Ubushinwa", "Ubuyapani", "Ubuhinde", "Mongolia"],
+"answer": "Ubushinwa",
+"explanation": "Great Wall ni urukuta rw'amateka ruherereye mu Bushinwa."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Uganda?",
+"options": ["Kampala", "Jinja", "Gulu", "Mbarara"],
+"answer": "Kampala",
+"explanation": "Kampala ni umurwa mukuru wa Uganda."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Tanzaniya?",
+"options": ["Arusha", "Dodoma", "Dar es Salaam", "Mwanza"],
+"answer": "Dodoma",
+"explanation": "Dodoma ni umurwa mukuru wa Tanzaniya."
+},
+{
+"question": "Ni ikihe gihugu cyo muri Afurika y'Iburengerazuba kizwiho umurwa mukuru Accra?",
+"options": ["Ghana", "Nigeria", "Senegal", "Mali"],
+"answer": "Ghana",
+"explanation": "Accra ni umurwa mukuru wa Ghana."
+},
+{
+"question": "Ni nde wanditse igitabo kizwi nka Romeo and Juliet?",
+"options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "George Orwell"],
+"answer": "William Shakespeare",
+"explanation": "William Shakespeare ni we wanditse ikinamico Romeo and Juliet."
+},
+{
+"question": "Ni nde wanditse igitabo Animal Farm?",
+"options": ["George Orwell", "J.K. Rowling", "William Shakespeare", "Jane Austen"],
+"answer": "George Orwell",
+"explanation": "George Orwell ni we wanditse Animal Farm."
+},
+{
+"question": "Umwaka ugira amezi angahe?",
+"options": ["10", "11", "12", "13"],
+"answer": "12",
+"explanation": "Umwaka usanzwe ugira amezi 12."
+},
+{
+"question": "Umunsi ugira amasaha angahe?",
+"options": ["12", "18", "24", "36"],
+"answer": "24",
+"explanation": "Umunsi usanzwe ugira amasaha 24."
+},
+{
+"question": "Iminota 60 ingana n'iki?",
+"options": ["Isaha imwe", "Amasaha abiri", "Iminota 30", "Amasegonda 60"],
+"answer": "Isaha imwe",
+"explanation": "Isaha imwe igizwe n'iminota 60."
+},
+{
+"question": "Ni ikihe gikoresho gifasha kumenya icyerekezo cy'amajyaruguru?",
+"options": ["Boussole", "Thermomètre", "Balance", "Chronomètre"],
+"answer": "Boussole",
+"explanation": "Boussole ifasha kumenya icyerekezo, harimo n'amajyaruguru."
+},
+{
+"question": "Ni ikihe gikoresho gikoreshwa mu kureba utuntu duto cyane tutagaragarira amaso neza?",
+"options": ["Telesikopi", "Microscope", "Jumelles", "Periscope"],
+"answer": "Microscope",
+"explanation": "Microscope yongera ishusho y'ibintu bito kugira ngo bishobore kurebwa neza."
+},
+{
+"question": "Ni iyihe gaze abantu bahumeka ikenewe mu guhumeka bisanzwe?",
+"options": ["Oxygène", "Hélium", "Méthane", "Hydrogène"],
+"answer": "Oxygène",
+"explanation": "Oxygène ikoreshwa n'uturemangingo twinshi tw'umubiri mu gukora ingufu."
+},
+{
+"question": "Ni ikihe gice cy'igihingwa gikurura amazi n'imyunyu ngugu mu butaka?",
+"options": ["Indabo", "Imizi", "Amababi", "Imbuto"],
+"answer": "Imizi",
+"explanation": "Imizi ikurura amazi n'imyunyu ngugu biri mu butaka."
+},
+{
+"question": "Ni ikihe gice cy'igihingwa gifasha cyane mu gukora ibiryo hifashishijwe urumuri rw'izuba?",
+"options": ["Imizi", "Amababi", "Indabo gusa", "Igishishwa cy'imbuto"],
+"answer": "Amababi",
+"explanation": "Amababi akora fotosinteze hifashishijwe urumuri, amazi na karuboni ya dioxyde."
+},
+{
+"question": "Ni ikihe kinyabuzima gikunze kwitwa umwami w'ishyamba?",
+"options": ["Intare", "Inzovu", "Impara", "Imvubu"],
+"answer": "Intare",
+"explanation": "Intare ikunze kwitwa umwami w'ishyamba mu mvugo n'umuco rusange."
+},
+{
+"question": "Ni iyihe nyamaswa nini kurusha izindi ku isi muri iki gihe?",
+"options": ["Inzovu yo muri Afurika", "Baleine bleue", "Giraffe", "Imvubu"],
+"answer": "Baleine bleue",
+"explanation": "Baleine bleue ni yo nyamaswa nini izwiho kubaho ku isi muri iki gihe."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru Paris?",
+"options": ["Ubutaliyani", "Ubufaransa", "Ububiligi", "Ubusuwisi"],
+"answer": "Ubufaransa",
+"explanation": "Paris ni umurwa mukuru w'Ubufaransa."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru Berlin?",
+"options": ["Ubudage", "Otirishiya", "Polonye", "Danemark"],
+"answer": "Ubudage",
+"explanation": "Berlin ni umurwa mukuru w'Ubudage."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru Canberra?",
+"options": ["Nouvelle-Zélande", "Australiya", "Canada", "Irlande"],
+"answer": "Australiya",
+"explanation": "Canberra ni umurwa mukuru wa Australiya."
+},
+{
+"question": "Ni uwuhe murwa mukuru wa Leta Zunze Ubumwe za Amerika?",
+"options": ["New York", "Los Angeles", "Washington, D.C.", "Chicago"],
+"answer": "Washington, D.C.",
+"explanation": "Washington, D.C. ni umurwa mukuru wa Leta Zunze Ubumwe za Amerika."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru Ottawa?",
+"options": ["Canada", "Amerika", "Ubwongereza", "Australiya"],
+"answer": "Canada",
+"explanation": "Ottawa ni umurwa mukuru wa Canada."
+},
+{
+"question": "Ni iyihe nyanja nini kurusha izindi ku isi?",
+"options": ["Inyanja ya Atlantique", "Inyanja y'Ubuhinde", "Inyanja ya Pacifique", "Inyanja ya Arctique"],
+"answer": "Inyanja ya Pacifique",
+"explanation": "Inyanja ya Pacifique ni yo nini kurusha izindi nyanja."
+},
+{
+"question": "Ni uruhe ruzi rukunze kuvugwa nk'ururerure cyane ku isi mu bitabo byinshi by'ubumenyi rusange?",
+"options": ["Nili", "Niger", "Congo", "Zambezi"],
+"answer": "Nili",
+"explanation": "Uruzi rwa Nili rukunze gushyirwa ku mwanya wa mbere mu burebure, nubwo ibipimo bimwe bigereranya Nili na Amazone bitandukanye."
+},
+{
+"question": "Ni ikihe gihugu kizwiho umusozi wa Fuji?",
+"options": ["Ubuyapani", "Ubushinwa", "Nepal", "Indoneziya"],
+"answer": "Ubuyapani",
+"explanation": "Umusozi wa Fuji uri mu Buyapani."
+},
+{
+"question": "Ni uwuhe mubumbe uzwiho kuba umutuku iyo uwurebye uri kure?",
+"options": ["Mars", "Venus", "Mercure", "Saturne"],
+"answer": "Mars",
+"explanation": "Mars yitwa umubumbe utukura kubera ubutaka n'umukungugu bikungahaye kuri oxyde de fer."
+},
+{
+"question": "Ni iyihe nyamaswa izwiho kugira umunwa muremure n'amenyo akomeye, ikaba iba mu mazi no ku butaka?",
+"options": ["Ingona", "Inkende", "Impara", "Urukwavu"],
+"answer": "Ingona",
+"explanation": "Ingona ishobora kuba mu mazi no ku butaka kandi ifite urwasaya rukomeye."
+},
+{
+"question": "Ni ikihe gikoresho gipima uburemere?",
+"options": ["Balance", "Boussole", "Baromètre", "Microscope"],
+"answer": "Balance",
+"explanation": "Balance ikoreshwa mu gupima uburemere cyangwa kugereranya ibipimo by'ibintu."
+},
+{
+"question": "Ni ikihe gikoresho gipima umuvuduko w'umuyaga?",
+"options": ["Anémomètre", "Thermomètre", "Voltmètre", "Altimètre"],
+"answer": "Anémomètre",
+"explanation": "Anémomètre ni igikoresho gipima umuvuduko w'umuyaga."
+},
+{
+"question": "Ni iyihe mibare ibiri iyo uyiteranyije uba ubonye 100?",
+"options": ["45 na 55", "40 na 50", "30 na 60", "25 na 65"],
+"answer": "45 na 55",
+"explanation": "45 + 55 = 100."
+},
+{
+"question": "Igice cya kabiri cya 80 ni ikihe?",
+"options": ["20", "30", "40", "50"],
+"answer": "40",
+"explanation": "80 igabanyijwe na 2 bingana na 40."
+},
+{
+"question": "Niba ufite ibitabo 5 buri kimwe kigura amafaranga 200, byose hamwe bigura angahe?",
+"options": ["500", "800", "1,000", "1,200"],
+"answer": "1,000",
+"explanation": "5 × 200 = 1,000."
+},
+{
+"question": "Ni uruhe rurimi rukoreshwa cyane muri Mexico?",
+"options": ["Igisipanyolo", "Igiporutugali", "Igitaliyani", "Igidage"],
+"answer": "Igisipanyolo",
+"explanation": "Igisipanyolo ni rwo rurimi rukoreshwa cyane muri Mexico."
+},
+{
+"question": "Ni ikihe gihugu gifite umurwa mukuru Addis Ababa?",
+"options": ["Ethiopia", "Eritrea", "Somalia", "Sudani"],
+"answer": "Ethiopia",
+"explanation": "Addis Ababa ni umurwa mukuru wa Ethiopia."
+},
+{
+"question": "Ni uwuhe murwa mukuru w'u Burundi?",
+"options": ["Bujumbura", "Gitega", "Ngozi", "Rumonge"],
+"answer": "Gitega",
+"explanation": "Gitega ni umurwa mukuru wa politiki w'u Burundi."
+},
+{
+"question": "Ni ikihe gihugu cya Afurika kizwiho umusozi wa Kilimanjaro?",
+"options": ["Kenya", "Tanzaniya", "Uganda", "Rwanda"],
+"answer": "Tanzaniya",
+"explanation": "Umusozi wa Kilimanjaro uherereye muri Tanzaniya."
+},
