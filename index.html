@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
-
   <meta name="description" content="Quiz Master is a free knowledge quiz game. Test your knowledge of road traffic rules and general knowledge in English or Kinyarwanda.">
   <meta name="keywords" content="Quiz Master, Rwanda quiz, road traffic rules, driving theory, general knowledge, Ikinyarwanda quiz">
   <meta name="author" content="Mazimpaka Isaie">
@@ -205,7 +204,6 @@
       color: #cbd5e1;
     }
 
-    /* Language and category selection */
     #gameSetup {
       max-width: 760px;
       margin: 20px auto;
@@ -588,9 +586,7 @@
         </section>
 
         <div class="button-group">
-          <button id="startBtn"
-                  type="button"
-                  class="main-btn">
+          <button id="startBtn" type="button" class="main-btn">
             🎮 Start Quiz
           </button>
 
@@ -759,15 +755,12 @@
           <div class="quiz-stat">
             Question <strong id="questionNumber">1</strong>
           </div>
-
           <div class="quiz-stat">
             Round <strong id="roundDisplay">1</strong>
           </div>
-
           <div class="quiz-stat">
             Score <strong id="score">0</strong>
           </div>
-
           <div class="quiz-stat">
             Time <strong id="timer">30</strong>
           </div>
@@ -783,21 +776,9 @@
         <div id="message" aria-live="polite"></div>
 
         <div class="quiz-controls">
-          <button id="nextBtn" type="button" class="main-btn">
-            Next
-          </button>
-
-          <button id="pauseBtn"
-                  type="button"
-                  class="main-btn warning-btn">
-            Pause
-          </button>
-
-          <button id="quizHomeBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            Home
-          </button>
+          <button id="nextBtn" type="button" class="main-btn">Next</button>
+          <button id="pauseBtn" type="button" class="main-btn warning-btn">Pause</button>
+          <button id="quizHomeBtn" type="button" class="main-btn secondary-btn">Home</button>
         </div>
       </div>
     </div>
@@ -818,12 +799,10 @@
             <strong id="finishedRound">1</strong>
             <div>Round</div>
           </div>
-
           <div class="result-stat">
             <strong id="correctCount">0</strong>
             <div>Correct</div>
           </div>
-
           <div class="result-stat">
             <strong id="wrongCount">0</strong>
             <div>Wrong</div>
@@ -831,27 +810,10 @@
         </div>
 
         <div class="button-group">
-          <button id="nextRoundBtn"
-                  type="button"
-                  class="main-btn success-btn">
-            Next Round
-          </button>
-
-          <button id="restartBtn" type="button" class="main-btn">
-            Retry
-          </button>
-
-          <button id="reviewBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            Review Answers
-          </button>
-
-          <button id="resultHomeBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            Home
-          </button>
+          <button id="nextRoundBtn" type="button" class="main-btn success-btn">Next Round</button>
+          <button id="restartBtn" type="button" class="main-btn">Retry</button>
+          <button id="reviewBtn" type="button" class="main-btn secondary-btn">Review Answers</button>
+          <button id="resultHomeBtn" type="button" class="main-btn secondary-btn">Home</button>
         </div>
       </div>
     </div>
@@ -866,15 +828,8 @@
         <div id="reviewList"></div>
 
         <div class="button-group">
-          <button id="reviewRetryBtn" type="button" class="main-btn">
-            Retry
-          </button>
-
-          <button id="reviewBackBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            Back
-          </button>
+          <button id="reviewRetryBtn" type="button" class="main-btn">Retry</button>
+          <button id="reviewBackBtn" type="button" class="main-btn secondary-btn">Back</button>
         </div>
       </div>
     </div>
@@ -891,9 +846,7 @@
             <strong>Music</strong>
             <div>Background music</div>
           </div>
-          <input id="musicSwitch"
-                 type="checkbox"
-                 aria-label="Toggle music">
+          <input id="musicSwitch" type="checkbox" aria-label="Toggle music">
         </div>
 
         <div class="setting-row">
@@ -901,17 +854,11 @@
             <strong>Sound Effects</strong>
             <div>Quiz sound effects</div>
           </div>
-          <input id="soundSwitch"
-                 type="checkbox"
-                 aria-label="Toggle sound effects">
+          <input id="soundSwitch" type="checkbox" aria-label="Toggle sound effects">
         </div>
 
         <div class="button-group">
-          <button id="settingsBackBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            ← Back
-          </button>
+          <button id="settingsBackBtn" type="button" class="main-btn secondary-btn">← Back</button>
         </div>
       </div>
     </div>
@@ -922,20 +869,11 @@
     <div class="container">
       <div class="panel">
         <h2 class="screen-title">⚠️ Something Went Wrong</h2>
-        <div id="errorMessage">
-          Quiz Master could not load correctly.
-        </div>
+        <div id="errorMessage">Quiz Master could not load correctly.</div>
 
         <div class="button-group">
-          <button id="errorRestartBtn" type="button" class="main-btn">
-            Restart
-          </button>
-
-          <button id="errorHomeBtn"
-                  type="button"
-                  class="main-btn secondary-btn">
-            Home
-          </button>
+          <button id="errorRestartBtn" type="button" class="main-btn">Restart</button>
+          <button id="errorHomeBtn" type="button" class="main-btn secondary-btn">Home</button>
         </div>
       </div>
     </div>
@@ -980,11 +918,11 @@
       language: "1. Hitamo ururimi wumva neza",
       mode: "2. Hitamo ubwoko bw'ibibazo",
       traffic: "🚦 Amategeko y'umuhanda",
-      general: "🧠 Ibibazo rusange",
-      choose: "Banza uhitemo ururimi n'ubwoko bw'ibibazo.",
+      general: "🧠 Ubumenyi rusange",
+      choose: "Banza uhitemo ururimi n'icyiciro.",
       start: "▶️ Tangira gukina",
       ready: "Wahisemo",
-      error: "Hitamo ururimi n'ubwoko bw'ibibazo mbere yo gukomeza."
+      error: "Hitamo ururimi n'icyiciro mbere yo gukomeza."
     },
     en: {
       title: "🎮 Prepare Your Quiz",
@@ -1008,12 +946,14 @@
       return;
     }
 
-    const modeName = selectedMode === "traffic" ? t.traffic : t.general;
+    const languageName =
+      selectedLanguage === "rw" ? "Ikinyarwanda" : "English";
+
+    const modeName =
+      selectedMode === "traffic" ? t.traffic : t.general;
 
     summary.textContent =
-      t.ready + ": " +
-      (selectedLanguage === "rw" ? "Ikinyarwanda" : "English") +
-      " — " + modeName;
+      t.ready + ": " + languageName + " — " + modeName;
 
     confirmBtn.disabled = false;
   }
@@ -1042,6 +982,20 @@
     updateSummary();
   }
 
+  function updateMode(mode) {
+    if (mode !== "traffic" && mode !== "general") return;
+
+    selectedMode = mode;
+
+    document.querySelectorAll(".mode-btn").forEach(function (button) {
+      const selected = button.dataset.mode === mode;
+      button.classList.toggle("selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+
+    updateSummary();
+  }
+
   document.querySelectorAll(".language-btn").forEach(function (button) {
     button.addEventListener("click", function () {
       setupConfirmed = false;
@@ -1052,15 +1006,7 @@
   document.querySelectorAll(".mode-btn").forEach(function (button) {
     button.addEventListener("click", function () {
       setupConfirmed = false;
-      selectedMode = button.dataset.mode;
-
-      document.querySelectorAll(".mode-btn").forEach(function (item) {
-        const selected = item.dataset.mode === selectedMode;
-        item.classList.toggle("selected", selected);
-        item.setAttribute("aria-pressed", String(selected));
-      });
-
-      updateSummary();
+      updateMode(button.dataset.mode);
     });
   });
 
@@ -1076,37 +1022,51 @@
       localStorage.setItem("quizmasterMode", selectedMode);
       localStorage.setItem("quizmasterSetupComplete", "true");
     } catch (error) {
-      console.warn("Could not save quiz preferences:", error);
+      summary.textContent =
+        "Could not save your selection. Check browser settings.";
+      console.error("Preference storage error:", error);
+      return;
     }
 
     setupConfirmed = true;
 
-    window.dispatchEvent(new CustomEvent("quizmaster:setup", {
+    /*
+     * questions.js listens for this event on document.
+     */
+    document.dispatchEvent(new CustomEvent("quizmaster:setup", {
       detail: {
         language: selectedLanguage,
         mode: selectedMode
       }
     }));
 
+    /*
+     * Start the existing quiz engine without replacing it.
+     */
     startBtn.click();
   });
 
   /*
-   * Prevent starting a new quiz without choosing a language
-   * and category. Continue Quiz remains controlled by questions.js.
+   * Block starting a new quiz until both choices are confirmed.
    */
   startBtn.addEventListener("click", function (event) {
-    if (!setupConfirmed) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
+    if (setupConfirmed) return;
 
-      summary.textContent =
-        translations[selectedLanguage || "en"].error;
+    event.preventDefault();
+    event.stopImmediatePropagation();
 
-      setup.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    summary.textContent =
+      translations[selectedLanguage || "en"].error;
+
+    setup.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
   }, true);
 
+  /*
+   * Restore saved choices, but require confirmation for a new quiz.
+   */
   try {
     const savedLanguage = localStorage.getItem("quizmasterLanguage");
     const savedMode = localStorage.getItem("quizmasterMode");
@@ -1116,23 +1076,15 @@
     }
 
     if (savedMode === "traffic" || savedMode === "general") {
-      selectedMode = savedMode;
-
-      document.querySelectorAll(".mode-btn").forEach(function (button) {
-        const selected = button.dataset.mode === savedMode;
-        button.classList.toggle("selected", selected);
-        button.setAttribute("aria-pressed", String(selected));
-      });
-
-      updateSummary();
+      updateMode(savedMode);
     }
   } catch (error) {
-    console.warn("Could not load saved preferences:", error);
+    console.warn("Could not restore quiz preferences:", error);
   }
 })();
 </script>
 
-<!-- Quiz engine -->
+<!-- Quiz engine: keep this after the HTML elements and setup script -->
 <script src="./questions.js"></script>
 
 </body>
