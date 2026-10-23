@@ -196,20 +196,6 @@
 "category": "Road Safety"
 },
 {
-"question": "Iyo uri mu murongo w'ibinyabiziga kandi ushaka guhindura umurongo, ni iki ugomba kugenzura mbere?",
-"options": ["Indorerwamo, ahatagaragara n'umwanya uhagije wo kwinjiramo", "Ibara ry'imodoka ikuri inyuma gusa", "Imodoka iri imbere gusa", "Umuvuduko w'imodoka yawe gusa"],
-"answer": "Indorerwamo, ahatagaragara n'umwanya uhagije wo kwinjiramo",
-"explanation": "Indorerwamo ntizerekana buri kintu cyose kiri hafi y'imodoka. Kugenzura ahatagaragara no kureba ko hari umwanya bihashya ibyago byo kugongana mu gihe uhindura umurongo.",
-"category": "Road Safety"
-},
-{
-"question": "Iyo utwaye mu muhanda ufite imirongo igenewe ibinyabiziga bihindukira, ni ryari ugomba kwinjira mu murongo ujyanye n'icyerekezo cyawe?",
-"options": ["Hakiri kare kandi igihe byemewe, utabangamiye abandi", "Mu kanya ka nyuma uri hagati mu masangano", "Nyuma yo kurenga umurongo wo guhagararaho", "Igihe cyose nubwo umurongo udakwemerera kwinjiramo"],
-"answer": "Hakiri kare kandi igihe byemewe, utabangamiye abandi",
-"explanation": "Kwinjira mu murongo ukwiye hakiri kare bituma abandi bamenya aho ugiye. Ntugahindure umurongo mu buryo butunguranye cyangwa ahatemewe.",
-"category": "Road Safety"
-},
-{
 "question": "Iyo umuhanda ufite ahantu hagenewe imodoka zitwara abantu benshi gusa, umushoferi w'imodoka isanzwe agomba gukora iki?",
 "options": ["Kwirinda gukoresha iyo nzira keretse amategeko cyangwa ibimenyetso bibimwemerera", "Kuyikoresha igihe cyose umurongo usanzwe urimo imodoka nyinshi", "Kuyikoresha kugira ngo ahagarare", "Kuyikoresha nijoro atabanje kureba ibimenyetso"],
 "answer": "Kwirinda gukoresha iyo nzira keretse amategeko cyangwa ibimenyetso bibimwemerera",
