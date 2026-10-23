@@ -2999,7 +2999,9 @@
 {
 "question": "Ni uwuhe mubumbe wegereye Izuba? / Which planet is closest to the Sun?",
 "options": ["Isi / Earth", "Mars / Mars", "Merkuri / Mercury", "Venusi / Venus"],
-"answer": 2,
+"answer":3,
+
+  
 "explanation": "Merkuri ni wo mubumbe wegereye Izuba. / Mercury is the closest planet to the Sun."
 },
 {
@@ -3017,7 +3019,7 @@
 {
 "question": "Ni uwuhe mubumbe uzwiho impeta nini? / Which planet is famous for its rings?",
 "options": ["Saturne / Saturn", "Mars / Mars", "Merkuri / Mercury", "Isi / Earth"],
-"answer": 0,
+"answer": 1,
 "explanation": "Saturne izwi cyane kubera impeta zayo. / Saturn is especially famous for its rings."
 },
 {
