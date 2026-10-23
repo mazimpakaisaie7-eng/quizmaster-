@@ -1455,12 +1455,6 @@
     "explanation": "Umuvuduko ntarengwa si umuvuduko ugomba kugenderwaho buri gihe. Ugomba kugenda ku muvuduko ujyanye n'uko ubona n'uko ushobora kugenzura imodoka."
   },
   {
-    "question": "Ni iki ugomba gukora igihe ugiye gutwara imodoka ariko ukabona ko udashobora kwibanda neza?",
-    "options": ["Gutwara uko biri kose", "Kongera umuziki cyane", "Kutayitwara kugeza igihe ushobora kwibanda neza, cyangwa ugasaba undi muntu ubifitiye uburenganzira kuyitwara", "Gukoresha ihoni kenshi"],
-    "answer": "Kutitwara kugeza igihe ushobora kwibanda neza, cyangwa ugasaba undi muntu ubifitiye uburenganzira kuyitwara",
-    "explanation": "Gutwara bisaba kwitonda no gufata ibyemezo vuba. Niba hari ikikubuza kwibanda neza, byaba byiza udatwaye kugeza igihe ubishoboye."
-  },
-  {
     "question": "Ni ikihe gihugu kizwiho umurwa mukuru wa Madrid?",
     "options": ["Portugal", "Espagne", "Italy", "Greece"],
     "answer": "Espagne",
