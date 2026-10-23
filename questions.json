@@ -203,13 +203,6 @@
 "category": "Road Safety"
 },
 {
-"question": "Iyo amatara yo ku masangano adakora, ni iyihe myitwarire ikwiye?",
-"options": ["Kugabanya umuvuduko, kureba ibyerekezo byose no gukurikiza ibindi bimenyetso cyangwa amabwiriza ahari", "Kwemera ko ufite uburenganzira bwo kunyura mbere ya bose", "Kunyura wihuta kugira ngo ugere hakurya", "Gukurikira imodoka iri imbere utarebye"],
-"answer": "Kugabanya umuvuduko, kureba ibyerekezo byose no gukurikiza ibindi bimenyetso cyangwa amabwiriza ahari",
-"explanation": "Amatara adakora ashobora gutuma urujya n'uruza rudakurikiza gahunda isanzwe. Komeza witonze, wite ku bimenyetso bihari no ku bandi bakoresha umuhanda.",
-"category": "Road Safety"
-},
-{
 "question": "Iyo ibinyabiziga bibiri bigeze ku masangano icyarimwe kandi nta kimenyetso gihari, umushoferi agomba gukora iki?",
 "options": ["Kugabanya umuvuduko no gukurikiza itegeko ry'uburenganzira bwo kunyura rikurikizwa aho hantu", "Kunyura mbere kubera ko yageze ahantu hihuta", "Kuvuga ko imodoka nini ari yo ihora inyura mbere", "Kwinjira mu masangano utarebye"],
 "answer": "Kugabanya umuvuduko no gukurikiza itegeko ry'uburenganzira bwo kunyura rikurikizwa aho hantu",
