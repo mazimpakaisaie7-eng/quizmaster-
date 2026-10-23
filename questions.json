@@ -196,20 +196,6 @@
 "category": "Road Safety"
 },
 {
-"question": "Iyo ikimenyetso kigaragaza ko umuhanda ufunze imbere gihari, ukwiye gukora iki?",
-"options": ["Gukurikiza inzira y'inyongera cyangwa icyerekezo cyemewe", "Kunyura ahafunzwe niba imodoka ari nto", "Gukurikira imodoka iyobye", "Gusunika inzitizi utabifitiye uburenganzira"],
-"answer": "Gukurikiza inzira y'inyongera cyangwa icyerekezo cyemewe",
-"explanation": "Umuhanda ushobora gufungwa kubera imirimo, impanuka cyangwa izindi mpamvu z'umutekano. Kurikiza ibimenyetso biyobora abandi bakoresha umuhanda mu nzira yemewe.",
-"category": "Road Safety"
-},
-{
-"question": "Iyo ibinyabiziga bibiri bigeze ku masangano icyarimwe kandi nta kimenyetso gihari, umushoferi agomba gukora iki?",
-"options": ["Kugabanya umuvuduko no gukurikiza itegeko ry'uburenganzira bwo kunyura rikurikizwa aho hantu", "Kunyura mbere kubera ko yageze ahantu hihuta", "Kuvuga ko imodoka nini ari yo ihora inyura mbere", "Kwinjira mu masangano utarebye"],
-"answer": "Kugabanya umuvuduko no gukurikiza itegeko ry'uburenganzira bwo kunyura rikurikizwa aho hantu",
-"explanation": "Uburenganzira bwo kunyura mu masangano bugengwa n'amategeko y'umuhanda n'imiterere y'amasangano. Ntukishingikirize ku bunini bw'imodoka cyangwa ku kwihuta; genzura inzira kandi witonde.",
-"category": "Road Safety"
-},
-{
 "question": "Iyo uri mu murongo w'ibinyabiziga kandi ushaka guhindura umurongo, ni iki ugomba kugenzura mbere?",
 "options": ["Indorerwamo, ahatagaragara n'umwanya uhagije wo kwinjiramo", "Ibara ry'imodoka ikuri inyuma gusa", "Imodoka iri imbere gusa", "Umuvuduko w'imodoka yawe gusa"],
 "answer": "Indorerwamo, ahatagaragara n'umwanya uhagije wo kwinjiramo",
