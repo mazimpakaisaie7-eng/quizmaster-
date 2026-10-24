@@ -4476,4 +4476,115 @@
   "answer_rw": "Ingwe",
   "explanation": "The tiger is generally the largest living big cat species.",
   "explanation_rw": "Ingwe ni yo ifatwa nk'ubwoko bw'injangwe nini yo mu gasozi bunini kurusha ubundi bukiriho."
-}
+},
+  {
+    "category": "general",
+    "question": "Which planet is known as the Blue Planet?",
+    "question_rw": "Ni uwuhe mubumbe uzwi nk'umubumbe w'ubururu?",
+    "options": ["Earth", "Mars", "Jupiter", "Mercury"],
+    "options_rw": ["Isi", "Mars", "Yupiteri", "Merikire"],
+    "answer": "Earth",
+    "answer_rw": "Isi",
+    "explanation": "Earth is called the Blue Planet because much of its surface is covered by water.",
+    "explanation_rw": "Isi yitwa umubumbe w'ubururu kubera ko igice kinini cy'ubuso bwayo gitwikiriwe n'amazi."
+  },
+  {
+    "category": "general",
+    "question": "How many teeth does a typical adult human have, including wisdom teeth?",
+    "question_rw": "Umuntu mukuru usanzwe agira amenyo angahe, harimo n'amenyo y'inyuma?",
+    "options": ["28", "30", "32", "36"],
+    "options_rw": ["28", "30", "32", "36"],
+    "answer": "32",
+    "answer_rw": "32",
+    "explanation": "A typical adult has 32 permanent teeth, including four wisdom teeth.",
+    "explanation_rw": "Umuntu mukuru usanzwe agira amenyo ahoraho 32, harimo n'amenyo ane y'inyuma, nubwo abantu bamwe batayagira yose."
+  },
+  {
+    "category": "general",
+    "question": "Which country is famous for the city of Rome?",
+    "question_rw": "Umujyi wa Roma uzwi cyane uri mu kihe gihugu?",
+    "options": ["Spain", "Italy", "France", "Portugal"],
+    "options_rw": ["Esipanye", "Ubutaliyani", "Ubufaransa", "Porutugali"],
+    "answer": "Italy",
+    "answer_rw": "Ubutaliyani",
+    "explanation": "Rome is the capital city of Italy.",
+    "explanation_rw": "Roma ni umurwa mukuru w'Ubutaliyani."
+  },
+  {
+    "category": "general",
+    "question": "What is the main source of energy for wind?",
+    "question_rw": "Ni ikihe kintu nyamukuru gitera umuyaga kubona ingufu zo guhuhuta?",
+    "options": ["Uneven heating of Earth's surface by the Sun", "The Moon's light", "Ocean salt", "Earth's forests"],
+    "options_rw": ["Izuba rishyushya ubuso bw'Isi mu buryo butangana", "Urumuri rw'ukwezi", "Umunyu wo mu nyanja", "Amashyamba yo ku Isi"],
+    "answer": "Uneven heating of Earth's surface by the Sun",
+    "answer_rw": "Izuba rishyushya ubuso bw'Isi mu buryo butangana",
+    "explanation": "Uneven solar heating creates differences in air pressure that help produce wind.",
+    "explanation_rw": "Izuba rishyushya Isi mu buryo butangana, bigatuma habaho itandukaniro ry'umuvuduko w'ikirere rigira uruhare mu gutuma umuyaga uhuhuta."
+  },
+  {
+    "category": "general",
+    "question": "Which animal is known for having black and white stripes?",
+    "question_rw": "Ni iyihe nyamaswa izwiho kugira imirongo y'umukara n'umweru?",
+    "options": ["Zebra", "Giraffe", "Lion", "Camel"],
+    "options_rw": ["Zebra", "Impara", "Intare", "Ingamiya"],
+    "answer": "Zebra",
+    "answer_rw": "Zebra",
+    "explanation": "Zebras are known for their distinctive black and white stripes.",
+    "explanation_rw": "Zebra zizwiho kugira imirongo yihariye y'umukara n'umweru."
+  },
+  {
+    "category": "general",
+    "question": "What is the chemical formula for water?",
+    "question_rw": "Inyandiko ya shimi y'amazi ni iyihe?",
+    "options": ["CO2", "O2", "H2O", "NaCl"],
+    "options_rw": ["CO2", "O2", "H2O", "NaCl"],
+    "answer": "H2O",
+    "answer_rw": "H2O",
+    "explanation": "A water molecule contains two hydrogen atoms and one oxygen atom.",
+    "explanation_rw": "Akaremangingo k'amazi kagizwe na atome ebyiri za hayidrojeni na atome imwe ya ogisijeni."
+  },
+  {
+    "category": "general",
+    "question": "Which is the largest organ of the human body?",
+    "question_rw": "Ni uruhe rugingo runini kurusha izindi mu mubiri w'umuntu?",
+    "options": ["Heart", "Skin", "Liver", "Brain"],
+    "options_rw": ["Umutima", "Uruhu", "Umwijima", "Ubwonko"],
+    "answer": "Skin",
+    "answer_rw": "Uruhu",
+    "explanation": "The skin is the largest organ of the human body.",
+    "explanation_rw": "Uruhu ni rwo rugingo runini kurusha izindi mu mubiri w'umuntu."
+  },
+  {
+    "category": "general",
+    "question": "How many sides does an octagon have?",
+    "question_rw": "Oktagone igira impande zingahe?",
+    "options": ["Six", "Seven", "Eight", "Nine"],
+    "options_rw": ["Esheshatu", "Indwi", "Umunani", "Icyenda"],
+    "answer": "Eight",
+    "answer_rw": "Umunani",
+    "explanation": "An octagon is a polygon with eight sides.",
+    "explanation_rw": "Oktagone ni ishusho ifite impande umunani."
+  },
+  {
+    "category": "general",
+    "question": "Which country is home to the ancient Colosseum?",
+    "question_rw": "Inyubako ya kera yitwa Colosseum iherereye mu kihe gihugu?",
+    "options": ["Greece", "Italy", "Egypt", "Turkey"],
+    "options_rw": ["Ubugereki", "Ubutaliyani", "Misiri", "Turukiya"],
+    "answer": "Italy",
+    "answer_rw": "Ubutaliyani",
+    "explanation": "The Colosseum is a famous ancient amphitheatre in Rome, Italy.",
+    "explanation_rw": "Colosseum ni inyubako ya kera izwi cyane yakorerwagamo ibitaramo n'imikino, iri i Roma mu Butaliyani."
+  },
+  {
+    "category": "general",
+    "question": "What do we call the study of living things?",
+    "question_rw": "Kwiga ibinyabuzima byitwa iki?",
+    "options": ["Geography", "Biology", "Astronomy", "Chemistry"],
+    "options_rw": ["Geografiya", "Biyoloji", "Astronomi", "Shimi"],
+    "answer": "Biology",
+    "answer_rw": "Biyoloji",
+    "explanation": "Biology is the scientific study of living organisms.",
+    "explanation_rw": "Biyoloji ni ubumenyi bwiga ibinyabuzima."
+  }
+]
