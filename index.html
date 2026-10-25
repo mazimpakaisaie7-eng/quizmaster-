@@ -23,24 +23,35 @@
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
       font: 16px/1.5 Arial, Helvetica, sans-serif;
     }
+
     button, select { font: inherit; cursor: pointer; }
     button:disabled { cursor: not-allowed; opacity: .55; }
+
     button:focus-visible, a:focus-visible, select:focus-visible {
       outline: 3px solid #83b2ff;
       outline-offset: 2px;
     }
-    .app { width: min(100% - 24px, 760px); margin: auto; padding: 20px 0 30px; }
+
+    .app {
+      width: min(100% - 24px, 760px);
+      margin: auto;
+      padding: 20px 0 30px;
+    }
+
     header { text-align: center; padding: 12px 0 20px; }
     header h1 { margin: 0; font-size: clamp(27px, 5vw, 38px); }
     header p { color: var(--muted); margin: 8px 0 0; }
+
     .screen { display: none; }
     .screen.active { display: block; }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -49,14 +60,17 @@
       margin-bottom: 16px;
       box-shadow: 0 5px 22px rgba(23,45,80,.05);
     }
+
     h2, h3 { margin-top: 0; }
     .muted { color: var(--muted); }
+
     .button-group {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
       margin: 12px 0 22px;
     }
+
     .btn, .language-btn, .mode-btn, .answer-btn, .round-btn {
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -67,41 +81,157 @@
       text-align: center;
       overflow-wrap: anywhere;
     }
-    .btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
-    .btn-secondary { background: #edf3ff; color: #1548a0; border-color: #cbdcff; }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .btn-secondary {
+      background: #edf3ff;
+      color: #1548a0;
+      border-color: #cbdcff;
+    }
+
     .btn-block { display: block; width: 100%; margin-top: 10px; }
+
     .language-btn.selected, .mode-btn.selected {
       background: #e9f1ff;
       border: 2px solid var(--primary);
       color: #1548a0;
       font-weight: bold;
     }
-    .answer-btn { display: block; width: 100%; text-align: left; margin: 10px 0; }
-    .answer-btn.correct { background: #e4f8eb; border-color: var(--success); color: #126738; }
-    .answer-btn.incorrect { background: #ffebeb; border-color: var(--danger); color: #a22020; }
+
+    .answer-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 10px 0;
+    }
+
+    .answer-btn.correct {
+      background: #e4f8eb;
+      border-color: var(--success);
+      color: #126738;
+    }
+
+    .answer-btn.incorrect {
+      background: #ffebeb;
+      border-color: var(--danger);
+      color: #a22020;
+    }
+
     .answer-btn:disabled { opacity: 1; }
-    .stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; margin-bottom: 18px; }
-    .stat { padding: 12px 8px; border: 1px solid var(--border); border-radius: 12px; text-align: center; background: #f8faff; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 12px 8px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      background: #f8faff;
+    }
+
     .stat strong { display: block; font-size: 22px; }
     .stat span { display: block; font-size: 12px; color: var(--muted); }
-    .progress-track { height: 8px; background: #e4eaf3; border-radius: 20px; overflow: hidden; margin: 12px 0 20px; }
-    #progressBar { height: 100%; width: 0; background: var(--primary); transition: width .2s ease; }
-    .timer-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
-    .timer-pill { border-radius: 12px; background: #fff0cf; color: #825400; font-weight: bold; padding: 7px 13px; white-space: nowrap; }
-    #explanation { display: none; background: #f0f6ff; border-left: 4px solid var(--primary); border-radius: 8px; padding: 12px; margin-top: 14px; }
-    #quizError, #errorMessage { display: none; padding: 12px; border-radius: 10px; overflow-wrap: anywhere; margin-bottom: 14px; }
-    #quizError, #errorMessage { background: #fff0f0; border: 1px solid #f0bcbc; color: #a22020; }
-    #roundsContainer, #roundsList { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+
+    .progress-track {
+      height: 8px;
+      background: #e4eaf3;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 12px 0 20px;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0;
+      background: var(--primary);
+      transition: width .2s ease;
+    }
+
+    .timer-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .timer-pill {
+      border-radius: 12px;
+      background: #fff0cf;
+      color: #825400;
+      font-weight: bold;
+      padding: 7px 13px;
+      white-space: nowrap;
+    }
+
+    #explanation {
+      display: none;
+      background: #f0f6ff;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 14px;
+    }
+
+    #quizError, #errorMessage {
+      display: none;
+      padding: 12px;
+      border-radius: 10px;
+      overflow-wrap: anywhere;
+      margin-bottom: 14px;
+      background: #fff0f0;
+      border: 1px solid #f0bcbc;
+      color: #a22020;
+    }
+
+    #roundsContainer, #roundsList {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
     .round-btn { width: 100%; }
     .result-number { font-size: 42px; font-weight: bold; margin: 6px 0; }
-    .review-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+
+    .review-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
     .review-item:last-child { border-bottom: 0; }
     .review-correct { color: var(--success); font-weight: bold; }
     .review-wrong { color: var(--danger); font-weight: bold; }
+
     .field-label { display: block; font-weight: bold; margin: 14px 0 6px; }
-    select { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: white; color: var(--text); }
-    footer { text-align: center; padding: 18px 0; color: var(--muted); font-size: 13px; }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+      color: var(--text);
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     footer a { color: var(--primary); margin: 0 7px; }
+
     @media (max-width: 420px) {
       .button-group { grid-template-columns: 1fr; }
       .stats { gap: 6px; }
@@ -125,7 +255,7 @@
       <h2 id="homeTitle">Welcome to Quiz Master!</h2>
       <p id="homeDescription" class="muted">Choose your language and quiz category to begin.</p>
       <button id="startBtn" class="btn btn-primary btn-block" type="button">Start Quiz</button>
-      <button id="continueBtn" class="btn btn-secondary btn-block" type="button">Continue Quiz</button>
+      <button id="continueBtn" class="btn btn-secondary btn-block" type="button" hidden>Continue Quiz</button>
       <button id="reviewAnswersBtn" class="btn btn-block" type="button">Review Answers</button>
       <button id="roundsBtn" class="btn btn-block" type="button">View Rounds</button>
       <button id="settingsBtn" class="btn btn-block" type="button">Settings</button>
@@ -136,18 +266,23 @@
   <section id="gameSetup" class="screen">
     <div class="card">
       <h2 id="setupTitle">Set up your quiz</h2>
+
       <h3 id="languageHeading">Choose language</h3>
       <div class="button-group">
-        <button class="language-btn" type="button" data-language="rw">🇷🇼 Ikinyarwanda</button>
-        <button class="language-btn" type="button" data-language="en">🇬🇧 English</button>
+        <button class="language-btn" type="button" data-language="rw" aria-pressed="false">🇷🇼 Ikinyarwanda</button>
+        <button class="language-btn" type="button" data-language="en" aria-pressed="false">🇬🇧 English</button>
       </div>
+
       <h3 id="modeHeading">Choose category</h3>
       <div class="button-group">
-        <button class="mode-btn" type="button" data-mode="traffic">🚦 Amategeko y'umuhanda</button>
-        <button class="mode-btn" type="button" data-mode="general">🌍 Ubumenyi rusange</button>
+        <button class="mode-btn" type="button" data-mode="traffic" aria-pressed="false">🚦 Amategeko y'umuhanda</button>
+        <button class="mode-btn" type="button" data-mode="general" aria-pressed="false">🌍 Ubumenyi rusange</button>
       </div>
-      <p id="setupSummary" class="muted"></p>
-      <button id="confirmSetupBtn" class="btn btn-primary btn-block" type="button">Confirm and Start</button>
+
+      <p id="setupSummary" class="muted" aria-live="polite"></p>
+      <p id="setupError" role="alert" style="display:none;color:#a22020"></p>
+
+      <button id="confirmSetupBtn" class="btn btn-primary btn-block" type="button" disabled>Hitamo ururimi n'icyiciro</button>
       <button id="setupBackBtn" class="btn btn-block" type="button">Back</button>
     </div>
   </section>
@@ -159,14 +294,18 @@
         <div class="stat"><strong id="currentQuestionNumber">1</strong><span id="questionCount">Question</span></div>
         <div class="stat"><strong id="score">0</strong><span id="scoreLabel">Score</span></div>
       </div>
+
       <div class="progress-track"><div id="progressBar"></div></div>
+
       <div class="timer-line">
         <span id="questionLabel">Question</span>
         <span class="timer-pill">⏱ <span id="timer">30</span>s</span>
       </div>
+
       <h2 id="questionText">Loading question...</h2>
       <div id="optionsContainer"></div>
       <div id="explanation"></div>
+
       <button id="nextQuestionBtn" class="btn btn-primary btn-block" type="button" style="display:none">Next Question</button>
       <button id="quizReviewBtn" class="btn btn-block" type="button">Review Answers</button>
       <button id="quizHomeBtn" class="btn btn-block" type="button">Home</button>
@@ -180,11 +319,13 @@
       <p><span id="resultRoundLabel">Round</span> <strong id="resultRound">1</strong></p>
       <div class="result-number" id="resultPercent">0%</div>
       <p id="roundStars">★</p>
+
       <div class="stats">
         <div class="stat"><strong id="resultScore">0</strong><span id="resultScoreLabel">Score</span></div>
         <div class="stat"><strong id="correctAnswers">0</strong><span id="correctAnswersLabel">Correct</span></div>
         <div class="stat"><strong id="totalQuestionsResult">10</strong><span id="totalQuestionsLabel">Questions</span></div>
       </div>
+
       <button id="retryBtn" class="btn btn-primary btn-block" type="button">Retry Round</button>
       <button id="resultNextBtn" class="btn btn-secondary btn-block" type="button">Next Round</button>
       <button id="resultReviewBtn" class="btn btn-block" type="button">Review Answers</button>
@@ -215,16 +356,19 @@
   <section id="settingsScreen" class="screen">
     <div class="card">
       <h2 id="settingsTitle">Settings</h2>
+
       <label class="field-label" for="settingsLanguage" id="settingsLanguageLabel">Language</label>
       <select id="settingsLanguage">
         <option value="rw">🇷🇼 Ikinyarwanda</option>
         <option value="en">🇬🇧 English</option>
       </select>
+
       <label class="field-label" for="settingsMode" id="settingsModeLabel">Quiz category</label>
       <select id="settingsMode">
         <option value="traffic">🚦 Road Traffic Rules</option>
         <option value="general">🌍 General Knowledge</option>
       </select>
+
       <button id="saveSettingsBtn" class="btn btn-primary btn-block" type="button">Save Settings</button>
       <button id="changeSetupBtn" class="btn btn-block" type="button">Open Quiz Setup</button>
       <button id="settingsHomeBtn" class="btn btn-block" type="button">Home</button>
@@ -249,80 +393,109 @@
 
   let language = validLanguage(localStorage.getItem("quizmasterLanguage") || "rw");
   let mode = validMode(localStorage.getItem("quizmasterMode") || "traffic");
+  let selectedLanguage = null;
+  let selectedMode = null;
   let reviewReturnScreen = "homeScreen";
   let lastReview = [];
 
   const translations = {
     rw: {
-      subtitle:"Gerageza ubumenyi bwawe wige ibishya.",
-      homeTitle:"Murakaza neza kuri Quiz Master!",
-      homeDescription:"Banza uhitemo ururimi n'icyiciro cy'ibibazo.",
-      start:"Tangira umukino", continue:"Komeza umukino",
-      review:"Subiramo ibisubizo", rounds:"Reba rounds",
-      settings:"Igenamiterere", share:"Sangiza abandi Quiz Master",
-      setup:"Tegura umukino wawe", language:"Hitamo ururimi",
-      category:"Hitamo icyiciro", traffic:"🚦 Amategeko y'umuhanda",
-      general:"🌍 Ubumenyi rusange", confirm:"Emeza utangire",
-      back:"Subira inyuma", question:"Ikibazo", score:"Amanota",
-      round:"Round", next:"Ikibazo gikurikira", result:"Round irarangiye!",
-      retry:"Ongera ukine iyi round", nextRound:"Round ikurikira",
-      home:"Ahabanza", change:"Hindura ururimi n'icyiciro",
-      save:"Bika amahitamo", settingsLanguage:"Ururimi",
-      settingsMode:"Icyiciro cy'ibibazo", roundsTitle:"Rounds z'umukino",
-      roundsDesc:"Rounds zishingira ku bibazo byemewe biri muri JSON.",
-      totalRounds:"Rounds zose:", correct:"Ibisubizo nyabyo",
-      totalQuestions:"Ibibazo byose", reviewTitle:"Gusubiramo ibisubizo",
-      reviewDesc:"Reba ibisubizo watanze n'ibisubizo nyabyo.",
-      reviewEmpty:"Nta bisubizo byo gusubiramo biraboneka.",
-      reviewBack:"Subira aho wari uri", noSaved:"Nta mukino wabitswe wo gukomeza.",
-      loadError:"Ibibazo ntibyashoboye gufunguka.",
-      noQuestions:"Nta bibazo bihuye n'ururimi n'icyiciro wahisemo.",
-      right:"Igisubizo ni cyo!", wrong:"Igisubizo si cyo.",
-      timeout:"Igihe kirangiye!", saved:"Amahitamo yabitswe."
+      subtitle: "Gerageza ubumenyi bwawe wige ibishya.",
+      homeTitle: "Murakaza neza kuri Quiz Master!",
+      homeDescription: "Banza uhitemo ururimi n'icyiciro cy'ibibazo.",
+      start: "Tangira umukino",
+      continue: "Komeza umukino",
+      review: "Subiramo ibisubizo",
+      rounds: "Reba rounds",
+      settings: "Igenamiterere",
+      share: "Sangiza abandi Quiz Master",
+      setup: "Tegura umukino wawe",
+      language: "Hitamo ururimi",
+      category: "Hitamo ibibazo ushaka gukora",
+      traffic: "🚦 Amategeko y'umuhanda",
+      general: "🌍 Ubumenyi rusange",
+      confirm: "Tangira umukino",
+      chooseBoth: "Banza uhitemo ururimi n'icyiciro",
+      back: "Subira inyuma",
+      question: "Ikibazo",
+      score: "Amanota",
+      round: "Round",
+      next: "Ikibazo gikurikira",
+      result: "Round irarangiye!",
+      retry: "Ongera ukine iyi round",
+      nextRound: "Round ikurikira",
+      home: "Ahabanza",
+      change: "Hindura ururimi n'icyiciro",
+      save: "Bika amahitamo",
+      settingsLanguage: "Ururimi",
+      settingsMode: "Icyiciro cy'ibibazo",
+      roundsTitle: "Rounds z'umukino",
+      roundsDesc: "Rounds zishingira ku bibazo byemewe biri muri JSON.",
+      totalRounds: "Rounds zose:",
+      correct: "Ibisubizo nyabyo",
+      totalQuestions: "Ibibazo byose",
+      reviewTitle: "Gusubiramo ibisubizo",
+      reviewDesc: "Reba ibisubizo watanze n'ibisubizo nyabyo.",
+      reviewEmpty: "Nta bisubizo byo gusubiramo biraboneka.",
+      reviewBack: "Subira aho wari uri",
+      noSaved: "Nta mukino wabitswe wo gukomeza.",
+      loadError: "Ibibazo ntibyashoboye gufunguka.",
+      noQuestions: "Nta bibazo bihuye n'ururimi n'icyiciro wahisemo.",
+      right: "Igisubizo ni cyo!",
+      wrong: "Igisubizo si cyo.",
+      timeout: "Igihe kirangiye!",
+      saved: "Amahitamo yabitswe."
     },
     en: {
-      subtitle:"Test your knowledge and learn something new.",
-      homeTitle:"Welcome to Quiz Master!",
-      homeDescription:"Choose your language and question category first.",
-      start:"Start Quiz", continue:"Continue Quiz",
-      review:"Review Answers", rounds:"View Rounds",
-      settings:"Settings", share:"Share Quiz Master",
-      setup:"Set up your quiz", language:"Choose language",
-      category:"Choose category", traffic:"🚦 Road Traffic Rules",
-      general:"🌍 General Knowledge", confirm:"Confirm and Start",
-      back:"Go Back", question:"Question", score:"Score",
-      round:"Round", next:"Next Question", result:"Round Complete!",
-      retry:"Retry Round", nextRound:"Next Round",
-      home:"Home", change:"Change language and category",
-      save:"Save Settings", settingsLanguage:"Language",
-      settingsMode:"Quiz category", roundsTitle:"Quiz Rounds",
-      roundsDesc:"Rounds are based on valid questions in your JSON file.",
-      totalRounds:"Total rounds:", correct:"Correct",
-      totalQuestions:"Total Questions", reviewTitle:"Review Answers",
-      reviewDesc:"Review your answers and the correct answers.",
-      reviewEmpty:"No answers are available to review yet.",
-      reviewBack:"Return to previous screen", noSaved:"No saved game was found.",
-      loadError:"Questions could not be loaded.",
-      noQuestions:"No questions match your selected language and category.",
-      right:"Correct answer!", wrong:"Incorrect answer.",
-      timeout:"Time is up!", saved:"Settings saved."
+      subtitle: "Test your knowledge and learn something new.",
+      homeTitle: "Welcome to Quiz Master!",
+      homeDescription: "Choose your language and question category first.",
+      start: "Start Quiz",
+      continue: "Continue Quiz",
+      review: "Review Answers",
+      rounds: "View Rounds",
+      settings: "Settings",
+      share: "Share Quiz Master",
+      setup: "Set up your quiz",
+      language: "Choose language",
+      category: "Choose the questions you want to answer",
+      traffic: "🚦 Road Traffic Rules",
+      general: "🌍 General Knowledge",
+      confirm: "Start Quiz",
+      chooseBoth: "Choose a language and a category first",
+      back: "Go Back",
+      question: "Question",
+      score: "Score",
+      round: "Round",
+      next: "Next Question",
+      result: "Round Complete!",
+      retry: "Retry Round",
+      nextRound: "Next Round",
+      home: "Home",
+      change: "Change language and category",
+      save: "Save Settings",
+      settingsLanguage: "Language",
+      settingsMode: "Quiz category",
+      roundsTitle: "Quiz Rounds",
+      roundsDesc: "Rounds are based on valid questions in your JSON file.",
+      totalRounds: "Total rounds:",
+      correct: "Correct",
+      totalQuestions: "Total Questions",
+      reviewTitle: "Review Answers",
+      reviewDesc: "Review your answers and the correct answers.",
+      reviewEmpty: "No answers are available to review yet.",
+      reviewBack: "Return to previous screen",
+      noSaved: "No saved game was found.",
+      loadError: "Questions could not be loaded.",
+      noQuestions: "No questions match your selected language and category.",
+      right: "Correct answer!",
+      wrong: "Incorrect answer.",
+      timeout: "Time is up!",
+      saved: "Settings saved."
     }
   };
 
   const t = () => translations[language];
-
-  function showScreen(id) {
-    document.querySelectorAll(".screen").forEach(el => {
-      el.classList.remove("active");
-      el.style.display = "none";
-    });
-    const screen = $(id);
-    if (screen) {
-      screen.classList.add("active");
-      screen.style.display = "block";
-    }
-    clearErrors();
-  }
 
   function clearErrors() {
     ["quizError", "errorMessage"].forEach(id => {
@@ -337,35 +510,78 @@
     el.style.display = "block";
   }
 
+  function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(el => {
+      el.classList.remove("active");
+      el.style.display = "none";
+    });
+
+    const screen = $(id);
+    if (screen) {
+      screen.classList.add("active");
+      screen.style.display = "block";
+    }
+
+    clearErrors();
+  }
+
   function sendEvent(name, detail = {}) {
     window.dispatchEvent(new CustomEvent("quizmaster:" + name, { detail }));
   }
 
+  function updateSetupButton() {
+    const ready = Boolean(selectedLanguage && selectedMode);
+    $("confirmSetupBtn").disabled = !ready;
+    $("confirmSetupBtn").textContent = ready
+      ? translations[selectedLanguage].confirm
+      : translations[language].chooseBoth;
+  }
+
   function updateUI() {
     const x = t();
+
     const labels = {
-      headerSubtitle:x.subtitle, homeTitle:x.homeTitle,
-      homeDescription:x.homeDescription, startBtn:x.start,
-      continueBtn:x.continue, reviewAnswersBtn:x.review,
-      quizReviewBtn:x.review, resultReviewBtn:x.review,
-      roundsBtn:x.rounds, settingsBtn:x.settings, shareBtn:x.share,
-      setupTitle:x.setup, languageHeading:x.language,
-      modeHeading:x.category, confirmSetupBtn:x.confirm,
-      setupBackBtn:x.back, questionLabel:x.question,
-      roundStatLabel:x.round, scoreLabel:x.score,
-      nextQuestionBtn:x.next, resultTitle:x.result,
-      retryBtn:x.retry, resultNextBtn:x.nextRound,
-      quizHomeBtn:x.home, resultHomeBtn:x.home,
-      roundsHomeBtn:x.home, settingsHomeBtn:x.home,
-      changeSetupBtn:x.change, saveSettingsBtn:x.save,
-      settingsLanguageLabel:x.settingsLanguage,
-      settingsModeLabel:x.settingsMode,
-      roundsTitle:x.roundsTitle, roundsDescription:x.roundsDesc,
-      totalRoundsLabel:x.totalRounds, resultRoundLabel:x.round,
-      resultScoreLabel:x.score, correctAnswersLabel:x.correct,
-      totalQuestionsLabel:x.totalQuestions,
-      reviewTitle:x.reviewTitle, reviewDescription:x.reviewDesc,
-      reviewBackBtn:x.reviewBack, reviewHomeBtn:x.home
+      headerSubtitle: x.subtitle,
+      homeTitle: x.homeTitle,
+      homeDescription: x.homeDescription,
+      startBtn: x.start,
+      continueBtn: x.continue,
+      reviewAnswersBtn: x.review,
+      quizReviewBtn: x.review,
+      resultReviewBtn: x.review,
+      roundsBtn: x.rounds,
+      settingsBtn: x.settings,
+      shareBtn: x.share,
+      setupTitle: x.setup,
+      languageHeading: x.language,
+      modeHeading: x.category,
+      setupBackBtn: x.back,
+      questionLabel: x.question,
+      roundStatLabel: x.round,
+      scoreLabel: x.score,
+      nextQuestionBtn: x.next,
+      resultTitle: x.result,
+      retryBtn: x.retry,
+      resultNextBtn: x.nextRound,
+      quizHomeBtn: x.home,
+      resultHomeBtn: x.home,
+      roundsHomeBtn: x.home,
+      settingsHomeBtn: x.home,
+      changeSetupBtn: x.change,
+      saveSettingsBtn: x.save,
+      settingsLanguageLabel: x.settingsLanguage,
+      settingsModeLabel: x.settingsMode,
+      roundsTitle: x.roundsTitle,
+      roundsDescription: x.roundsDesc,
+      totalRoundsLabel: x.totalRounds,
+      resultRoundLabel: x.round,
+      resultScoreLabel: x.score,
+      correctAnswersLabel: x.correct,
+      totalQuestionsLabel: x.totalQuestions,
+      reviewTitle: x.reviewTitle,
+      reviewDescription: x.reviewDesc,
+      reviewBackBtn: x.reviewBack,
+      reviewHomeBtn: x.home
     };
 
     Object.entries(labels).forEach(([id, value]) => {
@@ -373,61 +589,115 @@
     });
 
     document.querySelectorAll("[data-language]").forEach(button => {
-      button.classList.toggle("selected", button.dataset.language === language);
-      button.setAttribute("aria-pressed", String(button.dataset.language === language));
+      button.classList.toggle("selected", button.dataset.language === selectedLanguage);
+      button.setAttribute("aria-pressed", String(button.dataset.language === selectedLanguage));
     });
 
     document.querySelectorAll("[data-mode]").forEach(button => {
-      button.classList.toggle("selected", button.dataset.mode === mode);
-      button.setAttribute("aria-pressed", String(button.dataset.mode === mode));
+      button.classList.toggle("selected", button.dataset.mode === selectedMode);
+      button.setAttribute("aria-pressed", String(button.dataset.mode === selectedMode));
       button.textContent = button.dataset.mode === "traffic" ? x.traffic : x.general;
     });
 
-    $("setupSummary").textContent =
-      (language === "en" ? "English" : "Ikinyarwanda") + " · " +
-      (mode === "traffic" ? x.traffic : x.general);
+    const languageName = selectedLanguage === "en" ? "English" :
+      selectedLanguage === "rw" ? "Ikinyarwanda" : "—";
 
+    const categoryName = selectedMode === "traffic" ? x.traffic :
+      selectedMode === "general" ? x.general : "—";
+
+    $("setupSummary").textContent = languageName + " · " + categoryName;
     $("settingsLanguage").value = language;
     $("settingsMode").value = mode;
     document.documentElement.lang = language === "rw" ? "rw" : "en";
+
+    updateSetupButton();
   }
 
   function savePreferences() {
+    language = validLanguage(language);
+    mode = validMode(mode);
     localStorage.setItem("quizmasterLanguage", language);
     localStorage.setItem("quizmasterMode", mode);
     updateUI();
   }
 
+  function openSetup() {
+    selectedLanguage = null;
+    selectedMode = null;
+    updateUI();
+    showScreen("gameSetup");
+  }
+
   document.querySelectorAll("[data-language]").forEach(button => {
     button.addEventListener("click", () => {
-      language = validLanguage(button.dataset.language);
-      savePreferences();
+      selectedLanguage = validLanguage(button.dataset.language);
+      language = selectedLanguage;
+      updateUI();
     });
   });
 
   document.querySelectorAll("[data-mode]").forEach(button => {
     button.addEventListener("click", () => {
-      mode = validMode(button.dataset.mode);
-      savePreferences();
+      selectedMode = validMode(button.dataset.mode);
+      mode = selectedMode;
+      updateUI();
     });
   });
 
-  $("startBtn").addEventListener("click", () => {
-    updateUI();
-    showScreen("gameSetup");
-  });
+  $("startBtn").addEventListener("click", openSetup);
+  $("changeSetupBtn").addEventListener("click", openSetup);
 
   $("confirmSetupBtn").addEventListener("click", () => {
+    if (!selectedLanguage || !selectedMode) {
+      $("setupError").textContent = t().chooseBoth;
+      $("setupError").style.display = "block";
+      return;
+    }
+
+    language = selectedLanguage;
+    mode = selectedMode;
     savePreferences();
+
     localStorage.setItem("quizmasterSetupComplete", "true");
+
+    $("setupError").style.display = "none";
+    $("questionText").textContent = language === "en"
+      ? "Loading questions..."
+      : "Ibibazo birimo gutegurwa...";
+
+    $("optionsContainer").replaceChildren();
+    $("explanation").style.display = "none";
+    $("nextQuestionBtn").style.display = "none";
+
     showScreen("quizScreen");
-    $("questionText").textContent = t().loading || (language === "en" ? "Loading question..." : "Ibibazo birimo gutegurwa...");
+
+    // Notify the quiz engine. questions.js must listen for this event
+    // or expose one of the compatible start functions below.
     sendEvent("setup", { language, mode });
+    sendEvent("start", { language, mode });
+    sendEvent("start-quiz", { language, mode });
+
+    const startFunctions = [
+      window.startQuiz,
+      window.startGame,
+      window.startNewQuiz,
+      window.startNewGame
+    ];
+
+    const startFunction = startFunctions.find(fn => typeof fn === "function");
+
+    if (startFunction) {
+      try {
+        startFunction({ language, mode });
+      } catch (error) {
+        console.error("Quiz start error:", error);
+        showError(t().loadError);
+      }
+    }
   });
 
   $("setupBackBtn").addEventListener("click", () => showScreen("homeScreen"));
   $("settingsBtn").addEventListener("click", () => showScreen("settingsScreen"));
-  $("changeSetupBtn").addEventListener("click", () => showScreen("gameSetup"));
   $("quizHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
   $("resultHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
   $("roundsHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
@@ -441,11 +711,15 @@
     showScreen("homeScreen");
   });
 
-  $("continueBtn").addEventListener("click", () => sendEvent("continue", { language, mode }));
+  $("continueBtn").addEventListener("click", () => {
+    sendEvent("continue", { language, mode });
+  });
+
   $("roundsBtn").addEventListener("click", () => {
     showScreen("roundsScreen");
     sendEvent("show-rounds", { language, mode });
   });
+
   $("retryBtn").addEventListener("click", () => sendEvent("retry", { language, mode }));
   $("resultNextBtn").addEventListener("click", () => sendEvent("next-round", { language, mode }));
   $("nextQuestionBtn").addEventListener("click", () => sendEvent("next-question", { language, mode }));
@@ -458,13 +732,16 @@
         if (Array.isArray(parsed)) return parsed;
       }
     } catch (_) {}
+
     return lastReview;
   }
 
   function renderReview() {
     const container = $("reviewContainer");
     container.replaceChildren();
+
     const data = getReviewData();
+
     if (!data.length) {
       const p = document.createElement("p");
       p.className = "muted";
@@ -478,7 +755,8 @@
       block.className = "review-item";
 
       const question = document.createElement("h3");
-      question.textContent = (index + 1) + ". " + (item.question || item.question_rw || "Question");
+      question.textContent = (index + 1) + ". " +
+        (item.question || item.question_rw || "Question");
       block.appendChild(question);
 
       const chosen = document.createElement("p");
@@ -492,7 +770,10 @@
         (item.correctAnswer ?? item.answer ?? "—");
       block.appendChild(correct);
 
-      const explanation = item.explanation || item.explanation_rw;
+      const explanation = language === "en"
+        ? (item.explanation || item.explanation_en)
+        : (item.explanation_rw || item.explanation);
+
       if (explanation) {
         const exp = document.createElement("p");
         exp.className = "muted";
@@ -514,6 +795,7 @@
   $("reviewAnswersBtn").addEventListener("click", openReview);
   $("quizReviewBtn").addEventListener("click", openReview);
   $("resultReviewBtn").addEventListener("click", openReview);
+
   $("reviewBackBtn").addEventListener("click", () => showScreen(reviewReturnScreen));
 
   $("shareBtn").addEventListener("click", async () => {
@@ -522,6 +804,7 @@
       text: "Test your knowledge with Quiz Master!",
       url: window.location.href
     };
+
     try {
       if (navigator.share) {
         await navigator.share(data);
@@ -530,6 +813,7 @@
     } catch (error) {
       if (error && error.name === "AbortError") return;
     }
+
     try {
       await navigator.clipboard.writeText(data.url);
       alert("✅ Link Copied!");
@@ -538,13 +822,14 @@
     }
   });
 
-  // Integration hooks: questions.js can publish saved answers and screen updates.
   window.addEventListener("quizmaster:review-data", event => {
     if (Array.isArray(event.detail)) {
       lastReview = event.detail;
+
       try {
         localStorage.setItem("quizmasterReviewAnswers", JSON.stringify(lastReview));
       } catch (_) {}
+
       if ($("reviewScreen").classList.contains("active")) renderReview();
     }
   });
@@ -559,8 +844,15 @@
     showError(String(event.detail?.message || t().loadError));
   });
 
-  window.addEventListener("quizmaster:setup-required", () => showScreen("gameSetup"));
+  window.addEventListener("quizmaster:setup-required", openSetup);
 
+  // Accept question data from the quiz engine if it provides an event.
+  window.addEventListener("quizmaster:questions-loaded", () => {
+    clearErrors();
+  });
+
+  // Begin at the home screen. The player must explicitly choose
+  // a language and category before starting a new quiz.
   updateUI();
   showScreen("homeScreen");
 })();
