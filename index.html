@@ -1,994 +1,1169 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10233f">
-  <meta name="description" content="Quiz Master Rwanda helps you learn road safety and general knowledge in English or Kinyarwanda. Play quizzes, review your answers, track your scores, and improve your knowledge.">
-  <meta name="robots" content="index, follow">
-  <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
-  <link rel="icon" href="./icon-512-3.png">
-  <link rel="manifest" href="./manifest.json">
+/* =========================================================
+QUIZ MASTER 🇷🇼 — questions.js
+Works with:
 
-  <style>
-    :root {
-      --navy: #10233f;
-      --blue: #1769aa;
-      --light-blue: #eaf4ff;
-      --green: #16834a;
-      --red: #c73535;
-      --gold: #f2b93b;
-      --white: #ffffff;
-      --bg: #f3f6fb;
-      --text: #1d2b3c;
-      --muted: #627184;
-      --border: #dce4ee;
-      --shadow: 0 5px 18px rgba(16, 35, 63, .08);
+- index.html screens and IDs discussed
+- questions.json
+- English / Kinyarwanda
+- Road Safety: 60 seconds per question
+- General Knowledge: 30 seconds per question
+  ========================================================= */
+
+(() => {
+"use strict";
+
+const CONFIG = {
+QUESTIONS_FILE: "./questions.json",
+QUESTIONS_PER_ROUND: 10,
+TRAFFIC_TIME: 60,
+GENERAL_TIME: 30,
+POINTS_PER_CORRECT: 10,
+STORAGE: {
+progress: "quizmasterProgress",
+used: "quizmasterUsedQuestionIds",
+completed: "quizmasterCompletedRounds",
+review: "quizmasterReviewAnswers",
+best: "quizmasterBestScore",
+total: "quizmasterTotalScore",
+weekly: "quizmasterWeeklyScores"
+}
+};
+
+const state = {
+allQuestions: [],
+availableQuestions: [],
+roundQuestions: [],
+review: [],
+currentIndex: 0,
+currentRound: 1,
+selectedIndex: null,
+score: 0,
+correct: 0,
+wrong: 0,
+timeLeft: 30,
+timerId: null,
+answered: false,
+language: "en",
+mode: "general",
+secondsPerQuestion: 30,
+totalScore: 0,
+bestScore: 0,
+completedRounds: [],
+usedQuestionIds: [],
+started: false,
+loading: false,
+roundStartedAt: null
+};
+
+const $ = (id) => document.getElementById(id);
+
+function readJSON(key, fallback) {
+try {
+const value = localStorage.getItem(key);
+return value ? JSON.parse(value) : fallback;
+} catch (error) {
+console.warn("Quiz Master: Could not read saved data:", key, error);
+return fallback;
+}
+}
+
+function writeJSON(key, value) {
+try {
+localStorage.setItem(key, JSON.stringify(value));
+} catch (error) {
+console.warn("Quiz Master: Could not save data:", key, error);
+}
+}
+
+function dispatch(name, detail = {}) {
+const event = new CustomEvent(name, { detail });
+document.dispatchEvent(event);
+}
+
+function setText(id, value) {
+const element = $(id);
+if (element) element.textContent = value == null ? "" : String(value);
+}
+
+function showScreen(screenId) {
+const screens = document.querySelectorAll(".screen");
+
+screens.forEach((screen) => {
+  const active = screen.id === screenId;
+  screen.classList.toggle("active", active);
+  screen.style.display = active ? "block" : "none";
+});
+
+dispatch("quizmaster:show-screen", { screenId });
+window.scrollTo({ top: 0, behavior: "auto" });
+
+}
+
+function stopTimer() {
+if (state.timerId !== null) {
+clearInterval(state.timerId);
+state.timerId = null;
+}
+}
+
+function getQuestionId(question, index) {
+return String(
+question.id ??
+question.question_id ??
+question.questionId ??
+"${question.category || question.mode || "question"}-${index}"
+);
+}
+
+function normalize(value) {
+return String(value ?? "")
+.trim()
+.toLowerCase()
+.replace(/\s+/g, " ");
+}
+
+function getQuestionCategory(question) {
+const value = normalize(
+question.category ??
+question.mode ??
+question.type ??
+question.quiz_type ??
+question.quizType ??
+""
+);
+
+if (
+  value.includes("traffic") ||
+  value.includes("road") ||
+  value.includes("safety") ||
+  value.includes("umuhanda") ||
+  value.includes("amategeko")
+) {
+  return "traffic";
+}
+
+if (
+  value.includes("general") ||
+  value.includes("rusange") ||
+  value.includes("knowledge")
+) {
+  return "general";
+}
+
+return value || "general";
+
+}
+
+function isQuestionForMode(question, mode) {
+const category = getQuestionCategory(question);
+
+if (mode === "traffic") {
+  return category === "traffic";
+}
+
+return category === "general";
+
+}
+
+function getQuestionText(question) {
+if (state.language === "rw") {
+return (
+question.question_rw ??
+question.questionRw ??
+question.rw ??
+question.question ??
+question.text ??
+""
+);
+}
+
+return (
+  question.question ??
+  question.text ??
+  question.question_en ??
+  question.questionEn ??
+  question.question_rw ??
+  ""
+);
+
+}
+
+function getOptions(question) {
+const options =
+question.options ??
+question.choices ??
+question.answers ??
+[];
+
+if (Array.isArray(options)) {
+  return options.map((option) => {
+    if (typeof option === "string" || typeof option === "number") {
+      return String(option);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    button, input, select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: .55;
-      cursor: not-allowed;
-    }
-
-    .app-header {
-      background: var(--navy);
-      color: white;
-      padding: 20px 15px;
-      text-align: center;
-    }
-
-    .app-header h1 {
-      margin: 0;
-      font-size: clamp(1.5rem, 5vw, 2.1rem);
-    }
-
-    .app-header p {
-      margin: 5px 0 0;
-      color: #dbe9f8;
-      font-size: .95rem;
-    }
-
-    .container {
-      width: min(100% - 24px, 760px);
-      margin: 20px auto;
-    }
-
-    .screen {
-      display: none;
-    }
-
-    .screen.active {
-      display: block;
-    }
-
-    .content-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 16px;
-      box-shadow: var(--shadow);
-    }
-
-    h2, h3 {
-      line-height: 1.3;
-      color: var(--navy);
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .btn {
-      border: 0;
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-weight: 700;
-      min-height: 46px;
-      text-align: center;
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      color: white;
-    }
-
-    .btn-secondary {
-      background: #e7edf5;
-      color: var(--navy);
-    }
-
-    .btn-success {
-      background: var(--green);
-      color: white;
-    }
-
-    .btn-danger {
-      background: var(--red);
-      color: white;
-    }
-
-    .btn-outline {
-      background: white;
-      color: var(--navy);
-      border: 1px solid var(--border);
-    }
-
-    .btn-block {
-      width: 100%;
-    }
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin: 12px 0 20px;
-    }
-
-    .choice-btn {
-      border: 2px solid var(--border);
-      background: white;
-      color: var(--text);
-      border-radius: 12px;
-      padding: 15px 10px;
-      min-height: 60px;
-      font-weight: 700;
-    }
-
-    .choice-btn.selected {
-      border-color: var(--blue);
-      background: var(--light-blue);
-      color: var(--navy);
-    }
-
-    .status-line {
-      background: var(--light-blue);
-      border-radius: 10px;
-      padding: 12px;
-      margin: 12px 0;
-    }
-
-    .quiz-meta {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-      font-weight: 700;
-    }
-
-    .timer {
-      font-size: 1.15rem;
-      color: var(--red);
-    }
-
-    .question-text {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin: 18px 0;
-      overflow-wrap: anywhere;
-    }
-
-    .option-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .option-btn {
-      display: block;
-      width: 100%;
-      background: white;
-      color: var(--text);
-      text-align: left;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 13px;
-      min-height: 48px;
-    }
-
-    .option-btn:hover,
-    .option-btn:focus {
-      border-color: var(--blue);
-      background: var(--light-blue);
-    }
-
-    .option-btn.selected {
-      border: 2px solid var(--blue);
-      background: var(--light-blue);
-    }
-
-    .progress-track {
-      height: 9px;
-      background: #e4eaf1;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 10px 0 16px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0;
-      background: var(--green);
-      transition: width .2s ease;
-    }
-
-    .score-number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--blue);
-    }
-
-    .result-good {
-      color: var(--green);
-      font-weight: 800;
-    }
-
-    .result-bad {
-      color: var(--red);
-      font-weight: 800;
-    }
-
-    .review-item {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 13px;
-      margin: 10px 0;
-      overflow-wrap: anywhere;
-    }
-
-    .correct-answer {
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    .wrong-answer {
-      color: var(--red);
-      font-weight: 700;
-    }
-
-    .setting-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .setting-row:last-child {
-      border-bottom: 0;
-    }
-
-    .ad-slot {
-      display: block;
-      min-height: 90px;
-      padding: 12px;
-      margin: 16px 0;
-      background: #fff;
-      border: 1px dashed #cbd5e1;
-      border-radius: 10px;
-      text-align: center;
-      color: var(--muted);
-      font-size: .85rem;
-    }
-
-    .ad-label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: .72rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .help-section details {
-      border-top: 1px solid var(--border);
-      padding: 12px 0;
-    }
-
-    .help-section summary {
-      font-weight: 700;
-      cursor: pointer;
-      color: var(--navy);
-    }
-
-    .site-footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: .9rem;
-      padding: 15px 10px 28px;
-    }
-
-    .site-footer a {
-      color: var(--blue);
-      margin: 0 6px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        width: calc(100% - 16px);
-        margin-top: 12px;
+    if (option && typeof option === "object") {
+      if (state.language === "rw") {
+        return String(
+          option.rw ??
+          option.text_rw ??
+          option.textRw ??
+          option.text ??
+          option.en ??
+          option.label ??
+          ""
+        );
       }
 
-      .content-card {
-        padding: 15px;
-      }
-
-      .choice-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .button-row .btn {
-        flex: 1 1 100%;
-      }
+      return String(
+        option.en ??
+        option.text_en ??
+        option.textEn ??
+        option.text ??
+        option.label ??
+        option.rw ??
+        ""
+      );
     }
-  </style>
-</head>
 
-<body>
-  <header class="app-header">
-    <h1>Quiz Master 🇷🇼</h1>
-    <p id="headerSubtitle">Learn, play, and improve your knowledge</p>
-  </header>
+    return "";
+  });
+}
 
-  <main class="container">
-    <!-- HOME SCREEN -->
-    <section id="homeScreen" class="screen active">
-      <div class="content-card">
-        <h2 id="welcomeTitle">Welcome to Quiz Master!</h2>
-        <p id="welcomeDescription">
-          Test your knowledge, learn road safety, answer general knowledge
-          questions, review your answers, and track your progress.
-        </p>
+if (options && typeof options === "object") {
+  return Object.values(options).map(String);
+}
 
-        <div class="button-row">
-          <button type="button" class="btn btn-primary btn-block" id="startBtn">
-            Start Playing / Tangira gukina
-          </button>
-          <button type="button" class="btn btn-secondary btn-block hidden" id="continueBtn">
-            Continue / Komeza
-          </button>
-          <button type="button" class="btn btn-outline btn-block" id="roundsBtn">
-            My Rounds / Ibyiciro byanjye
-          </button>
-          <button type="button" class="btn btn-outline btn-block" id="weeklyScoresBtn">
-            Weekly Scores / Amanota y'icyumweru
-          </button>
-          <button type="button" class="btn btn-outline btn-block" id="settingsBtn">
-            Settings / Igenamiterere
-          </button>
-          <button type="button" class="btn btn-outline btn-block" id="shareBtn">
-            Share Quiz Master / Sangiza abandi
-          </button>
-        </div>
-      </div>
+return [];
 
-      <!-- AdSense placement: display ad -->
-      <div class="ad-slot" id="homeAdSlot" aria-label="Advertisement area">
-        <span class="ad-label">Advertisement</span>
-        <span>Ad space</span>
-      </div>
+}
 
-      <div class="content-card help-section">
-        <h2 id="howTitle">How to Use Quiz Master</h2>
+function getCorrectAnswer(question, options) {
+let answer =
+question.answer ??
+question.correctAnswer ??
+question.correct_answer ??
+question.correct ??
+question.answerIndex ??
+question.correctIndex;
 
-        <details>
-          <summary id="howStartTitle">1. Choose your quiz</summary>
-          <p id="howStartText">
-            Select your language and choose Road Safety or General Knowledge,
-            then confirm your choices to begin.
-          </p>
-        </details>
+if (answer && typeof answer === "object") {
+  answer =
+    state.language === "rw"
+      ? answer.rw ?? answer.text_rw ?? answer.en ?? answer.text
+      : answer.en ?? answer.text_en ?? answer.rw ?? answer.text;
+}
 
-        <details>
-          <summary id="howAnswerTitle">2. Answer questions</summary>
-          <p id="howAnswerText">
-            Read each question, select an answer, and submit it before the
-            timer ends. The timer depends on the quiz category.
-          </p>
-        </details>
+if (typeof answer === "number" && Number.isInteger(answer)) {
+  if (answer >= 0 && answer < options.length) return answer;
+  if (answer >= 1 && answer <= options.length) return answer - 1;
+}
 
-        <details>
-          <summary id="howResultsTitle">3. Review your results</summary>
-          <p id="howResultsText">
-            At the end, check your score, correct answers, incorrect answers,
-            and the answers you selected.
-          </p>
-        </details>
+if (typeof answer === "string") {
+  const normalizedAnswer = normalize(answer);
 
-        <details>
-          <summary id="howProgressTitle">4. Track your progress</summary>
-          <p id="howProgressText">
-            Use the rounds and weekly scores sections to see saved progress
-            when score-saving is supported by the game engine.
-          </p>
-        </details>
+  const directIndex = options.findIndex(
+    (option) => normalize(option) === normalizedAnswer
+  );
 
-        <details>
-          <summary id="howSettingsTitle">5. Settings and music</summary>
-          <p id="howSettingsText">
-            Open Settings to turn the background music on or off.
-          </p>
-        </details>
-      </div>
-    </section>
+  if (directIndex !== -1) return directIndex;
 
-    <!-- SETUP SCREEN -->
-    <section id="gameSetup" class="screen">
-      <div class="content-card">
-        <button type="button" class="btn btn-secondary" data-go-home>
-          ← Home / Ahabanza
-        </button>
+  const letter = normalizedAnswer.match(/^[a-d]$/);
+  if (letter) return letter[0].charCodeAt(0) - 97;
 
-        <h2 id="setupTitle">Set Up Your Quiz</h2>
-        <p id="languageLabel">Choose language / Hitamo ururimi</p>
+  const numeric = Number(normalizedAnswer);
+  if (
+    Number.isInteger(numeric) &&
+    normalizedAnswer !== "" &&
+    numeric >= 0 &&
+    numeric < options.length
+  ) {
+    return numeric;
+  }
 
-        <div class="choice-grid" role="group" aria-label="Choose language">
-          <button type="button" class="choice-btn" data-language="rw">
-            Ikinyarwanda
-          </button>
-          <button type="button" class="choice-btn" data-language="en">
-            English
-          </button>
-        </div>
+  if (
+    Number.isInteger(numeric) &&
+    numeric >= 1 &&
+    numeric <= options.length
+  ) {
+    return numeric - 1;
+  }
+}
 
-        <p id="categoryLabel">Choose quiz category / Hitamo ubwoko bw'ibibazo</p>
+return -1;
 
-        <div class="choice-grid" role="group" aria-label="Choose quiz category">
-          <button type="button" class="choice-btn" data-mode="traffic">
-            🚦 Amategeko y'umuhanda / Road Safety
-          </button>
-          <button type="button" class="choice-btn" data-mode="general">
-            🌍 Ubumenyi rusange / General Knowledge
-          </button>
-        </div>
+}
 
-        <div class="status-line" id="selectionSummary" aria-live="polite">
-          Choose a language and category to continue.
-        </div>
+function getExplanation(question) {
+if (state.language === "rw") {
+return (
+question.explanation_rw ??
+question.explanationRw ??
+question.explanation ??
+question.explanation_en ??
+""
+);
+}
 
-        <button type="button" class="btn btn-primary btn-block" id="confirmSetupBtn" disabled>
-          Confirm and Start / Emeza utangire
-        </button>
-      </div>
-    </section>
+return (
+  question.explanation ??
+  question.explanation_en ??
+  question.explanationEn ??
+  question.explanation_rw ??
+  ""
+);
 
-    <!-- QUIZ SCREEN -->
-    <section id="quizScreen" class="screen">
-      <div class="content-card">
-        <button type="button" class="btn btn-secondary" data-go-home>
-          ← Home / Ahabanza
-        </button>
+}
 
-        <div class="quiz-meta">
-          <span id="roundLabel">Round 1</span>
-          <span id="questionCounter">Question 1 / 10</span>
-          <span class="timer" id="timer" aria-live="polite">30</span>
-        </div>
+function loadSavedData() {
+const progress = readJSON(CONFIG.STORAGE.progress, {});
 
-        <div class="progress-track" aria-label="Question progress">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
+state.currentRound = Math.max(
+  1,
+  Number(progress.currentRound) || 1
+);
 
-        <p class="muted" id="categoryIndicator">Quiz category</p>
-        <div class="question-text" id="questionText">Loading question...</div>
-        <div class="option-list" id="optionsContainer"></div>
+state.totalScore =
+  Number(
+    progress.totalScore ??
+    localStorage.getItem(CONFIG.STORAGE.total)
+  ) || 0;
 
-        <div class="button-row">
-          <button type="button" class="btn btn-primary btn-block" id="submitAnswerBtn">
-            Submit Answer / Tanga igisubizo
-          </button>
-          <button type="button" class="btn btn-secondary btn-block hidden" id="nextQuestionBtn">
-            Next Question / Ikibazo gikurikira
-          </button>
-        </div>
+state.bestScore =
+  Number(
+    progress.bestScore ??
+    localStorage.getItem(CONFIG.STORAGE.best)
+  ) || 0;
 
-        <p id="answerFeedback" aria-live="polite"></p>
-      </div>
+state.language =
+  progress.language === "rw" || progress.language === "en"
+    ? progress.language
+    : "en";
 
-      <!-- AdSense placement: in-game ad; fill only with policy-compliant ad code -->
-      <div class="ad-slot" id="quizAdSlot" aria-label="Advertisement area">
-        <span class="ad-label">Advertisement</span>
-        <span>Ad space</span>
-      </div>
-    </section>
+state.mode =
+  progress.mode === "traffic" || progress.mode === "general"
+    ? progress.mode
+    : "general";
 
-    <!-- RESULT SCREEN -->
-    <section id="resultScreen" class="screen">
-      <div class="content-card">
-        <button type="button" class="btn btn-secondary" data-go-home>
-          ← Home / Ahabanza
-        </button>
+state.completedRounds = readJSON(
+  CONFIG.STORAGE.completed,
+  []
+);
 
-        <h2 id="resultTitle">Your Results / Ibisubizo byawe</h2>
-        <p id="resultStatus" aria-live="polite"></p>
-        <div class="score-number" id="scoreNumber">0 / 10</div>
-        <p id="scoreDetails"></p>
-        <p id="correctCount"></p>
-        <p id="wrongCount"></p>
+if (!Array.isArray(state.completedRounds)) {
+  state.completedRounds = [];
+}
 
-        <div class="button-row">
-          <button type="button" class="btn btn-primary btn-block" id="reviewAnswersBtn">
-            Review Answers / Reba ibisubizo
-          </button>
-          <button type="button" class="btn btn-success btn-block" id="retryBtn">
-            Try Again / Ongera ukine
-          </button>
-          <button type="button" class="btn btn-primary btn-block" id="nextRoundBtn">
-            Next Round / Ikiciro gikurikira
-          </button>
-          <button type="button" class="btn btn-secondary btn-block" data-go-home>
-            Home / Ahabanza
-          </button>
-        </div>
-      </div>
+state.usedQuestionIds = readJSON(
+  CONFIG.STORAGE.used,
+  []
+);
 
-      <!-- AdSense placement: results display ad -->
-      <div class="ad-slot" id="resultAdSlot" aria-label="Advertisement area">
-        <span class="ad-label">Advertisement</span>
-        <span>Ad space</span>
-      </div>
-    </section>
+if (!Array.isArray(state.usedQuestionIds)) {
+  state.usedQuestionIds = [];
+}
 
-    <!-- REVIEW SCREEN -->
-    <section id="reviewScreen" class="screen">
-      <div class="content-card">
-        <button type="button" class="btn btn-secondary" data-go-home>
-          ← Home / Ahabanza
-        </button>
-        <h2 id="reviewTitle">Review Answers / Reba ibisubizo</h2>
-        <div id="reviewContainer"></div>
-        <button type="button" class="btn btn-primary btn-block" data-show-results>
-          Back to Results / Subira ku manota
-        </button>
-      </div>
-    </section>
+}
 
-    <!-- ROUNDS SCREEN -->
-    <section id="roundsScreen" class="screen">
-      <div class="content-card">
-        <button type="button" class="btn btn-secondary" data-go-home>
-          ← Home / Ahabanza
-        </button>
-        <h2 id="roundsTitle">My Rounds / Ibyiciro byanjye</h2>
-        <p id="roundsDescription">
-          Your completed rounds and saved progress will appear here when
-          provided by the game engine.
-        </p>
-        <div id="roundsContainer"></div>
-      </div>
-    </section>
+function saveProgress() {
+writeJSON(CONFIG.STORAGE.progress, {
+currentRound: state.currentRound,
+totalScore: state.totalScore,
+bestScore: state.bestScore,
+language: state.language,
+mode: state.mode,
+currentIndex: state.currentIndex,
+score: state.score,
+correct: state.correct,
+wrong: state.wrong,
+timeLeft: state.timeLeft,
+savedAt: Date.now()
+});
 
-    <!-- WEEKLY SCORES SCREEN -->
-    <section id="weeklyScoresScreen" class="screen">
-      <div class="content-card">
-        <button type="button" class="btn btn-secondary" data-go-home>
-          ← Home / Ahabanza
-        </button>
-        <h2 id="weeklyScoresTitle">Weekly Scores / Amanota y'icyumweru</h2>
-        <p id="weeklyScoresDescription">
-          Review your scores from the last seven days. Score history needs
-          to be saved by the game engine.
-        </p>
-        <div id="weeklyScoresContainer"></div>
-      </div>
-    </section>
+try {
+  localStorage.setItem(
+    CONFIG.STORAGE.total,
+    String(state.totalScore)
+  );
 
-    <!-- SETTINGS SCREEN -->
-    <section id="settingsScreen" class="screen">
-      <div class="content-card">
-        <button type="button" class="btn btn-secondary" data-go-home>
-          ← Home / Ahabanza
-        </button>
-        <h2 id="settingsTitle">Settings / Igenamiterere</h2>
+  localStorage.setItem(
+    CONFIG.STORAGE.best,
+    String(state.bestScore)
+  );
+} catch (error) {
+  console.warn("Quiz Master: Could not save scores.", error);
+}
 
-        <div class="setting-row">
-          <div>
-            <strong id="musicLabel">Background Music / Umuziki</strong>
-            <div class="muted" id="musicDescription">Turn the background music on or off.</div>
-          </div>
-          <button type="button" class="btn btn-primary" id="musicToggleBtn" aria-pressed="false">
-            Music: Off
-          </button>
-        </div>
+writeJSON(CONFIG.STORAGE.used, state.usedQuestionIds);
+writeJSON(CONFIG.STORAGE.completed, state.completedRounds);
+writeJSON(CONFIG.STORAGE.review, state.review);
 
-        <div class="setting-row">
-          <div>
-            <strong id="languageSettingLabel">Language / Ururimi</strong>
-            <div class="muted" id="currentLanguage">English</div>
-          </div>
-          <button type="button" class="btn btn-outline" id="changeLanguageBtn">
-            Change / Hindura
-          </button>
-        </div>
+}
 
-        <div class="setting-row">
-          <div>
-            <strong id="categorySettingLabel">Quiz Category / Ubwoko bw'ibibazo</strong>
-            <div class="muted" id="currentCategory">Not selected</div>
-          </div>
-          <button type="button" class="btn btn-outline" id="changeCategoryBtn">
-            Change / Hindura
-          </button>
-        </div>
-      </div>
-    </section>
-  </main>
+async function loadQuestions() {
+if (state.allQuestions.length) return state.allQuestions;
+if (state.loading) {
+while (state.loading) {
+await new Promise((resolve) => setTimeout(resolve, 50));
+}
+return state.allQuestions;
+}
 
-  <footer class="site-footer">
-    <p>© 2026 Quiz Master 🇷🇼</p>
-    <p>
-      <a href="./privacy-policy.html">Privacy Policy</a>
-      |
-      <a href="./terms.html">Terms of Use</a>
-    </p>
-    <p>
-      Contact:
-      <a href="mailto:mazimpakaisaie7@gmail.com">mazimpakaisaie7@gmail.com</a>
-    </p>
-  </footer>
+state.loading = true;
 
-  <audio id="backgroundMusic" src="./mythica.mp3" loop preload="none"></audio>
+try {
+  const response = await fetch(CONFIG.QUESTIONS_FILE, {
+    cache: "no-store"
+  });
 
-  <script>
-    /*
-      Quiz Master UI layer.
-      The next step is to connect these controls to the existing questions.js
-      engine without changing unrelated game behavior.
-    */
-    (() => {
-      "use strict";
+  if (!response.ok) {
+    throw new Error(
+      `Could not load questions.json (HTTP ${response.status})`
+    );
+  }
 
-      const $ = (id) => document.getElementById(id);
+  const data = await response.json();
 
-      const screens = [
-        "homeScreen",
-        "gameSetup",
-        "quizScreen",
-        "resultScreen",
-        "reviewScreen",
-        "roundsScreen",
-        "weeklyScoresScreen",
-        "settingsScreen"
-      ];
+  let questions = [];
 
-      const state = {
-        language: null,
-        mode: null,
-        musicOn: false
-      };
+  if (Array.isArray(data)) {
+    questions = data;
+  } else if (data && Array.isArray(data.questions)) {
+    questions = data.questions;
+  } else if (data && Array.isArray(data.trafficQuestions)) {
+    questions = data.trafficQuestions;
+  } else if (data && Array.isArray(data.generalQuestions)) {
+    questions = data.generalQuestions;
+  } else {
+    throw new Error(
+      "questions.json must contain an array of questions or a questions array."
+    );
+  }
 
-      function showScreen(id) {
-        screens.forEach((screenId) => {
-          const element = $(screenId);
-          if (element) element.classList.toggle("active", screenId === id);
-        });
-        window.scrollTo({ top: 0, behavior: "auto" });
-        document.dispatchEvent(new CustomEvent("quizmaster:show-screen", {
-          detail: { screen: id }
-        }));
-      }
+  state.allQuestions = questions.filter(
+    (question) =>
+      question &&
+      typeof question === "object" &&
+      getQuestionTextForValidation(question) &&
+      Array.isArray(
+        question.options ??
+        question.choices ??
+        question.answers
+      )
+  );
 
-      function updateSelectionSummary() {
-        const languageName = state.language === "rw"
-          ? "Ikinyarwanda"
-          : state.language === "en"
-            ? "English"
-            : "";
+  if (!state.allQuestions.length) {
+    throw new Error(
+      "No valid questions found. Check the structure of questions.json."
+    );
+  }
 
-        const categoryName = state.mode === "traffic"
-          ? "Road Safety / Amategeko y'umuhanda"
-          : state.mode === "general"
-            ? "General Knowledge / Ubumenyi rusange"
-            : "";
+  // Do not send the question array in this event:
+  // index.html may clear questionText if detail.questions exists.
+  dispatch("quizmaster:questions-loaded", {
+    questionCount: state.allQuestions.length
+  });
 
-        $("selectionSummary").textContent =
-          languageName && categoryName
-            ? languageName + " — " + categoryName
-            : "Choose a language and category to continue.";
+  return state.allQuestions;
+} catch (error) {
+  console.error("Quiz Master question loading error:", error);
 
-        $("confirmSetupBtn").disabled = !(state.language && state.mode);
-      }
+  dispatch("quizmaster:error", {
+    message:
+      "Ibibazo ntibishoboye gufunguka. Reba niba questions.json iri muri repository kandi idafite amakosa.",
+    error: error.message
+  });
 
-      function updateChoiceButtons(selector, dataKey, value) {
-        document.querySelectorAll(selector).forEach((button) => {
-          button.classList.toggle("selected", button.dataset[dataKey] === value);
-          button.setAttribute(
-            "aria-pressed",
-            button.dataset[dataKey] === value ? "true" : "false"
-          );
-        });
-      }
+  throw error;
+} finally {
+  state.loading = false;
+}
 
-      document.querySelectorAll("[data-language]").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.language = button.dataset.language;
-          updateChoiceButtons("[data-language]", "language", state.language);
-          updateSelectionSummary();
-        });
+}
+
+function getQuestionTextForValidation(question) {
+return (
+question.question ??
+question.question_rw ??
+question.questionRw ??
+question.text ??
+""
+);
+}
+
+function prepareRoundQuestions() {
+state.availableQuestions = state.allQuestions.filter(
+(question) => isQuestionForMode(question, state.mode)
+);
+
+if (!state.availableQuestions.length) {
+  throw new Error(
+    state.mode === "traffic"
+      ? "Nta bibazo by'amategeko y'umuhanda byabonetse muri questions.json."
+      : "Nta bibazo rusange byabonetse muri questions.json."
+  );
+}
+
+const alreadyUsed = new Set(state.usedQuestionIds);
+
+let unused = state.availableQuestions.filter(
+  (question, index) =>
+    !alreadyUsed.has(getQuestionId(question, index))
+);
+
+// Once the category's questions have all been used, start a new cycle.
+if (unused.length < CONFIG.QUESTIONS_PER_ROUND) {
+  const categoryIds = new Set(
+    state.availableQuestions.map((question, index) =>
+      getQuestionId(question, index)
+    )
+  );
+
+  state.usedQuestionIds = state.usedQuestionIds.filter(
+    (id) => !categoryIds.has(id)
+  );
+
+  unused = state.availableQuestions.slice();
+}
+
+shuffle(unused);
+
+state.roundQuestions = unused.slice(
+  0,
+  Math.min(CONFIG.QUESTIONS_PER_ROUND, unused.length)
+);
+
+state.roundQuestions = state.roundQuestions.filter((question) => {
+  const options = getOptions(question);
+  return (
+    getQuestionText(question).trim() !== "" &&
+    options.length >= 2 &&
+    getCorrectAnswer(question, options) >= 0
+  );
+});
+
+if (!state.roundQuestions.length) {
+  throw new Error(
+    "Ibibazo byabonetse ariko answer cyangwa options ntibihuye. Reba questions.json."
+  );
+}
+
+}
+
+function shuffle(array) {
+for (let i = array.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[array[i], array[j]] = [array[j], array[i]];
+}
+return array;
+}
+
+function getModeLabel() {
+if (state.mode === "traffic") {
+return state.language === "rw"
+? "Amategeko y'umuhanda"
+: "Road Safety";
+}
+
+return state.language === "rw"
+  ? "Ibibazo rusange"
+  : "General Knowledge";
+
+}
+
+async function startNewQuiz(options = {}) {
+stopTimer();
+
+try {
+  loadSavedData();
+
+  if (options && typeof options === "object") {
+    if (options.language === "rw" || options.language === "en") {
+      state.language = options.language;
+    }
+
+    if (
+      options.mode === "traffic" ||
+      options.mode === "general"
+    ) {
+      state.mode = options.mode;
+    }
+
+    if (
+      options.category === "traffic" ||
+      options.category === "general"
+    ) {
+      state.mode = options.category;
+    }
+  }
+
+  await loadQuestions();
+
+  state.secondsPerQuestion =
+    state.mode === "traffic"
+      ? CONFIG.TRAFFIC_TIME
+      : CONFIG.GENERAL_TIME;
+
+  prepareRoundQuestions();
+
+  state.currentIndex = 0;
+  state.score = 0;
+  state.correct = 0;
+  state.wrong = 0;
+  state.review = [];
+  state.selectedIndex = null;
+  state.answered = false;
+  state.started = true;
+  state.roundStartedAt = Date.now();
+
+  saveProgress();
+  renderQuestion();
+  showScreen("quizScreen");
+
+  dispatch("quizmaster:game-started", {
+    round: state.currentRound,
+    mode: state.mode,
+    language: state.language,
+    questionCount: state.roundQuestions.length,
+    secondsPerQuestion: state.secondsPerQuestion
+  });
+} catch (error) {
+  console.error("Quiz Master start error:", error);
+  showScreen("homeScreen");
+  setText(
+    "selectionSummary",
+    error.message || "Umukino ntushoboye gutangira."
+  );
+}
+
+}
+
+function renderQuestion() {
+stopTimer();
+
+if (state.currentIndex >= state.roundQuestions.length) {
+  finishRound();
+  return;
+}
+
+const question = state.roundQuestions[state.currentIndex];
+const options = getOptions(question);
+
+state.selectedIndex = null;
+state.answered = false;
+state.timeLeft = state.secondsPerQuestion;
+
+setText(
+  "roundLabel",
+  state.language === "rw"
+    ? `Round ${state.currentRound}`
+    : `Round ${state.currentRound}`
+);
+
+setText(
+  "questionCounter",
+  `${state.currentIndex + 1}/${state.roundQuestions.length}`
+);
+
+setText("timer", state.timeLeft);
+setText("categoryIndicator", getModeLabel());
+setText("questionText", getQuestionText(question));
+setText("answerFeedback", "");
+setText("scoreNumber", state.score);
+
+const progress = $("progressFill");
+if (progress) {
+  progress.style.width =
+    `${(state.currentIndex / state.roundQuestions.length) * 100}%`;
+}
+
+const container = $("optionsContainer");
+
+if (container) {
+  container.replaceChildren();
+
+  options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "answer-option";
+    button.textContent = option;
+    button.setAttribute("data-answer-index", String(index));
+    button.setAttribute("aria-pressed", "false");
+
+    button.addEventListener("click", () => {
+      if (state.answered) return;
+
+      state.selectedIndex = index;
+
+      container.querySelectorAll("button").forEach((item) => {
+        item.classList.remove("selected");
+        item.setAttribute("aria-pressed", "false");
       });
 
-      document.querySelectorAll("[data-mode]").forEach((button) => {
-        button.addEventListener("click", () => {
-          state.mode = button.dataset.mode;
-          updateChoiceButtons("[data-mode]", "mode", state.mode);
-          updateSelectionSummary();
-        });
-      });
+      button.classList.add("selected");
+      button.setAttribute("aria-pressed", "true");
+    });
 
-      $("startBtn").addEventListener("click", () => showScreen("gameSetup"));
+    container.appendChild(button);
+  });
+}
 
-      $("confirmSetupBtn").addEventListener("click", () => {
-        if (!state.language || !state.mode) return;
+const submitButton = $("submitAnswerBtn");
+const nextButton = $("nextQuestionBtn");
 
-        localStorage.setItem("quizmasterLanguage", state.language);
-        localStorage.setItem("quizmasterMode", state.mode);
+if (submitButton) submitButton.disabled = false;
+if (nextButton) nextButton.disabled = true;
 
-        const detail = {
-          language: state.language,
-          mode: state.mode,
-          secondsPerQuestion: state.mode === "traffic" ? 60 : 30
-        };
+startTimer();
+saveProgress();
 
-        document.dispatchEvent(new CustomEvent("quizmaster:setup", { detail }));
-        document.dispatchEvent(new CustomEvent("quizmaster:start-quiz", { detail }));
+}
 
-        if (typeof window.startQuiz === "function") {
-          window.startQuiz(detail);
-        } else if (typeof window.startGame === "function") {
-          window.startGame(detail);
-        } else {
-          /*
-            The questions.js engine will be connected here in the next step.
-            Do not fake a quiz or score if the engine has not loaded.
-          */
-          showScreen("quizScreen");
-          $("questionText").textContent =
-            state.language === "rw"
-              ? "Tegereza: imikorere y'ibibazo iracyategereje guhuza na questions.js."
-              : "The quiz engine needs to be connected to questions.js.";
-          $("optionsContainer").innerHTML = "";
-          $("submitAnswerBtn").disabled = true;
-          $("nextQuestionBtn").classList.add("hidden");
-          $("answerFeedback").textContent =
-            "Connect the matching questions.js engine before playing.";
-        }
+function startTimer() {
+stopTimer();
+setText("timer", state.timeLeft);
 
-        $("currentLanguage").textContent = state.language === "rw"
-          ? "Ikinyarwanda"
-          : "English";
+state.timerId = setInterval(() => {
+  if (!state.started || state.answered) {
+    stopTimer();
+    return;
+  }
 
-        $("currentCategory").textContent = state.mode === "traffic"
-          ? "Road Safety / Amategeko y'umuhanda"
-          : "General Knowledge / Ubumenyi rusange";
-      });
+  state.timeLeft -= 1;
+  setText("timer", Math.max(0, state.timeLeft));
 
-      $("settingsBtn").addEventListener("click", () => showScreen("settingsScreen"));
-      $("roundsBtn").addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent("quizmaster:show-rounds"));
-        showScreen("roundsScreen");
-      });
-      $("weeklyScoresBtn").addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent("quizmaster:show-weekly-scores"));
-        showScreen("weeklyScoresScreen");
-      });
+  if (state.timeLeft <= 0) {
+    answerQuestion(-1, true);
+  }
+}, 1000);
 
-      document.querySelectorAll("[data-go-home]").forEach((button) => {
-        button.addEventListener("click", () => {
-          document.dispatchEvent(new CustomEvent("quizmaster:go-home"));
-          showScreen("homeScreen");
-        });
-      });
+}
 
-      document.querySelectorAll("[data-show-results]").forEach((button) => {
-        button.addEventListener("click", () => showScreen("resultScreen"));
-      });
+function answerQuestion(selectedIndex, timedOut = false) {
+if (state.answered) return;
 
-      $("changeLanguageBtn").addEventListener("click", () => showScreen("gameSetup"));
-      $("changeCategoryBtn").addEventListener("click", () => showScreen("gameSetup"));
+const question = state.roundQuestions[state.currentIndex];
+if (!question) return;
 
-      const music = $("backgroundMusic");
+stopTimer();
+state.answered = true;
 
-      function setMusic(enabled) {
-        state.musicOn = enabled;
-        localStorage.setItem("quizmasterMusicOn", enabled ? "true" : "false");
-        $("musicToggleBtn").textContent = enabled
-          ? (state.language === "rw" ? "Umuziki: Ufunguye" : "Music: On")
-          : (state.language === "rw" ? "Umuziki: Ufunze" : "Music: Off");
-        $("musicToggleBtn").setAttribute("aria-pressed", String(enabled));
+const options = getOptions(question);
+const correctIndex = getCorrectAnswer(question, options);
+const isCorrect =
+  selectedIndex === correctIndex && correctIndex >= 0;
 
-        if (enabled) {
-          music.play().catch(() => {
-            $("musicDescription").textContent =
-              state.language === "rw"
-                ? "Kanda buto y'umuziki kugira ngo wongere ugerageze."
-                : "Tap the music button to try playing again.";
-          });
-        } else {
-          music.pause();
-          music.currentTime = 0;
-        }
-      }
+if (isCorrect) {
+  state.correct += 1;
+  state.score += CONFIG.POINTS_PER_CORRECT;
+  state.totalScore += CONFIG.POINTS_PER_CORRECT;
+} else {
+  state.wrong += 1;
+}
 
-      $("musicToggleBtn").addEventListener("click", () => {
-        setMusic(!state.musicOn);
-      });
+const answerRecord = {
+  question: getQuestionText(question),
+  options: options.slice(),
+  selectedIndex,
+  selectedAnswer:
+    selectedIndex >= 0 ? options[selectedIndex] : "",
+  correctIndex,
+  correctAnswer:
+    correctIndex >= 0 ? options[correctIndex] : "",
+  isCorrect,
+  timedOut,
+  explanation: getExplanation(question),
+  mode: state.mode,
+  language: state.language
+};
 
-      $("shareBtn").addEventListener("click", async () => {
-        const shareData = {
-          title: "Quiz Master 🇷🇼 - Knowledge Quiz",
-          text: "Test your knowledge with Quiz Master!",
-          url: window.location.href
-        };
+state.review.push(answerRecord);
 
-        try {
-          if (navigator.share) {
-            await navigator.share(shareData);
-          } else {
-            await navigator.clipboard.writeText(
-              shareData.text + " " + shareData.url
-            );
-            alert("✅ Link Copied!");
-          }
-        } catch (error) {
-          if (error && error.name === "AbortError") return;
+const container = $("optionsContainer");
 
-          try {
-            const temporaryInput = document.createElement("textarea");
-            temporaryInput.value = shareData.text + " " + shareData.url;
-            temporaryInput.style.position = "fixed";
-            temporaryInput.style.opacity = "0";
-            document.body.appendChild(temporaryInput);
-            temporaryInput.select();
-            const copied = document.execCommand("copy");
-            temporaryInput.remove();
+if (container) {
+  const buttons = container.querySelectorAll("button");
 
-            if (copied) alert("✅ Link Copied!");
-            else alert("Unable to share automatically. Copy the website link.");
-          } catch (_) {
-            alert("Unable to share automatically. Copy the website link.");
-          }
-        }
-      });
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+    button.classList.remove("selected");
 
-      $("retryBtn").addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent("quizmaster:retry"));
-        if (typeof window.startQuiz === "function") window.startQuiz();
-        else if (typeof window.startGame === "function") window.startGame();
-        else showScreen("gameSetup");
-      });
+    if (index === correctIndex) {
+      button.classList.add("correct");
+    } else if (index === selectedIndex && !isCorrect) {
+      button.classList.add("incorrect");
+    }
+  });
+}
 
-      $("nextRoundBtn").addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent("quizmaster:next-round"));
-        if (typeof window.startNextRound === "function") window.startNextRound();
-        else if (typeof window.nextRound === "function") window.nextRound();
-        else showScreen("gameSetup");
-      });
+let feedback = "";
 
-      $("reviewAnswersBtn").addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent("quizmaster:review-answers"));
-        showScreen("reviewScreen");
-      });
+if (isCorrect) {
+  feedback =
+    state.language === "rw"
+      ? "Ni byo! Wabonye amanota 10."
+      : "Correct! You earned 10 points.";
+} else if (timedOut) {
+  feedback =
+    state.language === "rw"
+      ? "Igihe kirangiye. Igisubizo nyacyo: "
+      : "Time is up. Correct answer: ";
+  feedback += answerRecord.correctAnswer;
+} else {
+  feedback =
+    state.language === "rw"
+      ? "Si byo. Igisubizo nyacyo: "
+      : "Incorrect. Correct answer: ";
+  feedback += answerRecord.correctAnswer;
+}
 
-      // Restore saved setup preferences.
-      state.language = localStorage.getItem("quizmasterLanguage");
-      state.mode = localStorage.getItem("quizmasterMode");
-      updateChoiceButtons("[data-language]", "language", state.language);
-      updateChoiceButtons("[data-mode]", "mode", state.mode);
-      updateSelectionSummary();
+const explanation = getExplanation(question);
+if (explanation) feedback += `\n${explanation}`;
 
-      const savedMusic = localStorage.getItem("quizmasterMusicOn") === "true";
-      setMusic(savedMusic);
+setText("answerFeedback", feedback);
+setText("scoreNumber", state.score);
 
-      if (state.language) {
-        $("currentLanguage").textContent =
-          state.language === "rw" ? "Ikinyarwanda" : "English";
-      }
+const submitButton = $("submitAnswerBtn");
+const nextButton = $("nextQuestionBtn");
 
-      if (state.mode) {
-        $("currentCategory").textContent =
-          state.mode === "traffic"
-            ? "Road Safety / Amategeko y'umuhanda"
-            : "General Knowledge / Ubumenyi rusange";
-      }
+if (submitButton) submitButton.disabled = true;
+if (nextButton) nextButton.disabled = false;
 
-      // These events allow questions.js to populate the interface.
-      document.addEventListener("quizmaster:show-screen", (event) => {
-        const screenId = event.detail && event.detail.screen;
-        if (screenId && screens.includes(screenId)) {
-          screens.forEach((id) => $(id).classList.toggle("active", id === screenId));
-        }
-      });
+saveProgress();
 
-      document.addEventListener("quizmaster:questions-loaded", (event) => {
-        if (event.detail && event.detail.questions) {
-          $("questionText").textContent = "";
-        }
-      });
+}
 
-      document.addEventListener("quizmaster:review-data", (event) => {
-        const container = $("reviewContainer");
-        container.innerHTML = "";
-        const items = event.detail && Array.isArray(event.detail.answers)
-          ? event.detail.answers
-          : [];
+function nextQuestion() {
+if (!state.answered) return;
 
-        items.forEach((item, index) => {
-          const block = document.createElement("div");
-          block.className = "review-item";
+state.currentIndex += 1;
 
-          const question = document.createElement("p");
-          question.textContent = (index + 1) + ". " + (item.question || "");
-          block.appendChild(question);
+if (state.currentIndex >= state.roundQuestions.length) {
+  finishRound();
+} else {
+  renderQuestion();
+}
 
-          const chosen = document.createElement("p");
-          chosen.textContent = "Your answer: " + (item.selectedAnswer || "No answer");
-          chosen.className = item.isCorrect ? "correct-answer" : "wrong-answer";
-          block.appendChild(chosen);
+}
 
-          const correct = document.createElement("p");
-          correct.textContent = "Correct answer: " + (item.correctAnswer || "Not available");
-          correct.className = "correct-answer";
-          block.appendChild(correct);
+function finishRound() {
+stopTimer();
+state.started = false;
 
-          container.appendChild(block);
-        });
-      });
+const total = state.roundQuestions.length;
+const percent = total
+  ? Math.round((state.correct / total) * 100)
+  : 0;
 
-      document.addEventListener("quizmaster:setup-required", () => showScreen("gameSetup"));
+if (!state.completedRounds.includes(state.currentRound)) {
+  state.completedRounds.push(state.currentRound);
+}
 
-      document.addEventListener("quizmaster:error", (event) => {
-        $("answerFeedback").textContent =
-          event.detail && event.detail.message
-            ? event.detail.message
-            : "Something went wrong. Please try again.";
-      });
+state.bestScore = Math.max(state.bestScore, state.score);
 
-      /*
-        IMPORTANT:
-        This page provides the UI and emits integration events. The existing
-        questions.js must implement quiz timing, question selection, scoring,
-        weekly history, round progression, and results. The next step is to
-        connect this UI to the exact functions in your current questions.js.
-      */
-    })();
-  </script>
+const roundResult = {
+  round: state.currentRound,
+  mode: state.mode,
+  language: state.language,
+  score: state.score,
+  correct: state.correct,
+  wrong: state.wrong,
+  total,
+  percent,
+  date: new Date().toISOString()
+};
 
-  <script src="./questions.js"></script>
-</body>
-</html>
+saveWeeklyScore(roundResult);
+saveProgress();
+
+setText("resultTitle", `Round ${state.currentRound}`);
+setText("scoreNumber", state.score);
+setText("scoreDetails", `${state.correct} / ${total}`);
+setText("correctCount", state.correct);
+setText("wrongCount", state.wrong);
+setText("resultStatus", percent >= 50
+  ? (state.language === "rw" ? "Watsinze!" : "Passed!")
+  : (state.language === "rw" ? "Komeza ugerageze!" : "Keep practicing!"));
+
+dispatch("quizmaster:review-data", {
+  answers: state.review.slice()
+});
+
+dispatch("quizmaster:round-finished", roundResult);
+
+renderReview();
+showScreen("resultScreen");
+
+}
+
+function saveWeeklyScore(result) {
+const scores = readJSON(CONFIG.STORAGE.weekly, []);
+const list = Array.isArray(scores) ? scores : [];
+
+list.push(result);
+
+const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+
+const recent = list.filter((item) => {
+  const time = Date.parse(item.date || "");
+  return Number.isFinite(time) && time >= cutoff;
+});
+
+writeJSON(CONFIG.STORAGE.weekly, recent);
+
+}
+
+function renderReview() {
+const container = $("reviewContainer");
+if (!container) return;
+
+container.replaceChildren();
+
+if (!state.review.length) {
+  const message = document.createElement("p");
+  message.textContent =
+    state.language === "rw"
+      ? "Nta bisubizo byo gusubiramo birahari."
+      : "There are no answers to review.";
+  container.appendChild(message);
+  return;
+}
+
+state.review.forEach((item, index) => {
+  const card = document.createElement("article");
+  card.className = "review-item";
+
+  const heading = document.createElement("h3");
+  heading.textContent = `${index + 1}. ${item.question}`;
+
+  const status = document.createElement("p");
+  status.textContent = item.isCorrect
+    ? (state.language === "rw" ? "Ni byo" : "Correct")
+    : (state.language === "rw" ? "Si byo" : "Incorrect");
+
+  const chosen = document.createElement("p");
+  chosen.textContent =
+    (state.language === "rw" ? "Igisubizo wahisemo: " : "Your answer: ") +
+    (item.selectedAnswer ||
+      (state.language === "rw" ? "Nta gisubizo" : "No answer"));
+
+  const correct = document.createElement("p");
+  correct.textContent =
+    (state.language === "rw" ? "Igisubizo nyacyo: " : "Correct answer: ") +
+    (item.correctAnswer || "—");
+
+  card.append(heading, status, chosen, correct);
+
+  if (item.explanation) {
+    const explanation = document.createElement("p");
+    explanation.textContent = item.explanation;
+    card.appendChild(explanation);
+  }
+
+  container.appendChild(card);
+});
+
+}
+
+function renderRounds() {
+const container = $("roundsContainer");
+if (!container) return;
+
+container.replaceChildren();
+
+const totalRounds = Math.max(
+  10,
+  Number($("totalRounds")?.textContent) || 10,
+  state.currentRound
+);
+
+for (let round = 1; round <= totalRounds; round++) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "round-button";
+  button.textContent = state.completedRounds.includes(round)
+    ? `Round ${round} ✓`
+    : `Round ${round}`;
+
+  button.addEventListener("click", () => {
+    state.currentRound = round;
+    saveProgress();
+    startNewQuiz({
+      language: state.language,
+      mode: state.mode
+    });
+  });
+
+  container.appendChild(button);
+}
+
+}
+
+function renderWeeklyScores() {
+const container = $("weeklyScoresContainer");
+if (!container) return;
+
+container.replaceChildren();
+
+const scores = readJSON(CONFIG.STORAGE.weekly, []);
+const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+
+const recent = (Array.isArray(scores) ? scores : [])
+  .filter((item) => Date.parse(item.date || "") >= cutoff)
+  .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+
+if (!recent.length) {
+  const message = document.createElement("p");
+  message.textContent =
+    state.language === "rw"
+      ? "Nta manota yo muri iyi minsi 7 arabikwa."
+      : "No scores recorded in the last 7 days.";
+  container.appendChild(message);
+  return;
+}
+
+recent.forEach((item) => {
+  const row = document.createElement("p");
+  const date = new Date(item.date).toLocaleDateString(
+    state.language === "rw" ? "rw-RW" : "en-US"
+  );
+
+  row.textContent =
+    `${date} — Round ${item.round} — ${item.score} points — ${item.percent}%`;
+
+  container.appendChild(row);
+});
+
+}
+
+function continueQuiz() {
+// Safe fallback: start a fresh round if a mid-question session
+// cannot be restored from the saved state.
+startNewQuiz({
+language: state.language,
+mode: state.mode
+});
+}
+
+function retryQuiz() {
+startNewQuiz({
+language: state.language,
+mode: state.mode
+});
+}
+
+function nextRound() {
+state.currentRound += 1;
+saveProgress();
+
+startNewQuiz({
+  language: state.language,
+  mode: state.mode
+});
+
+}
+
+function bind(id, eventName, handler) {
+const element = $(id);
+if (!element || element.dataset.quizMasterBound === "true") return;
+
+element.dataset.quizMasterBound = "true";
+element.addEventListener(eventName, handler);
+
+}
+
+function bindEvents() {
+bind("submitAnswerBtn", "click", () => {
+if (state.selectedIndex === null) {
+setText(
+"answerFeedback",
+state.language === "rw"
+? "Banza uhitemo igisubizo."
+: "Please select an answer first."
+);
+return;
+}
+
+  answerQuestion(state.selectedIndex);
+});
+
+bind("nextQuestionBtn", "click", nextQuestion);
+bind("continueBtn", "click", continueQuiz);
+bind("retryBtn", "click", retryQuiz);
+bind("nextRoundBtn", "click", nextRound);
+bind("resultNextBtn", "click", nextRound);
+
+bind("reviewAnswersBtn", "click", () => {
+  renderReview();
+  showScreen("reviewScreen");
+});
+
+bind("roundsBtn", "click", () => {
+  renderRounds();
+});
+
+bind("weeklyScoresBtn", "click", renderWeeklyScores);
+
+document.addEventListener("quizmaster:setup", (event) => {
+  const detail = event.detail || {};
+  startNewQuiz(detail);
+});
+
+document.addEventListener("quizmaster:continue", continueQuiz);
+document.addEventListener("quizmaster:retry", retryQuiz);
+document.addEventListener("quizmaster:next-round", nextRound);
+
+document.addEventListener("quizmaster:show-rounds", () => {
+  renderRounds();
+});
+
+document.addEventListener("quizmaster:show-weekly-scores", () => {
+  renderWeeklyScores();
+});
+
+document.addEventListener("quizmaster:show-review", () => {
+  renderReview();
+});
+
+}
+
+function initialize() {
+loadSavedData();
+bindEvents();
+
+// Show Continue only when there is saved progress.
+const progress = readJSON(CONFIG.STORAGE.progress, null);
+const continueButton = $("continueBtn");
+
+if (continueButton && progress && progress.savedAt) {
+  continueButton.style.display = "";
+}
+
+const music = $("backgroundMusic");
+if (music) {
+  music.loop = true;
+}
+
+// Report availability without clearing the current question text.
+loadQuestions().catch(() => {
+  // The error event and console already contain the explanation.
+});
+
+}
+
+// Public methods for compatibility with existing index.html.
+// The setup button should dispatch quizmaster:setup OR call startQuiz,
+// not both. Prefer the quizmaster:setup event.
+window.startQuiz = startNewQuiz;
+window.startGame = startNewQuiz;
+window.continueQuiz = continueQuiz;
+window.retryQuiz = retryQuiz;
+window.nextRound = nextRound;
+window.renderQuizMasterRounds = renderRounds;
+window.renderQuizMasterWeeklyScores = renderWeeklyScores;
+
+if (document.readyState === "loading") {
+document.addEventListener("DOMContentLoaded", initialize, { once: true });
+} else {
+initialize();
+}
+})();
