@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#10233f">
-  <meta name="description" content="Quiz Master Rwanda — learn road safety and general knowledge in English or Kinyarwanda.">
+  <meta name="description" content="Quiz Master Rwanda helps you learn road safety and general knowledge in English or Kinyarwanda. Play quizzes, review your answers, track your scores, and improve your knowledge.">
   <meta name="robots" content="index, follow">
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
   <link rel="icon" href="./icon-512-3.png">
@@ -12,852 +12,983 @@
 
   <style>
     :root {
-      --bg: #f2f5fb;
-      --card: #fff;
-      --text: #15233b;
-      --muted: #63718a;
-      --primary: #155eef;
-      --border: #dbe3ef;
-      --success: #16834a;
-      --danger: #c93636;
+      --navy: #10233f;
+      --blue: #1769aa;
+      --light-blue: #eaf4ff;
+      --green: #16834a;
+      --red: #c73535;
+      --gold: #f2b93b;
+      --white: #ffffff;
+      --bg: #f3f6fb;
+      --text: #1d2b3c;
+      --muted: #627184;
+      --border: #dce4ee;
+      --shadow: 0 5px 18px rgba(16, 35, 63, .08);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font: 16px/1.5 Arial, Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
     }
 
-    button, select { font: inherit; cursor: pointer; }
-    button:disabled { cursor: not-allowed; opacity: .55; }
-
-    button:focus-visible, a:focus-visible, select:focus-visible {
-      outline: 3px solid #83b2ff;
-      outline-offset: 2px;
+    button, input, select {
+      font: inherit;
     }
 
-    .app {
-      width: min(100% - 24px, 760px);
-      margin: auto;
-      padding: 20px 0 30px;
+    button {
+      cursor: pointer;
     }
 
-    header { text-align: center; padding: 12px 0 20px; }
-    header h1 { margin: 0; font-size: clamp(27px, 5vw, 38px); }
-    header p { color: var(--muted); margin: 8px 0 0; }
-
-    .screen { display: none; }
-    .screen.active { display: block; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: clamp(16px, 4vw, 26px);
-      margin-bottom: 16px;
-      box-shadow: 0 5px 22px rgba(23,45,80,.05);
+    button:disabled {
+      opacity: .55;
+      cursor: not-allowed;
     }
 
-    h2, h3 { margin-top: 0; }
-    .muted { color: var(--muted); }
-
-    .button-group {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin: 12px 0 22px;
-    }
-
-    .btn, .language-btn, .mode-btn, .answer-btn, .round-btn {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 12px 15px;
-      background: white;
-      color: var(--text);
-      min-height: 48px;
+    .app-header {
+      background: var(--navy);
+      color: white;
+      padding: 20px 15px;
       text-align: center;
-      overflow-wrap: anywhere;
+    }
+
+    .app-header h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 5vw, 2.1rem);
+    }
+
+    .app-header p {
+      margin: 5px 0 0;
+      color: #dbe9f8;
+      font-size: .95rem;
+    }
+
+    .container {
+      width: min(100% - 24px, 760px);
+      margin: 20px auto;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    h2, h3 {
+      line-height: 1.3;
+      color: var(--navy);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-weight: 700;
+      min-height: 46px;
+      text-align: center;
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: var(--blue);
       color: white;
-      border-color: var(--primary);
     }
 
     .btn-secondary {
-      background: #edf3ff;
-      color: #1548a0;
-      border-color: #cbdcff;
+      background: #e7edf5;
+      color: var(--navy);
     }
 
-    .btn-block { display: block; width: 100%; margin-top: 10px; }
-
-    .language-btn.selected, .mode-btn.selected {
-      background: #e9f1ff;
-      border: 2px solid var(--primary);
-      color: #1548a0;
-      font-weight: bold;
+    .btn-success {
+      background: var(--green);
+      color: white;
     }
 
-    .answer-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      margin: 10px 0;
+    .btn-danger {
+      background: var(--red);
+      color: white;
     }
 
-    .answer-btn.correct {
-      background: #e4f8eb;
-      border-color: var(--success);
-      color: #126738;
-    }
-
-    .answer-btn.incorrect {
-      background: #ffebeb;
-      border-color: var(--danger);
-      color: #a22020;
-    }
-
-    .answer-btn:disabled { opacity: 1; }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .stat {
-      padding: 12px 8px;
+    .btn-outline {
+      background: white;
+      color: var(--navy);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      text-align: center;
-      background: #f8faff;
     }
 
-    .stat strong { display: block; font-size: 22px; }
-    .stat span { display: block; font-size: 12px; color: var(--muted); }
-
-    .progress-track {
-      height: 8px;
-      background: #e4eaf3;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 12px 0 20px;
+    .btn-block {
+      width: 100%;
     }
 
-    #progressBar {
-      height: 100%;
-      width: 0;
-      background: var(--primary);
-      transition: width .2s ease;
-    }
-
-    .timer-line {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .timer-pill {
-      border-radius: 12px;
-      background: #fff0cf;
-      color: #825400;
-      font-weight: bold;
-      padding: 7px 13px;
-      white-space: nowrap;
-    }
-
-    #explanation {
-      display: none;
-      background: #f0f6ff;
-      border-left: 4px solid var(--primary);
-      border-radius: 8px;
-      padding: 12px;
-      margin-top: 14px;
-    }
-
-    #quizError, #errorMessage {
-      display: none;
-      padding: 12px;
-      border-radius: 10px;
-      overflow-wrap: anywhere;
-      margin-bottom: 14px;
-      background: #fff0f0;
-      border: 1px solid #f0bcbc;
-      color: #a22020;
-    }
-
-    #roundsContainer, #roundsList {
+    .choice-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
+      margin: 12px 0 20px;
     }
 
-    .round-btn { width: 100%; }
-    .result-number { font-size: 42px; font-weight: bold; margin: 6px 0; }
+    .choice-btn {
+      border: 2px solid var(--border);
+      background: white;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 15px 10px;
+      min-height: 60px;
+      font-weight: 700;
+    }
+
+    .choice-btn.selected {
+      border-color: var(--blue);
+      background: var(--light-blue);
+      color: var(--navy);
+    }
+
+    .status-line {
+      background: var(--light-blue);
+      border-radius: 10px;
+      padding: 12px;
+      margin: 12px 0;
+    }
+
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .timer {
+      font-size: 1.15rem;
+      color: var(--red);
+    }
+
+    .question-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 18px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option-btn {
+      display: block;
+      width: 100%;
+      background: white;
+      color: var(--text);
+      text-align: left;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px;
+      min-height: 48px;
+    }
+
+    .option-btn:hover,
+    .option-btn:focus {
+      border-color: var(--blue);
+      background: var(--light-blue);
+    }
+
+    .option-btn.selected {
+      border: 2px solid var(--blue);
+      background: var(--light-blue);
+    }
+
+    .progress-track {
+      height: 9px;
+      background: #e4eaf1;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 10px 0 16px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: var(--green);
+      transition: width .2s ease;
+    }
+
+    .score-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .result-good {
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .result-bad {
+      color: var(--red);
+      font-weight: 800;
+    }
 
     .review-item {
-      padding: 14px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 13px;
+      margin: 10px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .correct-answer {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .wrong-answer {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 13px 0;
       border-bottom: 1px solid var(--border);
     }
 
-    .review-item:last-child { border-bottom: 0; }
-    .review-correct { color: var(--success); font-weight: bold; }
-    .review-wrong { color: var(--danger); font-weight: bold; }
+    .setting-row:last-child {
+      border-bottom: 0;
+    }
 
-    .field-label { display: block; font-weight: bold; margin: 14px 0 6px; }
-
-    select {
-      width: 100%;
+    .ad-slot {
+      display: block;
+      min-height: 90px;
       padding: 12px;
-      border: 1px solid var(--border);
+      margin: 16px 0;
+      background: #fff;
+      border: 1px dashed #cbd5e1;
       border-radius: 10px;
-      background: white;
-      color: var(--text);
-    }
-
-    footer {
       text-align: center;
-      padding: 18px 0;
       color: var(--muted);
-      font-size: 13px;
+      font-size: .85rem;
     }
 
-    footer a { color: var(--primary); margin: 0 7px; }
+    .ad-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
 
-    @media (max-width: 420px) {
-      .button-group { grid-template-columns: 1fr; }
-      .stats { gap: 6px; }
-      .stat strong { font-size: 19px; }
+    .help-section details {
+      border-top: 1px solid var(--border);
+      padding: 12px 0;
+    }
+
+    .help-section summary {
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--navy);
+    }
+
+    .site-footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+      padding: 15px 10px 28px;
+    }
+
+    .site-footer a {
+      color: var(--blue);
+      margin: 0 6px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: calc(100% - 16px);
+        margin-top: 12px;
+      }
+
+      .content-card {
+        padding: 15px;
+      }
+
+      .choice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button-row .btn {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
 
 <body>
-<div class="app">
-  <header>
+  <header class="app-header">
     <h1>Quiz Master 🇷🇼</h1>
-    <p id="headerSubtitle">Test your knowledge and learn something new.</p>
+    <p id="headerSubtitle">Learn, play, and improve your knowledge</p>
   </header>
 
-  <div id="quizError" role="alert" aria-live="polite"></div>
-  <div id="errorMessage" role="alert" aria-live="polite"></div>
+  <main class="container">
+    <!-- HOME SCREEN -->
+    <section id="homeScreen" class="screen active">
+      <div class="content-card">
+        <h2 id="welcomeTitle">Welcome to Quiz Master!</h2>
+        <p id="welcomeDescription">
+          Test your knowledge, learn road safety, answer general knowledge
+          questions, review your answers, and track your progress.
+        </p>
 
-  <section id="homeScreen" class="screen active">
-    <div class="card">
-      <h2 id="homeTitle">Welcome to Quiz Master!</h2>
-      <p id="homeDescription" class="muted">Choose your language and quiz category to begin.</p>
-      <button id="startBtn" class="btn btn-primary btn-block" type="button">Start Quiz</button>
-      <button id="continueBtn" class="btn btn-secondary btn-block" type="button" hidden>Continue Quiz</button>
-      <button id="reviewAnswersBtn" class="btn btn-block" type="button">Review Answers</button>
-      <button id="roundsBtn" class="btn btn-block" type="button">View Rounds</button>
-      <button id="settingsBtn" class="btn btn-block" type="button">Settings</button>
-      <button id="shareBtn" class="btn btn-block" type="button">Share Quiz Master</button>
-    </div>
-  </section>
-
-  <section id="gameSetup" class="screen">
-    <div class="card">
-      <h2 id="setupTitle">Set up your quiz</h2>
-
-      <h3 id="languageHeading">Choose language</h3>
-      <div class="button-group">
-        <button class="language-btn" type="button" data-language="rw" aria-pressed="false">🇷🇼 Ikinyarwanda</button>
-        <button class="language-btn" type="button" data-language="en" aria-pressed="false">🇬🇧 English</button>
+        <div class="button-row">
+          <button type="button" class="btn btn-primary btn-block" id="startBtn">
+            Start Playing / Tangira gukina
+          </button>
+          <button type="button" class="btn btn-secondary btn-block hidden" id="continueBtn">
+            Continue / Komeza
+          </button>
+          <button type="button" class="btn btn-outline btn-block" id="roundsBtn">
+            My Rounds / Ibyiciro byanjye
+          </button>
+          <button type="button" class="btn btn-outline btn-block" id="weeklyScoresBtn">
+            Weekly Scores / Amanota y'icyumweru
+          </button>
+          <button type="button" class="btn btn-outline btn-block" id="settingsBtn">
+            Settings / Igenamiterere
+          </button>
+          <button type="button" class="btn btn-outline btn-block" id="shareBtn">
+            Share Quiz Master / Sangiza abandi
+          </button>
+        </div>
       </div>
 
-      <h3 id="modeHeading">Choose category</h3>
-      <div class="button-group">
-        <button class="mode-btn" type="button" data-mode="traffic" aria-pressed="false">🚦 Amategeko y'umuhanda</button>
-        <button class="mode-btn" type="button" data-mode="general" aria-pressed="false">🌍 Ubumenyi rusange</button>
+      <!-- AdSense placement: display ad -->
+      <div class="ad-slot" id="homeAdSlot" aria-label="Advertisement area">
+        <span class="ad-label">Advertisement</span>
+        <span>Ad space</span>
       </div>
 
-      <p id="setupSummary" class="muted" aria-live="polite"></p>
-      <p id="setupError" role="alert" style="display:none;color:#a22020"></p>
+      <div class="content-card help-section">
+        <h2 id="howTitle">How to Use Quiz Master</h2>
 
-      <button id="confirmSetupBtn" class="btn btn-primary btn-block" type="button" disabled>Hitamo ururimi n'icyiciro</button>
-      <button id="setupBackBtn" class="btn btn-block" type="button">Back</button>
-    </div>
-  </section>
+        <details>
+          <summary id="howStartTitle">1. Choose your quiz</summary>
+          <p id="howStartText">
+            Select your language and choose Road Safety or General Knowledge,
+            then confirm your choices to begin.
+          </p>
+        </details>
 
-  <section id="quizScreen" class="screen">
-    <div class="card">
-      <div class="stats">
-        <div class="stat"><strong id="currentRound">1</strong><span id="roundStatLabel">Round</span></div>
-        <div class="stat"><strong id="currentQuestionNumber">1</strong><span id="questionCount">Question</span></div>
-        <div class="stat"><strong id="score">0</strong><span id="scoreLabel">Score</span></div>
+        <details>
+          <summary id="howAnswerTitle">2. Answer questions</summary>
+          <p id="howAnswerText">
+            Read each question, select an answer, and submit it before the
+            timer ends. The timer depends on the quiz category.
+          </p>
+        </details>
+
+        <details>
+          <summary id="howResultsTitle">3. Review your results</summary>
+          <p id="howResultsText">
+            At the end, check your score, correct answers, incorrect answers,
+            and the answers you selected.
+          </p>
+        </details>
+
+        <details>
+          <summary id="howProgressTitle">4. Track your progress</summary>
+          <p id="howProgressText">
+            Use the rounds and weekly scores sections to see saved progress
+            when score-saving is supported by the game engine.
+          </p>
+        </details>
+
+        <details>
+          <summary id="howSettingsTitle">5. Settings and music</summary>
+          <p id="howSettingsText">
+            Open Settings to turn the background music on or off.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- SETUP SCREEN -->
+    <section id="gameSetup" class="screen">
+      <div class="content-card">
+        <button type="button" class="btn btn-secondary" data-go-home>
+          ← Home / Ahabanza
+        </button>
+
+        <h2 id="setupTitle">Set Up Your Quiz</h2>
+        <p id="languageLabel">Choose language / Hitamo ururimi</p>
+
+        <div class="choice-grid" role="group" aria-label="Choose language">
+          <button type="button" class="choice-btn" data-language="rw">
+            Ikinyarwanda
+          </button>
+          <button type="button" class="choice-btn" data-language="en">
+            English
+          </button>
+        </div>
+
+        <p id="categoryLabel">Choose quiz category / Hitamo ubwoko bw'ibibazo</p>
+
+        <div class="choice-grid" role="group" aria-label="Choose quiz category">
+          <button type="button" class="choice-btn" data-mode="traffic">
+            🚦 Amategeko y'umuhanda / Road Safety
+          </button>
+          <button type="button" class="choice-btn" data-mode="general">
+            🌍 Ubumenyi rusange / General Knowledge
+          </button>
+        </div>
+
+        <div class="status-line" id="selectionSummary" aria-live="polite">
+          Choose a language and category to continue.
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="confirmSetupBtn" disabled>
+          Confirm and Start / Emeza utangire
+        </button>
+      </div>
+    </section>
+
+    <!-- QUIZ SCREEN -->
+    <section id="quizScreen" class="screen">
+      <div class="content-card">
+        <button type="button" class="btn btn-secondary" data-go-home>
+          ← Home / Ahabanza
+        </button>
+
+        <div class="quiz-meta">
+          <span id="roundLabel">Round 1</span>
+          <span id="questionCounter">Question 1 / 10</span>
+          <span class="timer" id="timer" aria-live="polite">30</span>
+        </div>
+
+        <div class="progress-track" aria-label="Question progress">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <p class="muted" id="categoryIndicator">Quiz category</p>
+        <div class="question-text" id="questionText">Loading question...</div>
+        <div class="option-list" id="optionsContainer"></div>
+
+        <div class="button-row">
+          <button type="button" class="btn btn-primary btn-block" id="submitAnswerBtn">
+            Submit Answer / Tanga igisubizo
+          </button>
+          <button type="button" class="btn btn-secondary btn-block hidden" id="nextQuestionBtn">
+            Next Question / Ikibazo gikurikira
+          </button>
+        </div>
+
+        <p id="answerFeedback" aria-live="polite"></p>
       </div>
 
-      <div class="progress-track"><div id="progressBar"></div></div>
+      <!-- AdSense placement: in-game ad; fill only with policy-compliant ad code -->
+      <div class="ad-slot" id="quizAdSlot" aria-label="Advertisement area">
+        <span class="ad-label">Advertisement</span>
+        <span>Ad space</span>
+      </div>
+    </section>
 
-      <div class="timer-line">
-        <span id="questionLabel">Question</span>
-        <span class="timer-pill">⏱ <span id="timer">30</span>s</span>
+    <!-- RESULT SCREEN -->
+    <section id="resultScreen" class="screen">
+      <div class="content-card">
+        <button type="button" class="btn btn-secondary" data-go-home>
+          ← Home / Ahabanza
+        </button>
+
+        <h2 id="resultTitle">Your Results / Ibisubizo byawe</h2>
+        <p id="resultStatus" aria-live="polite"></p>
+        <div class="score-number" id="scoreNumber">0 / 10</div>
+        <p id="scoreDetails"></p>
+        <p id="correctCount"></p>
+        <p id="wrongCount"></p>
+
+        <div class="button-row">
+          <button type="button" class="btn btn-primary btn-block" id="reviewAnswersBtn">
+            Review Answers / Reba ibisubizo
+          </button>
+          <button type="button" class="btn btn-success btn-block" id="retryBtn">
+            Try Again / Ongera ukine
+          </button>
+          <button type="button" class="btn btn-primary btn-block" id="nextRoundBtn">
+            Next Round / Ikiciro gikurikira
+          </button>
+          <button type="button" class="btn btn-secondary btn-block" data-go-home>
+            Home / Ahabanza
+          </button>
+        </div>
       </div>
 
-      <h2 id="questionText">Loading question...</h2>
-      <div id="optionsContainer"></div>
-      <div id="explanation"></div>
-
-      <button id="nextQuestionBtn" class="btn btn-primary btn-block" type="button" style="display:none">Next Question</button>
-      <button id="quizReviewBtn" class="btn btn-block" type="button">Review Answers</button>
-      <button id="quizHomeBtn" class="btn btn-block" type="button">Home</button>
-    </div>
-  </section>
-
-  <section id="resultScreen" class="screen">
-    <div class="card">
-      <h2 id="resultTitle">Round Complete!</h2>
-      <p id="resultMessage" class="muted"></p>
-      <p><span id="resultRoundLabel">Round</span> <strong id="resultRound">1</strong></p>
-      <div class="result-number" id="resultPercent">0%</div>
-      <p id="roundStars">★</p>
-
-      <div class="stats">
-        <div class="stat"><strong id="resultScore">0</strong><span id="resultScoreLabel">Score</span></div>
-        <div class="stat"><strong id="correctAnswers">0</strong><span id="correctAnswersLabel">Correct</span></div>
-        <div class="stat"><strong id="totalQuestionsResult">10</strong><span id="totalQuestionsLabel">Questions</span></div>
+      <!-- AdSense placement: results display ad -->
+      <div class="ad-slot" id="resultAdSlot" aria-label="Advertisement area">
+        <span class="ad-label">Advertisement</span>
+        <span>Ad space</span>
       </div>
+    </section>
 
-      <button id="retryBtn" class="btn btn-primary btn-block" type="button">Retry Round</button>
-      <button id="resultNextBtn" class="btn btn-secondary btn-block" type="button">Next Round</button>
-      <button id="resultReviewBtn" class="btn btn-block" type="button">Review Answers</button>
-      <button id="resultHomeBtn" class="btn btn-block" type="button">Home</button>
-    </div>
-  </section>
+    <!-- REVIEW SCREEN -->
+    <section id="reviewScreen" class="screen">
+      <div class="content-card">
+        <button type="button" class="btn btn-secondary" data-go-home>
+          ← Home / Ahabanza
+        </button>
+        <h2 id="reviewTitle">Review Answers / Reba ibisubizo</h2>
+        <div id="reviewContainer"></div>
+        <button type="button" class="btn btn-primary btn-block" data-show-results>
+          Back to Results / Subira ku manota
+        </button>
+      </div>
+    </section>
 
-  <section id="reviewScreen" class="screen">
-    <div class="card">
-      <h2 id="reviewTitle">Review Answers</h2>
-      <p id="reviewDescription" class="muted">Review your answers and the correct answers.</p>
-      <div id="reviewContainer"></div>
-      <button id="reviewBackBtn" class="btn btn-primary btn-block" type="button">Back</button>
-      <button id="reviewHomeBtn" class="btn btn-block" type="button">Home</button>
-    </div>
-  </section>
+    <!-- ROUNDS SCREEN -->
+    <section id="roundsScreen" class="screen">
+      <div class="content-card">
+        <button type="button" class="btn btn-secondary" data-go-home>
+          ← Home / Ahabanza
+        </button>
+        <h2 id="roundsTitle">My Rounds / Ibyiciro byanjye</h2>
+        <p id="roundsDescription">
+          Your completed rounds and saved progress will appear here when
+          provided by the game engine.
+        </p>
+        <div id="roundsContainer"></div>
+      </div>
+    </section>
 
-  <section id="roundsScreen" class="screen">
-    <div class="card">
-      <h2 id="roundsTitle">Quiz Rounds</h2>
-      <p id="roundsDescription" class="muted">Rounds are generated from valid questions.</p>
-      <p><span id="totalRoundsLabel">Total rounds:</span> <strong id="totalRounds">0</strong></p>
-      <div id="roundsContainer"></div>
-      <button id="roundsHomeBtn" class="btn btn-block" type="button">Home</button>
-    </div>
-  </section>
+    <!-- WEEKLY SCORES SCREEN -->
+    <section id="weeklyScoresScreen" class="screen">
+      <div class="content-card">
+        <button type="button" class="btn btn-secondary" data-go-home>
+          ← Home / Ahabanza
+        </button>
+        <h2 id="weeklyScoresTitle">Weekly Scores / Amanota y'icyumweru</h2>
+        <p id="weeklyScoresDescription">
+          Review your scores from the last seven days. Score history needs
+          to be saved by the game engine.
+        </p>
+        <div id="weeklyScoresContainer"></div>
+      </div>
+    </section>
 
-  <section id="settingsScreen" class="screen">
-    <div class="card">
-      <h2 id="settingsTitle">Settings</h2>
+    <!-- SETTINGS SCREEN -->
+    <section id="settingsScreen" class="screen">
+      <div class="content-card">
+        <button type="button" class="btn btn-secondary" data-go-home>
+          ← Home / Ahabanza
+        </button>
+        <h2 id="settingsTitle">Settings / Igenamiterere</h2>
 
-      <label class="field-label" for="settingsLanguage" id="settingsLanguageLabel">Language</label>
-      <select id="settingsLanguage">
-        <option value="rw">🇷🇼 Ikinyarwanda</option>
-        <option value="en">🇬🇧 English</option>
-      </select>
+        <div class="setting-row">
+          <div>
+            <strong id="musicLabel">Background Music / Umuziki</strong>
+            <div class="muted" id="musicDescription">Turn the background music on or off.</div>
+          </div>
+          <button type="button" class="btn btn-primary" id="musicToggleBtn" aria-pressed="false">
+            Music: Off
+          </button>
+        </div>
 
-      <label class="field-label" for="settingsMode" id="settingsModeLabel">Quiz category</label>
-      <select id="settingsMode">
-        <option value="traffic">🚦 Road Traffic Rules</option>
-        <option value="general">🌍 General Knowledge</option>
-      </select>
+        <div class="setting-row">
+          <div>
+            <strong id="languageSettingLabel">Language / Ururimi</strong>
+            <div class="muted" id="currentLanguage">English</div>
+          </div>
+          <button type="button" class="btn btn-outline" id="changeLanguageBtn">
+            Change / Hindura
+          </button>
+        </div>
 
-      <button id="saveSettingsBtn" class="btn btn-primary btn-block" type="button">Save Settings</button>
-      <button id="changeSetupBtn" class="btn btn-block" type="button">Open Quiz Setup</button>
-      <button id="settingsHomeBtn" class="btn btn-block" type="button">Home</button>
-    </div>
-  </section>
+        <div class="setting-row">
+          <div>
+            <strong id="categorySettingLabel">Quiz Category / Ubwoko bw'ibibazo</strong>
+            <div class="muted" id="currentCategory">Not selected</div>
+          </div>
+          <button type="button" class="btn btn-outline" id="changeCategoryBtn">
+            Change / Hindura
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <footer>
-    <p>Quiz Master 🇷🇼 · 2026</p>
-    <a href="./privacy-policy.html">Privacy Policy</a>
-    <a href="./terms.html">Terms of Service</a>
-    <a href="mailto:mazimpakaisaie7@gmail.com">Contact</a>
+  <footer class="site-footer">
+    <p>© 2026 Quiz Master 🇷🇼</p>
+    <p>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      |
+      <a href="./terms.html">Terms of Use</a>
+    </p>
+    <p>
+      Contact:
+      <a href="mailto:mazimpakaisaie7@gmail.com">mazimpakaisaie7@gmail.com</a>
+    </p>
   </footer>
-</div>
 
-<script>
-(() => {
-  "use strict";
+  <audio id="backgroundMusic" src="./mythica.mp3" loop preload="none"></audio>
 
-  const $ = id => document.getElementById(id);
-  const validLanguage = value => value === "en" ? "en" : "rw";
-  const validMode = value => value === "general" ? "general" : "traffic";
+  <script>
+    /*
+      Quiz Master UI layer.
+      The next step is to connect these controls to the existing questions.js
+      engine without changing unrelated game behavior.
+    */
+    (() => {
+      "use strict";
 
-  let language = validLanguage(localStorage.getItem("quizmasterLanguage") || "rw");
-  let mode = validMode(localStorage.getItem("quizmasterMode") || "traffic");
-  let selectedLanguage = null;
-  let selectedMode = null;
-  let reviewReturnScreen = "homeScreen";
-  let lastReview = [];
+      const $ = (id) => document.getElementById(id);
 
-  const translations = {
-    rw: {
-      subtitle: "Gerageza ubumenyi bwawe wige ibishya.",
-      homeTitle: "Murakaza neza kuri Quiz Master!",
-      homeDescription: "Banza uhitemo ururimi n'icyiciro cy'ibibazo.",
-      start: "Tangira umukino",
-      continue: "Komeza umukino",
-      review: "Subiramo ibisubizo",
-      rounds: "Reba rounds",
-      settings: "Igenamiterere",
-      share: "Sangiza abandi Quiz Master",
-      setup: "Tegura umukino wawe",
-      language: "Hitamo ururimi",
-      category: "Hitamo ibibazo ushaka gukora",
-      traffic: "🚦 Amategeko y'umuhanda",
-      general: "🌍 Ubumenyi rusange",
-      confirm: "Tangira umukino",
-      chooseBoth: "Banza uhitemo ururimi n'icyiciro",
-      back: "Subira inyuma",
-      question: "Ikibazo",
-      score: "Amanota",
-      round: "Round",
-      next: "Ikibazo gikurikira",
-      result: "Round irarangiye!",
-      retry: "Ongera ukine iyi round",
-      nextRound: "Round ikurikira",
-      home: "Ahabanza",
-      change: "Hindura ururimi n'icyiciro",
-      save: "Bika amahitamo",
-      settingsLanguage: "Ururimi",
-      settingsMode: "Icyiciro cy'ibibazo",
-      roundsTitle: "Rounds z'umukino",
-      roundsDesc: "Rounds zishingira ku bibazo byemewe biri muri JSON.",
-      totalRounds: "Rounds zose:",
-      correct: "Ibisubizo nyabyo",
-      totalQuestions: "Ibibazo byose",
-      reviewTitle: "Gusubiramo ibisubizo",
-      reviewDesc: "Reba ibisubizo watanze n'ibisubizo nyabyo.",
-      reviewEmpty: "Nta bisubizo byo gusubiramo biraboneka.",
-      reviewBack: "Subira aho wari uri",
-      noSaved: "Nta mukino wabitswe wo gukomeza.",
-      loadError: "Ibibazo ntibyashoboye gufunguka.",
-      noQuestions: "Nta bibazo bihuye n'ururimi n'icyiciro wahisemo.",
-      right: "Igisubizo ni cyo!",
-      wrong: "Igisubizo si cyo.",
-      timeout: "Igihe kirangiye!",
-      saved: "Amahitamo yabitswe."
-    },
-    en: {
-      subtitle: "Test your knowledge and learn something new.",
-      homeTitle: "Welcome to Quiz Master!",
-      homeDescription: "Choose your language and question category first.",
-      start: "Start Quiz",
-      continue: "Continue Quiz",
-      review: "Review Answers",
-      rounds: "View Rounds",
-      settings: "Settings",
-      share: "Share Quiz Master",
-      setup: "Set up your quiz",
-      language: "Choose language",
-      category: "Choose the questions you want to answer",
-      traffic: "🚦 Road Traffic Rules",
-      general: "🌍 General Knowledge",
-      confirm: "Start Quiz",
-      chooseBoth: "Choose a language and a category first",
-      back: "Go Back",
-      question: "Question",
-      score: "Score",
-      round: "Round",
-      next: "Next Question",
-      result: "Round Complete!",
-      retry: "Retry Round",
-      nextRound: "Next Round",
-      home: "Home",
-      change: "Change language and category",
-      save: "Save Settings",
-      settingsLanguage: "Language",
-      settingsMode: "Quiz category",
-      roundsTitle: "Quiz Rounds",
-      roundsDesc: "Rounds are based on valid questions in your JSON file.",
-      totalRounds: "Total rounds:",
-      correct: "Correct",
-      totalQuestions: "Total Questions",
-      reviewTitle: "Review Answers",
-      reviewDesc: "Review your answers and the correct answers.",
-      reviewEmpty: "No answers are available to review yet.",
-      reviewBack: "Return to previous screen",
-      noSaved: "No saved game was found.",
-      loadError: "Questions could not be loaded.",
-      noQuestions: "No questions match your selected language and category.",
-      right: "Correct answer!",
-      wrong: "Incorrect answer.",
-      timeout: "Time is up!",
-      saved: "Settings saved."
-    }
-  };
+      const screens = [
+        "homeScreen",
+        "gameSetup",
+        "quizScreen",
+        "resultScreen",
+        "reviewScreen",
+        "roundsScreen",
+        "weeklyScoresScreen",
+        "settingsScreen"
+      ];
 
-  const t = () => translations[language];
+      const state = {
+        language: null,
+        mode: null,
+        musicOn: false
+      };
 
-  function clearErrors() {
-    ["quizError", "errorMessage"].forEach(id => {
-      $(id).textContent = "";
-      $(id).style.display = "none";
-    });
-  }
-
-  function showError(message) {
-    const el = $("quizError");
-    el.textContent = message;
-    el.style.display = "block";
-  }
-
-  function showScreen(id) {
-    document.querySelectorAll(".screen").forEach(el => {
-      el.classList.remove("active");
-      el.style.display = "none";
-    });
-
-    const screen = $(id);
-    if (screen) {
-      screen.classList.add("active");
-      screen.style.display = "block";
-    }
-
-    clearErrors();
-  }
-
-  function sendEvent(name, detail = {}) {
-    window.dispatchEvent(new CustomEvent("quizmaster:" + name, { detail }));
-  }
-
-  function updateSetupButton() {
-    const ready = Boolean(selectedLanguage && selectedMode);
-    $("confirmSetupBtn").disabled = !ready;
-    $("confirmSetupBtn").textContent = ready
-      ? translations[selectedLanguage].confirm
-      : translations[language].chooseBoth;
-  }
-
-  function updateUI() {
-    const x = t();
-
-    const labels = {
-      headerSubtitle: x.subtitle,
-      homeTitle: x.homeTitle,
-      homeDescription: x.homeDescription,
-      startBtn: x.start,
-      continueBtn: x.continue,
-      reviewAnswersBtn: x.review,
-      quizReviewBtn: x.review,
-      resultReviewBtn: x.review,
-      roundsBtn: x.rounds,
-      settingsBtn: x.settings,
-      shareBtn: x.share,
-      setupTitle: x.setup,
-      languageHeading: x.language,
-      modeHeading: x.category,
-      setupBackBtn: x.back,
-      questionLabel: x.question,
-      roundStatLabel: x.round,
-      scoreLabel: x.score,
-      nextQuestionBtn: x.next,
-      resultTitle: x.result,
-      retryBtn: x.retry,
-      resultNextBtn: x.nextRound,
-      quizHomeBtn: x.home,
-      resultHomeBtn: x.home,
-      roundsHomeBtn: x.home,
-      settingsHomeBtn: x.home,
-      changeSetupBtn: x.change,
-      saveSettingsBtn: x.save,
-      settingsLanguageLabel: x.settingsLanguage,
-      settingsModeLabel: x.settingsMode,
-      roundsTitle: x.roundsTitle,
-      roundsDescription: x.roundsDesc,
-      totalRoundsLabel: x.totalRounds,
-      resultRoundLabel: x.round,
-      resultScoreLabel: x.score,
-      correctAnswersLabel: x.correct,
-      totalQuestionsLabel: x.totalQuestions,
-      reviewTitle: x.reviewTitle,
-      reviewDescription: x.reviewDesc,
-      reviewBackBtn: x.reviewBack,
-      reviewHomeBtn: x.home
-    };
-
-    Object.entries(labels).forEach(([id, value]) => {
-      if ($(id)) $(id).textContent = value;
-    });
-
-    document.querySelectorAll("[data-language]").forEach(button => {
-      button.classList.toggle("selected", button.dataset.language === selectedLanguage);
-      button.setAttribute("aria-pressed", String(button.dataset.language === selectedLanguage));
-    });
-
-    document.querySelectorAll("[data-mode]").forEach(button => {
-      button.classList.toggle("selected", button.dataset.mode === selectedMode);
-      button.setAttribute("aria-pressed", String(button.dataset.mode === selectedMode));
-      button.textContent = button.dataset.mode === "traffic" ? x.traffic : x.general;
-    });
-
-    const languageName = selectedLanguage === "en" ? "English" :
-      selectedLanguage === "rw" ? "Ikinyarwanda" : "—";
-
-    const categoryName = selectedMode === "traffic" ? x.traffic :
-      selectedMode === "general" ? x.general : "—";
-
-    $("setupSummary").textContent = languageName + " · " + categoryName;
-    $("settingsLanguage").value = language;
-    $("settingsMode").value = mode;
-    document.documentElement.lang = language === "rw" ? "rw" : "en";
-
-    updateSetupButton();
-  }
-
-  function savePreferences() {
-    language = validLanguage(language);
-    mode = validMode(mode);
-    localStorage.setItem("quizmasterLanguage", language);
-    localStorage.setItem("quizmasterMode", mode);
-    updateUI();
-  }
-
-  function openSetup() {
-    selectedLanguage = null;
-    selectedMode = null;
-    updateUI();
-    showScreen("gameSetup");
-  }
-
-  document.querySelectorAll("[data-language]").forEach(button => {
-    button.addEventListener("click", () => {
-      selectedLanguage = validLanguage(button.dataset.language);
-      language = selectedLanguage;
-      updateUI();
-    });
-  });
-
-  document.querySelectorAll("[data-mode]").forEach(button => {
-    button.addEventListener("click", () => {
-      selectedMode = validMode(button.dataset.mode);
-      mode = selectedMode;
-      updateUI();
-    });
-  });
-
-  $("startBtn").addEventListener("click", openSetup);
-  $("changeSetupBtn").addEventListener("click", openSetup);
-
-  $("confirmSetupBtn").addEventListener("click", () => {
-    if (!selectedLanguage || !selectedMode) {
-      $("setupError").textContent = t().chooseBoth;
-      $("setupError").style.display = "block";
-      return;
-    }
-
-    language = selectedLanguage;
-    mode = selectedMode;
-    savePreferences();
-
-    localStorage.setItem("quizmasterSetupComplete", "true");
-
-    $("setupError").style.display = "none";
-    $("questionText").textContent = language === "en"
-      ? "Loading questions..."
-      : "Ibibazo birimo gutegurwa...";
-
-    $("optionsContainer").replaceChildren();
-    $("explanation").style.display = "none";
-    $("nextQuestionBtn").style.display = "none";
-
-    showScreen("quizScreen");
-
-    // Notify the quiz engine. questions.js must listen for this event
-    // or expose one of the compatible start functions below.
-    sendEvent("setup", { language, mode });
-    sendEvent("start", { language, mode });
-    sendEvent("start-quiz", { language, mode });
-
-    const startFunctions = [
-      window.startQuiz,
-      window.startGame,
-      window.startNewQuiz,
-      window.startNewGame
-    ];
-
-    const startFunction = startFunctions.find(fn => typeof fn === "function");
-
-    if (startFunction) {
-      try {
-        startFunction({ language, mode });
-      } catch (error) {
-        console.error("Quiz start error:", error);
-        showError(t().loadError);
-      }
-    }
-  });
-
-  $("setupBackBtn").addEventListener("click", () => showScreen("homeScreen"));
-  $("settingsBtn").addEventListener("click", () => showScreen("settingsScreen"));
-  $("quizHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
-  $("resultHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
-  $("roundsHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
-  $("settingsHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
-  $("reviewHomeBtn").addEventListener("click", () => showScreen("homeScreen"));
-
-  $("saveSettingsBtn").addEventListener("click", () => {
-    language = validLanguage($("settingsLanguage").value);
-    mode = validMode($("settingsMode").value);
-    savePreferences();
-    showScreen("homeScreen");
-  });
-
-  $("continueBtn").addEventListener("click", () => {
-    sendEvent("continue", { language, mode });
-  });
-
-  $("roundsBtn").addEventListener("click", () => {
-    showScreen("roundsScreen");
-    sendEvent("show-rounds", { language, mode });
-  });
-
-  $("retryBtn").addEventListener("click", () => sendEvent("retry", { language, mode }));
-  $("resultNextBtn").addEventListener("click", () => sendEvent("next-round", { language, mode }));
-  $("nextQuestionBtn").addEventListener("click", () => sendEvent("next-question", { language, mode }));
-
-  function getReviewData() {
-    try {
-      const stored = localStorage.getItem("quizmasterReviewAnswers");
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) return parsed;
-      }
-    } catch (_) {}
-
-    return lastReview;
-  }
-
-  function renderReview() {
-    const container = $("reviewContainer");
-    container.replaceChildren();
-
-    const data = getReviewData();
-
-    if (!data.length) {
-      const p = document.createElement("p");
-      p.className = "muted";
-      p.textContent = t().reviewEmpty;
-      container.appendChild(p);
-      return;
-    }
-
-    data.forEach((item, index) => {
-      const block = document.createElement("div");
-      block.className = "review-item";
-
-      const question = document.createElement("h3");
-      question.textContent = (index + 1) + ". " +
-        (item.question || item.question_rw || "Question");
-      block.appendChild(question);
-
-      const chosen = document.createElement("p");
-      chosen.textContent = (language === "en" ? "Your answer: " : "Igisubizo watanze: ") +
-        (item.selectedAnswer ?? item.userAnswer ?? item.chosenAnswer ?? "—");
-      block.appendChild(chosen);
-
-      const correct = document.createElement("p");
-      correct.className = "review-correct";
-      correct.textContent = (language === "en" ? "Correct answer: " : "Igisubizo nyacyo: ") +
-        (item.correctAnswer ?? item.answer ?? "—");
-      block.appendChild(correct);
-
-      const explanation = language === "en"
-        ? (item.explanation || item.explanation_en)
-        : (item.explanation_rw || item.explanation);
-
-      if (explanation) {
-        const exp = document.createElement("p");
-        exp.className = "muted";
-        exp.textContent = (language === "en" ? "Explanation: " : "Ibisobanuro: ") + explanation;
-        block.appendChild(exp);
+      function showScreen(id) {
+        screens.forEach((screenId) => {
+          const element = $(screenId);
+          if (element) element.classList.toggle("active", screenId === id);
+        });
+        window.scrollTo({ top: 0, behavior: "auto" });
+        document.dispatchEvent(new CustomEvent("quizmaster:show-screen", {
+          detail: { screen: id }
+        }));
       }
 
-      container.appendChild(block);
-    });
-  }
+      function updateSelectionSummary() {
+        const languageName = state.language === "rw"
+          ? "Ikinyarwanda"
+          : state.language === "en"
+            ? "English"
+            : "";
 
-  function openReview() {
-    reviewReturnScreen = document.querySelector(".screen.active")?.id || "homeScreen";
-    renderReview();
-    showScreen("reviewScreen");
-    sendEvent("review-answers", { language, mode });
-  }
+        const categoryName = state.mode === "traffic"
+          ? "Road Safety / Amategeko y'umuhanda"
+          : state.mode === "general"
+            ? "General Knowledge / Ubumenyi rusange"
+            : "";
 
-  $("reviewAnswersBtn").addEventListener("click", openReview);
-  $("quizReviewBtn").addEventListener("click", openReview);
-  $("resultReviewBtn").addEventListener("click", openReview);
+        $("selectionSummary").textContent =
+          languageName && categoryName
+            ? languageName + " — " + categoryName
+            : "Choose a language and category to continue.";
 
-  $("reviewBackBtn").addEventListener("click", () => showScreen(reviewReturnScreen));
-
-  $("shareBtn").addEventListener("click", async () => {
-    const data = {
-      title: "Quiz Master 🇷🇼",
-      text: "Test your knowledge with Quiz Master!",
-      url: window.location.href
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(data);
-        return;
+        $("confirmSetupBtn").disabled = !(state.language && state.mode);
       }
-    } catch (error) {
-      if (error && error.name === "AbortError") return;
-    }
 
-    try {
-      await navigator.clipboard.writeText(data.url);
-      alert("✅ Link Copied!");
-    } catch (_) {
-      prompt("Copy this link:", data.url);
-    }
-  });
+      function updateChoiceButtons(selector, dataKey, value) {
+        document.querySelectorAll(selector).forEach((button) => {
+          button.classList.toggle("selected", button.dataset[dataKey] === value);
+          button.setAttribute(
+            "aria-pressed",
+            button.dataset[dataKey] === value ? "true" : "false"
+          );
+        });
+      }
 
-  window.addEventListener("quizmaster:review-data", event => {
-    if (Array.isArray(event.detail)) {
-      lastReview = event.detail;
+      document.querySelectorAll("[data-language]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.language = button.dataset.language;
+          updateChoiceButtons("[data-language]", "language", state.language);
+          updateSelectionSummary();
+        });
+      });
 
-      try {
-        localStorage.setItem("quizmasterReviewAnswers", JSON.stringify(lastReview));
-      } catch (_) {}
+      document.querySelectorAll("[data-mode]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.mode = button.dataset.mode;
+          updateChoiceButtons("[data-mode]", "mode", state.mode);
+          updateSelectionSummary();
+        });
+      });
 
-      if ($("reviewScreen").classList.contains("active")) renderReview();
-    }
-  });
+      $("startBtn").addEventListener("click", () => showScreen("gameSetup"));
 
-  window.addEventListener("quizmaster:show-screen", event => {
-    if (event.detail && typeof event.detail.screen === "string") {
-      showScreen(event.detail.screen);
-    }
-  });
+      $("confirmSetupBtn").addEventListener("click", () => {
+        if (!state.language || !state.mode) return;
 
-  window.addEventListener("quizmaster:error", event => {
-    showError(String(event.detail?.message || t().loadError));
-  });
+        localStorage.setItem("quizmasterLanguage", state.language);
+        localStorage.setItem("quizmasterMode", state.mode);
 
-  window.addEventListener("quizmaster:setup-required", openSetup);
+        const detail = {
+          language: state.language,
+          mode: state.mode,
+          secondsPerQuestion: state.mode === "traffic" ? 60 : 30
+        };
 
-  // Accept question data from the quiz engine if it provides an event.
-  window.addEventListener("quizmaster:questions-loaded", () => {
-    clearErrors();
-  });
+        document.dispatchEvent(new CustomEvent("quizmaster:setup", { detail }));
+        document.dispatchEvent(new CustomEvent("quizmaster:start-quiz", { detail }));
 
-  // Begin at the home screen. The player must explicitly choose
-  // a language and category before starting a new quiz.
-  updateUI();
-  showScreen("homeScreen");
-})();
-</script>
+        if (typeof window.startQuiz === "function") {
+          window.startQuiz(detail);
+        } else if (typeof window.startGame === "function") {
+          window.startGame(detail);
+        } else {
+          /*
+            The questions.js engine will be connected here in the next step.
+            Do not fake a quiz or score if the engine has not loaded.
+          */
+          showScreen("quizScreen");
+          $("questionText").textContent =
+            state.language === "rw"
+              ? "Tegereza: imikorere y'ibibazo iracyategereje guhuza na questions.js."
+              : "The quiz engine needs to be connected to questions.js.";
+          $("optionsContainer").innerHTML = "";
+          $("submitAnswerBtn").disabled = true;
+          $("nextQuestionBtn").classList.add("hidden");
+          $("answerFeedback").textContent =
+            "Connect the matching questions.js engine before playing.";
+        }
 
-<script src="./questions.js"></script>
+        $("currentLanguage").textContent = state.language === "rw"
+          ? "Ikinyarwanda"
+          : "English";
+
+        $("currentCategory").textContent = state.mode === "traffic"
+          ? "Road Safety / Amategeko y'umuhanda"
+          : "General Knowledge / Ubumenyi rusange";
+      });
+
+      $("settingsBtn").addEventListener("click", () => showScreen("settingsScreen"));
+      $("roundsBtn").addEventListener("click", () => {
+        document.dispatchEvent(new CustomEvent("quizmaster:show-rounds"));
+        showScreen("roundsScreen");
+      });
+      $("weeklyScoresBtn").addEventListener("click", () => {
+        document.dispatchEvent(new CustomEvent("quizmaster:show-weekly-scores"));
+        showScreen("weeklyScoresScreen");
+      });
+
+      document.querySelectorAll("[data-go-home]").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.dispatchEvent(new CustomEvent("quizmaster:go-home"));
+          showScreen("homeScreen");
+        });
+      });
+
+      document.querySelectorAll("[data-show-results]").forEach((button) => {
+        button.addEventListener("click", () => showScreen("resultScreen"));
+      });
+
+      $("changeLanguageBtn").addEventListener("click", () => showScreen("gameSetup"));
+      $("changeCategoryBtn").addEventListener("click", () => showScreen("gameSetup"));
+
+      const music = $("backgroundMusic");
+
+      function setMusic(enabled) {
+        state.musicOn = enabled;
+        localStorage.setItem("quizmasterMusicOn", enabled ? "true" : "false");
+        $("musicToggleBtn").textContent = enabled
+          ? (state.language === "rw" ? "Umuziki: Ufunguye" : "Music: On")
+          : (state.language === "rw" ? "Umuziki: Ufunze" : "Music: Off");
+        $("musicToggleBtn").setAttribute("aria-pressed", String(enabled));
+
+        if (enabled) {
+          music.play().catch(() => {
+            $("musicDescription").textContent =
+              state.language === "rw"
+                ? "Kanda buto y'umuziki kugira ngo wongere ugerageze."
+                : "Tap the music button to try playing again.";
+          });
+        } else {
+          music.pause();
+          music.currentTime = 0;
+        }
+      }
+
+      $("musicToggleBtn").addEventListener("click", () => {
+        setMusic(!state.musicOn);
+      });
+
+      $("shareBtn").addEventListener("click", async () => {
+        const shareData = {
+          title: "Quiz Master 🇷🇼 - Knowledge Quiz",
+          text: "Test your knowledge with Quiz Master!",
+          url: window.location.href
+        };
+
+        try {
+          if (navigator.share) {
+            await navigator.share(shareData);
+          } else {
+            await navigator.clipboard.writeText(
+              shareData.text + " " + shareData.url
+            );
+            alert("✅ Link Copied!");
+          }
+        } catch (error) {
+          if (error && error.name === "AbortError") return;
+
+          try {
+            const temporaryInput = document.createElement("textarea");
+            temporaryInput.value = shareData.text + " " + shareData.url;
+            temporaryInput.style.position = "fixed";
+            temporaryInput.style.opacity = "0";
+            document.body.appendChild(temporaryInput);
+            temporaryInput.select();
+            const copied = document.execCommand("copy");
+            temporaryInput.remove();
+
+            if (copied) alert("✅ Link Copied!");
+            else alert("Unable to share automatically. Copy the website link.");
+          } catch (_) {
+            alert("Unable to share automatically. Copy the website link.");
+          }
+        }
+      });
+
+      $("retryBtn").addEventListener("click", () => {
+        document.dispatchEvent(new CustomEvent("quizmaster:retry"));
+        if (typeof window.startQuiz === "function") window.startQuiz();
+        else if (typeof window.startGame === "function") window.startGame();
+        else showScreen("gameSetup");
+      });
+
+      $("nextRoundBtn").addEventListener("click", () => {
+        document.dispatchEvent(new CustomEvent("quizmaster:next-round"));
+        if (typeof window.startNextRound === "function") window.startNextRound();
+        else if (typeof window.nextRound === "function") window.nextRound();
+        else showScreen("gameSetup");
+      });
+
+      $("reviewAnswersBtn").addEventListener("click", () => {
+        document.dispatchEvent(new CustomEvent("quizmaster:review-answers"));
+        showScreen("reviewScreen");
+      });
+
+      // Restore saved setup preferences.
+      state.language = localStorage.getItem("quizmasterLanguage");
+      state.mode = localStorage.getItem("quizmasterMode");
+      updateChoiceButtons("[data-language]", "language", state.language);
+      updateChoiceButtons("[data-mode]", "mode", state.mode);
+      updateSelectionSummary();
+
+      const savedMusic = localStorage.getItem("quizmasterMusicOn") === "true";
+      setMusic(savedMusic);
+
+      if (state.language) {
+        $("currentLanguage").textContent =
+          state.language === "rw" ? "Ikinyarwanda" : "English";
+      }
+
+      if (state.mode) {
+        $("currentCategory").textContent =
+          state.mode === "traffic"
+            ? "Road Safety / Amategeko y'umuhanda"
+            : "General Knowledge / Ubumenyi rusange";
+      }
+
+      // These events allow questions.js to populate the interface.
+      document.addEventListener("quizmaster:show-screen", (event) => {
+        const screenId = event.detail && event.detail.screen;
+        if (screenId && screens.includes(screenId)) {
+          screens.forEach((id) => $(id).classList.toggle("active", id === screenId));
+        }
+      });
+
+      document.addEventListener("quizmaster:questions-loaded", (event) => {
+        if (event.detail && event.detail.questions) {
+          $("questionText").textContent = "";
+        }
+      });
+
+      document.addEventListener("quizmaster:review-data", (event) => {
+        const container = $("reviewContainer");
+        container.innerHTML = "";
+        const items = event.detail && Array.isArray(event.detail.answers)
+          ? event.detail.answers
+          : [];
+
+        items.forEach((item, index) => {
+          const block = document.createElement("div");
+          block.className = "review-item";
+
+          const question = document.createElement("p");
+          question.textContent = (index + 1) + ". " + (item.question || "");
+          block.appendChild(question);
+
+          const chosen = document.createElement("p");
+          chosen.textContent = "Your answer: " + (item.selectedAnswer || "No answer");
+          chosen.className = item.isCorrect ? "correct-answer" : "wrong-answer";
+          block.appendChild(chosen);
+
+          const correct = document.createElement("p");
+          correct.textContent = "Correct answer: " + (item.correctAnswer || "Not available");
+          correct.className = "correct-answer";
+          block.appendChild(correct);
+
+          container.appendChild(block);
+        });
+      });
+
+      document.addEventListener("quizmaster:setup-required", () => showScreen("gameSetup"));
+
+      document.addEventListener("quizmaster:error", (event) => {
+        $("answerFeedback").textContent =
+          event.detail && event.detail.message
+            ? event.detail.message
+            : "Something went wrong. Please try again.";
+      });
+
+      /*
+        IMPORTANT:
+        This page provides the UI and emits integration events. The existing
+        questions.js must implement quiz timing, question selection, scoring,
+        weekly history, round progression, and results. The next step is to
+        connect this UI to the exact functions in your current questions.js.
+      */
+    })();
+  </script>
+
+  <script src="./questions.js"></script>
 </body>
 </html>
