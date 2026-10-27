@@ -1,26 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10233f">
-  <meta name="description" content="Quiz Master Rwanda — learn road safety and general knowledge in English or Kinyarwanda.">
+  <meta name="description" content="Quiz Master Rwanda: Learn road safety and general knowledge in English or Kinyarwanda.">
   <meta name="robots" content="index, follow">
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
 
-  <link rel="icon" href="/icon-512-3.png">
-  <link rel="stylesheet" href="./style.css">
-
   <style>
     :root {
-      --qm-bg: #10233f;
-      --qm-card: #ffffff;
-      --qm-primary: #1769aa;
-      --qm-text: #172b4d;
-      --qm-muted: #667085;
-      --qm-border: #d9e2ef;
-      --qm-green: #16834a;
-      --qm-red: #c62828;
+      --navy: #10233f;
+      --blue: #1769e0;
+      --green: #138754;
+      --light: #f3f6fb;
+      --text: #182338;
+      --muted: #64748b;
+      --border: #dbe3ef;
+      --white: #ffffff;
+      --red: #c93636;
     }
 
     * {
@@ -29,904 +28,456 @@
 
     body {
       margin: 0;
-      background: #f1f5fb;
-      color: var(--qm-text);
       font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--text);
       line-height: 1.6;
     }
 
-    button,
-    select {
+    button, select {
       font: inherit;
     }
 
     button {
-      min-height: 44px;
-      padding: 10px 16px;
-      border: 1px solid var(--qm-border);
-      border-radius: 10px;
-      background: white;
-      color: var(--qm-text);
       cursor: pointer;
     }
 
     button:disabled {
-      opacity: 0.5;
+      opacity: .5;
       cursor: not-allowed;
     }
 
-    button:focus-visible {
-      outline: 3px solid #f5b700;
-      outline-offset: 3px;
-    }
-
-    .app-header {
-      padding: 24px 16px;
-      background: var(--qm-bg);
+    header {
+      background: var(--navy);
       color: white;
+      padding: 22px 16px;
       text-align: center;
     }
 
-    .app-header h1 {
-      margin: 0 0 8px;
-      font-size: clamp(25px, 6vw, 36px);
+    header h1 {
+      margin: 0;
+      font-size: 27px;
     }
 
-    .app-header p {
-      max-width: 650px;
-      margin: 0 auto;
+    header p {
+      margin: 7px 0 0;
     }
 
-    .app-container {
-      width: min(100% - 24px, 760px);
+    main {
+      width: min(100% - 24px, 720px);
       margin: 22px auto;
     }
 
-    .screen {
-      display: none;
+    .content-card {
+      background: white;
       padding: 20px;
-      margin-bottom: 20px;
-      border: 1px solid var(--qm-border);
-      border-radius: 16px;
-      background: var(--qm-card);
-      box-shadow: 0 5px 20px rgba(16, 35, 63, 0.06);
+      margin-bottom: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 3px 12px #10233f0a;
     }
 
-    .screen.active {
-      display: block;
+    h2, h3 {
+      line-height: 1.35;
     }
 
-    .screen h2 {
+    h2 {
       margin-top: 0;
     }
 
-    .section-label {
+    .muted {
+      color: var(--muted);
+    }
+
+    .field-label {
       display: block;
+      font-weight: bold;
       margin: 18px 0 8px;
-      font-weight: bold;
     }
 
-    .button-group,
-    .action-buttons {
-      display: flex;
-      flex-wrap: wrap;
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 12px;
     }
 
-    .button-group button,
-    .action-buttons button {
-      flex: 1 1 145px;
-    }
-
-    .primary-button {
-      border-color: var(--qm-primary);
-      background: var(--qm-primary);
-      color: white;
-      font-weight: bold;
-    }
-
-    .secondary-button {
-      background: #eef4fb;
-    }
-
-    .choice-button[aria-pressed="true"] {
-      border: 2px solid var(--qm-primary);
-      background: #e5f1ff;
-      color: #104e83;
-      font-weight: bold;
-    }
-
-    .selection-summary,
-    .feedback,
-    .info-panel {
-      padding: 12px;
-      margin-top: 14px;
+    .choice {
+      padding: 12px 10px;
+      background: white;
+      color: var(--text);
+      border: 2px solid var(--border);
       border-radius: 10px;
-      background: #f1f5fb;
-      white-space: pre-line;
-      overflow-wrap: anywhere;
+      font-weight: bold;
     }
 
-    .feedback:empty,
-    .selection-summary:empty {
-      display: none;
+    .choice.selected {
+      border-color: var(--blue);
+      background: #eaf2ff;
+      color: #104da8;
     }
 
-    .game-information {
+    .primary, .secondary, .danger {
+      width: 100%;
+      padding: 13px 15px;
+      border: 0;
+      border-radius: 10px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .primary {
+      color: white;
+      background: var(--blue);
+    }
+
+    .secondary {
+      color: var(--navy);
+      background: #e8edf5;
+    }
+
+    .danger {
+      color: white;
+      background: var(--red);
+    }
+
+    .button-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .button-row button {
+      min-width: 0;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin: 16px 0;
-    }
-
-    .info-panel {
-      margin: 0;
+      gap: 8px;
       text-align: center;
     }
 
-    .info-panel strong {
+    .stat {
+      background: #f0f4fa;
+      border-radius: 10px;
+      padding: 12px 5px;
+    }
+
+    .stat strong {
       display: block;
       font-size: 20px;
     }
 
+    .stat span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
     .progress-track {
       height: 9px;
-      margin: 14px 0;
+      background: #e5eaf2;
+      border-radius: 20px;
       overflow: hidden;
-      border-radius: 99px;
-      background: #e5eaf1;
+      margin: 12px 0;
     }
 
-    #progressFill {
-      width: 0;
+    .progress-fill {
       height: 100%;
-      background: var(--qm-primary);
-      transition: width 0.2s ease;
+      width: 0;
+      background: var(--green);
+      transition: width .2s;
     }
 
-    #questionText {
-      font-size: 19px;
+    .question-text {
+      font-size: 21px;
       font-weight: bold;
-      overflow-wrap: anywhere;
+      margin: 15px 0;
     }
 
-    #optionsContainer {
+    .answer-list {
       display: grid;
       gap: 10px;
-      margin: 16px 0;
     }
 
     .answer-option {
-      width: 100%;
+      padding: 13px;
       text-align: left;
-      overflow-wrap: anywhere;
-    }
-
-    .answer-option.selected {
-      border: 2px solid var(--qm-primary);
-      background: #e5f1ff;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 10px;
+      color: var(--text);
     }
 
     .answer-option.correct {
-      border-color: var(--qm-green);
-      background: #e6f6ed;
-      color: #125c35;
+      background: #e6f7ed;
+      border-color: #138754;
     }
 
     .answer-option.incorrect {
-      border-color: var(--qm-red);
-      background: #ffebeb;
-      color: #8e1b1b;
+      background: #fff0f0;
+      border-color: #c93636;
     }
 
-    .round-button {
-      margin: 4px;
+    .feedback {
+      margin-top: 15px;
+      padding: 13px;
+      border-radius: 10px;
+      background: #f0f4fa;
     }
 
-    .review-item {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--qm-border);
-      overflow-wrap: anywhere;
+    .feedback.good {
+      background: #e6f7ed;
     }
 
-    .review-item:last-child {
-      border-bottom: 0;
+    .feedback.bad {
+      background: #fff0f0;
     }
 
-    .status-text {
-      font-weight: bold;
+    .setting-row {
+      margin: 14px 0;
     }
 
-    .app-footer {
-      padding: 18px 12px;
-      color: var(--qm-muted);
+    .setting-row select {
+      display: block;
+      width: 100%;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+    }
+
+    footer {
       text-align: center;
+      padding: 20px 12px;
+      color: var(--muted);
       font-size: 14px;
     }
 
-    .app-footer a {
-      color: var(--qm-primary);
+    footer a {
+      color: var(--blue);
+      margin: 0 6px;
     }
 
-    @media (max-width: 480px) {
-      .screen {
+    @media (max-width: 420px) {
+      header h1 {
+        font-size: 23px;
+      }
+
+      .content-card {
         padding: 15px;
       }
 
-      .game-information {
-        gap: 6px;
-      }
-
-      .info-panel {
-        padding: 9px 4px;
-        font-size: 13px;
-      }
-
-      .info-panel strong {
-        font-size: 18px;
-      }
-
-      .action-buttons button {
-        flex-basis: 100%;
+      .question-text {
+        font-size: 19px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="app-header">
+  <header>
     <h1>Quiz Master 🇷🇼</h1>
     <p id="heroDescription">
-      Test your knowledge, learn road safety and improve every round.
+      Test your knowledge, learn road safety and progress through each round.
     </p>
   </header>
 
-  <main class="app-container">
-
-    <!-- HOME AND GAME SETUP -->
-    <section id="homeScreen" class="screen active">
-      <h2 id="homeTitle">Welcome to Quiz Master</h2>
-      <p id="homeDescription">
+  <main>
+    <section id="homeScreen" class="content-card">
+      <h2 id="welcomeTitle">Welcome to Quiz Master</h2>
+      <p id="setupDescription" class="muted">
         Choose your language and quiz category before starting.
       </p>
 
-      <label class="section-label" id="languageLabel">
-        1. Choose language / Hitamo ururimi
-      </label>
+      <div id="gameSetup">
+        <span class="field-label" id="languageLabel">Choose language</span>
+        <div class="choice-grid">
+          <button type="button" class="choice selected"
+            data-language="en" aria-pressed="true">English</button>
+          <button type="button" class="choice"
+            data-language="rw" aria-pressed="false">Ikinyarwanda</button>
+        </div>
 
-      <div class="button-group">
-        <button
-          type="button"
-          class="choice-button"
-          data-language="rw"
-          aria-pressed="false">
-          Ikinyarwanda
-        </button>
+        <span class="field-label" id="categoryLabel">Choose quiz type</span>
+        <div class="choice-grid">
+          <button type="button" class="choice selected"
+            data-mode="traffic" aria-pressed="true">
+            Road Safety
+          </button>
+          <button type="button" class="choice"
+            data-mode="general" aria-pressed="false">
+            General Knowledge
+          </button>
+        </div>
 
-        <button
-          type="button"
-          class="choice-button"
-          data-language="en"
-          aria-pressed="true">
-          English
-        </button>
-      </div>
+        <p id="selectionSummary" class="muted" aria-live="polite">
+          English · Road Safety
+        </p>
 
-      <label class="section-label" id="modeLabel">
-        2. Choose quiz category / Hitamo ubwoko bw'ibibazo
-      </label>
-
-      <div class="button-group">
-        <button
-          type="button"
-          class="choice-button"
-          data-mode="traffic"
-          aria-pressed="false">
-          Amategeko y'umuhanda / Road Safety
-        </button>
-
-        <button
-          type="button"
-          class="choice-button"
-          data-mode="general"
-          aria-pressed="true">
-          Ibibazo rusange / General Knowledge
+        <button id="confirmSetupBtn" class="primary" type="button">
+          Confirm Selection
         </button>
       </div>
 
-      <p id="selectionSummary" class="selection-summary" role="status"></p>
-
-      <div class="action-buttons">
-        <button type="button" id="confirmSetupBtn" class="primary-button">
-          Tangira / Start Quiz
-        </button>
-
-        <button type="button" id="startBtn" class="primary-button">
-          Tangira umukino / Start
-        </button>
-
-        <button
-          type="button"
-          id="continueBtn"
-          class="secondary-button"
-          style="display:none">
-          Komeza / Continue
-        </button>
+      <div class="stats" style="margin-top:18px">
+        <div class="stat">
+          <strong id="homeRound">1</strong>
+          <span id="roundLabel">Current Round</span>
+        </div>
+        <div class="stat">
+          <strong id="homeScore">0</strong>
+          <span id="scoreLabel">Best Score</span>
+        </div>
+        <div class="stat">
+          <strong id="homeStars">0</strong>
+          <span id="starsLabel">Stars</span>
+        </div>
       </div>
 
-      <div class="action-buttons">
-        <button type="button" id="roundsBtn" class="secondary-button">
-          Round zose / All Rounds
-        </button>
+      <button id="startBtn" class="primary" type="button">
+        Start Quiz
+      </button>
 
-        <button type="button" id="weeklyScoresBtn" class="secondary-button">
-          Amanota y'iminsi 7 / Weekly Scores
-        </button>
+      <button id="continueBtn" class="secondary hidden" type="button">
+        Continue Quiz
+      </button>
 
-        <button type="button" id="settingsBtn" class="secondary-button">
-          Igenamiterere / Settings
-        </button>
+      <button id="roundsBtn" class="secondary" type="button">
+        View Rounds
+      </button>
 
-        <button type="button" id="shareBtn" class="secondary-button">
-          Sangiza abandi / Share
-        </button>
-      </div>
+      <button id="settingsBtn" class="secondary" type="button">
+        Settings
+      </button>
 
-      <p id="homeStatus" class="feedback" role="status"></p>
+      <button id="shareBtn" class="secondary" type="button">
+        Share Quiz
+      </button>
+
+      <p id="homeMessage" class="muted" role="status"></p>
     </section>
 
-    <!-- SETTINGS -->
-    <section id="settingsScreen" class="screen">
-      <h2 id="settingsTitle">Igenamiterere / Settings</h2>
-
-      <p id="settingsDescription">
-        Change the language or category, then return to the home screen.
-      </p>
-
-      <p>
-        <strong id="savedLanguageLabel">Language:</strong>
-        <span id="savedLanguage">English</span>
-      </p>
-
-      <p>
-        <strong id="savedModeLabel">Quiz category:</strong>
-        <span id="savedMode">General Knowledge</span>
-      </p>
-
-      <div class="action-buttons">
-        <button type="button" id="settingsHomeBtn" class="primary-button">
-          Garuka / Back Home
-        </button>
-
-        <button type="button" id="settingsSetupBtn" class="secondary-button">
-          Hindura ibyo wahisemo / Change Choices
-        </button>
-      </div>
-    </section>
-
-    <!-- QUIZ SCREEN -->
-    <section id="quizScreen" class="screen">
-      <h2 id="roundLabel">Round 1</h2>
-
-      <p>
-        <strong id="categoryIndicator">General Knowledge</strong>
-      </p>
-
-      <div class="game-information">
-        <div class="info-panel">
-          <span id="questionCounterLabel">Ikibazo / Question</span>
+    <section id="gameScreen" class="content-card hidden">
+      <div class="stats">
+        <div class="stat">
+          <strong id="gameRound">1</strong>
+          <span id="gameRoundLabel">Round</span>
+        </div>
+        <div class="stat">
           <strong id="questionCounter">1/10</strong>
+          <span id="questionLabel">Question</span>
         </div>
-
-        <div class="info-panel">
-          <span id="timerLabel">Igihe / Time</span>
-          <strong><span id="timer">30</span>s</strong>
-        </div>
-
-        <div class="info-panel">
-          <span id="scoreLabel">Amanota / Score</span>
-          <strong id="scoreNumber">0</strong>
+        <div class="stat">
+          <strong id="timer">30</strong>
+          <span id="timerLabel">Seconds</span>
         </div>
       </div>
 
-      <div
-        class="progress-track"
-        role="progressbar"
-        aria-label="Quiz progress"
-        aria-valuemin="0"
-        aria-valuemax="100">
-        <div id="progressFill"></div>
+      <div class="progress-track">
+        <div id="progressFill" class="progress-fill"></div>
       </div>
 
-      <p id="questionText">Ikibazo kizagaragara hano.</p>
+      <p id="categoryInfo" class="muted">Road Safety</p>
+      <h2 id="questionText" class="question-text">Loading question...</h2>
 
-      <div id="optionsContainer"></div>
+      <div id="answerList" class="answer-list"></div>
 
-      <p id="answerFeedback" class="feedback" role="status" aria-live="polite"></p>
+      <div id="feedback" class="feedback hidden" aria-live="polite"></div>
 
-      <div class="action-buttons">
-        <button type="button" id="submitAnswerBtn" class="primary-button">
-          Tanga igisubizo / Submit Answer
-        </button>
+      <button id="nextBtn" class="primary hidden" type="button">
+        Next Question
+      </button>
 
-        <button
-          type="button"
-          id="nextQuestionBtn"
-          class="primary-button"
-          disabled>
-          Ikibazo gikurikira / Next Question
-        </button>
+      <button id="pauseBtn" class="secondary" type="button">
+        Pause Quiz
+      </button>
 
-        <button type="button" id="quitQuizBtn" class="secondary-button">
-          Sohoka / Exit Quiz
-        </button>
-      </div>
+      <button id="exitBtn" class="secondary" type="button">
+        Exit to Home
+      </button>
     </section>
 
-    <!-- ROUND RESULTS -->
-    <section id="resultScreen" class="screen">
-      <h2 id="resultTitle">Ibisubizo / Round Results</h2>
+    <section id="resultScreen" class="content-card hidden">
+      <h2 id="resultTitle">Round Complete</h2>
+      <p id="resultMessage" aria-live="polite"></p>
 
-      <div class="game-information">
-        <div class="info-panel">
-          <span id="resultScoreLabel">Amanota / Score</span>
-          <strong id="resultScore">0</strong>
+      <div class="stats">
+        <div class="stat">
+          <strong id="resultScore">0/10</strong>
+          <span id="resultScoreLabel">Correct Answers</span>
         </div>
-
-        <div class="info-panel">
-          <span id="correctLabel">Byo / Correct</span>
-          <strong id="correctCount">0</strong>
+        <div class="stat">
+          <strong id="resultPercent">0%</strong>
+          <span id="resultPercentLabel">Percentage</span>
         </div>
-
-        <div class="info-panel">
-          <span id="wrongLabel">Si byo / Wrong</span>
-          <strong id="wrongCount">0</strong>
+        <div class="stat">
+          <strong id="resultStars">0</strong>
+          <span id="resultStarsLabel">Stars Earned</span>
         </div>
       </div>
 
-      <p>
-        <strong id="detailsLabel">Ibisubizo / Answers:</strong>
-        <span id="scoreDetails">0 / 10</span>
-      </p>
+      <button id="retryBtn" class="primary" type="button">
+        Try Again
+      </button>
 
-      <p id="resultStatus" class="status-text" role="status"></p>
+      <button id="nextRoundBtn" class="primary hidden" type="button">
+        Next Round
+      </button>
 
-      <div class="action-buttons">
-        <button type="button" id="nextRoundBtn" class="primary-button">
-          Round ikurikira / Next Round
-        </button>
-
-        <button type="button" id="resultNextBtn" class="primary-button">
-          Komeza / Continue
-        </button>
-
-        <button type="button" id="reviewAnswersBtn" class="secondary-button">
-          Ongera urebe ibisubizo / Review Answers
-        </button>
-
-        <button type="button" id="retryBtn" class="secondary-button">
-          Ongera ukine / Play Again
-        </button>
-
-        <button type="button" id="resultHomeBtn" class="secondary-button">
-          Ahabanza / Home
-        </button>
-      </div>
+      <button id="resultHomeBtn" class="secondary" type="button">
+        Back to Home
+      </button>
     </section>
 
-    <!-- ANSWER REVIEW -->
-    <section id="reviewScreen" class="screen">
-      <h2 id="reviewTitle">Gusubiramo ibisubizo / Review Answers</h2>
-
-      <div id="reviewContainer"></div>
-
-      <div class="action-buttons">
-        <button type="button" id="reviewRetryBtn" class="primary-button">
-          Ongera ukine / Play Again
-        </button>
-
-        <button type="button" id="reviewHomeBtn" class="secondary-button">
-          Ahabanza / Home
-        </button>
-      </div>
+    <section id="roundsScreen" class="content-card hidden">
+      <h2 id="roundsTitle">Your Rounds</h2>
+      <p id="roundsDescription" class="muted"></p>
+      <div id="roundList" class="answer-list"></div>
+      <button id="roundsHomeBtn" class="secondary" type="button">
+        Back to Home
+      </button>
     </section>
 
-    <!-- ROUND LIST -->
-    <section id="roundsScreen" class="screen">
-      <h2 id="roundsTitle">Round zose / All Rounds</h2>
+    <section id="settingsScreen" class="content-card hidden">
+      <h2 id="settingsTitle">Settings</h2>
 
-      <p id="roundsDescription">
-        Hitamo Round ushaka gukina.
-      </p>
-
-      <p>
-        <strong id="currentRoundLabel">Round uriho:</strong>
-        <span id="currentRoundDisplay">1</span>
-      </p>
-
-      <div id="roundsContainer"></div>
-
-      <div class="action-buttons">
-        <button type="button" id="roundsHomeBtn" class="primary-button">
-          Ahabanza / Home
-        </button>
+      <div class="setting-row">
+        <label class="field-label" for="difficultySelect"
+          id="difficultyLabel">Difficulty</label>
+        <select id="difficultySelect">
+          <option value="mixed">Mixed</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
       </div>
+
+      <button id="saveSettingsBtn" class="primary" type="button">
+        Save Settings
+      </button>
+
+      <button id="resetProgressBtn" class="danger" type="button">
+        Reset Progress
+      </button>
+
+      <button id="settingsHomeBtn" class="secondary" type="button">
+        Back to Home
+      </button>
+
+      <p id="settingsMessage" class="muted" role="status"></p>
     </section>
-
-    <!-- WEEKLY SCORES -->
-    <section id="weeklyScoresScreen" class="screen">
-      <h2 id="weeklyTitle">Amanota y'iminsi 7 / Weekly Scores</h2>
-
-      <div id="weeklyScoresContainer"></div>
-
-      <div class="action-buttons">
-        <button type="button" id="weeklyHomeBtn" class="primary-button">
-          Ahabanza / Home
-        </button>
-      </div>
-    </section>
-
   </main>
 
-  <footer class="app-footer">
+  <footer>
     <p>© 2026 Quiz Master 🇷🇼</p>
-    <p>
-      <a href="/privacy-policy.html">Privacy Policy</a>
-      |
-      <a href="/terms.html">Terms and Conditions</a>
-    </p>
-    <p>
-      Contact:
-      <a href="mailto:mazimpakaisaie7@gmail.com">
-        mazimpakaisaie7@gmail.com
-      </a>
-    </p>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms</a>
   </footer>
 
-  <audio id="backgroundMusic" src="./mythica.mp3" preload="none" loop></audio>
-
   <script src="./questions.js" defer></script>
-
-  <script>
-    (() => {
-      "use strict";
-
-      const $ = (id) => document.getElementById(id);
-
-      let selectedLanguage = "en";
-      let selectedMode = "general";
-
-      const translations = {
-        en: {
-          hero: "Test your knowledge, learn road safety and improve every round.",
-          homeTitle: "Welcome to Quiz Master",
-          homeDescription: "Choose your language and quiz category before starting.",
-          languageLabel: "1. Choose your language",
-          modeLabel: "2. Choose your quiz category",
-          start: "Start Quiz",
-          continue: "Continue Quiz",
-          rounds: "All Rounds",
-          weekly: "Weekly Scores",
-          settings: "Settings",
-          share: "Share Quiz Master",
-          settingsDescription: "Change your choices or return home.",
-          back: "Back Home",
-          change: "Change Choices",
-          traffic: "Road Safety",
-          general: "General Knowledge",
-          submit: "Submit Answer",
-          nextQuestion: "Next Question",
-          exit: "Exit Quiz",
-          nextRound: "Next Round",
-          review: "Review Answers",
-          retry: "Play Again",
-          home: "Home",
-          question: "Question",
-          timer: "Time",
-          score: "Score",
-          correct: "Correct",
-          wrong: "Wrong",
-          details: "Answers:",
-          chooseAnswer: "Please select an answer first.",
-          shared: "Link copied!",
-          confirmExit: "Exit this quiz and return home?",
-          roundsDescription: "Choose the round you want to play.",
-          currentRound: "Current round:",
-          shareText: "Test your knowledge with Quiz Master!",
-          languageName: "English"
-        },
-        rw: {
-          hero: "Gerageza ubumenyi bwawe, wige umutekano wo mu muhanda kandi utere imbere buri Round.",
-          homeTitle: "Murakaza neza muri Quiz Master",
-          homeDescription: "Banza uhitemo ururimi n'ubwoko bw'ibibazo.",
-          languageLabel: "1. Hitamo ururimi",
-          modeLabel: "2. Hitamo ubwoko bw'ibibazo",
-          start: "Tangira umukino",
-          continue: "Komeza umukino",
-          rounds: "Round zose",
-          weekly: "Amanota y'iminsi 7",
-          settings: "Igenamiterere",
-          share: "Sangiza abandi",
-          settingsDescription: "Hindura ibyo wahisemo cyangwa usubire ahabanza.",
-          back: "Garuka ahabanza",
-          change: "Hindura ibyo wahisemo",
-          traffic: "Amategeko y'umuhanda",
-          general: "Ibibazo rusange",
-          submit: "Tanga igisubizo",
-          nextQuestion: "Ikibazo gikurikira",
-          exit: "Sohoka mu mukino",
-          nextRound: "Round ikurikira",
-          review: "Ongera urebe ibisubizo",
-          retry: "Ongera ukine",
-          home: "Ahabanza",
-          question: "Ikibazo",
-          timer: "Igihe",
-          score: "Amanota",
-          correct: "Byo",
-          wrong: "Si byo",
-          details: "Ibisubizo:",
-          chooseAnswer: "Banza uhitemo igisubizo.",
-          shared: "Link yakoporowe!",
-          confirmExit: "Urashaka kuva mu mukino ugasubira ahabanza?",
-          roundsDescription: "Hitamo Round ushaka gukina.",
-          currentRound: "Round uriho:",
-          shareText: "Gerageza ubumenyi bwawe ukoresheje Quiz Master!",
-          languageName: "Ikinyarwanda"
-        }
-      };
-
-      function t(key) {
-        return translations[selectedLanguage][key] ||
-          translations.en[key] || key;
-      }
-
-      function setText(id, value) {
-        const element = $(id);
-        if (element) element.textContent = value;
-      }
-
-      function showScreen(id) {
-        document.querySelectorAll(".screen").forEach((screen) => {
-          const active = screen.id === id;
-          screen.classList.toggle("active", active);
-          screen.style.display = active ? "block" : "none";
-        });
-
-        window.scrollTo({ top: 0, behavior: "auto" });
-      }
-
-      function updateChoiceButtons() {
-        document.querySelectorAll("[data-language]").forEach((button) => {
-          const active = button.dataset.language === selectedLanguage;
-          button.setAttribute("aria-pressed", String(active));
-          button.classList.toggle("selected", active);
-        });
-
-        document.querySelectorAll("[data-mode]").forEach((button) => {
-          const active = button.dataset.mode === selectedMode;
-          button.setAttribute("aria-pressed", String(active));
-          button.classList.toggle("selected", active);
-        });
-      }
-
-      function updateLabels() {
-        document.documentElement.lang = selectedLanguage;
-
-        setText("heroDescription", t("hero"));
-        setText("homeTitle", t("homeTitle"));
-        setText("homeDescription", t("homeDescription"));
-        setText("languageLabel", t("languageLabel"));
-        setText("modeLabel", t("modeLabel"));
-        setText("confirmSetupBtn", t("start"));
-        setText("startBtn", t("start"));
-        setText("continueBtn", t("continue"));
-        setText("roundsBtn", t("rounds"));
-        setText("weeklyScoresBtn", t("weekly"));
-        setText("settingsBtn", t("settings"));
-        setText("shareBtn", t("share"));
-
-        setText("settingsTitle", t("settings"));
-        setText("settingsDescription", t("settingsDescription"));
-        setText("settingsHomeBtn", t("back"));
-        setText("settingsSetupBtn", t("change"));
-
-        setText("questionCounterLabel", t("question"));
-        setText("timerLabel", t("timer"));
-        setText("scoreLabel", t("score"));
-        setText("submitAnswerBtn", t("submit"));
-        setText("nextQuestionBtn", t("nextQuestion"));
-        setText("quitQuizBtn", t("exit"));
-
-        setText("resultScoreLabel", t("score"));
-        setText("correctLabel", t("correct"));
-        setText("wrongLabel", t("wrong"));
-        setText("detailsLabel", t("details"));
-        setText("nextRoundBtn", t("nextRound"));
-        setText("resultNextBtn", t("nextRound"));
-        setText("reviewAnswersBtn", t("review"));
-        setText("retryBtn", t("retry"));
-        setText("resultHomeBtn", t("home"));
-
-        setText("reviewTitle", t("review"));
-        setText("reviewRetryBtn", t("retry"));
-        setText("reviewHomeBtn", t("home"));
-
-        setText("roundsTitle", t("rounds"));
-        setText("roundsDescription", t("roundsDescription"));
-        setText("currentRoundLabel", t("currentRound"));
-        setText("roundsHomeBtn", t("home"));
-
-        setText("weeklyTitle", t("weekly"));
-        setText("weeklyHomeBtn", t("home"));
-
-        setText("savedLanguage", t("languageName"));
-        setText("savedMode", selectedMode === "traffic" ? t("traffic") : t("general"));
-
-        updateChoiceButtons();
-      }
-
-      function loadPreferences() {
-        try {
-          const saved = JSON.parse(
-            localStorage.getItem("quizmasterProgress") || "{}"
-          );
-
-          if (saved.language === "rw" || saved.language === "en") {
-            selectedLanguage = saved.language;
-          }
-
-          if (saved.mode === "traffic" || saved.mode === "general") {
-            selectedMode = saved.mode;
-          }
-        } catch (_) {
-          // Use default choices when saved preferences are unavailable.
-        }
-
-        updateLabels();
-      }
-
-      function startSelectedQuiz() {
-        setText("selectionSummary", "");
-
-        document.dispatchEvent(new CustomEvent("quizmaster:setup", {
-          detail: {
-            language: selectedLanguage,
-            mode: selectedMode
-          }
-        }));
-      }
-
-      document.querySelectorAll("[data-language]").forEach((button) => {
-        button.addEventListener("click", () => {
-          selectedLanguage = button.dataset.language;
-          updateLabels();
-          setText("selectionSummary", "");
-        });
-      });
-
-      document.querySelectorAll("[data-mode]").forEach((button) => {
-        button.addEventListener("click", () => {
-          selectedMode = button.dataset.mode;
-          updateLabels();
-          setText("selectionSummary", "");
-        });
-      });
-
-      $("confirmSetupBtn").addEventListener("click", startSelectedQuiz);
-      $("startBtn").addEventListener("click", startSelectedQuiz);
-
-      $("settingsBtn").addEventListener("click", () => {
-        showScreen("settingsScreen");
-      });
-
-      $("settingsHomeBtn").addEventListener("click", () => {
-        showScreen("homeScreen");
-      });
-
-      $("settingsSetupBtn").addEventListener("click", () => {
-        showScreen("homeScreen");
-      });
-
-      $("roundsBtn").addEventListener("click", () => {
-        setText("currentRoundDisplay", "1");
-        showScreen("roundsScreen");
-        document.dispatchEvent(new CustomEvent("quizmaster:show-rounds"));
-      });
-
-      $("weeklyScoresBtn").addEventListener("click", () => {
-        showScreen("weeklyScoresScreen");
-        document.dispatchEvent(new CustomEvent("quizmaster:show-weekly-scores"));
-      });
-
-      $("reviewAnswersBtn").addEventListener("click", () => {
-        showScreen("reviewScreen");
-        document.dispatchEvent(new CustomEvent("quizmaster:show-review"));
-      });
-
-      $("quitQuizBtn").addEventListener("click", () => {
-        if (window.confirm(t("confirmExit"))) {
-          showScreen("homeScreen");
-        }
-      });
-
-      $("resultHomeBtn").addEventListener("click", () => {
-        showScreen("homeScreen");
-      });
-
-      $("reviewHomeBtn").addEventListener("click", () => {
-        showScreen("homeScreen");
-      });
-
-      $("roundsHomeBtn").addEventListener("click", () => {
-        showScreen("homeScreen");
-      });
-
-      $("weeklyHomeBtn").addEventListener("click", () => {
-        showScreen("homeScreen");
-      });
-
-      $("reviewRetryBtn").addEventListener("click", () => {
-        startSelectedQuiz();
-      });
-
-      $("shareBtn").addEventListener("click", async () => {
-        const shareData = {
-          title: "Quiz Master 🇷🇼 - Knowledge Quiz",
-          text: t("shareText"),
-          url: window.location.href
-        };
-
-        try {
-          if (navigator.share) {
-            await navigator.share(shareData);
-          } else {
-            throw new Error("Share not available");
-          }
-        } catch (error) {
-          if (error && error.name === "AbortError") return;
-
-          try {
-            await navigator.clipboard.writeText(
-              shareData.text + " " + shareData.url
-            );
-            setText("homeStatus", t("shared"));
-          } catch (_) {
-            setText("homeStatus", shareData.url);
-          }
-        }
-      });
-
-      document.addEventListener("quizmaster:show-screen", (event) => {
-        const id = event.detail && event.detail.screenId;
-        if (id) showScreen(id);
-      });
-
-      document.addEventListener("quizmaster:game-started", (event) => {
-        const detail = event.detail || {};
-        selectedLanguage = detail.language || selectedLanguage;
-        selectedMode = detail.mode || selectedMode;
-        updateLabels();
-      });
-
-      document.addEventListener("quizmaster:round-finished", (event) => {
-        const result = event.detail || {};
-        setText("resultScore", result.score ?? 0);
-        setText("scoreDetails", `${result.correct ?? 0} / ${result.total ?? 0}`);
-      });
-
-      document.addEventListener("quizmaster:error", (event) => {
-        const detail = event.detail || {};
-        setText(
-          "selectionSummary",
-          detail.message || "Questions could not be loaded."
-        );
-        showScreen("homeScreen");
-      });
-
-      loadPreferences();
-      showScreen("homeScreen");
-    })();
-  </script>
 </body>
 </html>
