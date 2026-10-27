@@ -124,9 +124,9 @@
       difficulty: "Urwego rw'ibibazo",
       save: "Bika igenamiterere",
       reset: "Siba aho ugeze",
-      saved: "Igenamiterere ryabitswe.",
       resetConfirm: "Urashaka gusiba aho wageze hose mu mukino?",
       resetDone: "Aho wari ugeze hasibwe.",
+      saved: "Igenamiterere ryabitswe.",
       loading: "Ibibazo biri gutegurwa...",
       loadError: "Ibibazo ntibyafungutse. Reba questions.json wongere ugerageze.",
       noQuestions: "Nta bibazo bibonetse muri ubu bwoko.",
@@ -170,10 +170,14 @@
   let gameActive = false;
   let selectedConfirmed = false;
   let currentScreen = "home";
+
   let roundBest = {};
   let roundStars = {};
   let unlockedRounds = {};
   let savedGame = null;
+
+  // Stores shuffled answer choices separately for each question.
+  let displayedOptions = [];
 
   function t(key) {
     return translations[language][key] ??
@@ -251,10 +255,6 @@
     }
   }
 
-  function categoryKey(cat = category) {
-    return cat === "traffic" ? "traffic" : "general";
-  }
-
   function progressKey(cat, round) {
     return `${cat}_round_${round}`;
   }
@@ -295,9 +295,12 @@
       ? question.options_rw
       : question.options;
 
-    if (!Array.isArray(options) || options.length < 2) return [];
+    if (!Array.isArray(options) || options.length < 2) {
+      return [];
+    }
 
-    return options.map(String);
+    // Shuffle options while preserving the original answer text.
+    return shuffle(options.map(String));
   }
 
   function getCorrectAnswer(question) {
@@ -332,8 +335,20 @@
       return false;
     }
 
+    if (typeof q.answer !== "string" ||
+        typeof q.answer_rw !== "string") {
+      return false;
+    }
+
     if (!q.options.includes(q.answer) ||
         !q.options_rw.includes(q.answer_rw)) {
+      return false;
+    }
+
+    // Check that bilingual options and answers match by position.
+    const answerIndex = q.options.indexOf(q.answer);
+
+    if (q.options_rw[answerIndex] !== q.answer_rw) {
       return false;
     }
 
@@ -345,7 +360,7 @@
 
     try {
       const response = await fetch(
-        `${CONFIG.QUESTIONS_FILE}?v=3`,
+        `${CONFIG.QUESTIONS_FILE}?v=4`,
         { cache: "no-store" }
       );
 
@@ -512,6 +527,7 @@
     return questions;
   }
 
+  // Fisher-Yates shuffle.
   function shuffle(array) {
     const result = array.slice();
 
@@ -553,6 +569,7 @@
     questionIndex = 0;
     answered = false;
     gameActive = true;
+    displayedOptions = [];
 
     if (resume && savedGame &&
         savedGame.category === category &&
@@ -570,13 +587,23 @@
         : [];
 
       const restored = savedIds.map(id =>
-        bank.find(q => String(q.id) === String(id))
+        bank.find((q, index) => {
+          const questionId = q.id !== undefined
+            ? String(q.id)
+            : `q-${allQuestions.indexOf(q)}`;
+
+          return questionId === String(id);
+        })
       );
 
-      if (restored.length === 10 && restored.every(Boolean)) {
+      if (restored.length === CONFIG.QUESTIONS_PER_ROUND &&
+          restored.every(Boolean)) {
         roundQuestions = restored;
       } else {
-        roundQuestions = shuffle(bank).slice(0, 10);
+        roundQuestions = shuffle(bank).slice(
+          0,
+          CONFIG.QUESTIONS_PER_ROUND
+        );
         questionIndex = 0;
         score = 0;
       }
@@ -593,18 +620,13 @@
       round,
       questionIndex,
       score,
-      questionIds: roundQuestions.map((q, i) =>
-        q.id !== undefined ? q.id : `q-${bank.indexOf(q)}`
+      questionIds: roundQuestions.map(q =>
+        q.id !== undefined
+          ? String(q.id)
+          : `q-${allQuestions.indexOf(q)}`
       ),
       finished: false
     };
-
-    /*
-      For question banks without explicit unique IDs, preserve the
-      selected question objects in session memory. The IDs above are
-      for progress display; a page reload safely starts a fresh round
-      if the questions cannot be restored.
-    */
 
     saveProgress();
     showScreen("game");
@@ -621,7 +643,9 @@
       questionIndex,
       score,
       questionIds: roundQuestions.map(q =>
-        q.id !== undefined ? q.id : `q-${allQuestions.indexOf(q)}`
+        q.id !== undefined
+          ? String(q.id)
+          : `q-${allQuestions.indexOf(q)}`
       ),
       finished: false
     };
@@ -668,7 +692,12 @@
     $("feedback").textContent = "";
     $("nextBtn").classList.add("hidden");
 
-    getOptions(q).forEach(option => {
+    // Shuffle the choices once when the question is rendered.
+    // Keep the shuffled list stable until the player answers.
+    const options = getOptions(q);
+    displayedOptions = options.slice();
+
+    options.forEach(option => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "answer-option";
@@ -738,7 +767,8 @@
 
     if (!isCorrect) {
       const correct = document.createElement("p");
-      correct.textContent = `${language === "rw" ? "Igisubizo nyacyo" : "Correct answer"}: ${correctAnswer}`;
+      correct.textContent =
+        `${language === "rw" ? "Igisubizo nyacyo" : "Correct answer"}: ${correctAnswer}`;
       feedback.appendChild(correct);
     }
 
@@ -746,7 +776,8 @@
 
     if (explanation) {
       const explanationText = document.createElement("p");
-      explanationText.textContent = `${t("explanation")}: ${explanation}`;
+      explanationText.textContent =
+        `${t("explanation")}: ${explanation}`;
       feedback.appendChild(explanationText);
     }
 
@@ -789,7 +820,6 @@
     );
 
     const stars = percent >= 90 ? 3 : percent >= 80 ? 2 : percent >= 70 ? 1 : 0;
-
     const key = progressKey(category, currentRound);
 
     roundBest[key] = Math.max(
@@ -827,10 +857,13 @@
     $("resultStars").textContent = `${stars} ★`;
 
     $("resultMessage").textContent = passed
-      ? (currentRound >= CONFIG.MAX_ROUNDS ? t("allRounds") : t("passed"))
+      ? (currentRound >= CONFIG.MAX_ROUNDS
+          ? t("allRounds")
+          : t("passed"))
       : t("failed");
 
     $("retryBtn").textContent = t("retry");
+
     $("nextRoundBtn").classList.toggle(
       "hidden",
       !passed || currentRound >= CONFIG.MAX_ROUNDS
@@ -970,6 +1003,7 @@
       language = savedGame.language;
       category = savedGame.category;
       selectedConfirmed = true;
+
       applyTranslations();
       updateHome();
       startRound(savedGame.round, true);
