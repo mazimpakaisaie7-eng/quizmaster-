@@ -14,8 +14,9 @@
 
   const $ = id => document.getElementById(id);
 
-  const STORAGE_KEY = "quizmaster_progress_v3";
-  const SETTINGS_KEY = "quizmaster_settings_v3";
+  const STORAGE_KEY = "quizmaster_progress_v4";
+  const SETTINGS_KEY = "quizmaster_settings_v4";
+  const USED_QUESTIONS_KEY = "quizmaster_used_questions_v1";
 
   const translations = {
     en: {
@@ -81,7 +82,10 @@
       chooseRound: "Play this round",
       unavailable: "This round is locked.",
       confirmExit: "Exit this quiz? Your progress in this round will be saved.",
-      correctAnswer: "Correct answer"
+      correctAnswer: "Correct answer",
+      musicOn: "🎵 Music: ON",
+      musicOff: "🔇 Music: OFF",
+      cycleComplete: "All questions in this category have been used. A new cycle has started."
     },
 
     rw: {
@@ -147,7 +151,10 @@
       chooseRound: "Kina iyi Round",
       unavailable: "Iyi Round irafunze.",
       confirmExit: "Ushaka gusubira ahabanza? Aho ugeze harabikwa.",
-      correctAnswer: "Igisubizo nyacyo"
+      correctAnswer: "Igisubizo nyacyo",
+      musicOn: "🎵 Umuziki: UFUNGUYE",
+      musicOff: "🔇 Umuziki: UZIMYE",
+      cycleComplete: "Ibibazo byose byo muri ubu bwoko byarakoreshejwe. Hatangiye uruziga rushya."
     }
   };
 
@@ -167,12 +174,15 @@
   let selectedConfirmed = false;
   let currentScreen = "home";
   let paused = false;
-  let roundStartedAt = 0;
 
   let roundBest = {};
   let roundStars = {};
   let unlockedRounds = {};
   let savedGame = null;
+  let usedQuestionIds = readObject(
+    USED_QUESTIONS_KEY,
+    {}
+  );
 
   const music = new Audio("./mythica.mp3");
   music.loop = true;
@@ -206,6 +216,17 @@
     }
   }
 
+  function saveUsedQuestions() {
+    try {
+      localStorage.setItem(
+        USED_QUESTIONS_KEY,
+        JSON.stringify(usedQuestionIds)
+      );
+    } catch (error) {
+      console.warn("Could not save used questions:", error);
+    }
+  }
+
   function saveSettings() {
     try {
       localStorage.setItem(SETTINGS_KEY, JSON.stringify({
@@ -222,6 +243,7 @@
 
   function loadSavedData() {
     const progress = readObject(STORAGE_KEY, {});
+
     roundBest = progress.roundBest || {};
     roundStars = progress.roundStars || {};
     unlockedRounds = progress.unlockedRounds || {};
@@ -259,6 +281,10 @@
     return `${cat}_round_${round}`;
   }
 
+  function questionPoolKey() {
+    return `${category}_${difficulty}`;
+  }
+
   function isUnlocked(round, cat = category) {
     return round === 1 ||
       unlockedRounds[progressKey(cat, round)] === true;
@@ -273,11 +299,12 @@
   }
 
   function totalStars(cat = category) {
-    let total = 0;
-    for (let round = 1; round <= CONFIG.MAX_ROUNDS; round++) {
-      total += getRoundStars(round, cat);
-    }
-    return total;
+    return Object.keys(roundStars).reduce((total, key) => {
+      if (key.startsWith(`${cat}_round_`)) {
+        return total + Number(roundStars[key] || 0);
+      }
+      return total;
+    }, 0);
   }
 
   function getLanguageValue(question, base) {
@@ -285,6 +312,25 @@
       return question[`${base}_rw`] || question[base] || "";
     }
     return question[base] || question[`${base}_rw`] || "";
+  }
+
+  function shuffle(array) {
+    const result = array.slice();
+
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+
+    return result;
+  }
+
+  function questionId(q) {
+    if (q.id !== undefined && q.id !== null && String(q.id).trim()) {
+      return String(q.id);
+    }
+
+    return `q-${allQuestions.indexOf(q)}`;
   }
 
   function getOptions(question) {
@@ -295,6 +341,7 @@
     if (!Array.isArray(options) || options.length < 2) {
       return [];
     }
+
     return shuffle(options.map(String));
   }
 
@@ -330,6 +377,7 @@
         !q.options_rw.includes(q.answer_rw)) return false;
 
     const answerIndex = q.options.indexOf(q.answer);
+
     if (q.options_rw[answerIndex] !== q.answer_rw) return false;
 
     if (q.explanation !== undefined &&
@@ -346,13 +394,14 @@
 
     try {
       const response = await fetch(
-        `${CONFIG.QUESTIONS_FILE}?v=5`,
+        `${CONFIG.QUESTIONS_FILE}?v=6`,
         { cache: "no-store" }
       );
 
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       const data = await response.json();
+
       if (!Array.isArray(data)) {
         throw new Error("questions.json must contain a JSON array.");
       }
@@ -394,7 +443,8 @@
     };
 
     Object.entries(screens).forEach(([key, id]) => {
-      $(id).classList.toggle("hidden", key !== screen);
+      const element = $(id);
+      if (element) element.classList.toggle("hidden", key !== screen);
     });
   }
 
@@ -403,8 +453,8 @@
     if (!button) return;
 
     button.textContent = musicEnabled
-      ? (language === "rw" ? "🎵 Umuziki: UFUNGUYE" : "🎵 Music: ON")
-      : (language === "rw" ? "🔇 Umuziki: UZIMYE" : "🔇 Music: OFF");
+      ? t("musicOn")
+      : t("musicOff");
 
     button.setAttribute("aria-pressed", String(musicEnabled));
   }
@@ -419,12 +469,16 @@
     try {
       await music.play();
     } catch (error) {
-      console.warn("Music playback failed:", error);
+      console.warn(
+        "Music playback failed. Check mythica.mp3 and tap Start Quiz again.",
+        error
+      );
     }
   }
 
   function stopMusic() {
     music.pause();
+
     try {
       music.currentTime = 0;
     } catch (_) {}
@@ -435,8 +489,11 @@
     saveSettings();
     updateMusicButton();
 
-    if (musicEnabled) playMusic();
-    else music.pause();
+    if (musicEnabled) {
+      playMusic();
+    } else {
+      music.pause();
+    }
   }
 
   function updateChoiceButtons() {
@@ -452,29 +509,35 @@
       button.setAttribute("aria-pressed", String(active));
     });
 
-    $("selectionSummary").textContent =
-      `${language === "rw" ? "Ikinyarwanda" : "English"} · ${t(category)}`;
+    const summary = $("selectionSummary");
+    if (summary) {
+      summary.textContent =
+        `${language === "rw" ? "Ikinyarwanda" : "English"} · ${t(category)}`;
+    }
 
-    $("confirmSetupBtn").textContent = t("confirm");
+    const confirmButton = $("confirmSetupBtn");
+    if (confirmButton) confirmButton.textContent = t("confirm");
   }
 
   function updateHome() {
-    $("homeRound").textContent = currentRound;
-    $("homeScore").textContent = getRoundBest(currentRound);
-    $("homeStars").textContent = totalStars();
+    if ($("homeRound")) $("homeRound").textContent = currentRound;
+    if ($("homeScore")) $("homeScore").textContent = getRoundBest(currentRound);
+    if ($("homeStars")) $("homeStars").textContent = totalStars();
 
-    $("startBtn").textContent = t("start");
-    $("continueBtn").textContent = t("continue");
-    $("roundsBtn").textContent = t("rounds");
-    $("settingsBtn").textContent = t("settings");
-    $("shareBtn").textContent = t("share");
+    if ($("startBtn")) $("startBtn").textContent = t("start");
+    if ($("continueBtn")) $("continueBtn").textContent = t("continue");
+    if ($("roundsBtn")) $("roundsBtn").textContent = t("rounds");
+    if ($("settingsBtn")) $("settingsBtn").textContent = t("settings");
+    if ($("shareBtn")) $("shareBtn").textContent = t("share");
 
-    $("continueBtn").classList.toggle(
-      "hidden",
-      !savedGame || savedGame.finished ||
-      savedGame.category !== category ||
-      savedGame.language !== language
-    );
+    if ($("continueBtn")) {
+      $("continueBtn").classList.toggle(
+        "hidden",
+        !savedGame || savedGame.finished ||
+        savedGame.category !== category ||
+        savedGame.language !== language
+      );
+    }
 
     updateChoiceButtons();
     updateMusicButton();
@@ -483,45 +546,50 @@
   function applyTranslations() {
     document.documentElement.lang = language;
 
-    $("heroDescription").textContent = t("description");
-    $("welcomeTitle").textContent = t("welcome");
-    $("setupDescription").textContent = t("setup");
-    $("languageLabel").textContent = t("language");
-    $("categoryLabel").textContent = t("category");
+    const translationsById = {
+      heroDescription: "description",
+      welcomeTitle: "welcome",
+      setupDescription: "setup",
+      languageLabel: "language",
+      categoryLabel: "category",
+      roundLabel: "currentRound",
+      scoreLabel: "score",
+      starsLabel: "stars",
+      gameRoundLabel: "round",
+      questionLabel: "question",
+      timerLabel: "seconds",
+      nextBtn: "next",
+      exitBtn: "exit",
+      resultTitle: "result",
+      resultScoreLabel: "correctAnswers",
+      resultPercentLabel: "percentage",
+      resultStarsLabel: "earnedStars",
+      retryBtn: "retry",
+      nextRoundBtn: "nextRound",
+      resultHomeBtn: "home",
+      roundsTitle: "rounds",
+      roundsDescription: "roundList",
+      roundsHomeBtn: "home",
+      settingsTitle: "settings",
+      difficultyLabel: "difficulty",
+      saveSettingsBtn: "save",
+      resetProgressBtn: "reset",
+      settingsHomeBtn: "home"
+    };
 
-    $("roundLabel").textContent = t("currentRound");
-    $("scoreLabel").textContent = t("score");
-    $("starsLabel").textContent = t("stars");
+    Object.entries(translationsById).forEach(([id, key]) => {
+      const element = $(id);
+      if (element) element.textContent = t(key);
+    });
 
-    $("gameRoundLabel").textContent = t("round");
-    $("questionLabel").textContent = t("question");
-    $("timerLabel").textContent = t("seconds");
+    if ($("pauseBtn")) {
+      $("pauseBtn").textContent = paused ? t("resume") : t("pause");
+    }
 
-    $("nextBtn").textContent = t("next");
-    $("pauseBtn").textContent = paused ? t("resume") : t("pause");
-    $("exitBtn").textContent = t("exit");
-
-    $("resultTitle").textContent = t("result");
-    $("resultScoreLabel").textContent = t("correctAnswers");
-    $("resultPercentLabel").textContent = t("percentage");
-    $("resultStarsLabel").textContent = t("earnedStars");
-
-    $("retryBtn").textContent = t("retry");
-    $("nextRoundBtn").textContent = t("nextRound");
-    $("resultHomeBtn").textContent = t("home");
-
-    $("roundsTitle").textContent = t("rounds");
-    $("roundsDescription").textContent = t("roundList");
-    $("roundsHomeBtn").textContent = t("home");
-
-    $("settingsTitle").textContent = t("settings");
-    $("difficultyLabel").textContent = t("difficulty");
-    $("saveSettingsBtn").textContent = t("save");
-    $("resetProgressBtn").textContent = t("reset");
-    $("settingsHomeBtn").textContent = t("home");
-
-    for (const option of $("difficultySelect").options) {
-      option.textContent = t(option.value);
+    if ($("difficultySelect")) {
+      for (const option of $("difficultySelect").options) {
+        option.textContent = t(option.value);
+      }
     }
 
     updateChoiceButtons();
@@ -537,7 +605,8 @@
     saveProgress();
     applyTranslations();
     updateHome();
-    $("homeMessage").textContent = "";
+
+    if ($("homeMessage")) $("homeMessage").textContent = "";
   }
 
   function filteredQuestions() {
@@ -552,21 +621,36 @@
     return questions;
   }
 
-  function shuffle(array) {
-    const result = array.slice();
+  function getUnusedQuestions(bank) {
+    const poolKey = questionPoolKey();
+    const used = new Set(usedQuestionIds[poolKey] || []);
 
-    for (let i = result.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [result[i], result[j]] = [result[j], result[i]];
+    let unused = bank.filter(q => !used.has(questionId(q)));
+
+    if (unused.length < CONFIG.QUESTIONS_PER_ROUND) {
+      // Tangira cycle nshya gusa iyo hasigaye ibibazo bitageza kuri 10.
+      // Ibi birinda Round kugerageza gukoresha ibibazo bitagejeje kuri 10.
+      usedQuestionIds[poolKey] = [];
+      saveUsedQuestions();
+      unused = bank.slice();
     }
 
-    return result;
+    return shuffle(unused);
   }
 
-  function questionId(q) {
-    return q.id !== undefined
-      ? String(q.id)
-      : `q-${allQuestions.indexOf(q)}`;
+  function markQuestionsUsed(questions) {
+    const poolKey = questionPoolKey();
+
+    if (!Array.isArray(usedQuestionIds[poolKey])) {
+      usedQuestionIds[poolKey] = [];
+    }
+
+    const used = new Set(usedQuestionIds[poolKey]);
+
+    questions.forEach(q => used.add(questionId(q)));
+
+    usedQuestionIds[poolKey] = Array.from(used);
+    saveUsedQuestions();
   }
 
   function startRound(round, resume = false) {
@@ -581,6 +665,7 @@
       $("homeMessage").textContent = bank.length
         ? t("needQuestions")
         : t("noQuestions");
+
       showScreen("home");
       return;
     }
@@ -591,6 +676,7 @@
     }
 
     stopTimer();
+
     currentRound = round;
     score = 0;
     questionIndex = 0;
@@ -604,7 +690,8 @@
         Number(savedGame.round) === round) {
 
       const savedIds = Array.isArray(savedGame.questionIds)
-        ? savedGame.questionIds : [];
+        ? savedGame.questionIds
+        : [];
 
       const restored = savedIds.map(id =>
         bank.find(q => questionId(q) === String(id))
@@ -619,17 +706,20 @@
         );
         score = Math.max(0, Number(savedGame.score) || 0);
       } else {
-        roundQuestions = shuffle(bank).slice(
-          0, CONFIG.QUESTIONS_PER_ROUND
-        );
+        const unused = getUnusedQuestions(bank);
+        roundQuestions = unused.slice(0, CONFIG.QUESTIONS_PER_ROUND);
+        markQuestionsUsed(roundQuestions);
       }
     } else {
-      roundQuestions = shuffle(bank).slice(
-        0, CONFIG.QUESTIONS_PER_ROUND
-      );
-    }
+      const unused = getUnusedQuestions(bank);
 
-    roundStartedAt = Date.now();
+      roundQuestions = unused.slice(
+        0,
+        CONFIG.QUESTIONS_PER_ROUND
+      );
+
+      markQuestionsUsed(roundQuestions);
+    }
 
     savedGame = {
       category,
@@ -674,6 +764,7 @@
     stopTimer();
 
     const q = roundQuestions[questionIndex];
+
     if (!q) {
       finishRound();
       return;
@@ -789,7 +880,8 @@
     $("nextBtn").classList.remove("hidden");
     $("nextBtn").textContent =
       questionIndex === CONFIG.QUESTIONS_PER_ROUND - 1
-        ? t("result") : t("next");
+        ? t("result")
+        : t("next");
 
     saveCurrentGame();
   }
@@ -811,6 +903,7 @@
   function finishRound() {
     stopTimer();
     stopMusic();
+
     gameActive = false;
     paused = false;
 
@@ -819,11 +912,22 @@
       (CONFIG.QUESTIONS_PER_ROUND * CONFIG.POINTS_PER_CORRECT) * 100
     );
 
-    const stars = percent >= 90 ? 3 : percent >= 80 ? 2 : percent >= 70 ? 1 : 0;
+    const stars =
+      percent >= 90 ? 3 :
+      percent >= 80 ? 2 :
+      percent >= 70 ? 1 : 0;
+
     const key = progressKey(category, currentRound);
 
-    roundBest[key] = Math.max(Number(roundBest[key] || 0), percent);
-    roundStars[key] = Math.max(Number(roundStars[key] || 0), stars);
+    roundBest[key] = Math.max(
+      Number(roundBest[key] || 0),
+      percent
+    );
+
+    roundStars[key] = Math.max(
+      Number(roundStars[key] || 0),
+      stars
+    );
 
     const passed = percent >= CONFIG.UNLOCK_PERCENT;
 
@@ -845,12 +949,14 @@
 
     $("resultScore").textContent =
       `${score / CONFIG.POINTS_PER_CORRECT}/${CONFIG.QUESTIONS_PER_ROUND}`;
+
     $("resultPercent").textContent = `${percent}%`;
     $("resultStars").textContent = `${stars} ★`;
 
     $("resultMessage").textContent = passed
       ? (currentRound >= CONFIG.MAX_ROUNDS
-        ? t("allRounds") : t("passed"))
+        ? t("allRounds")
+        : t("passed"))
       : t("failed");
 
     $("nextRoundBtn").classList.toggle(
@@ -895,6 +1001,7 @@
       button.type = "button";
       button.className = "answer-option";
       button.disabled = !unlocked;
+
       button.textContent =
         `${t("round")} ${round} · ${unlocked ? t("unlocked") : t("locked")} · ${best}% · ${stars} ★`;
 
@@ -978,6 +1085,7 @@
         $("homeMessage").textContent = t("selectFirst");
         return;
       }
+
       startRound(currentRound);
     });
 
@@ -1040,6 +1148,7 @@
       roundStars = {};
       unlockedRounds = {};
       savedGame = null;
+      usedQuestionIds = {};
       currentRound = 1;
       score = 0;
       questionIndex = 0;
@@ -1048,6 +1157,8 @@
 
       stopTimer();
       stopMusic();
+
+      saveUsedQuestions();
       saveProgress();
       updateHome();
 
