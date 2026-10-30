@@ -34,7 +34,10 @@
 
     button,select { font:inherit; }
     button { cursor:pointer; }
-    button:disabled { opacity:.5;cursor:not-allowed; }
+    button:disabled {
+      opacity:.5;
+      cursor:not-allowed;
+    }
 
     header {
       background:var(--navy);
@@ -43,7 +46,11 @@
       text-align:center;
     }
 
-    header h1 { margin:0;font-size:27px; }
+    header h1 {
+      margin:0;
+      font-size:27px;
+    }
+
     header p { margin:7px 0 0; }
 
     main {
@@ -100,9 +107,20 @@
       margin-top:10px;
     }
 
-    .primary { color:white;background:var(--blue); }
-    .secondary { color:var(--navy);background:#e8edf5; }
-    .danger { color:white;background:var(--red); }
+    .primary {
+      color:white;
+      background:var(--blue);
+    }
+
+    .secondary {
+      color:var(--navy);
+      background:#e8edf5;
+    }
+
+    .danger {
+      color:white;
+      background:var(--red);
+    }
 
     .hidden { display:none !important; }
 
@@ -119,8 +137,15 @@
       padding:12px 5px;
     }
 
-    .stat strong { display:block;font-size:20px; }
-    .stat span { font-size:12px;color:var(--muted); }
+    .stat strong {
+      display:block;
+      font-size:20px;
+    }
+
+    .stat span {
+      font-size:12px;
+      color:var(--muted);
+    }
 
     .progress-track {
       height:9px;
@@ -154,7 +179,10 @@
       border:1px solid var(--border);
     }
 
-    .answer-list { display:grid;gap:10px; }
+    .answer-list {
+      display:grid;
+      gap:10px;
+    }
 
     .answer-option {
       padding:13px;
@@ -191,6 +219,52 @@
     .feedback.good { background:#e6f7ed; }
     .feedback.bad { background:#fff0f0; }
 
+    /* ROUNDS DESIGN */
+
+    .round-card {
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:12px;
+      padding:15px;
+      margin-bottom:12px;
+    }
+
+    .round-card h3 {
+      margin:0 0 8px;
+    }
+
+    .round-status {
+      padding:9px;
+      border-radius:8px;
+      margin:8px 0;
+      font-size:14px;
+    }
+
+    .round-status.unlocked {
+      background:#e6f7ed;
+      color:#126b43;
+    }
+
+    .round-status.locked {
+      background:#f0f2f5;
+      color:#64748b;
+    }
+
+    .round-status.completed {
+      background:#eaf2ff;
+      color:#104da8;
+    }
+
+    .round-card button {
+      width:100%;
+      padding:11px;
+      border:0;
+      border-radius:9px;
+      background:var(--blue);
+      color:white;
+      font-weight:bold;
+    }
+
     .setting-row { margin:14px 0; }
 
     .setting-row select {
@@ -223,198 +297,388 @@
 </head>
 
 <body>
-  <header>
-    <h1>Quiz Master 🇷🇼</h1>
-    <p id="heroDescription">
-      Test your knowledge, learn road safety and progress through each round.
-    </p>
-  </header>
 
-  <main>
-    <section id="homeScreen" class="content-card">
-      <h2 id="welcomeTitle">Welcome to Quiz Master</h2>
-      <p id="setupDescription" class="muted">
-        Choose your language and quiz category before starting.
+<header>
+  <h1>Quiz Master 🇷🇼</h1>
+  <p id="heroDescription">
+    Test your knowledge, learn road safety and progress through each round.
+  </p>
+</header>
+
+<main>
+
+  <!-- HOME SCREEN -->
+
+  <section id="homeScreen" class="content-card">
+
+    <h2 id="welcomeTitle">Welcome to Quiz Master</h2>
+
+    <p id="setupDescription" class="muted">
+      Choose your language and quiz category before starting.
+    </p>
+
+    <div id="gameSetup">
+
+      <span class="field-label" id="languageLabel">
+        Choose language
+      </span>
+
+      <div class="choice-grid">
+
+        <button type="button"
+          class="choice selected"
+          data-language="en"
+          aria-pressed="true">
+          English
+        </button>
+
+        <button type="button"
+          class="choice"
+          data-language="rw"
+          aria-pressed="false">
+          Ikinyarwanda
+        </button>
+
+      </div>
+
+      <span class="field-label" id="categoryLabel">
+        Choose quiz type
+      </span>
+
+      <div class="choice-grid">
+
+        <button type="button"
+          class="choice selected"
+          data-mode="traffic"
+          aria-pressed="true">
+          Road Safety
+        </button>
+
+        <button type="button"
+          class="choice"
+          data-mode="general"
+          aria-pressed="false">
+          General Knowledge
+        </button>
+
+      </div>
+
+      <p id="selectionSummary" class="muted" aria-live="polite">
+        English · Road Safety
       </p>
 
-      <div id="gameSetup">
-        <span class="field-label" id="languageLabel">Choose language</span>
-        <div class="choice-grid">
-          <button type="button" class="choice selected"
-            data-language="en" aria-pressed="true">English</button>
-          <button type="button" class="choice"
-            data-language="rw" aria-pressed="false">Ikinyarwanda</button>
-        </div>
+      <button id="confirmSetupBtn"
+        class="primary"
+        type="button">
+        Confirm Selection
+      </button>
 
-        <span class="field-label" id="categoryLabel">Choose quiz type</span>
-        <div class="choice-grid">
-          <button type="button" class="choice selected"
-            data-mode="traffic" aria-pressed="true">Road Safety</button>
-          <button type="button" class="choice"
-            data-mode="general" aria-pressed="false">General Knowledge</button>
-        </div>
+    </div>
 
-        <p id="selectionSummary" class="muted" aria-live="polite">
-          English · Road Safety
-        </p>
+    <div class="stats" style="margin-top:18px">
 
-        <button id="confirmSetupBtn" class="primary" type="button">
-          Confirm Selection
-        </button>
+      <div class="stat">
+        <strong id="homeRound">1</strong>
+        <span>Current Round</span>
       </div>
 
-      <div class="stats" style="margin-top:18px">
-        <div class="stat">
-          <strong id="homeRound">1</strong>
-          <span>Current Round</span>
-        </div>
-        <div class="stat">
-          <strong id="homeScore">0</strong>
-          <span>Best Score</span>
-        </div>
-        <div class="stat">
-          <strong id="homeStars">0</strong>
-          <span>Stars</span>
-        </div>
+      <div class="stat">
+        <strong id="homeScore">0</strong>
+        <span>Best Score</span>
       </div>
 
-      <button id="startBtn" class="primary" type="button">Start Quiz</button>
-      <button id="continueBtn" class="secondary hidden" type="button">Continue Quiz</button>
-      <button id="reviewAnswersBtn" class="secondary" type="button">Review Answers</button>
-      <button id="roundsBtn" class="secondary" type="button">View Rounds</button>
-      <button id="settingsBtn" class="secondary" type="button">Settings</button>
-      <button id="shareBtn" class="secondary" type="button">Share Quiz</button>
-      <p id="homeMessage" class="muted" role="status"></p>
-    </section>
-
-    <section id="quizScreen" class="content-card hidden">
-      <div class="stats">
-        <div class="stat">
-          <strong id="currentRound">1</strong>
-          <span>Round</span>
-        </div>
-        <div class="stat">
-          <strong id="currentQuestionNumber">1/10</strong>
-          <span>Question</span>
-        </div>
-        <div class="stat">
-          <strong id="timer">30</strong>
-          <span>Seconds</span>
-        </div>
+      <div class="stat">
+        <strong id="homeStars">0</strong>
+        <span>Stars</span>
       </div>
 
-      <div class="progress-track">
-        <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <button id="startBtn" class="primary" type="button">
+      Start Quiz
+    </button>
+
+    <button id="continueBtn"
+      class="secondary hidden"
+      type="button">
+      Continue Quiz
+    </button>
+
+    <button id="reviewAnswersBtn"
+      class="secondary"
+      type="button">
+      Review Answers
+    </button>
+
+    <button id="roundsBtn"
+      class="secondary"
+      type="button">
+      🏆 View All Rounds
+    </button>
+
+    <button id="settingsBtn"
+      class="secondary"
+      type="button">
+      Settings
+    </button>
+
+    <button id="shareBtn"
+      class="secondary"
+      type="button">
+      Share Quiz
+    </button>
+
+    <p id="homeMessage" class="muted" role="status"></p>
+
+  </section>
+
+  <!-- QUIZ SCREEN -->
+
+  <section id="quizScreen" class="content-card hidden">
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong id="currentRound">1</strong>
+        <span>Round</span>
       </div>
 
-      <p id="categoryIndicator" class="muted">Road Safety</p>
-
-      <h2 id="questionText" class="question-text">Loading question...</h2>
-
-      <img id="questionImage" class="question-image hidden"
-        alt="Question illustration">
-
-      <div id="optionsContainer" class="answer-list"></div>
-
-      <button id="submitAnswerBtn" class="primary" type="button" disabled>
-        Submit Answer
-      </button>
-
-      <div id="answerFeedback" class="feedback hidden" aria-live="polite"></div>
-
-      <button id="nextQuestionBtn" class="primary hidden" type="button">
-        Next Question
-      </button>
-
-      <button id="quizReviewBtn" class="secondary" type="button">
-        Review Answers
-      </button>
-
-      <button id="quizHomeBtn" class="secondary" type="button">
-        Back to Home
-      </button>
-    </section>
-
-    <section id="resultScreen" class="content-card hidden">
-      <h2 id="resultTitle">Round Complete</h2>
-      <p id="resultMessage" aria-live="polite"></p>
-
-      <div class="stats">
-        <div class="stat">
-          <strong id="resultScore">0/10</strong>
-          <span>Correct Answers</span>
-        </div>
-        <div class="stat">
-          <strong id="resultPercent">0%</strong>
-          <span>Percentage</span>
-        </div>
-        <div class="stat">
-          <strong id="resultStars">0</strong>
-          <span>Stars Earned</span>
-        </div>
+      <div class="stat">
+        <strong id="currentQuestionNumber">1/10</strong>
+        <span>Question</span>
       </div>
 
-      <button id="resultNextBtn" class="primary hidden" type="button">
-        Continue to Next Round
-      </button>
-      <button id="resultReviewBtn" class="secondary" type="button">
-        Review Answers
-      </button>
-      <button id="resultHomeBtn" class="secondary" type="button">
-        Back to Home
-      </button>
-    </section>
-
-    <section id="reviewScreen" class="content-card hidden">
-      <h2>Review Answers</h2>
-      <div id="reviewContainer"></div>
-      <button id="reviewHomeBtn" class="secondary" type="button">
-        Back to Home
-      </button>
-    </section>
-
-    <section id="roundsScreen" class="content-card hidden">
-      <h2>Your Rounds</h2>
-      <p id="roundsDescription" class="muted"></p>
-      <div id="roundList" class="answer-list"></div>
-      <button id="roundsHomeBtn" class="secondary" type="button">
-        Back to Home
-      </button>
-    </section>
-
-    <section id="settingsScreen" class="content-card hidden">
-      <h2>Settings</h2>
-
-      <div class="setting-row">
-        <label class="field-label" for="settingsLanguage">Language</label>
-        <select id="settingsLanguage">
-          <option value="en">English</option>
-          <option value="rw">Ikinyarwanda</option>
-        </select>
+      <div class="stat">
+        <strong id="timer">30</strong>
+        <span>Seconds</span>
       </div>
 
-      <div class="setting-row">
-        <label class="field-label" for="settingsMode">Quiz Category</label>
-        <select id="settingsMode">
-          <option value="traffic">Road Safety</option>
-          <option value="general">General Knowledge</option>
-        </select>
+    </div>
+
+    <div class="progress-track">
+      <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <p id="categoryIndicator" class="muted">
+      Road Safety
+    </p>
+
+    <h2 id="questionText" class="question-text">
+      Loading question...
+    </h2>
+
+    <img id="questionImage"
+      class="question-image hidden"
+      alt="Question illustration">
+
+    <div id="optionsContainer" class="answer-list"></div>
+
+    <button id="submitAnswerBtn"
+      class="primary"
+      type="button"
+      disabled>
+      Submit Answer
+    </button>
+
+    <div id="answerFeedback"
+      class="feedback hidden"
+      aria-live="polite">
+    </div>
+
+    <button id="nextQuestionBtn"
+      class="primary hidden"
+      type="button">
+      Next Question
+    </button>
+
+    <button id="quizReviewBtn"
+      class="secondary"
+      type="button">
+      Review Answers
+    </button>
+
+    <button id="quizHomeBtn"
+      class="secondary"
+      type="button">
+      Back to Home
+    </button>
+
+  </section>
+
+  <!-- RESULT SCREEN -->
+
+  <section id="resultScreen" class="content-card hidden">
+
+    <h2 id="resultTitle">Round Complete</h2>
+
+    <p id="resultMessage" aria-live="polite"></p>
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong id="resultScore">0/10</strong>
+        <span>Correct Answers</span>
       </div>
 
-      <button id="saveSettingsBtn" class="primary" type="button">Save Settings</button>
-      <button id="resetProgressBtn" class="danger" type="button">Reset Progress</button>
-      <button id="settingsHomeBtn" class="secondary" type="button">Back to Home</button>
-      <p id="settingsMessage" class="muted" role="status"></p>
-    </section>
-  </main>
+      <div class="stat">
+        <strong id="resultPercent">0%</strong>
+        <span>Percentage</span>
+      </div>
 
-  <footer>
-    <p>© 2026 Quiz Master 🇷🇼</p>
-    <a href="./privacy-policy.html">Privacy Policy</a>
-    <a href="./terms.html">Terms</a>
-    <p>Contact: mazimpakaisaie7@gmail.com</p>
-  </footer>
+      <div class="stat">
+        <strong id="resultStars">0</strong>
+        <span>Stars Earned</span>
+      </div>
 
-  <script src="./questions.js" defer></script>
+    </div>
+
+    <button id="resultNextBtn"
+      class="primary hidden"
+      type="button">
+      Continue to Next Round
+    </button>
+
+    <button id="resultReviewBtn"
+      class="secondary"
+      type="button">
+      Review Answers
+    </button>
+
+    <button id="resultHomeBtn"
+      class="secondary"
+      type="button">
+      Back to Home
+    </button>
+
+  </section>
+
+  <!-- REVIEW SCREEN -->
+
+  <section id="reviewScreen" class="content-card hidden">
+
+    <h2>Review Answers</h2>
+
+    <div id="reviewContainer"></div>
+
+    <button id="reviewHomeBtn"
+      class="secondary"
+      type="button">
+      Back to Home
+    </button>
+
+  </section>
+
+  <!-- ROUNDS SCREEN -->
+
+  <section id="roundsScreen" class="content-card hidden">
+
+    <h2>🏆 All Quiz Rounds</h2>
+
+    <p class="muted">
+      Complete each round to unlock the next one.
+      You need at least 70% to pass.
+    </p>
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong id="roundsCompleted">0</strong>
+        <span>Completed</span>
+      </div>
+
+      <div class="stat">
+        <strong id="roundsTotal">0</strong>
+        <span>Total Rounds</span>
+      </div>
+
+      <div class="stat">
+        <strong id="roundsUnlocked">1</strong>
+        <span>Unlocked</span>
+      </div>
+
+    </div>
+
+    <p id="roundsDescription" class="muted"></p>
+
+    <div id="roundList" class="answer-list"></div>
+
+    <button id="roundsHomeBtn"
+      class="secondary"
+      type="button">
+      Back to Home
+    </button>
+
+  </section>
+
+  <!-- SETTINGS SCREEN -->
+
+  <section id="settingsScreen" class="content-card hidden">
+
+    <h2>Settings</h2>
+
+    <div class="setting-row">
+
+      <label class="field-label" for="settingsLanguage">
+        Language
+      </label>
+
+      <select id="settingsLanguage">
+        <option value="en">English</option>
+        <option value="rw">Ikinyarwanda</option>
+      </select>
+
+    </div>
+
+    <div class="setting-row">
+
+      <label class="field-label" for="settingsMode">
+        Quiz Category
+      </label>
+
+      <select id="settingsMode">
+        <option value="traffic">Road Safety</option>
+        <option value="general">General Knowledge</option>
+      </select>
+
+    </div>
+
+    <button id="saveSettingsBtn"
+      class="primary"
+      type="button">
+      Save Settings
+    </button>
+
+    <button id="resetProgressBtn"
+      class="danger"
+      type="button">
+      Reset Progress
+    </button>
+
+    <button id="settingsHomeBtn"
+      class="secondary"
+      type="button">
+      Back to Home
+    </button>
+
+    <p id="settingsMessage" class="muted" role="status"></p>
+
+  </section>
+
+</main>
+
+<footer>
+
+  <p>© 2026 Quiz Master 🇷🇼</p>
+
+  <a href="./privacy-policy.html">Privacy Policy</a>
+
+  <a href="./terms.html">Terms</a>
+
+  <p>Contact: mazimpakaisaie7@gmail.com</p>
+
+</footer>
+
+<script src="./questions.js" defer></script>
+
 </body>
 </html>
