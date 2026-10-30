@@ -2,6 +2,11 @@
 (() => {
   "use strict";
 
+  // ================================================
+  // QUIZ MASTER RWANDA
+  // Compatible with the supplied index.html
+  // ================================================
+
   const CONFIG = {
     QUESTIONS_FILE: "./questions.json",
     QUESTIONS_PER_ROUND: 10,
@@ -33,9 +38,9 @@
     language: localStorage.getItem(CONFIG.STORAGE.language) || "en",
     mode: localStorage.getItem(CONFIG.STORAGE.mode) || "general",
 
-    // Require a selection when no previous choice is saved.
     languageChosen: !!localStorage.getItem(CONFIG.STORAGE.language),
     modeChosen: !!localStorage.getItem(CONFIG.STORAGE.mode),
+    setupConfirmed: false,
 
     music: localStorage.getItem(CONFIG.STORAGE.music) !== "false",
 
@@ -45,17 +50,19 @@
     score: 0,
     correct: 0,
     answered: 0,
+
     selectedAnswer: null,
     answerSubmitted: false,
+
     timeLeft: 0,
     timerId: null,
     review: [],
     paused: false
   };
 
-  // --------------------------------------------------
+  // ================================================
   // STORAGE
-  // --------------------------------------------------
+  // ================================================
 
   function readJSON(key, fallback) {
     try {
@@ -84,9 +91,7 @@
 
   function getUsedIds() {
     const data = getUsedData();
-    return Array.isArray(data[state.mode])
-      ? data[state.mode]
-      : [];
+    return Array.isArray(data[state.mode]) ? data[state.mode] : [];
   }
 
   function saveUsedIds(ids) {
@@ -104,9 +109,7 @@
 
   function getCompletedRounds() {
     const data = getCompletedData();
-    return Array.isArray(data[state.mode])
-      ? data[state.mode]
-      : [];
+    return Array.isArray(data[state.mode]) ? data[state.mode] : [];
   }
 
   function saveCompletedRounds(rounds) {
@@ -146,9 +149,9 @@
     updateHome();
   }
 
-  // --------------------------------------------------
+  // ================================================
   // GENERAL HELPERS
-  // --------------------------------------------------
+  // ================================================
 
   function showMessage(message, type = "info") {
     const target = $("homeMessage");
@@ -175,12 +178,16 @@
     ].forEach(id => {
       const element = $(id);
       if (element) {
-        element.style.display =
-          id === screenId ? "block" : "none";
+        element.style.display = id === screenId ? "block" : "none";
       }
     });
 
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    document.dispatchEvent(new CustomEvent(
+      "quizmaster:show-screen",
+      { detail: { screen: screenId } }
+    ));
   }
 
   function shuffle(array) {
@@ -250,9 +257,9 @@
       : CONFIG.GENERAL_TIME;
   }
 
-  // --------------------------------------------------
+  // ================================================
   // VALIDATE QUESTIONS
-  // --------------------------------------------------
+  // ================================================
 
   function validQuestion(question) {
     if (!question || typeof question !== "object") return false;
@@ -277,7 +284,7 @@
     }
 
     if (
-      question.options_rw &&
+      Array.isArray(question.options_rw) &&
       question.options_rw.length &&
       question.answer_rw &&
       !question.options_rw.includes(question.answer_rw)
@@ -288,9 +295,9 @@
     return true;
   }
 
-  // --------------------------------------------------
-  // LOAD QUESTIONS
-  // --------------------------------------------------
+  // ================================================
+  // LOAD QUESTIONS.JSON
+  // ================================================
 
   async function loadQuestions() {
     try {
@@ -318,7 +325,7 @@
       const valid = data.filter(validQuestion);
 
       state.questions = valid;
-      state.loaded = true;
+      state.loaded = valid.length > 0;
 
       const traffic = valid.filter(q => q.category === "traffic").length;
       const general = valid.filter(q => q.category === "general").length;
@@ -343,7 +350,8 @@
           detail: {
             total: valid.length,
             traffic,
-            general
+            general,
+            rejected: data.length - valid.length
           }
         }
       ));
@@ -351,7 +359,7 @@
       return true;
 
     } catch (error) {
-      console.error(error);
+      console.error("Quiz Master loading error:", error);
       state.loaded = false;
 
       showMessage(
@@ -371,14 +379,12 @@
   }
 
   function getModeQuestions() {
-    return state.questions.filter(
-      q => q.category === state.mode
-    );
+    return state.questions.filter(q => q.category === state.mode);
   }
 
-  // --------------------------------------------------
+  // ================================================
   // ROUND MANAGEMENT
-  // --------------------------------------------------
+  // ================================================
 
   function getTotalRounds() {
     return Math.ceil(
@@ -444,7 +450,8 @@
       q => !used.has(String(q.id))
     );
 
-    // Start a new cycle only after all questions are used.
+    // Start another question cycle only when all
+    // questions in this category have been used.
     if (available.length === 0) {
       saveUsedIds([]);
       available = [...pool];
@@ -480,15 +487,16 @@
     return true;
   }
 
-  // --------------------------------------------------
-  // SETUP AND SELECTION
-  // --------------------------------------------------
+  // ================================================
+  // SETUP: LANGUAGE AND CATEGORY
+  // ================================================
 
   function selectLanguage(language) {
     if (!["rw", "en"].includes(language)) return;
 
     state.language = language;
     state.languageChosen = true;
+    state.setupConfirmed = false;
 
     $$(".language-btn").forEach(button => {
       const active = button.dataset.language === language;
@@ -497,6 +505,7 @@
       button.setAttribute("aria-pressed", String(active));
     });
 
+    resetConfirmation();
     updateSelectionSummary();
   }
 
@@ -505,6 +514,7 @@
 
     state.mode = mode;
     state.modeChosen = true;
+    state.setupConfirmed = false;
 
     $$(".mode-btn").forEach(button => {
       const active = button.dataset.mode === mode;
@@ -513,7 +523,17 @@
       button.setAttribute("aria-pressed", String(active));
     });
 
+    resetConfirmation();
     updateSelectionSummary();
+  }
+
+  function resetConfirmation() {
+    const confirm = $("confirmSetupBtn");
+    const start = $("startBtn");
+
+    if (confirm) confirm.style.display = "block";
+    if (start) start.style.display = "block";
+    if (start) start.disabled = true;
   }
 
   function updateSelectionSummary() {
@@ -523,7 +543,7 @@
     const ready = state.languageChosen && state.modeChosen;
 
     if (confirm) {
-      confirm.disabled = !ready;
+      confirm.disabled = !ready || !state.loaded;
     }
 
     if (!summary) return;
@@ -533,7 +553,6 @@
         state.language === "rw"
           ? "Banza uhitemo ururimi n'icyiciro."
           : "Please choose your language and category.";
-
       return;
     }
 
@@ -541,8 +560,7 @@
       (state.language === "rw"
         ? "Ururimi: Ikinyarwanda"
         : "Language: English") +
-      " • " +
-      getCategoryName();
+      " • " + getCategoryName();
   }
 
   function syncSetupButtons() {
@@ -570,8 +588,19 @@
   function openSetup() {
     stopTimer();
 
+    state.setupConfirmed = false;
+
     const setup = $("gameSetup");
     if (setup) setup.style.display = "block";
+
+    if ($("confirmSetupBtn")) {
+      $("confirmSetupBtn").style.display = "block";
+    }
+
+    if ($("startBtn")) {
+      $("startBtn").style.display = "block";
+      $("startBtn").disabled = true;
+    }
 
     showScreen("homeScreen");
     syncSetupButtons();
@@ -593,22 +622,80 @@
       return;
     }
 
+    if (!getModeQuestions().length) {
+      showMessage(
+        state.language === "rw"
+          ? "Nta bibazo biri muri iki cyiciro."
+          : "There are no questions in this category.",
+        "error"
+      );
+      return;
+    }
+
     localStorage.setItem(CONFIG.STORAGE.language, state.language);
     localStorage.setItem(CONFIG.STORAGE.mode, state.mode);
+
+    state.setupConfirmed = true;
+
+    const summary = $("selectionSummary");
+    const confirm = $("confirmSetupBtn");
+    const start = $("startBtn");
+
+    if (summary) {
+      summary.textContent =
+        (state.language === "rw"
+          ? "✓ Wemeje: Ikinyarwanda"
+          : "✓ Confirmed: English") +
+        " • " + getCategoryName();
+    }
+
+    if (confirm) confirm.style.display = "none";
+
+    if (start) {
+      start.style.display = "block";
+      start.disabled = false;
+    }
+
+    showMessage(
+      state.language === "rw"
+        ? "Ibyo wahisemo byemejwe. Kanda Tangira gukina."
+        : "Selection confirmed. Press Start Quiz."
+    );
+  }
+
+  // ================================================
+  // START QUIZ
+  // ================================================
+
+  function startConfirmedQuiz() {
+    if (!state.setupConfirmed) {
+      showMessage(
+        state.language === "rw"
+          ? "Banza wemeze ibyo wahisemo."
+          : "Please confirm your selection first."
+      );
+      return;
+    }
+
+    if (!state.loaded) {
+      showMessage(
+        state.language === "rw"
+          ? "Tegereza ibibazo bibanze bifunguke."
+          : "Please wait for questions to load."
+      );
+      return;
+    }
 
     if (!prepareRound(getNextRound())) return;
 
     const setup = $("gameSetup");
     if (setup) setup.style.display = "none";
 
+    hideMessage();
     startCurrentRound();
   }
 
-  // --------------------------------------------------
-  // START QUIZ
-  // --------------------------------------------------
-
-  function startCurrentRound() {
+  function startCurrentRound(resume = false) {
     if (!state.roundQuestions.length) return;
 
     showScreen("quizScreen");
@@ -621,7 +708,7 @@
       $("categoryIndicator").textContent = getCategoryName();
     }
 
-    renderQuestion();
+    renderQuestion(resume);
     startTimer();
 
     document.dispatchEvent(new CustomEvent(
@@ -635,11 +722,11 @@
     ));
   }
 
-  // --------------------------------------------------
+  // ================================================
   // RENDER QUESTION
-  // --------------------------------------------------
+  // ================================================
 
-  function renderQuestion() {
+  function renderQuestion(resume = false) {
     const question = state.roundQuestions[state.currentIndex];
 
     if (!question) {
@@ -647,9 +734,17 @@
       return;
     }
 
-    state.selectedAnswer = null;
-    state.answerSubmitted = false;
-    state.timeLeft = getQuestionTime();
+    const savedAnswer = resume ? state.selectedAnswer : null;
+    const savedTime = resume ? state.timeLeft : getQuestionTime();
+
+    if (!resume) {
+      state.selectedAnswer = null;
+      state.answerSubmitted = false;
+      state.timeLeft = getQuestionTime();
+    } else {
+      state.selectedAnswer = savedAnswer;
+      state.timeLeft = savedTime;
+    }
 
     if ($("currentQuestionNumber")) {
       $("currentQuestionNumber").textContent =
@@ -692,34 +787,33 @@
           selectAnswer(option, button);
         });
 
+        if (resume && savedAnswer === option) {
+          button.classList.add("selected");
+          button.setAttribute("aria-pressed", "true");
+        }
+
         container.appendChild(button);
       });
     }
 
-    const feedback = $("answerFeedback");
-
-    if (feedback) {
-      feedback.textContent = "";
-      feedback.style.display = "none";
+    if ($("answerFeedback")) {
+      $("answerFeedback").textContent = "";
+      $("answerFeedback").style.display = "none";
     }
 
-    const explanation = $("explanation");
-
-    if (explanation) {
-      explanation.textContent = "";
-      explanation.style.display = "none";
+    if ($("explanation")) {
+      $("explanation").textContent = "";
+      $("explanation").style.display = "none";
     }
 
-    const submit = $("submitAnswerBtn");
-
-    if (submit) {
-      submit.disabled = true;
-      submit.style.display = "block";
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").disabled = !state.selectedAnswer;
+      $("submitAnswerBtn").style.display = "block";
     }
 
-    const next = $("nextQuestionBtn");
-
-    if (next) next.style.display = "none";
+    if ($("nextQuestionBtn")) {
+      $("nextQuestionBtn").style.display = "none";
+    }
 
     updateScoreDisplay();
     updateProgress();
@@ -742,15 +836,16 @@
       button.setAttribute("aria-pressed", "true");
     }
 
-    const submit = $("submitAnswerBtn");
-    if (submit) submit.disabled = false;
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").disabled = false;
+    }
 
     saveProgress();
   }
 
-  // --------------------------------------------------
+  // ================================================
   // SCORE AND PROGRESS
-  // --------------------------------------------------
+  // ================================================
 
   function updateScoreDisplay() {
     if ($("score")) {
@@ -772,25 +867,22 @@
     }
   }
 
-  // --------------------------------------------------
+  // ================================================
   // SUBMIT ANSWER
-  // --------------------------------------------------
+  // ================================================
 
   function submitAnswer() {
     if (state.answerSubmitted) return;
 
     if (state.selectedAnswer === null) {
-      const feedback = $("answerFeedback");
-
-      if (feedback) {
-        feedback.textContent =
+      if ($("answerFeedback")) {
+        $("answerFeedback").textContent =
           state.language === "rw"
             ? "Banza uhitemo igisubizo."
             : "Please select an answer first.";
 
-        feedback.style.display = "block";
+        $("answerFeedback").style.display = "block";
       }
-
       return;
     }
 
@@ -801,7 +893,6 @@
 
     const question = state.roundQuestions[state.currentIndex];
     const correctAnswer = getCorrectAnswer(question);
-
     const isCorrect = state.selectedAnswer === correctAnswer;
 
     if (isCorrect) {
@@ -827,10 +918,8 @@
       }
     });
 
-    const feedback = $("answerFeedback");
-
-    if (feedback) {
-      feedback.textContent = isCorrect
+    if ($("answerFeedback")) {
+      $("answerFeedback").textContent = isCorrect
         ? (state.language === "rw"
             ? "Ni byo! +10 amanota"
             : "Correct! +10 points")
@@ -838,43 +927,39 @@
             ? "Si byo. Gerageza ubutaha."
             : "Incorrect. Try again next time.");
 
-      feedback.style.display = "block";
+      $("answerFeedback").style.display = "block";
     }
 
-    const explanation = $("explanation");
     const explanationText = getExplanation(question);
 
-    if (explanation && explanationText) {
-      explanation.textContent = explanationText;
-      explanation.style.display = "block";
+    if ($("explanation") && explanationText) {
+      $("explanation").textContent = explanationText;
+      $("explanation").style.display = "block";
     }
 
     if ($("submitAnswerBtn")) {
       $("submitAnswerBtn").style.display = "none";
     }
 
-    const next = $("nextQuestionBtn");
-
-    if (next) {
-      next.textContent =
+    if ($("nextQuestionBtn")) {
+      $("nextQuestionBtn").textContent =
         state.currentIndex === state.roundQuestions.length - 1
           ? (state.language === "rw" ? "Reba amanota" : "See Results")
           : (state.language === "rw" ? "Ikibazo gikurikira" : "Next Question");
 
-      next.style.display = "block";
+      $("nextQuestionBtn").style.display = "block";
     }
 
     updateScoreDisplay();
     saveProgress();
   }
 
-  // --------------------------------------------------
+  // ================================================
   // TIMER
-  // --------------------------------------------------
+  // ================================================
 
   function startTimer() {
     stopTimer();
-
     updateTimerDisplay();
 
     state.timerId = setInterval(() => {
@@ -971,9 +1056,9 @@
     saveProgress();
   }
 
-  // --------------------------------------------------
+  // ================================================
   // NEXT QUESTION
-  // --------------------------------------------------
+  // ================================================
 
   function nextQuestion() {
     if (!state.answerSubmitted) return;
@@ -987,9 +1072,9 @@
     }
   }
 
-  // --------------------------------------------------
+  // ================================================
   // RESULTS
-  // --------------------------------------------------
+  // ================================================
 
   function finishRound() {
     stopTimer();
@@ -1075,6 +1160,7 @@
       $("retryBtn").style.display = passed ? "none" : "block";
     }
 
+    updateHome();
     showScreen("resultScreen");
 
     document.dispatchEvent(new CustomEvent(
@@ -1090,8 +1176,6 @@
         }
       }
     ));
-
-    updateHome();
   }
 
   function retryRound() {
@@ -1104,6 +1188,7 @@
     state.review = [];
     state.selectedAnswer = null;
     state.answerSubmitted = false;
+    state.timeLeft = getQuestionTime();
 
     saveProgress();
     startCurrentRound();
@@ -1117,16 +1202,23 @@
       return;
     }
 
-    if (!isRoundUnlocked(next)) return;
+    if (!isRoundUnlocked(next)) {
+      showMessage(
+        state.language === "rw"
+          ? "Banza utsinde Round ibanza."
+          : "Complete the previous round first."
+      );
+      return;
+    }
 
     if (prepareRound(next)) {
       startCurrentRound();
     }
   }
 
-  // --------------------------------------------------
+  // ================================================
   // REVIEW ANSWERS
-  // --------------------------------------------------
+  // ================================================
 
   function showReview() {
     const reviewData = state.review.length
@@ -1157,20 +1249,31 @@
       card.className = "review-item";
 
       const status = item.isCorrect
-        ? (state.language === "rw" ? "Ni byo" : "Correct")
-        : (state.language === "rw" ? "Si byo" : "Incorrect");
+        ? (state.language === "rw" ? "Ni byo ✓" : "Correct ✓")
+        : (state.language === "rw" ? "Si byo ✗" : "Incorrect ✗");
 
       card.innerHTML = `
         <h3>${index + 1}. ${escapeHTML(item.question)}</h3>
-        <p><strong>${state.language === "rw" ? "Igisubizo wahisemo:" : "Your answer:"}</strong>
-        ${escapeHTML(item.selected)}</p>
-        <p><strong>${state.language === "rw" ? "Igisubizo nyacyo:" : "Correct answer:"}</strong>
-        ${escapeHTML(item.correct)}</p>
+        <p>
+          <strong>${state.language === "rw"
+            ? "Igisubizo wahisemo:"
+            : "Your answer:"}</strong>
+          ${escapeHTML(item.selected)}
+        </p>
+        <p>
+          <strong>${state.language === "rw"
+            ? "Igisubizo nyacyo:"
+            : "Correct answer:"}</strong>
+          ${escapeHTML(item.correct)}
+        </p>
         <p class="review-status">${status}</p>
         ${item.explanation
           ? `<p>${escapeHTML(item.explanation)}</p>`
           : ""}
       `;
+
+      card.querySelector(".review-status").style.color =
+        item.isCorrect ? "#16a34a" : "#dc2626";
 
       container.appendChild(card);
     });
@@ -1183,9 +1286,9 @@
     ));
   }
 
-  // --------------------------------------------------
+  // ================================================
   // ROUNDS
-  // --------------------------------------------------
+  // ================================================
 
   function showRounds() {
     if (!state.loaded) {
@@ -1267,9 +1370,9 @@
     showScreen("roundsScreen");
   }
 
-  // --------------------------------------------------
+  // ================================================
   // HOME
-  // --------------------------------------------------
+  // ================================================
 
   function updateHome() {
     if ($("homeRound")) {
@@ -1282,16 +1385,15 @@
     }
 
     if ($("homeStars")) {
-      $("homeStars").textContent = "⭐".repeat(
-        Math.min(5, getCompletedRounds().length)
-      ) || "⭐";
+      $("homeStars").textContent =
+        "⭐".repeat(Math.min(5, getCompletedRounds().length)) || "⭐";
     }
 
     const saved = getProgress();
 
     const canContinue = Boolean(
       saved &&
-      saved.questionIds &&
+      Array.isArray(saved.questionIds) &&
       saved.questionIds.length
     );
 
@@ -1306,11 +1408,16 @@
       $("reviewAnswersBtn").style.display =
         review.length ? "block" : "none";
     }
+
+    if ($("confirmSetupBtn")) {
+      $("confirmSetupBtn").disabled =
+        !(state.languageChosen && state.modeChosen && state.loaded);
+    }
   }
 
-  // --------------------------------------------------
+  // ================================================
   // CONTINUE SAVED GAME
-  // --------------------------------------------------
+  // ================================================
 
   function continueQuiz() {
     if (!state.loaded) {
@@ -1334,6 +1441,7 @@
 
     state.languageChosen = true;
     state.modeChosen = true;
+    state.setupConfirmed = true;
 
     const questionMap = new Map(
       state.questions.map(q => [String(q.id), q])
@@ -1341,7 +1449,7 @@
 
     const restored = saved.questionIds
       .map(id => questionMap.get(String(id)))
-      .filter(Boolean);
+      .filter(q => q && q.category === state.mode);
 
     if (!restored.length) {
       clearProgress();
@@ -1351,8 +1459,9 @@
 
     state.round = Number(saved.round) || 1;
     state.roundQuestions = restored;
+
     state.currentIndex = Math.min(
-      Number(saved.currentIndex) || 0,
+      Math.max(0, Number(saved.currentIndex) || 0),
       restored.length - 1
     );
 
@@ -1365,7 +1474,7 @@
       : [];
 
     state.timeLeft = Number.isFinite(Number(saved.timeLeft))
-      ? Number(saved.timeLeft)
+      ? Math.max(0, Number(saved.timeLeft))
       : getQuestionTime();
 
     state.selectedAnswer = saved.selectedAnswer ?? null;
@@ -1376,8 +1485,6 @@
 
     syncSetupButtons();
 
-    // If the previous question was already answered,
-    // continue with the next unanswered question.
     if (state.answerSubmitted) {
       if (state.currentIndex < restored.length - 1) {
         state.currentIndex++;
@@ -1390,12 +1497,15 @@
       }
     }
 
-    startCurrentRound();
+    const setup = $("gameSetup");
+    if (setup) setup.style.display = "none";
+
+    startCurrentRound(true);
   }
 
-  // --------------------------------------------------
+  // ================================================
   // SETTINGS
-  // --------------------------------------------------
+  // ================================================
 
   function openSettings() {
     if (
@@ -1436,12 +1546,16 @@
     state.mode = mode;
     state.languageChosen = true;
     state.modeChosen = true;
+    state.setupConfirmed = false;
 
     localStorage.setItem(CONFIG.STORAGE.language, language);
     localStorage.setItem(CONFIG.STORAGE.mode, mode);
 
     if (changed) {
       clearProgress();
+      state.roundQuestions = [];
+      state.review = [];
+      state.currentIndex = 0;
     }
 
     syncSetupButtons();
@@ -1455,6 +1569,19 @@
     }
 
     showScreen("homeScreen");
+
+    if ($("gameSetup")) {
+      $("gameSetup").style.display = "block";
+    }
+
+    if ($("confirmSetupBtn")) {
+      $("confirmSetupBtn").style.display = "block";
+    }
+
+    if ($("startBtn")) {
+      $("startBtn").style.display = "block";
+      $("startBtn").disabled = true;
+    }
   }
 
   function resetProgress() {
@@ -1485,6 +1612,7 @@
     state.answered = 0;
     state.selectedAnswer = null;
     state.answerSubmitted = false;
+    state.setupConfirmed = false;
 
     updateHome();
 
@@ -1496,9 +1624,9 @@
     }
   }
 
-  // --------------------------------------------------
-  // MUSIC SETTING
-  // --------------------------------------------------
+  // ================================================
+  // MUSIC ON / OFF
+  // ================================================
 
   function setMusic(enabled) {
     state.music = Boolean(enabled);
@@ -1524,9 +1652,9 @@
     ));
   }
 
-  // --------------------------------------------------
-  // SHARE
-  // --------------------------------------------------
+  // ================================================
+  // SHARE QUIZ
+  // ================================================
 
   async function shareApp() {
     const shareData = {
@@ -1562,9 +1690,9 @@
     }
   }
 
-  // --------------------------------------------------
+  // ================================================
   // NAVIGATION
-  // --------------------------------------------------
+  // ================================================
 
   function goHome() {
     if (
@@ -1578,40 +1706,56 @@
 
     showScreen("homeScreen");
     updateHome();
+
+    if ($("gameSetup")) {
+      $("gameSetup").style.display = "block";
+    }
+
+    if ($("confirmSetupBtn")) {
+      $("confirmSetupBtn").style.display = "block";
+    }
+
+    if ($("startBtn")) {
+      $("startBtn").style.display = "block";
+      $("startBtn").disabled = true;
+    }
+
+    state.setupConfirmed = false;
+    syncSetupButtons();
   }
 
-  // --------------------------------------------------
+  // ================================================
   // EVENT BINDING
-  // --------------------------------------------------
+  // ================================================
 
   function on(id, event, callback) {
     const element = $(id);
-    if (element) element.addEventListener(event, callback);
+    if (element) {
+      element.addEventListener(event, callback);
+    }
   }
 
   function bindEvents() {
 
-    // Compatibility only: the new index does not need startBtn.
-    on("startBtn", "click", openSetup);
-
-    // Main setup button.
+    // Setup confirmation and start.
+    on("startBtn", "click", startConfirmedQuiz);
     on("confirmSetupBtn", "click", confirmSetup);
 
-    // Language selection.
+    // Language.
     $$(".language-btn").forEach(button => {
       button.addEventListener("click", () => {
         selectLanguage(button.dataset.language);
       });
     });
 
-    // Category selection.
+    // Category.
     $$(".mode-btn").forEach(button => {
       button.addEventListener("click", () => {
         selectMode(button.dataset.mode);
       });
     });
 
-    // Home navigation.
+    // Home.
     on("continueBtn", "click", continueQuiz);
     on("roundsBtn", "click", showRounds);
     on("settingsBtn", "click", openSettings);
@@ -1656,6 +1800,8 @@
         $("quizScreen").style.display === "none"
       ) return;
 
+      if (event.target && event.target.tagName === "BUTTON") return;
+
       if (state.answerSubmitted) {
         nextQuestion();
       } else if (state.selectedAnswer !== null) {
@@ -1664,9 +1810,9 @@
     });
   }
 
-  // --------------------------------------------------
+  // ================================================
   // INITIALIZATION
-  // --------------------------------------------------
+  // ================================================
 
   async function init() {
     bindEvents();
@@ -1674,31 +1820,37 @@
     syncSetupButtons();
     setMusic(state.music);
 
-    // Open directly on the home screen with setup visible.
     showScreen("homeScreen");
 
-    const setup = $("gameSetup");
-    if (setup) setup.style.display = "block";
+    if ($("gameSetup")) {
+      $("gameSetup").style.display = "block";
+    }
+
+    if ($("confirmSetupBtn")) {
+      $("confirmSetupBtn").style.display = "block";
+    }
+
+    if ($("startBtn")) {
+      $("startBtn").style.display = "block";
+      $("startBtn").disabled = true;
+    }
 
     updateHome();
 
     await loadQuestions();
 
     updateHome();
-
-    document.dispatchEvent(new CustomEvent(
-      "quizmaster:show-screen",
-      { detail: { screen: "homeScreen" } }
-    ));
+    updateSelectionSummary();
   }
 
-  // --------------------------------------------------
+  // ================================================
   // PUBLIC FUNCTIONS
-  // --------------------------------------------------
+  // ================================================
 
   window.QuizMaster = {
     start: openSetup,
     confirmSetup,
+    startConfirmedQuiz,
     continueQuiz,
     showRounds,
     showReview,
