@@ -5213,4 +5213,517 @@
     "answer": "United States",
     "answer_rw": "Leta Zunze Ubumwe za Amerika"
   },
-  
+  {
+    "category": "general",
+    "question": "Which organ pumps blood throughout the human body?",
+    "question_rw": "Ni uruhe rugingo rusunika amaraso akagera mu mubiri wose w'umuntu?",
+    "options": ["Lungs", "Heart", "Kidneys", "Liver"],
+    "options_rw": ["Ibihaha", "Umutima", "Impyiko", "Umwijima"],
+    "answer": "Heart",
+    "answer_rw": "Umutima"
+  },
+  {
+    "category": "general",
+    "question": "Which part of a plant absorbs water and minerals from the soil?",
+    "question_rw": "Ni ikihe gice cy'igihingwa gikurura amazi n'intungamubiri ziva mu butaka?",
+    "options": ["Leaves", "Flowers", "Roots", "Fruits"],
+    "options_rw": ["Amababi", "Indabo", "Imizi", "Imbuto"],
+    "answer": "Roots",
+    "answer_rw": "Imizi"
+  },
+  {
+    "category": "general",
+    "question": "What is the basic structural and functional unit of life?",
+    "question_rw": "Ni ikihe kintu fatizo kigize ibinyabuzima kandi kibikoreramo ibikorwa by'ubuzima?",
+    "options": ["Tissue", "Cell", "Organ", "Atom"],
+    "options_rw": ["Uturemangingo tw'itsinda", "Akaremangingo", "Urugingo", "Agahimba k'ibanze k'ibintu"],
+    "answer": "Cell",
+    "answer_rw": "Akaremangingo"
+  },
+  {
+    "category": "general",
+    "question": "Which blood cells help the body fight infections?",
+    "question_rw": "Ni ubuhe bwoko bw'uturemangingo tw'amaraso bufasha umubiri kurwanya indwara?",
+    "options": ["Red blood cells", "White blood cells", "Platelets", "Plasma"],
+    "options_rw": ["Uturemangingo dutukura", "Uturemangingo twera", "Uturemangingo dufasha amaraso kuvura", "Plazima"],
+    "answer": "White blood cells",
+    "answer_rw": "Uturemangingo twera"
+  },
+  {
+    "category": "general",
+    "question": "What is the process by which green plants make their own food using sunlight?",
+    "question_rw": "Ni ikihe gikorwa ibimera bibisi bikoresha kugira ngo bikore ibiryo byabyo bifashishije urumuri rw'izuba?",
+    "options": ["Respiration", "Photosynthesis", "Digestion", "Fermentation"],
+    "options_rw": ["Guhumeka", "Fotosinteze", "Igogorwa", "Fermentation"],
+    "answer": "Photosynthesis",
+    "answer_rw": "Fotosinteze"
+  },
+  {
+    "category": "general",
+    "question": "Which organ is mainly responsible for filtering blood and producing urine?",
+    "question_rw": "Ni uruhe rugingo ruyungurura amaraso kandi rugakora inkari?",
+    "options": ["Heart", "Liver", "Kidneys", "Stomach"],
+    "options_rw": ["Umutima", "Umwijima", "Impyiko", "Igifu"],
+    "answer": "Kidneys",
+    "answer_rw": "Impyiko"
+  },
+  {
+    "category": "general",
+    "question": "What is the largest organ of the human body?",
+    "question_rw": "Ni uruhe rugingo runini kurusha izindi mu mubiri w'umuntu?",
+    "options": ["Liver", "Brain", "Skin", "Lungs"],
+    "options_rw": ["Umwijima", "Ubwonko", "Uruhu", "Ibihaha"],
+    "answer": "Skin",
+    "answer_rw": "Uruhu"
+  },
+  {
+    "category": "general",
+    "question": "Which molecule carries genetic information in living organisms?",
+    "question_rw": "Ni iyihe molekile itwara amakuru y'imiterere n'ibiranga ibinyabuzima?",
+    "options": ["Protein", "DNA", "Glucose", "Water"],
+    "options_rw": ["Poroteyine", "DNA", "Gulukosi", "Amazi"],
+    "answer": "DNA",
+    "answer_rw": "DNA"
+  },
+  {
+    "category": "general",
+    "question": "Which gas do humans mainly take in during breathing?",
+    "question_rw": "Ni uwuhe mwuka abantu bakenera cyane mu gihe bahumeka?",
+    "options": ["Carbon dioxide", "Nitrogen", "Oxygen", "Hydrogen"],
+    "options_rw": ["Diyogiside ya karubone", "Azote", "Ogisijeni", "Hayidrojeni"],
+    "answer": "Oxygen",
+    "answer_rw": "Ogisijeni"
+  },
+  {
+    "category": "general",
+    "question": "Which part of the human brain controls balance and coordination?",
+    "question_rw": "Ni ikihe gice cy'ubwonko gifasha umuntu kuringaniza umubiri no guhuza ingendo?",
+    "options": ["Cerebrum", "Cerebellum", "Brain stem", "Hypothalamus"],
+    "options_rw": ["Ubwonko bunini", "Ubwonko buto", "Igice gihuza ubwonko n'umugongo", "Hypothalamus"],
+    "answer": "Cerebellum",
+    "answer_rw": "Ubwonko buto"
+  },
+  {
+    "category": "general",
+    "question": "What is the SI unit of force?",
+    "question_rw": "Ni ikihe gipimo mpuzamahanga gikoreshwa mu gupima imbaraga?",
+    "options": ["Joule", "Newton", "Watt", "Pascal"],
+    "options_rw": ["Joule", "Newton", "Watt", "Pascal"],
+    "answer": "Newton",
+    "answer_rw": "Newton"
+  },
+  {
+    "category": "general",
+    "question": "What is the approximate speed of light in a vacuum?",
+    "question_rw": "Umuvuduko w'urumuri mu cyuho kingana ute hafi?",
+    "options": ["300,000 km/s", "30,000 km/s", "150,000 km/s", "3,000 km/s"],
+    "options_rw": ["Km 300.000 ku isegonda", "Km 30.000 ku isegonda", "Km 150.000 ku isegonda", "Km 3.000 ku isegonda"],
+    "answer": "300,000 km/s",
+    "answer_rw": "Km 300.000 ku isegonda"
+  },
+  {
+    "category": "general",
+    "question": "Which instrument is used to measure temperature?",
+    "question_rw": "Ni ikihe gikoresho gipima ubushyuhe?",
+    "options": ["Barometer", "Thermometer", "Hygrometer", "Anemometer"],
+    "options_rw": ["Barometer", "Thermometer", "Hygrometer", "Anemometer"],
+    "answer": "Thermometer",
+    "answer_rw": "Thermometer"
+  },
+  {
+    "category": "general",
+    "question": "What happens to water at standard atmospheric pressure when it reaches 100 degrees Celsius?",
+    "question_rw": "Bigenda bite ku mazi ageze kuri dogere selisiyusi 100 ku muvuduko usanzwe w'ikirere?",
+    "options": ["They freeze", "They boil", "They become solid metal", "They disappear"],
+    "options_rw": ["Arakonja agahinduka urubura", "Arabira", "Ahinduka icyuma", "Arashira burundu"],
+    "answer": "They boil",
+    "answer_rw": "Arabira"
+  },
+  {
+    "category": "general",
+    "question": "Which type of energy is stored in a stretched spring?",
+    "question_rw": "Ni ubuhe bwoko bw'ingufu bubikwa mu cyuma cy'isoko kirambuwe?",
+    "options": ["Chemical energy", "Elastic potential energy", "Sound energy", "Nuclear energy"],
+    "options_rw": ["Ingufu z'ubutabire", "Ingufu zishobora kubikwa mu kintu cyoroshye kurambuka", "Ingufu z'ijwi", "Ingufu za nikireya"],
+    "answer": "Elastic potential energy",
+    "answer_rw": "Ingufu zishobora kubikwa mu kintu cyoroshye kurambuka"
+  },
+  {
+    "category": "general",
+    "question": "What is the SI unit of electrical resistance?",
+    "question_rw": "Ni ikihe gipimo mpuzamahanga gipima inzitizi amashanyarazi ahura na zo?",
+    "options": ["Volt", "Ampere", "Ohm", "Watt"],
+    "options_rw": ["Volt", "Ampere", "Ohm", "Watt"],
+    "answer": "Ohm",
+    "answer_rw": "Ohm"
+  },
+  {
+    "category": "general",
+    "question": "Which law states that every action has an equal and opposite reaction?",
+    "question_rw": "Ni irihe tegeko rivuga ko buri gikorwa kigira igisubizo kingana na cyo ariko kijya mu cyerekezo gitandukanye?",
+    "options": ["Newton's first law", "Newton's second law", "Newton's third law", "Ohm's law"],
+    "options_rw": ["Itegeko rya mbere rya Newton", "Itegeko rya kabiri rya Newton", "Itegeko rya gatatu rya Newton", "Itegeko rya Ohm"],
+    "answer": "Newton's third law",
+    "answer_rw": "Itegeko rya gatatu rya Newton"
+  },
+  {
+    "category": "general",
+    "question": "What is the SI unit of power?",
+    "question_rw": "Ni ikihe gipimo mpuzamahanga gipima ingufu zikoreshwa mu gihe runaka?",
+    "options": ["Joule", "Watt", "Newton", "Meter"],
+    "options_rw": ["Joule", "Watt", "Newton", "Meter"],
+    "answer": "Watt",
+    "answer_rw": "Watt"
+  },
+  {
+    "category": "general",
+    "question": "Which phenomenon causes a straw in a glass of water to appear bent?",
+    "question_rw": "Ni iki gituma umuheha uri mu kirahuri cy'amazi usa n'uwunamye?",
+    "options": ["Reflection", "Refraction", "Diffraction", "Magnetism"],
+    "options_rw": ["Kugaruka k'urumuri", "Kugororwa kw'urumuri", "Gutatanuka kw'imiraba", "Imbaraga za rukuruzi ya rukuruzi y'icyuma"],
+    "answer": "Refraction",
+    "answer_rw": "Kugororwa kw'urumuri"
+  },
+  {
+    "category": "general",
+    "question": "Which is the largest ocean on Earth?",
+    "question_rw": "Ni iyihe nyanja nini kurusha izindi ku isi?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "options_rw": ["Inyanja ya Atlantika", "Inyanja y'Abahinde", "Inyanja ya Pasifika", "Inyanja ya Arctique"],
+    "answer": "Pacific Ocean",
+    "answer_rw": "Inyanja ya Pasifika"
+  },
+  {
+    "category": "general",
+    "question": "Which is the largest hot desert in the world?",
+    "question_rw": "Ni ubuhe butayu bunini kurusha ubundi ku isi mu butayu bushyushye?",
+    "options": ["Gobi Desert", "Sahara Desert", "Kalahari Desert", "Arabian Desert"],
+    "options_rw": ["Ubutayu bwa Gobi", "Ubutayu bwa Sahara", "Ubutayu bwa Kalahari", "Ubutayu bw'Abarabu"],
+    "answer": "Sahara Desert",
+    "answer_rw": "Ubutayu bwa Sahara"
+  },
+  {
+    "category": "general",
+    "question": "What is the capital city of Australia?",
+    "question_rw": "Umurwa mukuru wa Australia ni uwuhe?",
+    "options": ["Sydney", "Melbourne", "Canberra", "Perth"],
+    "options_rw": ["Sydney", "Melbourne", "Canberra", "Perth"],
+    "answer": "Canberra",
+    "answer_rw": "Canberra"
+  },
+  {
+    "category": "general",
+    "question": "Which mountain is the highest above sea level?",
+    "question_rw": "Ni uwuhe musozi muremure kurusha iyindi ku isi iyo upimye uhereye ku nyanja?",
+    "options": ["Mount Kilimanjaro", "Mount Everest", "K2", "Mount Elbrus"],
+    "options_rw": ["Umusozi wa Kilimanjaro", "Umusozi wa Everest", "K2", "Umusozi wa Elbrus"],
+    "answer": "Mount Everest",
+    "answer_rw": "Umusozi wa Everest"
+  },
+  {
+    "category": "general",
+    "question": "Which continent has the largest number of countries?",
+    "question_rw": "Ni uwuhe mugabane ufite ibihugu byinshi kurusha indi?",
+    "options": ["Asia", "Africa", "Europe", "South America"],
+    "options_rw": ["Aziya", "Afurika", "Uburayi", "Amerika y'Epfo"],
+    "answer": "Africa",
+    "answer_rw": "Afurika"
+  },
+  {
+    "category": "general",
+    "question": "Which river is traditionally regarded as the longest river in Africa?",
+    "question_rw": "Ni uwuhe mugezi usanzwe ufatwa nk'ureure kurusha indi muri Afurika?",
+    "options": ["Congo River", "Nile River", "Zambezi River", "Niger River"],
+    "options_rw": ["Umugezi wa Kongo", "Umugezi wa Nili", "Umugezi wa Zambezi", "Umugezi wa Niger"],
+    "answer": "Nile River",
+    "answer_rw": "Umugezi wa Nili"
+  },
+  {
+    "category": "general",
+    "question": "Which imaginary line divides Earth into the Northern and Southern Hemispheres?",
+    "question_rw": "Ni uwuhe murongo w'impimbano ugabanya isi mo igice cy'Amajyaruguru n'icy'Amajyepfo?",
+    "options": ["Prime Meridian", "Equator", "Tropic of Cancer", "Arctic Circle"],
+    "options_rw": ["Umurongo wa Greenwich", "Ekwateri", "Umurongo wa Tropic of Cancer", "Umurongo wa Arctique"],
+    "answer": "Equator",
+    "answer_rw": "Ekwateri"
+  },
+  {
+    "category": "general",
+    "question": "Which country has the largest land area in the world?",
+    "question_rw": "Ni ikihe gihugu gifite ubuso bunini kurusha ibindi ku isi?",
+    "options": ["Canada", "China", "Russia", "United States"],
+    "options_rw": ["Canada", "Ubushinwa", "Uburusiya", "Leta Zunze Ubumwe za Amerika"],
+    "answer": "Russia",
+    "answer_rw": "Uburusiya"
+  },
+  {
+    "category": "general",
+    "question": "What is the capital city of Japan?",
+    "question_rw": "Umurwa mukuru w'Ubuyapani ni uwuhe?",
+    "options": ["Kyoto", "Osaka", "Tokyo", "Hiroshima"],
+    "options_rw": ["Kyoto", "Osaka", "Tokyo", "Hiroshima"],
+    "answer": "Tokyo",
+    "answer_rw": "Tokyo"
+  },
+  {
+    "category": "general",
+    "question": "Which African lake is the largest by surface area?",
+    "question_rw": "Ni iyihe nyanja yo muri Afurika nini kurusha izindi ukurikije ubuso bw'amazi?",
+    "options": ["Lake Tanganyika", "Lake Victoria", "Lake Malawi", "Lake Kivu"],
+    "options_rw": ["Ikiyaga cya Tanganyika", "Ikiyaga cya Victoria", "Ikiyaga cya Malawi", "Ikiyaga cya Kivu"],
+    "answer": "Lake Victoria",
+    "answer_rw": "Ikiyaga cya Victoria"
+  },
+  {
+    "category": "general",
+    "question": "What is 15 multiplied by 12?",
+    "question_rw": "15 wikubye na 12 bingana iki?",
+    "options": ["160", "170", "180", "190"],
+    "options_rw": ["160", "170", "180", "190"],
+    "answer": "180",
+    "answer_rw": "180"
+  },
+  {
+    "category": "general",
+    "question": "What is the square root of 144?",
+    "question_rw": "Umubare fatizo wa kabiri wa 144 ni uwuhe?",
+    "options": ["10", "11", "12", "14"],
+    "options_rw": ["10", "11", "12", "14"],
+    "answer": "12",
+    "answer_rw": "12"
+  },
+  {
+    "category": "general",
+    "question": "What is the value of pi rounded to two decimal places?",
+    "question_rw": "Agaciro ka Pi kapfundikiye ku mibare ibiri nyuma y'akadomo ni akahe?",
+    "options": ["3.12", "3.14", "3.16", "3.18"],
+    "options_rw": ["3.12", "3.14", "3.16", "3.18"],
+    "answer": "3.14",
+    "answer_rw": "3.14"
+  },
+  {
+    "category": "general",
+    "question": "What is the sum of the interior angles of a triangle?",
+    "question_rw": "Igiteranyo cy'inguni zo imbere mu mpandeshatu kingana iki?",
+    "options": ["90 degrees", "180 degrees", "270 degrees", "360 degrees"],
+    "options_rw": ["Dogere 90", "Dogere 180", "Dogere 270", "Dogere 360"],
+    "answer": "180 degrees",
+    "answer_rw": "Dogere 180"
+  },
+  {
+    "category": "general",
+    "question": "What is 25 percent of 200?",
+    "question_rw": "25 ku ijana bya 200 bingana iki?",
+    "options": ["25", "40", "50", "75"],
+    "options_rw": ["25", "40", "50", "75"],
+    "answer": "50",
+    "answer_rw": "50"
+  },
+  {
+    "category": "general",
+    "question": "What is the next prime number after 7?",
+    "question_rw": "Ni uwuhe mubare w'ibanze ukurikira 7?",
+    "options": ["8", "9", "10", "11"],
+    "options_rw": ["8", "9", "10", "11"],
+    "answer": "11",
+    "answer_rw": "11"
+  },
+  {
+    "category": "general",
+    "question": "What is the area of a rectangle with length 8 cm and width 5 cm?",
+    "question_rw": "Ubuso bw'urukiramende rufite uburebure bwa cm 8 n'ubugari bwa cm 5 bungana iki?",
+    "options": ["13 cm²", "26 cm²", "40 cm²", "45 cm²"],
+    "options_rw": ["cm² 13", "cm² 26", "cm² 40", "cm² 45"],
+    "answer": "40 cm²",
+    "answer_rw": "cm² 40"
+  },
+  {
+    "category": "general",
+    "question": "Solve the equation: 3x + 5 = 20. What is x?",
+    "question_rw": "Kora iyi mibare: 3x + 5 = 20. Agaciro ka x ni akahe?",
+    "options": ["3", "5", "7", "10"],
+    "options_rw": ["3", "5", "7", "10"],
+    "answer": "5",
+    "answer_rw": "5"
+  },
+  {
+    "category": "general",
+    "question": "What is the probability of getting a head when tossing a fair coin once?",
+    "question_rw": "Amahirwe yo kubona uruhande rwanditseho umutwe iyo uteye igiceri kimwe kingana iki?",
+    "options": ["1/4", "1/2", "1/3", "1"],
+    "options_rw": ["1/4", "1/2", "1/3", "1"],
+    "answer": "1/2",
+    "answer_rw": "1/2"
+  },
+  {
+    "category": "general",
+    "question": "What is the chemical symbol for gold?",
+    "question_rw": "Ikimenyetso cy'ubutabire cy'igisate cya zahabu ni ikihe?",
+    "options": ["Ag", "Au", "Fe", "Go"],
+    "options_rw": ["Ag", "Au", "Fe", "Go"],
+    "answer": "Au",
+    "answer_rw": "Au"
+  },
+  {
+    "category": "general",
+    "question": "What is the chemical formula for water?",
+    "question_rw": "Imiterere y'imvange y'ubutabire y'amazi yandikwa ite?",
+    "options": ["CO2", "H2O", "O2", "NaCl"],
+    "options_rw": ["CO2", "H2O", "O2", "NaCl"],
+    "answer": "H2O",
+    "answer_rw": "H2O"
+  },
+  {
+    "category": "general",
+    "question": "What is the pH value of a neutral solution at 25 degrees Celsius?",
+    "question_rw": "Agaciro ka pH k'umuti utari aside cyangwa alkalini ku bushyuhe bwa dogere 25 ni akahe?",
+    "options": ["0", "5", "7", "14"],
+    "options_rw": ["0", "5", "7", "14"],
+    "answer": "7",
+    "answer_rw": "7"
+  },
+  {
+    "category": "general",
+    "question": "Which gas is most abundant in Earth's atmosphere?",
+    "question_rw": "Ni uwuhe mwuka uboneka ku bwinshi mu kirere gikikije isi?",
+    "options": ["Oxygen", "Carbon dioxide", "Nitrogen", "Hydrogen"],
+    "options_rw": ["Ogisijeni", "Diyogiside ya karubone", "Azote", "Hayidrojeni"],
+    "answer": "Nitrogen",
+    "answer_rw": "Azote"
+  },
+  {
+    "category": "general",
+    "question": "Which element has the chemical symbol Fe?",
+    "question_rw": "Ni ikihe kinyabutabire gifite ikimenyetso Fe?",
+    "options": ["Fluorine", "Iron", "Francium", "Fermium"],
+    "options_rw": ["Fluorine", "Icyuma", "Francium", "Fermium"],
+    "answer": "Iron",
+    "answer_rw": "Icyuma"
+  },
+  {
+    "category": "general",
+    "question": "What type of substance has a pH below 7?",
+    "question_rw": "Ni ubuhe bwoko bw'umuti bugira pH iri munsi ya 7?",
+    "options": ["Neutral substance", "Acidic substance", "Basic substance", "Pure metal"],
+    "options_rw": ["Umuti utabogamye", "Umuti wa aside", "Umuti wa alkalini", "Icyuma gisukuye"],
+    "answer": "Acidic substance",
+    "answer_rw": "Umuti wa aside"
+  },
+  {
+    "category": "general",
+    "question": "What is the chemical symbol for sodium?",
+    "question_rw": "Ikimenyetso cy'ubutabire cya sodium ni ikihe?",
+    "options": ["S", "So", "Na", "N"],
+    "options_rw": ["S", "So", "Na", "N"],
+    "answer": "Na",
+    "answer_rw": "Na"
+  },
+  {
+    "category": "general",
+    "question": "Which gas is released when an acid reacts with many metals?",
+    "question_rw": "Ni uwuhe mwuka urekurwa iyo aside ikoranye n'ibyuma byinshi?",
+    "options": ["Oxygen", "Hydrogen", "Nitrogen", "Chlorine"],
+    "options_rw": ["Ogisijeni", "Hayidrojeni", "Azote", "Kororini"],
+    "answer": "Hydrogen",
+    "answer_rw": "Hayidrojeni"
+  },
+  {
+    "category": "general",
+    "question": "What is the traditional Kinyarwanda proverb meaning that unity brings strength?",
+    "question_rw": "Ni uwuhe mugani nyarwanda uvuga ko abantu bishyize hamwe bagira imbaraga?",
+    "options": ["Ak'imuhana kaza imvura ihise", "Ubumwe ni imbaraga", "Agahinda k'umugabo ni agahinda k'undi", "Uwitonze akama ishashi"],
+    "options_rw": ["Ak'imuhana kaza imvura ihise", "Ubumwe ni imbaraga", "Agahinda k'umugabo ni agahinda k'undi", "Uwitonze akama ishashi"],
+    "answer": "Ubumwe ni imbaraga",
+    "answer_rw": "Ubumwe ni imbaraga"
+  },
+  {
+    "category": "general",
+    "question": "Complete the Kinyarwanda proverb: Ak'imuhana kaza...",
+    "question_rw": "Uzuza uyu mugani nyarwanda: Ak'imuhana kaza...",
+    "options": ["imvura ihise", "ku mugoroba", "iyo izuba rirenze", "mu gitondo"],
+    "options_rw": ["imvura ihise", "ku mugoroba", "iyo izuba rirenze", "mu gitondo"],
+    "answer": "imvura ihise",
+    "answer_rw": "imvura ihise"
+  },
+  {
+    "category": "general",
+    "question": "What does the Kinyarwanda proverb 'Uwitonze akama ishashi' teach?",
+    "question_rw": "Umugani 'Uwitonze akama ishashi' wigisha iki?",
+    "options": ["Patience and perseverance bring results", "Hurry is always best", "Wealth comes without effort", "Never help others"],
+    "options_rw": ["Kwihangana no gutuza bitanga umusaruro", "Kwihuta ni byo byiza buri gihe", "Ubukire buza nta mbaraga", "Ntukagire uwo ufasha"],
+    "answer": "Patience and perseverance bring results",
+    "answer_rw": "Kwihangana no gutuza bitanga umusaruro"
+  },
+  {
+    "category": "general",
+    "question": "What is the meaning of the Kinyarwanda expression 'Guca bugufi'?",
+    "question_rw": "Imvugo 'Guca bugufi' isobanura iki?",
+    "options": ["To become proud", "To show humility", "To become angry", "To run quickly"],
+    "options_rw": ["Kwishyira hejuru", "Kugaragaza kwicisha bugufi", "Kurakara", "Kwiruka vuba"],
+    "answer": "To show humility",
+    "answer_rw": "Kugaragaza kwicisha bugufi"
+  },
+  {
+    "category": "general",
+    "question": "What is the opposite of the Kinyarwanda word 'Umugabo' in the traditional gendered vocabulary?",
+    "question_rw": "Mu magambo y'ikinyarwanda agaragaza igitsina, ijambo rinyuranye na 'umugabo' ni irihe?",
+    "options": ["Umuhungu", "Umugore", "Umusaza", "Umwana"],
+    "options_rw": ["Umuhungu", "Umugore", "Umusaza", "Umwana"],
+    "answer": "Umugore",
+    "answer_rw": "Umugore"
+  },
+  {
+    "category": "general",
+    "question": "Which planet is known as the Red Planet?",
+    "question_rw": "Ni uwuhe mubumbe uzwi ku izina ry'umubumbe utukura?",
+    "options": ["Venus", "Mars", "Jupiter", "Mercury"],
+    "options_rw": ["Venusi", "Marsi", "Jupiteri", "Merkuri"],
+    "answer": "Mars",
+    "answer_rw": "Marsi"
+  },
+  {
+    "category": "general",
+    "question": "Which star is closest to Earth?",
+    "question_rw": "Ni iyihe nyenyeri yegereye isi kurusha izindi?",
+    "options": ["Sirius", "The Sun", "Polaris", "Proxima Centauri"],
+    "options_rw": ["Sirius", "Izuba", "Polaris", "Proxima Centauri"],
+    "answer": "The Sun",
+    "answer_rw": "Izuba"
+  },
+  {
+    "category": "general",
+    "question": "Which planet is the largest in our solar system?",
+    "question_rw": "Ni uwuhe mubumbe munini kurusha iyindi muri sisitemu y'izuba?",
+    "options": ["Saturn", "Earth", "Jupiter", "Neptune"],
+    "options_rw": ["Saturni", "Isi", "Jupiteri", "Neptune"],
+    "answer": "Jupiter",
+    "answer_rw": "Jupiteri"
+  },
+  {
+    "category": "general",
+    "question": "What causes the phases of the Moon?",
+    "question_rw": "Ni iki gituma ukwezi kugaragara mu byiciro bitandukanye?",
+    "options": ["Earth's shadow always covers part of the Moon", "The changing positions of the Sun, Earth, and Moon", "The Moon produces different amounts of light", "Clouds cover the Moon"],
+    "options_rw": ["Igicucu cy'isi gihora gitwikira igice cy'ukwezi", "Imyanya y'izuba, isi n'ukwezi uko ihinduka", "Ukwezi kugenda guhindura ingano y'urumuri kwikorera", "Ibicu bitwikira ukwezi"],
+    "answer": "The changing positions of the Sun, Earth, and Moon",
+    "answer_rw": "Imyanya y'izuba, isi n'ukwezi uko ihinduka"
+  },
+  {
+    "category": "general",
+    "question": "Which planet is famous for its prominent ring system?",
+    "question_rw": "Ni uwuhe mubumbe uzwiho kugira impeta zigaragara cyane?",
+    "options": ["Mars", "Saturn", "Venus", "Mercury"],
+    "options_rw": ["Marsi", "Saturni", "Venusi", "Merkuri"],
+    "answer": "Saturn",
+    "answer_rw": "Saturni"
+  },
+  {
+    "category": "general",
+    "question": "What is the name of the galaxy that contains our Solar System?",
+    "question_rw": "Injeje irimo sisitemu yacu y'izuba yitwa ite?",
+    "options": ["Andromeda", "Milky Way", "Whirlpool", "Sombrero"],
+    "options_rw": ["Andromeda", "Inzira y'Amata", "Whirlpool", "Sombrero"],
+    "answer": "Milky Way",
+    "answer_rw": "Inzira y'Amata"
+  },
+    
