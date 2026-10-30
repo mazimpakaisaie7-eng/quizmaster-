@@ -62,8 +62,7 @@
       line-height: 1.55;
     }
 
-    button,
-    select {
+    button, select {
       font: inherit;
     }
 
@@ -129,10 +128,7 @@
       margin-bottom: 8px;
     }
 
-    h1,
-    h2,
-    h3,
-    p {
+    h1, h2, h3, p {
       margin-top: 0;
     }
 
@@ -255,7 +251,7 @@
     }
 
     .selection-group {
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
     .selection-group h3 {
@@ -274,9 +270,10 @@
       border: 2px solid var(--border);
       border-radius: 12px;
       padding: 14px 8px;
-      min-height: 55px;
+      min-height: 58px;
       font-weight: 700;
       color: var(--text);
+      transition: 0.15s ease;
     }
 
     .choice-btn.active {
@@ -285,12 +282,19 @@
       color: var(--primary);
     }
 
+    .choice-btn:focus-visible,
+    .button:focus-visible {
+      outline: 3px solid #9bbaff;
+      outline-offset: 2px;
+    }
+
+    /* Setup is visible immediately */
     #gameSetup {
-      display: none;
+      display: block;
     }
 
     #selectionSummary {
-      margin-top: 16px;
+      margin-top: 18px;
       padding: 12px;
       border-radius: 10px;
       background: #f4f7ff;
@@ -699,11 +703,13 @@
         </script>
       </div>
 
-      <!-- GAME SETUP -->
+      <!-- GAME SETUP: VISIBLE IMMEDIATELY -->
       <div id="gameSetup" class="card">
 
-        <h2>Game Setup</h2>
-        <p class="muted">Choose your language and question category.</p>
+        <h2>🎮 Game Setup / Tegura umukino</h2>
+        <p class="muted">
+          Hitamo ururimi n'icyiciro cy'ibibazo ushaka gukina.
+        </p>
 
         <div class="selection-group">
           <h3>1. Choose Language / Hitamo ururimi</h3>
@@ -712,65 +718,56 @@
             <button
               type="button"
               class="choice-btn language-btn"
-              data-language="rw">
+              data-language="rw"
+              aria-pressed="false">
               🇷🇼 Ikinyarwanda
             </button>
 
             <button
               type="button"
               class="choice-btn language-btn"
-              data-language="en">
+              data-language="en"
+              aria-pressed="false">
               🇬🇧 English
             </button>
           </div>
         </div>
 
         <div class="selection-group">
-          <h3>2. Choose Category / Hitamo icyiciro</h3>
+          <h3>2. Choose Category / Hitamo ibibazo</h3>
 
           <div class="choice-grid">
             <button
               type="button"
               class="choice-btn mode-btn"
-              data-mode="traffic">
+              data-mode="traffic"
+              aria-pressed="false">
               🚦 Amategeko y'umuhanda
             </button>
 
             <button
               type="button"
               class="choice-btn mode-btn"
-              data-mode="general">
+              data-mode="general"
+              aria-pressed="false">
               🌍 Ubumenyi rusange
             </button>
           </div>
         </div>
 
-        <div id="selectionSummary">
-          Choose your language and category
+        <div id="selectionSummary" aria-live="polite">
+          Banza uhitemo ururimi n'icyiciro.
         </div>
 
         <button
           type="button"
           id="confirmSetupBtn"
-          class="button button-primary button-block">
-          Tangira gukina / Start Quiz
-        </button>
-
-        <button
-          type="button"
-          class="button button-light button-block"
-          onclick="document.getElementById('gameSetup').style.display='none'">
-          Back
+          class="button button-primary button-block"
+          disabled>
+          ▶ Tangira gukina / Start Quiz
         </button>
 
       </div>
-
-      <button
-        type="button"
-        id="startBtn"
-        class="button button-primary button-block">
-        🚀 Start Quiz
-      </button>
 
       <button
         type="button"
