@@ -3550,4 +3550,1153 @@
     "explanation": "Anticipation, controlled speed and calm decisions reduce the risk of collisions.",
     "explanation_rw": "Kuba maso, kugenzura umuvuduko no gufata ibyemezo utuje bigabanya ibyago by'impanuka."
   },
-    
+  {
+    "id": "incident_151",
+    "category": "traffic",
+    "sign_symbol": "⛔",
+    "question": "What does a No Entry sign mean?",
+    "question_rw": "Icyapa kibuzanya kwinjira gisobanura iki?",
+    "options": [
+      "Vehicles must not enter from that direction",
+      "Vehicles may enter at low speed",
+      "Only large vehicles may enter",
+      "Vehicles may enter after sounding the horn"
+    ],
+    "options_rw": [
+      "Ibinyabiziga ntibigomba kwinjira bivuye muri icyo cyerekezo",
+      "Ibinyabiziga bishobora kwinjira ku muvuduko muto",
+      "Ibinyabiziga binini gusa ni byo byemerewe kwinjira",
+      "Ibinyabiziga bishobora kwinjira bimaze kuvuza ihoni"
+    ],
+    "answer": "Vehicles must not enter from that direction",
+    "answer_rw": "Ibinyabiziga ntibigomba kwinjira bivuye muri icyo cyerekezo",
+    "explanation": "A No Entry sign prohibits vehicles from entering the road from the direction shown.",
+    "explanation_rw": "Icyapa kibuzanya kwinjira kibuza ibinyabiziga kwinjira muri uwo muhanda bivuye mu cyerekezo cyerekanwe."
+  },
+  {
+    "id": "incident_152",
+    "category": "traffic",
+    "sign_symbol": "🚫",
+    "question": "What should a driver do when a road sign prohibits vehicles above a specified weight?",
+    "question_rw": "Umushoferi agomba gukora iki iyo icyapa kibujije ibinyabiziga birengeje uburemere runaka?",
+    "options": [
+      "Check the vehicle's weight and use another permitted route if necessary",
+      "Enter if the road looks wide enough",
+      "Ignore the restriction when carrying an empty load",
+      "Follow another restricted vehicle"
+    ],
+    "options_rw": [
+      "Kugenzura uburemere bw'ikinyabiziga no gukoresha indi nzira yemewe igihe bibaye ngombwa",
+      "Kwinjira niba umuhanda usa n'uwagutse",
+      "Kwirengagiza ikikumirwa igihe ikinyabiziga kitikoreye",
+      "Gukurikira ikindi kinyabiziga na cyo kibujijwe"
+    ],
+    "answer": "Check the vehicle's weight and use another permitted route if necessary",
+    "answer_rw": "Kugenzura uburemere bw'ikinyabiziga no gukoresha indi nzira yemewe igihe bibaye ngombwa",
+    "explanation": "Weight restrictions protect roads, bridges and structures from excessive loads.",
+    "explanation_rw": "Ibikumirwa by'uburemere birinda imihanda, ibiraro n'ibindi bikorwaremezo kwangizwa n'imizigo irenze ubushobozi bwabyo."
+  },
+  {
+    "id": "incident_153",
+    "category": "traffic",
+    "sign_symbol": "↕️",
+    "question": "What should a driver do when a height restriction sign is displayed?",
+    "question_rw": "Umushoferi agomba gukora iki iyo abonye icyapa kigaragaza uburebure ntarengwa bw'ikinyabiziga?",
+    "options": [
+      "Check the vehicle's total height before proceeding",
+      "Proceed if the vehicle is moving slowly",
+      "Lower the vehicle's windows",
+      "Follow a taller vehicle through"
+    ],
+    "options_rw": [
+      "Kubanza kugenzura uburebure bwose bw'ikinyabiziga mbere yo gukomeza",
+      "Gukomeza niba ikinyabiziga kigenda buhoro",
+      "Gufungura amadirishya y'ikinyabiziga",
+      "Gukurikira ikinyabiziga kirekire ukinjira inyuma yacyo"
+    ],
+    "answer": "Check the vehicle's total height before proceeding",
+    "answer_rw": "Kubanza kugenzura uburebure bwose bw'ikinyabiziga mbere yo gukomeza",
+    "explanation": "The restriction helps prevent collisions with bridges, tunnels and overhead structures.",
+    "explanation_rw": "Iki kimenyetso kirinda ibinyabiziga kugonga ibiraro, imyobo yo munsi y'ubutaka n'ibindi biri hejuru y'umuhanda."
+  },
+  {
+    "id": "incident_154",
+    "category": "traffic",
+    "sign_symbol": "🚛",
+    "question": "What should a driver of a heavy goods vehicle do when a truck restriction applies?",
+    "question_rw": "Umushoferi w'ikamyo agomba gukora iki iyo hari icyapa kibuzanya amakamyo?",
+    "options": [
+      "Use an alternative route that permits the vehicle",
+      "Enter because trucks are commercial vehicles",
+      "Drive on the pavement",
+      "Ignore the sign when carrying light goods"
+    ],
+    "options_rw": [
+      "Gukoresha indi nzira yemerera icyo kinyabiziga",
+      "Kwinjira kuko amakamyo ari ibinyabiziga by'ubucuruzi",
+      "Gutwara hejuru y'inzira y'abanyamaguru",
+      "Kwirengagiza icyapa igihe atwaye imizigo yoroheje"
+    ],
+    "answer": "Use an alternative route that permits the vehicle",
+    "answer_rw": "Gukoresha indi nzira yemerera icyo kinyabiziga",
+    "explanation": "Vehicle-class restrictions must be obeyed unless an authorised exemption applies.",
+    "explanation_rw": "Ibikumirwa by'ubwoko bw'ibinyabiziga bigomba kubahirizwa keretse hari ubusonerwe bwemewe."
+  },
+  {
+    "id": "incident_155",
+    "category": "traffic",
+    "sign_symbol": "🚲",
+    "question": "What should a driver do when approaching a road reserved for cyclists?",
+    "question_rw": "Umushoferi agomba gukora iki ageze ku nzira yagenewe abanyamagare gusa?",
+    "options": [
+      "Keep the vehicle out of the restricted cycle path",
+      "Drive in it to avoid traffic",
+      "Park in it temporarily",
+      "Use it to overtake other vehicles"
+    ],
+    "options_rw": [
+      "Kwirinda kwinjiza ikinyabiziga mu nzira yagenewe abanyamagare",
+      "Kuyigendamo kugira ngo ahunge ubwinshi bw'ibinyabiziga",
+      "Kuyiparkiramo by'agateganyo",
+      "Kuyikoresha arenga ibindi binyabiziga"
+    ],
+    "answer": "Keep the vehicle out of the restricted cycle path",
+    "answer_rw": "Kwirinda kwinjiza ikinyabiziga mu nzira yagenewe abanyamagare",
+    "explanation": "Reserved cycle facilities should remain available and safe for cyclists.",
+    "explanation_rw": "Inzira zagenewe abanyamagare zigomba kuguma zikoreshwa na bo mu mutekano."
+  },
+  {
+    "id": "incident_156",
+    "category": "traffic",
+    "sign_symbol": "🚌",
+    "question": "When may a private car use a lane reserved for buses?",
+    "question_rw": "Ni ryari imodoka y'umuntu ku giti cye ishobora gukoresha umurongo wagenewe bisi?",
+    "options": [
+      "Only when the signs or regulations specifically permit it",
+      "Whenever the bus lane appears empty",
+      "Whenever traffic is congested",
+      "Whenever the driver is in a hurry"
+    ],
+    "options_rw": [
+      "Gusa igihe ibyapa cyangwa amategeko bibyemera mu buryo bwihariye",
+      "Igihe cyose umurongo wa bisi usa n'utakirimo abantu",
+      "Igihe cyose umuhanda urimo umubyigano",
+      "Igihe cyose umushoferi yihuta"
+    ],
+    "answer": "Only when the signs or regulations specifically permit it",
+    "answer_rw": "Gusa igihe ibyapa cyangwa amategeko bibyemera mu buryo bwihariye",
+    "explanation": "A bus lane is reserved for permitted vehicles during the periods indicated.",
+    "explanation_rw": "Umurongo wa bisi ugenewe ibinyabiziga byemewe mu masaha cyangwa ibihe bigaragazwa n'ibyapa."
+  },
+  {
+    "id": "incident_157",
+    "category": "traffic",
+    "sign_symbol": "🅿️",
+    "question": "What should you do if parking is prohibited on a particular road section?",
+    "question_rw": "Wakora iki iyo guhagarika ikinyabiziga bibujijwe ku gice runaka cy'umuhanda?",
+    "options": [
+      "Find a permitted parking area",
+      "Park there briefly with hazard lights on",
+      "Park on the pavement",
+      "Leave the vehicle partly in the traffic lane"
+    ],
+    "options_rw": [
+      "Gushaka ahantu hemewe guhagarika ikinyabiziga",
+      "Guhaparika akanya gato ucanye amatara y'akaga",
+      "Guhaparika hejuru y'inzira y'abanyamaguru",
+      "Kureka ikinyabiziga igice cyacyo kiri mu murongo w'ibinyabiziga"
+    ],
+    "answer": "Find a permitted parking area",
+    "answer_rw": "Gushaka ahantu hemewe guhagarika ikinyabiziga",
+    "explanation": "Parking restrictions help maintain visibility, access and traffic flow.",
+    "explanation_rw": "Ibikumirwa byo guhagarika ibinyabiziga bifasha kurinda uko umuhanda ugaragara, uko abantu bagera ahantu n'uko ibinyabiziga bigenda."
+  },
+  {
+    "id": "incident_158",
+    "category": "traffic",
+    "sign_symbol": "🚷",
+    "question": "What does a sign prohibiting pedestrians indicate?",
+    "question_rw": "Icyapa kibuza abanyamaguru kunyura gisobanura iki?",
+    "options": [
+      "Pedestrians must not use that route",
+      "Pedestrians may walk if traffic is light",
+      "Only children are prohibited",
+      "Pedestrians may use the road at night"
+    ],
+    "options_rw": [
+      "Abanyamaguru ntibemerewe gukoresha iyo nzira",
+      "Abanyamaguru bashobora kuyinyuramo igihe ibinyabiziga ari bike",
+      "Abana gusa ni bo babujijwe",
+      "Abanyamaguru bashobora kuyikoresha nijoro"
+    ],
+    "answer": "Pedestrians must not use that route",
+    "answer_rw": "Abanyamaguru ntibemerewe gukoresha iyo nzira",
+    "explanation": "The sign indicates that the route is not permitted for pedestrians.",
+    "explanation_rw": "Icyapa kigaragaza ko iyo nzira itagenewe kunyurwamo n'abanyamaguru."
+  },
+  {
+    "id": "incident_159",
+    "category": "traffic",
+    "sign_symbol": "🚜",
+    "question": "What should a driver do when a road is restricted to certain vehicle types?",
+    "question_rw": "Umushoferi agomba gukora iki iyo umuhanda wemera ubwoko bumwe gusa bw'ibinyabiziga?",
+    "options": [
+      "Check whether their vehicle is permitted before entering",
+      "Enter if no officer is present",
+      "Follow another vehicle regardless of its type",
+      "Enter during quiet hours without checking"
+    ],
+    "options_rw": [
+      "Kugenzura niba ikinyabiziga cye cyemerewe mbere yo kwinjira",
+      "Kwinjira niba nta mupolisi uhari",
+      "Gukurikira ikindi kinyabiziga hatitawe ku bwoko bwacyo",
+      "Kwinjira mu masaha atarimo abantu utagenzuye"
+    ],
+    "answer": "Check whether their vehicle is permitted before entering",
+    "answer_rw": "Kugenzura niba ikinyabiziga cye cyemerewe mbere yo kwinjira",
+    "explanation": "Restrictions apply according to the vehicle categories shown by the signs.",
+    "explanation_rw": "Ibikumirwa bikurikizwa hakurikijwe ibyiciro by'ibinyabiziga bigaragazwa n'ibyapa."
+  },
+  {
+    "id": "incident_160",
+    "category": "traffic",
+    "sign_symbol": "🚫",
+    "question": "What should a driver do when a road is closed to all motor vehicles?",
+    "question_rw": "Umushoferi agomba gukora iki iyo umuhanda ufunze ku binyabiziga byose bifite moteri?",
+    "options": [
+      "Use another permitted route",
+      "Enter slowly and leave quickly",
+      "Enter if the vehicle is small",
+      "Ignore the closure if there is no traffic"
+    ],
+    "options_rw": [
+      "Gukoresha indi nzira yemewe",
+      "Kwinjira buhoro hanyuma agahita asohoka",
+      "Kwinjira niba ikinyabiziga ari gito",
+      "Kwirengagiza ifungwa ry'umuhanda niba nta binyabiziga birimo"
+    ],
+    "answer": "Use another permitted route",
+    "answer_rw": "Gukoresha indi nzira yemewe",
+    "explanation": "A road closure must be respected unless authorised access is provided.",
+    "explanation_rw": "Ifungwa ry'umuhanda rigomba kubahirizwa keretse hari uburenganzira bwihariye bwo kuwukoresha."
+  },
+  {
+    "id": "incident_161",
+    "category": "traffic",
+    "sign_symbol": "🚦",
+    "question": "At a junction with a red traffic light, what must a driver do?",
+    "question_rw": "Ku masangano afite itara ritukura, umushoferi agomba gukora iki?",
+    "options": [
+      "Stop before the stop line",
+      "Proceed if no vehicle is approaching",
+      "Proceed after sounding the horn",
+      "Stop beyond the pedestrian crossing"
+    ],
+    "options_rw": [
+      "Guhagarara mbere y'umurongo wo guhagarara",
+      "Gukomeza niba nta kinyabiziga kiri kuza",
+      "Gukomeza amaze kuvuza ihoni",
+      "Guhagarara urenze aho abanyamaguru bambukira"
+    ],
+    "answer": "Stop before the stop line",
+    "answer_rw": "Guhagarara mbere y'umurongo wo guhagarara",
+    "explanation": "A red signal prohibits proceeding beyond the stop line, subject to any lawful authorised signal or direction.",
+    "explanation_rw": "Itara ritukura ribuza kurenga umurongo wo guhagarara, keretse hari ikimenyetso cyangwa amabwiriza yemewe abihindura."
+  },
+  {
+    "id": "incident_162",
+    "category": "traffic",
+    "sign_symbol": "🛑",
+    "question": "At a STOP sign, what must a driver do?",
+    "question_rw": "Iyo ugeze ku cyapa cya STOP, umushoferi agomba gukora iki?",
+    "options": [
+      "Come to a complete stop and proceed only when safe",
+      "Slow down without stopping",
+      "Stop only when another vehicle appears",
+      "Sound the horn and continue"
+    ],
+    "options_rw": [
+      "Guhagarara burundu hanyuma agakomeza ari uko bitekanye",
+      "Kugabanya umuvuduko atarahagarara",
+      "Guhagarara gusa igihe abonye ikindi kinyabiziga",
+      "Kuvuza ihoni agakomeza"
+    ],
+    "answer": "Come to a complete stop and proceed only when safe",
+    "answer_rw": "Guhagarara burundu hanyuma agakomeza ari uko bitekanye",
+    "explanation": "A STOP sign requires a complete stop, followed by checking that the way is safe.",
+    "explanation_rw": "Icyapa cya STOP gisaba guhagarara burundu, ukagenzura ko inzira itekanye mbere yo gukomeza."
+  },
+  {
+    "id": "incident_163",
+    "category": "traffic",
+    "sign_symbol": "↔️",
+    "question": "At an uncontrolled junction, what should a driver do?",
+    "question_rw": "Ku masangano atagenzurwa n'amatara cyangwa umupolisi, umushoferi agomba gukora iki?",
+    "options": [
+      "Approach cautiously and apply the relevant priority rules",
+      "Assume the largest vehicle always goes first",
+      "Accelerate to reach the junction first",
+      "Ignore vehicles approaching from other directions"
+    ],
+    "options_rw": [
+      "Kuyegera yitonze kandi agakurikiza amategeko agenga uwambuka mbere",
+      "Kwemeza ko ikinyabiziga kinini ari cyo kibanza kunyura buri gihe",
+      "Kongera umuvuduko kugira ngo abe uwa mbere",
+      "Kwirengagiza ibinyabiziga biva mu zindi nzira"
+    ],
+    "answer": "Approach cautiously and apply the relevant priority rules",
+    "answer_rw": "Kuyegera yitonze kandi agakurikiza amategeko agenga uwambuka mbere",
+    "explanation": "Drivers must assess the junction and follow the applicable traffic priority rules.",
+    "explanation_rw": "Abashoferi bagomba gusuzuma amasangano kandi bagakurikiza amategeko agenga uburenganzira bwo kubanza kunyura."
+  },
+  {
+    "id": "incident_164",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do when approaching a junction where another vehicle has clear priority?",
+    "question_rw": "Wakora iki wegereye amasangano aho ikindi kinyabiziga gifite uburenganzira bwo kubanza kunyura?",
+    "options": [
+      "Give way and wait until it is safe to proceed",
+      "Force your way into the junction",
+      "Sound the horn to claim priority",
+      "Accelerate before the other vehicle arrives"
+    ],
+    "options_rw": [
+      "Giha inzira utegereze kugeza igihe ushobora gukomeza mu mutekano",
+      "Jya mu masangano ku ngufu",
+      "Vuza ihoni uvuga ko ari wowe ugomba kubanza",
+      "Ongera umuvuduko mbere y'uko ikindi kinyabiziga gihagera"
+    ],
+    "answer": "Give way and wait until it is safe to proceed",
+    "answer_rw": "Giha inzira utegereze kugeza igihe ushobora gukomeza mu mutekano",
+    "explanation": "Giving way prevents conflicts and collisions at junctions.",
+    "explanation_rw": "Gutanga inzira birinda guhurirana nabi kw'ibinyabiziga n'impanuka ku masangano."
+  },
+  {
+    "id": "incident_165",
+    "category": "traffic",
+    "sign_symbol": "🚶",
+    "question": "When turning across a pedestrian crossing, what should a driver do?",
+    "question_rw": "Iyo umushoferi akata ahari inzira y'abanyamaguru bambukira, agomba gukora iki?",
+    "options": [
+      "Give way to pedestrians who are crossing or entitled to cross",
+      "Drive through before pedestrians arrive",
+      "Sound the horn to make pedestrians stop",
+      "Park on the crossing"
+    ],
+    "options_rw": [
+      "Guha inzira abanyamaguru bambuka cyangwa bafite uburenganzira bwo kwambuka",
+      "Guca mbere y'uko abanyamaguru bahagera",
+      "Kuvuza ihoni kugira ngo abanyamaguru bahagarare",
+      "Guhagarika ikinyabiziga ku murongo w'abanyamaguru"
+    ],
+    "answer": "Give way to pedestrians who are crossing or entitled to cross",
+    "answer_rw": "Guha inzira abanyamaguru bambuka cyangwa bafite uburenganzira bwo kwambuka",
+    "explanation": "Drivers turning across pedestrian paths must take particular care and give way as required.",
+    "explanation_rw": "Abashoferi bakata bambuka inzira y'abanyamaguru bagomba kwitonda no kubaha uburenganzira bwo kunyura."
+  },
+  {
+    "id": "incident_166",
+    "category": "traffic",
+    "sign_symbol": "🚑",
+    "question": "What should you do when an ambulance approaches with emergency warning signals?",
+    "question_rw": "Wakora iki iyo imbangukiragutabara ikwegereye itanga ibimenyetso by'ubutabazi?",
+    "options": [
+      "Make way safely without creating a new hazard",
+      "Race it to the junction",
+      "Block the road to stop other vehicles",
+      "Follow closely behind it"
+    ],
+    "options_rw": [
+      "Yihe inzira mu mutekano utateje akandi kaga",
+      "Uyihiganwe kugira ngo ugere ku masangano mbere yayo",
+      "Funga umuhanda kugira ngo uhagarike ibindi binyabiziga",
+      "Yikurikire uri hafi cyane"
+    ],
+    "answer": "Make way safely without creating a new hazard",
+    "answer_rw": "Yihe inzira mu mutekano utateje akandi kaga",
+    "explanation": "Emergency vehicles need a clear path, but other road users must still act safely.",
+    "explanation_rw": "Ibinyabiziga by'ubutabazi bikenera inzira ifunguye, ariko abandi bakoresha umuhanda bagomba gukomeza kwitwara mu mutekano."
+  },
+  {
+    "id": "incident_167",
+    "category": "traffic",
+    "sign_symbol": "🔄",
+    "question": "When approaching a roundabout, what should a driver do?",
+    "question_rw": "Iyo umushoferi ageze hafi y'umuzenguruko, agomba gukora iki?",
+    "options": [
+      "Slow down, observe signs and give way according to the rules",
+      "Enter without checking other traffic",
+      "Stop inside the roundabout unnecessarily",
+      "Always assume vehicles entering have priority"
+    ],
+    "options_rw": [
+      "Kugabanya umuvuduko, kureba ibyapa no gutanga inzira hakurikijwe amategeko",
+      "Kwinjira atagenzuye ibindi binyabiziga",
+      "Guhagarara mu ruzenguruko nta mpamvu",
+      "Guhora atekereza ko abinjira mu ruzenguruko ari bo bafite uburenganzira"
+    ],
+    "answer": "Slow down, observe signs and give way according to the rules",
+    "answer_rw": "Kugabanya umuvuduko, kureba ibyapa no gutanga inzira hakurikijwe amategeko",
+    "explanation": "Roundabout priority depends on the applicable signs and traffic rules.",
+    "explanation_rw": "Uburenganzira bwo kunyura mu ruzenguruko bugengwa n'ibyapa bihari n'amategeko y'umuhanda."
+  },
+  {
+    "id": "incident_168",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do before entering a main road from a minor road?",
+    "question_rw": "Wakora iki mbere yo kwinjira mu muhanda munini uvuye mu muhanda muto?",
+    "options": [
+      "Check traffic carefully and give way where required",
+      "Enter quickly without looking",
+      "Expect main-road traffic to stop for you",
+      "Use the opposite lane to enter"
+    ],
+    "options_rw": [
+      "Kugenzura ibinyabiziga neza kandi ugatanga inzira aho bisabwa",
+      "Kwinjira vuba utarebye",
+      "Kwitega ko ibinyabiziga byo mu muhanda munini biguhagararira",
+      "Gukoresha umurongo w'abaturuka imbere winjira"
+    ],
+    "answer": "Check traffic carefully and give way where required",
+    "answer_rw": "Kugenzura ibinyabiziga neza kandi ugatanga inzira aho bisabwa",
+    "explanation": "Drivers entering a main road must avoid interfering with traffic that has priority.",
+    "explanation_rw": "Abinjira mu muhanda munini bagomba kwirinda kubangamira ibinyabiziga bifite uburenganzira bwo kubanza kunyura."
+  },
+  {
+    "id": "incident_169",
+    "category": "traffic",
+    "sign_symbol": "🚘",
+    "question": "What should a driver do when another vehicle is already overtaking?",
+    "question_rw": "Umushoferi agomba gukora iki iyo abonye ikindi kinyabiziga kimaze gutangira kurenga?",
+    "options": [
+      "Avoid increasing speed and allow the overtaking manoeuvre to finish safely",
+      "Accelerate to prevent it from passing",
+      "Move suddenly into its path",
+      "Brake sharply without warning"
+    ],
+    "options_rw": [
+      "Kwirinda kongera umuvuduko kandi akagiha umwanya wo kurangiza kurenga mu mutekano",
+      "Kongera umuvuduko kugira ngo atakurenze",
+      "Guhita winjira mu nzira yacyo",
+      "Gufata feri cyane utaburiye"
+    ],
+    "answer": "Avoid increasing speed and allow the overtaking manoeuvre to finish safely",
+    "answer_rw": "Kwirinda kongera umuvuduko kandi akagiha umwanya wo kurangiza kurenga mu mutekano",
+    "explanation": "Do not compete with an overtaking vehicle; help maintain a safe and predictable road situation.",
+    "explanation_rw": "Ntugahangane n'ikinyabiziga kiri kurenga; fasha kugira ngo umuhanda ugumane umutekano n'uko abantu bashobora guteganya uko ibinyabiziga bigenda."
+  },
+  {
+    "id": "incident_170",
+    "category": "traffic",
+    "sign_symbol": "↔️",
+    "question": "When should a driver give way to oncoming traffic on a narrow road?",
+    "question_rw": "Ni ryari umushoferi agomba guha inzira ibinyabiziga bimuturutse imbere mu muhanda ufunganye?",
+    "options": [
+      "When required by signs, road layout or the safe passing situation",
+      "Only when the oncoming vehicle flashes its lights",
+      "Never, because the faster vehicle has priority",
+      "Only when driving a small vehicle"
+    ],
+    "options_rw": [
+      "Iyo bisabwe n'ibyapa, imiterere y'umuhanda cyangwa uko kunyuranaho bitekanye",
+      "Gusa iyo ikinyabiziga kimuturutse imbere kimucaniye amatara",
+      "Nta na rimwe, kuko ikinyabiziga cyihuta ari cyo gifite uburenganzira",
+      "Gusa iyo atwaye ikinyabiziga gito"
+    ],
+    "answer": "When required by signs, road layout or the safe passing situation",
+    "answer_rw": "Iyo bisabwe n'ibyapa, imiterere y'umuhanda cyangwa uko kunyuranaho bitekanye",
+    "explanation": "Drivers should follow priority signs and avoid forcing a dangerous meeting on a narrow road.",
+    "explanation_rw": "Abashoferi bagomba gukurikiza ibyapa by'uburenganzira kandi bakirinda guhatira ibinyabiziga guhura mu buryo butekanye nabi."
+  },
+  {
+    "id": "incident_171",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do when another vehicle is entering your lane?",
+    "question_rw": "Wakora iki iyo ikindi kinyabiziga kirimo kwinjira mu murongo wawe?",
+    "options": [
+      "Adjust speed if necessary and avoid a collision",
+      "Accelerate to close the gap",
+      "Block it regardless of the danger",
+      "Turn suddenly without checking"
+    ],
+    "options_rw": [
+      "Hindura umuvuduko niba bikenewe kugira ngo wirinde kugongana",
+      "Ongera umuvuduko kugira ngo ufunge icyuho",
+      "Kibuza kwinjira hatitawe ku kaga",
+      "Hita uhindukira utagenzuye"
+    ],
+    "answer": "Adjust speed if necessary and avoid a collision",
+    "answer_rw": "Hindura umuvuduko niba bikenewe kugira ngo wirinde kugongana",
+    "explanation": "Defensive driving means anticipating other road users' actions and preventing avoidable collisions.",
+    "explanation_rw": "Gutwara witonze bisaba guteganya ibyo abandi bakoresha umuhanda bashobora gukora no gukumira impanuka zishobora kwirindwa."
+  },
+  {
+    "id": "incident_172",
+    "category": "traffic",
+    "sign_symbol": "🚛",
+    "question": "Why should you avoid cutting in closely in front of a heavy truck?",
+    "question_rw": "Kuki ugomba kwirinda kwinjira hafi cyane imbere y'ikamyo nini?",
+    "options": [
+      "It needs more distance to stop safely",
+      "It can always stop faster than a car",
+      "It has no blind spots",
+      "It does not need following distance"
+    ],
+    "options_rw": [
+      "Ikenera intera ndende kugira ngo ihagarare mu mutekano",
+      "Ihagarara vuba kurusha imodoka buri gihe",
+      "Nta hantu umushoferi atabona igira",
+      "Nta ntera yo gukurikiranaho ikenera"
+    ],
+    "answer": "It needs more distance to stop safely",
+    "answer_rw": "Ikenera intera ndende kugira ngo ihagarare mu mutekano",
+    "explanation": "Heavy vehicles generally require more stopping distance, especially when loaded.",
+    "explanation_rw": "Ibinyabiziga biremereye muri rusange bikenera intera ndende yo guhagarara, cyane cyane iyo bipakiye."
+  },
+  {
+    "id": "incident_173",
+    "category": "traffic",
+    "sign_symbol": "🚲",
+    "question": "When overtaking a cyclist, what should a driver do?",
+    "question_rw": "Iyo urenga umuntu uri kuri gare, umushoferi agomba gukora iki?",
+    "options": [
+      "Leave sufficient safe clearance and overtake only when permitted",
+      "Pass as closely as possible",
+      "Sound the horn and pass at high speed",
+      "Force the cyclist off the road"
+    ],
+    "options_rw": [
+      "Gusiga intera ihagije y'umutekano no kurenga gusa igihe byemewe",
+      "Kunyura hafi cyane ye",
+      "Kuvuza ihoni ukamurenga ku muvuduko mwinshi",
+      "Kumuhatira kuva mu muhanda"
+    ],
+    "answer": "Leave sufficient safe clearance and overtake only when permitted",
+    "answer_rw": "Gusiga intera ihagije y'umutekano no kurenga gusa igihe byemewe",
+    "explanation": "Cyclists are vulnerable road users and need enough space when being overtaken.",
+    "explanation_rw": "Abanyamagare bashobora guhura n'ibyago byoroshye, bityo bakenera umwanya uhagije igihe barengwa."
+  },
+  {
+    "id": "incident_174",
+    "category": "traffic",
+    "sign_symbol": "🚶",
+    "question": "What should you do when approaching a zebra crossing with pedestrians waiting?",
+    "question_rw": "Wakora iki wegereye aho abanyamaguru bambukira ubona bahagaze bategereje?",
+    "options": [
+      "Slow down and be ready to stop to let them cross when required",
+      "Accelerate to pass before they step forward",
+      "Park on the crossing",
+      "Sound the horn to make them wait"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko witegure guhagarara kugira ngo bambuke igihe bisabwa",
+      "Ongera umuvuduko kugira ngo ubanyuremo bataratera intambwe",
+      "Paka ku murongo w'abanyamaguru",
+      "Vuza ihoni kugira ngo bakomeze gutegereza"
+    ],
+    "answer": "Slow down and be ready to stop to let them cross when required",
+    "answer_rw": "Gabanya umuvuduko witegure guhagarara kugira ngo bambuke igihe bisabwa",
+    "explanation": "Drivers must approach pedestrian crossings carefully and respect pedestrians' crossing rights.",
+    "explanation_rw": "Abashoferi bagomba kwegera inzira z'abanyamaguru bitonze kandi bakubahiriza uburenganzira bwabo bwo kwambuka."
+  },
+  {
+    "id": "incident_175",
+    "category": "traffic",
+    "sign_symbol": "🚘",
+    "question": "What should you do when a vehicle ahead signals that it is turning?",
+    "question_rw": "Wakora iki iyo ikinyabiziga kiri imbere kigaragaje ko kigiye gukata?",
+    "options": [
+      "Reduce speed and allow it to complete the turn safely",
+      "Overtake it immediately on the side it is turning towards",
+      "Drive very close behind it",
+      "Ignore the signal and continue at the same speed"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko ukireke kirangize gukata mu mutekano",
+      "Hita ukirenga ku ruhande kigiye gukatiraho",
+      "Gikurikire uri hafi cyane",
+      "Irengagize ikimenyetso cyacyo ukomeze ku muvuduko umwe"
+    ],
+    "answer": "Reduce speed and allow it to complete the turn safely",
+    "answer_rw": "Gabanya umuvuduko ukireke kirangize gukata mu mutekano",
+    "explanation": "A turning vehicle may need space and time to complete its manoeuvre.",
+    "explanation_rw": "Ikinyabiziga gikata gishobora gukenera umwanya n'igihe kugira ngo kirangize icyo gikorwa."
+  },
+  {
+    "id": "incident_176",
+    "category": "traffic",
+    "sign_symbol": "🚦",
+    "question": "What should a driver do when a green light is showing but the junction is blocked?",
+    "question_rw": "Umushoferi agomba gukora iki iyo itara ry'icyatsi ryaka ariko amasangano yuzuye ibinyabiziga?",
+    "options": [
+      "Wait until there is enough space to clear the junction",
+      "Enter and block the pedestrian crossing",
+      "Enter and stop in the middle",
+      "Sound the horn until traffic moves"
+    ],
+    "options_rw": [
+      "Gutegereza kugeza habonetse umwanya uhagije wo kurenga amasangano",
+      "Kwinjira ugafunga inzira y'abanyamaguru",
+      "Kwinjira ugahagarara hagati",
+      "Kuvuza ihoni kugeza ibinyabiziga bigiye"
+    ],
+    "answer": "Wait until there is enough space to clear the junction",
+    "answer_rw": "Gutegereza kugeza habonetse umwanya uhagije wo kurenga amasangano",
+    "explanation": "A green light does not make it safe to enter a junction that is blocked.",
+    "explanation_rw": "Itara ry'icyatsi ntirituma biba bitekanye kwinjira mu masangano yuzuye ibinyabiziga."
+  },
+  {
+    "id": "incident_177",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should a driver do before turning right or left at a junction?",
+    "question_rw": "Ni iki umushoferi agomba gukora mbere yo gukata iburyo cyangwa ibumoso ku masangano?",
+    "options": [
+      "Check mirrors and blind spots, signal and position correctly",
+      "Turn immediately without signalling",
+      "Signal only after beginning the turn",
+      "Look only at the road directly ahead"
+    ],
+    "options_rw": [
+      "Kureba mu ndorerwamo no mu hantu atabona neza, gutanga ikimenyetso no gufata umwanya ukwiye",
+      "Gukata ako kanya atatanze ikimenyetso",
+      "Gutanga ikimenyetso amaze gutangira gukata",
+      "Kureba imbere gusa"
+    ],
+    "answer": "Check mirrors and blind spots, signal and position correctly",
+    "answer_rw": "Kureba mu ndorerwamo no mu hantu atabona neza, gutanga ikimenyetso no gufata umwanya ukwiye",
+    "explanation": "Correct observation, signalling and positioning help prevent conflicts with other road users.",
+    "explanation_rw": "Kureba neza, gutanga ibimenyetso no gufata umwanya ukwiye birinda guhura nabi n'abandi bakoresha umuhanda."
+  },
+  {
+    "id": "incident_178",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "When joining traffic from a parked position, what should you do?",
+    "question_rw": "Ni iki ugomba gukora igihe winjira mu muhanda uvuye aho wari waparitse?",
+    "options": [
+      "Check for approaching traffic, signal and move only when safe",
+      "Move out immediately because you were parked first",
+      "Expect all traffic to stop",
+      "Reverse into the road without checking"
+    ],
+    "options_rw": [
+      "Kugenzura ibinyabiziga biza, gutanga ikimenyetso no kwinjira ari uko bitekanye",
+      "Hita winjira kuko ari wowe wari waparitse mbere",
+      "Kwitega ko ibinyabiziga byose bihagarara",
+      "Gusubira mu muhanda utagenzuye"
+    ],
+    "answer": "Check for approaching traffic, signal and move only when safe",
+    "answer_rw": "Kugenzura ibinyabiziga biza, gutanga ikimenyetso no kwinjira ari uko bitekanye",
+    "explanation": "A driver leaving a parked position must not force other road users to brake or swerve.",
+    "explanation_rw": "Umushoferi uvuye aho yari aparitse ntagomba gutuma abandi bafata feri cyangwa bahindukira mu buryo butunguranye."
+  },
+  {
+    "id": "incident_179",
+    "category": "traffic",
+    "sign_symbol": "🚛",
+    "question": "Why should you avoid overtaking near a junction?",
+    "question_rw": "Kuki ugomba kwirinda kurenga ikindi kinyabiziga hafi y'amasangano?",
+    "options": [
+      "Vehicles may turn or enter from different directions",
+      "All junctions have a higher speed limit",
+      "The road is always wider at junctions",
+      "Overtaking is safer when more vehicles are present"
+    ],
+    "options_rw": [
+      "Ibinyabiziga bishobora gukata cyangwa kwinjira bivuye mu byerekezo bitandukanye",
+      "Amasangano yose aba afite umuvuduko ntarengwa uri hejuru",
+      "Umuhanda uhora wagutse ku masangano",
+      "Kurenga birushaho gutekana iyo harimo ibinyabiziga byinshi"
+    ],
+    "answer": "Vehicles may turn or enter from different directions",
+    "answer_rw": "Ibinyabiziga bishobora gukata cyangwa kwinjira bivuye mu byerekezo bitandukanye",
+    "explanation": "Junctions involve several possible movements and require extra observation.",
+    "explanation_rw": "Ku masangano haba hari ibyerekezo byinshi ibinyabiziga bishobora kunyuramo, bityo hakenewe kwitegereza cyane."
+  },
+  {
+    "id": "incident_180",
+    "category": "traffic",
+    "sign_symbol": "🔄",
+    "question": "What should you do if a vehicle inside a roundabout is continuing past your intended entry?",
+    "question_rw": "Wakora iki iyo ikinyabiziga kiri mu ruzenguruko gikomeje kunyura aho washakaga kwinjirira?",
+    "options": [
+      "Wait and give way according to the roundabout signs and rules",
+      "Enter in front of it",
+      "Sound the horn and force your entry",
+      "Stop in the middle of the entry lane"
+    ],
+    "options_rw": [
+      "Tegereza kandi ugitangeho inzira ukurikije ibyapa n'amategeko by'uruzenguruko",
+      "Injira imbere yacyo",
+      "Vuza ihoni winjire ku ngufu",
+      "Hagarara hagati mu murongo winjiriramo"
+    ],
+    "answer": "Wait and give way according to the roundabout signs and rules",
+    "answer_rw": "Tegereza kandi ugitangeho inzira ukurikije ibyapa n'amategeko by'uruzenguruko",
+    "explanation": "Never force entry into circulating traffic; follow the signs governing priority.",
+    "explanation_rw": "Ntugahatire kwinjira mu binyabiziga biri kuzenguruka; kurikiza ibyapa bigenga uburenganzira bwo kunyura."
+  },
+  {
+    "id": "incident_181",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What does giving way mean at a junction?",
+    "question_rw": "Gutanga inzira ku masangano bisobanura iki?",
+    "options": [
+      "Allowing traffic with priority to proceed before you",
+      "Stopping every vehicle in all directions",
+      "Driving faster than other vehicles",
+      "Claiming priority by sounding the horn"
+    ],
+    "options_rw": [
+      "Kureka ibinyabiziga bifite uburenganzira bikabanza kunyura",
+      "Guhagarika ibinyabiziga byose mu byerekezo byose",
+      "Gutwara vuba kurusha ibindi binyabiziga",
+      "Kwemeza ko ari wowe ufite uburenganzira ukoresheje ihoni"
+    ],
+    "answer": "Allowing traffic with priority to proceed before you",
+    "answer_rw": "Kureka ibinyabiziga bifite uburenganzira bikabanza kunyura",
+    "explanation": "Giving way means not forcing priority traffic to change speed or direction to avoid you.",
+    "explanation_rw": "Gutanga inzira bisobanura kutagora ibinyabiziga bifite uburenganzira ku buryo byahindura umuvuduko cyangwa icyerekezo kugira ngo bikwirinde."
+  },
+  {
+    "id": "incident_182",
+    "category": "traffic",
+    "sign_symbol": "🚦",
+    "question": "If a police officer directs traffic differently from the traffic lights, what should you follow?",
+    "question_rw": "Iyo umupolisi ayobora ibinyabiziga mu buryo butandukanye n'amatara, ugomba gukurikiza iki?",
+    "options": [
+      "The authorised officer's directions",
+      "The traffic lights only",
+      "The vehicle in front",
+      "Your preferred direction"
+    ],
+    "options_rw": [
+      "Amabwiriza y'umupolisi ubifitiye ububasha",
+      "Amatara gusa",
+      "Ikinyabiziga kiri imbere",
+      "Icyerekezo wihitiyemo"
+    ],
+    "answer": "The authorised officer's directions",
+    "answer_rw": "Amabwiriza y'umupolisi ubifitiye ububasha",
+    "explanation": "An authorised officer may control traffic to manage an unusual or dangerous situation.",
+    "explanation_rw": "Umupolisi ubifitiye ububasha ashobora kuyobora ibinyabiziga kugira ngo akemure ikibazo kidasanzwe cyangwa giteje akaga."
+  },
+  {
+    "id": "incident_183",
+    "category": "traffic",
+    "sign_symbol": "🚑",
+    "question": "Does an emergency vehicle automatically allow other drivers to ignore traffic safety?",
+    "question_rw": "Ese ikinyabiziga cy'ubutabazi gituma abandi bashoferi bemererwa kwirengagiza umutekano wo mu muhanda?",
+    "options": [
+      "No, drivers must still act safely and follow applicable directions",
+      "Yes, all drivers may ignore traffic lights",
+      "Yes, all vehicles may drive on the pavement",
+      "No, but drivers should block its route"
+    ],
+    "options_rw": [
+      "Oya, abashoferi bagomba gukomeza kwitwara mu mutekano no gukurikiza amabwiriza",
+      "Yego, abashoferi bose bashobora kwirengagiza amatara",
+      "Yego, ibinyabiziga byose bishobora gutwara ku nzira y'abanyamaguru",
+      "Oya, ariko abashoferi bagomba kuyifungira inzira"
+    ],
+    "answer": "No, drivers must still act safely and follow applicable directions",
+    "answer_rw": "Oya, abashoferi bagomba gukomeza kwitwara mu mutekano no gukurikiza amabwiriza",
+    "explanation": "Emergency situations require cooperation without creating additional dangers.",
+    "explanation_rw": "Ibihe by'ubutabazi bisaba ubufatanye ariko hatabayeho guteza akandi kaga."
+  },
+  {
+    "id": "incident_184",
+    "category": "traffic",
+    "sign_symbol": "🚸",
+    "question": "Who should a driver protect most carefully near a school crossing?",
+    "question_rw": "Ni bande umushoferi agomba kwitondera cyane hafi y'aho abanyeshuri bambukira?",
+    "options": [
+      "Children and other vulnerable pedestrians",
+      "Only drivers of large vehicles",
+      "Only people carrying luggage",
+      "Only adults who are walking quickly"
+    ],
+    "options_rw": [
+      "Abana n'abandi banyamaguru bashobora guhura n'ibyago byoroshye",
+      "Abashoferi b'ibinyabiziga binini gusa",
+      "Abantu bafite imizigo gusa",
+      "Abantu bakuru bagenda vuba gusa"
+    ],
+    "answer": "Children and other vulnerable pedestrians",
+    "answer_rw": "Abana n'abandi banyamaguru bashobora guhura n'ibyago byoroshye",
+    "explanation": "Children can behave unpredictably and need extra protection near roads.",
+    "explanation_rw": "Abana bashobora kwitwara mu buryo butateganyijwe kandi bakenera kurindwa cyane hafi y'umuhanda."
+  },
+  {
+    "id": "incident_185",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do when a vehicle ahead stops to give way?",
+    "question_rw": "Wakora iki iyo ikinyabiziga kiri imbere gihagaze kugira ngo gitange inzira?",
+    "options": [
+      "Slow down and check why it has stopped before passing",
+      "Overtake it immediately",
+      "Sound the horn and drive around it",
+      "Assume the road ahead is clear"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko ubanze urebe impamvu gihagaze mbere yo kukinyuraho",
+      "Hita ukirenga",
+      "Vuza ihoni ukinyureho",
+      "Tekereza ko imbere nta kibazo kirimo"
+    ],
+    "answer": "Slow down and check why it has stopped before passing",
+    "answer_rw": "Gabanya umuvuduko ubanze urebe impamvu gihagaze mbere yo kukinyuraho",
+    "explanation": "The stopped vehicle may be giving way to pedestrians or traffic you cannot yet see.",
+    "explanation_rw": "Ikinyabiziga gihagaze gishobora kuba giha inzira abanyamaguru cyangwa ibinyabiziga utarabona."
+  },
+  {
+    "id": "incident_186",
+    "category": "traffic",
+    "sign_symbol": "🚘",
+    "question": "What should you do if two vehicles arrive at a junction at nearly the same time?",
+    "question_rw": "Wakora iki iyo ibinyabiziga bibiri bigereye ku masangano hafi y'igihe kimwe?",
+    "options": [
+      "Apply the applicable priority rules and proceed cautiously",
+      "Race to enter first",
+      "Assume the larger vehicle always has priority",
+      "Ignore the other vehicle"
+    ],
+    "options_rw": [
+      "Gukurikiza amategeko agenga uburenganzira bwo kunyura kandi ukitonda",
+      "Guhiganwa kugira ngo winjire mbere",
+      "Kwemeza ko ikinyabiziga kinini ari cyo gihora gifite uburenganzira",
+      "Kwirengagiza ikindi kinyabiziga"
+    ],
+    "answer": "Apply the applicable priority rules and proceed cautiously",
+    "answer_rw": "Gukurikiza amategeko agenga uburenganzira bwo kunyura kandi ukitonda",
+    "explanation": "Never decide priority by vehicle size or speed; follow signs and applicable rules.",
+    "explanation_rw": "Ntugashingire uburenganzira ku bunini cyangwa ku muvuduko w'ikinyabiziga; kurikiza ibyapa n'amategeko abigenga."
+  },
+  {
+    "id": "incident_187",
+    "category": "traffic",
+    "sign_symbol": "🚛",
+    "question": "What should you do when a long vehicle needs extra room to turn?",
+    "question_rw": "Wakora iki iyo ikinyabiziga kirekire gikeneye umwanya munini kugira ngo gikate?",
+    "options": [
+      "Keep clear and allow it to complete the turn safely",
+      "Squeeze between it and the pavement",
+      "Overtake it during the turn",
+      "Stop in its turning path"
+    ],
+    "options_rw": [
+      "Kigire kure kandi ukireke kirangize gukata mu mutekano",
+      "Injira hagati yacyo n'inzira y'abanyamaguru",
+      "Kirenzeho kirimo gukata",
+      "Hagarara mu nzira kigomba kunyuramo gikata"
+    ],
+    "answer": "Keep clear and allow it to complete the turn safely",
+    "answer_rw": "Kigire kure kandi ukireke kirangize gukata mu mutekano",
+    "explanation": "Long vehicles may need extra turning space and can have significant blind spots.",
+    "explanation_rw": "Ibinyabiziga birebire bishobora gukenera umwanya munini wo gukata kandi bikagira ahantu henshi umushoferi atabona."
+  },
+  {
+    "id": "incident_188",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "When entering a road from a driveway, who must the driver avoid obstructing?",
+    "question_rw": "Iyo winjira mu muhanda uvuye mu muryango w'aho imodoka zinjirira, ni bande ugomba kwirinda kubangamira?",
+    "options": [
+      "Pedestrians and vehicles already using the road",
+      "Only vehicles behind you",
+      "Only parked vehicles",
+      "Nobody if you signal"
+    ],
+    "options_rw": [
+      "Abanyamaguru n'ibinyabiziga bisanzwe bikoresha umuhanda",
+      "Ibinyabiziga biri inyuma yawe gusa",
+      "Ibinyabiziga biparitse gusa",
+      "Nta muntu niba watanze ikimenyetso"
+    ],
+    "answer": "Pedestrians and vehicles already using the road",
+    "answer_rw": "Abanyamaguru n'ibinyabiziga bisanzwe bikoresha umuhanda",
+    "explanation": "A driver entering a road must check carefully and give way where required.",
+    "explanation_rw": "Umushoferi winjira mu muhanda agomba kubanza kugenzura neza no gutanga inzira aho bisabwa."
+  },
+  {
+    "id": "incident_189",
+    "category": "traffic",
+    "sign_symbol": "🚫",
+    "question": "What should you do if a sign prohibits overtaking?",
+    "question_rw": "Wakora iki iyo icyapa kibuzanya kurenga ibindi binyabiziga?",
+    "options": [
+      "Remain behind until the restriction ends and overtaking is safe",
+      "Overtake only small vehicles",
+      "Overtake if you sound the horn",
+      "Ignore the sign when the road looks clear"
+    ],
+    "options_rw": [
+      "Guma inyuma kugeza ikikumirwa kirangiye kandi kurenga bitekanye",
+      "Renga ibinyabiziga bito gusa",
+      "Renga umaze kuvuza ihoni",
+      "Irengagize icyapa igihe umuhanda usa n'ufunguye"
+    ],
+    "answer": "Remain behind until the restriction ends and overtaking is safe",
+    "answer_rw": "Guma inyuma kugeza ikikumirwa kirangiye kandi kurenga bitekanye",
+    "explanation": "Overtaking restrictions are placed where passing may be dangerous.",
+    "explanation_rw": "Ibikumirwa byo kurenga bishyirwa ahantu kunyuranaho bishobora guteza impanuka."
+  },
+  {
+    "id": "incident_190",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do when approaching a narrow bridge with a priority sign?",
+    "question_rw": "Wakora iki wegereye ikiraro gifunganye gifite icyapa kigaragaza uburenganzira bwo kunyura?",
+    "options": [
+      "Follow the priority sign and check that the bridge is clear",
+      "Enter regardless of oncoming traffic",
+      "Accelerate to cross before others",
+      "Stop in the middle of the bridge"
+    ],
+    "options_rw": [
+      "Kurikiza icyapa cy'uburenganzira kandi urebe ko ikiraro kidafite ikindi kinyabiziga",
+      "Injira utitaye ku binyabiziga biva imbere",
+      "Ongera umuvuduko kugira ngo ugere hakurya mbere y'abandi",
+      "Hagarara hagati ku kiraro"
+    ],
+    "answer": "Follow the priority sign and check that the bridge is clear",
+    "answer_rw": "Kurikiza icyapa cy'uburenganzira kandi urebe ko ikiraro kidafite ikindi kinyabiziga",
+    "explanation": "Priority signs help organise safe passage where two vehicles cannot pass easily.",
+    "explanation_rw": "Ibyapa by'uburenganzira bifasha gutegura kunyuranaho mu mutekano aho ibinyabiziga bibiri bidashobora kunyurana neza."
+  },
+  {
+    "id": "incident_191",
+    "category": "traffic",
+    "sign_symbol": "🚦",
+    "question": "What should you do when a green arrow permits a turn but pedestrians are crossing?",
+    "question_rw": "Wakora iki iyo umwambi w'icyatsi wemera gukata ariko abanyamaguru bari kwambuka?",
+    "options": [
+      "Give way to pedestrians and turn only when safe",
+      "Turn immediately because the arrow is green",
+      "Sound the horn to make pedestrians stop",
+      "Drive around pedestrians"
+    ],
+    "options_rw": [
+      "Guha inzira abanyamaguru kandi ugakata ari uko bitekanye",
+      "Hita ukata kuko umwambi ari icyatsi",
+      "Vuza ihoni kugira ngo abanyamaguru bahagarare",
+      "Uzenguruke abanyamaguru ubanyureho"
+    ],
+    "answer": "Give way to pedestrians and turn only when safe",
+    "answer_rw": "Guha inzira abanyamaguru kandi ugakata ari uko bitekanye",
+    "explanation": "A permitted turn does not remove the driver's duty to avoid endangering pedestrians.",
+    "explanation_rw": "Kwemererwa gukata ntibikuraho inshingano yo kwirinda gushyira abanyamaguru mu kaga."
+  },
+  {
+    "id": "incident_192",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should a driver do when another vehicle signals to join a queue?",
+    "question_rw": "Wakora iki iyo ikindi kinyabiziga kigaragaje ko gishaka kwinjira mu murongo w'ibinyabiziga?",
+    "options": [
+      "Maintain a safe gap when practical and avoid aggressive blocking",
+      "Accelerate to close every gap",
+      "Block the vehicle with your car",
+      "Force it onto the pavement"
+    ],
+    "options_rw": [
+      "Gusiga icyuho cy'umutekano igihe bishoboka no kwirinda kukibuza kwinjira mu burakari",
+      "Kongera umuvuduko kugira ngo ufunge buri cyuho",
+      "Kukifungira ukoresheje imodoka yawe",
+      "Kugitera kujya ku nzira y'abanyamaguru"
+    ],
+    "answer": "Maintain a safe gap when practical and avoid aggressive blocking",
+    "answer_rw": "Gusiga icyuho cy'umutekano igihe bishoboka no kwirinda kukibuza kwinjira mu burakari",
+    "explanation": "Cooperation and predictable driving reduce conflict in slow-moving traffic.",
+    "explanation_rw": "Ubufatanye no gutwara mu buryo buteganyijwe bigabanya amakimbirane mu muhanda urimo umubyigano."
+  },
+  {
+    "id": "incident_193",
+    "category": "traffic",
+    "sign_symbol": "🚘",
+    "question": "What should you do if a vehicle approaches from a side road while you are on a priority road?",
+    "question_rw": "Wakora iki iyo ikinyabiziga kikugezeho kiva mu muhanda wo ku ruhande kandi uri mu muhanda ufite uburenganzira?",
+    "options": [
+      "Continue cautiously while watching that it gives way",
+      "Assume it will stop and ignore it",
+      "Accelerate without observing",
+      "Move into the opposite lane"
+    ],
+    "options_rw": [
+      "Komeza witonze urebe ko gitanga inzira",
+      "Tekereza ko gihagarara ukirengagize",
+      "Ongera umuvuduko utarebye",
+      "Injira mu murongo w'abaturuka imbere"
+    ],
+    "answer": "Continue cautiously while watching that it gives way",
+    "answer_rw": "Komeza witonze urebe ko gitanga inzira",
+    "explanation": "Having priority does not remove the need to anticipate mistakes by other drivers.",
+    "explanation_rw": "Kugira uburenganzira bwo kubanza kunyura ntibikuraho inshingano yo guteganya amakosa ashobora gukorwa n'abandi bashoferi."
+  },
+  {
+    "id": "incident_194",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do if a driver waves you through a junction but another lane is still moving?",
+    "question_rw": "Wakora iki iyo umushoferi akweretse ko wanyura mu masangano ariko undi murongo ukirimo ibinyabiziga?",
+    "options": [
+      "Check every lane and proceed only when the whole manoeuvre is safe",
+      "Move immediately because one driver waved",
+      "Ignore all other traffic",
+      "Accelerate across without checking"
+    ],
+    "options_rw": [
+      "Kugenzura buri murongo kandi ugakomeza ari uko igikorwa cyose gitekanye",
+      "Hita winjira kuko umushoferi umwe yakweretse",
+      "Kwirengagiza ibindi binyabiziga byose",
+      "Ongera umuvuduko wambuke utagenzuye"
+    ],
+    "answer": "Check every lane and proceed only when the whole manoeuvre is safe",
+    "answer_rw": "Kugenzura buri murongo kandi ugakomeza ari uko igikorwa cyose gitekanye",
+    "explanation": "A signal from one driver does not guarantee that all lanes are clear.",
+    "explanation_rw": "Ikimenyetso cyatanzwe n'umushoferi umwe nticyemeza ko indi mirongo yose ifunguye."
+  },
+  {
+    "id": "incident_195",
+    "category": "traffic",
+    "sign_symbol": "🚦",
+    "question": "What should you do if you are waiting at a junction and the light turns green but pedestrians are still crossing?",
+    "question_rw": "Wakora iki niba utegereje ku masangano itara rikaba icyatsi ariko abanyamaguru bagikambuka?",
+    "options": [
+      "Wait until the crossing is clear and it is safe to move",
+      "Drive through while they are crossing",
+      "Sound the horn and move forward",
+      "Move onto the pedestrian crossing"
+    ],
+    "options_rw": [
+      "Tegereza kugeza abanyamaguru barangije kwambuka kandi inzira itekanye",
+      "Nyura hagati yabo bakiri kwambuka",
+      "Vuza ihoni ukomeze",
+      "Injira ku murongo w'abanyamaguru"
+    ],
+    "answer": "Wait until the crossing is clear and it is safe to move",
+    "answer_rw": "Tegereza kugeza abanyamaguru barangije kwambuka kandi inzira itekanye",
+    "explanation": "Drivers must not endanger pedestrians who are still crossing.",
+    "explanation_rw": "Abashoferi ntibagomba gushyira mu kaga abanyamaguru bakiri kwambuka."
+  },
+  {
+    "id": "incident_196",
+    "category": "traffic",
+    "sign_symbol": "🚛",
+    "question": "What should you do when a bus signals to leave a designated bus stop?",
+    "question_rw": "Wakora iki iyo bisi itanze ikimenyetso ko igiye kuva aho ihagarara hagenewe bisi?",
+    "options": [
+      "Be prepared to respond safely and follow the applicable local rules",
+      "Accelerate to prevent it from moving",
+      "Drive alongside it without leaving space",
+      "Ignore its signal in every situation"
+    ],
+    "options_rw": [
+      "Witegure kwitwara mu mutekano kandi ukurikize amategeko abigenga",
+      "Ongera umuvuduko kugira ngo uyibuze kugenda",
+      "Genda iruhande rwayo utayisigiye umwanya",
+      "Kwirengagiza ikimenyetso cyayo mu bihe byose"
+    ],
+    "answer": "Be prepared to respond safely and follow the applicable local rules",
+    "answer_rw": "Witegure kwitwara mu mutekano kandi ukurikize amategeko abigenga",
+    "explanation": "Rules about buses leaving stops may vary; always observe the signs and applicable local requirements.",
+    "explanation_rw": "Amategeko agenga bisi ziva aho zihagarara ashobora gutandukana; buri gihe reba ibyapa n'amabwiriza akurikizwa aho uri."
+  },
+  {
+    "id": "incident_197",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do when a vehicle ahead is waiting to turn across your path?",
+    "question_rw": "Wakora iki iyo ikinyabiziga kiri imbere yawe gitegereje gukata kikambuka inzira yawe?",
+    "options": [
+      "Reduce speed and be prepared to stop",
+      "Assume it will turn after you pass",
+      "Overtake without checking",
+      "Accelerate towards it"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko kandi witegure guhagarara",
+      "Tekereza ko kizakata umaze kukinyuraho",
+      "Kirenzeho utagenzuye",
+      "Ongera umuvuduko ukerekeza kuri cyo"
+    ],
+    "answer": "Reduce speed and be prepared to stop",
+    "answer_rw": "Gabanya umuvuduko kandi witegure guhagarara",
+    "explanation": "A turning vehicle may enter your path, so leave enough time and space to react.",
+    "explanation_rw": "Ikinyabiziga gikata gishobora kwinjira mu nzira yawe, bityo sigaza igihe n'umwanya uhagije wo kugira icyo ukora."
+  },
+  {
+    "id": "incident_198",
+    "category": "traffic",
+    "sign_symbol": "🚫",
+    "question": "What should a driver do when a temporary sign restricts access to a road?",
+    "question_rw": "Umushoferi agomba gukora iki iyo icyapa cy'agateganyo kibujije kwinjira mu muhanda?",
+    "options": [
+      "Follow the temporary restriction and use the signed diversion",
+      "Ignore it because it is not permanent",
+      "Enter if other drivers are entering",
+      "Move the sign out of the way"
+    ],
+    "options_rw": [
+      "Kubahiriza ikikumirwa cy'agateganyo no gukurikiza inzira y'ayandi mahitamo yerekanwe",
+      "Kwirengagiza icyapa kuko atari icy'igihe cyose",
+      "Kwinjira niba abandi bashoferi barimo kwinjira",
+      "Kuvana icyapa aho kiri"
+    ],
+    "answer": "Follow the temporary restriction and use the signed diversion",
+    "answer_rw": "Kubahiriza ikikumirwa cy'agateganyo no gukurikiza inzira y'ayandi mahitamo yerekanwe",
+    "explanation": "Temporary restrictions may be used to protect road users during works or emergencies.",
+    "explanation_rw": "Ibikumirwa by'agateganyo bishobora gushyirwaho kugira ngo birinde abakoresha umuhanda mu gihe cy'imirimo cyangwa ubutabazi."
+  },
+  {
+    "id": "incident_199",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What is the safest response when another driver mistakenly gives you priority?",
+    "question_rw": "Ni ikihe gikorwa gitekanye iyo undi mushoferi aguhaye uburenganzira bwo kubanza kunyura kandi atari wowe wari ubufite?",
+    "options": [
+      "Check the whole road situation and proceed only when safe and lawful",
+      "Accept immediately without checking",
+      "Accelerate because you have been invited",
+      "Ignore all other road users"
+    ],
+    "options_rw": [
+      "Kugenzura uko umuhanda wose umeze ugakomeza gusa igihe bitekanye kandi byemewe",
+      "Guhita wemera utagenzuye",
+      "Ongera umuvuduko kuko bakwemereye",
+      "Kwirengagiza abandi bakoresha umuhanda bose"
+    ],
+    "answer": "Check the whole road situation and proceed only when safe and lawful",
+    "answer_rw": "Kugenzura uko umuhanda wose umeze ugakomeza gusa igihe bitekanye kandi byemewe",
+    "explanation": "Courtesy from another driver does not replace your responsibility to check for hazards and obey the rules.",
+    "explanation_rw": "Kugirirwa neza n'undi mushoferi ntibikuraho inshingano yawe yo kugenzura ibyago no kubahiriza amategeko."
+  },
+  {
+    "id": "incident_200",
+    "category": "traffic",
+    "sign_symbol": "⚖️",
+    "question": "What is the most important principle when deciding who should proceed first?",
+    "question_rw": "Ni irihe hame ry'ingenzi mu kumenya ikinyabiziga kigomba kubanza kunyura?",
+    "options": [
+      "Follow traffic signs, signals, authorised directions and applicable priority rules",
+      "The fastest vehicle always goes first",
+      "The largest vehicle always goes first",
+      "The driver who sounds the horn first goes first"
+    ],
+    "options_rw": [
+      "Gukurikiza ibyapa, amatara, amabwiriza y'ababifitiye ububasha n'amategeko agenga uburenganzira bwo kunyura",
+      "Ikinyabiziga cyihuta ni cyo gihora kibanza",
+      "Ikinyabiziga kinini ni cyo gihora kibanza",
+      "Umushoferi ubanje kuvuza ihoni ni we ubanza"
+    ],
+    "answer": "Follow traffic signs, signals, authorised directions and applicable priority rules",
+    "answer_rw": "Gukurikiza ibyapa, amatara, amabwiriza y'ababifitiye ububasha n'amategeko agenga uburenganzira bwo kunyura",
+    "explanation": "Priority is determined by traffic controls and applicable rules, not by vehicle size, speed or impatience.",
+    "explanation_rw": "Uburenganzira bwo kunyura bugenwa n'ibyapa, amatara n'amategeko abigenga, si ubunini bw'ikinyabiziga, umuvuduko cyangwa kutihangana."
+  }, 
