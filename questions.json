@@ -5726,4 +5726,472 @@
     "answer": "Milky Way",
     "answer_rw": "Inzira y'Amata"
   },
-    
+  {
+    "category": "general",
+    "question": "In which year did the war in Sudan begin?",
+    "question_rw": "Intambara yo muri Sudani yatangiye mu wuhe mwaka?",
+    "options": ["2020", "2021", "2023", "2025"],
+    "options_rw": ["2020", "2021", "2023", "2025"],
+    "answer": "2023",
+    "answer_rw": "2023"
+  },
+  {
+    "category": "general",
+    "question": "Which international organization coordinates global humanitarian health responses?",
+    "question_rw": "Ni uwuhe muryango mpuzamahanga uhuza ibikorwa byo guhangana n'ibibazo by'ubuzima ku isi?",
+    "options": ["FIFA", "WHO", "WTO", "UNESCO"],
+    "options_rw": ["FIFA", "OMS", "WTO", "UNESCO"],
+    "answer": "WHO",
+    "answer_rw": "OMS"
+  },
+  {
+    "category": "general",
+    "question": "Which country experienced the Ebola outbreak declared in May 2026?",
+    "question_rw": "Ni ikihe gihugu cyagize icyorezo cya Ebola cyatangajwe muri Gicurasi 2026?",
+    "options": ["Rwanda", "Democratic Republic of Congo", "Kenya", "Egypt"],
+    "options_rw": ["Rwanda", "Repubulika Iharanira Demokarasi ya Congo", "Kenya", "Misiri"],
+    "answer": "Democratic Republic of Congo",
+    "answer_rw": "Repubulika Iharanira Demokarasi ya Congo"
+  },
+  {
+    "category": "general",
+    "question": "Which disease is caused by the Ebola virus?",
+    "question_rw": "Ni iyihe ndwara iterwa na virusi ya Ebola?",
+    "options": ["Malaria", "Ebola virus disease", "Tuberculosis", "Diabetes"],
+    "options_rw": ["Malariya", "Indwara ya Ebola", "Igituntu", "Diyabete"],
+    "answer": "Ebola virus disease",
+    "answer_rw": "Indwara ya Ebola"
+  },
+  {
+    "category": "general",
+    "question": "Which factor is a major cause of famine during armed conflicts?",
+    "question_rw": "Ni ikihe kintu gishobora gutera inzara ikomeye mu gihe cy'intambara?",
+    "options": ["Blocked food supplies", "More schools", "Better transport", "Increased rainfall"],
+    "options_rw": ["Guhagarika itangwa ry'ibiribwa", "Amashuri menshi", "Ubwikorezi bwiza", "Imvura yiyongera"],
+    "answer": "Blocked food supplies",
+    "answer_rw": "Guhagarika itangwa ry'ibiribwa"
+  },
+  {
+    "category": "general",
+    "question": "What does WHO stand for?",
+    "question_rw": "WHO bisobanura iki?",
+    "options": ["World Health Organization", "World Human Office", "World History Organization", "World Help Organization"],
+    "options_rw": ["Umuryango Mpuzamahanga w'Ubuzima", "Ibiro Mpuzamahanga by'Abantu", "Umuryango w'Amateka", "Umuryango Mpuzamahanga w'Ubufasha"],
+    "answer": "World Health Organization",
+    "answer_rw": "Umuryango Mpuzamahanga w'Ubuzima"
+  },
+  {
+    "category": "general",
+    "question": "Which country is famous for the Eiffel Tower?",
+    "question_rw": "Ni ikihe gihugu kizwi cyane kubera umunara wa Eiffel?",
+    "options": ["Italy", "France", "Germany", "Spain"],
+    "options_rw": ["Ubutaliyani", "Ubufaransa", "Ubudage", "Esipanye"],
+    "answer": "France",
+    "answer_rw": "Ubufaransa"
+  },
+  {
+    "category": "general",
+    "question": "Which country is home to the Great Pyramids of Giza?",
+    "question_rw": "Ni ikihe gihugu kibamo za Piramide nini za Giza?",
+    "options": ["Morocco", "Egypt", "Ghana", "South Africa"],
+    "options_rw": ["Maroke", "Misiri", "Ghana", "Afurika y'Epfo"],
+    "answer": "Egypt",
+    "answer_rw": "Misiri"
+  },
+  {
+    "category": "general",
+    "question": "Which country is famous for the Taj Mahal?",
+    "question_rw": "Ni ikihe gihugu kizwi kubera inyubako ya Taj Mahal?",
+    "options": ["India", "China", "Japan", "Thailand"],
+    "options_rw": ["Ubuhinde", "Ubushinwa", "Ubuyapani", "Tayilande"],
+    "answer": "India",
+    "answer_rw": "Ubuhinde"
+  },
+  {
+    "category": "general",
+    "question": "Which African country is famous for Victoria Falls?",
+    "question_rw": "Ni ibihe bihugu byo muri Afurika bizwiho isumo rya Victoria Falls?",
+    "options": ["Rwanda and Burundi", "Zambia and Zimbabwe", "Kenya and Uganda", "Egypt and Libya"],
+    "options_rw": ["Rwanda n'u Burundi", "Zambiya na Zimbabwe", "Kenya na Uganda", "Misiri na Libiya"],
+    "answer": "Zambia and Zimbabwe",
+    "answer_rw": "Zambiya na Zimbabwe"
+  },
+  {
+    "category": "general",
+    "question": "Which city is known as the City of Love?",
+    "question_rw": "Ni uwuhe mujyi uzwi nk'Umujyi w'Urukundo?",
+    "options": ["London", "Paris", "Tokyo", "Nairobi"],
+    "options_rw": ["London", "Paris", "Tokyo", "Nairobi"],
+    "answer": "Paris",
+    "answer_rw": "Paris"
+  },
+  {
+    "category": "general",
+    "question": "Which Rwandan artist released the song 'Igikwe'?",
+    "question_rw": "Ni uwuhe muhanzi nyarwanda wakoze indirimbo 'Igikwe'?",
+    "options": ["Bruce Melodie", "Meddy", "The Ben", "King James"],
+    "options_rw": ["Bruce Melodie", "Meddy", "The Ben", "King James"],
+    "answer": "Bruce Melodie",
+    "answer_rw": "Bruce Melodie"
+  },
+  {
+    "category": "general",
+    "question": "Which Rwandan artist is known for the song 'Slowly'?",
+    "question_rw": "Ni uwuhe muhanzi nyarwanda uzwi mu ndirimbo 'Slowly'?",
+    "options": ["Meddy", "Riderman", "Kivumbi King", "Chris Eazy"],
+    "options_rw": ["Meddy", "Riderman", "Kivumbi King", "Chris Eazy"],
+    "answer": "Meddy",
+    "answer_rw": "Meddy"
+  },
+  {
+    "category": "general",
+    "question": "Which Rwandan artist is known by the stage name The Ben?",
+    "question_rw": "Ni nde muhanzi nyarwanda uzwi ku izina rya The Ben?",
+    "options": ["Benjamin Mugisha", "Bruce Itahiwacu", "Meddy", "Tom Close"],
+    "options_rw": ["Benjamin Mugisha", "Bruce Itahiwacu", "Meddy", "Tom Close"],
+    "answer": "Benjamin Mugisha",
+    "answer_rw": "Benjamin Mugisha"
+  },
+  {
+    "category": "general",
+    "question": "What is the main role of a comedian?",
+    "question_rw": "Ni iyihe nshingano nyamukuru y'umukomediyani?",
+    "options": ["To make people laugh", "To build houses", "To treat diseases", "To fly aircraft"],
+    "options_rw": ["Gusetsa abantu", "Kubaka amazu", "Kuvura indwara", "Gutwara indege"],
+    "answer": "To make people laugh",
+    "answer_rw": "Gusetsa abantu"
+  },
+  {
+    "category": "general",
+    "question": "Which Rwandan comedian is widely known as Bamenya?",
+    "question_rw": "Ni uwuhe mukomediyani nyarwanda uzwi ku izina rya Bamenya?",
+    "options": ["Bamenya", "Meddy", "Tom Close", "Riderman"],
+    "options_rw": ["Bamenya", "Meddy", "Tom Close", "Riderman"],
+    "answer": "Bamenya",
+    "answer_rw": "Bamenya"
+  },
+  {
+    "category": "general",
+    "question": "Which car manufacturer uses a three-pointed star logo?",
+    "question_rw": "Ni uruhe ruganda rukora imodoka rukoresha ikirango cy'inyenyeri ifite imitwe itatu?",
+    "options": ["Toyota", "Mercedes-Benz", "Ford", "Honda"],
+    "options_rw": ["Toyota", "Mercedes-Benz", "Ford", "Honda"],
+    "answer": "Mercedes-Benz",
+    "answer_rw": "Mercedes-Benz"
+  },
+  {
+    "category": "general",
+    "question": "Which company manufactures the Corolla?",
+    "question_rw": "Ni uruhe ruganda rukora imodoka ya Corolla?",
+    "options": ["BMW", "Toyota", "Audi", "Nissan"],
+    "options_rw": ["BMW", "Toyota", "Audi", "Nissan"],
+    "answer": "Toyota",
+    "answer_rw": "Toyota"
+  },
+  {
+    "category": "general",
+    "question": "Which car brand has four interlocking rings?",
+    "question_rw": "Ni ikihe kirango cy'imodoka gifite inziga enye zifatanye?",
+    "options": ["Audi", "Volvo", "Mazda", "Hyundai"],
+    "options_rw": ["Audi", "Volvo", "Mazda", "Hyundai"],
+    "answer": "Audi",
+    "answer_rw": "Audi"
+  },
+  {
+    "category": "general",
+    "question": "Which company manufactures the Mustang?",
+    "question_rw": "Ni uruhe ruganda rukora imodoka ya Mustang?",
+    "options": ["Ford", "Ferrari", "Lamborghini", "Kia"],
+    "options_rw": ["Ford", "Ferrari", "Lamborghini", "Kia"],
+    "answer": "Ford",
+    "answer_rw": "Ford"
+  },
+  {
+    "category": "general",
+    "question": "Which car brand is famous for the model Land Cruiser?",
+    "question_rw": "Ni ikihe kirango cy'imodoka kizwi kubera imodoka ya Land Cruiser?",
+    "options": ["Toyota", "Peugeot", "Volkswagen", "Renault"],
+    "options_rw": ["Toyota", "Peugeot", "Volkswagen", "Renault"],
+    "answer": "Toyota",
+    "answer_rw": "Toyota"
+  },
+  {
+    "category": "general",
+    "question": "What does SUV stand for?",
+    "question_rw": "SUV bisobanura iki mu bijyanye n'imodoka?",
+    "options": ["Sport Utility Vehicle", "Super Urban Van", "Special Universal Vehicle", "Standard Unit Vehicle"],
+    "options_rw": ["Imodoka ikoreshwa mu bikorwa bitandukanye", "Imodoka nini yo mu mujyi", "Imodoka idasanzwe", "Imodoka isanzwe"],
+    "answer": "Sport Utility Vehicle",
+    "answer_rw": "Imodoka ikoreshwa mu bikorwa bitandukanye"
+  },
+  {
+    "category": "general",
+    "question": "Which football club plays its home matches at Camp Nou?",
+    "question_rw": "Ni iyihe kipe y'umupira w'amaguru yakiniraga imikino yayo yo mu rugo kuri Camp Nou?",
+    "options": ["Real Madrid", "FC Barcelona", "Liverpool", "Bayern Munich"],
+    "options_rw": ["Real Madrid", "FC Barcelona", "Liverpool", "Bayern Munich"],
+    "answer": "FC Barcelona",
+    "answer_rw": "FC Barcelona"
+  },
+  {
+    "category": "general",
+    "question": "Which country won the 2022 FIFA World Cup?",
+    "question_rw": "Ni ikihe gihugu cyatwaye igikombe cy'isi cya FIFA mu 2022?",
+    "options": ["France", "Argentina", "Brazil", "Germany"],
+    "options_rw": ["Ubufaransa", "Argentine", "Burezili", "Ubudage"],
+    "answer": "Argentina",
+    "answer_rw": "Argentine"
+  },
+  {
+    "category": "general",
+    "question": "How many players does one football team have on the field at the start of a match?",
+    "question_rw": "Ikipe imwe y'umupira w'amaguru itangira umukino ifite abakinnyi bangahe mu kibuga?",
+    "options": ["9", "10", "11", "12"],
+    "options_rw": ["9", "10", "11", "12"],
+    "answer": "11",
+    "answer_rw": "11"
+  },
+  {
+    "category": "general",
+    "question": "Which footballer is famously nicknamed CR7?",
+    "question_rw": "Ni uwuhe mukinnyi w'umupira w'amaguru uzwi ku izina rya CR7?",
+    "options": ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappe"],
+    "options_rw": ["Lionel Messi", "Cristiano Ronaldo", "Neymar", "Kylian Mbappe"],
+    "answer": "Cristiano Ronaldo",
+    "answer_rw": "Cristiano Ronaldo"
+  },
+  {
+    "category": "general",
+    "question": "Which football club is based in Munich?",
+    "question_rw": "Ni iyihe kipe y'umupira w'amaguru ikomoka mu mujyi wa Munich?",
+    "options": ["Bayern Munich", "Chelsea", "Arsenal", "Juventus"],
+    "options_rw": ["Bayern Munich", "Chelsea", "Arsenal", "Juventus"],
+    "answer": "Bayern Munich",
+    "answer_rw": "Bayern Munich"
+  },
+  {
+    "category": "general",
+    "question": "What does FIFA stand for?",
+    "question_rw": "FIFA bisobanura iki?",
+    "options": ["International Federation of Association Football", "Football International Federation Africa", "Federation of Indoor Football Associations", "International Football Academy"],
+    "options_rw": ["Ishyirahamwe Mpuzamahanga ry'Umupira w'Amaguru", "Ishyirahamwe ry'Umupira muri Afurika", "Ishyirahamwe ry'Umupira wo mu nzu", "Ishuri Mpuzamahanga ry'Umupira"],
+    "answer": "International Federation of Association Football",
+    "answer_rw": "Ishyirahamwe Mpuzamahanga ry'Umupira w'Amaguru"
+  },
+  {
+    "category": "general",
+    "question": "What does F1 stand for in motorsport?",
+    "question_rw": "F1 bisobanura iki mu marushanwa y'imodoka?",
+    "options": ["Formula One", "Fast One", "First Racing", "Formula International"],
+    "options_rw": ["Formula One", "Fast One", "First Racing", "Formula International"],
+    "answer": "Formula One",
+    "answer_rw": "Formula One"
+  },
+  {
+    "category": "general",
+    "question": "How many wheels does a Formula 1 car have?",
+    "question_rw": "Imodoka yo mu marushanwa ya Formula 1 igira amapine angahe?",
+    "options": ["2", "3", "4", "6"],
+    "options_rw": ["2", "3", "4", "6"],
+    "answer": "4",
+    "answer_rw": "4"
+  },
+  {
+    "category": "general",
+    "question": "What is the main purpose of a pit stop in Formula 1?",
+    "question_rw": "Ni iyihe ntego nyamukuru yo guhagarara muri pit stop muri Formula 1?",
+    "options": ["To change tyres and perform repairs", "To end the race", "To change the driver every lap", "To refuel during every race"],
+    "options_rw": ["Guhindura amapine no gusana imodoka", "Kurangiza isiganwa", "Guhindura umushoferi buri ruziga", "Gushyiramo lisansi muri buri siganwa"],
+    "answer": "To change tyres and perform repairs",
+    "answer_rw": "Guhindura amapine no gusana imodoka"
+  },
+  {
+    "category": "general",
+    "question": "Which country is associated with Ferrari?",
+    "question_rw": "Ferrari ni ikirango cy'imodoka gikomoka mu kihe gihugu?",
+    "options": ["Germany", "Italy", "Japan", "South Korea"],
+    "options_rw": ["Ubudage", "Ubutaliyani", "Ubuyapani", "Koreya y'Epfo"],
+    "answer": "Italy",
+    "answer_rw": "Ubutaliyani"
+  },
+  {
+    "category": "general",
+    "question": "How many points is a standard field goal worth in basketball when scored inside the three-point line?",
+    "question_rw": "Muri Basketball, gutsinda umupira uri imbere y'umurongo wa amanota atatu bitanga amanota angahe?",
+    "options": ["1", "2", "3", "4"],
+    "options_rw": ["1", "2", "3", "4"],
+    "answer": "2",
+    "answer_rw": "2"
+  },
+  {
+    "category": "general",
+    "question": "How many players from one team are on the court in standard basketball?",
+    "question_rw": "Muri Basketball isanzwe, ikipe imwe iba ifite abakinnyi bangahe mu kibuga?",
+    "options": ["4", "5", "6", "7"],
+    "options_rw": ["4", "5", "6", "7"],
+    "answer": "5",
+    "answer_rw": "5"
+  },
+  {
+    "category": "general",
+    "question": "Which basketball league is famous worldwide as the NBA?",
+    "question_rw": "Ni irihe rushanwa rya Basketball rizwi ku isi hose nka NBA?",
+    "options": ["National Basketball Association", "National Baseball Association", "New Basketball Academy", "North Basketball Alliance"],
+    "options_rw": ["Ishyirahamwe rya Basketball muri Amerika ya Ruguru", "Ishyirahamwe rya Baseball", "Ishuri rya Basketball", "Ihuriro rya Basketball ryo mu Majyaruguru"],
+    "answer": "National Basketball Association",
+    "answer_rw": "Ishyirahamwe rya Basketball muri Amerika ya Ruguru"
+  },
+  {
+    "category": "general",
+    "question": "Which basketball player is famously nicknamed King James?",
+    "question_rw": "Ni uwuhe mukinnyi wa Basketball uzwi ku izina rya King James?",
+    "options": ["Stephen Curry", "LeBron James", "Kevin Durant", "Michael Jordan"],
+    "options_rw": ["Stephen Curry", "LeBron James", "Kevin Durant", "Michael Jordan"],
+    "answer": "LeBron James",
+    "answer_rw": "LeBron James"
+  },
+  {
+    "category": "general",
+    "question": "Which technology allows computers to learn from data?",
+    "question_rw": "Ni irihe koranabuhanga rifasha mudasobwa kwiga zishingiye ku makuru?",
+    "options": ["Machine Learning", "Printing", "Typing", "Scanning"],
+    "options_rw": ["Machine Learning", "Gucapa", "Kwandika", "Gusikana"],
+    "answer": "Machine Learning",
+    "answer_rw": "Machine Learning"
+  },
+  {
+    "category": "general",
+    "question": "Who is commonly credited with inventing the World Wide Web?",
+    "question_rw": "Ni nde uzwiho kuba yarahanze World Wide Web?",
+    "options": ["Bill Gates", "Tim Berners-Lee", "Steve Jobs", "Mark Zuckerberg"],
+    "options_rw": ["Bill Gates", "Tim Berners-Lee", "Steve Jobs", "Mark Zuckerberg"],
+    "answer": "Tim Berners-Lee",
+    "answer_rw": "Tim Berners-Lee"
+  },
+  {
+    "category": "general",
+    "question": "What does AI stand for?",
+    "question_rw": "AI bisobanura iki?",
+    "options": ["Artificial Intelligence", "Automatic Internet", "Advanced Information", "Applied Innovation"],
+    "options_rw": ["Ubwenge Bukorano", "Interineti yikoresha", "Amakuru Yagutse", "Udushya Dukoreshwa"],
+    "answer": "Artificial Intelligence",
+    "answer_rw": "Ubwenge Bukorano"
+  },
+  {
+    "category": "general",
+    "question": "Which planet is known as the Red Planet?",
+    "question_rw": "Ni uwuhe mubumbe uzwi nk'umubumbe utukura?",
+    "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "options_rw": ["Venus", "Mars", "Jupiter", "Saturn"],
+    "answer": "Mars",
+    "answer_rw": "Mars"
+  },
+  {
+    "category": "general",
+    "question": "What is the largest ocean on Earth?",
+    "question_rw": "Ni iyihe nyanja nini kurusha izindi ku isi?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "options_rw": ["Inyanja ya Atlantika", "Inyanja y'Abahinde", "Inyanja ya Pasifika", "Inyanja ya Arctique"],
+    "answer": "Pacific Ocean",
+    "answer_rw": "Inyanja ya Pasifika"
+  },
+  {
+    "category": "general",
+    "question": "Who was the first human to walk on the Moon?",
+    "question_rw": "Ni nde muntu wa mbere wagendeye ku kwezi?",
+    "options": ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "John Glenn"],
+    "options_rw": ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "John Glenn"],
+    "answer": "Neil Armstrong",
+    "answer_rw": "Neil Armstrong"
+  },
+  {
+    "category": "general",
+    "question": "How many continents are commonly recognized on Earth?",
+    "question_rw": "Ku isi hakunze kumenyekana imigabane ingahe?",
+    "options": ["5", "6", "7", "8"],
+    "options_rw": ["5", "6", "7", "8"],
+    "answer": "7",
+    "answer_rw": "7"
+  },
+  {
+    "category": "general",
+    "question": "According to the Bible, in which town was Jesus born?",
+    "question_rw": "Nk'uko Bibiliya ibivuga, Yesu yavukiye mu wuhe mujyi?",
+    "options": ["Jerusalem", "Bethlehem", "Nazareth", "Capernaum"],
+    "options_rw": ["Yerusalemu", "Betelehemu", "Nazareti", "Kaperinawumu"],
+    "answer": "Bethlehem",
+    "answer_rw": "Betelehemu"
+  },
+  {
+    "category": "general",
+    "question": "Who was the mother of Jesus according to the Bible?",
+    "question_rw": "Nk'uko Bibiliya ibivuga, nyina wa Yesu yitwaga nde?",
+    "options": ["Martha", "Mary", "Elizabeth", "Sarah"],
+    "options_rw": ["Marita", "Mariya", "Elizabeti", "Sara"],
+    "answer": "Mary",
+    "answer_rw": "Mariya"
+  },
+  {
+    "category": "general",
+    "question": "Who baptized Jesus?",
+    "question_rw": "Ni nde wabatije Yesu?",
+    "options": ["Peter", "John the Baptist", "Paul", "Moses"],
+    "options_rw": ["Petero", "Yohana Umubatiza", "Pawulo", "Mose"],
+    "answer": "John the Baptist",
+    "answer_rw": "Yohana Umubatiza"
+  },
+  {
+    "category": "general",
+    "question": "How many apostles did Jesus choose according to the New Testament?",
+    "question_rw": "Nk'uko Isezerano Rishya ribivuga, Yesu yatoranyije intumwa zingahe?",
+    "options": ["10", "11", "12", "13"],
+    "options_rw": ["10", "11", "12", "13"],
+    "answer": "12",
+    "answer_rw": "12"
+  },
+  {
+    "category": "general",
+    "question": "Which angel announced to Mary that she would give birth to Jesus?",
+    "question_rw": "Ni uwuhe mumarayika wabwiye Mariya ko azabyara Yesu?",
+    "options": ["Michael", "Gabriel", "Raphael", "Uriel"],
+    "options_rw": ["Mikayeli", "Gaburiyeli", "Rafaheli", "Uriyeli"],
+    "answer": "Gabriel",
+    "answer_rw": "Gaburiyeli"
+  },
+  {
+    "category": "general",
+    "question": "What is the first book of the Bible?",
+    "question_rw": "Ni ikihe gitabo cya mbere muri Bibiliya?",
+    "options": ["Exodus", "Genesis", "Psalms", "Matthew"],
+    "options_rw": ["Kuva", "Itangiriro", "Zaburi", "Matayo"],
+    "answer": "Genesis",
+    "answer_rw": "Itangiriro"
+  },
+  {
+    "category": "general",
+    "question": "What is the name of the place where Jesus was crucified according to the Bible?",
+    "question_rw": "Nk'uko Bibiliya ibivuga, ahantu Yesu yabambwe hitwaga he?",
+    "options": ["Mount Sinai", "Golgotha", "Mount Carmel", "Mount Ararat"],
+    "options_rw": ["Umusozi wa Sinayi", "Gologota", "Umusozi wa Karumeli", "Umusozi wa Ararati"],
+    "answer": "Golgotha",
+    "answer_rw": "Gologota"
+  },
+  {
+    "category": "general",
+    "question": "What is the Christian celebration of Jesus' resurrection called?",
+    "question_rw": "Umunsi abakirisitu bizihizaho izuka rya Yesu witwa iki?",
+    "options": ["Christmas", "Easter", "Pentecost", "Advent"],
+    "options_rw": ["Noheli", "Pasika", "Pentekote", "Adiventi"],
+    "answer": "Easter",
+    "answer_rw": "Pasika"
+  },
+  {
+    "category": "general",
+    "question": "Which sea did Moses and the Israelites cross according to the Bible?",
+    "question_rw": "Nk'uko Bibiliya ibivuga, Mose n'Abisirayeli bambutse iyihe nyanja?",
+    "options": ["Dead Sea", "Red Sea", "Mediterranean Sea", "Black Sea"],
+    "options_rw": ["Inyanja y'Umunyu", "Inyanja Itukura", "Inyanja ya Mediterane", "Inyanja y'Umukara"],
+    "answer": "Red Sea",
+    "answer_rw": "Inyanja Itukura"
+  }
+]
