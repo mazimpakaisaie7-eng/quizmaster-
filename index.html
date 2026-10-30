@@ -11,269 +11,213 @@
 
   <style>
     :root {
-      --navy: #10233f;
-      --blue: #1769e0;
-      --green: #138754;
-      --light: #f3f6fb;
-      --text: #182338;
-      --muted: #64748b;
-      --border: #dbe3ef;
-      --white: #ffffff;
-      --red: #c93636;
+      --navy:#10233f;
+      --blue:#1769e0;
+      --green:#138754;
+      --light:#f3f6fb;
+      --text:#182338;
+      --muted:#64748b;
+      --border:#dbe3ef;
+      --white:#fff;
+      --red:#c93636;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing:border-box; }
 
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
-      color: var(--text);
-      line-height: 1.6;
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--light);
+      color:var(--text);
+      line-height:1.6;
     }
 
-    button, select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: .5;
-      cursor: not-allowed;
-    }
+    button,select { font:inherit; }
+    button { cursor:pointer; }
+    button:disabled { opacity:.5;cursor:not-allowed; }
 
     header {
-      background: var(--navy);
-      color: white;
-      padding: 22px 16px;
-      text-align: center;
+      background:var(--navy);
+      color:white;
+      padding:22px 16px;
+      text-align:center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 27px;
-    }
-
-    header p {
-      margin: 7px 0 0;
-    }
+    header h1 { margin:0;font-size:27px; }
+    header p { margin:7px 0 0; }
 
     main {
-      width: min(100% - 24px, 720px);
-      margin: 22px auto;
+      width:min(100% - 24px,720px);
+      margin:22px auto;
     }
 
     .content-card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 16px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: 0 3px 12px #10233f0a;
+      background:white;
+      padding:20px;
+      margin-bottom:16px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      box-shadow:0 3px 12px #10233f0a;
     }
 
-    h2, h3 {
-      line-height: 1.35;
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
+    h2,h3 { line-height:1.35; }
+    h2 { margin-top:0; }
+    .muted { color:var(--muted); }
 
     .field-label {
-      display: block;
-      font-weight: bold;
-      margin: 18px 0 8px;
+      display:block;
+      font-weight:bold;
+      margin:18px 0 8px;
     }
 
     .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
     }
 
     .choice {
-      padding: 12px 10px;
-      background: white;
-      color: var(--text);
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      font-weight: bold;
+      padding:12px 10px;
+      background:white;
+      color:var(--text);
+      border:2px solid var(--border);
+      border-radius:10px;
+      font-weight:bold;
     }
 
     .choice.selected {
-      border-color: var(--blue);
-      background: #eaf2ff;
-      color: #104da8;
+      border-color:var(--blue);
+      background:#eaf2ff;
+      color:#104da8;
     }
 
-    .primary, .secondary, .danger {
-      width: 100%;
-      padding: 13px 15px;
-      border: 0;
-      border-radius: 10px;
-      font-weight: bold;
-      margin-top: 10px;
+    .primary,.secondary,.danger {
+      width:100%;
+      padding:13px 15px;
+      border:0;
+      border-radius:10px;
+      font-weight:bold;
+      margin-top:10px;
     }
 
-    .primary {
-      color: white;
-      background: var(--blue);
-    }
+    .primary { color:white;background:var(--blue); }
+    .secondary { color:var(--navy);background:#e8edf5; }
+    .danger { color:white;background:var(--red); }
 
-    .secondary {
-      color: var(--navy);
-      background: #e8edf5;
-    }
-
-    .danger {
-      color: white;
-      background: var(--red);
-    }
-
-    .button-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .button-row button {
-      min-width: 0;
-    }
-
-    .hidden {
-      display: none !important;
-    }
+    .hidden { display:none !important; }
 
     .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      text-align: center;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:8px;
+      text-align:center;
     }
 
     .stat {
-      background: #f0f4fa;
-      border-radius: 10px;
-      padding: 12px 5px;
+      background:#f0f4fa;
+      border-radius:10px;
+      padding:12px 5px;
     }
 
-    .stat strong {
-      display: block;
-      font-size: 20px;
-    }
-
-    .stat span {
-      font-size: 12px;
-      color: var(--muted);
-    }
+    .stat strong { display:block;font-size:20px; }
+    .stat span { font-size:12px;color:var(--muted); }
 
     .progress-track {
-      height: 9px;
-      background: #e5eaf2;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 12px 0;
+      height:9px;
+      background:#e5eaf2;
+      border-radius:20px;
+      overflow:hidden;
+      margin:12px 0;
     }
 
     .progress-fill {
-      height: 100%;
-      width: 0;
-      background: var(--green);
-      transition: width .2s;
+      height:100%;
+      width:0;
+      background:var(--green);
+      transition:width .2s;
     }
 
     .question-text {
-      font-size: 21px;
-      font-weight: bold;
-      margin: 15px 0;
+      font-size:21px;
+      font-weight:bold;
+      margin:15px 0;
     }
 
-    .answer-list {
-      display: grid;
-      gap: 10px;
+    .question-image {
+      display:block;
+      width:100%;
+      max-height:320px;
+      object-fit:contain;
+      margin:12px auto;
+      border-radius:12px;
+      background:#f0f4fa;
+      border:1px solid var(--border);
     }
+
+    .answer-list { display:grid;gap:10px; }
 
     .answer-option {
-      padding: 13px;
-      text-align: left;
-      border: 2px solid var(--border);
-      background: white;
-      border-radius: 10px;
-      color: var(--text);
+      padding:13px;
+      text-align:left;
+      border:2px solid var(--border);
+      background:white;
+      border-radius:10px;
+      color:var(--text);
+      width:100%;
+    }
+
+    .answer-option.selected {
+      border-color:var(--blue);
+      background:#eaf2ff;
     }
 
     .answer-option.correct {
-      background: #e6f7ed;
-      border-color: #138754;
+      background:#e6f7ed;
+      border-color:var(--green);
     }
 
     .answer-option.incorrect {
-      background: #fff0f0;
-      border-color: #c93636;
+      background:#fff0f0;
+      border-color:var(--red);
     }
 
     .feedback {
-      margin-top: 15px;
-      padding: 13px;
-      border-radius: 10px;
-      background: #f0f4fa;
+      margin-top:15px;
+      padding:13px;
+      border-radius:10px;
+      background:#f0f4fa;
     }
 
-    .feedback.good {
-      background: #e6f7ed;
-    }
+    .feedback.good { background:#e6f7ed; }
+    .feedback.bad { background:#fff0f0; }
 
-    .feedback.bad {
-      background: #fff0f0;
-    }
-
-    .setting-row {
-      margin: 14px 0;
-    }
+    .setting-row { margin:14px 0; }
 
     .setting-row select {
-      display: block;
-      width: 100%;
-      padding: 11px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: white;
+      display:block;
+      width:100%;
+      padding:11px;
+      border:1px solid var(--border);
+      border-radius:8px;
+      background:white;
     }
 
     footer {
-      text-align: center;
-      padding: 20px 12px;
-      color: var(--muted);
-      font-size: 14px;
+      text-align:center;
+      padding:20px 12px;
+      color:var(--muted);
+      font-size:14px;
     }
 
     footer a {
-      color: var(--blue);
-      margin: 0 6px;
+      color:var(--blue);
+      margin:0 6px;
     }
 
-    @media (max-width: 420px) {
-      header h1 {
-        font-size: 23px;
-      }
-
-      .content-card {
-        padding: 15px;
-      }
-
-      .question-text {
-        font-size: 19px;
-      }
+    @media(max-width:420px) {
+      header h1 { font-size:23px; }
+      .content-card { padding:15px; }
+      .question-text { font-size:19px; }
     }
   </style>
 </head>
@@ -305,13 +249,9 @@
         <span class="field-label" id="categoryLabel">Choose quiz type</span>
         <div class="choice-grid">
           <button type="button" class="choice selected"
-            data-mode="traffic" aria-pressed="true">
-            Road Safety
-          </button>
+            data-mode="traffic" aria-pressed="true">Road Safety</button>
           <button type="button" class="choice"
-            data-mode="general" aria-pressed="false">
-            General Knowledge
-          </button>
+            data-mode="general" aria-pressed="false">General Knowledge</button>
         </div>
 
         <p id="selectionSummary" class="muted" aria-live="polite">
@@ -326,54 +266,40 @@
       <div class="stats" style="margin-top:18px">
         <div class="stat">
           <strong id="homeRound">1</strong>
-          <span id="roundLabel">Current Round</span>
+          <span>Current Round</span>
         </div>
         <div class="stat">
           <strong id="homeScore">0</strong>
-          <span id="scoreLabel">Best Score</span>
+          <span>Best Score</span>
         </div>
         <div class="stat">
           <strong id="homeStars">0</strong>
-          <span id="starsLabel">Stars</span>
+          <span>Stars</span>
         </div>
       </div>
 
-      <button id="startBtn" class="primary" type="button">
-        Start Quiz
-      </button>
-
-      <button id="continueBtn" class="secondary hidden" type="button">
-        Continue Quiz
-      </button>
-
-      <button id="roundsBtn" class="secondary" type="button">
-        View Rounds
-      </button>
-
-      <button id="settingsBtn" class="secondary" type="button">
-        Settings
-      </button>
-
-      <button id="shareBtn" class="secondary" type="button">
-        Share Quiz
-      </button>
-
+      <button id="startBtn" class="primary" type="button">Start Quiz</button>
+      <button id="continueBtn" class="secondary hidden" type="button">Continue Quiz</button>
+      <button id="reviewAnswersBtn" class="secondary" type="button">Review Answers</button>
+      <button id="roundsBtn" class="secondary" type="button">View Rounds</button>
+      <button id="settingsBtn" class="secondary" type="button">Settings</button>
+      <button id="shareBtn" class="secondary" type="button">Share Quiz</button>
       <p id="homeMessage" class="muted" role="status"></p>
     </section>
 
-    <section id="gameScreen" class="content-card hidden">
+    <section id="quizScreen" class="content-card hidden">
       <div class="stats">
         <div class="stat">
-          <strong id="gameRound">1</strong>
-          <span id="gameRoundLabel">Round</span>
+          <strong id="currentRound">1</strong>
+          <span>Round</span>
         </div>
         <div class="stat">
-          <strong id="questionCounter">1/10</strong>
-          <span id="questionLabel">Question</span>
+          <strong id="currentQuestionNumber">1/10</strong>
+          <span>Question</span>
         </div>
         <div class="stat">
           <strong id="timer">30</strong>
-          <span id="timerLabel">Seconds</span>
+          <span>Seconds</span>
         </div>
       </div>
 
@@ -381,29 +307,31 @@
         <div id="progressFill" class="progress-fill"></div>
       </div>
 
-      <p id="categoryInfo" class="muted">Road Safety</p>
+      <p id="categoryIndicator" class="muted">Road Safety</p>
+
       <h2 id="questionText" class="question-text">Loading question...</h2>
 
-      <div id="answerList" class="answer-list"></div>
+      <img id="questionImage" class="question-image hidden"
+        alt="Question illustration">
 
-      <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+      <div id="optionsContainer" class="answer-list"></div>
 
-      <button id="nextBtn" class="primary hidden" type="button">
+      <button id="submitAnswerBtn" class="primary" type="button" disabled>
+        Submit Answer
+      </button>
+
+      <div id="answerFeedback" class="feedback hidden" aria-live="polite"></div>
+
+      <button id="nextQuestionBtn" class="primary hidden" type="button">
         Next Question
       </button>
 
-      <button id="pauseBtn" class="secondary" type="button">
-        Pause Quiz
+      <button id="quizReviewBtn" class="secondary" type="button">
+        Review Answers
       </button>
 
-      <!-- Music ON/OFF button -->
-      <button id="musicBtn" class="secondary" type="button"
-        aria-pressed="true">
-        🎵 Music: ON
-      </button>
-
-      <button id="exitBtn" class="secondary" type="button">
-        Exit to Home
+      <button id="quizHomeBtn" class="secondary" type="button">
+        Back to Home
       </button>
     </section>
 
@@ -414,33 +342,39 @@
       <div class="stats">
         <div class="stat">
           <strong id="resultScore">0/10</strong>
-          <span id="resultScoreLabel">Correct Answers</span>
+          <span>Correct Answers</span>
         </div>
         <div class="stat">
           <strong id="resultPercent">0%</strong>
-          <span id="resultPercentLabel">Percentage</span>
+          <span>Percentage</span>
         </div>
         <div class="stat">
           <strong id="resultStars">0</strong>
-          <span id="resultStarsLabel">Stars Earned</span>
+          <span>Stars Earned</span>
         </div>
       </div>
 
-      <button id="retryBtn" class="primary" type="button">
-        Try Again
+      <button id="resultNextBtn" class="primary hidden" type="button">
+        Continue to Next Round
       </button>
-
-      <button id="nextRoundBtn" class="primary hidden" type="button">
-        Next Round
+      <button id="resultReviewBtn" class="secondary" type="button">
+        Review Answers
       </button>
-
       <button id="resultHomeBtn" class="secondary" type="button">
         Back to Home
       </button>
     </section>
 
+    <section id="reviewScreen" class="content-card hidden">
+      <h2>Review Answers</h2>
+      <div id="reviewContainer"></div>
+      <button id="reviewHomeBtn" class="secondary" type="button">
+        Back to Home
+      </button>
+    </section>
+
     <section id="roundsScreen" class="content-card hidden">
-      <h2 id="roundsTitle">Your Rounds</h2>
+      <h2>Your Rounds</h2>
       <p id="roundsDescription" class="muted"></p>
       <div id="roundList" class="answer-list"></div>
       <button id="roundsHomeBtn" class="secondary" type="button">
@@ -449,39 +383,36 @@
     </section>
 
     <section id="settingsScreen" class="content-card hidden">
-      <h2 id="settingsTitle">Settings</h2>
+      <h2>Settings</h2>
 
       <div class="setting-row">
-        <label class="field-label" for="difficultySelect"
-          id="difficultyLabel">Difficulty</label>
-        <select id="difficultySelect">
-          <option value="mixed">Mixed</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
+        <label class="field-label" for="settingsLanguage">Language</label>
+        <select id="settingsLanguage">
+          <option value="en">English</option>
+          <option value="rw">Ikinyarwanda</option>
         </select>
       </div>
 
-      <button id="saveSettingsBtn" class="primary" type="button">
-        Save Settings
-      </button>
+      <div class="setting-row">
+        <label class="field-label" for="settingsMode">Quiz Category</label>
+        <select id="settingsMode">
+          <option value="traffic">Road Safety</option>
+          <option value="general">General Knowledge</option>
+        </select>
+      </div>
 
-      <button id="resetProgressBtn" class="danger" type="button">
-        Reset Progress
-      </button>
-
-      <button id="settingsHomeBtn" class="secondary" type="button">
-        Back to Home
-      </button>
-
+      <button id="saveSettingsBtn" class="primary" type="button">Save Settings</button>
+      <button id="resetProgressBtn" class="danger" type="button">Reset Progress</button>
+      <button id="settingsHomeBtn" class="secondary" type="button">Back to Home</button>
       <p id="settingsMessage" class="muted" role="status"></p>
     </section>
   </main>
 
   <footer>
     <p>© 2026 Quiz Master 🇷🇼</p>
-    <a href="/privacy-policy.html">Privacy Policy</a>
-    <a href="/terms.html">Terms</a>
+    <a href="./privacy-policy.html">Privacy Policy</a>
+    <a href="./terms.html">Terms</a>
+    <p>Contact: mazimpakaisaie7@gmail.com</p>
   </footer>
 
   <script src="./questions.js" defer></script>
