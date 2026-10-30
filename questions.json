@@ -4700,3 +4700,517 @@
     "explanation": "Priority is determined by traffic controls and applicable rules, not by vehicle size, speed or impatience.",
     "explanation_rw": "Uburenganzira bwo kunyura bugenwa n'ibyapa, amatara n'amategeko abigenga, si ubunini bw'ikinyabiziga, umuvuduko cyangwa kutihangana."
   }, 
+  {
+    "category": "general",
+    "question": "Who was the first President of the United States?",
+    "question_rw": "Ni nde wabaye Perezida wa mbere wa Leta Zunze Ubumwe za Amerika?",
+    "options": ["Abraham Lincoln", "George Washington", "John Adams", "Thomas Jefferson"],
+    "options_rw": ["Abraham Lincoln", "George Washington", "John Adams", "Thomas Jefferson"],
+    "answer": "George Washington",
+    "answer_rw": "George Washington"
+  },
+  {
+    "category": "general",
+    "question": "Which Egyptian queen was famous for her relationship with Julius Caesar and Mark Antony?",
+    "question_rw": "Ni uwuhe mwamikazi wa Misiri wari uzwi cyane kubera umubano we na Julius Caesar na Mark Antony?",
+    "options": ["Nefertiti", "Cleopatra VII", "Hatshepsut", "Isis"],
+    "options_rw": ["Nefertiti", "Cleopatra wa Karindwi", "Hatshepsut", "Isis"],
+    "answer": "Cleopatra VII",
+    "answer_rw": "Cleopatra wa Karindwi"
+  },
+  {
+    "category": "general",
+    "question": "Which African leader became the first democratically elected Black president of South Africa?",
+    "question_rw": "Ni uwuhe muyobozi wa Afurika wabaye Perezida wa mbere w'umwirabura watowe mu matora ya demokarasi muri Afurika y'Epfo?",
+    "options": ["Desmond Tutu", "Nelson Mandela", "Thabo Mbeki", "Robert Mugabe"],
+    "options_rw": ["Desmond Tutu", "Nelson Mandela", "Thabo Mbeki", "Robert Mugabe"],
+    "answer": "Nelson Mandela",
+    "answer_rw": "Nelson Mandela"
+  },
+  {
+    "category": "general",
+    "question": "Who was known as the founder of the Mongol Empire?",
+    "question_rw": "Ni nde uzwiho gushinga Ingoma y'Abamongoli?",
+    "options": ["Alexander the Great", "Genghis Khan", "Napoleon Bonaparte", "Julius Caesar"],
+    "options_rw": ["Alexander Mukuru", "Genghis Khan", "Napoleon Bonaparte", "Julius Caesar"],
+    "answer": "Genghis Khan",
+    "answer_rw": "Genghis Khan"
+  },
+  {
+    "category": "general",
+    "question": "Which British monarch ruled during much of the 19th century?",
+    "question_rw": "Ni uwuhe mwamikazi w'u Bwongereza wategetse mu gihe kinini cy'ikinyejana cya 19?",
+    "options": ["Queen Elizabeth II", "Queen Victoria", "Queen Anne", "Queen Mary"],
+    "options_rw": ["Umwamikazi Elizabeth wa Kabiri", "Umwamikazi Victoria", "Umwamikazi Anne", "Umwamikazi Mary"],
+    "answer": "Queen Victoria",
+    "answer_rw": "Umwamikazi Victoria"
+  },
+  {
+    "category": "general",
+    "question": "Who was the first President of Ghana after independence?",
+    "question_rw": "Ni nde wabaye Perezida wa mbere wa Ghana nyuma yo kubona ubwigenge?",
+    "options": ["Kwame Nkrumah", "Jerry Rawlings", "John Kufuor", "Nana Akufo-Addo"],
+    "options_rw": ["Kwame Nkrumah", "Jerry Rawlings", "John Kufuor", "Nana Akufo-Addo"],
+    "answer": "Kwame Nkrumah",
+    "answer_rw": "Kwame Nkrumah"
+  },
+  {
+    "category": "general",
+    "question": "Which Roman leader was assassinated on the Ides of March in 44 BC?",
+    "question_rw": "Ni uwuhe muyobozi w'Abaroma wishwe ku itariki ya 15 Werurwe mu mwaka wa 44 mbere ya Yesu?",
+    "options": ["Augustus", "Julius Caesar", "Nero", "Constantine"],
+    "options_rw": ["Augustus", "Julius Caesar", "Nero", "Constantine"],
+    "answer": "Julius Caesar",
+    "answer_rw": "Julius Caesar"
+  },
+  {
+    "category": "general",
+    "question": "Who was the first female Prime Minister of the United Kingdom?",
+    "question_rw": "Ni nde wabaye umugore wa mbere wabaye Minisitiri w'Intebe w'u Bwongereza?",
+    "options": ["Theresa May", "Margaret Thatcher", "Angela Merkel", "Queen Victoria"],
+    "options_rw": ["Theresa May", "Margaret Thatcher", "Angela Merkel", "Umwamikazi Victoria"],
+    "answer": "Margaret Thatcher",
+    "answer_rw": "Margaret Thatcher"
+  },
+  {
+    "category": "general",
+    "question": "Which country was ruled by Emperor Napoleon Bonaparte?",
+    "question_rw": "Ni ikihe gihugu cyategetswe na Napoleon Bonaparte?",
+    "options": ["Spain", "France", "Germany", "Portugal"],
+    "options_rw": ["Espagne", "Ubufaransa", "Ubudage", "Portugal"],
+    "answer": "France",
+    "answer_rw": "Ubufaransa"
+  },
+  {
+    "category": "general",
+    "question": "Who was the first President of independent Kenya?",
+    "question_rw": "Ni nde wabaye Perezida wa mbere wa Kenya yigenga?",
+    "options": ["Daniel arap Moi", "Jomo Kenyatta", "Mwai Kibaki", "Uhuru Kenyatta"],
+    "options_rw": ["Daniel arap Moi", "Jomo Kenyatta", "Mwai Kibaki", "Uhuru Kenyatta"],
+    "answer": "Jomo Kenyatta",
+    "answer_rw": "Jomo Kenyatta"
+  },
+  {
+    "category": "general",
+    "question": "Which footballer is famously known as CR7?",
+    "question_rw": "Ni uwuhe mukinnyi w'umupira w'amaguru uzwi cyane ku izina rya CR7?",
+    "options": ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappe"],
+    "options_rw": ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr.", "Kylian Mbappe"],
+    "answer": "Cristiano Ronaldo",
+    "answer_rw": "Cristiano Ronaldo"
+  },
+  {
+    "category": "general",
+    "question": "Which country did Lionel Messi represent when he won the 2022 FIFA World Cup?",
+    "question_rw": "Ni ikihe gihugu Lionel Messi yari ahagarariye ubwo yatwaraga Igikombe cy'Isi cya FIFA mu 2022?",
+    "options": ["Spain", "Brazil", "Argentina", "Portugal"],
+    "options_rw": ["Espagne", "Burezili", "Arijantine", "Portugal"],
+    "answer": "Argentina",
+    "answer_rw": "Arijantine"
+  },
+  {
+    "category": "general",
+    "question": "Which Jamaican athlete is famous for the 100-metre world record of 9.58 seconds?",
+    "question_rw": "Ni uwuhe mukinnyi wo muri Jamaica uzwiho kugira agahigo k'isi ko kwiruka metero 100 mu masegonda 9.58?",
+    "options": ["Yohan Blake", "Usain Bolt", "Justin Gatlin", "Asafa Powell"],
+    "options_rw": ["Yohan Blake", "Usain Bolt", "Justin Gatlin", "Asafa Powell"],
+    "answer": "Usain Bolt",
+    "answer_rw": "Usain Bolt"
+  },
+  {
+    "category": "general",
+    "question": "Which basketball legend was nicknamed His Airness?",
+    "question_rw": "Ni uwuhe mukinnyi w'icyamamare wa Basketball wahabwaga akabyiniriro ka His Airness?",
+    "options": ["LeBron James", "Kobe Bryant", "Michael Jordan", "Stephen Curry"],
+    "options_rw": ["LeBron James", "Kobe Bryant", "Michael Jordan", "Stephen Curry"],
+    "answer": "Michael Jordan",
+    "answer_rw": "Michael Jordan"
+  },
+  {
+    "category": "general",
+    "question": "Which country did the famous footballer Pele represent?",
+    "question_rw": "Ni ikihe gihugu umukinnyi w'icyamamare Pele yari ahagarariye?",
+    "options": ["Argentina", "Brazil", "France", "Italy"],
+    "options_rw": ["Arijantine", "Burezili", "Ubufaransa", "Ubutaliyani"],
+    "answer": "Brazil",
+    "answer_rw": "Burezili"
+  },
+  {
+    "category": "general",
+    "question": "Which female tennis player has won 23 Grand Slam singles titles in the Open Era?",
+    "question_rw": "Ni uwuhe mukinnyi w'umugore wa Tennis wegukanye ibikombe 23 bya Grand Slam mu mikino y'ababigize umwuga kuva mu gihe cya Open Era?",
+    "options": ["Maria Sharapova", "Serena Williams", "Venus Williams", "Steffi Graf"],
+    "options_rw": ["Maria Sharapova", "Serena Williams", "Venus Williams", "Steffi Graf"],
+    "answer": "Serena Williams",
+    "answer_rw": "Serena Williams"
+  },
+  {
+    "category": "general",
+    "question": "Which country hosted the first modern Olympic Games in 1896?",
+    "question_rw": "Ni ikihe gihugu cyakiriye Imikino Olempike ya mbere yo mu bihe bya none mu 1896?",
+    "options": ["France", "Greece", "Italy", "United Kingdom"],
+    "options_rw": ["Ubufaransa", "Ubugereki", "Ubutaliyani", "Ubwongereza"],
+    "answer": "Greece",
+    "answer_rw": "Ubugereki"
+  },
+  {
+    "category": "general",
+    "question": "Which athlete is known as the fastest man in the history of the 100-metre sprint?",
+    "question_rw": "Ni uwuhe mukinnyi uzwiho kuba yarirutse metero 100 vuba kurusha abandi mu mateka?",
+    "options": ["Carl Lewis", "Usain Bolt", "Tyson Gay", "Noah Lyles"],
+    "options_rw": ["Carl Lewis", "Usain Bolt", "Tyson Gay", "Noah Lyles"],
+    "answer": "Usain Bolt",
+    "answer_rw": "Usain Bolt"
+  },
+  {
+    "category": "general",
+    "question": "Which musician was known as the King of Pop?",
+    "question_rw": "Ni uwuhe muhanzi wari uzwi nk'Umwami wa Pop?",
+    "options": ["Elvis Presley", "Michael Jackson", "Prince", "Freddie Mercury"],
+    "options_rw": ["Elvis Presley", "Michael Jackson", "Prince", "Freddie Mercury"],
+    "answer": "Michael Jackson",
+    "answer_rw": "Michael Jackson"
+  },
+  {
+    "category": "general",
+    "question": "Which Jamaican singer popularized reggae music worldwide?",
+    "question_rw": "Ni uwuhe muririmbyi wo muri Jamaica wamamaje umuziki wa Reggae ku isi?",
+    "options": ["Bob Marley", "Shaggy", "Sean Paul", "Jimmy Cliff"],
+    "options_rw": ["Bob Marley", "Shaggy", "Sean Paul", "Jimmy Cliff"],
+    "answer": "Bob Marley",
+    "answer_rw": "Bob Marley"
+  },
+  {
+    "category": "general",
+    "question": "Which singer is famously known as the Queen of Pop?",
+    "question_rw": "Ni uwuhe muririmbyi w'umugore uzwi cyane nk'Umwamikazi wa Pop?",
+    "options": ["Beyonce", "Madonna", "Rihanna", "Adele"],
+    "options_rw": ["Beyonce", "Madonna", "Rihanna", "Adele"],
+    "answer": "Madonna",
+    "answer_rw": "Madonna"
+  },
+  {
+    "category": "general",
+    "question": "Which singer released the famous album Thriller in 1982?",
+    "question_rw": "Ni uwuhe muririmbyi wasohoye album y'icyamamare yitwa Thriller mu 1982?",
+    "options": ["Prince", "Michael Jackson", "Elton John", "Lionel Richie"],
+    "options_rw": ["Prince", "Michael Jackson", "Elton John", "Lionel Richie"],
+    "answer": "Michael Jackson",
+    "answer_rw": "Michael Jackson"
+  },
+  {
+    "category": "general",
+    "question": "Which Nigerian musician is popularly known as the African Giant?",
+    "question_rw": "Ni uwuhe muhanzi wo muri Nigeria uzwi cyane ku izina rya African Giant?",
+    "options": ["Wizkid", "Burna Boy", "Davido", "Olamide"],
+    "options_rw": ["Wizkid", "Burna Boy", "Davido", "Olamide"],
+    "answer": "Burna Boy",
+    "answer_rw": "Burna Boy"
+  },
+  {
+    "category": "general",
+    "question": "Which music group released the song Bohemian Rhapsody?",
+    "question_rw": "Ni irihe tsinda ry'abaririmbyi ryasohoye indirimbo Bohemian Rhapsody?",
+    "options": ["The Beatles", "Queen", "ABBA", "The Rolling Stones"],
+    "options_rw": ["The Beatles", "Queen", "ABBA", "The Rolling Stones"],
+    "answer": "Queen",
+    "answer_rw": "Queen"
+  },
+  {
+    "category": "general",
+    "question": "Which actor played Jack Dawson in the film Titanic?",
+    "question_rw": "Ni uwuhe mukinnyi wa filime wakinnye ari Jack Dawson muri filime Titanic?",
+    "options": ["Brad Pitt", "Leonardo DiCaprio", "Tom Cruise", "Johnny Depp"],
+    "options_rw": ["Brad Pitt", "Leonardo DiCaprio", "Tom Cruise", "Johnny Depp"],
+    "answer": "Leonardo DiCaprio",
+    "answer_rw": "Leonardo DiCaprio"
+  },
+  {
+    "category": "general",
+    "question": "Which actor played the character Iron Man in the Marvel Cinematic Universe?",
+    "question_rw": "Ni uwuhe mukinnyi wa filime wakinnye nka Iron Man muri filime za Marvel?",
+    "options": ["Chris Evans", "Robert Downey Jr.", "Chris Hemsworth", "Mark Ruffalo"],
+    "options_rw": ["Chris Evans", "Robert Downey Jr.", "Chris Hemsworth", "Mark Ruffalo"],
+    "answer": "Robert Downey Jr.",
+    "answer_rw": "Robert Downey Jr."
+  },
+  {
+    "category": "general",
+    "question": "Who directed the film Jurassic Park released in 1993?",
+    "question_rw": "Ni nde wayoboye filime Jurassic Park yasohotse mu 1993?",
+    "options": ["James Cameron", "Steven Spielberg", "Christopher Nolan", "George Lucas"],
+    "options_rw": ["James Cameron", "Steven Spielberg", "Christopher Nolan", "George Lucas"],
+    "answer": "Steven Spielberg",
+    "answer_rw": "Steven Spielberg"
+  },
+  {
+    "category": "general",
+    "question": "Which actress played Hermione Granger in the Harry Potter films?",
+    "question_rw": "Ni uwuhe mukinnyi w'umugore wakinnye nka Hermione Granger muri filime za Harry Potter?",
+    "options": ["Emma Stone", "Emma Watson", "Anne Hathaway", "Jennifer Lawrence"],
+    "options_rw": ["Emma Stone", "Emma Watson", "Anne Hathaway", "Jennifer Lawrence"],
+    "answer": "Emma Watson",
+    "answer_rw": "Emma Watson"
+  },
+  {
+    "category": "general",
+    "question": "Which actor played the main character in the film The Mask of Zorro?",
+    "question_rw": "Ni uwuhe mukinnyi wa filime wakinnye ari Zorro muri filime The Mask of Zorro yo mu 1998?",
+    "options": ["Antonio Banderas", "Tom Hanks", "Keanu Reeves", "Will Smith"],
+    "options_rw": ["Antonio Banderas", "Tom Hanks", "Keanu Reeves", "Will Smith"],
+    "answer": "Antonio Banderas",
+    "answer_rw": "Antonio Banderas"
+  },
+  {
+    "category": "general",
+    "question": "Who wrote the famous play Romeo and Juliet?",
+    "question_rw": "Ni nde wanditse ikinamico y'icyamamare yitwa Romeo and Juliet?",
+    "options": ["Charles Dickens", "William Shakespeare", "Mark Twain", "Jane Austen"],
+    "options_rw": ["Charles Dickens", "William Shakespeare", "Mark Twain", "Jane Austen"],
+    "answer": "William Shakespeare",
+    "answer_rw": "William Shakespeare"
+  },
+  {
+    "category": "general",
+    "question": "Who wrote the novel Things Fall Apart?",
+    "question_rw": "Ni nde wanditse igitabo Things Fall Apart?",
+    "options": ["Wole Soyinka", "Chinua Achebe", "Ngugi wa Thiong'o", "Chimamanda Ngozi Adichie"],
+    "options_rw": ["Wole Soyinka", "Chinua Achebe", "Ngugi wa Thiong'o", "Chimamanda Ngozi Adichie"],
+    "answer": "Chinua Achebe",
+    "answer_rw": "Chinua Achebe"
+  },
+  {
+    "category": "general",
+    "question": "Which British author created the character Sherlock Holmes?",
+    "question_rw": "Ni uwuhe mwanditsi w'Umunyabongereza wahimbye umugenzacyaha Sherlock Holmes?",
+    "options": ["Agatha Christie", "Arthur Conan Doyle", "J.K. Rowling", "Charles Dickens"],
+    "options_rw": ["Agatha Christie", "Arthur Conan Doyle", "J.K. Rowling", "Charles Dickens"],
+    "answer": "Arthur Conan Doyle",
+    "answer_rw": "Arthur Conan Doyle"
+  },
+  {
+    "category": "general",
+    "question": "Who wrote the novel Don Quixote?",
+    "question_rw": "Ni nde wanditse igitabo Don Quixote?",
+    "options": ["Miguel de Cervantes", "Leo Tolstoy", "Victor Hugo", "Dante Alighieri"],
+    "options_rw": ["Miguel de Cervantes", "Leo Tolstoy", "Victor Hugo", "Dante Alighieri"],
+    "answer": "Miguel de Cervantes",
+    "answer_rw": "Miguel de Cervantes"
+  },
+  {
+    "category": "general",
+    "question": "Which writer wrote the Harry Potter book series?",
+    "question_rw": "Ni nde wanditse ibitabo by'uruhererekane rwa Harry Potter?",
+    "options": ["J.R.R. Tolkien", "J.K. Rowling", "Stephen King", "Suzanne Collins"],
+    "options_rw": ["J.R.R. Tolkien", "J.K. Rowling", "Stephen King", "Suzanne Collins"],
+    "answer": "J.K. Rowling",
+    "answer_rw": "J.K. Rowling"
+  },
+  {
+    "category": "general",
+    "question": "According to the Bible, who built an ark before the great flood?",
+    "question_rw": "Dukurikije Bibiliya, ni nde wubatse inkuge mbere y'umwuzure ukomeye?",
+    "options": ["Abraham", "Noah", "Moses", "David"],
+    "options_rw": ["Aburahamu", "Nowa", "Mose", "Dawidi"],
+    "answer": "Noah",
+    "answer_rw": "Nowa"
+  },
+  {
+    "category": "general",
+    "question": "According to the Bible, which prophet led the Israelites out of Egypt?",
+    "question_rw": "Dukurikije Bibiliya, ni uwuhe muhanuzi wayoboye Abisirayeli bava mu Misiri?",
+    "options": ["Elijah", "Moses", "Isaiah", "Samuel"],
+    "options_rw": ["Eliya", "Mose", "Yesaya", "Samweli"],
+    "answer": "Moses",
+    "answer_rw": "Mose"
+  },
+  {
+    "category": "general",
+    "question": "According to the Bible, who defeated Goliath?",
+    "question_rw": "Dukurikije Bibiliya, ni nde watsinze Goliyati?",
+    "options": ["Solomon", "David", "Saul", "Jonathan"],
+    "options_rw": ["Salomo", "Dawidi", "Sawuli", "Yonatani"],
+    "answer": "David",
+    "answer_rw": "Dawidi"
+  },
+  {
+    "category": "general",
+    "question": "According to Islamic tradition, which prophet received the first revelation of the Quran?",
+    "question_rw": "Dukurikije imigenzo ya Islamu, ni uwuhe muhanuzi wahishuriwe bwa mbere amagambo ya Qur'an?",
+    "options": ["Prophet Musa", "Prophet Muhammad", "Prophet Ibrahim", "Prophet Isa"],
+    "options_rw": ["Umuhanuzi Musa", "Umuhanuzi Muhammad", "Umuhanuzi Ibrahim", "Umuhanuzi Isa"],
+    "answer": "Prophet Muhammad",
+    "answer_rw": "Umuhanuzi Muhammad"
+  },
+  {
+    "category": "general",
+    "question": "According to the Bible, in which town was Jesus born?",
+    "question_rw": "Dukurikije Bibiliya, Yesu yavukiye mu wuhe mujyi?",
+    "options": ["Jerusalem", "Bethlehem", "Nazareth", "Jericho"],
+    "options_rw": ["Yerusalemu", "Betelehemu", "Nazareti", "Yeriko"],
+    "answer": "Bethlehem",
+    "answer_rw": "Betelehemu"
+  },
+  {
+    "category": "general",
+    "question": "Which prophet is traditionally associated with the story of the great fish?",
+    "question_rw": "Ni uwuhe muhanuzi mu nkuru z'idini uvugwa mu nkuru y'ifi nini yamumize?",
+    "options": ["Jonah", "Elijah", "Isaiah", "Jeremiah"],
+    "options_rw": ["Yona", "Eliya", "Yesaya", "Yeremiya"],
+    "answer": "Jonah",
+    "answer_rw": "Yona"
+  },
+  {
+    "category": "general",
+    "question": "Who developed the theory of general relativity?",
+    "question_rw": "Ni nde wavumbuye inyigisho ya General Relativity mu bumenyi bwa Fiziki?",
+    "options": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"],
+    "options_rw": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"],
+    "answer": "Albert Einstein",
+    "answer_rw": "Albert Einstein"
+  },
+  {
+    "category": "general",
+    "question": "Who discovered penicillin?",
+    "question_rw": "Ni nde wavumbuye umuti wa Penicillin?",
+    "options": ["Louis Pasteur", "Alexander Fleming", "Marie Curie", "Edward Jenner"],
+    "options_rw": ["Louis Pasteur", "Alexander Fleming", "Marie Curie", "Edward Jenner"],
+    "answer": "Alexander Fleming",
+    "answer_rw": "Alexander Fleming"
+  },
+  {
+    "category": "general",
+    "question": "Which scientist is famous for the laws of motion and universal gravitation?",
+    "question_rw": "Ni uwuhe muhanga uzwiho gushyiraho amategeko agenga ingendo z'ibintu n'imbaraga za rukuruzi?",
+    "options": ["Albert Einstein", "Isaac Newton", "Charles Darwin", "Niels Bohr"],
+    "options_rw": ["Albert Einstein", "Isaac Newton", "Charles Darwin", "Niels Bohr"],
+    "answer": "Isaac Newton",
+    "answer_rw": "Isaac Newton"
+  },
+  {
+    "category": "general",
+    "question": "Who was the first woman to win a Nobel Prize?",
+    "question_rw": "Ni nde mugore wa mbere wegukanye igihembo cyitiriwe Nobel?",
+    "options": ["Rosalind Franklin", "Marie Curie", "Ada Lovelace", "Jane Goodall"],
+    "options_rw": ["Rosalind Franklin", "Marie Curie", "Ada Lovelace", "Jane Goodall"],
+    "answer": "Marie Curie",
+    "answer_rw": "Marie Curie"
+  },
+  {
+    "category": "general",
+    "question": "Who is widely regarded as the father of modern computer science?",
+    "question_rw": "Ni nde ufatwa na benshi nk'umubyeyi w'ubumenyi bwa mudasobwa bwo muri iki gihe?",
+    "options": ["Bill Gates", "Alan Turing", "Steve Jobs", "Charles Babbage"],
+    "options_rw": ["Bill Gates", "Alan Turing", "Steve Jobs", "Charles Babbage"],
+    "answer": "Alan Turing",
+    "answer_rw": "Alan Turing"
+  },
+  {
+    "category": "general",
+    "question": "Which scientist proposed the theory of evolution by natural selection?",
+    "question_rw": "Ni uwuhe muhanga wasobanuye inyigisho y'ihindagurika ry'ibinyabuzima binyuze mu gutoranywa n'ibidukikije?",
+    "options": ["Gregor Mendel", "Charles Darwin", "Louis Pasteur", "Galileo Galilei"],
+    "options_rw": ["Gregor Mendel", "Charles Darwin", "Louis Pasteur", "Galileo Galilei"],
+    "answer": "Charles Darwin",
+    "answer_rw": "Charles Darwin"
+  },
+  {
+    "category": "general",
+    "question": "Who was the first human to walk on the Moon?",
+    "question_rw": "Ni nde muntu wa mbere wagendeye ku Kwezi?",
+    "options": ["Buzz Aldrin", "Neil Armstrong", "Yuri Gagarin", "Michael Collins"],
+    "options_rw": ["Buzz Aldrin", "Neil Armstrong", "Yuri Gagarin", "Michael Collins"],
+    "answer": "Neil Armstrong",
+    "answer_rw": "Neil Armstrong"
+  },
+  {
+    "category": "general",
+    "question": "Which country invented paper according to historical records?",
+    "question_rw": "Dukurikije amateka, ni ikihe gihugu cyavumbuyemo impapuro?",
+    "options": ["India", "China", "Egypt", "Greece"],
+    "options_rw": ["Ubuhinde", "Ubushinwa", "Misiri", "Ubugereki"],
+    "answer": "China",
+    "answer_rw": "Ubushinwa"
+  },
+  {
+    "category": "general",
+    "question": "In which country was the printing press developed by Johannes Gutenberg?",
+    "question_rw": "Ni mu kihe gihugu Johannes Gutenberg yateje imbere imashini icapa ibitabo?",
+    "options": ["France", "Germany", "Italy", "England"],
+    "options_rw": ["Ubufaransa", "Ubudage", "Ubutaliyani", "Ubwongereza"],
+    "answer": "Germany",
+    "answer_rw": "Ubudage"
+  },
+  {
+    "category": "general",
+    "question": "Which country is the birthplace of the ancient Olympic Games?",
+    "question_rw": "Ni ikihe gihugu cyavukiyemo Imikino Olempike yo mu bihe bya kera?",
+    "options": ["Egypt", "Greece", "China", "Italy"],
+    "options_rw": ["Misiri", "Ubugereki", "Ubushinwa", "Ubutaliyani"],
+    "answer": "Greece",
+    "answer_rw": "Ubugereki"
+  },
+  {
+    "category": "general",
+    "question": "Which country is widely credited with developing the first successful powered airplane?",
+    "question_rw": "Ni ikihe gihugu kivugwa cyane ko ari ho haturutse indege ya mbere yagurutse ikoresheje moteri mu buryo bwagenze neza?",
+    "options": ["France", "United States", "Germany", "United Kingdom"],
+    "options_rw": ["Ubufaransa", "Leta Zunze Ubumwe za Amerika", "Ubudage", "Ubwongereza"],
+    "answer": "United States",
+    "answer_rw": "Leta Zunze Ubumwe za Amerika"
+  },
+  {
+    "category": "general",
+    "question": "Which country launched Sputnik 1, the first artificial satellite?",
+    "question_rw": "Ni ikihe gihugu cyohereje mu isanzure icyogajuru cya mbere cyakozwe n'abantu cyitwa Sputnik 1?",
+    "options": ["United States", "Soviet Union", "China", "Japan"],
+    "options_rw": ["Leta Zunze Ubumwe za Amerika", "Ubumwe bw'Abasoviyeti", "Ubushinwa", "Ubuyapani"],
+    "answer": "Soviet Union",
+    "answer_rw": "Ubumwe bw'Abasoviyeti"
+  },
+  {
+    "category": "general",
+    "question": "Which country is home to the ancient Great Wall?",
+    "question_rw": "Ni ikihe gihugu kibonekamo Urukuta Rukuru rwubatswe mu bihe bya kera?",
+    "options": ["India", "China", "Japan", "South Korea"],
+    "options_rw": ["Ubuhinde", "Ubushinwa", "Ubuyapani", "Koreya y'Epfo"],
+    "answer": "China",
+    "answer_rw": "Ubushinwa"
+  },
+  {
+    "category": "general",
+    "question": "Which country developed the World Wide Web through the work of Tim Berners-Lee at CERN?",
+    "question_rw": "Tim Berners-Lee yakoreye i CERN, mu Busuwisi, aho yahanze World Wide Web. CERN iherereye mu kihe gihugu?",
+    "options": ["United Kingdom", "Switzerland", "United States", "Germany"],
+    "options_rw": ["Ubwongereza", "Ubusuwisi", "Leta Zunze Ubumwe za Amerika", "Ubudage"],
+    "answer": "Switzerland",
+    "answer_rw": "Ubusuwisi"
+  },
+  {
+    "category": "general",
+    "question": "Which country is famous for developing the Toyota automobile brand?",
+    "question_rw": "Ni ikihe gihugu kizwiho gukora imodoka zo mu bwoko bwa Toyota?",
+    "options": ["South Korea", "Japan", "Germany", "China"],
+    "options_rw": ["Koreya y'Epfo", "Ubuyapani", "Ubudage", "Ubushinwa"],
+    "answer": "Japan",
+    "answer_rw": "Ubuyapani"
+  },
+  {
+    "category": "general",
+    "question": "Which ancient civilization developed the earliest known forms of writing called cuneiform?",
+    "question_rw": "Ni irihe tsinda ry'abantu bo mu bihe bya kera ryateje imbere uburyo bwa mbere buzwi bwo kwandika bwitwa Cuneiform?",
+    "options": ["Ancient Egyptians", "Sumerians", "Ancient Greeks", "Romans"],
+    "options_rw": ["Abanyamisiri ba kera", "Abasumeriya", "Abagiriki ba kera", "Abaroma"],
+    "answer": "Sumerians",
+    "answer_rw": "Abasumeriya"
+  },
+  {
+    "category": "general",
+    "question": "Which country is credited with inventing the modern telephone through Alexander Graham Bell's work?",
+    "question_rw": "Ni ikihe gihugu gifitanye isano n'ivumburwa rya telefoni ya mbere igezweho binyuze mu mirimo ya Alexander Graham Bell?",
+    "options": ["United States", "Italy", "Germany", "Japan"],
+    "options_rw": ["Leta Zunze Ubumwe za Amerika", "Ubutaliyani", "Ubudage", "Ubuyapani"],
+    "answer": "United States",
+    "answer_rw": "Leta Zunze Ubumwe za Amerika"
+  },
+  
