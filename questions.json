@@ -2400,4 +2400,1154 @@
     "explanation": "Safe driving through multiple junctions requires anticipation, observation and controlled speed.",
     "explanation_rw": "Gutwara neza unyura mu masangano menshi bisaba guteganya, kwitegereza no kugenzura umuvuduko."
   },
-  
+  {
+    "id": "incident_101",
+    "category": "traffic",
+    "sign_symbol": "⚠️",
+    "question": "What should you do first when you arrive at a road crash scene?",
+    "question_rw": "Ni iki ugomba kubanza gukora ugeze ahabereye impanuka yo mu muhanda?",
+    "options": [
+      "Stop in a safe place and assess the danger",
+      "Run immediately into the road",
+      "Move every damaged vehicle",
+      "Take photographs before checking safety"
+    ],
+    "options_rw": [
+      "Hagarara ahatekanye maze usuzume ibyago bihari",
+      "Hita wirukira mu muhanda",
+      "Hita wimura ibinyabiziga byose byangiritse",
+      "Banza ufate amafoto utabanje kureba umutekano"
+    ],
+    "answer": "Stop in a safe place and assess the danger",
+    "answer_rw": "Hagarara ahatekanye maze usuzume ibyago bihari",
+    "explanation": "Protect yourself and other road users before approaching the crash scene.",
+    "explanation_rw": "Banza urinde umutekano wawe n'uw'abandi mbere yo kwegera ahabereye impanuka."
+  },
+  {
+    "id": "incident_102",
+    "category": "traffic",
+    "sign_symbol": "🚑",
+    "question": "What should you do if someone is seriously injured in a road crash?",
+    "question_rw": "Wakora iki iyo umuntu akomeretse bikomeye mu mpanuka yo mu muhanda?",
+    "options": [
+      "Call emergency services and request medical assistance",
+      "Leave the person alone without reporting the crash",
+      "Give the person food immediately",
+      "Ask the person to walk around"
+    ],
+    "options_rw": [
+      "Hamagara ubutabazi usabe ubufasha bw'abaganga",
+      "Musige aho utamenyesheje ubutabazi",
+      "Hita umuha ibiryo",
+      "Musabe kugenda kugira ngo urebe uko ameze"
+    ],
+    "answer": "Call emergency services and request medical assistance",
+    "answer_rw": "Hamagara ubutabazi usabe ubufasha bw'abaganga",
+    "explanation": "Serious injuries require prompt assessment and professional medical help.",
+    "explanation_rw": "Imvune zikomeye zisaba ubufasha bwihuse bw'abaganga babifitiye ubumenyi."
+  },
+  {
+    "id": "incident_103",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "When should an injured person be moved after a road crash?",
+    "question_rw": "Ni ryari umuntu wakomeretse mu mpanuka ashobora kwimurwa?",
+    "options": [
+      "Only when there is immediate danger or movement is necessary for safety",
+      "Whenever someone wants to clear the road",
+      "Immediately after every crash",
+      "Whenever the injured person is unconscious"
+    ],
+    "options_rw": [
+      "Iyo hari akaga kihutirwa cyangwa kwimurwa ari ngombwa ku mutekano",
+      "Igihe cyose umuntu ashaka gukuraho imodoka mu muhanda",
+      "Ako kanya nyuma ya buri mpanuka",
+      "Igihe cyose uwakomeretse atavuga"
+    ],
+    "answer": "Only when there is immediate danger or movement is necessary for safety",
+    "answer_rw": "Iyo hari akaga kihutirwa cyangwa kwimurwa ari ngombwa ku mutekano",
+    "explanation": "Unnecessary movement can worsen some injuries. Follow emergency professionals' instructions.",
+    "explanation_rw": "Kwimura umuntu bitari ngombwa bishobora kongera ubukana bw'imvune. Kurikiza amabwiriza y'abatabazi."
+  },
+  {
+    "id": "incident_104",
+    "category": "traffic",
+    "sign_symbol": "🪖",
+    "question": "What should you do if a motorcyclist is injured and wearing a helmet?",
+    "question_rw": "Wakora iki iyo umugenzi wa moto yakomeretse kandi yambaye ingofero?",
+    "options": [
+      "Avoid removing the helmet unless trained professionals direct you",
+      "Pull the helmet off immediately",
+      "Ask the injured person to remove it",
+      "Turn the helmet sharply to check the face"
+    ],
+    "options_rw": [
+      "Irinde kuyikuraho keretse ubisabwe n'abatabazi babifitiye ubumenyi",
+      "Hita uyikuraho",
+      "Saba uwakomeretse kuyikuraho",
+      "Hindukiza ingofero ku ngufu kugira ngo urebe mu maso"
+    ],
+    "answer": "Avoid removing the helmet unless trained professionals direct you",
+    "answer_rw": "Irinde kuyikuraho keretse ubisabwe n'abatabazi babifitiye ubumenyi",
+    "explanation": "Removing a helmet incorrectly may worsen a head or neck injury.",
+    "explanation_rw": "Gukuraho ingofero nabi bishobora kongera ubukana bw'imvune yo mu mutwe cyangwa mu ijosi."
+  },
+  {
+    "id": "incident_105",
+    "category": "traffic",
+    "sign_symbol": "🔥",
+    "question": "What should you do if a crashed vehicle catches fire?",
+    "question_rw": "Wakora iki iyo ikinyabiziga cyakoze impanuka gifashwe n'umuriro?",
+    "options": [
+      "Keep a safe distance and call emergency services",
+      "Stand close to the vehicle and open its fuel tank",
+      "Continue driving past without warning anyone",
+      "Touch the burning vehicle to check the heat"
+    ],
+    "options_rw": [
+      "Gira intera y'umutekano maze uhamagare ubutabazi",
+      "Egera ikinyabiziga ufungure ikigega cya lisansi",
+      "Komeza unyureho utaburiye abandi",
+      "Kora ku kinyabiziga cyaka kugira ngo urebe ubushyuhe"
+    ],
+    "answer": "Keep a safe distance and call emergency services",
+    "answer_rw": "Gira intera y'umutekano maze uhamagare ubutabazi",
+    "explanation": "A vehicle fire can spread or cause an explosion. Do not put yourself in danger.",
+    "explanation_rw": "Umuriro w'ikinyabiziga ushobora gukwira cyangwa guteza iturika. Ntukishyire mu kaga."
+  },
+  {
+    "id": "incident_106",
+    "category": "traffic",
+    "sign_symbol": "🚧",
+    "question": "What should you do if a crash blocks one lane of a busy road?",
+    "question_rw": "Wakora iki iyo impanuka ifunze umurongo umwe w'umuhanda ukoreshwa cyane?",
+    "options": [
+      "Slow down and follow the directions of authorised traffic controllers",
+      "Drive around the crash without checking for traffic",
+      "Use the opposite lane at high speed",
+      "Stop in the middle of the road"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko ukurikize amabwiriza y'abayobora ibinyabiziga",
+      "Nyura iruhande rw'impanuka utarebye ibindi binyabiziga",
+      "Koresha umurongo w'abaturuka imbere ku muvuduko mwinshi",
+      "Hagarara hagati mu muhanda"
+    ],
+    "answer": "Slow down and follow the directions of authorised traffic controllers",
+    "answer_rw": "Gabanya umuvuduko ukurikize amabwiriza y'abayobora ibinyabiziga",
+    "explanation": "Traffic controllers help prevent secondary crashes around an obstruction.",
+    "explanation_rw": "Abayobora ibinyabiziga bafasha gukumira izindi mpanuka zishobora kubera ahafunze umuhanda."
+  },
+  {
+    "id": "incident_107",
+    "category": "traffic",
+    "sign_symbol": "🚨",
+    "question": "What should you do when an emergency vehicle approaches with warning signals?",
+    "question_rw": "Wakora iki iyo ikinyabiziga cy'ubutabazi kikugezeho gitanga ibimenyetso byo kuburira?",
+    "options": [
+      "Make way safely and follow the applicable traffic rules",
+      "Race ahead of it",
+      "Block its path to slow it down",
+      "Follow closely behind it"
+    ],
+    "options_rw": [
+      "Giha inzira mu mutekano kandi ukurikize amategeko y'umuhanda",
+      "Gihiganwe kugira ngo ukirenge",
+      "Gifunge inzira kugira ngo kigabanye umuvuduko",
+      "Ugikurikire uri hafi cyane"
+    ],
+    "answer": "Make way safely and follow the applicable traffic rules",
+    "answer_rw": "Giha inzira mu mutekano kandi ukurikize amategeko y'umuhanda",
+    "explanation": "Make room without creating another hazard or violating traffic safety.",
+    "explanation_rw": "Giha inzira ariko wirinde guteza akandi kaga cyangwa kurenga ku mutekano wo mu muhanda."
+  },
+  {
+    "id": "incident_108",
+    "category": "traffic",
+    "sign_symbol": "🌧️",
+    "question": "How should you drive when heavy rain reduces visibility?",
+    "question_rw": "Wagombye gutwara ute iyo imvura nyinshi igabanyije uko umuhanda ugaragara?",
+    "options": [
+      "Reduce speed and increase the following distance",
+      "Drive faster to leave the rain quickly",
+      "Follow the vehicle ahead very closely",
+      "Switch off all lights"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko wongere intera hagati yawe n'ikinyabiziga imbere",
+      "Ongera umuvuduko kugira ngo uhunge imvura vuba",
+      "Kurikira ikinyabiziga imbere uri hafi cyane",
+      "Zimya amatara yose"
+    ],
+    "answer": "Reduce speed and increase the following distance",
+    "answer_rw": "Gabanya umuvuduko wongere intera hagati yawe n'ikinyabiziga imbere",
+    "explanation": "Rain reduces visibility and tyre grip, increasing stopping distances.",
+    "explanation_rw": "Imvura igabanya uko umuhanda ugaragara n'uko amapine afata umuhanda, bigatuma intera yo guhagarara yiyongera."
+  },
+  {
+    "id": "incident_109",
+    "category": "traffic",
+    "sign_symbol": "🌫️",
+    "question": "Which lights are generally most suitable when driving in thick fog?",
+    "question_rw": "Ni ayahe matara muri rusange akwiriye gukoreshwa mu gihe cy'igihu cyinshi?",
+    "options": [
+      "Dipped headlights and suitable fog lights if fitted",
+      "Full beam headlights at all times",
+      "Hazard lights while driving normally",
+      "No lights during daylight"
+    ],
+    "options_rw": [
+      "Amatara magufi n'amatara y'igihu niba ahari",
+      "Amatara maremare igihe cyose",
+      "Amatara y'akaga mu gihe utwaye bisanzwe",
+      "Nta matara ku manywa"
+    ],
+    "answer": "Dipped headlights and suitable fog lights if fitted",
+    "answer_rw": "Amatara magufi n'amatara y'igihu niba ahari",
+    "explanation": "Dipped beams reduce glare reflected back by fog. Use fog lights only when conditions justify them.",
+    "explanation_rw": "Amatara magufi agabanya urumuri rugaruka ruterwa n'igihu. Amatara y'igihu akoreshwa gusa igihe bikenewe."
+  },
+  {
+    "id": "incident_110",
+    "category": "traffic",
+    "sign_symbol": "💧",
+    "question": "What should you do if your vehicle begins to aquaplane?",
+    "question_rw": "Wakora iki iyo ikinyabiziga gitangiye kunyerera hejuru y'amazi?",
+    "options": [
+      "Ease off the accelerator and avoid sudden steering or braking",
+      "Brake hard immediately",
+      "Turn the steering wheel sharply",
+      "Accelerate to regain grip"
+    ],
+    "options_rw": [
+      "Rekura gahoro gahoro umuvuduko wirinde gufata feri cyangwa guhindura icyerekezo gitunguranye",
+      "Hita ukanda feri cyane",
+      "Hindura volant mu buryo butunguranye",
+      "Ongera umuvuduko kugira ngo amapine afate umuhanda"
+    ],
+    "answer": "Ease off the accelerator and avoid sudden steering or braking",
+    "answer_rw": "Rekura gahoro gahoro umuvuduko wirinde gufata feri cyangwa guhindura icyerekezo gitunguranye",
+    "explanation": "Sudden inputs can make loss of control worse when tyres are riding on water.",
+    "explanation_rw": "Gukanda ibigenzura ikinyabiziga gitunguranye bishobora kongera gutakaza ubuyobozi igihe amapine ari hejuru y'amazi."
+  },
+  {
+    "id": "incident_111",
+    "category": "traffic",
+    "sign_symbol": "🛞",
+    "question": "What is the safest response to a sudden tyre blowout?",
+    "question_rw": "Ni ikihe gikorwa kirinda umutekano iyo ipine ritunguranye rituritse?",
+    "options": [
+      "Hold the steering wheel firmly and slow down gradually",
+      "Brake as hard as possible",
+      "Turn sharply towards the roadside",
+      "Accelerate immediately"
+    ],
+    "options_rw": [
+      "Fata volant uyikomereho maze ugabanye umuvuduko buhoro buhoro",
+      "Kanda feri cyane uko ushoboye",
+      "Hita uhindukira cyane werekeza ku ruhande rw'umuhanda",
+      "Hita wongera umuvuduko"
+    ],
+    "answer": "Hold the steering wheel firmly and slow down gradually",
+    "answer_rw": "Fata volant uyikomereho maze ugabanye umuvuduko buhoro buhoro",
+    "explanation": "Firm steering control and gradual deceleration help maintain stability after a blowout.",
+    "explanation_rw": "Gufata volant neza no kugabanya umuvuduko buhoro bifasha kugumana ubuyobozi nyuma yo guturika kw'ipine."
+  },
+  {
+    "id": "incident_112",
+    "category": "traffic",
+    "sign_symbol": "🛑",
+    "question": "What should you do if your brakes suddenly stop working?",
+    "question_rw": "Wakora iki iyo feri z'ikinyabiziga zihagaritse gukora mu buryo butunguranye?",
+    "options": [
+      "Stay calm, ease off the accelerator and use safe ways to slow down",
+      "Switch off the engine immediately while moving",
+      "Jump out of the vehicle",
+      "Accelerate towards an open road"
+    ],
+    "options_rw": [
+      "Tuza, rekura umuvuduko kandi ukoreshe uburyo butekanye bwo kugabanya umuvuduko",
+      "Zimya moteri ako kanya ukiri kugenda",
+      "Simbuka uve mu kinyabiziga",
+      "Ongera umuvuduko werekeza mu muhanda ufunguye"
+    ],
+    "answer": "Stay calm, ease off the accelerator and use safe ways to slow down",
+    "answer_rw": "Tuza, rekura umuvuduko kandi ukoreshe uburyo butekanye bwo kugabanya umuvuduko",
+    "explanation": "Avoid sudden actions. Use available safe slowing methods and seek a safe stopping area.",
+    "explanation_rw": "Irinde ibikorwa bitunguranye. Koresha uburyo butekanye bwo kugabanya umuvuduko ushake ahantu ho guhagarara."
+  },
+  {
+    "id": "incident_113",
+    "category": "traffic",
+    "sign_symbol": "🔋",
+    "question": "What should you do if your vehicle engine overheats?",
+    "question_rw": "Wakora iki iyo moteri y'ikinyabiziga ishyushye birenze urugero?",
+    "options": [
+      "Stop safely, switch off the engine and allow it to cool",
+      "Continue driving at high speed",
+      "Open the hot radiator cap immediately",
+      "Pour cold water directly into the running engine"
+    ],
+    "options_rw": [
+      "Hagarara ahatekanye, uzimye moteri uyireke ikonere",
+      "Komeza utware ku muvuduko mwinshi",
+      "Hita ufungura umupfundikizo wa radiateri ishyushye",
+      "Suka amazi akonje muri moteri igikora"
+    ],
+    "answer": "Stop safely, switch off the engine and allow it to cool",
+    "answer_rw": "Hagarara ahatekanye, uzimye moteri uyireke ikonere",
+    "explanation": "A hot cooling system can release pressurised steam or hot liquid. Never open it while hot.",
+    "explanation_rw": "Sisitemu ikonjesha moteri ishobora gusohora umwuka cyangwa amazi ashyushye afite umuvuduko. Ntuyifungure igishyushye."
+  },
+  {
+    "id": "incident_114",
+    "category": "traffic",
+    "sign_symbol": "⛽",
+    "question": "What should you do if you smell fuel strongly while driving?",
+    "question_rw": "Wakora iki iyo wumva impumuro ikomeye ya lisansi uri gutwara?",
+    "options": [
+      "Stop in a safe place, switch off the engine and investigate from a safe distance",
+      "Light a match to locate the leak",
+      "Continue driving until the tank is empty",
+      "Smoke near the vehicle to check the smell"
+    ],
+    "options_rw": [
+      "Hagarara ahatekanye, uzimye moteri kandi usuzume uri kure y'akaga",
+      "Cana ikibiriti kugira ngo ushake aho iva",
+      "Komeza utware kugeza lisansi ishize",
+      "Nywera itabi hafi y'ikinyabiziga kugira ngo urebe impumuro"
+    ],
+    "answer": "Stop in a safe place, switch off the engine and investigate from a safe distance",
+    "answer_rw": "Hagarara ahatekanye, uzimye moteri kandi usuzume uri kure y'akaga",
+    "explanation": "Fuel vapour is highly flammable. Avoid flames and other ignition sources.",
+    "explanation_rw": "Umwuka wa lisansi ushobora gufatwa n'umuriro vuba. Irinde umuriro n'ibindi bishobora kuwukongeza."
+  },
+  {
+    "id": "incident_115",
+    "category": "traffic",
+    "sign_symbol": "🌊",
+    "question": "What should you do when a road is covered by floodwater of unknown depth?",
+    "question_rw": "Wakora iki iyo umuhanda wuzuye amazi menshi utazi ubujyakuzimu bwayo?",
+    "options": [
+      "Do not drive through it; find a safer route",
+      "Drive through quickly",
+      "Follow a large vehicle through the water",
+      "Stop halfway and test the depth"
+    ],
+    "options_rw": [
+      "Ntuyacemo n'ikinyabiziga; shaka indi nzira itekanye",
+      "Yinjiremo ku muvuduko mwinshi",
+      "Kurikira ikinyabiziga kinini mu mazi",
+      "Hagarara hagati muri yo upime ubujyakuzimu"
+    ],
+    "answer": "Do not drive through it; find a safer route",
+    "answer_rw": "Ntuyacemo n'ikinyabiziga; shaka indi nzira itekanye",
+    "explanation": "Floodwater can hide deep sections, strong currents and damaged road surfaces.",
+    "explanation_rw": "Amazi y'umwuzure ashobora guhisha ahacukutse cyane, imigezi ikaze cyangwa umuhanda wangiritse."
+  },
+  {
+    "id": "incident_116",
+    "category": "traffic",
+    "sign_symbol": "⛈️",
+    "question": "What should you do if a severe storm makes driving unsafe?",
+    "question_rw": "Wakora iki iyo inkubi y'umuyaga itumye gutwara ikinyabiziga biba bibi?",
+    "options": [
+      "Find a safe place to stop away from trees and power lines",
+      "Stop beneath a weak tree",
+      "Continue at maximum speed",
+      "Park on a bridge"
+    ],
+    "options_rw": [
+      "Shaka ahantu hatekanye ho guhagarara kure y'ibiti n'insinga z'amashanyarazi",
+      "Hagarara munsi y'igiti gishobora kugwa",
+      "Komeza ku muvuduko wo hejuru",
+      "Paka ku kiraro"
+    ],
+    "answer": "Find a safe place to stop away from trees and power lines",
+    "answer_rw": "Shaka ahantu hatekanye ho guhagarara kure y'ibiti n'insinga z'amashanyarazi",
+    "explanation": "Falling branches and damaged power lines can create serious hazards.",
+    "explanation_rw": "Amashami agwa n'insinga z'amashanyarazi zangiritse bishobora guteza ibyago bikomeye."
+  },
+  {
+    "id": "incident_117",
+    "category": "traffic",
+    "sign_symbol": "🌙",
+    "question": "What should you do if an oncoming vehicle's headlights dazzle you at night?",
+    "question_rw": "Wakora iki iyo amatara y'ikinyabiziga kikuza akubangamiye nijoro?",
+    "options": [
+      "Look towards the left edge of your lane and reduce speed",
+      "Look directly into the headlights",
+      "Switch on full beam and accelerate",
+      "Close your eyes briefly"
+    ],
+    "options_rw": [
+      "Reba ku ruhande rw'ibumoso rw'umurongo wawe kandi ugabanye umuvuduko",
+      "Reba mu matara yacyo",
+      "Cana amatara maremare wongere umuvuduko",
+      "Humiriza amaso akanya gato"
+    ],
+    "answer": "Look towards the left edge of your lane and reduce speed",
+    "answer_rw": "Reba ku ruhande rw'ibumoso rw'umurongo wawe kandi ugabanye umuvuduko",
+    "explanation": "Avoid staring into bright lights and maintain control using the road edge as a guide.",
+    "explanation_rw": "Irinde kureba mu matara akaze kandi ukoreshe inkombe y'umurongo nk'ikimenyetso kikuyobora."
+  },
+  {
+    "id": "incident_118",
+    "category": "traffic",
+    "sign_symbol": "🐄",
+    "question": "What should you do when livestock suddenly enters the road?",
+    "question_rw": "Wakora iki iyo amatungo yinjiye mu muhanda mu buryo butunguranye?",
+    "options": [
+      "Slow down, avoid sudden swerving and be ready to stop",
+      "Accelerate to pass before the animals move",
+      "Sound the horn continuously and drive closer",
+      "Swerve sharply into the opposite lane"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko, wirinde guhindukira gitunguranye kandi witegure guhagarara",
+      "Ongera umuvuduko kugira ngo uyanyuremo ataragenda",
+      "Komeza kuvuza ihoni wegere amatungo",
+      "Hita ujya mu murongo w'abaturuka imbere"
+    ],
+    "answer": "Slow down, avoid sudden swerving and be ready to stop",
+    "answer_rw": "Gabanya umuvuduko, wirinde guhindukira gitunguranye kandi witegure guhagarara",
+    "explanation": "Animals may move unpredictably. Sudden swerving can cause a collision.",
+    "explanation_rw": "Amatungo ashobora kugenda mu buryo butateganyijwe. Guhindukira gitunguranye bishobora guteza impanuka."
+  },
+  {
+    "id": "incident_119",
+    "category": "traffic",
+    "sign_symbol": "🧒",
+    "question": "What should you do when a child suddenly runs onto the road?",
+    "question_rw": "Wakora iki iyo umwana yirutse akinjira mu muhanda mu buryo butunguranye?",
+    "options": [
+      "Brake safely and be prepared to stop",
+      "Swerve without checking other traffic",
+      "Accelerate to pass the child",
+      "Sound the horn and maintain speed"
+    ],
+    "options_rw": [
+      "Fata feri mu buryo butekanye kandi witegure guhagarara",
+      "Hindukira utabanje kureba ibindi binyabiziga",
+      "Ongera umuvuduko kugira ngo umunyuremo",
+      "Vuza ihoni ukomeze ku muvuduko wari uriho"
+    ],
+    "answer": "Brake safely and be prepared to stop",
+    "answer_rw": "Fata feri mu buryo butekanye kandi witegure guhagarara",
+    "explanation": "Children may not judge vehicle speed or distance correctly. Be ready to stop.",
+    "explanation_rw": "Abana bashobora kutamenya neza umuvuduko cyangwa intera y'ikinyabiziga. Buri gihe ujye witegura guhagarara."
+  },
+  {
+    "id": "incident_120",
+    "category": "traffic",
+    "sign_symbol": "🚴",
+    "question": "How should you respond when a cyclist falls in front of your vehicle?",
+    "question_rw": "Wakora iki iyo umuntu uri kuri gare aguye imbere y'ikinyabiziga cyawe?",
+    "options": [
+      "Brake safely, stop and check for danger before offering help",
+      "Drive around immediately without checking",
+      "Sound the horn and continue",
+      "Stop so close that the cyclist cannot move"
+    ],
+    "options_rw": [
+      "Fata feri neza, uhagarare urebe niba nta kaga mbere yo gutanga ubufasha",
+      "Hita unyura iruhande utagenzuye",
+      "Vuza ihoni ukomeze",
+      "Hagarara hafi cyane ku buryo uwaguye atabona aho ava"
+    ],
+    "answer": "Brake safely, stop and check for danger before offering help",
+    "answer_rw": "Fata feri neza, uhagarare urebe niba nta kaga mbere yo gutanga ubufasha",
+    "explanation": "Protect the fallen cyclist and yourself from other traffic before approaching.",
+    "explanation_rw": "Banza urinde uwaguye n'umutekano wawe ku binyabiziga bindi mbere yo kumwegera."
+  },
+  {
+    "id": "incident_121",
+    "category": "traffic",
+    "sign_symbol": "🚛",
+    "question": "What should you do if a large truck begins to reverse near you?",
+    "question_rw": "Wakora iki iyo ikamyo nini itangiye gusubira inyuma hafi yawe?",
+    "options": [
+      "Stay clear of its path and allow it enough space",
+      "Stand directly behind it",
+      "Pass closely while it is reversing",
+      "Assume the driver can see you"
+    ],
+    "options_rw": [
+      "Guma kure y'inzira yayo kandi uyihere umwanya uhagije",
+      "Hagarara inyuma yayo neza",
+      "Yinyureho hafi cyane igisubira inyuma",
+      "Tekereza ko umushoferi akubona neza"
+    ],
+    "answer": "Stay clear of its path and allow it enough space",
+    "answer_rw": "Guma kure y'inzira yayo kandi uyihere umwanya uhagije",
+    "explanation": "Large vehicles have blind spots and need extra space when reversing.",
+    "explanation_rw": "Ibinyabiziga binini bifite ahantu umushoferi atabona kandi bikenera umwanya uhagije iyo bisubira inyuma."
+  },
+  {
+    "id": "incident_122",
+    "category": "traffic",
+    "sign_symbol": "🚦",
+    "question": "What should you do if traffic lights stop working at a busy junction?",
+    "question_rw": "Wakora iki iyo amatara ayobora ibinyabiziga ahagaritse gukora ku masangano ahuze?",
+    "options": [
+      "Approach cautiously and follow an authorised officer's directions if present",
+      "Assume every direction has a green light",
+      "Drive through without slowing down",
+      "Follow the vehicle in front without checking"
+    ],
+    "options_rw": [
+      "Egera witonze kandi ukurikize amabwiriza y'umupolisi ubifitiye ububasha niba ahari",
+      "Tekereza ko impande zose zifite itara ry'icyatsi",
+      "Ca mu masangano utagabanyije umuvuduko",
+      "Kurikira ikinyabiziga imbere utagenzuye"
+    ],
+    "answer": "Approach cautiously and follow an authorised officer's directions if present",
+    "answer_rw": "Egera witonze kandi ukurikize amabwiriza y'umupolisi ubifitiye ububasha niba ahari",
+    "explanation": "A failed signal does not give drivers permission to ignore junction safety.",
+    "explanation_rw": "Kuba amatara atagikora ntibivuze ko abashoferi bemerewe kwirengagiza umutekano wo ku masangano."
+  },
+  {
+    "id": "incident_123",
+    "category": "traffic",
+    "sign_symbol": "🪨",
+    "question": "What should you do when you see rocks or debris on a mountain road?",
+    "question_rw": "Wakora iki iyo ubonye amabuye cyangwa ibisigazwa ku muhanda wo mu misozi?",
+    "options": [
+      "Reduce speed and pass only when it is safe",
+      "Drive over them at high speed",
+      "Swerve suddenly into oncoming traffic",
+      "Stop around a blind bend"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko unyuremo gusa igihe ari umutekano",
+      "Binyuremo ku muvuduko mwinshi",
+      "Hita ujya mu murongo w'abaturuka imbere",
+      "Hagarara hafi y'ahantu utabona ibiturutse imbere"
+    ],
+    "answer": "Reduce speed and pass only when it is safe",
+    "answer_rw": "Gabanya umuvuduko unyuremo gusa igihe ari umutekano",
+    "explanation": "Debris can damage tyres or cause loss of control, especially on narrow roads.",
+    "explanation_rw": "Ibisigazwa bishobora kwangiza amapine cyangwa gutuma utakaza ubuyobozi, cyane cyane mu mihanda migufi."
+  },
+  {
+    "id": "incident_124",
+    "category": "traffic",
+    "sign_symbol": "⛰️",
+    "question": "What is the safest approach when driving down a steep hill?",
+    "question_rw": "Ni ubuhe buryo butekanye bwo kumanuka ahamanuka cyane?",
+    "options": [
+      "Use an appropriate low gear and control your speed",
+      "Select neutral and coast downhill",
+      "Switch off the engine",
+      "Keep pressing the accelerator"
+    ],
+    "options_rw": [
+      "Koresha gare ntoya ikwiye kandi ugenzure umuvuduko",
+      "Shyira muri neutral umanuke ureka ikinyabiziga kigende",
+      "Zimya moteri",
+      "Komeza ukande gaz"
+    ],
+    "answer": "Use an appropriate low gear and control your speed",
+    "answer_rw": "Koresha gare ntoya ikwiye kandi ugenzure umuvuduko",
+    "explanation": "A suitable low gear helps control speed and reduces excessive use of the brakes.",
+    "explanation_rw": "Gare ntoya ikwiye ifasha kugenzura umuvuduko kandi ikagabanya gukoresha feri birenze urugero."
+  },
+  {
+    "id": "incident_125",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do if your vehicle begins to skid on a slippery road?",
+    "question_rw": "Wakora iki iyo ikinyabiziga gitangiye kunyerera mu muhanda unyerera?",
+    "options": [
+      "Ease off the accelerator and steer smoothly in the direction needed to regain control",
+      "Brake sharply and turn suddenly",
+      "Accelerate hard",
+      "Close your eyes and hold the steering wheel loosely"
+    ],
+    "options_rw": [
+      "Rekura gaz buhoro kandi uyobore volant mu buryo bworoheje kugira ngo ugarure ubuyobozi",
+      "Kanda feri cyane kandi uhindure icyerekezo gitunguranye",
+      "Kanda gaz cyane",
+      "Humiriza amaso ufate volant udakomeye"
+    ],
+    "answer": "Ease off the accelerator and steer smoothly in the direction needed to regain control",
+    "answer_rw": "Rekura gaz buhoro kandi uyobore volant mu buryo bworoheje kugira ngo ugarure ubuyobozi",
+    "explanation": "Smooth control inputs are safer than sudden braking or steering during a skid.",
+    "explanation_rw": "Gukoresha volant na gaz mu buryo bworoheje biratekanye kurusha gufata feri cyangwa guhindukira gitunguranye igihe ikinyabiziga kinyerera."
+  },
+  {
+    "id": "incident_126",
+    "category": "traffic",
+    "sign_symbol": "🚘",
+    "question": "What should you do if a vehicle behind you is following too closely?",
+    "question_rw": "Wakora iki iyo ikinyabiziga kikuri inyuma kigukurikira kiri hafi cyane?",
+    "options": [
+      "Increase your safety margin ahead and avoid sudden braking",
+      "Brake sharply to warn the driver",
+      "Accelerate beyond the speed limit",
+      "Block the vehicle from passing"
+    ],
+    "options_rw": [
+      "Ongera intera y'umutekano imbere yawe kandi wirinde gufata feri gitunguranye",
+      "Kanda feri cyane kugira ngo uburire umushoferi",
+      "Ongera umuvuduko urenze uwemewe",
+      "Kibuze kukurenga"
+    ],
+    "answer": "Increase your safety margin ahead and avoid sudden braking",
+    "answer_rw": "Ongera intera y'umutekano imbere yawe kandi wirinde gufata feri gitunguranye",
+    "explanation": "Extra space ahead gives you more time to slow down gradually if needed.",
+    "explanation_rw": "Umwanya uhagije imbere yawe uguha igihe cyo kugabanya umuvuduko buhoro igihe bibaye ngombwa."
+  },
+  {
+    "id": "incident_127",
+    "category": "traffic",
+    "sign_symbol": "🛣️",
+    "question": "What should you do if you miss your intended exit on a highway?",
+    "question_rw": "Wakora iki iyo urenze aho washakaga gusohokera mu muhanda munini?",
+    "options": [
+      "Continue to the next exit and take a safe alternative route",
+      "Reverse along the highway",
+      "Stop suddenly in the driving lane",
+      "Make a sudden U-turn"
+    ],
+    "options_rw": [
+      "Komeza ugere ku hasohokera hakurikiyeho ushake indi nzira itekanye",
+      "Subira inyuma muri uwo muhanda",
+      "Hagarara gitunguranye mu murongo w'ibinyabiziga",
+      "Hita ukata uhindukire mu cyerekezo gitandukanye"
+    ],
+    "answer": "Continue to the next exit and take a safe alternative route",
+    "answer_rw": "Komeza ugere ku hasohokera hakurikiyeho ushake indi nzira itekanye",
+    "explanation": "Reversing or turning around on a highway creates a serious collision risk.",
+    "explanation_rw": "Gusubira inyuma cyangwa guhindukira mu muhanda munini bishobora guteza impanuka ikomeye."
+  },
+  {
+    "id": "incident_128",
+    "category": "traffic",
+    "sign_symbol": "🚧",
+    "question": "What should you do when approaching roadworks with temporary signs?",
+    "question_rw": "Wakora iki wegereye ahakorerwa imirimo yo gusana umuhanda hari ibyapa by'agateganyo?",
+    "options": [
+      "Reduce speed and obey the temporary signs and instructions",
+      "Ignore the signs because they are temporary",
+      "Overtake all vehicles near the workers",
+      "Drive through the work area without caution"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko kandi ukurikize ibyapa n'amabwiriza by'agateganyo",
+      "Irengagize ibyapa kuko ari iby'agateganyo",
+      "Renga ibinyabiziga byose hafi y'abakozi",
+      "Nyura ahakorerwa imirimo utitonze"
+    ],
+    "answer": "Reduce speed and obey the temporary signs and instructions",
+    "answer_rw": "Gabanya umuvuduko kandi ukurikize ibyapa n'amabwiriza by'agateganyo",
+    "explanation": "Roadworks may involve workers, uneven surfaces and changed traffic routes.",
+    "explanation_rw": "Ahakorerwa imirimo hashobora kuba hari abakozi, umuhanda wangiritse cyangwa inzira zahinduwe."
+  },
+  {
+    "id": "incident_129",
+    "category": "traffic",
+    "sign_symbol": "🚶",
+    "question": "What should you do if pedestrians are walking along a narrow road with no pavement?",
+    "question_rw": "Wakora iki iyo abanyamaguru bagenda ku muhanda ufunganye udafite inzira yabagenewe?",
+    "options": [
+      "Slow down and pass with plenty of clearance",
+      "Drive close to them to make them move",
+      "Sound the horn continuously and maintain speed",
+      "Pass at high speed"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko ubanyureho usize intera ihagije",
+      "Banyureho ubegereye kugira ngo bave mu nzira",
+      "Komeza kuvuza ihoni kandi ugumane umuvuduko",
+      "Banyureho ku muvuduko mwinshi"
+    ],
+    "answer": "Slow down and pass with plenty of clearance",
+    "answer_rw": "Gabanya umuvuduko ubanyureho usize intera ihagije",
+    "explanation": "Pedestrians need extra protection where there is no separate walking path.",
+    "explanation_rw": "Abanyamaguru bakenera kwitabwaho cyane iyo nta nzira yihariye bagenewe ihari."
+  },
+  {
+    "id": "incident_130",
+    "category": "traffic",
+    "sign_symbol": "🚙",
+    "question": "What should you do if you become too tired to drive safely?",
+    "question_rw": "Wakora iki iyo unaniwe ku buryo udashobora gutwara neza?",
+    "options": [
+      "Stop in a safe place and rest before continuing",
+      "Open the window and continue without stopping",
+      "Drive faster to reach your destination sooner",
+      "Play loud music and ignore the tiredness"
+    ],
+    "options_rw": [
+      "Hagarara ahatekanye uruhuke mbere yo gukomeza",
+      "Fungura idirishya ukomeze utarahagarara",
+      "Ongera umuvuduko kugira ngo ugereyo vuba",
+      "Shyiraho umuziki uranguruye wirengagize umunaniro"
+    ],
+    "answer": "Stop in a safe place and rest before continuing",
+    "answer_rw": "Hagarara ahatekanye uruhuke mbere yo gukomeza",
+    "explanation": "Fatigue reduces attention, judgement and reaction time.",
+    "explanation_rw": "Umunaniro ugabanya ubushobozi bwo kwita ku muhanda, gufata ibyemezo no kugira icyo ukora vuba."
+  },
+  {
+    "id": "incident_131",
+    "category": "traffic",
+    "sign_symbol": "😴",
+    "question": "Which is a warning sign that a driver may be too sleepy to continue?",
+    "question_rw": "Ni ikihe kimenyetso kigaragaza ko umushoferi ashobora kuba asinziriye cyane ku buryo atakomeza gutwara?",
+    "options": [
+      "Repeated yawning and difficulty keeping attention",
+      "Feeling fully alert",
+      "Checking mirrors regularly",
+      "Maintaining a safe following distance"
+    ],
+    "options_rw": [
+      "Gusinzira kenshi no kunanirwa gukomeza kwita ku muhanda",
+      "Kumva uri maso neza",
+      "Kugenzura indorerwamo kenshi",
+      "Gusiga intera y'umutekano hagati y'ibinyabiziga"
+    ],
+    "answer": "Repeated yawning and difficulty keeping attention",
+    "answer_rw": "Gusinzira kenshi no kunanirwa gukomeza kwita ku muhanda",
+    "explanation": "These signs indicate fatigue. Stop safely and rest rather than trying to push through.",
+    "explanation_rw": "Ibi bimenyetso bigaragaza umunaniro. Hagarara ahatekanye uruhuke aho gukomeza wihata."
+  },
+  {
+    "id": "incident_132",
+    "category": "traffic",
+    "sign_symbol": "📱",
+    "question": "What should you do if your phone rings while you are driving?",
+    "question_rw": "Wakora iki iyo telefoni ivuze uri gutwara ikinyabiziga?",
+    "options": [
+      "Ignore it until you can stop safely",
+      "Look down and read the message",
+      "Hold it in one hand while steering",
+      "Answer immediately in heavy traffic"
+    ],
+    "options_rw": [
+      "Yireke kugeza igihe ushobora guhagarara ahatekanye",
+      "Reba hasi usome ubutumwa",
+      "Yifate mu kuboko kumwe utwaye",
+      "Yitabe ako kanya mu muhanda urimo ibinyabiziga byinshi"
+    ],
+    "answer": "Ignore it until you can stop safely",
+    "answer_rw": "Yireke kugeza igihe ushobora guhagarara ahatekanye",
+    "explanation": "Phone use distracts the driver and can cause a crash.",
+    "explanation_rw": "Gukoresha telefoni birangaza umushoferi kandi bishobora guteza impanuka."
+  },
+  {
+    "id": "incident_133",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do if a passenger suddenly opens a door into moving traffic?",
+    "question_rw": "Wakora iki iyo umugenzi afunguye umuryango w'ikinyabiziga gitunguranye werekeza mu muhanda urimo ibinyabiziga?",
+    "options": [
+      "Warn the passenger and check traffic before any door is opened",
+      "Allow the door to remain open",
+      "Tell the passenger to step out quickly",
+      "Ignore the danger"
+    ],
+    "options_rw": [
+      "Burira umugenzi kandi ubanze ugenzure ibinyabiziga mbere yo gufungura umuryango",
+      "Reka umuryango ukomeze kuba ufunguye",
+      "Saba umugenzi gusohoka vuba",
+      "Irengagize akaga"
+    ],
+    "answer": "Warn the passenger and check traffic before any door is opened",
+    "answer_rw": "Burira umugenzi kandi ubanze ugenzure ibinyabiziga mbere yo gufungura umuryango",
+    "explanation": "An open door can strike a cyclist, motorcyclist or passing vehicle.",
+    "explanation_rw": "Umuryango ufunguye ushobora kugonga umuntu uri kuri gare, moto cyangwa ikinyabiziga kinyura."
+  },
+  {
+    "id": "incident_134",
+    "category": "traffic",
+    "sign_symbol": "🛞",
+    "question": "What should you check before using a spare tyre after a puncture?",
+    "question_rw": "Ni iki ugomba kugenzura mbere yo gukoresha ipine risimbura irindi nyuma yo gutoboka?",
+    "options": [
+      "Its condition, correct fit and recommended pressure",
+      "Only its colour",
+      "Whether it is larger than all other tyres",
+      "Whether it has never touched the road"
+    ],
+    "options_rw": [
+      "Imiterere yaryo, uko rishyirwaho n'umwuka urigomba",
+      "Ibara ryaryo gusa",
+      "Niba rinini kurusha andi mapine yose",
+      "Niba ritarigeze rikora ku muhanda"
+    ],
+    "answer": "Its condition, correct fit and recommended pressure",
+    "answer_rw": "Imiterere yaryo, uko rishyirwaho n'umwuka urigomba",
+    "explanation": "A spare tyre must be suitable, correctly fitted and inflated according to its specifications.",
+    "explanation_rw": "Ipine risimbura irindi rigomba kuba rikwiye, rishyizwe neza kandi rifite umwuka ukurikije amabwiriza yaryo."
+  },
+  {
+    "id": "incident_135",
+    "category": "traffic",
+    "sign_symbol": "🔧",
+    "question": "Where should you avoid changing a tyre if possible?",
+    "question_rw": "Ni hehe wagombye kwirinda guhindurira ipine igihe bishoboka?",
+    "options": [
+      "On a narrow bend or an exposed live traffic lane",
+      "In a safe parking area",
+      "On firm level ground away from traffic",
+      "In a designated safe stopping area"
+    ],
+    "options_rw": [
+      "Ahantu hakata cyane cyangwa mu murongo w'ibinyabiziga bigenda",
+      "Ahantu hatekanye ho guhagarara",
+      "Ahantu hakomeye kandi haringaniye kure y'ibinyabiziga",
+      "Ahantu hagenewe guhagarara mu mutekano"
+    ],
+    "answer": "On a narrow bend or an exposed live traffic lane",
+    "answer_rw": "Ahantu hakata cyane cyangwa mu murongo w'ibinyabiziga bigenda",
+    "explanation": "Choose a stable location away from moving traffic before attempting roadside repairs.",
+    "explanation_rw": "Banza ushake ahantu hatuje kandi kure y'ibinyabiziga bigenda mbere yo gusana ikinyabiziga ku muhanda."
+  },
+  {
+    "id": "incident_136",
+    "category": "traffic",
+    "sign_symbol": "🚨",
+    "question": "What should you do if your vehicle breaks down on a busy road?",
+    "question_rw": "Wakora iki iyo ikinyabiziga cyawe gipfiriye mu muhanda urimo ibinyabiziga byinshi?",
+    "options": [
+      "Move to a safe place if possible and warn approaching traffic",
+      "Remain in the driving lane without warning others",
+      "Stand behind the vehicle in the traffic lane",
+      "Leave the vehicle in a dangerous position"
+    ],
+    "options_rw": [
+      "Kijyane ahatekanye niba bishoboka kandi uburire ibinyabiziga biza",
+      "Guma mu murongo w'ibinyabiziga utaburiye abandi",
+      "Hagarara inyuma yacyo mu murongo w'ibinyabiziga",
+      "Gisige ahantu hashobora guteza impanuka"
+    ],
+    "answer": "Move to a safe place if possible and warn approaching traffic",
+    "answer_rw": "Kijyane ahatekanye niba bishoboka kandi uburire ibinyabiziga biza",
+    "explanation": "A broken-down vehicle can become an obstruction and cause another crash.",
+    "explanation_rw": "Ikinyabiziga gipfiriye mu muhanda gishobora kubangamira abandi no guteza indi mpanuka."
+  },
+  {
+    "id": "incident_137",
+    "category": "traffic",
+    "sign_symbol": "⚡",
+    "question": "What should you do if a fallen power line is lying across the road?",
+    "question_rw": "Wakora iki iyo insinga y'amashanyarazi yaguye ikambuka umuhanda?",
+    "options": [
+      "Keep away, prevent others from approaching if safe, and call emergency services",
+      "Move it with a metal object",
+      "Drive over it carefully",
+      "Touch it to check whether it is live"
+    ],
+    "options_rw": [
+      "Yigire kure, ubuze abandi kuyegera niba bishoboka kandi uhamagare ubutabazi",
+      "Yimure ukoresheje icyuma",
+      "Yigireho witonze n'ikinyabiziga",
+      "Yikorereho urebe niba igifite umuriro"
+    ],
+    "answer": "Keep away, prevent others from approaching if safe, and call emergency services",
+    "answer_rw": "Yigire kure, ubuze abandi kuyegera niba bishoboka kandi uhamagare ubutabazi",
+    "explanation": "A fallen power line may still be live and can cause fatal electric shock.",
+    "explanation_rw": "Insinga yaguye ishobora kuba igifite amashanyarazi kandi ishobora guteza impanuka ikomeye."
+  },
+  {
+    "id": "incident_138",
+    "category": "traffic",
+    "sign_symbol": "🚒",
+    "question": "What should you do if you see smoke coming from beneath your vehicle's bonnet?",
+    "question_rw": "Wakora iki iyo ubonye umwotsi uturuka munsi ya kapo y'ikinyabiziga?",
+    "options": [
+      "Stop safely, switch off the engine and assess the situation from a safe position",
+      "Open the bonnet immediately while standing over the smoke",
+      "Pour fuel onto the engine",
+      "Continue driving at high speed"
+    ],
+    "options_rw": [
+      "Hagarara ahatekanye, uzimye moteri kandi usuzume ikibazo uri ahatekanye",
+      "Hita ufungura kapo uhagaze hejuru y'umwotsi",
+      "Suka lisansi kuri moteri",
+      "Komeza utware ku muvuduko mwinshi"
+    ],
+    "answer": "Stop safely, switch off the engine and assess the situation from a safe position",
+    "answer_rw": "Hagarara ahatekanye, uzimye moteri kandi usuzume ikibazo uri ahatekanye",
+    "explanation": "Smoke may indicate overheating or fire. Avoid exposing yourself to heat or flames.",
+    "explanation_rw": "Umwotsi ushobora kugaragaza ubushyuhe bukabije cyangwa umuriro. Irinde kwegera ubushyuhe cyangwa umuriro."
+  },
+  {
+    "id": "incident_139",
+    "category": "traffic",
+    "sign_symbol": "🧯",
+    "question": "When should a driver use a vehicle fire extinguisher?",
+    "question_rw": "Ni ryari umushoferi yakoresha kizimyamwoto kiri mu kinyabiziga?",
+    "options": [
+      "Only if the fire is small, there is a safe escape route and the driver knows how to use it",
+      "For every large vehicle fire regardless of danger",
+      "While standing inside thick smoke",
+      "Instead of calling emergency services"
+    ],
+    "options_rw": [
+      "Iyo umuriro ukiri muto, hari inzira yo guhunga itekanye kandi umushoferi azi kuyikoresha",
+      "Ku muriro munini wose hatitawe ku kaga",
+      "Ahagaze mu mwotsi mwinshi",
+      "Mu mwanya wo guhamagara ubutabazi"
+    ],
+    "answer": "Only if the fire is small, there is a safe escape route and the driver knows how to use it",
+    "answer_rw": "Iyo umuriro ukiri muto, hari inzira yo guhunga itekanye kandi umushoferi azi kuyikoresha",
+    "explanation": "Personal safety comes first. Withdraw and call emergency services if the fire is spreading.",
+    "explanation_rw": "Umutekano wawe uza mbere. Va aho hantu uhamagare ubutabazi niba umuriro ukomeje gukwira."
+  },
+  {
+    "id": "incident_140",
+    "category": "traffic",
+    "sign_symbol": "🩹",
+    "question": "What should you do if an injured person is bleeding heavily after a crash?",
+    "question_rw": "Wakora iki iyo umuntu wakomeretse mu mpanuka ava amaraso menshi?",
+    "options": [
+      "Call emergency services and apply firm direct pressure if safe and appropriate",
+      "Give the person alcohol",
+      "Ask the person to stand up and walk",
+      "Leave the person without seeking help"
+    ],
+    "options_rw": [
+      "Hamagara ubutabazi kandi umufashe gukandira ahava amaraso niba ari umutekano kandi bikwiye",
+      "Mumuhe inzoga",
+      "Musabe guhaguruka akagenda",
+      "Musige aho utashatse ubufasha"
+    ],
+    "answer": "Call emergency services and apply firm direct pressure if safe and appropriate",
+    "answer_rw": "Hamagara ubutabazi kandi umufashe gukandira ahava amaraso niba ari umutekano kandi bikwiye",
+    "explanation": "Severe bleeding needs urgent professional help. Use appropriate first-aid methods if trained.",
+    "explanation_rw": "Kuva amaraso menshi bisaba ubufasha bwihuse bw'abaganga. Koresha ubufasha bw'ibanze bukwiye niba warabihuguriwe."
+  },
+  {
+    "id": "incident_141",
+    "category": "traffic",
+    "sign_symbol": "🚑",
+    "question": "What should you avoid giving to an unconscious person after a crash?",
+    "question_rw": "Ni iki ugomba kwirinda guha umuntu wataye ubwenge nyuma y'impanuka?",
+    "options": [
+      "Food or drink",
+      "Emergency medical attention",
+      "A safe environment",
+      "Professional assessment"
+    ],
+    "options_rw": [
+      "Ibiryo cyangwa icyo kunywa",
+      "Ubufasha bwihutirwa bw'abaganga",
+      "Ahantu hatekanye",
+      "Isuzumwa n'abaganga"
+    ],
+    "answer": "Food or drink",
+    "answer_rw": "Ibiryo cyangwa icyo kunywa",
+    "explanation": "An unconscious person may choke. Seek urgent medical help instead.",
+    "explanation_rw": "Umuntu wataye ubwenge ashobora kuniga. Ahubwo shaka ubufasha bwihutirwa bw'abaganga."
+  },
+  {
+    "id": "incident_142",
+    "category": "traffic",
+    "sign_symbol": "📞",
+    "question": "What information is most useful when reporting a serious road crash?",
+    "question_rw": "Ni ayahe makuru y'ingenzi watanga mu kumenyesha impanuka ikomeye yo mu muhanda?",
+    "options": [
+      "The exact location, number of injured people and immediate dangers",
+      "Only the colour of the vehicles",
+      "Only the names of people watching",
+      "Unverified rumours about the crash"
+    ],
+    "options_rw": [
+      "Ahantu nyaho impanuka yabereye, umubare w'abakomeretse n'akaga gahari",
+      "Amabara y'ibinyabiziga gusa",
+      "Amazina y'abareba gusa",
+      "Amakuru y'ibihuha atagenzuwe ku mpanuka"
+    ],
+    "answer": "The exact location, number of injured people and immediate dangers",
+    "answer_rw": "Ahantu nyaho impanuka yabereye, umubare w'abakomeretse n'akaga gahari",
+    "explanation": "Clear information helps emergency responders prepare and reach the correct location.",
+    "explanation_rw": "Amakuru asobanutse afasha abatabazi kwitegura no kugera ahabereye impanuka."
+  },
+  {
+    "id": "incident_143",
+    "category": "traffic",
+    "sign_symbol": "🚗",
+    "question": "What should you do if you are involved in a minor collision with no obvious injuries?",
+    "question_rw": "Wakora iki iyo ukoze impanuka ntoya kandi nta wakomeretse bigaragara?",
+    "options": [
+      "Stop safely, exchange required details and follow reporting rules",
+      "Drive away without stopping",
+      "Argue in the middle of the road",
+      "Leave the damaged vehicle blocking traffic"
+    ],
+    "options_rw": [
+      "Hagarara ahatekanye, muhanahane amakuru asabwa kandi mukurikize amabwiriza yo kumenyesha impanuka",
+      "Hita ugenda utahagaze",
+      "Mutongane hagati mu muhanda",
+      "Siga ikinyabiziga cyangiritse gifunze umuhanda"
+    ],
+    "answer": "Stop safely, exchange required details and follow reporting rules",
+    "answer_rw": "Hagarara ahatekanye, muhanahane amakuru asabwa kandi mukurikize amabwiriza yo kumenyesha impanuka",
+    "explanation": "Even minor collisions should be handled safely and according to applicable reporting requirements.",
+    "explanation_rw": "N'impanuka ntoya igomba gukurikiranwa mu mutekano no hakurikijwe amabwiriza yo kumenyesha impanuka."
+  },
+  {
+    "id": "incident_144",
+    "category": "traffic",
+    "sign_symbol": "🚧",
+    "question": "Why should you avoid stopping immediately after a blind bend?",
+    "question_rw": "Kuki ugomba kwirinda guhagarara ako kanya nyuma y'ahantu hakata utabona ibiturutse imbere?",
+    "options": [
+      "Approaching drivers may not see your vehicle in time",
+      "The road is always wider there",
+      "It improves the view for other drivers",
+      "It prevents vehicles from using the road"
+    ],
+    "options_rw": [
+      "Abashoferi baza bashobora kutakubona hakiri kare",
+      "Umuhanda uhora wagutse aho hantu",
+      "Bituma abandi bashoferi babona neza",
+      "Bituma ibinyabiziga bitakoresha umuhanda"
+    ],
+    "answer": "Approaching drivers may not see your vehicle in time",
+    "answer_rw": "Abashoferi baza bashobora kutakubona hakiri kare",
+    "explanation": "A vehicle stopped just after a blind bend can be difficult to see and may cause a collision.",
+    "explanation_rw": "Ikinyabiziga gihagaze nyuma y'ahantu hakata utabona imbere gishobora kutagaragara neza, kikaba cyateza impanuka."
+  },
+  {
+    "id": "incident_145",
+    "category": "traffic",
+    "sign_symbol": "🚜",
+    "question": "What should you do when approaching a slow-moving agricultural vehicle?",
+    "question_rw": "Wakora iki wegereye ikinyabiziga cy'ubuhinzi kigenda buhoro?",
+    "options": [
+      "Keep a safe distance and overtake only when legal and clearly safe",
+      "Overtake immediately on a bend",
+      "Drive very close behind it",
+      "Use the shoulder to pass without checking"
+    ],
+    "options_rw": [
+      "Siga intera y'umutekano kandi urenge gusa igihe byemewe kandi bigaragara ko bitekanye",
+      "Hita ukirenga ahantu hakata",
+      "Gikurikire uri hafi cyane",
+      "Koresha inkombe y'umuhanda utagenzuye"
+    ],
+    "answer": "Keep a safe distance and overtake only when legal and clearly safe",
+    "answer_rw": "Siga intera y'umutekano kandi urenge gusa igihe byemewe kandi bigaragara ko bitekanye",
+    "explanation": "Slow vehicles may be wide, unpredictable or preparing to turn.",
+    "explanation_rw": "Ibinyabiziga bigenda buhoro bishobora kuba binini, bigahindura icyerekezo mu buryo butunguranye cyangwa bigiye gukata."
+  },
+  {
+    "id": "incident_146",
+    "category": "traffic",
+    "sign_symbol": "🚦",
+    "question": "What should you do if the traffic light changes to amber as you approach it?",
+    "question_rw": "Wakora iki iyo itara rihindutse umuhondo ukiri kurigeraho?",
+    "options": [
+      "Stop if you can do so safely; proceed only if stopping would be unsafe",
+      "Accelerate in every situation",
+      "Reverse to increase distance",
+      "Ignore the signal completely"
+    ],
+    "options_rw": [
+      "Hagarara niba wabikora mu mutekano; komeza gusa niba guhagarara byateza akaga",
+      "Ongera umuvuduko mu bihe byose",
+      "Subira inyuma kugira ngo wongere intera",
+      "Irengagize itara burundu"
+    ],
+    "answer": "Stop if you can do so safely; proceed only if stopping would be unsafe",
+    "answer_rw": "Hagarara niba wabikora mu mutekano; komeza gusa niba guhagarara byateza akaga",
+    "explanation": "Amber generally means stop, except when it is unsafe to stop before the stop line.",
+    "explanation_rw": "Itara ry'umuhondo risanzwe risaba guhagarara, keretse igihe guhagarara mbere y'umurongo byateza akaga."
+  },
+  {
+    "id": "incident_147",
+    "category": "traffic",
+    "sign_symbol": "🚸",
+    "question": "What should you do when approaching a school during arrival or dismissal times?",
+    "question_rw": "Wakora iki wegereye ishuri mu gihe abanyeshuri baza cyangwa bataha?",
+    "options": [
+      "Reduce speed and watch carefully for children crossing",
+      "Maintain high speed because children know the road",
+      "Overtake stopped vehicles near the school gate",
+      "Sound the horn continuously"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko kandi witegereze neza abana bashobora kwambuka",
+      "Gumana umuvuduko mwinshi kuko abana bazi umuhanda",
+      "Renga ibinyabiziga bihagaze hafi y'irembo ry'ishuri",
+      "Komeza kuvuza ihoni"
+    ],
+    "answer": "Reduce speed and watch carefully for children crossing",
+    "answer_rw": "Gabanya umuvuduko kandi witegereze neza abana bashobora kwambuka",
+    "explanation": "Children may cross unexpectedly, especially around school entrances.",
+    "explanation_rw": "Abana bashobora kwambuka batunguranye, cyane cyane hafi y'amarembo y'ishuri."
+  },
+  {
+    "id": "incident_148",
+    "category": "traffic",
+    "sign_symbol": "🚘",
+    "question": "What should you do if another driver behaves aggressively towards you?",
+    "question_rw": "Wakora iki iyo undi mushoferi akwitwayeho nabi cyangwa akakwereka uburakari mu muhanda?",
+    "options": [
+      "Remain calm, avoid confrontation and keep a safe distance",
+      "Chase the driver to argue",
+      "Block the driver's vehicle",
+      "Respond with aggressive driving"
+    ],
+    "options_rw": [
+      "Tuza, wirinde guterana amagambo kandi usige intera y'umutekano",
+      "Mwirukankane kugira ngo mutongane",
+      "Mufungire ikinyabiziga",
+      "Nawe utware mu buryo burimo uburakari"
+    ],
+    "answer": "Remain calm, avoid confrontation and keep a safe distance",
+    "answer_rw": "Tuza, wirinde guterana amagambo kandi usige intera y'umutekano",
+    "explanation": "Aggressive reactions increase the risk of road conflict and collisions.",
+    "explanation_rw": "Kwitwara mu burakari byongera ibyago byo guterana amagambo no gukora impanuka."
+  },
+  {
+    "id": "incident_149",
+    "category": "traffic",
+    "sign_symbol": "🛣️",
+    "question": "What should you do if dust from a vehicle ahead suddenly reduces visibility?",
+    "question_rw": "Wakora iki iyo umukungugu uvuye ku kinyabiziga kiri imbere ugabanyije uko ubona umuhanda?",
+    "options": [
+      "Reduce speed and increase the distance from the vehicle",
+      "Move closer to see through the dust",
+      "Overtake immediately without checking",
+      "Switch off your headlights at night"
+    ],
+    "options_rw": [
+      "Gabanya umuvuduko wongere intera hagati yawe n'icyo kinyabiziga",
+      "Kwegereza ikinyabiziga kugira ngo ubone unyuze mu mukungugu",
+      "Hita urenga utagenzuye",
+      "Zimya amatara nijoro"
+    ],
+    "answer": "Reduce speed and increase the distance from the vehicle",
+    "answer_rw": "Gabanya umuvuduko wongere intera hagati yawe n'icyo kinyabiziga",
+    "explanation": "Dust can hide hazards and reduce the time available to react.",
+    "explanation_rw": "Umukungugu ushobora guhisha ibyago kandi ukagabanya igihe cyo kugira icyo ukora."
+  },
+  {
+    "id": "incident_150",
+    "category": "traffic",
+    "sign_symbol": "⚠️",
+    "question": "What is the best general response when an unexpected hazard appears ahead?",
+    "question_rw": "Ni ikihe gikorwa cyiza muri rusange iyo ubonye ikintu gishobora guteza impanuka gitunguranye imbere yawe?",
+    "options": [
+      "Stay alert, reduce speed safely and choose a controlled response",
+      "Close your eyes and brake suddenly",
+      "Accelerate without checking the surroundings",
+      "Turn sharply without considering other road users"
+    ],
+    "options_rw": [
+      "Komeza kuba maso, gabanya umuvuduko mu mutekano kandi ufate icyemezo ugenzura ikinyabiziga",
+      "Humiriza amaso ufate feri gitunguranye",
+      "Ongera umuvuduko utagenzuye ibikikije",
+      "Hita uhindukira utitaye ku bandi bakoresha umuhanda"
+    ],
+    "answer": "Stay alert, reduce speed safely and choose a controlled response",
+    "answer_rw": "Komeza kuba maso, gabanya umuvuduko mu mutekano kandi ufate icyemezo ugenzura ikinyabiziga",
+    "explanation": "Anticipation, controlled speed and calm decisions reduce the risk of collisions.",
+    "explanation_rw": "Kuba maso, kugenzura umuvuduko no gufata ibyemezo utuje bigabanya ibyago by'impanuka."
+  },
+    
