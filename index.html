@@ -4,19 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="theme-color" content="#155eef">
+  <meta name="description" content="Quiz Master Rwanda - Test your knowledge, learn and improve every day.">
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
 
-  <meta name="description" content="Test your knowledge with Quiz Master Rwanda. Learn road safety and general knowledge in English or Kinyarwanda.">
-  <meta name="theme-color" content="#155eef">
-
-  <link rel="icon" type="image/png" href="./icon-512-3.png">
+  <link rel="icon" href="./icon-512-3.png">
   <link rel="manifest" href="./manifest.json">
-
-  <!-- Google AdSense -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous"></script>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
@@ -29,37 +22,29 @@
 
   <style>
     :root {
-      --background: #f2f5fb;
-      --surface: #ffffff;
+      --bg: #f2f5fb;
+      --card: #ffffff;
       --primary: #155eef;
       --primary-dark: #1048bd;
       --text: #172033;
-      --muted: #667085;
-      --border: #e4e9f2;
-      --success: #16803c;
-      --success-bg: #e9f8ef;
-      --danger: #d92d20;
-      --danger-bg: #fff0ee;
-      --warning: #b54708;
-      --shadow: 0 8px 28px rgba(16, 24, 40, 0.07);
-      --radius: 16px;
+      --muted: #68758a;
+      --border: #e1e7f0;
+      --green: #16a34a;
+      --red: #dc2626;
+      --orange: #f59e0b;
+      --shadow: 0 5px 22px rgba(20, 40, 80, .07);
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      min-height: 100vh;
-      background: var(--background);
+      background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     button, select {
@@ -68,212 +53,133 @@
 
     button {
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
     button:disabled {
       cursor: not-allowed;
-      opacity: 0.55;
+      opacity: .5;
     }
 
     .container {
-      width: min(100% - 28px, 760px);
-      margin: 0 auto;
+      width: min(100% - 24px, 760px);
+      margin: auto;
     }
 
     header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .header-inner {
-      min-height: 66px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .brand {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .header-tag {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    main {
-      padding: 25px 0 40px;
-      min-height: 75vh;
-    }
-
-    .screen {
-      width: 100%;
-    }
-
-    .hero {
-      text-align: center;
       padding: 25px 12px 20px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(135deg, #155eef, #073b9b);
+      border-radius: 0 0 25px 25px;
     }
 
-    .hero-icon {
-      font-size: 48px;
-      margin-bottom: 8px;
+    header .brand {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      opacity: .9;
     }
 
-    h1, h2, h3, p {
-      margin-top: 0;
+    header h1 {
+      margin: 7px 0;
+      font-size: 29px;
     }
 
-    .hero h1 {
-      margin-bottom: 8px;
-      font-size: clamp(27px, 6vw, 38px);
-      line-height: 1.2;
+    header p {
+      margin: 0;
+      font-size: 14px;
+      opacity: .9;
     }
 
-    .hero p {
-      color: var(--muted);
-      margin-bottom: 0;
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0;
     }
 
-    .card {
-      background: var(--surface);
+    .stat {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 16px;
+      border-radius: 14px;
+      padding: 13px 5px;
+      text-align: center;
       box-shadow: var(--shadow);
     }
 
-    .card h2 {
+    .stat strong {
+      display: block;
+      font-size: 23px;
+      color: var(--primary);
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .ad-area {
+      margin: 15px 0;
+      min-height: 55px;
+      padding: 8px;
+      border: 1px dashed #d5dce8;
+      border-radius: 12px;
+      background: #fff;
+      text-align: center;
+      color: #9aa3b2;
+      font-size: 11px;
+    }
+
+    .screen {
+      display: none;
+      padding-bottom: 25px;
+    }
+
+    #homeScreen {
+      display: block;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 19px;
+      margin: 14px 0;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h2 {
       font-size: 19px;
-      margin-bottom: 8px;
+      margin: 0 0 8px;
+    }
+
+    .panel h3 {
+      font-size: 16px;
+      margin: 18px 0 10px;
     }
 
     .muted {
       color: var(--muted);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 15px 0;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 14px 8px;
-      text-align: center;
-    }
-
-    .stat-card strong {
-      display: block;
-      color: var(--primary);
-      font-size: 23px;
-    }
-
-    .stat-card span {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .button {
-      border: 0;
-      border-radius: 12px;
-      padding: 13px 18px;
-      min-height: 47px;
-      font-weight: 700;
-      transition: 0.15s ease;
-    }
-
-    .button:active {
-      transform: scale(0.98);
-    }
-
-    .button-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .button-primary:hover {
-      background: var(--primary-dark);
-    }
-
-    .button-secondary {
-      background: #eaf0ff;
-      color: var(--primary);
-      border: 1px solid #d8e3ff;
-    }
-
-    .button-light {
-      background: #f1f3f7;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .button-danger {
-      background: var(--danger-bg);
-      color: var(--danger);
-      border: 1px solid #ffd6d2;
-    }
-
-    .button-success {
-      background: var(--success);
-      color: white;
-    }
-
-    .button-block {
-      width: 100%;
-      display: block;
-      margin-top: 10px;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .button-row .button {
-      flex: 1 1 130px;
-    }
-
-    .selection-group {
-      margin-top: 20px;
-    }
-
-    .selection-group h3 {
-      font-size: 15px;
-      margin-bottom: 10px;
+      font-size: 13px;
     }
 
     .choice-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
+      margin-top: 10px;
     }
 
     .choice-btn {
-      background: #fff;
+      min-height: 62px;
       border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 8px;
-      min-height: 58px;
-      font-weight: 700;
+      border-radius: 13px;
+      background: white;
       color: var(--text);
-      transition: 0.15s ease;
+      padding: 12px 8px;
+      font-weight: bold;
+      font-size: 14px;
     }
 
     .choice-btn.active {
@@ -282,140 +188,174 @@
       color: var(--primary);
     }
 
-    .choice-btn:focus-visible,
-    .button:focus-visible {
-      outline: 3px solid #9bbaff;
-      outline-offset: 2px;
-    }
-
-    /* Setup is visible immediately */
-    #gameSetup {
-      display: block;
-    }
-
-    #selectionSummary {
-      margin-top: 18px;
-      padding: 12px;
-      border-radius: 10px;
-      background: #f4f7ff;
-      color: var(--primary);
-      font-weight: 700;
+    .summary {
+      margin: 17px 0 12px;
+      background: #f1f5ff;
+      border: 1px solid #d8e4ff;
+      border-radius: 12px;
+      padding: 13px;
+      font-size: 14px;
       text-align: center;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 10px 0;
+      font-weight: bold;
+      font-size: 15px;
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn.secondary {
+      color: var(--text);
+      background: #edf1f7;
+      border: 1px solid var(--border);
+    }
+
+    .btn.success {
+      background: var(--green);
+    }
+
+    .btn.danger {
+      background: var(--red);
+    }
+
+    .btn.small {
+      padding: 11px;
+      font-size: 13px;
     }
 
     #homeMessage {
       display: none;
       padding: 12px;
-      margin: 12px 0;
       border-radius: 10px;
-      background: #fff5e8;
-      color: var(--warning);
+      background: #fff3cd;
+      color: #795500;
+      margin: 12px 0;
       font-size: 14px;
     }
 
     #homeMessage[data-type="error"] {
-      background: var(--danger-bg);
-      color: var(--danger);
+      background: #fee2e2;
+      color: #991b1b;
     }
 
-    .ad-container {
-      background: var(--surface);
+    .home-menu {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .menu-btn {
+      background: white;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 12px;
-      margin: 18px 0;
-      text-align: center;
-      overflow: hidden;
+      padding: 14px 8px;
+      color: var(--text);
+      font-weight: bold;
+      box-shadow: var(--shadow);
     }
 
-    .ad-label {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-      margin-bottom: 6px;
+    .menu-btn:active {
+      background: #edf3ff;
     }
 
-    /* Quiz screen */
+    /* QUIZ */
 
     .quiz-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
-      margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
     .quiz-badge {
-      background: #eaf0ff;
+      background: #edf3ff;
       color: var(--primary);
+      padding: 7px 11px;
       border-radius: 20px;
-      padding: 7px 12px;
+      font-weight: bold;
       font-size: 13px;
-      font-weight: 700;
     }
 
-    .timer-box {
-      background: #fff4e5;
-      color: var(--warning);
+    #timerBox {
+      background: #e9f9ef;
+      color: #15803d;
+      padding: 7px 14px;
       border-radius: 20px;
-      padding: 7px 13px;
-      font-weight: 800;
+      font-weight: bold;
     }
 
-    .timer-box.warning {
-      background: var(--danger-bg);
-      color: var(--danger);
+    #timerBox.warning {
+      background: #fee2e2;
+      color: #b91c1c;
     }
 
     .progress-track {
-      width: 100%;
       height: 9px;
-      border-radius: 20px;
       background: #e8edf5;
+      border-radius: 20px;
       overflow: hidden;
-      margin: 14px 0 20px;
+      margin: 15px 0;
     }
 
     #progressFill {
-      width: 0%;
       height: 100%;
+      width: 0;
       background: var(--primary);
-      border-radius: inherit;
-      transition: width 0.25s ease;
+      transition: width .3s;
     }
 
     #questionText {
-      font-size: clamp(19px, 4.5vw, 24px);
-      line-height: 1.4;
-      margin: 12px 0 20px;
+      font-size: 19px;
+      font-weight: bold;
+      margin: 18px 0;
+      line-height: 1.6;
     }
 
     #questionImage {
       display: none;
       width: 100%;
-      max-height: 280px;
+      max-height: 270px;
       object-fit: contain;
       border-radius: 12px;
-      margin: 12px 0;
-    }
-
-    #optionsContainer {
-      display: grid;
-      gap: 10px;
+      margin: 12px auto;
     }
 
     .option-btn {
+      width: 100%;
       display: flex;
       align-items: center;
       gap: 12px;
-      width: 100%;
-      min-height: 55px;
-      padding: 12px;
       text-align: left;
-      color: var(--text);
-      background: #fff;
+      padding: 13px;
+      margin: 9px 0;
+      background: white;
       border: 2px solid var(--border);
       border-radius: 12px;
+      color: var(--text);
+    }
+
+    .option-letter {
+      flex: 0 0 30px;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      background: #edf1f7;
+      border-radius: 50%;
+      font-weight: bold;
     }
 
     .option-btn.selected {
@@ -424,157 +364,120 @@
     }
 
     .option-btn.correct {
-      border-color: var(--success);
-      background: var(--success-bg);
-      color: var(--success);
+      border-color: var(--green);
+      background: #dcfce7;
     }
 
     .option-btn.incorrect {
-      border-color: var(--danger);
-      background: var(--danger-bg);
-      color: var(--danger);
-    }
-
-    .option-letter {
-      display: grid;
-      place-items: center;
-      flex: 0 0 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: #eef1f6;
-      font-weight: 800;
-    }
-
-    .option-text {
-      overflow-wrap: anywhere;
+      border-color: var(--red);
+      background: #fee2e2;
     }
 
     #answerFeedback {
       display: none;
       padding: 12px;
-      margin-top: 14px;
+      margin: 12px 0;
+      background: #edf3ff;
       border-radius: 10px;
-      font-weight: 700;
-      background: #f2f5fb;
+      font-weight: bold;
     }
 
     #explanation {
       display: none;
-      margin-top: 12px;
       padding: 13px;
-      border-left: 4px solid var(--primary);
-      background: #f4f7ff;
+      margin: 12px 0;
+      background: #fff8e7;
+      border-left: 4px solid var(--orange);
       border-radius: 8px;
-      color: #344054;
+      font-size: 14px;
     }
 
-    /* Results */
+    /* RESULTS */
 
-    .result-heading {
+    .result-box {
       text-align: center;
-      padding: 15px 5px;
+      padding: 25px 15px;
     }
 
-    #resultTitle {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    #resultStars {
-      font-size: 30px;
-      margin: 10px 0;
+    .result-box h2 {
+      font-size: 27px;
     }
 
     .result-number {
-      font-size: 38px;
+      font-size: 43px;
       color: var(--primary);
-      font-weight: 800;
-      text-align: center;
-      margin: 8px 0;
+      font-weight: bold;
+      margin: 10px;
     }
 
-    .result-stat {
-      text-align: center;
-      background: #f5f7fb;
-      border-radius: 12px;
-      padding: 15px;
+    .result-stars {
+      font-size: 28px;
     }
 
-    .result-stat strong {
-      display: block;
-      font-size: 23px;
-    }
-
-    /* Review */
+    /* REVIEW */
 
     .review-item {
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 12px;
-      background: #fff;
+      border-radius: 13px;
+      padding: 14px;
+      margin: 12px 0;
+      background: white;
     }
 
     .review-item h3 {
-      font-size: 16px;
-      margin-bottom: 12px;
+      font-size: 15px;
+      margin: 0 0 12px;
     }
 
     .review-item p {
-      margin-bottom: 7px;
+      font-size: 13px;
       overflow-wrap: anywhere;
     }
 
     .review-status {
-      font-weight: 800;
-      color: var(--primary);
+      font-weight: bold;
+      color: var(--green);
     }
 
-    /* Rounds */
+    /* ROUNDS */
 
     #roundList {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       margin-top: 15px;
     }
 
     .round-card {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-align: left;
-      padding: 15px;
-      background: #fff;
+      background: white;
       border: 2px solid var(--border);
       border-radius: 12px;
-      color: var(--text);
-    }
-
-    .round-card:not(:disabled):hover {
-      border-color: var(--primary);
-      background: #f5f8ff;
+      padding: 15px 8px;
+      text-align: center;
     }
 
     .round-card.completed {
-      border-color: #a7e2ba;
-      background: var(--success-bg);
+      border-color: var(--green);
+      background: #effcf3;
     }
 
     .round-card.locked {
-      opacity: 0.55;
+      opacity: .55;
     }
 
-    .round-number {
-      font-weight: 800;
+    .round-number,
+    .round-status {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
     }
 
     .round-status {
-      font-size: 12px;
+      margin-top: 5px;
       color: var(--muted);
     }
 
-    /* Settings */
+    /* SETTINGS */
 
     .setting-row {
       margin: 15px 0;
@@ -582,7 +485,7 @@
 
     .setting-row label {
       display: block;
-      font-weight: 700;
+      font-weight: bold;
       margin-bottom: 7px;
     }
 
@@ -591,58 +494,33 @@
       padding: 12px;
       border: 1px solid var(--border);
       border-radius: 10px;
-      background: #fff;
-      color: var(--text);
-    }
-
-    #settingsMessage {
-      margin-top: 12px;
-      color: var(--success);
-      font-weight: 700;
+      background: white;
     }
 
     footer {
-      padding: 25px 12px;
-      background: #fff;
-      border-top: 1px solid var(--border);
       text-align: center;
+      padding: 25px 10px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     footer a {
       color: var(--primary);
       text-decoration: none;
-      margin: 0 7px;
+      margin: 0 5px;
     }
 
-    @media (max-width: 480px) {
-      .container {
-        width: min(100% - 20px, 760px);
+    @media (max-width: 380px) {
+      header h1 {
+        font-size: 24px;
       }
 
-      .card {
-        padding: 16px;
+      .panel {
+        padding: 14px;
       }
 
-      .stats-grid {
-        gap: 7px;
-      }
-
-      .stat-card {
-        padding: 12px 5px;
-      }
-
-      .stat-card strong {
-        font-size: 20px;
-      }
-
-      .button-row {
-        flex-direction: column;
-      }
-
-      .button-row .button {
-        width: 100%;
+      .choice-btn {
+        font-size: 12px;
       }
     }
   </style>
@@ -650,448 +528,412 @@
 
 <body>
 
-  <header>
-    <div class="container header-inner">
-      <a class="brand" href="./index.html">Quiz Master 🇷🇼</a>
-      <span class="header-tag">KNOWLEDGE QUIZ</span>
+<header>
+  <div class="brand">KNOWLEDGE QUIZ</div>
+  <h1>🧠 Quiz Master 🇷🇼</h1>
+  <p>Test your knowledge. Learn something new every day!</p>
+</header>
+
+<main class="container">
+
+  <!-- HOME SCREEN -->
+  <section id="homeScreen" class="screen">
+
+    <div class="stats">
+      <div class="stat">
+        <strong id="homeRound">1</strong>
+        <span>Next Round</span>
+      </div>
+
+      <div class="stat">
+        <strong id="homeScore">0</strong>
+        <span>Best Score</span>
+      </div>
+
+      <div class="stat">
+        <strong id="homeStars">⭐</strong>
+        <span>Achievements</span>
+      </div>
     </div>
-  </header>
 
-  <main class="container">
+    <div class="ad-area">
+      ADVERTISEMENT
+      <!-- Keep your existing AdSense ad unit code here. -->
+    </div>
 
-    <!-- HOME SCREEN -->
-    <section id="homeScreen" class="screen">
+    <div id="gameSetup" class="panel">
 
-      <div class="hero">
-        <div class="hero-icon">🧠</div>
-        <h1>Quiz Master 🇷🇼</h1>
-        <p>Test your knowledge. Learn something new every day!</p>
-      </div>
+      <h2>🎮 Game Setup / Tegura umukino</h2>
+      <p class="muted">
+        Hitamo ururimi n'icyiciro cy'ibibazo ushaka gukina.
+      </p>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <strong id="homeRound">1</strong>
-          <span>Next Round</span>
-        </div>
+      <h3>1. Choose Language / Hitamo ururimi</h3>
 
-        <div class="stat-card">
-          <strong id="homeScore">0</strong>
-          <span>Best Score</span>
-        </div>
-
-        <div class="stat-card">
-          <strong id="homeStars">⭐</strong>
-          <span>Achievements</span>
-        </div>
-      </div>
-
-      <div id="homeMessage"></div>
-
-      <!-- HOME AD -->
-      <div class="ad-container">
-        <span class="ad-label">ADVERTISEMENT</span>
-
-        <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-2666698676518429"
-          data-ad-slot="9045712897"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-
-      <!-- GAME SETUP: VISIBLE IMMEDIATELY -->
-      <div id="gameSetup" class="card">
-
-        <h2>🎮 Game Setup / Tegura umukino</h2>
-        <p class="muted">
-          Hitamo ururimi n'icyiciro cy'ibibazo ushaka gukina.
-        </p>
-
-        <div class="selection-group">
-          <h3>1. Choose Language / Hitamo ururimi</h3>
-
-          <div class="choice-grid">
-            <button
-              type="button"
-              class="choice-btn language-btn"
-              data-language="rw"
-              aria-pressed="false">
-              🇷🇼 Ikinyarwanda
-            </button>
-
-            <button
-              type="button"
-              class="choice-btn language-btn"
-              data-language="en"
-              aria-pressed="false">
-              🇬🇧 English
-            </button>
-          </div>
-        </div>
-
-        <div class="selection-group">
-          <h3>2. Choose Category / Hitamo ibibazo</h3>
-
-          <div class="choice-grid">
-            <button
-              type="button"
-              class="choice-btn mode-btn"
-              data-mode="traffic"
-              aria-pressed="false">
-              🚦 Amategeko y'umuhanda
-            </button>
-
-            <button
-              type="button"
-              class="choice-btn mode-btn"
-              data-mode="general"
-              aria-pressed="false">
-              🌍 Ubumenyi rusange
-            </button>
-          </div>
-        </div>
-
-        <div id="selectionSummary" aria-live="polite">
-          Banza uhitemo ururimi n'icyiciro.
-        </div>
-
-        <button
-          type="button"
-          id="confirmSetupBtn"
-          class="button button-primary button-block"
-          disabled>
-          ▶ Tangira gukina / Start Quiz
+      <div class="choice-grid">
+        <button type="button"
+          class="choice-btn language-btn"
+          data-language="rw"
+          aria-pressed="false">
+          🇷🇼 Ikinyarwanda
         </button>
 
+        <button type="button"
+          class="choice-btn language-btn"
+          data-language="en"
+          aria-pressed="false">
+          🇬🇧 English
+        </button>
       </div>
 
-      <button
-        type="button"
-        id="continueBtn"
-        class="button button-success button-block"
-        style="display:none;">
-        ▶ Continue Quiz
+      <h3>2. Choose Category / Hitamo ibibazo</h3>
+
+      <div class="choice-grid">
+        <button type="button"
+          class="choice-btn mode-btn"
+          data-mode="traffic"
+          aria-pressed="false">
+          🚦 Amategeko y'umuhanda
+        </button>
+
+        <button type="button"
+          class="choice-btn mode-btn"
+          data-mode="general"
+          aria-pressed="false">
+          🌍 Ubumenyi rusange
+        </button>
+      </div>
+
+      <h3>3. Emeza ibyo wahisemo</h3>
+
+      <div id="selectionSummary" class="summary">
+        Banza uhitemo ururimi n'icyiciro.
+      </div>
+
+      <button type="button"
+        id="confirmSetupBtn"
+        class="btn"
+        disabled>
+        ✓ Emeza ibyo wahisemo / Confirm Selection
       </button>
 
-      <button
-        type="button"
+      <p class="muted" style="text-align:center">
+        Nyuma yo kwemeza, kanda Tangira gukina.
+      </p>
+
+      <button type="button"
+        id="startBtn"
+        class="btn success">
+        ▶ Tangira gukina / Start Quiz
+      </button>
+
+    </div>
+
+    <div id="homeMessage" role="status"></div>
+
+    <button type="button"
+      id="continueBtn"
+      class="btn success"
+      style="display:none">
+      ▶ Komeza umukino / Continue Quiz
+    </button>
+
+    <div class="home-menu">
+
+      <button type="button"
         id="reviewAnswersBtn"
-        class="button button-secondary button-block"
-        style="display:none;">
-        📖 Review Answers
+        class="menu-btn"
+        style="display:none">
+        📖 Reba ibisubizo
       </button>
 
-      <div class="button-row">
-        <button
-          type="button"
-          id="roundsBtn"
-          class="button button-light">
-          🏆 Rounds
-        </button>
+      <button type="button"
+        id="roundsBtn"
+        class="menu-btn">
+        🏆 Reba Rounds
+      </button>
 
-        <button
-          type="button"
-          id="settingsBtn"
-          class="button button-light">
-          ⚙️ Settings
-        </button>
-      </div>
+      <button type="button"
+        id="settingsBtn"
+        class="menu-btn">
+        ⚙️ Settings
+      </button>
 
-      <div class="button-row">
-        <button
-          type="button"
-          id="musicToggleBtn"
-          class="button button-light">
-          Music: ON
-        </button>
+      <button type="button"
+        id="shareBtn"
+        class="menu-btn">
+        📤 Share Quiz
+      </button>
 
-        <button
-          type="button"
-          id="shareBtn"
-          class="button button-secondary">
-          📤 Share Quiz
-        </button>
-      </div>
+    </div>
 
-    </section>
+    <button type="button"
+      id="musicToggleBtn"
+      class="btn secondary">
+      Music: ON
+    </button>
 
-    <!-- QUIZ SCREEN -->
-    <section id="quizScreen" class="screen" style="display:none;">
+  </section>
+
+  <!-- QUIZ SCREEN -->
+  <section id="quizScreen" class="screen">
+
+    <div class="panel">
 
       <div class="quiz-top">
         <span class="quiz-badge">
           Round <span id="currentRound">1</span>
         </span>
 
-        <span class="timer-box" id="timerBox">
+        <span class="quiz-badge" id="categoryIndicator">
+          General Knowledge
+        </span>
+
+        <span id="timerBox">
           ⏱ <span id="timer">30</span>s
         </span>
       </div>
 
-      <div class="card">
+      <div class="quiz-top" style="margin-top:15px">
+        <strong>
+          Question <span id="currentQuestionNumber">1/10</span>
+        </strong>
 
-        <div class="quiz-top">
-          <span class="muted">
-            Question <span id="currentQuestionNumber">1/10</span>
-          </span>
-
-          <span class="quiz-badge" id="categoryIndicator">
-            General Knowledge
-          </span>
-        </div>
-
-        <div class="progress-track">
-          <div id="progressFill"></div>
-        </div>
-
-        <h2 id="questionText">Question loading...</h2>
-
-        <img
-          id="questionImage"
-          src=""
-          alt="Question illustration">
-
-        <div id="optionsContainer"></div>
-
-        <div id="answerFeedback"></div>
-
-        <div id="explanation"></div>
-
-        <button
-          type="button"
-          id="submitAnswerBtn"
-          class="button button-primary button-block"
-          disabled>
-          Submit Answer
-        </button>
-
-        <button
-          type="button"
-          id="nextQuestionBtn"
-          class="button button-primary button-block"
-          style="display:none;">
-          Next Question
-        </button>
-
-        <div class="button-row">
-          <button
-            type="button"
-            id="quizReviewBtn"
-            class="button button-light">
-            Review Answers
-          </button>
-
-          <button
-            type="button"
-            id="quizHomeBtn"
-            class="button button-light">
-            Home
-          </button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- RESULT SCREEN -->
-    <section id="resultScreen" class="screen" style="display:none;">
-
-      <div class="card">
-
-        <div class="result-heading">
-          <div id="resultStars">⭐</div>
-          <h1 id="resultTitle">Round Results</h1>
-          <p id="resultMessage" class="muted">
-            Your results are ready.
-          </p>
-        </div>
-
-        <div class="result-number">
-          <span id="resultScore">0</span>
-          <span style="font-size:17px;">points</span>
-        </div>
-
-        <div class="result-stat">
-          <strong id="resultPercent">0%</strong>
-          <span class="muted">Your Score</span>
-        </div>
-
-        <div class="button-row">
-          <button
-            type="button"
-            id="retryBtn"
-            class="button button-primary"
-            style="display:none;">
-            🔄 Retry Round
-          </button>
-
-          <button
-            type="button"
-            id="resultNextBtn"
-            class="button button-success"
-            style="display:none;">
-            Continue to Next Round
-          </button>
-        </div>
-
-        <button
-          type="button"
-          id="resultReviewBtn"
-          class="button button-secondary button-block">
-          📖 Review Answers
-        </button>
-
-        <button
-          type="button"
-          id="resultHomeBtn"
-          class="button button-light button-block">
-          🏠 Back to Home
-        </button>
-
-      </div>
-    </section>
-
-    <!-- REVIEW SCREEN -->
-    <section id="reviewScreen" class="screen" style="display:none;">
-
-      <div class="card">
-        <h2>📖 Review Answers</h2>
-        <p class="muted">
-          Check your answers and learn from the explanations.
-        </p>
-
-        <div id="reviewContainer"></div>
-
-        <button
-          type="button"
-          id="reviewHomeBtn"
-          class="button button-primary button-block">
-          Back to Home
-        </button>
+        <strong>
+          ⭐ Score: <span id="score">0</span>
+        </strong>
       </div>
 
-    </section>
-
-    <!-- ROUNDS SCREEN -->
-    <section id="roundsScreen" class="screen" style="display:none;">
-
-      <div class="card">
-        <h2>🏆 Quiz Rounds</h2>
-
-        <p id="roundsDescription" class="muted">
-          Complete each round to unlock the next one.
-        </p>
-
-        <div class="stats-grid">
-          <div class="stat-card">
-            <strong id="roundsCompleted">0</strong>
-            <span>Completed</span>
-          </div>
-
-          <div class="stat-card">
-            <strong id="roundsTotal">0</strong>
-            <span>Total Rounds</span>
-          </div>
-
-          <div class="stat-card">
-            <strong id="roundsUnlocked">1</strong>
-            <span>Unlocked</span>
-          </div>
-        </div>
-
-        <div id="roundList"></div>
-
-        <button
-          type="button"
-          id="roundsHomeBtn"
-          class="button button-primary button-block">
-          Back to Home
-        </button>
+      <div class="progress-track">
+        <div id="progressFill"></div>
       </div>
 
-    </section>
+      <img id="questionImage" alt="Question illustration">
 
-    <!-- SETTINGS SCREEN -->
-    <section id="settingsScreen" class="screen" style="display:none;">
-
-      <div class="card">
-        <h2>⚙️ Settings</h2>
-
-        <div class="setting-row">
-          <label for="settingsLanguage">Language</label>
-
-          <select id="settingsLanguage">
-            <option value="rw">Ikinyarwanda</option>
-            <option value="en">English</option>
-          </select>
-        </div>
-
-        <div class="setting-row">
-          <label for="settingsMode">Question Category</label>
-
-          <select id="settingsMode">
-            <option value="traffic">Road Safety</option>
-            <option value="general">General Knowledge</option>
-          </select>
-        </div>
-
-        <button
-          type="button"
-          id="settingsMusicBtn"
-          class="button button-light button-block">
-          Music: ON
-        </button>
-
-        <button
-          type="button"
-          id="saveSettingsBtn"
-          class="button button-primary button-block">
-          Save Settings
-        </button>
-
-        <div id="settingsMessage"></div>
-
-        <hr style="border:0;border-top:1px solid var(--border);margin:22px 0;">
-
-        <h3>Reset Progress</h3>
-        <p class="muted">
-          This will remove saved scores, completed rounds and saved game progress.
-        </p>
-
-        <button
-          type="button"
-          id="resetProgressBtn"
-          class="button button-danger button-block">
-          Reset My Progress
-        </button>
-
-        <button
-          type="button"
-          id="settingsHomeBtn"
-          class="button button-light button-block">
-          Back to Home
-        </button>
+      <div id="questionText">
+        Loading question...
       </div>
 
-    </section>
+      <div id="optionsContainer"></div>
 
-  </main>
+      <div id="answerFeedback" role="status"></div>
 
-  <footer>
-    <p>
-      <a href="./privacy-policy.html">Privacy Policy</a>
-      <a href="./terms.html">Terms</a>
-      <a href="mailto:mazimpakaisaie7@gmail.com">Contact</a>
-    </p>
+      <div id="explanation"></div>
 
-    <p>Quiz Master 🇷🇼 · 2026</p>
-  </footer>
+      <button type="button"
+        id="submitAnswerBtn"
+        class="btn"
+        disabled>
+        Emeza igisubizo / Submit Answer
+      </button>
 
-  <!-- Quiz JavaScript -->
-  <script src="./questions.js" defer></script>
+      <button type="button"
+        id="nextQuestionBtn"
+        class="btn success"
+        style="display:none">
+        Ikibazo gikurikira / Next Question
+      </button>
+
+      <button type="button"
+        id="quizReviewBtn"
+        class="btn secondary">
+        📖 Reba ibisubizo
+      </button>
+
+      <button type="button"
+        id="quizHomeBtn"
+        class="btn secondary">
+        🏠 Ahabanza
+      </button>
+
+    </div>
+  </section>
+
+  <!-- RESULT SCREEN -->
+  <section id="resultScreen" class="screen">
+
+    <div class="panel result-box">
+
+      <h2 id="resultTitle">Watsinze!</h2>
+
+      <div id="resultStars" class="result-stars">⭐⭐⭐</div>
+
+      <p id="resultMessage">
+        Wujuje ibisabwa kugira ngo ukomeze.
+      </p>
+
+      <div class="result-number">
+        <span id="resultScore">0</span>
+      </div>
+
+      <p>Points</p>
+
+      <h2 id="resultPercent">0%</h2>
+
+      <button type="button"
+        id="resultNextBtn"
+        class="btn success">
+        ▶ Komeza kuri Round ikurikira
+      </button>
+
+      <button type="button"
+        id="retryBtn"
+        class="btn">
+        🔄 Subiramo ukine / Play Again
+      </button>
+
+      <button type="button"
+        id="resultReviewBtn"
+        class="btn secondary">
+        📖 Reba ibyo wakoze neza n'ibyo wakoze nabi
+      </button>
+
+      <button type="button"
+        id="resultHomeBtn"
+        class="btn secondary">
+        🏠 Subira ahabanza
+      </button>
+
+    </div>
+  </section>
+
+  <!-- REVIEW SCREEN -->
+  <section id="reviewScreen" class="screen">
+
+    <div class="panel">
+      <h2>📖 Review Answers / Isubiramo ry'ibisubizo</h2>
+
+      <p class="muted">
+        Reba ibyo wasubije neza, ibyo wasubije nabi n'ibisubizo nyabyo.
+      </p>
+
+      <div id="reviewContainer"></div>
+
+      <button type="button"
+        id="reviewHomeBtn"
+        class="btn secondary">
+        🏠 Subira ahabanza
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ROUNDS SCREEN -->
+  <section id="roundsScreen" class="screen">
+
+    <div class="panel">
+
+      <h2>🏆 Rounds / Ibyiciro by'umukino</h2>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="roundsCompleted">0</strong>
+          <span>Completed</span>
+        </div>
+
+        <div class="stat">
+          <strong id="roundsTotal">0</strong>
+          <span>Total Rounds</span>
+        </div>
+
+        <div class="stat">
+          <strong id="roundsUnlocked">1</strong>
+          <span>Unlocked</span>
+        </div>
+      </div>
+
+      <p id="roundsDescription" class="muted"></p>
+
+      <div id="roundList"></div>
+
+      <button type="button"
+        id="roundsHomeBtn"
+        class="btn secondary">
+        🏠 Subira ahabanza
+      </button>
+
+    </div>
+  </section>
+
+  <!-- SETTINGS SCREEN -->
+  <section id="settingsScreen" class="screen">
+
+    <div class="panel">
+
+      <h2>⚙️ Settings / Igenamiterere</h2>
+
+      <div class="setting-row">
+        <label for="settingsLanguage">
+          Language / Ururimi
+        </label>
+
+        <select id="settingsLanguage">
+          <option value="rw">🇷🇼 Ikinyarwanda</option>
+          <option value="en">🇬🇧 English</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <label for="settingsMode">
+          Category / Icyiciro
+        </label>
+
+        <select id="settingsMode">
+          <option value="traffic">🚦 Amategeko y'umuhanda</option>
+          <option value="general">🌍 Ubumenyi rusange</option>
+        </select>
+      </div>
+
+      <button type="button"
+        id="saveSettingsBtn"
+        class="btn success">
+        💾 Bika ibyo wahinduye / Save Settings
+      </button>
+
+      <button type="button"
+        id="settingsMusicBtn"
+        class="btn secondary">
+        Music: ON
+      </button>
+
+      <div id="settingsMessage"
+        class="summary"
+        aria-live="polite">
+      </div>
+
+      <button type="button"
+        id="resetProgressBtn"
+        class="btn danger">
+        Reset Progress
+      </button>
+
+      <button type="button"
+        id="settingsHomeBtn"
+        class="btn secondary">
+        🏠 Subira ahabanza
+      </button>
+
+    </div>
+  </section>
+
+  <div class="ad-area">
+    ADVERTISEMENT
+    <!-- Keep your existing AdSense ad unit code here. -->
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <a href="./privacy-policy.html">Privacy Policy</a>
+    <a href="./terms.html">Terms</a>
+    <a href="mailto:mazimpakaisaie7@gmail.com">Contact</a>
+  </p>
+
+  <p>Quiz Master 🇷🇼 · 2026</p>
+</footer>
+
+<script src="./questions.js" defer></script>
 
 </body>
 </html>
