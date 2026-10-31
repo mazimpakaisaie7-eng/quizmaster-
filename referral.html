@@ -1,558 +1,366 @@
-/* =========================================================
-   QUIZ MASTER - REFERRAL SYSTEM
-   File: referral.js
-   Ihuye na referral.html
-   ========================================================= */
 
-(function () {
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10233f">
 
-  "use strict";
+  <title>Gusangiza Quiz Master | Quiz Master 🇷🇼</title>
 
+  <meta name="description" content="Sangiza abandi Quiz Master, umukino w'ibibazo n'ibisubizo mu Kinyarwanda no mu Cyongereza.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/referral.html">
 
-  // ==========================================
-  // SETTINGS
-  // ==========================================
+  <meta property="og:title" content="Sangiza Quiz Master 🇷🇼">
+  <meta property="og:description" content="Sangiza abandi Quiz Master maze mwipime ubumenyi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://quizmaster-liard-five.vercel.app/referral.html">
 
-  const REFERRAL_STORAGE_KEY =
-    "quizMasterReferralCode";
+  <link rel="icon" href="./icon-512-3.png">
+  <link rel="manifest" href="./manifest.webmanifest">
 
-  const REFERRAL_COUNT_KEY =
-    "quizMasterReferralCount";
-
-  const REWARD_COUNT_KEY =
-    "quizMasterRewardCount";
-
-
-  // ==========================================
-  // GET ELEMENT
-  // ==========================================
-
-  function getElement(id) {
-
-    return document.getElementById(id);
-
-  }
-
-
-  // ==========================================
-  // GENERATE REFERRAL CODE
-  // ==========================================
-
-  function generateReferralCode() {
-
-    const randomPart =
-      Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase();
-
-    return "QM-" + randomPart;
-
-  }
-
-
-  // ==========================================
-  // GET OR CREATE REFERRAL CODE
-  // ==========================================
-
-  function getReferralCode() {
-
-    let code =
-      localStorage.getItem(
-        REFERRAL_STORAGE_KEY
-      );
-
-
-    if (!code) {
-
-      code =
-        generateReferralCode();
-
-      localStorage.setItem(
-        REFERRAL_STORAGE_KEY,
-        code
-      );
-
+  <style>
+    :root {
+      --primary: #155eef;
+      --dark: #10233f;
+      --background: #f2f5fb;
+      --white: #ffffff;
+      --text: #172b4d;
+      --muted: #667085;
+      --border: #dce3ef;
+      --success: #087443;
     }
 
-
-    return code;
-
-  }
-
-
-  // ==========================================
-  // GET APP URL
-  // ==========================================
-
-  function getAppUrl() {
-
-    /*
-      Iyo referral.html iri kuri:
-      https://example.com/referral.html
-
-      dukuramo /referral.html
-      tukabona:
-      https://example.com/
-    */
-
-    return (
-      window.location.origin +
-      window.location.pathname
-        .replace(
-          /\/[^/]*$/,
-          "/"
-        )
-    );
-
-  }
-
-
-  // ==========================================
-  // CREATE REFERRAL LINK
-  // ==========================================
-
-  function createReferralLink(code) {
-
-    const baseUrl =
-      getAppUrl();
-
-    return (
-      baseUrl +
-      "?ref=" +
-      encodeURIComponent(code)
-    );
-
-  }
-
-
-  // ==========================================
-  // LOAD STATS
-  // ==========================================
-
-  function loadStats() {
-
-    let referralCount =
-      parseInt(
-        localStorage.getItem(
-          REFERRAL_COUNT_KEY
-        ) || "0",
-        10
-      );
-
-
-    let rewardCount =
-      parseInt(
-        localStorage.getItem(
-          REWARD_COUNT_KEY
-        ) || "0",
-        10
-      );
-
-
-    if (isNaN(referralCount)) {
-      referralCount = 0;
+    * {
+      box-sizing: border-box;
     }
 
-
-    if (isNaN(rewardCount)) {
-      rewardCount = 0;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
     }
 
-
-    const referralCountElement =
-      getElement(
-        "referralCount"
-      );
-
-
-    const rewardCountElement =
-      getElement(
-        "rewardCount"
-      );
-
-
-    if (referralCountElement) {
-
-      referralCountElement.textContent =
-        referralCount;
-
+    .container {
+      width: 100%;
+      max-width: 620px;
+      margin: 25px auto;
     }
 
-
-    if (rewardCountElement) {
-
-      rewardCountElement.textContent =
-        rewardCount;
-
+    .header {
+      text-align: center;
+      margin-bottom: 22px;
     }
 
-  }
-
-
-  // ==========================================
-  // SHOW REFERRAL INFORMATION
-  // ==========================================
-
-  function loadReferralInformation() {
-
-    const code =
-      getReferralCode();
-
-
-    const link =
-      createReferralLink(code);
-
-
-    const codeElement =
-      getElement(
-        "referralCode"
-      );
-
-
-    const linkElement =
-      getElement(
-        "referralLink"
-      );
-
-
-    if (codeElement) {
-
-      codeElement.textContent =
-        code;
-
+    .logo {
+      font-size: 42px;
+      margin-bottom: 5px;
     }
 
-
-    if (linkElement) {
-
-      linkElement.value =
-        link;
-
+    h1 {
+      color: var(--dark);
+      font-size: 27px;
+      margin: 5px 0;
     }
 
-  }
+    .subtitle {
+      color: var(--muted);
+      margin: 5px 0;
+    }
 
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 23px;
+      margin-bottom: 18px;
+      box-shadow: 0 5px 20px rgba(16, 35, 63, 0.05);
+    }
 
-  // ==========================================
-  // SHOW SUCCESS MESSAGE
-  // ==========================================
+    h2 {
+      font-size: 19px;
+      color: var(--dark);
+      margin: 0 0 12px;
+    }
 
-  function showSuccessMessage(
-    message
-  ) {
+    .description {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 0;
+    }
 
-    const element =
-      getElement(
-        "successMessage"
-      );
+    .code-box {
+      background: #eef4ff;
+      border: 1px dashed var(--primary);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      margin: 15px 0;
+    }
 
+    #referralCode {
+      color: var(--primary);
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      overflow-wrap: anywhere;
+    }
 
-    if (!element) return;
+    .link-input {
+      width: 100%;
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-size: 14px;
+      background: #f8fafc;
+      color: var(--text);
+      margin: 8px 0 12px;
+    }
 
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
 
-    element.textContent =
-      message;
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 15px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      min-height: 46px;
+    }
 
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #94b9ff;
+      outline-offset: 3px;
+    }
 
-    element.style.display =
-      "block";
+    .primary-button {
+      background: var(--primary);
+      color: white;
+    }
 
+    .secondary-button {
+      background: #eaf0fa;
+      color: var(--dark);
+    }
 
-    setTimeout(
-      function () {
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
 
-        element.style.display =
-          "none";
+    .stat {
+      text-align: center;
+      background: #f5f8ff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 15px 8px;
+    }
 
-      },
-      3000
-    );
+    .stat strong {
+      display: block;
+      color: var(--primary);
+      font-size: 27px;
+    }
 
-  }
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
 
+    .notice {
+      background: #fff8e6;
+      border: 1px solid #f3dfaa;
+      color: #76520b;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 13px;
+      margin-top: 15px;
+    }
 
-  // ==========================================
-  // COPY REFERRAL LINK
-  // ==========================================
+    #successMessage {
+      display: none;
+      background: #e8f7ef;
+      color: var(--success);
+      border: 1px solid #b8e5ca;
+      border-radius: 9px;
+      padding: 11px;
+      margin-top: 13px;
+      text-align: center;
+      font-size: 14px;
+    }
 
-  async function copyReferralLink() {
+    .back-link {
+      display: block;
+      text-align: center;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 20px 0;
+    }
 
-    const linkElement =
-      getElement(
-        "referralLink"
-      );
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 15px 0;
+    }
 
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 5px;
+    }
 
-    if (!linkElement) return;
-
-
-    const link =
-      linkElement.value;
-
-
-    try {
-
-      if (
-        navigator.clipboard &&
-        window.isSecureContext
-      ) {
-
-        await navigator.clipboard.writeText(
-          link
-        );
-
-      } else {
-
-        linkElement.focus();
-
-        linkElement.select();
-
-        document.execCommand(
-          "copy"
-        );
-
+    @media (max-width: 420px) {
+      body {
+        padding: 12px;
       }
 
-
-      showSuccessMessage(
-        "✅ Referral link yakoporowe!"
-      );
-
-
-    } catch (error) {
-
-      console.error(
-        "Copy error:",
-        error
-      );
-
-
-      showSuccessMessage(
-        "⚠️ Copy yanze. Kanda kuri link uyikopore."
-      );
-
-    }
-
-  }
-
-
-  // ==========================================
-  // SHARE REFERRAL LINK
-  // ==========================================
-
-  async function shareReferralLink() {
-
-    const code =
-      getReferralCode();
-
-
-    const link =
-      createReferralLink(code);
-
-
-    const shareText =
-      "🎯 Injira muri Quiz Master! " +
-      "Koresha iyi referral link: " +
-      link;
-
-
-    /*
-      Niba browser ishyigikira Web Share API
-    */
-
-    if (
-      navigator.share
-    ) {
-
-      try {
-
-        await navigator.share({
-
-          title:
-            "Quiz Master",
-
-          text:
-            shareText,
-
-          url:
-            link
-
-        });
-
-
-      } catch (error) {
-
-        /*
-          User ashobora kuba yakandagiye
-          Cancel. Ntitwerekane error.
-        */
-
-        console.log(
-          "Share cancelled."
-        );
-
+      .card {
+        padding: 17px;
       }
 
-      return;
+      .buttons {
+        grid-template-columns: 1fr;
+      }
 
+      h1 {
+        font-size: 23px;
+      }
     }
+  </style>
+</head>
 
+<body>
+  <main class="container">
 
-    /*
-      Niba browser idashyigikira
-      navigator.share, copy link.
-    */
+    <header class="header">
+      <div class="logo" aria-hidden="true">🎯🇷🇼</div>
+      <h1>Sangiza abandi Quiz Master</h1>
+      <p class="subtitle">
+        Sangiza inshuti zawe umukino wo kwipima ubumenyi.
+      </p>
+    </header>
 
-    try {
+    <section class="card">
+      <h2>🔗 Referral Code yawe</h2>
 
-      await navigator.clipboard.writeText(
-        link
-      );
+      <p class="description">
+        Koresha iyi code cyangwa link kugira ngo usangize abandi Quiz Master.
+      </p>
 
-      showSuccessMessage(
-        "📋 Share idahari kuri browser yawe. Link yakoporowe!"
-      );
+      <div class="code-box">
+        <div id="referralCode" aria-live="polite">Irimo gutegurwa...</div>
+      </div>
 
-    } catch (error) {
+      <label for="referralLink">
+        <strong>Referral Link yawe</strong>
+      </label>
 
-      console.error(
-        "Share fallback error:",
-        error
-      );
+      <input
+        type="text"
+        id="referralLink"
+        class="link-input"
+        readonly
+        aria-label="Referral link yawe"
+        value=""
+      >
 
-      showSuccessMessage(
-        "🔗 Referral link: " + link
-      );
+      <div class="buttons">
+        <button
+          type="button"
+          id="copyButton"
+          class="secondary-button"
+        >
+          📋 Koporora Link
+        </button>
 
-    }
+        <button
+          type="button"
+          id="shareButton"
+          class="primary-button"
+        >
+          📤 Sangiza abandi
+        </button>
+      </div>
 
-  }
+      <div
+        id="successMessage"
+        role="status"
+        aria-live="polite"
+      ></div>
+    </section>
 
+    <section class="card">
+      <h2>📊 Imibare ya Referral</h2>
 
-  // ==========================================
-  // CHECK INCOMING REFERRAL
-  // ==========================================
+      <p class="description">
+        Iyi mibare igaragaza amakuru abitswe kuri iki gikoresho.
+      </p>
 
-  function checkIncomingReferral() {
+      <div class="stats">
+        <div class="stat">
+          <strong id="referralCount">0</strong>
+          <span>Referrals</span>
+        </div>
 
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
+        <div class="stat">
+          <strong id="rewardCount">0</strong>
+          <span>Rewards</span>
+        </div>
+      </div>
 
+      <div class="notice">
+        <strong>Icyitonderwa:</strong>
+        Imibare igaragara hano ibikwa muri browser yawe gusa.
+        Ntabwo yemeza ko umuntu yanditse, ko referral yagenzuwe,
+        cyangwa ko hari ibihembo byemejwe na server.
+      </div>
+    </section>
 
-    const incomingRef =
-      params.get("ref");
+    <section class="card">
+      <h2>ℹ️ Uko ukoresha Referral</h2>
 
+      <ol>
+        <li>Koporora referral link yawe.</li>
+        <li>Yisangize inshuti cyangwa abandi bantu.</li>
+        <li>Abayibonye bashobora kuyikoresha basura Quiz Master.</li>
+        <li>Fungura umukino kugira ngo ukomeze kwipima ubumenyi.</li>
+      </ol>
+    </section>
 
-    if (!incomingRef) {
-      return;
-    }
+    <a class="back-link" href="./index.html">
+      ← Subira kuri Quiz Master
+    </a>
 
+    <footer>
+      <p>Quiz Master 🇷🇼 · 2026</p>
+      <p>
+        <a href="./about.html">About</a> |
+        <a href="./contact.html">Contact</a> |
+        <a href="./privacy-policy.html">Privacy Policy</a> |
+        <a href="./terms.html">Terms</a>
+      </p>
+    </footer>
 
-    const cleanedRef =
-      incomingRef.trim();
+  </main>
 
-
-    if (!cleanedRef) {
-      return;
-    }
-
-
-    /*
-      Ntitwongeramo referral count
-      hano kuko umuntu ashobora
-      kongera gufungura link inshuro nyinshi.
-
-      Server ni yo igomba kwemeza
-      referral nyayo.
-    */
-
-    sessionStorage.setItem(
-      "quizMasterIncomingReferral",
-      cleanedRef
-    );
-
-
-    console.log(
-      "Incoming referral:",
-      cleanedRef
-    );
-
-  }
-
-
-  // ==========================================
-  // BUTTON EVENTS
-  // ==========================================
-
-  function setupEvents() {
-
-    const copyButton =
-      getElement(
-        "copyButton"
-      );
-
-
-    const shareButton =
-      getElement(
-        "shareButton"
-      );
-
-
-    if (copyButton) {
-
-      copyButton.addEventListener(
-        "click",
-        copyReferralLink
-      );
-
-    }
-
-
-    if (shareButton) {
-
-      shareButton.addEventListener(
-        "click",
-        shareReferralLink
-      );
-
-    }
-
-  }
-
-
-  // ==========================================
-  // INITIALIZE
-  // ==========================================
-
-  function initializeReferral() {
-
-    console.log(
-      "✅ Quiz Master Referral yatangiye."
-    );
-
-
-    loadReferralInformation();
-
-    loadStats();
-
-    checkIncomingReferral();
-
-    setupEvents();
-
-  }
-
-
-  // ==========================================
-  // PAGE LOAD
-  // ==========================================
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeReferral
-  );
-
-
-})();
+  <!-- Referral JavaScript -->
+  <script src="./referral.js" defer></script>
+</body>
+</html>
