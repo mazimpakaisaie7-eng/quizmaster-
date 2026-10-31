@@ -2,10 +2,10 @@
 (() => {
   "use strict";
 
-  // ================================================
+  // =========================================
   // QUIZ MASTER RWANDA
   // Compatible with the supplied index.html
-  // ================================================
+  // =========================================
 
   const CONFIG = {
     QUESTIONS_FILE: "./questions.json",
@@ -47,6 +47,7 @@
     round: 1,
     roundQuestions: [],
     currentIndex: 0,
+
     score: 0,
     correct: 0,
     answered: 0,
@@ -56,13 +57,14 @@
 
     timeLeft: 0,
     timerId: null,
+
     review: [],
     paused: false
   };
 
-  // ================================================
-  // STORAGE
-  // ================================================
+  // =========================================
+  // STORAGE HELPERS
+  // =========================================
 
   function readJSON(key, fallback) {
     try {
@@ -91,7 +93,9 @@
 
   function getUsedIds() {
     const data = getUsedData();
-    return Array.isArray(data[state.mode]) ? data[state.mode] : [];
+    return Array.isArray(data[state.mode])
+      ? data[state.mode]
+      : [];
   }
 
   function saveUsedIds(ids) {
@@ -109,7 +113,9 @@
 
   function getCompletedRounds() {
     const data = getCompletedData();
-    return Array.isArray(data[state.mode]) ? data[state.mode] : [];
+    return Array.isArray(data[state.mode])
+      ? data[state.mode]
+      : [];
   }
 
   function saveCompletedRounds(rounds) {
@@ -149,9 +155,9 @@
     updateHome();
   }
 
-  // ================================================
+  // =========================================
   // GENERAL HELPERS
-  // ================================================
+  // =========================================
 
   function showMessage(message, type = "info") {
     const target = $("homeMessage");
@@ -257,9 +263,9 @@
       : CONFIG.GENERAL_TIME;
   }
 
-  // ================================================
+  // =========================================
   // VALIDATE QUESTIONS
-  // ================================================
+  // =========================================
 
   function validQuestion(question) {
     if (!question || typeof question !== "object") return false;
@@ -295,9 +301,9 @@
     return true;
   }
 
-  // ================================================
+  // =========================================
   // LOAD QUESTIONS.JSON
-  // ================================================
+  // =========================================
 
   async function loadQuestions() {
     try {
@@ -330,7 +336,7 @@
       const traffic = valid.filter(q => q.category === "traffic").length;
       const general = valid.filter(q => q.category === "general").length;
 
-      console.log("Quiz Master loaded:", {
+      console.log("Quiz Master questions:", {
         total: valid.length,
         traffic,
         general,
@@ -360,6 +366,7 @@
 
     } catch (error) {
       console.error("Quiz Master loading error:", error);
+
       state.loaded = false;
 
       showMessage(
@@ -382,9 +389,9 @@
     return state.questions.filter(q => q.category === state.mode);
   }
 
-  // ================================================
+  // =========================================
   // ROUND MANAGEMENT
-  // ================================================
+  // =========================================
 
   function getTotalRounds() {
     return Math.ceil(
@@ -450,8 +457,8 @@
       q => !used.has(String(q.id))
     );
 
-    // Start another question cycle only when all
-    // questions in this category have been used.
+    // Start a new cycle only after every question in this
+    // category has been used.
     if (available.length === 0) {
       saveUsedIds([]);
       available = [...pool];
@@ -487,9 +494,9 @@
     return true;
   }
 
-  // ================================================
+  // =========================================
   // SETUP: LANGUAGE AND CATEGORY
-  // ================================================
+  // =========================================
 
   function selectLanguage(language) {
     if (!["rw", "en"].includes(language)) return;
@@ -501,6 +508,7 @@
     $$(".language-btn").forEach(button => {
       const active = button.dataset.language === language;
 
+      button.classList.toggle("selected", active);
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
     });
@@ -519,6 +527,7 @@
     $$(".mode-btn").forEach(button => {
       const active = button.dataset.mode === mode;
 
+      button.classList.toggle("selected", active);
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
     });
@@ -532,8 +541,11 @@
     const start = $("startBtn");
 
     if (confirm) confirm.style.display = "block";
-    if (start) start.style.display = "block";
-    if (start) start.disabled = true;
+
+    if (start) {
+      start.style.display = "block";
+      start.disabled = true;
+    }
   }
 
   function updateSelectionSummary() {
@@ -569,6 +581,7 @@
         state.languageChosen &&
         button.dataset.language === state.language;
 
+      button.classList.toggle("selected", active);
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
     });
@@ -578,6 +591,7 @@
         state.modeChosen &&
         button.dataset.mode === state.mode;
 
+      button.classList.toggle("selected", active);
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
     });
@@ -590,8 +604,9 @@
 
     state.setupConfirmed = false;
 
-    const setup = $("gameSetup");
-    if (setup) setup.style.display = "block";
+    if ($("gameSetup")) {
+      $("gameSetup").style.display = "block";
+    }
 
     if ($("confirmSetupBtn")) {
       $("confirmSetupBtn").style.display = "block";
@@ -637,23 +652,21 @@
 
     state.setupConfirmed = true;
 
-    const summary = $("selectionSummary");
-    const confirm = $("confirmSetupBtn");
-    const start = $("startBtn");
-
-    if (summary) {
-      summary.textContent =
+    if ($("selectionSummary")) {
+      $("selectionSummary").textContent =
         (state.language === "rw"
           ? "✓ Wemeje: Ikinyarwanda"
           : "✓ Confirmed: English") +
         " • " + getCategoryName();
     }
 
-    if (confirm) confirm.style.display = "none";
+    if ($("confirmSetupBtn")) {
+      $("confirmSetupBtn").style.display = "none";
+    }
 
-    if (start) {
-      start.style.display = "block";
-      start.disabled = false;
+    if ($("startBtn")) {
+      $("startBtn").style.display = "block";
+      $("startBtn").disabled = false;
     }
 
     showMessage(
@@ -663,9 +676,9 @@
     );
   }
 
-  // ================================================
+  // =========================================
   // START QUIZ
-  // ================================================
+  // =========================================
 
   function startConfirmedQuiz() {
     if (!state.setupConfirmed) {
@@ -688,8 +701,9 @@
 
     if (!prepareRound(getNextRound())) return;
 
-    const setup = $("gameSetup");
-    if (setup) setup.style.display = "none";
+    if ($("gameSetup")) {
+      $("gameSetup").style.display = "none";
+    }
 
     hideMessage();
     startCurrentRound();
@@ -722,9 +736,9 @@
     ));
   }
 
-  // ================================================
+  // =========================================
   // RENDER QUESTION
-  // ================================================
+  // =========================================
 
   function renderQuestion(resume = false) {
     const question = state.roundQuestions[state.currentIndex];
@@ -780,7 +794,7 @@
         button.dataset.answer = option;
 
         button.innerHTML =
-          `<span class="option-letter">${String.fromCharCode(65 + index)}</span>` +
+          `<span class="option-letter">${String.fromCharCode(65 + index)}</span> ` +
           `<span class="option-text">${escapeHTML(option)}</span>`;
 
         button.addEventListener("click", () => {
@@ -843,9 +857,9 @@
     saveProgress();
   }
 
-  // ================================================
+  // =========================================
   // SCORE AND PROGRESS
-  // ================================================
+  // =========================================
 
   function updateScoreDisplay() {
     if ($("score")) {
@@ -867,9 +881,9 @@
     }
   }
 
-  // ================================================
+  // =========================================
   // SUBMIT ANSWER
-  // ================================================
+  // =========================================
 
   function submitAnswer() {
     if (state.answerSubmitted) return;
@@ -954,9 +968,9 @@
     saveProgress();
   }
 
-  // ================================================
+  // =========================================
   // TIMER
-  // ================================================
+  // =========================================
 
   function startTimer() {
     stopTimer();
@@ -1056,9 +1070,9 @@
     saveProgress();
   }
 
-  // ================================================
+  // =========================================
   // NEXT QUESTION
-  // ================================================
+  // =========================================
 
   function nextQuestion() {
     if (!state.answerSubmitted) return;
@@ -1072,9 +1086,9 @@
     }
   }
 
-  // ================================================
+  // =========================================
   // RESULTS
-  // ================================================
+  // =========================================
 
   function finishRound() {
     stopTimer();
@@ -1216,9 +1230,9 @@
     }
   }
 
-  // ================================================
+  // =========================================
   // REVIEW ANSWERS
-  // ================================================
+  // =========================================
 
   function showReview() {
     const reviewData = state.review.length
@@ -1286,9 +1300,9 @@
     ));
   }
 
-  // ================================================
+  // =========================================
   // ROUNDS
-  // ================================================
+  // =========================================
 
   function showRounds() {
     if (!state.loaded) {
@@ -1370,9 +1384,9 @@
     showScreen("roundsScreen");
   }
 
-  // ================================================
+  // =========================================
   // HOME
-  // ================================================
+  // =========================================
 
   function updateHome() {
     if ($("homeRound")) {
@@ -1415,9 +1429,9 @@
     }
   }
 
-  // ================================================
+  // =========================================
   // CONTINUE SAVED GAME
-  // ================================================
+  // =========================================
 
   function continueQuiz() {
     if (!state.loaded) {
@@ -1497,15 +1511,16 @@
       }
     }
 
-    const setup = $("gameSetup");
-    if (setup) setup.style.display = "none";
+    if ($("gameSetup")) {
+      $("gameSetup").style.display = "none";
+    }
 
     startCurrentRound(true);
   }
 
-  // ================================================
+  // =========================================
   // SETTINGS
-  // ================================================
+  // =========================================
 
   function openSettings() {
     if (
@@ -1624,9 +1639,9 @@
     }
   }
 
-  // ================================================
+  // =========================================
   // MUSIC ON / OFF
-  // ================================================
+  // =========================================
 
   function setMusic(enabled) {
     state.music = Boolean(enabled);
@@ -1636,7 +1651,9 @@
       state.music ? "true" : "false"
     );
 
-    const label = state.music ? "Music: ON" : "Music: OFF";
+    const label = state.music
+      ? "🎵 Music: ON"
+      : "🔇 Music: OFF";
 
     if ($("musicToggleBtn")) {
       $("musicToggleBtn").textContent = label;
@@ -1648,13 +1665,30 @@
 
     document.dispatchEvent(new CustomEvent(
       "quizmaster:music-changed",
-      { detail: { enabled: state.music } }
+      {
+        detail: {
+          enabled: state.music
+        }
+      }
     ));
+
+    // Also control the audio directly if available.
+    const audio = $("backgroundMusic");
+
+    if (audio) {
+      if (state.music) {
+        audio.play().catch(() => {
+          // Browser may require a user interaction.
+        });
+      } else {
+        audio.pause();
+      }
+    }
   }
 
-  // ================================================
+  // =========================================
   // SHARE QUIZ
-  // ================================================
+  // =========================================
 
   async function shareApp() {
     const shareData = {
@@ -1684,15 +1718,16 @@
         );
 
         window.alert("✅ Link Copied!");
+
       } catch (copyError) {
         console.error("Share failed:", copyError);
       }
     }
   }
 
-  // ================================================
+  // =========================================
   // NAVIGATION
-  // ================================================
+  // =========================================
 
   function goHome() {
     if (
@@ -1724,66 +1759,64 @@
     syncSetupButtons();
   }
 
-  // ================================================
+  // =========================================
   // EVENT BINDING
-  // ================================================
+  // =========================================
 
   function on(id, event, callback) {
     const element = $(id);
+
     if (element) {
       element.addEventListener(event, callback);
     }
   }
 
   function bindEvents() {
-
-    // Setup confirmation and start.
+    // Setup
     on("startBtn", "click", startConfirmedQuiz);
     on("confirmSetupBtn", "click", confirmSetup);
 
-    // Language.
     $$(".language-btn").forEach(button => {
       button.addEventListener("click", () => {
         selectLanguage(button.dataset.language);
       });
     });
 
-    // Category.
     $$(".mode-btn").forEach(button => {
       button.addEventListener("click", () => {
         selectMode(button.dataset.mode);
       });
     });
 
-    // Home.
+    // Home
     on("continueBtn", "click", continueQuiz);
     on("roundsBtn", "click", showRounds);
     on("settingsBtn", "click", openSettings);
     on("shareBtn", "click", shareApp);
     on("reviewAnswersBtn", "click", showReview);
 
-    // Quiz.
+    // Quiz
     on("submitAnswerBtn", "click", submitAnswer);
     on("nextQuestionBtn", "click", nextQuestion);
     on("quizReviewBtn", "click", showReview);
     on("quizHomeBtn", "click", goHome);
 
-    // Results.
+    // Results
     on("resultNextBtn", "click", nextRound);
     on("retryBtn", "click", retryRound);
     on("resultReviewBtn", "click", showReview);
     on("resultHomeBtn", "click", goHome);
 
-    // Other screens.
+    // Other screens
     on("reviewHomeBtn", "click", goHome);
     on("roundsHomeBtn", "click", goHome);
     on("settingsHomeBtn", "click", goHome);
 
-    // Settings.
+    // Settings
     on("saveSettingsBtn", "click", saveSettings);
     on("resetProgressBtn", "click", resetProgress);
 
-    // Music.
+    // Music
     on("musicToggleBtn", "click", () => {
       setMusic(!state.music);
     });
@@ -1792,7 +1825,7 @@
       setMusic(!state.music);
     });
 
-    // Keyboard support.
+    // Keyboard support
     document.addEventListener("keydown", event => {
       if (
         event.key !== "Enter" ||
@@ -1810,14 +1843,16 @@
     });
   }
 
-  // ================================================
+  // =========================================
   // INITIALIZATION
-  // ================================================
+  // =========================================
 
   async function init() {
     bindEvents();
 
     syncSetupButtons();
+
+    // Initialize the music buttons and audio.
     setMusic(state.music);
 
     showScreen("homeScreen");
@@ -1843,9 +1878,9 @@
     updateSelectionSummary();
   }
 
-  // ================================================
+  // =========================================
   // PUBLIC FUNCTIONS
-  // ================================================
+  // =========================================
 
   window.QuizMaster = {
     start: openSetup,
