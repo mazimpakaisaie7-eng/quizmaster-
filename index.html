@@ -2,953 +2,1340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#155eef">
-  <meta name="description" content="Quiz Master Rwanda - Test your knowledge, learn and improve every day.">
-  <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
-
-  <link rel="icon" href="./icon-512-3.png">
-  <link rel="manifest" href="./manifest.json">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2W9SXBBH1P');
-  </script>
-
-  <style>
-    :root {
-      --bg:#f2f5fb;
-      --card:#fff;
-      --primary:#155eef;
-      --primary-dark:#1048bd;
-      --text:#172033;
-      --muted:#68758a;
-      --border:#e1e7f0;
-      --green:#16a34a;
-      --red:#dc2626;
-      --orange:#f59e0b;
-      --shadow:0 3px 12px rgba(20,40,80,.06);
-    }
-
-    * {box-sizing:border-box}
-
-    body {
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.4;
-    }
-
-    button,select {font:inherit}
-    button {
-      cursor:pointer;
-      -webkit-tap-highlight-color:transparent;
-    }
-    button:disabled {opacity:.5;cursor:not-allowed}
-
-    .container {
-      width:min(100% - 18px,760px);
-      margin:auto;
-    }
-
-    /* COMPACT HEADER */
-
-    header {
-      padding:13px 10px 12px;
-      text-align:center;
-      color:white;
-      background:linear-gradient(135deg,#155eef,#073b9b);
-      border-radius:0 0 17px 17px;
-    }
-
-    header .brand {
-      font-size:10px;
-      font-weight:bold;
-      letter-spacing:2px;
-      opacity:.9;
-    }
-
-    header h1 {
-      margin:3px 0;
-      font-size:23px;
-    }
-
-    header p {
-      margin:0;
-      font-size:11px;
-      opacity:.9;
-    }
-
-    .screen {
-      display:none;
-      padding-bottom:12px;
-    }
-
-    #homeScreen {display:block}
-
-    /* STATS */
-
-    .stats {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:7px;
-      margin:9px 0;
-    }
-
-    .stat {
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:7px 4px;
-      text-align:center;
-      box-shadow:var(--shadow);
-    }
-
-    .stat strong {
-      display:block;
-      font-size:18px;
-      color:var(--primary);
-    }
-
-    .stat span {
-      font-size:10px;
-      color:var(--muted);
-    }
-
-    .ad-area {
-      margin:8px 0;
-      min-height:45px;
-      padding:6px;
-      border:1px dashed #d5dce8;
-      border-radius:9px;
-      background:#fff;
-      text-align:center;
-      color:#9aa3b2;
-      font-size:10px;
-    }
-
-    /* PANELS */
-
-    .panel {
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:13px;
-      padding:12px;
-      margin:9px 0;
-      box-shadow:var(--shadow);
-    }
-
-    .panel h2 {
-      font-size:16px;
-      margin:0 0 5px;
-    }
-
-    .panel h3 {
-      font-size:13px;
-      margin:11px 0 6px;
-    }
-
-    .muted {
-      color:var(--muted);
-      font-size:11px;
-    }
-
-    /* CHOICES */
-
-    .choice-grid {
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:7px;
-      margin-top:6px;
-    }
-
-    .choice-btn {
-      min-height:43px;
-      border:1.5px solid var(--border);
-      border-radius:9px;
-      background:white;
-      color:var(--text);
-      padding:8px 5px;
-      font-weight:bold;
-      font-size:12px;
-    }
-
-    .choice-btn.active {
-      border-color:var(--primary);
-      background:#edf3ff;
-      color:var(--primary);
-    }
-
-    .summary {
-      margin:9px 0;
-      background:#f1f5ff;
-      border:1px solid #d8e4ff;
-      border-radius:9px;
-      padding:8px;
-      font-size:11px;
-      text-align:center;
-    }
-
-    /* BUTTONS */
-
-    .btn {
-      display:block;
-      width:100%;
-      border:0;
-      border-radius:9px;
-      padding:10px 8px;
-      margin:5px 0;
-      font-weight:bold;
-      font-size:12px;
-      background:var(--primary);
-      color:white;
-    }
-
-    .btn:hover {background:var(--primary-dark)}
-
-    .btn.secondary {
-      color:var(--text);
-      background:#edf1f7;
-      border:1px solid var(--border);
-    }
-
-    .btn.success {background:var(--green)}
-    .btn.danger {background:var(--red)}
-
-    .btn.small {
-      padding:8px;
-      font-size:11px;
-    }
-
-    /* HOME BUTTON GRID */
-
-    .home-actions {
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:7px;
-      margin:9px 0;
-    }
-
-    .home-actions .btn {
-      min-height:39px;
-      margin:0;
-      padding:8px 4px;
-      font-size:11px;
-    }
-
-    .menu-btn {
-      background:white;
-      border:1px solid var(--border);
-      border-radius:9px;
-      padding:9px 5px;
-      color:var(--text);
-      font-weight:bold;
-      font-size:11px;
-      box-shadow:var(--shadow);
-    }
-
-    .menu-btn:active {background:#edf3ff}
-
-    #homeMessage {
-      display:none;
-      padding:9px;
-      border-radius:9px;
-      background:#fff3cd;
-      color:#795500;
-      margin:8px 0;
-      font-size:12px;
-    }
-
-    #homeMessage[data-type="error"] {
-      background:#fee2e2;
-      color:#991b1b;
-    }
-
-    /* QUIZ */
-
-    .quiz-top {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .quiz-badge {
-      background:#edf3ff;
-      color:var(--primary);
-      padding:6px 9px;
-      border-radius:20px;
-      font-weight:bold;
-      font-size:11px;
-    }
-
-    #timerBox {
-      background:#e9f9ef;
-      color:#15803d;
-      padding:6px 11px;
-      border-radius:20px;
-      font-weight:bold;
-    }
-
-    #timerBox.warning {
-      background:#fee2e2;
-      color:#b91c1c;
-    }
-
-    .progress-track {
-      height:8px;
-      background:#e8edf5;
-      border-radius:20px;
-      overflow:hidden;
-      margin:12px 0;
-    }
-
-    #progressFill {
-      height:100%;
-      width:0;
-      background:var(--primary);
-      transition:width .3s;
-    }
-
-    #questionText {
-      font-size:17px;
-      font-weight:bold;
-      margin:14px 0;
-      line-height:1.5;
-    }
-
-    #questionImage {
-      display:none;
-      width:100%;
-      max-height:270px;
-      object-fit:contain;
-      border-radius:10px;
-      margin:10px auto;
-    }
-
-    .option-btn {
-      width:100%;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-align:left;
-      padding:11px;
-      margin:7px 0;
-      background:white;
-      border:2px solid var(--border);
-      border-radius:10px;
-      color:var(--text);
-      font-size:13px;
-    }
-
-    .option-letter {
-      flex:0 0 28px;
-      width:28px;
-      height:28px;
-      display:grid;
-      place-items:center;
-      background:#edf1f7;
-      border-radius:50%;
-      font-weight:bold;
-    }
-
-    .option-btn.selected {
-      border-color:var(--primary);
-      background:#edf3ff;
-    }
-
-    .option-btn.correct {
-      border-color:var(--green);
-      background:#dcfce7;
-    }
-
-    .option-btn.incorrect {
-      border-color:var(--red);
-      background:#fee2e2;
-    }
-
-    #answerFeedback {
-      display:none;
-      padding:10px;
-      margin:10px 0;
-      background:#edf3ff;
-      border-radius:9px;
-      font-weight:bold;
-    }
-
-    #explanation {
-      display:none;
-      padding:11px;
-      margin:10px 0;
-      background:#fff8e7;
-      border-left:4px solid var(--orange);
-      border-radius:8px;
-      font-size:13px;
-    }
-
-    /* RESULTS */
-
-    .result-box {
-      text-align:center;
-      padding:18px 12px;
-    }
-
-    .result-box h2 {font-size:23px}
-    .result-number {
-      font-size:38px;
-      color:var(--primary);
-      font-weight:bold;
-      margin:8px;
-    }
-    .result-stars {font-size:25px}
-
-    /* REVIEW */
-
-    .review-item {
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:11px;
-      margin:9px 0;
-      background:white;
-    }
-
-    .review-item h3 {
-      font-size:14px;
-      margin:0 0 10px;
-    }
-
-    .review-item p {
-      font-size:12px;
-      overflow-wrap:anywhere;
-    }
-
-    .review-status {
-      font-weight:bold;
-      color:var(--green);
-    }
-
-    /* ROUNDS */
-
-    #roundList {
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:8px;
-      margin-top:12px;
-    }
-
-    .round-card {
-      background:white;
-      border:2px solid var(--border);
-      border-radius:10px;
-      padding:12px 6px;
-      text-align:center;
-    }
-
-    .round-card.completed {
-      border-color:var(--green);
-      background:#effcf3;
-    }
-
-    .round-card.locked {opacity:.55}
-
-    .round-number,.round-status {
-      display:block;
-      font-size:12px;
-      font-weight:bold;
-    }
-
-    .round-status {
-      margin-top:4px;
-      color:var(--muted);
-    }
-
-    /* SETTINGS */
-
-    .setting-row {margin:11px 0}
-
-    .setting-row label {
-      display:block;
-      font-weight:bold;
-      margin-bottom:6px;
-      font-size:12px;
-    }
-
-    .setting-row select {
-      width:100%;
-      padding:9px;
-      border:1px solid var(--border);
-      border-radius:9px;
-      background:white;
-      font-size:13px;
-    }
-
-    .settings-grid {
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:7px;
-      margin:10px 0;
-    }
-
-    .settings-grid .btn {
-      margin:0;
-      min-height:39px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      text-align:center;
-      padding:12px 8px;
-      color:var(--muted);
-      font-size:10px;
-    }
-
-    footer a {
-      color:var(--primary);
-      text-decoration:none;
-      margin:0 4px;
-    }
-
-    @media(max-width:380px) {
-      header h1 {font-size:21px}
-      .panel {padding:10px}
-      .choice-btn {font-size:11px}
-      .home-actions .btn {font-size:10px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
+
+<meta name="description" content="Quiz Master is a free educational quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and General Knowledge.">
+<meta name="keywords" content="Quiz Master, Rwanda Quiz, General Knowledge, Geography, History, Science, Traffic Rules">
+<meta name="author" content="Mazimpaka Isaie">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="theme-color" content="#111827">
+
+<link rel="icon" type="image/png" href="./icon-512-3.png">
+<link rel="apple-touch-icon" href="./icon-512-3.png">
+<link rel="manifest" href="./manifest.json">
+
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2W9SXBBH1P');
+</script>
+
+<!-- GOOGLE ADSENSE -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
+crossorigin="anonymous"></script>
+
+<style>
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --card: #263449;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --primary: #2563eb;
+  --border: #475569;
+  --success: #059669;
+  --danger: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  background: linear-gradient(135deg,#0f172a,#111827,#172554);
+  color: var(--text);
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: min(1100px,94%);
+  margin: auto;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px 0 35px;
+}
+
+.screen.active {
+  display: block;
+}
+
+.hero {
+  text-align: center;
+  padding: 25px 12px;
+}
+
+.logo {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: clamp(2rem,6vw,3.2rem);
+  margin: 8px 0;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.tagline {
+  color: #93c5fd;
+  font-weight: bold;
+}
+
+.hero-description {
+  max-width: 760px;
+  margin: 15px auto;
+  color: var(--muted);
+}
+
+.panel,
+.content-card {
+  background: rgba(30,41,59,.96);
+  border: 1px solid rgba(148,163,184,.2);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.panel {
+  width: min(900px,94%);
+  margin: 20px auto;
+}
+
+.content-section {
+  margin: 30px auto;
+}
+
+.content-section h2,
+.screen-title {
+  text-align: center;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  gap: 14px;
+}
+
+.content-card h3 {
+  color: #bfdbfe;
+  margin-top: 0;
+}
+
+.content-card p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+/* BUTTONS */
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px auto;
+}
+
+.main-btn {
+  border: 0;
+  border-radius: 11px;
+  padding: 12px 18px;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  transition: .15s;
+}
+
+.main-btn:hover:not(:disabled) {
+  opacity: .88;
+  transform: translateY(-1px);
+}
+
+.secondary-btn {
+  background: #475569;
+}
+
+.success-btn {
+  background: var(--success);
+}
+
+.warning-btn {
+  background: #d97706;
+}
+
+.danger-btn {
+  background: var(--danger);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* SETUP */
+
+#gameSetup {
+  max-width: 760px;
+  margin: 20px auto;
+  text-align: center;
+  border: 1px solid rgba(147,197,253,.35);
+}
+
+#gameSetup p {
+  color: var(--muted);
+}
+
+#gameSetup .button-group {
+  margin: 12px auto 20px;
+}
+
+.language-btn,
+.mode-btn {
+  min-width: 180px;
+}
+
+.language-btn.selected,
+.mode-btn.selected {
+  outline: 3px solid #93c5fd;
+  background: #047857;
+}
+
+#selectionSummary {
+  min-height: 28px;
+}
+
+#confirmSetupBtn {
+  min-width: 190px;
+}
+
+/* ADS */
+
+.ad-section {
+  width: 100%;
+  margin: 25px auto;
+  text-align: center;
+}
+
+.ad-label {
+  color: #94a3b8;
+  font-size: .75rem;
+  margin-bottom: 7px;
+}
+
+.ad-box {
+  width: 100%;
+  min-height: 90px;
+  overflow: hidden;
+}
+
+.adsbygoogle {
+  display: block;
+  width: 100%;
+}
+
+/* CATEGORIES */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+  gap: 12px;
+}
+
+.category-card {
+  padding: 15px 10px;
+  text-align: center;
+  background: var(--panel);
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+.category-card strong,
+.category-card span {
+  display: block;
+}
+
+.category-card span {
+  font-size: .83rem;
+  color: #94a3b8;
+}
+
+/* ROUNDS */
+
+#roundList,
+#roundsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
+  gap: 10px;
+}
+
+.round-card,
+.round-btn {
+  min-height: 75px;
+  padding: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: #334155;
+  color: white;
+  font-weight: bold;
+}
+
+.round-card:disabled,
+.round-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* QUIZ */
+
+.quiz-header {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.quiz-stat {
+  padding: 10px 5px;
+  text-align: center;
+  background: var(--panel);
+  border-radius: 10px;
+  font-size: .9rem;
+}
+
+.quiz-stat strong {
+  display: block;
+  font-size: 21px;
+}
+
+.progress-container {
+  width: 100%;
+  height: 9px;
+  background: #334155;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 18px 0;
+}
+
+#progressFill {
+  width: 0%;
+  height: 100%;
+  background: #2563eb;
+  transition: width .2s;
+}
+
+#categoryIndicator {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: #1d4ed8;
+  font-size: .85rem;
+}
+
+#questionText {
+  font-size: clamp(1.2rem,4vw,1.7rem);
+  margin: 15px 0;
+}
+
+#questionImage {
+  display: block;
+  max-width: 100%;
+  max-height: 280px;
+  margin: 12px auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+#optionsContainer {
+  display: grid;
+  gap: 10px;
+}
+
+#optionsContainer button {
+  width: 100%;
+  padding: 14px;
+  text-align: left;
+  color: white;
+  background: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 11px;
+}
+
+#optionsContainer button:hover:not(:disabled) {
+  background: #334155;
+}
+
+#optionsContainer button.selected {
+  border: 2px solid #60a5fa;
+  background: #1d4ed8;
+}
+
+#optionsContainer button.correct {
+  background: #047857;
+  border-color: #10b981;
+}
+
+#optionsContainer button.incorrect {
+  background: #991b1b;
+  border-color: #ef4444;
+}
+
+#answerFeedback {
+  min-height: 35px;
+  margin: 15px 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.quiz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* RESULTS */
+
+.result-score {
+  text-align: center;
+  font-size: 2.7rem;
+  font-weight: 800;
+}
+
+#resultPercent,
+#resultStars,
+#resultTitle,
+#resultMessage {
+  text-align: center;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.result-stat {
+  padding: 15px;
+  text-align: center;
+  background: var(--panel);
+  border-radius: 12px;
+}
+
+/* REVIEW */
+
+#reviewContainer {
+  display: grid;
+  gap: 12px;
+}
+
+.review-item {
+  background: var(--panel);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+}
+
+/* SETTINGS */
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 0;
+  border-bottom: 1px solid #334155;
+}
+
+.setting-row:last-child {
+  border-bottom: 0;
+}
+
+.setting-row select {
+  max-width: 180px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+#errorMessage {
+  padding: 15px;
+  margin: 15px 0;
+  background: rgba(127,29,29,.5);
+  color: #fecaca;
+  border-radius: 12px;
+}
+
+/* FOOTER */
+
+.footer {
+  width: min(1000px,94%);
+  margin: 40px auto 0;
+  padding: 25px 10px;
+  text-align: center;
+  border-top: 1px solid #334155;
+  color: #94a3b8;
+  font-size: .9rem;
+}
+
+.footer-links {
+  margin: 12px 0;
+}
+
+.footer-links a {
+  margin: 0 5px;
+}
+
+@media(max-width:650px) {
+  .hero {
+    padding-top: 15px;
+  }
+
+  .logo {
+    width: 85px;
+    height: 85px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .main-btn {
+    width: 100%;
+  }
+
+  .quiz-header {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .setting-row {
+    align-items: center;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <div class="brand">KNOWLEDGE QUIZ</div>
-  <h1>🧠 Quiz Master 🇷🇼</h1>
-  <p>Murakaza neza! Gerageza ubumenyi bwawe utsinde.</p>
+<div class="app">
+
+<!-- HOME SCREEN -->
+
+<section id="homeScreen" class="screen active">
+<div class="container">
+
+<header class="hero">
+
+<img src="./icon-512-3.png"
+     alt="Quiz Master Rwanda logo"
+     class="logo">
+
+<h1>Quiz Master 🇷🇼</h1>
+
+<div class="tagline">
+Test Your Knowledge. Learn. Score. Unlock.
+</div>
+
+<p class="hero-description">
+Quiz Master is a free educational quiz game covering
+Geography, History, Science, Technology, Rwanda,
+Africa, Sports and General Knowledge.
+Test your knowledge, earn points and unlock new rounds.
+</p>
+
 </header>
 
-<main class="container">
-
-  <!-- HOME SCREEN -->
-  <section id="homeScreen" class="screen">
-
-    <div class="stats">
-      <div class="stat">
-        <strong id="homeRound">1</strong>
-        <span>Next Round</span>
-      </div>
-      <div class="stat">
-        <strong id="homeScore">0</strong>
-        <span>Best Score</span>
-      </div>
-      <div class="stat">
-        <strong id="homeStars">⭐</strong>
-        <span>Achievements</span>
-      </div>
-    </div>
-
-    <div class="ad-area">
-      ADVERTISEMENT
-      <!-- Keep your existing AdSense ad unit code here. -->
-    </div>
-
-    <div id="gameSetup" class="panel">
-
-      <h2>🎮 Tegura umukino</h2>
-      <p class="muted">
-        Hitamo ururimi n'ubwoko bw'ibibazo ushaka gukina.
-      </p>
-
-      <h3>1. Hitamo ururimi</h3>
-
-      <div class="choice-grid">
-        <button type="button"
-          class="choice-btn language-btn"
-          data-language="rw"
-          aria-pressed="false">
-          🇷🇼 Ikinyarwanda
-        </button>
-
-        <button type="button"
-          class="choice-btn language-btn"
-          data-language="en"
-          aria-pressed="false">
-          🇬🇧 English
-        </button>
-      </div>
-
-      <h3>2. Hitamo ubwoko bw'ibibazo</h3>
-
-      <div class="choice-grid">
-        <button type="button"
-          class="choice-btn mode-btn"
-          data-mode="traffic"
-          aria-pressed="false">
-          🚦 Amategeko y'umuhanda
-        </button>
-
-        <button type="button"
-          class="choice-btn mode-btn"
-          data-mode="general"
-          aria-pressed="false">
-          🌍 Ubumenyi rusange
-        </button>
-      </div>
-
-      <div id="selectionSummary" class="summary">
-        Banza uhitemo ururimi n'icyiciro.
-      </div>
-
-      <!-- 2 COLUMNS -->
-      <div class="home-actions">
-
-        <button type="button"
-          id="confirmSetupBtn"
-          class="btn"
-          disabled>
-          ✓ Emeza ibyo wahisemo
-        </button>
-
-        <button type="button"
-          id="startBtn"
-          class="btn success">
-          ▶ Tangira gukina
-        </button>
-
-      </div>
-
-      <p class="muted" style="text-align:center;margin:5px 0">
-        Emeza ibyo wahisemo mbere yo gutangira.
-      </p>
-
-    </div>
-
-    <div id="homeMessage" role="status"></div>
-
-    <div class="home-actions">
-
-      <button type="button"
-        id="continueBtn"
-        class="btn success"
-        style="display:none">
-        ▶ Komeza umukino
-      </button>
-
-      <button type="button"
-        id="settingsBtn"
-        class="menu-btn">
-        ⚙️ Settings
-      </button>
-
-      <button type="button"
-        id="shareBtn"
-        class="menu-btn">
-        📤 Sangiza abandi
-      </button>
-
-    </div>
-
-    <!-- Kept for JavaScript compatibility -->
-    <button type="button"
-      id="roundsBtn"
-      class="menu-btn"
-      style="display:none">
-      🏆 Reba Rounds
-    </button>
-
-    <button type="button"
-      id="reviewAnswersBtn"
-      class="menu-btn"
-      style="display:none">
-      📖 Reba ibisubizo
-    </button>
-
-  </section>
-
-  <!-- QUIZ SCREEN -->
-  <section id="quizScreen" class="screen">
-
-    <div class="panel">
-
-      <div class="quiz-top">
-        <span class="quiz-badge">
-          Round <span id="currentRound">1</span>
-        </span>
-
-        <span class="quiz-badge" id="categoryIndicator">
-          General Knowledge
-        </span>
-
-        <span id="timerBox">
-          ⏱ <span id="timer">30</span>s
-        </span>
-      </div>
-
-      <div class="quiz-top" style="margin-top:12px">
-        <strong>
-          Question <span id="currentQuestionNumber">1/10</span>
-        </strong>
-
-        <strong>
-          ⭐ Score: <span id="score">0</span>
-        </strong>
-      </div>
-
-      <div class="progress-track">
-        <div id="progressFill"></div>
-      </div>
-
-      <img id="questionImage" alt="Question illustration">
-
-      <div id="questionText">Loading question...</div>
-
-      <div id="optionsContainer"></div>
-
-      <div id="answerFeedback" role="status"></div>
-
-      <div id="explanation"></div>
-
-      <button type="button"
-        id="submitAnswerBtn"
-        class="btn"
-        disabled>
-        Emeza igisubizo / Submit Answer
-      </button>
+<div class="panel">
 
-      <button type="button"
-        id="nextQuestionBtn"
-        class="btn success"
-        style="display:none">
-        Ikibazo gikurikira / Next Question
-      </button>
-
-      <button type="button"
-        id="quizReviewBtn"
-        class="btn secondary">
-        📖 Reba ibisubizo
-      </button>
-
-      <button type="button"
-        id="quizHomeBtn"
-        class="btn secondary">
-        🏠 Ahabanza
-      </button>
-
-    </div>
-  </section>
-
-  <!-- RESULT SCREEN -->
-  <section id="resultScreen" class="screen">
-
-    <div class="panel result-box">
-
-      <h2 id="resultTitle">Watsinze!</h2>
+<h2 style="text-align:center">Welcome to Quiz Master!</h2>
 
-      <div id="resultStars" class="result-stars">⭐⭐⭐</div>
-
-      <p id="resultMessage">
-        Wujuje ibisabwa kugira ngo ukomeze.
-      </p>
+<p style="text-align:center;color:#cbd5e1">
+Choose your language and category, then start playing.
+</p>
 
-      <div class="result-number">
-        <span id="resultScore">0</span>
-      </div>
+<button id="startBtn" type="button" class="main-btn btn-block">
+🎮 Start Quiz
+</button>
+
+<button id="continueBtn" type="button"
+class="main-btn success-btn btn-block" hidden>
+▶️ Continue Quiz
+</button>
+
+</div>
+
+<!-- MAIN NAVIGATION -->
+
+<div class="button-group">
+
+<button id="roundsBtn" type="button"
+class="main-btn secondary-btn">
+🏆 Quiz Rounds
+</button>
+
+<button id="reviewAnswersBtn" type="button"
+class="main-btn secondary-btn">
+📖 Review Answers
+</button>
 
-      <p>Points</p>
+<button id="settingsBtn" type="button"
+class="main-btn secondary-btn">
+⚙️ Settings
+</button>
+
+<button id="shareBtn" type="button"
+class="main-btn secondary-btn">
+📤 Share Quiz Master
+</button>
+
+</div>
 
-      <h2 id="resultPercent">0%</h2>
+<!-- ADSENSE HOME AD -->
+
+<div class="ad-section">
+
+<div class="ad-label">Advertisement</div>
+
+<div class="ad-box">
+
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-2666698676518429"
+data-ad-slot="9045712897"
+data-ad-format="auto"
+data-full-width-responsive="true">
+</ins>
+
+</div>
+</div>
+
+<!-- ABOUT -->
+
+<section class="content-section">
+
+<h2>About Quiz Master</h2>
+
+<div class="content-grid">
+
+<article class="content-card">
+<h3>What Is Quiz Master?</h3>
+<p>
+Quiz Master 🇷🇼 is an educational knowledge game
+designed to help players test their knowledge and
+discover useful facts from around the world.
+</p>
+</article>
+
+<article class="content-card">
+<h3>Learning With Quiz Master</h3>
+<p>
+Each question gives players an opportunity to
+learn from correct answers and improve their
+knowledge through practice.
+</p>
+</article>
+
+<article class="content-card">
+<h3>How to Play</h3>
+<p>
+Choose a language and quiz category, start a round,
+select an answer and submit it before the timer ends.
+</p>
+</article>
+
+<article class="content-card">
+<h3>Quiz Progress</h3>
+<p>
+Complete quiz rounds, earn points and unlock
+additional challenges by meeting the required score.
+</p>
+</article>
+
+<article class="content-card">
+<h3>Why Play Quiz Master?</h3>
+<p>
+Explore different subjects through interactive
+questions and discover interesting information.
+</p>
+</article>
+
+<article class="content-card">
+<h3>Built for Knowledge</h3>
+<p>
+Quiz Master provides an accessible way to practice
+general knowledge and learn about Rwanda, Africa
+and the wider world.
+</p>
+</article>
+
+</div>
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="content-section">
+
+<h2>Explore Quiz Categories</h2>
+
+<div class="category-grid">
+
+<div class="category-card">
+<strong>🌍 Geography</strong>
+<span>Countries and places</span>
+</div>
+
+<div class="category-card">
+<strong>📜 History</strong>
+<span>Historical events and people</span>
+</div>
+
+<div class="category-card">
+<strong>🔬 Science</strong>
+<span>Science and nature</span>
+</div>
+
+<div class="category-card">
+<strong>💻 Technology</strong>
+<span>Digital knowledge</span>
+</div>
+
+<div class="category-card">
+<strong>🇷🇼 Rwanda</strong>
+<span>Knowledge about Rwanda</span>
+</div>
+
+<div class="category-card">
+<strong>🌍 Africa</strong>
+<span>African countries and facts</span>
+</div>
+
+<div class="category-card">
+<strong>⚽ Sports</strong>
+<span>Sports and competitions</span>
+</div>
+
+<div class="category-card">
+<strong>🧠 General Knowledge</strong>
+<span>Interesting facts</span>
+</div>
+
+</div>
+</section>
+
+<!-- FEATURES -->
+
+<section class="content-section">
+
+<h2>Quiz Master Features</h2>
+
+<div class="content-grid">
+
+<article class="content-card">
+<h3>🎯 Score Points</h3>
+<p>Earn points by answering questions correctly.</p>
+</article>
+
+<article class="content-card">
+<h3>🏆 Unlock Rounds</h3>
+<p>Progress through rounds by reaching the required score.</p>
+</article>
+
+<article class="content-card">
+<h3>📚 Learn From Questions</h3>
+<p>Discover facts and explanations as you play.</p>
+</article>
+
+<article class="content-card">
+<h3>📱 Mobile Friendly</h3>
+<p>Designed for phones, tablets and computers.</p>
+</article>
+
+</div>
+</section>
+
+<footer class="footer">
+
+<div>© 2026 Quiz Master 🇷🇼 — Knowledge Quiz</div>
+
+<div class="footer-links">
+<a href="./privacy-policy.html">Privacy Policy</a>
+|
+<a href="./terms.html">Terms of Service</a>
+</div>
+
+<div>
+Contact:
+<a href="mailto:mazimpakae7@gmail.com">
+mazimpakae7@gmail.com
+</a>
+</div>
 
-      <button type="button"
-        id="resultNextBtn"
-        class="btn success">
-        ▶ Komeza kuri Round ikurikira
-      </button>
-
-      <button type="button"
-        id="retryBtn"
-        class="btn">
-        🔄 Ongera ukine
-      </button>
-
-      <button type="button"
-        id="resultReviewBtn"
-        class="btn secondary">
-        📖 Reba ibyo wakoze neza n'ibyo wakoze nabi
-      </button>
-
-      <button type="button"
-        id="resultHomeBtn"
-        class="btn secondary">
-        🏠 Subira ahabanza
-      </button>
-
-    </div>
-  </section>
-
-  <!-- REVIEW SCREEN -->
-  <section id="reviewScreen" class="screen">
-
-    <div class="panel">
-      <h2>📖 Review Answers</h2>
-
-      <p class="muted">
-        Reba ibyo wasubije neza, ibyo wasubije nabi n'ibisubizo nyabyo.
-      </p>
-
-      <div id="reviewContainer"></div>
-
-      <button type="button"
-        id="reviewHomeBtn"
-        class="btn secondary">
-        🏠 Ahabanza
-      </button>
-    </div>
-
-  </section>
-
-  <!-- ROUNDS SCREEN -->
-  <section id="roundsScreen" class="screen">
-
-    <div class="panel">
-
-      <h2>🏆 Rounds / Ibyiciro by'umukino</h2>
-
-      <div class="stats">
-        <div class="stat">
-          <strong id="roundsCompleted">0</strong>
-          <span>Completed</span>
-        </div>
-
-        <div class="stat">
-          <strong id="roundsTotal">0</strong>
-          <span>Total Rounds</span>
-        </div>
-
-        <div class="stat">
-          <strong id="roundsUnlocked">1</strong>
-          <span>Unlocked</span>
-        </div>
-      </div>
-
-      <p id="roundsDescription" class="muted"></p>
-
-      <div id="roundList"></div>
-
-      <button type="button"
-        id="roundsHomeBtn"
-        class="btn secondary">
-        🏠 Ahabanza
-      </button>
-
-    </div>
-  </section>
-
-  <!-- SETTINGS SCREEN -->
-  <section id="settingsScreen" class="screen">
-
-    <div class="panel">
-
-      <h2>⚙️ Settings / Igenamiterere</h2>
-
-      <div class="setting-row">
-        <label for="settingsLanguage">Language / Ururimi</label>
-
-        <select id="settingsLanguage">
-          <option value="rw">🇷🇼 Ikinyarwanda</option>
-          <option value="en">🇬🇧 English</option>
-        </select>
-      </div>
-
-      <div class="setting-row">
-        <label for="settingsMode">Category / Icyiciro</label>
-
-        <select id="settingsMode">
-          <option value="traffic">🚦 Amategeko y'umuhanda</option>
-          <option value="general">🌍 Ubumenyi rusange</option>
-        </select>
-      </div>
-
-      <button type="button"
-        id="saveSettingsBtn"
-        class="btn success">
-        💾 Bika ibyo wahinduye
-      </button>
-
-      <h3>Ibindi bikoresho</h3>
-
-      <div class="settings-grid">
-
-        <button type="button"
-          id="musicToggleBtn"
-          class="btn secondary">
-          🎵 Music: ON
-        </button>
-
-        <button type="button"
-          id="settingsMusicBtn"
-          class="btn secondary">
-          🎵 Music: ON
-        </button>
-
-        <button type="button"
-          id="roundsBtnSettings"
-          class="btn secondary"
-          onclick="document.getElementById('roundsBtn').click()">
-          🏆 Reba Rounds
-        </button>
-
-        <button type="button"
-          id="reviewAnswersBtnSettings"
-          class="btn secondary"
-          onclick="document.getElementById('reviewAnswersBtn').click()">
-          📖 Reba ibyo wakoze
-        </button>
-
-      </div>
-
-      <div id="settingsMessage"
-        class="summary"
-        aria-live="polite">
-      </div>
-
-      <button type="button"
-        id="resetProgressBtn"
-        class="btn danger">
-        Reset Progress
-      </button>
-
-      <button type="button"
-        id="settingsHomeBtn"
-        class="btn secondary">
-        🏠 Ahabanza
-      </button>
-
-    </div>
-  </section>
-
-  <div class="ad-area">
-    ADVERTISEMENT
-    <!-- Keep your existing AdSense ad unit code here. -->
-  </div>
-
-</main>
-
-<footer>
-  <p>
-    <a href="./privacy-policy.html">Privacy Policy</a>
-    <a href="./terms.html">Terms</a>
-    <a href="mailto:mazimpakaisaie7@gmail.com">Contact</a>
-  </p>
-
-  <p>Quiz Master 🇷🇼 · 2026</p>
 </footer>
 
+</div>
+</section>
+
+<!-- GAME SETUP SCREEN -->
+
+<section id="gameSetup" class="screen">
+<div class="container">
+
+<div class="panel">
+
+<h2 class="screen-title" id="setupTitle">
+🎮 Prepare Your Quiz
+</h2>
+
+<p id="languageLabel">
+1. Choose your preferred language
+</p>
+
+<div class="button-group">
+
+<button type="button"
+class="main-btn language-btn"
+data-language="rw">
+🇷🇼 Ikinyarwanda
+</button>
+
+<button type="button"
+class="main-btn language-btn"
+data-language="en">
+🇬🇧 English
+</button>
+
+</div>
+
+<p id="modeLabel">
+2. Choose the quiz category
+</p>
+
+<div class="button-group">
+
+<button type="button"
+class="main-btn mode-btn"
+data-mode="traffic">
+🚦 Amategeko y'umuhanda
+</button>
+
+<button type="button"
+class="main-btn mode-btn"
+data-mode="general">
+🧠 Ubumenyi rusange
+</button>
+
+</div>
+
+<p id="selectionSummary" aria-live="polite">
+Choose a language and category to begin.
+</p>
+
+<button id="confirmSetupBtn"
+type="button"
+class="main-btn success-btn btn-block">
+▶️ Emeza ibyo wahisemo
+</button>
+
+<button id="setupBackBtn"
+type="button"
+class="main-btn secondary-btn btn-block">
+← Subira inyuma
+</button>
+
+</div>
+</div>
+</section>
+
+<!-- ROUNDS SCREEN -->
+
+<section id="roundsScreen" class="screen">
+<div class="container">
+
+<div class="panel">
+
+<h2 class="screen-title">🏆 Quiz Rounds</h2>
+
+<p id="roundsDescription" style="text-align:center">
+Complete rounds to unlock more challenges.
+</p>
+
+<p style="text-align:center">
+Total rounds: <strong id="totalRounds">0</strong>
+</p>
+
+<div id="roundList"></div>
+
+<div id="roundsContainer"></div>
+
+<div class="button-group">
+<button id="roundsHomeBtn"
+type="button"
+class="main-btn secondary-btn">
+← Home
+</button>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- QUIZ SCREEN -->
+
+<section id="quizScreen" class="screen">
+<div class="container">
+
+<div class="panel">
+
+<div class="quiz-header">
+
+<div class="quiz-stat">
+Question
+<strong id="currentQuestionNumber">1</strong>
+</div>
+
+<div class="quiz-stat">
+Round
+<strong id="currentRound">1</strong>
+</div>
+
+<div class="quiz-stat">
+Score
+<strong id="scoreNumber">0</strong>
+</div>
+
+<div class="quiz-stat">
+Time
+<strong><span id="timer">30</span>s</strong>
+</div>
+
+</div>
+
+<div class="progress-container">
+<div id="progressFill"></div>
+</div>
+
+<div id="categoryIndicator">
+General Knowledge
+</div>
+
+<img id="questionImage"
+src=""
+alt="Question illustration"
+hidden>
+
+<h2 id="questionText">Loading question...</h2>
+
+<div id="optionsContainer"></div>
+
+<div id="answerFeedback" aria-live="polite"></div>
+
+<div class="quiz-controls">
+
+<button id="submitAnswerBtn"
+type="button"
+class="main-btn success-btn">
+Submit Answer
+</button>
+
+<button id="nextQuestionBtn"
+type="button"
+class="main-btn"
+hidden>
+Next Question →
+</button>
+
+<button id="quizReviewBtn"
+type="button"
+class="main-btn secondary-btn">
+Review Answers
+</button>
+
+<button id="quizHomeBtn"
+type="button"
+class="main-btn secondary-btn">
+Home
+</button>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- RESULT SCREEN -->
+
+<section id="resultScreen" class="screen">
+<div class="container">
+
+<div class="panel">
+
+<h2 class="screen-title" id="resultTitle">
+🎉 Quiz Result
+</h2>
+
+<div id="resultScore" class="result-score">0</div>
+
+<div id="resultPercent">0%</div>
+
+<div id="resultStars"></div>
+
+<p id="resultMessage"></p>
+
+<div class="result-grid">
+
+<div class="result-stat">
+<strong id="resultRound">1</strong>
+<div>Round</div>
+</div>
+
+<div class="result-stat">
+<strong id="resultCorrect">0</strong>
+<div>Correct</div>
+</div>
+
+<div class="result-stat">
+<strong id="resultWrong">0</strong>
+<div>Wrong</div>
+</div>
+
+</div>
+
+<div class="button-group">
+
+<button id="resultNextBtn"
+type="button"
+class="main-btn success-btn">
+Next Round
+</button>
+
+<button id="retryBtn"
+type="button"
+class="main-btn">
+Retry Round
+</button>
+
+<button id="resultReviewBtn"
+type="button"
+class="main-btn secondary-btn">
+Review Answers
+</button>
+
+<button id="resultHomeBtn"
+type="button"
+class="main-btn secondary-btn">
+Home
+</button>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- REVIEW SCREEN -->
+
+<section id="reviewScreen" class="screen">
+<div class="container">
+
+<div class="panel">
+
+<h2 class="screen-title">📖 Review Answers</h2>
+
+<div id="reviewSummary"></div>
+
+<div id="reviewContainer"></div>
+
+<div class="button-group">
+
+<button id="reviewRetryBtn"
+type="button"
+class="main-btn">
+Retry Round
+</button>
+
+<button id="reviewBackBtn"
+type="button"
+class="main-btn secondary-btn">
+Back
+</button>
+
+<button id="reviewHomeBtn"
+type="button"
+class="main-btn secondary-btn">
+Home
+</button>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SETTINGS SCREEN -->
+
+<section id="settingsScreen" class="screen">
+<div class="container">
+
+<div class="panel">
+
+<h2 class="screen-title">⚙️ Settings</h2>
+
+<div class="setting-row">
+<label for="settingsLanguage">Language</label>
+
+<select id="settingsLanguage">
+<option value="rw">Ikinyarwanda</option>
+<option value="en">English</option>
+</select>
+</div>
+
+<div class="setting-row">
+<label for="settingsMode">Quiz Category</label>
+
+<select id="settingsMode">
+<option value="traffic">Road Traffic Rules</option>
+<option value="general">General Knowledge</option>
+</select>
+</div>
+
+<div class="setting-row">
+<label for="musicSwitch">🎵 Background Music</label>
+<input id="musicSwitch" type="checkbox">
+</div>
+
+<div class="setting-row">
+<label for="soundSwitch">🔊 Sound Effects</label>
+<input id="soundSwitch" type="checkbox">
+</div>
+
+<div class="button-group">
+
+<button id="saveSettingsBtn"
+type="button"
+class="main-btn success-btn">
+Save Settings
+</button>
+
+<button id="resetProgressBtn"
+type="button"
+class="main-btn danger-btn">
+Reset Progress
+</button>
+
+<button id="settingsHomeBtn"
+type="button"
+class="main-btn secondary-btn">
+← Home
+</button>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ERROR SCREEN -->
+
+<section id="errorScreen" class="screen">
+<div class="container">
+
+<div class="panel">
+
+<h2 class="screen-title">
+⚠️ Something Went Wrong
+</h2>
+
+<div id="errorMessage" aria-live="polite">
+Quiz Master could not load correctly.
+</div>
+
+<div class="button-group">
+
+<button id="errorRestartBtn"
+type="button"
+class="main-btn">
+Restart
+</button>
+
+<button id="errorHomeBtn"
+type="button"
+class="main-btn secondary-btn">
+Home
+</button>
+
+</div>
+
+</div>
+</div>
+</section>
+
+</div>
+
+<!-- BACKGROUND MUSIC
+     Add your music file as music.mp3 in the project root. -->
+
+<audio id="backgroundMusic"
+src="./music.mp3"
+loop
+preload="none"></audio>
+
+<!-- MUSIC SETTINGS -->
+
+<script>
+(() => {
+"use strict";
+
+const music = document.getElementById("backgroundMusic");
+const musicSwitch = document.getElementById("musicSwitch");
+const soundSwitch = document.getElementById("soundSwitch");
+
+if (!music || !musicSwitch) return;
+
+const MUSIC_KEY = "quizmasterMusic";
+const SOUND_KEY = "quizmasterSound";
+
+musicSwitch.checked = localStorage.getItem(MUSIC_KEY) === "true";
+if (soundSwitch) {
+  soundSwitch.checked = localStorage.getItem(SOUND_KEY) === "true";
+}
+
+musicSwitch.addEventListener("change", () => {
+  localStorage.setItem(MUSIC_KEY, String(musicSwitch.checked));
+
+  if (musicSwitch.checked) {
+    music.play().catch(() => {
+      musicSwitch.checked = false;
+      localStorage.setItem(MUSIC_KEY, "false");
+    });
+  } else {
+    music.pause();
+    music.currentTime = 0;
+  }
+});
+
+document.addEventListener("click", () => {
+  if (musicSwitch.checked && music.paused) {
+    music.play().catch(() => {});
+  }
+}, { once: true });
+
+if (soundSwitch) {
+  soundSwitch.addEventListener("change", () => {
+    localStorage.setItem(SOUND_KEY, String(soundSwitch.checked));
+  });
+}
+})();
+</script>
+
+<!-- SHARE BUTTON -->
+
+<script>
+(() => {
+"use strict";
+
+const shareBtn = document.getElementById("shareBtn");
+if (!shareBtn) return;
+
+shareBtn.addEventListener("click", async () => {
+
+const shareData = {
+  title: "Quiz Master 🇷🇼",
+  text: "Test your knowledge with Quiz Master!",
+  url: window.location.href
+};
+
+try {
+  if (navigator.share) {
+    await navigator.share(shareData);
+  } else {
+    await navigator.clipboard.writeText(shareData.url);
+    alert("✅ Link Copied!");
+  }
+} catch (error) {
+
+  if (error.name === "AbortError") return;
+
+  try {
+    await navigator.clipboard.writeText(shareData.url);
+    alert("✅ Link Copied!");
+  } catch {
+    prompt("Copy this link:", shareData.url);
+  }
+}
+});
+})();
+</script>
+
+<!-- ADSENSE INITIALIZATION -->
+
+<script>
+window.addEventListener("load", function() {
+
+  document.querySelectorAll(".adsbygoogle").forEach(function(ad) {
+
+    if (!ad.getAttribute("data-adsbygoogle-status")) {
+
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch(error) {
+        console.warn("AdSense initialization warning:", error);
+      }
+
+    }
+
+  });
+
+});
+</script>
+
+<!-- QUIZ ENGINE: KEEP THIS FILE -->
 <script src="./questions.js" defer></script>
 
 </body>
