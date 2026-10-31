@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://quizmaster-liard-five.vercel.app/sitemap.xml
