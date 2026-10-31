@@ -1,23 +1,47 @@
 
 /* =====================================================
    QUIZ MASTER 🇷🇼
-   Service Worker
-   Version: 2.1.0
+   SERVICE WORKER
+   Version: 3.0.0
+   Fixed: Offline page, correct icons, safe caching
 ===================================================== */
 
 "use strict";
 
-const CACHE_VERSION = "quizmaster-v2.1.0";
+/* =========================================
+   CACHE CONFIGURATION
+========================================= */
+
+const CACHE_VERSION = "quizmaster-v3.0.0";
 
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const DATA_CACHE = `${CACHE_VERSION}-data`;
 
-const OFFLINE_PAGE = "./offline.html";
+const OFFLINE_URL = new URL(
+  "./offline.html",
+  self.registration.scope
+).href;
 
-const STATIC_FILES = [
-  "./",
+const HOME_URL = new URL(
   "./index.html",
+  self.registration.scope
+).href;
+
+/* =========================================
+   FILES TO CACHE
+========================================= */
+
+// These files must exist for installation.
+const REQUIRED_FILES = [
+  "./index.html",
+  "./offline.html"
+];
+
+// These files are optional.
+// A missing optional file will not break installation.
+const OPTIONAL_FILES = [
+  "./",
   "./about.html",
   "./contact.html",
   "./privacy-policy.html",
@@ -25,38 +49,99 @@ const STATIC_FILES = [
   "./premium.html",
   "./referral.html",
   "./manifest.webmanifest",
-  "./icon-192.png",
-  "./icon-512-3.png"
-];
 
-const DATA_FILES = [
+  // Correct existing icon filenames
+  "./icon-192-4.png",
+  "./icon-512-3.png",
+
+  // Application resources
   "./questions.js",
   "./questions.json",
   "./payment.js",
-  "./referral.js"
+  "./referral.js",
+  "./mythica.mp3"
 ];
 
-/* INSTALL */
+/* =========================================
+   INSTALL
+========================================= */
 
 self.addEventListener("install", event => {
   event.waitUntil(
     (async () => {
+
       const cache = await caches.open(STATIC_CACHE);
 
-      await cache.addAll(STATIC_FILES);
+      // Required files must be available.
+      for (const file of REQUIRED_FILES) {
+
+        const url = new URL(
+          file,
+          self.registration.scope
+        ).href;
+
+        const response = await fetch(url, {
+          cache: "reload"
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `Required file missing: ${file}`
+          );
+        }
+
+        await cache.put(url, response);
+      }
+
+      // Optional files cannot break installation.
+      await Promise.allSettled(
+        OPTIONAL_FILES.map(async file => {
+
+          const url = new URL(
+            file,
+            self.registration.scope
+          ).href;
+
+          try {
+
+            const response = await fetch(url, {
+              cache: "reload"
+            });
+
+            if (response.ok) {
+              await cache.put(url, response);
+            }
+
+          } catch (error) {
+
+            console.warn(
+              "Optional cache skipped:",
+              file
+            );
+
+          }
+
+        })
+      );
 
       await self.skipWaiting();
+
     })()
   );
 });
 
-/* ACTIVATE */
+/* =========================================
+   ACTIVATE
+========================================= */
 
 self.addEventListener("activate", event => {
+
   event.waitUntil(
     (async () => {
+
       const cacheNames = await caches.keys();
 
+      // Delete outdated Quiz Master caches only.
       await Promise.all(
         cacheNames
           .filter(name =>
@@ -72,24 +157,32 @@ self.addEventListener("activate", event => {
 
       await self.clients.claim();
 
+      // Inform open pages about the new version.
       const clients = await self.clients.matchAll({
         type: "window",
         includeUncontrolled: true
       });
 
       for (const client of clients) {
+
         client.postMessage({
           type: "QUIZMASTER_UPDATED",
           version: CACHE_VERSION
         });
+
       }
+
     })()
   );
+
 });
 
-/* FETCH */
+/* =========================================
+   FETCH
+========================================= */
 
 self.addEventListener("fetch", event => {
+
   const request = event.request;
 
   if (request.method !== "GET") {
@@ -98,87 +191,108 @@ self.addEventListener("fetch", event => {
 
   const url = new URL(request.url);
 
+  // Only handle this website's own requests.
   if (url.origin !== self.location.origin) {
     return;
   }
 
-  /* API requests: always use network */
-
+  // Never cache payment or API requests.
+  // These must use the actual network.
   if (
     url.pathname.includes("/api/") ||
     url.pathname.includes("/payment")
   ) {
-    event.respondWith(fetch(request));
     return;
   }
 
-  /* Questions and JavaScript: network first */
-
+  // JavaScript and JSON: network first.
   if (
-    url.pathname.endsWith(".json") ||
-    url.pathname.endsWith(".js")
+    url.pathname.endsWith(".js") ||
+    url.pathname.endsWith(".json")
   ) {
-    event.respondWith(networkFirst(request, DATA_CACHE));
+
+    event.respondWith(
+      networkFirst(request, DATA_CACHE)
+    );
+
     return;
   }
 
-  /* HTML pages: network first */
-
+  // HTML pages: network first.
   if (
     request.mode === "navigate" ||
     url.pathname.endsWith(".html") ||
     url.pathname.endsWith("/")
   ) {
-    event.respondWith(networkFirst(request, PAGE_CACHE));
+
+    event.respondWith(
+      networkFirst(request, PAGE_CACHE)
+    );
+
     return;
   }
 
-  /* Images, icons, CSS and other assets: cache first */
+  // Images, icons and other static assets.
+  event.respondWith(
+    cacheFirst(request, STATIC_CACHE)
+  );
 
-  event.respondWith(cacheFirst(request, STATIC_CACHE));
 });
 
-/* NETWORK FIRST */
+/* =========================================
+   NETWORK FIRST
+========================================= */
 
 async function networkFirst(request, cacheName) {
+
   const cache = await caches.open(cacheName);
 
   try {
+
     const response = await fetch(request);
 
     if (response && response.ok) {
-      await cache.put(request, response.clone());
+
+      await cache.put(
+        request,
+        response.clone()
+      );
+
     }
 
     return response;
 
   } catch (error) {
+
+    // Try the previously saved version.
     const cached = await cache.match(request);
 
     if (cached) {
       return cached;
     }
 
+    // Navigation fallback.
     if (request.mode === "navigate") {
-      const offline = await caches.match(OFFLINE_PAGE);
 
-      if (offline) {
-        return offline;
+      const offlinePage = await caches.match(
+        OFFLINE_URL
+      );
+
+      if (offlinePage) {
+        return offlinePage;
       }
 
-      return new Response(
-        "Internet ntiboneka. Ongera ugerageze.",
-        {
-          status: 503,
-          headers: {
-            "Content-Type": "text/plain; charset=utf-8"
-          }
-        }
+      const homePage = await caches.match(
+        HOME_URL
       );
+
+      if (homePage) {
+        return homePage;
+      }
     }
 
     return new Response(
-      "Internet ntiboneka.",
+      "Internet ntiboneka. Ongera ugerageze.",
       {
         status: 503,
         headers: {
@@ -186,12 +300,17 @@ async function networkFirst(request, cacheName) {
         }
       }
     );
+
   }
+
 }
 
-/* CACHE FIRST */
+/* =========================================
+   CACHE FIRST
+========================================= */
 
 async function cacheFirst(request, cacheName) {
+
   const cache = await caches.open(cacheName);
 
   const cached = await cache.match(request);
@@ -201,17 +320,24 @@ async function cacheFirst(request, cacheName) {
   }
 
   try {
+
     const response = await fetch(request);
 
     if (response && response.ok) {
-      await cache.put(request, response.clone());
+
+      await cache.put(
+        request,
+        response.clone()
+      );
+
     }
 
     return response;
 
   } catch (error) {
+
     return new Response(
-      "File ntibonetse. Ongera ugerageze.",
+      "Iyi file ntibashije kuyibona. Ongera ugerageze.",
       {
         status: 503,
         headers: {
@@ -219,29 +345,53 @@ async function cacheFirst(request, cacheName) {
         }
       }
     );
+
   }
+
 }
 
-/* MESSAGE */
+/* =========================================
+   MESSAGE HANDLER
+========================================= */
 
 self.addEventListener("message", event => {
+
   if (!event.data) {
     return;
   }
 
+  // Activate a waiting service worker.
   if (event.data.type === "SKIP_WAITING") {
+
     self.skipWaiting();
+
   }
 
-  if (event.data.type === "CLEAR_QUIZMASTER_CACHE") {
+  // Clear Quiz Master caches when requested.
+  if (
+    event.data.type === "CLEAR_QUIZMASTER_CACHE"
+  ) {
+
     event.waitUntil(
+
       caches.keys().then(names =>
+
         Promise.all(
           names
-            .filter(name => name.startsWith("quizmaster-"))
+            .filter(name =>
+              name.startsWith("quizmaster-")
+            )
             .map(name => caches.delete(name))
         )
+
       )
+
     );
+
   }
+
 });
+
+/* =========================================
+   END OF SERVICE WORKER
+========================================= */
