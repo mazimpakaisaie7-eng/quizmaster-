@@ -1,4 +1,3 @@
-
 (() => {
   "use strict";
 
@@ -328,6 +327,43 @@
   }
 
   // ==========================================
+  // OFFLINE CACHE FALLBACK
+  // ==========================================
+
+  async function getCachedQuestions() {
+    if (!("caches" in window)) {
+      return null;
+    }
+
+    try {
+      const questionsURL = new URL(
+        CONFIG.QUESTIONS_FILE,
+        document.baseURI
+      ).href;
+
+      // Search all available caches, including the
+      // cache created by the Service Worker.
+
+      const cachedResponse = await caches.match(
+        questionsURL,
+        { ignoreSearch: true }
+      );
+
+      if (!cachedResponse || !cachedResponse.ok) {
+        return null;
+      }
+
+      const data = await cachedResponse.json();
+
+      return Array.isArray(data) ? data : null;
+
+    } catch (error) {
+      console.warn("Offline cache lookup failed:", error);
+      return null;
+    }
+  }
+
+  // ==========================================
   // LOAD QUESTIONS
   // ==========================================
 
@@ -339,19 +375,44 @@
           : "Loading questions..."
       );
 
-      const response = await fetch(
-        CONFIG.QUESTIONS_FILE + "?v=" + Date.now(),
-        { cache: "no-store" }
-      );
+      let data = null;
+      let source = "network";
 
-      if (!response.ok) {
-        throw new Error("HTTP error: " + response.status);
-      }
+      try {
+        // IMPORTANT:
+        // Use a stable URL without Date.now().
+        // This allows the Service Worker to find
+        // the same questions.json when offline.
 
-      const data = await response.json();
+        const response = await fetch(
+          CONFIG.QUESTIONS_FILE,
+          { cache: "no-cache" }
+        );
 
-      if (!Array.isArray(data)) {
-        throw new Error("questions.json must contain an array.");
+        if (!response.ok) {
+          throw new Error("HTTP error: " + response.status);
+        }
+
+        data = await response.json();
+
+        if (!Array.isArray(data)) {
+          throw new Error("questions.json must contain an array.");
+        }
+
+      } catch (networkError) {
+        console.warn(
+          "Network question loading failed. Trying offline cache:",
+          networkError
+        );
+
+        data = await getCachedQuestions();
+        source = "cache";
+
+        if (!data) {
+          throw new Error(
+            "Questions are unavailable online and in offline cache."
+          );
+        }
       }
 
       const valid = data.filter(validQuestion);
@@ -368,6 +429,7 @@
       ).length;
 
       console.log("Quiz Master:", {
+        source,
         total: valid.length,
         traffic,
         general,
@@ -389,7 +451,8 @@
             total: valid.length,
             traffic,
             general,
-            rejected: data.length - valid.length
+            rejected: data.length - valid.length,
+            source
           }
         }
       ));
@@ -403,8 +466,8 @@
 
       showMessage(
         state.language === "rw"
-          ? "Ibibazo ntibyafungutse. Genza questions.json."
-          : "Questions could not load. Check questions.json.",
+          ? "Ibibazo ntibyafungutse. Genza internet cyangwa questions.json yabitswe muri cache."
+          : "Questions could not load. Check your connection or the cached questions.json file.",
         "error"
       );
 
@@ -491,11 +554,10 @@
       q => !used.has(String(q.id))
     );
 
-    // Reset question cycle only when all questions
-    // in the selected category have been used.
-
-    if (available.length < CONFIG.QUESTIONS_PER_ROUND &&
-        pool.length >= CONFIG.QUESTIONS_PER_ROUND) {
+    if (
+      available.length < CONFIG.QUESTIONS_PER_ROUND &&
+      pool.length >= CONFIG.QUESTIONS_PER_ROUND
+    ) {
       saveUsedIds([]);
       available = [...pool];
     }
@@ -825,9 +887,7 @@
       }
     }
 
-    const container = getElement(
-      "optionsContainer"
-    );
+    const container = getElement("optionsContainer");
 
     if (container) {
       container.innerHTML = "";
@@ -1789,11 +1849,8 @@
   }
 
   function bindEvents() {
-    // Setup
-
     on("startBtn", "click", startConfirmedQuiz);
     on("confirmSetupBtn", "click", confirmSetup);
-
     on("setupBackBtn", "click", goHome);
 
     $$(".language-btn").forEach(button => {
@@ -1808,40 +1865,28 @@
       });
     });
 
-    // Home
-
     on("continueBtn", "click", continueQuiz);
     on("roundsBtn", "click", showRounds);
     on("settingsBtn", "click", openSettings);
     on("shareBtn", "click", shareApp);
     on("reviewAnswersBtn", "click", showReview);
 
-    // Quiz
-
     on("submitAnswerBtn", "click", submitAnswer);
     on("nextQuestionBtn", "click", nextQuestion);
     on("quizReviewBtn", "click", showReview);
     on("quizHomeBtn", "click", goHome);
-
-    // Results
 
     on("resultNextBtn", "click", nextRound);
     on("retryBtn", "click", retryRound);
     on("resultReviewBtn", "click", showReview);
     on("resultHomeBtn", "click", goHome);
 
-    // Other screens
-
     on("reviewHomeBtn", "click", goHome);
     on("roundsHomeBtn", "click", goHome);
     on("settingsHomeBtn", "click", goHome);
 
-    // Settings
-
     on("saveSettingsBtn", "click", saveSettings);
     on("resetProgressBtn", "click", resetProgress);
-
-    // Keyboard
 
     document.addEventListener("keydown", event => {
       if (
@@ -1870,8 +1915,6 @@
     state.initialized = true;
 
     bindEvents();
-
-    // Restore saved selections.
 
     state.language = localStorage.getItem(
       CONFIG.STORAGE.language
