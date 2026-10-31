@@ -1,174 +1,162 @@
-!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="rw">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10233f">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>Quiz Master Premium 💎</title>
-
-  <meta
-    name="theme-color"
-    content="#111827"
-  >
+  <title>Quiz Master Premium 🇷🇼</title>
 
   <meta
     name="description"
-    content="Quiz Master Premium - Pay with Pi"
+    content="Menya ibyiza bya Quiz Master Premium."
   >
 
-  <!-- Pi Network SDK -->
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <meta name="robots" content="index, follow">
+
+  <link
+    rel="canonical"
+    href="https://quizmaster-liard-five.vercel.app/premium.html"
+  >
+
+  <link rel="icon" href="./icon-512-3.png">
+  <link rel="manifest" href="./manifest.webmanifest">
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #111827;
-      color: #ffffff;
-      min-height: 100vh;
+      margin: 0;
       padding: 20px;
+      min-height: 100vh;
+      background: #f2f5fb;
+      color: #172b4d;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
     }
 
     .container {
-      width: 100%;
       max-width: 600px;
-      margin: 0 auto;
+      width: 100%;
+      margin: 25px auto;
     }
 
     .header {
       text-align: center;
-      margin: 20px 0 30px;
+      margin-bottom: 25px;
     }
 
     .logo {
       font-size: 55px;
-      margin-bottom: 10px;
     }
 
     h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
+      color: #10233f;
+      font-size: 28px;
+      margin: 8px 0;
     }
 
     .subtitle {
-      color: #cbd5e1;
-      line-height: 1.5;
+      color: #667085;
     }
 
     .card {
-      background: #1f2937;
-      border: 1px solid #374151;
-      border-radius: 18px;
+      background: #ffffff;
+      border: 1px solid #dce3ef;
+      border-radius: 16px;
       padding: 22px;
       margin-bottom: 18px;
+      box-shadow: 0 5px 20px rgba(16, 35, 63, 0.05);
     }
 
-    .card h2 {
-      margin-bottom: 10px;
-      font-size: 22px;
+    h2 {
+      color: #10233f;
+      font-size: 21px;
     }
 
     .price {
-      font-size: 34px;
+      font-size: 27px;
       font-weight: bold;
+      color: #155eef;
       margin: 15px 0;
     }
 
-    .price small {
-      font-size: 15px;
-      color: #cbd5e1;
-      font-weight: normal;
-    }
-
     ul {
-      list-style: none;
-      margin: 18px 0;
+      padding-left: 22px;
     }
 
     li {
-      padding: 9px 0;
-      color: #e5e7eb;
+      padding: 7px 0;
     }
 
-    li::before {
-      content: "✓ ";
-      font-weight: bold;
-      color: #10b981;
-    }
-
-    button,
-    .back {
-      display: block;
-      width: 100%;
-      border: none;
-      border-radius: 12px;
+    .status {
+      background: #fff8e6;
+      border: 1px solid #f3dfaa;
+      color: #76520b;
       padding: 14px;
-      font-size: 17px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    #paymentArea button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #d0d5dd;
+      color: #475467;
+      font-size: 16px;
       font-weight: bold;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    #piPaymentBtn {
-      background: #f59e0b;
-      color: #111827;
-      margin-top: 10px;
-    }
-
-    #piPaymentBtn:hover {
-      opacity: 0.9;
-    }
-
-    #piPaymentBtn:disabled {
-      opacity: 0.6;
       cursor: not-allowed;
     }
 
     .back {
-      background: #374151;
-      color: white;
-      margin-top: 12px;
-    }
-
-    .status {
-      display: none;
-      background: #064e3b;
-      border: 1px solid #10b981;
-      color: #d1fae5;
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 18px;
-      text-align: center;
-      line-height: 1.5;
-    }
-
-    .warning {
-      background: #451a03;
-      border: 1px solid #f59e0b;
-      color: #fde68a;
+      display: block;
+      width: 100%;
       padding: 14px;
-      border-radius: 12px;
-      margin-bottom: 18px;
-      line-height: 1.5;
-      font-size: 14px;
+      margin-top: 12px;
+      border-radius: 10px;
+      background: #155eef;
+      color: #ffffff;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    .note {
-      color: #9ca3af;
-      font-size: 13px;
-      line-height: 1.5;
+    .secondary {
+      background: #10233f;
+    }
+
+    footer {
       text-align: center;
-      margin-top: 20px;
+      color: #667085;
+      font-size: 13px;
+      margin-top: 25px;
+    }
+
+    footer a {
+      color: #155eef;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    @media (max-width: 420px) {
+      body {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 17px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
@@ -178,114 +166,89 @@
   <main class="container">
 
     <header class="header">
+      <div class="logo" aria-hidden="true">💎🇷🇼</div>
 
-      <div class="logo">💎</div>
-
-      <h1>
-        Quiz Master Premium
-      </h1>
+      <h1>Quiz Master Premium</h1>
 
       <p class="subtitle">
-        Fungura ubushobozi bwa Premium
-        ukoresheje Pi.
+        Menya ibyiza by'uburyo bwa Premium.
       </p>
-
     </header>
-
-    <div
-      id="status"
-      class="status"
-    >
-      🎉 Premium yawe iri gukora!
-    </div>
-
-    <div class="warning">
-      ⚠️ Payment ikorera muri Pi Browser.
-      Ntukishyure umuntu ku giti cye.
-      Koresha gusa payment button iri muri
-      Quiz Master.
-    </div>
 
     <section class="card">
 
-      <h2>
-        💎 Premium
-      </h2>
+      <h2>💎 Premium Features</h2>
 
-      <div class="price">
-        0.1 Pi
-        <small>/ Premium</small>
-      </div>
+      <p>
+        Premium igenewe kongerera abakoresha Quiz Master
+        ubushobozi bwo gukomeza kwiga no kwipima ubumenyi.
+      </p>
 
       <ul>
-        <li>
-          Ibibazo byinshi bya Quiz
-        </li>
-
-        <li>
-          Ibibazo bya Premium
-        </li>
-
-        <li>
-          Gukina nta mbogamizi
-        </li>
-
-        <li>
-          Gukurikirana amanota yawe
-        </li>
-
-        <li>
-          Kugera ku bindi bice bya Premium
-        </li>
+        <li>Ibibazo byinshi bya Quiz.</li>
+        <li>Ibibazo byihariye bya Premium.</li>
+        <li>Gukurikirana amanota yawe.</li>
+        <li>Gukurikirana iterambere ryawe.</li>
+        <li>Kugera ku bindi bice bya Premium nibimara gutegurwa.</li>
       </ul>
-
-      <!--
-        payment.js ni yo ishyiramo
-        payment button hano.
-      -->
-
-      <div id="paymentArea"></div>
 
     </section>
 
     <section class="card">
 
-      <h2>
-        👥 Referral
-      </h2>
+      <h2>💳 Payment Status</h2>
+
+      <div
+        id="paymentStatus"
+        class="status"
+        role="status"
+        aria-live="polite"
+      >
+        Premium payment irategurwa.
+        Nta bwishyu bwemezwa muri iki gihe.
+      </div>
+
+      <div id="paymentArea"></div>
 
       <p class="subtitle">
-        Uzazana abandi kuri Quiz Master
-        ashobora kubona rewards hakurikijwe
-        amategeko ya referral.
+        Ntukohereze amafaranga cyangwa Pi kuri
+        konti y'umuntu ku giti cye uvuga ko agufungurira Premium.
       </p>
 
-      <a
-        class="back"
-        href="referral.html"
-      >
-        👥 Jya kuri Referral
+    </section>
+
+    <section class="card">
+
+      <h2>👥 Referral</h2>
+
+      <p>
+        Reba urupapuro rwa Referral rwa Quiz Master.
+      </p>
+
+      <a class="back secondary" href="./referral.html">
+        Jya kuri Referral
       </a>
 
     </section>
 
-    <a
-      class="back"
-      href="index.html"
-    >
+    <a class="back" href="./index.html">
       ← Subira kuri Quiz Master
     </a>
 
-    <p class="note">
-      Payment yemezwa na Pi Network payment
-      system. Premium ifunguka nyuma y’uko
-      server yemeje transaction.
-    </p>
+    <footer>
+      <p>Quiz Master 🇷🇼 · 2026</p>
+
+      <p>
+        <a href="./about.html">About</a> |
+        <a href="./contact.html">Contact</a> |
+        <a href="./privacy-policy.html">Privacy</a> |
+        <a href="./terms.html">Terms</a>
+      </p>
+    </footer>
 
   </main>
 
-  <!-- Quiz Master payment logic -->
-  <script src="payment.js"></script>
+  <script src="./payment.js" defer></script>
 
 </body>
 </html>
