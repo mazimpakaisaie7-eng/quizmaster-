@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta name="theme-color" content="#10233f">
+
+  <meta
+    name="description"
+    content="Quiz Master Rwanda offline page."
+  >
+
+  <title>Offline - Quiz Master 🇷🇼</title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="./icon-192-4.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="./icon-192-4.png"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #08172b;
+      color: #f5f8ff;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+
+    .offline-container {
+      width: 100%;
+      max-width: 430px;
+      padding: 30px 22px;
+      background: #10233f;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 27px;
+      margin: 8px 0;
+    }
+
+    p {
+      color: #a9bad3;
+      line-height: 1.7;
+    }
+
+    .offline-icon {
+      font-size: 55px;
+      margin: 12px 0;
+    }
+
+    .status {
+      margin: 20px 0;
+      padding: 12px;
+      border-radius: 10px;
+      background: #172f50;
+    }
+
+    button,
+    .home-link {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: 0;
+      border-radius: 10px;
+      background: #155eef;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .home-link {
+      background: #172f50;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #8092aa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="offline-container">
+
+    <img
+      class="logo"
+      src="./icon-192-4.png"
+      alt="Quiz Master Rwanda"
+      width="90"
+      height="90"
+    >
+
+    <h1>Quiz Master 🇷🇼</h1>
+
+    <div class="offline-icon">📡</div>
+
+    <h2>You are offline</h2>
+
+    <p>
+      It looks like your internet connection
+      is unavailable.
+    </p>
+
+    <p>
+      Internet connection is required to load
+      new questions and online resources.
+    </p>
+
+    <div class="status" id="connectionStatus">
+      🔴 No internet connection
+    </div>
+
+    <button
+      type="button"
+      onclick="window.location.reload()"
+    >
+      🔄 Try Again
+    </button>
+
+    <a class="home-link" href="./index.html">
+      🏠 Return to Quiz Master
+    </a>
+
+    <footer>
+      Quiz Master 🇷🇼 · 2026
+      <br>
+      Learn • Play • Improve
+    </footer>
+
+  </main>
+
+  <script>
+    (() => {
+
+      const status = document.getElementById(
+        "connectionStatus"
+      );
+
+      function updateConnection() {
+
+        if (navigator.onLine) {
+
+          status.textContent =
+            "🟢 Internet connection available";
+
+        } else {
+
+          status.textContent =
+            "🔴 No internet connection";
+
+        }
+
+      }
+
+      window.addEventListener(
+        "online",
+        updateConnection
+      );
+
+      window.addEventListener(
+        "offline",
+        updateConnection
+      );
+
+      updateConnection();
+
+    })();
+  </script>
+
+</body>
+</html>
