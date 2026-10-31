@@ -1,362 +1,380 @@
-Quiz Master 🇷🇼 – Knowledge Quiz
 
-Learn, Practise and Improve Your Knowledge
+# Quiz Master 🇷🇼 — Knowledge Quiz
 
-Welcome to Quiz Master Rwanda, an educational online quiz platform designed to help users test their knowledge, learn new information and improve their understanding through interactive multiple-choice quizzes.
+**Quiz Master** is a bilingual knowledge quiz application designed to help users test and improve their knowledge through road-safety and general-knowledge questions.
 
-🌐 Live Website: https://quizmaster-liard-five.vercel.app/
+🌐 **Live application:** https://quizmaster-liard-five.vercel.app/  
+📦 **GitHub repository:** https://github.com/mazimpakaisaie7-eng/quizmaster-
 
 ---
 
-📖 About Quiz Master
+## 1. About the Project
 
-Quiz Master Rwanda is an interactive educational quiz application supporting English and Kinyarwanda.
+Quiz Master is a browser-based quiz application built with HTML, CSS, JavaScript and JSON question data.
 
-The platform provides two main quiz categories:
+Users can choose their preferred language and question category, answer timed multiple-choice questions, view their results, review their answers and track progress.
 
-1. Road Safety – Road signs, traffic regulations and responsible road use.
-2. General Knowledge – Geography, history, science, technology, Rwanda, Africa, sports and other educational subjects.
+The application supports:
 
-The application is designed for mobile phones, tablets and desktop computers.
-
-🎯 Main Features
-
-- English and Kinyarwanda language support.
-- Road Safety quizzes.
-- General Knowledge quizzes.
-- Multiple-choice questions.
-- Timed quiz sessions.
+- English and Kinyarwanda.
+- Road-safety questions.
+- General-knowledge questions.
+- Timed questions.
 - Ten questions per round.
-- Automatic score calculation.
-- 70% minimum passing requirement.
-- Multiple quiz rounds.
-- Round unlocking system.
-- Progress tracking.
-- Answer review.
-- Saved quiz progress where supported.
-- Best score tracking where supported.
-- Optional background music.
-- Responsive mobile-friendly interface.
-- Share functionality.
-- Premium information page.
-- Referral information and functionality.
-- Privacy Policy and Terms and Conditions.
-- Google Analytics integration.
-- Google AdSense integration.
+- Score tracking and progress saving.
+- Review of previous answers.
+- Round progression.
+- Browser-based offline support through a service worker.
 
-📚 Quiz Categories
+## 2. Main Features
 
-1. Road Safety
+### Language selection
 
-The Road Safety category helps users learn about:
+Users can choose:
 
-- Road signs and their meanings.
-- Traffic regulations.
-- Road safety awareness.
-- Pedestrian safety.
-- Responsible road use.
-- Safe driving practices.
-- Traffic signals and road markings.
+- English
+- Ikinyarwanda
 
-Time limit: 60 seconds per question.
+The selected language is saved in the browser.
 
-2. General Knowledge
+### Question categories
 
-The General Knowledge category covers subjects such as:
+The application provides two categories:
 
-- Geography.
-- History.
-- Science.
-- Technology.
-- Rwanda.
-- Africa.
-- Sports.
-- Culture.
-- Education.
-- General knowledge.
+| Category | Description |
+|---|---|
+| Road Safety (`traffic`) | Road signs, traffic rules and road safety |
+| General Knowledge (`general`) | General knowledge and educational topics |
 
-Time limit: 30 seconds per question.
+### Quiz timing
 
-🌍 Supported Languages
+Each question has its own countdown timer.
 
-Quiz Master supports:
+| Category | Time per question |
+|---|---:|
+| Road Safety | 60 seconds |
+| General Knowledge | 30 seconds |
 
-- English.
-- Kinyarwanda.
+### Rounds
 
-Users can select their preferred language before starting a quiz.
+- Each round contains up to 10 questions.
+- Questions are selected randomly from the selected category.
+- Previously used question IDs are tracked separately for each category.
+- Questions are reused only after the available question cycle is exhausted.
+- The next round requires at least 70% to pass the current round.
+- A round is recorded as completed only when the required score is achieved.
 
-🎮 Quiz Rules and Scoring System
-
-The application follows these quiz rules:
-
-Rule| Requirement
-Questions per round| 10
-General Knowledge time| 30 seconds per question
-Road Safety time| 60 seconds per question
-Points per correct answer| 10
-Minimum passing score| 70%
-Questions per category| Determined by available valid questions
-
-Scoring
+### Scoring system
 
 - Each correct answer earns 10 points.
 - Incorrect answers earn 0 points.
-- Each round contains 10 questions.
-- The maximum score per round is 100 points.
-- A user must score at least 70 points (70%) to pass.
-- Passing a round unlocks the next round according to the application's progression rules.
+- A round's score is calculated from the correct answers.
+- The passing requirement is 70% or higher.
 
-Example
+For a full round of 10 questions:
 
-Correct answers| Score| Result
-10| 100| Pass
-9| 90| Pass
-8| 80| Pass
-7| 70| Pass
-6| 60| Not passed
-5| 50| Not passed
-0| 0| Not passed
+| Correct answers | Score | Result |
+|---:|---:|---|
+| 7 | 70 points | Pass |
+| 8 | 80 points | Pass |
+| 9 | 90 points | Pass |
+| 10 | 100 points | Pass |
+| 0–6 | 0–60 points | Try again |
 
-📝 How to Play
+The number of questions in a round may be lower than 10 if fewer questions remain in the selected category.
 
-1. Open the Quiz Master website.
-2. Select English or Kinyarwanda.
-3. Choose Road Safety or General Knowledge.
-4. Select whether to enable background music, if available.
-5. Press Start Quiz.
-6. Read each question carefully.
-7. Select your answer.
-8. Submit your answer.
-9. Continue until all ten questions are completed.
-10. View your final score and result.
-11. Review your answers if needed.
-12. Pass with at least 70% to unlock the next round.
+## 3. How Scores and Progress Are Saved
 
-🏆 Quiz Rounds
+Quiz Master currently uses the browser's `localStorage` to save quiz progress and scores.
 
-Quiz Master organizes questions into multiple rounds.
+This means saved information belongs to the browser and device being used. It is not automatically synchronized between different devices or stored in a user account on a server.
 
-Each round contains ten questions.
+The application uses these storage keys:
 
-The next round becomes available after achieving the required passing score of 70%, subject to the application's round progression and unlocking rules.
+| Storage key | Purpose |
+|---|---|
+| `quizmasterLanguage` | Saves the selected language |
+| `quizmasterMode` | Saves the selected category |
+| `quizmasterUsedQuestionIds` | Tracks used question IDs separately for each category |
+| `quizmasterCompletedRounds` | Stores successfully completed rounds separately for each category |
+| `quizmasterReviewAnswers` | Stores the most recently completed round's answer review |
+| `quizmasterBestScore` | Stores the highest score achieved in a single round |
+| `quizmasterTotalScore` | Stores the cumulative score from completed rounds |
+| `quizmasterProgress` | Saves the current round and unfinished quiz progress |
 
-The available number of rounds depends on the valid questions available in each category and language.
+### Best score
 
-📊 Progress Tracking
+`quizmasterBestScore` stores the highest score achieved in one round.
 
-Depending on the browser and application functionality, Quiz Master may save:
+It is not the cumulative score.
 
-- Current quiz progress.
-- Completed rounds.
-- Best scores.
-- Total scores.
-- Questions requiring review.
-- Used question IDs.
-- Weekly score information.
-- User preferences.
+### Total score
 
-Some information is stored locally in the user's browser using Local Storage.
+`quizmasterTotalScore` adds the score earned each time a round is completed.
 
-Clearing browser data may remove locally saved progress.
+For example:
 
-🎵 Background Music
+- First completed round: 70 points.
+- Second completed round: 90 points.
+- Total score: 160 points.
 
-Quiz Master may provide optional background music.
+The total score is cumulative and is separate from the best score.
 
-Users can enable or disable music depending on the available settings.
+### Saved progress
 
-Music is optional and does not affect quiz scores.
+The application can save information about an unfinished round, including:
 
-⭐ Premium Features
+- Selected language.
+- Selected category.
+- Round number.
+- Question IDs in the round.
+- Current question position.
+- Current round score.
+- Correct and answered question counts.
+- Answer-review data.
+- Remaining time.
+- Selected answer and submission status.
 
-Quiz Master includes a Premium information page.
+The saved progress is used by the application's continue-quiz functionality.
 
-Premium services and benefits are subject to the actual features and payment functionality made available by the application.
+### Answer review
 
-No payment should be considered successful until it has been verified by the authorized payment system.
+The application saves the answer review for the most recently completed round. It does not currently provide a server-based account history.
 
-Visit:
+### Resetting progress
 
-https://quizmaster-liard-five.vercel.app/premium.html
+The reset option removes saved quiz progress and scores from the current browser while preserving the saved language and category preferences.
 
-🤝 Referral Program
+**Important:** Clearing browser data or using a different browser/device can make locally saved progress unavailable.
 
-Quiz Master includes a referral section intended to help users share the platform.
+## 4. Question Data
 
-Referral rewards, referral counts and eligibility depend on the implemented and verified referral system.
+Questions are loaded from:
 
-Referral information:
+`questions.json`
 
-https://quizmaster-liard-five.vercel.app/referral.html
+The quiz engine validates question data before using it.
 
-📢 Advertising and Analytics
+A question must contain:
 
-Quiz Master may use advertising and analytics services to support the platform and understand website usage.
+- A unique question ID.
+- A supported category (`traffic` or `general`).
+- An English question.
+- English answer options.
+- A correct English answer included in the options.
 
-Google AdSense
+Kinyarwanda fields can include:
 
-Google AdSense may display advertisements on eligible pages.
+- `question_rw`
+- `options_rw`
+- `answer_rw`
+- `explanation_rw`
 
-Advertisements are subject to Google's policies and approval requirements.
+English fields can include:
 
-Google Analytics
+- `question`
+- `options`
+- `answer`
+- `explanation`
 
-Google Analytics may be used to understand website traffic and improve the user experience.
+Optional question illustrations can use the `image` field.
 
-Users can read the Privacy Policy for more information about data handling.
+Example question structure:
 
-🔒 Privacy and Security
+```json
+{
+  "id": 1,
+  "category": "general",
+  "question": "What is the capital city of Rwanda?",
+  "options": [
+    "Kigali",
+    "Musanze",
+    "Huye",
+    "Rubavu"
+  ],
+  "answer": "Kigali",
+  "explanation": "Kigali is the capital city of Rwanda.",
+  "question_rw": "Umurwa mukuru w'u Rwanda ni uwuhe?",
+  "options_rw": [
+    "Kigali",
+    "Musanze",
+    "Huye",
+    "Rubavu"
+  ],
+  "answer_rw": "Kigali",
+  "explanation_rw": "Kigali ni umurwa mukuru w'u Rwanda."
+}
+```
 
-Quiz Master may use browser storage, analytics and advertising technologies.
+The correct answer must match one of the options exactly.
 
-The platform aims to protect user information and provide transparent information about data usage.
+## 5. Offline Support
 
-Please read:
+The application uses a service worker to support offline access to cached resources.
 
-- Privacy Policy: https://quizmaster-liard-five.vercel.app/privacy-policy.html
-- Terms and Conditions: https://quizmaster-liard-five.vercel.app/terms.html
+The service worker can cache important application files, including:
 
-📱 Responsive Design
+- Main application page.
+- Offline page.
+- Quiz JavaScript.
+- Question data.
+- Other configured static resources.
 
-Quiz Master is designed to work on:
+For offline questions to be available, the user should first open the application while connected to the internet and allow the question data to load successfully.
 
-- Android smartphones.
-- iPhones.
-- Tablets.
-- Desktop computers.
-- Modern web browsers.
+Offline availability depends on successful caching and the browser's storage policies.
 
-An internet connection may be required to load questions and other online resources.
+## 6. Technology Stack
 
-Offline functionality depends on the available service worker cache and cached resources.
+| Technology | Purpose |
+|---|---|
+| HTML5 | Application structure |
+| CSS3 | Layout and styling |
+| JavaScript | Quiz logic and interactions |
+| JSON | Question database |
+| LocalStorage | Local scores and progress |
+| Service Worker | Caching and offline support |
+| Vercel | Application hosting |
+| GitHub | Source-code repository |
 
-🛠️ Technologies Used
+The quiz frontend does not require a framework or a build step.
 
-The project uses:
+## 7. Project Files
 
-- HTML5 – Website structure.
-- CSS3 – Styling and responsive design.
-- JavaScript – Quiz logic and user interactions.
-- JSON – Question database.
-- Local Storage – Local progress and preference storage.
-- Service Workers – Progressive Web App caching where configured.
-- Web App Manifest – Application installation metadata.
-- Google AdSense – Advertising integration.
-- Google Analytics – Website analytics.
-- GitHub – Source code management.
-- Vercel – Website hosting and deployment.
+Important application files include:
 
-📁 Project Structure
-
+```text
 quizmaster-/
-│
-├── api/
-│   ├── payment.js
-│   └── referral.js
 │
 ├── index.html
 ├── questions.js
 ├── questions.json
+├── service-worker.js
+├── offline.html
+├── manifest.webmanifest
+├── sitemap.xml
+├── robots.txt
 │
 ├── about.html
 ├── contact.html
+├── privacy-policy.html
+├── terms.html
+│
 ├── premium.html
-├── payment.html
 ├── referral.html
+├── payment.html
 │
 ├── payment.js
 ├── referral.js
 │
-├── privacy-policy.html
-├── terms.html
-│
-├── robots.txt
-├── sitemap.xml
-├── ads.txt
-│
-├── manifest.webmanifest
-├── service-worker.js
-│
-├── icon-192-4.png
-├── icon-512-3.png
-├── mythica.mp3
-│
-├── CREDITS.TXT
-└── readme.md
+└── README.md
+```
 
-Note: The structure above represents the repository files provided in the project overview. Actual API endpoints, assets and other files should be checked against the current GitHub repository before deployment.
+Some optional assets and additional files may also exist in the repository.
 
-🚀 Installation and Development
+## 8. Running the Project
 
-To work with the project:
+### Run locally
 
-1. Open the GitHub repository.
-2. Clone or download the repository.
-3. Open the project files in a code editor.
-4. Check the question database.
-5. Test the application locally.
-6. Deploy the project using Vercel.
+1. Download or clone the repository.
+2. Open the project folder.
+3. Run it using a local web server.
+4. Open the local application URL in a browser.
 
-Repository
+Example:
 
-https://github.com/mazimpakaisaie7-eng/quizmaster-
+```bash
+git clone https://github.com/mazimpakaisaie7-eng/quizmaster-.git
+cd quizmaster-
+```
 
-Production Website
+You can use a local development server such as VS Code Live Server.
+
+Do not rely on opening `index.html` directly using a `file://` URL because browser fetch and service-worker features require an appropriate web origin.
+
+### Live application
 
 https://quizmaster-liard-five.vercel.app/
 
-🧪 Testing Checklist
+## 9. Deployment
 
-Before deploying changes, check:
+The project is hosted on Vercel and connected to its GitHub source repository.
 
-- [ ] Homepage loads correctly.
-- [ ] Language selection works.
-- [ ] Category selection works.
-- [ ] General Knowledge uses 30 seconds per question.
-- [ ] Road Safety uses 60 seconds per question.
-- [ ] Each round contains ten questions.
-- [ ] Correct answers award ten points.
-- [ ] Incorrect answers award zero points.
-- [ ] A score of 70% passes the round.
-- [ ] A score below 70% does not pass.
-- [ ] Round unlocking works correctly.
-- [ ] Answer review displays the correct information.
-- [ ] Progress is saved and restored correctly.
-- [ ] Music controls work.
-- [ ] Mobile layout works.
-- [ ] Advertising integration does not break the quiz.
-- [ ] Service worker installation succeeds.
-- [ ] All website pages load correctly.
-- [ ] Referral and payment endpoints are properly configured.
-- [ ] No JavaScript errors appear in the browser console.
+A deployment can be triggered by pushing or committing changes to the configured production branch.
 
-📩 Contact and Support
+After deployment, test the application on both mobile and desktop browsers.
 
-For questions, suggestions, technical support or feedback:
+Check that:
 
-Email: mazimpakaisaie7@gmail.com
+- The homepage loads.
+- Language selection works.
+- Category selection works.
+- Questions load correctly.
+- Timers work for both categories.
+- Answers can be submitted.
+- Scores are calculated correctly.
+- The 70% passing requirement works.
+- Review answers are displayed.
+- Saved progress can be resumed.
+- Offline caching works after an online visit.
 
-Contact Page: https://quizmaster-liard-five.vercel.app/contact.html
+## 10. Search Engine and Legal Pages
 
-About Page: https://quizmaster-liard-five.vercel.app/about.html
+The project includes public information pages such as:
 
-🌱 Project Mission
+- About Quiz Master.
+- Contact.
+- Privacy Policy.
+- Terms and Conditions.
 
-Our mission is to make educational quizzes accessible, engaging and enjoyable.
+The sitemap is intended to list public pages that should be discovered by search engines.
 
-Quiz Master Rwanda encourages continuous learning, curiosity and knowledge development through interactive quizzes in English and Kinyarwanda.
+Private, temporary, transactional or unfinished pages should not automatically be submitted for indexing.
 
-📜 Copyright and Credits
+The presence of a sitemap does not guarantee that a search engine will index every listed page.
 
-© 2026 Quiz Master Rwanda.
+## 11. Advertising
 
-All rights reserved to the respective owners of original project materials.
+The application may display Google AdSense advertisements where configured.
 
-Third-party assets, libraries, images and music remain subject to their respective licenses and attribution requirements.
+Advertising availability and approval are controlled by Google and are not guaranteed by this project.
 
-Please respect all applicable copyrights and licenses.
+The application should continue to provide useful quiz content and a good user experience independently of advertising.
+
+## 12. Payments and Referrals
+
+The repository includes premium, referral and payment-related frontend files.
+
+The presence of these files does not by itself mean that real payments, verified transactions or server-side referral rewards are operational.
+
+Any real payment or reward feature requires a secure backend, transaction verification and appropriate protection against fraud.
+
+Do not treat browser-only storage as proof that a payment has been completed.
+
+## 13. Privacy and Data
+
+The quiz engine stores quiz preferences, scores and progress in the user's browser.
+
+Users should consult the Privacy Policy for information about analytics, advertising and any other data processing used by the deployed application.
+
+Do not enter passwords, payment details or other sensitive information into quiz fields.
+
+## 14. Support and Contact
+
+For questions, feedback or bug reports:
+
+**Email:** mazimpakaisaie7@gmail.com
+
+**GitHub repository:**  
+https://github.com/mazimpakaisaie7-eng/quizmaster-
+
+**Live application:**  
+https://quizmaster-liard-five.vercel.app/
 
 ---
 
-Quiz Master 🇷🇼 – Learn, Practise and Improve Your Knowledge.
+## 15. Project Goal
+
+The goal of Quiz Master Rwanda is to provide an accessible bilingual learning experience that encourages users to improve their road-safety awareness and general knowledge through interactive quizzes.
+
+**Quiz Master 🇷🇼 — Learn, Play and Improve.**
