@@ -22,506 +22,505 @@
 
   <style>
     :root {
-      --bg: #f2f5fb;
-      --card: #ffffff;
-      --primary: #155eef;
-      --primary-dark: #1048bd;
-      --text: #172033;
-      --muted: #68758a;
-      --border: #e1e7f0;
-      --green: #16a34a;
-      --red: #dc2626;
-      --orange: #f59e0b;
-      --shadow: 0 5px 22px rgba(20, 40, 80, .07);
+      --bg:#f2f5fb;
+      --card:#fff;
+      --primary:#155eef;
+      --primary-dark:#1048bd;
+      --text:#172033;
+      --muted:#68758a;
+      --border:#e1e7f0;
+      --green:#16a34a;
+      --red:#dc2626;
+      --orange:#f59e0b;
+      --shadow:0 3px 12px rgba(20,40,80,.06);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * {box-sizing:border-box}
 
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.5;
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.4;
     }
 
-    button, select {
-      font: inherit;
-    }
-
+    button,select {font:inherit}
     button {
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
+      cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
     }
-
-    button:disabled {
-      cursor: not-allowed;
-      opacity: .5;
-    }
+    button:disabled {opacity:.5;cursor:not-allowed}
 
     .container {
-      width: min(100% - 24px, 760px);
-      margin: auto;
+      width:min(100% - 18px,760px);
+      margin:auto;
     }
 
+    /* COMPACT HEADER */
+
     header {
-      padding: 25px 12px 20px;
-      text-align: center;
-      color: white;
-      background: linear-gradient(135deg, #155eef, #073b9b);
-      border-radius: 0 0 25px 25px;
+      padding:13px 10px 12px;
+      text-align:center;
+      color:white;
+      background:linear-gradient(135deg,#155eef,#073b9b);
+      border-radius:0 0 17px 17px;
     }
 
     header .brand {
-      font-size: 14px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      opacity: .9;
+      font-size:10px;
+      font-weight:bold;
+      letter-spacing:2px;
+      opacity:.9;
     }
 
     header h1 {
-      margin: 7px 0;
-      font-size: 29px;
+      margin:3px 0;
+      font-size:23px;
     }
 
     header p {
-      margin: 0;
-      font-size: 14px;
-      opacity: .9;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 18px 0;
-    }
-
-    .stat {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 13px 5px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 23px;
-      color: var(--primary);
-    }
-
-    .stat span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .ad-area {
-      margin: 15px 0;
-      min-height: 55px;
-      padding: 8px;
-      border: 1px dashed #d5dce8;
-      border-radius: 12px;
-      background: #fff;
-      text-align: center;
-      color: #9aa3b2;
-      font-size: 11px;
+      margin:0;
+      font-size:11px;
+      opacity:.9;
     }
 
     .screen {
-      display: none;
-      padding-bottom: 25px;
+      display:none;
+      padding-bottom:12px;
     }
 
-    #homeScreen {
-      display: block;
+    #homeScreen {display:block}
+
+    /* STATS */
+
+    .stats {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:7px;
+      margin:9px 0;
     }
+
+    .stat {
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:7px 4px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+
+    .stat strong {
+      display:block;
+      font-size:18px;
+      color:var(--primary);
+    }
+
+    .stat span {
+      font-size:10px;
+      color:var(--muted);
+    }
+
+    .ad-area {
+      margin:8px 0;
+      min-height:45px;
+      padding:6px;
+      border:1px dashed #d5dce8;
+      border-radius:9px;
+      background:#fff;
+      text-align:center;
+      color:#9aa3b2;
+      font-size:10px;
+    }
+
+    /* PANELS */
 
     .panel {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      padding: 19px;
-      margin: 14px 0;
-      box-shadow: var(--shadow);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:13px;
+      padding:12px;
+      margin:9px 0;
+      box-shadow:var(--shadow);
     }
 
     .panel h2 {
-      font-size: 19px;
-      margin: 0 0 8px;
+      font-size:16px;
+      margin:0 0 5px;
     }
 
     .panel h3 {
-      font-size: 16px;
-      margin: 18px 0 10px;
+      font-size:13px;
+      margin:11px 0 6px;
     }
 
     .muted {
-      color: var(--muted);
-      font-size: 13px;
+      color:var(--muted);
+      font-size:11px;
     }
 
+    /* CHOICES */
+
     .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 10px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:7px;
+      margin-top:6px;
     }
 
     .choice-btn {
-      min-height: 62px;
-      border: 2px solid var(--border);
-      border-radius: 13px;
-      background: white;
-      color: var(--text);
-      padding: 12px 8px;
-      font-weight: bold;
-      font-size: 14px;
+      min-height:43px;
+      border:1.5px solid var(--border);
+      border-radius:9px;
+      background:white;
+      color:var(--text);
+      padding:8px 5px;
+      font-weight:bold;
+      font-size:12px;
     }
 
     .choice-btn.active {
-      border-color: var(--primary);
-      background: #edf3ff;
-      color: var(--primary);
+      border-color:var(--primary);
+      background:#edf3ff;
+      color:var(--primary);
     }
 
     .summary {
-      margin: 17px 0 12px;
-      background: #f1f5ff;
-      border: 1px solid #d8e4ff;
-      border-radius: 12px;
-      padding: 13px;
-      font-size: 14px;
-      text-align: center;
+      margin:9px 0;
+      background:#f1f5ff;
+      border:1px solid #d8e4ff;
+      border-radius:9px;
+      padding:8px;
+      font-size:11px;
+      text-align:center;
     }
+
+    /* BUTTONS */
 
     .btn {
-      display: block;
-      width: 100%;
-      border: 0;
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin: 10px 0;
-      font-weight: bold;
-      font-size: 15px;
-      background: var(--primary);
-      color: white;
+      display:block;
+      width:100%;
+      border:0;
+      border-radius:9px;
+      padding:10px 8px;
+      margin:5px 0;
+      font-weight:bold;
+      font-size:12px;
+      background:var(--primary);
+      color:white;
     }
 
-    .btn:hover {
-      background: var(--primary-dark);
-    }
+    .btn:hover {background:var(--primary-dark)}
 
     .btn.secondary {
-      color: var(--text);
-      background: #edf1f7;
-      border: 1px solid var(--border);
+      color:var(--text);
+      background:#edf1f7;
+      border:1px solid var(--border);
     }
 
-    .btn.success {
-      background: var(--green);
-    }
-
-    .btn.danger {
-      background: var(--red);
-    }
+    .btn.success {background:var(--green)}
+    .btn.danger {background:var(--red)}
 
     .btn.small {
-      padding: 11px;
-      font-size: 13px;
+      padding:8px;
+      font-size:11px;
     }
 
-    #homeMessage {
-      display: none;
-      padding: 12px;
-      border-radius: 10px;
-      background: #fff3cd;
-      color: #795500;
-      margin: 12px 0;
-      font-size: 14px;
+    /* HOME BUTTON GRID */
+
+    .home-actions {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:7px;
+      margin:9px 0;
     }
 
-    #homeMessage[data-type="error"] {
-      background: #fee2e2;
-      color: #991b1b;
-    }
-
-    .home-menu {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin: 15px 0;
+    .home-actions .btn {
+      min-height:39px;
+      margin:0;
+      padding:8px 4px;
+      font-size:11px;
     }
 
     .menu-btn {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 8px;
-      color: var(--text);
-      font-weight: bold;
-      box-shadow: var(--shadow);
+      background:white;
+      border:1px solid var(--border);
+      border-radius:9px;
+      padding:9px 5px;
+      color:var(--text);
+      font-weight:bold;
+      font-size:11px;
+      box-shadow:var(--shadow);
     }
 
-    .menu-btn:active {
-      background: #edf3ff;
+    .menu-btn:active {background:#edf3ff}
+
+    #homeMessage {
+      display:none;
+      padding:9px;
+      border-radius:9px;
+      background:#fff3cd;
+      color:#795500;
+      margin:8px 0;
+      font-size:12px;
+    }
+
+    #homeMessage[data-type="error"] {
+      background:#fee2e2;
+      color:#991b1b;
     }
 
     /* QUIZ */
 
     .quiz-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      flex-wrap:wrap;
     }
 
     .quiz-badge {
-      background: #edf3ff;
-      color: var(--primary);
-      padding: 7px 11px;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 13px;
+      background:#edf3ff;
+      color:var(--primary);
+      padding:6px 9px;
+      border-radius:20px;
+      font-weight:bold;
+      font-size:11px;
     }
 
     #timerBox {
-      background: #e9f9ef;
-      color: #15803d;
-      padding: 7px 14px;
-      border-radius: 20px;
-      font-weight: bold;
+      background:#e9f9ef;
+      color:#15803d;
+      padding:6px 11px;
+      border-radius:20px;
+      font-weight:bold;
     }
 
     #timerBox.warning {
-      background: #fee2e2;
-      color: #b91c1c;
+      background:#fee2e2;
+      color:#b91c1c;
     }
 
     .progress-track {
-      height: 9px;
-      background: #e8edf5;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 15px 0;
+      height:8px;
+      background:#e8edf5;
+      border-radius:20px;
+      overflow:hidden;
+      margin:12px 0;
     }
 
     #progressFill {
-      height: 100%;
-      width: 0;
-      background: var(--primary);
-      transition: width .3s;
+      height:100%;
+      width:0;
+      background:var(--primary);
+      transition:width .3s;
     }
 
     #questionText {
-      font-size: 19px;
-      font-weight: bold;
-      margin: 18px 0;
-      line-height: 1.6;
+      font-size:17px;
+      font-weight:bold;
+      margin:14px 0;
+      line-height:1.5;
     }
 
     #questionImage {
-      display: none;
-      width: 100%;
-      max-height: 270px;
-      object-fit: contain;
-      border-radius: 12px;
-      margin: 12px auto;
+      display:none;
+      width:100%;
+      max-height:270px;
+      object-fit:contain;
+      border-radius:10px;
+      margin:10px auto;
     }
 
     .option-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-align: left;
-      padding: 13px;
-      margin: 9px 0;
-      background: white;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      color: var(--text);
+      width:100%;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-align:left;
+      padding:11px;
+      margin:7px 0;
+      background:white;
+      border:2px solid var(--border);
+      border-radius:10px;
+      color:var(--text);
+      font-size:13px;
     }
 
     .option-letter {
-      flex: 0 0 30px;
-      width: 30px;
-      height: 30px;
-      display: grid;
-      place-items: center;
-      background: #edf1f7;
-      border-radius: 50%;
-      font-weight: bold;
+      flex:0 0 28px;
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      background:#edf1f7;
+      border-radius:50%;
+      font-weight:bold;
     }
 
     .option-btn.selected {
-      border-color: var(--primary);
-      background: #edf3ff;
+      border-color:var(--primary);
+      background:#edf3ff;
     }
 
     .option-btn.correct {
-      border-color: var(--green);
-      background: #dcfce7;
+      border-color:var(--green);
+      background:#dcfce7;
     }
 
     .option-btn.incorrect {
-      border-color: var(--red);
-      background: #fee2e2;
+      border-color:var(--red);
+      background:#fee2e2;
     }
 
     #answerFeedback {
-      display: none;
-      padding: 12px;
-      margin: 12px 0;
-      background: #edf3ff;
-      border-radius: 10px;
-      font-weight: bold;
+      display:none;
+      padding:10px;
+      margin:10px 0;
+      background:#edf3ff;
+      border-radius:9px;
+      font-weight:bold;
     }
 
     #explanation {
-      display: none;
-      padding: 13px;
-      margin: 12px 0;
-      background: #fff8e7;
-      border-left: 4px solid var(--orange);
-      border-radius: 8px;
-      font-size: 14px;
+      display:none;
+      padding:11px;
+      margin:10px 0;
+      background:#fff8e7;
+      border-left:4px solid var(--orange);
+      border-radius:8px;
+      font-size:13px;
     }
 
     /* RESULTS */
 
     .result-box {
-      text-align: center;
-      padding: 25px 15px;
+      text-align:center;
+      padding:18px 12px;
     }
 
-    .result-box h2 {
-      font-size: 27px;
-    }
-
+    .result-box h2 {font-size:23px}
     .result-number {
-      font-size: 43px;
-      color: var(--primary);
-      font-weight: bold;
-      margin: 10px;
+      font-size:38px;
+      color:var(--primary);
+      font-weight:bold;
+      margin:8px;
     }
-
-    .result-stars {
-      font-size: 28px;
-    }
+    .result-stars {font-size:25px}
 
     /* REVIEW */
 
     .review-item {
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 14px;
-      margin: 12px 0;
-      background: white;
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:11px;
+      margin:9px 0;
+      background:white;
     }
 
     .review-item h3 {
-      font-size: 15px;
-      margin: 0 0 12px;
+      font-size:14px;
+      margin:0 0 10px;
     }
 
     .review-item p {
-      font-size: 13px;
-      overflow-wrap: anywhere;
+      font-size:12px;
+      overflow-wrap:anywhere;
     }
 
     .review-status {
-      font-weight: bold;
-      color: var(--green);
+      font-weight:bold;
+      color:var(--green);
     }
 
     /* ROUNDS */
 
     #roundList {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 15px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:8px;
+      margin-top:12px;
     }
 
     .round-card {
-      background: white;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 15px 8px;
-      text-align: center;
+      background:white;
+      border:2px solid var(--border);
+      border-radius:10px;
+      padding:12px 6px;
+      text-align:center;
     }
 
     .round-card.completed {
-      border-color: var(--green);
-      background: #effcf3;
+      border-color:var(--green);
+      background:#effcf3;
     }
 
-    .round-card.locked {
-      opacity: .55;
-    }
+    .round-card.locked {opacity:.55}
 
-    .round-number,
-    .round-status {
-      display: block;
-      font-size: 13px;
-      font-weight: bold;
+    .round-number,.round-status {
+      display:block;
+      font-size:12px;
+      font-weight:bold;
     }
 
     .round-status {
-      margin-top: 5px;
-      color: var(--muted);
+      margin-top:4px;
+      color:var(--muted);
     }
 
     /* SETTINGS */
 
-    .setting-row {
-      margin: 15px 0;
-    }
+    .setting-row {margin:11px 0}
 
     .setting-row label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 7px;
+      display:block;
+      font-weight:bold;
+      margin-bottom:6px;
+      font-size:12px;
     }
 
     .setting-row select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: white;
+      width:100%;
+      padding:9px;
+      border:1px solid var(--border);
+      border-radius:9px;
+      background:white;
+      font-size:13px;
     }
 
+    .settings-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:7px;
+      margin:10px 0;
+    }
+
+    .settings-grid .btn {
+      margin:0;
+      min-height:39px;
+    }
+
+    /* FOOTER */
+
     footer {
-      text-align: center;
-      padding: 25px 10px;
-      color: var(--muted);
-      font-size: 12px;
+      text-align:center;
+      padding:12px 8px;
+      color:var(--muted);
+      font-size:10px;
     }
 
     footer a {
-      color: var(--primary);
-      text-decoration: none;
-      margin: 0 5px;
+      color:var(--primary);
+      text-decoration:none;
+      margin:0 4px;
     }
 
-    @media (max-width: 380px) {
-      header h1 {
-        font-size: 24px;
-      }
-
-      .panel {
-        padding: 14px;
-      }
-
-      .choice-btn {
-        font-size: 12px;
-      }
+    @media(max-width:380px) {
+      header h1 {font-size:21px}
+      .panel {padding:10px}
+      .choice-btn {font-size:11px}
+      .home-actions .btn {font-size:10px}
     }
   </style>
 </head>
@@ -531,7 +530,7 @@
 <header>
   <div class="brand">KNOWLEDGE QUIZ</div>
   <h1>🧠 Quiz Master 🇷🇼</h1>
-  <p>Test your knowledge. Learn something new every day!</p>
+  <p>Murakaza neza! Gerageza ubumenyi bwawe utsinde.</p>
 </header>
 
 <main class="container">
@@ -544,12 +543,10 @@
         <strong id="homeRound">1</strong>
         <span>Next Round</span>
       </div>
-
       <div class="stat">
         <strong id="homeScore">0</strong>
         <span>Best Score</span>
       </div>
-
       <div class="stat">
         <strong id="homeStars">⭐</strong>
         <span>Achievements</span>
@@ -563,12 +560,12 @@
 
     <div id="gameSetup" class="panel">
 
-      <h2>🎮 Game Setup / Tegura umukino</h2>
+      <h2>🎮 Tegura umukino</h2>
       <p class="muted">
-        Hitamo ururimi n'icyiciro cy'ibibazo ushaka gukina.
+        Hitamo ururimi n'ubwoko bw'ibibazo ushaka gukina.
       </p>
 
-      <h3>1. Choose Language / Hitamo ururimi</h3>
+      <h3>1. Hitamo ururimi</h3>
 
       <div class="choice-grid">
         <button type="button"
@@ -586,7 +583,7 @@
         </button>
       </div>
 
-      <h3>2. Choose Category / Hitamo ibibazo</h3>
+      <h3>2. Hitamo ubwoko bw'ibibazo</h3>
 
       <div class="choice-grid">
         <button type="button"
@@ -604,53 +601,43 @@
         </button>
       </div>
 
-      <h3>3. Emeza ibyo wahisemo</h3>
-
       <div id="selectionSummary" class="summary">
         Banza uhitemo ururimi n'icyiciro.
       </div>
 
-      <button type="button"
-        id="confirmSetupBtn"
-        class="btn"
-        disabled>
-        ✓ Emeza ibyo wahisemo / Confirm Selection
-      </button>
+      <!-- 2 COLUMNS -->
+      <div class="home-actions">
 
-      <p class="muted" style="text-align:center">
-        Nyuma yo kwemeza, kanda Tangira gukina.
+        <button type="button"
+          id="confirmSetupBtn"
+          class="btn"
+          disabled>
+          ✓ Emeza ibyo wahisemo
+        </button>
+
+        <button type="button"
+          id="startBtn"
+          class="btn success">
+          ▶ Tangira gukina
+        </button>
+
+      </div>
+
+      <p class="muted" style="text-align:center;margin:5px 0">
+        Emeza ibyo wahisemo mbere yo gutangira.
       </p>
-
-      <button type="button"
-        id="startBtn"
-        class="btn success">
-        ▶ Tangira gukina / Start Quiz
-      </button>
 
     </div>
 
     <div id="homeMessage" role="status"></div>
 
-    <button type="button"
-      id="continueBtn"
-      class="btn success"
-      style="display:none">
-      ▶ Komeza umukino / Continue Quiz
-    </button>
-
-    <div class="home-menu">
+    <div class="home-actions">
 
       <button type="button"
-        id="reviewAnswersBtn"
-        class="menu-btn"
+        id="continueBtn"
+        class="btn success"
         style="display:none">
-        📖 Reba ibisubizo
-      </button>
-
-      <button type="button"
-        id="roundsBtn"
-        class="menu-btn">
-        🏆 Reba Rounds
+        ▶ Komeza umukino
       </button>
 
       <button type="button"
@@ -662,15 +649,24 @@
       <button type="button"
         id="shareBtn"
         class="menu-btn">
-        📤 Share Quiz
+        📤 Sangiza abandi
       </button>
 
     </div>
 
+    <!-- Kept for JavaScript compatibility -->
     <button type="button"
-      id="musicToggleBtn"
-      class="btn secondary">
-      Music: ON
+      id="roundsBtn"
+      class="menu-btn"
+      style="display:none">
+      🏆 Reba Rounds
+    </button>
+
+    <button type="button"
+      id="reviewAnswersBtn"
+      class="menu-btn"
+      style="display:none">
+      📖 Reba ibisubizo
     </button>
 
   </section>
@@ -694,7 +690,7 @@
         </span>
       </div>
 
-      <div class="quiz-top" style="margin-top:15px">
+      <div class="quiz-top" style="margin-top:12px">
         <strong>
           Question <span id="currentQuestionNumber">1/10</span>
         </strong>
@@ -710,9 +706,7 @@
 
       <img id="questionImage" alt="Question illustration">
 
-      <div id="questionText">
-        Loading question...
-      </div>
+      <div id="questionText">Loading question...</div>
 
       <div id="optionsContainer"></div>
 
@@ -779,7 +773,7 @@
       <button type="button"
         id="retryBtn"
         class="btn">
-        🔄 Subiramo ukine / Play Again
+        🔄 Ongera ukine
       </button>
 
       <button type="button"
@@ -801,7 +795,7 @@
   <section id="reviewScreen" class="screen">
 
     <div class="panel">
-      <h2>📖 Review Answers / Isubiramo ry'ibisubizo</h2>
+      <h2>📖 Review Answers</h2>
 
       <p class="muted">
         Reba ibyo wasubije neza, ibyo wasubije nabi n'ibisubizo nyabyo.
@@ -812,7 +806,7 @@
       <button type="button"
         id="reviewHomeBtn"
         class="btn secondary">
-        🏠 Subira ahabanza
+        🏠 Ahabanza
       </button>
     </div>
 
@@ -849,7 +843,7 @@
       <button type="button"
         id="roundsHomeBtn"
         class="btn secondary">
-        🏠 Subira ahabanza
+        🏠 Ahabanza
       </button>
 
     </div>
@@ -863,9 +857,7 @@
       <h2>⚙️ Settings / Igenamiterere</h2>
 
       <div class="setting-row">
-        <label for="settingsLanguage">
-          Language / Ururimi
-        </label>
+        <label for="settingsLanguage">Language / Ururimi</label>
 
         <select id="settingsLanguage">
           <option value="rw">🇷🇼 Ikinyarwanda</option>
@@ -874,9 +866,7 @@
       </div>
 
       <div class="setting-row">
-        <label for="settingsMode">
-          Category / Icyiciro
-        </label>
+        <label for="settingsMode">Category / Icyiciro</label>
 
         <select id="settingsMode">
           <option value="traffic">🚦 Amategeko y'umuhanda</option>
@@ -887,14 +877,40 @@
       <button type="button"
         id="saveSettingsBtn"
         class="btn success">
-        💾 Bika ibyo wahinduye / Save Settings
+        💾 Bika ibyo wahinduye
       </button>
 
-      <button type="button"
-        id="settingsMusicBtn"
-        class="btn secondary">
-        Music: ON
-      </button>
+      <h3>Ibindi bikoresho</h3>
+
+      <div class="settings-grid">
+
+        <button type="button"
+          id="musicToggleBtn"
+          class="btn secondary">
+          🎵 Music: ON
+        </button>
+
+        <button type="button"
+          id="settingsMusicBtn"
+          class="btn secondary">
+          🎵 Music: ON
+        </button>
+
+        <button type="button"
+          id="roundsBtnSettings"
+          class="btn secondary"
+          onclick="document.getElementById('roundsBtn').click()">
+          🏆 Reba Rounds
+        </button>
+
+        <button type="button"
+          id="reviewAnswersBtnSettings"
+          class="btn secondary"
+          onclick="document.getElementById('reviewAnswersBtn').click()">
+          📖 Reba ibyo wakoze
+        </button>
+
+      </div>
 
       <div id="settingsMessage"
         class="summary"
@@ -910,7 +926,7 @@
       <button type="button"
         id="settingsHomeBtn"
         class="btn secondary">
-        🏠 Subira ahabanza
+        🏠 Ahabanza
       </button>
 
     </div>
