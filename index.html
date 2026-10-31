@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="./icon-512-3.png">
 <link rel="manifest" href="./manifest.json">
 
-<!-- GOOGLE ANALYTICS -->
+<!-- GOOGLE ANALYTICS: PRESERVED -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -27,7 +27,7 @@ gtag('js', new Date());
 gtag('config', 'G-2W9SXBBH1P');
 </script>
 
-<!-- GOOGLE ADSENSE -->
+<!-- GOOGLE ADSENSE: PRESERVED -->
 <script async
 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
 crossorigin="anonymous"></script>
@@ -213,6 +213,7 @@ h2 {
 
 .btn-block {
   width: 100%;
+  margin-top: 10px;
 }
 
 /* SETUP */
@@ -237,8 +238,8 @@ h2 {
   min-width: 180px;
 }
 
-.language-btn.selected,
-.mode-btn.selected {
+.language-btn.active,
+.mode-btn.active {
   outline: 3px solid #93c5fd;
   background: #047857;
 }
@@ -249,6 +250,23 @@ h2 {
 
 #confirmSetupBtn {
   min-width: 190px;
+}
+
+/* HOME MESSAGE */
+
+#homeMessage {
+  display: none;
+  padding: 12px;
+  margin: 15px 0;
+  text-align: center;
+  border-radius: 10px;
+  background: #334155;
+  color: #fff;
+}
+
+#homeMessage[data-type="error"] {
+  background: rgba(127,29,29,.8);
+  color: #fecaca;
 }
 
 /* ADS */
@@ -304,15 +322,14 @@ h2 {
 
 /* ROUNDS */
 
-#roundList,
-#roundsContainer {
+#roundList {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
   gap: 10px;
+  margin-top: 18px;
 }
 
-.round-card,
-.round-btn {
+.round-card {
   min-height: 75px;
   padding: 12px;
   border: 0;
@@ -322,10 +339,18 @@ h2 {
   font-weight: bold;
 }
 
-.round-card:disabled,
-.round-btn:disabled {
+.round-card.completed {
+  background: #047857;
+}
+
+.round-card.locked {
   opacity: .45;
   cursor: not-allowed;
+}
+
+.round-number,
+.round-status {
+  display: block;
 }
 
 /* QUIZ */
@@ -379,7 +404,6 @@ h2 {
 }
 
 #questionImage {
-  display: block;
   max-width: 100%;
   max-height: 280px;
   margin: 12px auto;
@@ -421,11 +445,28 @@ h2 {
   border-color: #ef4444;
 }
 
+.option-letter {
+  display: inline-block;
+  min-width: 28px;
+  font-weight: bold;
+}
+
 #answerFeedback {
   min-height: 35px;
   margin: 15px 0;
   text-align: center;
   font-weight: bold;
+}
+
+#explanation {
+  padding: 12px;
+  background: #334155;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+#timerBox.warning {
+  background: #991b1b;
 }
 
 .quiz-controls {
@@ -477,6 +518,7 @@ h2 {
   padding: 15px;
   border-radius: 12px;
   border: 1px solid #334155;
+  overflow-wrap: anywhere;
 }
 
 /* SETTINGS */
@@ -500,12 +542,9 @@ h2 {
   border-radius: 8px;
 }
 
-#errorMessage {
-  padding: 15px;
-  margin: 15px 0;
-  background: rgba(127,29,29,.5);
-  color: #fecaca;
-  border-radius: 12px;
+#settingsMessage {
+  text-align: center;
+  color: #86efac;
 }
 
 /* FOOTER */
@@ -568,7 +607,7 @@ h2 {
 
 <!-- HOME SCREEN -->
 
-<section id="homeScreen" class="screen active">
+<section id="homeScreen" class="screen">
 <div class="container">
 
 <header class="hero">
@@ -600,15 +639,35 @@ Test your knowledge, earn points and unlock new rounds.
 Choose your language and category, then start playing.
 </p>
 
-<button id="startBtn" type="button" class="main-btn btn-block">
+<div id="homeMessage" role="status" aria-live="polite"></div>
+
+<button id="startBtn" type="button" class="main-btn btn-block" disabled>
 🎮 Start Quiz
 </button>
 
 <button id="continueBtn" type="button"
-class="main-btn success-btn btn-block" hidden>
+class="main-btn success-btn btn-block"
+style="display:none">
 ▶️ Continue Quiz
 </button>
 
+<div style="text-align:center;margin-top:15px;color:#cbd5e1">
+Best Score: <strong id="homeScore">0</strong>
+<br>
+Next Round: <strong id="homeRound">1</strong>
+<br>
+<span id="homeStars">⭐</span>
+</div>
+
+</div>
+
+<!-- MUSIC CONTROL -->
+
+<div class="button-group">
+<button id="musicToggleBtn" type="button"
+class="main-btn secondary-btn">
+Music: ON
+</button>
 </div>
 
 <!-- MAIN NAVIGATION -->
@@ -621,7 +680,8 @@ class="main-btn secondary-btn">
 </button>
 
 <button id="reviewAnswersBtn" type="button"
-class="main-btn secondary-btn">
+class="main-btn secondary-btn"
+style="display:none">
 📖 Review Answers
 </button>
 
@@ -637,7 +697,72 @@ class="main-btn secondary-btn">
 
 </div>
 
-<!-- ADSENSE HOME AD -->
+<!-- GAME SETUP -->
+
+<div id="gameSetup" class="panel">
+
+<h2 class="screen-title" id="setupTitle">
+🎮 Prepare Your Quiz
+</h2>
+
+<p id="languageLabel">
+1. Choose your preferred language
+</p>
+
+<div class="button-group">
+
+<button type="button"
+class="main-btn language-btn"
+data-language="rw"
+aria-pressed="false">
+🇷🇼 Ikinyarwanda
+</button>
+
+<button type="button"
+class="main-btn language-btn"
+data-language="en"
+aria-pressed="false">
+🇬🇧 English
+</button>
+
+</div>
+
+<p id="modeLabel">
+2. Choose the quiz category
+</p>
+
+<div class="button-group">
+
+<button type="button"
+class="main-btn mode-btn"
+data-mode="traffic"
+aria-pressed="false">
+🚦 Amategeko y'umuhanda
+</button>
+
+<button type="button"
+class="main-btn mode-btn"
+data-mode="general"
+aria-pressed="false">
+🧠 Ubumenyi rusange
+</button>
+
+</div>
+
+<p id="selectionSummary" aria-live="polite">
+Choose a language and category to begin.
+</p>
+
+<button id="confirmSetupBtn"
+type="button"
+class="main-btn success-btn btn-block"
+disabled>
+▶️ Emeza ibyo wahisemo
+</button>
+
+</div>
+
+<!-- ADSENSE HOME AD ONLY -->
 
 <div class="ad-section">
 
@@ -812,84 +937,13 @@ and the wider world.
 
 <div>
 Contact:
-<a href="mailto:mazimpakae7@gmail.com">
-mazimpakae7@gmail.com
+<a href="mailto:mazimpakaisaie7@gmail.com">
+mazimpakaisaie7@gmail.com
 </a>
 </div>
 
 </footer>
 
-</div>
-</section>
-
-<!-- GAME SETUP SCREEN -->
-
-<section id="gameSetup" class="screen">
-<div class="container">
-
-<div class="panel">
-
-<h2 class="screen-title" id="setupTitle">
-🎮 Prepare Your Quiz
-</h2>
-
-<p id="languageLabel">
-1. Choose your preferred language
-</p>
-
-<div class="button-group">
-
-<button type="button"
-class="main-btn language-btn"
-data-language="rw">
-🇷🇼 Ikinyarwanda
-</button>
-
-<button type="button"
-class="main-btn language-btn"
-data-language="en">
-🇬🇧 English
-</button>
-
-</div>
-
-<p id="modeLabel">
-2. Choose the quiz category
-</p>
-
-<div class="button-group">
-
-<button type="button"
-class="main-btn mode-btn"
-data-mode="traffic">
-🚦 Amategeko y'umuhanda
-</button>
-
-<button type="button"
-class="main-btn mode-btn"
-data-mode="general">
-🧠 Ubumenyi rusange
-</button>
-
-</div>
-
-<p id="selectionSummary" aria-live="polite">
-Choose a language and category to begin.
-</p>
-
-<button id="confirmSetupBtn"
-type="button"
-class="main-btn success-btn btn-block">
-▶️ Emeza ibyo wahisemo
-</button>
-
-<button id="setupBackBtn"
-type="button"
-class="main-btn secondary-btn btn-block">
-← Subira inyuma
-</button>
-
-</div>
 </div>
 </section>
 
@@ -906,13 +960,26 @@ class="main-btn secondary-btn btn-block">
 Complete rounds to unlock more challenges.
 </p>
 
-<p style="text-align:center">
-Total rounds: <strong id="totalRounds">0</strong>
-</p>
+<div class="result-grid">
+
+<div class="result-stat">
+<strong id="roundsCompleted">0</strong>
+<div>Completed</div>
+</div>
+
+<div class="result-stat">
+<strong id="roundsTotal">0</strong>
+<div>Total Rounds</div>
+</div>
+
+<div class="result-stat">
+<strong id="roundsUnlocked">1</strong>
+<div>Unlocked</div>
+</div>
+
+</div>
 
 <div id="roundList"></div>
-
-<div id="roundsContainer"></div>
 
 <div class="button-group">
 <button id="roundsHomeBtn"
@@ -937,7 +1004,7 @@ class="main-btn secondary-btn">
 
 <div class="quiz-stat">
 Question
-<strong id="currentQuestionNumber">1</strong>
+<strong id="currentQuestionNumber">1/10</strong>
 </div>
 
 <div class="quiz-stat">
@@ -947,10 +1014,10 @@ Round
 
 <div class="quiz-stat">
 Score
-<strong id="scoreNumber">0</strong>
+<strong id="score">0</strong>
 </div>
 
-<div class="quiz-stat">
+<div class="quiz-stat" id="timerBox">
 Time
 <strong><span id="timer">30</span>s</strong>
 </div>
@@ -968,13 +1035,15 @@ General Knowledge
 <img id="questionImage"
 src=""
 alt="Question illustration"
-hidden>
+style="display:none">
 
 <h2 id="questionText">Loading question...</h2>
 
 <div id="optionsContainer"></div>
 
 <div id="answerFeedback" aria-live="polite"></div>
+
+<div id="explanation" style="display:none"></div>
 
 <div class="quiz-controls">
 
@@ -987,7 +1056,7 @@ Submit Answer
 <button id="nextQuestionBtn"
 type="button"
 class="main-btn"
-hidden>
+style="display:none">
 Next Question →
 </button>
 
@@ -1028,36 +1097,19 @@ Home
 
 <p id="resultMessage"></p>
 
-<div class="result-grid">
-
-<div class="result-stat">
-<strong id="resultRound">1</strong>
-<div>Round</div>
-</div>
-
-<div class="result-stat">
-<strong id="resultCorrect">0</strong>
-<div>Correct</div>
-</div>
-
-<div class="result-stat">
-<strong id="resultWrong">0</strong>
-<div>Wrong</div>
-</div>
-
-</div>
-
 <div class="button-group">
 
 <button id="resultNextBtn"
 type="button"
-class="main-btn success-btn">
+class="main-btn success-btn"
+style="display:none">
 Next Round
 </button>
 
 <button id="retryBtn"
 type="button"
-class="main-btn">
+class="main-btn"
+style="display:none">
 Retry Round
 </button>
 
@@ -1088,28 +1140,14 @@ Home
 
 <h2 class="screen-title">📖 Review Answers</h2>
 
-<div id="reviewSummary"></div>
-
 <div id="reviewContainer"></div>
 
 <div class="button-group">
 
-<button id="reviewRetryBtn"
-type="button"
-class="main-btn">
-Retry Round
-</button>
-
-<button id="reviewBackBtn"
-type="button"
-class="main-btn secondary-btn">
-Back
-</button>
-
 <button id="reviewHomeBtn"
 type="button"
 class="main-btn secondary-btn">
-Home
+← Home
 </button>
 
 </div>
@@ -1146,14 +1184,16 @@ Home
 </div>
 
 <div class="setting-row">
-<label for="musicSwitch">🎵 Background Music</label>
-<input id="musicSwitch" type="checkbox">
+<span>🎵 Background Music</span>
+
+<button id="settingsMusicBtn"
+type="button"
+class="main-btn secondary-btn">
+Music: ON
+</button>
 </div>
 
-<div class="setting-row">
-<label for="soundSwitch">🔊 Sound Effects</label>
-<input id="soundSwitch" type="checkbox">
-</div>
+<p id="settingsMessage" aria-live="polite"></p>
 
 <div class="button-group">
 
@@ -1181,144 +1221,96 @@ class="main-btn secondary-btn">
 </div>
 </section>
 
-<!-- ERROR SCREEN -->
-
-<section id="errorScreen" class="screen">
-<div class="container">
-
-<div class="panel">
-
-<h2 class="screen-title">
-⚠️ Something Went Wrong
-</h2>
-
-<div id="errorMessage" aria-live="polite">
-Quiz Master could not load correctly.
 </div>
 
-<div class="button-group">
-
-<button id="errorRestartBtn"
-type="button"
-class="main-btn">
-Restart
-</button>
-
-<button id="errorHomeBtn"
-type="button"
-class="main-btn secondary-btn">
-Home
-</button>
-
-</div>
-
-</div>
-</div>
-</section>
-
-</div>
-
-<!-- BACKGROUND MUSIC
-     Add your music file as music.mp3 in the project root. -->
+<!-- BACKGROUND MUSIC -->
+<!-- Place music.mp3 in the project root folder. -->
 
 <audio id="backgroundMusic"
 src="./music.mp3"
 loop
 preload="none"></audio>
 
-<!-- MUSIC SETTINGS -->
+<!-- MUSIC PLAYER: CONNECTED TO QUESTIONS.JS EVENT -->
 
 <script>
 (() => {
 "use strict";
 
 const music = document.getElementById("backgroundMusic");
-const musicSwitch = document.getElementById("musicSwitch");
-const soundSwitch = document.getElementById("soundSwitch");
+const MUSIC_KEY = "quizmasterMusicEnabled";
 
-if (!music || !musicSwitch) return;
+if (!music) return;
 
-const MUSIC_KEY = "quizmasterMusic";
-const SOUND_KEY = "quizmasterSound";
+let musicEnabled =
+  localStorage.getItem(MUSIC_KEY) !== "false";
 
-musicSwitch.checked = localStorage.getItem(MUSIC_KEY) === "true";
-if (soundSwitch) {
-  soundSwitch.checked = localStorage.getItem(SOUND_KEY) === "true";
+function updateMusicButtons() {
+  const label = musicEnabled ? "Music: ON" : "Music: OFF";
+
+  const homeButton = document.getElementById("musicToggleBtn");
+  const settingsButton = document.getElementById("settingsMusicBtn");
+
+  if (homeButton) homeButton.textContent = label;
+  if (settingsButton) settingsButton.textContent = label;
 }
 
-musicSwitch.addEventListener("change", () => {
-  localStorage.setItem(MUSIC_KEY, String(musicSwitch.checked));
+function playMusic() {
+  if (!musicEnabled) return;
 
-  if (musicSwitch.checked) {
-    music.play().catch(() => {
-      musicSwitch.checked = false;
-      localStorage.setItem(MUSIC_KEY, "false");
-    });
+  music.play().catch(() => {
+    // Browser may require a user interaction before playback.
+  });
+}
+
+function stopMusic() {
+  music.pause();
+  music.currentTime = 0;
+}
+
+document.addEventListener("quizmaster:music-changed", event => {
+  musicEnabled = Boolean(event.detail.enabled);
+  updateMusicButtons();
+
+  if (musicEnabled) {
+    playMusic();
   } else {
-    music.pause();
-    music.currentTime = 0;
+    stopMusic();
   }
 });
 
-document.addEventListener("click", () => {
-  if (musicSwitch.checked && music.paused) {
-    music.play().catch(() => {});
+document.addEventListener("click", event => {
+  const button = event.target.closest("#musicToggleBtn, #settingsMusicBtn");
+
+  if (!button) return;
+
+  // The quiz engine also handles the button and changes its setting.
+  // Playback is handled by the music-changed event.
+});
+
+document.addEventListener("pointerdown", () => {
+  if (musicEnabled && music.paused) {
+    playMusic();
   }
 }, { once: true });
 
-if (soundSwitch) {
-  soundSwitch.addEventListener("change", () => {
-    localStorage.setItem(SOUND_KEY, String(soundSwitch.checked));
-  });
-}
+document.addEventListener("keydown", () => {
+  if (musicEnabled && music.paused) {
+    playMusic();
+  }
+}, { once: true });
+
+updateMusicButtons();
+
 })();
 </script>
 
-<!-- SHARE BUTTON -->
-
-<script>
-(() => {
-"use strict";
-
-const shareBtn = document.getElementById("shareBtn");
-if (!shareBtn) return;
-
-shareBtn.addEventListener("click", async () => {
-
-const shareData = {
-  title: "Quiz Master 🇷🇼",
-  text: "Test your knowledge with Quiz Master!",
-  url: window.location.href
-};
-
-try {
-  if (navigator.share) {
-    await navigator.share(shareData);
-  } else {
-    await navigator.clipboard.writeText(shareData.url);
-    alert("✅ Link Copied!");
-  }
-} catch (error) {
-
-  if (error.name === "AbortError") return;
-
-  try {
-    await navigator.clipboard.writeText(shareData.url);
-    alert("✅ Link Copied!");
-  } catch {
-    prompt("Copy this link:", shareData.url);
-  }
-}
-});
-})();
-</script>
-
-<!-- ADSENSE INITIALIZATION -->
+<!-- ADSENSE INITIALIZATION: HOME AD ONLY -->
 
 <script>
 window.addEventListener("load", function() {
 
-  document.querySelectorAll(".adsbygoogle").forEach(function(ad) {
+  document.querySelectorAll("#homeScreen .adsbygoogle").forEach(function(ad) {
 
     if (!ad.getAttribute("data-adsbygoogle-status")) {
 
@@ -1335,7 +1327,7 @@ window.addEventListener("load", function() {
 });
 </script>
 
-<!-- QUIZ ENGINE: KEEP THIS FILE -->
+<!-- QUIZ ENGINE -->
 <script src="./questions.js" defer></script>
 
 </body>
