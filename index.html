@@ -2,1333 +2,1006 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
-
-<meta name="description" content="Quiz Master is a free educational quiz game covering Geography, History, Science, Technology, Rwanda, Africa, Sports and General Knowledge.">
-<meta name="keywords" content="Quiz Master, Rwanda Quiz, General Knowledge, Geography, History, Science, Traffic Rules">
-<meta name="author" content="Mazimpaka Isaie">
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow">
-<meta name="theme-color" content="#111827">
-
-<link rel="icon" type="image/png" href="./icon-512-3.png">
-<link rel="apple-touch-icon" href="./icon-512-3.png">
-<link rel="manifest" href="./manifest.json">
-
-<!-- GOOGLE ANALYTICS: PRESERVED -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2W9SXBBH1P');
-</script>
-
-<!-- GOOGLE ADSENSE: PRESERVED -->
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-crossorigin="anonymous"></script>
-
-<style>
-:root {
-  --bg: #0f172a;
-  --panel: #1e293b;
-  --card: #263449;
-  --text: #f8fafc;
-  --muted: #cbd5e1;
-  --primary: #2563eb;
-  --border: #475569;
-  --success: #059669;
-  --danger: #dc2626;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.6;
-  background: linear-gradient(135deg,#0f172a,#111827,#172554);
-  color: var(--text);
-}
-
-button, input, select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: .45;
-  cursor: not-allowed;
-}
-
-a {
-  color: #93c5fd;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.container {
-  width: min(1100px,94%);
-  margin: auto;
-}
-
-.screen {
-  display: none;
-  width: 100%;
-  min-height: 100vh;
-  padding: 20px 0 35px;
-}
-
-.screen.active {
-  display: block;
-}
-
-.hero {
-  text-align: center;
-  padding: 25px 12px;
-}
-
-.logo {
-  width: 95px;
-  height: 95px;
-  object-fit: contain;
-  border-radius: 20px;
-}
-
-h1 {
-  font-size: clamp(2rem,6vw,3.2rem);
-  margin: 8px 0;
-}
-
-h2 {
-  margin-top: 0;
-}
-
-.tagline {
-  color: #93c5fd;
-  font-weight: bold;
-}
-
-.hero-description {
-  max-width: 760px;
-  margin: 15px auto;
-  color: var(--muted);
-}
-
-.panel,
-.content-card {
-  background: rgba(30,41,59,.96);
-  border: 1px solid rgba(148,163,184,.2);
-  border-radius: 16px;
-  padding: 20px;
-}
-
-.panel {
-  width: min(900px,94%);
-  margin: 20px auto;
-}
-
-.content-section {
-  margin: 30px auto;
-}
-
-.content-section h2,
-.screen-title {
-  text-align: center;
-}
-
-.content-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
-  gap: 14px;
-}
-
-.content-card h3 {
-  color: #bfdbfe;
-  margin-top: 0;
-}
-
-.content-card p {
-  color: var(--muted);
-  margin-bottom: 0;
-}
-
-/* BUTTONS */
-
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 18px auto;
-}
-
-.main-btn {
-  border: 0;
-  border-radius: 11px;
-  padding: 12px 18px;
-  background: var(--primary);
-  color: white;
-  font-weight: bold;
-  transition: .15s;
-}
-
-.main-btn:hover:not(:disabled) {
-  opacity: .88;
-  transform: translateY(-1px);
-}
-
-.secondary-btn {
-  background: #475569;
-}
-
-.success-btn {
-  background: var(--success);
-}
-
-.warning-btn {
-  background: #d97706;
-}
-
-.danger-btn {
-  background: var(--danger);
-}
-
-.btn-block {
-  width: 100%;
-  margin-top: 10px;
-}
-
-/* SETUP */
-
-#gameSetup {
-  max-width: 760px;
-  margin: 20px auto;
-  text-align: center;
-  border: 1px solid rgba(147,197,253,.35);
-}
-
-#gameSetup p {
-  color: var(--muted);
-}
-
-#gameSetup .button-group {
-  margin: 12px auto 20px;
-}
-
-.language-btn,
-.mode-btn {
-  min-width: 180px;
-}
-
-.language-btn.active,
-.mode-btn.active {
-  outline: 3px solid #93c5fd;
-  background: #047857;
-}
-
-#selectionSummary {
-  min-height: 28px;
-}
-
-#confirmSetupBtn {
-  min-width: 190px;
-}
-
-/* HOME MESSAGE */
-
-#homeMessage {
-  display: none;
-  padding: 12px;
-  margin: 15px 0;
-  text-align: center;
-  border-radius: 10px;
-  background: #334155;
-  color: #fff;
-}
-
-#homeMessage[data-type="error"] {
-  background: rgba(127,29,29,.8);
-  color: #fecaca;
-}
-
-/* ADS */
-
-.ad-section {
-  width: 100%;
-  margin: 25px auto;
-  text-align: center;
-}
-
-.ad-label {
-  color: #94a3b8;
-  font-size: .75rem;
-  margin-bottom: 7px;
-}
-
-.ad-box {
-  width: 100%;
-  min-height: 90px;
-  overflow: hidden;
-}
-
-.adsbygoogle {
-  display: block;
-  width: 100%;
-}
-
-/* CATEGORIES */
-
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
-  gap: 12px;
-}
-
-.category-card {
-  padding: 15px 10px;
-  text-align: center;
-  background: var(--panel);
-  border-radius: 12px;
-  border: 1px solid #334155;
-}
-
-.category-card strong,
-.category-card span {
-  display: block;
-}
-
-.category-card span {
-  font-size: .83rem;
-  color: #94a3b8;
-}
-
-/* ROUNDS */
-
-#roundList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(110px,1fr));
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.round-card {
-  min-height: 75px;
-  padding: 12px;
-  border: 0;
-  border-radius: 12px;
-  background: #334155;
-  color: white;
-  font-weight: bold;
-}
-
-.round-card.completed {
-  background: #047857;
-}
-
-.round-card.locked {
-  opacity: .45;
-  cursor: not-allowed;
-}
-
-.round-number,
-.round-status {
-  display: block;
-}
-
-/* QUIZ */
-
-.quiz-header {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 8px;
-}
-
-.quiz-stat {
-  padding: 10px 5px;
-  text-align: center;
-  background: var(--panel);
-  border-radius: 10px;
-  font-size: .9rem;
-}
-
-.quiz-stat strong {
-  display: block;
-  font-size: 21px;
-}
-
-.progress-container {
-  width: 100%;
-  height: 9px;
-  background: #334155;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 18px 0;
-}
-
-#progressFill {
-  width: 0%;
-  height: 100%;
-  background: #2563eb;
-  transition: width .2s;
-}
-
-#categoryIndicator {
-  display: inline-block;
-  padding: 5px 12px;
-  border-radius: 20px;
-  background: #1d4ed8;
-  font-size: .85rem;
-}
-
-#questionText {
-  font-size: clamp(1.2rem,4vw,1.7rem);
-  margin: 15px 0;
-}
-
-#questionImage {
-  max-width: 100%;
-  max-height: 280px;
-  margin: 12px auto;
-  border-radius: 12px;
-  object-fit: contain;
-}
-
-#optionsContainer {
-  display: grid;
-  gap: 10px;
-}
-
-#optionsContainer button {
-  width: 100%;
-  padding: 14px;
-  text-align: left;
-  color: white;
-  background: #1e293b;
-  border: 1px solid #475569;
-  border-radius: 11px;
-}
-
-#optionsContainer button:hover:not(:disabled) {
-  background: #334155;
-}
-
-#optionsContainer button.selected {
-  border: 2px solid #60a5fa;
-  background: #1d4ed8;
-}
-
-#optionsContainer button.correct {
-  background: #047857;
-  border-color: #10b981;
-}
-
-#optionsContainer button.incorrect {
-  background: #991b1b;
-  border-color: #ef4444;
-}
-
-.option-letter {
-  display: inline-block;
-  min-width: 28px;
-  font-weight: bold;
-}
-
-#answerFeedback {
-  min-height: 35px;
-  margin: 15px 0;
-  text-align: center;
-  font-weight: bold;
-}
-
-#explanation {
-  padding: 12px;
-  background: #334155;
-  border-radius: 10px;
-  margin: 12px 0;
-}
-
-#timerBox.warning {
-  background: #991b1b;
-}
-
-.quiz-controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-/* RESULTS */
-
-.result-score {
-  text-align: center;
-  font-size: 2.7rem;
-  font-weight: 800;
-}
-
-#resultPercent,
-#resultStars,
-#resultTitle,
-#resultMessage {
-  text-align: center;
-}
-
-.result-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.result-stat {
-  padding: 15px;
-  text-align: center;
-  background: var(--panel);
-  border-radius: 12px;
-}
-
-/* REVIEW */
-
-#reviewContainer {
-  display: grid;
-  gap: 12px;
-}
-
-.review-item {
-  background: var(--panel);
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #334155;
-  overflow-wrap: anywhere;
-}
-
-/* SETTINGS */
-
-.setting-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  padding: 14px 0;
-  border-bottom: 1px solid #334155;
-}
-
-.setting-row:last-child {
-  border-bottom: 0;
-}
-
-.setting-row select {
-  max-width: 180px;
-  padding: 8px;
-  border-radius: 8px;
-}
-
-#settingsMessage {
-  text-align: center;
-  color: #86efac;
-}
-
-/* FOOTER */
-
-.footer {
-  width: min(1000px,94%);
-  margin: 40px auto 0;
-  padding: 25px 10px;
-  text-align: center;
-  border-top: 1px solid #334155;
-  color: #94a3b8;
-  font-size: .9rem;
-}
-
-.footer-links {
-  margin: 12px 0;
-}
-
-.footer-links a {
-  margin: 0 5px;
-}
-
-@media(max-width:650px) {
-  .hero {
-    padding-top: 15px;
-  }
-
-  .logo {
-    width: 85px;
-    height: 85px;
-  }
-
-  .button-group {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .main-btn {
-    width: 100%;
-  }
-
-  .quiz-header {
-    grid-template-columns: repeat(2,1fr);
-  }
-
-  .panel {
-    padding: 16px;
-  }
-
-  .setting-row {
-    align-items: center;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10233f">
+
+  <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
+  <meta name="description" content="Quiz Master is a free knowledge quiz game covering road safety, Geography, History, Science, Technology, Rwanda, Africa, Sports and General Knowledge.">
+
+  <link rel="icon" type="image/png" href="./icon-512-3.png">
+  <link rel="apple-touch-icon" href="./icon-192-4.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2W9SXBBH1P');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
+    crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg: #08172b;
+      --panel: #10233f;
+      --panel2: #172f50;
+      --primary: #155eef;
+      --primary-light: #3978ff;
+      --text: #f5f8ff;
+      --muted: #a9bad3;
+      --border: rgba(255,255,255,.12);
+      --green: #20bd78;
+      --red: #ef5350;
+      --gold: #ffc857;
+      --radius: 17px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    button, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .container {
+      width: min(100% - 28px, 850px);
+      margin: auto;
+    }
+
+    header {
+      background: #0c1d35;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 800;
+      color: white;
+      text-decoration: none;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .small-btn {
+      border: 1px solid var(--border);
+      color: white;
+      background: var(--panel2);
+      border-radius: 10px;
+      padding: 8px 11px;
+      font-size: 13px;
+    }
+
+    main {
+      padding: 22px 0 40px;
+    }
+
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 32px 15px 22px;
+    }
+
+    .hero-icon {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 6vw, 39px);
+      line-height: 1.2;
+      margin: 5px 0 12px;
+    }
+
+    h2 {
+      font-size: 23px;
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin: 16px 0;
+    }
+
+    .section-title {
+      margin-bottom: 12px;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px;
+    }
+
+    .choice-btn {
+      background: var(--panel2);
+      color: white;
+      border: 2px solid var(--border);
+      border-radius: 13px;
+      padding: 15px 10px;
+      min-height: 65px;
+      font-weight: 700;
+    }
+
+    .choice-btn.selected {
+      border-color: var(--primary-light);
+      background: rgba(21,94,239,.25);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 17px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      min-height: 46px;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: var(--primary-light);
+    }
+
+    .btn.secondary {
+      background: var(--panel2);
+      border: 1px solid var(--border);
+    }
+
+    .btn.success {
+      background: #16895b;
+    }
+
+    .btn.danger {
+      background: #a83232;
+    }
+
+    .btn.gold {
+      background: #a66c08;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .btn-row .btn {
+      flex: 1 1 130px;
+    }
+
+    .full {
+      width: 100%;
+    }
+
+    .summary {
+      background: rgba(21,94,239,.12);
+      border: 1px solid rgba(57,120,255,.3);
+      padding: 12px;
+      border-radius: 11px;
+      margin: 15px 0;
+      color: var(--text);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin: 16px 0;
+    }
+
+    .stat {
+      background: var(--panel2);
+      padding: 13px 8px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 21px;
+      color: white;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .ad-container {
+      margin: 20px auto;
+      min-height: 90px;
+      max-width: 100%;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .ad-label {
+      font-size: 10px;
+      color: #8092aa;
+      margin-bottom: 5px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 9px;
+      background: #263c59;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 12px 0;
+    }
+
+    #progressFill {
+      height: 100%;
+      width: 0;
+      background: var(--green);
+      transition: width .3s;
+    }
+
+    .quiz-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    #timerBox {
+      display: inline-flex;
+      padding: 8px 13px;
+      border-radius: 10px;
+      background: var(--panel2);
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    #questionText {
+      font-size: 21px;
+      line-height: 1.45;
+      margin: 20px 0;
+      color: white;
+    }
+
+    #questionImage {
+      display: none;
+      width: 100%;
+      max-height: 260px;
+      object-fit: contain;
+      border-radius: 12px;
+      margin: 12px 0;
+    }
+
+    #optionsContainer {
+      display: grid;
+      gap: 10px;
+    }
+
+    #optionsContainer button,
+    #optionsContainer .option-btn {
+      width: 100%;
+      text-align: left;
+      color: white;
+      background: var(--panel2);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+    }
+
+    #optionsContainer button.selected,
+    #optionsContainer .selected {
+      border-color: var(--primary-light);
+      background: rgba(21,94,239,.25);
+    }
+
+    #optionsContainer button.correct {
+      border-color: var(--green);
+    }
+
+    #optionsContainer button.wrong {
+      border-color: var(--red);
+    }
+
+    #answerFeedback {
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    #explanation {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .result-score {
+      font-size: 43px;
+      font-weight: 900;
+      color: var(--gold);
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    #resultStars {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .round-item,
+    .review-item {
+      padding: 14px;
+      margin: 9px 0;
+      border: 1px solid var(--border);
+      background: var(--panel2);
+      border-radius: 12px;
+    }
+
+    .round-item button {
+      margin-top: 8px;
+    }
+
+    .review-item p {
+      margin: 5px 0;
+    }
+
+    .correct-text {
+      color: var(--green);
+    }
+
+    .wrong-text {
+      color: #ff7777;
+    }
+
+    .field {
+      display: block;
+      width: 100%;
+      background: var(--panel2);
+      color: white;
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: 10px;
+      margin: 8px 0 15px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .info-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 15px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 12px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #8eb5ff;
+      margin: 0 7px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 20px, 850px);
+      }
+
+      .panel {
+        padding: 15px;
+      }
+
+      .choice-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="app">
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="./index.html">🇷🇼 Quiz Master</a>
 
-<!-- HOME SCREEN -->
-
-<section id="homeScreen" class="screen">
-<div class="container">
-
-<header class="hero">
-
-<img src="./icon-512-3.png"
-     alt="Quiz Master Rwanda logo"
-     class="logo">
-
-<h1>Quiz Master 🇷🇼</h1>
-
-<div class="tagline">
-Test Your Knowledge. Learn. Score. Unlock.
-</div>
-
-<p class="hero-description">
-Quiz Master is a free educational quiz game covering
-Geography, History, Science, Technology, Rwanda,
-Africa, Sports and General Knowledge.
-Test your knowledge, earn points and unlock new rounds.
-</p>
-
+    <div class="header-actions">
+      <button class="small-btn" id="settingsBtn" type="button">⚙️ Settings</button>
+      <button class="small-btn" id="shareBtn" type="button">↗ Share</button>
+    </div>
+  </div>
 </header>
 
-<div class="panel">
-
-<h2 style="text-align:center">Welcome to Quiz Master!</h2>
-
-<p style="text-align:center;color:#cbd5e1">
-Choose your language and category, then start playing.
-</p>
-
-<div id="homeMessage" role="status" aria-live="polite"></div>
-
-<button id="startBtn" type="button" class="main-btn btn-block" disabled>
-🎮 Start Quiz
-</button>
-
-<button id="continueBtn" type="button"
-class="main-btn success-btn btn-block"
-style="display:none">
-▶️ Continue Quiz
-</button>
-
-<div style="text-align:center;margin-top:15px;color:#cbd5e1">
-Best Score: <strong id="homeScore">0</strong>
-<br>
-Next Round: <strong id="homeRound">1</strong>
-<br>
-<span id="homeStars">⭐</span>
-</div>
-
-</div>
-
-<!-- MUSIC CONTROL -->
-
-<div class="button-group">
-<button id="musicToggleBtn" type="button"
-class="main-btn secondary-btn">
-Music: ON
-</button>
-</div>
-
-<!-- MAIN NAVIGATION -->
-
-<div class="button-group">
-
-<button id="roundsBtn" type="button"
-class="main-btn secondary-btn">
-🏆 Quiz Rounds
-</button>
-
-<button id="reviewAnswersBtn" type="button"
-class="main-btn secondary-btn"
-style="display:none">
-📖 Review Answers
-</button>
-
-<button id="settingsBtn" type="button"
-class="main-btn secondary-btn">
-⚙️ Settings
-</button>
-
-<button id="shareBtn" type="button"
-class="main-btn secondary-btn">
-📤 Share Quiz Master
-</button>
-
-</div>
-
-<!-- GAME SETUP -->
-
-<div id="gameSetup" class="panel">
-
-<h2 class="screen-title" id="setupTitle">
-🎮 Prepare Your Quiz
-</h2>
-
-<p id="languageLabel">
-1. Choose your preferred language
-</p>
-
-<div class="button-group">
-
-<button type="button"
-class="main-btn language-btn"
-data-language="rw"
-aria-pressed="false">
-🇷🇼 Ikinyarwanda
-</button>
-
-<button type="button"
-class="main-btn language-btn"
-data-language="en"
-aria-pressed="false">
-🇬🇧 English
-</button>
-
-</div>
-
-<p id="modeLabel">
-2. Choose the quiz category
-</p>
-
-<div class="button-group">
-
-<button type="button"
-class="main-btn mode-btn"
-data-mode="traffic"
-aria-pressed="false">
-🚦 Amategeko y'umuhanda
-</button>
-
-<button type="button"
-class="main-btn mode-btn"
-data-mode="general"
-aria-pressed="false">
-🧠 Ubumenyi rusange
-</button>
-
-</div>
-
-<p id="selectionSummary" aria-live="polite">
-Choose a language and category to begin.
-</p>
-
-<button id="confirmSetupBtn"
-type="button"
-class="main-btn success-btn btn-block"
-disabled>
-▶️ Emeza ibyo wahisemo
-</button>
-
-</div>
-
-<!-- ADSENSE HOME AD ONLY -->
-
-<div class="ad-section">
-
-<div class="ad-label">Advertisement</div>
-
-<div class="ad-box">
-
-<ins class="adsbygoogle"
-style="display:block"
-data-ad-client="ca-pub-2666698676518429"
-data-ad-slot="9045712897"
-data-ad-format="auto"
-data-full-width-responsive="true">
-</ins>
-
-</div>
-</div>
-
-<!-- ABOUT -->
-
-<section class="content-section">
-
-<h2>About Quiz Master</h2>
-
-<div class="content-grid">
-
-<article class="content-card">
-<h3>What Is Quiz Master?</h3>
-<p>
-Quiz Master 🇷🇼 is an educational knowledge game
-designed to help players test their knowledge and
-discover useful facts from around the world.
-</p>
-</article>
-
-<article class="content-card">
-<h3>Learning With Quiz Master</h3>
-<p>
-Each question gives players an opportunity to
-learn from correct answers and improve their
-knowledge through practice.
-</p>
-</article>
-
-<article class="content-card">
-<h3>How to Play</h3>
-<p>
-Choose a language and quiz category, start a round,
-select an answer and submit it before the timer ends.
-</p>
-</article>
-
-<article class="content-card">
-<h3>Quiz Progress</h3>
-<p>
-Complete quiz rounds, earn points and unlock
-additional challenges by meeting the required score.
-</p>
-</article>
-
-<article class="content-card">
-<h3>Why Play Quiz Master?</h3>
-<p>
-Explore different subjects through interactive
-questions and discover interesting information.
-</p>
-</article>
-
-<article class="content-card">
-<h3>Built for Knowledge</h3>
-<p>
-Quiz Master provides an accessible way to practice
-general knowledge and learn about Rwanda, Africa
-and the wider world.
-</p>
-</article>
-
-</div>
-</section>
-
-<!-- CATEGORIES -->
-
-<section class="content-section">
-
-<h2>Explore Quiz Categories</h2>
-
-<div class="category-grid">
-
-<div class="category-card">
-<strong>🌍 Geography</strong>
-<span>Countries and places</span>
-</div>
-
-<div class="category-card">
-<strong>📜 History</strong>
-<span>Historical events and people</span>
-</div>
-
-<div class="category-card">
-<strong>🔬 Science</strong>
-<span>Science and nature</span>
-</div>
-
-<div class="category-card">
-<strong>💻 Technology</strong>
-<span>Digital knowledge</span>
-</div>
-
-<div class="category-card">
-<strong>🇷🇼 Rwanda</strong>
-<span>Knowledge about Rwanda</span>
-</div>
-
-<div class="category-card">
-<strong>🌍 Africa</strong>
-<span>African countries and facts</span>
-</div>
-
-<div class="category-card">
-<strong>⚽ Sports</strong>
-<span>Sports and competitions</span>
-</div>
-
-<div class="category-card">
-<strong>🧠 General Knowledge</strong>
-<span>Interesting facts</span>
-</div>
-
-</div>
-</section>
-
-<!-- FEATURES -->
-
-<section class="content-section">
-
-<h2>Quiz Master Features</h2>
-
-<div class="content-grid">
-
-<article class="content-card">
-<h3>🎯 Score Points</h3>
-<p>Earn points by answering questions correctly.</p>
-</article>
-
-<article class="content-card">
-<h3>🏆 Unlock Rounds</h3>
-<p>Progress through rounds by reaching the required score.</p>
-</article>
-
-<article class="content-card">
-<h3>📚 Learn From Questions</h3>
-<p>Discover facts and explanations as you play.</p>
-</article>
-
-<article class="content-card">
-<h3>📱 Mobile Friendly</h3>
-<p>Designed for phones, tablets and computers.</p>
-</article>
-
-</div>
-</section>
-
-<footer class="footer">
-
-<div>© 2026 Quiz Master 🇷🇼 — Knowledge Quiz</div>
-
-<div class="footer-links">
-<a href="./privacy-policy.html">Privacy Policy</a>
-|
-<a href="./terms.html">Terms of Service</a>
-</div>
-
-<div>
-Contact:
-<a href="mailto:mazimpakaisaie7@gmail.com">
-mazimpakaisaie7@gmail.com
-</a>
-</div>
-
+<main class="container">
+
+  <!-- HOME SCREEN -->
+  <section id="homeScreen" class="screen">
+
+    <div class="hero">
+      <div class="hero-icon">🧠🇷🇼</div>
+      <h1>Quiz Master</h1>
+      <p>Test your knowledge. Learn something new every day!</p>
+    </div>
+
+    <!-- HOME ONLY ADSENSE AD -->
+    <div class="ad-container">
+      <div class="ad-label">ADVERTISEMENT</div>
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-2666698676518429"
+        data-ad-slot="9045712897"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    </div>
+
+    <div class="panel">
+      <h2>Welcome to Quiz Master 🇷🇼</h2>
+      <p>
+        Challenge yourself with road safety and general knowledge questions.
+        Improve your knowledge, earn points and unlock new rounds.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="homeRound">1</strong>
+          <span>Current Round</span>
+        </div>
+        <div class="stat">
+          <strong id="homeScore">0</strong>
+          <span>Total Score</span>
+        </div>
+        <div class="stat">
+          <strong id="homeStars">0 ⭐</strong>
+          <span>Stars</span>
+        </div>
+      </div>
+
+      <p id="homeMessage" class="summary">
+        Choose your language and category to begin.
+      </p>
+
+      <div id="gameSetup">
+
+        <h3 class="section-title">1. Choose Language</h3>
+
+        <div class="choice-grid">
+          <button class="choice-btn language-btn"
+            data-language="rw" type="button">
+            🇷🇼 Ikinyarwanda
+          </button>
+
+          <button class="choice-btn language-btn"
+            data-language="en" type="button">
+            🇬🇧 English
+          </button>
+        </div>
+
+        <h3 class="section-title" style="margin-top:22px">
+          2. Choose Category
+        </h3>
+
+        <div class="choice-grid">
+          <button class="choice-btn mode-btn"
+            data-mode="traffic" type="button">
+            🚦 Amategeko y'umuhanda
+          </button>
+
+          <button class="choice-btn mode-btn"
+            data-mode="general" type="button">
+            🌍 Ubumenyi rusange
+          </button>
+        </div>
+
+        <div id="selectionSummary" class="summary">
+          Select language and category.
+        </div>
+
+        <button id="confirmSetupBtn"
+          class="btn full"
+          type="button"
+          disabled>
+          Confirm Selection
+        </button>
+
+      </div>
+
+      <div class="btn-row">
+        <button id="startBtn" class="btn full" type="button" disabled>
+          ▶ Start Quiz
+        </button>
+
+        <button id="continueBtn"
+          class="btn success full"
+          type="button"
+          style="display:none">
+          Continue Quiz
+        </button>
+      </div>
+
+      <div class="btn-row">
+        <button id="roundsBtn" class="btn secondary" type="button">
+          🏆 Quiz Rounds
+        </button>
+
+        <button id="reviewAnswersBtn"
+          class="btn secondary"
+          type="button"
+          style="display:none">
+          📖 Review Answers
+        </button>
+      </div>
+
+    </div>
+
+    <div class="panel">
+      <h2>About Quiz Master</h2>
+      <p>
+        Quiz Master is a learning game designed to help users improve
+        their knowledge of road safety, Rwanda, Africa, science,
+        geography, history, technology and more.
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>Categories</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>🚦 Road Safety</h3>
+          <p>Learn traffic signs, road rules and safe driving practices.</p>
+        </div>
+        <div class="info-card">
+          <h3>🌍 General Knowledge</h3>
+          <p>Explore science, geography, history, sports and world facts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Features</h2>
+      <ul>
+        <li>English and Kinyarwanda language options.</li>
+        <li>Timed questions and score tracking.</li>
+        <li>Different rounds and progress unlocking.</li>
+        <li>Review answers and explanations.</li>
+        <li>Background music controls.</li>
+        <li>Save your game progress on your device.</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- QUIZ SCREEN -->
+  <section id="quizScreen" class="screen">
+
+    <div class="panel">
+
+      <div class="quiz-top">
+        <span>Round <strong id="currentRound">1</strong></span>
+        <span>Question <strong id="currentQuestionNumber">1/10</strong></span>
+        <span>Score <strong id="score">0</strong></span>
+        <span id="categoryIndicator">General Knowledge</span>
+      </div>
+
+      <div id="timerBox">
+        ⏱ <span id="timer">30</span>s
+      </div>
+
+      <div class="progress-track">
+        <div id="progressFill"></div>
+      </div>
+
+      <img id="questionImage" alt="Question illustration">
+
+      <h2 id="questionText">Loading question...</h2>
+
+      <div id="optionsContainer"></div>
+
+      <div id="answerFeedback" aria-live="polite"></div>
+
+      <div id="explanation"></div>
+
+      <button id="submitAnswerBtn"
+        class="btn full"
+        type="button"
+        style="margin-top:15px">
+        Submit Answer
+      </button>
+
+      <div class="btn-row">
+        <button id="nextQuestionBtn"
+          class="btn full"
+          type="button"
+          style="display:none">
+          Next Question →
+        </button>
+
+        <button id="quizReviewBtn"
+          class="btn secondary"
+          type="button">
+          Review Answers
+        </button>
+
+        <button id="quizHomeBtn"
+          class="btn secondary"
+          type="button">
+          🏠 Home
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- RESULT SCREEN -->
+  <section id="resultScreen" class="screen">
+
+    <div class="panel">
+      <h2 id="resultTitle" style="text-align:center">
+        Round Complete!
+      </h2>
+
+      <p id="resultMessage" style="text-align:center">
+        Your results are ready.
+      </p>
+
+      <div id="resultStars">⭐</div>
+
+      <div class="result-score" id="resultScore">0</div>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="resultPercent">0%</strong>
+          <span>Percentage</span>
+        </div>
+
+        <div class="stat">
+          <strong>10</strong>
+          <span>Questions</span>
+        </div>
+
+        <div class="stat">
+          <strong>70%</strong>
+          <span>Pass Mark</span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button id="resultNextBtn"
+          class="btn success full"
+          type="button">
+          Continue to Next Round
+        </button>
+
+        <button id="retryBtn"
+          class="btn gold full"
+          type="button">
+          Retry Round
+        </button>
+
+        <button id="resultReviewBtn"
+          class="btn secondary full"
+          type="button">
+          Review Answers
+        </button>
+
+        <button id="resultHomeBtn"
+          class="btn secondary full"
+          type="button">
+          🏠 Back to Home
+        </button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- REVIEW SCREEN -->
+  <section id="reviewScreen" class="screen">
+    <div class="panel">
+      <h2>📖 Review Answers</h2>
+      <p>Check your answers and learn from the explanations.</p>
+
+      <div id="reviewContainer"></div>
+
+      <button id="reviewHomeBtn"
+        class="btn secondary full"
+        type="button">
+        🏠 Back to Home
+      </button>
+    </div>
+  </section>
+
+  <!-- ROUNDS SCREEN -->
+  <section id="roundsScreen" class="screen">
+    <div class="panel">
+      <h2>🏆 Quiz Rounds</h2>
+
+      <p id="roundsDescription">
+        Complete rounds to unlock the next challenges.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong id="roundsCompleted">0</strong>
+          <span>Completed</span>
+        </div>
+
+        <div class="stat">
+          <strong id="roundsTotal">0</strong>
+          <span>Total Rounds</span>
+        </div>
+
+        <div class="stat">
+          <strong id="roundsUnlocked">1</strong>
+          <span>Unlocked</span>
+        </div>
+      </div>
+
+      <div id="roundList"></div>
+
+      <button id="roundsHomeBtn"
+        class="btn secondary full"
+        type="button">
+        🏠 Back to Home
+      </button>
+    </div>
+  </section>
+
+  <!-- SETTINGS SCREEN -->
+  <section id="settingsScreen" class="screen">
+    <div class="panel">
+      <h2>⚙️ Settings</h2>
+
+      <label for="settingsLanguage">Language</label>
+      <select id="settingsLanguage" class="field">
+        <option value="en">English</option>
+        <option value="rw">Ikinyarwanda</option>
+      </select>
+
+      <label for="settingsMode">Question Category</label>
+      <select id="settingsMode" class="field">
+        <option value="traffic">Road Safety</option>
+        <option value="general">General Knowledge</option>
+      </select>
+
+      <div class="summary">
+        <strong>🎵 Background Music</strong>
+        <p>Use the button below to turn music on or off.</p>
+        <button id="musicToggleBtn"
+          class="btn secondary full"
+          type="button">
+          🎵 Music On / Off
+        </button>
+        <button id="settingsMusicBtn"
+          class="btn secondary full"
+          type="button"
+          style="margin-top:8px">
+          Toggle Music
+        </button>
+      </div>
+
+      <p id="settingsMessage"></p>
+
+      <button id="saveSettingsBtn"
+        class="btn full"
+        type="button">
+        Save Settings
+      </button>
+
+      <button id="resetProgressBtn"
+        class="btn danger full"
+        type="button"
+        style="margin-top:10px">
+        Reset Progress
+      </button>
+
+      <button id="settingsHomeBtn"
+        class="btn secondary full"
+        type="button"
+        style="margin-top:10px">
+        🏠 Back to Home
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Quiz Master 🇷🇼 · 2026</p>
+  <p>
+    <a href="./privacy-policy.html">Privacy Policy</a>
+    <a href="./terms.html">Terms</a>
+    <a href="mailto:mazimpakaisaie7@gmail.com">Contact</a>
+  </p>
+  <p>Learn • Play • Improve</p>
 </footer>
 
-</div>
-</section>
-
-<!-- ROUNDS SCREEN -->
-
-<section id="roundsScreen" class="screen">
-<div class="container">
-
-<div class="panel">
-
-<h2 class="screen-title">🏆 Quiz Rounds</h2>
-
-<p id="roundsDescription" style="text-align:center">
-Complete rounds to unlock more challenges.
-</p>
-
-<div class="result-grid">
-
-<div class="result-stat">
-<strong id="roundsCompleted">0</strong>
-<div>Completed</div>
-</div>
-
-<div class="result-stat">
-<strong id="roundsTotal">0</strong>
-<div>Total Rounds</div>
-</div>
-
-<div class="result-stat">
-<strong id="roundsUnlocked">1</strong>
-<div>Unlocked</div>
-</div>
-
-</div>
-
-<div id="roundList"></div>
-
-<div class="button-group">
-<button id="roundsHomeBtn"
-type="button"
-class="main-btn secondary-btn">
-← Home
-</button>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- QUIZ SCREEN -->
-
-<section id="quizScreen" class="screen">
-<div class="container">
-
-<div class="panel">
-
-<div class="quiz-header">
-
-<div class="quiz-stat">
-Question
-<strong id="currentQuestionNumber">1/10</strong>
-</div>
-
-<div class="quiz-stat">
-Round
-<strong id="currentRound">1</strong>
-</div>
-
-<div class="quiz-stat">
-Score
-<strong id="score">0</strong>
-</div>
-
-<div class="quiz-stat" id="timerBox">
-Time
-<strong><span id="timer">30</span>s</strong>
-</div>
-
-</div>
-
-<div class="progress-container">
-<div id="progressFill"></div>
-</div>
-
-<div id="categoryIndicator">
-General Knowledge
-</div>
-
-<img id="questionImage"
-src=""
-alt="Question illustration"
-style="display:none">
-
-<h2 id="questionText">Loading question...</h2>
-
-<div id="optionsContainer"></div>
-
-<div id="answerFeedback" aria-live="polite"></div>
-
-<div id="explanation" style="display:none"></div>
-
-<div class="quiz-controls">
-
-<button id="submitAnswerBtn"
-type="button"
-class="main-btn success-btn">
-Submit Answer
-</button>
-
-<button id="nextQuestionBtn"
-type="button"
-class="main-btn"
-style="display:none">
-Next Question →
-</button>
-
-<button id="quizReviewBtn"
-type="button"
-class="main-btn secondary-btn">
-Review Answers
-</button>
-
-<button id="quizHomeBtn"
-type="button"
-class="main-btn secondary-btn">
-Home
-</button>
-
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- RESULT SCREEN -->
-
-<section id="resultScreen" class="screen">
-<div class="container">
-
-<div class="panel">
-
-<h2 class="screen-title" id="resultTitle">
-🎉 Quiz Result
-</h2>
-
-<div id="resultScore" class="result-score">0</div>
-
-<div id="resultPercent">0%</div>
-
-<div id="resultStars"></div>
-
-<p id="resultMessage"></p>
-
-<div class="button-group">
-
-<button id="resultNextBtn"
-type="button"
-class="main-btn success-btn"
-style="display:none">
-Next Round
-</button>
-
-<button id="retryBtn"
-type="button"
-class="main-btn"
-style="display:none">
-Retry Round
-</button>
-
-<button id="resultReviewBtn"
-type="button"
-class="main-btn secondary-btn">
-Review Answers
-</button>
-
-<button id="resultHomeBtn"
-type="button"
-class="main-btn secondary-btn">
-Home
-</button>
-
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- REVIEW SCREEN -->
-
-<section id="reviewScreen" class="screen">
-<div class="container">
-
-<div class="panel">
-
-<h2 class="screen-title">📖 Review Answers</h2>
-
-<div id="reviewContainer"></div>
-
-<div class="button-group">
-
-<button id="reviewHomeBtn"
-type="button"
-class="main-btn secondary-btn">
-← Home
-</button>
-
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- SETTINGS SCREEN -->
-
-<section id="settingsScreen" class="screen">
-<div class="container">
-
-<div class="panel">
-
-<h2 class="screen-title">⚙️ Settings</h2>
-
-<div class="setting-row">
-<label for="settingsLanguage">Language</label>
-
-<select id="settingsLanguage">
-<option value="rw">Ikinyarwanda</option>
-<option value="en">English</option>
-</select>
-</div>
-
-<div class="setting-row">
-<label for="settingsMode">Quiz Category</label>
-
-<select id="settingsMode">
-<option value="traffic">Road Traffic Rules</option>
-<option value="general">General Knowledge</option>
-</select>
-</div>
-
-<div class="setting-row">
-<span>🎵 Background Music</span>
-
-<button id="settingsMusicBtn"
-type="button"
-class="main-btn secondary-btn">
-Music: ON
-</button>
-</div>
-
-<p id="settingsMessage" aria-live="polite"></p>
-
-<div class="button-group">
-
-<button id="saveSettingsBtn"
-type="button"
-class="main-btn success-btn">
-Save Settings
-</button>
-
-<button id="resetProgressBtn"
-type="button"
-class="main-btn danger-btn">
-Reset Progress
-</button>
-
-<button id="settingsHomeBtn"
-type="button"
-class="main-btn secondary-btn">
-← Home
-</button>
-
-</div>
-
-</div>
-</div>
-</section>
-
-</div>
-
 <!-- BACKGROUND MUSIC -->
-<!-- Place music.mp3 in the project root folder. -->
-
 <audio id="backgroundMusic"
-src="./music.mp3"
-loop
-preload="none"></audio>
-
-<!-- MUSIC PLAYER: CONNECTED TO QUESTIONS.JS EVENT -->
+  src="./mythica.mp3"
+  preload="auto"
+  loop></audio>
 
 <script>
-(() => {
-"use strict";
+  (() => {
+    "use strict";
 
-const music = document.getElementById("backgroundMusic");
-const MUSIC_KEY = "quizmasterMusicEnabled";
+    const music = document.getElementById("backgroundMusic");
 
-if (!music) return;
+    function playMusic() {
+      if (!music) return;
 
-let musicEnabled =
-  localStorage.getItem(MUSIC_KEY) !== "false";
-
-function updateMusicButtons() {
-  const label = musicEnabled ? "Music: ON" : "Music: OFF";
-
-  const homeButton = document.getElementById("musicToggleBtn");
-  const settingsButton = document.getElementById("settingsMusicBtn");
-
-  if (homeButton) homeButton.textContent = label;
-  if (settingsButton) settingsButton.textContent = label;
-}
-
-function playMusic() {
-  if (!musicEnabled) return;
-
-  music.play().catch(() => {
-    // Browser may require a user interaction before playback.
-  });
-}
-
-function stopMusic() {
-  music.pause();
-  music.currentTime = 0;
-}
-
-document.addEventListener("quizmaster:music-changed", event => {
-  musicEnabled = Boolean(event.detail.enabled);
-  updateMusicButtons();
-
-  if (musicEnabled) {
-    playMusic();
-  } else {
-    stopMusic();
-  }
-});
-
-document.addEventListener("click", event => {
-  const button = event.target.closest("#musicToggleBtn, #settingsMusicBtn");
-
-  if (!button) return;
-
-  // The quiz engine also handles the button and changes its setting.
-  // Playback is handled by the music-changed event.
-});
-
-document.addEventListener("pointerdown", () => {
-  if (musicEnabled && music.paused) {
-    playMusic();
-  }
-}, { once: true });
-
-document.addEventListener("keydown", () => {
-  if (musicEnabled && music.paused) {
-    playMusic();
-  }
-}, { once: true });
-
-updateMusicButtons();
-
-})();
-</script>
-
-<!-- ADSENSE INITIALIZATION: HOME AD ONLY -->
-
-<script>
-window.addEventListener("load", function() {
-
-  document.querySelectorAll("#homeScreen .adsbygoogle").forEach(function(ad) {
-
-    if (!ad.getAttribute("data-adsbygoogle-status")) {
-
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch(error) {
-        console.warn("AdSense initialization warning:", error);
-      }
-
+      music.play().catch(() => {
+        // Browsers require a user interaction before audio can play.
+      });
     }
 
-  });
+    function pauseMusic() {
+      if (music) music.pause();
+    }
 
-});
+    function updateMusic(enabled) {
+      if (enabled) {
+        playMusic();
+      } else {
+        pauseMusic();
+      }
+    }
+
+    // Connect music to the quiz engine's music event.
+    document.addEventListener("quizmaster:music-changed", (event) => {
+      const enabled = event.detail &&
+        typeof event.detail.enabled === "boolean"
+        ? event.detail.enabled
+        : null;
+
+      if (enabled !== null) {
+        updateMusic(enabled);
+      }
+    });
+
+    // Retry playback after the user's first interaction.
+    document.addEventListener("pointerdown", () => {
+      try {
+        if (localStorage.getItem("quizmasterMusicEnabled") === "true") {
+          playMusic();
+        }
+      } catch (_) {}
+    }, { once: true });
+
+    document.addEventListener("keydown", () => {
+      try {
+        if (localStorage.getItem("quizmasterMusicEnabled") === "true") {
+          playMusic();
+        }
+      } catch (_) {}
+    }, { once: true });
+
+    // Make the audio element available to the quiz engine.
+    window.quizMasterMusic = {
+      play: playMusic,
+      pause: pauseMusic,
+      toggle: () => {
+        if (music.paused) playMusic();
+        else pauseMusic();
+      }
+    };
+  })();
 </script>
 
 <!-- QUIZ ENGINE -->
 <script src="./questions.js" defer></script>
+
+<script>
+  // Register the service worker if one exists.
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./service-worker.js")
+        .catch(() => {
+          // Service worker is optional.
+        });
+    });
+  }
+
+  // Home-only AdSense initialization.
+  window.addEventListener("load", () => {
+    const homeAd = document.querySelector("#homeScreen .adsbygoogle");
+
+    if (homeAd && !homeAd.dataset.initialized) {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        homeAd.dataset.initialized = "true";
+      } catch (error) {
+        console.warn("AdSense initialization:", error);
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
