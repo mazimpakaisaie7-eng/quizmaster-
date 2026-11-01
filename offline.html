@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +8,17 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <meta name="theme-color" content="#10233f">
+  <meta
+    name="theme-color"
+    content="#08172b"
+  >
 
   <meta
     name="description"
-    content="Quiz Master Rwanda offline page."
+    content="Quiz Master Rwanda offline page. Reconnect to the internet or return to the quiz."
   >
+
+  <meta name="robots" content="noindex, nofollow">
 
   <title>Offline - Quiz Master 🇷🇼</title>
 
@@ -30,132 +34,254 @@
   >
 
   <style>
+    :root {
+      color-scheme: dark;
+      --background: #08172b;
+      --card: #10233f;
+      --card-light: #172f50;
+      --primary: #155eef;
+      --text: #f5f8ff;
+      --muted: #a9bad3;
+      --border: rgba(255,255,255,.12);
+      --success: #24c78b;
+      --danger: #ff6b6b;
+    }
+
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
+      min-height: 100dvh;
       padding: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #08172b;
-      color: #f5f8ff;
-      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(
+          circle at top,
+          #142d50 0,
+          var(--background) 60%
+        );
+      color: var(--text);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
       text-align: center;
     }
 
     .offline-container {
       width: 100%;
-      max-width: 430px;
-      padding: 30px 22px;
-      background: #10233f;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 18px;
+      max-width: 440px;
+      padding: 32px 23px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow:
+        0 15px 45px rgba(0,0,0,.25);
     }
 
     .logo {
+      display: block;
       width: 90px;
       height: 90px;
       object-fit: contain;
-      margin-bottom: 15px;
+      margin: 0 auto 14px;
     }
 
     h1 {
       font-size: 27px;
       margin: 8px 0;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-size: 21px;
+      margin: 10px 0;
     }
 
     p {
-      color: #a9bad3;
+      color: var(--muted);
       line-height: 1.7;
+      font-size: 14px;
     }
 
     .offline-icon {
-      font-size: 55px;
-      margin: 12px 0;
+      font-size: 54px;
+      margin: 14px 0;
     }
 
     .status {
-      margin: 20px 0;
-      padding: 12px;
-      border-radius: 10px;
-      background: #172f50;
+      margin: 22px 0;
+      padding: 13px;
+      border-radius: 11px;
+      background: var(--card-light);
+      border: 1px solid var(--border);
+      color: var(--danger);
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .status.online {
+      color: var(--success);
     }
 
     button,
     .home-link {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
-      padding: 14px;
+      min-height: 48px;
+      padding: 13px 16px;
       margin-top: 12px;
       border: 0;
-      border-radius: 10px;
-      background: #155eef;
+      border-radius: 11px;
+      background: var(--primary);
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: bold;
       text-decoration: none;
       cursor: pointer;
+      transition:
+        opacity .2s ease,
+        transform .2s ease;
+    }
+
+    button:hover,
+    .home-link:hover {
+      opacity: .9;
+    }
+
+    button:active,
+    .home-link:active {
+      transform: scale(.98);
+    }
+
+    button:focus-visible,
+    .home-link:focus-visible {
+      outline: 3px solid #8db5ff;
+      outline-offset: 3px;
+    }
+
+    button:disabled {
+      opacity: .65;
+      cursor: wait;
     }
 
     .home-link {
-      background: #172f50;
-      border: 1px solid rgba(255,255,255,.15);
+      background: var(--card-light);
+      border: 1px solid var(--border);
+    }
+
+    .help-text {
+      margin-top: 18px;
+      font-size: 12px;
     }
 
     footer {
       margin-top: 25px;
       font-size: 12px;
       color: #8092aa;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 360px) {
+      .offline-container {
+        padding: 25px 17px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <main class="offline-container">
+  <main
+    class="offline-container"
+    aria-labelledby="pageTitle"
+  >
 
     <img
       class="logo"
       src="./icon-192-4.png"
-      alt="Quiz Master Rwanda"
+      alt="Quiz Master Rwanda logo"
       width="90"
       height="90"
     >
 
-    <h1>Quiz Master 🇷🇼</h1>
+    <h1 id="pageTitle">
+      Quiz Master 🇷🇼
+    </h1>
 
-    <div class="offline-icon">📡</div>
+    <div
+      class="offline-icon"
+      aria-hidden="true"
+    >
+      📡
+    </div>
 
     <h2>You are offline</h2>
 
     <p>
-      It looks like your internet connection
-      is unavailable.
+      Your internet connection appears to be
+      unavailable.
     </p>
 
     <p>
-      Internet connection is required to load
-      new questions and online resources.
+      Reconnect to the internet to load the
+      latest questions and online resources.
+      Previously cached content may still be
+      available.
     </p>
 
-    <div class="status" id="connectionStatus">
-      🔴 No internet connection
+    <div
+      class="status"
+      id="connectionStatus"
+      role="status"
+      aria-live="polite"
+    >
+      🔴 Checking connection...
     </div>
 
     <button
       type="button"
-      onclick="window.location.reload()"
+      id="retryBtn"
     >
       🔄 Try Again
     </button>
 
-    <a class="home-link" href="./index.html">
+    <a
+      class="home-link"
+      href="./index.html"
+    >
       🏠 Return to Quiz Master
     </a>
+
+    <p class="help-text">
+      If you are connected but this page remains
+      visible, check your connection and try again.
+    </p>
 
     <footer>
       Quiz Master 🇷🇼 · 2026
@@ -167,38 +293,57 @@
 
   <script>
     (() => {
+      "use strict";
 
-      const status = document.getElementById(
-        "connectionStatus"
-      );
+      const statusElement =
+        document.getElementById("connectionStatus");
 
-      function updateConnection() {
+      const retryButton =
+        document.getElementById("retryBtn");
 
-        if (navigator.onLine) {
+      function updateConnectionStatus() {
+        const online = navigator.onLine;
 
-          status.textContent =
+        if (online) {
+          statusElement.textContent =
             "🟢 Internet connection available";
 
+          statusElement.classList.add("online");
         } else {
-
-          status.textContent =
+          statusElement.textContent =
             "🔴 No internet connection";
 
+          statusElement.classList.remove("online");
         }
+      }
 
+      function retryConnection() {
+        retryButton.disabled = true;
+        retryButton.textContent = "⏳ Checking...";
+
+        updateConnectionStatus();
+
+        // Reload the page so the Service Worker
+        // can try the network and cached pages again.
+        window.location.reload();
       }
 
       window.addEventListener(
         "online",
-        updateConnection
+        updateConnectionStatus
       );
 
       window.addEventListener(
         "offline",
-        updateConnection
+        updateConnectionStatus
       );
 
-      updateConnection();
+      retryButton.addEventListener(
+        "click",
+        retryConnection
+      );
+
+      updateConnectionStatus();
 
     })();
   </script>
