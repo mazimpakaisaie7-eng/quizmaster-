@@ -364,12 +364,25 @@
     if (!text || options.length < 2) return null;
 
     const answer =
-      question.answer ??
-      question.correctAnswer ??
-      question.correct_answer ??
-      question.correct ??
-      question.answerIndex ??
-      question.correctIndex;
+  state.language === "rw"
+    ? (
+        question.answer_rw ??
+        question.answer ??
+        question.correctAnswer ??
+        question.correct_answer ??
+        question.correct ??
+        question.answerIndex ??
+        question.correctIndex
+      )
+      
+      : (
+        question.answer ??
+        question.correctAnswer ??
+        question.correct_answer ??
+        question.correct ??
+        question.answerIndex ??
+        question.correctIndex
+      );
 
     let correctIndex = -1;
 
