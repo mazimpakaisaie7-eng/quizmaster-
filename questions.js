@@ -1,1367 +1,776 @@
 (() => {
   "use strict";
 
-  // =====================================================
-  // QUIZ MASTER RWANDA
-  // Complete Quiz Engine
-  // Compatible with Quiz Master index.html
-  // =====================================================
+  /* ==========================================
+     QUIZ MASTER 🇷🇼
+     COMPLETE QUIZ ENGINE
+     Compatible with supplied index.html
+  ========================================== */
 
   const CONFIG = {
     QUESTIONS_FILE: "./questions.json",
-
     QUESTIONS_PER_ROUND: 10,
-
     TRAFFIC_TIME: 60,
     GENERAL_TIME: 30,
-
     POINTS_PER_CORRECT: 10,
-    UNLOCK_PERCENT: 70,
+    PASS_PERCENT: 70,
 
     STORAGE: {
-      language: "quizmasterLanguage",
-      mode: "quizmasterMode",
+      progress: "quizmasterProgress",
       used: "quizmasterUsedQuestionIds",
       completed: "quizmasterCompletedRounds",
       review: "quizmasterReviewAnswers",
       best: "quizmasterBestScore",
       total: "quizmasterTotalScore",
-      progress: "quizmasterProgress"
-    },
-
-    MAX_REVIEW_HISTORY: 500
+      weekly: "quizmasterWeeklyScores",
+      settings: "quizmasterSettings",
+      session: "quizmasterCurrentSession"
+    }
   };
-
-  // =====================================================
-  // ELEMENT HELPERS
-  // =====================================================
 
   const $ = id => document.getElementById(id);
 
-  const $$ = selector => [
-    ...document.querySelectorAll(selector)
-  ];
+  const state = {
+    language: "en",
+    mode: "general",
+    questions: [],
+    pool: [],
+    roundQuestions: [],
+    currentIndex: 0,
+    selectedAnswer: null,
+    score: 0,
+    correct: 0,
+    remainingTime: 30,
+    timerInterval: null,
+    answered: false,
+    confirmed: false,
+    finished: false,
+    round: 1,
+    review: [],
+    loading: false
+  };
 
-  function getElement(...ids) {
-    for (const id of ids) {
-      const element = $(id);
-      if (element) return element;
-    }
+  const EVENTS = {
+    screen: "quizmaster:show-screen",
+    loaded: "quizmaster:questions-loaded",
+    error: "quizmaster:error",
+    started: "quizmaster:game-started",
+    review: "quizmaster:review-data",
+    finished: "quizmaster:round-finished"
+  };
 
-    return null;
-  }
+  /* ==========================================
+     HELPERS
+  ========================================== */
 
-  function setText(ids, value) {
-    const element = getElement(...ids);
-
-    if (element) {
-      element.textContent = String(value ?? "");
-    }
-  }
-
-  function setDisplay(ids, display) {
-    const element = getElement(...ids);
-
-    if (element) {
-      element.style.display = display;
-    }
-  }
-
-  function showMessage(message, type = "info") {
-    const target = getElement(
-      "setupError",
-      "homeMessage"
-    );
-
-    if (!target) {
-      console.log(message);
-      return;
-    }
-
-    target.textContent = message;
-    target.dataset.type = type;
-    target.style.display = "block";
-  }
-
-  function hideMessage() {
-    const target = getElement(
-      "setupError",
-      "homeMessage"
-    );
-
-    if (target) {
-      target.style.display = "none";
-    }
-  }
-
-  function escapeHTML(value) {
-    return String(value ?? "").replace(
-      /[&<>"']/g,
-      character => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-      })[character]
-    );
-  }
-
-  function dispatch(name, detail = {}) {
+  function emit(name, detail = {}) {
     document.dispatchEvent(
       new CustomEvent(name, { detail })
     );
   }
 
-  // =====================================================
-  // SAFE LOCAL STORAGE
-  // =====================================================
-
-  function storageGet(key) {
+  function read(key, fallback) {
     try {
-      return localStorage.getItem(key);
-    } catch (error) {
-      console.warn("Storage read error:", error);
-      return null;
-    }
-  }
-
-  function storageSet(key, value) {
-    try {
-      localStorage.setItem(key, String(value));
-      return true;
-    } catch (error) {
-      console.warn("Storage write error:", error);
-      return false;
-    }
-  }
-
-  function storageRemove(key) {
-    try {
-      localStorage.removeItem(key);
-    } catch (error) {
-      console.warn("Storage remove error:", error);
-    }
-  }
-
-  function readJSON(key, fallback) {
-    try {
-      const value = storageGet(key);
-
-      if (!value) return fallback;
-
-      return JSON.parse(value);
-    } catch (error) {
-      console.warn("Invalid stored JSON:", key, error);
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : JSON.parse(value);
+    } catch (_) {
       return fallback;
     }
   }
 
-  function writeJSON(key, value) {
+  function write(key, value) {
     try {
-      return storageSet(
-        key,
-        JSON.stringify(value)
-      );
+      localStorage.setItem(key, JSON.stringify(value));
+      return true;
     } catch (error) {
-      console.warn("JSON storage error:", error);
+      console.warn("Storage error:", error);
       return false;
     }
   }
 
-  // =====================================================
-  // STATE
-  // =====================================================
-
-  const state = {
-    questions: [],
-    loaded: false,
-
-    language: storageGet(CONFIG.STORAGE.language) || "en",
-    mode: storageGet(CONFIG.STORAGE.mode) || "general",
-
-    languageChosen: false,
-    modeChosen: false,
-    setupConfirmed: false,
-
-    round: 1,
-    roundQuestions: [],
-    currentIndex: 0,
-
-    score: 0,
-    correct: 0,
-    answered: 0,
-
-    selectedAnswer: null,
-    answerSubmitted: false,
-
-    timeLeft: 0,
-    timerId: null,
-    paused: false,
-
-    review: [],
-    roundFinished: false,
-    initialized: false
-  };
-
-  // =====================================================
-  // LANGUAGE
-  // =====================================================
-
-  function getQuestionText(question) {
-    if (
-      state.language === "rw" &&
-      question.question_rw
-    ) {
-      return question.question_rw;
-    }
-
-    return question.question || "";
+  function remove(key) {
+    try {
+      localStorage.removeItem(key);
+    } catch (_) {}
   }
 
-  function getOptions(question) {
-    if (
-      state.language === "rw" &&
-      Array.isArray(question.options_rw) &&
-      question.options_rw.length
-    ) {
-      return question.options_rw;
-    }
-
-    return question.options || [];
+  function normalize(value) {
+    return String(value ?? "")
+      .trim()
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, " ");
   }
 
-  function getCorrectAnswer(question) {
-    if (state.language !== "rw") {
-      return question.answer;
-    }
-
-    if (question.answer_rw) {
-      return question.answer_rw;
-    }
-
-    // If answer_rw is missing, use the matching
-    // option position to find the translated answer.
-
-    const englishOptions = question.options || [];
-    const rwOptions = question.options_rw || [];
-
-    const index = englishOptions.indexOf(
-      question.answer
+  function escapeHTML(value) {
+    return String(value ?? "").replace(
+      /[&<>"']/g,
+      char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+      })[char]
     );
-
-    if (
-      index >= 0 &&
-      index < rwOptions.length
-    ) {
-      return rwOptions[index];
-    }
-
-    return question.answer;
   }
 
-  function getExplanation(question) {
-    if (state.language === "rw") {
-      return (
-        question.explanation_rw ||
-        question.explanation ||
-        ""
-      );
-    }
-
-    return question.explanation || "";
+  function getPoolKey() {
+    return `${state.language}_${state.mode}`;
   }
 
-  function getCategoryName() {
-    if (state.mode === "traffic") {
-      return state.language === "rw"
-        ? "Amategeko y'umuhanda"
-        : "Road Safety";
-    }
-
-    return state.language === "rw"
-      ? "Ubumenyi rusange"
-      : "General Knowledge";
-  }
-
-  function getQuestionTime() {
+  function getTimeLimit() {
     return state.mode === "traffic"
       ? CONFIG.TRAFFIC_TIME
       : CONFIG.GENERAL_TIME;
   }
 
-  // =====================================================
-  // STORAGE DATA
-  // =====================================================
-
-  function getUsedData() {
-    const data = readJSON(
-      CONFIG.STORAGE.used,
-      {}
-    );
-
-    if (Array.isArray(data)) {
-      return {
-        traffic: data,
-        general: []
-      };
+  function showMessage(message) {
+    if ($("homeMessage")) {
+      $("homeMessage").textContent = message;
     }
-
-    return data && typeof data === "object"
-      ? data
-      : {};
   }
 
-  function getUsedIds() {
-    const data = getUsedData();
+  function showSetupError(message) {
+    const element = $("setupError");
 
-    return Array.isArray(data[state.mode])
-      ? data[state.mode].map(String)
+    if (element) {
+      element.textContent = message;
+      element.dataset.type = "error";
+    }
+  }
+
+  function clearSetupError() {
+    if ($("setupError")) {
+      $("setupError").textContent = "";
+      $("setupError").dataset.type = "";
+    }
+  }
+
+  /* ==========================================
+     STORAGE
+  ========================================== */
+
+  function getUsed() {
+    const data = read(CONFIG.STORAGE.used, {});
+    return Array.isArray(data[getPoolKey()])
+      ? data[getPoolKey()]
       : [];
   }
 
-  function saveUsedIds(ids) {
-    const data = getUsedData();
-
-    data[state.mode] = [
-      ...new Set(ids.map(String))
-    ];
-
-    writeJSON(CONFIG.STORAGE.used, data);
+  function saveUsed(ids) {
+    const data = read(CONFIG.STORAGE.used, {});
+    data[getPoolKey()] = ids;
+    write(CONFIG.STORAGE.used, data);
   }
 
-  function getCompletedData() {
-    const data = readJSON(
-      CONFIG.STORAGE.completed,
-      {}
-    );
-
-    if (Array.isArray(data)) {
-      return {
-        traffic: data,
-        general: []
-      };
-    }
-
-    return data && typeof data === "object"
-      ? data
-      : {};
-  }
-
-  function getCompletedRounds() {
-    const data = getCompletedData();
-
-    return Array.isArray(data[state.mode])
-      ? data[state.mode]
-          .map(Number)
-          .filter(Number.isFinite)
+  function getCompleted() {
+    const data = read(CONFIG.STORAGE.completed, {});
+    return Array.isArray(data[getPoolKey()])
+      ? data[getPoolKey()]
       : [];
   }
 
-  function saveCompletedRounds(rounds) {
-    const data = getCompletedData();
-
-    data[state.mode] = [
-      ...new Set(rounds.map(Number))
-    ].sort((a, b) => a - b);
-
-    writeJSON(CONFIG.STORAGE.completed, data);
+  function saveCompleted(rounds) {
+    const data = read(CONFIG.STORAGE.completed, {});
+    data[getPoolKey()] = rounds;
+    write(CONFIG.STORAGE.completed, data);
   }
 
-  function getProgress() {
-    return readJSON(
-      CONFIG.STORAGE.progress,
-      null
-    );
-  }
+  function getUnlockedRound() {
+    const completed = getCompleted();
 
-  function clearProgress() {
-    storageRemove(CONFIG.STORAGE.progress);
-    updateHome();
-  }
+    let unlocked = 1;
 
-  // =====================================================
-  // SAVE GAME PROGRESS
-  // =====================================================
-
-  function saveProgress() {
-    if (
-      !state.roundQuestions.length ||
-      state.roundFinished
-    ) {
-      return;
+    while (completed.includes(unlocked)) {
+      unlocked++;
     }
 
-    writeJSON(CONFIG.STORAGE.progress, {
-      version: 2,
+    return unlocked;
+  }
 
+  function saveSession() {
+    write(CONFIG.STORAGE.session, {
       language: state.language,
       mode: state.mode,
-
       round: state.round,
-
-      questionIds: state.roundQuestions.map(
-        question => String(question.id)
-      ),
-
+      questions: state.roundQuestions,
       currentIndex: state.currentIndex,
-
       score: state.score,
       correct: state.correct,
-      answered: state.answered,
-
-      review: state.review,
-
-      timeLeft: state.timeLeft,
-
-      selectedAnswer: state.selectedAnswer,
-      answerSubmitted: state.answerSubmitted
+      review: state.review
     });
-
-    updateHome();
   }
 
-  // =====================================================
-  // SCREEN NAVIGATION
-  // =====================================================
+  function getSession() {
+    const session = read(CONFIG.STORAGE.session, null);
 
-  function showScreen(screenId) {
-    const screens = [
-      "homeScreen",
-      "quizScreen",
-      "resultScreen",
-      "reviewScreen",
-      "roundsScreen",
-      "settingsScreen"
-    ];
+    if (
+      !session ||
+      session.language !== state.language ||
+      session.mode !== state.mode ||
+      !Array.isArray(session.questions) ||
+      session.questions.length !== CONFIG.QUESTIONS_PER_ROUND
+    ) {
+      return null;
+    }
 
-    screens.forEach(id => {
-      const element = $(id);
+    return session;
+  }
 
-      if (element) {
-        element.style.display =
-          id === screenId ? "block" : "none";
+  /* ==========================================
+     QUESTION LOADING
+  ========================================== */
+
+  function extractQuestions(data) {
+    if (Array.isArray(data)) return data;
+
+    if (!data || typeof data !== "object") {
+      return [];
+    }
+
+    for (const key of [
+      "questions",
+      "data",
+      "items"
+    ]) {
+      if (Array.isArray(data[key])) {
+        return data[key];
       }
+    }
+
+    const result = [];
+
+    function walk(value) {
+      if (Array.isArray(value)) {
+        value.forEach(item => {
+          if (item && typeof item === "object") {
+            if (
+              item.question ||
+              item.question_en ||
+              item.question_rw ||
+              item.text
+            ) {
+              result.push(item);
+            } else {
+              walk(item);
+            }
+          }
+        });
+      } else if (
+        value &&
+        typeof value === "object"
+      ) {
+        Object.values(value).forEach(walk);
+      }
+    }
+
+    walk(data);
+    return result;
+  }
+
+  function localized(question, fields) {
+    const suffix = state.language;
+
+    for (const field of fields) {
+      const value = question[`${field}_${suffix}`];
+
+      if (value !== undefined && value !== null) {
+        return value;
+      }
+    }
+
+    for (const field of fields) {
+      const value = question[field];
+
+      if (value !== undefined && value !== null) {
+        if (typeof value === "object" && !Array.isArray(value)) {
+          return value[suffix] ?? value.en ?? value.rw ?? "";
+        }
+
+        return value;
+      }
+    }
+
+    return "";
+  }
+
+  function matchesMode(question) {
+    const category = normalize(
+      question.category ??
+      question.mode ??
+      question.type ??
+      question.topic ??
+      ""
+    );
+
+    if (!category) return true;
+
+    if (state.mode === "traffic") {
+      return [
+        "traffic",
+        "road",
+        "road safety",
+        "road_safety",
+        "amategeko y'umuhanda"
+      ].includes(category);
+    }
+
+    return [
+      "general",
+      "general knowledge",
+      "ubumenyi rusange",
+      "knowledge"
+    ].includes(category);
+  }
+
+  function normalizeQuestion(question, index) {
+    const text = localized(
+      question,
+      ["question", "text", "title"]
+    );
+
+    let options = localized(
+      question,
+      ["options", "choices", "answers"]
+    );
+
+    if (typeof options === "string") {
+      try {
+        options = JSON.parse(options);
+      } catch (_) {
+        return null;
+      }
+    }
+
+    if (!Array.isArray(options)) return null;
+
+    options = options.map(option => {
+      if (option && typeof option === "object") {
+        return String(
+          option[state.language] ??
+          option.text ??
+          option.value ??
+          ""
+        );
+      }
+
+      return String(option);
     });
 
-    closeMoreMenu();
+    options = options.filter(option => option.trim());
+
+    if (!text || options.length < 2) return null;
+
+    const answer =
+      question.answer ??
+      question.correctAnswer ??
+      question.correct_answer ??
+      question.correct ??
+      question.answerIndex ??
+      question.correctIndex;
+
+    let correctIndex = -1;
+
+    if (typeof answer === "number") {
+      correctIndex = answer;
+    } else if (
+      typeof answer === "string" &&
+      /^\d+$/.test(answer.trim())
+    ) {
+      correctIndex = Number(answer);
+    } else {
+      correctIndex = options.findIndex(
+        option => normalize(option) === normalize(answer)
+      );
+    }
+
+    if (
+      correctIndex < 0 ||
+      correctIndex >= options.length
+    ) {
+      return null;
+    }
+
+    const explanation = localized(
+      question,
+      ["explanation", "description", "reason"]
+    );
+
+    return {
+      id: String(
+        question.id ??
+        question.questionId ??
+        question.question_id ??
+        `${state.mode}_${state.language}_${index}`
+      ),
+      question: String(text),
+      options,
+      correctIndex,
+      answer: options[correctIndex],
+      explanation: String(explanation || ""),
+      image: String(
+        question.image ??
+        question.imageUrl ??
+        question.image_url ??
+        ""
+      )
+    };
+  }
+
+  async function loadQuestions() {
+    if (state.loading) return;
+
+    state.loading = true;
+    showMessage("Loading questions...");
 
     try {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    } catch {
-      window.scrollTo(0, 0);
-    }
-
-    dispatch("quizmaster:show-screen", {
-      screen: screenId
-    });
-  }
-
-  // =====================================================
-  // MORE MENU
-  // =====================================================
-
-  function getMoreMenu() {
-    return getElement(
-      "moreMenu",
-      "moreMenuPanel",
-      "moreDropdown"
-    );
-  }
-
-  function getMoreButton() {
-    return getElement(
-      "moreMenuBtn",
-      "moreBtn",
-      "moreToggleBtn"
-    );
-  }
-
-  function closeMoreMenu() {
-    const menu = getMoreMenu();
-    const button = getMoreButton();
-
-    if (menu) {
-      menu.hidden = true;
-      menu.classList.remove("open");
-      menu.style.display = "none";
-    }
-
-    if (button) {
-      button.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-    }
-  }
-
-  function toggleMoreMenu() {
-    const menu = getMoreMenu();
-    const button = getMoreButton();
-
-    if (!menu) return;
-
-    const isOpen =
-      menu.classList.contains("open") ||
-      (!menu.hidden && menu.style.display !== "none");
-
-    if (isOpen) {
-      closeMoreMenu();
-      return;
-    }
-
-    menu.hidden = false;
-    menu.style.display = "block";
-    menu.classList.add("open");
-
-    if (button) {
-      button.setAttribute(
-        "aria-expanded",
-        "true"
-      );
-    }
-  }
-
-  function bindMoreMenu() {
-    const button = getMoreButton();
-    const menu = getMoreMenu();
-
-    if (button) {
-      button.setAttribute(
-        "aria-expanded",
-        "false"
+      const response = await fetch(
+        CONFIG.QUESTIONS_FILE,
+        { cache: "no-store" }
       );
 
-      button.addEventListener(
-        "click",
-        event => {
-          event.stopPropagation();
-          toggleMoreMenu();
-        }
-      );
-    }
-
-    document.addEventListener(
-      "click",
-      event => {
-        if (!menu || !button) return;
-
-        if (
-          !menu.contains(event.target) &&
-          !button.contains(event.target)
-        ) {
-          closeMoreMenu();
-        }
-      }
-    );
-
-    document.addEventListener(
-      "keydown",
-      event => {
-        if (event.key === "Escape") {
-          closeMoreMenu();
-        }
-      }
-    );
-
-    if (menu) {
-      menu.addEventListener("click", event => {
-        const item = event.target.closest(
-          "button, a"
+      if (!response.ok) {
+        throw new Error(
+          `questions.json returned HTTP ${response.status}`
         );
+      }
 
-        if (item) {
-          closeMoreMenu();
-        }
+      const data = await response.json();
+
+      state.questions = extractQuestions(data);
+
+      if (!state.questions.length) {
+        throw new Error("No questions found.");
+      }
+
+      emit(EVENTS.loaded, {
+        total: state.questions.length
       });
+
+      showMessage("Questions loaded successfully.");
+
+    } catch (error) {
+      console.error(error);
+
+      showSetupError(
+        "Questions failed to load. Check questions.json."
+      );
+
+      emit(EVENTS.error, {
+        message: error.message
+      });
+
+    } finally {
+      state.loading = false;
+      updateHome();
+      updateSelection();
     }
   }
 
-  // =====================================================
-  // SHUFFLE
-  // =====================================================
+  function buildPool() {
+    const pool = [];
+    const ids = new Set();
+
+    state.questions.forEach((question, index) => {
+      if (!matchesMode(question)) return;
+
+      const normalized = normalizeQuestion(question, index);
+
+      if (!normalized || ids.has(normalized.id)) return;
+
+      ids.add(normalized.id);
+      pool.push(normalized);
+    });
+
+    return pool;
+  }
+
+  /* ==========================================
+     NAVIGATION
+  ========================================== */
+
+  function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(screen => {
+      screen.classList.remove("active");
+    });
+
+    const screen = $(id);
+
+    if (screen) {
+      screen.classList.add("active");
+    }
+
+    if (id !== "quizScreen") {
+      stopTimer();
+    }
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+    emit(EVENTS.screen, { screen: id });
+  }
+
+  /* ==========================================
+     HOME AND SETUP
+  ========================================== */
+
+  function updateSelection() {
+    document.querySelectorAll(".language-btn").forEach(button => {
+      const selected =
+        button.dataset.language === state.language;
+
+      button.classList.toggle("selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+
+    document.querySelectorAll(".mode-btn").forEach(button => {
+      const selected =
+        button.dataset.mode === state.mode;
+
+      button.classList.toggle("selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+
+    if ($("selectionSummary")) {
+      const language =
+        state.language === "rw"
+          ? "Ikinyarwanda"
+          : "English";
+
+      const category =
+        state.mode === "traffic"
+          ? "Road Safety"
+          : "General Knowledge";
+
+      $("selectionSummary").textContent =
+        `${language} • ${category}`;
+    }
+
+    if ($("confirmSetupBtn")) {
+      $("confirmSetupBtn").disabled = false;
+    }
+
+    if ($("startBtn")) {
+      $("startBtn").disabled =
+        !state.confirmed || state.loading;
+    }
+
+    clearSetupError();
+  }
+
+  function confirmSetup() {
+    state.confirmed = true;
+
+    write(CONFIG.STORAGE.settings, {
+      language: state.language,
+      mode: state.mode
+    });
+
+    updateSelection();
+
+    showMessage("Selection confirmed. Start your quiz!");
+  }
+
+  function restoreSettings() {
+    const settings = read(
+      CONFIG.STORAGE.settings,
+      {}
+    );
+
+    if (["en", "rw"].includes(settings.language)) {
+      state.language = settings.language;
+    }
+
+    if (["traffic", "general"].includes(settings.mode)) {
+      state.mode = settings.mode;
+    }
+
+    if ($("settingsLanguage")) {
+      $("settingsLanguage").value = state.language;
+    }
+
+    if ($("settingsMode")) {
+      $("settingsMode").value = state.mode;
+    }
+
+    updateSelection();
+  }
+
+  function updateHome() {
+    const best = read(CONFIG.STORAGE.best, 0);
+    const completed = getCompleted();
+
+    if ($("homeRound")) {
+      $("homeRound").textContent = getUnlockedRound();
+    }
+
+    if ($("homeScore")) {
+      $("homeScore").textContent = best;
+    }
+
+    if ($("homeStars")) {
+      $("homeStars").textContent =
+        completed.length
+          ? "⭐".repeat(Math.min(completed.length, 5))
+          : "⭐";
+    }
+
+    if ($("reviewAnswersBtn")) {
+      const review = read(CONFIG.STORAGE.review, []);
+      $("reviewAnswersBtn").hidden = !review.length;
+    }
+
+    const session = getSession();
+
+    if ($("continueBtn")) {
+      $("continueBtn").hidden = !session;
+    }
+  }
+
+  /* ==========================================
+     ROUND MANAGEMENT
+  ========================================== */
 
   function shuffle(array) {
     const result = [...array];
 
-    for (
-      let index = result.length - 1;
-      index > 0;
-      index--
-    ) {
-      const randomIndex = Math.floor(
-        Math.random() * (index + 1)
-      );
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
 
-      [
-        result[index],
-        result[randomIndex]
-      ] = [
-        result[randomIndex],
-        result[index]
-      ];
+      [result[i], result[j]] =
+        [result[j], result[i]];
     }
 
     return result;
   }
 
-  // =====================================================
-  // QUESTION VALIDATION
-  // =====================================================
+  function prepareRound(round, retry = false) {
+    state.pool = buildPool();
 
-  function validQuestion(question) {
-    if (
-      !question ||
-      typeof question !== "object" ||
-      Array.isArray(question)
-    ) {
+    if (state.pool.length < CONFIG.QUESTIONS_PER_ROUND) {
+      showSetupError(
+        `Only ${state.pool.length} valid questions found. At least 10 are required.`
+      );
       return false;
     }
 
+    const completed = getCompleted();
+
     if (
-      !["traffic", "general"].includes(
-        question.category
-      )
+      !retry &&
+      round > getUnlockedRound()
     ) {
+      showSetupError("Complete the previous round first.");
       return false;
     }
 
-    if (
-      question.id === undefined ||
-      question.id === null ||
-      String(question.id).trim() === ""
-    ) {
-      return false;
-    }
+    const session = getSession();
 
     if (
-      typeof question.question !== "string" ||
-      !question.question.trim()
+      retry &&
+      session &&
+      session.round === round
     ) {
-      return false;
-    }
+      state.roundQuestions = session.questions;
+    } else {
+      const used = new Set(getUsed());
 
-    if (
-      typeof question.answer !== "string" ||
-      !question.answer.trim()
-    ) {
-      return false;
-    }
-
-    if (
-      !Array.isArray(question.options) ||
-      question.options.length < 2
-    ) {
-      return false;
-    }
-
-    if (
-      !question.options.every(
-        option =>
-          typeof option === "string" &&
-          option.trim() !== ""
-      )
-    ) {
-      return false;
-    }
-
-    if (!question.options.includes(question.answer)) {
-      return false;
-    }
-
-    if (
-      Array.isArray(question.options_rw) &&
-      question.options_rw.length
-    ) {
-      if (
-        question.options_rw.length !==
-        question.options.length
-      ) {
-        return false;
-      }
-
-      if (
-        !question.options_rw.every(
-          option =>
-            typeof option === "string" &&
-            option.trim() !== ""
-        )
-      ) {
-        return false;
-      }
-
-      if (
-        question.answer_rw &&
-        !question.options_rw.includes(
-          question.answer_rw
-        )
-      ) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  // =====================================================
-  // OFFLINE CACHE
-  // =====================================================
-
-  async function getCachedQuestions() {
-    if (!("caches" in window)) {
-      return null;
-    }
-
-    try {
-      const url = new URL(
-        CONFIG.QUESTIONS_FILE,
-        document.baseURI
-      ).href;
-
-      const response = await caches.match(
-        url,
-        { ignoreSearch: true }
+      let available = state.pool.filter(
+        question => !used.has(question.id)
       );
 
-      if (!response || !response.ok) {
-        return null;
+      if (available.length < CONFIG.QUESTIONS_PER_ROUND) {
+        saveUsed([]);
+        available = [...state.pool];
       }
 
-      const data = await response.json();
-
-      return Array.isArray(data)
-        ? data
-        : null;
-
-    } catch (error) {
-      console.warn(
-        "Offline cache error:",
-        error
-      );
-
-      return null;
-    }
-  }
-
-  // =====================================================
-  // LOAD QUESTIONS
-  // =====================================================
-
-  async function loadQuestions() {
-    state.loaded = false;
-
-    showMessage(
-      state.language === "rw"
-        ? "Ibibazo birimo gutegurwa..."
-        : "Loading questions..."
-    );
-
-    let data = null;
-    let source = "network";
-
-    try {
-      try {
-        const response = await fetch(
-          CONFIG.QUESTIONS_FILE,
-          { cache: "no-cache" }
-        );
-
-        if (!response.ok) {
-          throw new Error(
-            "HTTP " + response.status
-          );
-        }
-
-        data = await response.json();
-
-        if (!Array.isArray(data)) {
-          throw new Error(
-            "questions.json must contain an array."
-          );
-        }
-
-      } catch (networkError) {
-        console.warn(
-          "Network loading failed. Checking cache:",
-          networkError
-        );
-
-        data = await getCachedQuestions();
-        source = "cache";
-
-        if (!data) {
-          throw new Error(
-            "Questions unavailable online and offline."
-          );
-        }
-      }
-
-      const valid = data.filter(validQuestion);
-
-      const rejected = data.length - valid.length;
-
-      state.questions = valid;
-      state.loaded = valid.length > 0;
-
-      const traffic = valid.filter(
-        question =>
-          question.category === "traffic"
-      ).length;
-
-      const general = valid.filter(
-        question =>
-          question.category === "general"
-      ).length;
-
-      console.log("Quiz Master questions:", {
-        source,
-        total: valid.length,
-        traffic,
-        general,
-        rejected
-      });
-
-      if (!valid.length) {
-        throw new Error(
-          "No valid questions found in questions.json."
-        );
-      }
-
-      hideMessage();
-
-      updateHome();
-      updateSelectionSummary();
-
-      dispatch(
-        "quizmaster:questions-loaded",
-        {
-          total: valid.length,
-          traffic,
-          general,
-          rejected,
-          source
-        }
-      );
-
-      return true;
-
-    } catch (error) {
-      state.loaded = false;
-
-      console.error(
-        "Question loading error:",
-        error
-      );
-
-      showMessage(
-        state.language === "rw"
-          ? "Ibibazo ntibyafungutse. Reba internet cyangwa questions.json."
-          : "Questions could not load. Check your connection or questions.json.",
-        "error"
-      );
-
-      dispatch("quizmaster:error", {
-        message: error.message
-      });
-
-      return false;
-    }
-  }
-
-  // =====================================================
-  // CATEGORY QUESTIONS
-  // =====================================================
-
-  function getModeQuestions() {
-    return state.questions.filter(
-      question =>
-        question.category === state.mode
-    );
-  }
-
-  // =====================================================
-  // ROUND SYSTEM
-  // =====================================================
-
-  function getTotalRounds() {
-    return Math.ceil(
-      getModeQuestions().length /
-      CONFIG.QUESTIONS_PER_ROUND
-    );
-  }
-
-  function getNextRound() {
-    const completed = getCompletedRounds();
-
-    for (
-      let round = 1;
-      round <= getTotalRounds();
-      round++
-    ) {
-      if (!completed.includes(round)) {
-        return round;
-      }
+      state.roundQuestions = shuffle(available)
+        .slice(0, CONFIG.QUESTIONS_PER_ROUND);
     }
 
-    return 1;
-  }
-
-  function isRoundUnlocked(round) {
-    if (round === 1) return true;
-
-    const completed = getCompletedRounds();
-
-    for (
-      let previous = 1;
-      previous < round;
-      previous++
-    ) {
-      if (!completed.includes(previous)) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  function prepareRound(roundNumber) {
-    const pool = getModeQuestions();
-
-    if (!pool.length) {
-      showMessage(
-        state.language === "rw"
-          ? "Nta bibazo biri muri iki cyiciro."
-          : "No questions available in this category.",
-        "error"
-      );
-
+    if (state.roundQuestions.length !== 10) {
+      showSetupError("Could not prepare the round.");
       return false;
     }
 
-    const totalRounds = getTotalRounds();
-
-    if (
-      roundNumber < 1 ||
-      roundNumber > totalRounds
-    ) {
-      return false;
-    }
-
-    if (!isRoundUnlocked(roundNumber)) {
-      showMessage(
-        state.language === "rw"
-          ? "Banza utsinde rounds zibanza."
-          : "Complete earlier rounds first."
-      );
-
-      return false;
-    }
-
-    const used = new Set(getUsedIds());
-
-    let available = pool.filter(
-      question =>
-        !used.has(String(question.id))
-    );
-
-    // Start a new question cycle only when the
-    // remaining questions cannot fill another round.
-
-    if (
-      available.length <
-        Math.min(CONFIG.QUESTIONS_PER_ROUND, pool.length)
-    ) {
-      saveUsedIds([]);
-      available = [...pool];
-    }
-
-    const selected = shuffle(available).slice(
-      0,
-      CONFIG.QUESTIONS_PER_ROUND
-    );
-
-    if (!selected.length) {
-      return false;
-    }
-
-    saveUsedIds([
-      ...getUsedIds(),
-      ...selected.map(
-        question => String(question.id)
-      )
-    ]);
-
-    state.round = roundNumber;
-    state.roundQuestions = selected;
-
+    state.round = round;
     state.currentIndex = 0;
-
     state.score = 0;
     state.correct = 0;
-    state.answered = 0;
-
-    state.selectedAnswer = null;
-    state.answerSubmitted = false;
-
-    state.timeLeft = getQuestionTime();
-
     state.review = [];
-    state.roundFinished = false;
+    state.selectedAnswer = null;
+    state.answered = false;
+    state.finished = false;
 
-    saveProgress();
+    saveSession();
 
     return true;
   }
 
-  // =====================================================
-  // SETUP
-  // =====================================================
-
-  function selectLanguage(language) {
-    if (!["rw", "en"].includes(language)) {
+  function startQuiz() {
+    if (!state.confirmed) {
+      showSetupError("Confirm your language and category first.");
       return;
     }
 
-    state.language = language;
-    state.languageChosen = true;
-    state.setupConfirmed = false;
+    if (!prepareRound(getUnlockedRound())) return;
 
-    storageSet(
-      CONFIG.STORAGE.language,
-      language
-    );
-
-    $$(".language-btn").forEach(button => {
-      const active =
-        button.dataset.language === language;
-
-      button.classList.toggle(
-        "selected",
-        active
-      );
-
-      button.classList.toggle(
-        "active",
-        active
-      );
-
-      button.setAttribute(
-        "aria-pressed",
-        String(active)
-      );
-    });
-
-    resetConfirmation();
-    updateSelectionSummary();
-    hideMessage();
-  }
-
-  function selectMode(mode) {
-    if (!["traffic", "general"].includes(mode)) {
-      return;
-    }
-
-    state.mode = mode;
-    state.modeChosen = true;
-    state.setupConfirmed = false;
-
-    storageSet(
-      CONFIG.STORAGE.mode,
-      mode
-    );
-
-    $$(".mode-btn").forEach(button => {
-      const active =
-        button.dataset.mode === mode;
-
-      button.classList.toggle(
-        "selected",
-        active
-      );
-
-      button.classList.toggle(
-        "active",
-        active
-      );
-
-      button.setAttribute(
-        "aria-pressed",
-        String(active)
-      );
-    });
-
-    resetConfirmation();
-    updateSelectionSummary();
-    hideMessage();
-  }
-
-  function resetConfirmation() {
-    setDisplay(
-      ["confirmSetupBtn"],
-      "block"
-    );
-
-    const start = $("startBtn");
-
-    if (start) {
-      start.style.display = "block";
-      start.disabled = true;
-    }
-
-    state.setupConfirmed = false;
-  }
-
-  function updateSelectionSummary() {
-    const summary = getElement(
-      "selectionSummary",
-      "setupSummary"
-    );
-
-    const ready =
-      state.languageChosen &&
-      state.modeChosen;
-
-    const confirm = $("confirmSetupBtn");
-
-    if (confirm) {
-      confirm.disabled =
-        !ready || !state.loaded;
-    }
-
-    if (!summary) return;
-
-    if (!ready) {
-      summary.textContent =
-        state.language === "rw"
-          ? "Hitamo ururimi n'icyiciro."
-          : "Choose your language and category.";
-
-      return;
-    }
-
-    summary.textContent =
-      (
-        state.language === "rw"
-          ? "Ururimi: Ikinyarwanda"
-          : "Language: English"
-      ) +
-      " • " +
-      getCategoryName();
-  }
-
-  function syncSetupButtons() {
-    $$(".language-btn").forEach(button => {
-      const active =
-        button.dataset.language === state.language;
-
-      button.classList.toggle(
-        "selected",
-        active
-      );
-
-      button.classList.toggle(
-        "active",
-        active
-      );
-
-      button.setAttribute(
-        "aria-pressed",
-        String(active)
-      );
-    });
-
-    $$(".mode-btn").forEach(button => {
-      const active =
-        button.dataset.mode === state.mode;
-
-      button.classList.toggle(
-        "selected",
-        active
-      );
-
-      button.classList.toggle(
-        "active",
-        active
-      );
-
-      button.setAttribute(
-        "aria-pressed",
-        String(active)
-      );
-    });
-
-    updateSelectionSummary();
-  }
-
-  function openSetup() {
-    stopTimer();
-
-    state.setupConfirmed = false;
-
-    showScreen("homeScreen");
-
-    setDisplay(["gameSetup"], "block");
-    setDisplay(["confirmSetupBtn"], "block");
-
-    const start = $("startBtn");
-
-    if (start) {
-      start.style.display = "block";
-      start.disabled = true;
-    }
-
-    syncSetupButtons();
-    hideMessage();
-  }
-
-  function confirmSetup() {
-    if (
-      !state.languageChosen ||
-      !state.modeChosen
-    ) {
-      updateSelectionSummary();
-      return;
-    }
-
-    if (!state.loaded) {
-      showMessage(
-        state.language === "rw"
-          ? "Tegereza ibibazo bifunguke."
-          : "Please wait for questions to load."
-      );
-
-      return;
-    }
-
-    if (!getModeQuestions().length) {
-      showMessage(
-        state.language === "rw"
-          ? "Nta bibazo biri muri iki cyiciro."
-          : "No questions in this category.",
-        "error"
-      );
-
-      return;
-    }
-
-    state.setupConfirmed = true;
-
-    storageSet(
-      CONFIG.STORAGE.language,
-      state.language
-    );
-
-    storageSet(
-      CONFIG.STORAGE.mode,
-      state.mode
-    );
-
-    setDisplay(
-      ["confirmSetupBtn"],
-      "none"
-    );
-
-    const start = $("startBtn");
-
-    if (start) {
-      start.style.display = "block";
-      start.disabled = false;
-    }
-
-    const summary = getElement(
-      "selectionSummary",
-      "setupSummary"
-    );
-
-    if (summary) {
-      summary.textContent =
-        state.language === "rw"
-          ? "✓ Ibyo wahisemo byemejwe."
-          : "✓ Your selection is confirmed.";
-    }
-
-    hideMessage();
-  }
-
-  // =====================================================
-  // START GAME
-  // =====================================================
-
-  function startConfirmedQuiz() {
-    if (!state.setupConfirmed) {
-      showMessage(
-        state.language === "rw"
-          ? "Banza wemeze ibyo wahisemo."
-          : "Please confirm your selections first."
-      );
-
-      return;
-    }
-
-    if (!state.loaded) {
-      showMessage(
-        state.language === "rw"
-          ? "Tegereza ibibazo bifunguke."
-          : "Questions are still loading."
-      );
-
-      return;
-    }
-
-    const nextRound = getNextRound();
-
-    if (!prepareRound(nextRound)) {
-      return;
-    }
-
-    setDisplay(["gameSetup"], "none");
-
-    hideMessage();
-
-    startCurrentRound();
-  }
-
-  function startCurrentRound(resume = false) {
-    if (!state.roundQuestions.length) {
-      return;
-    }
-
-    state.roundFinished = false;
-
-    showScreen("quizScreen");
-
-    setText(
-      ["currentRound", "roundLabel"],
-      state.round
-    );
-
-    setText(
-      ["categoryIndicator"],
-      getCategoryName()
-    );
-
-    renderQuestion(resume);
-
-    if (!state.answerSubmitted) {
-      startTimer();
-    } else {
-      stopTimer();
-    }
-
-    dispatch("quizmaster:game-started", {
+    emit(EVENTS.started, {
       round: state.round,
+      language: state.language,
       mode: state.mode
     });
+
+    showScreen("quizScreen");
+    renderQuestion();
   }
 
-  // =====================================================
-  // RENDER QUESTION
-  // =====================================================
+  function continueQuiz() {
+    const session = getSession();
 
-  function renderQuestion(resume = false) {
+    if (!session) {
+      showMessage("No saved quiz is available.");
+      updateHome();
+      return;
+    }
+
+    state.round = session.round;
+    state.roundQuestions = session.questions;
+    state.currentIndex = Math.min(
+      session.currentIndex || 0,
+      session.questions.length - 1
+    );
+    state.score = session.score || 0;
+    state.correct = session.correct || 0;
+    state.review = session.review || [];
+    state.answered = false;
+    state.finished = false;
+
+    showScreen("quizScreen");
+    renderQuestion();
+  }
+
+  function retryRound() {
+    if (!prepareRound(state.round, true)) {
+      // If no saved session exists, recreate the round.
+      if (!prepareRound(state.round)) return;
+    }
+
+    showScreen("quizScreen");
+    renderQuestion();
+  }
+
+  /* ==========================================
+     QUESTION DISPLAY
+  ========================================== */
+
+  function renderQuestion() {
+    stopTimer();
+
     const question =
       state.roundQuestions[state.currentIndex];
 
@@ -1370,39 +779,43 @@
       return;
     }
 
-    if (!resume) {
-      state.selectedAnswer = null;
-      state.answerSubmitted = false;
-      state.timeLeft = getQuestionTime();
+    state.selectedAnswer = null;
+    state.answered = false;
+    state.remainingTime = getTimeLimit();
+
+    if ($("roundLabel")) {
+      $("roundLabel").textContent = state.round;
     }
 
-    setText(
-      [
-        "currentQuestionNumber",
-        "questionCounter"
-      ],
-      `${state.currentIndex + 1}/${state.roundQuestions.length}`
-    );
+    if ($("questionCounter")) {
+      $("questionCounter").textContent =
+        `${state.currentIndex + 1}/10`;
+    }
 
-    setText(
-      ["questionText"],
-      getQuestionText(question)
-    );
+    if ($("scoreNumber")) {
+      $("scoreNumber").textContent = state.score;
+    }
 
-    // Question image
+    if ($("categoryIndicator")) {
+      $("categoryIndicator").textContent =
+        state.mode === "traffic"
+          ? "🚦 Road Safety"
+          : "🌍 General Knowledge";
+    }
+
+    if ($("questionText")) {
+      $("questionText").textContent = question.question;
+    }
 
     const image = $("questionImage");
 
     if (image) {
-      const imageURL = question.image || "";
+      image.onerror = () => {
+        image.style.display = "none";
+      };
 
-      if (
-        typeof imageURL === "string" &&
-        imageURL.trim() &&
-        /^(https?:|\.{1,2}\/|\/)/i.test(imageURL)
-      ) {
-        image.src = imageURL;
-        image.alt = "Question illustration";
+      if (question.image) {
+        image.src = question.image;
         image.style.display = "block";
       } else {
         image.removeAttribute("src");
@@ -1410,1805 +823,830 @@
       }
     }
 
-    // Answer options
-
     const container = $("optionsContainer");
 
     if (container) {
       container.innerHTML = "";
 
-      shuffle(getOptions(question)).forEach(
-        (option, index) => {
-          const button =
-            document.createElement("button");
+      question.options.forEach((option, index) => {
+        const button = document.createElement("button");
 
-          button.type = "button";
-          button.className = "option-btn";
+        button.type = "button";
+        button.className = "option-btn";
 
-          button.dataset.answer = String(option);
+        button.innerHTML = `
+          <span class="option-letter">
+            ${String.fromCharCode(65 + index)}
+          </span>
+          <span>${escapeHTML(option)}</span>
+        `;
 
-          button.setAttribute(
-            "aria-pressed",
-            String(
-              state.selectedAnswer === option
-            )
-          );
+        button.addEventListener("click", () => {
+          selectAnswer(index);
+        });
 
-          button.innerHTML =
-            `<span class="option-letter">${String.fromCharCode(65 + index)}</span>` +
-            `<span class="option-text">${escapeHTML(option)}</span>`;
-
-          button.addEventListener(
-            "click",
-            () => selectAnswer(option, button)
-          );
-
-          if (state.selectedAnswer === option) {
-            button.classList.add("selected");
-          }
-
-          if (state.answerSubmitted) {
-            button.disabled = true;
-
-            if (
-              String(option) ===
-              String(getCorrectAnswer(question))
-            ) {
-              button.classList.add("correct");
-            } else if (
-              String(option) ===
-              String(state.selectedAnswer)
-            ) {
-              button.classList.add("incorrect");
-            }
-          }
-
-          container.appendChild(button);
-        }
-      );
+        container.appendChild(button);
+      });
     }
 
-    setDisplay(["answerFeedback"], "none");
-    setDisplay(["explanation"], "none");
-
-    if (state.answerSubmitted) {
-      showAnswerFeedback(question);
+    if ($("answerFeedback")) {
+      $("answerFeedback").textContent = "";
     }
 
-    const submit = $("submitAnswerBtn");
-
-    if (submit) {
-      submit.disabled =
-        state.selectedAnswer === null ||
-        state.answerSubmitted;
-
-      submit.style.display =
-        state.answerSubmitted
-          ? "none"
-          : "block";
+    if ($("explanation")) {
+      $("explanation").textContent = "";
     }
 
-    setDisplay(
-      ["nextQuestionBtn"],
-      state.answerSubmitted
-        ? "block"
-        : "none"
-    );
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").hidden = false;
+      $("submitAnswerBtn").disabled = true;
+    }
 
-    updateScoreDisplay();
+    if ($("nextQuestionBtn")) {
+      $("nextQuestionBtn").hidden = true;
+    }
+
+    if ($("timer")) {
+      $("timer").textContent = state.remainingTime;
+    }
+
     updateProgress();
-    updateTimerDisplay();
-
-    saveProgress();
+    saveSession();
+    startTimer();
   }
 
-  // =====================================================
-  // SELECT ANSWER
-  // =====================================================
-
-  function selectAnswer(answer, button) {
-    if (state.answerSubmitted) return;
-
-    state.selectedAnswer = answer;
-
-    $$("#optionsContainer .option-btn").forEach(
-      option => {
-        option.classList.remove("selected");
-
-        option.setAttribute(
-          "aria-pressed",
-          "false"
-        );
-      }
-    );
-
-    if (button) {
-      button.classList.add("selected");
-
-      button.setAttribute(
-        "aria-pressed",
-        "true"
-      );
-    }
-
-    const submit = $("submitAnswerBtn");
-
-    if (submit) {
-      submit.disabled = false;
-    }
-
-    saveProgress();
-  }
-
-  // =====================================================
-  // SCORE AND PROGRESS
-  // =====================================================
-
-  function updateScoreDisplay() {
-    setText(
-      ["scoreNumber", "score"],
-      state.score
-    );
-  }
-
-  function updateProgress() {
-    const fill = $("progressFill");
-
-    if (fill) {
-      const percentage =
-        (
-          (state.currentIndex + 1) /
-          state.roundQuestions.length
-        ) * 100;
-
-      fill.style.width =
-        Math.min(100, percentage) + "%";
-    }
-  }
-
-  // =====================================================
-  // ANSWER FEEDBACK
-  // =====================================================
-
-  function showAnswerFeedback(question) {
-    const correct = getCorrectAnswer(question);
-
-    const isCorrect =
-      state.selectedAnswer === correct;
-
-    const feedback = $("answerFeedback");
-
-    if (feedback) {
-      feedback.textContent = isCorrect
-        ? (
-            state.language === "rw"
-              ? "Ni byo! +10 amanota"
-              : "Correct! +10 points"
-          )
-        : (
-            state.language === "rw"
-              ? "Si byo. Gerageza ubutaha."
-              : "Incorrect. Try again next time."
-          );
-
-      feedback.style.display = "block";
-    }
-
-    const explanation = $("explanation");
-    const explanationText = getExplanation(question);
-
-    if (explanation) {
-      if (explanationText) {
-        explanation.textContent = explanationText;
-        explanation.style.display = "block";
-      } else {
-        explanation.textContent = "";
-        explanation.style.display = "none";
-      }
-    }
-  }
-
-  // =====================================================
-  // SUBMIT ANSWER
-  // =====================================================
-
-  function submitAnswer() {
-    if (state.answerSubmitted) return;
-
-    if (state.selectedAnswer === null) {
-      showMessage(
-        state.language === "rw"
-          ? "Banza uhitemo igisubizo."
-          : "Please select an answer."
-      );
-
-      return;
-    }
-
-    stopTimer();
-
-    state.answerSubmitted = true;
-    state.answered++;
+  function selectAnswer(index) {
+    if (state.answered) return;
 
     const question =
       state.roundQuestions[state.currentIndex];
 
-    const correct = getCorrectAnswer(question);
+    if (
+      !question ||
+      index < 0 ||
+      index >= question.options.length
+    ) return;
 
-    const isCorrect =
-      state.selectedAnswer === correct;
+    state.selectedAnswer = index;
 
-    if (isCorrect) {
-      state.correct++;
-
-      state.score +=
-        CONFIG.POINTS_PER_CORRECT;
-    }
-
-    state.review.push({
-      id: String(question.id),
-      round: state.round,
-      mode: state.mode,
-
-      question: getQuestionText(question),
-
-      selected: state.selectedAnswer,
-      correct,
-
-      isCorrect,
-
-      explanation: getExplanation(question)
+    document.querySelectorAll(
+      "#optionsContainer .option-btn"
+    ).forEach((button, buttonIndex) => {
+      button.classList.toggle(
+        "selected",
+        buttonIndex === index
+      );
     });
 
-    $$("#optionsContainer .option-btn").forEach(
-      button => {
-        button.disabled = true;
-
-        if (
-          button.dataset.answer === String(correct)
-        ) {
-          button.classList.add("correct");
-        } else if (
-          button.dataset.answer ===
-          String(state.selectedAnswer)
-        ) {
-          button.classList.add("incorrect");
-        }
-      }
-    );
-
-    showAnswerFeedback(question);
-
-    setDisplay(
-      ["submitAnswerBtn"],
-      "none"
-    );
-
-    const next = $("nextQuestionBtn");
-
-    if (next) {
-      next.textContent =
-        state.currentIndex ===
-        state.roundQuestions.length - 1
-          ? (
-              state.language === "rw"
-                ? "Reba amanota"
-                : "See Results"
-            )
-          : (
-              state.language === "rw"
-                ? "Ikibazo gikurikira"
-                : "Next Question"
-            );
-
-      next.style.display = "block";
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").disabled = false;
     }
-
-    updateScoreDisplay();
-    updateProgress();
-
-    saveProgress();
   }
 
-  // =====================================================
-  // TIMER
-  // =====================================================
+  /* ==========================================
+     TIMER
+  ========================================== */
+
+  function stopTimer() {
+    if (state.timerInterval !== null) {
+      clearInterval(state.timerInterval);
+      state.timerInterval = null;
+    }
+
+    if ($("timerBox")) {
+      $("timerBox").classList.remove("warning");
+    }
+  }
 
   function startTimer() {
     stopTimer();
 
-    if (state.answerSubmitted) return;
+    state.timerInterval = setInterval(() => {
+      if (state.answered) return;
 
-    updateTimerDisplay();
+      state.remainingTime--;
 
-    state.timerId = window.setInterval(() => {
-      if (
-        state.paused ||
-        state.answerSubmitted
-      ) {
-        return;
+      if ($("timer")) {
+        $("timer").textContent =
+          Math.max(0, state.remainingTime);
       }
 
-      state.timeLeft--;
-
-      updateTimerDisplay();
-
-      if (state.timeLeft <= 0) {
-        state.timeLeft = 0;
-
-        stopTimer();
-        timeExpired();
-
-        return;
+      if ($("timerBox")) {
+        $("timerBox").classList.toggle(
+          "warning",
+          state.remainingTime <= 10
+        );
       }
 
-      if (state.timeLeft % 5 === 0) {
-        saveProgress();
+      if (state.remainingTime <= 0) {
+        submitAnswer(true);
       }
-
     }, 1000);
   }
 
-  function stopTimer() {
-    if (state.timerId !== null) {
-      window.clearInterval(state.timerId);
-      state.timerId = null;
-    }
-  }
+  /* ==========================================
+     ANSWERS
+  ========================================== */
 
-  function updateTimerDisplay() {
-    setText(
-      ["timer"],
-      Math.max(0, state.timeLeft)
-    );
+  function submitAnswer(timedOut = false) {
+    if (state.answered) return;
 
-    const timerBox = $("timerBox");
+    if (
+      state.selectedAnswer === null &&
+      !timedOut
+    ) return;
 
-    if (timerBox) {
-      timerBox.classList.toggle(
-        "warning",
-        state.timeLeft <= 10
-      );
-    }
-  }
-
-  // =====================================================
-  // TIME EXPIRED
-  // =====================================================
-
-  function timeExpired() {
-    if (state.answerSubmitted) return;
-
-    state.answerSubmitted = true;
-    state.answered++;
+    state.answered = true;
+    stopTimer();
 
     const question =
       state.roundQuestions[state.currentIndex];
 
-    const correct = getCorrectAnswer(question);
+    const correct =
+      state.selectedAnswer === question.correctIndex;
+
+    if (correct) {
+      state.score += CONFIG.POINTS_PER_CORRECT;
+      state.correct++;
+    }
 
     state.review.push({
-      id: String(question.id),
-      round: state.round,
-      mode: state.mode,
-
-      question: getQuestionText(question),
-
-      selected:
-        state.language === "rw"
-          ? "Nta gisubizo"
-          : "No answer",
-
+      question: question.question,
+      options: question.options,
+      selectedAnswer:
+        state.selectedAnswer === null
+          ? null
+          : question.options[state.selectedAnswer],
+      correctAnswer: question.answer,
       correct,
-      isCorrect: false,
-
-      explanation: getExplanation(question)
+      explanation: question.explanation
     });
 
-    $$("#optionsContainer .option-btn").forEach(
-      button => {
-        button.disabled = true;
+    document.querySelectorAll(
+      "#optionsContainer .option-btn"
+    ).forEach((button, index) => {
+      button.disabled = true;
 
-        if (
-          button.dataset.answer === String(correct)
-        ) {
-          button.classList.add("correct");
-        }
+      if (index === question.correctIndex) {
+        button.classList.add("correct");
       }
-    );
 
-    const feedback = $("answerFeedback");
+      if (
+        index === state.selectedAnswer &&
+        !correct
+      ) {
+        button.classList.add("incorrect");
+      }
+    });
 
-    if (feedback) {
-      feedback.textContent =
-        state.language === "rw"
-          ? "Igihe kirangiye!"
-          : "Time is up!";
+    if ($("answerFeedback")) {
+      $("answerFeedback").textContent = timedOut
+        ? "⏰ Time is up!"
+        : correct
+          ? "✅ Correct answer!"
+          : "❌ Incorrect answer.";
 
-      feedback.style.display = "block";
+      $("answerFeedback").style.color =
+        correct ? "#20bd78" : "#ff7777";
     }
 
-    const explanation = $("explanation");
-
-    if (explanation) {
-      const text = getExplanation(question);
-
-      explanation.textContent = text;
-      explanation.style.display =
-        text ? "block" : "none";
+    if ($("explanation")) {
+      $("explanation").textContent =
+        question.explanation;
     }
 
-    setDisplay(
-      ["submitAnswerBtn"],
-      "none"
-    );
-
-    const next = $("nextQuestionBtn");
-
-    if (next) {
-      next.textContent =
-        state.currentIndex ===
-        state.roundQuestions.length - 1
-          ? (
-              state.language === "rw"
-                ? "Reba amanota"
-                : "See Results"
-            )
-          : (
-              state.language === "rw"
-                ? "Ikibazo gikurikira"
-                : "Next Question"
-            );
-
-      next.style.display = "block";
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").hidden = true;
     }
 
-    updateScoreDisplay();
-    saveProgress();
+    if ($("nextQuestionBtn")) {
+      $("nextQuestionBtn").hidden = false;
+
+      $("nextQuestionBtn").textContent =
+        state.currentIndex === 9
+          ? "View Results →"
+          : "Next Question →";
+    }
+
+    if ($("scoreNumber")) {
+      $("scoreNumber").textContent = state.score;
+    }
+
+    saveSession();
+    updateProgress();
   }
 
-  // =====================================================
-  // NEXT QUESTION
-  // =====================================================
-
   function nextQuestion() {
-    if (!state.answerSubmitted) return;
+    if (!state.answered) return;
 
-    if (
-      state.currentIndex <
-      state.roundQuestions.length - 1
-    ) {
+    if (state.currentIndex < 9) {
       state.currentIndex++;
-
-      state.selectedAnswer = null;
-      state.answerSubmitted = false;
-      state.timeLeft = getQuestionTime();
-
       renderQuestion();
-
-      startTimer();
-
     } else {
       finishRound();
     }
   }
 
-  // =====================================================
-  // REVIEW HISTORY
-  // =====================================================
-
-  function saveReviewHistory() {
-    const previous = readJSON(
-      CONFIG.STORAGE.review,
-      []
+  function updateProgress() {
+    const percentage = Math.round(
+      (
+        state.currentIndex +
+        (state.answered ? 1 : 0)
+      ) / 10 * 100
     );
 
-    const history = Array.isArray(previous)
-      ? previous
-      : [];
+    if ($("progressFill")) {
+      $("progressFill").style.width =
+        `${percentage}%`;
+    }
 
-    const newRecords = state.review.map(
-      item => ({
-        ...item,
-        date: new Date().toISOString()
-      })
+    const track = document.querySelector(
+      ".progress-track"
     );
 
-    const combined = [
-      ...history,
-      ...newRecords
-    ].slice(-CONFIG.MAX_REVIEW_HISTORY);
+    if (track) {
+      track.setAttribute(
+        "aria-valuenow",
+        percentage
+      );
+    }
+  }
 
-    writeJSON(
-      CONFIG.STORAGE.review,
-      combined
+  /* ==========================================
+     SCORE STATISTICS
+  ========================================== */
+
+  function getWeekNumber(date) {
+    const d = new Date(Date.UTC(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    ));
+
+    const day = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - day);
+
+    const start = new Date(
+      Date.UTC(d.getUTCFullYear(), 0, 1)
+    );
+
+    return Math.ceil(
+      (((d - start) / 86400000) + 1) / 7
     );
   }
 
-  // =====================================================
-  // RESULTS
-  // =====================================================
-
-  function finishRound() {
-    if (
-      state.roundFinished ||
-      !state.roundQuestions.length
-    ) {
-      return;
-    }
-
-    stopTimer();
-
-    state.roundFinished = true;
-
-    const total = state.roundQuestions.length;
-
-    const percentage = total
-      ? Math.round(
-          (state.correct / total) * 100
-        )
-      : 0;
-
-    const passed =
-      percentage >= CONFIG.UNLOCK_PERCENT;
-
-    if (passed) {
-      const completed = getCompletedRounds();
-
-      if (!completed.includes(state.round)) {
-        completed.push(state.round);
-
-        saveCompletedRounds(completed);
-      }
-    }
-
-    // Best score
-
+  function updateStatistics() {
     const best = Number(
-      storageGet(CONFIG.STORAGE.best) || 0
+      read(CONFIG.STORAGE.best, 0)
     );
 
-    if (state.score > best) {
-      storageSet(
-        CONFIG.STORAGE.best,
-        state.score
-      );
-    }
+    const total = Number(
+      read(CONFIG.STORAGE.total, 0)
+    );
 
-    // Total score
+    write(
+      CONFIG.STORAGE.best,
+      Math.max(best, state.score)
+    );
 
-    const totalScore =
-      Number(
-        storageGet(CONFIG.STORAGE.total) || 0
-      ) + state.score;
-
-    storageSet(
+    write(
       CONFIG.STORAGE.total,
-      totalScore
+      total + state.score
     );
 
-    // Keep previous review answers
-
-    saveReviewHistory();
-
-    // Remove unfinished progress
-
-    storageRemove(CONFIG.STORAGE.progress);
-
-    setText(
-      ["resultTitle"],
-      passed
-        ? (
-            state.language === "rw"
-              ? "Watsinze!"
-              : "You Passed!"
-          )
-        : (
-            state.language === "rw"
-              ? "Ongera ugerageze"
-              : "Try Again"
-          )
+    const progress = read(
+      CONFIG.STORAGE.progress,
+      {}
     );
 
-    setText(
-      ["resultMessage"],
-      passed
-        ? (
-            state.language === "rw"
-              ? "Wujuje ibisabwa kugira ngo ukomeze."
-              : "You passed this round."
-          )
-        : (
-            state.language === "rw"
-              ? "Ukeneye nibura 70% kugira ngo ukomeze."
-              : "You need at least 70% to unlock the next round."
-          )
-    );
+    progress.totalScore =
+      (progress.totalScore || 0) + state.score;
 
-    setText(
-      ["resultScore"],
+    progress.bestScore = Math.max(
+      progress.bestScore || 0,
       state.score
     );
 
-    setText(
-      ["resultPercent"],
-      percentage + "%"
+    progress.completedRounds =
+      getCompleted().length;
+
+    write(CONFIG.STORAGE.progress, progress);
+
+    const weekly = read(
+      CONFIG.STORAGE.weekly,
+      {}
     );
 
-    setText(
-      ["resultStars"],
-      passed ? "⭐⭐⭐" : "⭐"
-    );
+    const now = new Date();
 
-    const nextButton = $("resultNextBtn");
+    const weekKey =
+      `${now.getFullYear()}-W${getWeekNumber(now)}`;
 
-    if (nextButton) {
-      nextButton.style.display =
-        passed &&
-        state.round < getTotalRounds()
-          ? "block"
-          : "none";
-    }
+    weekly[weekKey] =
+      (weekly[weekKey] || 0) + state.score;
 
-    setDisplay(
-      ["retryBtn"],
-      passed ? "none" : "block"
-    );
-
-    updateHome();
-
-    showScreen("resultScreen");
-
-    dispatch(
-      "quizmaster:round-finished",
-      {
-        round: state.round,
-        score: state.score,
-        correct: state.correct,
-        total,
-        percentage,
-        passed
-      }
-    );
+    write(CONFIG.STORAGE.weekly, weekly);
   }
 
-  // =====================================================
-  // RETRY ROUND
-  // =====================================================
+  /* ==========================================
+     FINISH ROUND
+  ========================================== */
 
-  function retryRound() {
-    if (!state.roundQuestions.length) {
-      return;
-    }
+  function finishRound() {
+    if (state.finished) return;
 
+    state.finished = true;
     stopTimer();
 
-    state.currentIndex = 0;
-
-    state.score = 0;
-    state.correct = 0;
-    state.answered = 0;
-
-    state.review = [];
-
-    state.selectedAnswer = null;
-    state.answerSubmitted = false;
-
-    state.timeLeft = getQuestionTime();
-
-    state.roundFinished = false;
-
-    saveProgress();
-
-    startCurrentRound();
-  }
-
-  // =====================================================
-  // NEXT ROUND
-  // =====================================================
-
-  function nextRound() {
-    const next = state.round + 1;
-
-    if (next > getTotalRounds()) {
-      goHome();
-      return;
-    }
-
-    if (!isRoundUnlocked(next)) {
-      showMessage(
-        state.language === "rw"
-          ? "Banza utsinde round ibanza."
-          : "Complete the previous round first."
-      );
-
-      return;
-    }
-
-    if (prepareRound(next)) {
-      startCurrentRound();
-    }
-  }
-
-  // =====================================================
-  // REVIEW ANSWERS SCREEN
-  // =====================================================
-
-  function showReview() {
-    const saved = readJSON(
-      CONFIG.STORAGE.review,
-      []
+    const percentage = Math.round(
+      state.correct / 10 * 100
     );
 
-    const reviewData =
-      state.review.length && !state.roundFinished
-        ? state.review
-        : Array.isArray(saved)
-          ? saved
-          : [];
+    const passed =
+      percentage >= CONFIG.PASS_PERCENT;
 
-    const container = getElement(
-      "reviewContainer",
-      "reviewList"
+    if (passed) {
+      const completed = getCompleted();
+
+      if (!completed.includes(state.round)) {
+        completed.push(state.round);
+        completed.sort((a, b) => a - b);
+        saveCompleted(completed);
+      }
+
+      const used = getUsed();
+
+      saveUsed([
+        ...new Set([
+          ...used,
+          ...state.roundQuestions.map(q => q.id)
+        ])
+      ]);
+    }
+
+    updateStatistics();
+
+    write(CONFIG.STORAGE.review, state.review);
+
+    // Keep failed round available for retry.
+    // Remove the session only after a passed round.
+    if (passed) {
+      remove(CONFIG.STORAGE.session);
+    } else {
+      saveSession();
+    }
+
+    if ($("resultTitle")) {
+      $("resultTitle").textContent = passed
+        ? "Round Passed! 🎉"
+        : "Round Not Passed";
+    }
+
+    if ($("resultMessage")) {
+      $("resultMessage").textContent = passed
+        ? "You achieved the required score to unlock the next round."
+        : "You need at least 70% to unlock the next round. Try again!";
+    }
+
+    if ($("resultStars")) {
+      const stars =
+        percentage >= 90 ? 3 :
+        percentage >= 80 ? 2 :
+        percentage >= 70 ? 1 : 0;
+
+      $("resultStars").textContent =
+        stars ? "⭐".repeat(stars) : "🌱";
+    }
+
+    if ($("resultScore")) {
+      $("resultScore").textContent = state.score;
+    }
+
+    if ($("resultPercent")) {
+      $("resultPercent").textContent =
+        `${percentage}%`;
+    }
+
+    if ($("resultCorrect")) {
+      $("resultCorrect").textContent =
+        `${state.correct}/10`;
+    }
+
+    if ($("resultPassMark")) {
+      $("resultPassMark").textContent = "70%";
+    }
+
+    if ($("resultNextBtn")) {
+      $("resultNextBtn").hidden = !passed;
+    }
+
+    if ($("retryBtn")) {
+      $("retryBtn").hidden = passed;
+    }
+
+    emit(EVENTS.finished, {
+      round: state.round,
+      score: state.score,
+      correct: state.correct,
+      percentage,
+      passed
+    });
+
+    updateHome();
+    showScreen("resultScreen");
+  }
+
+  /* ==========================================
+     REVIEW ANSWERS
+  ========================================== */
+
+  function renderReview() {
+    const container = $("reviewContainer");
+
+    if (!container) return;
+
+    const reviews = state.review.length
+      ? state.review
+      : read(CONFIG.STORAGE.review, []);
+
+    container.innerHTML = "";
+
+    if (!reviews.length) {
+      container.textContent =
+        "No answers available to review yet.";
+      return;
+    }
+
+    reviews.forEach((item, index) => {
+      const element = document.createElement("div");
+
+      element.className = "review-item";
+
+      const selected =
+        item.selectedAnswer ?? "No answer";
+
+      element.innerHTML = `
+        <h3>
+          ${index + 1}. ${escapeHTML(item.question)}
+        </h3>
+
+        <p class="${
+          item.correct ? "correct-text" : "wrong-text"
+        }">
+          Your answer: ${escapeHTML(selected)}
+        </p>
+
+        <p class="correct-text">
+          Correct answer: ${escapeHTML(item.correctAnswer)}
+        </p>
+
+        ${
+          item.explanation
+            ? `<p>Explanation: ${escapeHTML(item.explanation)}</p>`
+            : ""
+        }
+      `;
+
+      container.appendChild(element);
+    });
+
+    emit(EVENTS.review, {
+      answers: reviews
+    });
+  }
+
+  function openReview() {
+    renderReview();
+    showScreen("reviewScreen");
+  }
+
+  /* ==========================================
+     ROUNDS
+  ========================================== */
+
+  function renderRounds() {
+    const container = $("roundList");
+
+    if (!container) return;
+
+    const completed = getCompleted();
+    const unlocked = getUnlockedRound();
+
+    const total = Math.floor(
+      buildPool().length / 10
     );
 
-    if (!container) {
-      showScreen("reviewScreen");
-      return;
+    if ($("roundsCompleted")) {
+      $("roundsCompleted").textContent =
+        completed.length;
+    }
+
+    if ($("roundsTotal")) {
+      $("roundsTotal").textContent = total;
+    }
+
+    if ($("roundsUnlocked")) {
+      $("roundsUnlocked").textContent =
+        Math.min(unlocked, total);
     }
 
     container.innerHTML = "";
 
-    if (!reviewData.length) {
+    if (total === 0) {
       container.textContent =
-        state.language === "rw"
-          ? "Nta bisubizo byo gusubiramo bihari."
-          : "There are no answers to review.";
-
-      showScreen("reviewScreen");
+        "Not enough questions available for this category.";
       return;
     }
 
-    reviewData.forEach((item, index) => {
-      const card = document.createElement("div");
+    for (let round = 1; round <= total; round++) {
+      const isCompleted = completed.includes(round);
+      const isUnlocked = round <= unlocked;
 
-      card.className = "review-item";
+      const button = document.createElement("button");
 
-      const status = item.isCorrect
-        ? (
-            state.language === "rw"
-              ? "Ni byo ✓"
-              : "Correct ✓"
-          )
-        : (
-            state.language === "rw"
-              ? "Si byo ✗"
-              : "Incorrect ✗"
-          );
+      button.type = "button";
 
-      const title = document.createElement("h3");
+      button.className =
+        "round-card" +
+        (isCompleted ? " completed" : "") +
+        (!isUnlocked ? " locked" : "");
 
-      title.textContent =
-        `${index + 1}. ${item.question || ""}`;
+      button.disabled = !isUnlocked;
 
-      const selected = document.createElement("p");
-      const correct = document.createElement("p");
-      const statusElement = document.createElement("p");
-
-      const selectedLabel =
-        state.language === "rw"
-          ? "Igisubizo wahisemo:"
-          : "Your answer:";
-
-      const correctLabel =
-        state.language === "rw"
-          ? "Igisubizo nyacyo:"
-          : "Correct answer:";
-
-      selected.textContent =
-        `${selectedLabel} ${item.selected || ""}`;
-
-      correct.textContent =
-        `${correctLabel} ${item.correct || ""}`;
-
-      statusElement.className = "review-status";
-      statusElement.textContent = status;
-
-      statusElement.style.color =
-        item.isCorrect ? "#16a34a" : "#dc2626";
-
-      card.appendChild(title);
-      card.appendChild(selected);
-      card.appendChild(correct);
-      card.appendChild(statusElement);
-
-      if (item.explanation) {
-        const explanation = document.createElement("p");
-
-        explanation.textContent = item.explanation;
-
-        card.appendChild(explanation);
-      }
-
-      container.appendChild(card);
-    });
-
-    showScreen("reviewScreen");
-
-    dispatch(
-      "quizmaster:review-data",
-      reviewData
-    );
-  }
-
-  // =====================================================
-  // ROUNDS SCREEN
-  // =====================================================
-
-  function showRounds() {
-    if (!state.loaded) {
-      showMessage(
-        state.language === "rw"
-          ? "Tegereza ibibazo bifunguke."
-          : "Questions are still loading."
-      );
-
-      return;
-    }
-
-    const total = getTotalRounds();
-    const completed = getCompletedRounds();
-
-    setText(
-      ["roundsCompleted"],
-      completed.length
-    );
-
-    setText(
-      ["roundsTotal"],
-      total
-    );
-
-    setText(
-      ["roundsUnlocked"],
-      Math.min(total, completed.length + 1)
-    );
-
-    setText(
-      ["roundsDescription"],
-      state.language === "rw"
-        ? "Ugomba gutsinda nibura 70% kugira ngo ukomeze."
-        : "You need at least 70% to unlock the next round."
-    );
-
-    const list = $("roundList");
-
-    if (list) {
-      list.innerHTML = "";
-
-      for (
-        let round = 1;
-        round <= total;
-        round++
-      ) {
-        const isCompleted =
-          completed.includes(round);
-
-        const isUnlocked =
-          isRoundUnlocked(round);
-
-        const button =
-          document.createElement("button");
-
-        button.type = "button";
-        button.className = "round-card";
-
-        if (isCompleted) {
-          button.classList.add("completed");
-        }
-
-        if (!isUnlocked) {
-          button.classList.add("locked");
-        }
-
-        button.disabled = !isUnlocked;
-
-        const roundName =
-          state.language === "rw"
-            ? `Ikiciro ${round}`
-            : `Round ${round}`;
-
-        const status = isCompleted
-          ? (
-              state.language === "rw"
-                ? "Waragitsinze ✓"
-                : "Completed ✓"
-            )
-          : isUnlocked
-            ? (
-                state.language === "rw"
-                  ? "Kina"
-                  : "Play"
-              )
-            : (
-                state.language === "rw"
-                  ? "Kirafunze 🔒"
-                  : "Locked 🔒"
-              );
-
-        const nameElement =
-          document.createElement("span");
-
-        nameElement.className = "round-number";
-        nameElement.textContent = roundName;
-
-        const statusElement =
-          document.createElement("span");
-
-        statusElement.className = "round-status";
-        statusElement.textContent = status;
-
-        button.appendChild(nameElement);
-        button.appendChild(statusElement);
-
-        button.addEventListener(
-          "click",
-          () => {
-            if (prepareRound(round)) {
-              startCurrentRound();
+      button.innerHTML = `
+        <span>
+          <strong>Round ${round}</strong>
+          <br>
+          <span class="round-status">
+            ${
+              isCompleted
+                ? "✓ Completed"
+                : isUnlocked
+                  ? "Available"
+                  : "🔒 Locked"
             }
-          }
-        );
+          </span>
+        </span>
+        <span>
+          ${isCompleted ? "🏆" : isUnlocked ? "▶" : "🔒"}
+        </span>
+      `;
 
-        list.appendChild(button);
-      }
+      button.addEventListener("click", () => {
+        if (prepareRound(round)) {
+          showScreen("quizScreen");
+          renderQuestion();
+        }
+      });
+
+      container.appendChild(button);
     }
-
-    showScreen("roundsScreen");
   }
 
-  // =====================================================
-  // HOME SCREEN
-  // =====================================================
-
-  function updateHome() {
-    setText(
-      ["homeRound"],
-      getNextRound()
-    );
-
-    setText(
-      ["homeScore"],
-      storageGet(CONFIG.STORAGE.best) || "0"
-    );
-
-    const completed = getCompletedRounds();
-
-    setText(
-      ["homeStars"],
-      "⭐".repeat(
-        Math.min(5, completed.length)
-      ) || "⭐"
-    );
-
-    const saved = getProgress();
-
-    const canContinue = Boolean(
-      saved &&
-      Array.isArray(saved.questionIds) &&
-      saved.questionIds.length
-    );
-
-    setDisplay(
-      ["continueBtn"],
-      canContinue ? "block" : "none"
-    );
-
-    const review = readJSON(
-      CONFIG.STORAGE.review,
-      []
-    );
-
-    setDisplay(
-      ["reviewAnswersBtn"],
-      Array.isArray(review) && review.length
-        ? "block"
-        : "none"
-    );
-
-    updateSelectionSummary();
-  }
-
-  // =====================================================
-  // CONTINUE QUIZ
-  // =====================================================
-
-  function continueQuiz() {
-    if (!state.loaded) {
-      showMessage(
-        state.language === "rw"
-          ? "Tegereza ibibazo bifunguke."
-          : "Please wait for questions to load."
-      );
-
-      return;
-    }
-
-    const saved = getProgress();
-
-    if (
-      !saved ||
-      !Array.isArray(saved.questionIds) ||
-      !saved.questionIds.length
-    ) {
-      openSetup();
-      return;
-    }
-
-    const language =
-      saved.language === "rw" ? "rw" : "en";
-
-    const mode =
-      saved.mode === "traffic"
-        ? "traffic"
-        : "general";
-
-    state.language = language;
-    state.mode = mode;
-
-    state.languageChosen = true;
-    state.modeChosen = true;
-    state.setupConfirmed = true;
-
-    const questionMap = new Map(
-      state.questions.map(
-        question => [
-          String(question.id),
-          question
-        ]
-      )
-    );
-
-    const restored = saved.questionIds
-      .map(id => questionMap.get(String(id)))
-      .filter(
-        question =>
-          question &&
-          question.category === state.mode
-      );
-
-    if (!restored.length) {
-      storageRemove(CONFIG.STORAGE.progress);
-
-      showMessage(
-        state.language === "rw"
-          ? "Umukino wabitswe ntushobora gukomeza. Tangira bundi bushya."
-          : "The saved game could not be restored. Please start again."
-      );
-
-      openSetup();
-      return;
-    }
-
-    state.round = Math.max(
-      1,
-      Number(saved.round) || 1
-    );
-
-    state.roundQuestions = restored;
-
-    state.currentIndex = Math.min(
-      Math.max(
-        0,
-        Number(saved.currentIndex) || 0
-      ),
-      restored.length - 1
-    );
-
-    state.score = Math.max(
-      0,
-      Number(saved.score) || 0
-    );
-
-    state.correct = Math.max(
-      0,
-      Number(saved.correct) || 0
-    );
-
-    state.answered = Math.max(
-      0,
-      Number(saved.answered) || 0
-    );
-
-    state.review = Array.isArray(saved.review)
-      ? saved.review
-      : [];
-
-    state.timeLeft = Number.isFinite(
-      Number(saved.timeLeft)
-    )
-      ? Math.max(
-          0,
-          Number(saved.timeLeft)
-        )
-      : getQuestionTime();
-
-    state.selectedAnswer =
-      saved.selectedAnswer ?? null;
-
-    state.answerSubmitted =
-      Boolean(saved.answerSubmitted);
-
-    state.roundFinished = false;
-
-    storageSet(
-      CONFIG.STORAGE.language,
-      state.language
-    );
-
-    storageSet(
-      CONFIG.STORAGE.mode,
-      state.mode
-    );
-
-    syncSetupButtons();
-
-    // If the previous question was already answered,
-    // continue with the next question.
-
-    if (state.answerSubmitted) {
-      if (
-        state.currentIndex <
-        restored.length - 1
-      ) {
-        state.currentIndex++;
-
-        state.selectedAnswer = null;
-        state.answerSubmitted = false;
-
-        state.timeLeft = getQuestionTime();
-
-      } else {
-        finishRound();
-        return;
-      }
-    }
-
-    setDisplay(
-      ["gameSetup"],
-      "none"
-    );
-
-    startCurrentRound(true);
-  }
-
-  // =====================================================
-  // SETTINGS
-  // =====================================================
-
-  function openSettings() {
-    stopTimer();
-
-    // Save the remaining time before leaving the quiz.
-
-    if (
-      $("quizScreen") &&
-      $("quizScreen").style.display !== "none"
-    ) {
-      saveProgress();
-    }
-
-    const language = $("settingsLanguage");
-    const mode = $("settingsMode");
-
-    if (language) {
-      language.value = state.language;
-    }
-
-    if (mode) {
-      mode.value = state.mode;
-    }
-
-    showScreen("settingsScreen");
-  }
+  /* ==========================================
+     SETTINGS
+  ========================================== */
 
   function saveSettings() {
-    const language =
-      $("settingsLanguage")?.value ||
-      state.language;
+    const language = $("settingsLanguage")?.value;
+    const mode = $("settingsMode")?.value;
 
-    const mode =
-      $("settingsMode")?.value ||
-      state.mode;
-
-    if (!["rw", "en"].includes(language)) {
-      return;
-    }
-
-    if (!["traffic", "general"].includes(mode)) {
-      return;
-    }
-
-    const changed =
-      language !== state.language ||
-      mode !== state.mode;
+    if (!["en", "rw"].includes(language)) return;
+    if (!["traffic", "general"].includes(mode)) return;
 
     state.language = language;
     state.mode = mode;
+    state.confirmed = true;
 
-    state.languageChosen = true;
-    state.modeChosen = true;
-
-    state.setupConfirmed = false;
-
-    storageSet(
-      CONFIG.STORAGE.language,
-      language
-    );
-
-    storageSet(
-      CONFIG.STORAGE.mode,
+    write(CONFIG.STORAGE.settings, {
+      language,
       mode
-    );
+    });
 
-    if (changed) {
-      storageRemove(CONFIG.STORAGE.progress);
-
-      state.roundQuestions = [];
-      state.review = [];
-
-      state.currentIndex = 0;
-
-      state.score = 0;
-      state.correct = 0;
-      state.answered = 0;
-
-      state.selectedAnswer = null;
-      state.answerSubmitted = false;
-
-      state.roundFinished = false;
-
-      stopTimer();
-    }
-
-    syncSetupButtons();
+    updateSelection();
     updateHome();
 
-    const message = $("settingsMessage");
-
-    if (message) {
-      message.textContent =
-        language === "rw"
-          ? "Ibyahinduwe byabitswe neza."
-          : "Settings saved successfully.";
+    if ($("settingsMessage")) {
+      $("settingsMessage").textContent =
+        "Settings saved successfully.";
     }
-
-    openSetup();
   }
-
-  // =====================================================
-  // RESET PROGRESS
-  // =====================================================
 
   function resetProgress() {
-    const confirmation =
-      state.language === "rw"
-        ? "Urashaka gusiba amanota n'iterambere byawe?"
-        : "Are you sure you want to reset your progress?";
-
-    if (!window.confirm(confirmation)) {
-      return;
-    }
-
-    Object.values(CONFIG.STORAGE).forEach(
-      key => storageRemove(key)
+    const confirmed = window.confirm(
+      "Are you sure you want to reset all quiz progress, scores and saved answers?"
     );
 
-    stopTimer();
+    if (!confirmed) return;
 
-    state.roundQuestions = [];
+    [
+      CONFIG.STORAGE.progress,
+      CONFIG.STORAGE.used,
+      CONFIG.STORAGE.completed,
+      CONFIG.STORAGE.review,
+      CONFIG.STORAGE.best,
+      CONFIG.STORAGE.total,
+      CONFIG.STORAGE.weekly,
+      CONFIG.STORAGE.session
+    ].forEach(remove);
+
     state.review = [];
-
-    state.round = 1;
-    state.currentIndex = 0;
-
     state.score = 0;
     state.correct = 0;
-    state.answered = 0;
+    state.currentIndex = 0;
+    state.roundQuestions = [];
+    state.finished = false;
 
-    state.selectedAnswer = null;
-    state.answerSubmitted = false;
-
-    state.timeLeft = 0;
-
-    state.setupConfirmed = false;
-    state.roundFinished = false;
-
-    state.languageChosen = false;
-    state.modeChosen = false;
-
-    state.language = "en";
-    state.mode = "general";
-
-    storageSet(
-      CONFIG.STORAGE.language,
-      "en"
-    );
-
-    storageSet(
-      CONFIG.STORAGE.mode,
-      "general"
-    );
-
-    syncSetupButtons();
     updateHome();
+    renderRounds();
 
-    const message = $("settingsMessage");
-
-    if (message) {
-      message.textContent =
-        state.language === "rw"
-          ? "Iterambere ryasubijwe ku ntangiriro."
-          : "Progress has been reset.";
+    if ($("settingsMessage")) {
+      $("settingsMessage").textContent =
+        "Quiz progress has been reset.";
     }
-
-    openSetup();
   }
 
-  // =====================================================
-  // SHARE
-  // =====================================================
+  /* ==========================================
+     SHARE
+  ========================================== */
 
-  async function shareApp() {
-    const shareData = {
-      title: "Quiz Master 🇷🇼 - Knowledge Quiz",
+  async function shareQuiz() {
+    const data = {
+      title: "Quiz Master 🇷🇼",
       text: "Test your knowledge with Quiz Master!",
       url: window.location.href
     };
 
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
+    if (navigator.share) {
+      try {
+        await navigator.share(data);
         return;
+      } catch (error) {
+        if (error.name === "AbortError") return;
       }
+    }
 
-      if (!navigator.clipboard?.writeText) {
-        throw new Error(
-          "Clipboard is unavailable."
-        );
-      }
-
+    try {
       await navigator.clipboard.writeText(
-        shareData.text + " " + shareData.url
+        `${data.text} ${data.url}`
       );
 
       window.alert("✅ Link Copied!");
-
-    } catch (error) {
-      if (error?.name === "AbortError") {
-        return;
-      }
-
-      try {
-        if (!navigator.clipboard?.writeText) {
-          throw error;
-        }
-
-        await navigator.clipboard.writeText(
-          shareData.text + " " + shareData.url
-        );
-
-        window.alert("✅ Link Copied!");
-
-      } catch (copyError) {
-        console.error(
-          "Share error:",
-          copyError
-        );
-      }
+    } catch (_) {
+      window.prompt("Copy this link:", data.url);
     }
   }
 
-  // =====================================================
-  // HOME NAVIGATION
-  // =====================================================
+  /* ==========================================
+     EVENTS
+  ========================================== */
 
-  function goHome() {
-    if (
-      $("quizScreen") &&
-      $("quizScreen").style.display !== "none"
-    ) {
-      saveProgress();
-    }
-
-    stopTimer();
-
-    showScreen("homeScreen");
-
-    updateHome();
-
-    setDisplay(
-      ["gameSetup"],
-      "block"
-    );
-
-    state.setupConfirmed = false;
-
-    setDisplay(
-      ["confirmSetupBtn"],
-      "block"
-    );
-
-    const start = $("startBtn");
-
-    if (start) {
-      start.style.display = "block";
-      start.disabled = true;
-    }
-
-    syncSetupButtons();
-  }
-
-  // =====================================================
-  // EVENT HELPER
-  // =====================================================
-
-  function on(id, event, callback) {
+  function bind(id, event, callback) {
     const element = $(id);
 
     if (element) {
-      element.addEventListener(
-        event,
-        callback
-      );
+      element.addEventListener(event, callback);
     }
   }
-
-  // =====================================================
-  // EVENTS
-  // =====================================================
 
   function bindEvents() {
-    // More menu
+    document.querySelectorAll(".language-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const next = button.dataset.language;
 
-    bindMoreMenu();
-
-    // Setup
-
-    on(
-      "startBtn",
-      "click",
-      startConfirmedQuiz
-    );
-
-    on(
-      "confirmSetupBtn",
-      "click",
-      confirmSetup
-    );
-
-    on(
-      "setupBackBtn",
-      "click",
-      goHome
-    );
-
-    $$(".language-btn").forEach(button => {
-      button.addEventListener(
-        "click",
-        () => {
-          selectLanguage(
-            button.dataset.language
-          );
+        if (next !== state.language) {
+          state.confirmed = false;
         }
-      );
+
+        state.language = next;
+        updateSelection();
+      });
     });
 
-    $$(".mode-btn").forEach(button => {
-      button.addEventListener(
-        "click",
-        () => {
-          selectMode(
-            button.dataset.mode
-          );
+    document.querySelectorAll(".mode-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const next = button.dataset.mode;
+
+        if (next !== state.mode) {
+          state.confirmed = false;
         }
-      );
+
+        state.mode = next;
+        updateSelection();
+      });
     });
 
-    // Home
+    bind("confirmSetupBtn", "click", confirmSetup);
+    bind("startBtn", "click", startQuiz);
+    bind("continueBtn", "click", continueQuiz);
 
-    on(
-      "continueBtn",
-      "click",
-      continueQuiz
-    );
+    bind("submitAnswerBtn", "click", () => {
+      submitAnswer(false);
+    });
 
-    on(
-      "roundsBtn",
-      "click",
-      showRounds
-    );
+    bind("nextQuestionBtn", "click", nextQuestion);
 
-    on(
-      "settingsBtn",
-      "click",
-      openSettings
-    );
+    bind("quizReviewBtn", "click", openReview);
+    bind("resultReviewBtn", "click", openReview);
+    bind("reviewAnswersBtn", "click", openReview);
 
-    on(
-      "shareBtn",
-      "click",
-      shareApp
-    );
+    bind("reviewHomeBtn", "click", () => {
+      updateHome();
+      showScreen("homeScreen");
+    });
 
-    on(
-      "reviewAnswersBtn",
-      "click",
-      showReview
-    );
+    bind("quizHomeBtn", "click", () => {
+      saveSession();
+      updateHome();
+      showScreen("homeScreen");
+    });
 
-    // Quiz
+    bind("resultHomeBtn", "click", () => {
+      updateHome();
+      showScreen("homeScreen");
+    });
 
-    on(
-      "submitAnswerBtn",
-      "click",
-      submitAnswer
-    );
+    bind("resultNextBtn", "click", () => {
+      const next = state.round + 1;
 
-    on(
-      "nextQuestionBtn",
-      "click",
-      nextQuestion
-    );
-
-    on(
-      "quizReviewBtn",
-      "click",
-      showReview
-    );
-
-    on(
-      "quizHomeBtn",
-      "click",
-      goHome
-    );
-
-    // Results
-
-    on(
-      "resultNextBtn",
-      "click",
-      nextRound
-    );
-
-    on(
-      "retryBtn",
-      "click",
-      retryRound
-    );
-
-    on(
-      "resultReviewBtn",
-      "click",
-      showReview
-    );
-
-    on(
-      "resultHomeBtn",
-      "click",
-      goHome
-    );
-
-    // Review
-
-    on(
-      "reviewHomeBtn",
-      "click",
-      goHome
-    );
-
-    // Rounds
-
-    on(
-      "roundsHomeBtn",
-      "click",
-      goHome
-    );
-
-    // Settings
-
-    on(
-      "settingsHomeBtn",
-      "click",
-      goHome
-    );
-
-    on(
-      "saveSettingsBtn",
-      "click",
-      saveSettings
-    );
-
-    on(
-      "resetProgressBtn",
-      "click",
-      resetProgress
-    );
-
-    // Keyboard navigation
-
-    document.addEventListener(
-      "keydown",
-      event => {
-        if (
-          event.key !== "Enter" ||
-          !$("quizScreen") ||
-          $("quizScreen").style.display === "none"
-        ) {
-          return;
-        }
-
-        const target = event.target;
-
-        if (
-          target &&
-          target.matches(
-            "button, input, select, textarea, a"
-          )
-        ) {
-          return;
-        }
-
-        if (state.answerSubmitted) {
-          nextQuestion();
-        } else if (
-          state.selectedAnswer !== null
-        ) {
-          submitAnswer();
-        }
+      if (
+        next <= getUnlockedRound() &&
+        prepareRound(next)
+      ) {
+        showScreen("quizScreen");
+        renderQuestion();
       }
-    );
+    });
 
-    // Pause timer when the user leaves the tab.
-    // Save progress before the tab becomes inactive.
+    bind("retryBtn", "click", retryRound);
 
-    document.addEventListener(
-      "visibilitychange",
-      () => {
-        if (document.hidden) {
-          if (
-            $("quizScreen") &&
-            $("quizScreen").style.display !== "none"
-          ) {
-            saveProgress();
-          }
+    bind("roundsBtn", "click", () => {
+      renderRounds();
+      showScreen("roundsScreen");
+    });
 
-          stopTimer();
-        } else if (
-          $("quizScreen") &&
-          $("quizScreen").style.display !== "none" &&
-          !state.answerSubmitted &&
-          state.roundQuestions.length
-        ) {
-          startTimer();
-        }
+    bind("roundsHomeBtn", "click", () => {
+      updateHome();
+      showScreen("homeScreen");
+    });
+
+    bind("settingsBtn", "click", () => {
+      if ($("settingsLanguage")) {
+        $("settingsLanguage").value = state.language;
       }
-    );
 
-    // Save progress when the page is closed.
-
-    window.addEventListener(
-      "pagehide",
-      () => {
-        if (
-          $("quizScreen") &&
-          $("quizScreen").style.display !== "none"
-        ) {
-          saveProgress();
-        }
-
-        stopTimer();
+      if ($("settingsMode")) {
+        $("settingsMode").value = state.mode;
       }
-    );
+
+      showScreen("settingsScreen");
+    });
+
+    bind("saveSettingsBtn", "click", saveSettings);
+
+    bind("settingsHomeBtn", "click", () => {
+      updateSelection();
+      updateHome();
+      showScreen("homeScreen");
+    });
+
+    bind("resetProgressBtn", "click", resetProgress);
+
+    bind("shareBtn", "click", shareQuiz);
   }
 
-  // =====================================================
-  // INITIALIZATION
-  // =====================================================
+  /* ==========================================
+     INITIALIZATION
+  ========================================== */
 
   async function init() {
-    if (state.initialized) return;
-
-    state.initialized = true;
-
     bindEvents();
+    restoreSettings();
 
-    state.language =
-      storageGet(CONFIG.STORAGE.language) || "en";
-
-    state.mode =
-      storageGet(CONFIG.STORAGE.mode) || "general";
-
-    if (!["rw", "en"].includes(state.language)) {
-      state.language = "en";
+    if ($("startBtn")) {
+      $("startBtn").disabled = true;
     }
 
-    if (!["traffic", "general"].includes(state.mode)) {
-      state.mode = "general";
+    if ($("continueBtn")) {
+      $("continueBtn").hidden = true;
     }
-
-    // User must confirm both choices.
-
-    state.languageChosen = false;
-    state.modeChosen = false;
-
-    state.setupConfirmed = false;
-
-    syncSetupButtons();
-
-    showScreen("homeScreen");
-
-    setDisplay(
-      ["gameSetup"],
-      "block"
-    );
-
-    setDisplay(
-      ["confirmSetupBtn"],
-      "block"
-    );
-
-    const start = $("startBtn");
-
-    if (start) {
-      start.style.display = "block";
-      start.disabled = true;
-    }
-
-    closeMoreMenu();
 
     updateHome();
 
     await loadQuestions();
 
     updateHome();
-    updateSelectionSummary();
-    syncSetupButtons();
+    updateSelection();
+
+    if ($("startBtn")) {
+      $("startBtn").disabled =
+        !state.confirmed || state.loading;
+    }
+
+    console.log(
+      "Quiz Master initialized successfully."
+    );
   }
-
-  // =====================================================
-  // PUBLIC API
-  // =====================================================
-
-  window.QuizMaster = {
-    start: openSetup,
-
-    confirmSetup,
-    startConfirmedQuiz,
-
-    continueQuiz,
-
-    nextQuestion,
-    submitAnswer,
-
-    showRounds,
-    showReview,
-
-    openSettings,
-    saveSettings,
-    resetProgress,
-
-    goHome,
-
-    loadQuestions,
-
-    openMoreMenu: toggleMoreMenu,
-    closeMoreMenu
-  };
-
-  // =====================================================
-  // START ENGINE
-  // =====================================================
 
   if (document.readyState === "loading") {
     document.addEventListener(
