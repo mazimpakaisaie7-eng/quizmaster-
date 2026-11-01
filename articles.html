@@ -5,33 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#08172b">
 
-  <title>Learning Articles | Quiz Master 🇷🇼 - Knowledge Quiz</title>
+  <title>Learning Centre | General Knowledge & Road Safety | Quiz Master 🇷🇼</title>
 
-  <meta name="description" content="Explore educational articles about road safety, traffic rules, general knowledge, learning skills and responsible citizenship in English and Kinyarwanda.">
-  <meta name="keywords" content="Quiz Master Rwanda, road safety, traffic rules, general knowledge, educational articles, Rwanda education, learning">
+  <meta name="description" content="Learn general knowledge and road safety with free educational lessons from Quiz Master Rwanda. Study geography, science, history, traffic signs, road rules and safe driving.">
+
+  <meta name="keywords" content="Quiz Master Rwanda, general knowledge lessons, road safety lessons, traffic signs, road rules Rwanda, geography, science, history, education">
+
   <meta name="author" content="Quiz Master Rwanda">
   <meta name="robots" content="index, follow">
 
   <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/articles.html">
+  <link rel="icon" type="image/png" href="./icon-192-4.png">
+  <link rel="apple-touch-icon" href="./icon-192-4.png">
+  <link rel="manifest" href="./manifest.webmanifest">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Learning Articles | Quiz Master 🇷🇼">
-  <meta property="og:description" content="Learn about road safety, general knowledge and useful everyday skills.">
+  <meta property="og:title" content="Learning Centre | Quiz Master Rwanda">
+  <meta property="og:description" content="Free lessons in general knowledge and road safety. Learn first, then test your knowledge.">
   <meta property="og:url" content="https://quizmaster-liard-five.vercel.app/articles.html">
-  <meta property="og:site_name" content="Quiz Master 🇷🇼">
+  <meta property="og:site_name" content="Quiz Master Rwanda">
 
   <style>
     :root {
-      --bg: #f2f5fb;
-      --surface: #ffffff;
-      --text: #172033;
-      --muted: #64748b;
+      color-scheme: dark;
+      --background: #08172b;
+      --surface: #10233f;
+      --surface-light: #172f50;
       --primary: #155eef;
-      --primary-dark: #1048c5;
-      --border: #e2e8f0;
-      --header: #08172b;
-      --radius: 16px;
-      --shadow: 0 8px 28px rgba(15, 23, 42, .06);
+      --primary-light: #3478ff;
+      --text: #f5f8ff;
+      --muted: #b2c0d5;
+      --border: rgba(255,255,255,.12);
+      --success: #35c98a;
     }
 
     * {
@@ -40,680 +45,1594 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #142d50 0, var(--background) 55%);
       color: var(--text);
-      line-height: 1.7;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.75;
     }
 
     a {
-      color: var(--primary);
-      text-decoration: none;
+      color: #9fc0ff;
+      overflow-wrap: anywhere;
     }
 
-    a:hover {
-      text-decoration: underline;
+    a:focus-visible {
+      outline: 3px solid #8db5ff;
+      outline-offset: 4px;
     }
 
-    .site-header {
-      background: var(--header);
-      color: #fff;
-      padding: 17px 16px;
-    }
-
-    .header-inner {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      color: #fff;
-      font-size: 20px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .brand:hover {
-      text-decoration: none;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(8,23,43,.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
     .nav {
+      max-width: 1100px;
+      min-height: 66px;
+      margin: auto;
+      padding: 10px 17px;
       display: flex;
       align-items: center;
-      gap: 17px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
     }
 
-    .nav a {
-      color: #e2e8f0;
-      font-size: 14px;
-    }
-
-    .language-control {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin: 20px 0;
-    }
-
-    .language-control button {
-      border: 1px solid var(--border);
-      background: var(--surface);
+    .brand {
       color: var(--text);
-      border-radius: 9px;
-      padding: 9px 15px;
-      font-weight: 700;
-      cursor: pointer;
+      font-size: 19px;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
-    .language-control button.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
     }
 
-    .hero {
-      background: linear-gradient(135deg, #08172b, #155eef);
-      color: #fff;
-      text-align: center;
-      padding: 55px 18px;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .hero h1 {
-      font-size: clamp(29px, 5vw, 44px);
-      line-height: 1.2;
-      margin: 0 0 15px;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: auto;
-      color: #e2e8f0;
-      font-size: 16px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 16px;
-    }
-
-    .section-heading {
-      margin-bottom: 20px;
-    }
-
-    .section-heading h2 {
-      margin-bottom: 5px;
-      font-size: 25px;
-    }
-
-    .section-heading p {
-      margin-top: 0;
+    .nav-links a {
       color: var(--muted);
-    }
-
-    .article-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .article-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 23px;
-      box-shadow: var(--shadow);
-    }
-
-    .article-card .category {
-      display: inline-block;
-      background: #eaf1ff;
-      color: #1048c5;
-      border-radius: 30px;
-      padding: 4px 11px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .article-card h2 {
-      font-size: 20px;
-      line-height: 1.35;
-      margin: 5px 0 10px;
-    }
-
-    .article-card p {
-      color: var(--muted);
-      margin: 0 0 13px;
-    }
-
-    .article-card h3 {
-      font-size: 16px;
-      margin: 17px 0 5px;
-    }
-
-    .article-card ul {
-      padding-left: 21px;
-      margin: 8px 0;
-    }
-
-    .article-card li {
-      margin-bottom: 5px;
-    }
-
-    .article-card .read-label {
-      color: var(--primary);
       font-size: 13px;
-      font-weight: 700;
-    }
-
-    .notice {
-      margin-top: 25px;
-      padding: 17px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--primary);
-      border-radius: 10px;
-      color: var(--muted);
-    }
-
-    .quiz-cta {
-      margin-top: 30px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px 20px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .quiz-cta h2 {
-      margin-top: 0;
-    }
-
-    .primary-button {
-      display: inline-block;
-      background: var(--primary);
-      color: #fff;
-      padding: 12px 23px;
-      border-radius: 10px;
-      font-weight: 700;
-      margin-top: 8px;
-    }
-
-    .primary-button:hover {
-      background: var(--primary-dark);
-      color: #fff;
       text-decoration: none;
     }
 
-    .site-footer {
-      background: var(--header);
-      color: #cbd5e1;
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .home-link,
+    .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 17px;
+      color: white;
+      background: var(--primary);
+      border: 0;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+
+    .home-link:hover,
+    .primary-button:hover {
+      color: white;
+      background: var(--primary-light);
+    }
+
+    main {
+      width: 100%;
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 0 17px;
+    }
+
+    .hero {
+      padding: 38px 25px;
+      background: linear-gradient(135deg, #142f55, #10233f);
+      border: 1px solid var(--border);
+      border-radius: 18px;
       text-align: center;
-      padding: 25px 16px;
-      margin-top: 45px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 12px;
+      color: #a9c6ff;
+      background: rgba(21,94,239,.15);
+      border: 1px solid rgba(141,181,255,.2);
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 5vw, 40px);
+      line-height: 1.3;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 12px auto;
+      color: var(--muted);
+    }
+
+    .hero .primary-button {
+      margin-top: 15px;
+    }
+
+    .content-section {
+      margin-top: 25px;
+      padding: 26px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    h2 {
+      margin: 0 0 15px;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    h3 {
+      margin: 20px 0 8px;
+      color: #e7efff;
+      font-size: 19px;
+      line-height: 1.4;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+    }
+
+    p {
+      margin: 12px 0;
+    }
+
+    ul,
+    ol {
+      padding-left: 24px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+      margin-top: 20px;
+    }
+
+    .category-card {
+      padding: 22px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .category-card h3 {
+      margin-top: 0;
+      font-size: 21px;
+    }
+
+    .category-card p {
+      margin-bottom: 16px;
+    }
+
+    .lesson {
+      margin-top: 18px;
+      padding: 20px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .lesson h3 {
+      margin-top: 0;
+    }
+
+    .fact {
+      margin: 15px 0;
+      padding: 14px;
+      background: rgba(21,94,239,.12);
+      border-left: 4px solid var(--primary-light);
+      border-radius: 8px;
+    }
+
+    .fact p {
+      margin: 0;
+    }
+
+    .warning {
+      margin: 15px 0;
+      padding: 14px;
+      background: rgba(220,145,35,.12);
+      border-left: 4px solid #e6a23c;
+      border-radius: 8px;
+    }
+
+    .warning p {
+      margin: 0;
+    }
+
+    .contents {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .contents a {
+      display: inline-block;
+      padding: 8px 12px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .contents a:hover {
+      background: #203e65;
+      text-decoration: underline;
+    }
+
+    .lesson-number {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: #a9c6ff;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .quiz-link {
+      margin-top: 16px;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      margin-top: 35px;
+      padding: 25px 15px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    footer p {
+      margin: 7px 0;
+      font-size: 13px;
     }
 
     .footer-links {
       display: flex;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 17px;
-      margin: 10px 0;
+      gap: 10px 18px;
+      margin-top: 12px;
     }
 
     .footer-links a {
-      color: #e2e8f0;
-      font-size: 14px;
-    }
-
-    .site-footer p {
       font-size: 13px;
-      margin: 8px 0;
+      text-decoration: none;
     }
 
-    [hidden] {
-      display: none !important;
+    .footer-links a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 700px) {
-      .article-grid {
+      .category-grid {
         grid-template-columns: 1fr;
       }
 
-      .header-inner {
-        justify-content: center;
+      .nav {
+        min-height: 60px;
+        padding: 10px 12px;
       }
 
-      .nav {
-        justify-content: center;
-        gap: 12px;
+      .brand {
+        font-size: 16px;
+      }
+
+      .nav-links {
+        gap: 7px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      main {
+        margin: 20px auto;
+        padding: 0 12px;
       }
 
       .hero {
-        padding: 40px 16px;
+        padding: 28px 17px;
       }
 
-      .article-card {
-        padding: 19px;
+      .content-section {
+        padding: 20px 16px;
+      }
+
+      h2 {
+        font-size: 21px;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav-links a:not(.home-link) {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
       }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Quiz Master Learning Centre",
+    "url": "https://quizmaster-liard-five.vercel.app/articles.html",
+    "description": "Free educational lessons in general knowledge and road safety.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Quiz Master Rwanda",
+      "url": "https://quizmaster-liard-five.vercel.app/"
+    }
+  }
+  </script>
 </head>
 
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="./index.html">Quiz Master 🇷🇼</a>
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href="./index.html">Quiz Master 🇷🇼</a>
 
-      <nav class="nav" aria-label="Main navigation">
-        <a href="./index.html">Home</a>
-        <a href="./about.html">About</a>
-        <a href="./articles.html">Articles</a>
-        <a href="./contact.html">Contact</a>
-      </nav>
+    <div class="nav-links">
+      <a href="#general-knowledge">General Knowledge</a>
+      <a href="#road-safety">Road Safety</a>
+      <a class="home-link" href="./index.html">🏠 Home</a>
     </div>
-  </header>
+  </nav>
+</header>
+
+<main>
 
   <section class="hero">
-    <div class="hero-content">
-      <h1 data-en="Learn Something New Every Day"
-          data-rw="Wige Ikintu Gishya Buri Munsi">
-        Learn Something New Every Day
-      </h1>
+    <span class="eyebrow">Free Educational Resources</span>
 
-      <p data-en="Discover useful educational information about road safety, traffic rules, general knowledge and responsible citizenship."
-         data-rw="Menya amakuru y'ingirakamaro ku mutekano wo mu muhanda, amategeko y'umuhanda, ubumenyi rusange n'ubwenegihugu bwiza.">
-        Discover useful educational information about road safety, traffic rules, general knowledge and responsible citizenship.
+    <h1>Quiz Master Learning Centre</h1>
+
+    <p>
+      Welcome to the Quiz Master Learning Centre.
+      Learn general knowledge, understand road safety,
+      explore useful facts, and improve your knowledge
+      through clear educational lessons.
+    </p>
+
+    <p>
+      Choose a subject, read the lessons, understand the
+      important ideas, and then test what you have learned
+      in the Quiz Master application.
+    </p>
+
+    <a class="primary-button" href="#learning-categories">
+      Explore Lessons ↓
+    </a>
+  </section>
+
+  <section class="content-section" id="learning-categories">
+    <h2>Choose What You Want to Learn</h2>
+
+    <p>
+      Quiz Master provides two main learning categories.
+      You can study general knowledge or learn important
+      road safety principles.
+    </p>
+
+    <div class="category-grid">
+
+      <div class="category-card">
+        <h3>🧠 General Knowledge</h3>
+
+        <p>
+          Explore geography, science, history, technology,
+          sports, Rwanda, and other subjects that help
+          you understand the world.
+        </p>
+
+        <a class="primary-button" href="#general-knowledge">
+          Study General Knowledge
+        </a>
+      </div>
+
+      <div class="category-card">
+        <h3>🚦 Road Safety</h3>
+
+        <p>
+          Learn about traffic signs, road markings,
+          traffic lights, pedestrians, safe driving,
+          and responsible road use.
+        </p>
+
+        <a class="primary-button" href="#road-safety">
+          Study Road Safety
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GENERAL KNOWLEDGE -->
+
+  <section class="content-section" id="general-knowledge">
+    <span class="eyebrow">Learning Category 1</span>
+
+    <h2>🧠 General Knowledge Lessons</h2>
+
+    <p>
+      General knowledge is information about different
+      subjects, people, places, events, science, and
+      everyday life. It helps learners understand
+      the world and develop curiosity.
+    </p>
+
+    <h3>General Knowledge Lesson Directory</h3>
+
+    <nav class="contents" aria-label="General knowledge lessons">
+      <a href="#gk-introduction">Introduction</a>
+      <a href="#gk-geography">Geography</a>
+      <a href="#gk-science">Science</a>
+      <a href="#gk-human-body">Human Body</a>
+      <a href="#gk-technology">Technology</a>
+      <a href="#gk-history">History</a>
+      <a href="#gk-sports">Sports</a>
+      <a href="#gk-rwanda">Rwanda</a>
+      <a href="#gk-environment">Environment</a>
+      <a href="#gk-mathematics">Mathematics</a>
+    </nav>
+
+    <article class="lesson" id="gk-introduction">
+      <span class="lesson-number">General Knowledge • Lesson 1</span>
+      <h3>Introduction to General Knowledge</h3>
+
+      <p>
+        General knowledge includes facts and information
+        from many areas of life. It can include the names
+        of countries, scientific discoveries, historical
+        events, sports, technology, and culture.
+      </p>
+
+      <h3>Why is general knowledge important?</h3>
+
+      <ul>
+        <li>It helps us understand our surroundings.</li>
+        <li>It improves communication and learning.</li>
+        <li>It encourages curiosity and asking questions.</li>
+        <li>It helps us connect ideas from different subjects.</li>
+        <li>It supports informed decision-making.</li>
+      </ul>
+
+      <h3>How to improve general knowledge</h3>
+
+      <ol>
+        <li>Read reliable educational books and articles.</li>
+        <li>Study different subjects regularly.</li>
+        <li>Ask questions when information is unclear.</li>
+        <li>Discuss what you learn with others.</li>
+        <li>Practise with educational questions and explanations.</li>
+      </ol>
+    </article>
+
+    <article class="lesson" id="gk-geography">
+      <span class="lesson-number">General Knowledge • Lesson 2</span>
+      <h3>Geography: Understanding the Earth</h3>
+
+      <p>
+        Geography is the study of the Earth, its physical
+        features, people, places, climate, and environments.
+        It helps us understand where places are located
+        and how people interact with their surroundings.
+      </p>
+
+      <h3>The seven continents</h3>
+
+      <p>
+        In the commonly used seven-continent model,
+        the continents are:
+      </p>
+
+      <ol>
+        <li>Africa</li>
+        <li>Asia</li>
+        <li>Europe</li>
+        <li>North America</li>
+        <li>South America</li>
+        <li>Antarctica</li>
+        <li>Australia</li>
+      </ol>
+
+      <h3>The five oceans</h3>
+
+      <p>
+        The five commonly recognised oceans are:
+        Pacific, Atlantic, Indian, Southern, and Arctic.
+        Oceans support marine life, influence climate,
+        and provide routes for transport and trade.
+      </p>
+
+      <h3>Countries and capital cities</h3>
+
+      <p>
+        A country is a territory with its own government.
+        A capital city is generally the main location
+        of a country's national government.
+      </p>
+
+      <p>
+        Examples include Kigali in Rwanda, Nairobi in Kenya,
+        Kampala in Uganda, Dodoma in Tanzania, and
+        Bujumbura in Burundi.
+      </p>
+
+      <h3>Compass directions</h3>
+
+      <p>
+        The four main compass directions are North,
+        South, East, and West. They help people describe
+        locations and read maps.
+      </p>
+
+      <div class="fact">
+        <p>
+          <strong>Remember:</strong>
+          Geography helps us understand the relationship
+          between people, places, and the natural environment.
+        </p>
+      </div>
+    </article>
+
+    <article class="lesson" id="gk-science">
+      <span class="lesson-number">General Knowledge • Lesson 3</span>
+      <h3>Science: Understanding Nature</h3>
+
+      <p>
+        Science is the systematic study of the natural
+        world through observation, investigation,
+        questions, and evidence.
+      </p>
+
+      <h3>Biology</h3>
+
+      <p>
+        Biology is the study of living organisms,
+        including humans, animals, plants, and
+        microorganisms.
+      </p>
+
+      <h3>Physics</h3>
+
+      <p>
+        Physics studies matter, energy, motion,
+        forces, light, and sound.
+      </p>
+
+      <p>
+        Gravity is the attraction between objects
+        that have mass. Earth's gravity helps keep
+        people and objects on its surface.
+      </p>
+
+      <h3>Chemistry</h3>
+
+      <p>
+        Chemistry studies substances, their properties,
+        their structures, and how they change.
+      </p>
+
+      <p>
+        Water is a chemical compound made from
+        hydrogen and oxygen. Its chemical formula
+        is H₂O.
+      </p>
+
+      <h3>States of matter</h3>
+
+      <ul>
+        <li><strong>Solid:</strong> Has a definite shape and volume.</li>
+        <li><strong>Liquid:</strong> Has a definite volume but takes the shape of its container.</li>
+        <li><strong>Gas:</strong> Spreads to fill the available space.</li>
+      </ul>
+    </article>
+
+    <article class="lesson" id="gk-human-body">
+      <span class="lesson-number">General Knowledge • Lesson 4</span>
+      <h3>The Human Body</h3>
+
+      <p>
+        The human body contains organs and systems
+        that work together to support life.
+      </p>
+
+      <ul>
+        <li><strong>Brain:</strong> Helps control body activities, thinking, and memory.</li>
+        <li><strong>Heart:</strong> Pumps blood around the body.</li>
+        <li><strong>Lungs:</strong> Help exchange oxygen and carbon dioxide.</li>
+        <li><strong>Stomach:</strong> Helps break down food during digestion.</li>
+        <li><strong>Kidneys:</strong> Filter waste from the blood and help regulate body fluids.</li>
+        <li><strong>Skeleton:</strong> Supports the body and protects important organs.</li>
+        <li><strong>Skin:</strong> Forms a protective covering around the body.</li>
+      </ul>
+
+      <h3>Body systems</h3>
+
+      <p>
+        The circulatory system transports blood.
+        The respiratory system supports breathing.
+        The digestive system processes food.
+        The nervous system carries messages
+        throughout the body.
+      </p>
+    </article>
+
+    <article class="lesson" id="gk-technology">
+      <span class="lesson-number">General Knowledge • Lesson 5</span>
+      <h3>Technology and Computers</h3>
+
+      <p>
+        Technology includes tools, systems, and methods
+        that people develop to solve problems and
+        perform tasks.
+      </p>
+
+      <h3>Computer basics</h3>
+
+      <ul>
+        <li><strong>Hardware:</strong> Physical parts of a computer.</li>
+        <li><strong>Software:</strong> Programs and instructions used by a device.</li>
+        <li><strong>Input:</strong> Data entered into a computer.</li>
+        <li><strong>Output:</strong> Information produced by a computer.</li>
+        <li><strong>Storage:</strong> Keeping information for later use.</li>
+      </ul>
+
+      <h3>The Internet</h3>
+
+      <p>
+        The Internet is a worldwide network of connected
+        computer networks. It allows people to communicate,
+        study, exchange information, and use online services.
+      </p>
+
+      <h3>Digital safety</h3>
+
+      <ul>
+        <li>Use strong and unique passwords.</li>
+        <li>Do not share private account details.</li>
+        <li>Be careful with unexpected links and attachments.</li>
+        <li>Check information before sharing it.</li>
+        <li>Keep devices and applications updated.</li>
+      </ul>
+    </article>
+
+    <article class="lesson" id="gk-history">
+      <span class="lesson-number">General Knowledge • Lesson 6</span>
+      <h3>History: Learning from the Past</h3>
+
+      <p>
+        History is the study of past events and human
+        societies. It helps us understand how communities
+        and countries have changed over time.
+      </p>
+
+      <h3>Historical sources</h3>
+
+      <ul>
+        <li><strong>Written sources:</strong> Books, letters, and official documents.</li>
+        <li><strong>Oral sources:</strong> Stories and accounts passed between people.</li>
+        <li><strong>Archaeological sources:</strong> Objects, buildings, and remains from the past.</li>
+        <li><strong>Visual sources:</strong> Photographs, paintings, and maps.</li>
+      </ul>
+
+      <h3>Why study history?</h3>
+
+      <ul>
+        <li>To understand how societies developed.</li>
+        <li>To preserve cultural heritage.</li>
+        <li>To learn how past events influenced the present.</li>
+        <li>To evaluate evidence and different historical accounts.</li>
+      </ul>
+    </article>
+
+    <article class="lesson" id="gk-sports">
+      <span class="lesson-number">General Knowledge • Lesson 7</span>
+      <h3>Sports and Physical Education</h3>
+
+      <p>
+        Sports are organised activities that involve
+        physical skills, practice, rules, and sometimes
+        competition.
+      </p>
+
+      <h3>Examples of sports</h3>
+
+      <ul>
+        <li>Football</li>
+        <li>Basketball</li>
+        <li>Volleyball</li>
+        <li>Athletics</li>
+        <li>Tennis</li>
+        <li>Swimming</li>
+      </ul>
+
+      <h3>Why are sports important?</h3>
+
+      <ul>
+        <li>They encourage teamwork and cooperation.</li>
+        <li>They develop coordination and physical skills.</li>
+        <li>They teach respect for rules and other people.</li>
+        <li>They create opportunities for social interaction.</li>
+      </ul>
+
+      <p>
+        Learning about sports also includes understanding
+        their rules, equipment, history, and terminology.
+      </p>
+    </article>
+
+    <article class="lesson" id="gk-rwanda">
+      <span class="lesson-number">General Knowledge • Lesson 8</span>
+      <h3>Learning About Rwanda</h3>
+
+      <p>
+        Rwanda is a landlocked country in East Africa.
+        Its capital city is Kigali.
+      </p>
+
+      <h3>Geography</h3>
+
+      <p>
+        Rwanda is known for its hills, lakes, green
+        landscapes, and diverse natural environments.
+        It shares borders with Uganda, Tanzania,
+        Burundi, and the Democratic Republic of the Congo.
+      </p>
+
+      <h3>Official languages</h3>
+
+      <p>
+        Rwanda's official languages are Kinyarwanda,
+        English, French, and Kiswahili.
+      </p>
+
+      <h3>National learning topics</h3>
+
+      <p>
+        Learning about Rwanda can include its geography,
+        history, national symbols, culture, public
+        institutions, economy, and development.
+      </p>
+
+      <div class="fact">
+        <p>
+          <strong>Study tip:</strong>
+          Use reliable educational books and official
+          publications when learning about national
+          institutions and information that may change.
+        </p>
+      </div>
+    </article>
+
+    <article class="lesson" id="gk-environment">
+      <span class="lesson-number">General Knowledge • Lesson 9</span>
+      <h3>Environment and Nature</h3>
+
+      <p>
+        The environment includes living organisms,
+        land, water, air, and the conditions in
+        which people and other organisms live.
+      </p>
+
+      <h3>Natural resources</h3>
+
+      <p>
+        Natural resources include water, soil, forests,
+        sunlight, minerals, and wildlife.
+        People depend on these resources for many needs.
+      </p>
+
+      <h3>Protecting the environment</h3>
+
+      <ul>
+        <li>Dispose of waste responsibly.</li>
+        <li>Protect trees and natural habitats.</li>
+        <li>Use water carefully.</li>
+        <li>Reduce unnecessary pollution.</li>
+        <li>Support responsible use of natural resources.</li>
+      </ul>
+    </article>
+
+    <article class="lesson" id="gk-mathematics">
+      <span class="lesson-number">General Knowledge • Lesson 10</span>
+      <h3>Basic Mathematics</h3>
+
+      <p>
+        Mathematics is the study of numbers, quantities,
+        patterns, shapes, and relationships.
+      </p>
+
+      <h3>Four basic operations</h3>
+
+      <ul>
+        <li><strong>Addition:</strong> Combining quantities. Example: 4 + 3 = 7.</li>
+        <li><strong>Subtraction:</strong> Finding the difference. Example: 9 - 5 = 4.</li>
+        <li><strong>Multiplication:</strong> Repeated addition. Example: 3 × 4 = 12.</li>
+        <li><strong>Division:</strong> Sharing into equal groups. Example: 12 ÷ 3 = 4.</li>
+      </ul>
+
+      <p>
+        Mathematics is useful in shopping, measuring,
+        planning, science, technology, and everyday life.
+      </p>
+    </article>
+
+    <a class="primary-button quiz-link" href="./index.html">
+      Test Your General Knowledge →
+    </a>
+
+  </section>
+
+  <!-- ROAD SAFETY -->
+
+  <section class="content-section" id="road-safety">
+    <span class="eyebrow">Learning Category 2</span>
+
+    <h2>🚦 Road Safety Lessons</h2>
+
+    <p>
+      Road safety is the practice of using roads
+      responsibly to reduce danger and protect
+      drivers, passengers, cyclists, motorcyclists,
+      and pedestrians.
+    </p>
+
+    <p>
+      Everyone using the road has a responsibility
+      to pay attention, follow applicable traffic
+      rules, and respect other road users.
+    </p>
+
+    <h3>Road Safety Lesson Directory</h3>
+
+    <nav class="contents" aria-label="Road safety lessons">
+      <a href="#rs-introduction">Introduction</a>
+      <a href="#rs-signs">Traffic Signs</a>
+      <a href="#rs-warning">Warning Signs</a>
+      <a href="#rs-regulatory">Regulatory Signs</a>
+      <a href="#rs-information">Information Signs</a>
+      <a href="#rs-lights">Traffic Lights</a>
+      <a href="#rs-markings">Road Markings</a>
+      <a href="#rs-priority">Right of Way</a>
+      <a href="#rs-pedestrians">Pedestrians</a>
+      <a href="#rs-drivers">Drivers</a>
+      <a href="#rs-motorcycles">Motorcycles</a>
+      <a href="#rs-bicycles">Cyclists</a>
+      <a href="#rs-weather">Weather and Visibility</a>
+      <a href="#rs-emergency">Emergencies</a>
+      <a href="#rs-responsibility">Road Responsibility</a>
+    </nav>
+
+    <article class="lesson" id="rs-introduction">
+      <span class="lesson-number">Road Safety • Lesson 1</span>
+      <h3>Introduction to Road Safety</h3>
+
+      <p>
+        Road safety means using roads in a careful,
+        responsible, and lawful way. It involves
+        understanding traffic signs, obeying road
+        rules, and paying attention to other road users.
+      </p>
+
+      <h3>Who uses the road?</h3>
+
+      <ul>
+        <li>Drivers of cars, buses, and trucks.</li>
+        <li>Motorcyclists and passengers.</li>
+        <li>Cyclists.</li>
+        <li>Pedestrians.</li>
+        <li>People using other permitted forms of transport.</li>
+      </ul>
+
+      <h3>Why is road safety important?</h3>
+
+      <ul>
+        <li>It helps prevent road crashes.</li>
+        <li>It protects lives and reduces injuries.</li>
+        <li>It encourages respect between road users.</li>
+        <li>It supports orderly movement of traffic.</li>
+      </ul>
+
+      <div class="fact">
+        <p>
+          <strong>Remember:</strong>
+          Road safety is everyone's responsibility,
+          not only the responsibility of drivers.
+        </p>
+      </div>
+    </article>
+
+    <article class="lesson" id="rs-signs">
+      <span class="lesson-number">Road Safety • Lesson 2</span>
+      <h3>Understanding Traffic Signs</h3>
+
+      <p>
+        Traffic signs are symbols, shapes, colours,
+        and words placed near roads to communicate
+        information and instructions to road users.
+      </p>
+
+      <h3>Why are traffic signs important?</h3>
+
+      <ul>
+        <li>They warn people about possible dangers.</li>
+        <li>They communicate restrictions and instructions.</li>
+        <li>They provide directions and useful information.</li>
+        <li>They help organise road traffic.</li>
+      </ul>
+
+      <h3>Main groups of traffic signs</h3>
+
+      <ul>
+        <li><strong>Warning signs:</strong> Alert road users to possible hazards.</li>
+        <li><strong>Regulatory signs:</strong> Communicate rules, restrictions, or obligations.</li>
+        <li><strong>Information signs:</strong> Provide directions and useful information.</li>
+      </ul>
+
+      <p>
+        The exact appearance and meaning of a sign
+        should be learned from the official road
+        signs used in the relevant country.
+      </p>
+    </article>
+
+    <article class="lesson" id="rs-warning">
+      <span class="lesson-number">Road Safety • Lesson 3</span>
+      <h3>Warning Traffic Signs</h3>
+
+      <p>
+        Warning signs alert road users to conditions
+        that may require extra attention or caution.
+        They help people prepare for possible hazards.
+      </p>
+
+      <h3>Examples of warning signs</h3>
+
+      <ul>
+        <li><strong>Sharp bend:</strong> Warns that the road changes direction sharply.</li>
+        <li><strong>Road narrows:</strong> Warns that the available road width reduces.</li>
+        <li><strong>Pedestrian crossing:</strong> Alerts drivers to a place where pedestrians may cross.</li>
+        <li><strong>Children crossing:</strong> Warns that children may be near or crossing the road.</li>
+        <li><strong>Slippery road:</strong> Warns about a surface that may reduce tyre grip.</li>
+        <li><strong>Road works:</strong> Warns that construction or maintenance may affect the road.</li>
+        <li><strong>Steep hill:</strong> Warns about a significant uphill or downhill section.</li>
+      </ul>
+
+      <h3>How should road users respond?</h3>
+
+      <p>
+        Pay attention to the warning, observe the road,
+        and follow the applicable rules. Drivers should
+        adjust their driving appropriately to the
+        conditions and avoid sudden or unsafe actions.
+      </p>
+    </article>
+
+    <article class="lesson" id="rs-regulatory">
+      <span class="lesson-number">Road Safety • Lesson 4</span>
+      <h3>Regulatory Traffic Signs</h3>
+
+      <p>
+        Regulatory signs communicate traffic rules,
+        restrictions, and obligations. Road users
+        must understand and obey the applicable
+        instructions.
+      </p>
+
+      <h3>Examples</h3>
+
+      <ul>
+        <li><strong>STOP:</strong> Requires a driver to stop as instructed before proceeding safely.</li>
+        <li><strong>Give Way:</strong> Requires a driver to yield priority as indicated.</li>
+        <li><strong>No Entry:</strong> Indicates that vehicles must not enter that road or area.</li>
+        <li><strong>Speed limit:</strong> Shows the maximum permitted speed for that section.</li>
+        <li><strong>No Parking:</strong> Indicates that parking is prohibited in the marked area.</li>
+        <li><strong>No Overtaking:</strong> Restricts overtaking where the sign applies.</li>
+      </ul>
+
+      <div class="warning">
+        <p>
+          <strong>Important:</strong>
+          Do not rely on memory alone when interpreting
+          an unfamiliar sign. Learn the official sign
+          meanings and follow instructions displayed
+          on the actual road.
+        </p>
+      </div>
+    </article>
+
+    <article class="lesson" id="rs-information">
+      <span class="lesson-number">Road Safety • Lesson 5</span>
+      <h3>Information and Direction Signs</h3>
+
+      <p>
+        Information signs help road users find places,
+        understand road facilities, and follow directions.
+      </p>
+
+      <h3>Examples</h3>
+
+      <ul>
+        <li>Direction signs showing routes to destinations.</li>
+        <li>Signs identifying towns and localities.</li>
+        <li>Signs indicating hospitals or health facilities.</li>
+        <li>Signs showing parking facilities.</li>
+        <li>Signs identifying public services.</li>
+        <li>Signs providing route and distance information.</li>
+      </ul>
+
+      <p>
+        Drivers should read signs carefully while
+        maintaining attention to the road. Passengers
+        can also help with navigation when appropriate.
+      </p>
+    </article>
+
+    <article class="lesson" id="rs-lights">
+      <span class="lesson-number">Road Safety • Lesson 6</span>
+      <h3>Traffic Lights and Their Meanings</h3>
+
+      <p>
+        Traffic lights control the movement of road
+        users at intersections and other locations.
+      </p>
+
+      <h3>Common traffic light colours</h3>
+
+      <ul>
+        <li><strong>Red:</strong> Stop and wait.</li>
+        <li><strong>Amber or yellow:</strong> Prepare to stop where it is safe and follow the applicable signal rules.</li>
+        <li><strong>Green:</strong> Proceed only when the way is clear and it is safe and permitted to do so.</li>
+      </ul>
+
+      <h3>Important safety points</h3>
+
+      <ul>
+        <li>Do not enter an intersection when it is blocked.</li>
+        <li>Watch for pedestrians and other road users.</li>
+        <li>Do not assume other road users will always obey signals.</li>
+        <li>Follow traffic officers' lawful directions where applicable.</li>
+      </ul>
+
+      <div class="fact">
+        <p>
+          <strong>Remember:</strong>
+          A green light does not mean you should
+          proceed without checking that the way is safe.
+        </p>
+      </div>
+    </article>
+
+    <article class="lesson" id="rs-markings">
+      <span class="lesson-number">Road Safety • Lesson 7</span>
+      <h3>Road Markings and Their Meanings</h3>
+
+      <p>
+        Road markings are lines, symbols, and other
+        marks placed on the road surface to guide
+        and regulate traffic.
+      </p>
+
+      <h3>Examples of road markings</h3>
+
+      <ul>
+        <li><strong>Centre line:</strong> Separates traffic moving in opposite directions on some roads.</li>
+        <li><strong>Lane lines:</strong> Help separate lanes travelling in the same direction.</li>
+        <li><strong>Stop line:</strong> Indicates where a vehicle should stop when required.</li>
+        <li><strong>Pedestrian crossing:</strong> Marks an area intended for pedestrian crossing.</li>
+        <li><strong>Directional arrows:</strong> Indicate permitted or required directions of travel.</li>
+        <li><strong>Parking markings:</strong> Identify designated parking spaces or restrictions.</li>
+      </ul>
+
+      <p>
+        Drivers should observe road markings and
+        follow the traffic rules that apply to them.
+        Markings should never be ignored simply
+        because there is no nearby sign.
+      </p>
+    </article>
+
+    <article class="lesson" id="rs-priority">
+      <span class="lesson-number">Road Safety • Lesson 8</span>
+      <h3>Right of Way and Giving Priority</h3>
+
+      <p>
+        Right of way refers to which road user has
+        priority to proceed in a particular situation.
+        Traffic signs, signals, road markings,
+        and applicable traffic rules determine priority.
+      </p>
+
+      <h3>Important principles</h3>
+
+      <ul>
+        <li>Obey STOP and Give Way signs.</li>
+        <li>Follow traffic lights and lawful directions from traffic officers.</li>
+        <li>Pay attention to pedestrians at crossings.</li>
+        <li>Approach intersections carefully.</li>
+        <li>Do not force your way into traffic.</li>
+        <li>Never assume another road user has seen you.</li>
+      </ul>
+
+      <div class="warning">
+        <p>
+          <strong>Safety first:</strong>
+          Priority rules can depend on the road layout
+          and local law. Learn the rules applicable
+          in Rwanda from official materials.
+        </p>
+      </div>
+    </article>
+
+    <article class="lesson" id="rs-pedestrians">
+      <span class="lesson-number">Road Safety • Lesson 9</span>
+      <h3>Pedestrian Safety</h3>
+
+      <p>
+        Pedestrians are people travelling on foot.
+        They are among the road users who need
+        particular protection.
+      </p>
+
+      <h3>Safe pedestrian habits</h3>
+
+      <ul>
+        <li>Use pavements or designated walking areas where available.</li>
+        <li>Use designated pedestrian crossings where provided.</li>
+        <li>Look carefully for traffic before crossing.</li>
+        <li>Follow pedestrian signals where available.</li>
+        <li>Avoid distractions while crossing.</li>
+        <li>Be especially careful near schools and busy roads.</li>
+        <li>Help children and people who need assistance to cross safely.</li>
+      </ul>
+
+      <h3>Pedestrian crossings</h3>
+
+      <p>
+        A pedestrian crossing is a designated place
+        where people can cross the road. Drivers
+        should observe crossing rules and take care
+        around people using the crossing.
+      </p>
+    </article>
+
+    <article class="lesson" id="rs-drivers">
+      <span class="lesson-number">Road Safety • Lesson 10</span>
+      <h3>Safe Driving and Driver Responsibilities</h3>
+
+      <p>
+        Safe driving requires attention, patience,
+        knowledge of traffic rules, and respect
+        for all road users.
+      </p>
+
+      <h3>Responsible driving habits</h3>
+
+      <ul>
+        <li>Hold the appropriate valid driving licence.</li>
+        <li>Ensure the vehicle is roadworthy.</li>
+        <li>Wear a seat belt and ensure passengers use appropriate restraints.</li>
+        <li>Obey road signs, signals, and speed restrictions.</li>
+        <li>Keep a safe distance from other vehicles.</li>
+        <li>Use indicators when required and appropriate.</li>
+        <li>Check mirrors and surroundings before manoeuvres.</li>
+        <li>Never drive when impaired by alcohol, drugs, or fatigue.</li>
+        <li>Avoid using a handheld phone while driving.</li>
+      </ul>
+
+      <h3>Vehicle maintenance</h3>
+
+      <p>
+        Regular vehicle checks help identify problems
+        that may affect safety. Important components
+        include brakes, tyres, lights, mirrors,
+        steering, and other safety equipment.
+      </p>
+    </article>
+
+    <article class="lesson" id="rs-motorcycles">
+      <span class="lesson-number">Road Safety • Lesson 11</span>
+      <h3>Motorcycle Safety</h3>
+
+      <p>
+        Motorcycles require careful handling because
+        riders are more exposed than people inside
+        enclosed vehicles.
+      </p>
+
+      <h3>Safety principles</h3>
+
+      <ul>
+        <li>Wear an approved and properly fitted helmet.</li>
+        <li>Use appropriate protective clothing.</li>
+        <li>Ensure the motorcycle is in good condition.</li>
+        <li>Obey traffic signs and speed restrictions.</li>
+        <li>Make yourself visible to other road users.</li>
+        <li>Avoid carrying more passengers than legally permitted.</li>
+        <li>Never ride while impaired or distracted.</li>
+      </ul>
+
+      <p>
+        Passengers should also use appropriate protective
+        equipment and follow safety instructions.
+      </p>
+    </article>
+
+    <article class="lesson" id="rs-bicycles">
+      <span class="lesson-number">Road Safety • Lesson 12</span>
+      <h3>Bicycle and Cyclist Safety</h3>
+
+      <p>
+        Cyclists are road users and should understand
+        the rules that apply to bicycles on public roads.
+      </p>
+
+      <h3>Safe cycling habits</h3>
+
+      <ul>
+        <li>Keep the bicycle in safe working condition.</li>
+        <li>Use appropriate lights and reflectors where required.</li>
+        <li>Stay alert and watch for vehicles and pedestrians.</li>
+        <li>Use permitted cycling areas where available.</li>
+        <li>Signal intentions when required and safe.</li>
+        <li>Obey traffic signs and signals.</li>
+        <li>Avoid carrying loads that make the bicycle unstable.</li>
+      </ul>
+    </article>
+
+    <article class="lesson" id="rs-weather">
+      <span class="lesson-number">Road Safety • Lesson 13</span>
+      <h3>Weather, Visibility, and Road Conditions</h3>
+
+      <p>
+        Rain, fog, darkness, dust, and poor road
+        conditions can make travelling more difficult.
+        Road users should adapt their behaviour
+        to the conditions.
+      </p>
+
+      <h3>When visibility is poor</h3>
+
+      <ul>
+        <li>Use appropriate vehicle lights.</li>
+        <li>Reduce speed when conditions require it.</li>
+        <li>Increase the distance from vehicles ahead.</li>
+        <li>Watch for pedestrians and cyclists.</li>
+        <li>Avoid sudden movements.</li>
+      </ul>
+
+      <h3>When roads are wet</h3>
+
+      <p>
+        Wet surfaces can reduce tyre grip and increase
+        stopping distance. Drivers should be cautious,
+        avoid abrupt braking where possible, and
+        leave sufficient space.
+      </p>
+    </article>
+
+    <article class="lesson" id="rs-emergency">
+      <span class="lesson-number">Road Safety • Lesson 14</span>
+      <h3>Road Emergencies and Crashes</h3>
+
+      <p>
+        An emergency on the road requires calm,
+        responsible action. Protecting people
+        and contacting appropriate emergency
+        services are important priorities.
+      </p>
+
+      <h3>General safety principles</h3>
+
+      <ul>
+        <li>Keep yourself and others away from immediate danger where possible.</li>
+        <li>Contact the appropriate emergency services.</li>
+        <li>Give clear information about the location and situation.</li>
+        <li>Do not create additional danger around the scene.</li>
+        <li>Follow instructions from emergency responders.</li>
+        <li>Do not move an injured person unnecessarily unless there is immediate danger.</li>
+      </ul>
+
+      <div class="warning">
+        <p>
+          <strong>Important:</strong>
+          In a real emergency, seek help from trained
+          emergency responders. Do not attempt actions
+          beyond your training.
+        </p>
+      </div>
+    </article>
+
+    <article class="lesson" id="rs-responsibility">
+      <span class="lesson-number">Road Safety • Lesson 15</span>
+      <h3>Respect, Responsibility, and Road Discipline</h3>
+
+      <p>
+        Good road behaviour includes patience,
+        respect, attention, and following the law.
+        Road users should consider the safety
+        of everyone around them.
+      </p>
+
+      <h3>Examples of responsible behaviour</h3>
+
+      <ul>
+        <li>Respect other road users.</li>
+        <li>Do not drive aggressively.</li>
+        <li>Do not misuse the horn.</li>
+        <li>Follow traffic officers' lawful instructions.</li>
+        <li>Do not block pedestrian crossings.</li>
+        <li>Keep roads and public spaces free from litter.</li>
+        <li>Report dangerous road conditions through appropriate channels.</li>
+      </ul>
+
+      <div class="fact">
+        <p>
+          <strong>Remember:</strong>
+          A responsible road user protects not only
+          themselves but also other people.
+        </p>
+      </div>
+    </article>
+
+    <section class="lesson">
+      <h3>Important Note About Road Rules in Rwanda</h3>
+
+      <p>
+        These lessons provide general road safety
+        education. They are not a replacement for
+        Rwanda's current traffic laws, official
+        road regulations, driving instruction,
+        or guidance from competent authorities.
+      </p>
+
+      <p>
+        Exact speed limits, penalties, licence
+        requirements, vehicle requirements,
+        and other legal details must be checked
+        against current official Rwandan regulations.
+      </p>
+
+      <p>
+        Always follow the traffic signs, road
+        markings, and lawful instructions that
+        apply where you are travelling.
+      </p>
+    </section>
+
+    <a class="primary-button quiz-link" href="./index.html">
+      Test Your Road Safety Knowledge →
+    </a>
+
+  </section>
+
+  <!-- STUDY METHODS -->
+
+  <section class="content-section" id="study-methods">
+    <h2>How to Study Effectively</h2>
+
+    <p>
+      Learning becomes more useful when you understand
+      ideas instead of only memorising answers.
+    </p>
+
+    <div class="lesson">
+      <h3>1. Choose one topic</h3>
+      <p>
+        Start with one lesson, such as traffic signs
+        or geography. Avoid trying to study everything
+        at once.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>2. Read carefully</h3>
+      <p>
+        Read the explanation and identify the important
+        ideas, definitions, and examples.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>3. Explain what you learned</h3>
+      <p>
+        Try to explain the lesson using your own words.
+        This helps you check your understanding.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>4. Practise with questions</h3>
+      <p>
+        Use the Quiz Master quiz to test your knowledge.
+        Read the explanations after answering.
+      </p>
+    </div>
+
+    <div class="lesson">
+      <h3>5. Review difficult topics</h3>
+      <p>
+        If you find a question difficult, return to
+        the related lesson and study it again.
+      </p>
+    </div>
+
+    <div class="fact">
+      <p>
+        <strong>Learning principle:</strong>
+        Read, understand, practise, review, and keep
+        improving. A good score is useful, but
+        understanding is even more important.
       </p>
     </div>
   </section>
 
-  <main class="container">
+  <!-- QUIZ CONNECTION -->
 
-    <div class="language-control" aria-label="Choose language">
-      <button type="button" id="englishBtn" class="active" aria-pressed="true">English</button>
-      <button type="button" id="kinyarwandaBtn" aria-pressed="false">Ikinyarwanda</button>
-    </div>
+  <section class="content-section" id="quiz-learning">
+    <h2>Learn and Practise with Quiz Master</h2>
 
-    <section>
-      <div class="section-heading">
-        <h2 data-en="Educational Articles"
-            data-rw="Inyandiko Zigisha">
-          Educational Articles
-        </h2>
-
-        <p data-en="Read, understand and apply useful knowledge in everyday life."
-           data-rw="Soma, sobanukirwa kandi ukoreshe ubumenyi bw'ingirakamaro mu buzima bwa buri munsi.">
-          Read, understand and apply useful knowledge in everyday life.
-        </p>
-      </div>
-
-      <div class="article-grid">
-
-        <!-- ARTICLE 1 -->
-        <article class="article-card">
-          <span class="category"
-                data-en="Road Safety"
-                data-rw="Umutekano wo mu muhanda">Road Safety</span>
-
-          <div data-en-content>
-            <h2>Why Road Safety Matters</h2>
-            <p>Road safety means using roads responsibly to reduce the risk of crashes and protect everyone who uses them. Drivers, passengers, cyclists and pedestrians all have a role to play.</p>
-
-            <h3>Important road-safety habits</h3>
-            <ul>
-              <li>Follow road signs and traffic signals.</li>
-              <li>Wear a seat belt when travelling in a vehicle.</li>
-              <li>Never use a phone while driving.</li>
-              <li>Respect speed limits and keep a safe distance.</li>
-              <li>Look carefully before crossing the road.</li>
-            </ul>
-
-            <h3>Why it matters</h3>
-            <p>Responsible road use helps prevent injuries, protects lives and makes journeys safer for everyone. Road safety is a shared responsibility, not only the responsibility of drivers.</p>
-          </div>
-
-          <div data-rw-content hidden>
-            <h2>Kuki Umutekano wo mu Muhanda Ari Ingenzi?</h2>
-            <p>Umutekano wo mu muhanda ni ugukoresha umuhanda neza hagamijwe kugabanya impanuka no kurinda abantu bose bawukoresha. Abatwara ibinyabiziga, abagenzi, abanyamagare n'abanyamaguru bose bafite uruhare.</p>
-
-            <h3>Imyitwarire myiza yo mu muhanda</h3>
-            <ul>
-              <li>Kubahiriza ibyapa n'amatara yo mu muhanda.</li>
-              <li>Kwambara umukandara igihe uri mu modoka.</li>
-              <li>Kwirinda gukoresha telefoni utwaye ikinyabiziga.</li>
-              <li>Kubahiriza umuvuduko wagenwe no gusiga intera ihagije.</li>
-              <li>Kureba neza mbere yo kwambuka umuhanda.</li>
-            </ul>
-
-            <h3>Akamaro kabyo</h3>
-            <p>Gukoresha umuhanda neza bifasha gukumira impanuka, kurinda ubuzima no gutuma ingendo ziba umutekano kuri bose. Umutekano wo mu muhanda ni inshingano ya buri wese.</p>
-          </div>
-        </article>
-
-        <!-- ARTICLE 2 -->
-        <article class="article-card">
-          <span class="category"
-                data-en="Traffic Rules"
-                data-rw="Amategeko y'Umuhanda">Traffic Rules</span>
-
-          <div data-en-content>
-            <h2>Understanding Traffic Signs</h2>
-            <p>Traffic signs communicate important information to road users. They help people understand restrictions, warnings, directions and road conditions.</p>
-
-            <h3>Common groups of signs</h3>
-            <ul>
-              <li><strong>Warning signs:</strong> Alert road users to possible dangers ahead.</li>
-              <li><strong>Regulatory signs:</strong> Show rules and restrictions that must be followed.</li>
-              <li><strong>Information signs:</strong> Provide directions and useful road information.</li>
-            </ul>
-
-            <h3>What should road users do?</h3>
-            <p>Observe signs carefully, understand their meaning and follow the instructions. Never ignore a sign simply because the road appears empty.</p>
-          </div>
-
-          <div data-rw-content hidden>
-            <h2>Gusobanukirwa Ibyapa byo mu Muhanda</h2>
-            <p>Ibyapa byo mu muhanda biha amakuru ingenzi abantu bawukoresha. Bifasha kumenya ibyo umuntu agomba kwirinda, ibyago biri imbere, icyerekezo n'imiterere y'umuhanda.</p>
-
-            <h3>Amatsinda y'ibyapa</h3>
-            <ul>
-              <li><strong>Ibyapa biburira:</strong> Bimenyesha ibyago bishobora kuba imbere.</li>
-              <li><strong>Ibyapa bitegeka cyangwa bibuza:</strong> Bigaragaza amategeko agomba kubahirizwa.</li>
-              <li><strong>Ibyapa biyobora:</strong> Bitanga icyerekezo n'andi makuru afasha abagenzi.</li>
-            </ul>
-
-            <h3>Abakoresha umuhanda bakora iki?</h3>
-            <p>Jya witegereza ibyapa, usobanukirwe n'ubutumwa bwabyo kandi ukurikize amabwiriza bitanga. Ntukirengagize icyapa nubwo umuhanda waba usa n'utagira abantu.</p>
-          </div>
-        </article>
-
-        <!-- ARTICLE 3 -->
-        <article class="article-card">
-          <span class="category"
-                data-en="Pedestrian Safety"
-                data-rw="Umutekano w'Abanyamaguru">Pedestrian Safety</span>
-
-          <div data-en-content>
-            <h2>How Pedestrians Can Stay Safe</h2>
-            <p>Pedestrians are among the most vulnerable road users. Paying attention and choosing safe crossing places can reduce danger when walking near roads.</p>
-
-            <h3>Safer walking practices</h3>
-            <ul>
-              <li>Use sidewalks or pedestrian paths where available.</li>
-              <li>Cross at designated crossings when possible.</li>
-              <li>Look in both directions and check that vehicles have stopped.</li>
-              <li>Avoid distractions when crossing.</li>
-              <li>Help children and people who need assistance to cross safely.</li>
-            </ul>
-
-            <h3>Be visible</h3>
-            <p>In poor lighting, wear clothing that helps drivers notice you. Stay alert and avoid assuming that a driver has seen you.</p>
-          </div>
-
-          <div data-rw-content hidden>
-            <h2>Uko Abanyamaguru Barushaho Kwikingira</h2>
-            <p>Abanyamaguru ni bamwe mu bakoresha umuhanda bashobora guhura n'ibyago byoroshye. Kwitwararika no guhitamo ahantu hatekanye ho kwambukira bifasha kugabanya ibyago.</p>
-
-            <h3>Uko wagenda mu mutekano</h3>
-            <ul>
-              <li>Koresha inzira zagenewe abanyamaguru aho zihari.</li>
-              <li>Ambukira ahabugenewe igihe bishoboka.</li>
-              <li>Reba impande zombi kandi urebe ko ibinyabiziga byahagaze.</li>
-              <li>Irinde ibikurangaza igihe wambuka.</li>
-              <li>Fasha abana n'abakeneye ubufasha kwambuka neza.</li>
-            </ul>
-
-            <h3>Jya ugaragara neza</h3>
-            <p>Iyo hari urumuri ruke, ambara imyenda ituma abatwara ibinyabiziga bakubona. Komeza kwitwararika kandi ntukibwire ko umushoferi yakubonye.</p>
-          </div>
-        </article>
-
-        <!-- ARTICLE 4 -->
-        <article class="article-card">
-          <span class="category"
-                data-en="General Knowledge"
-                data-rw="Ubumenyi Rusange">General Knowledge</span>
-
-          <div data-en-content>
-            <h2>Why General Knowledge Is Important</h2>
-            <p>General knowledge helps people understand the world around them. It includes information about science, geography, history, culture, technology and everyday life.</p>
-
-            <h3>Benefits of learning</h3>
-            <ul>
-              <li>Improves understanding of different subjects.</li>
-              <li>Encourages curiosity and critical thinking.</li>
-              <li>Helps people make informed decisions.</li>
-              <li>Supports communication and lifelong learning.</li>
-            </ul>
-
-            <h3>How to build knowledge</h3>
-            <p>Read reliable educational materials, ask questions, discuss ideas and practise what you learn. Compare information from trustworthy sources before accepting it as fact.</p>
-          </div>
-
-          <div data-rw-content hidden>
-            <h2>Akamaro k'Ubumenyi Rusange</h2>
-            <p>Ubumenyi rusange bufasha umuntu gusobanukirwa isi amukikije. Burimo ubumenyi ku bumenyi bw'isi, amateka, umuco, ikoranabuhanga, siyansi n'ubuzima bwa buri munsi.</p>
-
-            <h3>Inyungu zo kwiga</h3>
-            <ul>
-              <li>Byongera gusobanukirwa amasomo atandukanye.</li>
-              <li>Biteza imbere amatsiko no gutekereza neza.</li>
-              <li>Bifasha gufata ibyemezo bishingiye ku makuru.</li>
-              <li>Biteza imbere ibiganiro no gukomeza kwiga.</li>
-            </ul>
-
-            <h3>Uko wakongera ubumenyi</h3>
-            <p>Soma inyandiko zizewe, jya ubaza ibibazo, muganire ku bitekerezo kandi ushyire mu bikorwa ibyo wiga. Gereranya amakuru aturuka ahantu hizewe mbere yo kuyemera nk'ukuri.</p>
-          </div>
-        </article>
-
-        <!-- ARTICLE 5 -->
-        <article class="article-card">
-          <span class="category"
-                data-en="Learning Skills"
-                data-rw="Uburyo bwo Kwiga">Learning Skills</span>
-
-          <div data-en-content>
-            <h2>Simple Ways to Improve Your Learning</h2>
-            <p>Learning becomes more effective when it is organised and consistent. Small study habits can help learners understand and remember information.</p>
-
-            <h3>Useful learning habits</h3>
-            <ul>
-              <li>Set a clear learning goal.</li>
-              <li>Study in a quiet place when possible.</li>
-              <li>Break large topics into smaller sections.</li>
-              <li>Review what you have learned regularly.</li>
-              <li>Test your understanding with practice questions.</li>
-            </ul>
-
-            <h3>Learn from mistakes</h3>
-            <p>Incorrect answers can show which topics need more attention. Review explanations, correct misunderstandings and try again. Learning is a process that improves with practice.</p>
-          </div>
-
-          <div data-rw-content hidden>
-            <h2>Uburyo Bworoheje bwo Kunoza Imyigire</h2>
-            <p>Kwiga birushaho gutanga umusaruro iyo biteguwe kandi bigakorwa buri gihe. Utumenyero duto two kwiga dushobora gufasha umuntu gusobanukirwa no kwibuka ibyo yize.</p>
-
-            <h3>Imyitwarire myiza yo kwiga</h3>
-            <ul>
-              <li>Shyiraho intego isobanutse yo kwiga.</li>
-              <li>Iga ahantu hatuje igihe bishoboka.</li>
-              <li>Gabanya amasomo manini mo uduce duto.</li>
-              <li>Jya usubiramo ibyo wize kenshi.</li>
-              <li>Gerageza ibibazo kugira ngo urebe niba wasobanukiwe.</li>
-            </ul>
-
-            <h3>Jya wigira ku makosa</h3>
-            <p>Igisubizo kitari cyo gishobora kukwereka amasomo ukeneye kongera kwiga. Subiramo ibisobanuro, kosora ibyo utasobanukiwe hanyuma wongere ugerageze. Kwiga ni urugendo rurushaho gutera imbere uko ukora imyitozo.</p>
-          </div>
-        </article>
-
-        <!-- ARTICLE 6 -->
-        <article class="article-card">
-          <span class="category"
-                data-en="Responsible Citizenship"
-                data-rw="Ubwenegihugu Bwiza">Responsible Citizenship</span>
-
-          <div data-en-content>
-            <h2>How Responsible Citizens Help Their Communities</h2>
-            <p>A responsible citizen contributes positively to the community by respecting others, following applicable laws and helping protect shared resources.</p>
-
-            <h3>Positive actions</h3>
-            <ul>
-              <li>Respect the rights and dignity of other people.</li>
-              <li>Keep public places clean.</li>
-              <li>Follow community rules and applicable laws.</li>
-              <li>Protect public property and the environment.</li>
-              <li>Share useful and accurate information.</li>
-            </ul>
-
-            <h3>Small actions make a difference</h3>
-            <p>Communities become safer and stronger when people act responsibly. Cooperation, respect and honesty help create a better environment for everyone.</p>
-          </div>
-
-          <div data-rw-content hidden>
-            <h2>Uko Umunyarwanda Mwiza Afasha Umuryango Nyarwanda</h2>
-            <p>Umunyagihugu urangwa n'inshingano agira uruhare mu guteza imbere umuryango abamo yubaha abandi, akurikiza amategeko kandi akarinda umutungo rusange.</p>
-
-            <h3>Ibikorwa byiza</h3>
-            <ul>
-              <li>Kubaha uburenganzira n'agaciro ka buri muntu.</li>
-              <li>Kurinda isuku ahantu hahurira abantu benshi.</li>
-              <li>Kubahiriza amategeko n'amabwiriza y'umuryango.</li>
-              <li>Kurinda umutungo rusange n'ibidukikije.</li>
-              <li>Gutanga amakuru y'ingirakamaro kandi yizewe.</li>
-            </ul>
-
-            <h3>Ibikorwa bito bigira akamaro</h3>
-            <p>Imiryango irushaho kugira umutekano n'imbaraga iyo abantu bitwara neza. Ubufatanye, kubahana no kuvugisha ukuri bifasha kubaka ahantu heza kuri bose.</p>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <div class="notice">
-      <p data-en="Educational note: These articles provide general learning information. For official road rules and legal requirements, consult the relevant authorities in your country. Always follow current laws and official instructions."
-         data-rw="Icyitonderwa: Izi nyandiko zitanga ubumenyi rusange. Ku mategeko y'umuhanda n'ibisabwa n'amategeko, jya ugisha amakuru inzego zibishinzwe mu gihugu cyawe. Buri gihe ukurikize amategeko n'amabwiriza agezweho.">
-        Educational note: These articles provide general learning information. For official road rules and legal requirements, consult the relevant authorities in your country. Always follow current laws and official instructions.
-      </p>
-    </div>
-
-    <section class="quiz-cta">
-      <h2 data-en="Ready to Test Your Knowledge?"
-          data-rw="Witeguye Kugerageza Ubumenyi Bwawe?">
-        Ready to Test Your Knowledge?
-      </h2>
-
-      <p data-en="Visit Quiz Master and practise with educational questions in English or Kinyarwanda."
-         data-rw="Sura Quiz Master ukore imyitozo y'ibibazo by'ubumenyi mu Cyongereza cyangwa mu Kinyarwanda.">
-        Visit Quiz Master and practise with educational questions in English or Kinyarwanda.
-      </p>
-
-      <a class="primary-button" href="./index.html"
-         data-en="Start Quiz"
-         data-rw="Tangira Gukina">
-        Start Quiz
-      </a>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <strong>Quiz Master 🇷🇼</strong>
-
-    <div class="footer-links">
-      <a href="./index.html">Home</a>
-      <a href="./about.html">About</a>
-      <a href="./articles.html">Articles</a>
-      <a href="./contact.html">Contact</a>
-      <a href="./privacy-policy.html">Privacy Policy</a>
-      <a href="./terms.html">Terms</a>
-    </div>
-
-    <p>© <span id="currentYear">2026</span> Quiz Master 🇷🇼. All rights reserved.</p>
-    <p data-en="Learn something useful every day."
-       data-rw="Jya wiga ikintu cy'ingirakamaro buri munsi.">
-      Learn something useful every day.
+    <p>
+      After studying a lesson, visit the Quiz Master
+      application and choose the matching quiz category.
     </p>
-  </footer>
 
-  <script>
-    (() => {
-      "use strict";
+    <div class="category-grid">
 
-      const englishBtn = document.getElementById("englishBtn");
-      const kinyarwandaBtn = document.getElementById("kinyarwandaBtn");
+      <div class="category-card">
+        <h3>🧠 General Knowledge Quiz</h3>
 
-      function setLanguage(language) {
-        const isKinyarwanda = language === "rw";
+        <p>
+          Test your knowledge of geography, science,
+          history, technology, sports, Rwanda,
+          and other general subjects.
+        </p>
 
-        document.documentElement.lang = language;
+        <a class="primary-button" href="./index.html">
+          Open Quiz Master →
+        </a>
+      </div>
 
-        document.querySelectorAll("[data-en]").forEach(element => {
-          element.textContent = isKinyarwanda
-            ? element.getAttribute("data-rw")
-            : element.getAttribute("data-en");
-        });
+      <div class="category-card">
+        <h3>🚦 Road Safety Quiz</h3>
 
-        document.querySelectorAll("[data-en-content]").forEach(element => {
-          element.hidden = isKinyarwanda;
-        });
+        <p>
+          Practise your understanding of road signs,
+          traffic lights, road markings, pedestrians,
+          and responsible road use.
+        </p>
 
-        document.querySelectorAll("[data-rw-content]").forEach(element => {
-          element.hidden = !isKinyarwanda;
-        });
+        <a class="primary-button" href="./index.html">
+          Open Quiz Master →
+        </a>
+      </div>
 
-        englishBtn.classList.toggle("active", !isKinyarwanda);
-        kinyarwandaBtn.classList.toggle("active", isKinyarwanda);
+    </div>
 
-        englishBtn.setAttribute("aria-pressed", String(!isKinyarwanda));
-        kinyarwandaBtn.setAttribute("aria-pressed", String(isKinyarwanda));
+    <p class="small-note">
+      When the quiz opens, choose the appropriate
+      language and question category in the game setup.
+    </p>
+  </section>
 
-        try {
-          localStorage.setItem("quizmasterArticlesLanguage", language);
-        } catch (error) {
-          // The page still works if browser storage is unavailable.
-        }
-      }
+  <section class="content-section">
+    <h2>Keep Learning</h2>
 
-      englishBtn.addEventListener("click", () => setLanguage("en"));
-      kinyarwandaBtn.addEventListener("click", () => setLanguage("rw"));
+    <p>
+      Knowledge grows through regular study,
+      curiosity, practice, and responsible use
+      of reliable information.
+    </p>
 
-      let savedLanguage = "en";
+    <p>
+      Use these lessons as an introduction to each
+      subject. For deeper study, consult textbooks,
+      recognised educational materials, and
+      official publications.
+    </p>
 
-      try {
-        savedLanguage =
-          localStorage.getItem("quizmasterArticlesLanguage") || "en";
-      } catch (error) {
-        savedLanguage = "en";
-      }
+    <div class="fact">
+      <p>
+        <strong>Educational notice:</strong>
+        Quiz Master provides general educational
+        information. Road safety lessons are
+        educational summaries and do not replace
+        current laws or professional instruction.
+      </p>
+    </div>
 
-      setLanguage(savedLanguage === "rw" ? "rw" : "en");
+    <a class="primary-button" href="./index.html">
+      Return to Quiz Master →
+    </a>
+  </section>
 
-      document.getElementById("currentYear").textContent =
-        new Date().getFullYear();
-    })();
-  </script>
+</main>
+
+<footer>
+  <p><strong>Quiz Master 🇷🇼</strong></p>
+  <p>Learn • Discover • Practise • Improve</p>
+
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="./index.html">Home</a>
+    <a href="./about.html">About</a>
+    <a href="./articles.html">Learning Centre</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./privacy-policy.html">Privacy Policy</a>
+    <a href="./terms.html">Terms</a>
+  </nav>
+
+  <p>© 2026 Quiz Master Rwanda. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
