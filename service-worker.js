@@ -3,19 +3,26 @@
 /* ==========================================
    QUIZ MASTER 🇷🇼
    SERVICE WORKER
-   Version 3.2.0
+   Version 3.3.0
    Offline support + safe updates
 ========================================== */
 
-const VERSION = "3.2.0";
+const VERSION = "3.3.0";
 
-const STATIC_CACHE = `quizmaster-${VERSION}-static`;
-const PAGE_CACHE = `quizmaster-${VERSION}-pages`;
-const DATA_CACHE = `quizmaster-${VERSION}-data`;
+const CACHE_PREFIX = "quizmaster-";
+
+const STATIC_CACHE = `${CACHE_PREFIX}${VERSION}-static`;
+const PAGE_CACHE = `${CACHE_PREFIX}${VERSION}-pages`;
+const DATA_CACHE = `${CACHE_PREFIX}${VERSION}-data`;
 
 const HOME_URL = "./index.html";
 const OFFLINE_URL = "./offline.html";
 const QUESTIONS_URL = "./questions.json";
+
+/* ==========================================
+   REQUIRED FILES
+   Installation fails if these are unavailable.
+========================================== */
 
 const REQUIRED_FILES = [
   HOME_URL,
@@ -25,9 +32,15 @@ const REQUIRED_FILES = [
   "./manifest.webmanifest"
 ];
 
+/* ==========================================
+   OPTIONAL FILES
+   Missing files do not block installation.
+========================================== */
+
 const OPTIONAL_FILES = [
   "./",
   "./about.html",
+  "./articles.html",
   "./contact.html",
   "./privacy-policy.html",
   "./terms.html",
@@ -68,6 +81,18 @@ function stableQuestionsRequest(request) {
 }
 
 /* ==========================================
+   RESPONSE VALIDATION
+========================================== */
+
+function isValidResponse(response) {
+  return Boolean(
+    response &&
+    response.ok &&
+    response.type !== "opaque"
+  );
+}
+
+/* ==========================================
    CACHE HELPERS
 ========================================== */
 
@@ -80,11 +105,11 @@ async function cacheOne(cache, path) {
       credentials: "same-origin"
     });
 
-    if (!response.ok || response.type === "opaque") {
+    if (!isValidResponse(response)) {
       console.warn(
-        "Quiz Master: Could not cache",
+        "Quiz Master: Could not cache:",
         path,
-        response.status
+        response ? response.status : "No response"
       );
 
       return false;
@@ -96,7 +121,7 @@ async function cacheOne(cache, path) {
 
   } catch (error) {
     console.warn(
-      "Quiz Master: Cache failed",
+      "Quiz Master: Cache failed:",
       path,
       error
     );
@@ -108,25 +133,29 @@ async function cacheOne(cache, path) {
 async function cacheFiles(cacheName, files) {
   const cache = await caches.open(cacheName);
 
-  const results = await Promise.all(
+  return Promise.all(
     files.map(file => cacheOne(cache, file))
   );
-
-  return results;
 }
+
+/* ==========================================
+   QUESTIONS CACHE SEARCH
+========================================== */
 
 async function findQuestionsInAnyCache(request) {
   const stableRequest = stableQuestionsRequest(request);
 
   const direct = await caches.match(stableRequest);
 
-  if (direct) return direct;
+  if (direct) {
+    return direct;
+  }
 
   const target = new URL(stableRequest.url);
   const cacheNames = await caches.keys();
 
   for (const cacheName of cacheNames) {
-    if (!cacheName.startsWith("quizmaster-")) {
+    if (!cacheName.startsWith(CACHE_PREFIX)) {
       continue;
     }
 
@@ -142,7 +171,9 @@ async function findQuestionsInAnyCache(request) {
       ) {
         const response = await cache.match(key);
 
-        if (response) return response;
+        if (response) {
+          return response;
+        }
       }
     }
   }
@@ -150,8 +181,14 @@ async function findQuestionsInAnyCache(request) {
   return null;
 }
 
+/* ==========================================
+   SAVE QUESTIONS
+========================================== */
+
 async function saveQuestions(response, request) {
-  if (!response || !response.ok) return;
+  if (!isValidResponse(response)) {
+    return;
+  }
 
   const cache = await caches.open(DATA_CACHE);
   const stableRequest = stableQuestionsRequest(request);
@@ -168,20 +205,22 @@ async function saveQuestions(response, request) {
 
 self.addEventListener("install", event => {
   event.waitUntil((async () => {
+    console.log(
+      `Quiz Master Service Worker ${VERSION}: Installing...`
+    );
+
     const results = await cacheFiles(
       STATIC_CACHE,
       REQUIRED_FILES
     );
 
-    // Required files must be available before
-    // the new worker is activated.
     const failed = REQUIRED_FILES.filter(
       (_, index) => !results[index]
     );
 
-    if (failed.length) {
+    if (failed.length > 0) {
       console.error(
-        "Quiz Master: Required files failed to cache:",
+        "Quiz Master: Required files failed:",
         failed
       );
 
@@ -218,7 +257,7 @@ self.addEventListener("activate", event => {
     await Promise.all(
       cacheNames.map(cacheName => {
         if (
-          cacheName.startsWith("quizmaster-") &&
+          cacheName.startsWith(CACHE_PREFIX) &&
           !currentCaches.includes(cacheName)
         ) {
           return caches.delete(cacheName);
@@ -259,7 +298,7 @@ async function networkFirst(request, cacheName) {
   try {
     const response = await fetch(request);
 
-    if (response && response.ok) {
+    if (isValidResponse(response)) {
       await cache.put(
         request,
         response.clone()
@@ -271,11 +310,15 @@ async function networkFirst(request, cacheName) {
   } catch (error) {
     const cached = await cache.match(request);
 
-    if (cached) return cached;
+    if (cached) {
+      return cached;
+    }
 
     const fallback = await caches.match(request);
 
-    if (fallback) return fallback;
+    if (fallback) {
+      return fallback;
+    }
 
     throw error;
   }
@@ -289,17 +332,15 @@ async function questionsNetworkFirst(request) {
   try {
     const response = await fetch(request);
 
-    if (
-      response &&
-      response.ok &&
-      response.type !== "opaque"
-    ) {
+    if (isValidResponse(response)) {
       await saveQuestions(response, request);
 
       return response;
     }
 
-    throw new Error("Could not load questions.json.");
+    throw new Error(
+      "Could not load questions.json."
+    );
 
   } catch (error) {
     console.warn(
@@ -309,7 +350,9 @@ async function questionsNetworkFirst(request) {
 
     const cached = await findQuestionsInAnyCache(request);
 
-    if (cached) return cached;
+    if (cached) {
+      return cached;
+    }
 
     return new Response(
       JSON.stringify({
@@ -332,11 +375,23 @@ async function questionsNetworkFirst(request) {
 ========================================== */
 
 async function getOfflinePage() {
-  return (
-    await caches.match(absoluteURL(OFFLINE_URL))
-  ) || (
-    await caches.match(absoluteURL(HOME_URL))
-  ) || new Response(
+  const offlinePage = await caches.match(
+    absoluteURL(OFFLINE_URL)
+  );
+
+  if (offlinePage) {
+    return offlinePage;
+  }
+
+  const homePage = await caches.match(
+    absoluteURL(HOME_URL)
+  );
+
+  if (homePage) {
+    return homePage;
+  }
+
+  return new Response(
     "You are offline. Please reconnect to the internet.",
     {
       status: 503,
@@ -348,21 +403,19 @@ async function getOfflinePage() {
 }
 
 /* ==========================================
-   STATIC ASSETS
+   STATIC ASSETS — CACHE FIRST
 ========================================== */
 
 async function cacheFirst(request) {
   const cached = await caches.match(request);
 
-  if (cached) return cached;
+  if (cached) {
+    return cached;
+  }
 
   const response = await fetch(request);
 
-  if (
-    response &&
-    response.ok &&
-    response.type !== "opaque"
-  ) {
+  if (isValidResponse(response)) {
     const cache = await caches.open(STATIC_CACHE);
 
     await cache.put(
@@ -381,14 +434,18 @@ async function cacheFirst(request) {
 self.addEventListener("fetch", event => {
   const request = event.request;
 
-  if (request.method !== "GET") return;
+  if (request.method !== "GET") {
+    return;
+  }
 
   const url = new URL(request.url);
 
-  // Only handle this website's own requests.
-  if (!isSameOrigin(url)) return;
+  // Handle only this website's own requests.
+  if (!isSameOrigin(url)) {
+    return;
+  }
 
-  // Never cache API or payment endpoints.
+  // Do not cache API or payment endpoints.
   if (
     url.pathname.includes("/api/") ||
     url.pathname.includes("/payment")
@@ -396,7 +453,7 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Questions always use their own cache logic.
+  // Questions use their own cache strategy.
   if (isQuestionsRequest(url)) {
     event.respondWith(
       questionsNetworkFirst(request)
@@ -405,67 +462,66 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // JavaScript files: network first.
+  // JavaScript: network first.
   if (url.pathname.endsWith(".js")) {
     event.respondWith(
-      networkFirst(request, DATA_CACHE)
-        .catch(() => {
-          return caches.match(request).then(cached => {
-            return cached || new Response(
-              "JavaScript file unavailable offline.",
-              {
-                status: 503,
-                headers: {
-                  "Content-Type": "text/plain; charset=utf-8"
-                }
+      networkFirst(request, DATA_CACHE).catch(() => {
+        return caches.match(request).then(cached => {
+          return cached || new Response(
+            "JavaScript file unavailable offline.",
+            {
+              status: 503,
+              headers: {
+                "Content-Type": "text/plain; charset=utf-8"
               }
-            );
-          });
-        })
+            }
+          );
+        });
+      })
     );
 
     return;
   }
 
-  // Other JSON files: network first.
+  // Other JSON: network first.
   if (url.pathname.endsWith(".json")) {
     event.respondWith(
-      networkFirst(request, DATA_CACHE)
-        .catch(() => {
-          return caches.match(request).then(cached => {
-            return cached || new Response(
-              JSON.stringify({
-                error: "Data unavailable offline."
-              }),
-              {
-                status: 503,
-                headers: {
-                  "Content-Type": "application/json; charset=utf-8"
-                }
+      networkFirst(request, DATA_CACHE).catch(() => {
+        return caches.match(request).then(cached => {
+          return cached || new Response(
+            JSON.stringify({
+              error: "Data unavailable offline."
+            }),
+            {
+              status: 503,
+              headers: {
+                "Content-Type": "application/json; charset=utf-8"
               }
-            );
-          });
-        })
+            }
+          );
+        });
+      })
     );
 
     return;
   }
 
-  // HTML navigation: network first.
+  // HTML pages and navigation: network first.
   if (
     request.mode === "navigate" ||
     url.pathname.endsWith(".html") ||
     url.pathname.endsWith("/")
   ) {
     event.respondWith(
-      networkFirst(request, PAGE_CACHE)
-        .catch(async () => {
-          const cached = await caches.match(request);
+      networkFirst(request, PAGE_CACHE).catch(async () => {
+        const cached = await caches.match(request);
 
-          if (cached) return cached;
+        if (cached) {
+          return cached;
+        }
 
-          return getOfflinePage();
-        })
+        return getOfflinePage();
+      })
     );
 
     return;
@@ -487,25 +543,39 @@ self.addEventListener("fetch", event => {
 ========================================== */
 
 self.addEventListener("message", event => {
-  if (!event.data) return;
-
-  if (event.data.type === "SKIP_WAITING") {
-    event.waitUntil(self.skipWaiting());
+  if (!event.data) {
     return;
   }
 
+  // Activate a waiting service worker.
+  if (event.data.type === "SKIP_WAITING") {
+    event.waitUntil(
+      self.skipWaiting()
+    );
+
+    return;
+  }
+
+  // Clear all Quiz Master caches.
   if (event.data.type === "CLEAR_QUIZ_CACHE") {
     event.waitUntil((async () => {
-      await Promise.all([
-        caches.delete(STATIC_CACHE),
-        caches.delete(PAGE_CACHE),
-        caches.delete(DATA_CACHE)
-      ]);
+      const cacheNames = await caches.keys();
+
+      await Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheName.startsWith(CACHE_PREFIX)) {
+            return caches.delete(cacheName);
+          }
+
+          return Promise.resolve(false);
+        })
+      );
     })());
 
     return;
   }
 
+  // Return current service worker version.
   if (event.data.type === "GET_SW_VERSION") {
     const reply = {
       type: "QUIZMASTER_SW_VERSION",
