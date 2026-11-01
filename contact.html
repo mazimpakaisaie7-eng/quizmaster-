@@ -1,177 +1,520 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#08172b"
+  >
+
+  <meta
+    name="description"
+    content="Contact Quiz Master Rwanda for questions, feedback, suggestions, corrections or support. We welcome your ideas to help improve our educational quiz platform."
+  >
+
+  <meta
+    name="author"
+    content="Quiz Master Rwanda"
+  >
+
+  <meta
+    name="robots"
+    content="index, follow, max-image-preview:large"
+  >
+
+  <meta
+    name="application-name"
+    content="Quiz Master"
+  >
 
   <title>Contact Us | Quiz Master 🇷🇼</title>
 
-  <meta name="description" content="Contact Quiz Master Rwanda for questions, feedback, suggestions or support about our educational quiz platform.">
-  <meta name="author" content="Quiz Master Rwanda">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#155eef">
+  <link
+    rel="canonical"
+    href="https://quizmaster-liard-five.vercel.app/contact.html"
+  >
 
-  <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/contact.html">
+  <link
+    rel="icon"
+    type="image/png"
+    href="./icon-192-4.png"
+  >
 
+  <link
+    rel="apple-touch-icon"
+    href="./icon-192-4.png"
+  >
+
+  <link
+    rel="manifest"
+    href="./manifest.webmanifest"
+  >
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Contact Quiz Master 🇷🇼">
-  <meta property="og:description" content="Get in touch with Quiz Master Rwanda for questions, feedback and support.">
-  <meta property="og:url" content="https://quizmaster-liard-five.vercel.app/contact.html">
-  <meta property="og:site_name" content="Quiz Master Rwanda">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Contact Quiz Master 🇷🇼">
-  <meta name="twitter:description" content="Contact Quiz Master Rwanda for help and feedback.">
+  <meta
+    property="og:title"
+    content="Contact Quiz Master 🇷🇼"
+  >
 
+  <meta
+    property="og:description"
+    content="Get in touch with Quiz Master Rwanda. Send questions, feedback, corrections and suggestions."
+  >
+
+  <meta
+    property="og:url"
+    content="https://quizmaster-liard-five.vercel.app/contact.html"
+  >
+
+  <meta
+    property="og:site_name"
+    content="Quiz Master Rwanda"
+  >
+
+  <meta
+    property="og:locale"
+    content="en_US"
+  >
+
+  <!-- Twitter -->
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
+
+  <meta
+    name="twitter:title"
+    content="Contact Quiz Master 🇷🇼"
+  >
+
+  <meta
+    name="twitter:description"
+    content="Contact Quiz Master Rwanda for questions, feedback and support."
+  >
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact Quiz Master Rwanda",
     "url": "https://quizmaster-liard-five.vercel.app/contact.html",
-    "description": "Contact information for Quiz Master Rwanda.",
+    "description": "Contact information for questions, feedback, suggestions, corrections and support related to Quiz Master Rwanda.",
     "inLanguage": "en",
     "mainEntity": {
       "@type": "Organization",
       "name": "Quiz Master Rwanda",
+      "url": "https://quizmaster-liard-five.vercel.app/",
       "email": "mazimpakaisaie7@gmail.com",
-      "url": "https://quizmaster-liard-five.vercel.app/"
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "mazimpakaisaie7@gmail.com",
+        "availableLanguage": [
+          "English",
+          "Kinyarwanda"
+        ]
+      }
     }
   }
   </script>
 
   <style>
     :root {
+      color-scheme: dark;
+
+      --background: #08172b;
+      --surface: #10233f;
+      --surface-light: #172f50;
       --primary: #155eef;
-      --background: #f2f5fb;
-      --surface: #ffffff;
-      --text: #172033;
-      --muted: #596579;
-      --border: #e1e7f0;
+      --primary-light: #3478ff;
+      --text: #f5f8ff;
+      --muted: #b2c0d5;
+      --border: rgba(255,255,255,.12);
+      --success: #36c995;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--background);
+      min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at top,
+          #142d50 0,
+          var(--background) 55%
+        );
+
       color: var(--text);
-      line-height: 1.7;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      line-height: 1.75;
+    }
+
+    a {
+      color: #8db5ff;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #8db5ff;
+      outline-offset: 4px;
+      border-radius: 4px;
     }
 
     header {
-      background: var(--surface);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+
+      background: rgba(8,23,43,.96);
       border-bottom: 1px solid var(--border);
-      padding: 16px 20px;
+
+      backdrop-filter: blur(12px);
     }
 
     .nav {
-      max-width: 850px;
+      width: 100%;
+      max-width: 950px;
+      min-height: 68px;
+
       margin: auto;
+      padding: 12px 20px;
+
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 15px;
     }
 
     .brand {
-      font-size: 20px;
+      color: var(--text);
+
+      font-size: 19px;
       font-weight: 800;
-      color: var(--primary);
+
       text-decoration: none;
+      white-space: nowrap;
     }
 
     .home-link {
-      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 42px;
+      padding: 8px 15px;
+
+      color: white;
+      background: var(--primary);
+
+      border-radius: 9px;
+
+      font-size: 14px;
       font-weight: 700;
+
       text-decoration: none;
     }
 
+    .home-link:hover,
+    .button:hover,
+    .email-button:hover {
+      background: var(--primary-light);
+    }
+
     main {
-      max-width: 800px;
+      width: 100%;
+      max-width: 850px;
+
       margin: 35px auto;
-      padding: 0 16px;
+      padding: 0 17px;
     }
 
     .content {
+      padding: 34px;
+
       background: var(--surface);
-      padding: 30px;
+
       border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 5px 20px rgba(20, 40, 80, 0.04);
+      border-radius: 18px;
+
+      box-shadow: 0 15px 45px rgba(0,0,0,.18);
+    }
+
+    .eyebrow {
+      display: inline-block;
+
+      margin-bottom: 12px;
+      padding: 5px 11px;
+
+      color: #a9c6ff;
+      background: rgba(21,94,239,.15);
+
+      border: 1px solid rgba(141,181,255,.2);
+      border-radius: 30px;
+
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: 30px;
+      margin: 0 0 16px;
+
+      font-size: clamp(27px, 5vw, 35px);
       line-height: 1.3;
-      margin-top: 0;
     }
 
     h2 {
+      margin: 30px 0 10px;
+
       font-size: 21px;
-      margin-top: 28px;
+      line-height: 1.4;
     }
 
-    p {
+    h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    p,
+    li {
       color: var(--muted);
     }
 
+    p {
+      margin: 12px 0;
+    }
+
+    strong {
+      color: var(--text);
+    }
+
+    .intro {
+      font-size: 16px;
+    }
+
     .contact-card {
-      background: #eef4ff;
-      border: 1px solid #dce8ff;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 22px 0;
+      margin: 25px 0;
+      padding: 23px;
+
+      background: var(--surface-light);
+
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary-light);
+      border-radius: 13px;
+    }
+
+    .contact-icon {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 34px;
     }
 
     .email-link {
       display: inline-block;
-      color: var(--primary);
+
+      margin: 7px 0;
+
+      color: #a9c6ff;
+
       font-size: 17px;
       font-weight: 700;
+
       overflow-wrap: anywhere;
     }
 
+    .email-button,
     .button {
-      display: inline-block;
-      background: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 47px;
+      margin-top: 15px;
+      padding: 11px 19px;
+
       color: white;
-      text-decoration: none;
-      padding: 12px 20px;
+      background: var(--primary);
+
+      border: 0;
       border-radius: 9px;
+
+      font-size: 14px;
       font-weight: 700;
-      margin-top: 12px;
+
+      text-decoration: none;
+      cursor: pointer;
+
+      transition: background .2s ease;
     }
 
-    footer {
-      text-align: center;
-      padding: 24px 15px;
-      color: var(--muted);
+    .email-button:hover,
+    .button:hover {
+      color: white;
+    }
+
+    .contact-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+
+      margin: 18px 0;
+    }
+
+    .contact-item {
+      padding: 17px;
+
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+    }
+
+    .contact-item p {
+      margin-bottom: 0;
       font-size: 14px;
     }
 
-    footer a {
-      margin: 0 7px;
-      color: var(--primary);
+    .contact-item-icon {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 23px;
+    }
+
+    ul {
+      padding-left: 23px;
+    }
+
+    li {
+      margin: 9px 0;
+      padding-left: 3px;
+    }
+
+    .note {
+      margin: 23px 0;
+      padding: 16px 18px;
+
+      background: rgba(54,201,149,.08);
+      border: 1px solid rgba(54,201,149,.2);
+      border-radius: 11px;
+    }
+
+    .note p {
+      margin: 0;
+    }
+
+    .other-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+
+      margin-top: 14px;
+    }
+
+    .other-links a {
+      font-weight: 600;
       text-decoration: none;
     }
 
+    .other-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 35px;
+      padding: 25px 15px;
+
+      border-top: 1px solid var(--border);
+
+      text-align: center;
+    }
+
+    footer p {
+      margin: 7px 0;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px) {
+      .nav {
+        min-height: 60px;
+        padding: 10px 14px;
+      }
+
+      .brand {
+        font-size: 17px;
+      }
+
       main {
         margin: 20px auto;
+        padding: 0 12px;
       }
 
       .content {
-        padding: 21px;
+        padding: 22px 18px;
       }
 
-      h1 {
-        font-size: 25px;
+      .contact-list {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 19px;
+      }
+
+      .intro {
+        font-size: 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -181,111 +524,265 @@
 
   <header>
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="./index.html">Quiz Master 🇷🇼</a>
-      <a class="home-link" href="./index.html">Home</a>
+
+      <a
+        class="brand"
+        href="./index.html"
+        aria-label="Quiz Master home"
+      >
+        Quiz Master 🇷🇼
+      </a>
+
+      <a
+        class="home-link"
+        href="./index.html"
+      >
+        🏠 Home
+      </a>
+
     </nav>
   </header>
 
   <main>
+
     <article class="content">
+
+      <span class="eyebrow">
+        We welcome your feedback
+      </span>
 
       <h1>Contact Quiz Master 🇷🇼</h1>
 
-      <p>
+      <p class="intro">
         Thank you for visiting Quiz Master Rwanda.
         We welcome your questions, feedback, suggestions
         and comments about our educational quiz platform.
       </p>
 
-      <h2>How to Contact Us</h2>
-
       <p>
-        If you have a question about the quizzes, notice
-        an error in a question or answer, or want to share
-        a suggestion, you can contact us by email.
+        Your feedback can help us improve the learning
+        experience, make questions clearer and make
+        Quiz Master more useful for everyone.
       </p>
 
-      <section class="contact-card" aria-label="Email contact information">
+      <section
+        class="contact-card"
+        aria-labelledby="emailTitle"
+      >
 
-        <h2> Email Support</h2>
+        <span
+          class="contact-icon"
+          aria-hidden="true"
+        >
+          ✉️
+        </span>
+
+        <h2 id="emailTitle">
+          Email Support
+        </h2>
 
         <p>
-          Send your message to:
+          For questions, suggestions, corrections or
+          website support, send us an email using the
+          address below.
         </p>
 
-        <a class="email-link"
-           href="mailto:mazimpakaisaie7@gmail.com">
+        <a
+          class="email-link"
+          href="mailto:mazimpakaisaie7@gmail.com"
+        >
           mazimpakaisaie7@gmail.com
         </a>
 
         <br>
 
-        <a class="button"
-           href="mailto:mazimpakaisaie7@gmail.com?subject=Quiz%20Master%20Support">
-          Send an Email
+        <a
+          class="email-button"
+          href="mailto:mazimpakaisaie7@gmail.com?subject=Quiz%20Master%20Support"
+        >
+          ✉️ Send an Email
         </a>
 
       </section>
 
       <h2>What You Can Contact Us About</h2>
 
+      <div class="contact-list">
+
+        <section class="contact-item">
+          <span class="contact-item-icon" aria-hidden="true">
+            ❓
+          </span>
+
+          <h3>Questions</h3>
+
+          <p>
+            Ask questions about using Quiz Master
+            and its quiz features.
+          </p>
+        </section>
+
+        <section class="contact-item">
+          <span class="contact-item-icon" aria-hidden="true">
+            📝
+          </span>
+
+          <h3>Corrections</h3>
+
+          <p>
+            Report incorrect, confusing or unclear
+            quiz questions and answers.
+          </p>
+        </section>
+
+        <section class="contact-item">
+          <span class="contact-item-icon" aria-hidden="true">
+            💡
+          </span>
+
+          <h3>Suggestions</h3>
+
+          <p>
+            Share ideas for new questions, categories
+            or platform improvements.
+          </p>
+        </section>
+
+        <section class="contact-item">
+          <span class="contact-item-icon" aria-hidden="true">
+            🛠️
+          </span>
+
+          <h3>Technical Support</h3>
+
+          <p>
+            Tell us about problems with loading,
+            navigation or other website features.
+          </p>
+        </section>
+
+        <section class="contact-item">
+          <span class="contact-item-icon" aria-hidden="true">
+            🔒
+          </span>
+
+          <h3>Privacy Concerns</h3>
+
+          <p>
+            Contact us about privacy or website
+            data-related questions.
+          </p>
+        </section>
+
+        <section class="contact-item">
+          <span class="contact-item-icon" aria-hidden="true">
+            🌍
+          </span>
+
+          <h3>General Feedback</h3>
+
+          <p>
+            Tell us how Quiz Master helps you learn
+            and what could make it better.
+          </p>
+        </section>
+
+      </div>
+
+      <h2>How to Send a Helpful Message</h2>
+
+      <p>
+        When reporting a problem, it may help to include:
+      </p>
+
       <ul>
-        <li>Questions about using Quiz Master.</li>
-        <li>Incorrect or unclear quiz questions and answers.</li>
-        <li>Suggestions for improving the platform.</li>
-        <li>Technical problems with the website.</li>
-        <li>General feedback about our educational content.</li>
-        <li>Privacy or website-related concerns.</li>
+        <li>The page or feature where the problem happened.</li>
+        <li>A short description of what went wrong.</li>
+        <li>The question number, if reporting a quiz question.</li>
+        <li>Your device and browser, if reporting a technical issue.</li>
+        <li>A screenshot, if it helps explain the problem.</li>
       </ul>
+
+      <p>
+        Please do not include passwords, payment details
+        or other confidential information in your message.
+      </p>
 
       <h2>Our Commitment</h2>
 
       <p>
-        We aim to make Quiz Master a simple and useful
-        educational platform. Your feedback helps us identify
-        problems and improve the learning experience.
+        We aim to make Quiz Master a simple, useful and
+        accessible educational platform. Messages sent
+        to our contact email will be reviewed, and we
+        will respond when possible.
       </p>
 
-      <p>
-        We will review messages sent to our contact email
-        and respond when possible.
-      </p>
+      <div class="note">
+        <p>
+          <strong>Thank you for helping us improve.</strong>
+          Every useful suggestion and correction can help
+          make Quiz Master a better place to learn,
+          practise and discover knowledge.
+        </p>
+      </div>
 
       <h2>Other Information</h2>
 
       <p>
-        To learn more about Quiz Master, please visit our
-        <a href="./about.html">About page</a>.
+        Learn more about the platform and how it works:
       </p>
 
-      <p>
-        For information about personal data and website
-        practices, read our
-        <a href="./privacy-policy.html">Privacy Policy</a>.
-      </p>
+      <nav
+        class="other-links"
+        aria-label="Related pages"
+      >
+        <a href="./about.html">About Quiz Master</a>
 
-      <p>
-        Please also review our
-        <a href="./terms.html">Terms and Conditions</a>.
-      </p>
+        <a href="./privacy-policy.html">
+          Privacy Policy
+        </a>
 
-      <a class="button" href="./index.html">
-        Return to Quiz Master
+        <a href="./terms.html">
+          Terms and Conditions
+        </a>
+      </nav>
+
+      <a
+        class="button"
+        href="./index.html"
+      >
+        ← Return to Quiz Master
       </a>
 
     </article>
+
   </main>
 
   <footer>
-    <p>Quiz Master 🇷🇼 · 2026</p>
 
     <p>
+      <strong>Quiz Master 🇷🇼</strong>
+    </p>
+
+    <p>
+      Learn • Discover • Practise • Improve
+    </p>
+
+    <nav
+      class="footer-links"
+      aria-label="Footer navigation"
+    >
       <a href="./index.html">Home</a>
       <a href="./about.html">About</a>
       <a href="./contact.html">Contact</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
       <a href="./terms.html">Terms</a>
+    </nav>
+
+    <p>
+      © 2026 Quiz Master Rwanda. All rights reserved.
     </p>
+
   </footer>
 
 </body>
