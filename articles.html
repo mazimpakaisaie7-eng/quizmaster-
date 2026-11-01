@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08172b">
+
+  <title>Learning Articles | Quiz Master 🇷🇼 - Knowledge Quiz</title>
+
+  <meta name="description" content="Explore educational articles about road safety, traffic rules, general knowledge, learning skills and responsible citizenship in English and Kinyarwanda.">
+  <meta name="keywords" content="Quiz Master Rwanda, road safety, traffic rules, general knowledge, educational articles, Rwanda education, learning">
+  <meta name="author" content="Quiz Master Rwanda">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/articles.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Learning Articles | Quiz Master 🇷🇼">
+  <meta property="og:description" content="Learn about road safety, general knowledge and useful everyday skills.">
+  <meta property="og:url" content="https://quizmaster-liard-five.vercel.app/articles.html">
+  <meta property="og:site_name" content="Quiz Master 🇷🇼">
+
+  <style>
+    :root {
+      --bg: #f2f5fb;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #64748b;
+      --primary: #155eef;
+      --primary-dark: #1048c5;
+      --border: #e2e8f0;
+      --header: #08172b;
+      --radius: 16px;
+      --shadow: 0 8px 28px rgba(15, 23, 42, .06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .site-header {
+      background: var(--header);
+      color: #fff;
+      padding: 17px 16px;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .brand:hover {
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    .language-control {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .language-control button {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 9px;
+      padding: 9px 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .language-control button.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #08172b, #155eef);
+      color: #fff;
+      text-align: center;
+      padding: 55px 18px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(29px, 5vw, 44px);
+      line-height: 1.2;
+      margin: 0 0 15px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      color: #e2e8f0;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+
+    .section-heading {
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 5px;
+      font-size: 25px;
+    }
+
+    .section-heading p {
+      margin-top: 0;
+      color: var(--muted);
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 23px;
+      box-shadow: var(--shadow);
+    }
+
+    .article-card .category {
+      display: inline-block;
+      background: #eaf1ff;
+      color: #1048c5;
+      border-radius: 30px;
+      padding: 4px 11px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .article-card h2 {
+      font-size: 20px;
+      line-height: 1.35;
+      margin: 5px 0 10px;
+    }
+
+    .article-card p {
+      color: var(--muted);
+      margin: 0 0 13px;
+    }
+
+    .article-card h3 {
+      font-size: 16px;
+      margin: 17px 0 5px;
+    }
+
+    .article-card ul {
+      padding-left: 21px;
+      margin: 8px 0;
+    }
+
+    .article-card li {
+      margin-bottom: 5px;
+    }
+
+    .article-card .read-label {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .notice {
+      margin-top: 25px;
+      padding: 17px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      color: var(--muted);
+    }
+
+    .quiz-cta {
+      margin-top: 30px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-cta h2 {
+      margin-top: 0;
+    }
+
+    .primary-button {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 23px;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .primary-button:hover {
+      background: var(--primary-dark);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .site-footer {
+      background: var(--header);
+      color: #cbd5e1;
+      text-align: center;
+      padding: 25px 16px;
+      margin-top: 45px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 17px;
+      margin: 10px 0;
+    }
+
+    .footer-links a {
+      color: #e2e8f0;
+      font-size: 14px;
+    }
+
+    .site-footer p {
+      font-size: 13px;
+      margin: 8px 0;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 700px) {
+      .article-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-inner {
+        justify-content: center;
+      }
+
+      .nav {
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero {
+        padding: 40px 16px;
+      }
+
+      .article-card {
+        padding: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./index.html">Quiz Master 🇷🇼</a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./articles.html">Articles</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 data-en="Learn Something New Every Day"
+          data-rw="Wige Ikintu Gishya Buri Munsi">
+        Learn Something New Every Day
+      </h1>
+
+      <p data-en="Discover useful educational information about road safety, traffic rules, general knowledge and responsible citizenship."
+         data-rw="Menya amakuru y'ingirakamaro ku mutekano wo mu muhanda, amategeko y'umuhanda, ubumenyi rusange n'ubwenegihugu bwiza.">
+        Discover useful educational information about road safety, traffic rules, general knowledge and responsible citizenship.
+      </p>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <div class="language-control" aria-label="Choose language">
+      <button type="button" id="englishBtn" class="active" aria-pressed="true">English</button>
+      <button type="button" id="kinyarwandaBtn" aria-pressed="false">Ikinyarwanda</button>
+    </div>
+
+    <section>
+      <div class="section-heading">
+        <h2 data-en="Educational Articles"
+            data-rw="Inyandiko Zigisha">
+          Educational Articles
+        </h2>
+
+        <p data-en="Read, understand and apply useful knowledge in everyday life."
+           data-rw="Soma, sobanukirwa kandi ukoreshe ubumenyi bw'ingirakamaro mu buzima bwa buri munsi.">
+          Read, understand and apply useful knowledge in everyday life.
+        </p>
+      </div>
+
+      <div class="article-grid">
+
+        <!-- ARTICLE 1 -->
+        <article class="article-card">
+          <span class="category"
+                data-en="Road Safety"
+                data-rw="Umutekano wo mu muhanda">Road Safety</span>
+
+          <div data-en-content>
+            <h2>Why Road Safety Matters</h2>
+            <p>Road safety means using roads responsibly to reduce the risk of crashes and protect everyone who uses them. Drivers, passengers, cyclists and pedestrians all have a role to play.</p>
+
+            <h3>Important road-safety habits</h3>
+            <ul>
+              <li>Follow road signs and traffic signals.</li>
+              <li>Wear a seat belt when travelling in a vehicle.</li>
+              <li>Never use a phone while driving.</li>
+              <li>Respect speed limits and keep a safe distance.</li>
+              <li>Look carefully before crossing the road.</li>
+            </ul>
+
+            <h3>Why it matters</h3>
+            <p>Responsible road use helps prevent injuries, protects lives and makes journeys safer for everyone. Road safety is a shared responsibility, not only the responsibility of drivers.</p>
+          </div>
+
+          <div data-rw-content hidden>
+            <h2>Kuki Umutekano wo mu Muhanda Ari Ingenzi?</h2>
+            <p>Umutekano wo mu muhanda ni ugukoresha umuhanda neza hagamijwe kugabanya impanuka no kurinda abantu bose bawukoresha. Abatwara ibinyabiziga, abagenzi, abanyamagare n'abanyamaguru bose bafite uruhare.</p>
+
+            <h3>Imyitwarire myiza yo mu muhanda</h3>
+            <ul>
+              <li>Kubahiriza ibyapa n'amatara yo mu muhanda.</li>
+              <li>Kwambara umukandara igihe uri mu modoka.</li>
+              <li>Kwirinda gukoresha telefoni utwaye ikinyabiziga.</li>
+              <li>Kubahiriza umuvuduko wagenwe no gusiga intera ihagije.</li>
+              <li>Kureba neza mbere yo kwambuka umuhanda.</li>
+            </ul>
+
+            <h3>Akamaro kabyo</h3>
+            <p>Gukoresha umuhanda neza bifasha gukumira impanuka, kurinda ubuzima no gutuma ingendo ziba umutekano kuri bose. Umutekano wo mu muhanda ni inshingano ya buri wese.</p>
+          </div>
+        </article>
+
+        <!-- ARTICLE 2 -->
+        <article class="article-card">
+          <span class="category"
+                data-en="Traffic Rules"
+                data-rw="Amategeko y'Umuhanda">Traffic Rules</span>
+
+          <div data-en-content>
+            <h2>Understanding Traffic Signs</h2>
+            <p>Traffic signs communicate important information to road users. They help people understand restrictions, warnings, directions and road conditions.</p>
+
+            <h3>Common groups of signs</h3>
+            <ul>
+              <li><strong>Warning signs:</strong> Alert road users to possible dangers ahead.</li>
+              <li><strong>Regulatory signs:</strong> Show rules and restrictions that must be followed.</li>
+              <li><strong>Information signs:</strong> Provide directions and useful road information.</li>
+            </ul>
+
+            <h3>What should road users do?</h3>
+            <p>Observe signs carefully, understand their meaning and follow the instructions. Never ignore a sign simply because the road appears empty.</p>
+          </div>
+
+          <div data-rw-content hidden>
+            <h2>Gusobanukirwa Ibyapa byo mu Muhanda</h2>
+            <p>Ibyapa byo mu muhanda biha amakuru ingenzi abantu bawukoresha. Bifasha kumenya ibyo umuntu agomba kwirinda, ibyago biri imbere, icyerekezo n'imiterere y'umuhanda.</p>
+
+            <h3>Amatsinda y'ibyapa</h3>
+            <ul>
+              <li><strong>Ibyapa biburira:</strong> Bimenyesha ibyago bishobora kuba imbere.</li>
+              <li><strong>Ibyapa bitegeka cyangwa bibuza:</strong> Bigaragaza amategeko agomba kubahirizwa.</li>
+              <li><strong>Ibyapa biyobora:</strong> Bitanga icyerekezo n'andi makuru afasha abagenzi.</li>
+            </ul>
+
+            <h3>Abakoresha umuhanda bakora iki?</h3>
+            <p>Jya witegereza ibyapa, usobanukirwe n'ubutumwa bwabyo kandi ukurikize amabwiriza bitanga. Ntukirengagize icyapa nubwo umuhanda waba usa n'utagira abantu.</p>
+          </div>
+        </article>
+
+        <!-- ARTICLE 3 -->
+        <article class="article-card">
+          <span class="category"
+                data-en="Pedestrian Safety"
+                data-rw="Umutekano w'Abanyamaguru">Pedestrian Safety</span>
+
+          <div data-en-content>
+            <h2>How Pedestrians Can Stay Safe</h2>
+            <p>Pedestrians are among the most vulnerable road users. Paying attention and choosing safe crossing places can reduce danger when walking near roads.</p>
+
+            <h3>Safer walking practices</h3>
+            <ul>
+              <li>Use sidewalks or pedestrian paths where available.</li>
+              <li>Cross at designated crossings when possible.</li>
+              <li>Look in both directions and check that vehicles have stopped.</li>
+              <li>Avoid distractions when crossing.</li>
+              <li>Help children and people who need assistance to cross safely.</li>
+            </ul>
+
+            <h3>Be visible</h3>
+            <p>In poor lighting, wear clothing that helps drivers notice you. Stay alert and avoid assuming that a driver has seen you.</p>
+          </div>
+
+          <div data-rw-content hidden>
+            <h2>Uko Abanyamaguru Barushaho Kwikingira</h2>
+            <p>Abanyamaguru ni bamwe mu bakoresha umuhanda bashobora guhura n'ibyago byoroshye. Kwitwararika no guhitamo ahantu hatekanye ho kwambukira bifasha kugabanya ibyago.</p>
+
+            <h3>Uko wagenda mu mutekano</h3>
+            <ul>
+              <li>Koresha inzira zagenewe abanyamaguru aho zihari.</li>
+              <li>Ambukira ahabugenewe igihe bishoboka.</li>
+              <li>Reba impande zombi kandi urebe ko ibinyabiziga byahagaze.</li>
+              <li>Irinde ibikurangaza igihe wambuka.</li>
+              <li>Fasha abana n'abakeneye ubufasha kwambuka neza.</li>
+            </ul>
+
+            <h3>Jya ugaragara neza</h3>
+            <p>Iyo hari urumuri ruke, ambara imyenda ituma abatwara ibinyabiziga bakubona. Komeza kwitwararika kandi ntukibwire ko umushoferi yakubonye.</p>
+          </div>
+        </article>
+
+        <!-- ARTICLE 4 -->
+        <article class="article-card">
+          <span class="category"
+                data-en="General Knowledge"
+                data-rw="Ubumenyi Rusange">General Knowledge</span>
+
+          <div data-en-content>
+            <h2>Why General Knowledge Is Important</h2>
+            <p>General knowledge helps people understand the world around them. It includes information about science, geography, history, culture, technology and everyday life.</p>
+
+            <h3>Benefits of learning</h3>
+            <ul>
+              <li>Improves understanding of different subjects.</li>
+              <li>Encourages curiosity and critical thinking.</li>
+              <li>Helps people make informed decisions.</li>
+              <li>Supports communication and lifelong learning.</li>
+            </ul>
+
+            <h3>How to build knowledge</h3>
+            <p>Read reliable educational materials, ask questions, discuss ideas and practise what you learn. Compare information from trustworthy sources before accepting it as fact.</p>
+          </div>
+
+          <div data-rw-content hidden>
+            <h2>Akamaro k'Ubumenyi Rusange</h2>
+            <p>Ubumenyi rusange bufasha umuntu gusobanukirwa isi amukikije. Burimo ubumenyi ku bumenyi bw'isi, amateka, umuco, ikoranabuhanga, siyansi n'ubuzima bwa buri munsi.</p>
+
+            <h3>Inyungu zo kwiga</h3>
+            <ul>
+              <li>Byongera gusobanukirwa amasomo atandukanye.</li>
+              <li>Biteza imbere amatsiko no gutekereza neza.</li>
+              <li>Bifasha gufata ibyemezo bishingiye ku makuru.</li>
+              <li>Biteza imbere ibiganiro no gukomeza kwiga.</li>
+            </ul>
+
+            <h3>Uko wakongera ubumenyi</h3>
+            <p>Soma inyandiko zizewe, jya ubaza ibibazo, muganire ku bitekerezo kandi ushyire mu bikorwa ibyo wiga. Gereranya amakuru aturuka ahantu hizewe mbere yo kuyemera nk'ukuri.</p>
+          </div>
+        </article>
+
+        <!-- ARTICLE 5 -->
+        <article class="article-card">
+          <span class="category"
+                data-en="Learning Skills"
+                data-rw="Uburyo bwo Kwiga">Learning Skills</span>
+
+          <div data-en-content>
+            <h2>Simple Ways to Improve Your Learning</h2>
+            <p>Learning becomes more effective when it is organised and consistent. Small study habits can help learners understand and remember information.</p>
+
+            <h3>Useful learning habits</h3>
+            <ul>
+              <li>Set a clear learning goal.</li>
+              <li>Study in a quiet place when possible.</li>
+              <li>Break large topics into smaller sections.</li>
+              <li>Review what you have learned regularly.</li>
+              <li>Test your understanding with practice questions.</li>
+            </ul>
+
+            <h3>Learn from mistakes</h3>
+            <p>Incorrect answers can show which topics need more attention. Review explanations, correct misunderstandings and try again. Learning is a process that improves with practice.</p>
+          </div>
+
+          <div data-rw-content hidden>
+            <h2>Uburyo Bworoheje bwo Kunoza Imyigire</h2>
+            <p>Kwiga birushaho gutanga umusaruro iyo biteguwe kandi bigakorwa buri gihe. Utumenyero duto two kwiga dushobora gufasha umuntu gusobanukirwa no kwibuka ibyo yize.</p>
+
+            <h3>Imyitwarire myiza yo kwiga</h3>
+            <ul>
+              <li>Shyiraho intego isobanutse yo kwiga.</li>
+              <li>Iga ahantu hatuje igihe bishoboka.</li>
+              <li>Gabanya amasomo manini mo uduce duto.</li>
+              <li>Jya usubiramo ibyo wize kenshi.</li>
+              <li>Gerageza ibibazo kugira ngo urebe niba wasobanukiwe.</li>
+            </ul>
+
+            <h3>Jya wigira ku makosa</h3>
+            <p>Igisubizo kitari cyo gishobora kukwereka amasomo ukeneye kongera kwiga. Subiramo ibisobanuro, kosora ibyo utasobanukiwe hanyuma wongere ugerageze. Kwiga ni urugendo rurushaho gutera imbere uko ukora imyitozo.</p>
+          </div>
+        </article>
+
+        <!-- ARTICLE 6 -->
+        <article class="article-card">
+          <span class="category"
+                data-en="Responsible Citizenship"
+                data-rw="Ubwenegihugu Bwiza">Responsible Citizenship</span>
+
+          <div data-en-content>
+            <h2>How Responsible Citizens Help Their Communities</h2>
+            <p>A responsible citizen contributes positively to the community by respecting others, following applicable laws and helping protect shared resources.</p>
+
+            <h3>Positive actions</h3>
+            <ul>
+              <li>Respect the rights and dignity of other people.</li>
+              <li>Keep public places clean.</li>
+              <li>Follow community rules and applicable laws.</li>
+              <li>Protect public property and the environment.</li>
+              <li>Share useful and accurate information.</li>
+            </ul>
+
+            <h3>Small actions make a difference</h3>
+            <p>Communities become safer and stronger when people act responsibly. Cooperation, respect and honesty help create a better environment for everyone.</p>
+          </div>
+
+          <div data-rw-content hidden>
+            <h2>Uko Umunyarwanda Mwiza Afasha Umuryango Nyarwanda</h2>
+            <p>Umunyagihugu urangwa n'inshingano agira uruhare mu guteza imbere umuryango abamo yubaha abandi, akurikiza amategeko kandi akarinda umutungo rusange.</p>
+
+            <h3>Ibikorwa byiza</h3>
+            <ul>
+              <li>Kubaha uburenganzira n'agaciro ka buri muntu.</li>
+              <li>Kurinda isuku ahantu hahurira abantu benshi.</li>
+              <li>Kubahiriza amategeko n'amabwiriza y'umuryango.</li>
+              <li>Kurinda umutungo rusange n'ibidukikije.</li>
+              <li>Gutanga amakuru y'ingirakamaro kandi yizewe.</li>
+            </ul>
+
+            <h3>Ibikorwa bito bigira akamaro</h3>
+            <p>Imiryango irushaho kugira umutekano n'imbaraga iyo abantu bitwara neza. Ubufatanye, kubahana no kuvugisha ukuri bifasha kubaka ahantu heza kuri bose.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="notice">
+      <p data-en="Educational note: These articles provide general learning information. For official road rules and legal requirements, consult the relevant authorities in your country. Always follow current laws and official instructions."
+         data-rw="Icyitonderwa: Izi nyandiko zitanga ubumenyi rusange. Ku mategeko y'umuhanda n'ibisabwa n'amategeko, jya ugisha amakuru inzego zibishinzwe mu gihugu cyawe. Buri gihe ukurikize amategeko n'amabwiriza agezweho.">
+        Educational note: These articles provide general learning information. For official road rules and legal requirements, consult the relevant authorities in your country. Always follow current laws and official instructions.
+      </p>
+    </div>
+
+    <section class="quiz-cta">
+      <h2 data-en="Ready to Test Your Knowledge?"
+          data-rw="Witeguye Kugerageza Ubumenyi Bwawe?">
+        Ready to Test Your Knowledge?
+      </h2>
+
+      <p data-en="Visit Quiz Master and practise with educational questions in English or Kinyarwanda."
+         data-rw="Sura Quiz Master ukore imyitozo y'ibibazo by'ubumenyi mu Cyongereza cyangwa mu Kinyarwanda.">
+        Visit Quiz Master and practise with educational questions in English or Kinyarwanda.
+      </p>
+
+      <a class="primary-button" href="./index.html"
+         data-en="Start Quiz"
+         data-rw="Tangira Gukina">
+        Start Quiz
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <strong>Quiz Master 🇷🇼</strong>
+
+    <div class="footer-links">
+      <a href="./index.html">Home</a>
+      <a href="./about.html">About</a>
+      <a href="./articles.html">Articles</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="./terms.html">Terms</a>
+    </div>
+
+    <p>© <span id="currentYear">2026</span> Quiz Master 🇷🇼. All rights reserved.</p>
+    <p data-en="Learn something useful every day."
+       data-rw="Jya wiga ikintu cy'ingirakamaro buri munsi.">
+      Learn something useful every day.
+    </p>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const englishBtn = document.getElementById("englishBtn");
+      const kinyarwandaBtn = document.getElementById("kinyarwandaBtn");
+
+      function setLanguage(language) {
+        const isKinyarwanda = language === "rw";
+
+        document.documentElement.lang = language;
+
+        document.querySelectorAll("[data-en]").forEach(element => {
+          element.textContent = isKinyarwanda
+            ? element.getAttribute("data-rw")
+            : element.getAttribute("data-en");
+        });
+
+        document.querySelectorAll("[data-en-content]").forEach(element => {
+          element.hidden = isKinyarwanda;
+        });
+
+        document.querySelectorAll("[data-rw-content]").forEach(element => {
+          element.hidden = !isKinyarwanda;
+        });
+
+        englishBtn.classList.toggle("active", !isKinyarwanda);
+        kinyarwandaBtn.classList.toggle("active", isKinyarwanda);
+
+        englishBtn.setAttribute("aria-pressed", String(!isKinyarwanda));
+        kinyarwandaBtn.setAttribute("aria-pressed", String(isKinyarwanda));
+
+        try {
+          localStorage.setItem("quizmasterArticlesLanguage", language);
+        } catch (error) {
+          // The page still works if browser storage is unavailable.
+        }
+      }
+
+      englishBtn.addEventListener("click", () => setLanguage("en"));
+      kinyarwandaBtn.addEventListener("click", () => setLanguage("rw"));
+
+      let savedLanguage = "en";
+
+      try {
+        savedLanguage =
+          localStorage.getItem("quizmasterArticlesLanguage") || "en";
+      } catch (error) {
+        savedLanguage = "en";
+      }
+
+      setLanguage(savedLanguage === "rw" ? "rw" : "en");
+
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    })();
+  </script>
+
+</body>
+</html>
