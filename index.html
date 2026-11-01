@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10233f">
+  <meta name="theme-color" content="#08172b">
 
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
 
-  <meta name="description" content="Quiz Master is a free knowledge quiz game covering road safety, Geography, History, Science, Technology, Rwanda, Africa, Sports and General Knowledge.">
+  <meta name="description" content="Quiz Master is a bilingual knowledge quiz game covering road safety, Rwanda, Africa, science, geography, history and general knowledge.">
 
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="googlebot" content="index, follow">
@@ -20,8 +20,9 @@
   <link rel="apple-touch-icon" href="./icon-192-4.png">
   <link rel="manifest" href="./manifest.webmanifest">
 
-  <!-- Google Analytics -->
+  <!-- GOOGLE ANALYTICS -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2W9SXBBH1P"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -33,7 +34,7 @@
     gtag('config', 'G-2W9SXBBH1P');
   </script>
 
-  <!-- Google AdSense -->
+  <!-- GOOGLE ADSENSE -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
     crossorigin="anonymous"></script>
@@ -41,6 +42,7 @@
   <style>
     :root {
       --bg: #08172b;
+      --header: #0c1d35;
       --panel: #10233f;
       --panel2: #172f50;
       --primary: #155eef;
@@ -84,18 +86,29 @@
       cursor: not-allowed;
     }
 
+    a {
+      color: inherit;
+    }
+
+    [hidden],
+    .hidden {
+      display: none !important;
+    }
+
     .container {
-      width: min(100% - 28px, 850px);
+      width: min(100% - 24px, 760px);
       margin: auto;
     }
 
+    /* HEADER */
+
     header {
-      background: #0c1d35;
+      background: var(--header);
       border-bottom: 1px solid var(--border);
-      padding: 14px 0;
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 100;
+      padding: 12px 0;
     }
 
     .header-inner {
@@ -108,26 +121,86 @@
     .brand {
       font-size: 19px;
       font-weight: 800;
-      color: white;
       text-decoration: none;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .small-btn {
-      border: 1px solid var(--border);
       color: white;
-      background: var(--panel2);
-      border-radius: 10px;
-      padding: 8px 11px;
-      font-size: 13px;
+      white-space: nowrap;
     }
+
+    .menu-wrapper {
+      position: relative;
+    }
+
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--panel2);
+      color: white;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 9px 13px;
+      font-weight: 700;
+    }
+
+    .menu-toggle:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .menu-panel {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      width: min(290px, calc(100vw - 24px));
+      background: #10233f;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 9px;
+      box-shadow: 0 15px 40px rgba(0,0,0,.4);
+      z-index: 110;
+      max-height: 75vh;
+      overflow-y: auto;
+    }
+
+    .menu-heading {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 8px 11px;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 11px;
+      padding: 11px;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: white;
+      text-align: left;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .menu-item:hover,
+    .menu-item:focus-visible {
+      background: var(--panel2);
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 7px 3px;
+    }
+
+    /* MAIN */
 
     main {
-      padding: 22px 0 40px;
+      min-height: 75vh;
+      padding: 20px 0 35px;
     }
 
     .screen {
@@ -140,78 +213,151 @@
 
     .hero {
       text-align: center;
-      padding: 32px 15px 22px;
+      padding: 24px 10px 17px;
     }
 
     .hero-icon {
-      font-size: 48px;
-      margin-bottom: 8px;
+      font-size: 43px;
+      line-height: 1.3;
     }
 
     h1 {
-      font-size: clamp(26px, 6vw, 39px);
+      font-size: clamp(27px, 6vw, 37px);
       line-height: 1.2;
-      margin: 5px 0 12px;
+      margin: 8px 0;
     }
 
     h2 {
-      font-size: 23px;
-      margin-top: 0;
+      font-size: 21px;
+      margin: 0 0 12px;
     }
 
     h3 {
-      margin-top: 0;
+      font-size: 16px;
+      margin: 0 0 10px;
     }
 
     p {
       color: var(--muted);
     }
 
+    .muted {
+      color: var(--muted);
+    }
+
+    .small {
+      font-size: 12px;
+    }
+
     .panel {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px;
-      margin: 16px 0;
+      padding: 18px;
+      margin: 13px 0;
     }
 
-    .section-title {
-      margin-bottom: 12px;
+    /* HOME */
+
+    .home-intro {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .home-intro p {
+      margin: 5px 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    .stat {
+      text-align: center;
+      background: var(--panel2);
+      padding: 10px 5px;
+      border-radius: 11px;
+      min-width: 0;
+    }
+
+    .stat strong {
+      display: block;
+      color: white;
+      font-size: 19px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .setup-heading {
+      margin: 20px 0 10px;
+      font-size: 15px;
     }
 
     .choice-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 11px;
+      gap: 9px;
     }
 
     .choice-btn {
+      min-height: 62px;
+      padding: 12px 8px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
       background: var(--panel2);
       color: white;
-      border: 2px solid var(--border);
-      border-radius: 13px;
-      padding: 15px 10px;
-      min-height: 65px;
       font-weight: 700;
+      font-size: 13px;
     }
 
-    .choice-btn.selected {
+    .choice-btn.selected,
+    .choice-btn.active {
       border-color: var(--primary-light);
       background: rgba(21,94,239,.25);
     }
 
+    .summary {
+      background: rgba(21,94,239,.12);
+      border: 1px solid rgba(57,120,255,.3);
+      border-radius: 11px;
+      padding: 11px;
+      margin: 13px 0;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    #homeMessage,
+    #setupError {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    #setupError[data-type="error"] {
+      color: #ff8585;
+    }
+
+    /* BUTTONS */
+
     .btn {
-      display: inline-flex;
+      display: flex;
       justify-content: center;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
+      width: 100%;
+      min-height: 46px;
+      padding: 12px 15px;
       border: 0;
-      border-radius: 12px;
-      padding: 13px 17px;
+      border-radius: 11px;
       background: var(--primary);
       color: white;
       font-weight: 700;
-      min-height: 46px;
+      text-align: center;
     }
 
     .btn:hover:not(:disabled) {
@@ -239,7 +385,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
-      margin-top: 15px;
+      margin-top: 13px;
     }
 
     .btn-row .btn {
@@ -250,61 +396,69 @@
       width: 100%;
     }
 
-    .summary {
-      background: rgba(21,94,239,.12);
-      border: 1px solid rgba(57,120,255,.3);
-      padding: 12px;
-      border-radius: 11px;
-      margin: 15px 0;
-      color: var(--text);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 9px;
-      margin: 16px 0;
-    }
-
-    .stat {
-      background: var(--panel2);
-      padding: 13px 8px;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 21px;
-      color: white;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    /* ADSENSE */
 
     .ad-container {
-      margin: 20px auto;
+      width: 100%;
       min-height: 90px;
-      max-width: 100%;
+      margin: 18px auto;
       text-align: center;
       overflow: hidden;
     }
 
     .ad-label {
-      font-size: 10px;
       color: #8092aa;
+      font-size: 10px;
       margin-bottom: 5px;
     }
 
+    /* QUIZ */
+
+    .quiz-top {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .quiz-info {
+      background: var(--panel2);
+      padding: 8px 4px;
+      border-radius: 9px;
+    }
+
+    #categoryIndicator {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    #timerBox {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--panel2);
+      color: var(--gold);
+      padding: 8px 14px;
+      border-radius: 10px;
+      margin-top: 14px;
+      font-weight: 800;
+    }
+
+    #timerBox.warning {
+      color: #ff7777;
+      border: 1px solid var(--red);
+    }
+
     .progress-track {
-      width: 100%;
-      height: 9px;
+      height: 8px;
       background: #263c59;
       border-radius: 20px;
       overflow: hidden;
-      margin: 12px 0;
+      margin: 13px 0;
     }
 
     #progressFill {
@@ -314,39 +468,20 @@
       transition: width .3s;
     }
 
-    .quiz-top {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    #timerBox {
-      display: inline-flex;
-      padding: 8px 13px;
-      border-radius: 10px;
-      background: var(--panel2);
-      color: var(--gold);
-      font-weight: 800;
-      margin-top: 12px;
-    }
-
-    #questionText {
-      font-size: 21px;
-      line-height: 1.45;
-      margin: 20px 0;
-      color: white;
-    }
-
     #questionImage {
       display: none;
       width: 100%;
-      max-height: 260px;
+      max-height: 250px;
       object-fit: contain;
       border-radius: 12px;
       margin: 12px 0;
+    }
+
+    #questionText {
+      font-size: clamp(19px, 4vw, 23px);
+      line-height: 1.45;
+      margin: 20px 0;
+      color: white;
     }
 
     #optionsContainer {
@@ -354,70 +489,94 @@
       gap: 10px;
     }
 
-    #optionsContainer button,
     #optionsContainer .option-btn {
+      display: flex;
+      align-items: center;
       width: 100%;
-      text-align: left;
-      color: white;
-      background: var(--panel2);
+      gap: 10px;
+      padding: 14px;
+      min-height: 53px;
       border: 2px solid var(--border);
       border-radius: 12px;
-      padding: 14px;
+      background: var(--panel2);
+      color: white;
+      text-align: left;
       font-size: 15px;
     }
 
-    #optionsContainer button.selected,
+    .option-letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.1);
+      font-weight: 800;
+    }
+
     #optionsContainer .selected {
       border-color: var(--primary-light);
       background: rgba(21,94,239,.25);
     }
 
-    #optionsContainer button.correct {
+    #optionsContainer .correct {
       border-color: var(--green);
     }
 
-    #optionsContainer button.wrong {
+    #optionsContainer .incorrect,
+    #optionsContainer .wrong {
       border-color: var(--red);
     }
 
     #answerFeedback {
-      margin-top: 14px;
+      margin-top: 15px;
       font-weight: 700;
     }
 
     #explanation {
       color: var(--muted);
       margin-top: 8px;
+      font-size: 14px;
     }
 
+    /* RESULTS */
+
     .result-score {
-      font-size: 43px;
+      text-align: center;
+      font-size: 45px;
       font-weight: 900;
       color: var(--gold);
-      text-align: center;
-      margin: 10px 0;
+      margin: 12px 0;
     }
 
     #resultStars {
       text-align: center;
-      font-size: 30px;
+      font-size: 28px;
     }
 
-    .round-item,
+    #resultTitle {
+      text-align: center;
+    }
+
+    #resultMessage {
+      text-align: center;
+    }
+
+    /* REVIEW */
+
     .review-item {
-      padding: 14px;
-      margin: 9px 0;
-      border: 1px solid var(--border);
       background: var(--panel2);
+      border: 1px solid var(--border);
       border-radius: 12px;
-    }
-
-    .round-item button {
-      margin-top: 8px;
+      padding: 14px;
+      margin: 10px 0;
+      overflow-wrap: anywhere;
     }
 
     .review-item p {
-      margin: 5px 0;
+      margin: 7px 0;
+      font-size: 14px;
     }
 
     .correct-text {
@@ -428,40 +587,62 @@
       color: #ff7777;
     }
 
+    /* ROUNDS */
+
+    .round-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      margin: 9px 0;
+      background: var(--panel2);
+      color: white;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      text-align: left;
+    }
+
+    .round-card.completed {
+      border-color: var(--green);
+    }
+
+    .round-card.locked {
+      opacity: .5;
+    }
+
+    .round-status {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* SETTINGS */
+
     .field {
       display: block;
       width: 100%;
       background: var(--panel2);
       color: white;
       border: 1px solid var(--border);
-      padding: 12px;
       border-radius: 10px;
-      margin: 8px 0 15px;
+      padding: 12px;
+      margin: 8px 0 17px;
     }
 
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+    label {
+      font-weight: 700;
+      font-size: 14px;
     }
 
-    .info-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 15px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
+    /* FOOTER */
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 25px 12px;
+      padding: 22px 12px;
       text-align: center;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     footer a {
@@ -469,9 +650,7 @@
       margin: 0 7px;
     }
 
-    .muted {
-      color: var(--muted);
-    }
+    /* ACCESSIBILITY */
 
     button:focus-visible,
     a:focus-visible,
@@ -480,37 +659,37 @@
       outline-offset: 3px;
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 420px) {
       .container {
-        width: min(100% - 20px, 850px);
+        width: calc(100% - 18px);
       }
 
       .panel {
-        padding: 15px;
-      }
-
-      .choice-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
+        padding: 14px;
       }
 
       .brand {
         font-size: 16px;
       }
 
-      .stats {
-        gap: 6px;
-      }
-
-      .stat {
-        padding: 11px 5px;
+      .choice-btn {
+        font-size: 12px;
       }
 
       .stat strong {
-        font-size: 18px;
+        font-size: 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -518,32 +697,126 @@
 
 <body>
 
-<!-- HEADER -->
+<!-- =====================================
+     HEADER AND MORE MENU
+====================================== -->
+
 <header>
   <div class="container header-inner">
 
-    <a class="brand" href="./index.html">
+    <a href="./index.html" class="brand">
       🇷🇼 Quiz Master
     </a>
 
-    <div class="header-actions">
-      <button id="settingsBtn" class="small-btn" type="button">
-        ⚙️ Settings
+    <div class="menu-wrapper">
+
+      <button
+        id="moreMenuBtn"
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="moreMenu"
+      >
+        ☰ More
       </button>
 
-      <button id="shareBtn" class="small-btn" type="button">
-        ↗ Share
-      </button>
+      <nav
+        id="moreMenu"
+        class="menu-panel"
+        aria-label="More navigation"
+        hidden
+      >
+
+        <div class="menu-heading">My Quiz</div>
+
+        <button
+          id="roundsBtn"
+          class="menu-item"
+          type="button"
+        >
+          🏆 My Progress & Quiz Rounds
+        </button>
+
+        <button
+          id="reviewAnswersBtn"
+          class="menu-item"
+          type="button"
+          style="display:none"
+        >
+          📖 Review Answers
+        </button>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-heading">Application</div>
+
+        <button
+          id="settingsBtn"
+          class="menu-item"
+          type="button"
+        >
+          ⚙️ Settings
+        </button>
+
+        <button
+          id="shareBtn"
+          class="menu-item"
+          type="button"
+        >
+          ↗ Share Quiz Master
+        </button>
+
+        <button
+          id="musicMenuBtn"
+          class="menu-item"
+          type="button"
+        >
+          🎵 Music Settings
+        </button>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-heading">Explore</div>
+
+        <a href="./about.html" class="menu-item">
+          ℹ️ About Quiz Master
+        </a>
+
+        <a href="./premium.html" class="menu-item">
+          👑 Premium
+        </a>
+
+        <a href="./referral.html" class="menu-item">
+          👥 Referral
+        </a>
+
+        <a href="./payment.html" class="menu-item">
+          💳 Payment Information
+        </a>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-heading">Support</div>
+
+        <a href="./contact.html" class="menu-item">
+          ✉️ Contact & Help
+        </a>
+
+      </nav>
+
     </div>
 
   </div>
 </header>
 
+
+<!-- =====================================
+     MAIN APPLICATION
+====================================== -->
+
 <main class="container">
 
-  <!-- =====================================
-       1. HOME SCREEN
-  ====================================== -->
+  <!-- HOME SCREEN -->
 
   <section id="homeScreen" class="screen active">
 
@@ -553,13 +826,11 @@
 
       <h1>Quiz Master</h1>
 
-      <p>
-        Test your knowledge. Learn something new every day!
-      </p>
+      <p>Learn • Play • Improve</p>
 
     </div>
 
-    <!-- HOME ONLY ADSENSE AD -->
+    <!-- HOME ADVERTISEMENT -->
 
     <div class="ad-container">
 
@@ -575,19 +846,19 @@
 
     </div>
 
-    <!-- HOME CONTENT -->
-
     <div class="panel">
 
-      <h2>Welcome to Quiz Master 🇷🇼</h2>
+      <div class="home-intro">
 
-      <p>
-        Challenge yourself with road safety and general knowledge
-        questions. Improve your knowledge, earn points and unlock
-        new rounds.
-      </p>
+        <h2>Welcome to Quiz Master 🇷🇼</h2>
 
-      <!-- PLAYER STATISTICS -->
+        <p>
+          Test your knowledge and improve every day.
+        </p>
+
+      </div>
+
+      <!-- SMALL STATISTICS -->
 
       <div class="stats">
 
@@ -598,81 +869,92 @@
 
         <div class="stat">
           <strong id="homeScore">0</strong>
-          <span>Total Score</span>
+          <span>Best Score</span>
         </div>
 
         <div class="stat">
-          <strong id="homeStars">0 ⭐</strong>
+          <strong id="homeStars">⭐</strong>
           <span>Stars</span>
         </div>
 
       </div>
 
-      <p id="homeMessage" class="summary" aria-live="polite">
-        Choose your language and category to begin.
-      </p>
-
       <!-- GAME SETUP -->
 
       <div id="gameSetup">
 
-        <!-- STEP 1: LANGUAGE -->
-
-        <h3 class="section-title">
+        <h3 class="setup-heading">
           1. Choose Language
         </h3>
 
         <div class="choice-grid">
 
-          <button class="choice-btn language-btn"
+          <button
+            class="choice-btn language-btn"
             data-language="rw"
-            type="button">
+            type="button"
+            aria-pressed="false"
+          >
             🇷🇼 Ikinyarwanda
           </button>
 
-          <button class="choice-btn language-btn"
+          <button
+            class="choice-btn language-btn"
             data-language="en"
-            type="button">
+            type="button"
+            aria-pressed="false"
+          >
             🇬🇧 English
           </button>
 
         </div>
 
-        <!-- STEP 2: CATEGORY -->
-
-        <h3 class="section-title" style="margin-top:22px">
+        <h3 class="setup-heading">
           2. Choose Category
         </h3>
 
         <div class="choice-grid">
 
-          <button class="choice-btn mode-btn"
+          <button
+            class="choice-btn mode-btn"
             data-mode="traffic"
-            type="button">
-            🚦 Amategeko y'umuhanda
+            type="button"
+            aria-pressed="false"
+          >
+            🚦 Road Safety
           </button>
 
-          <button class="choice-btn mode-btn"
+          <button
+            class="choice-btn mode-btn"
             data-mode="general"
-            type="button">
-            🌍 Ubumenyi rusange
+            type="button"
+            aria-pressed="false"
+          >
+            🌍 General Knowledge
           </button>
 
         </div>
 
-        <!-- SELECTION SUMMARY -->
-
-        <div id="selectionSummary" class="summary"
-          aria-live="polite">
-          Select language and category.
+        <div
+          id="selectionSummary"
+          class="summary"
+          aria-live="polite"
+        >
+          Choose your language and category.
         </div>
 
-        <!-- CONFIRM SELECTION -->
+        <p
+          id="setupError"
+          role="status"
+          aria-live="polite"
+        ></p>
 
-        <button id="confirmSetupBtn"
-          class="btn full"
+        <button
+          id="confirmSetupBtn"
+          class="btn secondary full"
           type="button"
-          disabled>
+          disabled
+        >
           Confirm Selection
         </button>
 
@@ -682,97 +964,31 @@
 
       <div class="btn-row">
 
-        <button id="startBtn"
+        <button
+          id="startBtn"
           class="btn full"
           type="button"
-          disabled>
+          disabled
+        >
           ▶ Start Quiz
         </button>
 
-        <button id="continueBtn"
+        <button
+          id="continueBtn"
           class="btn success full"
           type="button"
-          style="display:none">
-          Continue Quiz
+          style="display:none"
+        >
+          ▶ Continue Quiz
         </button>
 
       </div>
 
-      <!-- HOME NAVIGATION -->
-
-      <div class="btn-row">
-
-        <button id="roundsBtn"
-          class="btn secondary full"
-          type="button">
-          🏆 Quiz Rounds
-        </button>
-
-        <button id="reviewAnswersBtn"
-          class="btn secondary full"
-          type="button"
-          style="display:none">
-          📖 Review Answers
-        </button>
-
-      </div>
-
-    </div>
-
-    <!-- ABOUT -->
-
-    <div class="panel">
-
-      <h2>About Quiz Master</h2>
-
-      <p>
-        Quiz Master is a learning game designed to help users
-        improve their knowledge of road safety, Rwanda, Africa,
-        science, geography, history, technology and more.
-      </p>
-
-    </div>
-
-    <!-- CATEGORIES -->
-
-    <div class="panel">
-
-      <h2>Categories</h2>
-
-      <div class="info-grid">
-
-        <div class="info-card">
-          <h3>🚦 Road Safety</h3>
-          <p>
-            Learn traffic signs, road rules and safe driving practices.
-          </p>
-        </div>
-
-        <div class="info-card">
-          <h3>🌍 General Knowledge</h3>
-          <p>
-            Explore science, geography, history, sports and world facts.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- FEATURES -->
-
-    <div class="panel">
-
-      <h2>Features</h2>
-
-      <ul>
-        <li>English and Kinyarwanda language options.</li>
-        <li>Timed questions and score tracking.</li>
-        <li>Different rounds and progress unlocking.</li>
-        <li>Review answers and explanations.</li>
-        <li>Background music controls.</li>
-        <li>Save your game progress on your device.</li>
-      </ul>
+      <p
+        id="homeMessage"
+        role="status"
+        aria-live="polite"
+      ></p>
 
     </div>
 
@@ -780,33 +996,34 @@
 
 
   <!-- =====================================
-       2. QUIZ SCREEN
+       QUIZ SCREEN
   ====================================== -->
 
   <section id="quizScreen" class="screen">
 
     <div class="panel">
 
-      <!-- QUIZ INFORMATION -->
-
       <div class="quiz-top">
 
-        <span>
-          Round <strong id="roundLabel">1</strong>
-        </span>
+        <div class="quiz-info">
+          Round
+          <strong id="roundLabel">1</strong>
+        </div>
 
-        <span>
-          Question <strong id="questionCounter">1/10</strong>
-        </span>
+        <div class="quiz-info">
+          Question
+          <strong id="questionCounter">1/10</strong>
+        </div>
 
-        <span>
-          Score <strong id="scoreNumber">0</strong>
-        </span>
+        <div class="quiz-info">
+          Score
+          <strong id="scoreNumber">0</strong>
+        </div>
 
-        <span id="categoryIndicator">
-          General Knowledge
-        </span>
+      </div>
 
+      <div id="categoryIndicator">
+        General Knowledge
       </div>
 
       <!-- TIMER -->
@@ -817,19 +1034,21 @@
 
       <!-- PROGRESS -->
 
-      <div class="progress-track"
+      <div
+        class="progress-track"
         role="progressbar"
-        aria-label="Quiz progress">
-
+        aria-label="Quiz progress"
+      >
         <div id="progressFill"></div>
-
       </div>
 
       <!-- QUESTION IMAGE -->
 
-      <img id="questionImage"
+      <img
+        id="questionImage"
         alt="Question illustration"
-        loading="lazy">
+        loading="lazy"
+      >
 
       <!-- QUESTION -->
 
@@ -837,49 +1056,59 @@
         Loading question...
       </h2>
 
-      <!-- ANSWER OPTIONS -->
+      <!-- OPTIONS -->
 
       <div id="optionsContainer"></div>
 
       <!-- FEEDBACK -->
 
-      <div id="answerFeedback"
-        aria-live="polite">
-      </div>
+      <div
+        id="answerFeedback"
+        aria-live="polite"
+      ></div>
 
       <!-- EXPLANATION -->
 
       <div id="explanation"></div>
 
-      <!-- SUBMIT ANSWER -->
+      <!-- SUBMIT -->
 
-      <button id="submitAnswerBtn"
+      <button
+        id="submitAnswerBtn"
         class="btn full"
         type="button"
-        style="margin-top:15px">
+        style="margin-top:16px"
+        disabled
+      >
         Submit Answer
       </button>
 
-      <!-- QUIZ NAVIGATION -->
+      <!-- NEXT QUESTION -->
 
       <div class="btn-row">
 
-        <button id="nextQuestionBtn"
-          class="btn full"
+        <button
+          id="nextQuestionBtn"
+          class="btn success full"
           type="button"
-          style="display:none">
+          style="display:none"
+        >
           Next Question →
         </button>
 
-        <button id="quizReviewBtn"
+        <button
+          id="quizReviewBtn"
           class="btn secondary full"
-          type="button">
+          type="button"
+        >
           Review Answers
         </button>
 
-        <button id="quizHomeBtn"
+        <button
+          id="quizHomeBtn"
           class="btn secondary full"
-          type="button">
+          type="button"
+        >
           🏠 Home
         </button>
 
@@ -891,18 +1120,18 @@
 
 
   <!-- =====================================
-       3. RESULT SCREEN
+       RESULTS SCREEN
   ====================================== -->
 
   <section id="resultScreen" class="screen">
 
     <div class="panel">
 
-      <h2 id="resultTitle" style="text-align:center">
+      <h2 id="resultTitle">
         Round Complete!
       </h2>
 
-      <p id="resultMessage" style="text-align:center">
+      <p id="resultMessage">
         Your results are ready.
       </p>
 
@@ -910,11 +1139,12 @@
         ⭐
       </div>
 
-      <div class="result-score" id="resultScore">
+      <div
+        id="resultScore"
+        class="result-score"
+      >
         0
       </div>
-
-      <!-- RESULTS STATISTICS -->
 
       <div class="stats">
 
@@ -925,7 +1155,7 @@
 
         <div class="stat">
           <strong>10</strong>
-          <span>Questions</span>
+          <span>Maximum Questions</span>
         </div>
 
         <div class="stat">
@@ -935,31 +1165,39 @@
 
       </div>
 
-      <!-- RESULT NAVIGATION -->
-
       <div class="btn-row">
 
-        <button id="resultNextBtn"
+        <button
+          id="resultNextBtn"
           class="btn success full"
-          type="button">
-          Continue to Next Round
+          type="button"
+          style="display:none"
+        >
+          Continue to Next Round →
         </button>
 
-        <button id="retryBtn"
+        <button
+          id="retryBtn"
           class="btn gold full"
-          type="button">
-          Retry Round
+          type="button"
+          style="display:none"
+        >
+          ↻ Retry Round
         </button>
 
-        <button id="resultReviewBtn"
+        <button
+          id="resultReviewBtn"
           class="btn secondary full"
-          type="button">
-          Review Answers
+          type="button"
+        >
+          📖 Review Answers
         </button>
 
-        <button id="resultHomeBtn"
+        <button
+          id="resultHomeBtn"
           class="btn secondary full"
-          type="button">
+          type="button"
+        >
           🏠 Back to Home
         </button>
 
@@ -971,7 +1209,7 @@
 
 
   <!-- =====================================
-       4. REVIEW SCREEN
+       REVIEW SCREEN
   ====================================== -->
 
   <section id="reviewScreen" class="screen">
@@ -986,9 +1224,11 @@
 
       <div id="reviewContainer"></div>
 
-      <button id="reviewHomeBtn"
+      <button
+        id="reviewHomeBtn"
         class="btn secondary full"
-        type="button">
+        type="button"
+      >
         🏠 Back to Home
       </button>
 
@@ -998,7 +1238,7 @@
 
 
   <!-- =====================================
-       5. ROUNDS SCREEN
+       ROUNDS SCREEN
   ====================================== -->
 
   <section id="roundsScreen" class="screen">
@@ -1008,10 +1248,8 @@
       <h2>🏆 Quiz Rounds</h2>
 
       <p id="roundsDescription">
-        Complete rounds to unlock the next challenges.
+        Complete rounds to unlock new challenges.
       </p>
-
-      <!-- ROUND STATISTICS -->
 
       <div class="stats">
 
@@ -1032,13 +1270,13 @@
 
       </div>
 
-      <!-- ROUND LIST -->
-
       <div id="roundList"></div>
 
-      <button id="roundsHomeBtn"
+      <button
+        id="roundsHomeBtn"
         class="btn secondary full"
-        type="button">
+        type="button"
+      >
         🏠 Back to Home
       </button>
 
@@ -1048,7 +1286,7 @@
 
 
   <!-- =====================================
-       6. SETTINGS SCREEN
+       SETTINGS SCREEN
   ====================================== -->
 
   <section id="settingsScreen" class="screen">
@@ -1057,83 +1295,84 @@
 
       <h2>⚙️ Settings</h2>
 
-      <!-- LANGUAGE -->
-
       <label for="settingsLanguage">
         Language
       </label>
 
-      <select id="settingsLanguage" class="field">
-
+      <select
+        id="settingsLanguage"
+        class="field"
+      >
         <option value="en">English</option>
-
         <option value="rw">Ikinyarwanda</option>
-
       </select>
-
-      <!-- CATEGORY -->
 
       <label for="settingsMode">
         Question Category
       </label>
 
-      <select id="settingsMode" class="field">
-
-        <option value="traffic">
-          Road Safety
-        </option>
-
-        <option value="general">
-          General Knowledge
-        </option>
-
+      <select
+        id="settingsMode"
+        class="field"
+      >
+        <option value="traffic">Road Safety</option>
+        <option value="general">General Knowledge</option>
       </select>
 
-      <!-- BACKGROUND MUSIC -->
+      <!-- MUSIC -->
 
       <div class="summary">
 
         <strong>🎵 Background Music</strong>
 
-        <p>
-          Turn background music on or off.
+        <p class="small">
+          Control the application's background music.
         </p>
 
-        <button id="musicToggleBtn"
+        <button
+          id="musicToggleBtn"
           class="btn secondary full"
-          type="button">
-          🎵 Music On / Off
+          type="button"
+        >
+          🔇 Music Off
         </button>
+
+        <p
+          id="musicStatus"
+          class="small"
+          aria-live="polite"
+        ></p>
 
       </div>
 
-      <p id="settingsMessage"
-        aria-live="polite">
-      </p>
+      <p
+        id="settingsMessage"
+        aria-live="polite"
+      ></p>
 
-      <!-- SAVE SETTINGS -->
-
-      <button id="saveSettingsBtn"
+      <button
+        id="saveSettingsBtn"
         class="btn full"
-        type="button">
+        type="button"
+      >
         Save Settings
       </button>
 
-      <!-- RESET PROGRESS -->
-
-      <button id="resetProgressBtn"
+      <button
+        id="resetProgressBtn"
         class="btn danger full"
         type="button"
-        style="margin-top:10px">
+        style="margin-top:10px"
+      >
         Reset Progress
       </button>
 
-      <!-- BACK HOME -->
-
-      <button id="settingsHomeBtn"
+      <button
+        id="settingsHomeBtn"
         class="btn secondary full"
         type="button"
-        style="margin-top:10px">
+        style="margin-top:10px"
+      >
         🏠 Back to Home
       </button>
 
@@ -1153,17 +1392,10 @@
   <p>Quiz Master 🇷🇼 · 2026</p>
 
   <p>
-    <a href="./privacy-policy.html">
-      Privacy Policy
-    </a>
-
-    <a href="./terms.html">
-      Terms
-    </a>
-
-    <a href="mailto:mazimpakaisaie7@gmail.com">
-      Contact
-    </a>
+    <a href="./about.html">About</a>
+    <a href="./privacy-policy.html">Privacy</a>
+    <a href="./terms.html">Terms</a>
+    <a href="./contact.html">Contact</a>
   </p>
 
   <p>Learn • Play • Improve</p>
@@ -1175,11 +1407,12 @@
      BACKGROUND MUSIC
 ====================================== -->
 
-<audio id="backgroundMusic"
+<audio
+  id="backgroundMusic"
   src="./mythica.mp3"
-  preload="auto"
-  loop>
-</audio>
+  preload="none"
+  loop
+></audio>
 
 
 <!-- =====================================
@@ -1191,103 +1424,101 @@
   "use strict";
 
   const music = document.getElementById("backgroundMusic");
-  const musicButton = document.getElementById("musicToggleBtn");
+  const button = document.getElementById("musicToggleBtn");
+  const status = document.getElementById("musicStatus");
+  const menuMusic = document.getElementById("musicMenuBtn");
 
-  if (!music) return;
+  if (!music || !button) return;
 
-  function getMusicPreference() {
+  const STORAGE_KEY = "quizmasterMusicEnabled";
+
+  function getEnabled() {
     try {
-      return localStorage.getItem("quizmasterMusicEnabled") === "true";
+      return localStorage.getItem(STORAGE_KEY) === "true";
     } catch (_) {
       return false;
     }
   }
 
-  function saveMusicPreference(enabled) {
+  function saveEnabled(value) {
     try {
-      localStorage.setItem(
-        "quizmasterMusicEnabled",
-        String(enabled)
-      );
+      localStorage.setItem(STORAGE_KEY, String(value));
     } catch (_) {}
   }
 
-  function playMusic() {
-    if (!music) return;
+  function updateUI() {
+    const enabled = getEnabled();
 
-    music.play().catch(() => {
-      // Playback requires browser permission or user interaction.
-    });
-  }
-
-  function pauseMusic() {
-    music.pause();
-  }
-
-  function updateMusicButton() {
-    if (!musicButton) return;
-
-    const enabled = getMusicPreference();
-
-    musicButton.textContent = enabled
+    button.textContent = enabled
       ? "🔊 Music On"
       : "🔇 Music Off";
+
+    if (status) {
+      status.textContent = enabled
+        ? "Music is enabled."
+        : "Music is disabled.";
+    }
+
+    if (menuMusic) {
+      menuMusic.textContent = enabled
+        ? "🔊 Music On"
+        : "🎵 Music Settings";
+    }
   }
 
   function setMusic(enabled) {
-    saveMusicPreference(enabled);
+    saveEnabled(enabled);
 
     if (enabled) {
-      playMusic();
+      music.play().catch(() => {
+        if (status) {
+          status.textContent =
+            "Tap Music On again if playback is blocked by your browser.";
+        }
+      });
     } else {
-      pauseMusic();
+      music.pause();
     }
 
-    updateMusicButton();
+    updateUI();
   }
 
-  if (musicButton) {
-    musicButton.addEventListener("click", () => {
-      setMusic(!getMusicPreference());
+  button.addEventListener("click", () => {
+    setMusic(!getEnabled());
+  });
+
+  if (menuMusic) {
+    menuMusic.addEventListener("click", () => {
+      document.getElementById("settingsBtn")?.click();
     });
   }
 
   document.addEventListener(
     "quizmaster:music-changed",
-    (event) => {
-      const enabled = event.detail &&
-        typeof event.detail.enabled === "boolean"
-        ? event.detail.enabled
-        : null;
+    event => {
+      const enabled = event.detail?.enabled;
 
-      if (enabled !== null) {
+      if (typeof enabled === "boolean") {
         setMusic(enabled);
       }
     }
   );
 
-  document.addEventListener("pointerdown", () => {
-    if (getMusicPreference()) {
-      playMusic();
-    }
-  }, { once: true });
-
-  document.addEventListener("keydown", () => {
-    if (getMusicPreference()) {
-      playMusic();
-    }
-  }, { once: true });
-
   window.quizMasterMusic = {
-    play: playMusic,
-    pause: pauseMusic,
-    toggle: () => {
-      setMusic(!getMusicPreference());
+    play: () => {
+      if (getEnabled()) {
+        music.play().catch(() => {});
+      }
     },
+
+    pause: () => music.pause(),
+
+    toggle: () => setMusic(!getEnabled()),
+
     setEnabled: setMusic
   };
 
-  updateMusicButton();
+  updateUI();
 
 })();
 </script>
@@ -1301,82 +1532,61 @@
 
 
 <!-- =====================================
-     APPLICATION BRIDGE
+     MORE MENU CONTROLLER
 ====================================== -->
 
 <script>
 (() => {
   "use strict";
 
-  // Screen navigation support.
+  const menu = document.getElementById("moreMenu");
+  const toggle = document.getElementById("moreMenuBtn");
 
-  const screenIds = [
-    "homeScreen",
-    "quizScreen",
-    "resultScreen",
-    "reviewScreen",
-    "roundsScreen",
-    "settingsScreen"
-  ];
+  if (!menu || !toggle) return;
 
-  function showScreen(screenId) {
-    if (!screenIds.includes(screenId)) return;
-
-    screenIds.forEach((id) => {
-      const screen = document.getElementById(id);
-
-      if (screen) {
-        screen.classList.toggle("active", id === screenId);
-      }
-    });
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+  function openMenu() {
+    menu.hidden = false;
+    toggle.setAttribute("aria-expanded", "true");
   }
 
-  document.addEventListener(
-    "quizmaster:show-screen",
-    (event) => {
-      const detail = event.detail || {};
+  function closeMenu() {
+    menu.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+  }
 
-      const screenId =
-        typeof detail === "string"
-          ? detail
-          : detail.screen || detail.screenId || detail.id;
+  toggle.addEventListener("click", event => {
+    event.stopPropagation();
 
-      if (screenId) {
-        showScreen(screenId);
-      }
+    if (menu.hidden) {
+      openMenu();
+    } else {
+      closeMenu();
     }
-  );
+  });
 
-  // Display application errors.
-
-  document.addEventListener(
-    "quizmaster:error",
-    (event) => {
-      const detail = event.detail || {};
-
-      const message =
-        typeof detail === "string"
-          ? detail
-          : detail.message || "An unexpected application error occurred.";
-
-      const homeMessage = document.getElementById("homeMessage");
-
-      if (homeMessage) {
-        homeMessage.textContent = message;
-      }
-
-      console.error("Quiz Master:", message);
+  document.addEventListener("click", event => {
+    if (
+      !menu.contains(event.target) &&
+      !toggle.contains(event.target)
+    ) {
+      closeMenu();
     }
-  );
+  });
 
-  // Make sure the initial screen is visible.
+  menu.addEventListener("click", event => {
+    const action = event.target.closest("button, a");
 
-  showScreen("homeScreen");
+    if (action) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeMenu();
+      toggle.focus();
+    }
+  });
 
 })();
 </script>
@@ -1393,8 +1603,17 @@ if ("serviceWorker" in navigator) {
 
     navigator.serviceWorker
       .register("./service-worker.js")
-      .catch((error) => {
-        console.warn("Service Worker registration:", error);
+      .then(registration => {
+        console.log(
+          "Quiz Master Service Worker registered:",
+          registration.scope
+        );
+      })
+      .catch(error => {
+        console.warn(
+          "Service Worker registration failed:",
+          error
+        );
       });
 
   });
@@ -1410,23 +1629,23 @@ if ("serviceWorker" in navigator) {
 <script>
 window.addEventListener("load", () => {
 
-  const homeAd = document.querySelector(
+  const ad = document.querySelector(
     "#homeScreen .adsbygoogle"
   );
 
-  if (homeAd && !homeAd.dataset.initialized) {
+  if (!ad || ad.dataset.initialized === "true") {
+    return;
+  }
 
-    try {
+  try {
 
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
 
-      homeAd.dataset.initialized = "true";
+    ad.dataset.initialized = "true";
 
-    } catch (error) {
+  } catch (error) {
 
-      console.warn("AdSense initialization:", error);
-
-    }
+    console.warn("AdSense initialization:", error);
 
   }
 
