@@ -1,411 +1,892 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08172b">
 
-  <title>Privacy Policy - Quiz Master 🇷🇼</title><meta name="description"
-content="Privacy Policy for Quiz Master 🇷🇼, explaining data collection, advertising, cookies, analytics, local storage, registration, Premium features, payments, and third-party services.">
+  <title>Privacy Policy | Quiz Master 🇷🇼</title>
 
-<meta name="robots"
-content="index, follow">
+  <meta
+    name="description"
+    content="Read the Quiz Master Rwanda Privacy Policy to understand how gameplay data, browser storage, Google Analytics, advertising and third-party services may be used."
+  >
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Quiz Master Rwanda">
+  <meta name="application-name" content="Quiz Master">
+
+  <link
+    rel="canonical"
+    href="https://quizmaster-liard-five.vercel.app/privacy-policy.html"
+  >
+
+  <link rel="icon" type="image/png" href="./icon-192-4.png">
+  <link rel="apple-touch-icon" href="./icon-192-4.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Privacy Policy | Quiz Master 🇷🇼">
+  <meta
+    property="og:description"
+    content="Learn how Quiz Master handles browser storage, gameplay information, analytics and advertising."
+  >
+  <meta
+    property="og:url"
+    content="https://quizmaster-liard-five.vercel.app/privacy-policy.html"
+  >
+  <meta property="og:site_name" content="Quiz Master Rwanda">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Privacy Policy | Quiz Master 🇷🇼">
+  <meta
+    name="twitter:description"
+    content="Read the privacy information for Quiz Master Rwanda."
+  >
 
   <style>
+    :root {
+      color-scheme: dark;
+
+      --background: #08172b;
+      --surface: #10233f;
+      --surface-light: #172f50;
+      --primary: #155eef;
+      --primary-light: #3478ff;
+      --text: #f5f8ff;
+      --muted: #b2c0d5;
+      --border: rgba(255,255,255,.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.7;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 24px;
-      color: #222;
-      background: #fff;
-    }
-
-    h1, h2 {
-      line-height: 1.3;
-    }
-
-    h1 {
-      margin-bottom: 8px;
-    }
-
-    h2 {
-      margin-top: 32px;
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at top,
+          #142d50 0,
+          var(--background) 55%
+        );
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.75;
     }
 
     a {
-      word-break: break-word;
+      color: #8db5ff;
+      overflow-wrap: anywhere;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #8db5ff;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,23,43,.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      width: 100%;
+      max-width: 1000px;
+      min-height: 68px;
+      margin: auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-size: 19px;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .home-link,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      color: #fff;
+      background: var(--primary);
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .2s ease;
+    }
+
+    .home-link:hover,
+    .button:hover {
+      color: #fff;
+      background: var(--primary-light);
+    }
+
+    main {
+      width: 100%;
+      max-width: 950px;
+      margin: 32px auto;
+      padding: 0 17px;
+    }
+
+    .content {
+      padding: 34px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 15px 45px rgba(0,0,0,.18);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 11px;
+      color: #a9c6ff;
+      background: rgba(21,94,239,.15);
+      border: 1px solid rgba(141,181,255,.2);
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(27px, 5vw, 36px);
+      line-height: 1.3;
+    }
+
+    h2 {
+      margin: 32px 0 10px;
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    p,
+    li {
+      color: var(--muted);
+    }
+
+    p {
+      margin: 12px 0;
+    }
+
+    li {
+      margin: 8px 0;
+      padding-left: 3px;
+    }
+
+    ul {
+      padding-left: 23px;
+    }
+
+    strong {
+      color: var(--text);
     }
 
     .updated {
-      color: #555;
+      margin: 0 0 22px;
+      color: #9fb1ca;
+      font-size: 14px;
     }
 
     .notice {
-      padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #f8f8f8;
+      margin: 24px 0;
+      padding: 18px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary-light);
+      border-radius: 11px;
+    }
+
+    .notice p {
+      margin: 0;
+    }
+
+    .contact-box {
+      margin-top: 25px;
+      padding: 21px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 5px;
+      font-weight: 700;
+    }
+
+    .button {
+      margin-top: 20px;
     }
 
     footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
+      margin-top: 35px;
+      padding: 25px 15px;
+      border-top: 1px solid var(--border);
+      text-align: center;
     }
-  </style></head><body>  <h1>Privacy Policy</h1>  <p class="updated">
-    <strong>Last updated: October 8, 2026</strong>
-  </p>  <p>
-    Quiz Master 🇷🇼 ("Quiz Master", "we", "us", or "our") respects your
-    privacy. This Privacy Policy explains how information may be collected,
-    used, stored, shared, and protected when you visit or use the Quiz Master
-    website, quiz game, services, and related features.
-  </p>  <p>
-    By using Quiz Master, you acknowledge that you have read this Privacy
-    Policy. Where applicable law requires consent for a particular type of
-    data processing, we will request consent through an appropriate notice
-    or consent mechanism.
-  </p>  <div class="notice">
-    <strong>Important:</strong>
-    Quiz Master is designed to minimize the amount of personal information
-    required to use the basic quiz experience. Some future or optional
-    features, such as registration, accounts, Premium features, or payment
-    services, may require additional information as described below.
-  </div>  <h2>1. Information We Collect</h2>  <p>
-    The basic Quiz Master experience does not require a user to create an
-    account or provide personal information such as a name, phone number,
-    physical address, or email address in order to play the quiz.
-  </p>  <p>
-    Depending on the features you use, Quiz Master may process the following
-    categories of information:
-  </p>  <ul>
-    <li>Quiz scores and gameplay progress.</li>
-    <li>Unlocked rounds and completed rounds.</li>
-    <li>Game settings and preferences.</li>
-    <li>Achievements, stars, streaks, and similar gameplay information.</li>
-    <li>Information stored locally in your browser or device.</li>
-    <li>Technical information provided by your browser or device.</li>
-    <li>Website usage and analytics information.</li>
-    <li>Information associated with advertising and advertising measurement.</li>
-  </ul>  <p>
-    If optional account or registration functionality is introduced,
-    information such as an email address, username, account identifier,
-    or other information required to create and maintain the account may
-    be collected. Such information will be used for purposes such as
-    account management, authentication, security, and providing requested
-    services.
-  </p>  <h2>2. Information You Provide</h2>  <p>
-    If Quiz Master introduces optional registration, account creation,
-    contact forms, support features, or other services requiring information
-    from you, you may voluntarily provide information such as an email
-    address or username.
-  </p>  <p>
-    We will use information you voluntarily provide for the purpose for
-    which it was provided, including account management, customer support,
-    service communications, security, and operation of requested features.
-  </p>  <p>
-    We do not require personal information for ordinary quiz gameplay unless
-    a particular feature specifically requires it.
-  </p>  <h2>3. Quiz Gameplay and Local Storage</h2>  <p>
-    Quiz Master may store gameplay information locally in your browser or
-    device using technologies such as browser local storage.
-  </p>  <p>
-    This information may include:
-  </p>  <ul>
-    <li>Quiz progress.</li>
-    <li>Current round.</li>
-    <li>Scores and personal bests.</li>
-    <li>Unlocked rounds.</li>
-    <li>Completed rounds.</li>
-    <li>Stars and achievements.</li>
-    <li>Daily challenge information.</li>
-    <li>Music and sound preferences.</li>
-    <li>Other gameplay settings and preferences.</li>
-  </ul>  <p>
-    Local gameplay information is generally stored on your device rather
-    than being submitted to Quiz Master servers.
-  </p>  <p>
-    You can generally remove locally stored information by clearing the
-    website's browser data or local storage. Doing so may reset your quiz
-    progress, settings, or other locally stored information.
-  </p>  <h2>4. Cookies and Similar Technologies</h2>  <p>
-    Quiz Master and third-party service providers may use cookies, local
-    storage, web beacons, pixels, device identifiers, or similar technologies.
-  </p>  <p>
-    These technologies may be used to:
-  </p>  <ul>
-    <li>Remember preferences.</li>
-    <li>Maintain or improve website functionality.</li>
-    <li>Measure website usage.</li>
-    <li>Provide and measure advertisements.</li>
-    <li>Help prevent fraud and invalid activity.</li>
-    <li>Improve security and service performance.</li>
-    <li>Understand how users interact with the website.</li>
-  </ul>  <p>
-    Some cookies or similar technologies may be placed or read by third
-    parties as a result of advertising or analytics services used on the
-    website.
-  </p>  <h2>5. Google AdSense and Advertising</h2>  <p>
-    Quiz Master may use Google AdSense and other third-party advertising
-    services to display advertisements.
-  </p>  <p>
-    Third-party vendors, including Google, may use cookies and similar
-    technologies to serve, measure, and personalize advertisements based
-    on a user's visits to this website and/or other websites, where permitted
-    by applicable law and the user's choices.
-  </p>  <p>
-    Google and its advertising partners may process information such as
-    cookies, IP addresses, device or browser information, advertising
-    identifiers, approximate location information, and information about
-    interactions with advertisements, subject to their applicable policies
-    and settings.
-  </p>  <p>
-    Google may use advertising cookies to help serve advertisements based
-    on a user's prior visits to this website or other websites. Google
-    also provides controls through which users can manage personalized
-    advertising preferences.
-  </p>  <p>
-    Depending on applicable laws, geographic location, consent, and
-    advertising settings, Quiz Master may display personalized or
-    non-personalized advertisements.
-  </p>  <p>
-    Users can learn more about Google's advertising practices and manage
-    advertising personalization through Google's advertising settings.
-  </p>  <p>
-    Google information about how it uses data when you use partner websites
-    and applications is available through Google's privacy resources.
-  </p>  <h2>6. Advertising Consent</h2>  <p>
-    Where applicable law requires consent for advertising cookies, local
-    storage, personalized advertising, or related processing, Quiz Master
-    may use a consent management platform or other appropriate consent
-    mechanism.
-  </p>  <p>
-    Users may be provided with choices concerning personalized and
-    non-personalized advertising, cookies, and related technologies.
-  </p>  <p>
-    Advertising choices may vary depending on the user's country or region
-    and applicable privacy laws.
-  </p>  <p>
-    For users in the European Economic Area, the United Kingdom, Switzerland,
-    or other jurisdictions where additional consent requirements apply,
-    Quiz Master will use applicable consent mechanisms and advertising
-    settings where required.
-  </p>  <h2>7. Google Analytics</h2>  <p>
-    Quiz Master may use Google Analytics to understand how visitors use
-    the website and to improve the service.
-  </p>  <p>
-    Google Analytics may collect information such as:
-  </p>  <ul>
-    <li>Browser and device information.</li>
-    <li>Approximate geographic information.</li>
-    <li>Pages or screens visited.</li>
-    <li>Interactions with website features.</li>
-    <li>General usage information.</li>
-    <li>Technical information relating to website activity.</li>
-  </ul>  <p>
-    Google Analytics processes information according to Google's applicable
-    terms, policies, and privacy practices.
-  </p>  <p>
-    Where legally required, appropriate consent or privacy controls may be
-    used for analytics-related storage and processing.
-  </p>  <h2>8. How We Use Information</h2>  <p>
-    Information processed by Quiz Master or its service providers may be
-    used for purposes including:
-  </p>  <ul>
-    <li>Providing and operating Quiz Master.</li>
-    <li>Saving gameplay progress and preferences.</li>
-    <li>Improving quiz content and features.</li>
-    <li>Understanding website usage.</li>
-    <li>Providing customer or technical support.</li>
-    <li>Maintaining security and preventing abuse.</li>
-    <li>Detecting and preventing fraudulent or invalid activity.</li>
-    <li>Providing and measuring advertising.</li>
-    <li>Operating optional accounts and registration features.</li>
-    <li>Processing optional Premium features.</li>
-    <li>Processing payments where payment features are available.</li>
-    <li>Complying with legal obligations.</li>
-  </ul>  <h2>9. Registration and User Accounts</h2>  <p>
-    Quiz Master may introduce optional registration or user account features
-    in the future.
-  </p>  <p>
-    If registration becomes available, users may be asked to provide
-    information necessary to create and maintain an account, such as an
-    email address, username, account identifier, or authentication
-    information.
-  </p>  <p>
-    Account information may be used to provide login functionality, save
-    progress across devices, provide requested account features, communicate
-    with users when necessary, maintain account security, and prevent abuse.
-  </p>  <p>
-    Registration will not be required for basic gameplay unless Quiz Master
-    clearly states otherwise for a particular feature.
-  </p>  <h2>10. Premium Features</h2>  <p>
-    Quiz Master may offer optional Premium or paid features in the future.
-  </p>  <p>
-    If Premium features become available, information necessary to activate,
-    maintain, verify, or provide those features may be processed.
-  </p>  <p>
-    Premium status may be associated with an account, transaction, payment
-    identifier, or device depending on how the feature is implemented.
-  </p>  <p>
-    We will not collect or store payment card information unless a payment
-    service specifically provides such functionality and the applicable
-    payment processing arrangement permits it. Payment information may
-    instead be processed directly by third-party payment providers.
-  </p>  <h2>11. Pi Network and Payment Services</h2>  <p>
-    Quiz Master may support Pi Network payments or other third-party payment
-    services for optional Premium features or other legitimate services.
-  </p>  <p>
-    If Pi Network payment functionality is enabled, payment-related
-    information may be processed by Quiz Master and/or the relevant payment
-    provider to verify and complete transactions.
-  </p>  <p>
-    Depending on the payment implementation, this may include information
-    such as a transaction identifier, payment identifier, wallet-related
-    identifier, amount, status, timestamps, or other information necessary
-    to verify a transaction.
-  </p>  <p>
-    Quiz Master does not need to collect or store a user's private wallet
-    keys, passwords, or secret credentials in order to process a payment.
-  </p>  <p>
-    Payment services are subject to the applicable terms, privacy policies,
-    technical requirements, and security practices of the relevant payment
-    provider.
-  </p>  <p>
-    Payment functionality may not be available in all regions or at all
-    times and may be changed, suspended, or removed.
-  </p>  <h2>12. Third-Party Services</h2>  <p>
-    Quiz Master may use third-party services to provide, maintain, analyze,
-    secure, advertise, or improve the website and its features.
-  </p>  <p>
-    These services may include, depending on the features currently enabled:
-  </p>  <ul>
-    <li>Google AdSense.</li>
-    <li>Google Analytics.</li>
-    <li>Google services and advertising technologies.</li>
-    <li>Hosting and infrastructure providers.</li>
-    <li>Payment providers.</li>
-    <li>Pi Network services.</li>
-    <li>Authentication or account providers.</li>
-    <li>Other technical service providers.</li>
-  </ul>  <p>
-    Third-party providers may process information according to their own
-    privacy policies and applicable laws.
-  </p>  <h2>13. Data Sharing</h2>  <p>
-    Quiz Master does not sell users' personal information.
-  </p>  <p>
-    Information may be shared with or processed by service providers when
-    necessary to operate the website and provide requested services.
-  </p>  <p>
-    Information may also be disclosed where reasonably necessary to comply
-    with applicable law, legal process, court orders, governmental requests,
-    security requirements, fraud prevention, or protection of Quiz Master,
-    its users, or others.
-  </p>  <h2>14. Data Security</h2>  <p>
-    Quiz Master takes reasonable technical and organizational measures to
-    protect information against unauthorized access, alteration, disclosure,
-    misuse, or destruction.
-  </p>  <p>
-    However, no website, internet transmission, device, or storage system
-    can be guaranteed to be completely secure.
-  </p>  <p>
-    Users should also take reasonable steps to protect their own devices,
-    accounts, passwords, and authentication information.
-  </p>  <h2>15. Data Retention</h2>  <p>
-    The period for which information is retained depends on the type of
-    information and the purpose for which it is processed.
-  </p>  <p>
-    Gameplay information stored locally may remain on a user's device until
-    it is deleted by the user, overwritten by the application, or removed
-    when browser or website data is cleared.
-  </p>  <p>
-    Account, transaction, support, security, or legally required information
-    may be retained for as long as reasonably necessary for the applicable
-    purpose, legitimate business needs, security, dispute resolution,
-    accounting, or legal obligations.
-  </p>  <h2>16. Children's Privacy</h2>  <p>
-    Quiz Master is a general knowledge quiz website.
-  </p>  <p>
-    The basic quiz experience does not intentionally require children to
-    provide personal information such as their name, phone number, or email
-    address.
-  </p>  <p>
-    If account registration, advertising, analytics, Premium features, or
-    other services are introduced, Quiz Master will apply the safeguards
-    and requirements required by applicable laws and platform policies.
-  </p>  <p>
-    We do not knowingly request personal information from children for the
-    purpose of creating unnecessary profiles or collecting information
-    unrelated to providing the service.
-  </p>  <h2>17. Your Privacy Choices</h2>  <p>
-    Depending on your location and applicable law, you may have rights or
-    choices concerning personal information processed by Quiz Master or
-    its service providers.
-  </p>  <p>
-    These may include rights to request access to, correction of, deletion
-    of, or information about certain personal data, subject to applicable
-    legal limitations.
-  </p>  <p>
-    You may also be able to control cookies, advertising personalization,
-    analytics settings, or browser storage through your browser, device,
-    Google's available privacy controls, or the consent mechanisms presented
-    on the website.
-  </p>  <h2>18. Deleting Local Data</h2>  <p>
-    Users can generally remove locally stored Quiz Master information by
-    clearing the website's browser data or local storage.
-  </p>  <p>
-    Clearing local data may delete quiz progress, scores, unlocked rounds,
-    achievements, settings, and other locally stored information.
-  </p>  <h2>19. International Data Processing</h2>  <p>
-    Because Quiz Master may use third-party hosting, analytics, advertising,
-    payment, and infrastructure providers, information may be processed
-    in countries other than the country in which a user is located.
-  </p>  <p>
-    Where applicable, such processing will be subject to the requirements
-    of relevant laws and the policies or contractual safeguards of the
-    applicable service providers.
-  </p>  <h2>20. Links to Third-Party Websites and Services</h2>  <p>
-    Quiz Master may contain links or integrations to third-party websites,
-    services, applications, payment providers, or other platforms.
-  </p>  <p>
-    We are not responsible for the privacy practices, security, content,
-    or policies of third-party services. Users should review the privacy
-    policies and terms of those services before using them.
-  </p>  <h2>21. Changes to This Privacy Policy</h2>  <p>
-    This Privacy Policy may be updated from time to time to reflect changes
-    to Quiz Master, new features, advertising or analytics services,
-    registration systems, Premium services, payment systems, applicable
-    laws, or other operational requirements.
-  </p>  <p>
-    When changes are made, the updated version will be published on this
-    page and the "Last updated" date will be changed accordingly.
-  </p>  <p>
-    Your continued use of Quiz Master after an updated Privacy Policy is
-    published means that you acknowledge the updated policy, to the extent
-    permitted by applicable law.
-  </p>  <h2>22. Contact</h2>  <p>
-    If you have questions, concerns, requests, or comments regarding this
-    Privacy Policy or Quiz Master, please contact us at:
-  </p>  <p>
-    <strong>Email:</strong>
-    <a href="mailto:mazimpakaisaie7@gmail.com">
-      mazimpakaisaie7@gmail.com
-    </a>
-  </p>  <p>
-    <strong>Service:</strong> Quiz Master 🇷🇼
-  </p>  <p>
-    <strong>Website:</strong>
-    <a href="https://quizmaster-liard-five.vercel.app/"
-       rel="noopener noreferrer">
-      Quiz Master 🇷🇼
-    </a>
-  </p>  <footer>
-    <p>
-      <strong>Quiz Master 🇷🇼</strong>
-    </p><p>
-  This Privacy Policy is intended to provide clear information about
-  the privacy practices associated with Quiz Master. It is not a
-  substitute for professional legal advice.
-</p>
 
-  </footer></body>
+    footer p {
+      margin: 7px 0;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        min-height: 60px;
+        padding: 10px 14px;
+      }
+
+      .brand {
+        font-size: 17px;
+      }
+
+      main {
+        margin: 20px auto;
+        padding: 0 12px;
+      }
+
+      .content {
+        padding: 22px 18px;
+      }
+
+      h2 {
+        font-size: 19px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy - Quiz Master Rwanda",
+    "url": "https://quizmaster-liard-five.vercel.app/privacy-policy.html",
+    "description": "Privacy information about Quiz Master Rwanda, including browser storage, gameplay data, analytics and advertising.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Quiz Master Rwanda",
+      "url": "https://quizmaster-liard-five.vercel.app/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="./index.html">
+        Quiz Master 🇷🇼
+      </a>
+
+      <a class="home-link" href="./index.html">
+        🏠 Home
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="content">
+
+      <span class="eyebrow">
+        Your privacy matters
+      </span>
+
+      <h1>Privacy Policy</h1>
+
+      <p class="updated">
+        <strong>Last updated: November 1, 2026</strong>
+      </p>
+
+      <p>
+        Quiz Master 🇷🇼 ("Quiz Master", "we", "us", or "our")
+        respects your privacy. This Privacy Policy explains how
+        information may be collected, used, stored, and shared
+        when you visit or use the Quiz Master website and its
+        available features.
+      </p>
+
+      <p>
+        This policy describes the website's current basic quiz
+        experience and the third-party services that may be used
+        to operate, measure, and support the website.
+      </p>
+
+      <div class="notice">
+        <p>
+          <strong>Important:</strong>
+          Basic quiz gameplay is designed not to require account
+          registration. Quiz scores, settings, and progress may
+          be saved in your browser or on your device. Third-party
+          services such as Google Analytics and Google AdSense
+          may process information when enabled on the website.
+        </p>
+      </div>
+
+      <h2>1. Information We May Process</h2>
+
+      <p>
+        You can generally play the basic quiz without creating
+        an account or entering personal information such as
+        your name, phone number, or home address.
+      </p>
+
+      <p>
+        Depending on how you use the website and which services
+        are enabled, the following types of information may
+        be processed:
+      </p>
+
+      <ul>
+        <li>Quiz scores and gameplay progress.</li>
+        <li>Current, completed, and unlocked rounds.</li>
+        <li>Quiz answers and review information.</li>
+        <li>Game settings and language preferences.</li>
+        <li>Music and other user preferences.</li>
+        <li>Browser, device, and technical information.</li>
+        <li>Website usage and analytics information.</li>
+        <li>Advertising and advertisement interaction information.</li>
+      </ul>
+
+      <h2>2. Information You Send to Us</h2>
+
+      <p>
+        If you contact us by email, we may receive the information
+        you choose to include in your message, such as your email
+        address, message content, questions, suggestions, or
+        information about a technical problem.
+      </p>
+
+      <p>
+        We use this information to understand and respond to
+        your message, review feedback, correct reported problems,
+        and improve the website where appropriate.
+      </p>
+
+      <p>
+        Please do not send passwords, private credentials,
+        payment information, or other confidential information
+        in ordinary support messages.
+      </p>
+
+      <h2>3. Quiz Gameplay and Local Storage</h2>
+
+      <p>
+        Quiz Master may use browser local storage and similar
+        technologies to save information on your device.
+      </p>
+
+      <p>This information may include:</p>
+
+      <ul>
+        <li>Your quiz progress.</li>
+        <li>Your current round.</li>
+        <li>Your scores and best score.</li>
+        <li>Completed and unlocked rounds.</li>
+        <li>Questions saved for review.</li>
+        <li>Language and category preferences.</li>
+        <li>Music and other game settings.</li>
+      </ul>
+
+      <p>
+        Information saved in local storage is generally kept
+        in your browser on your device. It is not automatically
+        the same as information stored in an online user account.
+      </p>
+
+      <p>
+        Clearing your browser's website data or local storage
+        may remove saved scores, progress, settings, and other
+        locally stored information.
+      </p>
+
+      <h2>4. Cookies and Similar Technologies</h2>
+
+      <p>
+        Quiz Master and third-party services used by the website
+        may use cookies, local storage, pixels, web beacons,
+        or similar technologies.
+      </p>
+
+      <p>These technologies may be used to:</p>
+
+      <ul>
+        <li>Remember preferences and settings.</li>
+        <li>Support website functionality.</li>
+        <li>Understand how visitors use the website.</li>
+        <li>Measure website performance.</li>
+        <li>Display and measure advertisements.</li>
+        <li>Help detect invalid activity and protect services.</li>
+      </ul>
+
+      <p>
+        Third-party technologies may be controlled by the
+        relevant service providers and may be subject to
+        their own privacy policies.
+      </p>
+
+      <h2>5. Google AdSense and Advertising</h2>
+
+      <p>
+        Quiz Master may use Google AdSense to display
+        advertisements on the website.
+      </p>
+
+      <p>
+        Google and its advertising partners may use cookies
+        or similar technologies to serve, measure, and
+        personalize advertisements, depending on applicable
+        laws, available consent choices, and advertising
+        settings.
+      </p>
+
+      <p>
+        Advertising-related information may include browser
+        or device information, IP address, cookie identifiers,
+        approximate location information, and interactions
+        with advertisements.
+      </p>
+
+      <p>
+        The type of advertisements displayed may depend on
+        factors such as your location, privacy choices,
+        advertising settings, and the services available
+        to the website.
+      </p>
+
+      <p>
+        You can learn more about Google's advertising and
+        privacy practices here:
+      </p>
+
+      <ul>
+        <li>
+          <a
+            href="https://policies.google.com/technologies/ads"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            How Google uses information for advertising
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="https://myadcenter.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google My Ad Center
+          </a>
+        </li>
+      </ul>
+
+      <h2>6. Advertising Consent and Privacy Choices</h2>
+
+      <p>
+        Depending on your country or region, applicable laws
+        may require consent or other privacy choices before
+        certain advertising cookies or technologies are used.
+      </p>
+
+      <p>
+        Where required, the website should use an appropriate
+        consent mechanism and respect the choices made by
+        visitors.
+      </p>
+
+      <p>
+        Available choices may differ depending on your location
+        and the services being used.
+      </p>
+
+      <p>
+        If a consent message or privacy control is presented,
+        you should review the choices and select the option
+        that reflects your preferences.
+      </p>
+
+      <h2>7. Google Analytics</h2>
+
+      <p>
+        Quiz Master may use Google Analytics to understand
+        how visitors interact with the website and to help
+        improve its content and functionality.
+      </p>
+
+      <p>Depending on the configuration, analytics may process:</p>
+
+      <ul>
+        <li>Pages visited.</li>
+        <li>Browser and device information.</li>
+        <li>General website interactions.</li>
+        <li>Approximate geographic information.</li>
+        <li>Technical information about website activity.</li>
+      </ul>
+
+      <p>
+        Google Analytics processes information under Google's
+        applicable terms and privacy practices.
+      </p>
+
+      <p>
+        Learn more:
+        <a
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Google Privacy Policy
+        </a>.
+      </p>
+
+      <h2>8. How Information May Be Used</h2>
+
+      <p>
+        Information processed through Quiz Master or its
+        service providers may be used to:
+      </p>
+
+      <ul>
+        <li>Operate and maintain the website.</li>
+        <li>Save gameplay progress and preferences locally.</li>
+        <li>Improve quiz questions and explanations.</li>
+        <li>Understand website usage and performance.</li>
+        <li>Respond to messages and feedback.</li>
+        <li>Maintain website security.</li>
+        <li>Detect invalid activity and misuse.</li>
+        <li>Display and measure advertisements.</li>
+        <li>Meet applicable legal requirements.</li>
+      </ul>
+
+      <h2>9. Third-Party Services</h2>
+
+      <p>
+        Quiz Master may rely on third-party providers to host,
+        operate, analyze, or support the website.
+      </p>
+
+      <p>Depending on the services currently enabled, these may include:</p>
+
+      <ul>
+        <li>Google AdSense for advertising.</li>
+        <li>Google Analytics for website analytics.</li>
+        <li>Vercel for website hosting and delivery.</li>
+        <li>Other technical infrastructure providers, if used.</li>
+      </ul>
+
+      <p>
+        Third-party providers may process information under
+        their own privacy policies, terms, and applicable laws.
+        Quiz Master does not control every aspect of how
+        independent third-party services operate.
+      </p>
+
+      <h2>10. Data Sharing</h2>
+
+      <p>
+        Quiz Master does not sell users' personal information.
+      </p>
+
+      <p>
+        Information may be processed by service providers
+        where necessary to operate the website, provide
+        requested services, measure usage, or display
+        advertisements.
+      </p>
+
+      <p>
+        Information may also be disclosed when reasonably
+        necessary to comply with applicable laws, respond
+        to valid legal requests, protect website security,
+        investigate misuse, or protect the rights and safety
+        of users and others.
+      </p>
+
+      <h2>11. Data Security</h2>
+
+      <p>
+        We aim to use reasonable measures to protect the
+        website and information processed through it.
+      </p>
+
+      <p>
+        However, no website, internet connection, browser,
+        or electronic storage system can be guaranteed
+        to be completely secure.
+      </p>
+
+      <p>
+        You should also keep your device, browser, and
+        personal accounts secure.
+      </p>
+
+      <h2>12. Data Retention</h2>
+
+      <p>
+        Gameplay information saved locally may remain on
+        your device until it is deleted, overwritten, or
+        removed when browser website data is cleared.
+      </p>
+
+      <p>
+        Emails sent to us may remain in our email service
+        for as long as reasonably necessary to handle
+        the message, maintain relevant records, or meet
+        applicable legal requirements.
+      </p>
+
+      <p>
+        Third-party providers determine their own retention
+        practices under their applicable policies and settings.
+      </p>
+
+      <h2>13. Children's Privacy</h2>
+
+      <p>
+        Quiz Master is an educational quiz website intended
+        to provide general learning and practice activities.
+      </p>
+
+      <p>
+        Basic gameplay does not require users to provide
+        personal details such as a name, phone number,
+        or email address.
+      </p>
+
+      <p>
+        We do not intentionally ask children to provide
+        unnecessary personal information to play the
+        basic quiz.
+      </p>
+
+      <p>
+        Advertising and analytics services may have their
+        own age-related requirements and restrictions.
+        Such services should be configured and used in
+        accordance with applicable laws and platform policies.
+      </p>
+
+      <h2>14. Your Privacy Choices and Rights</h2>
+
+      <p>
+        Depending on your location and applicable law,
+        you may have rights concerning personal information
+        processed about you.
+      </p>
+
+      <p>These rights may include:</p>
+
+      <ul>
+        <li>Requesting information about personal data processing.</li>
+        <li>Requesting access to certain personal information.</li>
+        <li>Requesting correction of inaccurate information.</li>
+        <li>Requesting deletion where legally applicable.</li>
+        <li>Objecting to or restricting certain processing.</li>
+        <li>Managing available advertising and cookie choices.</li>
+      </ul>
+
+      <p>
+        These rights may be subject to legal conditions
+        and limitations.
+      </p>
+
+      <h2>15. Deleting Local Data</h2>
+
+      <p>
+        You can generally remove locally saved Quiz Master
+        information by clearing the website's data or
+        local storage through your browser settings.
+      </p>
+
+      <p>
+        This may delete saved scores, progress, unlocked
+        rounds, review information, and preferences.
+      </p>
+
+      <p>
+        Clearing local data does not necessarily delete
+        information independently held by third-party
+        providers, such as Google.
+      </p>
+
+      <h2>16. International Data Processing</h2>
+
+      <p>
+        Some third-party providers used by the website
+        may process information in countries other than
+        the country where a visitor is located.
+      </p>
+
+      <p>
+        Where applicable, such processing is subject to
+        relevant legal requirements and the safeguards
+        used by the relevant providers.
+      </p>
+
+      <h2>17. Links to Other Websites</h2>
+
+      <p>
+        Quiz Master may contain links to external websites
+        and services.
+      </p>
+
+      <p>
+        We are not responsible for the privacy practices,
+        content, or security of websites operated by
+        independent third parties.
+      </p>
+
+      <p>
+        Please review the privacy policies of external
+        websites before providing them with personal
+        information.
+      </p>
+
+      <h2>18. Changes to This Privacy Policy</h2>
+
+      <p>
+        We may update this Privacy Policy when the website,
+        its features, third-party services, or applicable
+        legal requirements change.
+      </p>
+
+      <p>
+        When changes are made, the revised policy will
+        be published on this page and the "Last updated"
+        date will be changed.
+      </p>
+
+      <p>
+        We encourage visitors to review this page
+        periodically.
+      </p>
+
+      <h2>19. Contact Us</h2>
+
+      <p>
+        If you have questions, concerns, or requests
+        about this Privacy Policy or the privacy practices
+        associated with Quiz Master, please contact us:
+      </p>
+
+      <section class="contact-box">
+        <p>
+          <strong>Service:</strong> Quiz Master 🇷🇼
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <a
+            class="email-link"
+            href="mailto:mazimpakaisaie7@gmail.com"
+          >
+            mazimpakaisaie7@gmail.com
+          </a>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <a
+            href="https://quizmaster-liard-five.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://quizmaster-liard-five.vercel.app/
+          </a>
+        </p>
+      </section>
+
+      <div class="notice">
+        <p>
+          <strong>Important notice:</strong>
+          This Privacy Policy provides general information
+          about the website's privacy practices. It is not
+          legal advice. The actual operation of analytics,
+          advertising, consent tools, and storage should
+          match the statements on this page.
+        </p>
+      </div>
+
+      <a class="button" href="./index.html">
+        ← Return to Quiz Master
+      </a>
+
+    </article>
+  </main>
+
+  <footer>
+    <p><strong>Quiz Master 🇷🇼</strong></p>
+
+    <p>Learn • Discover • Practise • Improve</p>
+
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="./index.html">Home</a>
+      <a href="./about.html">About</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
+      <a href="./terms.html">Terms</a>
+    </nav>
+
+    <p>© 2026 Quiz Master Rwanda. All rights reserved.</p>
+  </footer>
+
+</body>
 </html>
