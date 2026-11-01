@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08172b">
+
   <meta name="description" content="Quiz Master Rwanda is a bilingual knowledge quiz covering road safety, Rwanda, Africa, science, geography, history and general knowledge.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="googlebot" content="index,follow">
@@ -533,8 +533,6 @@
 
 <body>
 
-<!-- HEADER -->
-
 <header>
   <div class="container header-inner">
     <a href="./index.html" class="brand">🇷🇼 Quiz Master</a>
@@ -586,13 +584,21 @@
 
         <div class="menu-heading">Explore</div>
 
-        <a href="./about.html" class="menu-item">ℹ️ About Quiz Master</a>
+        <a href="./articles.html" class="menu-item">
+          📚 Learning Centre
+        </a>
+
+        <a href="./about.html" class="menu-item">
+          ℹ️ About Quiz Master
+        </a>
 
         <div class="menu-divider"></div>
 
         <div class="menu-heading">Support</div>
 
-        <a href="./contact.html" class="menu-item">✉️ Contact & Help</a>
+        <a href="./contact.html" class="menu-item">
+          ✉️ Contact & Help
+        </a>
       </nav>
     </div>
   </div>
@@ -688,7 +694,9 @@
           </button>
         </div>
 
-        <div id="selectionSummary" class="summary" aria-live="polite">
+        <div id="selectionSummary"
+          class="summary"
+          aria-live="polite">
           Choose your language and category.
         </div>
 
@@ -983,6 +991,7 @@
   <p>Quiz Master 🇷🇼 · 2026</p>
 
   <p>
+    <a href="./articles.html">Learning Centre</a>
     <a href="./about.html">About</a>
     <a href="./privacy-policy.html">Privacy</a>
     <a href="./terms.html">Terms</a>
@@ -1034,7 +1043,7 @@
 
     if (menuButton) {
       menuButton.textContent = on
-        ? "🔊 Music On"
+        ? "🔊 Music Settings"
         : "🎵 Music Settings";
     }
   }
@@ -1053,6 +1062,7 @@
       });
     } else {
       music.pause();
+      music.currentTime = 0;
     }
 
     updateUI();
@@ -1093,10 +1103,7 @@
 
 <script src="./questions.js" defer></script>
 
-<!-- MORE MENU CONTROLLER
-     This is the ONLY controller for moreMenu.
-     Do not add another bindMoreMenu() in questions.js.
--->
+<!-- MORE MENU CONTROLLER: SINGLE CONTROLLER -->
 
 <script>
 (() => {
