@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#08172b">
 
-  <title>Learning Articles & General Knowledge Lessons | Quiz Master 🇷🇼</title>
+  <title>Terms of Service | Quiz Master 🇷🇼</title>
 
   <meta
     name="description"
-    content="Explore free educational articles and general knowledge lessons on geography, science, technology, history, sports, Rwanda and effective learning methods with Quiz Master Rwanda."
+    content="Read the Quiz Master Rwanda Terms of Service. Learn the rules for using the educational quiz website, gameplay, scores, local storage, advertising and acceptable use."
   >
 
-  <meta name="keywords" content="general knowledge lessons, educational articles, learning methods, Rwanda education, geography, science, history, Quiz Master Rwanda">
+  <meta
+    name="keywords"
+    content="Quiz Master Rwanda terms of service, quiz rules, educational quiz terms, road safety quiz, general knowledge quiz"
+  >
 
   <meta name="author" content="Quiz Master Rwanda">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -20,7 +23,7 @@
 
   <link
     rel="canonical"
-    href="https://quizmaster-liard-five.vercel.app/articles.html"
+    href="https://quizmaster-liard-five.vercel.app/terms.html"
   >
 
   <link rel="icon" type="image/png" href="./icon-192-4.png">
@@ -28,23 +31,23 @@
   <link rel="manifest" href="./manifest.webmanifest">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Learning Articles | Quiz Master 🇷🇼">
+  <meta property="og:title" content="Terms of Service | Quiz Master 🇷🇼">
   <meta
     property="og:description"
-    content="Free learning resources and general knowledge lessons covering geography, science, history, technology and more."
+    content="Read the rules and conditions for using Quiz Master Rwanda."
   >
   <meta
     property="og:url"
-    content="https://quizmaster-liard-five.vercel.app/articles.html"
+    content="https://quizmaster-liard-five.vercel.app/terms.html"
   >
   <meta property="og:site_name" content="Quiz Master Rwanda">
   <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Learning Articles | Quiz Master 🇷🇼">
+  <meta name="twitter:title" content="Terms of Service | Quiz Master 🇷🇼">
   <meta
     name="twitter:description"
-    content="Learn new facts and improve your general knowledge with Quiz Master Rwanda."
+    content="Terms and conditions for using Quiz Master Rwanda."
   >
 
   <style>
@@ -65,15 +68,19 @@
     }
 
     html {
+      min-height: 100%;
       scroll-behavior: smooth;
-      scroll-padding-top: 85px;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at top, #142d50 0, var(--background) 55%);
+        radial-gradient(
+          circle at top,
+          #142d50 0,
+          var(--background) 55%
+        );
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.75;
@@ -100,10 +107,11 @@
     }
 
     .nav {
-      max-width: 1050px;
+      width: 100%;
+      max-width: 1000px;
       min-height: 68px;
       margin: auto;
-      padding: 12px 18px;
+      padding: 12px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -119,12 +127,12 @@
     }
 
     .home-link,
-    .primary-button {
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 44px;
-      padding: 10px 17px;
+      padding: 10px 16px;
       color: #fff;
       background: var(--primary);
       border-radius: 9px;
@@ -135,30 +143,30 @@
     }
 
     .home-link:hover,
-    .primary-button:hover {
+    .button:hover {
       color: #fff;
       background: var(--primary-light);
     }
 
     main {
       width: 100%;
-      max-width: 1050px;
-      margin: 30px auto;
+      max-width: 950px;
+      margin: 32px auto;
       padding: 0 17px;
     }
 
-    .hero {
-      padding: 35px 28px;
-      background: linear-gradient(135deg, #142f55, #10233f);
+    .content {
+      padding: 34px;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 18px;
-      text-align: center;
+      box-shadow: 0 15px 45px rgba(0,0,0,.18);
     }
 
     .eyebrow {
       display: inline-block;
       margin-bottom: 12px;
-      padding: 5px 12px;
+      padding: 5px 11px;
       color: #a9c6ff;
       background: rgba(21,94,239,.15);
       border: 1px solid rgba(141,181,255,.2);
@@ -171,38 +179,13 @@
 
     h1 {
       margin: 0 0 12px;
-      font-size: clamp(28px, 5vw, 39px);
+      font-size: clamp(27px, 5vw, 36px);
       line-height: 1.3;
     }
 
-    .hero p {
-      max-width: 720px;
-      margin: 12px auto;
-      color: var(--muted);
-    }
-
-    .hero .primary-button {
-      margin-top: 15px;
-    }
-
-    .content-section {
-      margin-top: 25px;
-      padding: 26px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-    }
-
     h2 {
-      margin: 0 0 15px;
-      font-size: 24px;
-      line-height: 1.4;
-    }
-
-    h3 {
-      margin: 23px 0 8px;
-      color: #e7efff;
-      font-size: 19px;
+      margin: 32px 0 10px;
+      font-size: 21px;
       line-height: 1.4;
     }
 
@@ -215,78 +198,54 @@
       margin: 12px 0;
     }
 
-    ul,
-    ol {
-      padding-left: 24px;
-    }
-
     li {
       margin: 8px 0;
+      padding-left: 3px;
+    }
+
+    ul {
+      padding-left: 23px;
     }
 
     strong {
       color: var(--text);
     }
 
-    .lesson {
-      margin-top: 20px;
-      padding: 20px;
+    .updated {
+      margin: 0 0 22px;
+      color: #9fb1ca;
+      font-size: 14px;
+    }
+
+    .notice {
+      margin: 24px 0;
+      padding: 18px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary-light);
+      border-radius: 11px;
+    }
+
+    .notice p {
+      margin: 0;
+    }
+
+    .contact-box {
+      margin-top: 25px;
+      padding: 21px;
       background: var(--surface-light);
       border: 1px solid var(--border);
       border-radius: 12px;
     }
 
-    .lesson h3 {
-      margin-top: 0;
-    }
-
-    .fact {
-      margin: 15px 0;
-      padding: 14px;
-      background: rgba(21,94,239,.12);
-      border-left: 4px solid var(--primary-light);
-      border-radius: 8px;
-    }
-
-    .fact p {
-      margin: 0;
-    }
-
-    .contents {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .contents a {
+    .email-link {
       display: inline-block;
-      padding: 8px 12px;
-      background: var(--surface-light);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 14px;
-      text-decoration: none;
+      margin-top: 5px;
+      font-weight: 700;
     }
 
-    .contents a:hover {
-      background: #203e65;
-      text-decoration: underline;
-    }
-
-    .note {
-      margin-top: 18px;
-      padding: 16px;
-      background: var(--surface-light);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-    }
-
-    .note p {
-      margin: 0;
-    }
-
-    .primary-button {
-      margin-top: 15px;
+    .button {
+      margin-top: 20px;
     }
 
     footer {
@@ -322,7 +281,7 @@
     @media (max-width: 600px) {
       .nav {
         min-height: 60px;
-        padding: 10px 13px;
+        padding: 10px 14px;
       }
 
       .brand {
@@ -334,20 +293,12 @@
         padding: 0 12px;
       }
 
-      .hero {
-        padding: 27px 17px;
-      }
-
-      .content-section {
-        padding: 20px 16px;
+      .content {
+        padding: 22px 18px;
       }
 
       h2 {
-        font-size: 21px;
-      }
-
-      h3 {
-        font-size: 18px;
+        font-size: 19px;
       }
     }
 
@@ -367,10 +318,10 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Learning Articles and General Knowledge Lessons",
-    "url": "https://quizmaster-liard-five.vercel.app/articles.html",
-    "description": "Educational articles and general knowledge learning resources from Quiz Master Rwanda.",
+    "@type": "WebPage",
+    "name": "Terms of Service - Quiz Master Rwanda",
+    "url": "https://quizmaster-liard-five.vercel.app/terms.html",
+    "description": "Terms and conditions for using the Quiz Master Rwanda educational quiz website.",
     "inLanguage": "en",
     "isPartOf": {
       "@type": "WebSite",
@@ -396,597 +347,490 @@
   </header>
 
   <main>
+    <article class="content">
 
-    <section class="hero">
-      <span class="eyebrow">Free Learning Resources</span>
+      <span class="eyebrow">
+        Website Terms
+      </span>
 
-      <h1>Learn, Discover and Improve Your Knowledge</h1>
+      <h1>Terms of Service</h1>
 
-      <p>
-        Welcome to the Quiz Master Learning Centre.
-        Explore educational lessons, understand important
-        facts, develop good learning habits, and improve
-        your general knowledge one topic at a time.
+      <p class="updated">
+        <strong>Last updated: November 1, 2026</strong>
       </p>
 
       <p>
-        Read a lesson first, then test what you have learned
-        by playing the Quiz Master knowledge quiz.
+        Welcome to Quiz Master 🇷🇼 ("Quiz Master",
+        "we", "us", or "our"). These Terms of Service
+        explain the conditions for accessing and using
+        the Quiz Master website and its educational
+        quiz features.
       </p>
 
-      <a class="primary-button" href="./index.html">
-        Start Learning with Quiz Master →
+      <p>
+        By accessing or using the website, you agree
+        to follow these Terms. If you do not agree
+        with them, please stop using the website.
+      </p>
+
+      <div class="notice">
+        <p>
+          <strong>About Quiz Master:</strong>
+          Quiz Master is an educational quiz and learning
+          website. It provides general knowledge and
+          road-safety questions for learning and practice.
+          Basic quiz access is free. The website does not
+          offer paid subscriptions, premium accounts,
+          referral commissions or payment processing
+          as part of its current quiz service.
+        </p>
+      </div>
+
+      <h2>1. Purpose of the Website</h2>
+
+      <p>
+        Quiz Master is designed to support learning,
+        knowledge practice and educational activities.
+        The website may provide:
+      </p>
+
+      <ul>
+        <li>General knowledge quizzes.</li>
+        <li>Road-safety quizzes.</li>
+        <li>English and Kinyarwanda language options, where available.</li>
+        <li>Question explanations and answer reviews.</li>
+        <li>Scores, progress and round information.</li>
+        <li>Educational articles and learning resources.</li>
+      </ul>
+
+      <p>
+        Website features may be improved, changed,
+        added or removed over time.
+      </p>
+
+      <h2>2. Eligibility and Responsible Use</h2>
+
+      <p>
+        You may use Quiz Master for lawful educational
+        and personal learning purposes.
+      </p>
+
+      <p>
+        If you are a child or young person, use the
+        website in a way that is appropriate for your
+        age and follow any applicable guidance from
+        a parent, guardian, teacher or responsible adult.
+      </p>
+
+      <p>
+        You are responsible for using the website
+        respectfully and in accordance with applicable
+        laws and these Terms.
+      </p>
+
+      <h2>3. Free Access</h2>
+
+      <p>
+        Basic access to Quiz Master quizzes and
+        learning materials is provided free of charge.
+      </p>
+
+      <p>
+        The website does not currently require users
+        to purchase a subscription, pay to unlock
+        quiz rounds, or make payments to use its
+        basic educational features.
+      </p>
+
+      <p>
+        Internet access and mobile data charges may
+        still apply according to your network
+        provider's terms.
+      </p>
+
+      <h2>4. Quiz Rules and Gameplay</h2>
+
+      <p>
+        Quiz Master uses quiz rounds to organise
+        questions and learning activities. The
+        current standard gameplay settings are:
+      </p>
+
+      <ul>
+        <li><strong>Questions per round:</strong> 10 questions.</li>
+        <li><strong>General Knowledge time:</strong> 30 seconds per question.</li>
+        <li><strong>Road Safety time:</strong> 60 seconds per question.</li>
+        <li><strong>Correct answer:</strong> 10 points.</li>
+        <li><strong>Round completion requirement:</strong> A score of at least 70% to qualify to unlock the next round.</li>
+      </ul>
+
+      <p>
+        These settings describe the intended standard
+        quiz configuration. Actual availability and
+        behaviour may depend on the current version
+        of the website and the selected quiz category.
+      </p>
+
+      <h2>5. Scores, Progress and Round Unlocking</h2>
+
+      <p>
+        Quiz Master may save information such as
+        scores, completed rounds, unlocked rounds,
+        selected language, category and answers
+        marked for review.
+      </p>
+
+      <p>
+        Scores and progress are intended to support
+        personal learning and practice. They are
+        not official academic qualifications,
+        examination results or certificates.
+      </p>
+
+      <p>
+        Round unlocking is controlled by the quiz
+        application. A qualifying score may allow
+        access to a subsequent round, subject to
+        the current application rules.
+      </p>
+
+      <p>
+        We do not guarantee that saved progress
+        will always remain available. Browser data
+        may be cleared, lost, overwritten or affected
+        by device changes.
+      </p>
+
+      <h2>6. Educational Content and Accuracy</h2>
+
+      <p>
+        Quiz questions, explanations and articles
+        are provided for general educational purposes.
+        We aim to make the information useful and
+        accurate, but errors or outdated information
+        may occasionally occur.
+      </p>
+
+      <p>
+        Some subjects, including road safety,
+        traffic rules, public information and
+        current events, may change over time or
+        differ between locations.
+      </p>
+
+      <p>
+        You should check important or time-sensitive
+        information against reliable, current and
+        appropriate sources.
+      </p>
+
+      <p>
+        Quiz Master should not be treated as a
+        replacement for formal education, professional
+        training, official traffic instructions,
+        or advice from qualified authorities.
+      </p>
+
+      <h2>7. Road Safety Information</h2>
+
+      <p>
+        Road-safety lessons and questions are
+        educational resources. They are not a
+        substitute for official traffic laws,
+        professional driving instruction or
+        directions from authorised traffic officers.
+      </p>
+
+      <p>
+        Road signs, markings, speed limits and
+        traffic regulations may vary by country
+        and may be updated by relevant authorities.
+      </p>
+
+      <p>
+        Always follow the current laws and official
+        instructions that apply where you are using
+        the road. Do not rely only on a quiz answer
+        when making a real-world road-safety decision.
+      </p>
+
+      <h2>8. Acceptable Use</h2>
+
+      <p>
+        When using Quiz Master, you agree not to:
+      </p>
+
+      <ul>
+        <li>Use the website for unlawful activities.</li>
+        <li>Attempt to disrupt or damage the website.</li>
+        <li>Attempt unauthorised access to website systems or data.</li>
+        <li>Upload or distribute malicious code through the website.</li>
+        <li>Interfere with the availability or normal operation of the service.</li>
+        <li>Misuse website features or attempt to manipulate results through unauthorised methods.</li>
+        <li>Copy or republish protected content without permission where permission is required.</li>
+        <li>Use the website in a way that violates the rights of others.</li>
+      </ul>
+
+      <h2>9. Intellectual Property</h2>
+
+      <p>
+        Unless otherwise stated, the Quiz Master
+        website design, branding, original text,
+        original quiz content, graphics and other
+        materials are owned by or used with permission
+        by their respective rights holders.
+      </p>
+
+      <p>
+        You may access and use the website for
+        personal educational purposes.
+      </p>
+
+      <p>
+        You must not reproduce, redistribute,
+        sell, modify or commercially exploit
+        protected Quiz Master materials without
+        the required permission.
+      </p>
+
+      <p>
+        Third-party names, trademarks and materials
+        remain the property of their respective owners.
+      </p>
+
+      <h2>10. Advertisements</h2>
+
+      <p>
+        Quiz Master may display advertisements
+        through third-party advertising providers,
+        including Google AdSense, when advertising
+        is enabled.
+      </p>
+
+      <p>
+        Advertisements may be selected, delivered
+        or measured by third-party providers.
+        Quiz Master does not necessarily control
+        every advertisement displayed by those
+        providers.
+      </p>
+
+      <p>
+        The appearance of an advertisement does
+        not mean that Quiz Master endorses or
+        guarantees the advertised product or service.
+      </p>
+
+      <p>
+        Users should review the terms and privacy
+        information of third-party advertisers
+        before interacting with their services.
+      </p>
+
+      <h2>11. Analytics and Website Technologies</h2>
+
+      <p>
+        Where enabled, Quiz Master may use analytics
+        tools such as Google Analytics to understand
+        website usage and improve the service.
+      </p>
+
+      <p>
+        The website may also use browser storage,
+        cookies or similar technologies to support
+        its features and remember preferences.
+      </p>
+
+      <p>
+        More information about information handling
+        is available in our
+        <a href="./privacy-policy.html">Privacy Policy</a>.
+      </p>
+
+      <h2>12. Third-Party Websites and Services</h2>
+
+      <p>
+        The website may contain links to external
+        websites, services or resources.
+      </p>
+
+      <p>
+        These third-party services operate
+        independently and may have their own
+        terms, privacy policies and practices.
+      </p>
+
+      <p>
+        Quiz Master is not responsible for the
+        content, availability, security or policies
+        of external websites that it does not operate.
+      </p>
+
+      <h2>13. Website Availability and Updates</h2>
+
+      <p>
+        We aim to keep Quiz Master available and
+        functioning, but uninterrupted access
+        cannot be guaranteed.
+      </p>
+
+      <p>
+        The website may occasionally be unavailable
+        because of maintenance, hosting problems,
+        technical errors, network interruptions
+        or updates.
+      </p>
+
+      <p>
+        We may update, modify, suspend or discontinue
+        some or all website features when reasonably
+        necessary.
+      </p>
+
+      <h2>14. Disclaimer</h2>
+
+      <p>
+        Quiz Master is provided on an "as available"
+        and educational basis.
+      </p>
+
+      <p>
+        To the extent permitted by applicable law,
+        we do not guarantee that the website will
+        always be error-free, uninterrupted,
+        completely accurate or suitable for every
+        individual purpose.
+      </p>
+
+      <p>
+        You are responsible for how you use
+        educational information provided by
+        the website.
+      </p>
+
+      <h2>15. Limitation of Liability</h2>
+
+      <p>
+        To the extent permitted by applicable law,
+        Quiz Master and its operators will not be
+        responsible for losses arising from:
+      </p>
+
+      <ul>
+        <li>Temporary website interruptions or technical problems.</li>
+        <li>Loss of progress or information stored in a browser.</li>
+        <li>Errors or outdated information in educational content.</li>
+        <li>Problems caused by third-party websites or services.</li>
+        <li>Misuse of the website or reliance on information without appropriate verification.</li>
+      </ul>
+
+      <p>
+        Nothing in these Terms excludes or limits
+        liability where such exclusion or limitation
+        is not permitted by applicable law.
+      </p>
+
+      <h2>16. Privacy</h2>
+
+      <p>
+        Your use of Quiz Master is also subject
+        to our
+        <a href="./privacy-policy.html">Privacy Policy</a>,
+        which explains how browser storage,
+        gameplay information and third-party
+        services may be handled.
+      </p>
+
+      <h2>17. Changes to These Terms</h2>
+
+      <p>
+        We may revise these Terms when the website,
+        its features, or applicable requirements
+        change.
+      </p>
+
+      <p>
+        Updated Terms will be published on this page
+        with a revised "Last updated" date.
+      </p>
+
+      <p>
+        Your continued use of the website after
+        revised Terms are published means that
+        you should review and follow the updated
+        conditions, subject to applicable law.
+      </p>
+
+      <h2>18. Suspension or Restriction of Access</h2>
+
+      <p>
+        We may restrict or suspend access to the
+        website where reasonably necessary to
+        protect the service, users, website systems
+        or third parties, or to address misuse
+        or legal requirements.
+      </p>
+
+      <h2>19. Governing Law</h2>
+
+      <p>
+        These Terms are subject to applicable laws.
+        Any legal matter relating to the use of
+        Quiz Master will be handled under the
+        relevant laws and procedures that apply
+        to the matter.
+      </p>
+
+      <h2>20. Contact Us</h2>
+
+      <p>
+        If you have questions, concerns or feedback
+        about these Terms, please contact us:
+      </p>
+
+      <section class="contact-box">
+        <p>
+          <strong>Service:</strong> Quiz Master 🇷🇼
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <a
+            class="email-link"
+            href="mailto:mazimpakaisaie7@gmail.com"
+          >
+            mazimpakaisaie7@gmail.com
+          </a>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <a
+            href="https://quizmaster-liard-five.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://quizmaster-liard-five.vercel.app/
+          </a>
+        </p>
+      </section>
+
+      <div class="notice">
+        <p>
+          <strong>Important notice:</strong>
+          These Terms provide general information
+          about using Quiz Master. They are not
+          legal advice. Please ensure that the
+          website's actual features and practices
+          match the descriptions on this page.
+        </p>
+      </div>
+
+      <a class="button" href="./index.html">
+        ← Return to Quiz Master
       </a>
-    </section>
 
-    <section class="content-section">
-      <h2>Explore Our Learning Topics</h2>
-
-      <p>
-        Choose a topic below to go directly to its lesson.
-      </p>
-
-      <nav class="contents" aria-label="Article topics">
-        <a href="#learning-methods">How to Learn</a>
-        <a href="#general-knowledge">General Knowledge</a>
-        <a href="#geography">Geography</a>
-        <a href="#science">Science</a>
-        <a href="#technology">Technology</a>
-        <a href="#history">History</a>
-        <a href="#sports">Sports</a>
-        <a href="#rwanda">Rwanda</a>
-        <a href="#quiz-learning">Learning with Quizzes</a>
-      </nav>
-    </section>
-
-    <section class="content-section" id="learning-methods">
-      <h2>1. How to Study Effectively and Remember What You Learn</h2>
-
-      <p>
-        Learning is not only about reading many pages.
-        It is also about understanding information,
-        remembering important ideas, and knowing how
-        to use what you have learned.
-      </p>
-
-      <h3>Set a clear learning goal</h3>
-
-      <p>
-        Before studying, decide what you want to understand.
-        For example, you may choose to learn about the
-        continents, the human body, or the history of Rwanda.
-        A clear goal helps you focus on one subject at a time.
-      </p>
-
-      <h3>Study in small sections</h3>
-
-      <p>
-        Divide a large topic into smaller lessons.
-        Read one section, understand its main ideas,
-        and then move to the next section.
-        Short, focused study sessions can make learning
-        easier to manage.
-      </p>
-
-      <h3>Recall information without looking</h3>
-
-      <p>
-        After reading a lesson, close the page and try
-        to explain the main ideas using your own words.
-        This helps you check whether you truly understand
-        the information.
-      </p>
-
-      <h3>Review what you learned</h3>
-
-      <p>
-        Return to important information after some time.
-        Reviewing a topic on different days can help
-        strengthen your understanding and memory.
-      </p>
-
-      <h3>Practise with questions</h3>
-
-      <p>
-        Questions help you discover what you understand
-        and which topics need more attention. When you
-        get an answer wrong, read the explanation and
-        study the topic again.
-      </p>
-
-      <div class="fact">
-        <p>
-          <strong>Learning tip:</strong>
-          Understand first, practise second, and review
-          regularly. Do not focus only on memorising
-          answers without understanding them.
-        </p>
-      </div>
-    </section>
-
-    <section class="content-section" id="general-knowledge">
-      <h2>2. Introduction to General Knowledge</h2>
-
-      <p>
-        General knowledge is information about different
-        subjects and events in the world. It helps people
-        understand their environment, communicate better,
-        and make informed decisions.
-      </p>
-
-      <p>
-        General knowledge includes geography, science,
-        history, culture, technology, sports, and many
-        other subjects.
-      </p>
-
-      <div class="lesson">
-        <h3>Why is general knowledge important?</h3>
-
-        <ul>
-          <li>It helps us understand the world around us.</li>
-          <li>It improves reading, reasoning, and communication.</li>
-          <li>It encourages curiosity and independent learning.</li>
-          <li>It helps us connect information from different subjects.</li>
-          <li>It prepares learners for educational activities and quizzes.</li>
-        </ul>
-      </div>
-
-      <div class="lesson">
-        <h3>How can you improve your general knowledge?</h3>
-
-        <ol>
-          <li>Read reliable educational materials regularly.</li>
-          <li>Study different subjects instead of focusing on only one.</li>
-          <li>Ask questions when you do not understand something.</li>
-          <li>Discuss what you learn with classmates or other learners.</li>
-          <li>Practise with educational quizzes and review explanations.</li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="content-section" id="geography">
-      <h2>3. Geography: Understanding the Earth</h2>
-
-      <p>
-        Geography is the study of the Earth, its physical
-        features, people, places, climate, and environments.
-        It helps us understand where things are located
-        and how people interact with their surroundings.
-      </p>
-
-      <div class="lesson">
-        <h3>The seven continents</h3>
-
-        <p>
-          In the commonly used seven-continent model,
-          the continents are:
-        </p>
-
-        <ol>
-          <li>Africa</li>
-          <li>Asia</li>
-          <li>Europe</li>
-          <li>North America</li>
-          <li>South America</li>
-          <li>Antarctica</li>
-          <li>Australia</li>
-        </ol>
-
-        <p>
-          Continents are large land areas. Each has
-          different countries, landscapes, climates,
-          cultures, and populations.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Oceans of the world</h3>
-
-        <p>
-          The five commonly recognised oceans are
-          the Pacific, Atlantic, Indian, Southern,
-          and Arctic Oceans.
-        </p>
-
-        <p>
-          Oceans influence weather and climate,
-          support marine life, and provide important
-          routes for transport and trade.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Countries, capitals, and maps</h3>
-
-        <p>
-          A country is a political and geographical
-          area with its own government and territory.
-          A capital city is usually the main seat
-          of a country's national government.
-        </p>
-
-        <p>
-          Maps help us locate countries, cities,
-          rivers, mountains, roads, and other
-          geographical features.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Basic geographical directions</h3>
-
-        <p>
-          The four main compass directions are
-          North, South, East, and West.
-          They help people describe locations
-          and understand maps.
-        </p>
-      </div>
-    </section>
-
-    <section class="content-section" id="science">
-      <h2>4. Science: Understanding Nature and Life</h2>
-
-      <p>
-        Science is the systematic study of the natural
-        world through observation, questions,
-        investigation, and evidence.
-      </p>
-
-      <div class="lesson">
-        <h3>Biology: The study of living things</h3>
-
-        <p>
-          Biology is the branch of science that studies
-          living organisms, including humans, animals,
-          plants, and microorganisms.
-        </p>
-
-        <p>
-          Living things carry out important processes
-          such as growth, reproduction, and responding
-          to their environment.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Physics: Matter and energy</h3>
-
-        <p>
-          Physics studies matter, energy, motion,
-          forces, light, sound, and many other
-          natural phenomena.
-        </p>
-
-        <p>
-          For example, gravity is the force of attraction
-          between objects that have mass. It helps explain
-          why objects fall toward the Earth.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Chemistry: Understanding substances</h3>
-
-        <p>
-          Chemistry studies substances, their properties,
-          their structure, and how they change during
-          chemical reactions.
-        </p>
-
-        <p>
-          Water is a familiar chemical compound made
-          from hydrogen and oxygen. Its chemical formula
-          is H₂O.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>The human body</h3>
-
-        <p>
-          The human body contains different organs
-          and systems that work together.
-        </p>
-
-        <ul>
-          <li><strong>Heart:</strong> Pumps blood around the body.</li>
-          <li><strong>Lungs:</strong> Help the body exchange oxygen and carbon dioxide.</li>
-          <li><strong>Brain:</strong> Helps control body activities, thinking, and memory.</li>
-          <li><strong>Stomach:</strong> Helps break down food during digestion.</li>
-          <li><strong>Kidneys:</strong> Filter waste from the blood and help regulate body fluids.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="content-section" id="technology">
-      <h2>5. Technology and Digital Knowledge</h2>
-
-      <p>
-        Technology involves tools, systems, and methods
-        that people develop to solve problems and make
-        tasks easier.
-      </p>
-
-      <div class="lesson">
-        <h3>What is a computer?</h3>
-
-        <p>
-          A computer is an electronic device that
-          receives data, processes information,
-          stores information, and produces results.
-        </p>
-
-        <ul>
-          <li><strong>Hardware:</strong> Physical computer components.</li>
-          <li><strong>Software:</strong> Programs and instructions that run on devices.</li>
-          <li><strong>Input:</strong> Information entered into a computer.</li>
-          <li><strong>Output:</strong> Results produced by a computer.</li>
-          <li><strong>Storage:</strong> Keeping information for later use.</li>
-        </ul>
-      </div>
-
-      <div class="lesson">
-        <h3>The Internet</h3>
-
-        <p>
-          The Internet is a global network of connected
-          computer networks. It allows people to exchange
-          information, communicate, study, and access
-          online services.
-        </p>
-
-        <p>
-          A web browser is an application used to access
-          websites. Examples include Chrome, Firefox,
-          Safari, and Edge.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Digital safety</h3>
-
-        <p>
-          Good digital habits help protect personal
-          information and devices.
-        </p>
-
-        <ul>
-          <li>Use strong and unique passwords.</li>
-          <li>Do not share passwords with other people.</li>
-          <li>Check information before trusting or sharing it.</li>
-          <li>Be careful with unexpected links and attachments.</li>
-          <li>Keep devices and applications updated.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="content-section" id="history">
-      <h2>6. History: Learning from the Past</h2>
-
-      <p>
-        History is the study of past events and human
-        societies. Historians use documents, objects,
-        photographs, oral accounts, and other evidence
-        to understand what happened in the past.
-      </p>
-
-      <div class="lesson">
-        <h3>Why study history?</h3>
-
-        <ul>
-          <li>It helps us understand how societies developed.</li>
-          <li>It explains how important events shaped the present.</li>
-          <li>It helps preserve cultural heritage.</li>
-          <li>It encourages critical thinking about evidence and sources.</li>
-        </ul>
-      </div>
-
-      <div class="lesson">
-        <h3>Historical sources</h3>
-
-        <p>
-          Historical sources are materials that provide
-          information about the past.
-        </p>
-
-        <ul>
-          <li><strong>Written sources:</strong> Books, letters, records, and documents.</li>
-          <li><strong>Oral sources:</strong> Stories and accounts passed from person to person.</li>
-          <li><strong>Archaeological sources:</strong> Objects, buildings, and remains from earlier societies.</li>
-          <li><strong>Visual sources:</strong> Photographs, paintings, and maps.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="content-section" id="sports">
-      <h2>7. Sports and Physical Education</h2>
-
-      <p>
-        Sports are organised physical activities
-        that involve skill, practice, rules, and
-        sometimes competition.
-      </p>
-
-      <div class="lesson">
-        <h3>Popular sports</h3>
-
-        <p>
-          Football, basketball, volleyball, athletics,
-          tennis, and swimming are examples of sports
-          played in different parts of the world.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Why are sports important?</h3>
-
-        <ul>
-          <li>They encourage teamwork and cooperation.</li>
-          <li>They help develop coordination and physical skills.</li>
-          <li>They teach discipline and respect for rules.</li>
-          <li>They create opportunities for social interaction.</li>
-        </ul>
-      </div>
-
-      <div class="lesson">
-        <h3>Learning about sports fairly</h3>
-
-        <p>
-          When studying sports, learn the rules,
-          history, equipment, and basic terminology
-          of each sport. Remember that rules can
-          differ between sports and competitions.
-        </p>
-      </div>
-    </section>
-
-    <section class="content-section" id="rwanda">
-      <h2>8. Learning About Rwanda</h2>
-
-      <p>
-        Rwanda is a country in East Africa.
-        Learning about its geography, history,
-        culture, institutions, and development
-        helps learners understand their country
-        and its place in the world.
-      </p>
-
-      <div class="lesson">
-        <h3>Geography of Rwanda</h3>
-
-        <p>
-          Rwanda is a landlocked country in East Africa.
-          Its capital city is Kigali.
-        </p>
-
-        <p>
-          Rwanda is known for its hills, lakes,
-          green landscapes, and diverse natural
-          environments.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Official languages</h3>
-
-        <p>
-          Rwanda's official languages are
-          Kinyarwanda, English, French, and Kiswahili.
-        </p>
-      </div>
-
-      <div class="lesson">
-        <h3>Learning about national identity</h3>
-
-        <p>
-          Studying Rwanda also includes understanding
-          its national history, cultural heritage,
-          national symbols, public institutions,
-          and the contributions of its people.
-        </p>
-
-        <p>
-          Reliable educational sources and official
-          publications are useful when learning
-          about current national information.
-        </p>
-      </div>
-    </section>
-
-    <section class="content-section" id="quiz-learning">
-      <h2>9. How to Learn with Quiz Master</h2>
-
-      <p>
-        Quiz Master is designed to help learners
-        practise general knowledge and road-safety
-        topics through questions and answer review.
-      </p>
-
-      <h3>Step 1: Choose a learning language</h3>
-
-      <p>
-        Select English or Kinyarwanda, depending
-        on the language in which you prefer to learn.
-      </p>
-
-      <h3>Step 2: Choose a question category</h3>
-
-      <p>
-        Select General Knowledge or Road Safety
-        to practise the subject you want to study.
-      </p>
-
-      <h3>Step 3: Read each question carefully</h3>
-
-      <p>
-        Think about the question before choosing
-        an answer. Try to understand what it is asking.
-      </p>
-
-      <h3>Step 4: Review your answers</h3>
-
-      <p>
-        After answering, use the available review
-        feature to understand correct answers and
-        learn from mistakes.
-      </p>
-
-      <h3>Step 5: Study topics you find difficult</h3>
-
-      <p>
-        If a question is difficult, return to the
-        relevant lesson, read more about the topic,
-        and practise again.
-      </p>
-
-      <div class="fact">
-        <p>
-          <strong>Remember:</strong>
-          The purpose of learning is not only to
-          get a high score. It is also to understand
-          information and improve your knowledge.
-        </p>
-      </div>
-
-      <a class="primary-button" href="./index.html">
-        Play Quiz Master →
-      </a>
-    </section>
-
-    <section class="content-section">
-      <h2>10. Keep Learning</h2>
-
-      <p>
-        Learning is a continuous process. Explore
-        different subjects, read reliable materials,
-        ask questions, and practise what you learn.
-      </p>
-
-      <p>
-        The lessons on this page provide introductory
-        information. For deeper study, consult
-        textbooks, educational institutions,
-        recognised reference materials, and
-        official sources.
-      </p>
-
-      <div class="note">
-        <p>
-          <strong>Educational notice:</strong>
-          These articles are general learning resources.
-          Some information, especially facts that can
-          change over time, should be checked against
-          reliable and up-to-date sources.
-        </p>
-      </div>
-
-      <a class="primary-button" href="./index.html">
-        Return to Quiz Master
-      </a>
-    </section>
-
+    </article>
   </main>
 
   <footer>
@@ -997,7 +841,7 @@
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="./index.html">Home</a>
       <a href="./about.html">About</a>
-      <a href="./articles.html">Articles</a>
+      <a href="./articles.html">Learning Centre</a>
       <a href="./contact.html">Contact</a>
       <a href="./privacy-policy.html">Privacy Policy</a>
       <a href="./terms.html">Terms</a>
