@@ -1,22 +1,25 @@
+
 /* =========================================================
    🇷🇼 QUIZ MASTER — SERVICE WORKER
-   Version: 3.3.1
-   Purpose:
-   - PWA support
+   Version: 3.3.2
+
+   PURPOSE:
+   - Progressive Web App (PWA)
    - Offline application support
    - Static resource caching
    - Quiz questions caching
    - Learning Centre caching
    - Automatic cache updates
+   - Safe cache cleanup
    ========================================================= */
 
 "use strict";
 
-/* ==============================
+/* =========================================================
    1. CACHE CONFIGURATION
-================================ */
+========================================================= */
 
-const CACHE_VERSION = "3.3.1";
+const CACHE_VERSION = "3.3.2";
 
 const CACHE_NAME = `quizmaster-cache-${CACHE_VERSION}`;
 
@@ -24,86 +27,143 @@ const APP_SHELL = [
   "./",
   "./index.html",
   "./offline.html",
+
+  // Quiz engine and database
   "./questions.js",
   "./questions.json",
+
+  // Learning Centre
   "./articles.html",
   "./articles.json",
+
+  // Information pages
   "./about.html",
   "./contact.html",
   "./privacy-policy.html",
   "./terms.html",
+
+  // PWA files
   "./manifest.webmanifest",
   "./icon-192-4.png",
   "./icon-512-3.png",
+
+  // Additional resources
   "./mythica.mp3",
   "./robots.txt",
   "./sitemap.xml"
 ];
 
-/* ==============================
-   2. INSTALL EVENT
-================================ */
+/* =========================================================
+   2. HELPER FUNCTIONS
+========================================================= */
+
+function isValidResponse(response) {
+  return (
+    response &&
+    response.ok &&
+    response.type === "basic"
+  );
+}
+
+async function updateCache(cache, request) {
+  try {
+    const response = await fetch(request);
+
+    if (isValidResponse(response)) {
+      await cache.put(
+        request,
+        response.clone()
+      );
+    }
+  } catch (error) {
+    // Keep existing cached resources.
+  }
+}
+
+/* =========================================================
+   3. INSTALL EVENT
+========================================================= */
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
-      const cache = await caches.open(CACHE_NAME);
+      try {
+        const cache = await caches.open(CACHE_NAME);
 
-      await cache.addAll(APP_SHELL);
+        await cache.addAll(APP_SHELL);
 
-      await self.skipWaiting();
+        await self.skipWaiting();
+
+      } catch (error) {
+        console.error(
+          "Quiz Master installation failed:",
+          error
+        );
+
+        throw error;
+      }
     })()
   );
 });
 
-/* ==============================
-   3. ACTIVATE EVENT
-================================ */
+/* =========================================================
+   4. ACTIVATE EVENT
+========================================================= */
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
-      const cacheNames = await caches.keys();
+      try {
+        const cacheNames = await caches.keys();
 
-      await Promise.all(
-        cacheNames
-          .filter((name) =>
-            name.startsWith("quizmaster-cache-") &&
-            name !== CACHE_NAME
-          )
-          .map((name) => caches.delete(name))
-      );
+        await Promise.all(
+          cacheNames
+            .filter((name) =>
+              name.startsWith("quizmaster-cache-") &&
+              name !== CACHE_NAME
+            )
+            .map((name) => caches.delete(name))
+        );
 
-      await self.clients.claim();
+        await self.clients.claim();
+
+      } catch (error) {
+        console.error(
+          "Quiz Master activation failed:",
+          error
+        );
+
+        throw error;
+      }
     })()
   );
 });
 
-/* ==============================
-   4. FETCH EVENT
-================================ */
+/* =========================================================
+   5. FETCH EVENT
+========================================================= */
 
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
-  // Only handle GET requests.
+  // Handle GET requests only.
   if (request.method !== "GET") {
     return;
   }
 
   const url = new URL(request.url);
 
-  // Only handle requests from this origin.
+  // Handle same-origin requests only.
   if (url.origin !== self.location.origin) {
     return;
   }
 
-  // Do not cache API requests.
+  // Never cache API requests.
   if (url.pathname.includes("/api/")) {
     return;
   }
 
-  // Do not cache browser navigation outside the app.
+  // Ignore Vercel internal routes.
   if (url.pathname.includes("/_vercel/")) {
     return;
   }
@@ -112,19 +172,15 @@ self.addEventListener("fetch", (event) => {
     (async () => {
       const cache = await caches.open(CACHE_NAME);
 
-      /* --------------------------
-         HTML PAGE REQUESTS
-      --------------------------- */
+      /* -----------------------------------------
+         A. HTML NAVIGATION — NETWORK FIRST
+      ----------------------------------------- */
 
       if (request.mode === "navigate") {
         try {
           const networkResponse = await fetch(request);
 
-          if (
-            networkResponse &&
-            networkResponse.ok &&
-            networkResponse.type === "basic"
-          ) {
+          if (isValidResponse(networkResponse)) {
             await cache.put(
               request,
               networkResponse.clone()
@@ -134,19 +190,26 @@ self.addEventListener("fetch", (event) => {
           return networkResponse;
 
         } catch (error) {
+          // Try the exact requested page.
           const cachedPage = await cache.match(request);
 
           if (cachedPage) {
             return cachedPage;
           }
 
-          const homePage = await cache.match("./index.html");
+          // Try the cached home page.
+          const homePage = await cache.match(
+            "./index.html"
+          );
 
           if (homePage) {
             return homePage;
           }
 
-          const offlinePage = await cache.match("./offline.html");
+          // Try the offline page.
+          const offlinePage = await cache.match(
+            "./offline.html"
+          );
 
           if (offlinePage) {
             return offlinePage;
@@ -164,49 +227,30 @@ self.addEventListener("fetch", (event) => {
         }
       }
 
-      /* --------------------------
-         STATIC FILE REQUESTS
-      --------------------------- */
+      /* -----------------------------------------
+         B. STATIC RESOURCES — CACHE FIRST
+      ----------------------------------------- */
 
       const cachedResponse = await cache.match(request);
 
       if (cachedResponse) {
-        // Serve cached resource immediately.
-        // Update cache in the background when possible.
+        // Return cached resource immediately.
+        // Update the cache in the background.
         event.waitUntil(
-          fetch(request)
-            .then((response) => {
-              if (
-                response &&
-                response.ok &&
-                response.type === "basic"
-              ) {
-                return cache.put(
-                  request,
-                  response.clone()
-                );
-              }
-            })
-            .catch(() => {
-              // Keep the existing cached resource.
-            })
+          updateCache(cache, request)
         );
 
         return cachedResponse;
       }
 
-      /* --------------------------
-         NETWORK FALLBACK
-      --------------------------- */
+      /* -----------------------------------------
+         C. NETWORK FALLBACK
+      ----------------------------------------- */
 
       try {
         const networkResponse = await fetch(request);
 
-        if (
-          networkResponse &&
-          networkResponse.ok &&
-          networkResponse.type === "basic"
-        ) {
+        if (isValidResponse(networkResponse)) {
           await cache.put(
             request,
             networkResponse.clone()
@@ -230,19 +274,23 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-/* ==============================
-   5. MESSAGE EVENT
-================================ */
+/* =========================================================
+   6. MESSAGE EVENT
+========================================================= */
 
 self.addEventListener("message", (event) => {
-  if (!event.data) {
+  if (!event.data || typeof event.data.type !== "string") {
     return;
   }
 
+  // Activate the waiting service worker.
   if (event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
+    event.waitUntil(
+      self.skipWaiting()
+    );
   }
 
+  // Return current service worker version.
   if (event.data.type === "GET_VERSION") {
     if (event.ports && event.ports[0]) {
       event.ports[0].postMessage({
@@ -253,7 +301,6 @@ self.addEventListener("message", (event) => {
   }
 });
 
-/* ==============================
-   END OF QUIZ MASTER
-   SERVICE WORKER
-================================ */
+/* =========================================================
+   7. END
+========================================================= */
