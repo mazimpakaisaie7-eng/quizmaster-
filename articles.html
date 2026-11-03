@@ -1,56 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08172b">
 
   <title>Learning Centre | Quiz Master 🇷🇼</title>
 
-  <meta name="description" content="Learn with Quiz Master Learning Centre. Explore general knowledge and road safety lessons in English and Kinyarwanda.">
+  <meta
+    name="description"
+    content="Explore bilingual English and Kinyarwanda learning articles about road safety, science, geography, Rwanda and general knowledge."
+  >
 
-  <meta name="keywords" content="Quiz Master Rwanda, Learning Centre, General Knowledge, Road Safety, Ikinyarwanda, English">
+  <meta
+    name="robots"
+    content="index, follow"
+  >
 
-  <meta name="author" content="Quiz Master Rwanda">
-  <meta name="robots" content="index, follow">
-
-  <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/articles.html">
-
-  <link rel="icon" href="./icon-192-4.png">
-  <link rel="apple-touch-icon" href="./icon-192-4.png">
-  <link rel="manifest" href="./manifest.webmanifest">
-
-  <meta name="theme-color" content="#101827">
-
-  <meta property="og:title" content="Learning Centre | Quiz Master 🇷🇼">
-  <meta property="og:description" content="Explore educational lessons in English and Kinyarwanda.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://quizmaster-liard-five.vercel.app/articles.html">
+  <link
+    rel="canonical"
+    href="https://quizmaster-liard-five.vercel.app/articles.html"
+  >
 
   <style>
     :root {
-      --bg: #101827;
-      --panel: #182438;
-      --panel2: #202f45;
-      --text: #f1f5f9;
-      --muted: #aab8ca;
+      --bg: #08172b;
+      --panel: #10233d;
+      --panel-light: #172d49;
+      --text: #f3f7ff;
+      --muted: #aabbd0;
       --primary: #38bdf8;
-      --primary-dark: #0284c7;
-      --border: #334155;
-      --green: #22c55e;
-      --danger: #f87171;
+      --border: rgba(255,255,255,.12);
+      --success: #22c55e;
+      --danger: #fb7185;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
+      min-height: 100vh;
       background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
@@ -77,21 +68,17 @@
     }
 
     header {
-      background: #0b1220;
+      background: #0c1d34;
       border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 20;
+      padding: 16px 0;
     }
 
-    .nav {
-      min-height: 64px;
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
-      padding: 10px 0;
     }
 
     .brand {
@@ -100,71 +87,68 @@
       color: white;
     }
 
-    .nav-actions {
+    .header-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 9px;
     }
 
-    .nav-button,
-    .language-button {
+    .btn {
       border: 1px solid var(--border);
-      background: var(--panel);
+      background: var(--panel-light);
       color: white;
       border-radius: 9px;
-      padding: 8px 13px;
+      padding: 9px 14px;
       font-weight: 700;
+      transition: .2s;
     }
 
-    .nav-button:hover,
-    .language-button:hover {
+    .btn:hover {
       border-color: var(--primary);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #062033;
+    }
+
+    main {
+      padding: 35px 0 55px;
     }
 
     .hero {
       text-align: center;
-      padding: 45px 12px 30px;
+      margin-bottom: 30px;
     }
 
     .hero h1 {
-      font-size: clamp(27px, 5vw, 42px);
       margin: 0 0 10px;
+      font-size: clamp(27px, 5vw, 38px);
       line-height: 1.2;
     }
 
     .hero p {
       color: var(--muted);
-      max-width: 650px;
+      max-width: 680px;
       margin: 0 auto;
     }
 
-    .hero-tag {
-      display: inline-block;
-      color: #7dd3fc;
-      background: #082f49;
-      border: 1px solid #075985;
-      border-radius: 30px;
-      padding: 5px 13px;
-      margin-bottom: 15px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .toolbar {
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-      margin: 15px auto 25px;
+    .controls {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 17px;
+      margin-bottom: 22px;
     }
 
     .search-box {
       width: 100%;
-      background: var(--panel);
-      color: white;
+      padding: 13px 14px;
+      border-radius: 9px;
       border: 1px solid var(--border);
-      border-radius: 11px;
-      padding: 13px 15px;
+      background: #08172b;
+      color: white;
       outline: none;
     }
 
@@ -174,46 +158,46 @@
 
     .filters {
       display: flex;
-      gap: 9px;
       flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 14px;
     }
 
-    .filter-button {
-      border: 1px solid var(--border);
-      border-radius: 30px;
+    .filter-btn {
       padding: 8px 14px;
-      background: var(--panel);
-      color: var(--text);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
       font-weight: 700;
     }
 
-    .filter-button.active {
-      background: var(--primary-dark);
+    .filter-btn.active {
+      background: var(--primary);
+      color: #062033;
       border-color: var(--primary);
-      color: white;
     }
 
-    .stats {
+    .results-info {
       color: var(--muted);
       font-size: 14px;
-      margin: 12px 0;
+      margin: 15px 2px;
     }
 
     .articles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
       gap: 16px;
-      padding-bottom: 30px;
     }
 
     .article-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 19px;
       display: flex;
       flex-direction: column;
-      min-height: 220px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 18px;
+      min-height: 190px;
       transition: transform .2s, border-color .2s;
     }
 
@@ -224,703 +208,1107 @@
 
     .category-label {
       display: inline-block;
-      width: fit-content;
-      font-size: 12px;
+      align-self: flex-start;
+      font-size: 11px;
       font-weight: 800;
-      padding: 4px 9px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(56,189,248,.12);
       border-radius: 20px;
-      background: #082f49;
-      color: #7dd3fc;
-      margin-bottom: 11px;
+      padding: 4px 9px;
+      margin-bottom: 10px;
     }
 
     .article-card h2 {
       font-size: 18px;
-      line-height: 1.4;
+      line-height: 1.35;
       margin: 0 0 9px;
     }
 
     .article-card p {
       color: var(--muted);
       font-size: 14px;
-      margin: 0 0 18px;
-      flex: 1;
+      margin: 0 0 16px;
     }
 
-    .read-button {
-      width: 100%;
+    .read-link {
+      margin-top: auto;
+      align-self: flex-start;
+      color: var(--primary);
+      background: transparent;
       border: none;
-      border-radius: 9px;
-      background: var(--primary-dark);
-      color: white;
-      padding: 10px 13px;
+      padding: 0;
       font-weight: 800;
     }
 
-    .read-button:hover {
-      background: #0369a1;
-    }
-
-    .message {
-      text-align: center;
-      padding: 30px 15px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--muted);
-      margin: 20px 0 35px;
-    }
-
-    .message.error {
-      color: #fecaca;
-      border-color: #7f1d1d;
-    }
-
-    .message button {
-      margin-top: 12px;
-      padding: 9px 16px;
-      border: 0;
-      border-radius: 8px;
-      background: var(--primary-dark);
-      color: white;
-      font-weight: 700;
-    }
-
     .reader {
-      display: none;
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: clamp(17px, 4vw, 32px);
-      margin: 10px 0 35px;
+      border-radius: 14px;
+      padding: clamp(18px, 4vw, 30px);
     }
 
-    .reader h2 {
-      font-size: clamp(22px, 4vw, 30px);
+    .reader h1 {
+      font-size: clamp(24px, 4vw, 34px);
       line-height: 1.3;
-      margin: 10px 0;
+      margin: 12px 0;
     }
 
     .reader-description {
       color: var(--muted);
-      margin: 0 0 20px;
-      font-size: 15px;
+      font-size: 16px;
+      margin-bottom: 24px;
     }
 
     .reader-content {
+      color: #e2eaf5;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
-      line-height: 1.85;
       font-size: 16px;
-      color: #e2e8f0;
+      line-height: 1.85;
     }
 
-    .back-button {
-      background: var(--panel2);
-      color: white;
-      border: 1px solid var(--border);
-      padding: 9px 14px;
-      border-radius: 9px;
-      font-weight: 700;
-      margin-bottom: 15px;
+    .reader-content p {
+      margin: 0 0 17px;
     }
 
-    .back-button:hover {
-      border-color: var(--primary);
+    .back-btn {
+      margin-bottom: 18px;
     }
 
-    .reader-footer {
-      border-top: 1px solid var(--border);
-      margin-top: 25px;
-      padding-top: 17px;
-    }
-
-    .reader-footer a {
-      color: #7dd3fc;
-      font-weight: 700;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      margin-top: 25px;
-      padding: 25px 10px;
+    .message {
       text-align: center;
+      padding: 35px 15px;
       color: var(--muted);
-      font-size: 14px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
     }
 
-    footer a {
-      color: #7dd3fc;
-      margin: 0 7px;
+    .message.error {
+      color: #fecaca;
+      border-color: rgba(251,113,133,.4);
     }
 
     .hidden {
       display: none !important;
     }
 
+    footer {
+      border-top: 1px solid var(--border);
+      background: #0c1d34;
+      padding: 22px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 9px;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
     @media (max-width: 520px) {
-      .nav {
-        justify-content: center;
+      .header-inner {
+        align-items: flex-start;
       }
 
       .brand {
-        width: 100%;
-        text-align: center;
+        font-size: 16px;
       }
 
-      .nav-actions {
-        justify-content: center;
+      .btn {
+        padding: 8px 10px;
+        font-size: 13px;
       }
 
-      .hero {
-        padding-top: 30px;
+      main {
+        padding-top: 25px;
       }
 
       .articles-grid {
         grid-template-columns: 1fr;
       }
-
-      .article-card {
-        min-height: 190px;
-      }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Quiz Master Learning Centre",
-    "url": "https://quizmaster-liard-five.vercel.app/articles.html",
-    "description": "Educational lessons in English and Kinyarwanda about general knowledge and road safety.",
-    "inLanguage": ["en", "rw"]
-  }
-  </script>
 </head>
 
 <body>
 
 <header>
-  <div class="container nav">
-    <a class="brand" href="./index.html">🧠 Quiz Master 🇷🇼</a>
+  <div class="container header-inner">
 
-    <div class="nav-actions">
-      <button class="language-button" id="languageButton" type="button">
+    <a class="brand" href="./index.html">
+      🧠 Quiz Master 🇷🇼
+    </a>
+
+    <div class="header-actions">
+      <button
+        class="btn"
+        id="languageBtn"
+        type="button"
+      >
         Kinyarwanda
       </button>
 
-      <a class="nav-button" href="./index.html" id="homeLink">
-        🏠 Home
+      <a
+        class="btn btn-primary"
+        href="./index.html"
+        id="homeLink"
+      >
+        Home
       </a>
     </div>
+
   </div>
 </header>
 
 <main class="container">
 
-  <section class="hero">
-    <span class="hero-tag" id="heroTag">LEARN • DISCOVER • IMPROVE</span>
-
-    <h1 id="pageTitle">📚 Learning Centre</h1>
+  <section class="hero" id="heroSection">
+    <h1 id="pageTitle">Learning Centre</h1>
 
     <p id="pageDescription">
-      Explore educational lessons and improve your knowledge in different subjects.
+      Explore useful lessons and improve your knowledge
+      through English and Kinyarwanda articles.
     </p>
   </section>
 
   <section id="listSection">
 
-    <div class="toolbar">
+    <div class="controls">
 
       <input
         type="search"
         id="searchInput"
         class="search-box"
         placeholder="Search lessons..."
+        autocomplete="off"
         aria-label="Search lessons"
       >
 
       <div class="filters">
+
         <button
-          class="filter-button active"
+          class="filter-btn active"
+          type="button"
           data-category="all"
-          type="button"
-          id="allButton"
         >
-          All Lessons
+          All
         </button>
 
         <button
-          class="filter-button"
+          class="filter-btn"
+          type="button"
           data-category="general"
-          type="button"
-          id="generalButton"
         >
-          🌍 General Knowledge
+          General Knowledge
         </button>
 
         <button
-          class="filter-button"
-          data-category="traffic"
+          class="filter-btn"
           type="button"
-          id="trafficButton"
+          data-category="traffic"
         >
-          🚦 Road Safety
+          Road Safety
         </button>
+
       </div>
 
     </div>
 
-    <div class="stats" id="stats">
+    <p
+      class="results-info"
+      id="resultsInfo"
+      aria-live="polite"
+    >
       Loading lessons...
+    </p>
+
+    <div
+      class="articles-grid"
+      id="articlesGrid"
+    ></div>
+
+    <div
+      class="message hidden"
+      id="emptyMessage"
+    >
+      No lessons found.
     </div>
-
-    <div id="articlesGrid" class="articles-grid"></div>
-
-    <div id="statusMessage" class="message hidden" role="status"></div>
 
   </section>
 
-  <section id="readerSection" class="reader">
+  <section
+    class="reader hidden"
+    id="readerSection"
+  >
 
-    <button class="back-button" id="backButton" type="button">
+    <button
+      class="btn back-btn"
+      id="backBtn"
+      type="button"
+    >
       ← Back to lessons
     </button>
 
-    <span class="category-label" id="readerCategory"></span>
+    <div id="readerCategory" class="category-label"></div>
 
-    <h2 id="readerTitle"></h2>
+    <h1 id="readerTitle"></h1>
 
-    <p class="reader-description" id="readerDescription"></p>
+    <p
+      class="reader-description"
+      id="readerDescription"
+    ></p>
 
-    <div class="reader-content" id="readerContent"></div>
-
-    <div class="reader-footer">
-      <button class="back-button" id="readerBackButton" type="button">
-        ← Back to lessons
-      </button>
-      <p>
-        <a href="./index.html" id="playLink">
-          🧠 Go to Quiz Master
-        </a>
-      </p>
-    </div>
+    <div
+      class="reader-content"
+      id="readerContent"
+    ></div>
 
   </section>
+
+  <div
+    class="message hidden"
+    id="errorMessage"
+    role="alert"
+  ></div>
 
 </main>
 
 <footer>
-  <p>© <span id="year"></span> Quiz Master 🇷🇼</p>
+  <div class="container">
 
-  <p id="footerText">
-    Learn • Play • Improve
-  </p>
+    <div id="footerText">
+      © Quiz Master Rwanda. Learn • Play • Improve.
+    </div>
 
-  <p>
-    <a href="./index.html" id="footerHome">Home</a>
-    <a href="./about.html">About</a>
-    <a href="./contact.html">Contact</a>
-    <a href="./privacy-policy.html">Privacy</a>
-  </p>
+    <nav class="footer-links">
+
+      <a href="./index.html" id="footerHome">Home</a>
+
+      <a href="./about.html" id="footerAbout">About</a>
+
+      <a href="./contact.html" id="footerContact">Contact</a>
+
+      <a href="./privacy-policy.html" id="footerPrivacy">
+        Privacy Policy
+      </a>
+
+      <a href="./terms.html" id="footerTerms">
+        Terms
+      </a>
+
+    </nav>
+
+  </div>
 </footer>
 
 <script>
-(() => {
-  "use strict";
+"use strict";
 
-  const ARTICLES_URL = "./articles.json";
+/* =====================================
+   QUIZ MASTER ARTICLES CONFIGURATION
+===================================== */
 
-  const translations = {
-    en: {
-      languageButton: "Kinyarwanda",
-      home: "🏠 Home",
-      heroTag: "LEARN • DISCOVER • IMPROVE",
-      pageTitle: "📚 Learning Centre",
-      pageDescription: "Explore educational lessons and improve your knowledge in different subjects.",
-      search: "Search lessons...",
-      all: "All Lessons",
-      general: "🌍 General Knowledge",
-      traffic: "🚦 Road Safety",
-      loading: "Loading lessons...",
-      loaded: "lessons available",
-      read: "Read Lesson →",
-      back: "← Back to lessons",
-      play: "🧠 Go to Quiz Master",
-      noResults: "No lessons found. Try another search.",
-      loadError: "We could not load articles.json. Please check that the file exists in the root folder and contains valid JSON.",
-      retry: "Try Again",
-      generalName: "General Knowledge",
-      trafficName: "Road Safety",
-      footer: "Learn • Play • Improve"
-    },
+const ARTICLES_URL = "./articles.json";
 
-    rw: {
-      languageButton: "English",
-      home: "🏠 Ahabanza",
-      heroTag: "IGA • MENYA • TERA IMBERE",
-      pageTitle: "📚 Isomero ry'Amasomo",
-      pageDescription: "Soma amasomo agufasha kongera ubumenyi mu byiciro bitandukanye.",
-      search: "Shakisha isomo...",
-      all: "Amasomo Yose",
-      general: "🌍 Ubumenyi Rusange",
-      traffic: "🚦 Umutekano wo mu Muhanda",
-      loading: "Turimo gufungura amasomo...",
-      loaded: "amasomo arahari",
-      read: "Soma Isomo →",
-      back: "← Subira ku masomo",
-      play: "🧠 Jya kuri Quiz Master",
-      noResults: "Nta somo ribonetse. Gerageza gushakisha irindi.",
-      loadError: "Ntitwabashije gufungura articles.json. Reba niba dosiye ihari muri root folder kandi ifite JSON itunganye.",
-      retry: "Ongera ugerageze",
-      generalName: "Ubumenyi Rusange",
-      trafficName: "Umutekano wo mu Muhanda",
-      footer: "Iga • Kina • Tera Imbere"
-    }
-  };
+const translations = {
 
-  const elements = {
-    languageButton: document.getElementById("languageButton"),
-    homeLink: document.getElementById("homeLink"),
-    heroTag: document.getElementById("heroTag"),
-    pageTitle: document.getElementById("pageTitle"),
-    pageDescription: document.getElementById("pageDescription"),
-    searchInput: document.getElementById("searchInput"),
-    allButton: document.getElementById("allButton"),
-    generalButton: document.getElementById("generalButton"),
-    trafficButton: document.getElementById("trafficButton"),
-    stats: document.getElementById("stats"),
-    articlesGrid: document.getElementById("articlesGrid"),
-    statusMessage: document.getElementById("statusMessage"),
-    listSection: document.getElementById("listSection"),
-    readerSection: document.getElementById("readerSection"),
-    backButton: document.getElementById("backButton"),
-    readerBackButton: document.getElementById("readerBackButton"),
-    readerCategory: document.getElementById("readerCategory"),
-    readerTitle: document.getElementById("readerTitle"),
-    readerDescription: document.getElementById("readerDescription"),
-    readerContent: document.getElementById("readerContent"),
-    playLink: document.getElementById("playLink"),
-    footerText: document.getElementById("footerText"),
-    footerHome: document.getElementById("footerHome")
-  };
+  en: {
+    pageTitle: "Learning Centre",
 
-  let language = "en";
-  let articles = [];
-  let activeCategory = "all";
-  let currentArticle = null;
-  let isLoading = false;
+    pageDescription:
+      "Explore useful lessons and improve your knowledge through English and Kinyarwanda articles.",
 
-  function getText(value) {
-    if (typeof value === "string") {
-      return value;
-    }
+    searchPlaceholder: "Search lessons...",
 
-    if (value && typeof value === "object") {
-      return value[language] || value.en || value.rw || "";
-    }
+    all: "All",
 
-    return "";
+    general: "General Knowledge",
+
+    traffic: "Road Safety",
+
+    readMore: "Read lesson →",
+
+    back: "← Back to lessons",
+
+    home: "Home",
+
+    about: "About",
+
+    contact: "Contact",
+
+    privacy: "Privacy Policy",
+
+    terms: "Terms",
+
+    loading: "Loading lessons...",
+
+    results: "lessons found",
+
+    noResults: "No lessons found. Try another search.",
+
+    loadError:
+      "Unable to load lessons. Please check your internet connection and try again.",
+
+    invalidData:
+      "The articles file contains invalid data. Please check articles.json.",
+
+    articleNotFound:
+      "This lesson could not be found.",
+
+    trafficLabel: "Road Safety",
+
+    generalLabel: "General Knowledge",
+
+    footer:
+      "© Quiz Master Rwanda. Learn • Play • Improve."
+  },
+
+  rw: {
+    pageTitle: "Isomero ry'Ubwenge",
+
+    pageDescription:
+      "Soma amasomo agufasha kongera ubumenyi mu Kinyarwanda no mu Cyongereza.",
+
+    searchPlaceholder: "Shakisha amasomo...",
+
+    all: "Byose",
+
+    general: "Ubumenyi Rusange",
+
+    traffic: "Amategeko y'Umuhanda",
+
+    readMore: "Soma isomo →",
+
+    back: "← Subira ku masomo",
+
+    home: "Ahabanza",
+
+    about: "Abo turi bo",
+
+    contact: "Twandikire",
+
+    privacy: "Politiki y'Ibanga",
+
+    terms: "Amategeko",
+
+    loading: "Amasomo arimo gufunguka...",
+
+    results: "amasomo yabonetse",
+
+    noResults:
+      "Nta somo ribonetse. Gerageza gushakisha andi magambo.",
+
+    loadError:
+      "Ntibishobotse gufungura amasomo. Reba internet wongere ugerageze.",
+
+    invalidData:
+      "Amakuru yo muri articles.json afite amakosa. Ongera ugenzure iyo dosiye.",
+
+    articleNotFound:
+      "Iri somo ntiryabonetse.",
+
+    trafficLabel: "Amategeko y'Umuhanda",
+
+    generalLabel: "Ubumenyi Rusange",
+
+    footer:
+      "© Quiz Master Rwanda. Iga • Kina • Ongera ubumenyi."
   }
 
-  function setLanguage(nextLanguage) {
-    language = nextLanguage;
+};
 
-    const t = translations[language];
 
-    document.documentElement.lang = language;
+/* =====================================
+   APPLICATION STATE
+===================================== */
 
-    elements.languageButton.textContent = t.languageButton;
-    elements.homeLink.textContent = t.home;
-    elements.heroTag.textContent = t.heroTag;
-    elements.pageTitle.textContent = t.pageTitle;
-    elements.pageDescription.textContent = t.pageDescription;
-    elements.searchInput.placeholder = t.search;
-    elements.searchInput.setAttribute("aria-label", t.search);
+let articles = [];
 
-    elements.allButton.textContent = t.all;
-    elements.generalButton.textContent = t.general;
-    elements.trafficButton.textContent = t.traffic;
+let currentLanguage = "en";
 
-    elements.backButton.textContent = t.back;
-    elements.readerBackButton.textContent = t.back;
-    elements.playLink.textContent = t.play;
-    elements.footerText.textContent = t.footer;
-    elements.footerHome.textContent = language === "rw" ? "Ahabanza" : "Home";
+let currentCategory = "all";
 
-    if (currentArticle) {
-      showArticle(currentArticle, false);
-    } else {
-      renderArticles();
-    }
+let currentSearch = "";
+
+let currentArticleId = null;
+
+
+/* =====================================
+   HTML ELEMENTS
+===================================== */
+
+const elements = {
+
+  languageBtn: document.getElementById("languageBtn"),
+
+  homeLink: document.getElementById("homeLink"),
+
+  pageTitle: document.getElementById("pageTitle"),
+
+  pageDescription:
+    document.getElementById("pageDescription"),
+
+  searchInput:
+    document.getElementById("searchInput"),
+
+  filterButtons:
+    document.querySelectorAll(".filter-btn"),
+
+  resultsInfo:
+    document.getElementById("resultsInfo"),
+
+  articlesGrid:
+    document.getElementById("articlesGrid"),
+
+  emptyMessage:
+    document.getElementById("emptyMessage"),
+
+  listSection:
+    document.getElementById("listSection"),
+
+  readerSection:
+    document.getElementById("readerSection"),
+
+  readerCategory:
+    document.getElementById("readerCategory"),
+
+  readerTitle:
+    document.getElementById("readerTitle"),
+
+  readerDescription:
+    document.getElementById("readerDescription"),
+
+  readerContent:
+    document.getElementById("readerContent"),
+
+  backBtn:
+    document.getElementById("backBtn"),
+
+  errorMessage:
+    document.getElementById("errorMessage"),
+
+  footerText:
+    document.getElementById("footerText"),
+
+  footerHome:
+    document.getElementById("footerHome"),
+
+  footerAbout:
+    document.getElementById("footerAbout"),
+
+  footerContact:
+    document.getElementById("footerContact"),
+
+  footerPrivacy:
+    document.getElementById("footerPrivacy"),
+
+  footerTerms:
+    document.getElementById("footerTerms")
+
+};
+
+
+/* =====================================
+   LANGUAGE HELPERS
+===================================== */
+
+function t(key) {
+
+  return translations[currentLanguage][key]
+    || translations.en[key]
+    || key;
+
+}
+
+
+function getText(value) {
+
+  if (typeof value === "string") {
+    return value;
   }
 
-  function categoryName(category) {
-    const t = translations[language];
+  if (
+    value &&
+    typeof value === "object" &&
+    !Array.isArray(value)
+  ) {
 
-    if (category === "traffic") {
-      return t.trafficName;
-    }
+    const selected =
+      value[currentLanguage];
 
-    return t.generalName;
-  }
-
-  function showMessage(message, isError = false, showRetry = false) {
-    elements.statusMessage.replaceChildren();
-    elements.statusMessage.classList.remove("hidden", "error");
-
-    if (isError) {
-      elements.statusMessage.classList.add("error");
-    }
-
-    const paragraph = document.createElement("p");
-    paragraph.textContent = message;
-    elements.statusMessage.appendChild(paragraph);
-
-    if (showRetry) {
-      const retryButton = document.createElement("button");
-      retryButton.type = "button";
-      retryButton.textContent = translations[language].retry;
-      retryButton.addEventListener("click", loadArticles);
-      elements.statusMessage.appendChild(retryButton);
-    }
-  }
-
-  function hideMessage() {
-    elements.statusMessage.classList.add("hidden");
-    elements.statusMessage.replaceChildren();
-  }
-
-  function validateArticles(data) {
     if (
-      !data ||
-      typeof data !== "object" ||
-      !Array.isArray(data.articles)
+      typeof selected === "string" &&
+      selected.trim()
     ) {
-      throw new Error("Invalid articles.json structure");
+      return selected;
     }
 
-    const validArticles = data.articles.filter(article => {
-      return (
-        article &&
-        typeof article.id === "string" &&
-        typeof article.category === "string" &&
-        ["general", "traffic"].includes(article.category) &&
+    const english = value.en;
+
+    if (
+      typeof english === "string" &&
+      english.trim()
+    ) {
+      return english;
+    }
+
+    const kinyarwanda = value.rw;
+
+    if (
+      typeof kinyarwanda === "string" &&
+      kinyarwanda.trim()
+    ) {
+      return kinyarwanda;
+    }
+
+  }
+
+  return "";
+
+}
+
+
+/* =====================================
+   VALIDATE ARTICLES JSON
+===================================== */
+
+function validateArticles(data) {
+
+  if (
+    !data ||
+    typeof data !== "object" ||
+    Array.isArray(data)
+  ) {
+    throw new Error("Invalid JSON structure.");
+  }
+
+  if (
+    !Array.isArray(data.articles)
+  ) {
+    throw new Error("Missing articles array.");
+  }
+
+  const validCategories = [
+    "traffic",
+    "general"
+  ];
+
+  const seenIds = new Set();
+
+  const validArticles = data.articles.filter(article => {
+
+    if (
+      !article ||
+      typeof article !== "object" ||
+      Array.isArray(article)
+    ) {
+      return false;
+    }
+
+    if (
+      typeof article.id !== "string" ||
+      !article.id.trim()
+    ) {
+      return false;
+    }
+
+    if (seenIds.has(article.id)) {
+      return false;
+    }
+
+    if (
+      typeof article.category !== "string" ||
+      !validCategories.includes(article.category)
+    ) {
+      return false;
+    }
+
+    const hasTitle =
+      getText(article.title).trim().length > 0 ||
+      (
         article.title &&
+        typeof article.title === "object" &&
+        (
+          typeof article.title.en === "string" ||
+          typeof article.title.rw === "string"
+        )
+      );
+
+    const hasDescription =
+      getText(article.description).trim().length > 0 ||
+      (
         article.description &&
-        article.content
-      );
-    });
-
-    return validArticles;
-  }
-
-  async function loadArticles() {
-    if (isLoading) return;
-
-    isLoading = true;
-    hideMessage();
-
-    elements.stats.textContent = translations[language].loading;
-    elements.articlesGrid.replaceChildren();
-
-    try {
-      const response = await fetch(ARTICLES_URL, {
-        cache: "no-store"
-      });
-
-      if (!response.ok) {
-        throw new Error("HTTP " + response.status);
-      }
-
-      const data = await response.json();
-
-      articles = validateArticles(data);
-
-      if (articles.length === 0) {
-        throw new Error("No valid articles found");
-      }
-
-      renderArticles();
-
-    } catch (error) {
-      console.error("Quiz Master Articles Error:", error);
-
-      articles = [];
-      elements.stats.textContent = "";
-      elements.articlesGrid.replaceChildren();
-
-      showMessage(
-        translations[language].loadError,
-        true,
-        true
+        typeof article.description === "object" &&
+        (
+          typeof article.description.en === "string" ||
+          typeof article.description.rw === "string"
+        )
       );
 
-    } finally {
-      isLoading = false;
+    const hasContent =
+      getText(article.content).trim().length > 0 ||
+      (
+        article.content &&
+        typeof article.content === "object" &&
+        (
+          typeof article.content.en === "string" ||
+          typeof article.content.rw === "string"
+        )
+      );
+
+    if (
+      !hasTitle ||
+      !hasDescription ||
+      !hasContent
+    ) {
+      return false;
     }
+
+    seenIds.add(article.id);
+
+    return true;
+
+  });
+
+  if (validArticles.length === 0) {
+    throw new Error("No valid articles found.");
   }
 
-  function getFilteredArticles() {
-    const searchTerm = elements.searchInput.value
-      .trim()
-      .toLowerCase();
+  return validArticles;
 
-    return articles.filter(article => {
-      const matchesCategory =
-        activeCategory === "all" ||
-        article.category === activeCategory;
+}
 
-      const title = getText(article.title).toLowerCase();
-      const description = getText(article.description).toLowerCase();
-      const content = getText(article.content).toLowerCase();
 
-      const matchesSearch =
-        !searchTerm ||
-        title.includes(searchTerm) ||
-        description.includes(searchTerm) ||
-        content.includes(searchTerm);
+/* =====================================
+   LOAD ARTICLES FROM JSON
+===================================== */
 
-      return matchesCategory && matchesSearch;
-    });
+async function loadArticles() {
+
+  elements.resultsInfo.textContent =
+    t("loading");
+
+  elements.articlesGrid.innerHTML = "";
+
+  elements.errorMessage.classList.add("hidden");
+
+  try {
+
+    const response = await fetch(
+      ARTICLES_URL,
+      {
+        method: "GET",
+        cache: "no-store"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        "HTTP error: " + response.status
+      );
+    }
+
+    const data = await response.json();
+
+    articles = validateArticles(data);
+
+    renderArticles();
+
+  } catch (error) {
+
+    console.error(
+      "Quiz Master Articles Error:",
+      error
+    );
+
+    elements.resultsInfo.textContent = "";
+
+    elements.articlesGrid.innerHTML = "";
+
+    elements.errorMessage.textContent =
+      error instanceof SyntaxError
+        ? t("invalidData")
+        : t("loadError");
+
+    elements.errorMessage.classList.remove("hidden");
+
   }
 
-  function createArticleCard(article) {
-    const t = translations[language];
+}
+
+
+/* =====================================
+   CATEGORY LABEL
+===================================== */
+
+function getCategoryLabel(category) {
+
+  if (category === "traffic") {
+    return t("trafficLabel");
+  }
+
+  return t("generalLabel");
+
+}
+
+
+/* =====================================
+   SEARCH AND FILTER
+===================================== */
+
+function getFilteredArticles() {
+
+  return articles.filter(article => {
+
+    const matchesCategory =
+      currentCategory === "all" ||
+      article.category === currentCategory;
+
+    const searchableText = [
+
+      getText(article.title),
+
+      getText(article.description),
+
+      getText(article.content),
+
+      article.id,
+
+      article.category
+
+    ].join(" ").toLowerCase();
+
+    const matchesSearch =
+      searchableText.includes(
+        currentSearch.toLowerCase()
+      );
+
+    return matchesCategory && matchesSearch;
+
+  });
+
+}
+
+
+/* =====================================
+   DISPLAY ARTICLES
+===================================== */
+
+function renderArticles() {
+
+  const filteredArticles =
+    getFilteredArticles();
+
+  elements.articlesGrid.innerHTML = "";
+
+  elements.emptyMessage.classList.add("hidden");
+
+  elements.resultsInfo.textContent =
+    filteredArticles.length + " " + t("results");
+
+  if (filteredArticles.length === 0) {
+
+    elements.emptyMessage.textContent =
+      t("noResults");
+
+    elements.emptyMessage.classList.remove("hidden");
+
+    return;
+
+  }
+
+  filteredArticles.forEach(article => {
 
     const card = document.createElement("article");
+
     card.className = "article-card";
 
     const category = document.createElement("span");
+
     category.className = "category-label";
-    category.textContent = categoryName(article.category);
+
+    category.textContent =
+      getCategoryLabel(article.category);
 
     const title = document.createElement("h2");
-    title.textContent = getText(article.title);
 
-    const description = document.createElement("p");
-    description.textContent = getText(article.description);
-
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "read-button";
-    button.textContent = t.read;
-
-    button.addEventListener("click", () => {
-      showArticle(article);
-    });
-
-    card.append(
-      category,
-      title,
-      description,
-      button
-    );
-
-    return card;
-  }
-
-  function renderArticles() {
-    const t = translations[language];
-    const filtered = getFilteredArticles();
-
-    elements.articlesGrid.replaceChildren();
-    hideMessage();
-
-    elements.stats.textContent =
-      filtered.length + " " + t.loaded;
-
-    if (filtered.length === 0) {
-      showMessage(t.noResults);
-      return;
-    }
-
-    const fragment = document.createDocumentFragment();
-
-    filtered.forEach(article => {
-      fragment.appendChild(createArticleCard(article));
-    });
-
-    elements.articlesGrid.appendChild(fragment);
-  }
-
-  function showArticle(article, scroll = true) {
-    if (!article) return;
-
-    currentArticle = article;
-
-    elements.listSection.classList.add("hidden");
-    elements.readerSection.style.display = "block";
-
-    elements.readerCategory.textContent =
-      categoryName(article.category);
-
-    elements.readerTitle.textContent =
+    title.textContent =
       getText(article.title);
 
-    elements.readerDescription.textContent =
+    const description = document.createElement("p");
+
+    description.textContent =
       getText(article.description);
 
-    elements.readerContent.textContent =
-      getText(article.content);
+    const readButton = document.createElement("button");
 
-    if (scroll) {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
+    readButton.type = "button";
+
+    readButton.className = "read-link";
+
+    readButton.textContent = t("readMore");
+
+    readButton.addEventListener("click", () => {
+
+      openArticle(article.id);
+
+    });
+
+    card.appendChild(category);
+
+    card.appendChild(title);
+
+    card.appendChild(description);
+
+    card.appendChild(readButton);
+
+    elements.articlesGrid.appendChild(card);
+
+  });
+
+}
+
+
+/* =====================================
+   OPEN ONE ARTICLE
+===================================== */
+
+function openArticle(articleId) {
+
+  const article = articles.find(item => {
+
+    return item.id === articleId;
+
+  });
+
+  if (!article) {
+
+    elements.errorMessage.textContent =
+      t("articleNotFound");
+
+    elements.errorMessage.classList.remove("hidden");
+
+    return;
+
   }
 
-  function showArticleList() {
-    currentArticle = null;
+  currentArticleId = articleId;
 
-    elements.readerSection.style.display = "none";
-    elements.listSection.classList.remove("hidden");
+  elements.readerCategory.textContent =
+    getCategoryLabel(article.category);
+
+  elements.readerTitle.textContent =
+    getText(article.title);
+
+  elements.readerDescription.textContent =
+    getText(article.description);
+
+  elements.readerContent.textContent =
+    getText(article.content);
+
+  elements.listSection.classList.add("hidden");
+
+  elements.readerSection.classList.remove("hidden");
+
+  elements.errorMessage.classList.add("hidden");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/* =====================================
+   BACK TO ARTICLES
+===================================== */
+
+function showArticleList() {
+
+  currentArticleId = null;
+
+  elements.readerSection.classList.add("hidden");
+
+  elements.listSection.classList.remove("hidden");
+
+  elements.errorMessage.classList.add("hidden");
+
+  renderArticles();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/* =====================================
+   CHANGE LANGUAGE
+===================================== */
+
+function setLanguage(language) {
+
+  if (
+    language !== "en" &&
+    language !== "rw"
+  ) {
+    return;
+  }
+
+  currentLanguage = language;
+
+  document.documentElement.lang = language;
+
+  elements.languageBtn.textContent =
+    language === "en"
+      ? "Kinyarwanda"
+      : "English";
+
+  elements.pageTitle.textContent =
+    t("pageTitle");
+
+  elements.pageDescription.textContent =
+    t("pageDescription");
+
+  elements.searchInput.placeholder =
+    t("searchPlaceholder");
+
+  elements.searchInput.setAttribute(
+    "aria-label",
+    t("searchPlaceholder")
+  );
+
+  elements.homeLink.textContent =
+    t("home");
+
+  elements.footerHome.textContent =
+    t("home");
+
+  elements.footerAbout.textContent =
+    t("about");
+
+  elements.footerContact.textContent =
+    t("contact");
+
+  elements.footerPrivacy.textContent =
+    t("privacy");
+
+  elements.footerTerms.textContent =
+    t("terms");
+
+  elements.footerText.textContent =
+    t("footer");
+
+  elements.backBtn.textContent =
+    t("back");
+
+  elements.filterButtons.forEach(button => {
+
+    const category =
+      button.dataset.category;
+
+    button.textContent =
+      category === "all"
+        ? t("all")
+        : category === "traffic"
+          ? t("traffic")
+          : t("general");
+
+  });
+
+  if (currentArticleId) {
+
+    openArticle(currentArticleId);
+
+  } else {
 
     renderArticles();
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
   }
 
-  function selectCategory(category) {
-    activeCategory = category;
+}
 
-    document.querySelectorAll(".filter-button").forEach(button => {
-      button.classList.toggle(
-        "active",
-        button.dataset.category === category
-      );
-    });
+
+/* =====================================
+   EVENT LISTENERS
+===================================== */
+
+elements.languageBtn.addEventListener(
+  "click",
+  () => {
+
+    setLanguage(
+      currentLanguage === "en"
+        ? "rw"
+        : "en"
+    );
+
+  }
+);
+
+
+elements.searchInput.addEventListener(
+  "input",
+  event => {
+
+    currentSearch =
+      event.target.value.trim();
 
     renderArticles();
+
   }
+);
 
-  elements.languageButton.addEventListener("click", () => {
-    setLanguage(language === "en" ? "rw" : "en");
-  });
 
-  elements.searchInput.addEventListener("input", renderArticles);
+elements.filterButtons.forEach(button => {
 
-  document.querySelectorAll(".filter-button").forEach(button => {
-    button.addEventListener("click", () => {
-      selectCategory(button.dataset.category);
+  button.addEventListener("click", () => {
+
+    currentCategory =
+      button.dataset.category;
+
+    elements.filterButtons.forEach(item => {
+
+      item.classList.remove("active");
+
     });
+
+    button.classList.add("active");
+
+    renderArticles();
+
   });
 
-  elements.backButton.addEventListener("click", showArticleList);
-  elements.readerBackButton.addEventListener("click", showArticleList);
+});
 
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
 
-  setLanguage("en");
-  loadArticles();
+elements.backBtn.addEventListener(
+  "click",
+  showArticleList
+);
 
-})();
+
+/* =====================================
+   START APPLICATION
+===================================== */
+
+setLanguage("en");
+
+loadArticles();
+
 </script>
 
 </body>
