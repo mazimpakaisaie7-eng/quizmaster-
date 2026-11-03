@@ -1,0 +1,11 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" role="img" aria-labelledby="title">
+  <title id="title">No Parking Road Sign</title>
+  <rect width="500" height="500" fill="#ffffff"/>
+  <circle cx="250" cy="250" r="170" fill="#ffffff" stroke="#e60000" stroke-width="24"/>
+  <text x="250" y="295" text-anchor="middle"
+        font-family="Arial, sans-serif" font-size="150"
+        font-weight="bold" fill="#174a9c">P</text>
+  <line x1="125" y1="375" x2="375" y2="125"
+        stroke="#e60000" stroke-width="28" stroke-linecap="round"/>
+</svg>
