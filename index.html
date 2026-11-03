@@ -31,7 +31,7 @@
     gtag("config", "G-3FP8R0NDZN");
   </script>
 
-  <!-- GOOGLE ADSENSE -->
+  <!-- GOOGLE ADSENSE: KEEP CLIENT ID UNCHANGED -->
   <script
     async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
@@ -384,7 +384,7 @@
       width: 100%;
     }
 
-    /* ADSENSE CONTAINERS */
+    /* ONE HOME ADVERTISEMENT ONLY */
     .ad-container {
       display: block;
       width: 100%;
@@ -893,7 +893,7 @@
         <p id="homeMessage" role="status" aria-live="polite"></p>
       </div>
 
-      <!-- HOME ADVERTISEMENT: ONE AD ONLY -->
+      <!-- SINGLE HOME ADVERTISEMENT -->
       <div class="ad-container" id="homeAdContainer">
         <div class="ad-label">Advertisement</div>
 
@@ -1062,21 +1062,6 @@
 
       </div>
 
-      <!-- RESULTS ADVERTISEMENT: ONE AD ONLY -->
-      <!-- Placed AFTER all result buttons -->
-      <div class="ad-container" id="resultsAdContainer">
-        <div class="ad-label">Advertisement</div>
-
-        <ins
-          class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-2666698676518429"
-          data-ad-slot="9045712897"
-          data-ad-format="auto"
-          data-full-width-responsive="true">
-        </ins>
-      </div>
-
     </section>
 
     <!-- REVIEW SCREEN: NO ADS -->
@@ -1226,7 +1211,7 @@
     <p>
       <a href="./articles.html">Learning Centre</a>
       <a href="./about.html">About</a>
-      <a href="./privacy-policy.html">Privacy</a>
+      <a href="./privacy-policy.html">Privacy Policy</a>
       <a href="./terms.html">Terms</a>
       <a href="./contact.html">Contact</a>
     </p>
@@ -1379,20 +1364,12 @@
 
       function closeMenu() {
         menu.hidden = true;
-
-        toggle.setAttribute(
-          "aria-expanded",
-          "false"
-        );
+        toggle.setAttribute("aria-expanded", "false");
       }
 
       function openMenu() {
         menu.hidden = false;
-
-        toggle.setAttribute(
-          "aria-expanded",
-          "true"
-        );
+        toggle.setAttribute("aria-expanded", "true");
       }
 
       toggle.addEventListener("click", event => {
@@ -1438,180 +1415,73 @@
   <!-- SERVICE WORKER -->
   <script>
     if ("serviceWorker" in navigator) {
-
       window.addEventListener("load", () => {
-
         navigator.serviceWorker
           .register("./service-worker.js")
           .then(registration => {
-
             console.log(
               "Quiz Master Service Worker registered:",
               registration.scope
             );
-
           })
           .catch(error => {
-
             console.warn(
               "Service Worker registration failed:",
               error
             );
-
           });
-
       });
-
     }
   </script>
 
-  <!-- ADSENSE SCREEN CONTROLLER -->
+  <!-- ADSENSE: INITIALIZE THE SINGLE HOME AD -->
   <script>
     (() => {
       "use strict";
 
-      const initializedAds = new WeakSet();
+      function initializeHomeAd() {
+        const homeScreen = document.getElementById("homeScreen");
+        const ad = document.querySelector(
+          "#homeAdContainer ins.adsbygoogle"
+        );
 
-      function isScreenVisible(screen) {
-        if (!screen) return false;
+        if (!homeScreen || !ad) return;
 
-        if (!screen.classList.contains("active")) {
-          return false;
+        if (!homeScreen.classList.contains("active")) return;
+
+        if (ad.dataset.initialized === "true") return;
+
+        const container = ad.closest(".ad-container");
+
+        if (!container || container.getBoundingClientRect().width <= 0) {
+          return;
         }
 
-        if (screen.hidden) {
-          return false;
+        try {
+          ad.dataset.initialized = "true";
+
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (error) {
+          delete ad.dataset.initialized;
+
+          console.warn(
+            "AdSense initialization failed:",
+            error
+          );
         }
-
-        const style = window.getComputedStyle(screen);
-
-        return (
-          style.display !== "none" &&
-          style.visibility !== "hidden"
-        );
-      }
-
-      function initializeAdsOnScreen(screen) {
-        if (!isScreenVisible(screen)) return;
-
-        const ads = screen.querySelectorAll(
-          ".ad-container ins.adsbygoogle"
-        );
-
-        ads.forEach(ad => {
-
-          if (initializedAds.has(ad)) return;
-
-          if (ad.dataset.initialized === "true") {
-            initializedAds.add(ad);
-            return;
-          }
-
-          const container = ad.closest(".ad-container");
-
-          if (!container) return;
-
-          const rect = container.getBoundingClientRect();
-
-          if (rect.width <= 0) return;
-
-          try {
-
-            initializedAds.add(ad);
-
-            ad.dataset.initialized = "true";
-
-            (
-              window.adsbygoogle =
-              window.adsbygoogle || []
-            ).push({});
-
-          } catch (error) {
-
-            initializedAds.delete(ad);
-
-            delete ad.dataset.initialized;
-
-            console.warn(
-              "AdSense initialization failed:",
-              error
-            );
-
-          }
-
-        });
-      }
-
-      function initializeVisibleAds() {
-
-        const screens = document.querySelectorAll(
-          ".screen"
-        );
-
-        screens.forEach(screen => {
-
-          if (isScreenVisible(screen)) {
-            initializeAdsOnScreen(screen);
-          }
-
-        });
-
-      }
-
-      function startAdController() {
-
-        initializeVisibleAds();
-
-        const observer = new MutationObserver(() => {
-          initializeVisibleAds();
-        });
-
-        observer.observe(document.body, {
-          subtree: true,
-          childList: true,
-          attributes: true,
-          attributeFilter: [
-            "class",
-            "style",
-            "hidden"
-          ]
-        });
-
-        window.addEventListener(
-          "pageshow",
-          initializeVisibleAds
-        );
-
-        document.addEventListener(
-          "visibilitychange",
-          () => {
-            if (!document.hidden) {
-              initializeVisibleAds();
-            }
-          }
-        );
-
-        /*
-          Only Home and Results contain AdSense units.
-          Quiz, Review, Rounds and Settings contain none.
-        */
-
       }
 
       if (document.readyState === "loading") {
-
         document.addEventListener(
           "DOMContentLoaded",
-          startAdController,
+          initializeHomeAd,
           { once: true }
         );
-
       } else {
-
-        startAdController();
-
+        initializeHomeAd();
       }
 
+      window.addEventListener("pageshow", initializeHomeAd);
     })();
   </script>
 
