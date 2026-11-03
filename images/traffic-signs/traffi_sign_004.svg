@@ -1,11 +1,12 @@
 
 <svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" role="img" aria-labelledby="title">
-  <title id="title">No Parking Road Sign</title>
+  <title id="title">Pedestrian Crossing Road Sign</title>
   <rect width="500" height="500" fill="#ffffff"/>
-  <circle cx="250" cy="250" r="170" fill="#ffffff" stroke="#e60000" stroke-width="24"/>
-  <text x="250" y="295" text-anchor="middle"
-        font-family="Arial, sans-serif" font-size="150"
-        font-weight="bold" fill="#174a9c">P</text>
-  <line x1="125" y1="375" x2="375" y2="125"
-        stroke="#e60000" stroke-width="28" stroke-linecap="round"/>
+  <polygon points="250,45 455,420 45,420"
+           fill="#f5d900" stroke="#222222" stroke-width="16"/>
+  <circle cx="250" cy="185" r="28" fill="#222222"/>
+  <path d="M250 220 L225 290 L275 315 M225 290 L180 340 M225 290 L290 270 M275 315 L315 365"
+        fill="none" stroke="#222222" stroke-width="22"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M115 365 H385" stroke="#222222" stroke-width="12"/>
 </svg>
