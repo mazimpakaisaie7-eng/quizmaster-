@@ -536,11 +536,33 @@
         );
       }
 
-      allQuestions = rawQuestions
-        .map(normalizeQuestion)
-        .filter(Boolean);
+      const rejectedQuestions = [];
 
-      if (allQuestions.length === 0) {
+allQuestions = rawQuestions
+  .map((rawQuestion, index) => {
+    const question = normalizeQuestion(rawQuestion, index);
+
+    if (!question) {
+      rejectedQuestions.push({
+        questionNumber: index + 1,
+        data: rawQuestion
+      });
+    }
+
+    return question;
+  })
+  .filter(Boolean);
+
+console.log("IBIBAZO BYOSE:", rawQuestions.length);
+console.log("IBIBAZO BYEMEWE:", allQuestions.length);
+console.log("IBIBAZO BYANZWE:", rejectedQuestions);
+
+if (allQuestions.length === 0) {
+  throw new Error(
+    "No valid questions were found. Check rejectedQuestions in Console."
+  );
+}
+  if (allQuestions.length === 0) {
         throw new Error(
           "No valid questions were found."
         );
