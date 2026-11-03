@@ -1,4 +1,3 @@
-
 (() => {
   "use strict";
 
@@ -15,8 +14,7 @@
     TRAFFIC_TIME: 60,
     GENERAL_TIME: 30,
     POINTS_PER_CORRECT: 10,
-    PASS_PERCENTAGE: 70,
-    STORAGE_PREFIX: "quizmaster"
+    PASS_PERCENTAGE: 70
   });
 
   const KEYS = Object.freeze({
@@ -122,11 +120,13 @@
   let state = {
     language: "en",
     mode: "general",
+
     languageChosen: false,
     modeChosen: false,
     setupConfirmed: false,
 
     currentRound: 1,
+
     unlockedRounds: {
       traffic: 1,
       general: 1
@@ -162,30 +162,24 @@
   function storageGet(key, fallback = null) {
     try {
       const value = localStorage.getItem(key);
-
-      return value === null
-        ? fallback
-        : value;
-
+      return value === null ? fallback : value;
     } catch (error) {
-      console.warn("Storage read failed:", key);
+      console.warn("Storage read failed:", key, error);
       return fallback;
     }
   }
 
   function storageSet(key, value) {
     try {
-      localStorage.setItem(
-        key,
+      const storedValue =
         typeof value === "string"
           ? value
-          : JSON.stringify(value)
-      );
+          : JSON.stringify(value);
 
+      localStorage.setItem(key, storedValue);
       return true;
-
     } catch (error) {
-      console.warn("Storage write failed:", key);
+      console.warn("Storage write failed:", key, error);
       return false;
     }
   }
@@ -193,12 +187,9 @@
   function storageJSON(key, fallback) {
     try {
       const value = localStorage.getItem(key);
-
-      return value
-        ? JSON.parse(value)
-        : fallback;
-
+      return value ? JSON.parse(value) : fallback;
     } catch (error) {
+      console.warn("Invalid saved data:", key);
       return fallback;
     }
   }
@@ -209,6 +200,14 @@
       typeof value === "object" &&
       !Array.isArray(value)
     );
+  }
+
+  function safeNumber(value, fallback = 0) {
+    const number = Number(value);
+
+    return Number.isFinite(number)
+      ? number
+      : fallback;
   }
 
   /* =====================================================
@@ -228,19 +227,6 @@
     }
 
     return result;
-  }
-
-  function escapeHTML(value) {
-    return String(value ?? "").replace(
-      /[&<>"']/g,
-      character => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-      })[character]
-    );
   }
 
   function getText(en, rw) {
@@ -269,19 +255,19 @@
       : CONFIG.GENERAL_TIME;
   }
 
-  function getTotalRounds() {
-    return Math.max(
-      1,
-      Math.ceil(
-        getModeQuestions().length /
-        CONFIG.QUESTIONS_PER_ROUND
-      )
+  function getModeQuestions(mode = state.mode) {
+    return allQuestions.filter(
+      question => question.mode === mode
     );
   }
 
-  function getModeQuestions() {
-    return allQuestions.filter(
-      question => question.mode === state.mode
+  function getTotalRounds(mode = state.mode) {
+    return Math.max(
+      1,
+      Math.ceil(
+        getModeQuestions(mode).length /
+        CONFIG.QUESTIONS_PER_ROUND
+      )
     );
   }
 
@@ -291,10 +277,6 @@
     if (percentage >= 40) return "⭐";
 
     return "☆☆☆";
-  }
-
-  function getCurrentSession() {
-    return state.session;
   }
 
   function announce(name, detail = {}) {
@@ -308,46 +290,38 @@
   /* =====================================================
      QUESTION NORMALIZATION
   ===================================================== */
-function normalizeMode(category) {
-  const value = String(category || "")
-    .toLowerCase()
-    .trim();
 
-  if (
-    value === "traffic" ||
-    value === "road_safety" ||
-    value === "road safety" ||
-    value === "amategeko y'umuhanda"
-  ) {
-    return "traffic";
-  }
-
-  if (
-    value === "general" ||
-    value === "general_knowledge" ||
-    value === "general knowledge" ||
-    value === "ubumenyi rusange"
-  ) {
-    return "general";
-  }
-
-  return "";
-}
+  function normalizeMode(category) {
+    const value = String(category || "")
+      .toLowerCase()
+      .trim()
+      .replace(/[-_]+/g, " ")
+      .replace(/\s+/g, " ");
 
     if (
       value === "traffic" ||
-      value.includes("road safety") ||
-      value.includes("road_safety") ||
-      value.includes("amategeko y'umuhanda") ||
-      value.includes("amategeko y'umuhanda")
+      value === "road safety" ||
+      value === "amategeko y'umuhanda"
     ) {
       return "traffic";
     }
 
-    return "general";
+    if (
+      value === "general" ||
+      value === "general knowledge" ||
+      value === "ubumenyi rusange"
+    ) {
+      return "general";
+    }
+
+    return "";
   }
 
   function findAnswerIndex(answer, options) {
+    if (!Array.isArray(options) || options.length === 0) {
+      return -1;
+    }
+
     if (
       typeof answer === "number" &&
       Number.isInteger(answer) &&
@@ -365,6 +339,8 @@ function normalizeMode(category) {
       .trim()
       .toLowerCase();
 
+    if (!normalized) return -1;
+
     if (/^\d+$/.test(normalized)) {
       const index = Number(normalized);
 
@@ -373,9 +349,8 @@ function normalizeMode(category) {
       }
     }
 
-    return options.findIndex(
-      option =>
-        String(option).trim().toLowerCase() === normalized
+    return options.findIndex(option =>
+      String(option).trim().toLowerCase() === normalized
     );
   }
 
@@ -384,7 +359,20 @@ function normalizeMode(category) {
       return null;
     }
 
-    const options = Array.isArray(raw.options)
+    const mode = normalizeMode(
+      raw.category || raw.mode || raw.type
+    );
+
+    if (!mode) {
+      return null;
+    }
+
+    const questionEN = raw.question;
+
+    const questionRW =
+      raw.question_rw || raw.question;
+
+    const optionsEN = Array.isArray(raw.options)
       ? raw.options
       : [];
 
@@ -393,13 +381,19 @@ function normalizeMode(category) {
       : [];
 
     if (
-      typeof raw.question !== "string" ||
-      options.length !== 4 ||
-      options.some(
-        option =>
-          typeof option !== "string" ||
-          !option.trim()
+      typeof questionEN !== "string" ||
+      !questionEN.trim() ||
+      optionsEN.length !== 4 ||
+      optionsEN.some(option =>
+        typeof option !== "string" || !option.trim()
       )
+    ) {
+      return null;
+    }
+
+    if (
+      typeof questionRW !== "string" ||
+      !questionRW.trim()
     ) {
       return null;
     }
@@ -408,103 +402,86 @@ function normalizeMode(category) {
       optionsRW.length > 0 &&
       (
         optionsRW.length !== 4 ||
-        optionsRW.some(
-          option =>
-            typeof option !== "string" ||
-            !option.trim()
+        optionsRW.some(option =>
+          typeof option !== "string" || !option.trim()
         )
       )
     ) {
       return null;
     }
 
+    const finalOptionsRW =
+      optionsRW.length === 4
+        ? [...optionsRW]
+        : [...optionsEN];
+
     const answerIndexEN = findAnswerIndex(
       raw.answer,
-      options
+      optionsEN
     );
 
     let answerIndexRW = findAnswerIndex(
       raw.answer_rw,
-      optionsRW
+      finalOptionsRW
     );
 
-    if (answerIndexRW < 0) {
-      answerIndexRW = answerIndexEN;
+    let finalAnswerEN = answerIndexEN;
+
+    /*
+      If only the Kinyarwanda answer is supplied,
+      use its matching position for English too.
+    */
+
+    if (finalAnswerEN < 0 && answerIndexRW >= 0) {
+      finalAnswerEN = answerIndexRW;
     }
 
-    if (answerIndexEN < 0) {
-      const answerFromRW = findAnswerIndex(
-        raw.answer_rw,
-        options
-      );
+    /*
+      If answer_rw is missing, use the English answer
+      position. This assumes both option arrays have
+      the same ordering.
+    */
 
-      if (answerFromRW >= 0) {
-        return buildNormalizedQuestion(
-          raw,
-          index,
-          options,
-          optionsRW,
-          answerFromRW,
-          answerFromRW
-        );
-      }
+    if (answerIndexRW < 0 && finalAnswerEN >= 0) {
+      answerIndexRW = finalAnswerEN;
+    }
 
+    if (
+      finalAnswerEN < 0 ||
+      answerIndexRW < 0
+    ) {
       return null;
     }
 
-    if (answerIndexRW < 0) {
-      answerIndexRW = answerIndexEN;
-    }
-
-    return buildNormalizedQuestion(
-      raw,
-      index,
-      options,
-      optionsRW,
-      answerIndexEN,
-      answerIndexRW
-    );
-  }
-
-  function buildNormalizedQuestion(
-    raw,
-    index,
-    options,
-    optionsRW,
-    answerIndexEN,
-    answerIndexRW
-  ) {
     return {
-      id: String(
-        raw.id || `question_${index + 1}`
-      ),
-mode: normalizeMode(
-  raw.category || raw.mode || raw.type
-),
+      id: String(raw.id || `question_${index + 1}`),
 
-      category: raw.category || "General Knowledge",
+      mode,
 
-      question: raw.question,
+      category: raw.category || mode,
 
-      question_rw:
-        raw.question_rw || raw.question,
+      question: questionEN,
+      question_rw: questionRW,
 
-      options: [...options],
+      options: [...optionsEN],
+      options_rw: finalOptionsRW,
 
-      options_rw: optionsRW.length === 4
-        ? [...optionsRW]
-        : [...options],
-
-      answerIndexEN,
-      answerIndexRW,
+      answerIndexEN: finalAnswerEN,
+      answerIndexRW: answerIndexRW,
 
       explanation:
-        raw.explanation || "",
+        typeof raw.explanation === "string"
+          ? raw.explanation
+          : "",
 
       explanation_rw:
-        raw.explanation_rw ||
-        raw.explanation ||
-        "",
+        typeof raw.explanation_rw === "string"
+          ? raw.explanation_rw
+          : (
+              typeof raw.explanation === "string"
+                ? raw.explanation
+                : ""
+            ),
 
       image:
         raw.image ||
@@ -544,58 +521,48 @@ mode: normalizeMode(
 
       if (Array.isArray(data)) {
         rawQuestions = data;
-
       } else if (
         validObject(data) &&
         Array.isArray(data.questions)
       ) {
         rawQuestions = data.questions;
-
       } else {
         throw new Error(
-          "Invalid questions.json format."
+          "Invalid questions.json format. Expected an array of questions."
         );
       }
 
       const rejectedQuestions = [];
 
-allQuestions = rawQuestions
-  .map((rawQuestion, index) => {
-    const question = normalizeQuestion(rawQuestion, index);
+      allQuestions = rawQuestions
+        .map((rawQuestion, index) => {
+          const question = normalizeQuestion(
+            rawQuestion,
+            index
+          );
 
-    if (!question) {
-      rejectedQuestions.push({
-        questionNumber: index + 1,
-        data: rawQuestion
-      });
-    }
+          if (!question) {
+            rejectedQuestions.push(index + 1);
+          }
 
-    return question;
-  })
-  .filter(Boolean);
+          return question;
+        })
+        .filter(Boolean);
 
-console.log("IBIBAZO BYOSE:", rawQuestions.length);
-console.log("IBIBAZO BYEMEWE:", allQuestions.length);
-console.log("IBIBAZO BYANZWE:", rejectedQuestions);
+      const trafficCount = getModeQuestions("traffic").length;
+      const generalCount = getModeQuestions("general").length;
 
-if (allQuestions.length === 0) {
-  throw new Error(
-    "No valid questions were found. Check rejectedQuestions in Console."
-  );
-}
-  if (allQuestions.length === 0) {
+      console.log("Total questions:", rawQuestions.length);
+      console.log("Valid questions:", allQuestions.length);
+      console.log("Rejected question numbers:", rejectedQuestions);
+      console.log("Traffic questions:", trafficCount);
+      console.log("General questions:", generalCount);
+
+      if (allQuestions.length === 0) {
         throw new Error(
-          "No valid questions were found."
+          "No valid questions were found. Check the question format and category values."
         );
       }
-
-      const trafficCount = allQuestions.filter(
-        question => question.mode === "traffic"
-      ).length;
-
-      const generalCount = allQuestions.filter(
-        question => question.mode === "general"
-      ).length;
 
       if (trafficCount < CONFIG.QUESTIONS_PER_ROUND) {
         console.warn(
@@ -622,7 +589,8 @@ if (allQuestions.length === 0) {
       announce("questions-loaded", {
         total: allQuestions.length,
         traffic: trafficCount,
-        general: generalCount
+        general: generalCount,
+        rejected: rejectedQuestions.length
       });
 
       return true;
@@ -641,8 +609,7 @@ if (allQuestions.length === 0) {
       }
 
       if (elements.homeMessage) {
-        elements.homeMessage.textContent =
-          error.message;
+        elements.homeMessage.textContent = error.message;
       }
 
       announce("error", {
@@ -678,11 +645,8 @@ if (allQuestions.length === 0) {
       null
     );
 
-    state.language =
-      storageGet(KEYS.LANGUAGE, "en");
-
-    state.mode =
-      storageGet(KEYS.MODE, "general");
+    state.language = storageGet(KEYS.LANGUAGE, "en");
+    state.mode = storageGet(KEYS.MODE, "general");
 
     if (!["en", "rw"].includes(state.language)) {
       state.language = "en";
@@ -695,18 +659,20 @@ if (allQuestions.length === 0) {
     if (validObject(savedProgress)) {
       state.currentRound = Math.max(
         1,
-        Number(savedProgress.currentRound) || 1
+        safeNumber(savedProgress.currentRound, 1)
       );
+
+      const unlocked = savedProgress.unlockedRounds || {};
 
       state.unlockedRounds = {
         traffic: Math.max(
           1,
-          Number(savedProgress.unlockedRounds?.traffic) || 1
+          safeNumber(unlocked.traffic, 1)
         ),
 
         general: Math.max(
           1,
-          Number(savedProgress.unlockedRounds?.general) || 1
+          safeNumber(unlocked.general, 1)
         )
       };
 
@@ -744,19 +710,34 @@ if (allQuestions.length === 0) {
 
       state.bestScore = Math.max(
         0,
-        Number(savedProgress.bestScore) || 0
+        safeNumber(savedProgress.bestScore)
       );
 
       state.totalScore = Math.max(
         0,
-        Number(savedProgress.totalScore) || 0
+        safeNumber(savedProgress.totalScore)
       );
 
       state.lastRoundScore = Math.max(
         0,
-        Number(savedProgress.lastRoundScore) || 0
+        safeNumber(savedProgress.lastRoundScore)
       );
     }
+
+    /*
+      Restore older individual score values
+      if they exist outside the progress object.
+    */
+
+    state.bestScore = Math.max(
+      state.bestScore,
+      safeNumber(storageGet(KEYS.BEST_SCORE, 0))
+    );
+
+    state.totalScore = Math.max(
+      state.totalScore,
+      safeNumber(storageGet(KEYS.TOTAL_SCORE, 0))
+    );
 
     if (validObject(savedSettings)) {
       if (["en", "rw"].includes(savedSettings.language)) {
@@ -803,7 +784,9 @@ if (allQuestions.length === 0) {
     );
 
     const progressSession =
-      savedProgress.session || null;
+      validObject(savedProgress)
+        ? savedProgress.session || null
+        : null;
 
     const candidate = savedSession || progressSession;
 
@@ -817,8 +800,13 @@ if (allQuestions.length === 0) {
       state.currentRound = state.session.round;
     }
 
-    elements.settingsLanguage.value = state.language;
-    elements.settingsMode.value = state.mode;
+    if (elements.settingsLanguage) {
+      elements.settingsLanguage.value = state.language;
+    }
+
+    if (elements.settingsMode) {
+      elements.settingsMode.value = state.mode;
+    }
   }
 
   function validateSession(session) {
@@ -839,17 +827,45 @@ if (allQuestions.length === 0) {
     }
 
     if (
-      session.questions.some(
-        item =>
-          !validObject(item) ||
-          !item.q ||
-          !Array.isArray(item.order)
-      )
+      !Number.isInteger(session.currentIndex) ||
+      session.currentIndex < 0 ||
+      session.currentIndex > session.questions.length
     ) {
       return false;
     }
 
-    return true;
+    if (
+      !Number.isFinite(Number(session.score)) ||
+      !Number.isFinite(Number(session.correctCount))
+    ) {
+      return false;
+    }
+
+    return session.questions.every(item => {
+      if (
+        !validObject(item) ||
+        !validObject(item.q) ||
+        !Array.isArray(item.order) ||
+        item.order.length !== 4
+      ) {
+        return false;
+      }
+
+      const validOrder = item.order.every(
+        number =>
+          Number.isInteger(number) &&
+          number >= 0 &&
+          number <= 3
+      );
+
+      return (
+        validOrder &&
+        Array.isArray(item.q.options) &&
+        item.q.options.length === 4 &&
+        Array.isArray(item.q.options_rw) &&
+        item.q.options_rw.length === 4
+      );
+    });
   }
 
   /* =====================================================
@@ -858,7 +874,7 @@ if (allQuestions.length === 0) {
 
   function saveProgress() {
     const progress = {
-      version: 2,
+      version: 3,
 
       language: state.language,
       mode: state.mode,
@@ -866,9 +882,7 @@ if (allQuestions.length === 0) {
       currentRound: state.currentRound,
 
       unlockedRounds: state.unlockedRounds,
-
       completedRounds: state.completedRounds,
-
       usedQuestionIds: state.usedQuestionIds,
 
       bestScore: state.bestScore,
@@ -881,25 +895,14 @@ if (allQuestions.length === 0) {
     };
 
     storageSet(KEYS.PROGRESS, progress);
-
-    storageSet(
-      KEYS.CURRENT_SESSION,
-      state.session
-    );
-
-    storageSet(
-      KEYS.COMPLETED,
-      state.completedRounds
-    );
-
-    storageSet(
-      KEYS.USED_IDS,
-      state.usedQuestionIds
-    );
+    storageSet(KEYS.CURRENT_SESSION, state.session);
+    storageSet(KEYS.COMPLETED, state.completedRounds);
+    storageSet(KEYS.USED_IDS, state.usedQuestionIds);
 
     storageSet(KEYS.BEST_SCORE, state.bestScore);
     storageSet(KEYS.TOTAL_SCORE, state.totalScore);
     storageSet(KEYS.REVIEW, state.latestReview);
+
     storageSet(KEYS.LANGUAGE, state.language);
     storageSet(KEYS.MODE, state.mode);
 
@@ -1002,7 +1005,11 @@ if (allQuestions.length === 0) {
 
   elements.languageButtons.forEach(button => {
     button.addEventListener("click", () => {
-      state.language = button.dataset.language;
+      const language = button.dataset.language;
+
+      if (!["en", "rw"].includes(language)) return;
+
+      state.language = language;
       state.languageChosen = true;
       state.setupConfirmed = false;
 
@@ -1018,7 +1025,11 @@ if (allQuestions.length === 0) {
 
   elements.modeButtons.forEach(button => {
     button.addEventListener("click", () => {
-      state.mode = button.dataset.mode;
+      const mode = button.dataset.mode;
+
+      if (!["traffic", "general"].includes(mode)) return;
+
+      state.mode = mode;
       state.modeChosen = true;
       state.setupConfirmed = false;
 
@@ -1036,22 +1047,29 @@ if (allQuestions.length === 0) {
     elements.confirmSetupBtn.addEventListener(
       "click",
       () => {
-        if (!state.languageChosen || !state.modeChosen) {
+        if (
+          !state.languageChosen ||
+          !state.modeChosen
+        ) {
           return;
         }
 
         const count = getModeQuestions().length;
 
         if (count === 0) {
-          elements.setupError.textContent =
-            "No questions are available in this category.";
+          if (elements.setupError) {
+            elements.setupError.textContent =
+              "No questions are available in this category.";
+          }
 
           return;
         }
 
         if (count < CONFIG.QUESTIONS_PER_ROUND) {
-          elements.setupError.textContent =
-            "This category needs at least 10 valid questions.";
+          if (elements.setupError) {
+            elements.setupError.textContent =
+              "This category needs at least 10 valid questions.";
+          }
 
           return;
         }
@@ -1060,9 +1078,13 @@ if (allQuestions.length === 0) {
 
         saveProgress();
 
-        elements.startBtn.disabled = false;
+        if (elements.startBtn) {
+          elements.startBtn.disabled = false;
+        }
 
-        elements.setupError.textContent = "";
+        if (elements.setupError) {
+          elements.setupError.textContent = "";
+        }
 
         if (elements.homeMessage) {
           elements.homeMessage.textContent =
@@ -1070,6 +1092,7 @@ if (allQuestions.length === 0) {
         }
 
         updateSetupUI();
+        updateContinueButton();
       }
     );
   }
@@ -1091,7 +1114,9 @@ if (allQuestions.length === 0) {
 
     if (elements.homeStars) {
       const percentage =
-        state.bestScore / CONFIG.QUESTIONS_PER_ROUND *
+        (state.bestScore /
+          (CONFIG.QUESTIONS_PER_ROUND *
+            CONFIG.POINTS_PER_CORRECT)) *
         100;
 
       elements.homeStars.textContent =
@@ -1115,7 +1140,8 @@ if (allQuestions.length === 0) {
     const active =
       state.session &&
       !state.session.finished &&
-      state.session.questions.length > 0;
+      state.session.currentIndex <
+        state.session.questions.length;
 
     if (elements.continueBtn) {
       elements.continueBtn.hidden = !active;
@@ -1136,9 +1162,7 @@ if (allQuestions.length === 0) {
   ===================================================== */
 
   function createRoundQuestions(mode) {
-    const pool = allQuestions.filter(
-      question => question.mode === mode
-    );
+    const pool = getModeQuestions(mode);
 
     if (pool.length < CONFIG.QUESTIONS_PER_ROUND) {
       throw new Error(
@@ -1153,6 +1177,11 @@ if (allQuestions.length === 0) {
     let available = pool.filter(
       question => !used.has(question.id)
     );
+
+    /*
+      Start a new question cycle only when fewer
+      than 10 unused questions remain.
+    */
 
     if (available.length < CONFIG.QUESTIONS_PER_ROUND) {
       used = new Set();
@@ -1227,12 +1256,17 @@ if (allQuestions.length === 0) {
       };
 
       currentSelection = null;
+      timeRemaining = getTimerDuration();
 
       saveProgress();
 
-      renderQuestion();
+      /*
+        Show the screen BEFORE rendering the question.
+        showScreen stops any previous timer.
+      */
 
       showScreen("quizScreen");
+      renderQuestion();
 
       announce("game-started", {
         round: roundNumber,
@@ -1270,6 +1304,8 @@ if (allQuestions.length === 0) {
 
   function continueQuiz() {
     if (!validateSession(state.session)) {
+      state.session = null;
+      saveProgress();
       updateContinueButton();
       return;
     }
@@ -1299,8 +1335,8 @@ if (allQuestions.length === 0) {
 
     saveProgress();
 
-    renderQuestion();
     showScreen("quizScreen");
+    renderQuestion();
   }
 
   if (elements.startBtn) {
@@ -1338,16 +1374,15 @@ if (allQuestions.length === 0) {
   function getDisplayedOptions(entry) {
     const question = entry.q;
 
-    const options = state.language === "rw"
-      ? question.options_rw
-      : question.options;
+    const options =
+      state.language === "rw"
+        ? question.options_rw
+        : question.options;
 
-    return entry.order.map(
-      originalIndex => ({
-        originalIndex,
-        text: options[originalIndex]
-      })
-    );
+    return entry.order.map(originalIndex => ({
+      originalIndex,
+      text: options[originalIndex]
+    }));
   }
 
   function renderQuestion() {
@@ -1366,44 +1401,67 @@ if (allQuestions.length === 0) {
 
     const index = session.currentIndex;
 
-    elements.roundLabel.textContent =
-      session.round;
+    if (elements.roundLabel) {
+      elements.roundLabel.textContent = session.round;
+    }
 
-    elements.questionCounter.textContent =
-      `${index + 1}/${session.questions.length}`;
+    if (elements.questionCounter) {
+      elements.questionCounter.textContent =
+        `${index + 1}/${session.questions.length}`;
+    }
 
-    elements.scoreNumber.textContent =
-      session.score;
+    if (elements.scoreNumber) {
+      elements.scoreNumber.textContent = session.score;
+    }
 
-    elements.categoryIndicator.textContent =
-      getCategoryName(session.mode);
+    if (elements.categoryIndicator) {
+      elements.categoryIndicator.textContent =
+        getCategoryName(session.mode);
+    }
 
-    elements.questionText.textContent =
-      getText(
-        entry.q.question,
-        entry.q.question_rw
-      );
+    if (elements.questionText) {
+      elements.questionText.textContent =
+        getText(
+          entry.q.question,
+          entry.q.question_rw
+        );
+    }
 
-    elements.optionsContainer.innerHTML = "";
+    if (elements.optionsContainer) {
+      elements.optionsContainer.innerHTML = "";
+    }
 
-    elements.answerFeedback.textContent = "";
-    elements.explanation.textContent = "";
+    if (elements.answerFeedback) {
+      elements.answerFeedback.textContent = "";
+    }
 
-    elements.nextQuestionBtn.hidden = true;
+    if (elements.explanation) {
+      elements.explanation.textContent = "";
+    }
 
-    elements.submitAnswerBtn.hidden = false;
-    elements.submitAnswerBtn.disabled = true;
+    if (elements.nextQuestionBtn) {
+      elements.nextQuestionBtn.hidden = true;
+    }
+
+    if (elements.submitAnswerBtn) {
+      elements.submitAnswerBtn.hidden = false;
+      elements.submitAnswerBtn.disabled = true;
+    }
 
     const progress =
       (index / session.questions.length) * 100;
 
-    elements.progressFill.style.width =
-      `${progress}%`;
+    if (elements.progressFill) {
+      elements.progressFill.style.width =
+        `${progress}%`;
+    }
 
-    elements.progressBar.setAttribute(
-      "aria-valuenow",
-      String(Math.round(progress))
-    );
+    if (elements.progressBar) {
+      elements.progressBar.setAttribute(
+        "aria-valuenow",
+        String(Math.round(progress))
+      );
+    }
 
     renderQuestionImage(entry.q);
 
@@ -1412,7 +1470,7 @@ if (allQuestions.length === 0) {
 
     const letters = ["A", "B", "C", "D"];
 
-    displayedOptions.forEach((option, index) => {
+    displayedOptions.forEach((option, optionIndex) => {
       const button = document.createElement("button");
 
       button.type = "button";
@@ -1424,7 +1482,7 @@ if (allQuestions.length === 0) {
       const letter = document.createElement("span");
 
       letter.className = "option-letter";
-      letter.textContent = letters[index];
+      letter.textContent = letters[optionIndex];
 
       const text = document.createElement("span");
 
@@ -1437,11 +1495,12 @@ if (allQuestions.length === 0) {
         selectAnswer(option.originalIndex);
       });
 
-      elements.optionsContainer.appendChild(button);
+      if (elements.optionsContainer) {
+        elements.optionsContainer.appendChild(button);
+      }
     });
 
-    startTimer();
-
+    startTimer(true);
     saveProgress();
   }
 
@@ -1452,7 +1511,10 @@ if (allQuestions.length === 0) {
 
     const source = question.image;
 
-    if (!source) {
+    if (
+      typeof source !== "string" ||
+      !source.trim()
+    ) {
       image.removeAttribute("src");
       image.style.display = "none";
       return;
@@ -1481,21 +1543,33 @@ if (allQuestions.length === 0) {
 
     if (!entry || entry.answered) return;
 
+    if (
+      !Number.isInteger(index) ||
+      index < 0 ||
+      index > 3
+    ) {
+      return;
+    }
+
     currentSelection = index;
 
-    elements.optionsContainer
-      .querySelectorAll(".option-btn")
-      .forEach(button => {
-        const selected =
-          Number(button.dataset.index) === index;
+    if (elements.optionsContainer) {
+      elements.optionsContainer
+        .querySelectorAll(".option-btn")
+        .forEach(button => {
+          const selected =
+            Number(button.dataset.index) === index;
 
-        button.classList.toggle(
-          "selected",
-          selected
-        );
-      });
+          button.classList.toggle(
+            "selected",
+            selected
+          );
+        });
+    }
 
-    elements.submitAnswerBtn.disabled = false;
+    if (elements.submitAnswerBtn) {
+      elements.submitAnswerBtn.disabled = false;
+    }
   }
 
   /* =====================================================
@@ -1544,63 +1618,70 @@ if (allQuestions.length === 0) {
         : question.options;
 
     const correctAnswer = options[correctIndex];
+    const selectedAnswer = options[currentSelection];
 
-    const selectedAnswer =
-      options[currentSelection];
+    if (elements.optionsContainer) {
+      elements.optionsContainer
+        .querySelectorAll(".option-btn")
+        .forEach(button => {
+          const index = Number(button.dataset.index);
 
-    elements.optionsContainer
-      .querySelectorAll(".option-btn")
-      .forEach(button => {
-        const index = Number(button.dataset.index);
+          button.disabled = true;
 
-        button.disabled = true;
+          if (index === correctIndex) {
+            button.classList.add("correct");
+          }
 
-        if (index === correctIndex) {
-          button.classList.add("correct");
-        }
-
-        if (
-          index === currentSelection &&
-          !isCorrect
-        ) {
-          button.classList.add("incorrect");
-        }
-      });
-
-    if (isCorrect) {
-      elements.answerFeedback.textContent =
-        state.language === "rw"
-          ? "✅ Ni byo! Wabonye amanota 10."
-          : "✅ Correct! You earned 10 points.";
-
-      elements.answerFeedback.style.color =
-        "var(--green)";
-
-    } else {
-      elements.answerFeedback.textContent =
-        state.language === "rw"
-          ? `❌ Si byo. Igisubizo nyacyo ni: ${correctAnswer}`
-          : `❌ Incorrect. Correct answer: ${correctAnswer}`;
-
-      elements.answerFeedback.style.color =
-        "var(--red)";
+          if (
+            index === currentSelection &&
+            !isCorrect
+          ) {
+            button.classList.add("incorrect");
+          }
+        });
     }
 
-    const explanation = getText(
-      question.explanation,
-      question.explanation_rw
-    );
+    if (elements.answerFeedback) {
+      if (isCorrect) {
+        elements.answerFeedback.textContent =
+          state.language === "rw"
+            ? "✅ Ni byo! Wabonye amanota 10."
+            : "✅ Correct! You earned 10 points.";
 
-    elements.explanation.textContent =
-      explanation;
+        elements.answerFeedback.style.color =
+          "var(--green)";
+      } else {
+        elements.answerFeedback.textContent =
+          state.language === "rw"
+            ? `❌ Si byo. Igisubizo nyacyo ni: ${correctAnswer}`
+            : `❌ Incorrect. Correct answer: ${correctAnswer}`;
 
-    elements.scoreNumber.textContent =
-      state.session.score;
+        elements.answerFeedback.style.color =
+          "var(--red)";
+      }
+    }
 
-    elements.submitAnswerBtn.disabled = true;
-    elements.submitAnswerBtn.hidden = true;
+    if (elements.explanation) {
+      elements.explanation.textContent =
+        getText(
+          question.explanation,
+          question.explanation_rw
+        );
+    }
 
-    elements.nextQuestionBtn.hidden = false;
+    if (elements.scoreNumber) {
+      elements.scoreNumber.textContent =
+        state.session.score;
+    }
+
+    if (elements.submitAnswerBtn) {
+      elements.submitAnswerBtn.disabled = true;
+      elements.submitAnswerBtn.hidden = true;
+    }
+
+    if (elements.nextQuestionBtn) {
+      elements.nextQuestionBtn.hidden = false;
+    }
 
     saveProgress();
 
@@ -1624,15 +1705,24 @@ if (allQuestions.length === 0) {
      TIMER
   ===================================================== */
 
-  function startTimer() {
+  function startTimer(reset = true) {
     stopTimer();
 
-    timeRemaining = getTimerDuration();
+    if (reset || timeRemaining <= 0) {
+      timeRemaining = getTimerDuration();
+    }
 
     updateTimerUI();
 
     timerInterval = setInterval(() => {
       if (!state.session) {
+        stopTimer();
+        return;
+      }
+
+      const entry = getCurrentQuestionEntry();
+
+      if (!entry || entry.answered) {
         stopTimer();
         return;
       }
@@ -1645,7 +1735,6 @@ if (allQuestions.length === 0) {
         stopTimer();
         handleTimeUp();
       }
-
     }, 1000);
   }
 
@@ -1657,13 +1746,17 @@ if (allQuestions.length === 0) {
   }
 
   function updateTimerUI() {
-    elements.timer.textContent =
-      Math.max(0, timeRemaining);
+    if (elements.timer) {
+      elements.timer.textContent =
+        Math.max(0, timeRemaining);
+    }
 
-    elements.timerBox.classList.toggle(
-      "warning",
-      timeRemaining <= 10
-    );
+    if (elements.timerBox) {
+      elements.timerBox.classList.toggle(
+        "warning",
+        timeRemaining <= 10
+      );
+    }
   }
 
   function handleTimeUp() {
@@ -1685,34 +1778,45 @@ if (allQuestions.length === 0) {
 
     const correctAnswer = options[correctIndex];
 
-    elements.optionsContainer
-      .querySelectorAll(".option-btn")
-      .forEach(button => {
-        button.disabled = true;
+    if (elements.optionsContainer) {
+      elements.optionsContainer
+        .querySelectorAll(".option-btn")
+        .forEach(button => {
+          button.disabled = true;
 
-        if (
-          Number(button.dataset.index) === correctIndex
-        ) {
-          button.classList.add("correct");
-        }
-      });
+          if (
+            Number(button.dataset.index) === correctIndex
+          ) {
+            button.classList.add("correct");
+          }
+        });
+    }
 
-    elements.answerFeedback.textContent =
-      state.language === "rw"
-        ? `⏰ Igihe kirangiye. Igisubizo ni: ${correctAnswer}`
-        : `⏰ Time is up. Correct answer: ${correctAnswer}`;
+    if (elements.answerFeedback) {
+      elements.answerFeedback.textContent =
+        state.language === "rw"
+          ? `⏰ Igihe kirangiye. Igisubizo ni: ${correctAnswer}`
+          : `⏰ Time is up. Correct answer: ${correctAnswer}`;
 
-    elements.answerFeedback.style.color =
-      "var(--red)";
+      elements.answerFeedback.style.color =
+        "var(--red)";
+    }
 
-    elements.explanation.textContent =
-      getText(
-        entry.q.explanation,
-        entry.q.explanation_rw
-      );
+    if (elements.explanation) {
+      elements.explanation.textContent =
+        getText(
+          entry.q.explanation,
+          entry.q.explanation_rw
+        );
+    }
 
-    elements.submitAnswerBtn.hidden = true;
-    elements.nextQuestionBtn.hidden = false;
+    if (elements.submitAnswerBtn) {
+      elements.submitAnswerBtn.hidden = true;
+    }
+
+    if (elements.nextQuestionBtn) {
+      elements.nextQuestionBtn.hidden = false;
+    }
 
     saveProgress();
   }
@@ -1760,10 +1864,12 @@ if (allQuestions.length === 0) {
         const question = entry.q;
 
         const correctIndex =
-          getCorrectIndex(question);
+          state.session.language === "rw"
+            ? question.answerIndexRW
+            : question.answerIndexEN;
 
         const options =
-          state.language === "rw"
+          state.session.language === "rw"
             ? question.options_rw
             : question.options;
 
@@ -1772,10 +1878,10 @@ if (allQuestions.length === 0) {
 
           number: index + 1,
 
-          question: getText(
-            question.question,
-            question.question_rw
-          ),
+          question:
+            state.session.language === "rw"
+              ? question.question_rw
+              : question.question,
 
           options: [...options],
 
@@ -1792,10 +1898,10 @@ if (allQuestions.length === 0) {
 
           correct: entry.correct,
 
-          explanation: getText(
-            question.explanation,
-            question.explanation_rw
-          )
+          explanation:
+            state.session.language === "rw"
+              ? question.explanation_rw
+              : question.explanation
         };
       }
     );
@@ -1838,9 +1944,14 @@ if (allQuestions.length === 0) {
     container.innerHTML = "";
 
     if (!state.latestReview.length) {
-      container.innerHTML =
-        "<p>No answers are available to review yet.</p>";
+      const message = document.createElement("p");
 
+      message.textContent =
+        state.language === "rw"
+          ? "Nta bisubizo byo gusuzuma biraboneka."
+          : "No answers are available to review yet.";
+
+      container.appendChild(message);
       return;
     }
 
@@ -1863,7 +1974,7 @@ if (allQuestions.length === 0) {
         item.selectedAnswer === null
           ? (
               state.language === "rw"
-                ? "Igisubizo cyawe: Nta gisubizo watanze."
+                ? "Igisubizo watanze: Nta gisubizo watanze."
                 : "Your answer: No answer submitted."
             )
           : (
@@ -1884,7 +1995,8 @@ if (allQuestions.length === 0) {
       const explanation = document.createElement("p");
 
       explanation.textContent =
-        item.explanation || (
+        item.explanation ||
+        (
           state.language === "rw"
             ? "Nta bisobanuro bihari."
             : "No explanation available."
@@ -1963,7 +2075,6 @@ if (allQuestions.length === 0) {
     const round = state.session.round;
 
     state.lastRoundScore = score;
-
     state.totalScore += score;
 
     state.bestScore = Math.max(
@@ -1979,12 +2090,7 @@ if (allQuestions.length === 0) {
 
     if (passed) {
       const nextRound = round + 1;
-
-      const maximum = Math.ceil(
-        allQuestions.filter(
-          question => question.mode === mode
-        ).length / CONFIG.QUESTIONS_PER_ROUND
-      );
+      const maximum = getTotalRounds(mode);
 
       state.unlockedRounds[mode] = Math.min(
         maximum,
@@ -2033,51 +2139,64 @@ if (allQuestions.length === 0) {
       mode
     } = result;
 
-    elements.resultScore.textContent = score;
+    if (elements.resultScore) {
+      elements.resultScore.textContent = score;
+    }
 
-    elements.resultPercent.textContent =
-      `${percentage}%`;
+    if (elements.resultPercent) {
+      elements.resultPercent.textContent =
+        `${percentage}%`;
+    }
 
-    elements.resultCorrect.textContent =
-      `${correctCount}/${totalQuestions}`;
+    if (elements.resultCorrect) {
+      elements.resultCorrect.textContent =
+        `${correctCount}/${totalQuestions}`;
+    }
 
-    elements.resultPassMark.textContent =
-      `${CONFIG.PASS_PERCENTAGE}%`;
+    if (elements.resultPassMark) {
+      elements.resultPassMark.textContent =
+        `${CONFIG.PASS_PERCENTAGE}%`;
+    }
 
-    elements.resultStars.textContent =
-      getStars(percentage);
+    if (elements.resultStars) {
+      elements.resultStars.textContent =
+        getStars(percentage);
+    }
 
-    elements.resultTitle.textContent =
-      state.language === "rw"
-        ? "Round irarangiye!"
-        : "Round Complete!";
+    if (elements.resultTitle) {
+      elements.resultTitle.textContent =
+        state.language === "rw"
+          ? "Round irarangiye!"
+          : "Round Complete!";
+    }
 
-    elements.resultMessage.textContent =
-      passed
-        ? (
-            state.language === "rw"
-              ? "Wabikoze neza! Wemerewe gukomeza kuri Round ikurikira."
-              : "Excellent work! You have unlocked the next round."
-          )
-        : (
-            state.language === "rw"
-              ? "Ongera ugerageze kugira ngo ubone nibura 70%."
-              : "Keep practicing! You need at least 70% to unlock the next round."
-          );
+    if (elements.resultMessage) {
+      elements.resultMessage.textContent =
+        passed
+          ? (
+              state.language === "rw"
+                ? "Wabikoze neza! Wemerewe gukomeza kuri Round ikurikira."
+                : "Excellent work! You have unlocked the next round."
+            )
+          : (
+              state.language === "rw"
+                ? "Ongera ugerageze kugira ngo ubone nibura 70%."
+                : "Keep practicing! You need at least 70% to unlock the next round."
+            );
+    }
 
-    const maximum = Math.ceil(
-      allQuestions.filter(
-        question => question.mode === mode
-      ).length / CONFIG.QUESTIONS_PER_ROUND
-    );
+    const maximum = getTotalRounds(mode);
 
     const hasNextRound =
       passed && round < maximum;
 
-    elements.resultNextBtn.hidden =
-      !hasNextRound;
+    if (elements.resultNextBtn) {
+      elements.resultNextBtn.hidden = !hasNextRound;
+    }
 
-    elements.retryBtn.hidden = false;
+    if (elements.retryBtn) {
+      elements.retryBtn.hidden = false;
+    }
 
     showScreen("resultScreen");
   }
@@ -2116,7 +2235,7 @@ if (allQuestions.length === 0) {
 
         if (
           nextRound >
-          state.unlockedRounds[state.mode]
+          (state.unlockedRounds[state.mode] || 1)
         ) {
           return;
         }
@@ -2145,17 +2264,24 @@ if (allQuestions.length === 0) {
     const unlocked =
       state.unlockedRounds[state.mode] || 1;
 
-    elements.roundsCompleted.textContent =
-      completed.length;
+    if (elements.roundsCompleted) {
+      elements.roundsCompleted.textContent =
+        completed.length;
+    }
 
-    elements.roundsTotal.textContent =
-      total;
+    if (elements.roundsTotal) {
+      elements.roundsTotal.textContent = total;
+    }
 
-    elements.roundsUnlocked.textContent =
-      Math.min(unlocked, total);
+    if (elements.roundsUnlocked) {
+      elements.roundsUnlocked.textContent =
+        Math.min(unlocked, total);
+    }
 
-    elements.roundsDescription.textContent =
-      `${getCategoryName(state.mode)} · ${total} rounds · 10 questions per round`;
+    if (elements.roundsDescription) {
+      elements.roundsDescription.textContent =
+        `${getCategoryName(state.mode)} · ${total} rounds · 10 questions per round`;
+    }
 
     for (let round = 1; round <= total; round++) {
       const isCompleted =
@@ -2218,11 +2344,15 @@ if (allQuestions.length === 0) {
     elements.settingsBtn.addEventListener(
       "click",
       () => {
-        elements.settingsLanguage.value =
-          state.language;
+        if (elements.settingsLanguage) {
+          elements.settingsLanguage.value =
+            state.language;
+        }
 
-        elements.settingsMode.value =
-          state.mode;
+        if (elements.settingsMode) {
+          elements.settingsMode.value =
+            state.mode;
+        }
 
         showScreen("settingsScreen");
       }
@@ -2233,6 +2363,13 @@ if (allQuestions.length === 0) {
     elements.saveSettingsBtn.addEventListener(
       "click",
       () => {
+        if (
+          !elements.settingsLanguage ||
+          !elements.settingsMode
+        ) {
+          return;
+        }
+
         const language =
           elements.settingsLanguage.value;
 
@@ -2243,8 +2380,10 @@ if (allQuestions.length === 0) {
           !["en", "rw"].includes(language) ||
           !["traffic", "general"].includes(mode)
         ) {
-          elements.settingsMessage.textContent =
-            "Invalid settings.";
+          if (elements.settingsMessage) {
+            elements.settingsMessage.textContent =
+              "Invalid settings.";
+          }
 
           return;
         }
@@ -2254,11 +2393,7 @@ if (allQuestions.length === 0) {
 
         state.languageChosen = true;
         state.modeChosen = true;
-
         state.setupConfirmed = true;
-
-        storageSet(KEYS.LANGUAGE, language);
-        storageSet(KEYS.MODE, mode);
 
         saveProgress();
 
@@ -2266,10 +2401,12 @@ if (allQuestions.length === 0) {
         updateHomeUI();
         updateContinueButton();
 
-        elements.settingsMessage.textContent =
-          language === "rw"
-            ? "Ibyo wahinduye byabitswe neza."
-            : "Your settings have been saved.";
+        if (elements.settingsMessage) {
+          elements.settingsMessage.textContent =
+            language === "rw"
+              ? "Ibyo wahinduye byabitswe neza."
+              : "Your settings have been saved.";
+        }
 
         announce("settings-saved", {
           language,
@@ -2279,42 +2416,18 @@ if (allQuestions.length === 0) {
     );
   }
 
-  /* =====================================================
-     MUSIC MENU
-     Music controller remains in index.html.
-  ===================================================== */
-
-  const musicMenuButton = $("musicMenuBtn");
-
-  if (musicMenuButton) {
-    musicMenuButton.addEventListener(
-      "click",
-      () => {
-        elements.settingsLanguage.value =
-          state.language;
-
-        elements.settingsMode.value =
-          state.mode;
-
-        showScreen("settingsScreen");
-
-        const musicButton = $("musicToggleBtn");
-
-        if (musicButton) {
-          setTimeout(() => {
-            musicButton.focus();
-          }, 100);
-        }
-      }
-    );
-  }
+  /*
+    Music menu navigation is handled by index.html.
+    No duplicate musicMenuBtn listener is added here.
+  */
 
   /* =====================================================
      SHARE
   ===================================================== */
 
   async function shareQuiz() {
-    const url = window.location.origin +
+    const url =
+      window.location.origin +
       window.location.pathname;
 
     const shareData = {
@@ -2368,12 +2481,10 @@ if (allQuestions.length === 0) {
     const input = document.createElement("textarea");
 
     input.value = text;
-
     input.style.position = "fixed";
     input.style.opacity = "0";
 
     document.body.appendChild(input);
-
     input.select();
 
     try {
@@ -2445,16 +2556,19 @@ if (allQuestions.length === 0) {
         state.latestReview = [];
 
         currentSelection = null;
+        timeRemaining = 0;
 
         saveProgress();
 
         updateHomeUI();
         updateContinueButton();
 
-        elements.settingsMessage.textContent =
-          state.language === "rw"
-            ? "Amanota n'amateka byasubijwe ku ntangiriro."
-            : "Quiz progress has been reset.";
+        if (elements.settingsMessage) {
+          elements.settingsMessage.textContent =
+            state.language === "rw"
+              ? "Amanota n'amateka byasubijwe ku ntangiriro."
+              : "Quiz progress has been reset.";
+        }
 
         announce("progress-reset");
       }
@@ -2467,9 +2581,7 @@ if (allQuestions.length === 0) {
 
   function goHome() {
     stopTimer();
-
     saveProgress();
-
     showScreen("homeScreen");
   }
 
@@ -2495,8 +2607,12 @@ if (allQuestions.length === 0) {
     "visibilitychange",
     () => {
       if (document.hidden) {
-        stopTimer();
+        /*
+          Pause the timer without resetting the
+          remaining seconds.
+        */
 
+        stopTimer();
         saveProgress();
 
       } else if (
@@ -2506,7 +2622,7 @@ if (allQuestions.length === 0) {
         const entry = getCurrentQuestionEntry();
 
         if (entry && !entry.answered) {
-          startTimer();
+          startTimer(false);
         }
       }
     }
@@ -2522,12 +2638,14 @@ if (allQuestions.length === 0) {
 
   window.addEventListener(
     "pagehide",
-    saveProgress
+    () => {
+      stopTimer();
+      saveProgress();
+    }
   );
 
   /* =====================================================
      PUBLIC API
-     Useful for debugging and future extensions.
   ===================================================== */
 
   window.quizMaster = {
@@ -2566,7 +2684,6 @@ if (allQuestions.length === 0) {
 
   async function initialize() {
     updateSetupUI();
-
     updateReviewButton();
 
     const loaded = await loadQuestions();
@@ -2577,8 +2694,9 @@ if (allQuestions.length === 0) {
     state.modeChosen = true;
 
     /*
-      Existing users can start after confirming.
-      Their saved settings are preserved.
+      The user must confirm the selection before
+      starting a new quiz after loading the page.
+      Saved progress and unfinished sessions remain.
     */
 
     state.setupConfirmed = false;
@@ -2587,23 +2705,21 @@ if (allQuestions.length === 0) {
     updateHomeUI();
     updateContinueButton();
 
-    if (state.session && !state.session.finished) {
-      if (elements.homeMessage) {
-        elements.homeMessage.textContent =
-          "You have an unfinished quiz. Select Continue Quiz to resume.";
-      }
+    if (
+      state.session &&
+      !state.session.finished &&
+      elements.homeMessage
+    ) {
+      elements.homeMessage.textContent =
+        "You have an unfinished quiz. Select Continue Quiz to resume.";
     }
 
     console.info(
       "Quiz Master initialized successfully.",
       {
         questions: allQuestions.length,
-        traffic: allQuestions.filter(
-          q => q.mode === "traffic"
-        ).length,
-        general: allQuestions.filter(
-          q => q.mode === "general"
-        ).length
+        traffic: getModeQuestions("traffic").length,
+        general: getModeQuestions("general").length
       }
     );
   }
@@ -2614,7 +2730,6 @@ if (allQuestions.length === 0) {
       initialize,
       { once: true }
     );
-
   } else {
     initialize();
   }
