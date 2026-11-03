@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +13,7 @@
     content="Explore bilingual English and Kinyarwanda learning articles about road safety, science, geography, Rwanda and general knowledge."
   >
 
-  <meta
-    name="robots"
-    content="index, follow"
-  >
+  <meta name="robots" content="index, follow">
 
   <link
     rel="canonical"
@@ -39,6 +37,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -60,6 +62,13 @@
 
     button {
       cursor: pointer;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
     }
 
     .container {
@@ -115,6 +124,7 @@
 
     main {
       padding: 35px 0 55px;
+      min-height: 70vh;
     }
 
     .hero {
@@ -186,7 +196,10 @@
 
     .articles-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(245px, 1fr)
+      );
       gap: 16px;
     }
 
@@ -263,7 +276,6 @@
 
     .reader-content {
       color: #e2eaf5;
-      white-space: pre-wrap;
       overflow-wrap: anywhere;
       font-size: 16px;
       line-height: 1.85;
@@ -271,6 +283,40 @@
 
     .reader-content p {
       margin: 0 0 17px;
+      white-space: pre-wrap;
+    }
+
+    .lesson-section {
+      margin: 25px 0;
+      padding: 19px;
+      background: #0c1d34;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .lesson-section h2 {
+      color: var(--primary);
+      font-size: 19px;
+      line-height: 1.4;
+      margin: 0 0 13px;
+    }
+
+    .lesson-section p {
+      margin-bottom: 12px;
+    }
+
+    .lesson-section ul {
+      margin: 0;
+      padding-left: 23px;
+    }
+
+    .lesson-section li {
+      margin-bottom: 10px;
+      padding-left: 3px;
+    }
+
+    .lesson-section li:last-child {
+      margin-bottom: 0;
     }
 
     .back-btn {
@@ -337,6 +383,10 @@
       .articles-grid {
         grid-template-columns: 1fr;
       }
+
+      .lesson-section {
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -351,10 +401,12 @@
     </a>
 
     <div class="header-actions">
+
       <button
         class="btn"
         id="languageBtn"
         type="button"
+        aria-label="Change language"
       >
         Kinyarwanda
       </button>
@@ -366,20 +418,24 @@
       >
         Home
       </a>
-    </div>
 
+    </div>
   </div>
 </header>
 
 <main class="container">
 
   <section class="hero" id="heroSection">
-    <h1 id="pageTitle">Learning Centre</h1>
+
+    <h1 id="pageTitle">
+      Learning Centre
+    </h1>
 
     <p id="pageDescription">
       Explore useful lessons and improve your knowledge
       through English and Kinyarwanda articles.
     </p>
+
   </section>
 
   <section id="listSection">
@@ -401,6 +457,7 @@
           class="filter-btn active"
           type="button"
           data-category="all"
+          aria-pressed="true"
         >
           All
         </button>
@@ -409,6 +466,7 @@
           class="filter-btn"
           type="button"
           data-category="general"
+          aria-pressed="false"
         >
           General Knowledge
         </button>
@@ -417,12 +475,12 @@
           class="filter-btn"
           type="button"
           data-category="traffic"
+          aria-pressed="false"
         >
           Road Safety
         </button>
 
       </div>
-
     </div>
 
     <p
@@ -460,7 +518,10 @@
       ← Back to lessons
     </button>
 
-    <div id="readerCategory" class="category-label"></div>
+    <div
+      id="readerCategory"
+      class="category-label"
+    ></div>
 
     <h1 id="readerTitle"></h1>
 
@@ -485,6 +546,7 @@
 </main>
 
 <footer>
+
   <div class="container">
 
     <div id="footerText">
@@ -493,11 +555,17 @@
 
     <nav class="footer-links">
 
-      <a href="./index.html" id="footerHome">Home</a>
+      <a href="./index.html" id="footerHome">
+        Home
+      </a>
 
-      <a href="./about.html" id="footerAbout">About</a>
+      <a href="./about.html" id="footerAbout">
+        About
+      </a>
 
-      <a href="./contact.html" id="footerContact">Contact</a>
+      <a href="./contact.html" id="footerContact">
+        Contact
+      </a>
 
       <a href="./privacy-policy.html" id="footerPrivacy">
         Privacy Policy
@@ -520,6 +588,11 @@
 ===================================== */
 
 const ARTICLES_URL = "./articles.json";
+
+
+/* =====================================
+   TRANSLATIONS
+===================================== */
 
 const translations = {
 
@@ -555,7 +628,8 @@ const translations = {
 
     results: "lessons found",
 
-    noResults: "No lessons found. Try another search.",
+    noResults:
+      "No lessons found. Try another search.",
 
     loadError:
       "Unable to load lessons. Please check your internet connection and try again.",
@@ -569,6 +643,14 @@ const translations = {
     trafficLabel: "Road Safety",
 
     generalLabel: "General Knowledge",
+
+    definition: "Definition",
+
+    body: "Main Lesson",
+
+    keyPoints: "Key Points",
+
+    conclusion: "Conclusion",
 
     footer:
       "© Quiz Master Rwanda. Learn • Play • Improve."
@@ -622,6 +704,14 @@ const translations = {
 
     generalLabel: "Ubumenyi Rusange",
 
+    definition: "Ibisobanuro",
+
+    body: "Inyigisho irambuye",
+
+    keyPoints: "Ingingo z'ingenzi",
+
+    conclusion: "Umwanzuro",
+
     footer:
       "© Quiz Master Rwanda. Iga • Kina • Ongera ubumenyi."
   }
@@ -650,11 +740,14 @@ let currentArticleId = null;
 
 const elements = {
 
-  languageBtn: document.getElementById("languageBtn"),
+  languageBtn:
+    document.getElementById("languageBtn"),
 
-  homeLink: document.getElementById("homeLink"),
+  homeLink:
+    document.getElementById("homeLink"),
 
-  pageTitle: document.getElementById("pageTitle"),
+  pageTitle:
+    document.getElementById("pageTitle"),
 
   pageDescription:
     document.getElementById("pageDescription"),
@@ -720,28 +813,47 @@ const elements = {
 
 
 /* =====================================
-   LANGUAGE HELPERS
+   TRANSLATION HELPER
 ===================================== */
 
 function t(key) {
 
-  return translations[currentLanguage][key]
-    || translations.en[key]
-    || key;
+  return (
+    translations[currentLanguage][key] ||
+    translations.en[key] ||
+    key
+  );
 
 }
 
 
-function getText(value) {
+/* =====================================
+   GET LOCALIZED JSON VALUE
+
+   Supports:
+   - Normal strings
+   - { en: "...", rw: "..." }
+   - Arrays of localized strings
+===================================== */
+
+function getLocalizedValue(value) {
 
   if (typeof value === "string") {
     return value;
   }
 
+  if (Array.isArray(value)) {
+
+    return value
+      .map(item => getLocalizedValue(item))
+      .filter(Boolean)
+      .join("\n");
+
+  }
+
   if (
     value &&
-    typeof value === "object" &&
-    !Array.isArray(value)
+    typeof value === "object"
   ) {
 
     const selected =
@@ -752,6 +864,15 @@ function getText(value) {
       selected.trim()
     ) {
       return selected;
+    }
+
+    if (Array.isArray(selected)) {
+
+      return selected
+        .map(item => getLocalizedValue(item))
+        .filter(Boolean)
+        .join("\n");
+
     }
 
     const english = value.en;
@@ -780,6 +901,41 @@ function getText(value) {
 
 
 /* =====================================
+   CHECK WHETHER A VALUE HAS CONTENT
+===================================== */
+
+function hasLocalizedValue(value) {
+
+  if (typeof value === "string") {
+    return value.trim().length > 0;
+  }
+
+  if (Array.isArray(value)) {
+
+    return value.some(item =>
+      hasLocalizedValue(item)
+    );
+
+  }
+
+  if (
+    value &&
+    typeof value === "object"
+  ) {
+
+    return (
+      hasLocalizedValue(value.en) ||
+      hasLocalizedValue(value.rw)
+    );
+
+  }
+
+  return false;
+
+}
+
+
+/* =====================================
    VALIDATE ARTICLES JSON
 ===================================== */
 
@@ -790,13 +946,15 @@ function validateArticles(data) {
     typeof data !== "object" ||
     Array.isArray(data)
   ) {
+
     throw new Error("Invalid JSON structure.");
+
   }
 
-  if (
-    !Array.isArray(data.articles)
-  ) {
+  if (!Array.isArray(data.articles)) {
+
     throw new Error("Missing articles array.");
+
   }
 
   const validCategories = [
@@ -806,83 +964,72 @@ function validateArticles(data) {
 
   const seenIds = new Set();
 
-  const validArticles = data.articles.filter(article => {
+  const validArticles = [];
+
+  data.articles.forEach(article => {
 
     if (
       !article ||
       typeof article !== "object" ||
       Array.isArray(article)
     ) {
-      return false;
+      return;
     }
 
     if (
       typeof article.id !== "string" ||
       !article.id.trim()
     ) {
-      return false;
+      return;
     }
 
     if (seenIds.has(article.id)) {
-      return false;
+      return;
     }
 
     if (
       typeof article.category !== "string" ||
       !validCategories.includes(article.category)
     ) {
-      return false;
+      return;
     }
 
     const hasTitle =
-      getText(article.title).trim().length > 0 ||
-      (
-        article.title &&
-        typeof article.title === "object" &&
-        (
-          typeof article.title.en === "string" ||
-          typeof article.title.rw === "string"
-        )
-      );
+      hasLocalizedValue(article.title);
 
     const hasDescription =
-      getText(article.description).trim().length > 0 ||
-      (
-        article.description &&
-        typeof article.description === "object" &&
-        (
-          typeof article.description.en === "string" ||
-          typeof article.description.rw === "string"
-        )
-      );
+      hasLocalizedValue(article.description);
 
-    const hasContent =
-      getText(article.content).trim().length > 0 ||
-      (
-        article.content &&
-        typeof article.content === "object" &&
-        (
-          typeof article.content.en === "string" ||
-          typeof article.content.rw === "string"
-        )
-      );
+    const hasStructuredContent =
+      hasLocalizedValue(article.definition) ||
+      hasLocalizedValue(article.body) ||
+      hasLocalizedValue(article.key_points) ||
+      hasLocalizedValue(article.conclusion);
+
+    const hasOldContent =
+      hasLocalizedValue(article.content);
 
     if (
       !hasTitle ||
       !hasDescription ||
-      !hasContent
+      (
+        !hasStructuredContent &&
+        !hasOldContent
+      )
     ) {
-      return false;
+      return;
     }
 
     seenIds.add(article.id);
 
-    return true;
+    validArticles.push(article);
 
   });
 
   if (validArticles.length === 0) {
+
     throw new Error("No valid articles found.");
+
   }
 
   return validArticles;
@@ -909,14 +1056,19 @@ async function loadArticles() {
       ARTICLES_URL,
       {
         method: "GET",
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+          "Accept": "application/json"
+        }
       }
     );
 
     if (!response.ok) {
+
       throw new Error(
         "HTTP error: " + response.status
       );
+
     }
 
     const data = await response.json();
@@ -935,6 +1087,8 @@ async function loadArticles() {
     elements.resultsInfo.textContent = "";
 
     elements.articlesGrid.innerHTML = "";
+
+    elements.emptyMessage.classList.add("hidden");
 
     elements.errorMessage.textContent =
       error instanceof SyntaxError
@@ -964,6 +1118,41 @@ function getCategoryLabel(category) {
 
 
 /* =====================================
+   GET ALL SEARCHABLE ARTICLE TEXT
+===================================== */
+
+function getSearchableArticleText(article) {
+
+  const fields = [
+
+    article.id,
+
+    article.category,
+
+    getLocalizedValue(article.title),
+
+    getLocalizedValue(article.description),
+
+    getLocalizedValue(article.definition),
+
+    getLocalizedValue(article.body),
+
+    getLocalizedValue(article.key_points),
+
+    getLocalizedValue(article.conclusion),
+
+    getLocalizedValue(article.content)
+
+  ];
+
+  return fields
+    .join(" ")
+    .toLowerCase();
+
+}
+
+
+/* =====================================
    SEARCH AND FILTER
 ===================================== */
 
@@ -975,26 +1164,18 @@ function getFilteredArticles() {
       currentCategory === "all" ||
       article.category === currentCategory;
 
-    const searchableText = [
-
-      getText(article.title),
-
-      getText(article.description),
-
-      getText(article.content),
-
-      article.id,
-
-      article.category
-
-    ].join(" ").toLowerCase();
+    const searchableText =
+      getSearchableArticleText(article);
 
     const matchesSearch =
       searchableText.includes(
         currentSearch.toLowerCase()
       );
 
-    return matchesCategory && matchesSearch;
+    return (
+      matchesCategory &&
+      matchesSearch
+    );
 
   });
 
@@ -1015,7 +1196,9 @@ function renderArticles() {
   elements.emptyMessage.classList.add("hidden");
 
   elements.resultsInfo.textContent =
-    filteredArticles.length + " " + t("results");
+    filteredArticles.length +
+    " " +
+    t("results");
 
   if (filteredArticles.length === 0) {
 
@@ -1030,40 +1213,45 @@ function renderArticles() {
 
   filteredArticles.forEach(article => {
 
-    const card = document.createElement("article");
+    const card =
+      document.createElement("article");
 
     card.className = "article-card";
 
-    const category = document.createElement("span");
+    const category =
+      document.createElement("span");
 
     category.className = "category-label";
 
     category.textContent =
       getCategoryLabel(article.category);
 
-    const title = document.createElement("h2");
+    const title =
+      document.createElement("h2");
 
     title.textContent =
-      getText(article.title);
+      getLocalizedValue(article.title);
 
-    const description = document.createElement("p");
+    const description =
+      document.createElement("p");
 
     description.textContent =
-      getText(article.description);
+      getLocalizedValue(article.description);
 
-    const readButton = document.createElement("button");
+    const readButton =
+      document.createElement("button");
 
     readButton.type = "button";
 
     readButton.className = "read-link";
 
-    readButton.textContent = t("readMore");
+    readButton.textContent =
+      t("readMore");
 
-    readButton.addEventListener("click", () => {
-
-      openArticle(article.id);
-
-    });
+    readButton.addEventListener(
+      "click",
+      () => openArticle(article.id)
+    );
 
     card.appendChild(category);
 
@@ -1081,16 +1269,233 @@ function renderArticles() {
 
 
 /* =====================================
+   CREATE A LESSON SECTION
+===================================== */
+
+function createLessonSection(title, value) {
+
+  const content =
+    getLocalizedValue(value);
+
+  if (!content.trim()) {
+    return null;
+  }
+
+  const section =
+    document.createElement("section");
+
+  section.className = "lesson-section";
+
+  const heading =
+    document.createElement("h2");
+
+  heading.textContent = title;
+
+  const paragraph =
+    document.createElement("p");
+
+  paragraph.textContent = content;
+
+  section.appendChild(heading);
+
+  section.appendChild(paragraph);
+
+  return section;
+
+}
+
+
+/* =====================================
+   CREATE KEY POINTS SECTION
+
+   Supports:
+   key_points.en = ["...", "..."]
+   key_points.rw = ["...", "..."]
+
+   Also supports a normal string.
+===================================== */
+
+function createKeyPointsSection(value) {
+
+  if (!hasLocalizedValue(value)) {
+    return null;
+  }
+
+  const section =
+    document.createElement("section");
+
+  section.className = "lesson-section";
+
+  const heading =
+    document.createElement("h2");
+
+  heading.textContent =
+    t("keyPoints");
+
+  section.appendChild(heading);
+
+  const list =
+    document.createElement("ul");
+
+  let points = [];
+
+  if (Array.isArray(value)) {
+
+    points = value
+      .map(item => getLocalizedValue(item));
+
+  } else if (
+    value &&
+    typeof value === "object"
+  ) {
+
+    const selected =
+      value[currentLanguage];
+
+    if (Array.isArray(selected)) {
+
+      points = selected.map(item =>
+        getLocalizedValue(item)
+      );
+
+    } else {
+
+      const text =
+        getLocalizedValue(value);
+
+      points = text
+        ? text.split("\n")
+        : [];
+
+    }
+
+  } else {
+
+    points = getLocalizedValue(value)
+      .split("\n");
+
+  }
+
+  points
+    .map(point => String(point).trim())
+    .filter(Boolean)
+    .forEach(point => {
+
+      const item =
+        document.createElement("li");
+
+      item.textContent = point;
+
+      list.appendChild(item);
+
+    });
+
+  if (list.children.length === 0) {
+    return null;
+  }
+
+  section.appendChild(list);
+
+  return section;
+
+}
+
+
+/* =====================================
+   DISPLAY STRUCTURED ARTICLE
+
+   Displays:
+   1. Definition
+   2. Main lesson
+   3. Key points
+   4. Conclusion
+===================================== */
+
+function renderStructuredArticle(article) {
+
+  elements.readerContent.innerHTML = "";
+
+  const definition =
+    createLessonSection(
+      t("definition"),
+      article.definition
+    );
+
+  const body =
+    createLessonSection(
+      t("body"),
+      article.body
+    );
+
+  const keyPoints =
+    createKeyPointsSection(
+      article.key_points
+    );
+
+  const conclusion =
+    createLessonSection(
+      t("conclusion"),
+      article.conclusion
+    );
+
+  const sections = [
+    definition,
+    body,
+    keyPoints,
+    conclusion
+  ];
+
+  sections.forEach(section => {
+
+    if (section) {
+
+      elements.readerContent.appendChild(section);
+
+    }
+
+  });
+
+}
+
+
+/* =====================================
+   DISPLAY LEGACY CONTENT
+
+   Keeps compatibility with older JSON:
+   content.en and content.rw
+===================================== */
+
+function renderLegacyContent(article) {
+
+  elements.readerContent.innerHTML = "";
+
+  const content =
+    getLocalizedValue(article.content);
+
+  if (!content.trim()) {
+    return;
+  }
+
+  const paragraph =
+    document.createElement("p");
+
+  paragraph.textContent = content;
+
+  elements.readerContent.appendChild(paragraph);
+
+}
+
+
+/* =====================================
    OPEN ONE ARTICLE
 ===================================== */
 
 function openArticle(articleId) {
 
-  const article = articles.find(item => {
-
-    return item.id === articleId;
-
-  });
+  const article =
+    articles.find(item =>
+      item.id === articleId
+    );
 
   if (!article) {
 
@@ -1109,13 +1514,26 @@ function openArticle(articleId) {
     getCategoryLabel(article.category);
 
   elements.readerTitle.textContent =
-    getText(article.title);
+    getLocalizedValue(article.title);
 
   elements.readerDescription.textContent =
-    getText(article.description);
+    getLocalizedValue(article.description);
 
-  elements.readerContent.textContent =
-    getText(article.content);
+  const hasStructuredContent =
+    hasLocalizedValue(article.definition) ||
+    hasLocalizedValue(article.body) ||
+    hasLocalizedValue(article.key_points) ||
+    hasLocalizedValue(article.conclusion);
+
+  if (hasStructuredContent) {
+
+    renderStructuredArticle(article);
+
+  } else {
+
+    renderLegacyContent(article);
+
+  }
 
   elements.listSection.classList.add("hidden");
 
@@ -1170,7 +1588,8 @@ function setLanguage(language) {
 
   currentLanguage = language;
 
-  document.documentElement.lang = language;
+  document.documentElement.lang =
+    language;
 
   elements.languageBtn.textContent =
     language === "en"
@@ -1243,7 +1662,7 @@ function setLanguage(language) {
 
 
 /* =====================================
-   EVENT LISTENERS
+   LANGUAGE BUTTON
 ===================================== */
 
 elements.languageBtn.addEventListener(
@@ -1260,6 +1679,10 @@ elements.languageBtn.addEventListener(
 );
 
 
+/* =====================================
+   SEARCH INPUT
+===================================== */
+
 elements.searchInput.addEventListener(
   "input",
   event => {
@@ -1273,31 +1696,70 @@ elements.searchInput.addEventListener(
 );
 
 
+/* =====================================
+   CATEGORY FILTER BUTTONS
+===================================== */
+
 elements.filterButtons.forEach(button => {
 
-  button.addEventListener("click", () => {
+  button.addEventListener(
+    "click",
+    () => {
 
-    currentCategory =
-      button.dataset.category;
+      currentCategory =
+        button.dataset.category;
 
-    elements.filterButtons.forEach(item => {
+      elements.filterButtons.forEach(item => {
 
-      item.classList.remove("active");
+        item.classList.remove("active");
 
-    });
+        item.setAttribute(
+          "aria-pressed",
+          "false"
+        );
 
-    button.classList.add("active");
+      });
 
-    renderArticles();
+      button.classList.add("active");
 
-  });
+      button.setAttribute(
+        "aria-pressed",
+        "true"
+      );
+
+      renderArticles();
+
+    }
+  );
 
 });
 
 
+/* =====================================
+   BACK BUTTON
+===================================== */
+
 elements.backBtn.addEventListener(
   "click",
   showArticleList
+);
+
+
+/* =====================================
+   BROWSER BACK BUTTON
+===================================== */
+
+window.addEventListener(
+  "popstate",
+  () => {
+
+    if (currentArticleId) {
+
+      showArticleList();
+
+    }
+
+  }
 );
 
 
