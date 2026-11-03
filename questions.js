@@ -308,11 +308,31 @@
   /* =====================================================
      QUESTION NORMALIZATION
   ===================================================== */
+function normalizeMode(category) {
+  const value = String(category || "")
+    .toLowerCase()
+    .trim();
 
-  function normalizeMode(category) {
-    const value = String(category || "")
-      .toLowerCase()
-      .trim();
+  if (
+    value === "traffic" ||
+    value === "road_safety" ||
+    value === "road safety" ||
+    value === "amategeko y'umuhanda"
+  ) {
+    return "traffic";
+  }
+
+  if (
+    value === "general" ||
+    value === "general_knowledge" ||
+    value === "general knowledge" ||
+    value === "ubumenyi rusange"
+  ) {
+    return "general";
+  }
+
+  return "";
+}
 
     if (
       value === "traffic" ||
