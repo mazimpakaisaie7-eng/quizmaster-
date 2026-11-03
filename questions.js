@@ -458,8 +458,9 @@
       id: String(
         raw.id || `question_${index + 1}`
       ),
-
-      mode: normalizeMode(raw.category),
+mode: normalizeMode(
+  raw.category || raw.mode || raw.type
+),
 
       category: raw.category || "General Knowledge",
 
