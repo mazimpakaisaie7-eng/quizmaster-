@@ -1,45 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="theme-color"
-    content="#08172b"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08172b">
 
   <meta
     name="description"
-    content="Quiz Master Rwanda offline page. Reconnect to the internet or return to the quiz."
+    content="Quiz Master Rwanda is temporarily unavailable offline. Check your internet connection and try again."
   >
 
   <meta name="robots" content="noindex, nofollow">
 
   <title>Offline - Quiz Master 🇷🇼</title>
 
-  <link
-    rel="icon"
-    type="image/png"
-    href="./icon-192-4.png"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    href="./icon-192-4.png"
-  >
+  <link rel="icon" type="image/png" href="./icon-192-4.png">
+  <link rel="apple-touch-icon" href="./icon-192-4.png">
+  <link rel="manifest" href="./manifest.webmanifest">
 
   <style>
     :root {
       color-scheme: dark;
+
       --background: #08172b;
       --card: #10233f;
       --card-light: #172f50;
       --primary: #155eef;
+      --primary-light: #3478ff;
       --text: #f5f8ff;
       --muted: #a9bad3;
       --border: rgba(255,255,255,.12);
@@ -60,20 +48,20 @@
       min-height: 100vh;
       min-height: 100dvh;
       padding: 20px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       background:
         radial-gradient(
           circle at top,
           #142d50 0,
           var(--background) 60%
         );
+
       color: var(--text);
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       text-align: center;
     }
 
@@ -81,11 +69,12 @@
       width: 100%;
       max-width: 440px;
       padding: 32px 23px;
+
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
-      box-shadow:
-        0 15px 45px rgba(0,0,0,.25);
+
+      box-shadow: 0 15px 45px rgba(0,0,0,.25);
     }
 
     .logo {
@@ -121,9 +110,11 @@
     .status {
       margin: 22px 0;
       padding: 13px;
+
       border-radius: 11px;
       background: var(--card-light);
       border: 1px solid var(--border);
+
       color: var(--danger);
       font-size: 14px;
       font-weight: bold;
@@ -139,24 +130,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
       width: 100%;
       min-height: 48px;
       padding: 13px 16px;
       margin-top: 12px;
+
       border: 0;
       border-radius: 11px;
+
       background: var(--primary);
       color: white;
+
       font-size: 15px;
       font-weight: bold;
       text-decoration: none;
       cursor: pointer;
+
       transition:
         opacity .2s ease,
-        transform .2s ease;
+        transform .2s ease,
+        background .2s ease;
     }
 
-    button:hover,
+    button:hover:not(:disabled) {
+      background: var(--primary-light);
+    }
+
     .home-link:hover {
       opacity: .9;
     }
@@ -208,7 +208,6 @@
       *,
       *::before,
       *::after {
-        scroll-behavior: auto !important;
         transition: none !important;
       }
     }
@@ -244,15 +243,14 @@
     <h2>You are offline</h2>
 
     <p>
-      Your internet connection appears to be
-      unavailable.
+      Your internet connection may be unavailable
+      or the website could not be reached.
     </p>
 
     <p>
-      Reconnect to the internet to load the
-      latest questions and online resources.
-      Previously cached content may still be
-      available.
+      Reconnect to the internet to load the latest
+      questions, learning articles and online resources.
+      Previously cached content may still be available.
     </p>
 
     <div
@@ -278,9 +276,8 @@
       🏠 Return to Quiz Master
     </a>
 
-    <p class="help-text">
-      If you are connected but this page remains
-      visible, check your connection and try again.
+    <p class="help-text" id="helpText">
+      Check your internet connection and try again.
     </p>
 
     <footer>
@@ -301,31 +298,102 @@
       const retryButton =
         document.getElementById("retryBtn");
 
+      const helpText =
+        document.getElementById("helpText");
+
+      const HOME_URL = "./index.html";
+
+      let retrying = false;
+
       function updateConnectionStatus() {
-        const online = navigator.onLine;
-
-        if (online) {
-          statusElement.textContent =
-            "🟢 Internet connection available";
-
-          statusElement.classList.add("online");
-        } else {
+        if (!navigator.onLine) {
           statusElement.textContent =
             "🔴 No internet connection";
 
           statusElement.classList.remove("online");
+
+          helpText.textContent =
+            "Reconnect to the internet before trying again.";
+
+          return;
+        }
+
+        statusElement.textContent =
+          "🟢 Device reports an internet connection";
+
+        statusElement.classList.add("online");
+
+        helpText.textContent =
+          "Your device is connected. Try opening Quiz Master again.";
+      }
+
+      async function checkWebsite() {
+        try {
+          const response = await fetch(HOME_URL, {
+            method: "HEAD",
+            cache: "no-store"
+          });
+
+          return response.ok;
+        } catch (error) {
+          return false;
         }
       }
 
-      function retryConnection() {
+      async function retryConnection() {
+        if (retrying) return;
+
+        retrying = true;
+
         retryButton.disabled = true;
         retryButton.textContent = "⏳ Checking...";
 
         updateConnectionStatus();
 
-        // Reload the page so the Service Worker
-        // can try the network and cached pages again.
-        window.location.reload();
+        if (!navigator.onLine) {
+          statusElement.textContent =
+            "🔴 No internet connection";
+
+          statusElement.classList.remove("online");
+
+          helpText.textContent =
+            "Please reconnect to the internet and try again.";
+
+          retryButton.disabled = false;
+          retryButton.textContent = "🔄 Try Again";
+
+          retrying = false;
+          return;
+        }
+
+        statusElement.textContent =
+          "🟡 Checking Quiz Master website...";
+
+        const websiteAvailable = await checkWebsite();
+
+        if (websiteAvailable) {
+          statusElement.textContent =
+            "🟢 Website available. Returning home...";
+
+          helpText.textContent =
+            "Quiz Master is reachable. Opening the homepage.";
+
+          window.location.replace(HOME_URL);
+          return;
+        }
+
+        statusElement.textContent =
+          "🟠 Website could not be reached";
+
+        statusElement.classList.remove("online");
+
+        helpText.textContent =
+          "Your device may be connected, but the website is not responding. Check your connection and try again.";
+
+        retryButton.disabled = false;
+        retryButton.textContent = "🔄 Try Again";
+
+        retrying = false;
       }
 
       window.addEventListener(
