@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
   <link rel="apple-touch-icon" href="./icon-192-4.png">
   <link rel="manifest" href="./manifest.webmanifest">
 
-<!-- GOOGLE ANALYTICS 4 -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FP8R0NDZN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,499 +38,676 @@
 
   <style>
     :root {
-      --bg:#08172b;
-      --header:#0c1d35;
-      --panel:#10233f;
-      --panel2:#172f50;
-      --primary:#155eef;
-      --primary-light:#3978ff;
-      --text:#f5f8ff;
-      --muted:#a9bad3;
-      --border:rgba(255,255,255,.12);
-      --green:#20bd78;
-      --red:#ef5350;
-      --gold:#ffc857;
-      --radius:17px;
+      --bg: #08172b;
+      --header: #0c1d35;
+      --panel: #10233f;
+      --panel2: #172f50;
+      --primary: #155eef;
+      --primary-light: #3978ff;
+      --text: #f5f8ff;
+      --muted: #a9bad3;
+      --border: rgba(255,255,255,.12);
+      --green: #20bd78;
+      --red: #ef5350;
+      --gold: #ffc857;
+      --radius: 16px;
     }
 
-    * {box-sizing:border-box}
+    * {
+      box-sizing: border-box;
+    }
 
-    html {scroll-behavior:smooth}
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      margin:0;
-      min-height:100vh;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.6;
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
     }
 
-    button,select {font:inherit}
-    button {cursor:pointer}
-    button:disabled {opacity:.45;cursor:not-allowed}
-    a {color:inherit}
+    button, select {
+      font: inherit;
+    }
 
-    [hidden],.hidden {display:none!important}
+    button {
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    [hidden],
+    .hidden {
+      display: none !important;
+    }
 
     .container {
-      width:min(100% - 24px,760px);
-      margin:auto;
+      width: min(100% - 24px, 760px);
+      margin: auto;
     }
 
     /* HEADER */
 
     header {
-      background:var(--header);
-      border-bottom:1px solid var(--border);
-      position:sticky;
-      top:0;
-      z-index:100;
-      padding:12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 11px 0;
+      background: var(--header);
+      border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .brand {
-      font-size:19px;
-      font-weight:800;
-      text-decoration:none;
-      white-space:nowrap;
+      font-size: 19px;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
-    .menu-wrapper {position:relative}
+    .menu-wrapper {
+      position: relative;
+    }
 
     .menu-toggle {
-      display:flex;
-      align-items:center;
-      gap:8px;
-      background:var(--panel2);
-      color:white;
-      border:1px solid var(--border);
-      border-radius:11px;
-      padding:9px 13px;
-      font-weight:700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: var(--panel2);
+      color: white;
+      font-weight: 700;
     }
 
     .menu-panel {
-      position:absolute;
-      right:0;
-      top:calc(100% + 10px);
-      width:min(290px,calc(100vw - 24px));
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:15px;
-      padding:9px;
-      box-shadow:0 15px 40px rgba(0,0,0,.4);
-      max-height:75vh;
-      overflow-y:auto;
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: min(290px, calc(100vw - 24px));
+      max-height: 75vh;
+      overflow-y: auto;
+      padding: 9px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 15px 40px rgba(0,0,0,.4);
     }
 
     .menu-heading {
-      color:var(--muted);
-      font-size:11px;
-      font-weight:700;
-      text-transform:uppercase;
-      padding:8px 11px;
+      padding: 8px 11px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
     .menu-item {
-      display:flex;
-      align-items:center;
-      width:100%;
-      gap:11px;
-      padding:11px;
-      border:0;
-      border-radius:9px;
-      background:transparent;
-      color:white;
-      text-align:left;
-      text-decoration:none;
-      font-size:14px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 11px;
+      padding: 11px;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: white;
+      text-align: left;
+      text-decoration: none;
+      font-size: 14px;
     }
 
-    .menu-item:hover {background:var(--panel2)}
+    .menu-item:hover {
+      background: var(--panel2);
+    }
 
     .menu-divider {
-      height:1px;
-      background:var(--border);
-      margin:7px 3px;
+      height: 1px;
+      margin: 7px 3px;
+      background: var(--border);
     }
 
     /* MAIN */
 
     main {
-      min-height:75vh;
-      padding:20px 0 35px;
+      min-height: 75vh;
+      padding: 18px 0 35px;
     }
 
-    .screen {display:none}
-    .screen.active {display:block}
-
-    .hero {
-      text-align:center;
-      padding:24px 10px 17px;
+    .screen {
+      display: none;
     }
 
-    .hero-icon {font-size:43px;line-height:1.3}
-
-    h1 {
-      font-size:clamp(27px,6vw,37px);
-      line-height:1.2;
-      margin:8px 0;
+    .screen.active {
+      display: block;
     }
-
-    h2 {font-size:21px;margin:0 0 12px}
-    h3 {font-size:16px;margin:0 0 10px}
-    p {color:var(--muted)}
-    .muted {color:var(--muted)}
-    .small {font-size:12px}
 
     .panel {
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:18px;
-      margin:13px 0;
+      margin: 13px 0;
+      padding: 18px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
     }
 
-    /* HOME */
+    h1 {
+      margin: 8px 0;
+      font-size: clamp(27px, 6vw, 37px);
+      line-height: 1.2;
+    }
 
-    .home-intro {text-align:center;margin-bottom:16px}
-    .home-intro p {margin:5px 0}
+    h2 {
+      margin: 0 0 12px;
+      font-size: 21px;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .small {
+      font-size: 12px;
+    }
+
+    /* HOME HERO */
+
+    .hero {
+      padding: 17px 10px 13px;
+      text-align: center;
+    }
+
+    .hero-icon {
+      font-size: 42px;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      margin: 5px 0;
+    }
+
+    .home-intro {
+      margin-bottom: 13px;
+      text-align: center;
+    }
+
+    .home-intro p {
+      margin: 5px 0;
+    }
+
+    /* STATS */
 
     .stats {
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:8px;
-      margin:15px 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 15px 0;
     }
 
     .stat {
-      text-align:center;
-      background:var(--panel2);
-      padding:10px 5px;
-      border-radius:11px;
-      min-width:0;
+      min-width: 0;
+      padding: 10px 5px;
+      border-radius: 11px;
+      background: var(--panel2);
+      text-align: center;
     }
 
     .stat strong {
-      display:block;
-      color:white;
-      font-size:19px;
-      overflow-wrap:anywhere;
+      display: block;
+      overflow-wrap: anywhere;
+      color: white;
+      font-size: 19px;
     }
 
-    .stat span {color:var(--muted);font-size:11px}
+    .stat span {
+      color: var(--muted);
+      font-size: 11px;
+    }
 
-    .setup-heading {margin:20px 0 10px;font-size:15px}
+    /* SETUP */
+
+    .setup-section {
+      margin-top: 20px;
+    }
+
+    .setup-heading {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
 
     .choice-grid {
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:9px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
     }
 
     .choice-btn {
-      min-height:62px;
-      padding:12px 8px;
-      border-radius:12px;
-      border:2px solid var(--border);
-      background:var(--panel2);
-      color:white;
-      font-weight:700;
-      font-size:13px;
+      min-height: 58px;
+      padding: 11px 8px;
+      border: 2px solid var(--border);
+      border-radius: 11px;
+      background: var(--panel2);
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
     }
 
     .choice-btn.selected,
     .choice-btn.active {
-      border-color:var(--primary-light);
-      background:rgba(21,94,239,.25);
-    }
-
-    .choice-btn:focus-visible,
-    button:focus-visible,
-    a:focus-visible,
-    select:focus-visible {
-      outline:3px solid var(--gold);
-      outline-offset:3px;
+      border-color: var(--primary-light);
+      background: rgba(21,94,239,.25);
     }
 
     .summary {
-      background:rgba(21,94,239,.12);
-      border:1px solid rgba(57,120,255,.3);
-      border-radius:11px;
-      padding:11px;
-      margin:13px 0;
-      font-size:13px;
+      margin: 14px 0;
+      padding: 11px;
+      border: 1px solid rgba(57,120,255,.3);
+      border-radius: 11px;
+      background: rgba(21,94,239,.12);
+      font-size: 13px;
     }
 
-    #homeMessage,#setupError {
-      font-size:13px;
-      min-height:1em;
+    #homeMessage,
+    #setupError {
+      min-height: 1em;
+      font-size: 13px;
     }
 
-    #setupError[data-type="error"] {color:#ff8585}
+    #setupError[data-type="error"] {
+      color: #ff8585;
+    }
 
     /* BUTTONS */
 
     .btn {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:8px;
-      width:100%;
-      min-height:46px;
-      padding:12px 15px;
-      border:0;
-      border-radius:11px;
-      background:var(--primary);
-      color:white;
-      font-weight:700;
-      text-align:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 46px;
+      gap: 8px;
+      padding: 12px 15px;
+      border: 0;
+      border-radius: 11px;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      text-align: center;
     }
 
-    .btn:hover:not(:disabled) {background:var(--primary-light)}
-    .btn.secondary {background:var(--panel2);border:1px solid var(--border)}
-    .btn.success {background:#16895b}
-    .btn.danger {background:#a83232}
-    .btn.gold {background:#a66c08}
+    .btn:hover:not(:disabled) {
+      background: var(--primary-light);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--border);
+      background: var(--panel2);
+    }
+
+    .btn.success {
+      background: #16895b;
+    }
+
+    .btn.danger {
+      background: #a83232;
+    }
+
+    .btn.gold {
+      background: #a66c08;
+    }
 
     .btn-row {
-      display:flex;
-      flex-wrap:wrap;
-      gap:9px;
-      margin-top:13px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 13px;
     }
 
-    .btn-row .btn {flex:1 1 130px}
-    .full {width:100%}
+    .btn-row .btn {
+      flex: 1 1 130px;
+    }
 
-    /* ADS */
+    .full {
+      width: 100%;
+    }
+
+    /* HOME AD */
 
     .ad-container {
-      width:100%;
-      min-height:90px;
-      margin:18px auto;
-      text-align:center;
-      overflow:hidden;
+      width: 100%;
+      min-height: 90px;
+      margin: 22px auto 10px;
+      overflow: hidden;
+      text-align: center;
     }
 
     .ad-label {
-      color:#8092aa;
-      font-size:10px;
-      margin-bottom:5px;
+      margin-bottom: 5px;
+      color: #8092aa;
+      font-size: 10px;
     }
 
     /* QUIZ */
 
     .quiz-top {
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:8px;
-      font-size:12px;
-      color:var(--muted);
-      text-align:center;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
     }
 
     .quiz-info {
-      background:var(--panel2);
-      padding:8px 4px;
-      border-radius:9px;
-      min-width:0;
+      min-width: 0;
+      padding: 8px 4px;
+      border-radius: 9px;
+      background: var(--panel2);
     }
 
-    .quiz-info strong {display:block;color:white}
+    .quiz-info strong {
+      display: block;
+      color: white;
+    }
 
     #categoryIndicator {
-      display:block;
-      color:var(--muted);
-      font-size:12px;
-      margin-top:10px;
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
     #timerBox {
-      display:inline-flex;
-      align-items:center;
-      gap:5px;
-      background:var(--panel2);
-      color:var(--gold);
-      padding:8px 14px;
-      border-radius:10px;
-      margin-top:14px;
-      font-weight:800;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 14px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: var(--panel2);
+      color: var(--gold);
+      font-weight: 800;
     }
 
     #timerBox.warning {
-      color:#ff7777;
-      border:1px solid var(--red);
+      border: 1px solid var(--red);
+      color: #ff7777;
     }
 
     .progress-track {
-      height:8px;
-      background:#263c59;
-      border-radius:20px;
-      overflow:hidden;
-      margin:13px 0;
+      height: 8px;
+      margin: 13px 0;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #263c59;
     }
 
     #progressFill {
-      height:100%;
-      width:0;
-      background:var(--green);
-      transition:width .3s;
+      width: 0;
+      height: 100%;
+      background: var(--green);
+      transition: width .3s;
     }
 
     #questionImage {
-      display:none;
-      width:100%;
-      max-height:250px;
-      object-fit:contain;
-      border-radius:12px;
-      margin:12px 0;
+      display: none;
+      width: 100%;
+      max-height: 250px;
+      margin: 12px 0;
+      border-radius: 12px;
+      object-fit: contain;
     }
 
     #questionText {
-      font-size:clamp(19px,4vw,23px);
-      line-height:1.45;
-      margin:20px 0;
-      color:white;
+      margin: 20px 0;
+      color: white;
+      font-size: clamp(19px, 4vw, 23px);
+      line-height: 1.45;
     }
 
-    #optionsContainer {display:grid;gap:10px}
+    #optionsContainer {
+      display: grid;
+      gap: 10px;
+    }
 
     #optionsContainer .option-btn {
-      display:flex;
-      align-items:center;
-      width:100%;
-      gap:10px;
-      padding:14px;
-      min-height:53px;
-      border:2px solid var(--border);
-      border-radius:12px;
-      background:var(--panel2);
-      color:white;
-      text-align:left;
-      font-size:15px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 53px;
+      gap: 10px;
+      padding: 14px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel2);
+      color: white;
+      font-size: 15px;
+      text-align: left;
     }
 
     .option-letter {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:28px;
-      height:28px;
-      border-radius:8px;
-      background:rgba(255,255,255,.1);
-      font-weight:800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.1);
+      font-weight: 800;
     }
 
     #optionsContainer .selected {
-      border-color:var(--primary-light);
-      background:rgba(21,94,239,.25);
+      border-color: var(--primary-light);
+      background: rgba(21,94,239,.25);
     }
 
-    #optionsContainer .correct {border-color:var(--green)}
-    #optionsContainer .incorrect,
-    #optionsContainer .wrong {border-color:var(--red)}
+    #optionsContainer .correct {
+      border-color: var(--green);
+    }
 
-    #answerFeedback {margin-top:15px;font-weight:700}
-    #explanation {color:var(--muted);margin-top:8px;font-size:14px}
+    #optionsContainer .incorrect,
+    #optionsContainer .wrong {
+      border-color: var(--red);
+    }
+
+    #answerFeedback {
+      margin-top: 15px;
+      font-weight: 700;
+    }
+
+    #explanation {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
     /* RESULTS */
 
     .result-score {
-      text-align:center;
-      font-size:45px;
-      font-weight:900;
-      color:var(--gold);
-      margin:12px 0;
+      margin: 12px 0;
+      color: var(--gold);
+      font-size: 45px;
+      font-weight: 900;
+      text-align: center;
     }
 
-    #resultStars {text-align:center;font-size:28px}
-    #resultTitle,#resultMessage {text-align:center}
+    #resultStars {
+      font-size: 28px;
+      text-align: center;
+    }
+
+    #resultTitle,
+    #resultMessage {
+      text-align: center;
+    }
 
     /* REVIEW */
 
     .review-item {
-      background:var(--panel2);
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:14px;
-      margin:10px 0;
-      overflow-wrap:anywhere;
+      margin: 10px 0;
+      padding: 14px;
+      overflow-wrap: anywhere;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel2);
     }
 
-    .review-item p {margin:7px 0;font-size:14px}
-    .correct-text {color:var(--green)}
-    .wrong-text {color:#ff7777}
+    .review-item p {
+      margin: 7px 0;
+      font-size: 14px;
+    }
+
+    .correct-text {
+      color: var(--green);
+    }
+
+    .wrong-text {
+      color: #ff7777;
+    }
 
     /* ROUNDS */
 
     .round-card {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      width:100%;
-      padding:14px;
-      margin:9px 0;
-      background:var(--panel2);
-      color:white;
-      border:1px solid var(--border);
-      border-radius:11px;
-      text-align:left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 10px;
+      margin: 9px 0;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: var(--panel2);
+      color: white;
+      text-align: left;
     }
 
-    .round-card.completed {border-color:var(--green)}
-    .round-card.locked {opacity:.5}
-    .round-status {font-size:12px;color:var(--muted)}
+    .round-card.completed {
+      border-color: var(--green);
+    }
+
+    .round-card.locked {
+      opacity: .5;
+    }
+
+    .round-status {
+      color: var(--muted);
+      font-size: 12px;
+    }
 
     /* SETTINGS */
 
     .field {
-      display:block;
-      width:100%;
-      background:var(--panel2);
-      color:white;
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:12px;
-      margin:8px 0 17px;
+      display: block;
+      width: 100%;
+      margin: 8px 0 17px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--panel2);
+      color: white;
     }
 
-    label {font-weight:700;font-size:14px}
+    label {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .music-panel {
+      margin: 17px 0;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--panel2);
+    }
+
+    .music-panel p {
+      margin: 5px 0 12px;
+    }
 
     /* FOOTER */
 
     footer {
-      border-top:1px solid var(--border);
-      padding:22px 12px;
-      text-align:center;
-      color:var(--muted);
-      font-size:12px;
+      padding: 22px 12px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
     }
 
-    footer a {color:#8eb5ff;margin:0 7px}
-
-    @media(max-width:420px) {
-      .container {width:calc(100% - 18px)}
-      .panel {padding:14px}
-      .brand {font-size:16px}
-      .choice-btn {font-size:12px}
-      .stat strong {font-size:17px}
+    footer a {
+      display: inline-block;
+      margin: 4px 7px;
+      color: #8eb5ff;
     }
 
-    @media(prefers-reduced-motion:reduce) {
-      html {scroll-behavior:auto}
-      *,*::before,*::after {
-        transition-duration:.01ms!important;
-        animation-duration:.01ms!important;
+    /* ACCESSIBILITY */
+
+    button:focus-visible,
+    a:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        width: calc(100% - 18px);
+      }
+
+      .panel {
+        padding: 14px;
+      }
+
+      .brand {
+        font-size: 16px;
+      }
+
+      .choice-btn {
+        font-size: 12px;
+      }
+
+      .stat strong {
+        font-size: 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
       }
     }
   </style>
@@ -537,669 +715,803 @@
 
 <body>
 
-<header>
-  <div class="container header-inner">
-    <a href="./index.html" class="brand">🇷🇼 Quiz Master</a>
+  <!-- HEADER AND MENU -->
 
-    <div class="menu-wrapper">
-      <button id="moreMenuBtn"
-        class="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="moreMenu">
-        ☰ More
-      </button>
+  <header>
+    <div class="container header-inner">
 
-      <nav id="moreMenu"
-        class="menu-panel"
-        aria-label="More navigation"
-        hidden>
+      <a href="./index.html" class="brand">🇷🇼 Quiz Master</a>
 
-        <div class="menu-heading">My Quiz</div>
+      <div class="menu-wrapper">
 
-        <button id="roundsBtn" class="menu-item" type="button">
-          🏆 My Progress & Quiz Rounds
+        <button
+          id="moreMenuBtn"
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="moreMenu">
+          ☰ More
         </button>
 
-        <button id="reviewAnswersBtn"
-          class="menu-item"
-          type="button"
+        <nav
+          id="moreMenu"
+          class="menu-panel"
+          aria-label="Main navigation"
           hidden>
-          📖 Review Answers
-        </button>
 
-        <div class="menu-divider"></div>
+          <div class="menu-heading">My Quiz</div>
 
-        <div class="menu-heading">Application</div>
+          <button id="roundsBtn" class="menu-item" type="button">
+            🏆 My Progress & Quiz Rounds
+          </button>
 
-        <button id="settingsBtn" class="menu-item" type="button">
-          ⚙️ Settings
-        </button>
+          <button
+            id="reviewAnswersBtn"
+            class="menu-item"
+            type="button"
+            hidden>
+            📖 Review Answers
+          </button>
 
-        <button id="shareBtn" class="menu-item" type="button">
-          ↗ Share Quiz Master
-        </button>
+          <div class="menu-divider"></div>
 
-        <button id="musicMenuBtn" class="menu-item" type="button">
-          🎵 Music Settings
-        </button>
+          <div class="menu-heading">Application</div>
 
-        <div class="menu-divider"></div>
+          <button id="settingsBtn" class="menu-item" type="button">
+            ⚙️ Settings
+          </button>
 
-        <div class="menu-heading">Explore</div>
+          <button id="shareBtn" class="menu-item" type="button">
+            ↗ Share Quiz Master
+          </button>
 
-        <a href="./articles.html" class="menu-item">
-          📚 Learning Centre
-        </a>
+          <button id="musicMenuBtn" class="menu-item" type="button">
+            🎵 Music Settings
+          </button>
 
-        <a href="./about.html" class="menu-item">
-          ℹ️ About Quiz Master
-        </a>
+          <div class="menu-divider"></div>
 
-        <div class="menu-divider"></div>
+          <div class="menu-heading">Explore</div>
 
-        <div class="menu-heading">Support</div>
+          <a href="./articles.html" class="menu-item">
+            📚 Learning Centre
+          </a>
 
-        <a href="./contact.html" class="menu-item">
-          ✉️ Contact & Help
-        </a>
-      </nav>
+          <a href="./about.html" class="menu-item">
+            ℹ️ About Quiz Master
+          </a>
+
+          <div class="menu-divider"></div>
+
+          <div class="menu-heading">Support</div>
+
+          <a href="./contact.html" class="menu-item">
+            ✉️ Contact & Help
+          </a>
+
+        </nav>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main class="container">
+  <main class="container">
 
-  <!-- HOME SCREEN -->
+    <!-- HOME SCREEN -->
 
-  <section id="homeScreen" class="screen active">
+    <section id="homeScreen" class="screen active">
 
-    <div class="hero">
-      <div class="hero-icon">🧠🇷🇼</div>
-      <h1>Quiz Master</h1>
-      <p>Learn • Play • Improve</p>
-    </div>
-
-    <!-- HOME ADVERTISEMENT -->
-
-    <div class="ad-container">
-      <div class="ad-label">ADVERTISEMENT</div>
-
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-2666698676518429"
-        data-ad-slot="9045712897"
-        data-ad-format="auto"
-        data-full-width-responsive="true">
-      </ins>
-    </div>
-
-    <div class="panel">
-
-      <div class="home-intro">
-        <h2>Welcome to Quiz Master 🇷🇼</h2>
-        <p>Test your knowledge and improve every day.</p>
+      <div class="hero">
+        <div class="hero-icon">🧠🇷🇼</div>
+        <h1>Quiz Master</h1>
+        <p>Learn • Play • Improve</p>
       </div>
 
-      <div class="stats">
-        <div class="stat">
-          <strong id="homeRound">1</strong>
-          <span>Current Round</span>
+      <div class="panel">
+
+        <div class="home-intro">
+          <h2>Welcome to Quiz Master 🇷🇼</h2>
+          <p>Test your knowledge and improve every day.</p>
         </div>
 
-        <div class="stat">
-          <strong id="homeScore">0</strong>
-          <span>Best Score</span>
+        <!-- PLAYER STATISTICS -->
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong id="homeRound">1</strong>
+            <span>Current Round</span>
+          </div>
+
+          <div class="stat">
+            <strong id="homeScore">0</strong>
+            <span>Best Score</span>
+          </div>
+
+          <div class="stat">
+            <strong id="homeStars">⭐</strong>
+            <span>Stars</span>
+          </div>
+
         </div>
 
-        <div class="stat">
-          <strong id="homeStars">⭐</strong>
-          <span>Stars</span>
+        <!-- GAME SETUP -->
+
+        <div id="gameSetup">
+
+          <div class="setup-section">
+            <h3 class="setup-heading">1. Choose Language</h3>
+
+            <div class="choice-grid">
+
+              <button
+                class="choice-btn language-btn"
+                data-language="rw"
+                type="button"
+                aria-pressed="false">
+                🇷🇼 Ikinyarwanda
+              </button>
+
+              <button
+                class="choice-btn language-btn"
+                data-language="en"
+                type="button"
+                aria-pressed="false">
+                🇬🇧 English
+              </button>
+
+            </div>
+          </div>
+
+          <div class="setup-section">
+            <h3 class="setup-heading">2. Choose Category</h3>
+
+            <div class="choice-grid">
+
+              <button
+                class="choice-btn mode-btn"
+                data-mode="traffic"
+                type="button"
+                aria-pressed="false">
+                🚦 Road Safety
+              </button>
+
+              <button
+                class="choice-btn mode-btn"
+                data-mode="general"
+                type="button"
+                aria-pressed="false">
+                🌍 General Knowledge
+              </button>
+
+            </div>
+          </div>
+
+          <div
+            id="selectionSummary"
+            class="summary"
+            aria-live="polite">
+            Choose your language and category.
+          </div>
+
+          <p id="setupError" role="status" aria-live="polite"></p>
+
+          <button
+            id="confirmSetupBtn"
+            class="btn secondary full"
+            type="button"
+            disabled>
+            Confirm Selection
+          </button>
+
         </div>
+
+        <!-- START AND CONTINUE -->
+
+        <div class="btn-row">
+
+          <button
+            id="startBtn"
+            class="btn full"
+            type="button"
+            disabled>
+            ▶ Start Quiz
+          </button>
+
+          <button
+            id="continueBtn"
+            class="btn success full"
+            type="button"
+            hidden>
+            ▶ Continue Quiz
+          </button>
+
+        </div>
+
+        <p id="homeMessage" role="status" aria-live="polite"></p>
+
       </div>
 
-      <!-- GAME SETUP -->
+      <!-- HOME PAGE ADVERTISEMENT -->
 
-      <div id="gameSetup">
+      <div class="ad-container">
+        <div class="ad-label">ADVERTISEMENT</div>
 
-        <h3 class="setup-heading">1. Choose Language</h3>
-
-        <div class="choice-grid">
-          <button class="choice-btn language-btn"
-            data-language="rw"
-            type="button"
-            aria-pressed="false">
-            🇷🇼 Ikinyarwanda
-          </button>
-
-          <button class="choice-btn language-btn"
-            data-language="en"
-            type="button"
-            aria-pressed="false">
-            🇬🇧 English
-          </button>
-        </div>
-
-        <h3 class="setup-heading">2. Choose Category</h3>
-
-        <div class="choice-grid">
-          <button class="choice-btn mode-btn"
-            data-mode="traffic"
-            type="button"
-            aria-pressed="false">
-            🚦 Road Safety
-          </button>
-
-          <button class="choice-btn mode-btn"
-            data-mode="general"
-            type="button"
-            aria-pressed="false">
-            🌍 General Knowledge
-          </button>
-        </div>
-
-        <div id="selectionSummary"
-          class="summary"
-          aria-live="polite">
-          Choose your language and category.
-        </div>
-
-        <p id="setupError" role="status" aria-live="polite"></p>
-
-        <button id="confirmSetupBtn"
-          class="btn secondary full"
-          type="button"
-          disabled>
-          Confirm Selection
-        </button>
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-2666698676518429"
+          data-ad-slot="9045712897"
+          data-ad-format="auto"
+          data-full-width-responsive="true">
+        </ins>
       </div>
 
-      <div class="btn-row">
-        <button id="startBtn"
+    </section>
+
+    <!-- QUIZ SCREEN -->
+
+    <section id="quizScreen" class="screen">
+
+      <div class="panel">
+
+        <div class="quiz-top">
+
+          <div class="quiz-info">
+            Round
+            <strong id="roundLabel">1</strong>
+          </div>
+
+          <div class="quiz-info">
+            Question
+            <strong id="questionCounter">1/10</strong>
+          </div>
+
+          <div class="quiz-info">
+            Score
+            <strong id="scoreNumber">0</strong>
+          </div>
+
+        </div>
+
+        <div id="categoryIndicator">General Knowledge</div>
+
+        <div id="timerBox">
+          ⏱ <span id="timer">30</span>s
+        </div>
+
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-label="Quiz progress"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0">
+
+          <div id="progressFill"></div>
+
+        </div>
+
+        <img
+          id="questionImage"
+          alt="Question illustration"
+          loading="lazy">
+
+        <h2 id="questionText">Loading question...</h2>
+
+        <div id="optionsContainer"></div>
+
+        <div id="answerFeedback" aria-live="polite"></div>
+
+        <div id="explanation"></div>
+
+        <button
+          id="submitAnswerBtn"
           class="btn full"
           type="button"
+          style="margin-top:16px"
           disabled>
-          ▶ Start Quiz
+          Submit Answer
         </button>
 
-        <button id="continueBtn"
-          class="btn success full"
-          type="button"
-          hidden>
-          ▶ Continue Quiz
-        </button>
-      </div>
+        <div class="btn-row">
 
-      <p id="homeMessage" role="status" aria-live="polite"></p>
-    </div>
-  </section>
+          <button
+            id="nextQuestionBtn"
+            class="btn success full"
+            type="button"
+            hidden>
+            Next Question →
+          </button>
 
-  <!-- QUIZ SCREEN -->
+          <button
+            id="quizReviewBtn"
+            class="btn secondary full"
+            type="button">
+            Review Answers
+          </button>
 
-  <section id="quizScreen" class="screen">
-    <div class="panel">
+          <button
+            id="quizHomeBtn"
+            class="btn secondary full"
+            type="button">
+            🏠 Home
+          </button>
 
-      <div class="quiz-top">
-        <div class="quiz-info">
-          Round
-          <strong id="roundLabel">1</strong>
-        </div>
-
-        <div class="quiz-info">
-          Question
-          <strong id="questionCounter">1/10</strong>
-        </div>
-
-        <div class="quiz-info">
-          Score
-          <strong id="scoreNumber">0</strong>
         </div>
       </div>
 
-      <div id="categoryIndicator">General Knowledge</div>
+    </section>
 
-      <div id="timerBox">
-        ⏱ <span id="timer">30</span>s
-      </div>
+    <!-- RESULT SCREEN -->
 
-      <div class="progress-track"
-        role="progressbar"
-        aria-label="Quiz progress"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        aria-valuenow="0">
-        <div id="progressFill"></div>
-      </div>
+    <section id="resultScreen" class="screen">
 
-      <img id="questionImage"
-        alt="Question illustration"
-        loading="lazy">
+      <div class="panel">
 
-      <h2 id="questionText">Loading question...</h2>
+        <h2 id="resultTitle">Round Complete!</h2>
 
-      <div id="optionsContainer"></div>
+        <p id="resultMessage">Your results are ready.</p>
 
-      <div id="answerFeedback" aria-live="polite"></div>
+        <div id="resultStars">⭐</div>
 
-      <div id="explanation"></div>
+        <div id="resultScore" class="result-score">0</div>
 
-      <button id="submitAnswerBtn"
-        class="btn full"
-        type="button"
-        style="margin-top:16px"
-        disabled>
-        Submit Answer
-      </button>
+        <div class="stats">
 
-      <div class="btn-row">
-        <button id="nextQuestionBtn"
-          class="btn success full"
-          type="button"
-          hidden>
-          Next Question →
-        </button>
+          <div class="stat">
+            <strong id="resultPercent">0%</strong>
+            <span>Percentage</span>
+          </div>
 
-        <button id="quizReviewBtn"
-          class="btn secondary full"
-          type="button">
-          Review Answers
-        </button>
+          <div class="stat">
+            <strong id="resultCorrect">0/10</strong>
+            <span>Correct Answers</span>
+          </div>
 
-        <button id="quizHomeBtn"
-          class="btn secondary full"
-          type="button">
-          🏠 Home
-        </button>
-      </div>
-    </div>
-  </section>
+          <div class="stat">
+            <strong id="resultPassMark">70%</strong>
+            <span>Pass Mark</span>
+          </div>
 
-  <!-- RESULT SCREEN -->
-
-  <section id="resultScreen" class="screen">
-    <div class="panel">
-
-      <h2 id="resultTitle">Round Complete!</h2>
-
-      <p id="resultMessage">Your results are ready.</p>
-
-      <div id="resultStars">⭐</div>
-
-      <div id="resultScore" class="result-score">0</div>
-
-      <div class="stats">
-        <div class="stat">
-          <strong id="resultPercent">0%</strong>
-          <span>Percentage</span>
         </div>
 
-        <div class="stat">
-          <strong id="resultCorrect">0/10</strong>
-          <span>Correct Answers</span>
-        </div>
+        <div class="btn-row">
 
-        <div class="stat">
-          <strong id="resultPassMark">70%</strong>
-          <span>Pass Mark</span>
+          <button
+            id="resultNextBtn"
+            class="btn success full"
+            type="button"
+            hidden>
+            Continue to Next Round →
+          </button>
+
+          <button
+            id="retryBtn"
+            class="btn gold full"
+            type="button"
+            hidden>
+            ↻ Retry Round
+          </button>
+
+          <button
+            id="resultReviewBtn"
+            class="btn secondary full"
+            type="button">
+            📖 Review Answers
+          </button>
+
+          <button
+            id="resultHomeBtn"
+            class="btn secondary full"
+            type="button">
+            🏠 Back to Home
+          </button>
+
         </div>
       </div>
 
-      <div class="btn-row">
-        <button id="resultNextBtn"
-          class="btn success full"
-          type="button"
-          hidden>
-          Continue to Next Round →
-        </button>
+    </section>
 
-        <button id="retryBtn"
-          class="btn gold full"
-          type="button"
-          hidden>
-          ↻ Retry Round
-        </button>
+    <!-- REVIEW SCREEN -->
 
-        <button id="resultReviewBtn"
-          class="btn secondary full"
-          type="button">
-          📖 Review Answers
-        </button>
+    <section id="reviewScreen" class="screen">
 
-        <button id="resultHomeBtn"
+      <div class="panel">
+
+        <h2>📖 Review Answers</h2>
+
+        <p>Check your answers and learn from the explanations.</p>
+
+        <div id="reviewContainer"></div>
+
+        <button
+          id="reviewHomeBtn"
           class="btn secondary full"
           type="button">
           🏠 Back to Home
         </button>
-      </div>
-    </div>
-  </section>
 
-  <!-- REVIEW SCREEN -->
-
-  <section id="reviewScreen" class="screen">
-    <div class="panel">
-      <h2>📖 Review Answers</h2>
-
-      <p>Check your answers and learn from the explanations.</p>
-
-      <div id="reviewContainer"></div>
-
-      <button id="reviewHomeBtn"
-        class="btn secondary full"
-        type="button">
-        🏠 Back to Home
-      </button>
-    </div>
-  </section>
-
-  <!-- ROUNDS SCREEN -->
-
-  <section id="roundsScreen" class="screen">
-    <div class="panel">
-
-      <h2>🏆 Quiz Rounds</h2>
-
-      <p id="roundsDescription">
-        Complete rounds to unlock new challenges.
-      </p>
-
-      <div class="stats">
-        <div class="stat">
-          <strong id="roundsCompleted">0</strong>
-          <span>Completed</span>
-        </div>
-
-        <div class="stat">
-          <strong id="roundsTotal">0</strong>
-          <span>Total Rounds</span>
-        </div>
-
-        <div class="stat">
-          <strong id="roundsUnlocked">1</strong>
-          <span>Unlocked</span>
-        </div>
       </div>
 
-      <div id="roundList"></div>
+    </section>
 
-      <button id="roundsHomeBtn"
-        class="btn secondary full"
-        type="button">
-        🏠 Back to Home
-      </button>
-    </div>
-  </section>
+    <!-- ROUNDS SCREEN -->
 
-  <!-- SETTINGS SCREEN -->
+    <section id="roundsScreen" class="screen">
 
-  <section id="settingsScreen" class="screen">
-    <div class="panel">
+      <div class="panel">
 
-      <h2>⚙️ Settings</h2>
+        <h2>🏆 Quiz Rounds</h2>
 
-      <label for="settingsLanguage">Language</label>
-      <select id="settingsLanguage" class="field">
-        <option value="en">English</option>
-        <option value="rw">Ikinyarwanda</option>
-      </select>
-
-      <label for="settingsMode">Question Category</label>
-      <select id="settingsMode" class="field">
-        <option value="traffic">Road Safety</option>
-        <option value="general">General Knowledge</option>
-      </select>
-
-      <div class="summary">
-        <strong>🎵 Background Music</strong>
-
-        <p class="small">
-          Control the application's background music.
+        <p id="roundsDescription">
+          Complete rounds to unlock new challenges.
         </p>
 
-        <button id="musicToggleBtn"
+        <div class="stats">
+
+          <div class="stat">
+            <strong id="roundsCompleted">0</strong>
+            <span>Completed</span>
+          </div>
+
+          <div class="stat">
+            <strong id="roundsTotal">0</strong>
+            <span>Total Rounds</span>
+          </div>
+
+          <div class="stat">
+            <strong id="roundsUnlocked">1</strong>
+            <span>Unlocked</span>
+          </div>
+
+        </div>
+
+        <div id="roundList"></div>
+
+        <button
+          id="roundsHomeBtn"
           class="btn secondary full"
           type="button">
-          🔇 Music Off
+          🏠 Back to Home
         </button>
 
-        <p id="musicStatus" class="small" aria-live="polite"></p>
       </div>
 
-      <p id="settingsMessage" aria-live="polite"></p>
+    </section>
 
-      <button id="saveSettingsBtn" class="btn full" type="button">
-        Save Settings
-      </button>
+    <!-- SETTINGS SCREEN -->
 
-      <button id="resetProgressBtn"
-        class="btn danger full"
-        type="button"
-        style="margin-top:10px">
-        Reset Progress
-      </button>
+    <section id="settingsScreen" class="screen">
 
-      <button id="settingsHomeBtn"
-        class="btn secondary full"
-        type="button"
-        style="margin-top:10px">
-        🏠 Back to Home
-      </button>
-    </div>
-  </section>
+      <div class="panel">
 
-</main>
+        <h2>⚙️ Settings</h2>
 
-<!-- FOOTER -->
+        <label for="settingsLanguage">Language</label>
 
-<footer>
-  <p>Quiz Master 🇷🇼 · 2026</p>
+        <select id="settingsLanguage" class="field">
+          <option value="en">English</option>
+          <option value="rw">Ikinyarwanda</option>
+        </select>
 
-  <p>
-    <a href="./articles.html">Learning Centre</a>
-    <a href="./about.html">About</a>
-    <a href="./privacy-policy.html">Privacy</a>
-    <a href="./terms.html">Terms</a>
-    <a href="./contact.html">Contact</a>
-  </p>
+        <label for="settingsMode">Question Category</label>
 
-  <p>Learn • Play • Improve</p>
-</footer>
+        <select id="settingsMode" class="field">
+          <option value="traffic">Road Safety</option>
+          <option value="general">General Knowledge</option>
+        </select>
 
-<!-- BACKGROUND MUSIC -->
+        <!-- MUSIC CONTROL: SETTINGS ONLY -->
 
-<audio id="backgroundMusic"
-  src="./mythica.mp3"
-  preload="none"
-  loop></audio>
+        <div class="music-panel">
 
-<!-- MUSIC CONTROLLER -->
+          <h3>🎵 Background Music</h3>
 
-<script>
-(() => {
-  "use strict";
+          <p class="small">
+            Turn background music on or off.
+          </p>
 
-  const music = document.getElementById("backgroundMusic");
-  const button = document.getElementById("musicToggleBtn");
-  const status = document.getElementById("musicStatus");
-  const menuButton = document.getElementById("musicMenuBtn");
-  const key = "quizmasterMusicEnabled";
+          <button
+            id="musicToggleBtn"
+            class="btn secondary full"
+            type="button">
+            🔇 Music Off
+          </button>
 
-  if (!music || !button) return;
+          <p
+            id="musicStatus"
+            class="small"
+            aria-live="polite">
+          </p>
 
-  function enabled() {
-    try {
-      return localStorage.getItem(key) === "true";
-    } catch (_) {
-      return false;
-    }
-  }
+        </div>
 
-  function updateUI() {
-    const on = enabled();
+        <p id="settingsMessage" aria-live="polite"></p>
 
-    button.textContent = on ? "🔊 Music On" : "🔇 Music Off";
+        <button
+          id="saveSettingsBtn"
+          class="btn full"
+          type="button">
+          Save Settings
+        </button>
 
-    if (status) {
-      status.textContent = on
-        ? "Music is enabled."
-        : "Music is disabled.";
-    }
+        <button
+          id="resetProgressBtn"
+          class="btn danger full"
+          type="button"
+          style="margin-top:10px">
+          Reset Progress
+        </button>
 
-    if (menuButton) {
-      menuButton.textContent = on
-        ? "🔊 Music Settings"
-        : "🎵 Music Settings";
-    }
-  }
+        <button
+          id="settingsHomeBtn"
+          class="btn secondary full"
+          type="button"
+          style="margin-top:10px">
+          🏠 Back to Home
+        </button>
 
-  function setMusic(on) {
-    try {
-      localStorage.setItem(key, String(on));
-    } catch (_) {}
+      </div>
 
-    if (on) {
-      music.play().catch(() => {
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p>Quiz Master 🇷🇼 · 2026</p>
+
+    <p>
+      <a href="./articles.html">Learning Centre</a>
+      <a href="./about.html">About</a>
+      <a href="./privacy-policy.html">Privacy</a>
+      <a href="./terms.html">Terms</a>
+      <a href="./contact.html">Contact</a>
+    </p>
+
+    <p>Learn • Play • Improve</p>
+
+  </footer>
+
+  <!-- BACKGROUND MUSIC -->
+
+  <audio
+    id="backgroundMusic"
+    src="./mythica.mp3"
+    preload="none"
+    loop>
+  </audio>
+
+  <!-- MUSIC CONTROLLER -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      const music = document.getElementById("backgroundMusic");
+      const button = document.getElementById("musicToggleBtn");
+      const status = document.getElementById("musicStatus");
+      const menuButton = document.getElementById("musicMenuBtn");
+      const settingsButton = document.getElementById("settingsBtn");
+      const key = "quizmasterMusicEnabled";
+
+      if (!music || !button) return;
+
+      function isEnabled() {
+        try {
+          return localStorage.getItem(key) === "true";
+        } catch (error) {
+          return false;
+        }
+      }
+
+      function updateMusicUI() {
+        const on = isEnabled();
+
+        button.textContent = on
+          ? "🔊 Music On"
+          : "🔇 Music Off";
+
         if (status) {
-          status.textContent =
-            "Your browser blocked playback. Tap Music On again.";
+          status.textContent = on
+            ? "Music is enabled."
+            : "Music is disabled.";
+        }
+
+        if (menuButton) {
+          menuButton.textContent = on
+            ? "🔊 Music Settings"
+            : "🎵 Music Settings";
+        }
+      }
+
+      function setMusic(on) {
+        try {
+          localStorage.setItem(key, String(on));
+        } catch (error) {
+          console.warn("Music preference could not be saved.");
+        }
+
+        if (on) {
+          music.play().then(() => {
+            updateMusicUI();
+          }).catch(() => {
+            if (status) {
+              status.textContent =
+                "Playback was blocked. Tap Music On again.";
+            }
+          });
+        } else {
+          music.pause();
+          music.currentTime = 0;
+        }
+
+        updateMusicUI();
+
+        document.dispatchEvent(
+          new CustomEvent("quizmaster:music-changed", {
+            detail: { enabled: on }
+          })
+        );
+      }
+
+      button.addEventListener("click", () => {
+        setMusic(!isEnabled());
+      });
+
+      // Music menu item opens Settings.
+      menuButton?.addEventListener("click", () => {
+        settingsButton?.click();
+      });
+
+      // Keep compatibility with the app's music event.
+      document.addEventListener("quizmaster:music-changed", event => {
+        const enabled = event.detail?.enabled;
+
+        if (typeof enabled !== "boolean") return;
+
+        if (enabled) {
+          if (isEnabled()) {
+            music.play().catch(() => {});
+          }
+        } else {
+          music.pause();
+        }
+
+        updateMusicUI();
+      });
+
+      window.quizMasterMusic = {
+        play() {
+          if (isEnabled()) {
+            music.play().catch(() => {});
+          }
+        },
+
+        pause() {
+          music.pause();
+        },
+
+        toggle() {
+          setMusic(!isEnabled());
+        },
+
+        setEnabled: setMusic
+      };
+
+      updateMusicUI();
+
+    })();
+  </script>
+
+  <!-- QUIZ ENGINE -->
+
+  <script src="./questions.js" defer></script>
+
+  <!-- MORE MENU CONTROLLER -->
+
+  <script>
+    (() => {
+      "use strict";
+
+      const menu = document.getElementById("moreMenu");
+      const toggle = document.getElementById("moreMenuBtn");
+
+      if (!menu || !toggle) return;
+
+      function closeMenu() {
+        menu.hidden = true;
+        toggle.setAttribute("aria-expanded", "false");
+      }
+
+      function openMenu() {
+        menu.hidden = false;
+        toggle.setAttribute("aria-expanded", "true");
+      }
+
+      toggle.addEventListener("click", event => {
+        event.stopPropagation();
+
+        if (menu.hidden) {
+          openMenu();
+        } else {
+          closeMenu();
         }
       });
-    } else {
-      music.pause();
-      music.currentTime = 0;
-    }
 
-    updateUI();
-  }
-
-  button.addEventListener("click", () => {
-    setMusic(!enabled());
-  });
-
-  menuButton?.addEventListener("click", () => {
-    document.getElementById("settingsBtn")?.click();
-  });
-
-  document.addEventListener("quizmaster:music-changed", event => {
-    if (typeof event.detail?.enabled === "boolean") {
-      setMusic(event.detail.enabled);
-    }
-  });
-
-  window.quizMasterMusic = {
-    play() {
-      if (enabled()) music.play().catch(() => {});
-    },
-    pause() {
-      music.pause();
-    },
-    toggle() {
-      setMusic(!enabled());
-    },
-    setEnabled: setMusic
-  };
-
-  updateUI();
-})();
-</script>
-
-<!-- QUIZ ENGINE -->
-
-<script src="./questions.js" defer></script>
-
-<!-- MORE MENU CONTROLLER: SINGLE CONTROLLER -->
-
-<script>
-(() => {
-  "use strict";
-
-  const menu = document.getElementById("moreMenu");
-  const toggle = document.getElementById("moreMenuBtn");
-
-  if (!menu || !toggle) return;
-
-  function closeMenu() {
-    menu.hidden = true;
-    toggle.setAttribute("aria-expanded", "false");
-  }
-
-  function openMenu() {
-    menu.hidden = false;
-    toggle.setAttribute("aria-expanded", "true");
-  }
-
-  toggle.addEventListener("click", event => {
-    event.stopPropagation();
-
-    if (menu.hidden) {
-      openMenu();
-    } else {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener("click", event => {
-    if (!menu.contains(event.target) &&
-        !toggle.contains(event.target)) {
-      closeMenu();
-    }
-  });
-
-  menu.addEventListener("click", event => {
-    if (event.target.closest("button,a")) {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && !menu.hidden) {
-      closeMenu();
-      toggle.focus();
-    }
-  });
-
-  window.quizMasterMenu = {
-    open: openMenu,
-    close: closeMenu
-  };
-})();
-</script>
-
-<!-- SERVICE WORKER -->
-
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js")
-      .then(registration => {
-        console.log(
-          "Quiz Master Service Worker registered:",
-          registration.scope
-        );
-      })
-      .catch(error => {
-        console.warn("Service Worker registration failed:", error);
+      document.addEventListener("click", event => {
+        if (
+          !menu.contains(event.target) &&
+          !toggle.contains(event.target)
+        ) {
+          closeMenu();
+        }
       });
-  });
-}
-</script>
 
-<!-- GOOGLE ADSENSE INITIALIZATION -->
+      menu.addEventListener("click", event => {
+        if (event.target.closest("button, a")) {
+          closeMenu();
+        }
+      });
 
-<script>
-window.addEventListener("load", () => {
-  const ad = document.querySelector("#homeScreen .adsbygoogle");
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !menu.hidden) {
+          closeMenu();
+          toggle.focus();
+        }
+      });
 
-  if (!ad || ad.dataset.initialized === "true") return;
+      window.quizMasterMenu = {
+        open: openMenu,
+        close: closeMenu
+      };
 
-  try {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-    ad.dataset.initialized = "true";
-  } catch (error) {
-    console.warn("AdSense initialization failed:", error);
-  }
-});
-</script>
+    })();
+  </script>
+
+  <!-- SERVICE WORKER -->
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker
+          .register("./service-worker.js")
+          .then(registration => {
+            console.log(
+              "Quiz Master Service Worker registered:",
+              registration.scope
+            );
+          })
+          .catch(error => {
+            console.warn(
+              "Service Worker registration failed:",
+              error
+            );
+          });
+      });
+    }
+  </script>
+
+  <!-- ADSENSE INITIALIZATION -->
+
+  <script>
+    window.addEventListener("load", () => {
+      const ad = document.querySelector(
+        "#homeScreen .adsbygoogle"
+      );
+
+      if (!ad || ad.dataset.initialized === "true") return;
+
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        ad.dataset.initialized = "true";
+      } catch (error) {
+        console.warn("AdSense initialization failed:", error);
+      }
+    });
+  </script>
 
 </body>
 </html>
