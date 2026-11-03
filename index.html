@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,21 +18,25 @@
   <link rel="apple-touch-icon" href="./icon-192-4.png">
   <link rel="manifest" href="./manifest.webmanifest">
 
-  <!-- Google Analytics 4 -->
+  <!-- GOOGLE ANALYTICS 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FP8R0NDZN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
+
     function gtag() {
-      dataLayer.push(arguments);
+      window.dataLayer.push(arguments);
     }
+
     gtag("js", new Date());
     gtag("config", "G-3FP8R0NDZN");
   </script>
 
-  <!-- Google AdSense -->
-  <script async
+  <!-- GOOGLE ADSENSE -->
+  <script
+    async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous">
+  </script>
 
   <style>
     :root {
@@ -379,18 +384,31 @@
       width: 100%;
     }
 
+    /* ADSENSE CONTAINERS */
     .ad-container {
+      display: block;
       width: 100%;
-      min-height: 90px;
-      margin: 22px auto 10px;
+      min-width: 0;
+      margin: 24px auto 12px;
+      padding: 12px 0;
       overflow: hidden;
+      border-top: 1px solid var(--border);
       text-align: center;
+      clear: both;
     }
 
     .ad-label {
-      margin-bottom: 5px;
-      color: #a9bad3;
+      margin-bottom: 8px;
+      color: var(--muted);
       font-size: 11px;
+      text-align: center;
+    }
+
+    .ad-container ins.adsbygoogle {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      margin: 0 auto;
     }
 
     .quiz-top {
@@ -734,13 +752,20 @@
           <div class="menu-divider"></div>
           <div class="menu-heading">Explore</div>
 
-          <a href="./articles.html" class="menu-item">📚 Learning Centre</a>
-          <a href="./about.html" class="menu-item">ℹ️ About Quiz Master</a>
+          <a href="./articles.html" class="menu-item">
+            📚 Learning Centre
+          </a>
+
+          <a href="./about.html" class="menu-item">
+            ℹ️ About Quiz Master
+          </a>
 
           <div class="menu-divider"></div>
           <div class="menu-heading">Support</div>
 
-          <a href="./contact.html" class="menu-item">✉️ Contact & Help</a>
+          <a href="./contact.html" class="menu-item">
+            ✉️ Contact & Help
+          </a>
         </nav>
       </div>
     </div>
@@ -868,9 +893,9 @@
         <p id="homeMessage" role="status" aria-live="polite"></p>
       </div>
 
-      <!-- HOME PAGE ADVERTISEMENT -->
-      <div class="ad-container">
-        <div class="ad-label">Advertisements</div>
+      <!-- HOME ADVERTISEMENT: ONE AD ONLY -->
+      <div class="ad-container" id="homeAdContainer">
+        <div class="ad-label">Advertisement</div>
 
         <ins
           class="adsbygoogle"
@@ -881,10 +906,12 @@
           data-full-width-responsive="true">
         </ins>
       </div>
+
     </section>
 
-    <!-- QUIZ SCREEN -->
+    <!-- QUIZ SCREEN: NO ADS -->
     <section id="quizScreen" class="screen">
+
       <div class="panel">
 
         <div class="quiz-top">
@@ -966,11 +993,14 @@
             🏠 Home
           </button>
         </div>
+
       </div>
+
     </section>
 
     <!-- RESULT SCREEN -->
     <section id="resultScreen" class="screen">
+
       <div class="panel">
 
         <h2 id="resultTitle">Round Complete!</h2>
@@ -997,6 +1027,7 @@
         </div>
 
         <div class="btn-row">
+
           <button
             id="resultNextBtn"
             class="btn success full"
@@ -1026,15 +1057,37 @@
             type="button">
             🏠 Back to Home
           </button>
+
         </div>
+
       </div>
+
+      <!-- RESULTS ADVERTISEMENT: ONE AD ONLY -->
+      <!-- Placed AFTER all result buttons -->
+      <div class="ad-container" id="resultsAdContainer">
+        <div class="ad-label">Advertisement</div>
+
+        <ins
+          class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-2666698676518429"
+          data-ad-slot="9045712897"
+          data-ad-format="auto"
+          data-full-width-responsive="true">
+        </ins>
+      </div>
+
     </section>
 
-    <!-- REVIEW SCREEN -->
+    <!-- REVIEW SCREEN: NO ADS -->
     <section id="reviewScreen" class="screen">
+
       <div class="panel">
         <h2>📖 Review Answers</h2>
-        <p>Check your answers and learn from the explanations.</p>
+
+        <p>
+          Check your answers and learn from the explanations.
+        </p>
 
         <div id="reviewContainer"></div>
 
@@ -1045,10 +1098,12 @@
           🏠 Back to Home
         </button>
       </div>
+
     </section>
 
-    <!-- ROUNDS SCREEN -->
+    <!-- ROUNDS SCREEN: NO ADS -->
     <section id="roundsScreen" class="screen">
+
       <div class="panel">
         <h2>🏆 Quiz Rounds</h2>
 
@@ -1057,6 +1112,7 @@
         </p>
 
         <div class="stats">
+
           <div class="stat">
             <strong id="roundsCompleted">0</strong>
             <span>Completed</span>
@@ -1071,6 +1127,7 @@
             <strong id="roundsUnlocked">1</strong>
             <span>Unlocked</span>
           </div>
+
         </div>
 
         <div id="roundList"></div>
@@ -1081,30 +1138,39 @@
           type="button">
           🏠 Back to Home
         </button>
+
       </div>
+
     </section>
 
-    <!-- SETTINGS SCREEN -->
+    <!-- SETTINGS SCREEN: NO ADS -->
     <section id="settingsScreen" class="screen">
+
       <div class="panel">
 
         <h2>⚙️ Settings</h2>
 
         <label for="settingsLanguage">Language</label>
+
         <select id="settingsLanguage" class="field">
           <option value="en">English</option>
           <option value="rw">Ikinyarwanda</option>
         </select>
 
         <label for="settingsMode">Question Category</label>
+
         <select id="settingsMode" class="field">
           <option value="traffic">Road Safety</option>
           <option value="general">General Knowledge</option>
         </select>
 
         <div class="music-panel">
+
           <h3>🎵 Background Music</h3>
-          <p class="small">Turn background music on or off.</p>
+
+          <p class="small">
+            Turn background music on or off.
+          </p>
 
           <button
             id="musicToggleBtn"
@@ -1116,7 +1182,9 @@
           <p
             id="musicStatus"
             class="small"
-            aria-live="polite"></p>
+            aria-live="polite">
+          </p>
+
         </div>
 
         <p id="settingsMessage" aria-live="polite"></p>
@@ -1143,13 +1211,16 @@
           style="margin-top:10px">
           🏠 Back to Home
         </button>
+
       </div>
+
     </section>
 
   </main>
 
   <!-- FOOTER -->
   <footer>
+
     <p>Quiz Master 🇷🇼 · 2026</p>
 
     <p>
@@ -1161,6 +1232,7 @@
     </p>
 
     <p>Learn • Play • Improve</p>
+
   </footer>
 
   <!-- BACKGROUND MUSIC -->
@@ -1181,6 +1253,7 @@
       const status = document.getElementById("musicStatus");
       const menuButton = document.getElementById("musicMenuBtn");
       const settingsButton = document.getElementById("settingsBtn");
+
       const key = "quizmasterMusicEnabled";
 
       if (!music || !button) return;
@@ -1196,7 +1269,9 @@
       function updateMusicUI() {
         const on = isEnabled();
 
-        button.textContent = on ? "🔊 Music On" : "🔇 Music Off";
+        button.textContent = on
+          ? "🔊 Music On"
+          : "🔇 Music Off";
 
         if (status) {
           status.textContent = on
@@ -1219,12 +1294,14 @@
         }
 
         if (on) {
-          music.play().then(updateMusicUI).catch(() => {
-            if (status) {
-              status.textContent =
-                "Playback was blocked. Tap Music On again.";
-            }
-          });
+          music.play()
+            .then(updateMusicUI)
+            .catch(() => {
+              if (status) {
+                status.textContent =
+                  "Playback was blocked. Tap Music On again.";
+              }
+            });
         } else {
           music.pause();
           music.currentTime = 0;
@@ -1247,34 +1324,43 @@
         settingsButton?.click();
       });
 
-      document.addEventListener("quizmaster:music-changed", event => {
-        const enabled = event.detail?.enabled;
+      document.addEventListener(
+        "quizmaster:music-changed",
+        event => {
+          const enabled = event.detail?.enabled;
 
-        if (typeof enabled !== "boolean") return;
+          if (typeof enabled !== "boolean") return;
 
-        if (enabled && isEnabled()) {
-          music.play().catch(() => {});
-        } else if (!enabled) {
-          music.pause();
+          if (enabled && isEnabled()) {
+            music.play().catch(() => {});
+          } else if (!enabled) {
+            music.pause();
+          }
+
+          updateMusicUI();
         }
-
-        updateMusicUI();
-      });
+      );
 
       window.quizMasterMusic = {
         play() {
-          if (isEnabled()) music.play().catch(() => {});
+          if (isEnabled()) {
+            music.play().catch(() => {});
+          }
         },
+
         pause() {
           music.pause();
         },
+
         toggle() {
           setMusic(!isEnabled());
         },
+
         setEnabled: setMusic
       };
 
       updateMusicUI();
+
     })();
   </script>
 
@@ -1293,12 +1379,20 @@
 
       function closeMenu() {
         menu.hidden = true;
-        toggle.setAttribute("aria-expanded", "false");
+
+        toggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
       }
 
       function openMenu() {
         menu.hidden = false;
-        toggle.setAttribute("aria-expanded", "true");
+
+        toggle.setAttribute(
+          "aria-expanded",
+          "true"
+        );
       }
 
       toggle.addEventListener("click", event => {
@@ -1337,47 +1431,188 @@
         open: openMenu,
         close: closeMenu
       };
+
     })();
   </script>
 
   <!-- SERVICE WORKER -->
   <script>
     if ("serviceWorker" in navigator) {
+
       window.addEventListener("load", () => {
+
         navigator.serviceWorker
           .register("./service-worker.js")
           .then(registration => {
+
             console.log(
               "Quiz Master Service Worker registered:",
               registration.scope
             );
+
           })
           .catch(error => {
+
             console.warn(
               "Service Worker registration failed:",
               error
             );
+
           });
+
       });
+
     }
   </script>
 
-  <!-- ADSENSE INITIALIZATION -->
+  <!-- ADSENSE SCREEN CONTROLLER -->
   <script>
-    window.addEventListener("load", () => {
-      const ad = document.querySelector(
-        "#homeScreen .adsbygoogle"
-      );
+    (() => {
+      "use strict";
 
-      if (!ad || ad.dataset.initialized === "true") return;
+      const initializedAds = new WeakSet();
 
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        ad.dataset.initialized = "true";
-      } catch (error) {
-        console.warn("AdSense initialization failed:", error);
+      function isScreenVisible(screen) {
+        if (!screen) return false;
+
+        if (!screen.classList.contains("active")) {
+          return false;
+        }
+
+        if (screen.hidden) {
+          return false;
+        }
+
+        const style = window.getComputedStyle(screen);
+
+        return (
+          style.display !== "none" &&
+          style.visibility !== "hidden"
+        );
       }
-    });
+
+      function initializeAdsOnScreen(screen) {
+        if (!isScreenVisible(screen)) return;
+
+        const ads = screen.querySelectorAll(
+          ".ad-container ins.adsbygoogle"
+        );
+
+        ads.forEach(ad => {
+
+          if (initializedAds.has(ad)) return;
+
+          if (ad.dataset.initialized === "true") {
+            initializedAds.add(ad);
+            return;
+          }
+
+          const container = ad.closest(".ad-container");
+
+          if (!container) return;
+
+          const rect = container.getBoundingClientRect();
+
+          if (rect.width <= 0) return;
+
+          try {
+
+            initializedAds.add(ad);
+
+            ad.dataset.initialized = "true";
+
+            (
+              window.adsbygoogle =
+              window.adsbygoogle || []
+            ).push({});
+
+          } catch (error) {
+
+            initializedAds.delete(ad);
+
+            delete ad.dataset.initialized;
+
+            console.warn(
+              "AdSense initialization failed:",
+              error
+            );
+
+          }
+
+        });
+      }
+
+      function initializeVisibleAds() {
+
+        const screens = document.querySelectorAll(
+          ".screen"
+        );
+
+        screens.forEach(screen => {
+
+          if (isScreenVisible(screen)) {
+            initializeAdsOnScreen(screen);
+          }
+
+        });
+
+      }
+
+      function startAdController() {
+
+        initializeVisibleAds();
+
+        const observer = new MutationObserver(() => {
+          initializeVisibleAds();
+        });
+
+        observer.observe(document.body, {
+          subtree: true,
+          childList: true,
+          attributes: true,
+          attributeFilter: [
+            "class",
+            "style",
+            "hidden"
+          ]
+        });
+
+        window.addEventListener(
+          "pageshow",
+          initializeVisibleAds
+        );
+
+        document.addEventListener(
+          "visibilitychange",
+          () => {
+            if (!document.hidden) {
+              initializeVisibleAds();
+            }
+          }
+        );
+
+        /*
+          Only Home and Results contain AdSense units.
+          Quiz, Review, Rounds and Settings contain none.
+        */
+
+      }
+
+      if (document.readyState === "loading") {
+
+        document.addEventListener(
+          "DOMContentLoaded",
+          startAdController,
+          { once: true }
+        );
+
+      } else {
+
+        startAdController();
+
+      }
+
+    })();
   </script>
 
 </body>
