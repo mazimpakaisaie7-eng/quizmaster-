@@ -20,6 +20,16 @@
     href="https://quizmaster-liard-five.vercel.app/articles.html"
   >
 
+  <link rel="icon" type="image/png" href="./icon-512-3.png">
+  <link rel="apple-touch-icon" href="./icon-192-4.png">
+
+  <!-- GOOGLE ADSENSE -->
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
+    crossorigin="anonymous">
+  </script>
+
   <style>
     :root {
       --bg: #08172b;
@@ -109,7 +119,7 @@
       border-radius: 9px;
       padding: 9px 14px;
       font-weight: 700;
-      transition: .2s;
+      transition: border-color .2s;
     }
 
     .btn:hover {
@@ -123,7 +133,7 @@
     }
 
     main {
-      padding: 35px 0 55px;
+      padding: 35px 0 35px;
       min-height: 70vh;
     }
 
@@ -341,6 +351,32 @@
       display: none !important;
     }
 
+    /* ONE ADSENSE UNIT AT THE END OF THE PAGE */
+
+    .ad-container {
+      width: 100%;
+      max-width: 970px;
+      min-height: 100px;
+      margin: 38px auto 12px;
+      padding: 12px 0;
+      overflow: hidden;
+      text-align: center;
+      clear: both;
+    }
+
+    .ad-label {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .ad-container ins {
+      display: block;
+      width: 100%;
+      min-height: 90px;
+    }
+
     footer {
       border-top: 1px solid var(--border);
       background: #0c1d34;
@@ -387,6 +423,23 @@
       .lesson-section {
         padding: 15px;
       }
+
+      .ad-container {
+        margin-top: 28px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
     }
   </style>
 </head>
@@ -406,16 +459,14 @@
         class="btn"
         id="languageBtn"
         type="button"
-        aria-label="Change language"
-      >
+        aria-label="Change language">
         Kinyarwanda
       </button>
 
       <a
         class="btn btn-primary"
         href="./index.html"
-        id="homeLink"
-      >
+        id="homeLink">
         Home
       </a>
 
@@ -424,6 +475,8 @@
 </header>
 
 <main class="container">
+
+  <!-- PAGE INTRODUCTION -->
 
   <section class="hero" id="heroSection">
 
@@ -438,6 +491,8 @@
 
   </section>
 
+  <!-- ARTICLES LIST -->
+
   <section id="listSection">
 
     <div class="controls">
@@ -448,8 +503,7 @@
         class="search-box"
         placeholder="Search lessons..."
         autocomplete="off"
-        aria-label="Search lessons"
-      >
+        aria-label="Search lessons">
 
       <div class="filters">
 
@@ -457,8 +511,7 @@
           class="filter-btn active"
           type="button"
           data-category="all"
-          aria-pressed="true"
-        >
+          aria-pressed="true">
           All
         </button>
 
@@ -466,8 +519,7 @@
           class="filter-btn"
           type="button"
           data-category="general"
-          aria-pressed="false"
-        >
+          aria-pressed="false">
           General Knowledge
         </button>
 
@@ -475,8 +527,7 @@
           class="filter-btn"
           type="button"
           data-category="traffic"
-          aria-pressed="false"
-        >
+          aria-pressed="false">
           Road Safety
         </button>
 
@@ -486,64 +537,85 @@
     <p
       class="results-info"
       id="resultsInfo"
-      aria-live="polite"
-    >
+      aria-live="polite">
       Loading lessons...
     </p>
 
     <div
       class="articles-grid"
-      id="articlesGrid"
-    ></div>
+      id="articlesGrid">
+    </div>
 
     <div
       class="message hidden"
-      id="emptyMessage"
-    >
+      id="emptyMessage">
       No lessons found.
     </div>
 
   </section>
 
+  <!-- SINGLE ARTICLE READER -->
+
   <section
     class="reader hidden"
-    id="readerSection"
-  >
+    id="readerSection">
 
     <button
       class="btn back-btn"
       id="backBtn"
-      type="button"
-    >
+      type="button">
       ← Back to lessons
     </button>
 
     <div
       id="readerCategory"
-      class="category-label"
-    ></div>
+      class="category-label">
+    </div>
 
     <h1 id="readerTitle"></h1>
 
     <p
       class="reader-description"
-      id="readerDescription"
-    ></p>
+      id="readerDescription">
+    </p>
 
     <div
       class="reader-content"
-      id="readerContent"
-    ></div>
+      id="readerContent">
+    </div>
 
   </section>
 
   <div
     class="message hidden"
     id="errorMessage"
-    role="alert"
-  ></div>
+    role="alert">
+  </div>
+
+  <!-- ADSENSE: ONE AD AT THE BOTTOM, OUTSIDE LESSON CONTENT -->
+
+  <div
+    class="ad-container"
+    id="learningCentreAd">
+
+    <div class="ad-label">
+      Advertisements
+    </div>
+
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-2666698676518429"
+      data-ad-slot="9045712897"
+      data-ad-format="auto"
+      data-full-width-responsive="true">
+    </ins>
+
+  </div>
 
 </main>
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -584,10 +656,12 @@
 "use strict";
 
 /* =====================================
-   QUIZ MASTER ARTICLES CONFIGURATION
+   CONFIGURATION
 ===================================== */
 
 const ARTICLES_URL = "./articles.json";
+
+const LANGUAGE_KEY = "quizmasterLanguage";
 
 
 /* =====================================
@@ -733,6 +807,8 @@ let currentSearch = "";
 
 let currentArticleId = null;
 
+let hasOpenedArticle = false;
+
 
 /* =====================================
    HTML ELEMENTS
@@ -828,12 +904,12 @@ function t(key) {
 
 
 /* =====================================
-   GET LOCALIZED JSON VALUE
+   LOCALIZED DATA SUPPORT
 
    Supports:
    - Normal strings
    - { en: "...", rw: "..." }
-   - Arrays of localized strings
+   - Localized arrays
 ===================================== */
 
 function getLocalizedValue(value) {
@@ -859,38 +935,21 @@ function getLocalizedValue(value) {
     const selected =
       value[currentLanguage];
 
-    if (
-      typeof selected === "string" &&
-      selected.trim()
-    ) {
-      return selected;
-    }
+    if (hasContent(selected)) {
 
-    if (Array.isArray(selected)) {
-
-      return selected
-        .map(item => getLocalizedValue(item))
-        .filter(Boolean)
-        .join("\n");
+      return getLocalizedValue(selected);
 
     }
 
-    const english = value.en;
+    const fallback =
+      currentLanguage === "en"
+        ? value.rw
+        : value.en;
 
-    if (
-      typeof english === "string" &&
-      english.trim()
-    ) {
-      return english;
-    }
+    if (hasContent(fallback)) {
 
-    const kinyarwanda = value.rw;
+      return getLocalizedValue(fallback);
 
-    if (
-      typeof kinyarwanda === "string" &&
-      kinyarwanda.trim()
-    ) {
-      return kinyarwanda;
     }
 
   }
@@ -901,20 +960,20 @@ function getLocalizedValue(value) {
 
 
 /* =====================================
-   CHECK WHETHER A VALUE HAS CONTENT
+   CHECK CONTENT
 ===================================== */
 
-function hasLocalizedValue(value) {
+function hasContent(value) {
 
   if (typeof value === "string") {
+
     return value.trim().length > 0;
+
   }
 
   if (Array.isArray(value)) {
 
-    return value.some(item =>
-      hasLocalizedValue(item)
-    );
+    return value.some(item => hasContent(item));
 
   }
 
@@ -924,13 +983,58 @@ function hasLocalizedValue(value) {
   ) {
 
     return (
-      hasLocalizedValue(value.en) ||
-      hasLocalizedValue(value.rw)
+      hasContent(value.en) ||
+      hasContent(value.rw)
     );
 
   }
 
   return false;
+
+}
+
+
+/* =====================================
+   GET ALL LANGUAGES FOR SEARCH
+===================================== */
+
+function getAllLocalizedText(value) {
+
+  if (typeof value === "string") {
+    return value;
+  }
+
+  if (Array.isArray(value)) {
+
+    return value
+      .map(item => getAllLocalizedText(item))
+      .join(" ");
+
+  }
+
+  if (
+    value &&
+    typeof value === "object"
+  ) {
+
+    return Object.values(value)
+      .map(item => getAllLocalizedText(item))
+      .join(" ");
+
+  }
+
+  return "";
+
+}
+
+
+/* =====================================
+   ARTICLE IDENTIFIER
+===================================== */
+
+function getArticleId(article) {
+
+  return String(article.id);
 
 }
 
@@ -977,13 +1081,18 @@ function validateArticles(data) {
     }
 
     if (
-      typeof article.id !== "string" ||
-      !article.id.trim()
+      (
+        typeof article.id !== "string" &&
+        typeof article.id !== "number"
+      ) ||
+      String(article.id).trim() === ""
     ) {
       return;
     }
 
-    if (seenIds.has(article.id)) {
+    const id = getArticleId(article);
+
+    if (seenIds.has(id)) {
       return;
     }
 
@@ -995,19 +1104,19 @@ function validateArticles(data) {
     }
 
     const hasTitle =
-      hasLocalizedValue(article.title);
+      hasContent(article.title);
 
     const hasDescription =
-      hasLocalizedValue(article.description);
+      hasContent(article.description);
 
     const hasStructuredContent =
-      hasLocalizedValue(article.definition) ||
-      hasLocalizedValue(article.body) ||
-      hasLocalizedValue(article.key_points) ||
-      hasLocalizedValue(article.conclusion);
+      hasContent(article.definition) ||
+      hasContent(article.body) ||
+      hasContent(article.key_points) ||
+      hasContent(article.conclusion);
 
     const hasOldContent =
-      hasLocalizedValue(article.content);
+      hasContent(article.content);
 
     if (
       !hasTitle ||
@@ -1020,7 +1129,7 @@ function validateArticles(data) {
       return;
     }
 
-    seenIds.add(article.id);
+    seenIds.add(id);
 
     validArticles.push(article);
 
@@ -1056,7 +1165,7 @@ async function loadArticles() {
       ARTICLES_URL,
       {
         method: "GET",
-        cache: "no-store",
+        cache: "no-cache",
         headers: {
           "Accept": "application/json"
         }
@@ -1077,6 +1186,18 @@ async function loadArticles() {
 
     renderArticles();
 
+    /* Support direct article links */
+
+    const requestedId =
+      new URLSearchParams(location.search)
+        .get("article");
+
+    if (requestedId) {
+
+      openArticle(requestedId, false);
+
+    }
+
   } catch (error) {
 
     console.error(
@@ -1091,7 +1212,10 @@ async function loadArticles() {
     elements.emptyMessage.classList.add("hidden");
 
     elements.errorMessage.textContent =
-      error instanceof SyntaxError
+      error instanceof SyntaxError ||
+      error.message.includes("Invalid") ||
+      error.message.includes("Missing") ||
+      error.message.includes("No valid")
         ? t("invalidData")
         : t("loadError");
 
@@ -1109,7 +1233,9 @@ async function loadArticles() {
 function getCategoryLabel(category) {
 
   if (category === "traffic") {
+
     return t("trafficLabel");
+
   }
 
   return t("generalLabel");
@@ -1129,19 +1255,19 @@ function getSearchableArticleText(article) {
 
     article.category,
 
-    getLocalizedValue(article.title),
+    getAllLocalizedText(article.title),
 
-    getLocalizedValue(article.description),
+    getAllLocalizedText(article.description),
 
-    getLocalizedValue(article.definition),
+    getAllLocalizedText(article.definition),
 
-    getLocalizedValue(article.body),
+    getAllLocalizedText(article.body),
 
-    getLocalizedValue(article.key_points),
+    getAllLocalizedText(article.key_points),
 
-    getLocalizedValue(article.conclusion),
+    getAllLocalizedText(article.conclusion),
 
-    getLocalizedValue(article.content)
+    getAllLocalizedText(article.content)
 
   ];
 
@@ -1250,7 +1376,7 @@ function renderArticles() {
 
     readButton.addEventListener(
       "click",
-      () => openArticle(article.id)
+      () => openArticle(getArticleId(article), true)
     );
 
     card.appendChild(category);
@@ -1269,15 +1395,12 @@ function renderArticles() {
 
 
 /* =====================================
-   CREATE A LESSON SECTION
+   CREATE LESSON SECTION
 ===================================== */
 
 function createLessonSection(title, value) {
 
-  const content =
-    getLocalizedValue(value);
-
-  if (!content.trim()) {
+  if (!hasContent(value)) {
     return null;
   }
 
@@ -1291,14 +1414,25 @@ function createLessonSection(title, value) {
 
   heading.textContent = title;
 
-  const paragraph =
-    document.createElement("p");
-
-  paragraph.textContent = content;
-
   section.appendChild(heading);
 
-  section.appendChild(paragraph);
+  const content =
+    getLocalizedValue(value);
+
+  content
+    .split("\n")
+    .map(line => line.trim())
+    .filter(Boolean)
+    .forEach(line => {
+
+      const paragraph =
+        document.createElement("p");
+
+      paragraph.textContent = line;
+
+      section.appendChild(paragraph);
+
+    });
 
   return section;
 
@@ -1307,17 +1441,11 @@ function createLessonSection(title, value) {
 
 /* =====================================
    CREATE KEY POINTS SECTION
-
-   Supports:
-   key_points.en = ["...", "..."]
-   key_points.rw = ["...", "..."]
-
-   Also supports a normal string.
 ===================================== */
 
 function createKeyPointsSection(value) {
 
-  if (!hasLocalizedValue(value)) {
+  if (!hasContent(value)) {
     return null;
   }
 
@@ -1341,8 +1469,9 @@ function createKeyPointsSection(value) {
 
   if (Array.isArray(value)) {
 
-    points = value
-      .map(item => getLocalizedValue(item));
+    points = value.map(item =>
+      getLocalizedValue(item)
+    );
 
   } else if (
     value &&
@@ -1360,12 +1489,8 @@ function createKeyPointsSection(value) {
 
     } else {
 
-      const text =
-        getLocalizedValue(value);
-
-      points = text
-        ? text.split("\n")
-        : [];
+      points = getLocalizedValue(value)
+        .split("\n");
 
     }
 
@@ -1403,46 +1528,33 @@ function createKeyPointsSection(value) {
 
 /* =====================================
    DISPLAY STRUCTURED ARTICLE
-
-   Displays:
-   1. Definition
-   2. Main lesson
-   3. Key points
-   4. Conclusion
 ===================================== */
 
 function renderStructuredArticle(article) {
 
   elements.readerContent.innerHTML = "";
 
-  const definition =
+  const sections = [
+
     createLessonSection(
       t("definition"),
       article.definition
-    );
+    ),
 
-  const body =
     createLessonSection(
       t("body"),
       article.body
-    );
+    ),
 
-  const keyPoints =
     createKeyPointsSection(
       article.key_points
-    );
+    ),
 
-  const conclusion =
     createLessonSection(
       t("conclusion"),
       article.conclusion
-    );
+    )
 
-  const sections = [
-    definition,
-    body,
-    keyPoints,
-    conclusion
   ];
 
   sections.forEach(section => {
@@ -1460,9 +1572,6 @@ function renderStructuredArticle(article) {
 
 /* =====================================
    DISPLAY LEGACY CONTENT
-
-   Keeps compatibility with older JSON:
-   content.en and content.rw
 ===================================== */
 
 function renderLegacyContent(article) {
@@ -1476,12 +1585,20 @@ function renderLegacyContent(article) {
     return;
   }
 
-  const paragraph =
-    document.createElement("p");
+  content
+    .split("\n")
+    .map(line => line.trim())
+    .filter(Boolean)
+    .forEach(line => {
 
-  paragraph.textContent = content;
+      const paragraph =
+        document.createElement("p");
 
-  elements.readerContent.appendChild(paragraph);
+      paragraph.textContent = line;
+
+      elements.readerContent.appendChild(paragraph);
+
+    });
 
 }
 
@@ -1490,11 +1607,11 @@ function renderLegacyContent(article) {
    OPEN ONE ARTICLE
 ===================================== */
 
-function openArticle(articleId) {
+function openArticle(articleId, addHistory = true) {
 
   const article =
     articles.find(item =>
-      item.id === articleId
+      getArticleId(item) === String(articleId)
     );
 
   if (!article) {
@@ -1508,7 +1625,7 @@ function openArticle(articleId) {
 
   }
 
-  currentArticleId = articleId;
+  currentArticleId = getArticleId(article);
 
   elements.readerCategory.textContent =
     getCategoryLabel(article.category);
@@ -1520,10 +1637,10 @@ function openArticle(articleId) {
     getLocalizedValue(article.description);
 
   const hasStructuredContent =
-    hasLocalizedValue(article.definition) ||
-    hasLocalizedValue(article.body) ||
-    hasLocalizedValue(article.key_points) ||
-    hasLocalizedValue(article.conclusion);
+    hasContent(article.definition) ||
+    hasContent(article.body) ||
+    hasContent(article.key_points) ||
+    hasContent(article.conclusion);
 
   if (hasStructuredContent) {
 
@@ -1540,6 +1657,25 @@ function openArticle(articleId) {
   elements.readerSection.classList.remove("hidden");
 
   elements.errorMessage.classList.add("hidden");
+
+  if (addHistory) {
+
+    const url = new URL(location.href);
+
+    url.searchParams.set(
+      "article",
+      currentArticleId
+    );
+
+    history.pushState(
+      { articleId: currentArticleId },
+      "",
+      url
+    );
+
+    hasOpenedArticle = true;
+
+  }
 
   window.scrollTo({
     top: 0,
@@ -1562,6 +1698,18 @@ function showArticleList() {
   elements.listSection.classList.remove("hidden");
 
   elements.errorMessage.classList.add("hidden");
+
+  const url = new URL(location.href);
+
+  url.searchParams.delete("article");
+
+  history.replaceState(
+    { articleId: null },
+    "",
+    url
+  );
+
+  hasOpenedArticle = false;
 
   renderArticles();
 
@@ -1587,6 +1735,19 @@ function setLanguage(language) {
   }
 
   currentLanguage = language;
+
+  try {
+
+    localStorage.setItem(
+      LANGUAGE_KEY,
+      language
+    );
+
+  } catch (error) {
+
+    console.warn("Language preference could not be saved.");
+
+  }
 
   document.documentElement.lang =
     language;
@@ -1650,7 +1811,7 @@ function setLanguage(language) {
 
   if (currentArticleId) {
 
-    openArticle(currentArticleId);
+    openArticle(currentArticleId, false);
 
   } else {
 
@@ -1697,7 +1858,7 @@ elements.searchInput.addEventListener(
 
 
 /* =====================================
-   CATEGORY FILTER BUTTONS
+   CATEGORY FILTERS
 ===================================== */
 
 elements.filterButtons.forEach(button => {
@@ -1741,7 +1902,19 @@ elements.filterButtons.forEach(button => {
 
 elements.backBtn.addEventListener(
   "click",
-  showArticleList
+  () => {
+
+    if (hasOpenedArticle) {
+
+      history.back();
+
+    } else {
+
+      showArticleList();
+
+    }
+
+  }
 );
 
 
@@ -1751,11 +1924,30 @@ elements.backBtn.addEventListener(
 
 window.addEventListener(
   "popstate",
-  () => {
+  event => {
 
-    if (currentArticleId) {
+    const articleId =
+      event.state?.articleId ||
+      new URLSearchParams(location.search)
+        .get("article");
 
-      showArticleList();
+    if (articleId && articles.length) {
+
+      openArticle(articleId, false);
+
+    } else {
+
+      currentArticleId = null;
+
+      hasOpenedArticle = false;
+
+      elements.readerSection.classList.add("hidden");
+
+      elements.listSection.classList.remove("hidden");
+
+      elements.errorMessage.classList.add("hidden");
+
+      renderArticles();
 
     }
 
@@ -1767,9 +1959,81 @@ window.addEventListener(
    START APPLICATION
 ===================================== */
 
-setLanguage("en");
+let savedLanguage = "en";
+
+try {
+
+  const saved =
+    localStorage.getItem(LANGUAGE_KEY);
+
+  if (saved === "en" || saved === "rw") {
+
+    savedLanguage = saved;
+
+  }
+
+} catch (error) {
+
+  console.warn("Saved language is unavailable.");
+
+}
+
+setLanguage(savedLanguage);
 
 loadArticles();
+
+
+/* =====================================
+   ADSENSE INITIALIZATION
+   ONE AD UNIT ONLY ON THIS PAGE
+===================================== */
+
+function initializeLearningCentreAd() {
+
+  const ad =
+    document.querySelector(
+      "#learningCentreAd .adsbygoogle"
+    );
+
+  if (!ad) {
+    return;
+  }
+
+  if (ad.dataset.initialized === "true") {
+    return;
+  }
+
+  try {
+
+    (window.adsbygoogle =
+      window.adsbygoogle || []).push({});
+
+    ad.dataset.initialized = "true";
+
+  } catch (error) {
+
+    console.warn(
+      "Learning Centre AdSense initialization failed:",
+      error
+    );
+
+  }
+
+}
+
+if (document.readyState === "complete") {
+
+  initializeLearningCentreAd();
+
+} else {
+
+  window.addEventListener(
+    "load",
+    initializeLearningCentreAd,
+    { once: true }
+  );
+
+}
 
 </script>
 
