@@ -161,3 +161,405 @@
         "rw": "Gutwara ikinyabiziga ubishinzwe bisobanura kubahiriza amategeko y'umuhanda, kubaha abandi bawukoresha no gufata ibyemezo birengera ubuzima. Abashoferi bagomba gusiga intera ihagije hagati y'ibinyabiziga, gukoresha amatara yerekana icyerekezo mbere yo gukata, kureba mu ndorerwamo no gukomeza kwibanda ku muhanda. Ntibagomba gutwara bananiwe, barangaye cyangwa banyoye inzoga cyangwa ibindi bintu bibangamira ubushobozi bwo gutwara. Umushoferi ubishinzwe ategura urugendo, yita ku kinyabiziga kandi akamenya ko kugera amahoro ari byo by'ingenzi kurusha kugera vuba."
       }
     },
+    {
+      "id": "traffic-motorcycle-safety",
+      "category": "traffic",
+      "title": {
+        "en": "Motorcycle Safety",
+        "rw": "Umutekano w'abatwara moto"
+      },
+      "description": {
+        "en": "Understand safe practices for motorcyclists and their passengers.",
+        "rw": "Sobanukirwa imyitwarire irinda abatwara moto n'abo batwaye."
+      },
+      "content": {
+        "en": "Motorcyclists are more exposed to road hazards than people inside enclosed vehicles. They should wear an approved helmet that fits correctly and use suitable protective clothing. Before travelling, check the tyres, brakes, lights and other important parts. Follow traffic signs, keep a safe distance and avoid carrying more passengers or goods than permitted. Passengers should also wear helmets and sit securely.",
+        "rw": "Abatwara moto baba bashobora guhura n'ibyago byo mu muhanda kurusha abantu bari mu binyabiziga bifunze. Bagomba kwambara ingofero yabugenewe ibakwiriye neza no gukoresha imyambaro ibarinda. Mbere y'urugendo, genzura amapine, feri, amatara n'ibindi bice by'ingenzi. Kurikiza ibyapa, sigaza intera ihagije kandi wirinde gutwara abagenzi cyangwa imizigo irenze ibyemewe. Abagenzi na bo bagomba kwambara ingofero no kwicara neza."
+      }
+    },
+    {
+      "id": "traffic-bicycle-safety",
+      "category": "traffic",
+      "title": {
+        "en": "Bicycle Safety",
+        "rw": "Umutekano w'abatwara amagare"
+      },
+      "description": {
+        "en": "Learn how cyclists can travel safely and responsibly.",
+        "rw": "Menya uko abatwara amagare bakoresha umuhanda mu mutekano."
+      },
+      "content": {
+        "en": "Cyclists should use designated cycling paths where available and follow the same relevant traffic signs and signals as other road users. A properly fitted helmet, visible clothing and working lights improve safety. Keep both hands ready to control the bicycle, signal before turning and avoid sudden movements. Check the brakes, tyres and chain regularly. Never carry loads that make the bicycle difficult to control.",
+        "rw": "Abatwara amagare bagomba gukoresha inzira zabagenewe igihe zihari kandi bakubahiriza ibyapa n'amatara bireba abakoresha umuhanda. Ingofero ibakwiriye, imyambaro igaragara neza n'amatara akora neza byongera umutekano. Tegura amaboko ku buryo ushobora kuyobora igare neza, werekane icyerekezo mbere yo gukata kandi wirinde guhindura icyerekezo utunguranye. Buri gihe genzura feri, amapine n'umunyururu. Ntutware imizigo ituma igare ritakorohera kuriyobora."
+      }
+    },
+    {
+      "id": "traffic-weather-visibility",
+      "category": "traffic",
+      "title": {
+        "en": "Weather and Visibility",
+        "rw": "Ikirere n'uko umuhanda ugaragara"
+      },
+      "description": {
+        "en": "Learn how rain, fog and darkness affect road safety.",
+        "rw": "Menya uko imvura, igihu n'umwijima bigira ingaruka ku mutekano wo mu muhanda."
+      },
+      "content": {
+        "en": "Rain, fog, dust and darkness can reduce visibility and make roads slippery. Drivers should reduce speed when conditions are poor, increase following distance and use appropriate vehicle lights. Avoid sudden braking or sharp turns on slippery surfaces. Pedestrians and cyclists should make themselves visible, especially at night. If conditions become too dangerous, stop in a safe permitted place and wait until it is safer to continue.",
+        "rw": "Imvura, igihu, ivumbi n'umwijima bishobora kugabanya uko umuhanda ugaragara kandi bigatuma unyerera. Abashoferi bagomba kugabanya umuvuduko igihe ikirere kimeze nabi, kongera intera hagati y'ibinyabiziga no gukoresha amatara akwiye. Irinde gufata feri mu buryo butunguranye cyangwa gukata cyane ahanyerera. Abanyamaguru n'abatwara amagare bagomba kwambara imyambaro igaragara neza, cyane cyane nijoro. Iyo ikirere giteje ibyago byinshi, hagarara ahantu hatekanye kandi hemewe utegereze ko ibintu birushaho kuba byiza."
+      }
+    },
+    {
+      "id": "traffic-emergency-response",
+      "category": "traffic",
+      "title": {
+        "en": "Road Emergency Response",
+        "rw": "Uko witwara mu gihe habaye ikibazo mu muhanda"
+      },
+      "description": {
+        "en": "Understand basic safe actions when a road emergency occurs.",
+        "rw": "Sobanukirwa ibikorwa by'ibanze by'umutekano igihe habaye ikibazo mu muhanda."
+      },
+      "content": {
+        "en": "When an emergency occurs, protecting people from further danger is the first priority. Move to a safe location if possible, warn approaching traffic without putting yourself at risk and contact the appropriate emergency services. Do not crowd the scene or move an injured person unless there is an immediate danger. Give clear information about the location and the situation. Follow instructions from trained responders.",
+        "rw": "Iyo habaye ikibazo mu muhanda, ikintu cya mbere ni ukurinda abantu kongera guhura n'akaga. Niba bishoboka, jya ahantu hatekanye, menyesha ibinyabiziga bigana aho ikibazo cyabereye ariko utishyira mu kaga, kandi uhamagare inzego z'ubutabazi zibishinzwe. Ntukagose ahabereye ikibazo cyangwa ngo wimure umuntu wakomeretse keretse hari akaga kihutirwa kamutegereje. Tanga amakuru asobanutse ku hantu ikibazo cyabereye n'uko giteye. Kurikiza amabwiriza y'abatabazi babihuguriwe."
+      }
+    },
+    {
+      "id": "traffic-shared-responsibility",
+      "category": "traffic",
+      "title": {
+        "en": "Shared Responsibility on Roads",
+        "rw": "Inshingano rusange z'abakoresha umuhanda"
+      },
+      "description": {
+        "en": "Discover how cooperation makes roads safer for everyone.",
+        "rw": "Menya uko ubufatanye butuma umuhanda uba ahantu hatekanye kuri bose."
+      },
+      "content": {
+        "en": "Road safety is a shared responsibility. Drivers must obey traffic laws, pedestrians must cross carefully and cyclists and motorcyclists must use the road responsibly. Passengers should avoid distracting drivers and should use available safety equipment. Communities can support road safety by teaching children safe habits and reporting dangerous road conditions to the relevant authorities. Respect and patience help protect everyone.",
+        "rw": "Umutekano wo mu muhanda ni inshingano ya buri wese. Abashoferi bagomba kubahiriza amategeko, abanyamaguru bakambuka bitonze, naho abatwara amagare na moto bagakoresha umuhanda neza. Abagenzi bagomba kwirinda kurangaza abashoferi no gukoresha ibikoresho by'umutekano bihari. Abaturage bashobora gufasha mu mutekano wo mu muhanda bigisha abana imyitwarire myiza no kumenyesha inzego zibishinzwe ahantu umuhanda uteye ibyago. Kubahana no kwihangana birinda ubuzima bwa bose."
+      }
+    },
+    {
+      "id": "traffic-seat-belts",
+      "category": "traffic",
+      "title": {
+        "en": "Seat Belt Safety",
+        "rw": "Akamaro k'umukandara w'umutekano"
+      },
+      "description": {
+        "en": "Learn why seat belts are important for drivers and passengers.",
+        "rw": "Menya impamvu umukandara w'umutekano ari ingenzi ku bashoferi n'abagenzi."
+      },
+      "content": {
+        "en": "Seat belts are important safety devices that help protect people inside vehicles. Drivers and passengers should wear their seat belts correctly whenever the vehicle is moving. The belt should fit securely and should not be twisted or placed incorrectly. Children should use suitable child restraints according to their age, size and applicable laws. Airbags are designed to work with seat belts, not replace them.",
+        "rw": "Imikandara y'umutekano ni ibikoresho by'ingenzi bifasha kurinda abantu bari mu kinyabiziga. Umushoferi n'abagenzi bagomba kuyambara neza igihe cyose ikinyabiziga kigenda. Umukandara ugomba gufata neza umubiri, ntugoreke cyangwa ngo ushyirwe nabi. Abana bagomba gukoresha intebe cyangwa ibindi bikoresho bibagenewe hakurikijwe imyaka yabo, ingano yabo n'amategeko akurikizwa. Imifuka y'umwuka irinda abantu ikorana n'umukandara, ariko ntisimbura umukandara."
+      }
+    },
+    {
+      "id": "traffic-speed-management",
+      "category": "traffic",
+      "title": {
+        "en": "Safe Speed Management",
+        "rw": "Kugenzura umuvuduko mu mutekano"
+      },
+      "description": {
+        "en": "Understand why choosing a safe speed matters.",
+        "rw": "Sobanukirwa impamvu ari ngombwa guhitamo umuvuduko utekanye."
+      },
+      "content": {
+        "en": "A safe speed depends on road conditions, visibility, weather, traffic and the applicable speed limit. Drivers should never exceed the posted limit and may need to travel more slowly when conditions are difficult. Higher speeds reduce the time available to react and make it harder to stop safely. Slow down near schools, markets, residential areas and places where pedestrians may cross. Safe driving is about control, not speed.",
+        "rw": "Umuvuduko utekanye uterwa n'imiterere y'umuhanda, uko ugaragara, ikirere, urujya n'uruza n'umuvuduko ntarengwa wemewe. Abashoferi ntibagomba kurenza umuvuduko ugaragajwe ku cyapa kandi bashobora gukenera kugenda buhoro igihe imiterere y'umuhanda itameze neza. Umuvuduko mwinshi ugabanya igihe cyo kubona ikibazo no gufata icyemezo, kandi ugatuma guhagarara neza bigorana. Gabanya umuvuduko hafi y'amashuri, amasoko, aho abantu batuye n'ahashobora kwambukira abanyamaguru. Gutwara neza ni ukugenzura ikinyabiziga, si ukwiruka."
+      }
+    },
+    {
+      "id": "general-introduction",
+      "category": "general",
+      "title": {
+        "en": "Introduction to General Knowledge",
+        "rw": "Intangiriro ku bumenyi rusange"
+      },
+      "description": {
+        "en": "Explore the value of learning about the world around us.",
+        "rw": "Menya akamaro ko kwiga ibidukikije n'ibibera ku isi."
+      },
+      "content": {
+        "en": "General knowledge is information about many subjects, including science, geography, history, culture, technology and society. It helps people understand the world, communicate clearly and make informed decisions. Learning should be continuous: read reliable materials, ask questions, compare information and remain open to new evidence. Good general knowledge is not only about remembering facts; it is also about understanding how ideas connect.",
+        "rw": "Ubumenyi rusange ni amakuru yerekeye amasomo atandukanye arimo siyansi, geografiya, amateka, umuco, ikoranabuhanga na sosiyete. Bufasha abantu gusobanukirwa isi, kuvugana neza no gufata ibyemezo bishingiye ku makuru. Kwiga bigomba guhoraho: soma ibikoresho byizewe, baza ibibazo, gereranya amakuru kandi wemere ibimenyetso bishya. Ubumenyi rusange si ukugira mu mutwe amakuru gusa; ni no gusobanukirwa uko ibitekerezo bitandukanye bifitanye isano."
+      }
+    },
+    {
+      "id": "general-geography",
+      "category": "general",
+      "title": {
+        "en": "Geography of the World",
+        "rw": "Geografiya y'isi"
+      },
+      "description": {
+        "en": "Learn about continents, oceans, countries and physical features.",
+        "rw": "Menya imigabane, inyanja, ibihugu n'imiterere y'ubuso bw'isi."
+      },
+      "content": {
+        "en": "Geography studies places, people, environments and the relationships between them. Earth has seven commonly recognized continents and five major oceans. Mountains, rivers, lakes, deserts and plains are examples of physical features. Human geography examines settlements, population, languages, transport and economic activities. Maps, globes and satellite images help us understand locations and spatial relationships.",
+        "rw": "Geografiya ni isomo ryiga ahantu, abantu, ibidukikije n'isano biri hagati yabyo. Isi igizwe n'imigabane irindwi izwi cyane n'inyanja eshanu nini. Imisozi, imigezi, ibiyaga, ubutayu n'ibibaya ni ingero z'imiterere y'ubuso bw'isi. Geografiya y'abantu yiga aho batuye, umubare w'abaturage, indimi, ubwikorezi n'ibikorwa by'ubukungu. Amakarita, amashusho y'isi n'amashusho afatwa n'ibyogajuru bidufasha kumenya aho ahantu haherereye n'isano hagati y'ahantu hatandukanye."
+      }
+    },
+    {
+      "id": "general-science",
+      "category": "general",
+      "title": {
+        "en": "Introduction to Science",
+        "rw": "Intangiriro kuri siyansi"
+      },
+      "description": {
+        "en": "Understand how science uses observation and evidence.",
+        "rw": "Sobanukirwa uko siyansi ikoresha kwitegereza n'ibimenyetso."
+      },
+      "content": {
+        "en": "Science is a systematic way of studying the natural world. Scientists ask questions, make observations, develop explanations and test ideas using evidence. Major branches include biology, chemistry, physics and earth science. Scientific knowledge changes when reliable new evidence becomes available. Science helps improve medicine, agriculture, communication, transport and our understanding of the environment.",
+        "rw": "Siyansi ni uburyo buteguye bwo kwiga ibibera mu isi karemano. Abahanga babaza ibibazo, bakitegereza, bagatanga ibisobanuro kandi bakagerageza ibitekerezo bakoresheje ibimenyetso. Amashami akomeye ya siyansi arimo ibinyabuzima, ubutabire, ubugenge n'ubumenyi bw'isi. Ubumenyi bwa siyansi burahinduka iyo habonetse ibimenyetso bishya byizewe. Siyansi ifasha guteza imbere ubuvuzi, ubuhinzi, itumanaho, ubwikorezi no gusobanukirwa ibidukikije."
+      }
+    },
+    {
+      "id": "general-human-body",
+      "category": "general",
+      "title": {
+        "en": "The Human Body",
+        "rw": "Umubiri w'umuntu"
+      },
+      "description": {
+        "en": "Discover the main systems and functions of the human body.",
+        "rw": "Menya sisitemu z'ingenzi n'imirimo y'umubiri w'umuntu."
+      },
+      "content": {
+        "en": "The human body is made up of cells, tissues, organs and systems that work together. The heart circulates blood, the lungs exchange oxygen and carbon dioxide, and the brain coordinates many body activities. The digestive system processes food and absorbs nutrients. Bones support the body, while muscles help it move. Healthy habits such as balanced meals, adequate sleep, physical activity and hygiene support normal body functions.",
+        "rw": "Umubiri w'umuntu ugizwe n'uturemangingo, inyama, ingingo na sisitemu bikorana. Umutima utuma amaraso atembera, ibihaha bigafasha guhana umwuka wa ogisijeni na karuboni, naho ubwonko bukagenzura ibikorwa byinshi by'umubiri. Sisitemu y'igogora itunganya ibiryo kandi igakuramo intungamubiri. Amagufa ateranya umubiri, imikaya igafasha mu kugenda. Imyitwarire myiza nko kurya indyo yuzuye, gusinzira bihagije, gukora imyitozo ikwiye no kugira isuku bifasha umubiri gukora neza."
+      }
+    },
+    {
+      "id": "general-technology",
+      "category": "general",
+      "title": {
+        "en": "Technology in Everyday Life",
+        "rw": "Ikoranabuhanga mu buzima bwa buri munsi"
+      },
+      "description": {
+        "en": "Explore how technology supports communication, learning and work.",
+        "rw": "Menya uko ikoranabuhanga rifasha mu itumanaho, kwiga no gukora."
+      },
+      "content": {
+        "en": "Technology includes tools, systems and methods people use to solve problems and complete tasks. Computers and smartphones support communication, education, research and business. The internet makes information easier to access, but not everything online is accurate. Users should protect personal information, use strong passwords, check sources and communicate respectfully. Technology is most useful when it is used responsibly and thoughtfully.",
+        "rw": "Ikoranabuhanga ririmo ibikoresho, sisitemu n'uburyo abantu bakoresha mu gukemura ibibazo no kurangiza imirimo. Mudasobwa na telefoni zigezweho bifasha mu itumanaho, uburezi, ubushakashatsi n'ubucuruzi. Interineti yorohereza kubona amakuru, ariko si amakuru yose ayisangamo aba ari ukuri. Abayikoresha bagomba kurinda amakuru yabo bwite, gukoresha amagambo banga akomeye, kugenzura inkomoko y'amakuru no kuvugana bubahana. Ikoranabuhanga rigira akamaro cyane iyo rikoreshejwe neza kandi mu buryo bwatekerejweho."
+      }
+    },
+    {
+      "id": "general-history",
+      "category": "general",
+      "title": {
+        "en": "Understanding History",
+        "rw": "Gusobanukirwa amateka"
+      },
+      "description": {
+        "en": "Learn why studying the past helps us understand the present.",
+        "rw": "Menya impamvu kwiga ibyahise bidufasha gusobanukirwa ibiriho."
+      },
+      "content": {
+        "en": "History is the study of people, societies and events from the past. Historians use documents, objects, photographs, oral accounts and other evidence to investigate what happened. Studying history helps explain how communities, governments, cultures and technologies have changed. It also teaches us to compare sources carefully because accounts may differ or contain errors. Understanding the past can help societies make thoughtful decisions about the future.",
+        "rw": "Amateka ni isomo ryiga abantu, imiryango n'ibyabaye mu bihe byashize. Abashakashatsi b'amateka bakoresha inyandiko, ibikoresho bya kera, amafoto, ubuhamya bwo mu mvugo n'ibindi bimenyetso kugira ngo bamenye ibyabaye. Kwiga amateka bifasha gusobanukirwa uko imiryango, ubuyobozi, imico n'ikoranabuhanga byagiye bihinduka. Bitwigisha no kugereranya inkomoko z'amakuru twitonze kuko inkuru zishobora gutandukana cyangwa zikagira amakosa. Gusobanukirwa ibyahise bifasha abantu gufata ibyemezo byatekerejweho ku hazaza."
+      }
+    },
+    {
+      "id": "general-sports",
+      "category": "general",
+      "title": {
+        "en": "Sports and Physical Activity",
+        "rw": "Imikino n'imyitozo ngororamubiri"
+      },
+      "description": {
+        "en": "Understand how sports support teamwork and wellbeing.",
+        "rw": "Sobanukirwa uko imikino ifasha ubufatanye n'imibereho myiza."
+      },
+      "content": {
+        "en": "Sports and physical activities can support physical health, confidence and social connection. Team sports teach cooperation, communication, discipline and respect for rules. Individual sports can develop concentration and personal responsibility. Safe participation includes warming up appropriately, using suitable equipment, drinking enough water and allowing time for rest. Fair play means respecting teammates, opponents, officials and the rules of the game.",
+        "rw": "Imikino n'imyitozo ngororamubiri bishobora gufasha ubuzima bw'umubiri, kwigirira icyizere no kubana neza n'abandi. Imikino ikinwa n'amakipe yigisha ubufatanye, itumanaho, ikinyabupfura no kubahiriza amategeko. Imikino ikinwa n'umuntu ku giti cye ishobora guteza imbere kwibanda ku kintu no kwiyitaho. Gukina mu mutekano bisaba kubanza gutegura umubiri uko bikwiye, gukoresha ibikoresho biboneye, kunywa amazi ahagije no guha umubiri igihe cyo kuruhuka. Gukina mu kuri bisobanura kubaha abo mukinana, abo muhanganye, abasifuzi n'amategeko y'umukino."
+      }
+    },
+    {
+      "id": "general-rwanda",
+      "category": "general",
+      "title": {
+        "en": "Rwanda: Land of a Thousand Hills",
+        "rw": "u Rwanda: Igihugu cy'imisozi igihumbi"
+      },
+      "description": {
+        "en": "Explore Rwanda's geography, culture and national identity.",
+        "rw": "Menya geografiya y'u Rwanda, umuco warwo n'ibiruranga."
+      },
+      "content": {
+        "en": "Rwanda is a country in East Africa. Its capital city is Kigali, and Kinyarwanda is the national language. The country is known for its green hills, lakes, national parks and rich cultural traditions. Agriculture, services, tourism, trade and technology contribute to the economy. Rwanda's national symbols and historical heritage help express its identity. Learning about the country encourages citizens and visitors to understand its communities, environment and development.",
+        "rw": "u Rwanda ni igihugu giherereye muri Afurika y'Iburasirazuba. Umurwa mukuru warwo ni Kigali, naho Ikinyarwanda kikaba ururimi rw'igihugu. Igihugu kizwiho imisozi itoshye, ibiyaga, pariki z'igihugu n'umuco ukungahaye. Ubuhinzi, serivisi, ubukerarugendo, ubucuruzi n'ikoranabuhanga bigira uruhare mu bukungu. Ibimenyetso by'igihugu n'umurage w'amateka bigaragaza umwihariko wacyo. Kumenya igihugu bifasha abaturage n'abashyitsi gusobanukirwa imiryango yacyo, ibidukikije n'iterambere."
+      }
+    },
+    {
+      "id": "general-environment",
+      "category": "general",
+      "title": {
+        "en": "Environmental Protection",
+        "rw": "Kurengera ibidukikije"
+      },
+      "description": {
+        "en": "Learn practical ways to protect nature and natural resources.",
+        "rw": "Menya uburyo bufatika bwo kurengera ibidukikije n'umutungo kamere."
+      },
+      "content": {
+        "en": "The environment includes air, water, land, plants, animals and the places where people live. Pollution, deforestation, poor waste management and climate change can damage natural systems. People can help by reducing waste, reusing materials, recycling where possible, planting trees and protecting water sources. Communities, businesses and governments all have roles in environmental protection. Caring for nature supports health, biodiversity and future generations.",
+        "rw": "Ibidukikije birimo umwuka, amazi, ubutaka, ibimera, inyamaswa n'ahantu abantu batuye. Umwanda, gutema amashyamba, gucunga nabi imyanda n'imihindagurikire y'ikirere bishobora kwangiza imikorere karemano y'isi. Abantu bashobora gufasha bagabanya imyanda, bongera gukoresha ibikoresho, batunganya ibishobora kongera gukoreshwa, batera ibiti kandi barinda amasoko y'amazi. Abaturage, ibigo by'ubucuruzi na Leta bose bafite uruhare mu kurengera ibidukikije. Kwita ku bidukikije birengera ubuzima, ibinyabuzima n'ibisekuru bizaza."
+      }
+    },
+    {
+      "id": "general-mathematics",
+      "category": "general",
+      "title": {
+        "en": "Mathematics in Daily Life",
+        "rw": "Imibare mu buzima bwa buri munsi"
+      },
+      "description": {
+        "en": "Discover how mathematical thinking helps solve everyday problems.",
+        "rw": "Menya uko gutekereza mu mibare bifasha gukemura ibibazo bya buri munsi."
+      },
+      "content": {
+        "en": "Mathematics helps people measure, compare, estimate and solve problems. Addition, subtraction, multiplication and division are used in shopping, budgeting and planning. Fractions and percentages help explain parts of a whole, while geometry studies shapes, distances and space. Data and statistics help people interpret information and make comparisons. Practising mathematics develops logical thinking and careful problem-solving.",
+        "rw": "Imibare ifasha abantu gupima, kugereranya, kugereranya ingano no gukemura ibibazo. Guteranya, gukuramo, gukuba no kugabanya bikoreshwa mu kugura ibintu, gutegura ingengo y'imari no gutegura ibikorwa. Imigabane n'ijanisha bifasha gusobanura ibice by'ikintu cyose, naho geometrie ikiga imiterere y'ibintu, intera n'ubuso. Imibare y'ibarurishamibare ifasha abantu gusobanura amakuru no kugereranya ibintu. Kwitoza imibare biteza imbere gutekereza neza no gukemura ibibazo witonze."
+      }
+    },
+    {
+      "id": "general-communication",
+      "category": "general",
+      "title": {
+        "en": "Effective Communication",
+        "rw": "Itumanaho ryiza"
+      },
+      "description": {
+        "en": "Learn how listening and clear expression improve communication.",
+        "rw": "Menya uko gutega amatwi no kuvuga neza biteza imbere itumanaho."
+      },
+      "content": {
+        "en": "Communication is the exchange of information, ideas and feelings. It can happen through speaking, writing, gestures and digital tools. Effective communication requires clear messages, careful listening and respect for different opinions. Asking questions can prevent misunderstandings. Online communication should also be responsible: check information before sharing it and avoid insulting or threatening others.",
+        "rw": "Itumanaho ni uguhanahana amakuru, ibitekerezo n'ibyiyumvo. Rishobora gukorwa mu kuvuga, kwandika, gukoresha ibimenyetso no gukoresha ibikoresho by'ikoranabuhanga. Itumanaho ryiza risaba ubutumwa busobanutse, gutega amatwi witonze no kubaha ibitekerezo bitandukanye. Kubaza ibibazo bishobora gukumira kutumvikana. Itumanaho ryo kuri interineti na ryo rigomba gukorwa neza: banza ugenzure amakuru mbere yo kuyasangiza abandi kandi wirinde gutuka cyangwa gutera ubwoba abandi."
+      }
+    },
+    {
+      "id": "general-energy",
+      "category": "general",
+      "title": {
+        "en": "Energy and Its Forms",
+        "rw": "Ingufu n'ubwoko bwazo"
+      },
+      "description": {
+        "en": "Explore different forms of energy and how people use them.",
+        "rw": "Menya ubwoko butandukanye bw'ingufu n'uko abantu bazikoresha."
+      },
+      "content": {
+        "en": "Energy is the ability to cause change or do work. Common forms include electrical, chemical, thermal, light, sound and kinetic energy. People use energy for lighting, cooking, transport, communication and industry. Renewable sources include sunlight, wind and flowing water. Using energy efficiently helps reduce waste and environmental impact. Electricity should always be handled carefully and according to safety guidance.",
+        "rw": "Ingufu ni ubushobozi bwo gutuma ikintu gihinduka cyangwa bwo gukora umurimo. Ubwoko bw'ingufu burimo amashanyarazi, izikomoka ku butabire, ubushyuhe, urumuri, amajwi n'ingufu z'ibintu bigenda. Abantu bakoresha ingufu mu gucana amatara, guteka, gutwara abantu n'ibintu, itumanaho n'inganda. Ingufu zishobora kuvugururwa zirimo iz'izuba, umuyaga n'amazi atemba. Gukoresha ingufu neza bifasha kugabanya isesagura n'ingaruka ku bidukikije. Amashanyarazi agomba guhora akoreshwa hubahirizwa amabwiriza y'umutekano."
+      }
+    },
+    {
+      "id": "general-water-cycle",
+      "category": "general",
+      "title": {
+        "en": "The Water Cycle",
+        "rw": "Uruhererekane rw'amazi mu bidukikije"
+      },
+      "description": {
+        "en": "Understand how water moves through the environment.",
+        "rw": "Sobanukirwa uko amazi azenguruka mu bidukikije."
+      },
+      "content": {
+        "en": "The water cycle describes the continuous movement of water between the Earth's surface and the atmosphere. Heat from the Sun causes evaporation from water bodies and soil. Water vapour cools and forms clouds through condensation. Water then returns to the surface as precipitation, such as rain. Some water flows into rivers and lakes, while some enters the ground. This cycle supports ecosystems, agriculture and human life.",
+        "rw": "Uruhererekane rw'amazi rusobanura uko amazi ahora azenguruka hagati y'ubuso bw'isi n'ikirere. Ubushyuhe bw'izuba butuma amazi yo mu biyaga, inzuzi no mu butaka ahinduka umwuka. Uwo mwuka ukonja ugahinduka ibicu binyuze mu gikorwa cyitwa kondezasiya. Amazi agaruka ku butaka ari imvura cyangwa ubundi buryo bw'imvura. Amwe atemba ajya mu migezi no mu biyaga, andi akinjira mu butaka. Uruhererekane rw'amazi rushyigikira ibinyabuzima, ubuhinzi n'ubuzima bw'abantu."
+      }
+    },
+    {
+      "id": "general-space",
+      "category": "general",
+      "title": {
+        "en": "The Solar System",
+        "rw": "Imibumbe n'izuba"
+      },
+      "description": {
+        "en": "Learn about the Sun, planets and other objects in our solar system.",
+        "rw": "Menya izuba, imibumbe n'ibindi bintu biri mu muryango w'izuba."
+      },
+      "content": {
+        "en": "The solar system consists of the Sun and the objects held by its gravity. Eight planets orbit the Sun: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune. Some planets have moons, and the solar system also contains dwarf planets, asteroids, comets and dust. Earth is the only world currently known to support life. Studying space helps scientists understand how planets and stars form and change.",
+        "rw": "Umuryango w'izuba ugizwe n'izuba n'ibindi bintu bikururwa n'imbaraga zarwo. Imibumbe umunani izenguruka izuba ni Merkire, Venusi, Isi, Marisi, Jupita, Satuni, Uranusi na Neptuni. Imibumbe imwe ifite ukwezi kwayo, kandi muri uwo muryango harimo n'imibumbe mito, utubuye two mu isanzure, inyenyeri zifite umurizo n'umukungugu. Isi ni yo yonyine izwi kugeza ubu ko ibamo ubuzima. Kwiga isanzure bifasha abahanga gusobanukirwa uko imibumbe n'inyenyeri bibaho kandi bigahinduka."
+      }
+    },
+    {
+      "id": "general-food-nutrition",
+      "category": "general",
+      "title": {
+        "en": "Food and Nutrition",
+        "rw": "Ibiribwa n'intungamubiri"
+      },
+      "description": {
+        "en": "Understand the role of different nutrients in the body.",
+        "rw": "Sobanukirwa uruhare rw'intungamubiri zitandukanye mu mubiri."
+      },
+      "content": {
+        "en": "Food provides energy and nutrients that the body needs to grow, repair tissues and function well. Carbohydrates provide energy, proteins help build and repair tissues, and fats provide stored energy and support important body functions. Vitamins and minerals support many processes, while water is essential for hydration. Eating a variety of foods, practising good food hygiene and drinking safe water support health.",
+        "rw": "Ibiribwa biha umubiri ingufu n'intungamubiri ukenera kugira ngo ukure, usane inyama zangiritse kandi ukore neza. Ibyubaka umubiri bitanga ingufu, poroteyine zifasha kubaka no gusana inyama, naho ibinure bikabika ingufu kandi bigafasha imirimo y'ingenzi y'umubiri. Vitamini n'imyunyu ngugu bifasha imikorere myinshi y'umubiri, naho amazi akaba ingenzi mu kuwurinda kubura amazi. Kurya ibiribwa bitandukanye, kugira isuku mu gutegura ibiryo no kunywa amazi meza bifasha ubuzima."
+      }
+    },
+    {
+      "id": "general-plants",
+      "category": "general",
+      "title": {
+        "en": "Plants and Their Importance",
+        "rw": "Ibimera n'akamaro kabyo"
+      },
+      "description": {
+        "en": "Discover how plants support people, animals and the environment.",
+        "rw": "Menya uko ibimera bifasha abantu, inyamaswa n'ibidukikije."
+      },
+      "content": {
+        "en": "Plants are living organisms that play an important role in ecosystems. Many plants use sunlight, water and carbon dioxide to make food through photosynthesis, releasing oxygen in the process. Plants provide food, materials, shade and habitats for animals. Their roots help hold soil and reduce erosion. Protecting forests and planting suitable trees can support biodiversity and healthy environments.",
+        "rw": "Ibimera ni ibinyabuzima bigira uruhare rukomeye mu bidukikije. Ibimera byinshi bikoresha urumuri rw'izuba, amazi na karuboni kugira ngo bikore ibiribwa binyuze muri fotosinteze, bikarekura umwuka wa ogisijeni. Ibimera bitanga ibiribwa, ibikoresho, igicucu n'aho inyamaswa ziba. Imizi yabyo ifata ubutaka ikagabanya isuri. Kurinda amashyamba no gutera ibiti bibereye aho hantu bishobora gufasha kubungabunga ibinyabuzima n'ibidukikije."
+      }
+    },
+    {
+      "id": "general-internet-safety",
+      "category": "general",
+      "title": {
+        "en": "Internet Safety",
+        "rw": "Umutekano kuri interineti"
+      },
+      "description": {
+        "en": "Learn how to protect privacy and behave responsibly online.",
+        "rw": "Menya uko warinda amakuru yawe kandi ugakoresha interineti neza."
+      },
+      "content": {
+        "en": "The internet provides useful opportunities for learning, communication and creativity. However, users should protect personal details such as passwords, private addresses and financial information. Use privacy settings, create strong and unique passwords, and be careful with unfamiliar links or messages. Check whether information comes from trustworthy sources before sharing it. If something online makes you feel unsafe, speak with a trusted adult or the appropriate support service.",
+        "rw": "Interineti itanga amahirwe menshi yo kwiga, kuvugana no guhanga udushya. Ariko abayikoresha bagomba kurinda amakuru bwite nk'amagambo banga, aho batuye n'amakuru y'imari. Koresha uburyo bwo kurinda ubuzima bwite, hitamo amagambo banga akomeye kandi atandukanye, kandi witondere imiyoboro cyangwa ubutumwa utazi. Banza urebe niba amakuru aturuka ahantu hizewe mbere yo kuyasangiza abandi. Niba hari ikintu kuri interineti kiguteye kumva utizeye umutekano, ganira n'umuntu mukuru wizeye cyangwa urwego rushinzwe kugufasha."
+      }
+    },
+    {
+      "id": "general-culture",
+      "category": "general",
+      "title": {
+        "en": "Culture and Society",
+        "rw": "Umuco na sosiyete"
+      },
+      "description": {
+        "en": "Understand how traditions, values and communities shape society.",
+        "rw": "Sobanukirwa uko imigenzo, indangagaciro n'imiryango bigira uruhare muri sosiyete."
+      },
+      "content": {
+        "en": "Culture includes language, beliefs, traditions, arts, food and shared ways of life. It is learned and passed from one generation to another, while also changing over time. Societies contain people with different backgrounds and experiences. Respecting cultural differences encourages peaceful cooperation and learning. Cultural heritage can be protected through education, responsible preservation and participation in community activities.",
+        "rw": "Umuco urimo ururimi, imyemerere, imigenzo, ubuhanzi, ibiribwa n'imibereho abantu bahuriyeho. Umuco wigishwa kandi ukagezwa ku bisekuru bikurikirana, ariko na wo ugahinduka uko igihe gihita. Muri sosiyete habamo abantu bafite amateka n'ubunararibonye bitandukanye. Kubaha itandukaniro ry'imico bituma abantu babana mu mahoro kandi bakigira hamwe. Umurage ndangamuco urindwa binyuze mu burezi, kuwubungabunga neza no kwitabira ibikorwa by'abaturage."
+      }
+    }
+  ]
+}
