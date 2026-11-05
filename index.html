@@ -31,7 +31,7 @@
     gtag("config", "G-3FP8R0NDZN");
   </script>
 
-  <!-- GOOGLE ADSENSE: KEEP CLIENT ID UNCHANGED -->
+  <!-- GOOGLE ADSENSE: SINGLE AD UNIT -->
   <script
     async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
@@ -384,7 +384,7 @@
       width: 100%;
     }
 
-    /* ONE HOME ADVERTISEMENT ONLY */
+    /* SINGLE HOME ADVERTISEMENT ONLY */
     .ad-container {
       display: block;
       width: 100%;
@@ -894,7 +894,11 @@
       </div>
 
       <!-- SINGLE HOME ADVERTISEMENT -->
-      <div class="ad-container" id="homeAdContainer">
+      <div
+        class="ad-container"
+        id="homeAdContainer"
+        aria-label="Advertisement">
+
         <div class="ad-label">Advertisement</div>
 
         <ins
@@ -998,7 +1002,7 @@
 
     </section>
 
-    <!-- RESULT SCREEN -->
+    <!-- RESULT SCREEN: NO ADS -->
     <section id="resultScreen" class="screen">
 
       <div class="panel">
@@ -1434,26 +1438,33 @@
     }
   </script>
 
-  <!-- ADSENSE: INITIALIZE THE SINGLE HOME AD -->
+  <!-- ADSENSE: INITIALIZE THE SINGLE HOME AD ONLY ONCE -->
   <script>
     (() => {
       "use strict";
 
-      function initializeHomeAd() {
-        const homeScreen = document.getElementById("homeScreen");
-        const ad = document.querySelector(
-          "#homeAdContainer ins.adsbygoogle"
-        );
+      let initialized = false;
 
-        if (!homeScreen || !ad) return;
+      function initializeHomeAd() {
+        if (initialized) return;
+
+        const homeScreen = document.getElementById("homeScreen");
+        const container = document.getElementById("homeAdContainer");
+
+        if (!homeScreen || !container) return;
 
         if (!homeScreen.classList.contains("active")) return;
 
-        if (ad.dataset.initialized === "true") return;
+        const ad = container.querySelector("ins.adsbygoogle");
 
-        const container = ad.closest(".ad-container");
+        if (!ad) return;
 
-        if (!container || container.getBoundingClientRect().width <= 0) {
+        if (ad.dataset.initialized === "true") {
+          initialized = true;
+          return;
+        }
+
+        if (container.getBoundingClientRect().width <= 0) {
           return;
         }
 
@@ -1461,6 +1472,9 @@
           ad.dataset.initialized = "true";
 
           (window.adsbygoogle = window.adsbygoogle || []).push({});
+
+          initialized = true;
+
         } catch (error) {
           delete ad.dataset.initialized;
 
@@ -1482,6 +1496,7 @@
       }
 
       window.addEventListener("pageshow", initializeHomeAd);
+
     })();
   </script>
 
