@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,41 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08172b">
 
-  <title>Learning Centre | Quiz Master 🇷🇼</title>
+  <title>Articles & Learning Centre | Quiz Master 🇷🇼</title>
 
-  <meta
-    name="description"
-    content="Explore bilingual English and Kinyarwanda learning articles about road safety, science, geography, Rwanda and general knowledge."
-  >
+  <meta name="description" content="Explore educational articles about road safety, general knowledge, science, geography, history and learning in English and Kinyarwanda with Quiz Master Rwanda.">
 
+  <meta name="keywords" content="Quiz Master Rwanda, educational articles, road safety Rwanda, general knowledge, science, geography, history, learning centre, Kinyarwanda education">
+
+  <meta name="author" content="Quiz Master Rwanda">
   <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
 
-  <link
-    rel="canonical"
-    href="https://quizmaster-liard-five.vercel.app/articles.html"
-  >
+  <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/articles.html">
 
-  <link rel="icon" type="image/png" href="./icon-512-3.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Articles & Learning Centre | Quiz Master Rwanda">
+  <meta property="og:description" content="Learn about road safety, science, geography and general knowledge with Quiz Master Rwanda.">
+  <meta property="og:url" content="https://quizmaster-liard-five.vercel.app/articles.html">
+  <meta property="og:site_name" content="Quiz Master Rwanda">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Articles & Learning Centre | Quiz Master Rwanda">
+  <meta name="twitter:description" content="Educational articles and learning resources in English and Kinyarwanda.">
+
+  <link rel="icon" href="./icon-512-3.png" type="image/png">
   <link rel="apple-touch-icon" href="./icon-192-4.png">
-
-  <!-- GOOGLE ADSENSE -->
-  <script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous">
-  </script>
 
   <style>
     :root {
       --bg: #08172b;
-      --panel: #10233d;
-      --panel-light: #172d49;
-      --text: #f3f7ff;
-      --muted: #aabbd0;
+      --surface: #10233d;
+      --surface2: #172d49;
       --primary: #38bdf8;
-      --border: rgba(255,255,255,.12);
-      --success: #22c55e;
-      --danger: #fb7185;
+      --text: #f1f5f9;
+      --muted: #a9b8ca;
+      --border: rgba(255,255,255,.10);
+      --green: #22c55e;
+      --radius: 16px;
+      --max: 1100px;
     }
 
     * {
@@ -49,15 +50,15 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
       margin: 0;
-      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     a {
@@ -65,367 +66,425 @@
       text-decoration: none;
     }
 
-    button,
-    input {
+    button {
       font: inherit;
     }
 
-    button {
-      cursor: pointer;
-    }
-
-    button:focus-visible,
-    input:focus-visible,
-    a:focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: 3px;
-    }
-
     .container {
-      width: min(1100px, 92%);
+      width: min(92%, var(--max));
       margin: auto;
     }
 
     header {
-      background: #0c1d34;
+      background: rgba(8,23,43,.97);
       border-bottom: 1px solid var(--border);
-      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
     }
 
-    .header-inner {
+    .nav {
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    .brand {
-      font-size: 19px;
+    .logo {
+      font-size: 20px;
       font-weight: 800;
       color: white;
+      white-space: nowrap;
     }
 
-    .header-actions {
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .nav-actions {
       display: flex;
       align-items: center;
       gap: 9px;
     }
 
-    .btn {
-      border: 1px solid var(--border);
-      background: var(--panel-light);
+    .language-btn,
+    .menu-btn {
+      background: var(--surface2);
       color: white;
+      border: 1px solid var(--border);
       border-radius: 9px;
-      padding: 9px 14px;
-      font-weight: 700;
-      transition: border-color .2s;
+      padding: 8px 12px;
+      cursor: pointer;
     }
 
-    .btn:hover {
-      border-color: var(--primary);
+    .menu-btn {
+      display: none;
+    }
+
+    .hero {
+      padding: 75px 0 55px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, rgba(56,189,248,.17), transparent 65%);
+    }
+
+    .hero-label {
+      display: inline-block;
+      color: var(--primary);
+      background: rgba(56,189,248,.10);
+      border: 1px solid rgba(56,189,248,.2);
+      border-radius: 30px;
+      padding: 5px 14px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.2;
+      margin: 20px 0 14px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 19px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: .2s;
     }
 
     .btn-primary {
       background: var(--primary);
-      border-color: var(--primary);
-      color: #062033;
+      color: #071526;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     main {
-      padding: 35px 0 35px;
-      min-height: 70vh;
+      padding: 35px 0 65px;
     }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 30px;
+    .section-heading {
+      margin-bottom: 24px;
     }
 
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: clamp(27px, 5vw, 38px);
-      line-height: 1.2;
+    .section-heading h2 {
+      font-size: 25px;
+      margin: 0 0 5px;
     }
 
-    .hero p {
+    .section-heading p {
       color: var(--muted);
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .controls {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 17px;
-      margin-bottom: 22px;
+      margin: 0;
     }
 
     .search-box {
+      margin: 28px 0;
+    }
+
+    .search-box input {
       width: 100%;
-      padding: 13px 14px;
-      border-radius: 9px;
+      padding: 15px 17px;
+      border-radius: 12px;
       border: 1px solid var(--border);
-      background: #08172b;
-      color: white;
       outline: none;
+      background: var(--surface);
+      color: white;
+      font-size: 15px;
     }
 
-    .search-box:focus {
+    .search-box input:focus {
       border-color: var(--primary);
     }
 
-    .filters {
+    .categories {
       display: flex;
-      flex-wrap: wrap;
       gap: 9px;
-      margin-top: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
     }
 
-    .filter-btn {
-      padding: 8px 14px;
-      border-radius: 20px;
+    .category-btn {
+      padding: 8px 15px;
+      border-radius: 30px;
       border: 1px solid var(--border);
-      background: transparent;
+      background: var(--surface);
       color: var(--muted);
-      font-weight: 700;
+      cursor: pointer;
+      font-size: 13px;
     }
 
-    .filter-btn.active {
+    .category-btn.active,
+    .category-btn:hover {
       background: var(--primary);
-      color: #062033;
+      color: #071526;
       border-color: var(--primary);
-    }
-
-    .results-info {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 15px 2px;
     }
 
     .articles-grid {
       display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(245px, 1fr)
-      );
-      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 20px;
     }
 
     .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 23px;
       display: flex;
       flex-direction: column;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 18px;
-      min-height: 190px;
-      transition: transform .2s, border-color .2s;
+      min-width: 0;
+      transition: .2s;
     }
 
     .article-card:hover {
+      border-color: rgba(56,189,248,.5);
       transform: translateY(-3px);
-      border-color: var(--primary);
     }
 
-    .category-label {
-      display: inline-block;
-      align-self: flex-start;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .5px;
-      text-transform: uppercase;
+    .article-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      background: var(--surface2);
+      border-radius: 12px;
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    .article-category {
       color: var(--primary);
-      background: rgba(56,189,248,.12);
-      border-radius: 20px;
-      padding: 4px 9px;
-      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: .5px;
     }
 
-    .article-card h2 {
-      font-size: 18px;
-      line-height: 1.35;
-      margin: 0 0 9px;
+    .article-card h3 {
+      font-size: 19px;
+      line-height: 1.4;
+      margin: 9px 0;
     }
 
     .article-card p {
       color: var(--muted);
       font-size: 14px;
-      margin: 0 0 16px;
+      margin: 0 0 18px;
     }
 
-    .read-link {
+    .read-more {
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 14px;
       margin-top: auto;
       align-self: flex-start;
-      color: var(--primary);
-      background: transparent;
-      border: none;
       padding: 0;
-      font-weight: 800;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
     }
 
-    .reader {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: clamp(18px, 4vw, 30px);
+    .read-more:hover {
+      text-decoration: underline;
     }
 
-    .reader h1 {
-      font-size: clamp(24px, 4vw, 34px);
-      line-height: 1.3;
-      margin: 12px 0;
-    }
-
-    .reader-description {
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 35px;
       color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 24px;
+      background: var(--surface);
+      border-radius: var(--radius);
     }
 
-    .reader-content {
-      color: #e2eaf5;
-      overflow-wrap: anywhere;
-      font-size: 16px;
-      line-height: 1.85;
-    }
-
-    .reader-content p {
-      margin: 0 0 17px;
-      white-space: pre-wrap;
-    }
-
-    .lesson-section {
-      margin: 25px 0;
-      padding: 19px;
-      background: #0c1d34;
+    .article-detail {
+      display: none;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: var(--radius);
+      padding: clamp(20px, 4vw, 40px);
+      margin-top: 35px;
     }
 
-    .lesson-section h2 {
+    .article-detail.visible {
+      display: block;
+    }
+
+    .article-detail h2 {
+      font-size: clamp(23px, 4vw, 34px);
+      line-height: 1.35;
+      margin: 10px 0 20px;
+    }
+
+    .article-detail h3 {
       color: var(--primary);
-      font-size: 19px;
-      line-height: 1.4;
-      margin: 0 0 13px;
+      margin-top: 25px;
     }
 
-    .lesson-section p {
-      margin-bottom: 12px;
+    .article-detail p,
+    .article-detail li {
+      color: #d1dce8;
     }
 
-    .lesson-section ul {
-      margin: 0;
-      padding-left: 23px;
-    }
-
-    .lesson-section li {
-      margin-bottom: 10px;
-      padding-left: 3px;
-    }
-
-    .lesson-section li:last-child {
-      margin-bottom: 0;
+    .article-detail ul {
+      padding-left: 22px;
     }
 
     .back-btn {
-      margin-bottom: 18px;
-    }
-
-    .message {
-      text-align: center;
-      padding: 35px 15px;
-      color: var(--muted);
-      background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      background: var(--surface2);
+      color: white;
+      padding: 9px 15px;
+      border-radius: 9px;
+      cursor: pointer;
     }
 
-    .message.error {
-      color: #fecaca;
-      border-color: rgba(251,113,133,.4);
+    .learning-section {
+      margin-top: 65px;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: linear-gradient(120deg,#102e4d,#123b50);
+      border: 1px solid var(--border);
     }
 
-    .hidden {
-      display: none !important;
+    .learning-section h2 {
+      margin-top: 0;
     }
 
-    /* ONE ADSENSE UNIT AT THE END OF THE PAGE */
-
-    .ad-container {
-      width: 100%;
-      max-width: 970px;
-      min-height: 100px;
-      margin: 38px auto 12px;
-      padding: 12px 0;
-      overflow: hidden;
-      text-align: center;
-      clear: both;
-    }
-
-    .ad-label {
-      margin-bottom: 8px;
-      color: var(--muted);
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .ad-container ins {
-      display: block;
-      width: 100%;
-      min-height: 90px;
+    .learning-section p {
+      color: #c5d4e4;
     }
 
     footer {
       border-top: 1px solid var(--border);
-      background: #0c1d34;
-      padding: 22px 0;
-      text-align: center;
+      background: #061222;
+      padding: 35px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    .footer-content h3 {
+      font-size: 16px;
+    }
+
+    .footer-content p,
+    .footer-content a {
       color: var(--muted);
       font-size: 13px;
     }
 
     .footer-links {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 9px;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .footer-links a:hover {
       color: var(--primary);
     }
 
-    @media (max-width: 520px) {
-      .header-inner {
-        align-items: flex-start;
+    .copyright {
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 28px;
+      padding-top: 18px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        min-height: 65px;
       }
 
-      .brand {
-        font-size: 16px;
+      .menu-btn {
+        display: inline-block;
       }
 
-      .btn {
-        padding: 8px 10px;
-        font-size: 13px;
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 65px;
+        background: var(--surface);
+        padding: 18px 4%;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 13px;
       }
 
-      main {
-        padding-top: 25px;
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 6px 0;
+      }
+
+      .hero {
+        padding: 55px 0 40px;
       }
 
       .articles-grid {
         grid-template-columns: 1fr;
       }
 
-      .lesson-section {
-        padding: 15px;
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
 
-      .ad-container {
-        margin-top: 28px;
+      .learning-section {
+        padding: 22px;
       }
     }
 
@@ -438,1603 +497,1027 @@
       *::before,
       *::after {
         transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
       }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Articles and Learning Centre",
+    "description": "Educational articles about road safety, science, geography and general knowledge.",
+    "url": "https://quizmaster-liard-five.vercel.app/articles.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Quiz Master Rwanda",
+      "url": "https://quizmaster-liard-five.vercel.app/"
+    }
+  }
+  </script>
 </head>
 
 <body>
 
 <header>
-  <div class="container header-inner">
+  <div class="container nav">
 
-    <a class="brand" href="./index.html">
-      🧠 Quiz Master 🇷🇼
+    <a href="./index.html" class="logo">
+      Quiz Master <span>🇷🇼</span>
     </a>
 
-    <div class="header-actions">
+    <nav class="nav-links" id="navLinks">
+      <a href="./index.html" data-en="Home" data-rw="Ahabanza">Home</a>
+      <a href="./about.html" data-en="About" data-rw="Ibyerekeye">About</a>
+      <a href="./articles.html" class="active" data-en="Articles" data-rw="Inyandiko">Articles</a>
+      <a href="./contact.html" data-en="Contact" data-rw="Twandikire">Contact</a>
+    </nav>
 
-      <button
-        class="btn"
-        id="languageBtn"
-        type="button"
-        aria-label="Change language">
+    <div class="nav-actions">
+      <button class="language-btn" id="languageBtn" type="button">
         Kinyarwanda
       </button>
 
-      <a
-        class="btn btn-primary"
-        href="./index.html"
-        id="homeLink">
-        Home
-      </a>
-
+      <button class="menu-btn" id="menuBtn"
+        type="button" aria-label="Open navigation menu"
+        aria-expanded="false" aria-controls="navLinks">
+        ☰
+      </button>
     </div>
+
   </div>
 </header>
 
-<main class="container">
+<section class="hero">
+  <div class="container">
 
-  <!-- PAGE INTRODUCTION -->
+    <span class="hero-label"
+      data-en="LEARN • EXPLORE • GROW"
+      data-rw="IGA • MENYA • KURA">
+      LEARN • EXPLORE • GROW
+    </span>
 
-  <section class="hero" id="heroSection">
-
-    <h1 id="pageTitle">
-      Learning Centre
+    <h1
+      data-en="Articles & Learning Centre"
+      data-rw="Inyandiko n'Ikigo cy'Ubumenyi">
+      Articles & Learning Centre
     </h1>
 
-    <p id="pageDescription">
-      Explore useful lessons and improve your knowledge
-      through English and Kinyarwanda articles.
+    <p
+      data-en="Discover useful knowledge, improve your understanding and explore educational topics that help you learn something new every day."
+      data-rw="Menya ubumenyi bufite akamaro, wongere gusobanukirwa kandi wige ibintu bishya bigufasha buri munsi.">
+      Discover useful knowledge, improve your understanding and explore educational topics that help you learn something new every day.
     </p>
 
-  </section>
+    <div class="hero-actions">
+      <a href="#articles" class="btn btn-primary"
+        data-en="Explore Articles"
+        data-rw="Soma Inyandiko">
+        Explore Articles
+      </a>
 
-  <!-- ARTICLES LIST -->
-
-  <section id="listSection">
-
-    <div class="controls">
-
-      <input
-        type="search"
-        id="searchInput"
-        class="search-box"
-        placeholder="Search lessons..."
-        autocomplete="off"
-        aria-label="Search lessons">
-
-      <div class="filters">
-
-        <button
-          class="filter-btn active"
-          type="button"
-          data-category="all"
-          aria-pressed="true">
-          All
-        </button>
-
-        <button
-          class="filter-btn"
-          type="button"
-          data-category="general"
-          aria-pressed="false">
-          General Knowledge
-        </button>
-
-        <button
-          class="filter-btn"
-          type="button"
-          data-category="traffic"
-          aria-pressed="false">
-          Road Safety
-        </button>
-
-      </div>
+      <a href="./index.html" class="btn btn-secondary"
+        data-en="Play Quiz"
+        data-rw="Tangira Gukina">
+        Play Quiz
+      </a>
     </div>
+
+  </div>
+</section>
+
+<main class="container" id="articles">
+
+  <div class="section-heading">
+    <h2 data-en="Explore Our Articles"
+        data-rw="Soma Inyandiko Zacu">
+      Explore Our Articles
+    </h2>
 
     <p
-      class="results-info"
-      id="resultsInfo"
-      aria-live="polite">
-      Loading lessons...
+      data-en="Choose a topic and expand your knowledge."
+      data-rw="Hitamo ingingo wifuza kandi wongere ubumenyi bwawe.">
+      Choose a topic and expand your knowledge.
     </p>
+  </div>
 
-    <div
-      class="articles-grid"
-      id="articlesGrid">
-    </div>
+  <div class="search-box">
+    <input
+      type="search"
+      id="searchInput"
+      placeholder="Search articles..."
+      aria-label="Search articles"
+      autocomplete="off">
+  </div>
 
-    <div
-      class="message hidden"
-      id="emptyMessage">
-      No lessons found.
-    </div>
+  <div class="categories" aria-label="Article categories">
+    <button class="category-btn active" data-category="all"
+      data-en="All Articles" data-rw="Byose">All Articles</button>
 
-  </section>
+    <button class="category-btn" data-category="road"
+      data-en="Road Safety" data-rw="Umutekano wo mu Muhanda">Road Safety</button>
 
-  <!-- SINGLE ARTICLE READER -->
+    <button class="category-btn" data-category="science"
+      data-en="Science" data-rw="Siyansi">Science</button>
 
-  <section
-    class="reader hidden"
-    id="readerSection">
+    <button class="category-btn" data-category="geography"
+      data-en="Geography" data-rw="Ubumenyi bw'Isi">Geography</button>
 
-    <button
-      class="btn back-btn"
-      id="backBtn"
-      type="button">
-      ← Back to lessons
+    <button class="category-btn" data-category="general"
+      data-en="General Knowledge" data-rw="Ubumenyi Rusange">General Knowledge</button>
+
+    <button class="category-btn" data-category="learning"
+      data-en="Learning Tips" data-rw="Inama zo Kwiga">Learning Tips</button>
+  </div>
+
+  <div class="articles-grid" id="articlesGrid">
+
+    <article class="article-card" data-category="road"
+      data-search="road safety traffic rules signs driving pedestrians">
+      <div class="article-icon">🚦</div>
+      <span class="article-category" data-en="Road Safety" data-rw="Umutekano wo mu Muhanda">Road Safety</span>
+      <h3 data-en="Understanding Road Traffic Signs"
+          data-rw="Gusobanukirwa Ibyapa byo mu Muhanda">
+        Understanding Road Traffic Signs
+      </h3>
+      <p data-en="Learn why road signs are important and how they help drivers, cyclists and pedestrians use roads safely."
+         data-rw="Menya impamvu ibyapa byo mu muhanda ari ingenzi n'uko bifasha abashoferi, abanyamagare n'abanyamaguru kuwukoresha neza.">
+        Learn why road signs are important and how they help drivers, cyclists and pedestrians use roads safely.
+      </p>
+      <button class="read-more" data-article="signs"
+        data-en="Read Article →" data-rw="Soma Inyandiko →">Read Article →</button>
+    </article>
+
+    <article class="article-card" data-category="road"
+      data-search="pedestrian safety crossing zebra crossing road">
+      <div class="article-icon">🚶</div>
+      <span class="article-category" data-en="Road Safety" data-rw="Umutekano wo mu Muhanda">Road Safety</span>
+      <h3 data-en="Pedestrian Safety and Safe Road Crossing"
+          data-rw="Umutekano w'Abanyamaguru n'Uko Bambuka Umuhanda">
+        Pedestrian Safety and Safe Road Crossing
+      </h3>
+      <p data-en="Understand safe road crossing habits and the responsibilities of pedestrians."
+         data-rw="Sobanukirwa uko abanyamaguru bambuka umuhanda neza n'inshingano zabo.">
+        Understand safe road crossing habits and the responsibilities of pedestrians.
+      </p>
+      <button class="read-more" data-article="pedestrians"
+        data-en="Read Article →" data-rw="Soma Inyandiko →">Read Article →</button>
+    </article>
+
+    <article class="article-card" data-category="road"
+      data-search="traffic lights red amber green signals">
+      <div class="article-icon">🚥</div>
+      <span class="article-category" data-en="Road Safety" data-rw="Umutekano wo mu Muhanda">Road Safety</span>
+      <h3 data-en="What Do Traffic Light Colours Mean?"
+          data-rw="Amatara yo mu Muhanda Asobanura Iki?">
+        What Do Traffic Light Colours Mean?
+      </h3>
+      <p data-en="Discover the meaning of red, amber and green traffic lights and their role in road safety."
+         data-rw="Menya icyo amabara atukura, umuhondo n'icyatsi asobanura ku matara yo mu muhanda.">
+        Discover the meaning of red, amber and green traffic lights and their role in road safety.
+      </p>
+      <button class="read-more" data-article="lights"
+        data-en="Read Article →" data-rw="Soma Inyandiko →">Read Article →</button>
+    </article>
+
+    <article class="article-card" data-category="science"
+      data-search="human body heart lungs brain organs">
+      <div class="article-icon">🫀</div>
+      <span class="article-category" data-en="Science" data-rw="Siyansi">Science</span>
+      <h3 data-en="How the Human Body Works"
+          data-rw="Uko Umubiri w'Umuntu Ukora">
+        How the Human Body Works
+      </h3>
+      <p data-en="Explore the functions of important organs such as the heart, lungs, brain and kidneys."
+         data-rw="Menya imikorere y'ingingo z'ingenzi nk'umutima, ibihaha, ubwonko n'impyiko.">
+        Explore the functions of important organs such as the heart, lungs, brain and kidneys.
+      </p>
+      <button class="read-more" data-article="body"
+        data-en="Read Article →" data-rw="Soma Inyandiko →">Read Article →</button>
+    </article>
+
+    <article class="article-card" data-category="science"
+      data-search="solar system planets sun earth astronomy">
+      <div class="article-icon">🪐</div>
+      <span class="article-category" data-en="Science" data-rw="Siyansi">Science</span>
+      <h3 data-en="Exploring Our Solar System"
+          data-rw="Kumenya Imiterere y'Izuba n'Imibumbe">
+        Exploring Our Solar System
+      </h3>
+      <p data-en="Learn about the Sun, the planets and the objects that make up our solar system."
+         data-rw="Menya izuba, imibumbe n'ibindi bintu bigize imiterere y'izuba n'imibumbe irizenguruka.">
+        Learn about the Sun, the planets and the objects that make up our solar system.
+      </p>
+      <button class="read-more" data-article="solar"
+        data-en="Read Article →" data-rw="Soma Inyandiko →">Read Article →</button>
+    </article>
+
+    <article class="article-card" data-category="geography"
+      data-search="Africa countries rivers lakes mountains geography">
+      <div class="article-icon">🌍</div>
+      <span class="article-category" data-en="Geography" data-rw="Ubumenyi bw'Isi">Geography</span>
+      <h3 data-en="Discovering the Geography of Africa"
+          data-rw="Kumenya Imiterere y'Umugabane wa Afurika">
+        Discovering the Geography of Africa
+      </h3>
+      <p data-en="Explore African countries, major lakes, rivers, mountains and geographical features."
+         data-rw="Menya ibihugu bya Afurika, ibiyaga, imigezi, imisozi n'imiterere y'uyu mugabane.">
+        Explore African countries, major lakes, rivers, mountains and geographical features.
+      </p>
+      <button class="read-more" data-article="africa"
+        data-en="Read Article →" data-rw="Soma Inyandiko →">Read Article →</button>
+    </article>
+
+    <article class="article-card" data-category="general"
+      data-search="Rwanda history culture national heritage">
+      <div class="article-icon">🇷🇼</div>
+      <span class="article-category" data-en="General Knowledge" data-rw="Ubumenyi Rusange">General Knowledge</span>
+      <h3 data-en="Discovering Rwanda: History and Heritage"
+          data-rw="Kumenya u Rwanda: Amateka n'Umurage">
+        Discovering Rwanda: History and Heritage
+      </h3>
+      <p data-en="Learn about Rwanda's geography, cultural heritage, national identity and important historical events."
+         data-rw="Menya imiterere y'u Rwanda, umurage ndangamuco, indangagaciro n'amateka y'ingenzi.">
+        Learn about Rwanda's geography, cultural heritage, national identity and important historical events.
+      </p>
+      <button class="read-more" data-article="rwanda"
+        data-en="Read Article →" data-rw="Soma Inyandiko →">Read Article →</button>
+    </article>
+
+    <article class="article-card" data-category="learning"
+      data-search="study tips memory revision effective learning">
+      <div class="article-icon">📚</div>
+      <span class="article-category" data-en="Learning Tips" data-rw="Inama zo Kwiga">Learning Tips</span>
+      <h3 data-en="Effective Ways to Improve Your Learning"
+          data-rw="Uburyo Bwiza bwo Kongera Ubumenyi">
+        Effective Ways to Improve Your Learning
+      </h3>
+      <p data-en="Discover practical study habits, revision methods and ways to improve your understanding."
+         data-rw="Menya uburyo bwo kwiga neza, gusubiramo amasomo no kongera gusobanukirwa.">
+        Discover practical study habits, revision methods and ways to improve your understanding.
+      </p>
+      <button class="read-more" data-article="learning"
+        data-en="Read Article →" data-rw="Soma Inyandiko →">Read Article →</button>
+    </article>
+
+  </div>
+
+  <div class="article-detail" id="articleDetail"
+       aria-live="polite" tabindex="-1">
+
+    <button class="back-btn" id="backBtn" type="button"
+      data-en="← Back to Articles"
+      data-rw="← Subira ku Nyandiko">
+      ← Back to Articles
     </button>
 
-    <div
-      id="readerCategory"
-      class="category-label">
-    </div>
+    <div id="articleContent"></div>
 
-    <h1 id="readerTitle"></h1>
+    <button class="back-btn" id="backBtnBottom" type="button"
+      data-en="← Back to Articles"
+      data-rw="← Subira ku Nyandiko">
+      ← Back to Articles
+    </button>
+
+  </div>
+
+  <section class="learning-section">
+    <h2 data-en="Keep Learning with Quiz Master"
+        data-rw="Komeza Kwiga hamwe na Quiz Master">
+      Keep Learning with Quiz Master
+    </h2>
 
     <p
-      class="reader-description"
-      id="readerDescription">
+      data-en="Reading helps you build knowledge. Practising what you learn helps you remember it. Visit Quiz Master to test your understanding through educational questions in English and Kinyarwanda."
+      data-rw="Gusoma bigufasha kongera ubumenyi. Kwitoza ibyo wize bigufasha kubyibuka. Sura Quiz Master ugerageze ubumenyi bwawe ukoresheje ibibazo biri mu Cyongereza no mu Kinyarwanda.">
+      Reading helps you build knowledge. Practising what you learn helps you remember it. Visit Quiz Master to test your understanding through educational questions in English and Kinyarwanda.
     </p>
 
-    <div
-      class="reader-content"
-      id="readerContent">
-    </div>
-
+    <a href="./index.html" class="btn btn-primary"
+      data-en="Start Learning & Playing"
+      data-rw="Tangira Kwiga no Gukina">
+      Start Learning & Playing
+    </a>
   </section>
-
-  <div
-    class="message hidden"
-    id="errorMessage"
-    role="alert">
-  </div>
-
-  <!-- ADSENSE: ONE AD AT THE BOTTOM, OUTSIDE LESSON CONTENT -->
-
-  <div
-    class="ad-container"
-    id="learningCentreAd">
-
-    <div class="ad-label">
-      Advertisements
-    </div>
-
-    <ins
-      class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-2666698676518429"
-      data-ad-slot="9045712897"
-      data-ad-format="auto"
-      data-full-width-responsive="true">
-    </ins>
-
-  </div>
 
 </main>
 
-<!-- FOOTER -->
-
 <footer>
-
   <div class="container">
 
-    <div id="footerText">
-      © Quiz Master Rwanda. Learn • Play • Improve.
+    <div class="footer-content">
+
+      <div>
+        <h3>Quiz Master 🇷🇼</h3>
+        <p
+          data-en="An educational platform designed to make learning interesting through quizzes and informative articles."
+          data-rw="Urubuga rw'uburezi rugamije gutuma kwiga birushaho gushimisha binyuze mu bibazo n'inyandiko z'ubumenyi.">
+          An educational platform designed to make learning interesting through quizzes and informative articles.
+        </p>
+      </div>
+
+      <div>
+        <h3 data-en="Quick Links" data-rw="Aho Wanyura">Quick Links</h3>
+        <div class="footer-links">
+          <a href="./index.html" data-en="Home" data-rw="Ahabanza">Home</a>
+          <a href="./about.html" data-en="About Us" data-rw="Abo Turibo">About Us</a>
+          <a href="./articles.html" data-en="Articles" data-rw="Inyandiko">Articles</a>
+          <a href="./contact.html" data-en="Contact" data-rw="Twandikire">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 data-en="Information" data-rw="Amakuru">Information</h3>
+        <div class="footer-links">
+          <a href="./privacy-policy.html" data-en="Privacy Policy" data-rw="Politiki y'Ibanga">Privacy Policy</a>
+          <a href="./terms.html" data-en="Terms of Use" data-rw="Amabwiriza yo Gukoresha">Terms of Use</a>
+        </div>
+      </div>
+
     </div>
 
-    <nav class="footer-links">
-
-      <a href="./index.html" id="footerHome">
-        Home
-      </a>
-
-      <a href="./about.html" id="footerAbout">
-        About
-      </a>
-
-      <a href="./contact.html" id="footerContact">
-        Contact
-      </a>
-
-      <a href="./privacy-policy.html" id="footerPrivacy">
-        Privacy Policy
-      </a>
-
-      <a href="./terms.html" id="footerTerms">
-        Terms
-      </a>
-
-    </nav>
+    <div class="copyright">
+      © <span id="currentYear"></span> Quiz Master Rwanda.
+      <span data-en="All rights reserved."
+            data-rw="Uburenganzira bwose burubahirizwa.">
+        All rights reserved.
+      </span>
+    </div>
 
   </div>
 </footer>
 
 <script>
-"use strict";
-
-/* =====================================
-   CONFIGURATION
-===================================== */
-
-const ARTICLES_URL = "./articles.json";
-
-const LANGUAGE_KEY = "quizmasterLanguage";
-
-
-/* =====================================
-   TRANSLATIONS
-===================================== */
-
-const translations = {
-
-  en: {
-    pageTitle: "Learning Centre",
-
-    pageDescription:
-      "Explore useful lessons and improve your knowledge through English and Kinyarwanda articles.",
-
-    searchPlaceholder: "Search lessons...",
-
-    all: "All",
-
-    general: "General Knowledge",
-
-    traffic: "Road Safety",
-
-    readMore: "Read lesson →",
-
-    back: "← Back to lessons",
-
-    home: "Home",
-
-    about: "About",
-
-    contact: "Contact",
-
-    privacy: "Privacy Policy",
-
-    terms: "Terms",
-
-    loading: "Loading lessons...",
-
-    results: "lessons found",
-
-    noResults:
-      "No lessons found. Try another search.",
-
-    loadError:
-      "Unable to load lessons. Please check your internet connection and try again.",
-
-    invalidData:
-      "The articles file contains invalid data. Please check articles.json.",
-
-    articleNotFound:
-      "This lesson could not be found.",
-
-    trafficLabel: "Road Safety",
-
-    generalLabel: "General Knowledge",
-
-    definition: "Definition",
-
-    body: "Main Lesson",
-
-    keyPoints: "Key Points",
-
-    conclusion: "Conclusion",
-
-    footer:
-      "© Quiz Master Rwanda. Learn • Play • Improve."
-  },
-
-  rw: {
-    pageTitle: "Isomero ry'Ubwenge",
-
-    pageDescription:
-      "Soma amasomo agufasha kongera ubumenyi mu Kinyarwanda no mu Cyongereza.",
-
-    searchPlaceholder: "Shakisha amasomo...",
-
-    all: "Byose",
-
-    general: "Ubumenyi Rusange",
-
-    traffic: "Amategeko y'Umuhanda",
-
-    readMore: "Soma isomo →",
-
-    back: "← Subira ku masomo",
-
-    home: "Ahabanza",
-
-    about: "Abo turi bo",
-
-    contact: "Twandikire",
-
-    privacy: "Politiki y'Ibanga",
-
-    terms: "Amategeko",
-
-    loading: "Amasomo arimo gufunguka...",
-
-    results: "amasomo yabonetse",
-
-    noResults:
-      "Nta somo ribonetse. Gerageza gushakisha andi magambo.",
-
-    loadError:
-      "Ntibishobotse gufungura amasomo. Reba internet wongere ugerageze.",
-
-    invalidData:
-      "Amakuru yo muri articles.json afite amakosa. Ongera ugenzure iyo dosiye.",
-
-    articleNotFound:
-      "Iri somo ntiryabonetse.",
-
-    trafficLabel: "Amategeko y'Umuhanda",
-
-    generalLabel: "Ubumenyi Rusange",
-
-    definition: "Ibisobanuro",
-
-    body: "Inyigisho irambuye",
-
-    keyPoints: "Ingingo z'ingenzi",
-
-    conclusion: "Umwanzuro",
-
-    footer:
-      "© Quiz Master Rwanda. Iga • Kina • Ongera ubumenyi."
-  }
-
-};
-
-
-/* =====================================
-   APPLICATION STATE
-===================================== */
-
-let articles = [];
-
-let currentLanguage = "en";
-
-let currentCategory = "all";
-
-let currentSearch = "";
-
-let currentArticleId = null;
-
-let hasOpenedArticle = false;
-
-
-/* =====================================
-   HTML ELEMENTS
-===================================== */
-
-const elements = {
-
-  languageBtn:
-    document.getElementById("languageBtn"),
-
-  homeLink:
-    document.getElementById("homeLink"),
-
-  pageTitle:
-    document.getElementById("pageTitle"),
-
-  pageDescription:
-    document.getElementById("pageDescription"),
-
-  searchInput:
-    document.getElementById("searchInput"),
-
-  filterButtons:
-    document.querySelectorAll(".filter-btn"),
-
-  resultsInfo:
-    document.getElementById("resultsInfo"),
-
-  articlesGrid:
-    document.getElementById("articlesGrid"),
-
-  emptyMessage:
-    document.getElementById("emptyMessage"),
-
-  listSection:
-    document.getElementById("listSection"),
-
-  readerSection:
-    document.getElementById("readerSection"),
-
-  readerCategory:
-    document.getElementById("readerCategory"),
-
-  readerTitle:
-    document.getElementById("readerTitle"),
-
-  readerDescription:
-    document.getElementById("readerDescription"),
-
-  readerContent:
-    document.getElementById("readerContent"),
-
-  backBtn:
-    document.getElementById("backBtn"),
-
-  errorMessage:
-    document.getElementById("errorMessage"),
-
-  footerText:
-    document.getElementById("footerText"),
-
-  footerHome:
-    document.getElementById("footerHome"),
-
-  footerAbout:
-    document.getElementById("footerAbout"),
-
-  footerContact:
-    document.getElementById("footerContact"),
-
-  footerPrivacy:
-    document.getElementById("footerPrivacy"),
-
-  footerTerms:
-    document.getElementById("footerTerms")
-
-};
-
-
-/* =====================================
-   TRANSLATION HELPER
-===================================== */
-
-function t(key) {
-
-  return (
-    translations[currentLanguage][key] ||
-    translations.en[key] ||
-    key
-  );
-
-}
-
-
-/* =====================================
-   LOCALIZED DATA SUPPORT
-
-   Supports:
-   - Normal strings
-   - { en: "...", rw: "..." }
-   - Localized arrays
-===================================== */
-
-function getLocalizedValue(value) {
-
-  if (typeof value === "string") {
-    return value;
-  }
-
-  if (Array.isArray(value)) {
-
-    return value
-      .map(item => getLocalizedValue(item))
-      .filter(Boolean)
-      .join("\n");
-
-  }
-
-  if (
-    value &&
-    typeof value === "object"
-  ) {
-
-    const selected =
-      value[currentLanguage];
-
-    if (hasContent(selected)) {
-
-      return getLocalizedValue(selected);
-
+(() => {
+  "use strict";
+
+  const state = {
+    language: "en",
+    category: "all",
+    search: ""
+  };
+
+  const translations = {
+    en: {
+      search: "Search articles...",
+      empty: "No articles found. Try another search or category.",
+      invalid: "This article could not be found."
+    },
+    rw: {
+      search: "Shakisha inyandiko...",
+      empty: "Nta nyandiko ibonetse. Gerageza gushakisha ukundi.",
+      invalid: "Iyi nyandiko ntiyabonetse."
     }
-
-    const fallback =
-      currentLanguage === "en"
-        ? value.rw
-        : value.en;
-
-    if (hasContent(fallback)) {
-
-      return getLocalizedValue(fallback);
-
-    }
-
-  }
-
-  return "";
-
-}
-
-
-/* =====================================
-   CHECK CONTENT
-===================================== */
-
-function hasContent(value) {
-
-  if (typeof value === "string") {
-
-    return value.trim().length > 0;
-
-  }
-
-  if (Array.isArray(value)) {
-
-    return value.some(item => hasContent(item));
-
-  }
-
-  if (
-    value &&
-    typeof value === "object"
-  ) {
-
-    return (
-      hasContent(value.en) ||
-      hasContent(value.rw)
-    );
-
-  }
-
-  return false;
-
-}
-
-
-/* =====================================
-   GET ALL LANGUAGES FOR SEARCH
-===================================== */
-
-function getAllLocalizedText(value) {
-
-  if (typeof value === "string") {
-    return value;
-  }
-
-  if (Array.isArray(value)) {
-
-    return value
-      .map(item => getAllLocalizedText(item))
-      .join(" ");
-
-  }
-
-  if (
-    value &&
-    typeof value === "object"
-  ) {
-
-    return Object.values(value)
-      .map(item => getAllLocalizedText(item))
-      .join(" ");
-
-  }
-
-  return "";
-
-}
-
-
-/* =====================================
-   ARTICLE IDENTIFIER
-===================================== */
-
-function getArticleId(article) {
-
-  return String(article.id);
-
-}
-
-
-/* =====================================
-   VALIDATE ARTICLES JSON
-===================================== */
-
-function validateArticles(data) {
-
-  if (
-    !data ||
-    typeof data !== "object" ||
-    Array.isArray(data)
-  ) {
-
-    throw new Error("Invalid JSON structure.");
-
-  }
-
-  if (!Array.isArray(data.articles)) {
-
-    throw new Error("Missing articles array.");
-
-  }
-
-  const validCategories = [
-    "traffic",
-    "general"
-  ];
-
-  const seenIds = new Set();
-
-  const validArticles = [];
-
-  data.articles.forEach(article => {
-
-    if (
-      !article ||
-      typeof article !== "object" ||
-      Array.isArray(article)
-    ) {
-      return;
-    }
-
-    if (
-      (
-        typeof article.id !== "string" &&
-        typeof article.id !== "number"
-      ) ||
-      String(article.id).trim() === ""
-    ) {
-      return;
-    }
-
-    const id = getArticleId(article);
-
-    if (seenIds.has(id)) {
-      return;
-    }
-
-    if (
-      typeof article.category !== "string" ||
-      !validCategories.includes(article.category)
-    ) {
-      return;
-    }
-
-    const hasTitle =
-      hasContent(article.title);
-
-    const hasDescription =
-      hasContent(article.description);
-
-    const hasStructuredContent =
-      hasContent(article.definition) ||
-      hasContent(article.body) ||
-      hasContent(article.key_points) ||
-      hasContent(article.conclusion);
-
-    const hasOldContent =
-      hasContent(article.content);
-
-    if (
-      !hasTitle ||
-      !hasDescription ||
-      (
-        !hasStructuredContent &&
-        !hasOldContent
-      )
-    ) {
-      return;
-    }
-
-    seenIds.add(id);
-
-    validArticles.push(article);
-
-  });
-
-  if (validArticles.length === 0) {
-
-    throw new Error("No valid articles found.");
-
-  }
-
-  return validArticles;
-
-}
-
-
-/* =====================================
-   LOAD ARTICLES FROM JSON
-===================================== */
-
-async function loadArticles() {
-
-  elements.resultsInfo.textContent =
-    t("loading");
-
-  elements.articlesGrid.innerHTML = "";
-
-  elements.errorMessage.classList.add("hidden");
-
-  try {
-
-    const response = await fetch(
-      ARTICLES_URL,
-      {
-        method: "GET",
-        cache: "no-cache",
-        headers: {
-          "Accept": "application/json"
-        }
+  };
+
+  const articles = {
+    signs: {
+      en: {
+        title: "Understanding Road Traffic Signs",
+        intro: "Road traffic signs communicate important information to road users. They help drivers, cyclists and pedestrians understand rules, warnings and directions.",
+        sections: [
+          ["Why are road signs important?", [
+            "They communicate traffic rules and restrictions.",
+            "They warn road users about possible dangers.",
+            "They provide directions and useful information.",
+            "They help reduce confusion and improve road safety."
+          ]],
+          ["Main groups of road signs", [
+            "Regulatory signs communicate rules and restrictions that road users must follow.",
+            "Warning signs alert people to hazards or changes in road conditions.",
+            "Information and direction signs help people find destinations and services."
+          ]],
+          ["How should road users respond?", [
+            "Observe signs carefully and follow their instructions.",
+            "Reduce speed when a sign warns about a hazard.",
+            "Never ignore a sign simply because the road appears quiet.",
+            "Learn the official road signs used in your country."
+          ]]
+        ],
+        conclusion: "Understanding road signs is an important part of responsible road use. Every road user has a role in keeping roads safe."
+      },
+      rw: {
+        title: "Gusobanukirwa Ibyapa byo mu Muhanda",
+        intro: "Ibyapa byo mu muhanda bitanga amakuru y'ingenzi ku bawukoresha. Bifasha abashoferi, abanyamagare n'abanyamaguru gusobanukirwa amategeko, imiburo n'ibyerekezo.",
+        sections: [
+          ["Kuki ibyapa byo mu muhanda ari ingenzi?", [
+            "Bimenyesha abakoresha umuhanda amategeko n'ibibujijwe.",
+            "Biburira abantu ibyago bishobora kuba biri imbere.",
+            "Bitanga ibyerekezo n'andi makuru afasha abagenzi.",
+            "Bigabanya urujijo kandi bikongera umutekano wo mu muhanda."
+          ]],
+          ["Amatsinda y'ingenzi y'ibyapa", [
+            "Ibyapa bitegeka cyangwa bibuzanya byerekana amategeko n'ibibujijwe gukurikizwa.",
+            "Ibyapa biburira bimenyesha abantu ibyago cyangwa impinduka ziri imbere.",
+            "Ibyapa by'amakuru n'ibyerekezo bifasha abantu kumenya aho berekeza na serivisi zihari."
+          ]],
+          ["Abakoresha umuhanda bakwiye kubyitwaramo bate?", [
+            "Kwitegereza ibyapa no gukurikiza amabwiriza yabyo.",
+            "Kugabanya umuvuduko igihe icyapa kiburira ibyago.",
+            "Kutirengagiza icyapa nubwo umuhanda waba usa n'utuje.",
+            "Kumenya ibyapa byemewe gukoreshwa mu gihugu."
+          ]]
+        ],
+        conclusion: "Gusobanukirwa ibyapa ni ingenzi mu gukoresha umuhanda neza. Buri muntu awukoresha agira uruhare mu kuwugira ahatekanye."
       }
-    );
+    },
 
-    if (!response.ok) {
+    pedestrians: {
+      en: {
+        title: "Pedestrian Safety and Safe Road Crossing",
+        intro: "Pedestrians are among the most vulnerable road users. Careful behaviour and respect for traffic rules help protect everyone.",
+        sections: [
+          ["Choosing where to cross", [
+            "Use designated pedestrian crossings whenever available.",
+            "Use pedestrian bridges or underpasses where provided.",
+            "Avoid crossing at places where visibility is poor.",
+            "Follow traffic lights and crossing instructions."
+          ]],
+          ["Before crossing", [
+            "Stop at a safe place before entering the road.",
+            "Look carefully in both directions and check for approaching traffic.",
+            "Make sure vehicles have stopped before crossing.",
+            "Remain alert until you reach the other side."
+          ]],
+          ["Other important precautions", [
+            "Avoid distractions such as looking at a phone while crossing.",
+            "Help children and people who need assistance cross safely.",
+            "Wear visible clothing in low-light conditions.",
+            "Do not assume that every driver has seen you."
+          ]]
+        ],
+        conclusion: "Safe walking requires attention, patience and cooperation between pedestrians and drivers."
+      },
+      rw: {
+        title: "Umutekano w'Abanyamaguru n'Uko Bambuka Umuhanda",
+        intro: "Abanyamaguru ni bamwe mu bakoresha umuhanda bashobora guhura n'ibyago byoroshye. Kwitonda no gukurikiza amategeko bifasha kurinda buri wese.",
+        sections: [
+          ["Guhitamo aho kwambukira", [
+            "Koresha ahagenewe abanyamaguru kwambukira igihe hahari.",
+            "Koresha ibiraro by'abanyamaguru cyangwa inzira zo munsi y'umuhanda igihe bihari.",
+            "Irinde kwambukira ahatagaragara neza.",
+            "Kurikiza amatara n'amabwiriza agenga kwambuka."
+          ]],
+          ["Mbere yo kwambuka", [
+            "Banza uhagarare ahatekanye mbere yo kwinjira mu muhanda.",
+            "Reba neza impande zombi kandi witegereze ibinyabiziga biri kuza.",
+            "Emeza ko ibinyabiziga byahagaze mbere yo kwambuka.",
+            "Komeza kwitonda kugeza ugeze hakurya."
+          ]],
+          ["Izindi ngamba z'umutekano", [
+            "Irinde kurangazwa na telefoni igihe wambuka.",
+            "Fasha abana n'abakeneye ubufasha kwambuka neza.",
+            "Ambara imyenda igaragara neza mu gihe cy'umwijima.",
+            "Ntukibwire ko buri shoferi yakubonye."
+          ]]
+        ],
+        conclusion: "Kugenda n'amaguru mu mutekano bisaba kwitonda, kwihangana no gufatanya hagati y'abanyamaguru n'abashoferi."
+      }
+    },
 
-      throw new Error(
-        "HTTP error: " + response.status
-      );
+    lights: {
+      en: {
+        title: "What Do Traffic Light Colours Mean?",
+        intro: "Traffic lights help manage the movement of vehicles and pedestrians at intersections and other controlled locations.",
+        sections: [
+          ["Red light", [
+            "Red means stop.",
+            "Road users must stop at the designated stopping line or position.",
+            "Do not proceed until the signal permits movement."
+          ]],
+          ["Amber or yellow light", [
+            "Amber generally warns that the signal is changing to red.",
+            "Drivers should prepare to stop where it is safe to do so.",
+            "Do not speed up to beat the changing signal."
+          ]],
+          ["Green light", [
+            "Green generally permits movement in the direction indicated.",
+            "Check that the intersection is clear before proceeding.",
+            "Give way to pedestrians or other road users where required."
+          ]]
+        ],
+        conclusion: "Traffic lights work best when all road users understand and respect their signals. Always follow the official traffic rules applicable in your location."
+      },
+      rw: {
+        title: "Amatara yo mu Muhanda Asobanura Iki?",
+        intro: "Amatara yo mu muhanda afasha kugenzura uko ibinyabiziga n'abanyamaguru bigenda mu masangano no mu yandi mazu arimo kugenzurwa.",
+        sections: [
+          ["Itara ritukura", [
+            "Umutuku usobanura guhagarara.",
+            "Abakoresha umuhanda bagomba guhagarara ku murongo cyangwa ahagenewe guhagarara.",
+            "Ntukomeze urugendo kugeza igihe itara ryemereye kugenda."
+          ]],
+          ["Itara ry'umuhondo", [
+            "Umuhondo muri rusange uraburira ko itara rigiye guhinduka umutuku.",
+            "Umushoferi akwiye kwitegura guhagarara igihe bishoboka mu mutekano.",
+            "Ntukongere umuvuduko ushaka guca itara rigiye guhinduka."
+          ]],
+          ["Itara ry'icyatsi", [
+            "Icyatsi muri rusange cyemerera kugenda mu cyerekezo cyerekanwe.",
+            "Banza urebe ko mu masangano hatari ibikubuza gukomeza.",
+            "Tanga inzira ku banyamaguru cyangwa abandi bakoresha umuhanda igihe bisabwa."
+          ]]
+        ],
+        conclusion: "Amatara yo mu muhanda akora neza iyo abantu bose basobanukiwe kandi bakubahiriza ibimenyetso byayo. Buri gihe kurikiza amategeko y'umuhanda yemewe aho uri."
+      }
+    },
 
+    body: {
+      en: {
+        title: "How the Human Body Works",
+        intro: "The human body is made up of organs and systems that work together to keep a person alive and support everyday activities.",
+        sections: [
+          ["The heart and circulatory system", [
+            "The heart pumps blood throughout the body.",
+            "Blood carries oxygen and nutrients to body tissues.",
+            "The circulatory system also helps transport waste products."
+          ]],
+          ["The lungs and respiratory system", [
+            "The lungs allow oxygen to enter the blood.",
+            "They help remove carbon dioxide from the body.",
+            "Breathing supports the body's need for oxygen."
+          ]],
+          ["The brain and nervous system", [
+            "The brain processes information and coordinates many body activities.",
+            "Nerves carry messages between the brain, spinal cord and other body parts.",
+            "The nervous system helps control movement and responses."
+          ]],
+          ["The kidneys and digestive organs", [
+            "The kidneys filter blood and help produce urine.",
+            "The stomach and intestines help digest food and absorb nutrients.",
+            "Different organs work together to maintain body functions."
+          ]]
+        ],
+        conclusion: "The human body depends on cooperation between its organs and systems. Understanding these functions helps us appreciate the importance of healthy habits."
+      },
+      rw: {
+        title: "Uko Umubiri w'Umuntu Ukora",
+        intro: "Umubiri w'umuntu ugizwe n'ingingo n'ibice bitandukanye bikorana kugira ngo umuntu abeho kandi ashobore gukora ibikorwa bya buri munsi.",
+        sections: [
+          ["Umutima n'uburyo amaraso atemberamo", [
+            "Umutima usunika amaraso mu bice bitandukanye by'umubiri.",
+            "Amaraso atwara ogisijeni n'intungamubiri akabigeza mu ngingo.",
+            "Uburyo amaraso atemberamo bufasha no gutwara imyanda yo mu mubiri."
+          ]],
+          ["Ibihaha n'uburyo bwo guhumeka", [
+            "Ibihaha bifasha ogisijeni kwinjira mu maraso.",
+            "Bifasha umubiri gusohora umwuka wa karubone.",
+            "Guhumeka bituma umubiri ubona ogisijeni ukeneye."
+          ]],
+          ["Ubwonko n'imyakura", [
+            "Ubwonko busobanura amakuru kandi bugahuza ibikorwa byinshi by'umubiri.",
+            "Imyakura itwara ubutumwa hagati y'ubwonko, uruti rw'umugongo n'ibindi bice by'umubiri.",
+            "Imyakura ifasha kugenzura ingendo n'uko umubiri witwara."
+          ]],
+          ["Impyiko n'ingingo zifasha igogora", [
+            "Impyiko ziyungurura amaraso kandi zigafasha gukora inkari.",
+            "Igifu n'amara bifasha gusya ibiryo no gukuramo intungamubiri.",
+            "Ingingo zitandukanye zirafatanya kugira ngo umubiri ukore neza."
+          ]]
+        ],
+        conclusion: "Umubiri w'umuntu ukenera ko ingingo n'ibice byawo bikorana. Gusobanukirwa imikorere yabyo bituma tumenya akamaro ko kugira imibereho myiza."
+      }
+    },
+
+    solar: {
+      en: {
+        title: "Exploring Our Solar System",
+        intro: "Our solar system consists of the Sun and all the celestial objects held by its gravitational attraction, including planets, moons, asteroids and comets.",
+        sections: [
+          ["The Sun", [
+            "The Sun is a star at the centre of our solar system.",
+            "It provides most of the energy that supports life and drives Earth's climate.",
+            "Its gravity helps keep planets in their orbits."
+          ]],
+          ["The eight planets", [
+            "Mercury is the closest planet to the Sun.",
+            "Venus is known for its extremely hot surface.",
+            "Earth is the planet where we live.",
+            "Mars is often called the Red Planet.",
+            "Jupiter is the largest planet.",
+            "Saturn is famous for its prominent rings.",
+            "Uranus is an ice giant with an unusual tilted rotation axis.",
+            "Neptune is the most distant planet from the Sun."
+          ]],
+          ["Other objects in the solar system", [
+            "Moons orbit planets.",
+            "Asteroids are rocky objects that orbit the Sun.",
+            "Comets contain ice, dust and rocky material.",
+            "Dwarf planets include Pluto."
+          ]]
+        ],
+        conclusion: "Studying the solar system helps us understand Earth, our neighbouring planets and the wider universe."
+      },
+      rw: {
+        title: "Kumenya Imiterere y'Izuba n'Imibumbe",
+        intro: "Imiterere y'Izuba n'imibumbe irigose igizwe n'Izuba n'ibindi bintu byo mu isanzure birikikije kubera imbaraga rukuruzi, birimo imibumbe, ukwezi kwayo, asteroide na za komete.",
+        sections: [
+          ["Izuba", [
+            "Izuba ni inyenyeri iri hagati y'imibumbe irizenguruka.",
+            "Ritanga ingufu nyinshi zituma ubuzima ku Isi bushoboka kandi rigira uruhare mu miterere y'ikirere.",
+            "Imbaraga rukuruzi zaryo zifasha imibumbe kuguma mu nzira zayo zo kurizenguruka."
+          ]],
+          ["Imibumbe umunani", [
+            "Merkile ni wo mubumbe wegereye Izuba.",
+            "Venusi izwiho kugira ubuso bushyushye cyane.",
+            "Isi ni umubumbe dutuyeho.",
+            "Marisi ikunze kwitwa umubumbe utukura.",
+            "Jupiter ni wo mubumbe munini kurusha iyindi.",
+            "Saturne izwiho kugira impeta zigaragara cyane.",
+            "Uranusi ni umubumbe w'ibarafu ufite umurongo wo kuzungurukiraho wegamye cyane.",
+            "Neptune ni wo mubumbe uri kure y'Izuba kurusha iyindi."
+          ]],
+          ["Ibindi bintu byo mu isanzure", [
+            "Ukwezi kuzenguruka imibumbe.",
+            "Asteroide ni ibintu by'amabuye bizenguruka Izuba.",
+            "Komete zigizwe n'ibarafu, umukungugu n'amabuye.",
+            "Imibumbe mito irimo na Pluto."
+          ]]
+        ],
+        conclusion: "Kwiga imiterere y'Izuba n'imibumbe bidufasha gusobanukirwa Isi, imibumbe iyegereye n'isanzure muri rusange."
+      }
+    },
+
+    africa: {
+      en: {
+        title: "Discovering the Geography of Africa",
+        intro: "Africa is a large and diverse continent with many countries, languages, landscapes and natural resources.",
+        sections: [
+          ["Countries and regions", [
+            "Africa has 54 internationally recognized sovereign countries.",
+            "The continent is commonly divided into Northern, Western, Central, Eastern and Southern Africa.",
+            "Each region has its own geographical and cultural characteristics."
+          ]],
+          ["Major geographical features", [
+            "The Sahara is the world's largest hot desert.",
+            "The Nile is one of the world's longest rivers.",
+            "Lake Victoria is Africa's largest lake by surface area.",
+            "Mount Kilimanjaro is the highest mountain in Africa.",
+            "The Congo Basin contains a large tropical rainforest."
+          ]],
+          ["Climate and natural environments", [
+            "Africa has deserts, tropical rainforests, grasslands and mountain environments.",
+            "Rainfall and temperatures vary greatly across the continent.",
+            "These environments support a wide variety of plants and animals."
+          ]]
+        ],
+        conclusion: "Africa's geographical diversity plays an important role in its ecosystems, agriculture, cultures and economic activities."
+      },
+      rw: {
+        title: "Kumenya Imiterere y'Umugabane wa Afurika",
+        intro: "Afurika ni umugabane munini kandi utandukanye cyane mu bihugu, indimi, imiterere y'ubutaka n'umutungo kamere.",
+        sections: [
+          ["Ibihugu n'uturere", [
+            "Afurika ifite ibihugu 54 byigenga byemewe ku rwego mpuzamahanga.",
+            "Uyu mugabane ukunze kugabanywamo uturere dutanu: Amajyaruguru, Iburengerazuba, Hagati, Iburasirazuba n'Amajyepfo.",
+            "Buri karere gafite imiterere y'ubutaka n'umuco byihariye."
+          ]],
+          ["Ibintu by'ingenzi biranga imiterere y'ubutaka", [
+            "Sahara ni ubutayu bushyushye bunini kurusha ubundi ku Isi.",
+            "Uruzi rwa Nil ni rumwe mu nzuzi ndende ku Isi.",
+            "Ikiyaga cya Victoria ni cyo kinini muri Afurika iyo harebwe ubuso bwacyo.",
+            "Umusozi wa Kilimanjaro ni wo muremure kurusha indi muri Afurika.",
+            "Ikibaya cya Kongo kirimo ishyamba rinini ry'ubushyuhe bwo mu turere dushyuha."
+          ]],
+          ["Ikirere n'ibidukikije", [
+            "Afurika ifite ubutayu, amashyamba y'ubushyuhe, ibibaya n'uturere tw'imisozi.",
+            "Imvura n'ubushyuhe biratandukana cyane mu bice bitandukanye by'umugabane.",
+            "Ibi bidukikije bituma habaho ibimera n'inyamaswa bitandukanye."
+          ]]
+        ],
+        conclusion: "Imiterere itandukanye ya Afurika igira uruhare mu bidukikije, ubuhinzi, imico n'ibikorwa by'ubukungu."
+      }
+    },
+
+    rwanda: {
+      en: {
+        title: "Discovering Rwanda: History and Heritage",
+        intro: "Rwanda is a landlocked country in East-Central Africa, known for its rolling hills, rich cultural heritage and diverse natural environments.",
+        sections: [
+          ["Geography of Rwanda", [
+            "Rwanda is located in East-Central Africa.",
+            "Kigali is the capital city.",
+            "The country borders Uganda, Tanzania, Burundi and the Democratic Republic of the Congo.",
+            "Lake Kivu is one of the country's major lakes."
+          ]],
+          ["Culture and heritage", [
+            "Kinyarwanda is the national language and one of the country's official languages.",
+            "Rwandan culture includes traditional music, dance, crafts and storytelling.",
+            "Imigongo is a traditional Rwandan art form."
+          ]],
+          ["History and national development", [
+            "Rwanda has a long history and a rich cultural heritage.",
+            "The 1994 Genocide against the Tutsi is an important part of the country's history and remembrance.",
+            "Unity, reconciliation and national development are important parts of modern Rwanda."
+          ]],
+          ["Natural heritage", [
+            "Volcanoes National Park protects mountain gorillas and other wildlife.",
+            "Nyungwe National Park is known for its rainforest and biodiversity.",
+            "Akagera National Park contains savannah landscapes and diverse wildlife."
+          ]]
+        ],
+        conclusion: "Learning about Rwanda's geography, history and heritage helps us appreciate the country's identity and development."
+      },
+      rw: {
+        title: "Kumenya u Rwanda: Amateka n'Umurage",
+        intro: "U Rwanda ni igihugu kidakora ku nyanja giherereye muri Afurika yo Hagati n'Iburasirazuba, kizwiho imisozi myinshi, umurage ndangamuco n'ibidukikije bitandukanye.",
+        sections: [
+          ["Imiterere y'u Rwanda", [
+            "U Rwanda ruherereye muri Afurika yo Hagati n'Iburasirazuba.",
+            "Kigali ni umurwa mukuru w'u Rwanda.",
+            "U Rwanda ruhana imbibi na Uganda, Tanzania, Burundi na Repubulika Iharanira Demokarasi ya Kongo.",
+            "Ikiyaga cya Kivu ni kimwe mu biyaga bikomeye by'u Rwanda."
+          ]],
+          ["Umuco n'umurage", [
+            "Ikinyarwanda ni ururimi rw'igihugu kandi ni rumwe mu ndimi zemewe mu Rwanda.",
+            "Umuco nyarwanda urimo indirimbo, imbyino, ubukorikori n'ubuvanganzo.",
+            "Imigongo ni bumwe mu buhanzi gakondo bw'u Rwanda."
+          ]],
+          ["Amateka n'iterambere ry'igihugu", [
+            "U Rwanda rufite amateka maremare n'umurage ndangamuco ukomeye.",
+            "Jenoside yakorewe Abatutsi mu 1994 ni igice cy'ingenzi cy'amateka y'igihugu n'ibikorwa byo kwibuka.",
+            "Ubumwe, ubwiyunge n'iterambere ry'igihugu ni bimwe mu bintu by'ingenzi biranga u Rwanda rw'iki gihe."
+          ]],
+          ["Umurage kamere", [
+            "Pariki y'Igihugu y'Ibirunga irinda ingagi zo mu misozi n'izindi nyamaswa.",
+            "Pariki ya Nyungwe izwiho ishyamba ry'inzitane n'ibinyabuzima byinshi.",
+            "Pariki ya Akagera ifite ibibaya n'inyamaswa zitandukanye."
+          ]]
+        ],
+        conclusion: "Kumenya imiterere, amateka n'umurage by'u Rwanda bidufasha gusobanukirwa indangamuntu n'iterambere by'igihugu."
+      }
+    },
+
+    learning: {
+      en: {
+        title: "Effective Ways to Improve Your Learning",
+        intro: "Learning becomes more effective when you use consistent study habits, active practice and regular revision.",
+        sections: [
+          ["Set clear learning goals", [
+            "Decide what you want to understand or achieve.",
+            "Break large subjects into smaller topics.",
+            "Set realistic study goals for each session."
+          ]],
+          ["Use active learning", [
+            "Answer questions instead of only rereading notes.",
+            "Explain a topic in your own words.",
+            "Use examples to connect new information to what you already know.",
+            "Practise with educational quizzes."
+          ]],
+          ["Revise regularly", [
+            "Review information at regular intervals.",
+            "Pay attention to topics you find difficult.",
+            "Test yourself to identify what you understand and what needs more practice."
+          ]],
+          ["Create a good learning environment", [
+            "Choose a comfortable and quiet place.",
+            "Take reasonable breaks during long study sessions.",
+            "Reduce unnecessary distractions.",
+            "Ask teachers or other trusted sources when something is unclear."
+          ]]
+        ],
+        conclusion: "Good learning is a gradual process. Consistency, curiosity and regular practice can help you build lasting knowledge."
+      },
+      rw: {
+        title: "Uburyo Bwiza bwo Kongera Ubumenyi",
+        intro: "Kwiga birushaho gutanga umusaruro iyo ukoresha uburyo buhoraho bwo kwiga, kwitoza no gusubiramo amasomo.",
+        sections: [
+          ["Ishyirireho intego zo kwiga", [
+            "Hitamo ibyo ushaka gusobanukirwa cyangwa kugeraho.",
+            "Gabanya amasomo manini mo uduce duto.",
+            "Ishyirireho intego zishoboka muri buri gihe cyo kwiga."
+          ]],
+          ["Koresha uburyo bwo kwiga witoza", [
+            "Subiza ibibazo aho gusoma inyandiko gusa.",
+            "Sobanura ingingo mu magambo yawe bwite.",
+            "Koresha ingero kugira ngo uhuze amakuru mashya n'ayo wari usanzwe uzi.",
+            "Itoze ukoresheje ibibazo by'ubumenyi."
+          ]],
+          ["Jya usubiramo amasomo buri gihe", [
+            "Subiramo ibyo wize mu bihe bitandukanye.",
+            "Wite cyane ku masomo akugora.",
+            "Igerageze kugira ngo umenye ibyo usobanukiwe n'ibikeneye imyitozo irenzeho."
+          ]],
+          ["Itegure ahantu heza ho kwigira", [
+            "Hitamo ahantu hatuje kandi heza.",
+            "Jya ufata akaruhuko gakwiriye mu gihe wiga igihe kirekire.",
+            "Irinde ibintu bikurangaza bidafite akamaro.",
+            "Baza abarimu cyangwa abandi bantu bizewe igihe hari ibyo udasobanukiwe."
+          ]]
+        ],
+        conclusion: "Kwiga neza ni urugendo rugenda rutera imbere. Gukomeza, kugira amatsiko no kwitoza buri gihe bifasha kubaka ubumenyi burambye."
+      }
     }
+  };
 
-    const data = await response.json();
+  const grid = document.getElementById("articlesGrid");
+  const searchInput = document.getElementById("searchInput");
+  const detail = document.getElementById("articleDetail");
+  const content = document.getElementById("articleContent");
+  const languageBtn = document.getElementById("languageBtn");
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
 
-    articles = validateArticles(data);
+  function setLanguage(language) {
+    state.language = language;
+
+    document.documentElement.lang = language;
+
+    document.querySelectorAll("[data-en][data-rw]").forEach(element => {
+      element.textContent = element.dataset[language];
+    });
+
+    languageBtn.textContent =
+      language === "en" ? "Kinyarwanda" : "English";
+
+    searchInput.placeholder = translations[language].search;
+
+    searchInput.setAttribute(
+      "aria-label",
+      translations[language].search
+    );
 
     renderArticles();
 
-    /* Support direct article links */
+    const currentId = detail.dataset.articleId;
 
-    const requestedId =
-      new URLSearchParams(location.search)
-        .get("article");
-
-    if (requestedId) {
-
-      openArticle(requestedId, false);
-
+    if (currentId) {
+      openArticle(currentId, false);
     }
-
-  } catch (error) {
-
-    console.error(
-      "Quiz Master Articles Error:",
-      error
-    );
-
-    elements.resultsInfo.textContent = "";
-
-    elements.articlesGrid.innerHTML = "";
-
-    elements.emptyMessage.classList.add("hidden");
-
-    elements.errorMessage.textContent =
-      error instanceof SyntaxError ||
-      error.message.includes("Invalid") ||
-      error.message.includes("Missing") ||
-      error.message.includes("No valid")
-        ? t("invalidData")
-        : t("loadError");
-
-    elements.errorMessage.classList.remove("hidden");
-
   }
 
-}
+  function renderArticles() {
+    const cards = [...grid.querySelectorAll(".article-card")];
 
+    let visible = 0;
 
-/* =====================================
-   CATEGORY LABEL
-===================================== */
+    cards.forEach(card => {
+      const matchesCategory =
+        state.category === "all" ||
+        card.dataset.category === state.category;
 
-function getCategoryLabel(category) {
+      const searchableText = (
+        card.dataset.search + " " +
+        card.textContent + " " +
+        card.querySelector("h3").textContent
+      ).toLowerCase();
 
-  if (category === "traffic") {
+      const matchesSearch =
+        searchableText.includes(state.search.toLowerCase());
 
-    return t("trafficLabel");
+      const show = matchesCategory && matchesSearch;
 
-  }
+      card.hidden = !show;
 
-  return t("generalLabel");
-
-}
-
-
-/* =====================================
-   GET ALL SEARCHABLE ARTICLE TEXT
-===================================== */
-
-function getSearchableArticleText(article) {
-
-  const fields = [
-
-    article.id,
-
-    article.category,
-
-    getAllLocalizedText(article.title),
-
-    getAllLocalizedText(article.description),
-
-    getAllLocalizedText(article.definition),
-
-    getAllLocalizedText(article.body),
-
-    getAllLocalizedText(article.key_points),
-
-    getAllLocalizedText(article.conclusion),
-
-    getAllLocalizedText(article.content)
-
-  ];
-
-  return fields
-    .join(" ")
-    .toLowerCase();
-
-}
-
-
-/* =====================================
-   SEARCH AND FILTER
-===================================== */
-
-function getFilteredArticles() {
-
-  return articles.filter(article => {
-
-    const matchesCategory =
-      currentCategory === "all" ||
-      article.category === currentCategory;
-
-    const searchableText =
-      getSearchableArticleText(article);
-
-    const matchesSearch =
-      searchableText.includes(
-        currentSearch.toLowerCase()
-      );
-
-    return (
-      matchesCategory &&
-      matchesSearch
-    );
-
-  });
-
-}
-
-
-/* =====================================
-   DISPLAY ARTICLES
-===================================== */
-
-function renderArticles() {
-
-  const filteredArticles =
-    getFilteredArticles();
-
-  elements.articlesGrid.innerHTML = "";
-
-  elements.emptyMessage.classList.add("hidden");
-
-  elements.resultsInfo.textContent =
-    filteredArticles.length +
-    " " +
-    t("results");
-
-  if (filteredArticles.length === 0) {
-
-    elements.emptyMessage.textContent =
-      t("noResults");
-
-    elements.emptyMessage.classList.remove("hidden");
-
-    return;
-
-  }
-
-  filteredArticles.forEach(article => {
-
-    const card =
-      document.createElement("article");
-
-    card.className = "article-card";
-
-    const category =
-      document.createElement("span");
-
-    category.className = "category-label";
-
-    category.textContent =
-      getCategoryLabel(article.category);
-
-    const title =
-      document.createElement("h2");
-
-    title.textContent =
-      getLocalizedValue(article.title);
-
-    const description =
-      document.createElement("p");
-
-    description.textContent =
-      getLocalizedValue(article.description);
-
-    const readButton =
-      document.createElement("button");
-
-    readButton.type = "button";
-
-    readButton.className = "read-link";
-
-    readButton.textContent =
-      t("readMore");
-
-    readButton.addEventListener(
-      "click",
-      () => openArticle(getArticleId(article), true)
-    );
-
-    card.appendChild(category);
-
-    card.appendChild(title);
-
-    card.appendChild(description);
-
-    card.appendChild(readButton);
-
-    elements.articlesGrid.appendChild(card);
-
-  });
-
-}
-
-
-/* =====================================
-   CREATE LESSON SECTION
-===================================== */
-
-function createLessonSection(title, value) {
-
-  if (!hasContent(value)) {
-    return null;
-  }
-
-  const section =
-    document.createElement("section");
-
-  section.className = "lesson-section";
-
-  const heading =
-    document.createElement("h2");
-
-  heading.textContent = title;
-
-  section.appendChild(heading);
-
-  const content =
-    getLocalizedValue(value);
-
-  content
-    .split("\n")
-    .map(line => line.trim())
-    .filter(Boolean)
-    .forEach(line => {
-
-      const paragraph =
-        document.createElement("p");
-
-      paragraph.textContent = line;
-
-      section.appendChild(paragraph);
-
+      if (show) visible++;
     });
 
-  return section;
+    const oldMessage = grid.querySelector(".no-results");
 
-}
+    if (oldMessage) oldMessage.remove();
 
-
-/* =====================================
-   CREATE KEY POINTS SECTION
-===================================== */
-
-function createKeyPointsSection(value) {
-
-  if (!hasContent(value)) {
-    return null;
+    if (!visible) {
+      const message = document.createElement("div");
+      message.className = "no-results";
+      message.textContent = translations[state.language].empty;
+      grid.appendChild(message);
+    }
   }
 
-  const section =
-    document.createElement("section");
+  function openArticle(id, shouldScroll = true) {
+    const article = articles[id];
 
-  section.className = "lesson-section";
-
-  const heading =
-    document.createElement("h2");
-
-  heading.textContent =
-    t("keyPoints");
-
-  section.appendChild(heading);
-
-  const list =
-    document.createElement("ul");
-
-  let points = [];
-
-  if (Array.isArray(value)) {
-
-    points = value.map(item =>
-      getLocalizedValue(item)
-    );
-
-  } else if (
-    value &&
-    typeof value === "object"
-  ) {
-
-    const selected =
-      value[currentLanguage];
-
-    if (Array.isArray(selected)) {
-
-      points = selected.map(item =>
-        getLocalizedValue(item)
-      );
-
-    } else {
-
-      points = getLocalizedValue(value)
-        .split("\n");
-
+    if (!article) {
+      content.textContent = translations[state.language].invalid;
+      detail.dataset.articleId = "";
+      detail.classList.add("visible");
+      return;
     }
 
-  } else {
+    const data = article[state.language];
 
-    points = getLocalizedValue(value)
-      .split("\n");
+    content.replaceChildren();
 
-  }
+    const heading = document.createElement("h2");
+    heading.textContent = data.title;
+    content.appendChild(heading);
 
-  points
-    .map(point => String(point).trim())
-    .filter(Boolean)
-    .forEach(point => {
+    const intro = document.createElement("p");
+    intro.textContent = data.intro;
+    content.appendChild(intro);
 
-      const item =
-        document.createElement("li");
+    data.sections.forEach(section => {
+      const sectionHeading = document.createElement("h3");
+      sectionHeading.textContent = section[0];
+      content.appendChild(sectionHeading);
 
-      item.textContent = point;
+      const list = document.createElement("ul");
 
-      list.appendChild(item);
-
-    });
-
-  if (list.children.length === 0) {
-    return null;
-  }
-
-  section.appendChild(list);
-
-  return section;
-
-}
-
-
-/* =====================================
-   DISPLAY STRUCTURED ARTICLE
-===================================== */
-
-function renderStructuredArticle(article) {
-
-  elements.readerContent.innerHTML = "";
-
-  const sections = [
-
-    createLessonSection(
-      t("definition"),
-      article.definition
-    ),
-
-    createLessonSection(
-      t("body"),
-      article.body
-    ),
-
-    createKeyPointsSection(
-      article.key_points
-    ),
-
-    createLessonSection(
-      t("conclusion"),
-      article.conclusion
-    )
-
-  ];
-
-  sections.forEach(section => {
-
-    if (section) {
-
-      elements.readerContent.appendChild(section);
-
-    }
-
-  });
-
-}
-
-
-/* =====================================
-   DISPLAY LEGACY CONTENT
-===================================== */
-
-function renderLegacyContent(article) {
-
-  elements.readerContent.innerHTML = "";
-
-  const content =
-    getLocalizedValue(article.content);
-
-  if (!content.trim()) {
-    return;
-  }
-
-  content
-    .split("\n")
-    .map(line => line.trim())
-    .filter(Boolean)
-    .forEach(line => {
-
-      const paragraph =
-        document.createElement("p");
-
-      paragraph.textContent = line;
-
-      elements.readerContent.appendChild(paragraph);
-
-    });
-
-}
-
-
-/* =====================================
-   OPEN ONE ARTICLE
-===================================== */
-
-function openArticle(articleId, addHistory = true) {
-
-  const article =
-    articles.find(item =>
-      getArticleId(item) === String(articleId)
-    );
-
-  if (!article) {
-
-    elements.errorMessage.textContent =
-      t("articleNotFound");
-
-    elements.errorMessage.classList.remove("hidden");
-
-    return;
-
-  }
-
-  currentArticleId = getArticleId(article);
-
-  elements.readerCategory.textContent =
-    getCategoryLabel(article.category);
-
-  elements.readerTitle.textContent =
-    getLocalizedValue(article.title);
-
-  elements.readerDescription.textContent =
-    getLocalizedValue(article.description);
-
-  const hasStructuredContent =
-    hasContent(article.definition) ||
-    hasContent(article.body) ||
-    hasContent(article.key_points) ||
-    hasContent(article.conclusion);
-
-  if (hasStructuredContent) {
-
-    renderStructuredArticle(article);
-
-  } else {
-
-    renderLegacyContent(article);
-
-  }
-
-  elements.listSection.classList.add("hidden");
-
-  elements.readerSection.classList.remove("hidden");
-
-  elements.errorMessage.classList.add("hidden");
-
-  if (addHistory) {
-
-    const url = new URL(location.href);
-
-    url.searchParams.set(
-      "article",
-      currentArticleId
-    );
-
-    history.pushState(
-      { articleId: currentArticleId },
-      "",
-      url
-    );
-
-    hasOpenedArticle = true;
-
-  }
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-}
-
-
-/* =====================================
-   BACK TO ARTICLES
-===================================== */
-
-function showArticleList() {
-
-  currentArticleId = null;
-
-  elements.readerSection.classList.add("hidden");
-
-  elements.listSection.classList.remove("hidden");
-
-  elements.errorMessage.classList.add("hidden");
-
-  const url = new URL(location.href);
-
-  url.searchParams.delete("article");
-
-  history.replaceState(
-    { articleId: null },
-    "",
-    url
-  );
-
-  hasOpenedArticle = false;
-
-  renderArticles();
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-}
-
-
-/* =====================================
-   CHANGE LANGUAGE
-===================================== */
-
-function setLanguage(language) {
-
-  if (
-    language !== "en" &&
-    language !== "rw"
-  ) {
-    return;
-  }
-
-  currentLanguage = language;
-
-  try {
-
-    localStorage.setItem(
-      LANGUAGE_KEY,
-      language
-    );
-
-  } catch (error) {
-
-    console.warn("Language preference could not be saved.");
-
-  }
-
-  document.documentElement.lang =
-    language;
-
-  elements.languageBtn.textContent =
-    language === "en"
-      ? "Kinyarwanda"
-      : "English";
-
-  elements.pageTitle.textContent =
-    t("pageTitle");
-
-  elements.pageDescription.textContent =
-    t("pageDescription");
-
-  elements.searchInput.placeholder =
-    t("searchPlaceholder");
-
-  elements.searchInput.setAttribute(
-    "aria-label",
-    t("searchPlaceholder")
-  );
-
-  elements.homeLink.textContent =
-    t("home");
-
-  elements.footerHome.textContent =
-    t("home");
-
-  elements.footerAbout.textContent =
-    t("about");
-
-  elements.footerContact.textContent =
-    t("contact");
-
-  elements.footerPrivacy.textContent =
-    t("privacy");
-
-  elements.footerTerms.textContent =
-    t("terms");
-
-  elements.footerText.textContent =
-    t("footer");
-
-  elements.backBtn.textContent =
-    t("back");
-
-  elements.filterButtons.forEach(button => {
-
-    const category =
-      button.dataset.category;
-
-    button.textContent =
-      category === "all"
-        ? t("all")
-        : category === "traffic"
-          ? t("traffic")
-          : t("general");
-
-  });
-
-  if (currentArticleId) {
-
-    openArticle(currentArticleId, false);
-
-  } else {
-
-    renderArticles();
-
-  }
-
-}
-
-
-/* =====================================
-   LANGUAGE BUTTON
-===================================== */
-
-elements.languageBtn.addEventListener(
-  "click",
-  () => {
-
-    setLanguage(
-      currentLanguage === "en"
-        ? "rw"
-        : "en"
-    );
-
-  }
-);
-
-
-/* =====================================
-   SEARCH INPUT
-===================================== */
-
-elements.searchInput.addEventListener(
-  "input",
-  event => {
-
-    currentSearch =
-      event.target.value.trim();
-
-    renderArticles();
-
-  }
-);
-
-
-/* =====================================
-   CATEGORY FILTERS
-===================================== */
-
-elements.filterButtons.forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      currentCategory =
-        button.dataset.category;
-
-      elements.filterButtons.forEach(item => {
-
-        item.classList.remove("active");
-
-        item.setAttribute(
-          "aria-pressed",
-          "false"
-        );
-
+      section[1].forEach(item => {
+        const listItem = document.createElement("li");
+        listItem.textContent = item;
+        list.appendChild(listItem);
       });
 
-      button.classList.add("active");
+      content.appendChild(list);
+    });
 
-      button.setAttribute(
-        "aria-pressed",
-        "true"
-      );
+    const conclusionHeading = document.createElement("h3");
+    conclusionHeading.textContent =
+      state.language === "en" ? "Conclusion" : "Umusozo";
+
+    content.appendChild(conclusionHeading);
+
+    const conclusion = document.createElement("p");
+    conclusion.textContent = data.conclusion;
+    content.appendChild(conclusion);
+
+    detail.dataset.articleId = id;
+    detail.classList.add("visible");
+
+    if (shouldScroll) {
+      detail.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      detail.focus({ preventScroll: true });
+    }
+  }
+
+  function closeArticle() {
+    detail.classList.remove("visible");
+    detail.dataset.articleId = "";
+
+    document.getElementById("articles").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  document.querySelectorAll(".read-more").forEach(button => {
+    button.addEventListener("click", () => {
+      openArticle(button.dataset.article);
+    });
+  });
+
+  document.querySelectorAll(".category-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      state.category = button.dataset.category;
+
+      document.querySelectorAll(".category-btn").forEach(item => {
+        item.classList.toggle("active", item === button);
+      });
+
+      detail.classList.remove("visible");
+      detail.dataset.articleId = "";
 
       renderArticles();
+    });
+  });
 
-    }
+  searchInput.addEventListener("input", () => {
+    state.search = searchInput.value.trim();
+    detail.classList.remove("visible");
+    detail.dataset.articleId = "";
+    renderArticles();
+  });
+
+  languageBtn.addEventListener("click", () => {
+    setLanguage(state.language === "en" ? "rw" : "en");
+  });
+
+  menuBtn.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+
+    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuBtn.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  document.getElementById("backBtn").addEventListener(
+    "click", closeArticle
   );
 
-});
-
-
-/* =====================================
-   BACK BUTTON
-===================================== */
-
-elements.backBtn.addEventListener(
-  "click",
-  () => {
-
-    if (hasOpenedArticle) {
-
-      history.back();
-
-    } else {
-
-      showArticleList();
-
-    }
-
-  }
-);
-
-
-/* =====================================
-   BROWSER BACK BUTTON
-===================================== */
-
-window.addEventListener(
-  "popstate",
-  event => {
-
-    const articleId =
-      event.state?.articleId ||
-      new URLSearchParams(location.search)
-        .get("article");
-
-    if (articleId && articles.length) {
-
-      openArticle(articleId, false);
-
-    } else {
-
-      currentArticleId = null;
-
-      hasOpenedArticle = false;
-
-      elements.readerSection.classList.add("hidden");
-
-      elements.listSection.classList.remove("hidden");
-
-      elements.errorMessage.classList.add("hidden");
-
-      renderArticles();
-
-    }
-
-  }
-);
-
-
-/* =====================================
-   START APPLICATION
-===================================== */
-
-let savedLanguage = "en";
-
-try {
-
-  const saved =
-    localStorage.getItem(LANGUAGE_KEY);
-
-  if (saved === "en" || saved === "rw") {
-
-    savedLanguage = saved;
-
-  }
-
-} catch (error) {
-
-  console.warn("Saved language is unavailable.");
-
-}
-
-setLanguage(savedLanguage);
-
-loadArticles();
-
-
-/* =====================================
-   ADSENSE INITIALIZATION
-   ONE AD UNIT ONLY ON THIS PAGE
-===================================== */
-
-function initializeLearningCentreAd() {
-
-  const ad =
-    document.querySelector(
-      "#learningCentreAd .adsbygoogle"
-    );
-
-  if (!ad) {
-    return;
-  }
-
-  if (ad.dataset.initialized === "true") {
-    return;
-  }
-
-  try {
-
-    (window.adsbygoogle =
-      window.adsbygoogle || []).push({});
-
-    ad.dataset.initialized = "true";
-
-  } catch (error) {
-
-    console.warn(
-      "Learning Centre AdSense initialization failed:",
-      error
-    );
-
-  }
-
-}
-
-if (document.readyState === "complete") {
-
-  initializeLearningCentreAd();
-
-} else {
-
-  window.addEventListener(
-    "load",
-    initializeLearningCentreAd,
-    { once: true }
+  document.getElementById("backBtnBottom").addEventListener(
+    "click", closeArticle
   );
 
-}
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
 
+  setLanguage("en");
+
+})();
 </script>
 
 </body>
