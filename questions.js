@@ -1,11 +1,12 @@
+
 (() => {
   "use strict";
 
   /* =====================================================
      QUIZ MASTER 🇷🇼
      Complete bilingual quiz engine
-     Compatible with the supplied index.html
-     Data source: ./questions.json
+     Data: ./questions.json
+     Categories: traffic, general, both
   ===================================================== */
 
   const CONFIG = Object.freeze({
@@ -16,7 +17,7 @@
     POINTS_PER_CORRECT: 10,
     PASS_PERCENTAGE: 70,
     LANGUAGES: ["en", "rw"],
-    CATEGORIES: ["traffic", "general"]
+    CATEGORIES: ["traffic", "general", "both"]
   });
 
   const KEYS = Object.freeze({
@@ -40,12 +41,14 @@
     questions: [],
     language: "en",
     mode: "general",
+
     languageChosen: false,
     modeChosen: false,
     setupConfirmed: false,
 
     session: null,
     reviewAnswers: [],
+
     timerInterval: null,
     timeRemaining: 0,
 
@@ -62,6 +65,11 @@
         completedRounds: [],
         unlockedRound: 1,
         usedQuestionIds: []
+      },
+      both: {
+        completedRounds: [],
+        unlockedRound: 1,
+        usedQuestionIds: []
       }
     },
 
@@ -71,17 +79,14 @@
   const LETTERS = ["A", "B", "C", "D"];
 
   /* =====================================================
-     SAFE STORAGE
+     SAFE HELPERS
   ===================================================== */
 
   function readStorage(key, fallback = null) {
     try {
       const value = localStorage.getItem(key);
-
-      if (value === null) return fallback;
-
-      return JSON.parse(value);
-    } catch (error) {
+      return value === null ? fallback : JSON.parse(value);
+    } catch {
       return fallback;
     }
   }
@@ -91,7 +96,7 @@
       localStorage.setItem(key, JSON.stringify(value));
       return true;
     } catch (error) {
-      console.warn("Quiz Master: Could not save", key);
+      console.warn("Quiz Master storage error:", key, error);
       return false;
     }
   }
@@ -99,7 +104,7 @@
   function readString(key, fallback) {
     try {
       return localStorage.getItem(key) || fallback;
-    } catch (error) {
+    } catch {
       return fallback;
     }
   }
@@ -108,34 +113,31 @@
     try {
       localStorage.setItem(key, String(value));
     } catch (error) {
-      console.warn("Quiz Master: Could not save preference.");
+      console.warn("Quiz Master preference error:", error);
     }
   }
 
   function safeNumber(value, fallback = 0) {
     const number = Number(value);
-
-    return Number.isFinite(number)
-      ? number
-      : fallback;
+    return Number.isFinite(number) ? number : fallback;
   }
 
   function safeArray(value) {
     return Array.isArray(value) ? value : [];
   }
 
-  function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, character => {
-      const entities = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#039;"
-      };
+  function unique(array) {
+    return [...new Set(array)];
+  }
 
-      return entities[character];
-    });
+  function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, character => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    })[character]);
   }
 
   function shuffle(array) {
@@ -143,11 +145,27 @@
 
     for (let i = result.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-
       [result[i], result[j]] = [result[j], result[i]];
     }
 
     return result;
+  }
+
+  function on(id, event, callback) {
+    const element = $(id);
+    if (element) {
+      element.addEventListener(event, callback);
+    }
+  }
+
+  function setText(id, value) {
+    const element = $(id);
+    if (element) element.textContent = value;
+  }
+
+  function setHidden(id, hidden) {
+    const element = $(id);
+    if (element) element.hidden = hidden;
   }
 
   function makeId() {
@@ -158,7 +176,7 @@
   }
 
   /* =====================================================
-     CATEGORY AND LANGUAGE
+     LANGUAGE AND CATEGORY
   ===================================================== */
 
   function normalizeLanguage(language) {
@@ -166,62 +184,100 @@
       .toLowerCase()
       .trim();
 
-    return value === "rw" ? "rw" : "en";
+    return ["rw", "kinyarwanda"].includes(value) ? "rw" : "en";
   }
 
   function normalizeMode(category) {
     const value = String(category || "")
       .toLowerCase()
-      .trim();
+      .trim()
+      .replace(/[_\s]+/g, "-");
 
-    if (
-      value === "traffic" ||
-      value === "road" ||
-      value === "road-safety" ||
-      value === "roadsafety"
-    ) {
+    if ([
+      "traffic",
+      "road",
+      "roads",
+      "road-safety",
+      "roadsafety",
+      "traffic-rules",
+      "road-traffic"
+    ].includes(value)) {
       return "traffic";
     }
 
-    return "general";
+    if ([
+      "general",
+      "general-knowledge",
+      "generalknowledge",
+      "gk",
+      "ubumenyi-rusange"
+    ].includes(value)) {
+      return "general";
+    }
+
+    if ([
+      "both",
+      "all",
+      "mixed",
+      "all-categories"
+    ].includes(value)) {
+      return "both";
+    }
+
+    return null;
   }
 
-  function getTimerDuration() {
-    return state.mode === "traffic"
-      ? CONFIG.TRAFFIC_TIME
-      : CONFIG.GENERAL_TIME;
+  function normalizeSelectedMode(value) {
+    return normalizeMode(value) || "general";
   }
 
   function getCategoryName(category = state.mode) {
     if (state.language === "rw") {
-      return category === "traffic"
-        ? "Amategeko y'umuhanda"
-        : "Ubumenyi rusange";
+      if (category === "traffic") return "Amategeko y'umuhanda";
+      if (category === "both") return "Ibyiciro byombi";
+      return "Ubumenyi rusange";
     }
 
-    return category === "traffic"
-      ? "Road Safety"
-      : "General Knowledge";
+    if (category === "traffic") return "Road Safety";
+    if (category === "both") return "All Categories";
+    return "General Knowledge";
   }
 
-  function getText(question, englishField, kinyarwandaField) {
-    const rw = question?.[kinyarwandaField];
-    const en = question?.[englishField];
+  function getText(question, englishField, rwField) {
+    if (!question) return "";
 
-    if (state.language === "rw") {
-      return rw || en || "";
-    }
+    const en = question[englishField];
+    const rw = question[rwField];
 
-    return en || rw || "";
+    return state.language === "rw"
+      ? (rw || en || "")
+      : (en || rw || "");
+  }
+
+  function getQuestionDuration(question) {
+    const category = question?.category || state.mode;
+
+    return category === "traffic"
+      ? CONFIG.TRAFFIC_TIME
+      : CONFIG.GENERAL_TIME;
+  }
+
+  function getTimerDuration() {
+    const question = getCurrentQuestion();
+
+    return getQuestionDuration(question);
   }
 
   /* =====================================================
-     QUESTION NORMALIZATION
+     QUESTION OPTIONS
   ===================================================== */
 
   function optionText(option, language) {
-    if (typeof option === "string" || typeof option === "number") {
-      return String(option);
+    if (
+      typeof option === "string" ||
+      typeof option === "number"
+    ) {
+      return String(option).trim();
     }
 
     if (option && typeof option === "object") {
@@ -233,7 +289,7 @@
           option.en ??
           option.text ??
           ""
-        );
+        ).trim();
       }
 
       return String(
@@ -242,7 +298,7 @@
         option.text ??
         option.rw ??
         ""
-      );
+      ).trim();
     }
 
     return "";
@@ -256,27 +312,32 @@
       raw.choices_en
     );
 
-    const kinyarwanda = safeArray(
+    const rw = safeArray(
       raw.options_rw ??
       raw.choices_rw
     );
 
-    return { english, kinyarwanda };
+    return { english, rw };
   }
 
   function findAnswerIndex(raw, englishOptions, rwOptions) {
-    const directIndex = raw.answer_index ??
+    const directIndex =
+      raw.answer_index ??
       raw.correct_index ??
       raw.correctAnswerIndex;
 
     if (
       directIndex !== undefined &&
       directIndex !== null &&
-      Number.isInteger(Number(directIndex))
+      directIndex !== ""
     ) {
       const index = Number(directIndex);
 
-      if (index >= 0 && index < 4) {
+      if (
+        Number.isInteger(index) &&
+        index >= 0 &&
+        index <= 3
+      ) {
         return index;
       }
     }
@@ -288,15 +349,19 @@
       raw.correct_answer,
       raw.correct_answer_en,
       raw.correct_answer_rw
-    ].filter(value => value !== undefined && value !== null);
+    ].filter(value =>
+      value !== undefined &&
+      value !== null &&
+      value !== ""
+    );
 
     for (const answer of possibleAnswers) {
       if (typeof answer === "number") {
-        if (answer >= 0 && answer < 4) {
+        if (Number.isInteger(answer) && answer >= 0 && answer <= 3) {
           return answer;
         }
 
-        if (answer >= 1 && answer <= 4) {
+        if (Number.isInteger(answer) && answer >= 1 && answer <= 4) {
           return answer - 1;
         }
       }
@@ -305,18 +370,16 @@
 
       const letterIndex = LETTERS.indexOf(text.toUpperCase());
 
-      if (letterIndex !== -1) {
-        return letterIndex;
-      }
+      if (letterIndex !== -1) return letterIndex;
 
-      let index = englishOptions.findIndex(
-        option => option.trim().toLowerCase() === text.toLowerCase()
+      let index = englishOptions.findIndex(option =>
+        option.trim().toLowerCase() === text.toLowerCase()
       );
 
       if (index !== -1) return index;
 
-      index = rwOptions.findIndex(
-        option => option.trim().toLowerCase() === text.toLowerCase()
+      index = rwOptions.findIndex(option =>
+        option.trim().toLowerCase() === text.toLowerCase()
       );
 
       if (index !== -1) return index;
@@ -325,8 +388,12 @@
     return -1;
   }
 
+  /* =====================================================
+     NORMALIZE QUESTION
+  ===================================================== */
+
   function normalizeQuestion(raw, index) {
-    if (!raw || typeof raw !== "object") {
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
       return null;
     }
 
@@ -335,6 +402,11 @@
       raw.mode ??
       raw.type
     );
+
+    // Do not silently convert an unknown category to general.
+    if (!category || category === "both") {
+      return null;
+    }
 
     const questionEnglish = String(
       raw.question ??
@@ -355,19 +427,26 @@
 
     const arrays = getOptionArrays(raw);
 
-    const englishOptions = arrays.english.map(
-      option => optionText(option, "en").trim()
+    const englishOptions = arrays.english.map(option =>
+      optionText(option, "en")
     );
 
-    const rwOptions = arrays.kinyarwanda.map(
-      option => optionText(option, "rw").trim()
+    const rwOptions = arrays.rw.map(option =>
+      optionText(option, "rw")
     );
 
-    if (englishOptions.length !== 4) {
-      return null;
-    }
+    if (englishOptions.length !== 4) return null;
 
-    if (englishOptions.some(option => !option)) {
+    if (englishOptions.some(option => !option)) return null;
+
+    // If Kinyarwanda options are supplied, they must contain four.
+    if (
+      arrays.rw.length > 0 &&
+      (
+        rwOptions.length !== 4 ||
+        rwOptions.some(option => !option)
+      )
+    ) {
       return null;
     }
 
@@ -377,13 +456,11 @@
       rwOptions
     );
 
-    if (answerIndex < 0 || answerIndex > 3) {
-      return null;
-    }
+    if (answerIndex < 0 || answerIndex > 3) return null;
 
-    const finalRwOptions = englishOptions.map((option, i) => {
-      return rwOptions[i] || option;
-    });
+    const finalRwOptions = englishOptions.map((option, i) =>
+      rwOptions[i] || option
+    );
 
     const explanationEnglish = String(
       raw.explanation ??
@@ -426,15 +503,68 @@
   }
 
   /* =====================================================
+     READ DIFFERENT JSON STRUCTURES
+  ===================================================== */
+
+  function extractQuestions(data) {
+    if (Array.isArray(data)) {
+      return data;
+    }
+
+    if (!data || typeof data !== "object") {
+      return [];
+    }
+
+    if (Array.isArray(data.questions)) {
+      return data.questions;
+    }
+
+    if (Array.isArray(data.data)) {
+      return data.data;
+    }
+
+    if (Array.isArray(data.traffic) || Array.isArray(data.general)) {
+      const traffic = safeArray(data.traffic).map(question => ({
+        ...question,
+        category: question.category || "traffic"
+      }));
+
+      const general = safeArray(data.general).map(question => ({
+        ...question,
+        category: question.category || "general"
+      }));
+
+      return [...traffic, ...general];
+    }
+
+    if (
+      data.questions &&
+      typeof data.questions === "object"
+    ) {
+      const traffic = safeArray(data.questions.traffic).map(q => ({
+        ...q,
+        category: q.category || "traffic"
+      }));
+
+      const general = safeArray(data.questions.general).map(q => ({
+        ...q,
+        category: q.category || "general"
+      }));
+
+      return [...traffic, ...general];
+    }
+
+    return [];
+  }
+
+  /* =====================================================
      LOAD QUESTIONS.JSON
   ===================================================== */
 
   async function loadQuestions() {
     const startButton = $("startBtn");
 
-    if (startButton) {
-      startButton.disabled = true;
-    }
+    if (startButton) startButton.disabled = true;
 
     setMessage(
       "homeMessage",
@@ -445,31 +575,41 @@
 
     try {
       const response = await fetch(CONFIG.QUESTIONS_FILE, {
-        cache: "no-cache"
+        cache: "no-store"
       });
 
       if (!response.ok) {
         throw new Error(
-          `Could not load questions.json (${response.status})`
+          `questions.json could not be loaded. HTTP ${response.status}`
         );
       }
 
       const data = await response.json();
 
-      if (!Array.isArray(data)) {
-        throw new Error("questions.json must contain an array.");
+      const rawQuestions = extractQuestions(data);
+
+      if (!rawQuestions.length) {
+        throw new Error(
+          "JSON contains no question array. Check its structure."
+        );
       }
 
       const validQuestions = [];
-      let invalidCount = 0;
+      const invalidQuestions = [];
 
-      data.forEach((raw, index) => {
+      rawQuestions.forEach((raw, index) => {
         const question = normalizeQuestion(raw, index);
 
         if (question) {
           validQuestions.push(question);
         } else {
-          invalidCount++;
+          invalidQuestions.push({
+            index: index + 1,
+            id: raw?.id || "unknown",
+            category: raw?.category || "missing",
+            reason: "Invalid category, question, options or answer"
+          });
+
           console.warn(
             `Quiz Master: Invalid question at item ${index + 1}`,
             raw
@@ -477,17 +617,36 @@
         }
       });
 
-      state.questions = validQuestions;
+      // Prevent duplicate IDs.
+      const seenIds = new Set();
 
-      if (invalidCount > 0) {
-        console.warn(
-          `Quiz Master: ${invalidCount} invalid question(s) were skipped.`
-        );
+      state.questions = validQuestions.filter(question => {
+        if (seenIds.has(question.id)) {
+          console.warn("Duplicate question ID:", question.id);
+          return false;
+        }
+
+        seenIds.add(question.id);
+        return true;
+      });
+
+      const trafficCount = getCategoryQuestions("traffic").length;
+      const generalCount = getCategoryQuestions("general").length;
+
+      console.table({
+        totalLoaded: state.questions.length,
+        trafficQuestions: trafficCount,
+        generalQuestions: generalCount,
+        invalidQuestions: invalidQuestions.length
+      });
+
+      if (invalidQuestions.length) {
+        console.warn("Invalid questions:", invalidQuestions);
       }
 
-      if (state.questions.length === 0) {
+      if (!state.questions.length) {
         throw new Error(
-          "No valid questions found. Check questions.json."
+          "No valid questions found. Check question categories and answers."
         );
       }
 
@@ -496,26 +655,30 @@
       updateRoundsUI();
       updateReviewButton();
 
+      const selectedCount = getCategoryQuestions(state.mode).length;
+
       setMessage(
         "homeMessage",
         state.language === "rw"
-          ? `Ibibazo ${state.questions.length} byateguwe neza.`
-          : `${state.questions.length} questions loaded successfully.`
+          ? `Ibibazo ${state.questions.length} byafungutse. Icyiciro wahisemo gifite ${selectedCount}.`
+          : `${state.questions.length} questions loaded. Your selected category has ${selectedCount}.`
       );
 
       if (state.session && !state.session.finished) {
-        $("continueBtn").hidden = false;
+        setHidden("continueBtn", false);
       }
 
       if (startButton) {
-        startButton.disabled = !state.setupConfirmed;
+        startButton.disabled = !state.setupConfirmed || selectedCount === 0;
       }
 
       document.dispatchEvent(
         new CustomEvent("quizmaster:questions-loaded", {
           detail: {
             count: state.questions.length,
-            invalidCount
+            trafficCount,
+            generalCount,
+            invalidCount: invalidQuestions.length
           }
         })
       );
@@ -528,7 +691,7 @@
       setMessage(
         "homeMessage",
         state.language === "rw"
-          ? "Ibibazo ntibyashoboye gufunguka. Reba questions.json hanyuma wongere ugerageze."
+          ? "Ibibazo ntibyafungutse. Reba questions.json, hanyuma wongere ugerageze."
           : "Questions could not be loaded. Check questions.json and try again."
       );
 
@@ -545,47 +708,54 @@
   }
 
   /* =====================================================
-     RESTORE SAVED DATA
+     PROGRESS
   ===================================================== */
+
+  function emptyProgress() {
+    return {
+      completedRounds: [],
+      unlockedRound: 1,
+      usedQuestionIds: []
+    };
+  }
 
   function normalizeProgress(raw) {
     const result = {
-      traffic: {
-        completedRounds: [],
-        unlockedRound: 1,
-        usedQuestionIds: []
-      },
-      general: {
-        completedRounds: [],
-        unlockedRound: 1,
-        usedQuestionIds: []
-      }
+      traffic: emptyProgress(),
+      general: emptyProgress(),
+      both: emptyProgress()
     };
 
-    if (!raw || typeof raw !== "object") {
-      return result;
-    }
+    if (!raw || typeof raw !== "object") return result;
 
     CONFIG.CATEGORIES.forEach(category => {
       const source = raw[category] || {};
 
       result[category] = {
-        completedRounds: safeArray(
-          source.completedRounds ??
-          source.completed ??
-          []
-        ).map(Number).filter(Number.isFinite),
+        completedRounds: unique(
+          safeArray(
+            source.completedRounds ??
+            source.completed ??
+            []
+          )
+          .map(Number)
+          .filter(number =>
+            Number.isInteger(number) && number >= 1
+          )
+        ),
 
         unlockedRound: Math.max(
           1,
           safeNumber(source.unlockedRound, 1)
         ),
 
-        usedQuestionIds: safeArray(
-          source.usedQuestionIds ??
-          source.used ??
-          []
-        ).map(String)
+        usedQuestionIds: unique(
+          safeArray(
+            source.usedQuestionIds ??
+            source.used ??
+            []
+          ).map(String)
+        )
       };
     });
 
@@ -597,7 +767,7 @@
       readString(KEYS.language, "en")
     );
 
-    state.mode = normalizeMode(
+    state.mode = normalizeSelectedMode(
       readString(KEYS.mode, "general")
     );
 
@@ -626,7 +796,7 @@
         settings.language || state.language
       );
 
-      state.mode = normalizeMode(
+      state.mode = normalizeSelectedMode(
         settings.mode || state.mode
       );
     }
@@ -640,20 +810,18 @@
       savedSession.questions.length > 0 &&
       !savedSession.finished
     ) {
-      const validSession = savedSession.questions.every(entry => {
-        return (
-          entry &&
-          typeof entry.questionId === "string" &&
-          Number.isInteger(entry.answerIndex) &&
-          entry.answerIndex >= 0 &&
-          entry.answerIndex <= 3
-        );
-      });
+      const validSession = savedSession.questions.every(entry =>
+        entry &&
+        typeof entry.questionId === "string" &&
+        Number.isInteger(entry.answerIndex) &&
+        entry.answerIndex >= 0 &&
+        entry.answerIndex <= 3
+      );
 
       if (validSession) {
         state.session = savedSession;
 
-        state.session.mode = normalizeMode(
+        state.session.mode = normalizeSelectedMode(
           savedSession.mode || state.mode
         );
 
@@ -665,9 +833,7 @@
           0,
           safeNumber(
             savedSession.timeRemaining,
-            state.session.mode === "traffic"
-              ? CONFIG.TRAFFIC_TIME
-              : CONFIG.GENERAL_TIME
+            CONFIG.GENERAL_TIME
           )
         );
       }
@@ -676,30 +842,31 @@
     const legacyUsed = readStorage(KEYS.used, null);
     const legacyCompleted = readStorage(KEYS.completed, null);
 
-    if (Array.isArray(legacyUsed) && legacyUsed.length) {
-      state.progress[state.mode].usedQuestionIds = [
-        ...new Set([
-          ...state.progress[state.mode].usedQuestionIds,
-          ...legacyUsed.map(String)
-        ])
-      ];
+    if (Array.isArray(legacyUsed)) {
+      state.progress[state.mode].usedQuestionIds = unique([
+        ...state.progress[state.mode].usedQuestionIds,
+        ...legacyUsed.map(String)
+      ]);
     }
 
-    if (Array.isArray(legacyCompleted) && legacyCompleted.length) {
-      state.progress[state.mode].completedRounds = [
-        ...new Set([
-          ...state.progress[state.mode].completedRounds,
-          ...legacyCompleted.map(Number)
-        ])
-      ];
+    if (Array.isArray(legacyCompleted)) {
+      state.progress[state.mode].completedRounds = unique([
+        ...state.progress[state.mode].completedRounds,
+        ...legacyCompleted.map(Number).filter(Number.isFinite)
+      ]);
     }
 
     state.languageChosen = true;
     state.modeChosen = true;
     state.setupConfirmed = true;
 
-    $("settingsLanguage").value = state.language;
-    $("settingsMode").value = state.mode;
+    if ($("settingsLanguage")) {
+      $("settingsLanguage").value = state.language;
+    }
+
+    if ($("settingsMode")) {
+      $("settingsMode").value = state.mode;
+    }
 
     updateSetupUI();
     updateMusicStatus();
@@ -707,28 +874,20 @@
 
   function saveProgress() {
     writeStorage(KEYS.progress, state.progress);
-
     writeStorage(KEYS.session, state.session);
-
     writeStorage(KEYS.review, state.reviewAnswers);
 
     writeString(KEYS.language, state.language);
     writeString(KEYS.mode, state.mode);
-
     writeString(KEYS.best, state.bestScore);
     writeString(KEYS.total, state.totalScore);
 
     const categoryProgress = state.progress[state.mode];
 
-    writeStorage(
-      KEYS.used,
-      categoryProgress.usedQuestionIds
-    );
-
-    writeStorage(
-      KEYS.completed,
-      categoryProgress.completedRounds
-    );
+    if (categoryProgress) {
+      writeStorage(KEYS.used, categoryProgress.usedQuestionIds);
+      writeStorage(KEYS.completed, categoryProgress.completedRounds);
+    }
 
     writeStorage(KEYS.settings, {
       language: state.language,
@@ -737,12 +896,11 @@
   }
 
   /* =====================================================
-     MESSAGE HELPERS
+     MESSAGES
   ===================================================== */
 
   function setMessage(id, message, type = "") {
     const element = $(id);
-
     if (!element) return;
 
     element.textContent = message;
@@ -754,10 +912,8 @@
     }
   }
 
-  function getMessage(english, kinyarwanda) {
-    return state.language === "rw"
-      ? kinyarwanda
-      : english;
+  function getMessage(english, rw) {
+    return state.language === "rw" ? rw : english;
   }
 
   /* =====================================================
@@ -772,7 +928,6 @@
     });
 
     const target = $(screenId);
-
     if (!target) return;
 
     target.classList.add("active");
@@ -782,17 +937,9 @@
       behavior: "smooth"
     });
 
-    if (screenId === "homeScreen") {
-      updateHomeUI();
-    }
-
-    if (screenId === "roundsScreen") {
-      updateRoundsUI();
-    }
-
-    if (screenId === "reviewScreen") {
-      renderReview();
-    }
+    if (screenId === "homeScreen") updateHomeUI();
+    if (screenId === "roundsScreen") updateRoundsUI();
+    if (screenId === "reviewScreen") renderReview();
 
     saveProgress();
   }
@@ -808,8 +955,7 @@
 
   function updateSetupUI() {
     document.querySelectorAll(".language-btn").forEach(button => {
-      const selected =
-        button.dataset.language === state.language;
+      const selected = button.dataset.language === state.language;
 
       button.classList.toggle("selected", selected);
       button.classList.toggle("active", selected);
@@ -818,7 +964,7 @@
 
     document.querySelectorAll(".mode-btn").forEach(button => {
       const selected =
-        button.dataset.mode === state.mode;
+        normalizeMode(button.dataset.mode) === state.mode;
 
       button.classList.toggle("selected", selected);
       button.classList.toggle("active", selected);
@@ -828,24 +974,28 @@
     const summary = $("selectionSummary");
 
     if (summary) {
-      if (state.language === "rw") {
-        summary.textContent =
-          `Ururimi: ${state.language === "rw" ? "Ikinyarwanda" : "English"} | Icyiciro: ${getCategoryName()}`;
-      } else {
-        summary.textContent =
-          `Language: English | Category: ${getCategoryName()}`;
-      }
+      summary.textContent = state.language === "rw"
+        ? `Ururimi: Ikinyarwanda | Icyiciro: ${getCategoryName()}`
+        : `Language: English | Category: ${getCategoryName()}`;
     }
 
-    $("confirmSetupBtn").disabled = !(
-      state.languageChosen &&
-      state.modeChosen
-    );
+    const confirmButton = $("confirmSetupBtn");
 
-    $("startBtn").disabled = !(
-      state.setupConfirmed &&
-      state.questions.length > 0
-    );
+    if (confirmButton) {
+      confirmButton.disabled = !(
+        state.languageChosen &&
+        state.modeChosen
+      );
+    }
+
+    const startButton = $("startBtn");
+
+    if (startButton) {
+      startButton.disabled = !(
+        state.setupConfirmed &&
+        getCategoryQuestions().length > 0
+      );
+    }
   }
 
   function selectLanguage(language) {
@@ -854,21 +1004,31 @@
     state.setupConfirmed = false;
 
     updateSetupUI();
-
     setMessage("setupError", "");
-
     saveProgress();
   }
 
   function selectMode(mode) {
-    state.mode = normalizeMode(mode);
+    const normalized = normalizeMode(mode);
+
+    if (!normalized) {
+      setMessage(
+        "setupError",
+        getMessage(
+          "Invalid category selection.",
+          "Icyiciro wahisemo nticyemewe."
+        ),
+        "error"
+      );
+      return;
+    }
+
+    state.mode = normalized;
     state.modeChosen = true;
     state.setupConfirmed = false;
 
     updateSetupUI();
-
     setMessage("setupError", "");
-
     saveProgress();
   }
 
@@ -882,13 +1042,24 @@
         ),
         "error"
       );
+      return;
+    }
 
+    const count = getCategoryQuestions().length;
+
+    if (count === 0) {
+      setMessage(
+        "setupError",
+        getMessage(
+          "There are no valid questions in this category. Check questions.json.",
+          "Nta bibazo byemewe biri muri iki cyiciro. Reba questions.json."
+        ),
+        "error"
+      );
       return;
     }
 
     state.setupConfirmed = true;
-
-    $("startBtn").disabled = state.questions.length === 0;
 
     setMessage(
       "setupError",
@@ -900,50 +1071,64 @@
 
     saveProgress();
     updateSetupUI();
+    updateHomeUI();
   }
 
   /* =====================================================
-     QUESTION POOL AND ROUNDS
+     QUESTION POOL
   ===================================================== */
 
   function getCategoryQuestions(category = state.mode) {
+    const selected = normalizeSelectedMode(category);
+
+    if (selected === "both") {
+      return state.questions.filter(question =>
+        question.category === "traffic" ||
+        question.category === "general"
+      );
+    }
+
     return state.questions.filter(
-      question => question.category === category
+      question => question.category === selected
     );
   }
 
   function getTotalRounds(category = state.mode) {
-    const count = getCategoryQuestions(category).length;
-
     return Math.ceil(
-      count / CONFIG.QUESTIONS_PER_ROUND
+      getCategoryQuestions(category).length /
+      CONFIG.QUESTIONS_PER_ROUND
     );
   }
 
   function getCategoryProgress(category = state.mode) {
-    return state.progress[category];
+    const selected = normalizeSelectedMode(category);
+
+    return state.progress[selected];
   }
 
   function getUnlockedRound(category = state.mode) {
+    const total = getTotalRounds(category);
+
+    if (!total) return 1;
+
     return Math.min(
       Math.max(1, getCategoryProgress(category).unlockedRound),
-      Math.max(1, getTotalRounds(category))
+      total
     );
   }
 
   function getNextQuestionPool(category = state.mode) {
     const questions = getCategoryQuestions(category);
+    const progress = getCategoryProgress(category);
 
-    const used = new Set(
-      getCategoryProgress(category).usedQuestionIds
-    );
+    const used = new Set(progress.usedQuestionIds);
 
     let available = questions.filter(
       question => !used.has(question.id)
     );
 
     if (available.length === 0) {
-      getCategoryProgress(category).usedQuestionIds = [];
+      progress.usedQuestionIds = [];
       available = [...questions];
     }
 
@@ -962,22 +1147,19 @@
       CONFIG.QUESTIONS_PER_ROUND
     );
 
-    return selected.map(question => {
-      const optionIndexes = shuffle([0, 1, 2, 3]);
+    return selected.map(question => ({
+      questionId: question.id,
+      answerIndex: question.answerIndex,
 
-      return {
-        questionId: question.id,
-        answerIndex: question.answerIndex,
+      optionOrder: shuffle([0, 1, 2, 3]),
 
-        optionOrder: optionIndexes,
+      selectedOption: null,
+      answered: false,
+      correct: false,
 
-        selectedOption: null,
-        answered: false,
-        correct: false,
-
-        timeTaken: 0
-      };
-    });
+      timeTaken: 0,
+      timeLimit: getQuestionDuration(question)
+    }));
   }
 
   function getQuestionById(id) {
@@ -999,7 +1181,6 @@
           "Ibibazo ntibirafunguka."
         )
       );
-
       return;
     }
 
@@ -1012,7 +1193,19 @@
         ),
         "error"
       );
+      return;
+    }
 
+    const availableCount = getCategoryQuestions().length;
+
+    if (!availableCount) {
+      setMessage(
+        "homeMessage",
+        getMessage(
+          "There are no questions in this category.",
+          "Nta bibazo biri muri iki cyiciro."
+        )
+      );
       return;
     }
 
@@ -1026,7 +1219,6 @@
           "Banza urangize round ibanza."
         )
       );
-
       return;
     }
 
@@ -1036,11 +1228,10 @@
       setMessage(
         "homeMessage",
         getMessage(
-          "There are no questions in this category.",
-          "Nta bibazo biri muri iki cyiciro."
+          "No questions are available.",
+          "Nta bibazo biboneka."
         )
       );
-
       return;
     }
 
@@ -1058,15 +1249,13 @@
       startedAt: Date.now(),
       finished: false,
 
-      timeRemaining: getTimerDuration()
+      timeRemaining: questions[0].timeLimit
     };
 
-    state.timeRemaining = getTimerDuration();
+    state.timeRemaining = questions[0].timeLimit;
 
     saveProgress();
-
     renderQuestion(true);
-
     showScreen("quizScreen");
 
     document.dispatchEvent(
@@ -1092,15 +1281,12 @@
       return;
     }
 
-    state.mode = normalizeMode(session.mode);
+    state.mode = normalizeSelectedMode(session.mode);
     state.language = normalizeLanguage(session.language);
 
     state.timeRemaining = Math.max(
       0,
-      safeNumber(
-        session.timeRemaining,
-        getTimerDuration()
-      )
+      safeNumber(session.timeRemaining, CONFIG.GENERAL_TIME)
     );
 
     const current = session.questions[session.currentIndex];
@@ -1128,7 +1314,7 @@
   }
 
   /* =====================================================
-     QUESTION DISPLAY
+     DISPLAY QUESTIONS
   ===================================================== */
 
   function getCurrentQuestionEntry() {
@@ -1142,20 +1328,18 @@
   function getCurrentQuestion() {
     const entry = getCurrentQuestionEntry();
 
-    if (!entry) return null;
-
-    return getQuestionById(entry.questionId);
+    return entry
+      ? getQuestionById(entry.questionId)
+      : null;
   }
 
   function getDisplayedOptions(question, entry) {
-    return entry.optionOrder.map(index => {
-      return {
-        originalIndex: index,
-        text: state.language === "rw"
-          ? question.options_rw[index]
-          : question.options[index]
-      };
-    });
+    return entry.optionOrder.map(index => ({
+      originalIndex: index,
+      text: state.language === "rw"
+        ? question.options_rw[index]
+        : question.options[index]
+    }));
   }
 
   function renderQuestion(resetTimer = true) {
@@ -1171,60 +1355,56 @@
       return;
     }
 
-    state.mode = session.mode;
-    state.language = session.language;
+    state.mode = normalizeSelectedMode(session.mode);
+    state.language = normalizeLanguage(session.language);
 
-    $("roundLabel").textContent = session.round;
+    setText("roundLabel", session.round);
 
-    $("questionCounter").textContent =
-      `${session.currentIndex + 1}/${session.questions.length}`;
-
-    $("scoreNumber").textContent = session.score;
-
-    $("categoryIndicator").textContent =
-      getCategoryName(session.mode);
-
-    $("questionText").textContent = getText(
-      question,
-      "question",
-      "question_rw"
+    setText(
+      "questionCounter",
+      `${session.currentIndex + 1}/${session.questions.length}`
     );
+
+    setText("scoreNumber", session.score);
+    setText("categoryIndicator", getCategoryName(question.category));
+    setText("questionText", getText(question, "question", "question_rw"));
 
     const image = $("questionImage");
 
-    if (question.image) {
-      image.src = question.image;
-      image.style.display = "block";
-      image.onerror = () => {
+    if (image) {
+      if (question.image) {
+        image.src = question.image;
+        image.style.display = "block";
+
+        image.onerror = () => {
+          image.style.display = "none";
+        };
+      } else {
+        image.removeAttribute("src");
         image.style.display = "none";
-      };
-    } else {
-      image.removeAttribute("src");
-      image.style.display = "none";
+      }
     }
 
     const optionsContainer = $("optionsContainer");
 
+    if (!optionsContainer) {
+      console.error("Quiz Master: optionsContainer is missing from index.html.");
+      return;
+    }
+
     optionsContainer.replaceChildren();
 
-    const displayedOptions = getDisplayedOptions(
-      question,
-      entry
-    );
-
-    displayedOptions.forEach((option, displayIndex) => {
+    getDisplayedOptions(question, entry).forEach((option, displayIndex) => {
       const button = document.createElement("button");
 
       button.type = "button";
       button.className = "option-btn";
 
       const letter = document.createElement("span");
-
       letter.className = "option-letter";
       letter.textContent = LETTERS[displayIndex];
 
       const text = document.createElement("span");
-
       text.textContent = option.text;
 
       button.append(letter, text);
@@ -1236,23 +1416,29 @@
       optionsContainer.appendChild(button);
     });
 
-    $("submitAnswerBtn").disabled = true;
-    $("nextQuestionBtn").hidden = true;
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").disabled = true;
+    }
 
-    $("answerFeedback").textContent = "";
-    $("explanation").textContent = "";
+    setHidden("nextQuestionBtn", true);
+    setText("answerFeedback", "");
+    setText("explanation", "");
 
     updateProgressUI();
 
+    const duration = safeNumber(
+      entry.timeLimit,
+      getQuestionDuration(question)
+    );
+
+    entry.timeLimit = duration;
+
     if (resetTimer) {
-      state.timeRemaining = getTimerDuration();
+      state.timeRemaining = duration;
     } else {
       state.timeRemaining = Math.max(
         0,
-        safeNumber(
-          session.timeRemaining,
-          getTimerDuration()
-        )
+        safeNumber(session.timeRemaining, duration)
       );
     }
 
@@ -1274,12 +1460,18 @@
       ? (state.session.currentIndex / total) * 100
       : 0;
 
-    $("progressFill").style.width = `${percent}%`;
+    const fill = $("progressFill");
 
-    $("quizProgressBar").setAttribute(
-      "aria-valuenow",
-      String(Math.round(percent))
-    );
+    if (fill) fill.style.width = `${percent}%`;
+
+    const bar = $("quizProgressBar");
+
+    if (bar) {
+      bar.setAttribute(
+        "aria-valuenow",
+        String(Math.round(percent))
+      );
+    }
   }
 
   /* =====================================================
@@ -1289,13 +1481,21 @@
   function selectAnswer(originalIndex) {
     const entry = getCurrentQuestionEntry();
 
-    if (!entry || entry.answered) return;
+    if (
+      !entry ||
+      entry.answered ||
+      !Number.isInteger(originalIndex) ||
+      originalIndex < 0 ||
+      originalIndex > 3
+    ) {
+      return;
+    }
 
     entry.selectedOption = originalIndex;
 
-    const buttons = $("optionsContainer").querySelectorAll(
+    const buttons = $("optionsContainer")?.querySelectorAll(
       ".option-btn"
-    );
+    ) || [];
 
     buttons.forEach((button, displayIndex) => {
       const original = entry.optionOrder[displayIndex];
@@ -1306,7 +1506,9 @@
       );
     });
 
-    $("submitAnswerBtn").disabled = false;
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").disabled = false;
+    }
 
     saveProgress();
   }
@@ -1334,7 +1536,8 @@
 
     entry.timeTaken = Math.max(
       0,
-      getTimerDuration() - state.timeRemaining
+      safeNumber(entry.timeLimit, getQuestionDuration(question)) -
+      state.timeRemaining
     );
 
     if (entry.correct) {
@@ -1342,15 +1545,18 @@
       session.correctCount++;
     }
 
-    $("scoreNumber").textContent = session.score;
+    setText("scoreNumber", session.score);
 
     showAnswerFeedback(question, entry);
 
-    $("submitAnswerBtn").disabled = true;
-    $("nextQuestionBtn").hidden = false;
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").disabled = true;
+    }
+
+    setHidden("nextQuestionBtn", false);
 
     $("optionsContainer")
-      .querySelectorAll(".option-btn")
+      ?.querySelectorAll(".option-btn")
       .forEach((button, displayIndex) => {
         const originalIndex = entry.optionOrder[displayIndex];
 
@@ -1369,26 +1575,21 @@
       });
 
     saveProgress();
-
     updateReviewButton();
   }
 
   function showAnswerFeedback(question, entry) {
     const feedback = $("answerFeedback");
 
-    feedback.textContent = entry.correct
-      ? getMessage(
-          "✓ Correct answer!",
-          "✓ Igisubizo ni cyo!"
-        )
-      : getMessage(
-          "✗ Incorrect answer.",
-          "✗ Igisubizo si cyo."
-        );
+    if (feedback) {
+      feedback.textContent = entry.correct
+        ? getMessage("✓ Correct answer!", "✓ Igisubizo ni cyo!")
+        : getMessage("✗ Incorrect answer.", "✗ Igisubizo si cyo.");
 
-    feedback.className = entry.correct
-      ? "correct-text"
-      : "wrong-text";
+      feedback.className = entry.correct
+        ? "correct-text"
+        : "wrong-text";
+    }
 
     const correctAnswer = getText(
       question,
@@ -1402,9 +1603,12 @@
       "explanation_rw"
     );
 
-    $("explanation").textContent = explanation
-      ? `${getMessage("Explanation:", "Ibisobanuro:")} ${explanation}`
-      : `${getMessage("Correct answer:", "Igisubizo nyacyo:")} ${correctAnswer}`;
+    setText(
+      "explanation",
+      explanation
+        ? `${getMessage("Explanation:", "Ibisobanuro:")} ${explanation}`
+        : `${getMessage("Correct answer:", "Igisubizo nyacyo:")} ${correctAnswer}`
+    );
   }
 
   function restoreAnsweredQuestion() {
@@ -1415,11 +1619,14 @@
 
     showAnswerFeedback(question, entry);
 
-    $("submitAnswerBtn").disabled = true;
-    $("nextQuestionBtn").hidden = false;
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").disabled = true;
+    }
+
+    setHidden("nextQuestionBtn", false);
 
     $("optionsContainer")
-      .querySelectorAll(".option-btn")
+      ?.querySelectorAll(".option-btn")
       .forEach((button, displayIndex) => {
         const originalIndex = entry.optionOrder[displayIndex];
 
@@ -1458,12 +1665,17 @@
       return;
     }
 
-    state.timeRemaining = getTimerDuration();
+    const nextEntry = getCurrentQuestionEntry();
+    const nextQuestionData = getCurrentQuestion();
+
+    state.timeRemaining = safeNumber(
+      nextEntry?.timeLimit,
+      getQuestionDuration(nextQuestionData)
+    );
 
     session.timeRemaining = state.timeRemaining;
 
     renderQuestion(true);
-
     saveProgress();
   }
 
@@ -1472,12 +1684,9 @@
   ===================================================== */
 
   function updateTimerUI() {
-    const timer = $("timer");
-    const timerBox = $("timerBox");
+    setText("timer", state.timeRemaining);
 
-    if (timer) {
-      timer.textContent = String(state.timeRemaining);
-    }
+    const timerBox = $("timerBox");
 
     if (timerBox) {
       timerBox.classList.toggle(
@@ -1497,17 +1706,23 @@
   function startTimer(reset = true) {
     stopTimer();
 
-    if (reset) {
-      state.timeRemaining = getTimerDuration();
-    } else {
-      state.timeRemaining = Math.max(
-        0,
-        safeNumber(
-          state.session?.timeRemaining,
-          state.timeRemaining
-        )
-      );
-    }
+    const question = getCurrentQuestion();
+    const entry = getCurrentQuestionEntry();
+
+    const duration = safeNumber(
+      entry?.timeLimit,
+      getQuestionDuration(question)
+    );
+
+    state.timeRemaining = reset
+      ? duration
+      : Math.max(
+          0,
+          safeNumber(
+            state.session?.timeRemaining,
+            state.timeRemaining
+          )
+        );
 
     if (state.session) {
       state.session.timeRemaining = state.timeRemaining;
@@ -1526,9 +1741,9 @@
         return;
       }
 
-      const entry = getCurrentQuestionEntry();
+      const currentEntry = getCurrentQuestionEntry();
 
-      if (!entry || entry.answered) {
+      if (!currentEntry || currentEntry.answered) {
         stopTimer();
         return;
       }
@@ -1551,6 +1766,7 @@
 
   function handleTimeUp() {
     const entry = getCurrentQuestionEntry();
+    const question = getCurrentQuestion();
 
     if (!entry || entry.answered) return;
 
@@ -1565,19 +1781,24 @@
     entry.answered = true;
     entry.correct = false;
     entry.selectedOption = null;
-    entry.timeTaken = getTimerDuration();
 
-    const question = getCurrentQuestion();
+    entry.timeTaken = safeNumber(
+      entry.timeLimit,
+      getQuestionDuration(question)
+    );
 
     if (question) {
       showAnswerFeedback(question, entry);
     }
 
-    $("submitAnswerBtn").disabled = true;
-    $("nextQuestionBtn").hidden = false;
+    if ($("submitAnswerBtn")) {
+      $("submitAnswerBtn").disabled = true;
+    }
+
+    setHidden("nextQuestionBtn", false);
 
     $("optionsContainer")
-      .querySelectorAll(".option-btn")
+      ?.querySelectorAll(".option-btn")
       .forEach((button, displayIndex) => {
         const originalIndex = entry.optionOrder[displayIndex];
 
@@ -1588,16 +1809,19 @@
         }
       });
 
-    $("answerFeedback").textContent = getMessage(
-      "Time is up! The correct answer is shown above.",
-      "Igihe kirangiye! Igisubizo nyacyo kiragaragazwa hejuru."
+    setText(
+      "answerFeedback",
+      getMessage(
+        "Time is up! The correct answer is shown above.",
+        "Igihe kirangiye! Igisubizo nyacyo kiragaragazwa hejuru."
+      )
     );
 
     saveProgress();
   }
 
   /* =====================================================
-     FINISH ROUND AND RESULTS
+     FINISH ROUND
   ===================================================== */
 
   function finishRound() {
@@ -1632,16 +1856,10 @@
         session.round + 1
       );
 
-      const usedIds = session.questions.map(
-        entry => entry.questionId
-      );
-
-      progress.usedQuestionIds = [
-        ...new Set([
-          ...progress.usedQuestionIds,
-          ...usedIds
-        ])
-      ];
+      progress.usedQuestionIds = unique([
+        ...progress.usedQuestionIds,
+        ...session.questions.map(entry => entry.questionId)
+      ]);
     }
 
     state.totalScore += session.score;
@@ -1683,7 +1901,6 @@
     writeStorage(KEYS.review, state.reviewAnswers);
 
     saveWeeklyScore(session.score);
-
     saveProgress();
 
     renderResults({
@@ -1696,7 +1913,6 @@
     });
 
     showScreen("resultScreen");
-
     updateReviewButton();
 
     document.dispatchEvent(
@@ -1723,10 +1939,15 @@
       score: safeNumber(score)
     });
 
-    writeStorage(
-      KEYS.weekly,
-      scores.slice(-100)
-    );
+    writeStorage(KEYS.weekly, scores.slice(-100));
+  }
+
+  /* =====================================================
+     RESULTS
+  ===================================================== */
+
+  function resultCategory() {
+    return state.session?.mode || state.mode;
   }
 
   function renderResults(result) {
@@ -1738,55 +1959,51 @@
           ? "⭐"
           : "☆";
 
-    $("resultTitle").textContent = result.passed
-      ? getMessage("Round Passed!", "Watsinze iyi round!")
-      : getMessage("Round Not Passed", "Ntabwo watsinze iyi round.");
-
-    $("resultMessage").textContent = result.passed
-      ? getMessage(
-          "Congratulations! You unlocked the next round.",
-          "Urakoze! Wafunguye round ikurikira."
-        )
-      : getMessage(
-          "You need at least 70% to unlock the next round. Try again!",
-          "Ukeneye nibura 70% kugira ngo ufungure round ikurikira. Ongera ugerageze!"
-        );
-
-    $("resultStars").textContent = stars;
-    $("resultScore").textContent = result.score;
-
-    $("resultPercent").textContent =
-      `${result.percentage}%`;
-
-    $("resultCorrect").textContent =
-      `${result.correct}/${result.total}`;
-
-    $("resultPassMark").textContent =
-      `${CONFIG.PASS_PERCENTAGE}%`;
-
-    const nextRound = result.round + 1;
-    const totalRounds = getTotalRounds(resultCategory());
-
-    $("resultNextBtn").hidden = !(
-      result.passed &&
-      nextRound <= totalRounds
+    setText(
+      "resultTitle",
+      result.passed
+        ? getMessage("Round Passed!", "Watsinze iyi round!")
+        : getMessage("Round Not Passed", "Ntabwo watsinze iyi round.")
     );
 
-    $("retryBtn").hidden = result.passed;
+    setText(
+      "resultMessage",
+      result.passed
+        ? getMessage(
+            "Congratulations! You unlocked the next round.",
+            "Urakoze! Wafunguye round ikurikira."
+          )
+        : getMessage(
+            "You need at least 70% to unlock the next round. Try again!",
+            "Ukeneye nibura 70% kugira ngo ufungure round ikurikira. Ongera ugerageze!"
+          )
+    );
 
-    if (
-      result.passed &&
-      nextRound > totalRounds
-    ) {
-      $("resultMessage").textContent = getMessage(
-        "Excellent! You have completed all available rounds in this category.",
-        "Byiza cyane! Warangije rounds zose ziri muri iki cyiciro."
+    setText("resultStars", stars);
+    setText("resultScore", result.score);
+    setText("resultPercent", `${result.percentage}%`);
+    setText("resultCorrect", `${result.correct}/${result.total}`);
+    setText("resultPassMark", `${CONFIG.PASS_PERCENTAGE}%`);
+
+    const nextRoundNumber = result.round + 1;
+    const totalRounds = getTotalRounds(resultCategory());
+
+    setHidden(
+      "resultNextBtn",
+      !(result.passed && nextRoundNumber <= totalRounds)
+    );
+
+    setHidden("retryBtn", result.passed);
+
+    if (result.passed && nextRoundNumber > totalRounds) {
+      setText(
+        "resultMessage",
+        getMessage(
+          "Excellent! You have completed all available rounds in this category.",
+          "Byiza cyane! Warangije rounds zose ziri muri iki cyiciro."
+        )
       );
     }
-  }
-
-  function resultCategory() {
-    return state.session?.mode || state.mode;
   }
 
   function retryRound() {
@@ -1794,8 +2011,8 @@
 
     const round = state.session.round;
 
-    state.mode = state.session.mode;
-    state.language = state.session.language;
+    state.mode = normalizeSelectedMode(state.session.mode);
+    state.language = normalizeLanguage(state.session.language);
 
     state.session = null;
 
@@ -1812,8 +2029,8 @@
       return;
     }
 
-    state.mode = state.session.mode;
-    state.language = state.session.language;
+    state.mode = normalizeSelectedMode(state.session.mode);
+    state.language = normalizeLanguage(state.session.language);
 
     state.session = null;
 
@@ -1827,21 +2044,13 @@
   function updateReviewButton() {
     const hasReview = state.reviewAnswers.length > 0;
 
-    const menuButton = $("reviewAnswersBtn");
+    setHidden("reviewAnswersBtn", !hasReview);
+
     const quizButton = $("quizReviewBtn");
     const resultButton = $("resultReviewBtn");
 
-    if (menuButton) {
-      menuButton.hidden = !hasReview;
-    }
-
-    if (quizButton) {
-      quizButton.disabled = !hasReview;
-    }
-
-    if (resultButton) {
-      resultButton.disabled = !hasReview;
-    }
+    if (quizButton) quizButton.disabled = !hasReview;
+    if (resultButton) resultButton.disabled = !hasReview;
   }
 
   function openReview() {
@@ -1853,7 +2062,6 @@
           "Nta bisubizo byo gusubiramo birahari ubu."
         )
       );
-
       return;
     }
 
@@ -1877,36 +2085,31 @@
       );
 
       container.appendChild(message);
-
       return;
     }
 
     state.reviewAnswers.forEach((entry, index) => {
       const card = document.createElement("article");
-
       card.className = "review-item";
 
       const question = document.createElement("h3");
 
       question.textContent =
-        `${index + 1}. ${getText(
-          entry,
-          "question",
-          "question_rw"
-        )}`;
+        `${index + 1}. ${getText(entry, "question", "question_rw")}`;
 
       card.appendChild(question);
 
       const selected = document.createElement("p");
 
-      const selectedText = entry.selectedOption === null ||
+      const selectedText =
+        entry.selectedOption === null ||
         entry.selectedOption === undefined
-        ? getMessage("No answer selected", "Nta gisubizo wahisemo")
-        : (
-            state.language === "rw"
-              ? entry.options_rw[entry.selectedOption]
-              : entry.options[entry.selectedOption]
-          );
+          ? getMessage("No answer selected", "Nta gisubizo wahisemo")
+          : (
+              state.language === "rw"
+                ? entry.options_rw[entry.selectedOption]
+                : entry.options[entry.selectedOption]
+            );
 
       selected.textContent =
         `${getMessage("Your answer:", "Igisubizo wahisemo:")} ${selectedText}`;
@@ -1918,7 +2121,6 @@
       card.appendChild(selected);
 
       const correct = document.createElement("p");
-
       correct.className = "correct-text";
 
       correct.textContent =
@@ -1936,54 +2138,52 @@
         }`;
 
       card.appendChild(explanation);
-
       container.appendChild(card);
     });
 
     document.dispatchEvent(
       new CustomEvent("quizmaster:review-data", {
-        detail: {
-          answers: state.reviewAnswers
-        }
+        detail: { answers: state.reviewAnswers }
       })
     );
   }
 
   /* =====================================================
-     HOME SCREEN AND STATS
+     HOME SCREEN
   ===================================================== */
 
   function updateHomeUI() {
     const progress = getCategoryProgress();
 
-    $("homeRound").textContent = getUnlockedRound();
-
-    $("homeScore").textContent = state.bestScore;
+    setText("homeRound", getUnlockedRound());
+    setText("homeScore", state.bestScore);
 
     const completed = progress.completedRounds.length;
 
-    $("homeStars").textContent =
+    setText(
+      "homeStars",
       completed >= 10
         ? "⭐⭐⭐"
         : completed >= 5
           ? "⭐⭐"
           : completed >= 1
             ? "⭐"
-            : "☆";
-
-    const hasSession = Boolean(
-      state.session &&
-      !state.session.finished
+            : "☆"
     );
 
-    $("continueBtn").hidden = !hasSession;
+    const hasSession = Boolean(
+      state.session && !state.session.finished
+    );
 
-    $("startBtn").hidden = hasSession;
+    setHidden("continueBtn", !hasSession);
+    setHidden("startBtn", hasSession);
 
-    if ($("startBtn")) {
-      $("startBtn").disabled = !(
+    const startButton = $("startBtn");
+
+    if (startButton) {
+      startButton.disabled = !(
         state.setupConfirmed &&
-        state.questions.length > 0
+        getCategoryQuestions().length > 0
       );
     }
 
@@ -2005,30 +2205,25 @@
     const progress = getCategoryProgress();
     const unlocked = getUnlockedRound();
 
-    $("roundsCompleted").textContent =
-      progress.completedRounds.length;
+    setText("roundsCompleted", progress.completedRounds.length);
+    setText("roundsTotal", total);
+    setText("roundsUnlocked", Math.min(unlocked, total));
 
-    $("roundsTotal").textContent = total;
-
-    $("roundsUnlocked").textContent =
-      Math.min(unlocked, total);
-
-    $("roundsDescription").textContent =
+    setText(
+      "roundsDescription",
       getMessage(
         `Category: ${getCategoryName()}. Pass each round with at least 70% to unlock the next one.`,
         `Icyiciro: ${getCategoryName()}. Tsinda nibura 70% kugira ngo ufungure round ikurikira.`
-      );
+      )
+    );
 
     for (let round = 1; round <= total; round++) {
-      const completed =
-        progress.completedRounds.includes(round);
-
+      const completed = progress.completedRounds.includes(round);
       const locked = round > unlocked;
 
       const button = document.createElement("button");
 
       button.type = "button";
-
       button.className = "round-card";
 
       if (completed) button.classList.add("completed");
@@ -2037,12 +2232,9 @@
       button.disabled = locked;
 
       const title = document.createElement("span");
-
-      title.textContent =
-        `${getMessage("Round", "Round")} ${round}`;
+      title.textContent = `${getMessage("Round", "Round")} ${round}`;
 
       const status = document.createElement("span");
-
       status.className = "round-status";
 
       status.textContent = completed
@@ -2080,21 +2272,28 @@
   ===================================================== */
 
   function openSettings() {
-    $("settingsLanguage").value = state.language;
-    $("settingsMode").value = state.mode;
+    if ($("settingsLanguage")) {
+      $("settingsLanguage").value = state.language;
+    }
+
+    if ($("settingsMode")) {
+      $("settingsMode").value = state.mode;
+    }
 
     updateMusicStatus();
-
     showScreen("settingsScreen");
   }
 
   function saveSettings() {
+    const languageElement = $("settingsLanguage");
+    const modeElement = $("settingsMode");
+
     const newLanguage = normalizeLanguage(
-      $("settingsLanguage").value
+      languageElement?.value || state.language
     );
 
-    const newMode = normalizeMode(
-      $("settingsMode").value
+    const newMode = normalizeSelectedMode(
+      modeElement?.value || state.mode
     );
 
     if (
@@ -2112,7 +2311,6 @@
           "Banza urangize cyangwa usohoke muri round urimo mbere yo guhindura ururimi cyangwa icyiciro."
         )
       );
-
       return;
     }
 
@@ -2153,14 +2351,8 @@
 
     if (status) {
       status.textContent = enabled
-        ? getMessage(
-            "Music is enabled.",
-            "Umuziki urafunguye."
-          )
-        : getMessage(
-            "Music is disabled.",
-            "Umuziki urafunze."
-          );
+        ? getMessage("Music is enabled.", "Umuziki urafunguye.")
+        : getMessage("Music is disabled.", "Umuziki urafunze.");
     }
   }
 
@@ -2187,23 +2379,16 @@
     state.totalScore = 0;
 
     state.progress = {
-      traffic: {
-        completedRounds: [],
-        unlockedRound: 1,
-        usedQuestionIds: []
-      },
-      general: {
-        completedRounds: [],
-        unlockedRound: 1,
-        usedQuestionIds: []
-      }
+      traffic: emptyProgress(),
+      general: emptyProgress(),
+      both: emptyProgress()
     };
 
     Object.values(KEYS).forEach(key => {
       try {
         localStorage.removeItem(key);
       } catch (error) {
-        console.warn("Could not reset:", key);
+        console.warn("Could not reset:", key, error);
       }
     });
 
@@ -2254,10 +2439,7 @@
 
         setMessage(
           "homeMessage",
-          getMessage(
-            "✓ Link copied!",
-            "✓ Link yakoporowe!"
-          )
+          getMessage("✓ Link copied!", "✓ Link yakoporowe!")
         );
 
         return;
@@ -2292,104 +2474,37 @@
       });
     });
 
-    $("confirmSetupBtn").addEventListener(
-      "click",
-      confirmSetup
-    );
+    on("confirmSetupBtn", "click", confirmSetup);
+    on("startBtn", "click", () => startNewRound());
+    on("continueBtn", "click", continueQuiz);
 
-    $("startBtn").addEventListener("click", () => {
-      startNewRound();
-    });
+    on("submitAnswerBtn", "click", submitAnswer);
+    on("nextQuestionBtn", "click", nextQuestion);
 
-    $("continueBtn").addEventListener(
-      "click",
-      continueQuiz
-    );
+    on("quizReviewBtn", "click", openReview);
+    on("quizHomeBtn", "click", goHome);
 
-    $("submitAnswerBtn").addEventListener(
-      "click",
-      submitAnswer
-    );
+    on("resultNextBtn", "click", nextRound);
+    on("retryBtn", "click", retryRound);
+    on("resultReviewBtn", "click", openReview);
+    on("resultHomeBtn", "click", goHome);
 
-    $("nextQuestionBtn").addEventListener(
-      "click",
-      nextQuestion
-    );
+    on("reviewHomeBtn", "click", goHome);
 
-    $("quizReviewBtn").addEventListener(
-      "click",
-      openReview
-    );
-
-    $("quizHomeBtn").addEventListener(
-      "click",
-      goHome
-    );
-
-    $("resultNextBtn").addEventListener(
-      "click",
-      nextRound
-    );
-
-    $("retryBtn").addEventListener(
-      "click",
-      retryRound
-    );
-
-    $("resultReviewBtn").addEventListener(
-      "click",
-      openReview
-    );
-
-    $("resultHomeBtn").addEventListener(
-      "click",
-      goHome
-    );
-
-    $("reviewHomeBtn").addEventListener(
-      "click",
-      goHome
-    );
-
-    $("roundsBtn").addEventListener("click", () => {
+    on("roundsBtn", "click", () => {
       updateRoundsUI();
       showScreen("roundsScreen");
     });
 
-    $("roundsHomeBtn").addEventListener(
-      "click",
-      goHome
-    );
+    on("roundsHomeBtn", "click", goHome);
 
-    $("settingsBtn").addEventListener(
-      "click",
-      openSettings
-    );
+    on("settingsBtn", "click", openSettings);
+    on("saveSettingsBtn", "click", saveSettings);
+    on("resetProgressBtn", "click", resetProgress);
+    on("settingsHomeBtn", "click", goHome);
 
-    $("saveSettingsBtn").addEventListener(
-      "click",
-      saveSettings
-    );
-
-    $("resetProgressBtn").addEventListener(
-      "click",
-      resetProgress
-    );
-
-    $("settingsHomeBtn").addEventListener(
-      "click",
-      goHome
-    );
-
-    $("reviewAnswersBtn").addEventListener(
-      "click",
-      openReview
-    );
-
-    $("shareBtn").addEventListener(
-      "click",
-      shareQuiz
-    );
+    on("reviewAnswersBtn", "click", openReview);
+    on("shareBtn", "click", shareQuiz);
 
     document.addEventListener(
       "quizmaster:music-changed",
@@ -2398,7 +2513,7 @@
   }
 
   /* =====================================================
-     SAVE WHEN PAGE IS HIDDEN OR CLOSED
+     SAVE ON PAGE HIDDEN / CLOSED
   ===================================================== */
 
   document.addEventListener("visibilitychange", () => {
@@ -2407,13 +2522,8 @@
     }
   });
 
-  window.addEventListener("pagehide", () => {
-    saveProgress();
-  });
-
-  window.addEventListener("beforeunload", () => {
-    saveProgress();
-  });
+  window.addEventListener("pagehide", saveProgress);
+  window.addEventListener("beforeunload", saveProgress);
 
   /* =====================================================
      PUBLIC API
@@ -2424,8 +2534,16 @@
       return {
         language: state.language,
         mode: state.mode,
+
         questionsLoaded: state.questions.length,
+
+        trafficQuestions: getCategoryQuestions("traffic").length,
+        generalQuestions: getCategoryQuestions("general").length,
+
+        selectedCategoryQuestions: getCategoryQuestions().length,
+
         session: state.session,
+
         bestScore: state.bestScore,
         totalScore: state.totalScore
       };
@@ -2449,7 +2567,6 @@
     state.initialized = true;
 
     restoreState();
-
     bindEvents();
 
     updateHomeUI();
@@ -2459,12 +2576,14 @@
     const loaded = await loadQuestions();
 
     if (!loaded) {
-      $("startBtn").disabled = true;
+      if ($("startBtn")) {
+        $("startBtn").disabled = true;
+      }
       return;
     }
 
     if (state.session && !state.session.finished) {
-      $("continueBtn").hidden = false;
+      setHidden("continueBtn", false);
     }
 
     updateHomeUI();
@@ -2482,6 +2601,19 @@
       );
     }
   }
+
+  function getQuestionDiagnostics() {
+    return {
+      total: state.questions.length,
+      traffic: getCategoryQuestions("traffic").length,
+      general: getCategoryQuestions("general").length,
+      both: getCategoryQuestions("both").length,
+      selectedCategory: state.mode,
+      selectedCategoryCount: getCategoryQuestions().length
+    };
+  }
+
+  window.QuizMasterDiagnostics = getQuestionDiagnostics;
 
   initialize();
 
