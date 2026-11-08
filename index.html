@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,54 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08172b">
 
-  <meta name="description" content="Quiz Master Rwanda is a bilingual knowledge quiz covering road safety, Rwanda, Africa, science, geography, history and general knowledge.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="googlebot" content="index,follow">
-  <meta name="author" content="Quiz Master Rwanda">
-
   <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
 
-  <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/">
-  <link rel="icon" type="image/png" href="./icon-512-3.png">
-  <link rel="apple-touch-icon" href="./icon-192-4.png">
-  <link rel="manifest" href="./manifest.webmanifest">
+  <meta name="description"
+    content="Quiz Master Rwanda is a bilingual educational quiz covering road safety, Rwanda, Africa, science, geography, history and general knowledge.">
 
-  <!-- GOOGLE ANALYTICS 4 -->
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/">
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon-192-4.png">
+  <link rel="apple-touch-icon" href="./icon-192-4.png">
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FP8R0NDZN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-
-    gtag("js", new Date());
-    gtag("config", "G-3FP8R0NDZN");
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3FP8R0NDZN');
   </script>
+
+  <!-- AdSense: use only an eligible adult-managed account -->
+  <!-- Replace the publisher ID only after confirming the approved account. -->
+  <!--
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+  -->
 
   <style>
     :root {
       --bg: #08172b;
-      --header: #0c1d35;
       --panel: #10233f;
-      --panel2: #172f50;
-      --primary: #155eef;
-      --primary-light: #3978ff;
-      --text: #f5f8ff;
+      --panel2: #142c4d;
+      --text: #f4f7fb;
       --muted: #a9bad3;
+      --blue: #2878e5;
+      --green: #16a36a;
+      --red: #dc4b58;
       --border: rgba(255,255,255,.12);
-      --green: #20bd78;
-      --red: #ef5350;
-      --gold: #ffc857;
-      --radius: 16px;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -64,7 +61,7 @@
       line-height: 1.6;
     }
 
-    button, select {
+    button, input, select {
       font: inherit;
     }
 
@@ -73,113 +70,93 @@
     }
 
     button:disabled {
-      opacity: .45;
       cursor: not-allowed;
+      opacity: .5;
     }
 
-    a {
-      color: inherit;
-    }
-
-    [hidden],
-    .hidden {
-      display: none !important;
-    }
-
-    .container {
-      width: min(100% - 24px, 760px);
-      margin: auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 11px 0;
-      background: var(--header);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
+    .app-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      padding: 14px 16px;
+      background: #0c1d34;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
     }
 
     .brand {
       font-size: 19px;
       font-weight: 800;
-      text-decoration: none;
-      white-space: nowrap;
     }
 
-    .menu-wrapper {
+    .menu-wrap {
       position: relative;
     }
 
-    .menu-toggle {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 13px;
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      background: var(--panel2);
-      color: white;
-      font-weight: 700;
-    }
-
-    .menu-panel {
-      position: absolute;
-      top: calc(100% + 10px);
-      right: 0;
-      width: min(290px, calc(100vw - 24px));
-      max-height: 75vh;
-      overflow-y: auto;
-      padding: 9px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 15px 40px rgba(0,0,0,.4);
-    }
-
-    .menu-heading {
-      padding: 8px 11px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .menu-item {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      gap: 11px;
-      padding: 11px;
+    .btn {
       border: 0;
-      border-radius: 9px;
-      background: transparent;
+      border-radius: 10px;
+      padding: 11px 16px;
       color: white;
+      background: var(--blue);
+      font-weight: 700;
+    }
+
+    .btn.secondary {
+      background: #263e5e;
+    }
+
+    .btn.success {
+      background: var(--green);
+    }
+
+    .btn.danger {
+      background: var(--red);
+    }
+
+    .btn.full {
+      width: 100%;
+    }
+
+    .menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 48px;
+      width: 230px;
+      background: #142c4d;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      z-index: 30;
+    }
+
+    .menu.open {
+      display: grid;
+      gap: 6px;
+    }
+
+    .menu button {
       text-align: left;
-      text-decoration: none;
-      font-size: 14px;
+      width: 100%;
+      border: 0;
+      color: white;
+      background: transparent;
+      padding: 10px;
+      border-radius: 8px;
     }
 
-    .menu-item:hover {
-      background: var(--panel2);
-    }
-
-    .menu-divider {
-      height: 1px;
-      margin: 7px 3px;
-      background: var(--border);
+    .menu button:hover {
+      background: rgba(255,255,255,.1);
     }
 
     main {
-      min-height: 75vh;
-      padding: 18px 0 35px;
+      width: min(100% - 24px, 760px);
+      margin: 24px auto;
     }
 
     .screen {
@@ -191,472 +168,214 @@
     }
 
     .panel {
-      margin: 13px 0;
-      padding: 18px;
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
     }
 
     h1 {
-      margin: 8px 0;
-      font-size: clamp(27px, 6vw, 37px);
-      line-height: 1.2;
+      font-size: clamp(25px, 5vw, 34px);
+      margin: 0 0 10px;
     }
 
     h2 {
-      margin: 0 0 12px;
-      font-size: 21px;
-    }
-
-    h3 {
-      margin: 0 0 10px;
-      font-size: 16px;
-    }
-
-    p {
-      color: var(--muted);
+      font-size: 23px;
     }
 
     .muted {
       color: var(--muted);
     }
 
-    .small {
-      font-size: 12px;
-    }
-
-    .hero {
-      padding: 17px 10px 13px;
-      text-align: center;
-    }
-
-    .hero-icon {
-      font-size: 42px;
-      line-height: 1.3;
-    }
-
-    .hero p,
-    .home-intro p {
-      margin: 5px 0;
-    }
-
-    .home-intro {
-      margin-bottom: 13px;
-      text-align: center;
-    }
-
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin: 15px 0;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 18px 0;
     }
 
     .stat {
-      min-width: 0;
-      padding: 10px 5px;
-      border-radius: 11px;
       background: var(--panel2);
+      border-radius: 12px;
+      padding: 12px 6px;
       text-align: center;
     }
 
     .stat strong {
       display: block;
-      overflow-wrap: anywhere;
-      color: white;
-      font-size: 19px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .setup-section {
-      margin-top: 20px;
-    }
-
-    .setup-heading {
-      margin: 0 0 10px;
-      font-size: 15px;
+      font-size: 22px;
     }
 
     .choice-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 9px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 12px 0 18px;
     }
 
-    .choice-btn {
-      min-height: 58px;
-      padding: 11px 8px;
-      border: 2px solid var(--border);
-      border-radius: 11px;
+    .choice {
       background: var(--panel2);
+      border: 2px solid var(--border);
       color: white;
-      font-size: 13px;
+      border-radius: 12px;
+      padding: 13px 8px;
       font-weight: 700;
     }
 
-    .choice-btn.selected,
-    .choice-btn.active {
-      border-color: var(--primary-light);
-      background: rgba(21,94,239,.25);
+    .choice.selected {
+      border-color: #53a1ff;
+      background: #1a477b;
     }
 
     .summary {
-      margin: 14px 0;
-      padding: 11px;
-      border: 1px solid rgba(57,120,255,.3);
-      border-radius: 11px;
-      background: rgba(21,94,239,.12);
-      font-size: 13px;
-    }
-
-    #homeMessage,
-    #setupError {
-      min-height: 1em;
-      font-size: 13px;
-    }
-
-    #setupError[data-type="error"] {
-      color: #ff8585;
-    }
-
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 46px;
-      gap: 8px;
-      padding: 12px 15px;
-      border: 0;
-      border-radius: 11px;
-      background: var(--primary);
-      color: white;
-      font-weight: 700;
-      text-align: center;
-    }
-
-    .btn:hover:not(:disabled) {
-      background: var(--primary-light);
-    }
-
-    .btn.secondary {
-      border: 1px solid var(--border);
-      background: var(--panel2);
-    }
-
-    .btn.success {
-      background: #16895b;
-    }
-
-    .btn.danger {
-      background: #a83232;
-    }
-
-    .btn.gold {
-      background: #a66c08;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 13px;
-    }
-
-    .btn-row .btn {
-      flex: 1 1 130px;
-    }
-
-    .full {
-      width: 100%;
-    }
-
-    .quiz-top {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    .quiz-info {
-      min-width: 0;
-      padding: 8px 4px;
-      border-radius: 9px;
-      background: var(--panel2);
-    }
-
-    .quiz-info strong {
-      display: block;
-      color: white;
-    }
-
-    #categoryIndicator {
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    #timerBox {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 14px;
-      padding: 8px 14px;
+      background: rgba(255,255,255,.06);
+      padding: 12px;
       border-radius: 10px;
-      background: var(--panel2);
-      color: var(--gold);
-      font-weight: 800;
+      margin: 12px 0;
     }
 
-    #timerBox.warning {
-      border: 1px solid var(--red);
-      color: #ff7777;
+    .error {
+      color: #ff9299;
+      margin: 10px 0;
+    }
+
+    .success-text {
+      color: #72e2ad;
+    }
+
+    .question-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .progress-track {
-      height: 8px;
-      margin: 13px 0;
-      overflow: hidden;
+      height: 9px;
+      background: #263e5e;
       border-radius: 20px;
-      background: #263c59;
+      overflow: hidden;
+      margin: 12px 0 20px;
     }
 
     #progressFill {
       width: 0;
       height: 100%;
-      background: var(--green);
-      transition: width .3s;
+      background: #35a4ff;
+      transition: width .2s;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 10px 0;
+      padding: 14px;
+      border-radius: 10px;
+      border: 2px solid var(--border);
+      color: white;
+      background: var(--panel2);
+    }
+
+    .option.selected {
+      border-color: #55a5ff;
+      background: #1b4778;
+    }
+
+    .option.correct {
+      border-color: var(--green);
+    }
+
+    .option.wrong {
+      border-color: var(--red);
     }
 
     #questionImage {
       display: none;
-      width: 100%;
-      max-height: 250px;
-      margin: 12px 0;
-      border-radius: 12px;
-      object-fit: contain;
+      max-width: 100%;
+      max-height: 260px;
+      margin: 12px auto;
+      border-radius: 10px;
     }
 
-    #questionText {
-      margin: 20px 0;
-      color: white;
-      font-size: clamp(19px, 4vw, 23px);
-      line-height: 1.45;
+    .feedback, .explanation {
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.06);
     }
 
-    #optionsContainer {
-      display: grid;
-      gap: 10px;
-    }
-
-    #optionsContainer .option-btn {
+    .button-row {
       display: flex;
-      align-items: center;
-      width: 100%;
-      min-height: 53px;
       gap: 10px;
-      padding: 14px;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      background: var(--panel2);
-      color: white;
-      font-size: 15px;
-      text-align: left;
+      flex-wrap: wrap;
+      margin-top: 14px;
     }
 
-    .option-letter {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: rgba(255,255,255,.1);
-      font-weight: 800;
+    .button-row .btn {
+      flex: 1;
+      min-width: 120px;
     }
 
-    #optionsContainer .selected {
-      border-color: var(--primary-light);
-      background: rgba(21,94,239,.25);
-    }
-
-    #optionsContainer .correct {
-      border-color: var(--green);
-    }
-
-    #optionsContainer .incorrect,
-    #optionsContainer .wrong {
-      border-color: var(--red);
-    }
-
-    #answerFeedback {
-      margin-top: 15px;
-      font-weight: 700;
-    }
-
-    #explanation {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .result-score {
-      margin: 12px 0;
-      color: var(--gold);
-      font-size: 45px;
-      font-weight: 900;
-      text-align: center;
-    }
-
-    #resultStars {
-      font-size: 28px;
-      text-align: center;
-    }
-
-    #resultTitle,
-    #resultMessage {
-      text-align: center;
-    }
-
-    .review-item {
-      margin: 10px 0;
-      padding: 14px;
-      overflow-wrap: anywhere;
+    .ad-container {
+      width: 100%;
+      max-width: 720px;
+      min-height: 100px;
+      margin: 35px auto 20px;
+      padding: 12px;
+      background: #10233f;
       border: 1px solid var(--border);
       border-radius: 12px;
-      background: var(--panel2);
+      text-align: center;
     }
 
-    .review-item p {
-      margin: 7px 0;
-      font-size: 14px;
-    }
-
-    .correct-text {
-      color: var(--green);
-    }
-
-    .wrong-text {
-      color: #ff7777;
-    }
-
-    .round-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      gap: 10px;
-      margin: 9px 0;
-      padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 11px;
-      background: var(--panel2);
-      color: white;
-      text-align: left;
-    }
-
-    .round-card.completed {
-      border-color: var(--green);
-    }
-
-    .round-card.locked {
-      opacity: .5;
-    }
-
-    .round-status {
+    .ad-label {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
+      margin: 0 0 10px;
     }
 
-    .field {
+    .ad-container ins {
       display: block;
       width: 100%;
-      margin: 8px 0 17px;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--panel2);
-      color: white;
-    }
-
-    label {
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .music-panel {
-      margin: 17px 0;
-      padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--panel2);
-    }
-
-    .music-panel p {
-      margin: 5px 0 12px;
+      min-height: 90px;
     }
 
     footer {
-      padding: 22px 12px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
       text-align: center;
+      color: var(--muted);
+      padding: 25px 12px;
+      font-size: 13px;
     }
 
     footer a {
-      display: inline-block;
-      margin: 4px 7px;
-      color: #8eb5ff;
+      color: #82bdff;
+      margin: 0 6px;
     }
 
-    button:focus-visible,
-    a:focus-visible,
-    select:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 3px;
-    }
-
-    @media (max-width: 420px) {
-      .container {
-        width: calc(100% - 18px);
-      }
-
+    @media (max-width: 480px) {
       .panel {
-        padding: 14px;
+        padding: 16px;
       }
 
-      .brand {
-        font-size: 16px;
-      }
-
-      .choice-btn {
-        font-size: 12px;
+      .stats {
+        gap: 6px;
       }
 
       .stat strong {
-        font-size: 17px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
+        font-size: 19px;
       }
 
-      *,
-      *::before,
-      *::after {
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
+      .choice-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -664,726 +383,365 @@
 
 <body>
 
-  <!-- HEADER AND MENU -->
-  <header>
-    <div class="container header-inner">
-      <a href="./index.html" class="brand">🇷🇼 Quiz Master</a>
+<header class="app-header">
+  <div class="brand">🧠 Quiz Master 🇷🇼</div>
 
-      <div class="menu-wrapper">
-        <button
-          id="moreMenuBtn"
-          class="menu-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="moreMenu">
-          ☰ More
+  <div class="menu-wrap">
+    <button class="btn secondary" id="moreMenuBtn"
+      type="button" aria-expanded="false">
+      ☰ More
+    </button>
+
+    <nav class="menu" id="moreMenu">
+      <button type="button" id="roundsBtn">🏆 My Progress & Quiz Rounds</button>
+      <button type="button" id="reviewAnswersBtn">📝 Review Answers</button>
+      <button type="button" id="settingsBtn">⚙️ Settings</button>
+      <button type="button" id="shareBtn">📤 Share Quiz Master</button>
+      <button type="button" id="musicMenuBtn">🎵 Music Settings</button>
+      <a href="./articles.html">📚 Learning Centre</a>
+      <a href="./about.html">ℹ️ About</a>
+      <a href="./contact.html">✉️ Contact & Help</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME SCREEN -->
+  <section class="screen active" id="homeScreen">
+    <div class="panel">
+      <h1>Quiz Master 🇷🇼</h1>
+      <p class="muted">
+        Learn • Play • Improve
+      </p>
+
+      <p>
+        Improve your knowledge through interactive quizzes
+        in English and Kinyarwanda.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="muted">Current Round</span>
+          <strong id="homeRound">1</strong>
+        </div>
+        <div class="stat">
+          <span class="muted">Best Score</span>
+          <strong id="homeScore">0</strong>
+        </div>
+        <div class="stat">
+          <span class="muted">Stars</span>
+          <strong id="homeStars">⭐</strong>
+        </div>
+      </div>
+
+      <h2>Choose Language</h2>
+      <div class="choice-grid">
+        <button type="button" class="choice language-btn"
+          data-language="rw">🇷🇼 Ikinyarwanda</button>
+        <button type="button" class="choice language-btn"
+          data-language="en">🇬🇧 English</button>
+      </div>
+
+      <h2>Choose Category</h2>
+      <div class="choice-grid">
+        <button type="button" class="choice mode-btn"
+          data-mode="traffic">
+          🚦 Amategeko y'umuhanda
         </button>
-
-        <nav
-          id="moreMenu"
-          class="menu-panel"
-          aria-label="Main navigation"
-          hidden>
-
-          <div class="menu-heading">My Quiz</div>
-
-          <button id="roundsBtn" class="menu-item" type="button">
-            🏆 My Progress & Quiz Rounds
-          </button>
-
-          <button
-            id="reviewAnswersBtn"
-            class="menu-item"
-            type="button"
-            hidden>
-            📖 Review Answers
-          </button>
-
-          <div class="menu-divider"></div>
-          <div class="menu-heading">Application</div>
-
-          <button id="settingsBtn" class="menu-item" type="button">
-            ⚙️ Settings
-          </button>
-
-          <button id="shareBtn" class="menu-item" type="button">
-            ↗ Share Quiz Master
-          </button>
-
-          <button id="musicMenuBtn" class="menu-item" type="button">
-            🎵 Music Settings
-          </button>
-
-          <div class="menu-divider"></div>
-          <div class="menu-heading">Explore</div>
-
-          <a href="./articles.html" class="menu-item">
-            📚 Learning Centre
-          </a>
-
-          <a href="./about.html" class="menu-item">
-            ℹ️ About Quiz Master
-          </a>
-
-          <div class="menu-divider"></div>
-          <div class="menu-heading">Support</div>
-
-          <a href="./contact.html" class="menu-item">
-            ✉️ Contact & Help
-          </a>
-        </nav>
+        <button type="button" class="choice mode-btn"
+          data-mode="general">
+          🌍 Ubumenyi rusange
+        </button>
       </div>
+
+      <div class="summary" id="selectionSummary">
+        Choose your language and category.
+      </div>
+
+      <div class="error" id="setupError" role="alert"></div>
+
+      <button type="button" class="btn secondary full"
+        id="confirmSetupBtn" disabled>
+        Emeza ibyo wahisemo
+      </button>
+
+      <button type="button" class="btn success full"
+        id="startBtn" disabled style="margin-top:12px">
+        Tangira gukina
+      </button>
+
+      <button type="button" class="btn secondary full"
+        id="continueBtn" style="display:none;margin-top:12px">
+        Continue
+      </button>
+
+      <p id="homeMessage" class="muted" aria-live="polite">
+        Loading questions...
+      </p>
     </div>
-  </header>
 
-  <main class="container">
+    <!-- ONE AD LOCATION: HOME SCREEN ONLY -->
+    <!-- Add the approved adult-managed AdSense publisher and slot IDs here. -->
+    <!--
+    <div class="ad-container">
+      <p class="ad-label">Advertisements</p>
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+        data-ad-slot="XXXXXXXXXX"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    </div>
+    -->
+  </section>
 
-    <!-- HOME SCREEN -->
-    <section id="homeScreen" class="screen active">
-
-      <div class="hero">
-        <div class="hero-icon">🧠🇷🇼</div>
-        <h1>Quiz Master</h1>
-        <p>Learn • Play • Improve</p>
+  <!-- QUIZ SCREEN -->
+  <section class="screen" id="quizScreen">
+    <div class="panel">
+      <div class="question-meta">
+        <span id="roundLabel">Round 1</span>
+        <span id="questionCounter">Question 1/10</span>
+        <span id="scoreNumber">0</span>
       </div>
 
-      <div class="panel">
-
-        <div class="home-intro">
-          <h2>Welcome to Quiz Master 🇷🇼</h2>
-          <p>Test your knowledge and improve every day.</p>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <strong id="homeRound">1</strong>
-            <span>Current Round</span>
-          </div>
-
-          <div class="stat">
-            <strong id="homeScore">0</strong>
-            <span>Best Score</span>
-          </div>
-
-          <div class="stat">
-            <strong id="homeStars">⭐</strong>
-            <span>Stars</span>
-          </div>
-        </div>
-
-        <!-- GAME SETUP -->
-        <div id="gameSetup">
-
-          <div class="setup-section">
-            <h3 class="setup-heading">1. Choose Language</h3>
-
-            <div class="choice-grid">
-              <button
-                class="choice-btn language-btn"
-                data-language="rw"
-                type="button"
-                aria-pressed="false">
-                🇷🇼 Ikinyarwanda
-              </button>
-
-              <button
-                class="choice-btn language-btn"
-                data-language="en"
-                type="button"
-                aria-pressed="false">
-                🇬🇧 English
-              </button>
-            </div>
-          </div>
-
-          <div class="setup-section">
-            <h3 class="setup-heading">2. Choose Category</h3>
-
-            <div class="choice-grid">
-              <button
-                class="choice-btn mode-btn"
-                data-mode="traffic"
-                type="button"
-                aria-pressed="false">
-                🚦 Road Safety
-              </button>
-
-              <button
-                class="choice-btn mode-btn"
-                data-mode="general"
-                type="button"
-                aria-pressed="false">
-                🌍 General Knowledge
-              </button>
-            </div>
-          </div>
-
-          <div
-            id="selectionSummary"
-            class="summary"
-            aria-live="polite">
-            Choose your language and category.
-          </div>
-
-          <p id="setupError" role="status" aria-live="polite"></p>
-
-          <button
-            id="confirmSetupBtn"
-            class="btn secondary full"
-            type="button"
-            disabled>
-            Confirm Selection
-          </button>
-        </div>
-
-        <!-- START AND CONTINUE -->
-        <div class="btn-row">
-          <button
-            id="startBtn"
-            class="btn full"
-            type="button"
-            disabled>
-            ▶ Start Quiz
-          </button>
-
-          <button
-            id="continueBtn"
-            class="btn success full"
-            type="button"
-            hidden>
-            ▶ Continue Quiz
-          </button>
-        </div>
-
-        <p id="homeMessage" role="status" aria-live="polite"></p>
+      <div class="question-meta">
+        <span id="categoryIndicator">General Knowledge</span>
+        <span id="timerBox">⏱ <span id="timer">30</span>s</span>
       </div>
 
-    </section>
+      <div class="progress-track">
+        <div id="progressFill"></div>
+      </div>
 
-    <!-- QUIZ SCREEN -->
-    <section id="quizScreen" class="screen">
+      <img id="questionImage" alt="Question illustration">
 
-      <div class="panel">
+      <h2 id="questionText">Loading question...</h2>
 
-        <div class="quiz-top">
-          <div class="quiz-info">
-            Round
-            <strong id="roundLabel">1</strong>
-          </div>
+      <div id="optionsContainer"></div>
 
-          <div class="quiz-info">
-            Question
-            <strong id="questionCounter">1/10</strong>
-          </div>
+      <div id="answerFeedback" class="feedback"
+        aria-live="polite" style="display:none"></div>
 
-          <div class="quiz-info">
-            Score
-            <strong id="scoreNumber">0</strong>
-          </div>
-        </div>
+      <div id="explanation" class="explanation"
+        style="display:none"></div>
 
-        <div id="categoryIndicator">General Knowledge</div>
-
-        <div id="timerBox">
-          ⏱ <span id="timer">30</span>s
-        </div>
-
-        <div
-          class="progress-track"
-          id="quizProgressBar"
-          role="progressbar"
-          aria-label="Quiz progress"
-          aria-valuemin="0"
-          aria-valuemax="100"
-          aria-valuenow="0">
-
-          <div id="progressFill"></div>
-        </div>
-
-        <img
-          id="questionImage"
-          alt="Question illustration"
-          loading="lazy">
-
-        <h2 id="questionText">Loading question...</h2>
-
-        <div id="optionsContainer"></div>
-
-        <div id="answerFeedback" aria-live="polite"></div>
-        <div id="explanation"></div>
-
-        <button
-          id="submitAnswerBtn"
-          class="btn full"
-          type="button"
-          style="margin-top:16px"
-          disabled>
+      <div class="button-row">
+        <button type="button" class="btn"
+          id="submitAnswerBtn">
           Submit Answer
         </button>
 
-        <div class="btn-row">
-          <button
-            id="nextQuestionBtn"
-            class="btn success full"
-            type="button"
-            hidden>
-            Next Question →
-          </button>
-
-          <button
-            id="quizReviewBtn"
-            class="btn secondary full"
-            type="button">
-            Review Answers
-          </button>
-
-          <button
-            id="quizHomeBtn"
-            class="btn secondary full"
-            type="button">
-            🏠 Home
-          </button>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- RESULT SCREEN -->
-    <section id="resultScreen" class="screen">
-
-      <div class="panel">
-
-        <h2 id="resultTitle">Round Complete!</h2>
-        <p id="resultMessage">Your results are ready.</p>
-
-        <div id="resultStars">⭐</div>
-        <div id="resultScore" class="result-score">0</div>
-
-        <div class="stats">
-          <div class="stat">
-            <strong id="resultPercent">0%</strong>
-            <span>Percentage</span>
-          </div>
-
-          <div class="stat">
-            <strong id="resultCorrect">0/10</strong>
-            <span>Correct Answers</span>
-          </div>
-
-          <div class="stat">
-            <strong id="resultPassMark">70%</strong>
-            <span>Pass Mark</span>
-          </div>
-        </div>
-
-        <div class="btn-row">
-
-          <button
-            id="resultNextBtn"
-            class="btn success full"
-            type="button"
-            hidden>
-            Continue to Next Round →
-          </button>
-
-          <button
-            id="retryBtn"
-            class="btn gold full"
-            type="button"
-            hidden>
-            ↻ Retry Round
-          </button>
-
-          <button
-            id="resultReviewBtn"
-            class="btn secondary full"
-            type="button">
-            📖 Review Answers
-          </button>
-
-          <button
-            id="resultHomeBtn"
-            class="btn secondary full"
-            type="button">
-            🏠 Back to Home
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- REVIEW SCREEN -->
-    <section id="reviewScreen" class="screen">
-
-      <div class="panel">
-        <h2>📖 Review Answers</h2>
-
-        <p>
-          Check your answers and learn from the explanations.
-        </p>
-
-        <div id="reviewContainer"></div>
-
-        <button
-          id="reviewHomeBtn"
-          class="btn secondary full"
-          type="button">
-          🏠 Back to Home
+        <button type="button" class="btn success"
+          id="nextQuestionBtn" style="display:none">
+          Next Question
         </button>
       </div>
 
-    </section>
-
-    <!-- ROUNDS SCREEN -->
-    <section id="roundsScreen" class="screen">
-
-      <div class="panel">
-        <h2>🏆 Quiz Rounds</h2>
-
-        <p id="roundsDescription">
-          Complete rounds to unlock new challenges.
-        </p>
-
-        <div class="stats">
-
-          <div class="stat">
-            <strong id="roundsCompleted">0</strong>
-            <span>Completed</span>
-          </div>
-
-          <div class="stat">
-            <strong id="roundsTotal">0</strong>
-            <span>Total Rounds</span>
-          </div>
-
-          <div class="stat">
-            <strong id="roundsUnlocked">1</strong>
-            <span>Unlocked</span>
-          </div>
-
-        </div>
-
-        <div id="roundList"></div>
-
-        <button
-          id="roundsHomeBtn"
-          class="btn secondary full"
-          type="button">
-          🏠 Back to Home
-        </button>
-
+      <div class="button-row">
+        <button type="button" class="btn secondary"
+          id="quizReviewBtn">Review Answers</button>
+        <button type="button" class="btn danger"
+          id="quizHomeBtn">Home</button>
       </div>
+    </div>
+  </section>
 
-    </section>
+  <!-- RESULT SCREEN -->
+  <section class="screen" id="resultScreen">
+    <div class="panel">
+      <h1>Round Results</h1>
+      <h2 id="resultTitle">Well done!</h2>
+      <p id="resultScore">Your score: 0</p>
+      <p id="resultPercentage">0%</p>
+      <p id="resultMessage"></p>
 
-    <!-- SETTINGS SCREEN -->
-    <section id="settingsScreen" class="screen">
-
-      <div class="panel">
-
-        <h2>⚙️ Settings</h2>
-
-        <label for="settingsLanguage">Language</label>
-
-        <select id="settingsLanguage" class="field">
-          <option value="en">English</option>
-          <option value="rw">Ikinyarwanda</option>
-        </select>
-
-        <label for="settingsMode">Question Category</label>
-
-        <select id="settingsMode" class="field">
-          <option value="traffic">Road Safety</option>
-          <option value="general">General Knowledge</option>
-        </select>
-
-        <div class="music-panel">
-
-          <h3>🎵 Background Music</h3>
-
-          <p class="small">
-            Turn background music on or off.
-          </p>
-
-          <button
-            id="musicToggleBtn"
-            class="btn secondary full"
-            type="button">
-            🔇 Music Off
-          </button>
-
-          <p
-            id="musicStatus"
-            class="small"
-            aria-live="polite">
-          </p>
-
-        </div>
-
-        <p id="settingsMessage" aria-live="polite"></p>
-
-        <button
-          id="saveSettingsBtn"
-          class="btn full"
-          type="button">
-          Save Settings
-        </button>
-
-        <button
-          id="resetProgressBtn"
-          class="btn danger full"
-          type="button"
-          style="margin-top:10px">
-          Reset Progress
-        </button>
-
-        <button
-          id="settingsHomeBtn"
-          class="btn secondary full"
-          type="button"
-          style="margin-top:10px">
-          🏠 Back to Home
-        </button>
-
+      <div class="button-row">
+        <button type="button" class="btn success"
+          id="retryRoundBtn">Play Again</button>
+        <button type="button" class="btn secondary"
+          id="resultHomeBtn">Home</button>
       </div>
+    </div>
+  </section>
 
-    </section>
+  <!-- REVIEW SCREEN -->
+  <section class="screen" id="reviewScreen">
+    <div class="panel">
+      <h1>Review Answers</h1>
+      <div id="reviewContainer"></div>
 
-  </main>
+      <button type="button" class="btn secondary full"
+        id="reviewHomeBtn">Back Home</button>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
-  <footer>
+  <!-- ROUNDS SCREEN -->
+  <section class="screen" id="roundsScreen">
+    <div class="panel">
+      <h1>My Progress & Quiz Rounds</h1>
+      <div id="roundsContainer"></div>
 
-    <p>Quiz Master 🇷🇼 · 2026</p>
+      <button type="button" class="btn secondary full"
+        id="roundsHomeBtn">Back Home</button>
+    </div>
+  </section>
 
-    <p>
-      <a href="./articles.html">Learning Centre</a>
-      <a href="./about.html">About</a>
-      <a href="./privacy-policy.html">Privacy Policy</a>
-      <a href="./terms.html">Terms</a>
-      <a href="./contact.html">Contact</a>
-    </p>
+  <!-- SETTINGS SCREEN -->
+  <section class="screen" id="settingsScreen">
+    <div class="panel">
+      <h1>Settings</h1>
 
-    <p>Learn • Play • Improve</p>
+      <p>Music</p>
+      <button type="button" class="btn secondary full"
+        id="musicToggleBtn">
+        Toggle Music
+      </button>
 
-  </footer>
+      <button type="button" class="btn secondary full"
+        id="settingsHomeBtn" style="margin-top:12px">
+        Back Home
+      </button>
+    </div>
+  </section>
 
-  <!-- BACKGROUND MUSIC -->
-  <audio
-    id="backgroundMusic"
-    src="./mythica.mp3"
-    preload="none"
-    loop>
-  </audio>
+</main>
 
-  <!-- MUSIC CONTROLLER -->
-  <script>
-    (() => {
-      "use strict";
+<footer>
+  <p>Quiz Master 🇷🇼 — Learn • Play • Improve</p>
+  <p>
+    <a href="./about.html">About</a>
+    <a href="./privacy-policy.html">Privacy Policy</a>
+    <a href="./terms.html">Terms</a>
+    <a href="./contact.html">Contact</a>
+  </p>
+  <p>© <span id="currentYear"></span> Quiz Master Rwanda</p>
+</footer>
 
-      const music = document.getElementById("backgroundMusic");
-      const button = document.getElementById("musicToggleBtn");
-      const status = document.getElementById("musicStatus");
-      const menuButton = document.getElementById("musicMenuBtn");
-      const settingsButton = document.getElementById("settingsBtn");
+<audio id="backgroundMusic" src="./mythica.mp3"
+  loop preload="none"></audio>
 
-      const key = "quizmasterMusicEnabled";
+<!-- Music controller: does not attach duplicate button listeners -->
+<script>
+(() => {
+  "use strict";
 
-      if (!music || !button) return;
+  const audio = document.getElementById("backgroundMusic");
+  const toggle = document.getElementById("musicToggleBtn");
 
-      function isEnabled() {
-        try {
-          return localStorage.getItem(key) === "true";
-        } catch (error) {
-          return false;
-        }
-      }
+  let enabled = localStorage.getItem("quizmasterMusicEnabled") === "true";
 
-      function updateMusicUI() {
-        const on = isEnabled();
-
-        button.textContent = on
-          ? "🔊 Music On"
-          : "🔇 Music Off";
-
-        if (status) {
-          status.textContent = on
-            ? "Music is enabled."
-            : "Music is disabled.";
-        }
-
-        if (menuButton) {
-          menuButton.textContent = on
-            ? "🔊 Music Settings"
-            : "🎵 Music Settings";
-        }
-      }
-
-      function setMusic(on) {
-        try {
-          localStorage.setItem(key, String(on));
-        } catch (error) {
-          console.warn("Music preference could not be saved.");
-        }
-
-        if (on) {
-          music.play()
-            .then(updateMusicUI)
-            .catch(() => {
-              if (status) {
-                status.textContent =
-                  "Playback was blocked. Tap Music On again.";
-              }
-            });
-        } else {
-          music.pause();
-          music.currentTime = 0;
-        }
-
-        updateMusicUI();
-
-        document.dispatchEvent(
-          new CustomEvent("quizmaster:music-changed", {
-            detail: { enabled: on }
-          })
-        );
-      }
-
-      button.addEventListener("click", () => {
-        setMusic(!isEnabled());
-      });
-
-      menuButton?.addEventListener("click", () => {
-        settingsButton?.click();
-      });
-
-      document.addEventListener(
-        "quizmaster:music-changed",
-        event => {
-          const enabled = event.detail?.enabled;
-
-          if (typeof enabled !== "boolean") return;
-
-          if (enabled && isEnabled()) {
-            music.play().catch(() => {});
-          } else if (!enabled) {
-            music.pause();
-          }
-
-          updateMusicUI();
-        }
-      );
-
-      window.quizMasterMusic = {
-        play() {
-          if (isEnabled()) {
-            music.play().catch(() => {});
-          }
-        },
-
-        pause() {
-          music.pause();
-        },
-
-        toggle() {
-          setMusic(!isEnabled());
-        },
-
-        setEnabled: setMusic
-      };
-
-      updateMusicUI();
-
-    })();
-  </script>
-
-  <!-- QUIZ ENGINE -->
-  <script src="./questions.js" defer></script>
-
-  <!-- MORE MENU CONTROLLER -->
-  <script>
-    (() => {
-      "use strict";
-
-      const menu = document.getElementById("moreMenu");
-      const toggle = document.getElementById("moreMenuBtn");
-
-      if (!menu || !toggle) return;
-
-      function closeMenu() {
-        menu.hidden = true;
-        toggle.setAttribute("aria-expanded", "false");
-      }
-
-      function openMenu() {
-        menu.hidden = false;
-        toggle.setAttribute("aria-expanded", "true");
-      }
-
-      toggle.addEventListener("click", event => {
-        event.stopPropagation();
-
-        if (menu.hidden) {
-          openMenu();
-        } else {
-          closeMenu();
-        }
-      });
-
-      document.addEventListener("click", event => {
-        if (
-          !menu.contains(event.target) &&
-          !toggle.contains(event.target)
-        ) {
-          closeMenu();
-        }
-      });
-
-      menu.addEventListener("click", event => {
-        if (event.target.closest("button, a")) {
-          closeMenu();
-        }
-      });
-
-      document.addEventListener("keydown", event => {
-        if (event.key === "Escape" && !menu.hidden) {
-          closeMenu();
-          toggle.focus();
-        }
-      });
-
-      window.quizMasterMenu = {
-        open: openMenu,
-        close: closeMenu
-      };
-
-    })();
-  </script>
-
-  <!-- SERVICE WORKER -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("./service-worker.js")
-          .then(registration => {
-            console.log(
-              "Quiz Master Service Worker registered:",
-              registration.scope
-            );
-          })
-          .catch(error => {
-            console.warn(
-              "Service Worker registration failed:",
-              error
-            );
-          });
-      });
+  function updateButton() {
+    if (toggle) {
+      toggle.textContent = enabled ? "🔊 Music On" : "🔇 Music Off";
     }
-  </script>
+  }
+
+  async function setEnabled(value) {
+    enabled = Boolean(value);
+    localStorage.setItem("quizmasterMusicEnabled", String(enabled));
+
+    if (enabled) {
+      try {
+        await audio.play();
+      } catch (error) {
+        console.warn("Music playback requires user interaction.", error);
+      }
+    } else {
+      audio.pause();
+    }
+
+    updateButton();
+  }
+
+  window.quizMasterMusic = {
+    setEnabled,
+    isEnabled: () => enabled
+  };
+
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      setEnabled(!enabled);
+    });
+  }
+
+  updateButton();
+})();
+</script>
+
+<!-- Main quiz engine -->
+<script src="./questions.js" defer></script>
+
+<!-- Menu and navigation controller -->
+<script>
+(() => {
+  "use strict";
+
+  const menuButton = document.getElementById("moreMenuBtn");
+  const menu = document.getElementById("moreMenu");
+
+  if (menuButton && menu) {
+    menuButton.addEventListener("click", () => {
+      const open = menu.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!menu.contains(event.target) &&
+          !menuButton.contains(event.target)) {
+        menu.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  document.getElementById("shareBtn")?.addEventListener("click", async () => {
+    const shareData = {
+      title: "Quiz Master 🇷🇼",
+      text: "Test your knowledge with Quiz Master!",
+      url: window.location.origin
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(shareData.url);
+        alert("✅ Link Copied!");
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") {
+        try {
+          await navigator.clipboard.writeText(shareData.url);
+          alert("✅ Link Copied!");
+        } catch {
+          alert("Please copy this link: " + shareData.url);
+        }
+      }
+    }
+  });
+
+  document.getElementById("currentYear").textContent =
+    new Date().getFullYear();
+
+  /*
+    The quiz engine owns quiz navigation buttons.
+    Avoid adding duplicate click handlers here.
+  */
+})();
+</script>
+
+<!-- Service Worker -->
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => {
+        console.warn("Service Worker registration failed:", error);
+      });
+  });
+}
+</script>
 
 </body>
 </html>
