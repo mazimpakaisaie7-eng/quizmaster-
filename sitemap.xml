@@ -5,7 +5,7 @@
   <!-- Quiz Master Homepage -->
   <url>
     <loc>https://quizmaster-liard-five.vercel.app/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -37,7 +37,7 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://quizmaster-liard-five.vercel.app/privacy-policy.html</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -45,7 +45,7 @@
   <!-- Terms of Service -->
   <url>
     <loc>https://quizmaster-liard-five.vercel.app/terms.html</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
