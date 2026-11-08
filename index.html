@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,13 +28,6 @@
 
     gtag("js", new Date());
     gtag("config", "G-3FP8R0NDZN");
-  </script>
-
-  <!-- GOOGLE ADSENSE: SINGLE AD UNIT -->
-  <script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous">
   </script>
 
   <style>
@@ -382,33 +374,6 @@
 
     .full {
       width: 100%;
-    }
-
-    /* SINGLE HOME ADVERTISEMENT ONLY */
-    .ad-container {
-      display: block;
-      width: 100%;
-      min-width: 0;
-      margin: 24px auto 12px;
-      padding: 12px 0;
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      clear: both;
-    }
-
-    .ad-label {
-      margin-bottom: 8px;
-      color: var(--muted);
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .ad-container ins.adsbygoogle {
-      display: block;
-      width: 100%;
-      min-width: 0;
-      margin: 0 auto;
     }
 
     .quiz-top {
@@ -893,27 +858,9 @@
         <p id="homeMessage" role="status" aria-live="polite"></p>
       </div>
 
-      <!-- SINGLE HOME ADVERTISEMENT -->
-      <div
-        class="ad-container"
-        id="homeAdContainer"
-        aria-label="Advertisement">
-
-        <div class="ad-label">Advertisement</div>
-
-        <ins
-          class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-2666698676518429"
-          data-ad-slot="9045712897"
-          data-ad-format="auto"
-          data-full-width-responsive="true">
-        </ins>
-      </div>
-
     </section>
 
-    <!-- QUIZ SCREEN: NO ADS -->
+    <!-- QUIZ SCREEN -->
     <section id="quizScreen" class="screen">
 
       <div class="panel">
@@ -1002,7 +949,7 @@
 
     </section>
 
-    <!-- RESULT SCREEN: NO ADS -->
+    <!-- RESULT SCREEN -->
     <section id="resultScreen" class="screen">
 
       <div class="panel">
@@ -1068,7 +1015,7 @@
 
     </section>
 
-    <!-- REVIEW SCREEN: NO ADS -->
+    <!-- REVIEW SCREEN -->
     <section id="reviewScreen" class="screen">
 
       <div class="panel">
@@ -1090,7 +1037,7 @@
 
     </section>
 
-    <!-- ROUNDS SCREEN: NO ADS -->
+    <!-- ROUNDS SCREEN -->
     <section id="roundsScreen" class="screen">
 
       <div class="panel">
@@ -1132,7 +1079,7 @@
 
     </section>
 
-    <!-- SETTINGS SCREEN: NO ADS -->
+    <!-- SETTINGS SCREEN -->
     <section id="settingsScreen" class="screen">
 
       <div class="panel">
@@ -1436,68 +1383,6 @@
           });
       });
     }
-  </script>
-
-  <!-- ADSENSE: INITIALIZE THE SINGLE HOME AD ONLY ONCE -->
-  <script>
-    (() => {
-      "use strict";
-
-      let initialized = false;
-
-      function initializeHomeAd() {
-        if (initialized) return;
-
-        const homeScreen = document.getElementById("homeScreen");
-        const container = document.getElementById("homeAdContainer");
-
-        if (!homeScreen || !container) return;
-
-        if (!homeScreen.classList.contains("active")) return;
-
-        const ad = container.querySelector("ins.adsbygoogle");
-
-        if (!ad) return;
-
-        if (ad.dataset.initialized === "true") {
-          initialized = true;
-          return;
-        }
-
-        if (container.getBoundingClientRect().width <= 0) {
-          return;
-        }
-
-        try {
-          ad.dataset.initialized = "true";
-
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-
-          initialized = true;
-
-        } catch (error) {
-          delete ad.dataset.initialized;
-
-          console.warn(
-            "AdSense initialization failed:",
-            error
-          );
-        }
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener(
-          "DOMContentLoaded",
-          initializeHomeAd,
-          { once: true }
-        );
-      } else {
-        initializeHomeAd();
-      }
-
-      window.addEventListener("pageshow", initializeHomeAd);
-
-    })();
   </script>
 
 </body>
