@@ -3,19 +3,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08172b">
+
+  <title>About Quiz Master Rwanda 🇷🇼 | Educational Knowledge Quiz</title>
 
   <meta
     name="description"
-    content="Learn about Quiz Master Rwanda, a bilingual educational quiz platform offering Road Safety and General Knowledge quizzes in English and Kinyarwanda, with interactive questions, answers and explanations."
+    content="Learn about Quiz Master Rwanda, a bilingual educational platform offering Road Safety and General Knowledge quizzes, learning articles and explanations in English and Kinyarwanda."
   >
 
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="Quiz Master Rwanda">
   <meta name="application-name" content="Quiz Master">
-
-  <title>About Quiz Master 🇷🇼 | Knowledge Quiz</title>
 
   <link
     rel="canonical"
@@ -26,12 +26,8 @@
   <link rel="apple-touch-icon" href="./icon-192-4.png">
   <link rel="manifest" href="./manifest.webmanifest">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta
-    property="og:title"
-    content="About Quiz Master 🇷🇼 | Knowledge Quiz"
-  >
+  <meta property="og:title" content="About Quiz Master Rwanda 🇷🇼">
   <meta
     property="og:description"
     content="Discover Quiz Master Rwanda, a bilingual educational quiz platform for Road Safety and General Knowledge."
@@ -43,25 +39,20 @@
   <meta property="og:site_name" content="Quiz Master Rwanda">
   <meta property="og:locale" content="en_US">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta
-    name="twitter:title"
-    content="About Quiz Master 🇷🇼"
-  >
+  <meta name="twitter:title" content="About Quiz Master Rwanda">
   <meta
     name="twitter:description"
     content="Learn, practise and improve your knowledge with Quiz Master Rwanda."
   >
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     "name": "About Quiz Master Rwanda",
     "url": "https://quizmaster-liard-five.vercel.app/about.html",
-    "description": "Information about Quiz Master Rwanda, a bilingual educational quiz platform focused on Road Safety and General Knowledge.",
+    "description": "Information about Quiz Master Rwanda, a bilingual educational platform focused on Road Safety and General Knowledge.",
     "inLanguage": "en",
     "isPartOf": {
       "@type": "WebSite",
@@ -73,7 +64,7 @@
       "name": "Quiz Master Rwanda",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Web browser",
-      "description": "A bilingual educational quiz application offering Road Safety and General Knowledge quizzes in English and Kinyarwanda.",
+      "description": "A bilingual educational quiz application offering Road Safety and General Knowledge learning activities in English and Kinyarwanda.",
       "url": "https://quizmaster-liard-five.vercel.app/"
     }
   }
@@ -82,15 +73,15 @@
   <style>
     :root {
       color-scheme: dark;
-
       --background: #08172b;
       --surface: #10233f;
       --surface-light: #172f50;
       --primary: #155eef;
-      --primary-light: #3478ff;
+      --primary-hover: #3478ff;
       --text: #f5f8ff;
-      --muted: #b2c0d5;
-      --border: rgba(255,255,255,.12);
+      --muted: #c0ccdc;
+      --border: rgba(255,255,255,.13);
+      --accent: #8db5ff;
       --success: #36c995;
     }
 
@@ -101,48 +92,49 @@
     html {
       min-height: 100%;
       scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(
-          circle at top,
-          #142d50 0,
-          var(--background) 55%
-        );
+        radial-gradient(circle at top, #142d50 0, var(--background) 55%);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.75;
     }
 
     a {
-      color: #8db5ff;
+      color: var(--accent);
+      text-underline-offset: 4px;
+    }
+
+    a:hover {
+      color: #c0d5ff;
     }
 
     a:focus-visible {
-      outline: 3px solid #8db5ff;
+      outline: 3px solid var(--accent);
       outline-offset: 4px;
       border-radius: 4px;
     }
 
-    header {
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(8,23,43,.96);
+      background: rgba(8,23,43,.97);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(12px);
     }
 
     .nav {
       width: 100%;
-      max-width: 1000px;
+      max-width: 1050px;
       min-height: 68px;
       margin: auto;
       padding: 12px 20px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -157,30 +149,32 @@
       white-space: nowrap;
     }
 
-    .home-link {
+    .home-link,
+    .primary-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 42px;
-      padding: 8px 15px;
-
-      color: white;
+      min-height: 44px;
+      padding: 9px 16px;
+      color: #fff;
       background: var(--primary);
+      border: 0;
       border-radius: 9px;
-
       font-size: 14px;
       font-weight: 700;
       text-decoration: none;
+      transition: background .2s ease;
     }
 
     .home-link:hover,
-    .button:hover {
-      background: var(--primary-light);
+    .primary-button:hover {
+      color: #fff;
+      background: var(--primary-hover);
     }
 
     main {
       width: 100%;
-      max-width: 900px;
+      max-width: 950px;
       margin: 35px auto;
       padding: 0 17px;
     }
@@ -197,12 +191,10 @@
       display: inline-block;
       margin-bottom: 12px;
       padding: 5px 11px;
-
-      color: #a9c6ff;
+      color: #b9d0ff;
       background: rgba(21,94,239,.15);
       border: 1px solid rgba(141,181,255,.2);
       border-radius: 30px;
-
       font-size: 12px;
       font-weight: 700;
       letter-spacing: .5px;
@@ -211,7 +203,7 @@
 
     h1 {
       margin: 0 0 18px;
-      font-size: clamp(27px, 5vw, 36px);
+      font-size: clamp(28px, 5vw, 38px);
       line-height: 1.25;
       letter-spacing: -.5px;
     }
@@ -225,6 +217,7 @@
     h3 {
       margin: 0 0 8px;
       font-size: 17px;
+      line-height: 1.4;
     }
 
     p,
@@ -257,10 +250,9 @@
     .purpose {
       margin: 25px 0;
       padding: 22px;
-
       background: var(--surface-light);
       border: 1px solid var(--border);
-      border-left: 4px solid var(--primary-light);
+      border-left: 4px solid var(--primary-hover);
       border-radius: 12px;
     }
 
@@ -280,6 +272,7 @@
     }
 
     .feature {
+      min-width: 0;
       padding: 18px;
       background: var(--surface-light);
       border: 1px solid var(--border);
@@ -299,7 +292,7 @@
 
     .note {
       margin: 22px 0;
-      padding: 15px 17px;
+      padding: 16px 18px;
       background: rgba(54,201,149,.08);
       border: 1px solid rgba(54,201,149,.2);
       border-radius: 10px;
@@ -310,7 +303,7 @@
     }
 
     .contact-box {
-      margin-top: 25px;
+      margin-top: 20px;
       padding: 20px;
       background: var(--surface-light);
       border: 1px solid var(--border);
@@ -328,21 +321,11 @@
       overflow-wrap: anywhere;
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .primary-button {
       min-height: 47px;
       margin-top: 20px;
       padding: 11px 19px;
-
-      color: white;
-      background: var(--primary);
-      border-radius: 9px;
-
-      font-weight: 700;
-      text-decoration: none;
-      transition: background .2s ease;
+      font-size: 15px;
     }
 
     footer {
@@ -416,6 +399,8 @@
       *::before,
       *::after {
         transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
       }
     }
   </style>
@@ -423,26 +408,19 @@
 
 <body>
 
-  <header>
+  <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-
-      <a
-        class="brand"
-        href="./index.html"
-        aria-label="Quiz Master home"
-      >
+      <a class="brand" href="./index.html" aria-label="Quiz Master home">
         Quiz Master 🇷🇼
       </a>
 
       <a class="home-link" href="./index.html">
         🏠 Home
       </a>
-
     </nav>
   </header>
 
   <main>
-
     <article class="content">
 
       <span class="eyebrow">
@@ -460,30 +438,26 @@
       <p>
         Quiz Master helps users test their knowledge, discover
         new information and practise through interactive
-        questions, answer choices, results and educational
+        questions, answer choices, quiz results and educational
         explanations. The platform supports English and
         Kinyarwanda.
       </p>
 
       <section class="purpose" aria-labelledby="purposeTitle">
-
         <h2 id="purposeTitle">Our Purpose</h2>
 
         <p>
-          Quiz Master was created to provide a helpful place
-          where people can learn things they do not yet know,
-          refresh what they have already learned, understand
-          their knowledge better and explore different subjects
-          through enjoyable quiz activities.
+          Quiz Master aims to provide a helpful learning space
+          where users can explore subjects, refresh what they
+          already know and improve their understanding through
+          educational quiz activities.
         </p>
 
         <p>
-          The goal is not only to answer questions or earn
-          points. It is also to encourage curiosity, improve
-          understanding, refresh knowledge and make learning
-          a positive part of everyday life.
+          Learning is not only about selecting the correct answer.
+          It is also about understanding why an answer is correct,
+          discovering new ideas and developing curiosity.
         </p>
-
       </section>
 
       <h2>What Quiz Master Offers</h2>
@@ -492,55 +466,55 @@
 
         <section class="feature">
           <span class="feature-icon" aria-hidden="true">📚</span>
-          <h3>Learn New Things</h3>
+          <h3>Educational Learning</h3>
           <p>
-            Explore educational questions and discover
-            information across different subjects.
+            Explore questions and learning materials covering
+            different subjects and useful topics.
           </p>
         </section>
 
         <section class="feature">
           <span class="feature-icon" aria-hidden="true">🧠</span>
-          <h3>Refresh Your Knowledge</h3>
+          <h3>Knowledge Practice</h3>
           <p>
-            Practise what you have learned and remind yourself
-            of facts and ideas you already know.
+            Practise your knowledge through interactive
+            questions and multiple-choice answers.
           </p>
         </section>
 
         <section class="feature">
           <span class="feature-icon" aria-hidden="true">💡</span>
-          <h3>Learn from Explanations</h3>
+          <h3>Answer Explanations</h3>
           <p>
-            Read explanations after answering questions to
-            understand the correct answers and learn more.
-          </p>
-        </section>
-
-        <section class="feature">
-          <span class="feature-icon" aria-hidden="true">❓</span>
-          <h3>Explore Questions</h3>
-          <p>
-            Discover useful information through questions,
-            answer choices and educational explanations.
+            Use available explanations to understand answers
+            and learn from quiz questions.
           </p>
         </section>
 
         <section class="feature">
           <span class="feature-icon" aria-hidden="true">🏆</span>
-          <h3>Track Quiz Results</h3>
+          <h3>Quiz Results</h3>
           <p>
-            See your quiz results and use your performance
-            to identify areas where you can practise more.
+            Review your results and identify topics where
+            additional practice may be useful.
           </p>
         </section>
 
         <section class="feature">
           <span class="feature-icon" aria-hidden="true">🌍</span>
-          <h3>Use Two Languages</h3>
+          <h3>Two Languages</h3>
           <p>
-            Choose English or Kinyarwanda to make the learning
-            experience more comfortable.
+            Use English or Kinyarwanda where the corresponding
+            translated content is available.
+          </p>
+        </section>
+
+        <section class="feature">
+          <span class="feature-icon" aria-hidden="true">📖</span>
+          <h3>Learning Centre</h3>
+          <p>
+            Read educational articles that complement the
+            interactive quiz experience.
           </p>
         </section>
 
@@ -549,41 +523,32 @@
       <h2>Quiz Categories</h2>
 
       <p>
-        Quiz Master currently focuses on two main quiz categories:
+        Quiz Master focuses on two main learning categories:
       </p>
 
       <ul>
-
         <li>
           <strong>Road Safety:</strong>
-          Practise knowledge about road signs, traffic rules,
-          pedestrians, road users and responsible road use.
+          Learn about road signs, traffic lights, road markings,
+          pedestrians, responsible road use and general traffic
+          safety principles.
         </li>
 
         <li>
           <strong>General Knowledge:</strong>
-          Explore subjects such as geography, history, science,
-          technology, Rwanda, Africa and other general knowledge
-          topics.
+          Explore topics such as Rwanda, Africa, geography,
+          history, science, technology and other general
+          knowledge subjects.
         </li>
-
       </ul>
 
       <h2>Available Languages</h2>
 
       <p>
-        Quiz Master supports the following languages:
-      </p>
-
-      <ul>
-        <li><strong>English</strong></li>
-        <li><strong>Kinyarwanda</strong></li>
-      </ul>
-
-      <p>
-        Users can select their preferred language when setting
-        up a quiz. Questions and learning information are
-        provided in the supported languages where available.
+        Quiz Master supports English and Kinyarwanda.
+        Users can select their preferred language when
+        setting up a quiz. Translations are provided
+        where available.
       </p>
 
       <h2>How to Use Quiz Master</h2>
@@ -592,99 +557,101 @@
         <li>Open the Quiz Master homepage.</li>
         <li>Choose your preferred language.</li>
         <li>Select Road Safety or General Knowledge.</li>
-        <li>Confirm your selections and start a quiz.</li>
-        <li>Read each question and choose an answer.</li>
-        <li>Submit your answer as instructed in the quiz.</li>
+        <li>Confirm your selections.</li>
+        <li>Start a quiz and read each question carefully.</li>
+        <li>Select an answer and submit it as instructed.</li>
         <li>Review your results and available explanations.</li>
-        <li>Continue practising through the available quiz rounds.</li>
+        <li>Continue practising with available quiz rounds.</li>
       </ol>
 
       <h2>Quiz Results and Learning Progress</h2>
 
       <p>
-        Quiz Master uses questions, answer choices, scores
-        and explanations to create an interactive learning
-        experience. After a quiz, users can review their
-        performance and see which answers were correct.
+        Quiz Master provides an interactive way to practise
+        knowledge using questions, answer choices, scores
+        and explanations. Available progress and review
+        features help users follow their practice within
+        the application.
       </p>
 
       <p>
-        Available progress, review and quiz history features
-        help users follow their practice within the application.
-        Results are intended to support learning and should
-        not be treated as formal academic qualifications.
+        Quiz results are intended to support personal learning.
+        They are not formal academic qualifications,
+        professional certificates or official examination results.
       </p>
 
       <h2>Learning Centre</h2>
 
       <p>
-        In addition to interactive quizzes, Quiz Master provides
-        a Learning Centre where users can explore educational
-        articles and additional information.
+        The Quiz Master Learning Centre provides educational
+        articles and additional information to help users
+        explore subjects beyond the quiz questions.
       </p>
 
       <p>
-        The Learning Centre complements quiz practice by giving
-        users another way to read, explore and improve their
-        understanding of different topics.
+        Articles complement quiz practice by giving users
+        an opportunity to read, review important ideas
+        and improve their understanding.
       </p>
 
       <p>
         <a href="./articles.html">
-          Visit the Quiz Master Learning Centre
+          Visit the Quiz Master Learning Centre →
         </a>
       </p>
 
       <h2>Settings and User Experience</h2>
 
       <p>
-        Quiz Master includes settings and controls intended
-        to make the quiz experience easier to use. Depending
-        on the available application features, users can
-        manage preferences such as language and quiz music.
+        Quiz Master includes application controls intended
+        to make the learning experience easier to use.
+        Available settings may include language preferences
+        and music controls.
       </p>
 
-      <h2>Our Commitment</h2>
+      <h2>Our Commitment to Educational Content</h2>
 
       <p>
-        We aim to keep Quiz Master useful, accessible and easy
-        to understand. The platform may receive updates,
-        additional questions, learning articles and improvements
-        over time.
+        We aim to make Quiz Master useful, understandable
+        and accessible. The platform may receive updates,
+        additional questions, new learning articles and
+        improvements over time.
       </p>
 
       <div class="note">
         <p>
-          <strong>Educational note:</strong>
-          Quiz Master is intended for educational practice.
-          Road Safety content is provided for general learning
-          and does not replace official traffic laws, professional
-          driving instruction or guidance from relevant authorities.
-          Always follow the applicable road rules and official
-          instructions.
+          <strong>Educational notice:</strong>
+          Quiz Master is intended for general educational
+          practice. Road Safety information is provided
+          for learning purposes and does not replace
+          applicable laws, official government publications,
+          professional driving instruction or directions
+          from authorised traffic officers. Always follow
+          current official road rules and safety instructions.
         </p>
       </div>
 
       <h2>Access and Availability</h2>
 
       <p>
-        Quiz Master is accessible through a web browser.
-        An internet connection may be needed to load the website,
-        questions, articles and updates. Some previously loaded
-        content may be available offline depending on the
-        application's offline support and the content saved
-        on the device.
+        Quiz Master can be accessed through a compatible
+        web browser. An internet connection may be required
+        to load the website, questions, articles and updates.
+        Some previously loaded content may remain available
+        offline depending on the application's offline
+        support and the content stored on the device.
       </p>
 
       <h2>Contact Quiz Master</h2>
 
       <section class="contact-box" aria-labelledby="contactTitle">
+        <h2 id="contactTitle">Questions and Feedback</h2>
 
         <p>
-          Questions, feedback and suggestions are welcome.
-          If you would like to contact us about Quiz Master,
-          report an issue or suggest an improvement, please
-          send an email.
+          We welcome questions, feedback, corrections and
+          suggestions that can help improve Quiz Master.
+          For enquiries or to report a website issue,
+          contact us by email.
         </p>
 
         <a
@@ -693,31 +660,21 @@
         >
           mazimpakaisaie7@gmail.com
         </a>
-
       </section>
 
-      <a class="button" href="./index.html">
+      <a class="primary-button" href="./index.html">
         Start Learning with Quiz Master →
       </a>
 
     </article>
-
   </main>
 
   <footer>
+    <p><strong>Quiz Master 🇷🇼</strong></p>
 
-    <p>
-      <strong>Quiz Master 🇷🇼</strong>
-    </p>
+    <p>Learn • Discover • Practise • Improve</p>
 
-    <p>
-      Learn • Discover • Practise • Improve
-    </p>
-
-    <nav
-      class="footer-links"
-      aria-label="Footer navigation"
-    >
+    <nav class="footer-links" aria-label="Footer navigation">
       <a href="./index.html">Home</a>
       <a href="./about.html">About</a>
       <a href="./articles.html">Learning Centre</a>
@@ -729,7 +686,6 @@
     <p>
       © 2026 Quiz Master Rwanda. All rights reserved.
     </p>
-
   </footer>
 
 </body>
