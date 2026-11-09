@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +13,6 @@
 
   <link rel="icon" href="./icon-192-4.png">
   <link rel="manifest" href="./manifest.webmanifest">
-
-  <!-- AdSense: one manual ad unit is placed in the page body below. -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
-    crossorigin="anonymous"></script>
 
   <style>
     :root {
@@ -344,25 +340,6 @@
       text-align: center;
     }
 
-    /* The only ad placement in this HTML page. */
-    .ad-container {
-      min-height: 100px;
-      margin: 35px auto;
-      padding: 12px;
-      text-align: center;
-      background: rgba(16,35,61,.55);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-
-    .ad-label {
-      margin-bottom: 8px;
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
     .article-detail {
       display: none;
       margin: 30px 0;
@@ -643,20 +620,6 @@
 
       <div class="articles-grid" id="articlesGrid"></div>
     </section>
-
-    <!-- THE ONLY ADVERTISEMENT LOCATION IN THIS PAGE -->
-    <aside class="ad-container" aria-label="Advertisement">
-      <div class="ad-label" data-en="Advertisement" data-rw="Kwamamaza">
-        Advertisement
-      </div>
-
-      <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-2666698676518429"
-        data-ad-slot="9045712897"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-    </aside>
 
     <section class="article-detail" id="articleDetail"
       aria-live="polite" tabindex="-1">
@@ -1136,7 +1099,7 @@
         }
 
         state.articles = records
-          .map(normalizeArticle)
+          .map((record, index) => normalizeArticle(record, index))
           .filter(Boolean);
 
         state.notice = data.educational_notice || data.notice || {};
@@ -1207,14 +1170,8 @@
 
     $("backBtn").addEventListener("click", closeArticle);
     $("backBtnBottom").addEventListener("click", closeArticle);
-    $("currentYear").textContent = new Date().getFullYear();
 
-    // Initialize the single manual AdSense unit on this page.
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (error) {
-      console.warn("AdSense initialization:", error);
-    }
+    $("currentYear").textContent = new Date().getFullYear();
 
     setLanguage("en");
     loadArticles();
