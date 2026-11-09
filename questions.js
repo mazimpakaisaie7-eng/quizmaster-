@@ -1,6 +1,8 @@
 /* =========================================================
    🇷🇼 QUIZ MASTER — COMPLETE QUIZ ENGINE
-   Version: 4.1.2
+   Version: 4.2.0
+
+   Compatible with Quiz Master index.html
 
    Files:
    - ./questions.js
@@ -18,6 +20,7 @@
    - 10 questions per round
    - No repeats until category pool is exhausted
    - Separate category progress
+   - Continuous quiz cycles
    - Traffic: 60 seconds
    - General: 30 seconds
    - 10 points per correct answer
@@ -26,6 +29,7 @@
    - Review answers
    - Retry and next round
    - Sequential round unlocking
+   - Best Score and Total Score preserved
    ========================================================= */
 
 (() => {
@@ -63,6 +67,7 @@
     language: "en",
     mode: "general",
     setupConfirmed: false,
+
     questions: [],
     loaded: false,
     loading: false,
@@ -128,10 +133,7 @@
     if (!element) return;
 
     element.hidden = false;
-
-    if (element.style.display === "none") {
-      element.style.display = display;
-    }
+    element.style.display = display;
   }
 
   function hideElement(id) {
@@ -315,6 +317,7 @@
 
     ["traffic", "general"].forEach(category => {
       const source = raw[category];
+
       if (!source || typeof source !== "object") return;
 
       result[category].completedRounds =
@@ -534,6 +537,7 @@
 
       if (typeof value === "number") {
         if (value === 0) return 0;
+
         if (Number.isInteger(value) && value >= 1 && value <= 4) {
           return value - 1;
         }
@@ -948,8 +952,6 @@
 
   function updateSetupButtons() {
     const count = getCategoryQuestions().length;
-    const totalRounds = getTotalRounds();
-    const unlockedRound = getUnlockedRound();
 
     const canConfirm =
       state.loaded && count > 0 && !state.loading;
@@ -958,8 +960,7 @@
       state.loaded &&
       state.setupConfirmed &&
       count > 0 &&
-      !state.loading &&
-      unlockedRound <= totalRounds;
+      !state.loading;
 
     setDisabled("confirmSetupBtn", !canConfirm);
     setDisabled("startBtn", !canStart);
@@ -1013,17 +1014,6 @@
 
       showError(
         `There are no valid questions in ${getCategoryName()}. Check questions.json.`
-      );
-
-      updateSetupButtons();
-      return;
-    }
-
-    if (getUnlockedRound() > getTotalRounds()) {
-      showMessage(
-        state.language === "rw"
-          ? "Warangije rounds zose zo muri iki cyiciro."
-          : "You have completed all rounds in this category."
       );
 
       updateSetupButtons();
@@ -1113,7 +1103,7 @@
       session.questions.length > 0;
 
     if (hasSession) {
-      showElement("continueBtn");
+      showElement("continueBtn", "inline-block");
     } else {
       hideElement("continueBtn");
     }
@@ -1134,7 +1124,7 @@
     }
 
     saveJSON(CONFIG.STORAGE.SESSION, {
-      version: 2,
+      version: 3,
       category: state.mode,
       language: state.language,
       round: state.currentRound,
@@ -1291,14 +1281,18 @@
     if (!allQuestions.length) return [];
 
     const progress = state.progress[category];
+
     const usedIds = new Set(progress.usedQuestionIds);
 
     let available = allQuestions.filter(
-      q => !usedIds.has(q.id)
+      question => !usedIds.has(question.id)
     );
 
-    // Reset used-question cycle only after every question
-    // in this category has already been used.
+    /*
+      If all questions in this category have been used,
+      reset the question cycle and make them available again.
+    */
+
     if (!available.length) {
       progress.usedQuestionIds = [];
       available = [...allQuestions];
@@ -1344,11 +1338,16 @@
 
     const totalRounds = getTotalRounds(state.mode);
 
+    if (totalRounds <= 0) {
+      showError("No rounds are available in this category.");
+      return;
+    }
+
     if (!retryQuestions && requestedRound > totalRounds) {
-      showMessage(
+      showError(
         state.language === "rw"
-          ? "Warangije rounds zose z'iki cyiciro."
-          : "You have completed all rounds in this category."
+          ? "Nta yindi round ihari. Tangira cycle nshya."
+          : "No further round is available. Start a new cycle."
       );
 
       updateHome();
@@ -1840,7 +1839,7 @@
   }
 
   /* =====================================================
-     25. NEXT ROUND BUTTON — FIXED
+     25. NEXT ROUND BUTTON — CONTINUOUS CYCLE
   ===================================================== */
 
   function updateNextRoundButton(passed) {
@@ -1879,11 +1878,8 @@
     const hasNextRound =
       Boolean(passed) &&
       completed.includes(state.currentRound) &&
-      state.currentRound < totalRounds;
+      totalRounds > 0;
 
-    // IMPORTANT:
-    // Remove both hidden and inline display:none.
-    // This fixes the Next Round button not appearing.
     button.hidden = !hasNextRound;
 
     button.style.display = hasNextRound
@@ -1894,15 +1890,30 @@
 
     if (!hasNextRound) return;
 
-    const nextRound = state.currentRound + 1;
+    const isLastRound =
+      state.currentRound >= totalRounds;
 
-    button.textContent = state.language === "rw"
-      ? `🔓 Komeza kuri Round ${nextRound} →`
-      : `🔓 Continue to Round ${nextRound} →`;
+    const nextRound = isLastRound
+      ? 1
+      : state.currentRound + 1;
+
+    button.textContent = isLastRound
+      ? (
+          state.language === "rw"
+            ? "🔄 Tangira bundi bushya — Round 1"
+            : "🔄 Start New Cycle — Round 1"
+        )
+      : (
+          state.language === "rw"
+            ? `🔓 Komeza kuri Round ${nextRound} →`
+            : `🔓 Continue to Round ${nextRound} →`
+        );
 
     button.setAttribute(
       "aria-label",
-      `Continue to Round ${nextRound}`
+      isLastRound
+        ? "Start a new quiz cycle"
+        : `Continue to Round ${nextRound}`
     );
 
     if (button.dataset.nextRoundBound !== "true") {
@@ -1965,7 +1976,6 @@
     updateRounds();
     updateReviewButton();
 
-    // Update the Next Round button after recording progress.
     updateNextRoundButton(passed);
 
     const stars = percentage >= 90
@@ -2000,13 +2010,24 @@
 
     setText("resultPercentage", `${percentage}%`);
 
+    const isLastRound =
+      state.currentRound >= getTotalRounds(category);
+
     setText(
       "resultMessage",
       passed
         ? (
-            state.language === "rw"
-              ? `Wujuje amanota akenewe. ${stars} Ushobora gukomeza.`
-              : `You reached the pass mark. ${stars} You can continue.`
+            isLastRound
+              ? (
+                  state.language === "rw"
+                    ? `Watsinze Round ya nyuma! ${stars} Ushobora gutangira Cycle nshya.`
+                    : `You passed the final round! ${stars} You can start a new cycle.`
+                )
+              : (
+                  state.language === "rw"
+                    ? `Wujuje amanota akenewe. ${stars} Ushobora gukomeza.`
+                    : `You reached the pass mark. ${stars} You can continue.`
+                )
           )
         : (
             state.language === "rw"
@@ -2052,7 +2073,7 @@
   }
 
   /* =====================================================
-     28. CONTINUE TO NEXT ROUND — FIXED
+     28. CONTINUE TO NEXT ROUND — ENDLESS CYCLE
   ===================================================== */
 
   function continueToNextRound() {
@@ -2060,11 +2081,22 @@
 
     const category = state.mode;
     const progress = state.progress[category];
+
     const totalRounds = getTotalRounds(category);
+
+    if (totalRounds <= 0) {
+      showError(
+        state.language === "rw"
+          ? "Nta rounds zihari muri iki cyiciro."
+          : "There are no rounds available in this category."
+      );
+      return;
+    }
 
     const percentage = state.currentQuestions.length
       ? Math.round(
-          (state.correctAnswers / state.currentQuestions.length) * 100
+          (state.correctAnswers /
+            state.currentQuestions.length) * 100
         )
       : 0;
 
@@ -2077,7 +2109,9 @@
       return;
     }
 
-    if (!progress.completedRounds.includes(state.currentRound)) {
+    if (
+      !progress.completedRounds.includes(state.currentRound)
+    ) {
       showError(
         state.language === "rw"
           ? "Banza urangize round iriho."
@@ -2086,20 +2120,42 @@
       return;
     }
 
-    const nextRound = state.currentRound + 1;
+    const isLastRound =
+      state.currentRound >= totalRounds;
 
-    if (nextRound > totalRounds) {
-      showMessage(
-        state.language === "rw"
-          ? "🎉 Warangije rounds zose zo muri iki cyiciro!"
-          : "🎉 Congratulations! You completed all rounds in this category."
-      );
+    /*
+      FINAL ROUND:
+      Clear only the completed-round list and used-question list.
+      Best Score and Total Score remain unchanged.
+      The next round will be Round 1.
+    */
+
+    if (isLastRound) {
+      progress.completedRounds = [];
+      progress.usedQuestionIds = [];
+
+      saveProgress();
+
+      state.setupConfirmed = true;
 
       updateHome();
       updateRounds();
-      goHome();
+      updateReviewButton();
+
+      showMessage(
+        state.language === "rw"
+          ? "🔄 Watangiye cycle nshya! Komeza wige."
+          : "🔄 A new cycle has started! Keep learning."
+      );
+
+      startRound(1);
+
       return;
     }
+
+    /* NORMAL NEXT ROUND */
+
+    const nextRound = state.currentRound + 1;
 
     if (getUnlockedRound(category) !== nextRound) {
       showError(
@@ -2286,10 +2342,17 @@
     const summary = document.createElement("div");
     summary.className = "summary";
 
+    const cycleFinished =
+      total > 0 && unlocked > total;
+
     summary.textContent =
       state.language === "rw"
-        ? `Round warangije: ${completed.length} / ${total} • Round ifunguye: ${Math.min(unlocked, total)}`
-        : `Completed rounds: ${completed.length} / ${total} • Unlocked round: ${Math.min(unlocked, total)}`;
+        ? cycleFinished
+          ? `Cycle irarangiye: ${total} / ${total} • Ushobora gutangira bundi bushya.`
+          : `Round warangije: ${completed.length} / ${total} • Round ifunguye: ${unlocked}`
+        : cycleFinished
+          ? `Cycle completed: ${total} / ${total} • You can start again.`
+          : `Completed rounds: ${completed.length} / ${total} • Unlocked round: ${unlocked}`;
 
     container.appendChild(summary);
 
@@ -2304,12 +2367,12 @@
       return;
     }
 
-    if (unlocked > total) {
+    if (cycleFinished) {
       const completedMessage = document.createElement("p");
 
       completedMessage.textContent = state.language === "rw"
-        ? "🎉 Warangije rounds zose zo muri iki cyiciro!"
-        : "🎉 You have completed all rounds in this category!";
+        ? "🎉 Warangije rounds zose! Subira kuri Results utangize cycle nshya."
+        : "🎉 You completed all rounds! Return to Results to start a new cycle.";
 
       container.appendChild(completedMessage);
     }
@@ -2586,21 +2649,40 @@
         mode: state.mode,
         loaded: state.loaded,
         loading: state.loading,
+
         questionCount: state.questions.length,
+
         trafficCount: getCategoryQuestions("traffic").length,
         generalCount: getCategoryQuestions("general").length,
+
         currentRound: state.currentRound,
         currentQuestionIndex: state.currentQuestionIndex,
+
         score: state.score,
         correctAnswers: state.correctAnswers,
+
         setupConfirmed: state.setupConfirmed,
         roundFinished: state.roundFinished,
+
         completedTrafficRounds: [
           ...state.progress.traffic.completedRounds
         ],
+
         completedGeneralRounds: [
           ...state.progress.general.completedRounds
-        ]
+        ],
+
+        trafficBestScore: state.progress.traffic.bestScore,
+        generalBestScore: state.progress.general.bestScore,
+
+        trafficTotalScore: state.progress.traffic.totalScore,
+        generalTotalScore: state.progress.general.totalScore,
+
+        trafficUsedQuestions:
+          state.progress.traffic.usedQuestionIds.length,
+
+        generalUsedQuestions:
+          state.progress.general.usedQuestionIds.length
       };
     }
   };
