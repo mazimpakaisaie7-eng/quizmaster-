@@ -1,33 +1,35 @@
+
 {
-  "id": "./",
+  "id": "/",
   "name": "Quiz Master 🇷🇼 - Knowledge Quiz",
   "short_name": "Quiz Master",
   "description": "Quiz Master Rwanda is a bilingual educational quiz application that helps users improve their knowledge through road safety, general knowledge, learning articles and interactive quiz rounds in English and Kinyarwanda.",
   "lang": "en",
   "dir": "ltr",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "display_override": [
     "standalone",
     "minimal-ui"
   ],
   "orientation": "portrait",
-  "background_color": "#08172b",
+  "background_color": "#071426",
   "theme_color": "#08172b",
   "categories": [
     "education",
     "games"
   ],
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "./icon-192-4.png",
+      "src": "/icon-192-4.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "./icon-512-3.png",
+      "src": "/icon-512-3.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
