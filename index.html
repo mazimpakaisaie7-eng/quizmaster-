@@ -19,28 +19,22 @@
   <link rel="icon" href="./icon-192-4.png">
   <link rel="apple-touch-icon" href="./icon-192-4.png">
 
-  <!-- Google Analytics - PRESERVED -->
-  <script async
-    src="https://www.googletagmanager.com/gtag/js?id=G-3FP8R0NDZN"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FP8R0NDZN"></script>
 
   <script>
     window.dataLayer = window.dataLayer || [];
-
     function gtag() {
       dataLayer.push(arguments);
     }
-
     gtag('js', new Date());
     gtag('config', 'G-3FP8R0NDZN');
   </script>
 
-  <!-- Google AdSense - ORIGINAL CODE PRESERVED -->
-  <!-- Do not replace the publisher ID without verifying your account. -->
-  <!--
+  <!-- Google AdSense -->
   <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
     crossorigin="anonymous"></script>
-  -->
 
   <style>
     :root {
@@ -71,12 +65,7 @@
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(
-          circle at 50% 0%,
-          #17385e 0%,
-          #09192e 42%,
-          #071426 100%
-        );
+        radial-gradient(circle at 50% 0%, #17385e 0%, #09192e 42%, #071426 100%);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
@@ -223,11 +212,7 @@
     .panel {
       padding: 25px;
       margin-bottom: 20px;
-      background: linear-gradient(
-        145deg,
-        rgba(20,44,73,.98),
-        rgba(13,32,55,.98)
-      );
+      background: linear-gradient(145deg, rgba(20,44,73,.98), rgba(13,32,55,.98));
       border: 1px solid var(--border);
       border-radius: 19px;
       box-shadow: var(--shadow);
@@ -402,7 +387,7 @@
       font-size: 13px;
     }
 
-    /* ADS: THE ONLY AD LOCATION */
+    /* HOME AD ONLY */
     .ad-container {
       width: 100%;
       max-width: 720px;
@@ -594,11 +579,9 @@
 <body>
 
 <header class="app-header">
-
   <div class="brand">🧠 Quiz Master 🇷🇼</div>
 
   <div class="menu-wrap">
-
     <button class="btn secondary"
       id="moreMenuBtn"
       type="button"
@@ -608,7 +591,6 @@
     </button>
 
     <nav class="menu" id="moreMenu">
-
       <button type="button" id="roundsBtn">
         🏆 My Progress & Quiz Rounds
       </button>
@@ -632,32 +614,23 @@
       <a href="./articles.html">📚 Learning Centre</a>
       <a href="./about.html">ℹ️ About</a>
       <a href="./contact.html">✉️ Contact & Help</a>
-
     </nav>
   </div>
-
 </header>
 
 <main>
 
-  <!-- =================================
-       HOME SCREEN
-  ================================== -->
-
+  <!-- HOME SCREEN -->
   <section class="screen active" id="homeScreen">
 
     <div class="panel">
 
-      <!-- WELCOME -->
       <div class="welcome">
-
         <div class="logo-icon">🧠</div>
 
         <h1>Welcome to Quiz Master 🇷🇼</h1>
 
-        <p class="tagline">
-          LEARN • PLAY • IMPROVE
-        </p>
+        <p class="tagline">LEARN • PLAY • IMPROVE</p>
 
         <p class="welcome-description">
           Welcome! Challenge your knowledge, discover new things
@@ -668,12 +641,9 @@
         <div class="welcome-badge">
           🇷🇼 Rwanda Educational Quiz Platform
         </div>
-
       </div>
 
-      <!-- PROGRESS -->
       <div class="stats">
-
         <div class="stat">
           <span>Current Round</span>
           <strong id="homeRound">1</strong>
@@ -688,18 +658,13 @@
           <span>Stars</span>
           <strong id="homeStars">⭐</strong>
         </div>
-
       </div>
 
       <div class="setup-section">
 
-        <!-- LANGUAGE -->
-        <h2 class="section-heading">
-          🌐 Choose Your Language
-        </h2>
+        <h2 class="section-heading">🌐 Choose Your Language</h2>
 
         <div class="choice-grid">
-
           <button type="button"
             class="choice language-btn"
             data-language="rw">
@@ -711,16 +676,11 @@
             data-language="en">
             🇬🇧 English
           </button>
-
         </div>
 
-        <!-- CATEGORY -->
-        <h2 class="section-heading">
-          🎯 Choose Your Quiz Category
-        </h2>
+        <h2 class="section-heading">🎯 Choose Your Quiz Category</h2>
 
         <div class="choice-grid">
-
           <button type="button"
             class="choice mode-btn"
             data-mode="traffic">
@@ -732,20 +692,14 @@
             data-mode="general">
             🌍 Ubumenyi rusange
           </button>
-
         </div>
 
-        <!-- SUMMARY -->
         <div class="summary" id="selectionSummary">
           Choose your language and quiz category to continue.
         </div>
 
-        <div class="error"
-          id="setupError"
-          role="alert">
-        </div>
+        <div class="error" id="setupError" role="alert"></div>
 
-        <!-- CONFIRM -->
         <button type="button"
           class="btn secondary full"
           id="confirmSetupBtn"
@@ -753,7 +707,6 @@
           ✓ Emeza ibyo wahisemo
         </button>
 
-        <!-- START -->
         <button type="button"
           class="btn success full"
           id="startBtn"
@@ -761,7 +714,6 @@
           ▶ Tangira gukina
         </button>
 
-        <!-- CONTINUE -->
         <button type="button"
           class="btn secondary full"
           id="continueBtn"
@@ -776,76 +728,45 @@
         </p>
 
       </div>
-
     </div>
 
-    <!-- =================================
-         GOOGLE ADSENSE
-         ONLY AD LOCATION IN THIS WEBSITE
-         ORIGINAL PUBLISHER/LOADER SETTINGS
-         ARE PRESERVED BELOW IN COMMENTS.
-    ================================== -->
-
-    <!--
-    <div class="ad-container">
-
-      <p class="ad-label">Advertisements</p>
+    <!-- ADSENSE: HOME ONLY, BELOW ALL GAME SETUP BUTTONS -->
+    <div class="ad-container" id="homeAdContainer">
+      <p class="ad-label">Advertisement</p>
 
       <ins class="adsbygoogle"
         style="display:block"
-        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-        data-ad-slot="XXXXXXXXXX"
+        data-ad-client="ca-pub-2666698676518429"
+        data-ad-slot="9045712897"
         data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-
+        data-full-width-responsive="true">
+      </ins>
     </div>
-    -->
 
   </section>
 
-
-  <!-- =================================
-       QUIZ SCREEN
-  ================================== -->
-
+  <!-- QUIZ SCREEN -->
   <section class="screen" id="quizScreen">
-
     <div class="panel">
 
       <div class="question-meta">
-
         <span id="roundLabel">Round 1</span>
-
-        <span id="questionCounter">
-          Question 1/10
-        </span>
-
+        <span id="questionCounter">Question 1/10</span>
         <span id="scoreNumber">0</span>
-
       </div>
 
       <div class="question-meta">
-
-        <span id="categoryIndicator">
-          General Knowledge
-        </span>
-
-        <span id="timerBox">
-          ⏱ <span id="timer">30</span>s
-        </span>
-
+        <span id="categoryIndicator">General Knowledge</span>
+        <span id="timerBox">⏱ <span id="timer">30</span>s</span>
       </div>
 
       <div class="progress-track">
         <div id="progressFill"></div>
       </div>
 
-      <img id="questionImage"
-        alt="Question illustration">
+      <img id="questionImage" alt="Question illustration">
 
-      <h2 id="questionText">
-        Loading question...
-      </h2>
+      <h2 id="questionText">Loading question...</h2>
 
       <div id="optionsContainer"></div>
 
@@ -861,7 +782,6 @@
       </div>
 
       <div class="button-row">
-
         <button type="button"
           class="btn"
           id="submitAnswerBtn">
@@ -874,11 +794,9 @@
           style="display:none">
           Next Question
         </button>
-
       </div>
 
       <div class="button-row">
-
         <button type="button"
           class="btn secondary"
           id="quizReviewBtn">
@@ -890,29 +808,19 @@
           id="quizHomeBtn">
           Home
         </button>
-
       </div>
-
     </div>
-
   </section>
 
-
-  <!-- =================================
-       RESULTS SCREEN
-  ================================== -->
-
+  <!-- RESULTS SCREEN -->
   <section class="screen" id="resultScreen">
-
     <div class="panel">
 
       <h1>🏆 Round Results</h1>
 
       <h2 id="resultTitle">Well done!</h2>
 
-      <p id="resultScore">
-        Your score: 0
-      </p>
+      <p id="resultScore">Your score: 0</p>
 
       <p id="resultPercentage">0%</p>
 
@@ -923,30 +831,29 @@
         <button type="button"
           class="btn success"
           id="retryRoundBtn">
-          Play Again
+          🔄 Play Again
+        </button>
+
+        <button type="button"
+          class="btn"
+          id="nextRoundBtn"
+          style="display:none">
+          🔓 Next Round
         </button>
 
         <button type="button"
           class="btn secondary"
           id="resultHomeBtn">
-          Home
+          🏠 Home
         </button>
 
       </div>
-
     </div>
-
   </section>
 
-
-  <!-- =================================
-       REVIEW SCREEN
-  ================================== -->
-
+  <!-- REVIEW SCREEN -->
   <section class="screen" id="reviewScreen">
-
     <div class="panel">
-
       <h1>📝 Review Answers</h1>
 
       <div id="reviewContainer"></div>
@@ -956,20 +863,12 @@
         id="reviewHomeBtn">
         Back Home
       </button>
-
     </div>
-
   </section>
 
-
-  <!-- =================================
-       ROUNDS SCREEN
-  ================================== -->
-
+  <!-- ROUNDS SCREEN -->
   <section class="screen" id="roundsScreen">
-
     <div class="panel">
-
       <h1>🏆 My Progress & Quiz Rounds</h1>
 
       <div id="roundsContainer"></div>
@@ -979,20 +878,12 @@
         id="roundsHomeBtn">
         Back Home
       </button>
-
     </div>
-
   </section>
 
-
-  <!-- =================================
-       SETTINGS SCREEN
-  ================================== -->
-
+  <!-- SETTINGS SCREEN -->
   <section class="screen" id="settingsScreen">
-
     <div class="panel">
-
       <h1>⚙️ Settings</h1>
 
       <p>Music</p>
@@ -1009,37 +900,19 @@
         style="margin-top:12px">
         Back Home
       </button>
-
     </div>
-
   </section>
 
 </main>
 
-
-<!-- =================================
-     FOOTER
-================================== -->
-
 <footer>
-
-  <p>
-    <strong>Quiz Master 🇷🇼</strong>
-  </p>
-
-  <p>
-    Learn • Play • Improve
-  </p>
+  <p><strong>Quiz Master 🇷🇼</strong></p>
+  <p>Learn • Play • Improve</p>
 
   <p>
     <a href="./about.html">About</a>
-
-    <a href="./privacy-policy.html">
-      Privacy Policy
-    </a>
-
+    <a href="./privacy-policy.html">Privacy Policy</a>
     <a href="./terms.html">Terms</a>
-
     <a href="./contact.html">Contact</a>
   </p>
 
@@ -1047,11 +920,7 @@
     © <span id="currentYear"></span>
     Quiz Master Rwanda
   </p>
-
 </footer>
-
-
-<!-- BACKGROUND MUSIC -->
 
 <audio id="backgroundMusic"
   src="./mythica.mp3"
@@ -1059,33 +928,24 @@
   preload="none">
 </audio>
 
-
-<!-- =================================
-     MUSIC CONTROLLER
-================================== -->
-
+<!-- MUSIC CONTROLLER -->
 <script>
 (() => {
   "use strict";
 
-  const audio =
-    document.getElementById("backgroundMusic");
-
-  const toggle =
-    document.getElementById("musicToggleBtn");
+  const audio = document.getElementById("backgroundMusic");
+  const toggle = document.getElementById("musicToggleBtn");
 
   let enabled =
     localStorage.getItem("quizmasterMusicEnabled") === "true";
 
   function updateButton() {
     if (toggle) {
-      toggle.textContent =
-        enabled ? "🔊 Music On" : "🔇 Music Off";
+      toggle.textContent = enabled ? "🔊 Music On" : "🔇 Music Off";
     }
   }
 
   async function setEnabled(value) {
-
     enabled = Boolean(value);
 
     localStorage.setItem(
@@ -1094,20 +954,13 @@
     );
 
     if (enabled) {
-
       try {
         await audio.play();
       } catch (error) {
-        console.warn(
-          "Music playback requires user interaction.",
-          error
-        );
+        console.warn("Music playback requires user interaction.", error);
       }
-
     } else {
-
       audio.pause();
-
     }
 
     updateButton();
@@ -1125,67 +978,44 @@
   }
 
   updateButton();
-
 })();
 </script>
 
-
-<!-- =================================
-     QUIZ ENGINE
-================================== -->
-
+<!-- QUIZ ENGINE -->
 <script src="./questions.js" defer></script>
 
-
-<!-- =================================
-     MENU AND SHARE CONTROLLER
-================================== -->
-
+<!-- MENU AND SHARE CONTROLLER -->
 <script>
 (() => {
   "use strict";
 
-  const menuButton =
-    document.getElementById("moreMenuBtn");
-
-  const menu =
-    document.getElementById("moreMenu");
+  const menuButton = document.getElementById("moreMenuBtn");
+  const menu = document.getElementById("moreMenu");
 
   if (menuButton && menu) {
-
     menuButton.addEventListener("click", () => {
-
-      const open =
-        menu.classList.toggle("open");
+      const open = menu.classList.toggle("open");
 
       menuButton.setAttribute(
         "aria-expanded",
         String(open)
       );
-
     });
 
     document.addEventListener("click", (event) => {
-
       if (
         !menu.contains(event.target) &&
         !menuButton.contains(event.target)
       ) {
-
         menu.classList.remove("open");
 
         menuButton.setAttribute(
           "aria-expanded",
           "false"
         );
-
       }
-
     });
-
   }
-
-  // Share Quiz Master
 
   document.getElementById("shareBtn")
     ?.addEventListener("click", async () => {
@@ -1197,83 +1027,65 @@
       };
 
       try {
-
         if (navigator.share) {
-
           await navigator.share(shareData);
-
         } else {
-
-          await navigator.clipboard.writeText(
-            shareData.url
-          );
-
+          await navigator.clipboard.writeText(shareData.url);
           alert("✅ Link Copied!");
-
         }
-
       } catch (error) {
-
         if (error.name !== "AbortError") {
-
           try {
-
-            await navigator.clipboard.writeText(
-              shareData.url
-            );
-
+            await navigator.clipboard.writeText(shareData.url);
             alert("✅ Link Copied!");
-
           } catch {
-
-            alert(
-              "Please copy this link: " +
-              shareData.url
-            );
-
+            alert("Please copy this link: " + shareData.url);
           }
-
         }
-
       }
-
     });
 
-  // Current year
-
-  const year =
-    document.getElementById("currentYear");
+  const year = document.getElementById("currentYear");
 
   if (year) {
     year.textContent = new Date().getFullYear();
   }
-
 })();
 </script>
 
+<!-- ADSENSE INITIALIZATION: HOME AD -->
+<script>
+(() => {
+  "use strict";
 
-<!-- =================================
-     SERVICE WORKER
-================================== -->
+  const ad = document.querySelector(
+    "#homeAdContainer ins.adsbygoogle"
+  );
 
+  if (!ad || ad.dataset.initialized === "true") {
+    return;
+  }
+
+  ad.dataset.initialized = "true";
+
+  try {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  } catch (error) {
+    console.warn("AdSense initialization:", error);
+  }
+})();
+</script>
+
+<!-- SERVICE WORKER -->
 <script>
 if ("serviceWorker" in navigator) {
-
   window.addEventListener("load", () => {
-
     navigator.serviceWorker
       .register("./service-worker.js")
       .catch(error => {
-
-        console.warn(
-          "Service Worker registration failed:",
-          error
-        );
-
+        console.warn("Service Worker registration failed:", error);
       });
-
   });
-
 }
 </script>
 
