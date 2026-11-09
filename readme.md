@@ -2,120 +2,170 @@
 
 Learn • Play • Improve
 
-Quiz Master is a bilingual educational web application designed to help users improve their knowledge through interactive quizzes and educational lessons.
+Quiz Master is a bilingual educational web application designed to help users improve their knowledge through interactive quizzes, road safety education and general learning articles.
 
-The application supports English and Kinyarwanda and focuses on two main learning areas:
+The application supports English and Kinyarwanda and provides two main learning categories:
 
-- Road Safety
-- General Knowledge
+- 🚦 Road Safety
+- 🌍 General Knowledge
+
+Quiz Master combines interactive multiple-choice quizzes, educational explanations, learning articles, progress tracking and Progressive Web App (PWA) capabilities in one application.
 
 🌐 Live Application: https://quizmaster-liard-five.vercel.app/
+💻 GitHub Repository: https://github.com/mazimpakaisaie7-eng/quizmaster-
 
 ---
 
 1. Project Overview
 
-Quiz Master Rwanda is a browser-based educational application built using HTML5, CSS3, JavaScript and JSON.
+Quiz Master Rwanda is a browser-based educational application built with HTML5, CSS3, JavaScript and JSON.
 
-It provides an interactive learning environment where users can answer multiple-choice questions, review their answers, track supported quiz progress and read educational articles.
+Its purpose is to provide an accessible learning environment where users can:
 
-The application is designed to work on desktop and mobile browsers, with Progressive Web App (PWA) support.
+- Practice general knowledge.
+- Learn about road signs and road safety.
+- Answer interactive multiple-choice questions.
+- Receive feedback on submitted answers.
+- Read educational explanations.
+- Review previous answers.
+- Track supported quiz progress.
+- Explore bilingual educational articles.
+- Access supported application features on mobile and desktop browsers.
 
-Main objectives
+The application is designed for responsive web access and includes Progressive Web App functionality.
 
-- Improve general knowledge.
-- Promote road safety awareness.
-- Provide bilingual educational content.
-- Encourage interactive learning.
-- Make educational resources accessible through a web application.
+Main Objectives
+
+1. Improve general knowledge through interactive learning.
+2. Promote road safety awareness.
+3. Provide educational resources in English and Kinyarwanda.
+4. Encourage continuous learning and practice.
+5. Make educational content accessible through a web application.
+6. Provide a user-friendly experience on mobile and desktop devices.
+7. Support offline access to previously cached application resources.
 
 ---
 
-2. Live Application and Repository
+2. Project Information
 
-Information| Details
+Item| Details
 Project Name| Quiz Master 🇷🇼 - Knowledge Quiz
+Project Type| Bilingual Educational Web Application
 Live Website| https://quizmaster-liard-five.vercel.app/
 GitHub Repository| https://github.com/mazimpakaisaie7-eng/quizmaster-
 Hosting Platform| Vercel
-Project Type| Educational Web Application
 Main Languages| English and Kinyarwanda
 Main Categories| Road Safety and General Knowledge
+Main Quiz Engine| questions.js
+Question Database| questions.json
+Article Database| articles.json
+PWA Manifest| manifest.webmanifest
+Service Worker| service-worker.js
 
 ---
 
-3. Main Features
+3. Main Application Features
 
-🌍 Bilingual Language Support
+3.1 Bilingual Language Support
 
 Quiz Master supports two languages:
 
 - English ("en")
 - Kinyarwanda ("rw")
 
-Users can select their preferred language before starting a quiz.
+Users can select their preferred language through the application interface.
 
-Question translations, answer options, explanations and educational articles use the bilingual data structure supported by the application.
+The bilingual structure supports the presentation of:
 
-📚 Quiz Categories
+- Quiz questions.
+- Answer options.
+- Correct-answer feedback.
+- Educational explanations.
+- Learning Centre articles.
+- Supported application messages and labels.
 
-The application provides two main categories.
+The availability of a translation depends on the language fields provided in the relevant question or article data.
 
-Category| Internal Key| Description
-Road Safety| "traffic"| Road signs, traffic lights, road markings, traffic regulations and road safety
+3.2 Quiz Categories
+
+The application provides two main quiz categories.
+
+Category| Internal Key| Main Topics
+Road Safety| "traffic"| Road signs, traffic lights, road markings, traffic regulations and safe road use
 General Knowledge| "general"| Rwanda, Africa, geography, science, history and other educational subjects
 
-Each category has its own quiz progression and question usage tracking.
+Each category has separate question selection and progression tracking supported by the quiz engine.
 
-🎯 Quiz Configuration
+3.3 Quiz Configuration
 
-The quiz engine is designed around the following configuration:
+The quiz engine uses the following standard configuration:
 
 Feature| Configuration
 Questions per standard round| 10
-Road Safety time| 60 seconds per question
-General Knowledge time| 30 seconds per question
+Road Safety question time| 60 seconds
+General Knowledge question time| 30 seconds
 Correct answer| 10 points
 Incorrect answer| 0 points
 Unanswered question| 0 points
 Passing percentage| 70%
 
-For a standard 10-question round:
+For a standard round of 10 questions:
 
 Correct Answers| Score| Result
-0–6| 0–60| Not passed
+0| 0| Not passed
+1| 10| Not passed
+2| 20| Not passed
+3| 30| Not passed
+4| 40| Not passed
+5| 50| Not passed
+6| 60| Not passed
 7| 70| Passed
 8| 80| Passed
 9| 90| Passed
 10| 100| Passed
 
-A score of at least 70% is required to pass a standard round.
+A score of at least 70% is required to pass a standard 10-question round.
 
-🔀 Question Selection
+3.4 Question Selection and Randomization
 
-The quiz system is designed to:
+The quiz engine is designed to support:
 
-- Select questions randomly.
-- Randomize answer-option order.
-- Track previously used question IDs.
-- Keep question usage separate between categories.
-- Avoid unnecessary repetition while unused questions remain.
-- Reuse questions when the available question pool has been exhausted.
+- Random question selection.
+- Randomized answer-option order.
+- Tracking previously used question IDs.
+- Separate question usage tracking for Road Safety and General Knowledge.
+- Avoiding unnecessary repetition while unused valid questions remain.
+- Reusing questions when the available question pool has been exhausted.
 
-The actual number of questions available depends on the valid records in "questions.json".
+The actual number of available questions depends on the valid question records in "questions.json".
 
-📝 Answer Feedback and Review
+3.5 Answer Submission and Feedback
 
-The application supports:
+The application supports an answer workflow involving:
 
-- Multiple-choice answer selection.
-- Answer submission.
-- Correct and incorrect answer feedback.
-- Educational explanations.
-- Final score display.
-- Review of submitted answers.
+1. Displaying a question.
+2. Selecting an answer.
+3. Submitting the selected answer.
+4. Processing the answer.
+5. Displaying supported feedback.
+6. Showing an educational explanation where available.
+7. Moving to the next question.
 
 Selecting an answer and submitting it are separate actions.
+
+3.6 Results and Answer Review
+
+The quiz system supports result and review functionality, including:
+
+- Final round score.
+- Correct-answer count.
+- Incorrect-answer count.
+- Passing or non-passing result.
+- Review of submitted answers.
+- Correct-answer information.
+- Educational explanations where available.
+
+The information displayed depends on the current quiz session and available question data.
 
 ---
 
@@ -124,65 +174,123 @@ Selecting an answer and submitting it are separate actions.
 1. Open the Quiz Master website.
 2. Select English or Kinyarwanda.
 3. Choose Road Safety or General Knowledge.
-4. Confirm the selected options.
+4. Confirm the selected language and category.
 5. Press Start Quiz.
 6. Read the displayed question.
-7. Select one answer.
+7. Select one answer from the available options.
 8. Press Submit Answer.
-9. Read the feedback and explanation.
+9. Read the answer feedback and explanation.
 10. Press Next Question.
 11. Continue until the round is completed.
-12. View the final score and result.
+12. View the final result and score.
 
-Depending on the current application state, users can also access available navigation features such as:
+Depending on the current application state, users can also access additional navigation features such as:
 
-- Continue Quiz
-- Quiz Rounds
-- Review Answers
-- Settings
-- Music Settings
-- Learning Centre
-- About
-- Contact and Help
-- Share Quiz Master
+- Continue Quiz.
+- Quiz Rounds.
+- My Progress.
+- Review Answers.
+- Settings.
+- Music Settings.
+- Learning Centre.
+- About.
+- Contact and Help.
+- Share Quiz Master.
+
+The availability of individual navigation actions depends on the current application implementation and saved session state.
 
 ---
 
-5. Learning Centre
+5. Application Navigation and User Features
 
-Quiz Master includes a separate Learning Centre for educational articles.
+Quiz Master includes a navigation menu that provides access to supported application sections.
 
-Main files
+My Progress and Quiz Rounds
+
+The progress system is designed to display supported information about quiz activity, such as:
+
+- Current round.
+- Completed rounds.
+- Best score.
+- Total score.
+- Category progression.
+- Available quiz rounds.
+- Progress information saved by the application.
+
+Continue Quiz
+
+Where a resumable quiz session has been saved, users can continue from the supported saved session state.
+
+Review Answers
+
+Users can access supported answer-review information from previous quiz activity.
+
+Settings
+
+The settings section provides access to supported application preferences.
+
+Music Settings
+
+Quiz Master includes a music resource named "mythica.mp3".
+
+The application supports music-related controls where configured, including the saved music preference.
+
+Share Quiz Master
+
+The application includes a sharing feature intended to help users share the website.
+
+Supported sharing behavior may include:
+
+- Native browser sharing where available.
+- Copying the application link.
+- Clipboard fallback where supported.
+
+About and Contact
+
+The application includes supporting information and contact pages.
+
+---
+
+6. Learning Centre
+
+Quiz Master includes a separate educational section called the Learning Centre.
+
+Its main files are:
 
 - "articles.html"
 - "articles.json"
 
-Learning Centre features
+The Learning Centre provides educational content in English and Kinyarwanda.
 
-- Browse educational articles.
-- Search available lessons.
-- Filter articles by category.
-- Read General Knowledge lessons.
-- Read Road Safety lessons.
-- Switch between English and Kinyarwanda.
-- Open individual articles.
-- Navigate back to the main application.
+Learning Centre Features
 
-Supported article categories
+The article system is designed to support:
 
-- "general"
-- "traffic"
+- Browsing educational articles.
+- Searching available lessons.
+- Filtering articles by category.
+- Reading General Knowledge lessons.
+- Reading Road Safety lessons.
+- Displaying supported English and Kinyarwanda content.
+- Opening individual articles.
+- Navigating back to the main application.
 
-Article database structure
+Supported Article Categories
 
-The article database is stored in "articles.json".
+Category| Internal Key
+General Knowledge| "general"
+Road Safety| "traffic"
 
-The main data structure contains:
+Article Database Structure
+
+Article data is stored in "articles.json".
+
+The documented database structure contains:
 
 - "version"
 - "articles"
 
-Each article should contain:
+Each article should contain the fields expected by the current Learning Centre implementation, including:
 
 - "id"
 - "category"
@@ -192,7 +300,7 @@ Each article should contain:
 
 The bilingual fields use English ("en") and Kinyarwanda ("rw") values.
 
-Illustrative article example
+Illustrative Article Example
 
 {
   "id": "general-example",
@@ -211,111 +319,143 @@ Illustrative article example
   }
 }
 
-This is an illustrative example. New articles must follow the exact data structure expected by the current "articles.html" implementation.
+This is an illustrative example. New articles must follow the exact data structure and rendering requirements used by the current "articles.html" implementation.
 
 ---
 
-6. Question Database
+7. Question Database and Quiz Engine
 
-Quiz questions are stored in:
+The quiz system uses two main files:
 
 - "questions.json"
 - "questions.js"
 
-"questions.json"
+7.1 questions.json
 
-This file contains the quiz question data.
+This file stores the quiz question database.
 
-It stores the questions, categories, answer options, correct answers and supported translations.
+It contains the information needed by the quiz engine, including:
 
-"questions.js"
+- Question IDs.
+- Question categories.
+- English question statements.
+- Kinyarwanda question statements.
+- Answer options.
+- Correct answers.
+- Supported translations.
+- Explanations.
+- Optional image information where supported.
 
-This file contains the quiz engine and application logic responsible for handling tasks such as:
+7.2 questions.js
+
+This file contains the JavaScript quiz engine and application logic.
+
+Its responsibilities include the supported operations for:
 
 - Loading question data.
-- Validating and preparing questions.
-- Selecting questions for rounds.
+- Reading JSON question records.
+- Validating question information.
+- Preparing valid questions.
+- Selecting questions for quiz rounds.
+- Randomizing question and answer-option order.
 - Managing quiz state.
-- Displaying questions and options.
+- Displaying questions and answer options.
+- Handling answer selection.
 - Processing submitted answers.
 - Calculating scores.
-- Managing round progression.
+- Managing question progression.
+- Managing supported round progression.
 - Saving supported quiz information.
-- Handling answer review.
+- Managing answer-review information.
+- Supporting the English and Kinyarwanda interface.
+- Handling quiz timers.
+- Managing supported music preferences and application interactions.
 
-Main question categories
+7.3 Main Question Categories
 
-- "traffic"
-- "general"
+Question records use these internal category values:
 
-Question data requirements
+[
+  "traffic",
+  "general"
+]
 
-Each question should have:
+7.4 Question Data Requirements
 
-- A unique "id".
-- A valid "category".
-- A question statement.
-- Exactly four answer options.
-- A valid correct answer.
-- English and Kinyarwanda content where required.
-- An explanation where supported.
+Each question should provide:
 
-Optional image fields may be used where supported by the current quiz engine.
+Field| Requirement
+"id"| Unique question identifier
+"category"| "traffic" or "general"
+"question"| English question statement where required
+"options"| Exactly four answer options
+"answer"| Correct answer matching one of the options
+"question_rw"| Kinyarwanda question where supported
+"options_rw"| Kinyarwanda options where supported
+Explanation fields| Educational explanation where supported
+Image fields| Optional, when supported by the engine
 
-Adding new questions
+The exact accepted field names and validation rules are determined by the current "questions.js" implementation.
 
-Before adding questions:
+7.5 Adding New Questions
 
-1. Give each question a unique ID.
-2. Use "traffic" or "general" as the category.
+Before adding new questions:
+
+1. Give every question a unique ID.
+2. Use the correct category key.
 3. Provide exactly four answer options.
 4. Make sure the correct answer matches one of the options.
-5. Provide the required English and Kinyarwanda translations.
-6. Include accurate explanations.
-7. Validate the JSON syntax.
+5. Provide accurate English and Kinyarwanda content.
+6. Include explanations where supported.
+7. Check that the JSON syntax is valid.
 8. Check for duplicate IDs.
-9. Test the questions in the live application after deployment.
+9. Confirm that all required fields are present.
+10. Test the questions after deployment.
 
-Invalid JSON, missing fields, duplicate IDs or incorrect answer values may prevent questions from loading correctly.
+Invalid JSON syntax, missing fields, duplicate IDs, unsupported categories or incorrect answer values may cause questions to be rejected or fail to load.
 
 ---
 
-7. Saved Progress and Browser Storage
+8. Browser Storage and Saved Progress
 
 Quiz Master uses browser storage to retain supported application preferences and quiz information.
 
-Storage keys used by the application include:
+The application storage keys include:
 
-- "quizmasterLanguage"
-- "quizmasterMode"
-- "quizmasterProgress"
-- "quizmasterCurrentSession"
-- "quizmasterUsedQuestionIds"
-- "quizmasterCompletedRounds"
-- "quizmasterReviewAnswers"
-- "quizmasterBestScore"
-- "quizmasterTotalScore"
-- "quizmasterWeeklyScores"
-- "quizmasterSettings"
-- "quizmasterMusicEnabled"
+Storage Key| Purpose
+"quizmasterLanguage"| Selected language
+"quizmasterMode"| Selected quiz category
+"quizmasterProgress"| Supported progress information
+"quizmasterCurrentSession"| Current quiz session
+"quizmasterUsedQuestionIds"| Previously used question IDs
+"quizmasterCompletedRounds"| Completed round information
+"quizmasterReviewAnswers"| Answer-review information
+"quizmasterBestScore"| Best score information
+"quizmasterTotalScore"| Total score information
+"quizmasterWeeklyScores"| Weekly score information
+"quizmasterSettings"| Supported application settings
+"quizmasterMusicEnabled"| Music preference
 
-The exact saved information depends on the current application implementation.
+The exact information stored depends on the current quiz engine implementation.
 
-Important storage information
+Important Storage Information
 
 - Saved information is stored in the user's browser.
-- Browser storage is not an online account.
+- Browser storage is not an online user account.
 - Progress is not automatically synchronized between different devices.
-- Clearing site data or browser storage may remove saved progress and preferences.
-- Private browsing may not retain data in the same way as normal browsing.
+- Clearing browser site data may remove saved progress and preferences.
+- Private browsing may handle saved data differently.
+- Different browsers may maintain separate storage.
+
+Users should avoid clearing application storage unless they understand that saved progress may be lost.
 
 ---
 
-8. Progressive Web App (PWA)
+9. Progressive Web App (PWA)
 
-Quiz Master includes Progressive Web App support.
+Quiz Master includes Progressive Web App functionality.
 
-Main PWA files
+The main PWA files are:
 
 - "manifest.webmanifest"
 - "service-worker.js"
@@ -323,13 +463,16 @@ Main PWA files
 - "icon-192-4.png"
 - "icon-512-3.png"
 
-PWA configuration
+9.1 Web App Manifest
 
-The web app manifest defines:
+The "manifest.webmanifest" file provides application information used by compatible browsers.
+
+It defines supported settings such as:
 
 - Application name.
 - Short application name.
 - Application description.
+- Language and text direction.
 - Start URL.
 - Application scope.
 - Display mode.
@@ -337,33 +480,77 @@ The web app manifest defines:
 - Theme color.
 - Background color.
 - Application icons.
+- Application categories.
 
-Service Worker features
+The manifest references the application icons:
 
-The service worker is responsible for supported caching and offline behavior.
+- "icon-192-4.png"
+- "icon-512-3.png"
 
-The current caching strategy includes:
+9.2 Service Worker
 
-- Network First for HTML navigation.
-- Network First for important quiz and article data.
-- Cache First for supported static resources.
-- Removal of older application caches when a new cache version activates.
-- Offline fallback support.
-- Service Worker messaging.
+The "service-worker.js" file manages supported caching and offline behavior.
 
-Offline limitations
+Its responsibilities include:
 
-Offline access depends on which resources have already been successfully cached by the browser.
+- Caching important application resources.
+- Supporting offline homepage access.
+- Providing an offline fallback.
+- Managing cached HTML navigation.
+- Managing quiz and article data caching.
+- Caching the JavaScript quiz engine.
+- Caching supported static resources.
+- Updating application caches when the cache version changes.
+- Removing older Quiz Master caches.
+- Handling supported Service Worker messages.
 
-Some features may require an internet connection, especially when their data has not previously been cached.
+9.3 Caching Strategies
 
-After changing important application resources, the service worker cache version should be updated when necessary.
+The Service Worker uses the following documented caching strategies:
+
+Resource Type| Strategy| Purpose
+HTML navigation| Network First| Prefer the latest page from the server
+"questions.json"| Network First| Prefer updated quiz questions
+"questions.js"| Network First| Prefer the latest quiz engine
+"articles.json"| Network First| Prefer updated article data
+Static resources| Cache First| Reuse previously cached resources
+Offline page| Cached fallback| Provide an offline navigation fallback
+
+9.4 Service Worker Messaging
+
+The Service Worker supports messages including:
+
+Message| Purpose
+"SKIP_WAITING"| Requests activation of a waiting Service Worker
+"GET_VERSION"| Returns the current cache version
+"GET_CACHE_INFO"| Returns information about cached resources
+
+9.5 Offline Limitations
+
+Offline functionality depends on the resources that were successfully cached by the browser.
+
+This means:
+
+- Previously cached pages may remain available offline.
+- Previously cached question data may be available offline.
+- Previously cached article data may be available offline.
+- Resources that were never cached may require an internet connection.
+- External services and analytics may not work offline.
+- Clearing browser storage may remove cached resources.
+
+A successful offline experience should be tested on the actual deployed website.
+
+9.6 Cache Version Maintenance
+
+When important application resources change, the Service Worker cache version should be updated when necessary.
+
+This helps the browser recognize a new application cache and replace older cached resources.
 
 ---
 
-9. Website Pages
+10. Website Pages
 
-The project includes the following main pages:
+The project contains the following main website pages:
 
 File| Purpose
 "index.html"| Main Quiz Master application
@@ -374,239 +561,356 @@ File| Purpose
 "terms.html"| Terms and conditions
 "offline.html"| Offline fallback page
 
-The pages provide application navigation, educational information and supporting website content.
+These pages provide the main application interface, educational content and supporting website information.
 
 ---
 
-10. Project Structure
+11. Project Structure
 
 The main project structure is organized as follows:
 
 quizmaster-/
 │
 ├── api/
+│   └── Additional API-related functionality, where configured
 │
 ├── index.html
+│   └── Main Quiz Master application
+│
 ├── questions.js
+│   └── Quiz engine and application logic
+│
 ├── questions.json
+│   └── Quiz question database
 │
 ├── articles.html
+│   └── Learning Centre interface
+│
 ├── articles.json
+│   └── Educational article database
 │
 ├── about.html
+│   └── About the application
+│
 ├── contact.html
+│   └── Contact and support information
+│
 ├── privacy-policy.html
+│   └── Privacy information
+│
 ├── terms.html
+│   └── Terms and conditions
 │
 ├── offline.html
+│   └── Offline fallback page
+│
 ├── service-worker.js
+│   └── PWA caching and offline management
+│
 ├── manifest.webmanifest
+│   └── PWA application configuration
 │
 ├── icon-192-4.png
+│   └── 192 × 192 application icon
+│
 ├── icon-512-3.png
+│   └── 512 × 512 application icon
 │
 ├── mythica.mp3
+│   └── Application music resource
 │
 ├── ads.txt
+│   └── Advertising authorization information
+│
 ├── robots.txt
+│   └── Search engine crawler instructions
+│
 ├── sitemap.xml
+│   └── Website URL sitemap
 │
 ├── readme.md
-├── CREDITS.TXT
-├── validation-key.txt
+│   └── Project documentation
 │
-└── supporting files and folders
+├── CREDITS.TXT
+│   └── Third-party resource credits
+│
+├── validation-key.txt
+│   └── Supporting verification file, where configured
+│
+└── Additional supporting files and folders
 
-The "api/" directory and other supporting files may contain additional project functionality.
+The "api/" directory and other supporting files may contain additional functionality depending on the current project configuration.
 
 ---
 
-11. Technologies Used
+12. Technologies Used
 
 Technology| Purpose
-HTML5| Application structure
-CSS3| Layout and visual styling
-JavaScript| Quiz engine and interactions
-JSON| Quiz questions and article data
-Service Workers| Caching and offline fallback
+HTML5| Application page structure
+CSS3| Layout, styling and responsive design
+JavaScript| Quiz engine and application interactions
+JSON| Quiz questions and educational article data
+Browser Storage| Local preferences and supported progress
+Service Workers| Resource caching and offline support
 Web App Manifest| PWA configuration
-Browser Storage| Supported local preferences and progress
-Vercel| Website hosting
-GitHub| Source code repository
+Progressive Web App| Installable web application capabilities
+GitHub| Source code management
+Vercel| Website hosting and deployment
 Google Analytics| Website traffic measurement, where configured
 
-Advertising information
+---
 
-The project contains an "ads.txt" file.
+13. Advertising and Analytics
 
-However, the presence of "ads.txt" does not mean advertisements are currently displayed.
+13.1 Advertising Information
+
+The project contains an "ads.txt" file for advertising authorization information.
+
+The presence of "ads.txt" does not mean advertisements are currently displayed or that an advertising account has been approved.
 
 The main "index.html" has been prepared without the previous advertisement placements and AdSense display code as part of the advertising-related cleanup.
 
-Any future advertising integration must be reviewed separately and must not interfere with quiz functionality, navigation or educational content.
+Any future advertising integration should be reviewed separately and must not interfere with:
+
+- Quiz questions.
+- Answer selection.
+- Answer submission.
+- Quiz timers.
+- Navigation.
+- Educational content.
+- User experience.
+
+Advertising approval and display depend on the relevant advertising provider's requirements and account configuration.
+
+13.2 Google Analytics
+
+The project has included Google Analytics configuration.
+
+The reported Analytics measurement ID is:
+
+"G-3FP8R0NDZN"
+
+Analytics reporting depends on whether the tracking code is currently configured, deployed and operating correctly.
+
+The presence of an Analytics ID in project documentation does not independently confirm that data is being collected.
 
 ---
 
-12. Deployment
+14. Search Engine and Website Verification Files
 
-Quiz Master is hosted on Vercel and its source code is maintained in GitHub.
+Quiz Master includes supporting files for search engine discovery and website verification.
 
-Live website
+File| Purpose
+"robots.txt"| Provides crawler access instructions
+"sitemap.xml"| Lists website URLs for search engine discovery
+"ads.txt"| Provides advertising authorization information
+"validation-key.txt"| Supports verification where configured
+
+These files should contain accurate information that matches the live website.
+
+A sitemap, robots file or verification file does not guarantee indexing, ranking, verification or approval by an external service.
+
+---
+
+15. Deployment and Hosting
+
+Quiz Master is maintained in GitHub and hosted on Vercel.
+
+Live Website
 
 https://quizmaster-liard-five.vercel.app/
 
-GitHub repository
+GitHub Repository
 
 https://github.com/mazimpakaisaie7-eng/quizmaster-
 
-Updating the application
+Updating the Application
 
 1. Open the GitHub repository.
-2. Select the file that needs updating.
-3. Edit the file carefully.
-4. Check the code or JSON syntax.
-5. Commit the changes.
-6. Allow Vercel to deploy the new version.
-7. Open the live website.
-8. Test the updated feature.
+2. Find the file that needs updating.
+3. Open the file editor.
+4. Make the required changes.
+5. Check the code or JSON syntax.
+6. Commit the changes.
+7. Allow Vercel to process the deployment.
+8. Open the live application.
+9. Test the updated functionality.
 
-Important testing after deployment
+Deployment Testing
 
 After updating "questions.json" or "questions.js":
 
-- Open the application.
-- Confirm that questions load.
-- Check both quiz categories.
-- Check English and Kinyarwanda.
-- Test answer selection and submission.
+- Confirm that the question database loads.
+- Check Road Safety questions.
+- Check General Knowledge questions.
+- Test English and Kinyarwanda.
+- Test answer selection.
+- Test answer submission.
+- Check answer feedback.
 - Check score calculation.
-- Check the next-question button.
+- Test the next-question action.
 - Check round completion.
+- Check supported progress saving.
 
 After updating "articles.json" or "articles.html":
 
 - Open the Learning Centre.
 - Confirm that articles load.
-- Test search and category filters.
-- Check both languages.
+- Test article search.
+- Test category filters.
+- Check English and Kinyarwanda.
 - Open individual articles.
+- Check navigation back to the main application.
 
 After updating PWA files:
 
-- Check the manifest.
-- Check that both icons load.
-- Check service worker registration.
-- Test online and offline behavior.
+- Check "manifest.webmanifest".
+- Confirm that both icons load.
+- Check Service Worker registration.
+- Check the active cache version.
+- Test online behavior.
+- Test offline behavior.
+- Confirm that the offline fallback is available.
 
 ---
 
-13. Search Engine and Website Files
+16. Privacy and Data Handling
 
-The project includes supporting files for website discovery and verification.
-
-File| Purpose
-"robots.txt"| Provides crawler access instructions
-"sitemap.xml"| Lists website URLs for search engine discovery
-"ads.txt"| Advertising authorization information
-"validation-key.txt"| Supporting verification file, depending on its configured purpose
-
-These files should contain accurate information and should be kept consistent with the live website.
-
-The presence of a sitemap or verification file does not guarantee search engine indexing or approval by third-party services.
-
----
-
-14. Privacy and Data
-
-Quiz Master uses browser storage for supported local application information.
+Quiz Master uses browser storage for supported local application preferences and quiz information.
 
 Users should understand that:
 
-- Local quiz progress is stored in their browser.
+- Quiz progress may be stored locally in their browser.
+- Local progress is not automatically synchronized to an online account.
 - Clearing browser data may remove saved progress.
-- Local progress is not automatically cloud-synchronized.
-- Website analytics, when enabled, are subject to the relevant service configuration and privacy policy.
+- Different devices and browsers may have separate saved data.
+- Website analytics, when enabled, are subject to the relevant service configuration.
+- External services may have their own privacy and data-handling policies.
 
-For more information, see:
+For further information, users should consult:
 
 - "privacy-policy.html"
 - "terms.html"
 
+The published privacy policy should accurately describe the services and data collection mechanisms actually used by the deployed application.
+
 ---
 
-15. Educational Purpose and Road Safety Disclaimer
+17. Educational Purpose and Road Safety Disclaimer
 
-Quiz Master is designed for educational practice and general knowledge improvement.
+Quiz Master is intended for educational practice and general knowledge improvement.
 
-Road Safety lessons and questions are intended to improve awareness of road signs, traffic rules and responsible road use.
+Road Safety questions and articles are designed to improve awareness of:
 
-The educational content does not replace:
+- Road signs.
+- Traffic lights.
+- Road markings.
+- Traffic regulations.
+- Pedestrian safety.
+- Responsible road use.
+- General road safety practices.
+
+The educational information provided by the application does not replace:
 
 - Official traffic laws.
 - Government publications.
 - Professional driving instruction.
 - Authorized road safety guidance.
+- Current instructions from relevant authorities.
 
-Users should always follow current official regulations and instructions from authorized authorities.
+Users should always follow applicable laws and official instructions.
 
 ---
 
-16. Contact and Support
+18. Contact and Support
 
-For questions, feedback or application-related inquiries:
+For application-related questions, feedback or support:
 
 Email: mazimpakaisaie7@gmail.com
 
 Website: https://quizmaster-liard-five.vercel.app/
 
----
-
-17. Project Information
-
-Item| Details
-Project| Quiz Master 🇷🇼 - Knowledge Quiz
-Project Type| Bilingual Educational Web Application
-Main Languages| English and Kinyarwanda
-Main Categories| Road Safety and General Knowledge
-Main Data Files| "questions.json", "articles.json"
-Main Engine| "questions.js"
-Hosting| Vercel
-Source Code| GitHub
-Mission| Learn • Play • Improve
+GitHub: https://github.com/mazimpakaisaie7-eng/quizmaster-
 
 ---
 
-18. Important Maintenance Guidelines
+19. Maintenance Guidelines
 
-To keep Quiz Master maintainable:
+To keep Quiz Master reliable and maintainable:
 
-1. Keep filenames consistent with the files referenced by the application.
+1. Keep filenames consistent with application references.
 2. Do not rename important files without updating their references.
 3. Maintain valid JSON syntax.
-4. Use unique question and article IDs.
-5. Keep the question categories consistent.
-6. Maintain English and Kinyarwanda translations.
-7. Test changes before considering them complete.
-8. Update the service worker cache version when required.
-9. Keep the manifest icons and paths accurate.
-10. Keep website links and contact information up to date.
-11. Avoid adding scripts or external services that interfere with quiz functionality.
-12. Review privacy and advertising changes before deployment.
+4. Use unique question IDs.
+5. Use unique article IDs.
+6. Keep question categories consistent.
+7. Maintain accurate English and Kinyarwanda translations.
+8. Ensure every question has exactly four answer options.
+9. Ensure correct answers match the available options.
+10. Test question loading after database changes.
+11. Test Learning Centre functionality after article changes.
+12. Keep the PWA manifest paths accurate.
+13. Keep application icons available at their referenced paths.
+14. Update the Service Worker cache version when necessary.
+15. Test offline functionality after PWA changes.
+16. Keep website links and contact information up to date.
+17. Review privacy changes when introducing new services.
+18. Review advertising changes separately.
+19. Avoid scripts that interfere with quiz functionality.
+20. Test important features after every production deployment.
 
 ---
 
-19. License and Credits
+20. License and Credits
 
 Quiz Master is an educational project.
 
-Third-party assets, libraries, music and other resources, where used, should be credited according to their respective licenses and permissions.
+Third-party libraries, images, music, fonts and other resources used in the project should be credited according to their applicable licenses and permissions.
 
-See "CREDITS.TXT" for project credits.
+Refer to:
 
-Do not assume that third-party resources are free to redistribute or reuse without checking their applicable licenses.
+"CREDITS.TXT"
+
+for project credits and relevant third-party resource information.
+
+Do not assume that third-party resources are free to redistribute, modify or reuse without checking their applicable licenses.
+
+---
+
+21. Project Summary
+
+Item| Details
+Project| Quiz Master 🇷🇼 - Knowledge Quiz
+Main Purpose| Educational learning and quiz practice
+Project Type| Bilingual Web Application
+Supported Languages| English and Kinyarwanda
+Main Categories| Road Safety and General Knowledge
+Standard Round| 10 questions
+Road Safety Timer| 60 seconds
+General Knowledge Timer| 30 seconds
+Correct Answer| 10 points
+Passing Score| 70%
+Question Database| "questions.json"
+Quiz Engine| "questions.js"
+Learning Centre| "articles.html"
+Article Database| "articles.json"
+PWA Manifest| "manifest.webmanifest"
+Service Worker| "service-worker.js"
+Offline Page| "offline.html"
+Hosting| Vercel
+Source Code| GitHub
+Main Mission| Learn • Play • Improve
+
+---
+
+22. Project Mission
+
+Quiz Master 🇷🇼 aims to make learning more accessible through interactive quizzes and bilingual educational resources.
+
+By combining Road Safety education, General Knowledge, answer feedback, learning articles and supported offline capabilities, the project seeks to encourage continuous learning and responsible knowledge sharing.
+
+Learn • Play • Improve
 
 ---
 
 © Quiz Master 🇷🇼. All rights reserved.
-
-Learn • Play • Improve
