@@ -1,17 +1,18 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER RWANDA
-   SERVICE WORKER — VERSION 4.0.0
+   SERVICE WORKER — VERSION 4.1.0
 
    Features:
    - Reliable cache management
    - Automatic app updates
    - Network-first HTML pages
    - Network-first JSON data
+   - Network-first JavaScript and CSS
    - Offline page fallback
-   - Cache-first static assets
-   - Old cache cleanup
-   - Safe handling of external requests
+   - Cache-first images, audio and static assets
+   - Safe old-cache cleanup
+   - Safe handling of external and API requests
    ========================================================= */
 
 "use strict";
@@ -21,7 +22,7 @@
    ========================================================= */
 
 const CACHE_PREFIX = "quizmaster-cache-";
-const CACHE_VERSION = "4.0.0";
+const CACHE_VERSION = "4.1.0";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 
 /* =========================================================
@@ -58,7 +59,36 @@ const APP_SHELL = [
 ];
 
 /* =========================================================
-   3. INSTALL
+   3. HELPER FUNCTIONS
+   ========================================================= */
+
+function getAppURL(path) {
+  return new URL(path, self.registration.scope).href;
+}
+
+function isCacheableResponse(response) {
+  return (
+    response &&
+    response.ok &&
+    response.type === "basic"
+  );
+}
+
+async function saveToCache(cache, request, response) {
+  if (isCacheableResponse(response)) {
+    try {
+      await cache.put(request, response.clone());
+    } catch (error) {
+      console.warn(
+        "[Quiz Master] Cache save failed:",
+        request.url || request
+      );
+    }
+  }
+}
+
+/* =========================================================
+   4. INSTALL
    ========================================================= */
 
 self.addEventListener("install", (event) => {
@@ -68,13 +98,21 @@ self.addEventListener("install", (event) => {
 
       await Promise.allSettled(
         APP_SHELL.map(async (file) => {
+          const url = getAppURL(file);
+
           try {
-            const response = await fetch(file, {
+            const response = await fetch(url, {
               cache: "reload"
             });
 
-            if (response.ok && response.type === "basic") {
-              await cache.put(file, response);
+            if (isCacheableResponse(response)) {
+              await cache.put(url, response);
+            } else {
+              console.warn(
+                "[Quiz Master] File not cached:",
+                file,
+                response.status
+              );
             }
           } catch (error) {
             console.warn(
@@ -90,16 +128,14 @@ self.addEventListener("install", (event) => {
         CACHE_VERSION
       );
 
-      // Activate the new worker without waiting
-      // for all old tabs to close.
       await self.skipWaiting();
     })()
   );
 });
 
 /* =========================================================
-   4. ACTIVATE
-   Delete old Quiz Master caches.
+   5. ACTIVATE
+   Delete only old Quiz Master caches.
    ========================================================= */
 
 self.addEventListener("activate", (event) => {
@@ -108,16 +144,16 @@ self.addEventListener("activate", (event) => {
       const cacheNames = await caches.keys();
 
       await Promise.all(
-        cacheNames.map(async (cacheName) => {
+        cacheNames.map(async (name) => {
           if (
-            cacheName.startsWith(CACHE_PREFIX) &&
-            cacheName !== CACHE_NAME
+            name.startsWith(CACHE_PREFIX) &&
+            name !== CACHE_NAME
           ) {
-            await caches.delete(cacheName);
+            await caches.delete(name);
 
             console.log(
               "[Quiz Master] Deleted old cache:",
-              cacheName
+              name
             );
           }
         })
@@ -134,8 +170,8 @@ self.addEventListener("activate", (event) => {
 });
 
 /* =========================================================
-   5. NETWORK-FIRST STRATEGY
-   Used for HTML pages and important JSON data.
+   6. NETWORK-FIRST STRATEGY
+   HTML, JSON, JavaScript and CSS.
    ========================================================= */
 
 async function networkFirst(request) {
@@ -144,12 +180,18 @@ async function networkFirst(request) {
   try {
     const response = await fetch(request);
 
-    if (
-      response &&
-      response.ok &&
-      response.type === "basic"
-    ) {
-      await cache.put(request, response.clone());
+    if (response.ok) {
+      await saveToCache(cache, request, response);
+      return response;
+    }
+
+    // Use a cached copy if the server temporarily fails.
+    if (response.status >= 500) {
+      const cachedResponse = await cache.match(request);
+
+      if (cachedResponse) {
+        return cachedResponse;
+      }
     }
 
     return response;
@@ -166,8 +208,8 @@ async function networkFirst(request) {
 }
 
 /* =========================================================
-   6. STATIC ASSET STRATEGY
-   Cache-first with background refresh.
+   7. CACHE-FIRST STRATEGY
+   Images, audio, fonts and other static assets.
    ========================================================= */
 
 async function cacheFirst(request) {
@@ -175,41 +217,38 @@ async function cacheFirst(request) {
 
   const cachedResponse = await cache.match(request);
 
-  const networkUpdate = fetch(request)
-    .then(async (response) => {
-      if (
-        response &&
-        response.ok &&
-        response.type === "basic"
-      ) {
-        await cache.put(request, response.clone());
-      }
-
-      return response;
-    })
-    .catch(() => null);
-
   if (cachedResponse) {
+    // Refresh the cached file in the background.
+    fetch(request)
+      .then(async (response) => {
+        await saveToCache(cache, request, response);
+      })
+      .catch(() => {
+        // Keep using the existing cached copy.
+      });
+
     return cachedResponse;
   }
 
-  const networkResponse = await networkUpdate;
+  const networkResponse = await fetch(request);
 
-  if (networkResponse) {
-    return networkResponse;
+  if (networkResponse.ok) {
+    await saveToCache(cache, request, networkResponse);
   }
 
-  throw new Error("Resource unavailable");
+  return networkResponse;
 }
 
 /* =========================================================
-   7. OFFLINE FALLBACK
+   8. OFFLINE FALLBACK
    ========================================================= */
 
 async function offlineFallback() {
   const cache = await caches.open(CACHE_NAME);
 
-  const offlinePage = await cache.match("./offline.html");
+  const offlineURL = getAppURL("./offline.html");
+
+  const offlinePage = await cache.match(offlineURL);
 
   if (offlinePage) {
     return offlinePage;
@@ -221,6 +260,7 @@ async function offlineFallback() {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="robots" content="noindex, nofollow">
       <meta name="theme-color" content="#08172b">
       <title>Quiz Master - Offline</title>
       <style>
@@ -251,30 +291,31 @@ async function offlineFallback() {
     </head>
     <body>
       <main>
-        <h1>Quiz Master Rwanda</h1>
+        <h1>Quiz Master Rwanda 🇷🇼</h1>
         <h2>You are offline</h2>
         <p>Please check your internet connection and try again.</p>
-        <button onclick="location.reload()">Try again</button>
+        <button onclick="location.reload()">Try Again</button>
       </main>
     </body>
     </html>`,
     {
-      status: 200,
+      status: 503,
       headers: {
-        "Content-Type": "text/html; charset=utf-8"
+        "Content-Type": "text/html; charset=utf-8",
+        "Cache-Control": "no-store"
       }
     }
   );
 }
 
 /* =========================================================
-   8. FETCH HANDLER
+   9. FETCH HANDLER
    ========================================================= */
 
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
-  // Only handle GET requests.
+  // Handle only GET requests.
   if (request.method !== "GET") {
     return;
   }
@@ -292,7 +333,10 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Leave API requests to the network.
-  if (url.pathname.startsWith("/api/")) {
+  if (
+    url.pathname === "/api" ||
+    url.pathname.startsWith("/api/")
+  ) {
     return;
   }
 
@@ -315,15 +359,17 @@ self.addEventListener("fetch", (event) => {
   }
 
   /* -------------------------------------------------------
-     IMPORTANT JSON AND JAVASCRIPT — NETWORK FIRST
+     IMPORTANT JSON DATA — NETWORK FIRST
      ------------------------------------------------------- */
 
-  const fileName = url.pathname.split("/").pop().toLowerCase();
+  const fileName = url.pathname
+    .split("/")
+    .pop()
+    .toLowerCase();
 
   const importantFiles = [
     "questions.json",
-    "articles.json",
-    "questions.js"
+    "articles.json"
   ];
 
   if (importantFiles.includes(fileName)) {
@@ -340,7 +386,8 @@ self.addEventListener("fetch", (event) => {
             {
               status: 503,
               headers: {
-                "Content-Type": "application/json; charset=utf-8"
+                "Content-Type": "application/json; charset=utf-8",
+                "Cache-Control": "no-store"
               }
             }
           );
@@ -352,7 +399,39 @@ self.addEventListener("fetch", (event) => {
   }
 
   /* -------------------------------------------------------
-     STATIC FILES — CACHE FIRST
+     JAVASCRIPT AND CSS — NETWORK FIRST
+     ------------------------------------------------------- */
+
+  const isCodeAsset =
+    request.destination === "script" ||
+    request.destination === "style" ||
+    /\.(js|css)$/i.test(url.pathname);
+
+  if (isCodeAsset) {
+    event.respondWith(
+      (async () => {
+        try {
+          return await networkFirst(request);
+        } catch (error) {
+          return new Response(
+            "Application code is not available offline.",
+            {
+              status: 503,
+              headers: {
+                "Content-Type": "text/plain; charset=utf-8",
+                "Cache-Control": "no-store"
+              }
+            }
+          );
+        }
+      })()
+    );
+
+    return;
+  }
+
+  /* -------------------------------------------------------
+     OTHER STATIC FILES — CACHE FIRST
      ------------------------------------------------------- */
 
   event.respondWith(
@@ -365,7 +444,8 @@ self.addEventListener("fetch", (event) => {
           {
             status: 503,
             headers: {
-              "Content-Type": "text/plain; charset=utf-8"
+              "Content-Type": "text/plain; charset=utf-8",
+              "Cache-Control": "no-store"
             }
           }
         );
@@ -375,7 +455,7 @@ self.addEventListener("fetch", (event) => {
 });
 
 /* =========================================================
-   9. MANUAL UPDATE MESSAGE
+   10. MANUAL UPDATE MESSAGE
    ========================================================= */
 
 self.addEventListener("message", (event) => {
@@ -383,9 +463,13 @@ self.addEventListener("message", (event) => {
     event.data &&
     event.data.type === "SKIP_WAITING"
   ) {
-    self.skipWaiting();
+    event.waitUntil(self.skipWaiting());
   }
 });
+
+/* =========================================================
+   11. SERVICE WORKER READY
+   ========================================================= */
 
 console.log(
   "[Quiz Master] Service Worker script loaded:",
