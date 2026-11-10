@@ -1,357 +1,81 @@
 {
-  "version": "3.0.0",
-  "language_support": ["en", "rw"],
-  "categories": ["traffic", "general"],
+  "version": "4.0.0",
+  "language": ["en", "rw"],
   "educational_notice": {
-    "en": "These lessons are for general education and awareness. They are not a substitute for the current laws of Rwanda, official road signs, professional instruction or directions from authorised traffic officers. Laws and regulations may change. Always check the latest official publications.",
-    "rw": "Aya masomo agamije uburezi no kongera ubumenyi rusange. Ntisimbura amategeko y'u Rwanda agezweho, ibyapa byemewe, inyigisho zitangwa n'ababifitiye ububasha cyangwa amabwiriza y'abashinzwe umutekano wo mu muhanda. Amategeko n'amabwiriza bishobora guhinduka. Buri gihe genzura inyandiko nshya zemewe."
+    "en": "Quiz Master Rwanda provides educational information to support learning. Road safety lessons are general guidance and do not replace current Rwandan laws, official instructions, professional training or advice from relevant authorities. Always check official sources for current requirements.",
+    "rw": "Quiz Master Rwanda itanga amakuru agamije uburezi no gufasha abantu kwiga. Amasomo y'umutekano wo mu muhanda ni inyigisho rusange; ntasimbura amategeko y'u Rwanda agezweho, amabwiriza y'inzego zibifitiye ububasha, amahugurwa y'umwuga cyangwa inama z'ababishinzwe. Buri gihe genzura amakuru atangwa n'inzego zemewe."
   },
-  "sources": [
-    {
-      "title": "Law No. 014/2026 of 06/03/2026 Governing Road Traffic - Official Gazette",
-      "publisher": "Republic of Rwanda, Ministry of Justice",
-      "url": "https://minijust.gov.rw/fileadmin/user_upload/Minijust/Official_gazettes_2/____2026_Igazeti_ya_Leta/______WERURWE-March-Mars/OG_n___Special_of_10.03.2026__Ikoreshwa_ry_umuhanda.pdf"
-    },
-    {
-      "title": "Rwanda National Police - Road Safety Information",
-      "publisher": "Rwanda National Police",
-      "url": "https://police.gov.rw/"
-    },
-    {
-      "title": "World Health Organization - Road Traffic Injuries",
-      "publisher": "World Health Organization",
-      "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
-    },
-    {
-      "title": "NASA - Solar System Exploration",
-      "publisher": "National Aeronautics and Space Administration",
-      "url": "https://science.nasa.gov/solar-system/"
-    },
-    {
-      "title": "United States Geological Survey - Education",
-      "publisher": "USGS",
-      "url": "https://www.usgs.gov/education"
-    }
-  ],
   "articles": [
     {
-      "id": "traffic-introduction",
+      "id": "traffic-road-safety-basics",
       "category": "traffic",
       "icon": "🚦",
       "title": {
-        "en": "Introduction to Road Traffic Safety",
-        "rw": "Intangiriro ku Mutekano wo mu Muhanda"
+        "en": "The Foundations of Road Safety",
+        "rw": "Iby'ibanze ku mutekano wo mu muhanda"
       },
       "description": {
-        "en": "Understand road safety, the people who use roads and the shared responsibility of preventing crashes.",
-        "rw": "Sobanukirwa n'umutekano wo mu muhanda, abantu bawukoresha n'inshingano buri wese afite mu gukumira impanuka."
+        "en": "Understand why road safety is a shared responsibility and how careful decisions help protect everyone using the road.",
+        "rw": "Sobanukirwa impamvu umutekano wo mu muhanda ari inshingano ya buri wese n'uko gufata ibyemezo byitonze birinda abakoresha umuhanda bose."
       },
       "definition": {
-        "en": "Road traffic safety is the knowledge, rules, decisions and behaviour that help prevent road crashes and protect people using roads. It concerns drivers, passengers, pedestrians, cyclists and motorcyclists.",
-        "rw": "Umutekano wo mu muhanda ni ubumenyi, amategeko, ibyemezo n'imyitwarire bifasha gukumira impanuka no kurengera abantu bakoresha umuhanda. Ureba abashoferi, abagenzi, abanyamaguru, abanyamagare n'abatwara moto."
+        "en": "Road safety refers to the knowledge, behaviour, rules and protective measures that help prevent crashes and reduce the risk of injury or death on roads.",
+        "rw": "Umutekano wo mu muhanda ni ubumenyi, imyitwarire, amategeko n'ingamba zo kwirinda bifasha gukumira impanuka no kugabanya ibyago byo gukomereka cyangwa gupfa mu muhanda."
       },
       "body": {
-        "en": "A road is a shared space. Different people use it for travel, work, school and trade. Because they share the same space, each road user must consider the safety of others. A safe road user pays attention, follows official signs and signals, respects other people and avoids unnecessary risks.\n\nBefore a journey, a driver should check that the vehicle is in safe working condition, plan the journey and allow enough time. During the journey, the driver should remain attentive, keep a safe distance, use signals correctly and adjust speed to the road and weather conditions. Passengers should avoid distracting the driver and should use the safety equipment provided.\n\nPedestrians should use suitable walking areas and designated crossing places where available. Cyclists and motorcyclists should remain visible and follow the rules that apply to them. Children and other people who may need extra assistance should be given particular care near roads.\n\nRoad safety is not only the responsibility of drivers. Everyone contributes by behaving patiently, noticing possible hazards and following lawful instructions. A person who has priority should still be careful because other road users may make mistakes.",
-        "rw": "Umuhanda ni ahantu abantu benshi bahurira. Abantu bawukoresha bajya ku kazi, ku ishuri, mu ngendo no mu bucuruzi. Kubera ko bawusangira, buri wese agomba kwita ku mutekano w'abandi. Umukoresha umuhanda witonda yitegereza ibimukikije, yubahiriza ibyapa n'amatara byemewe, yubaha abandi kandi akirinda ibyago bitari ngombwa.\n\nMbere y'urugendo, umushoferi agomba kugenzura ko ikinyabiziga kimeze neza, gutegura urugendo no kwishyiriraho igihe gihagije. Mu rugendo agomba gukomeza kwitonda, gusiga intera itekanye, gukoresha amatara yerekana icyerekezo uko bikwiye no guhuza umuvuduko n'uko umuhanda n'ikirere bimeze. Abagenzi bagomba kwirinda kurangaza umushoferi no gukoresha ibikoresho bibarinda.\n\nAbanyamaguru bagomba gukoresha inzira zabagenewe n'ahantu ho kwambukira igihe bihari. Abanyamagare n'abatwara moto bagomba kugaragara neza no kubahiriza amategeko abareba. Abana n'abandi bashobora gukenera ubufasha bwihariye bagomba kwitabwaho cyane hafi y'imihanda.\n\nUmutekano wo mu muhanda si inshingano z'abashoferi gusa. Buri wese awugiramo uruhare iyo yitwaye neza, yitegereje ibyago bishobora kubaho kandi yubahiriza amabwiriza yemewe. N'ufite uburenganzira bwo kubanza agomba gukomeza kwitonda kuko abandi bashobora gukora amakosa."
+        "en": [
+          "Roads are shared spaces used by pedestrians, cyclists, motorcyclists, drivers and passengers. Each group has different needs, but everyone has a role in preventing crashes. A safe road environment depends on responsible behaviour, suitable infrastructure, visible signs and respect for traffic rules.",
+          "Many road crashes are linked to preventable risks such as excessive speed, distraction, unsafe overtaking, impaired driving and failure to use protective equipment. Paying attention, planning journeys and making calm decisions can reduce these risks.",
+          "Road safety is not only the responsibility of drivers. Pedestrians should use suitable crossing points where available, cyclists should make themselves visible, passengers should use available restraints and communities should support safer roads for everyone.",
+          "A responsible road user observes the environment, anticipates possible hazards and avoids actions that put others at unnecessary risk. When conditions are difficult, such as poor visibility or wet roads, extra caution is important."
+        ],
+        "rw": [
+          "Umuhanda ukoreshwa n'abanyamaguru, abanyamagare, abatwara moto, abashoferi n'abagenzi. Buri tsinda rifite ibyo rikeneye byihariye, ariko buri wese afite uruhare mu gukumira impanuka. Umuhanda utekanye ushingira ku myitwarire myiza, ibikorwa remezo bikwiye, ibyapa bigaragara no kubahiriza amategeko y'umuhanda.",
+          "Impanuka nyinshi zo mu muhanda zifitanye isano n'ibyago bishobora gukumirwa, nko kugendera ku muvuduko ukabije, kurangara, kurenga nabi, gutwara ikinyabiziga umuntu atameze neza cyangwa kutambara ibikoresho birinda. Kwitwararika, gutegura urugendo no gufata ibyemezo utuje bishobora kugabanya ibyo byago.",
+          "Umutekano wo mu muhanda si inshingano z'abashoferi gusa. Abanyamaguru bagomba gukoresha ahagenewe kwambukira igihe ahari, abanyamagare bakagaragara neza, abagenzi bagakoresha imikandara ibarinda igihe ihari, naho abaturage bagashyigikira umuhanda utekanye kuri bose.",
+          "Umukoresha umuhanda witwararika areba ibimukikije, agatekereza ku bishobora guteza ibyago kandi akirinda ibikorwa bishyira abandi mu kaga bidakenewe. Iyo ibihe bitoroshye, urugero nk'igihe hatagaragara neza cyangwa umuhanda unyerera, aba agomba kurushaho kwitonda."
+        ]
       },
       "key_points": {
         "en": [
           "Road safety is a shared responsibility.",
-          "Obey official signs, signals and lawful instructions.",
-          "Adjust speed and behaviour to road and weather conditions.",
-          "Avoid distractions and unsafe behaviour.",
-          "Take extra care around children and other vulnerable road users."
+          "Pay attention to other road users and the surrounding environment.",
+          "Avoid distraction and risky decisions.",
+          "Follow current traffic signs, rules and official instructions.",
+          "Choose behaviour that protects vulnerable road users."
         ],
         "rw": [
           "Umutekano wo mu muhanda ni inshingano ya buri wese.",
-          "Kurikiza ibyapa, amatara n'amabwiriza byemewe.",
-          "Huza umuvuduko n'imyitwarire n'uko umuhanda n'ikirere bimeze.",
-          "Irinde ibikurangaza n'imyitwarire iteje ibyago.",
-          "Witondere cyane abana n'abandi bakoresha umuhanda bashobora guhura n'ibyago byoroshye."
+          "Jya witondera abandi bakoresha umuhanda n'ibikikije.",
+          "Irinde kurangara no gufata ibyemezo bishobora guteza ibyago.",
+          "Kurikiza ibyapa, amategeko n'amabwiriza y'umuhanda agezweho.",
+          "Hitamo imyitwarire irinda abakoresha umuhanda bashobora guhura n'ibyago byoroshye."
         ]
       },
       "conclusion": {
-        "en": "Safer roads depend on attention, patience, respect and responsible decisions from every road user.",
-        "rw": "Imihanda itekanye ishingira ku kwitonda, kwihangana, kubahana no gufata ibyemezo birengera ubuzima bya buri wese."
+        "en": "Safer roads are created when every road user acts responsibly. Small careful decisions can help protect lives and make journeys safer.",
+        "rw": "Imihanda irushaho kugira umutekano iyo buri uyikoresha yitwaye neza. Ibyemezo bito byo kwitwararika bishobora gufasha kurinda ubuzima no gutuma ingendo ziba nziza."
       },
       "quiz_connection": {
-        "en": "This lesson supports quiz questions about road users, shared responsibility and basic safety behaviour.",
-        "rw": "Iri somo rigufasha gusubiza ibibazo bya Quiz Master ku bakoresha umuhanda, inshingano za buri wese n'imyitwarire y'umutekano."
-      }
-    },
-    {
-      "id": "traffic-road-signs",
-      "category": "traffic",
-      "icon": "🛑",
-      "title": {
-        "en": "Understanding Road Signs",
-        "rw": "Gusobanukirwa Ibyapa byo mu Muhanda"
-      },
-      "description": {
-        "en": "Learn how road signs communicate warnings, instructions, restrictions and useful information.",
-        "rw": "Menya uko ibyapa byo mu muhanda bitanga imiburo, amabwiriza, ibyo umuntu abujijwe n'amakuru amufasha."
-      },
-      "definition": {
-        "en": "A road sign is an official visual message placed near or above a road to guide, warn, regulate or inform road users.",
-        "rw": "Icyapa cyo mu muhanda ni ubutumwa bugaragara bushyirwa iruhande cyangwa hejuru y'umuhanda kugira ngo buyobore, buburire, butange amabwiriza cyangwa amakuru ku bawukoresha."
-      },
-      "body": {
-        "en": "Road signs help road users understand what is required or what may happen ahead. Signs use shapes, colours, symbols and words to communicate messages. Their exact meaning must be learned from the official road-sign system used in the country where a person is travelling.\n\nWarning signs alert people to possible hazards such as bends, junctions, roadworks, crossings or changes in the road. Regulatory signs communicate rules and restrictions. Information and direction signs help people find places, routes and services.\n\nA driver should notice a sign early enough to respond calmly. Looking at a sign only at the last moment can lead to sudden actions. Temporary signs placed near roadworks are also important and should not be ignored.\n\nIf a sign is damaged, hidden or difficult to understand, reduce risk by slowing down when appropriate, observing the road carefully and following lawful instructions from authorised officers. Do not guess the meaning of an unfamiliar sign.",
-        "rw": "Ibyapa byo mu muhanda bifasha abakoresha umuhanda kumenya ibyo basabwa cyangwa ibishobora kuba imbere. Ibyapa bikoresha imiterere, amabara, ibimenyetso n'amagambo kugira ngo bitange ubutumwa. Ibisobanuro nyakuri bigomba kwigwa hakurikijwe uburyo bw'ibyapa byemewe mu gihugu umuntu arimo kugendamo.\n\nIbyapa biburira abantu ibyago bishobora kuba imbere, nk'umuhanda ugoramye, amasangano, ahari imirimo, ahambukira abanyamaguru cyangwa impinduka mu muhanda. Ibyapa bitegeka bitanga amategeko n'ibibujijwe. Ibyapa by'amakuru n'ibyerekezo bifasha abantu kumenya ahantu, inzira na serivisi.\n\nUmushoferi agomba kubona icyapa hakiri kare kugira ngo agire icyo akora atuje. Kukibona ageze hafi yacyo bishobora gutuma afata icyemezo gitunguranye. Ibyapa by'agateganyo bishyirwa ahari imirimo yo mu muhanda na byo ni ingenzi kandi ntibigomba kwirengagizwa.\n\nIyo icyapa cyangiritse, gihishwe cyangwa kitumvikana, gabanya ibyago witonda, ugabanya umuvuduko igihe bikwiye, witegereza umuhanda kandi ukurikiza amabwiriza yemewe y'abashinzwe umutekano. Ntugakeke ibisobanuro by'icyapa utazi."
-      },
-      "key_points": {
-        "en": [
-          "Signs warn, regulate, guide or provide information.",
-          "Learn the official signs used in the country where you travel.",
-          "Read signs early and respond calmly.",
-          "Temporary roadwork signs must also be respected.",
-          "Do not guess the meaning of an unfamiliar sign."
-        ],
-        "rw": [
-          "Ibyapa biraburira, bigatanga amabwiriza, bikayobora cyangwa amakuru.",
-          "Menya ibyapa byemewe bikoreshwa mu gihugu urimo.",
-          "Soma ibyapa hakiri kare kandi ugire icyo ukora utuje.",
-          "Ibyapa by'agateganyo byo ahari imirimo na byo bigomba kubahirizwa.",
-          "Ntugakeke ibisobanuro by'icyapa utazi."
-        ]
-      },
-      "conclusion": {
-        "en": "Understanding road signs helps people make informed and safer decisions.",
-        "rw": "Gusobanukirwa ibyapa bifasha abantu gufata ibyemezo bishingiye ku makuru kandi birengera ubuzima."
-      },
-      "quiz_connection": {
-        "en": "Use this lesson to revise the purpose and meaning of different road signs before answering sign-related quiz questions.",
-        "rw": "Koresha iri somo usubiremo intego n'ibisobanuro by'ibyapa bitandukanye mbere yo gusubiza ibibazo byabyo muri Quiz Master."
-      }
-    },
-    {
-      "id": "traffic-warning-signs",
-      "category": "traffic",
-      "icon": "⚠️",
-      "title": {
-        "en": "Warning Signs and Road Hazards",
-        "rw": "Ibyapa Biburira n'Ibyago byo mu Muhanda"
-      },
-      "description": {
-        "en": "Recognise warning signs and learn how to prepare for possible hazards ahead.",
-        "rw": "Menya ibyapa biburira kandi wige uko witegura ibyago bishobora kuba imbere."
-      },
-      "definition": {
-        "en": "A warning sign alerts road users to a possible danger or unusual road condition ahead so that they can prepare and respond safely.",
-        "rw": "Icyapa kiburira kimenyekanisha icyago gishobora kuba imbere cyangwa imiterere idasanzwe y'umuhanda kugira ngo abakoresha umuhanda babyitegure kandi babyitwaramo neza."
-      },
-      "body": {
-        "en": "Warning signs are used where road users may need extra attention. They may indicate a bend, steep slope, narrow road, junction, pedestrian crossing, animals, falling rocks or roadworks. The sign is an early message to prepare, not a reason to panic.\n\nWhen a warning sign appears, look carefully at the road and the surrounding area. Consider visibility, weather, traffic and the condition of the road surface. Reduce speed when necessary and be ready to stop if the situation requires it.\n\nDo not overtake where the road ahead cannot be seen clearly or where the manoeuvre is prohibited. Near schools, markets and residential areas, be prepared for pedestrians and other road users to appear. Temporary warning signs should be treated seriously because road conditions may have changed.",
-        "rw": "Ibyapa biburira bikoreshwa ahantu abakoresha umuhanda bagomba kwitonda kurushaho. Bishobora kugaragaza umuhanda ugoramye, ahamanuka cyangwa hazamuka cyane, umuhanda ugabanutse, amasangano, aho abanyamaguru bambukira, inyamaswa, amabuye ashobora kugwa cyangwa ahari imirimo yo mu muhanda. Icyapa kiba ubutumwa bwo kwitegura hakiri kare, si impamvu yo guhagarika umutima.\n\nIyo ubonye icyapa kiburira, genzura neza umuhanda n'ibikikije. Reba uko ubona imbere, uko ikirere kimeze, uko imodoka zingana n'uko umuhanda umeze. Gabanya umuvuduko igihe bikenewe kandi witegure guhagarara niba imimerere ibigusaba.\n\nNturenze ikindi kinyabiziga ahantu utabona neza ibiri imbere cyangwa aho kubikora bibujijwe. Hafi y'amashuri, amasoko n'ahatuwe, ujye witegura ko abanyamaguru n'abandi bakoresha umuhanda bashobora kugaragara. Ibyapa biburira by'agateganyo bigomba gufatanwa uburemere kuko imimerere y'umuhanda ishobora kuba yarahindutse."
-      },
-      "key_points": {
-        "en": [
-          "Warning signs identify possible hazards ahead.",
-          "Prepare early instead of reacting at the last moment.",
-          "Consider weather, visibility and road surface.",
-          "Do not overtake where it is unsafe or prohibited.",
-          "Be especially careful near schools, markets and homes."
-        ],
-        "rw": [
-          "Ibyapa biburira bigaragaza ibyago bishobora kuba imbere.",
-          "Itegure hakiri kare aho gutegereza ko icyago kikugeraho.",
-          "Reba ikirere, uko ubona imbere n'uko umuhanda umeze.",
-          "Nturenze ikindi kinyabiziga aho biteje ibyago cyangwa bibujijwe.",
-          "Witondere cyane hafi y'amashuri, amasoko n'ingo."
-        ]
-      },
-      "conclusion": {
-        "en": "A warning sign gives road users time to prepare and choose a safer response.",
-        "rw": "Icyapa kiburira giha abakoresha umuhanda umwanya wo kwitegura no guhitamo uko babyitwaramo mu mutekano."
-      },
-      "quiz_connection": {
-        "en": "This lesson helps you identify the hazards shown by warning signs and select a safe response.",
-        "rw": "Iri somo rigufasha kumenya ibyago bigaragazwa n'ibyapa biburira no guhitamo uko wakwitwara mu mutekano."
-      }
-    },
-    {
-      "id": "traffic-regulatory-signs",
-      "category": "traffic",
-      "icon": "⛔",
-      "title": {
-        "en": "Regulatory Signs: Rules and Restrictions",
-        "rw": "Ibyapa Bitegeka n'Ibibuza"
-      },
-      "description": {
-        "en": "Understand signs that tell road users what they must do or must not do.",
-        "rw": "Sobanukirwa ibyapa bigaragaza ibyo abakoresha umuhanda bagomba gukora n'ibyo batagomba gukora."
-      },
-      "definition": {
-        "en": "A regulatory sign communicates a traffic rule, restriction or required action that road users must follow under the applicable law.",
-        "rw": "Icyapa gitegeka kigaragaza itegeko, ikibujijwe cyangwa igikorwa abakoresha umuhanda bagomba kubahiriza hakurikijwe amategeko abigenga."
-      },
-      "body": {
-        "en": "Regulatory signs help organise traffic and reduce conflict between road users. Depending on the official sign system, they may communicate a requirement to stop, give way, follow a direction, observe a speed restriction or avoid entering a restricted area.\n\nThe exact meaning of a sign depends on its official design and the law in force. Road users should learn the approved signs instead of relying on guesses or informal explanations. A sign may apply to a particular lane, direction, vehicle type or section of road.\n\nWhen approaching a regulatory sign, identify its instruction early and follow it in a safe manner. A stop instruction means bringing the vehicle to a complete stop at the legally required place. A restriction should not be ignored simply because the road looks empty.\n\nIf an authorised traffic officer gives a lawful instruction, road users should follow that instruction. Temporary traffic arrangements may be used during roadworks or special events.",
-        "rw": "Ibyapa bitegeka bifasha gutunganya uburyo ibinyabiziga bigenda no kugabanya amakimbirane hagati y'abakoresha umuhanda. Bitewe n'uburyo bw'ibyapa byemewe, bishobora gutegeka guhagarara, gutanga inzira, gukurikira icyerekezo, kubahiriza umuvuduko ntarengwa cyangwa kutinjira ahantu habujijwe.\n\nIbisobanuro nyakuri by'icyapa biterwa n'imiterere yacyo yemewe n'amategeko ariho. Abakoresha umuhanda bagomba kwiga ibyapa byemewe aho gushingira ku gukeka cyangwa ibisobanuro bitizewe. Icyapa gishobora kureba umurongo umwe, icyerekezo, ubwoko bw'ikinyabiziga cyangwa igice runaka cy'umuhanda.\n\nIyo wegereye icyapa gitegeka, banza umenye amabwiriza gitanga hanyuma uyakurikize mu buryo butekanye. Itegeko ryo guhagarara risaba guhagarika ikinyabiziga burundu ahagenwe n'amategeko. Ikibujijwe ntikigomba kwirengagizwa kubera ko umuhanda usa n'utemo.\n\nIyo umukozi ubifitiye ububasha atanze amabwiriza yemewe, abakoresha umuhanda bagomba kuyakurikiza. Amabwiriza y'agateganyo ashobora gushyirwaho igihe hari imirimo yo mu muhanda cyangwa ibirori bidasanzwe."
-      },
-      "key_points": {
-        "en": [
-          "Regulatory signs communicate rules and restrictions.",
-          "Learn the official meaning of each sign.",
-          "A stop instruction requires a complete stop.",
-          "Do not ignore restrictions when the road looks empty.",
-          "Follow lawful instructions from authorised officers."
-        ],
-        "rw": [
-          "Ibyapa bitegeka bigaragaza amategeko n'ibibujijwe.",
-          "Menya ibisobanuro byemewe bya buri cyapa.",
-          "Itegeko ryo guhagarara risaba guhagarara burundu.",
-          "Ntukirengagize ibibujijwe kubera ko umuhanda usa n'utemo.",
-          "Kurikiza amabwiriza yemewe atangwa n'ababifitiye ububasha."
-        ]
-      },
-      "conclusion": {
-        "en": "Regulatory signs communicate instructions that help keep road traffic orderly and safe.",
-        "rw": "Ibyapa bitegeka bitanga amabwiriza afasha gutuma ikoreshwa ry'umuhanda rigira gahunda kandi rikaba ritekenye."
-      },
-      "quiz_connection": {
-        "en": "Revise this lesson to distinguish warning signs from signs that impose rules or restrictions.",
-        "rw": "Subiramo iri somo kugira ngo utandukanye ibyapa biburira n'ibyapa bishyiraho amategeko cyangwa ibibujijwe."
-      }
-    },
-    {
-      "id": "traffic-traffic-lights",
-      "category": "traffic",
-      "icon": "🚥",
-      "title": {
-        "en": "Traffic Lights and Signal Control",
-        "rw": "Amatara yo mu Muhanda n'Uko Ayobora Urujya n'Uruza"
-      },
-      "description": {
-        "en": "Learn the general purpose of traffic lights and the importance of obeying signals.",
-        "rw": "Menya intego rusange y'amatara yo mu muhanda n'impamvu ari ngombwa kuyubahiriza."
-      },
-      "definition": {
-        "en": "Traffic lights are signal devices used to control the movement of vehicles, pedestrians or other road users at selected locations.",
-        "rw": "Amatara yo mu muhanda ni ibikoresho bitanga ibimenyetso bigenzura uko ibinyabiziga, abanyamaguru cyangwa abandi bakoresha umuhanda bagenda ahantu runaka."
-      },
-      "body": {
-        "en": "Traffic signals help organise movement where different directions or road users meet. The common red, amber and green signals communicate different instructions. Their meaning must be understood according to the official traffic rules and the signal arrangement at that location.\n\nA red signal generally means that a road user must stop at the required stopping point. A green signal generally permits movement when the way is clear and it is safe to proceed. An amber signal warns that the signal is changing; road users should respond according to the applicable rules and should not speed up dangerously to pass through.\n\nA green light does not remove the need to look carefully. The junction may still contain pedestrians, vehicles that have not cleared the road or emergency situations. Drivers should not block a junction when traffic ahead is stationary.\n\nPedestrian signals should also be followed. People crossing should use the crossing area and check that traffic has stopped before proceeding. If signals are not working, road users should slow down, observe carefully and follow lawful directions from authorised officers or applicable rules.",
-        "rw": "Amatara yo mu muhanda afasha gutunganya urujya n'uruza ahantu hahurira ibyerekezo bitandukanye cyangwa abakoresha umuhanda batandukanye. Amatara asanzwe y'umutuku, umuhondo n'icyatsi atanga amabwiriza atandukanye. Ibisobanuro byayo bigomba kumvikana hakurikijwe amategeko yemewe n'uko amatara yashyizwe ahantu runaka.\n\nItara ritukura risanzwe risobanura ko umukoresha umuhanda agomba guhagarara ahagenwe. Itara ry'icyatsi risanzwe ryemerera gukomeza urugendo iyo inzira ifunguye kandi nta cyago gihari. Itara ry'umuhondo riburira ko ikimenyetso kigiye guhinduka; abakoresha umuhanda bagomba kwitwara hakurikijwe amategeko kandi ntibihutishe ikinyabiziga mu buryo buteje ibyago kugira ngo barenze.\n\nItara ry'icyatsi ntirikuraho inshingano yo kureba neza. Mu masangano hashobora kuba hakiri abanyamaguru, ibinyabiziga bitararenga cyangwa ikindi kibazo cyihutirwa. Abashoferi ntibagomba gufunga amasangano igihe imodoka ziri imbere zitagenda.\n\nIbimenyetso bigenewe abanyamaguru na byo bigomba kubahirizwa. Abambuka bagomba gukoresha ahabugenewe kandi bakareba ko ibinyabiziga byahagaze mbere yo kwambuka. Iyo amatara adakora, abakoresha umuhanda bagomba kugabanya umuvuduko, kwitegereza neza no gukurikiza amabwiriza yemewe cyangwa amategeko abigenga."
-      },
-      "key_points": {
-        "en": [
-          "Traffic lights organise movement at selected locations.",
-          "Understand each signal according to official rules.",
-          "Do not speed up dangerously when a signal is changing.",
-          "A green signal does not mean that it is safe to ignore other road users.",
-          "Use extra care when signals are not working."
-        ],
-        "rw": [
-          "Amatara afasha gutunganya urujya n'uruza ahantu runaka.",
-          "Sobanukirwa buri kimenyetso ukurikije amategeko yemewe.",
-          "Ntukihutishe ikinyabiziga mu buryo buteje ibyago igihe itara rihinduka.",
-          "Itara ry'icyatsi ntirisobanura ko wirengagiza abandi bakoresha umuhanda.",
-          "Witonde cyane igihe amatara adakora."
-        ]
-      },
-      "conclusion": {
-        "en": "Traffic signals work best when everyone understands and obeys them carefully.",
-        "rw": "Amatara yo mu muhanda akora neza iyo buri wese ayasobanukiwe kandi akayubahiriza yitonze."
-      },
-      "quiz_connection": {
-        "en": "This lesson helps with quiz questions about traffic signals and safe behaviour at junctions.",
-        "rw": "Iri somo rigufasha gusubiza ibibazo bya Quiz Master ku matara yo mu muhanda n'imyitwarire itekanye mu masangano."
-      }
-    },
-    {
-      "id": "traffic-road-markings",
-      "category": "traffic",
-      "icon": "〰️",
-      "title": {
-        "en": "Road Markings and Lane Discipline",
-        "rw": "Imirongo yo mu Muhanda no Kugendera mu Mirongo"
-      },
-      "description": {
-        "en": "Understand why road markings are used and how they help organise traffic.",
-        "rw": "Sobanukirwa impamvu imirongo yo mu muhanda ikoreshwa n'uko ifasha gutunganya urujya n'uruza."
-      },
-      "definition": {
-        "en": "Road markings are lines, symbols and words placed on the road surface to guide, separate or regulate road users.",
-        "rw": "Imirongo yo mu muhanda ni imirongo, ibimenyetso n'amagambo bishushanywa ku buso bw'umuhanda kugira ngo biyobore, bitandukanye cyangwa bigire icyo bitegeka abakoresha umuhanda."
-      },
-      "body": {
-        "en": "Road markings provide information that can be seen directly on the road surface. They may separate lanes, show where vehicles should stop, identify pedestrian crossings or indicate areas that should not be used for ordinary driving. Their meaning depends on the official road-marking system and local rules.\n\nDrivers should remain within the appropriate lane and pay attention to lane arrows, boundary lines and crossing markings. A lane change should be made only when it is permitted and safe. Drivers should check the surrounding traffic, signal their intention and avoid sudden movement.\n\nPedestrian crossings identify places intended for people to cross. Drivers should approach these places carefully and respect pedestrians according to the law. Road markings may become difficult to see in rain, darkness or when the surface is worn, so road users should also observe signs and the general road situation.\n\nNever assume that a road marking can be ignored because there are few vehicles around. Markings help keep traffic predictable and reduce confusion.",
-        "rw": "Imirongo yo mu muhanda itanga amakuru agaragara ku buso bw'umuhanda. Ishobora gutandukanya imirongo y'ibinyabiziga, kugaragaza aho bigomba guhagarara, kwerekana aho abanyamaguru bambukira cyangwa kugaragaza ahantu hatagomba gukoreshwa mu kugendera bisanzwe. Ibisobanuro byayo biterwa n'uburyo bw'ibimenyetso byemewe n'amategeko y'aho hantu.\n\nAbashoferi bagomba kugendera mu murongo ubagenewe kandi bakita ku myambi yerekana icyerekezo, imirongo igabanya umuhanda n'ahambukira abanyamaguru. Guhindura umurongo bigomba gukorwa gusa igihe byemewe kandi bitekanye. Umushoferi agomba kubanza kugenzura ibinyabiziga bimukikije, kwerekana icyo agiye gukora no kwirinda guhindura icyerekezo gitunguranye.\n\nAhambukira abanyamaguru hagaragaza ahantu hagenewe abantu kwambukira. Abashoferi bagomba kukwegera bitonze no kubaha abanyamaguru hakurikijwe amategeko. Imirongo ishobora kutagaragara neza mu mvura, mu mwijima cyangwa igihe umuhanda ushaje, bityo abakoresha umuhanda bagomba no kwitegereza ibyapa n'uko umuhanda umeze.\n\nNtukibwire ko imirongo yo mu muhanda ishobora kwirengagizwa kubera ko ibinyabiziga ari bike. Ifasha gutuma urujya n'uruza rugira gahunda kandi ikagabanya urujijo."
-      },
-      "key_points": {
-        "en": [
-          "Road markings guide and organise road users.",
-          "Stay in the appropriate lane.",
-          "Change lanes only when permitted and safe.",
-          "Respect pedestrian crossing markings.",
-          "Look for signs and other road information when markings are unclear."
-        ],
-        "rw": [
-          "Imirongo yo mu muhanda iyobora kandi igatunganya abakoresha umuhanda.",
-          "Gendera mu murongo ugenewe ikinyabiziga cyawe.",
-          "Hindura umurongo gusa igihe byemewe kandi bitekanye.",
-          "Wubahe imirongo y'ahambukira abanyamaguru.",
-          "Iyo imirongo itagaragara neza, reba ibyapa n'andi makuru yo mu muhanda."
-        ]
-      },
-      "conclusion": {
-        "en": "Correct use of road markings makes movement clearer and safer for everyone.",
-        "rw": "Gukoresha neza imirongo yo mu muhanda bituma urujya n'uruza rusobanuka kandi rukarushaho kuba rutekanye."
-      },
-      "quiz_connection": {
-        "en": "Review the purpose of lane lines, arrows and pedestrian crossings before answering road-marking questions.",
-        "rw": "Subiramo intego y'imirongo y'imihanda, imyambi n'ahambukira abanyamaguru mbere yo gusubiza ibibazo byabyo."
-      }
-    },
-    {
-      "id": "traffic-driving-side",
-      "category": "traffic",
-      "icon": "➡️",
-      "title": {
-        "en": "Driving on the Correct Side of the Road",
-        "rw": "Kugendera ku Ruhande Rwemewe rw'Umuhanda"
-      },
-      "description": {
-        "en": "Learn the importance of using the correct side of the road and following lane rules.",
-        "rw": "Menya impamvu ari ngombwa kugendera ku ruhande rwemewe no kubahiriza amategeko y'imirongo."
-      },
-      "definition": {
-        "en": "The driving side is the side of the road on which vehicles are legally required to travel in a particular country.",
-        "rw": "Uruhande rugenderwamo ni uruhande rw'umuhanda ibinyabiziga bitegetswe kugenderamo hakurikijwe amategeko y'igihugu runaka."
-      },
-      "body": {
-        "en": "Countries establish rules about which side of the road vehicles must use. These rules help vehicles travelling in opposite directions pass each other in an organised way and help road users understand where to expect approaching traffic.\n\nRwanda's Law No. 014/2026 of 6 March 2026 governing road traffic states in Article 4 that the driving side for a vehicle on the road is the right-hand side. Road users in Rwanda should consult the current official law and obey road signs, lane markings and lawful instructions.\n\nDrivers should remain in the correct lane and should not move to another side of the road without a lawful and safe reason. Overtaking is a manoeuvre that requires particular care and must only be done where permitted, where visibility is adequate and where it can be completed safely.\n\nVisitors and new drivers should learn the local rules before travelling. Rules that apply in one country may differ from those in another country.",
-        "rw": "Ibihugu bishyiraho amategeko agaragaza uruhande ibinyabiziga bigomba kugenderamo. Aya mategeko afasha ibinyabiziga bigenda mu byerekezo bihabanye guhana inzira mu buryo bufite gahunda kandi agafasha abakoresha umuhanda kumenya aho ibinyabiziga bibaturutse imbere bigomba kunyura.\n\nItegeko ry'u Rwanda n° 014/2026 ryo ku wa 6 Werurwe 2026 rigenga ikoreshwa ry'umuhanda, mu ngingo ya 4, rivuga ko uruhande rugenderwamo n'ikinyabiziga mu muhanda ari urw'iburyo. Abakoresha umuhanda mu Rwanda bagomba kugenzura itegeko ryemewe rigezweho no kubahiriza ibyapa, imirongo yo mu muhanda n'amabwiriza yemewe.\n\nAbashoferi bagomba kugendera mu murongo ubagenewe kandi ntibimukire ku rundi ruhande nta mpamvu yemewe kandi itekanye. Kurenga ikindi kinyabiziga bisaba kwitonda cyane kandi bigomba gukorwa gusa aho byemewe, aho umuntu abona neza kandi aho bishobora kurangira mu mutekano.\n\nAbashyitsi n'abashoferi bashya bagomba kubanza kwiga amategeko y'aho bagiye gutwara. Amategeko akoreshwa mu gihugu kimwe ashobora gutandukana n'akoreshwa mu kindi."
-      },
-      "key_points": {
-        "en": [
-          "Each country has rules about the side of the road vehicles must use.",
-          "Rwanda's Law No. 014/2026, Article 4, specifies the right-hand side.",
-          "Follow lane markings and official signs.",
-          "Overtake only where permitted and safe.",
-          "Learn local traffic rules before driving in another country."
-        ],
-        "rw": [
-          "Buri gihugu kigira amategeko agaragaza uruhande ibinyabiziga bigomba kugenderamo.",
-          "Itegeko ry'u Rwanda n° 014/2026, ingingo ya 4, rigena uruhande rw'iburyo.",
-          "Kurikiza imirongo yo mu muhanda n'ibyapa byemewe.",
-          "Renga ikindi kinyabiziga gusa aho byemewe kandi bitekanye.",
-          "Banza wige amategeko y'umuhanda mbere yo gutwara mu kindi gihugu."
-        ]
-      },
-      "conclusion": {
-        "en": "Using the correct side of the road is essential for predictable and orderly traffic.",
-        "rw": "Kugendera ku ruhande rwemewe ni ingenzi kugira ngo urujya n'uruza rugire gahunda kandi rwumvikane."
-      },
-      "quiz_connection": {
-        "en": "This lesson supports questions about Rwanda's driving side and the importance of following lane rules.",
-        "rw": "Iri somo rigufasha gusubiza ibibazo ku ruhande ibinyabiziga bigenderamo mu Rwanda n'impamvu yo kubahiriza imirongo."
+        "en": "Think about the different people who use a road. Which actions can each person take to reduce danger?",
+        "rw": "Tekereza ku bantu batandukanye bakoresha umuhanda. Ni ibihe bikorwa buri wese yakora kugira ngo agabanye ibyago?"
       },
       "sources": [
         {
-          "title": "Law No. 014/2026 - Official Gazette, Article 4",
-          "url": "https://minijust.gov.rw/fileadmin/user_upload/Minijust/Official_gazettes_2/____2026_Igazeti_ya_Leta/______WERURWE-March-Mars/OG_n___Special_of_10.03.2026__Ikoreshwa_ry_umuhanda.pdf"
+          "title": {
+            "en": "Road traffic injuries",
+            "rw": "Imvune n'impanuka zo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
+        },
+        {
+          "title": {
+            "en": "Traffic and Road Safety",
+            "rw": "Umutekano wo mu muhanda"
+          },
+          "publisher": "Rwanda National Police",
+          "url": "https://police.gov.rw/"
         }
       ]
     },
@@ -360,321 +84,742 @@
       "category": "traffic",
       "icon": "🚶",
       "title": {
-        "en": "Pedestrian Safety and Safe Crossing",
-        "rw": "Umutekano w'Abanyamaguru no Kwambuka Neza"
+        "en": "Pedestrian Safety and Safe Road Crossing",
+        "rw": "Umutekano w'abanyamaguru no kwambuka umuhanda"
       },
       "description": {
-        "en": "Learn how pedestrians can reduce risk when walking beside or crossing roads.",
-        "rw": "Menya uko abanyamaguru bagabanya ibyago igihe bagenda iruhande rw'umuhanda cyangwa bawambuka."
+        "en": "Learn how pedestrians can make safer choices before and while crossing roads.",
+        "rw": "Menya uko abanyamaguru bafata ingamba zo kwambuka umuhanda mu buryo butekanye."
       },
       "definition": {
-        "en": "Pedestrian safety means using roads and walking areas in ways that reduce the risk of being involved in a road crash.",
-        "rw": "Umutekano w'abanyamaguru ni ugukoresha umuhanda n'inzira z'abanyamaguru mu buryo bugabanya ibyago byo guhura n'impanuka."
+        "en": "Pedestrian safety means taking precautions to reduce the risk of being involved in a road crash while walking or crossing a road.",
+        "rw": "Umutekano w'umunyamaguru ni ingamba zifatwa kugira ngo agabanye ibyago byo guhura n'impanuka igihe agenda n'amaguru cyangwa yambuka umuhanda."
       },
       "body": {
-        "en": "Pedestrians are road users and must pay attention to traffic. Where a pavement or designated walking path is available, use it. Where there is no suitable walking area, follow the applicable local rules and remain as far from moving vehicles as safely possible.\n\nWhen crossing, use a designated pedestrian crossing or another legally permitted place. Stop at a safe point, look carefully in all relevant directions and check that approaching vehicles have stopped or that there is enough time and space to cross safely. Never assume that a driver has seen you.\n\nAvoid crossing while distracted by a phone, headphones or conversation. At night or in poor visibility, wear clothing or use items that help other road users notice you. Children should receive suitable supervision near roads, and adults should explain safe crossing habits to them.\n\nDrivers should look out for pedestrians, approach crossing areas carefully and follow the rules that protect people walking. Safe crossing is a shared responsibility.",
-        "rw": "Abanyamaguru na bo ni abakoresha umuhanda kandi bagomba kwita ku modoka. Iyo hari inzira yabagenewe, ni yo bagomba gukoresha. Iyo nta nzira iboneye ihari, bagomba gukurikiza amategeko y'aho hantu kandi bakagendera kure y'ibinyabiziga bishoboka mu mutekano.\n\nIyo bagiye kwambuka, bakwiye gukoresha ahagenewe abanyamaguru cyangwa ahandi amategeko abyemera. Babanza guhagarara ahatekanye, bakareba neza mu byerekezo bikenewe kandi bakagenzura ko ibinyabiziga bibegereye byahagaze cyangwa ko bafite umwanya uhagije wo kwambuka neza. Ntibagomba kwibwira ko umushoferi yababonye.\n\nIrinde kwambuka urangajwe na telefoni, utwuma two kumva umuziki cyangwa ibiganiro. Nijoro cyangwa ahantu hatabona neza, ambara imyenda cyangwa ukoreshe ibimenyetso bituma abandi bakubona. Abana bagomba kugenzurwa uko bikwiye hafi y'umuhanda, kandi abantu bakuru bakabigisha uburyo bwo kwambuka mu mutekano.\n\nAbashoferi bagomba kwitegereza abanyamaguru, kwegera ahambukira bitonze no kubahiriza amategeko arengera abantu bagenda n'amaguru. Kwambuka neza ni inshingano isangiwe."
+        "en": [
+          "Pedestrians are among the road users who can be seriously affected in a crash because they have little physical protection. Safe walking requires awareness, patience and attention to vehicles, bicycles, motorcycles and road conditions.",
+          "Where a pedestrian crossing, footbridge or other designated crossing facility is provided, pedestrians should use it and follow the signals or instructions. Before crossing, stop in a safe place, observe traffic in all relevant directions and make sure there is enough time and space to cross safely.",
+          "Do not assume that a driver has seen you or will stop. Avoid stepping suddenly into the road from between parked vehicles or from behind an obstruction. Make yourself visible, especially in low light, rain or places where visibility is limited.",
+          "Mobile phones, headphones and other distractions can reduce awareness of approaching traffic. Give the road your full attention when crossing. Children should be taught safe crossing habits and supervised appropriately according to their age and surroundings."
+        ],
+        "rw": [
+          "Abanyamaguru ni bamwe mu bakoresha umuhanda bashobora kugira ingaruka zikomeye mu mpanuka kuko baba badafite ibikoresho byinshi bibarinda. Kugenda mu mutekano bisaba kuba maso, kwihangana no kwita ku binyabiziga, amagare, moto n'imiterere y'umuhanda.",
+          "Iyo hari ahagenewe abanyamaguru kwambukira, ikiraro cy'abanyamaguru cyangwa ahandi hateganyijwe kwambukira, abanyamaguru bagomba kuhakoresha no gukurikiza amatara cyangwa amabwiriza ahari. Mbere yo kwambuka, hagarara ahatekanye, urebe ibinyabiziga mu byerekezo bireba aho uri kandi wemeze ko ufite umwanya uhagije wo kwambuka neza.",
+          "Ntukibwire ko umushoferi yakubonye cyangwa ko azahagarara. Irinde kwihutira kwinjira mu muhanda uvuye hagati y'imodoka ziparitse cyangwa inyuma y'ikintu kikubuza kubona. Jya ugaragara neza, cyane cyane iyo bwije, imvura igwa cyangwa ahantu hatagaragara neza.",
+          "Telefoni, utwuma two kumva umuziki n'ibindi bishobora kurangaza bigabanya ubushobozi bwo kubona ibinyabiziga byegera. Igihe wambuka, jya wita ku muhanda gusa. Abana bagomba kwigishwa uko bambuka neza kandi bakagenzurwa hakurikijwe imyaka yabo n'aho bari."
+        ]
       },
       "key_points": {
         "en": [
-          "Use pavements or designated walking paths where available.",
-          "Use designated pedestrian crossings where provided.",
-          "Look carefully and make sure it is safe before crossing.",
-          "Do not cross while distracted by a phone or headphones.",
-          "Drivers must pay attention to pedestrians."
+          "Use designated pedestrian crossings when available.",
+          "Observe traffic and signals before crossing.",
+          "Never assume that approaching drivers have seen you.",
+          "Avoid using a phone or other distracting devices while crossing.",
+          "Be visible in poor lighting and weather conditions."
         ],
         "rw": [
-          "Koresha inzira z'abanyamaguru igihe zihari.",
-          "Koresha ahagenewe kwambukira abanyamaguru.",
-          "Reba neza kandi ubanze wemeze ko kwambuka bitekanye.",
-          "Ntukambuke urangajwe na telefoni cyangwa utwuma two kumva umuziki.",
-          "Abashoferi bagomba kwita ku banyamaguru."
+          "Koresha ahagenewe abanyamaguru kwambukira igihe ahari.",
+          "Reba ibinyabiziga n'amatara y'umuhanda mbere yo kwambuka.",
+          "Ntukibwire ko abashoferi bakwegereye bakubonye.",
+          "Irinde gukoresha telefoni cyangwa ibindi bikurangaza igihe wambuka.",
+          "Jya ugaragara neza iyo urumuri ruke cyangwa ikirere kimeze nabi."
         ]
       },
       "conclusion": {
-        "en": "Careful pedestrians and attentive drivers help make walking and crossing safer.",
-        "rw": "Abanyamaguru bitonda n'abashoferi bitegereza neza bafasha gutuma kugenda no kwambuka birushaho kuba bitekanye."
+        "en": "A safe pedestrian is alert, patient and visible. Taking a moment to observe traffic before crossing can prevent serious harm.",
+        "rw": "Umunyamaguru utekanye aba ari maso, yihangana kandi agaragara neza. Gufata akanya ukareba ibinyabiziga mbere yo kwambuka bishobora gukumira impanuka zikomeye."
       },
       "quiz_connection": {
-        "en": "Use this lesson to revise pedestrian crossings, visibility and safe walking behaviour.",
-        "rw": "Koresha iri somo usubiremo ahambukira abanyamaguru, uko bagaragara n'imyitwarire itekanye igihe bagenda."
-      }
-    },
-    {
-      "id": "traffic-motorcycle-safety",
-      "category": "traffic",
-      "icon": "🏍️",
-      "title": {
-        "en": "Motorcycle and Two-Wheeler Safety",
-        "rw": "Umutekano w'Abatwara Moto n'Ibinyabiziga by'Inziga Ebyiri"
-      },
-      "description": {
-        "en": "Understand responsible motorcycle use and the importance of protective equipment.",
-        "rw": "Sobanukirwa ikoreshwa rya moto mu buryo burengera ubuzima n'akamaro k'ibikoresho birinda uyitwaye."
-      },
-      "definition": {
-        "en": "Motorcycle safety involves responsible riding, a roadworthy motorcycle, protective equipment and compliance with traffic rules.",
-        "rw": "Umutekano wa moto ugizwe no kuyitwara neza, kuyitwara imeze neza, gukoresha ibikoresho birinda uyitwaye no kubahiriza amategeko y'umuhanda."
-      },
-      "body": {
-        "en": "Motorcycles are useful for transport, but riders and passengers have less physical protection than people inside many other vehicles. Responsible riding is therefore important. Riders should use a properly fitted and fastened approved helmet and ensure that passengers are also protected.\n\nBefore a journey, check the tyres, brakes, lights, mirrors and other important parts. Do not ride a motorcycle that has a known safety fault. Follow the speed limits and keep a safe distance from other road users. Avoid sudden manoeuvres, unsafe overtaking and riding on pedestrian walkways.\n\nNever use a phone in a way that distracts you while riding. Do not ride after drinking alcohol or when tired, unwell or affected by medicine that makes riding unsafe. Carry only the number of passengers permitted by law and use the required safety equipment.\n\nPassengers should wear a suitable helmet, sit properly and avoid distracting the rider. Both rider and passenger should respect pedestrians and other road users.",
-        "rw": "Moto ni ikinyabiziga gifasha mu ngendo, ariko uyitwaye n'uwo atwaye baba badafite uburinzi bungana n'ubw'abantu bari mu bindi binyabiziga byinshi. Ni yo mpamvu kuyitwara neza ari ingenzi. Uyitwaye agomba kwambara ingofero y'umutekano yemewe, imukwira kandi ifunze neza, akareba ko n'uwo atwaye arinzwe.\n\nMbere y'urugendo, genzura amapine, feri, amatara, indorerwamo n'ibindi bice by'ingenzi. Ntutware moto ifite ikibazo kizwi gishobora guteza ibyago. Kubahiriza umuvuduko ntarengwa, gusiga intera itekanye no kwirinda guhindura icyerekezo gitunguranye ni ingenzi. Irinde kurenga nabi no gutwara moto mu nzira zagenewe abanyamaguru.\n\nNtukoreshe telefoni mu buryo bukurangaza igihe utwaye moto. Ntuyitware wanyoye inzoga cyangwa igihe unaniwe, urwaye cyangwa wafashe umuti ushobora gutuma utayitwara neza. Twara umubare w'abagenzi wemewe n'amategeko kandi ukoreshe ibikoresho by'umutekano bisabwa.\n\nAbagenzi bagomba kwambara ingofero ibakwiriye, kwicara neza no kwirinda kurangaza uyitwaye. Uyitwaye n'umugenzi bagomba kubaha abanyamaguru n'abandi bakoresha umuhanda."
-      },
-      "key_points": {
-        "en": [
-          "Wear an approved, correctly fastened helmet.",
-          "Check the motorcycle before travelling.",
-          "Respect speed limits and keep a safe distance.",
-          "Do not use a phone while riding.",
-          "Never ride when impaired or too tired to ride safely."
-        ],
-        "rw": [
-          "Ambara ingofero y'umutekano yemewe kandi ifunze neza.",
-          "Genzura moto mbere yo gufata urugendo.",
-          "Kubahiriza umuvuduko ntarengwa no gusiga intera itekanye.",
-          "Ntukoreshe telefoni utwaye moto.",
-          "Ntutware moto igihe utameze neza cyangwa unaniwe ku buryo byakubuza kuyitwara neza."
-        ]
-      },
-      "conclusion": {
-        "en": "Responsible riding and proper protective equipment help protect riders, passengers and other road users.",
-        "rw": "Kugendera kuri moto witonze no gukoresha ibikoresho birinda uyitwaye bifasha kurengera abatwara moto, abagenzi n'abandi bakoresha umuhanda."
-      },
-      "quiz_connection": {
-        "en": "This lesson supports questions about helmets, motorcycle checks, passenger safety and responsible riding.",
-        "rw": "Iri somo rigufasha gusubiza ibibazo ku ngofero, kugenzura moto, umutekano w'abagenzi no kuyitwara neza."
+        "en": "Why is it unsafe to assume that a vehicle will stop just because you are waiting to cross?",
+        "rw": "Kuki atari byiza kwibwira ko ikinyabiziga kizahagarara kubera ko utegereje kwambuka?"
       },
       "sources": [
         {
-          "title": "Rwanda National Police - Motorcycle Safety Information",
+          "title": {
+            "en": "Road traffic injuries",
+            "rw": "Imvune n'impanuka zo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
+        },
+        {
+          "title": {
+            "en": "Road Safety",
+            "rw": "Umutekano wo mu muhanda"
+          },
+          "publisher": "Rwanda National Police",
           "url": "https://police.gov.rw/"
         }
       ]
     },
     {
-      "id": "traffic-seat-belts",
+      "id": "traffic-seatbelts-helmets",
       "category": "traffic",
-      "icon": "🚗",
+      "icon": "🪖",
       "title": {
-        "en": "Seat Belts and Passenger Protection",
-        "rw": "Imikandara y'Umutekano no Kurinda Abagenzi"
+        "en": "Seat Belts and Motorcycle Helmets",
+        "rw": "Imikandara y'umutekano n'ingofero za moto"
       },
       "description": {
-        "en": "Learn why seat belts matter and how passengers can contribute to safer journeys.",
-        "rw": "Menya akamaro k'umukandara w'umutekano n'uko abagenzi bagira uruhare mu rugendo rutekanye."
+        "en": "Discover how protective equipment helps reduce the severity of injuries during road crashes.",
+        "rw": "Menya uko ibikoresho birinda bifasha kugabanya ubukana bw'ibikomere mu mpanuka zo mu muhanda."
       },
       "definition": {
-        "en": "A seat belt is a safety restraint designed to help keep a vehicle occupant in the correct position during sudden braking or a collision.",
-        "rw": "Umukandara w'umutekano ni igikoresho kigenewe gufasha umuntu uri mu kinyabiziga kuguma mu mwanya we igihe ikinyabiziga gihagaze gitunguranye cyangwa habaye impanuka."
+        "en": "Protective equipment includes safety devices such as seat belts and properly approved motorcycle helmets that help reduce the risk or severity of injury.",
+        "rw": "Ibikoresho birinda birimo nk'imikandara y'umutekano n'ingofero za moto zemewe kandi zikoreshwa neza, bigafasha kugabanya ibyago cyangwa ubukana bw'ibikomere."
       },
       "body": {
-        "en": "Seat belts are an important part of vehicle safety. They help restrain occupants and reduce the risk of being thrown from their seats during a sudden stop or collision. They should be used correctly for every journey, even when travelling a short distance.\n\nThe belt should fit properly and should not be twisted. The shoulder section should lie across the chest, while the lap section should sit low across the hips. Follow the vehicle manufacturer's instructions and use suitable child restraints for children according to their age, size and applicable rules.\n\nDrivers should check that passengers are seated safely before moving. Passengers should not distract the driver, obstruct the driver's view or interfere with vehicle controls. Children should be transported using suitable safety arrangements and should not be allowed to move freely in a vehicle.\n\nAirbags and other safety systems do not replace seat belts. They are designed to work as part of a wider safety system.",
-        "rw": "Umukandara w'umutekano ni kimwe mu bikoresho by'ingenzi birinda abantu bari mu kinyabiziga. Ufasha kugumisha umugenzi mu mwanya we kandi ukagabanya ibyago byo kujugunywa mu gihe ikinyabiziga gihagaze gitunguranye cyangwa habaye impanuka. Ugomba gukoreshwa neza muri buri rugendo, n'iyo rwaba rugufi.\n\nUmukandara ugomba kuba wambaye neza kandi utazengurutse. Igice cyo hejuru kigomba kunyura ku gituza, naho igice cyo hasi kikicara hasi ku rukenyerero. Kurikiza amabwiriza y'uwakoze ikinyabiziga kandi ukoreshe ibikoresho byabugenewe birinda abana hakurikijwe imyaka yabo, ingano yabo n'amategeko abigenga.\n\nUmushoferi agomba kureba ko abagenzi bicaye neza mbere yo kugenda. Abagenzi ntibagomba kurangaza umushoferi, kumubuza kureba cyangwa gukorakora ibikoresho bigenzura ikinyabiziga. Abana bagomba gutwarwa mu buryo bubarinda kandi ntibemererwe kugendagenda mu kinyabiziga.\n\nImifuka y'umwuka n'ibindi bikoresho by'umutekano ntibisimbura umukandara. Byagenewe gukorana na wo mu rwego rw'uburinzi rusange."
+        "en": [
+          "A seat belt helps keep a vehicle occupant in the correct seating position during sudden braking or a crash. It can reduce the risk of being thrown from the vehicle or striking parts of its interior. Drivers and passengers should use seat belts correctly whenever they are provided.",
+          "A motorcycle helmet is designed to help protect the head during an impact. A suitable helmet should meet applicable safety standards, fit properly and be fastened as instructed by its manufacturer. A helmet that is damaged or poorly fitted may not provide the intended protection.",
+          "Protective equipment does not make dangerous driving safe. Speed control, attention, safe following distance and respect for traffic rules remain essential. Seat belts and helmets work alongside responsible behaviour; they do not replace it.",
+          "Passengers also have a role. Before a journey, passengers should use available safety restraints and follow the driver's safety instructions. Motorcycle passengers should use suitable protective helmets where required."
+        ],
+        "rw": [
+          "Umukandara w'umutekano ufasha kugumana umugenzi cyangwa umushoferi mu mwanya ukwiriye igihe ikinyabiziga gihagaze gitunguranye cyangwa habaye impanuka. Ushobora kugabanya ibyago byo kujugunywa hanze cyangwa kugonga ibice by'imbere mu kinyabiziga. Abashoferi n'abagenzi bagomba gukoresha neza imikandara igihe ihari.",
+          "Ingofero ya moto ikorwa kugira ngo ifashe kurinda umutwe igihe habayeho kugongana. Ingofero ikwiye igomba kuba yujuje ibisabwa n'amahame y'umutekano, ikaba ijyanye n'umutwe kandi igafungwa hakurikijwe amabwiriza y'uyikoze. Ingofero yangiritse cyangwa itagukwira neza ishobora kutarinda uko bikwiye.",
+          "Ibikoresho birinda ntibituma gutwara nabi cyangwa mu kaga biba byiza. Kugenzura umuvuduko, kwitwararika, gusiga intera ihagije no kubahiriza amategeko y'umuhanda biracyakenewe. Imikandara n'ingofero bifatanya n'imyitwarire myiza; ntibisimbura iyo myitwarire.",
+          "Abagenzi na bo bafite uruhare. Mbere y'urugendo, bagomba gukoresha ibikoresho bibarinda igihe bihari no gukurikiza amabwiriza y'umutekano. Abagenzi ba moto bagomba gukoresha ingofero zibereye igihe bisabwa."
+        ]
       },
       "key_points": {
         "en": [
-          "Use a seat belt on every journey.",
-          "Wear the belt correctly and keep it untwisted.",
-          "Use suitable child restraints where required.",
-          "Passengers should not distract the driver.",
-          "Airbags do not replace seat belts."
+          "Use a seat belt correctly whenever one is provided.",
+          "Use a suitable, properly fitted and fastened motorcycle helmet.",
+          "Replace or seek advice about damaged protective equipment.",
+          "Protective equipment reduces risk but does not prevent every injury.",
+          "Safe behaviour is still essential."
         ],
         "rw": [
-          "Koresha umukandara w'umutekano muri buri rugendo.",
-          "Wambare umukandara neza kandi wirinde ko uzenguruka.",
-          "Koresha ibikoresho birinda abana igihe bisabwa.",
-          "Abagenzi ntibagomba kurangaza umushoferi.",
-          "Imifuka y'umwuka ntisimbura umukandara."
+          "Koresha neza umukandara w'umutekano igihe uhari.",
+          "Koresha ingofero ya moto ikwiye, ikwiriye umutwe kandi ifunze neza.",
+          "Ibikoresho birinda byangiritse bigomba gusimbuzwa cyangwa kugenzurwa n'ababishinzwe.",
+          "Ibikoresho birinda bigabanya ibyago ariko ntibibuza ibikomere byose.",
+          "Imyitwarire myiza mu muhanda iracyakenewe."
         ]
       },
       "conclusion": {
-        "en": "Correct seat-belt use is a simple and important way to improve passenger protection.",
-        "rw": "Gukoresha umukandara neza ni uburyo bworoshye kandi bw'ingenzi bwo kurushaho kurinda abagenzi."
+        "en": "Seat belts and helmets are important protective measures. Use them properly and combine them with careful, lawful road behaviour.",
+        "rw": "Imikandara n'ingofero ni ingamba zikomeye zo kwirinda. Bikoreshwe neza kandi bihuzwe no kwitwara neza no kubahiriza amategeko y'umuhanda."
       },
       "quiz_connection": {
-        "en": "Review this lesson for questions about seat belts, passenger responsibilities and vehicle safety.",
-        "rw": "Subiramo iri somo ku bibazo byerekeye imikandara, inshingano z'abagenzi n'umutekano w'ikinyabiziga."
-      }
+        "en": "Explain why wearing a helmet does not give a motorcycle rider permission to take unnecessary risks.",
+        "rw": "Sobanura impamvu kwambara ingofero bitaha uburenganzira utwara moto bwo kwishyira mu kaga bidakenewe."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Road traffic injuries",
+            "rw": "Imvune n'impanuka zo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
+        },
+        {
+          "title": {
+            "en": "Road safety",
+            "rw": "Umutekano wo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/health-topics/road-safety"
+        }
+      ]
     },
     {
-      "id": "traffic-emergency-response",
+      "id": "traffic-distraction-speed",
       "category": "traffic",
-      "icon": "🆘",
+      "icon": "📵",
       "title": {
-        "en": "What to Do When a Road Emergency Occurs",
-        "rw": "Icyo Wakora Igihe Habaye Ikibazo Cyihutirwa mu Muhanda"
+        "en": "Distraction, Speed and Safe Driving Decisions",
+        "rw": "Kurangara, umuvuduko n'ibyemezo byo gutwara neza"
       },
       "description": {
-        "en": "Learn general safety principles for responding responsibly to a road emergency.",
-        "rw": "Menya amahame rusange y'umutekano agufasha kwitwara neza igihe habaye ikibazo cyihutirwa mu muhanda."
+        "en": "Learn why attention and appropriate speed are essential parts of responsible driving.",
+        "rw": "Menya impamvu kwitwararika no kugendera ku muvuduko ukwiye ari ingenzi mu gutwara ikinyabiziga neza."
       },
       "definition": {
-        "en": "A road emergency is an unexpected event on or near a road that may threaten the safety of people or property and require prompt assistance.",
-        "rw": "Ikibazo cyihutirwa cyo mu muhanda ni ikintu gitunguranye kibereye mu muhanda cyangwa hafi yawo gishobora gushyira abantu cyangwa ibintu mu kaga kandi kigakenera ubufasha bwihuse."
+        "en": "Driver distraction occurs when attention is taken away from driving. Speed-related risk increases when a vehicle travels too fast for the legal limit, traffic, visibility or road conditions.",
+        "rw": "Kurangara k'umushoferi bibaho iyo ibitekerezo bye bivuye ku gutwara ikinyabiziga. Ibyago bifitanye isano n'umuvuduko biriyongera iyo ikinyabiziga kigendera ku muvuduko urenze uwemewe cyangwa udahuye n'uko umuhanda, ibinyabiziga n'uko umuntu abona bimeze."
       },
       "body": {
-        "en": "When an emergency occurs, the first priority is to avoid creating further danger. A person who arrives at the scene should stay calm, observe the surroundings and avoid standing in the path of moving traffic. Do not put yourself or others at additional risk.\n\nContact the appropriate emergency services or local authorities as soon as it is safe to do so. Give clear information about the location, what happened and whether anyone appears to need urgent help. Follow the instructions given by emergency responders.\n\nDo not move an injured person unless there is an immediate danger that makes movement necessary. If possible, keep the area safe and allow trained responders to provide assistance. Do not give food, drink or medicine to an injured person unless a qualified professional instructs you to do so.\n\nDrivers involved in an incident should follow the current legal requirements and instructions of authorised officers. Leaving a scene or failing to provide required assistance may have serious consequences under applicable law. This lesson is general information and does not replace certified first-aid training.",
-        "rw": "Iyo habaye ikibazo cyihutirwa, ikintu cya mbere ni ukwirinda kongera guteza akaga. Umuntu ugeze ahabereye ikibazo agomba gutuza, kwitegereza ibimukikije no kwirinda guhagarara mu nzira y'ibinyabiziga bigenda. Ntukishyire cyangwa ngo ushyire abandi mu kaga karushijeho.\n\nHamagara inzego z'ubutabazi cyangwa iz'ubuyobozi zibishinzwe igihe bibaye ngombwa kandi bikimara gushoboka mu mutekano. Tanga amakuru asobanutse agaragaza aho ikibazo cyabereye, icyabaye n'uko hari umuntu ukeneye ubufasha bwihuse. Kurikiza amabwiriza y'abaje gutanga ubutabazi.\n\nNtukimure umuntu wakomeretse keretse hari akaga kihutirwa katuma kwimuka biba ngombwa. Niba bishoboka, rinda aho ikibazo cyabereye kandi utegereze abakozi babihuguriwe kugira ngo batange ubufasha. Ntugaburire, ngo uhe icyo kunywa cyangwa umuti umuntu wakomeretse keretse ubitegetswe n'umukozi w'ubuzima ubifitiye ubumenyi.\n\nAbashoferi bagize uruhare mu kibazo bagomba gukurikiza ibisabwa n'amategeko agezweho n'amabwiriza y'abashinzwe umutekano. Guta ahabereye ikibazo cyangwa kutatanga ubufasha busabwa bishobora kugira ingaruka zikomeye hakurikijwe amategeko abigenga. Iri somo ni amakuru rusange kandi ntirisimbura amahugurwa yemewe yo gutanga ubutabazi bw'ibanze."
+        "en": [
+          "Driving requires continuous attention. A driver needs to observe the road, notice signs, monitor other road users and respond to changing conditions. Using a phone, reading messages, adjusting devices or becoming deeply distracted by passengers can reduce the attention available for driving.",
+          "Speed affects how much distance a vehicle covers before the driver can respond and how much distance may be needed to stop. At higher speeds, a driver generally has less time to identify a hazard and react. The consequences of a crash can also become more severe.",
+          "A safe speed is not simply the highest speed shown on a road sign. Drivers must obey the applicable limit and consider weather, visibility, road surface, traffic, pedestrians and the condition of the vehicle. They may need to travel more slowly when conditions are difficult.",
+          "Planning before starting a journey helps reduce distraction. Set navigation, arrange essential items and make necessary calls before driving. If something requires attention, stop in a safe and lawful place before dealing with it."
+        ],
+        "rw": [
+          "Gutwara ikinyabiziga bisaba guhora witwararika. Umushoferi agomba kureba umuhanda, kubona ibyapa, gukurikirana abandi bawukoresha no kwitwara bitewe n'uko ibintu bihinduka. Gukoresha telefoni, gusoma ubutumwa, gukorakora ibikoresho cyangwa kurangazwa cyane n'abagenzi bishobora kugabanya ubushobozi bwo kwita ku gutwara.",
+          "Umuvuduko ugira ingaruka ku ntera ikinyabiziga kigenda mbere y'uko umushoferi agira icyo akora no ku ntera gishobora gukenera kugira ngo gihagarare. Iyo umuvuduko wiyongereye, umushoferi aba afite igihe gito cyo kubona icyago no kugisubiza. Ingaruka z'impanuka na zo zishobora kurushaho gukomera.",
+          "Umuvuduko utekanye si umuvuduko wo hejuru wanditse ku cyapa gusa. Abashoferi bagomba kubahiriza umuvuduko wemewe kandi bakita ku kirere, uko babona, uko umuhanda umeze, ibinyabiziga, abanyamaguru n'imiterere y'ikinyabiziga. Ibihe bigoye bishobora gusaba kugabanya umuvuduko.",
+          "Gutegura urugendo mbere yo kurutangira bifasha kugabanya kurangara. Tegura inzira, ibikoresho ukeneye n'amahamagara mbere yo gutwara. Niba hari ikintu gisaba kwitabwaho, banza uhagarare ahantu hatekanye kandi hemewe mbere yo kugikora."
+        ]
       },
       "key_points": {
         "en": [
-          "Avoid creating further danger.",
-          "Contact emergency services when it is safe to do so.",
-          "Give clear information about the location and situation.",
-          "Do not move an injured person unless immediate danger requires it.",
-          "Follow the instructions of trained emergency responders."
+          "Keep attention on driving and the road environment.",
+          "Do not read or type messages while driving.",
+          "Obey speed limits and adjust speed to conditions.",
+          "Allow enough time and space to respond to hazards.",
+          "Stop safely before handling distractions."
         ],
         "rw": [
-          "Irinde kongera guteza akaga.",
-          "Hamagara ubutabazi igihe bishoboka mu mutekano.",
-          "Tanga amakuru asobanutse ku hantu n'uko ikibazo kimeze.",
-          "Ntukimure umuntu wakomeretse keretse hari akaga kihutirwa kabisaba.",
-          "Kurikiza amabwiriza y'abakozi bahuguriwe ubutabazi."
+          "Ita ku gutwara no ku mimerere y'umuhanda.",
+          "Ntugasome cyangwa ngo wandike ubutumwa utwaye ikinyabiziga.",
+          "Kubahiriza umuvuduko wemewe kandi uwuhuze n'uko umuhanda umeze.",
+          "Siga igihe n'intera bihagije kugira ngo ubashe kwitwara igihe habaye icyago.",
+          "Banza uhagarare ahatekanye mbere yo gukemura ikikurangaza."
         ]
       },
       "conclusion": {
-        "en": "A calm and careful response can help prevent further harm while trained responders provide assistance.",
-        "rw": "Kwihangana no kwitonda bishobora gufasha gukumira ibindi bibazo mu gihe abahuguriwe ubutabazi baje gutanga ubufasha."
+        "en": "Attention and appropriate speed help drivers respond to hazards. Responsible driving means choosing safety over haste.",
+        "rw": "Kwitwararika no kugendera ku muvuduko ukwiye bifasha abashoferi kwitwara igihe habaye icyago. Gutwara neza bisaba gushyira umutekano imbere yihuta."
       },
       "quiz_connection": {
-        "en": "This lesson supports questions about emergency awareness, responsible behaviour and road-user duties.",
-        "rw": "Iri somo rigufasha gusubiza ibibazo ku kumenya ibibazo byihutirwa, imyitwarire iboneye n'inshingano z'abakoresha umuhanda."
-      }
+        "en": "Give two examples of distractions that can take a driver's attention away from the road.",
+        "rw": "Tanga ingero ebyiri z'ibishobora kurangaza umushoferi bikamuvana ku kwita ku muhanda."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Road traffic injuries",
+            "rw": "Imvune n'impanuka zo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
+        },
+        {
+          "title": {
+            "en": "Traffic and Road Safety",
+            "rw": "Umutekano wo mu muhanda"
+          },
+          "publisher": "Rwanda National Police",
+          "url": "https://police.gov.rw/"
+        }
+      ]
     },
     {
-      "id": "general-introduction",
-      "category": "general",
-      "icon": "📚",
+      "id": "traffic-signs-road-markings",
+      "category": "traffic",
+      "icon": "🛑",
       "title": {
-        "en": "Introduction to General Knowledge",
-        "rw": "Intangiriro ku Ubumenyi Rusange"
+        "en": "Understanding Traffic Signs and Road Markings",
+        "rw": "Gusobanukirwa ibyapa n'ibimenyetso byo mu muhanda"
       },
       "description": {
-        "en": "Discover what general knowledge means and how it helps people understand the world.",
-        "rw": "Menya icyo ubumenyi rusange busobanura n'uko bufasha abantu gusobanukirwa isi."
+        "en": "Explore how signs, signals and road markings communicate important information to road users.",
+        "rw": "Menya uko ibyapa, amatara n'ibimenyetso bishushanyije mu muhanda bigeza amakuru y'ingenzi ku bawukoresha."
       },
       "definition": {
-        "en": "General knowledge is information and understanding about many subjects, including society, history, geography, science, culture and everyday life.",
-        "rw": "Ubumenyi rusange ni amakuru n'ubusobanuro ku masomo atandukanye arimo imibereho y'abantu, amateka, ubumenyi bw'isi, siyansi, umuco n'ubuzima bwa buri munsi."
+        "en": "Traffic signs and road markings are visual communication tools that guide, warn, regulate and inform people using roads.",
+        "rw": "Ibyapa n'ibimenyetso byo mu muhanda ni uburyo bwo gutanga amakuru agaragara buyobora, buburira, bugenga kandi busobanurira abakoresha umuhanda."
       },
       "body": {
-        "en": "General knowledge helps people understand events, ask better questions and make informed decisions. It connects information from different subjects and helps learners see how ideas relate to everyday life.\n\nHistory explains events and changes that happened in the past. Geography studies places, environments and the relationship between people and the Earth. Science uses observation and evidence to explain the natural world. Civic and social knowledge helps people understand communities, institutions, rights and responsibilities.\n\nA good learner does not accept every statement immediately. It is useful to ask who produced the information, what evidence supports it, when it was published and whether reliable sources agree. Information can become outdated, especially when it concerns laws, technology, public health or current events.\n\nReading, asking questions, discussing ideas respectfully and practising what has been learned are useful ways to develop knowledge. Learning is a continuous process, not something that ends after one quiz or one book.",
-        "rw": "Ubumenyi rusange bufasha abantu gusobanukirwa ibyabaye, kubaza ibibazo byiza no gufata ibyemezo bishingiye ku makuru. Buhuriza hamwe ubumenyi buturuka mu masomo atandukanye kandi bugafasha abiga kubona isano iri hagati y'ibitekerezo n'ubuzima bwa buri munsi.\n\nAmateka asobanura ibyabaye n'impinduka zabaye kera. Ubumenyi bw'isi bwiga ahantu, ibidukikije n'isano iri hagati y'abantu n'isi. Siyansi ikoresha kwitegereza no kugenzura ibimenyetso kugira ngo isobanure iby'isi kamere. Ubumenyi ku mibereho n'imiyoborere bifasha abantu gusobanukirwa imiryango, inzego, uburenganzira n'inshingano.\n\nUmuntu wiga neza ntiyemera buri jambo ako kanya. Ni byiza kubaza uwatanze amakuru, ibimenyetso biyashyigikira, igihe yatangiwe n'uko andi masoko yizewe abyemeza. Amakuru ashobora gusaza, cyane cyane arebana n'amategeko, ikoranabuhanga, ubuzima rusange cyangwa ibyabaye vuba.\n\nGusoma, kubaza ibibazo, kuganira ku bitekerezo mu bwubahane no kwitoza ibyo wize ni uburyo bwiza bwo kongera ubumenyi. Kwiga ni urugendo ruhoraho, ntibirangirira ku kizamini kimwe cyangwa igitabo kimwe."
+        "en": [
+          "Traffic signs help road users understand what is required, what may be ahead and which actions are restricted or permitted. They are important because road users need clear information before reaching intersections, crossings, bends, work zones and other places where conditions may change.",
+          "Signs can communicate different types of information, including warnings about possible hazards, instructions that must be followed and information about destinations or services. Their shape, colour, symbols and placement help users recognise their meaning.",
+          "Road markings also provide guidance. Lines may separate traffic flows, indicate lane boundaries or show places where particular movements are restricted. Pedestrian crossings identify areas intended for people walking to cross. Drivers should pay attention to both signs and markings rather than relying on one alone.",
+          "Traffic lights and signs should be understood together with the current road rules. If a sign is damaged, unclear or temporarily covered, road users should proceed cautiously and follow instructions from authorised traffic officers where present. Learners should study official, current materials rather than memorising uncertain pictures from unofficial sources."
+        ],
+        "rw": [
+          "Ibyapa bifasha abakoresha umuhanda kumenya ibisabwa, ibishobora kuba biri imbere n'ibikorwa byemewe cyangwa bibujijwe. Ni ingenzi kuko abakoresha umuhanda bakeneye amakuru asobanutse mbere yo kugera mu masangano, ahambukira abanyamaguru, mu mihanda igoramye, ahakorerwa imirimo n'ahandi hashobora guhinduka.",
+          "Ibyapa bitanga amakuru atandukanye, harimo kuburira ku byago bishobora kuba biri imbere, amabwiriza agomba gukurikizwa n'amakuru y'aho umuntu agana cyangwa serivisi zihari. Imiterere yabyo, amabara, ibishushanyo n'aho bishyirwa bifasha abantu gusobanukirwa n'icyo bivuze.",
+          "Ibimenyetso bishushanyije mu muhanda na byo birayobora. Imirongo ishobora gutandukanya ibyerekezo by'ibinyabiziga, kugaragaza imipaka y'umurongo cyangwa ahantu ibikorwa bimwe bibujijwe. Ahambukira abanyamaguru hagaragaza ahagenewe abantu bagenda n'amaguru. Abashoferi bagomba kwita ku byapa no ku bimenyetso byo hasi mu muhanda byombi.",
+          "Amatara y'umuhanda n'ibyapa bigomba kumvikana hamwe n'amategeko y'umuhanda agezweho. Iyo icyapa cyangiritse, kitumvikana cyangwa gitwikiriwe by'agateganyo, abakoresha umuhanda bagomba kwitonda no gukurikiza amabwiriza y'abashinzwe umutekano wo mu muhanda igihe bahari. Abiga bagomba gukoresha inyandiko zemewe kandi zigezweho aho gufata mu mutwe amashusho atizewe yo ku mbuga zitazwi."
+        ]
       },
       "key_points": {
         "en": [
-          "General knowledge covers many areas of life and learning.",
-          "History, geography and science answer different kinds of questions.",
-          "Check the reliability and date of information.",
-          "Use evidence instead of accepting every claim immediately.",
-          "Learning continues throughout life."
+          "Signs warn, regulate, guide and provide information.",
+          "Pay attention to the shape, colour and symbol of a sign.",
+          "Road markings help organise traffic and identify crossing areas.",
+          "Observe signs, road markings and traffic signals together.",
+          "Use official and up-to-date learning materials."
         ],
         "rw": [
-          "Ubumenyi rusange bukubiyemo amasomo menshi ajyanye n'ubuzima no kwiga.",
-          "Amateka, ubumenyi bw'isi na siyansi bisubiza ibibazo bitandukanye.",
-          "Genzura niba amakuru yizewe n'igihe yatangiwe.",
-          "Shingira ku bimenyetso aho kwemera buri kintu ako kanya.",
-          "Kwiga bikomeza mu buzima bwose."
+          "Ibyapa biraburira, biragena, birayobora kandi bitanga amakuru.",
+          "Ita ku miterere, ibara n'ikimenyetso kiri ku cyapa.",
+          "Ibimenyetso byo mu muhanda bifasha gutunganya ingendo no kugaragaza ahambukira.",
+          "Reba ibyapa, ibimenyetso byo mu muhanda n'amatara byose hamwe.",
+          "Koresha inyigisho zemewe kandi zigezweho."
         ]
       },
       "conclusion": {
-        "en": "General knowledge grows through curiosity, careful reading, reliable evidence and regular practice.",
-        "rw": "Ubumenyi rusange bwiyongera binyuze mu kugira amatsiko yo kumenya, gusoma witonze, gukoresha ibimenyetso byizewe no kwitoza buri gihe."
+        "en": "Understanding road signs and markings helps people make informed decisions. Always learn their meanings from current official materials.",
+        "rw": "Gusobanukirwa ibyapa n'ibimenyetso byo mu muhanda bifasha abantu gufata ibyemezo bishingiye ku makuru. Buri gihe ujye wiga ibisobanuro byabyo mu nyandiko zemewe kandi zigezweho."
       },
       "quiz_connection": {
-        "en": "This lesson introduces the different subjects and learning habits that support the general knowledge quiz.",
-        "rw": "Iri somo ritangiza amasomo atandukanye n'imyitozo yo kwiga bifasha mu kizamini cy'ubumenyi rusange."
-      }
+        "en": "What are three purposes of traffic signs?",
+        "rw": "Vuga intego eshatu z'ibyapa byo mu muhanda."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Traffic and Road Safety",
+            "rw": "Umutekano wo mu muhanda"
+          },
+          "publisher": "Rwanda National Police",
+          "url": "https://police.gov.rw/"
+        },
+        {
+          "title": {
+            "en": "Road safety",
+            "rw": "Umutekano wo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/health-topics/road-safety"
+        }
+      ]
     },
     {
-      "id": "general-geography",
-      "category": "general",
-      "icon": "🌍",
-      "title": {
-        "en": "Geography: Understanding the Earth",
-        "rw": "Ubumenyi bw'Isi: Gusobanukirwa Isi Dutuyemo"
-      },
-      "description": {
-        "en": "Learn about the Earth, continents, oceans, maps and the relationship between people and places.",
-        "rw": "Menya ibyerekeye Isi, imigabane, inyanja, amakarita n'isano iri hagati y'abantu n'aho batuye."
-      },
-      "definition": {
-        "en": "Geography is the study of places, physical environments, human communities and the relationships between people and their surroundings.",
-        "rw": "Ubumenyi bw'isi ni isomo ryiga ahantu, imiterere kamere y'isi, imibereho y'abantu n'isano iri hagati yabo n'ibidukikije."
-      },
-      "body": {
-        "en": "Earth is the planet on which people live. It contains land, oceans, rivers, lakes, mountains, plains, forests and many other environments. Geography helps explain where these features are found and how they influence life.\n\nThe world is commonly divided into seven continents: Africa, Antarctica, Asia, Europe, North America, South America and Australia. There are also five commonly recognised oceans: the Pacific, Atlantic, Indian, Southern and Arctic Oceans. Different educational systems may group some regions differently, so learners should understand the classification used in their study materials.\n\nMaps represent all or part of the Earth's surface. A map may show countries, cities, roads, rivers, mountains or other features. A map key explains symbols, a scale compares map distance with real distance, and a compass or north arrow helps show direction. Latitude and longitude are used to describe locations on the globe.\n\nRwanda is a landlocked country in East-Central Africa. Its neighbouring countries are Uganda, Tanzania, Burundi and the Democratic Republic of the Congo. Geography also studies climate, population, resources, settlement and how people interact with their environment.",
-        "rw": "Isi ni umubumbe abantu batuyeho. Ifite ubutaka, inyanja, imigezi, ibiyaga, imisozi, ibibaya, amashyamba n'ibindi bidukikije byinshi. Ubumenyi bw'isi bufasha gusobanura aho ibyo bintu biherereye n'uko bigira ingaruka ku buzima.\n\nIsi igabanywamo imigabane irindwi ikunze kwigishwa: Afurika, Antaragitika, Aziya, Uburayi, Amerika ya Ruguru, Amerika y'Epfo na Ositaraliya. Hari kandi inyanja eshanu zikunze kwemerwa: Pasifika, Atlantika, Indiya, Amajyepfo n'Inyanja ya Arikitika. Uburyo bwo gushyira uturere mu byiciro bushobora gutandukana mu masomo amwe, bityo abiga bagomba kumenya uburyo ibitabo byabo bikoresha.\n\nIkarita igaragaza igice cyangwa isi yose. Ishobora kwerekana ibihugu, imijyi, imihanda, imigezi, imisozi cyangwa ibindi bintu. Urufunguzo rw'ikarita rusobanura ibimenyetso, igipimo kigereranya intera iri ku ikarita n'intera nyayo, naho ikimenyetso cy'icyerekezo gifasha kumenya aho amajyaruguru aherereye. Imirongo y'ubuhagarike n'ubutambike ikoreshwa mu kugaragaza aho ahantu giherereye ku isi.\n\nU Rwanda ni igihugu kidakora ku nyanja giherereye mu burasirazuba bwo hagati bwa Afurika. Ibihugu bihana imbibi na rwo ni Uganda, Tanzania, Burundi na Repubulika Iharanira Demokarasi ya Congo. Ubumenyi bw'isi bwiga kandi ikirere, abaturage, umutungo kamere, aho abantu batuye n'uko bakorana n'ibidukikije."
-      },
-      "key_points": {
-        "en": [
-          "Geography studies places, environments and people.",
-          "The world is commonly taught as having seven continents.",
-          "Maps use keys, scales and directions to communicate information.",
-          "Latitude and longitude help identify locations.",
-          "Rwanda is a landlocked country in East-Central Africa."
-        ],
-        "rw": [
-          "Ubumenyi bw'isi bwiga ahantu, ibidukikije n'abantu.",
-          "Isi yigishwa kenshi nk'igizwe n'imigabane irindwi.",
-          "Amakarita akoresha urufunguzo, igipimo n'ibyerekezo kugira ngo atange amakuru.",
-          "Imirongo y'ubuhagarike n'ubutambike ifasha kumenya aho ahantu giherereye.",
-          "U Rwanda ni igihugu kidakora ku nyanja kiri mu burasirazuba bwo hagati bwa Afurika."
-        ]
-      },
-      "conclusion": {
-        "en": "Geography helps people understand the Earth's features and the ways communities interact with their surroundings.",
-        "rw": "Ubumenyi bw'isi bufasha abantu gusobanukirwa imiterere y'isi n'uko abaturage babana n'ibidukikije."
-      },
-      "quiz_connection": {
-        "en": "Use this lesson to revise continents, oceans, maps, directions and Rwanda's location.",
-        "rw": "Koresha iri somo usubiremo imigabane, inyanja, amakarita, ibyerekezo n'aho u Rwanda ruherereye."
-      }
-    },
-    {
-      "id": "general-science",
+      "id": "general-scientific-method",
       "category": "general",
       "icon": "🔬",
       "title": {
-        "en": "Basic Science and Scientific Thinking",
-        "rw": "Siyansi Shingiro n'Uburyo bwo Gutekereza Kiyansi"
+        "en": "The Scientific Method and Critical Thinking",
+        "rw": "Uburyo bwa siyansi no gutekereza byimbitse"
       },
       "description": {
-        "en": "Discover how observation, questions and evidence help us understand the natural world.",
-        "rw": "Menya uko kwitegereza, kubaza ibibazo no gukoresha ibimenyetso bidufasha gusobanukirwa isi kamere."
+        "en": "Learn how questions, observations, evidence and testing help people investigate the world.",
+        "rw": "Menya uko ibibazo, kwitegereza, ibimenyetso no kugerageza bifasha abantu gukora ubushakashatsi ku bidukikije."
       },
       "definition": {
-        "en": "Science is a systematic way of studying the natural world through observation, questions, investigation, evidence and explanation.",
-        "rw": "Siyansi ni uburyo bufite gahunda bwo kwiga isi kamere hakoreshejwe kwitegereza, kubaza ibibazo, gukora ubushakashatsi, gukusanya ibimenyetso no gutanga ibisobanuro."
+        "en": "The scientific method is a systematic approach to investigating questions using observation, testable explanations, evidence and careful evaluation.",
+        "rw": "Uburyo bwa siyansi ni inzira iteguye yo gukora ubushakashatsi ku bibazo hakoreshejwe kwitegereza, ibisobanuro bishobora kugeragezwa, ibimenyetso no gusuzuma neza ibyavuye mu bushakashatsi."
       },
       "body": {
-        "en": "Science helps explain natural events and processes. It includes subjects such as biology, chemistry, physics, Earth science and astronomy. Each field studies different aspects of the world, but all use evidence and careful reasoning.\n\nScientific investigation often begins with an observation or question. A learner may suggest a possible explanation, collect information, carry out a suitable investigation and examine the results. The explanation should be compared with the evidence. If the evidence does not support the first idea, the explanation should be reviewed.\n\nBiology studies living things, including plants, animals and microorganisms. Physics studies matter, energy, forces and motion. Chemistry studies substances, their properties and how they change. Earth science studies the planet, its materials and natural processes. Astronomy studies objects and events in space.\n\nReliable scientific knowledge is open to testing and correction. A single observation may not be enough to establish a general conclusion. Repeated investigations, accurate measurements and independent evidence help improve confidence in scientific explanations.",
-        "rw": "Siyansi ifasha gusobanura ibyabaye n'imikorere y'isi kamere. Ikubiyemo amasomo nka biyolojiya, shimi, fiziki, ubumenyi bw'isi n'ubumenyi bw'ikirere n'ibiri mu isanzure. Buri somo ryiga ibice bitandukanye by'isi, ariko byose bikoresha ibimenyetso no gutekereza neza.\n\nUbushakashatsi bwa siyansi akenshi butangirira ku kintu umuntu yitegereje cyangwa ikibazo yibajije. Umuntu wiga ashobora gutanga igitekerezo cy'igisubizo, gukusanya amakuru, gukora igenzura rikwiye no gusuzuma ibyavuye mu bushakashatsi. Igisobanuro gitangwa kigomba kugereranywa n'ibimenyetso. Iyo ibimenyetso bidashyigikiye igitekerezo cya mbere, igisobanuro kigomba kongera gusuzumwa.\n\nBiyolojiya yiga ibinyabuzima birimo ibimera, inyamaswa n'utunyabuzima duto. Fiziki yiga ibintu, ingufu, imbaraga n'imigendere. Shimi yiga ibintu, imiterere yabyo n'impinduka zabyo. Ubumenyi bw'isi bwiga umubumbe w'isi, ibiwugize n'ibikorwa kamere biwubamo. Ubumenyi bw'ikirere n'isanzure bwiga imibumbe, inyenyeri n'ibindi bintu biri mu isanzure.\n\nUbumenyi bwa siyansi bwizewe bushobora kugenzurwa no gukosorwa igihe habonetse ibimenyetso bishya. Kwitegereza ikintu rimwe gusa ntibihagije buri gihe kugira ngo hafatwe umwanzuro rusange. Gusubiramo ubushakashatsi, gupima neza no gukoresha ibimenyetso bitandukanye bifasha kongera icyizere mu bisobanuro bya siyansi."
+        "en": [
+          "Science is a way of learning about the natural and physical world through careful observation and evidence. It does not depend only on opinions or guesses. Scientific explanations should be open to testing and revision when stronger evidence becomes available.",
+          "An investigation often begins with a question. A learner observes something, identifies what they want to understand and proposes a possible explanation called a hypothesis. The hypothesis should be clear enough to investigate.",
+          "The next step may involve collecting information or carrying out a fair test. A good investigation records observations carefully, changes only the factors being tested where possible and considers other explanations. Repeating tests can help show whether a result is consistent.",
+          "After examining the evidence, the investigator explains what the results suggest and identifies limitations. A result does not always prove an idea permanently. Other researchers may repeat the work, challenge the explanation or discover new evidence.",
+          "Critical thinking is useful beyond science. It means checking the quality of information, asking how a claim is supported and being willing to change a conclusion when reliable evidence points in another direction."
+        ],
+        "rw": [
+          "Siyansi ni uburyo bwo kumenya isi n'ibiyigize hifashishijwe kwitegereza neza no gukoresha ibimenyetso. Ntishingira ku bitekerezo cyangwa gukeka gusa. Ibisobanuro bya siyansi bigomba kuba bishobora kugeragezwa kandi bigahindurwa igihe habonetse ibimenyetso bikomeye kurushaho.",
+          "Ubushakashatsi akenshi butangirana n'ikibazo. Umuntu yitegereza ikintu, akagaragaza icyo ashaka gusobanukirwa, hanyuma agatanga igitekerezo cy'igisubizo gishobora kugeragezwa, cyitwa hypothesis. Icyo gitekerezo kigomba kuba gisobanutse ku buryo gishobora gukorerwa ubushakashatsi.",
+          "Intambwe ikurikira ishobora kuba ugukusanya amakuru cyangwa gukora igerageza riboneye. Ubushakashatsi bwiza bwandika ibyo bwitegereje neza, bugahindura gusa ibintu biri kugeragezwa igihe bishoboka kandi bugatekereza ku bindi bisobanuro bishoboka. Gusubiramo igerageza bishobora gufasha kumenya niba ibisubizo bihoraho.",
+          "Nyuma yo gusuzuma ibimenyetso, ukora ubushakashatsi asobanura icyo ibisubizo byerekana kandi akagaragaza aho ubushakashatsi bugarukira. Igisubizo ntigihita gihamya igitekerezo burundu. Abandi bashakashatsi bashobora gusubiramo ubushakashatsi, kunenga ibisobanuro cyangwa kubona ibimenyetso bishya.",
+          "Gutekereza byimbitse ni ingenzi no hanze ya siyansi. Bisobanura kugenzura ubwiza bw'amakuru, kubaza ibimenyetso bishyigikira ikivugwa no kwemera guhindura umwanzuro igihe ibimenyetso byizewe byerekana ibindi."
+        ]
       },
       "key_points": {
         "en": [
-          "Science studies the natural world using evidence.",
-          "Scientific investigations begin with questions or observations.",
-          "Biology studies living things.",
-          "Physics studies matter, energy, forces and motion.",
-          "Scientific explanations can be tested and improved."
+          "Begin an investigation with a clear question.",
+          "A hypothesis is a testable possible explanation.",
+          "Collect and record evidence carefully.",
+          "Consider limitations and alternative explanations.",
+          "Be ready to revise a conclusion when reliable new evidence appears."
         ],
         "rw": [
-          "Siyansi yiga isi kamere ikoresheje ibimenyetso.",
-          "Ubushakashatsi bwa siyansi butangirira ku bibazo cyangwa ibyo umuntu yitegereje.",
-          "Biyolojiya yiga ibinyabuzima.",
-          "Fiziki yiga ibintu, ingufu, imbaraga n'imigendere.",
-          "Ibisobanuro bya siyansi bishobora kugenzurwa no kunozwa."
+          "Tangira ubushakashatsi ufite ikibazo gisobanutse.",
+          "Hypothesis ni igitekerezo cy'igisubizo gishobora kugeragezwa.",
+          "Kusanya kandi wandike ibimenyetso witonze.",
+          "Tekereza ku mbogamizi z'ubushakashatsi no ku bindi bisobanuro bishoboka.",
+          "Itegure guhindura umwanzuro igihe hagaragaye ibimenyetso bishya byizewe."
         ]
       },
       "conclusion": {
-        "en": "Scientific thinking encourages curiosity, careful observation, evidence and willingness to correct mistakes.",
-        "rw": "Gutekereza kiyansi bitera amatsiko yo kumenya, kwitegereza neza, gukoresha ibimenyetso no kwemera gukosora amakosa."
+        "en": "Good science depends on curiosity, careful testing and honest evaluation of evidence. Critical thinking helps people make better-informed decisions.",
+        "rw": "Siyansi nziza ishingira ku kugira amatsiko yo kumenya, kugerageza witonze no gusuzuma ibimenyetso mu kuri. Gutekereza byimbitse bifasha abantu gufata ibyemezo bishingiye ku makuru meza."
       },
       "quiz_connection": {
-        "en": "This lesson prepares learners for questions about scientific fields, evidence and basic scientific ideas.",
-        "rw": "Iri somo ritegura abiga gusubiza ibibazo ku mashami ya siyansi, ibimenyetso n'ibitekerezo by'ibanze bya siyansi."
-      }
+        "en": "What is the difference between an observation and a hypothesis?",
+        "rw": "Itandukaniro riri hagati yo kwitegereza n'igitekerezo gishobora kugeragezwa ni irihe?"
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "The scientific method",
+            "rw": "Uburyo bwa siyansi"
+          },
+          "publisher": "Encyclopaedia Britannica",
+          "url": "https://www.britannica.com/science/scientific-method"
+        },
+        {
+          "title": {
+            "en": "Science education",
+            "rw": "Uburezi bwa siyansi"
+          },
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/education/science"
+        }
+      ]
+    },
+    {
+      "id": "general-water-cycle",
+      "category": "general",
+      "icon": "💧",
+      "title": {
+        "en": "The Water Cycle",
+        "rw": "Uruziga rw'amazi mu bidukikije"
+      },
+      "description": {
+        "en": "Understand how water moves between the land, oceans, atmosphere and living things.",
+        "rw": "Sobanukirwa uko amazi azenguruka hagati y'ubutaka, inyanja, ikirere n'ibinyabuzima."
+      },
+      "definition": {
+        "en": "The water cycle is the continuous movement of water through evaporation, condensation, precipitation, collection and other natural processes.",
+        "rw": "Uruziga rw'amazi ni urugendo ruhoraho amazi akora binyuze mu guhinduka umwuka, kwibumbira mu bitonyanga, kugwa kw'imvura, gukusanyiriza hamwe n'izindi nzira kamere."
+      },
+      "body": {
+        "en": [
+          "Water is constantly moving through the environment. Heat from the Sun causes water from oceans, lakes, rivers and wet surfaces to evaporate. Plants also release water vapour into the atmosphere through a process called transpiration.",
+          "As water vapour rises and cools, it can condense into tiny droplets or ice crystals. These form clouds. When droplets or ice particles become large and heavy enough, water may fall back to Earth as rain, snow or other forms of precipitation, depending on atmospheric conditions.",
+          "Some precipitation flows over the land into streams, rivers, lakes and oceans. Some infiltrates the soil and may become groundwater. Plants can absorb water from the soil, and water can return to the atmosphere through evaporation and transpiration.",
+          "The water cycle helps distribute fresh water, supports ecosystems and influences weather and climate. Human activities such as pollution, deforestation and changes in land use can affect water quality and how water moves through an area.",
+          "Protecting water sources, reducing pollution and using water responsibly help maintain healthy ecosystems and reliable supplies of clean water."
+        ],
+        "rw": [
+          "Amazi ahora azenguruka mu bidukikije. Ubushyuhe buturuka ku zuba butuma amazi yo mu nyanja, ibiyaga, imigezi no ku buso butose ahinduka umwuka. Ibimera na byo birekura umwuka w'amazi ujya mu kirere binyuze mu nzira yitwa transpiration.",
+          "Iyo umwuka w'amazi uzamutse ugakonja, ushobora kwibumbira mu bitonyanga bito cyangwa utubumbe tw'urubura. Ibyo bigakora ibicu. Iyo ibitonyanga cyangwa uduce tw'urubura bibaye binini kandi biremereye bihagije, amazi ashobora kongera kugwa ku isi ari imvura, urubura cyangwa ubundi buryo bitewe n'uko ikirere kimeze.",
+          "Amazi amwe atemba ku butaka akajya mu migezi, inzuzi, ibiyaga no mu nyanja. Andi yinjira mu butaka akazaba amazi yo munsi y'ubutaka. Ibimera bishobora gukurura amazi mu butaka, na yo akongera gusubira mu kirere binyuze mu guhinduka umwuka no mu guhumeka kw'ibimera.",
+          "Uruziga rw'amazi rufasha gukwirakwiza amazi meza, gushyigikira urusobe rw'ibinyabuzima no kugira uruhare mu miterere y'ikirere n'ibihe. Ibikorwa by'abantu nko kwanduza amazi, gutema amashyamba no guhindura imikoreshereze y'ubutaka bishobora kugira ingaruka ku bwiza bw'amazi no ku buryo agenda.",
+          "Kurinda amasoko y'amazi, kugabanya umwanda no gukoresha amazi neza bifasha kubungabunga urusobe rw'ibinyabuzima no kubona amazi meza ahagije."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Solar energy drives much of the water cycle.",
+          "Evaporation changes liquid water into water vapour.",
+          "Condensation helps form clouds.",
+          "Precipitation returns water to the Earth's surface.",
+          "Water conservation and pollution prevention protect water resources."
+        ],
+        "rw": [
+          "Ingufu z'izuba ni zo zituma igice kinini cy'uruhererekane rw'amazi gikomeza.",
+          "Evaporation ihindura amazi y'ubutaremo umwuka w'amazi.",
+          "Condensation ifasha gukora ibicu.",
+          "Precipitation ni igihe amazi yongera kugwa ku butaka.",
+          "Kugabanya gusesagura amazi no gukumira umwanda birinda umutungo w'amazi."
+        ]
+      },
+      "conclusion": {
+        "en": "The water cycle continually renews the movement of water through nature. Protecting water quality is important for people, plants and animals.",
+        "rw": "Uruziga rw'amazi rutuma amazi akomeza kuzenguruka mu bidukikije. Kurinda ubwiza bw'amazi ni ingenzi ku bantu, ibimera n'inyamaswa."
+      },
+      "quiz_connection": {
+        "en": "Name three important processes in the water cycle and explain what each one does.",
+        "rw": "Vuga inzira eshatu z'ingenzi mu ruziga rw'amazi kandi usobanure icyo buri imwe ikora."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "The Water Cycle",
+            "rw": "Uruziga rw'amazi"
+          },
+          "publisher": "NASA Earth Observatory",
+          "url": "https://earthobservatory.nasa.gov/features/Water"
+        },
+        {
+          "title": {
+            "en": "Water cycle",
+            "rw": "Uruziga rw'amazi"
+          },
+          "publisher": "US Geological Survey",
+          "url": "https://www.usgs.gov/special-topics/water-science-school/science/water-cycle"
+        }
+      ]
+    },
+    {
+      "id": "general-biodiversity-ecosystems",
+      "category": "general",
+      "icon": "🌳",
+      "title": {
+        "en": "Biodiversity and Healthy Ecosystems",
+        "rw": "Urusobe rw'ibinyabuzima n'ibidukikije bizima"
+      },
+      "description": {
+        "en": "Explore the variety of life on Earth and why healthy ecosystems matter to people and nature.",
+        "rw": "Menya amoko atandukanye y'ibinyabuzima ku isi n'impamvu ibidukikije bizima ari ingenzi ku bantu no kuri kamere."
+      },
+      "definition": {
+        "en": "Biodiversity is the variety of living organisms, including diversity within species, between species and among ecosystems.",
+        "rw": "Urusobe rw'ibinyabuzima ni ubwinshi n'ubwoko butandukanye bw'ibinyabuzima, harimo itandukaniro riri mu bwoko bumwe, hagati y'amoko atandukanye no hagati y'ibidukikije."
+      },
+      "body": {
+        "en": [
+          "Biodiversity includes plants, animals, fungi and microorganisms, as well as the ecosystems in which they live. It can be considered at different levels: genetic diversity within a species, diversity of species and diversity of ecosystems such as forests, wetlands, grasslands and lakes.",
+          "Ecosystems are communities of living organisms interacting with each other and with non-living parts of their environment, such as water, air, soil and sunlight. These relationships support processes such as pollination, nutrient cycling, soil formation and the natural regulation of pests.",
+          "People depend on healthy ecosystems for food, clean water, materials, medicines, livelihoods and protection from some environmental hazards. Natural areas can also support tourism, learning, cultural values and recreation.",
+          "Biodiversity faces pressures from habitat destruction, pollution, overexploitation of natural resources, invasive species and climate change. These pressures can reduce populations and disrupt ecological relationships.",
+          "Conservation includes protecting habitats, restoring damaged areas, using natural resources responsibly and supporting community participation. Everyday choices, such as reducing waste and respecting protected areas, can contribute to environmental protection."
+        ],
+        "rw": [
+          "Urusobe rw'ibinyabuzima rurimo ibimera, inyamaswa, ibihumyo n'udukoko tutagaragara n'amaso, hamwe n'ibidukikije bibamo. Rushobora kureberwa ku nzego zitandukanye: itandukaniro ry'uturemangingo mu bwoko bumwe, amoko atandukanye y'ibinyabuzima n'ibidukikije bitandukanye nk'amashyamba, ibishanga, inzuri n'ibiyaga.",
+          "Ibidukikije ni uruhurirane rw'ibinyabuzima bikorana hagati yabyo kandi bigakorana n'ibintu bitari bizima bibikikije, nk'amazi, umwuka, ubutaka n'izuba. Iyo mikoranire ifasha mu bikorwa nko gufasha ibimera kororoka, kuzenguruka kw'intungamubiri, kurema ubutaka no kugenzura udukoko twangiza mu buryo kamere.",
+          "Abantu bakeneye ibidukikije bizima kugira ngo babone ibiribwa, amazi meza, ibikoresho, imiti, imibereho n'uburinzi ku ngaruka zimwe z'ibidukikije. Ahantu nyaburanga hashobora no gufasha ubukerarugendo, kwiga, kubungabunga umuco no kuruhuka.",
+          "Urusobe rw'ibinyabuzima ruhura n'ibibazo biterwa no kwangiza aho bibera, umwanda, gukoresha umutungo kamere birenze urugero, amoko yinjizwa ahantu atari asanzwe abamo n'imihindagurikire y'ikirere. Ibyo bishobora kugabanya umubare w'ibinyabuzima no guhungabanya imikoranire yabyo.",
+          "Kubungabunga ibidukikije birimo kurinda aho ibinyabuzima biba, gusana ahangiritse, gukoresha umutungo kamere mu buryo burambye no gushyigikira uruhare rw'abaturage. Ibyo dukora buri munsi, nko kugabanya imyanda no kubaha ahantu harinzwe, bishobora gufasha kurengera ibidukikije."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Biodiversity includes genes, species and ecosystems.",
+          "Living things interact with one another and with their environment.",
+          "Healthy ecosystems provide important benefits to people.",
+          "Habitat loss, pollution and climate change can threaten biodiversity.",
+          "Conservation requires responsible choices and collective action."
+        ],
+        "rw": [
+          "Urusobe rw'ibinyabuzima rurimo uturemangingo, amoko n'ibidukikije.",
+          "Ibinyabuzima bikorana hagati yabyo no n'ibidukikije bibikikije.",
+          "Ibidukikije bizima biha abantu inyungu nyinshi z'ingenzi.",
+          "Kwangiza aho ibinyabuzima biba, umwanda n'imihindagurikire y'ikirere bishobora kubibangamira.",
+          "Kubungabunga ibidukikije bisaba imyitwarire myiza n'ubufatanye."
+        ]
+      },
+      "conclusion": {
+        "en": "Biodiversity supports the natural systems on which life depends. Protecting habitats and using resources responsibly helps maintain a healthier environment.",
+        "rw": "Urusobe rw'ibinyabuzima rushyigikira imikorere ya kamere ubuzima bushingiyeho. Kurinda aho ibinyabuzima biba no gukoresha umutungo kamere neza bifasha kubungabunga ibidukikije."
+      },
+      "quiz_connection": {
+        "en": "Give two examples of how healthy ecosystems benefit people.",
+        "rw": "Tanga ingero ebyiri z'uburyo ibidukikije bizima bigirira abantu akamaro."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Biodiversity",
+            "rw": "Urusobe rw'ibinyabuzima"
+          },
+          "publisher": "United Nations Environment Programme",
+          "url": "https://www.unep.org/explore-topics/biodiversity"
+        },
+        {
+          "title": {
+            "en": "Biodiversity",
+            "rw": "Urusobe rw'ibinyabuzima"
+          },
+          "publisher": "Convention on Biological Diversity",
+          "url": "https://www.cbd.int/"
+        }
+      ]
+    },
+    {
+      "id": "general-geography-maps",
+      "category": "general",
+      "icon": "🌍",
+      "title": {
+        "en": "Geography, Maps and Understanding Places",
+        "rw": "Geografiya, amakarita no gusobanukirwa ahantu"
+      },
+      "description": {
+        "en": "Learn how geography and maps help people understand locations, landscapes and relationships between places.",
+        "rw": "Menya uko geografiya n'amakarita bifasha abantu gusobanukirwa ahantu, imiterere y'ubutaka n'isano iri hagati y'ahantu hatandukanye."
+      },
+      "definition": {
+        "en": "Geography is the study of places, environments, physical features and the relationships between people and the world around them.",
+        "rw": "Geografiya ni ubumenyi bwiga ahantu, ibidukikije, imiterere kamere y'isi n'isano iri hagati y'abantu n'isi ibakikije."
+      },
+      "body": {
+        "en": [
+          "Geography helps explain where things are, why places differ and how people interact with their environments. Physical geography studies features such as mountains, rivers, climate, soils and natural vegetation. Human geography examines population, settlements, transport, economic activities and cultures.",
+          "Maps are tools for representing places and spatial information. A map may show roads, rivers, boundaries, landforms, buildings or other features. The title explains the subject, the legend explains symbols, the scale relates map distance to real distance and the orientation helps users understand direction.",
+          "Latitude and longitude are coordinate systems used to describe locations on Earth's surface. Latitude measures position north or south of the Equator, while longitude measures position east or west of the Prime Meridian.",
+          "Maps can be general or specialised. A road map supports navigation, a physical map highlights natural features and a thematic map focuses on one topic such as rainfall, population or land use. Digital maps can add interactive information, but users should still check the date and reliability of the data.",
+          "Geographic knowledge is useful for planning journeys, understanding weather patterns, managing natural resources and learning how communities are connected."
+        ],
+        "rw": [
+          "Geografiya ifasha gusobanura aho ibintu biherereye, impamvu ahantu hatandukanye n'uko abantu babana n'ibidukikije. Geografiya karemano yiga ibintu nk'imisozi, inzuzi, ikirere, ubutaka n'ibimera kamere. Geografiya y'abantu yiga abaturage, aho batuye, ubwikorezi, ibikorwa by'ubukungu n'umuco.",
+          "Ikarita ni igikoresho kigaragaza ahantu n'amakuru yerekeye aho ibintu biherereye. Ikarita ishobora kugaragaza imihanda, inzuzi, imbibi, imiterere y'ubutaka, inyubako n'ibindi. Umutwe wayo usobanura icyo igaragaza, urufunguzo rusobanura ibimenyetso, igipimo kigereranya intera yo ku ikarita n'intera nyayo, naho icyerekezo kigafasha kumenya aho ibintu biherereye.",
+          "Latitude na longitude ni uburyo bwo kugaragaza aho ahantu riherereye ku buso bw'isi. Latitude igaragaza aho ahantu hari mu majyaruguru cyangwa mu majyepfo y'umurongo wa Equator, naho longitude ikerekana aho hari mu burasirazuba cyangwa mu burengerazuba bw'umurongo wa Prime Meridian.",
+          "Amakarita ashobora kuba rusange cyangwa yihariye. Ikarita y'imihanda ifasha mu kugenda, ikarita karemano igaragaza imiterere y'isi, naho ikarita y'insanganyamatsiko ikibanda ku kintu kimwe nk'imvura, abaturage cyangwa imikoreshereze y'ubutaka. Amakarita yo kuri murandasi ashobora kugira amakuru umuntu akoraho, ariko ni ngombwa kugenzura igihe amakuru yatangiwe n'ubwizerwe bwayo.",
+          "Ubumenyi bwa geografiya bufasha gutegura ingendo, gusobanukirwa imiterere y'ikirere, gucunga umutungo kamere no kumenya uko abaturage n'ahantu bahuzwa."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Physical geography studies natural features and processes.",
+          "Human geography studies people and their activities in places.",
+          "A map legend explains the symbols used on a map.",
+          "Latitude and longitude help identify locations.",
+          "Always consider the date and reliability of map information."
+        ],
+        "rw": [
+          "Geografiya karemano yiga imiterere n'imikorere ya kamere.",
+          "Geografiya y'abantu yiga abantu n'ibikorwa byabo ahantu hatandukanye.",
+          "Urufunguzo rw'ikarita rusobanura ibimenyetso biyiriho.",
+          "Latitude na longitude bifasha kumenya aho ahantu riherereye.",
+          "Buri gihe tekereza ku gihe amakuru y'ikarita yatangiwe n'ubwizerwe bwayo."
+        ]
+      },
+      "conclusion": {
+        "en": "Geography and maps help people understand the world and make informed decisions about places, travel and resources.",
+        "rw": "Geografiya n'amakarita bifasha abantu gusobanukirwa isi no gufata ibyemezo bishingiye ku makuru yerekeye ahantu, ingendo n'umutungo."
+      },
+      "quiz_connection": {
+        "en": "What information does a map legend provide, and why is map scale useful?",
+        "rw": "Urufunguzo rw'ikarita rutanga ayahe makuru, kandi kuki igipimo cy'ikarita ari ingenzi?"
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Geography",
+            "rw": "Geografiya"
+          },
+          "publisher": "National Geographic Education",
+          "url": "https://education.nationalgeographic.org/"
+        },
+        {
+          "title": {
+            "en": "Geographic information",
+            "rw": "Amakuru ya geografiya"
+          },
+          "publisher": "United States Geological Survey",
+          "url": "https://www.usgs.gov/"
+        }
+      ]
+    },
+    {
+      "id": "general-media-information-literacy",
+      "category": "general",
+      "icon": "🧠",
+      "title": {
+        "en": "Media and Information Literacy",
+        "rw": "Kumenya gusuzuma amakuru n'ibitangazamakuru"
+      },
+      "description": {
+        "en": "Build skills for checking information, recognising misleading claims and using digital media responsibly.",
+        "rw": "Wunguke ubumenyi bwo kugenzura amakuru, kumenya ibivugwa biyobya no gukoresha ibitangazamakuru byo kuri murandasi neza."
+      },
+      "definition": {
+        "en": "Media and information literacy is the ability to access, analyse, evaluate and responsibly create or share information across different media.",
+        "rw": "Kumenya gusuzuma amakuru n'ibitangazamakuru ni ubushobozi bwo kubona, gusesengura, kugenzura no gukora cyangwa gusangiza abandi amakuru mu buryo bufite inshingano."
+      },
+      "body": {
+        "en": [
+          "People receive information from websites, social networks, television, radio, newspapers, messaging applications and other sources. Not every message is accurate, complete or presented fairly. Media literacy helps people think carefully about what they see and hear.",
+          "Before sharing a claim, check who created it, when it was published, what evidence supports it and whether other reliable sources report the same information. A headline alone may not represent the full meaning of an article.",
+          "Images and videos can be taken out of context, edited or shared with incorrect descriptions. Look for the original source, publication date and surrounding information. Be cautious when a post uses extreme language, promises an easy answer or pressures people to share immediately.",
+          "Protect personal information online. Think carefully before sharing private details, location information, passwords or photographs. Use strong, unique passwords where possible and review privacy settings on digital services.",
+          "Responsible digital participation includes respecting others, avoiding harassment, crediting original creators and correcting mistakes when reliable evidence shows that information shared earlier was wrong."
+        ],
+        "rw": [
+          "Abantu babona amakuru ku mbuga za internet, ku mbuga nkoranyambaga, kuri televiziyo, kuri radiyo, mu binyamakuru, muri porogaramu zo koherezanya ubutumwa no mu bindi bitangazamakuru. Ubutumwa bwose si bwo buba ari ukuri, bwuzuye cyangwa bwatanzwe mu buryo butabogamye. Ubumenyi ku bitangazamakuru bufasha abantu gutekereza neza ku byo babona n'ibyo bumva.",
+          "Mbere yo gusangiza abandi amakuru, genzura uyatangaje, igihe yatangiwe, ibimenyetso biyashyigikira n'uko andi masoko yizewe abivugaho. Umutwe w'inkuru wonyine ushobora kutagaragaza igitekerezo cyose kiri mu nkuru.",
+          "Amafoto na videwo bishobora gukurwa mu miterere yabyo, guhindurwa cyangwa gusangizwa abantu biherekejwe n'ibisobanuro bitari byo. Shakisha aho byaturutse, igihe byatangiriye n'andi makuru abikikije. Witondere ubutumwa bukoresha amagambo akabije, butanga igisubizo cyoroshye kuri buri kibazo cyangwa buguhatira kubusangiza abandi ako kanya.",
+          "Rinda amakuru yawe bwite kuri internet. Tekereza neza mbere yo gusangiza abandi amakuru y'ibanga, aho uherereye, amagambo banga cyangwa amafoto. Aho bishoboka koresha amagambo banga akomeye kandi atandukanye, kandi ujye ugenzura uburyo serivisi ukoresha zirinda amakuru yawe.",
+          "Gukoresha internet ufite inshingano birimo kubaha abandi, kwirinda kubatoteza, kuvuga aho igitekerezo cyangwa igihangano cyaturutse no gukosora amakosa igihe ibimenyetso byizewe byerekanye ko amakuru wasangije mbere atari yo."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Check the original source and publication date.",
+          "Look for evidence and confirmation from reliable sources.",
+          "Do not trust a headline without reading the full context.",
+          "Protect passwords and personal information.",
+          "Share information responsibly and correct mistakes."
+        ],
+        "rw": [
+          "Genzura isoko y'umwimerere n'igihe amakuru yatangiwe.",
+          "Shakisha ibimenyetso n'andi masoko yizewe abyemeza.",
+          "Ntukizere umutwe w'inkuru utarasomye ibisobanuro byayo byose.",
+          "Rinda amagambo banga n'amakuru yawe bwite.",
+          "Sangiza abandi amakuru ufite inshingano kandi ukosore amakosa."
+        ]
+      },
+      "conclusion": {
+        "en": "Being informed requires more than reading or watching. Check evidence, protect your privacy and think before sharing information.",
+        "rw": "Kugira amakuru meza bisaba ibirenze gusoma cyangwa kureba. Genzura ibimenyetso, rinda ubuzima bwite kandi ubanze utekereze mbere yo gusangiza abandi amakuru."
+      },
+      "quiz_connection": {
+        "en": "List three checks you should make before sharing a surprising claim online.",
+        "rw": "Vuga ibintu bitatu ugomba kugenzura mbere yo gusangiza abandi amakuru atangaje kuri internet."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Media and Information Literacy",
+            "rw": "Kumenya gusuzuma amakuru n'ibitangazamakuru"
+          },
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/media-information-literacy"
+        },
+        {
+          "title": {
+            "en": "Online safety",
+            "rw": "Umutekano kuri internet"
+          },
+          "publisher": "UNICEF",
+          "url": "https://www.unicef.org/end-violence/how-to-stop-cyberbullying"
+        }
+      ]
+    },
+    {
+      "id": "general-climate-weather",
+      "category": "general",
+      "icon": "🌦️",
+      "title": {
+        "en": "Weather, Climate and Climate Change",
+        "rw": "Ibihe by'ikirere, imiterere y'ikirere n'imihindagurikire yabyo"
+      },
+      "description": {
+        "en": "Understand the difference between weather and climate and explore why the Earth's climate is changing.",
+        "rw": "Sobanukirwa itandukaniro riri hagati y'uko ikirere kimeze ubu n'imiterere yacyo mu gihe kirekire, unamenye impamvu imihindagurikire y'ikirere ibaho."
+      },
+      "definition": {
+        "en": "Weather describes short-term atmospheric conditions, while climate describes patterns and averages of weather over long periods.",
+        "rw": "Ibihe by'ikirere bisobanura uko ikirere kimeze mu gihe gito, naho imiterere y'ikirere ikavuga uko ibihe byagiye biba mu gihe kirekire n'impuzandengo yabyo."
+      },
+      "body": {
+        "en": [
+          "Weather describes conditions such as temperature, rainfall, wind, humidity and cloud cover at a particular time and place. It can change over minutes, hours or days. A weather forecast estimates the conditions that may occur in the near future.",
+          "Climate describes typical weather patterns in a region over many years. It includes averages as well as the frequency of events such as droughts, heavy rainfall or heatwaves. One unusually cold day does not by itself show that the climate is becoming colder.",
+          "The Earth's climate changes naturally over time, but scientific evidence shows that the recent rapid warming is mainly caused by human activities that increase heat-trapping greenhouse gases. Burning fossil fuels, deforestation and some industrial and agricultural activities contribute to these emissions.",
+          "Climate change can affect rainfall patterns, temperatures, ecosystems, agriculture, water availability and human health. The effects differ from one region to another, and communities may face different levels of risk.",
+          "Climate action includes reducing greenhouse gas emissions, protecting forests, improving energy efficiency and preparing communities for climate impacts. Reliable scientific information helps people understand risks and choose appropriate responses."
+        ],
+        "rw": [
+          "Ibihe by'ikirere bisobanura uko ubushyuhe, imvura, umuyaga, ubuhehere n'ibicu bimeze ahantu runaka no mu gihe runaka. Bishobora guhinduka mu minota, amasaha cyangwa iminsi. Iteganyagihe ritanga igereranya ry'uko ikirere gishobora kumera mu gihe kiri imbere.",
+          "Imiterere y'ikirere isobanura uko ibihe bisanzwe bigenda biba mu karere mu gihe cy'imyaka myinshi. Harimo impuzandengo n'inshuro ibintu nk'amapfa, imvura nyinshi cyangwa ubushyuhe bukabije bibaho. Umunsi umwe ukonje bidasanzwe ntuhagije ngo ugaragaze ko imiterere y'ikirere iri gukonja.",
+          "Imiterere y'ikirere cy'isi ishobora guhinduka mu buryo kamere uko igihe gihita, ariko ibimenyetso bya siyansi byerekana ko ubushyuhe bwiyongera vuba muri iki gihe ahanini buterwa n'ibikorwa by'abantu byongera imyuka ifata ubushyuhe mu kirere. Gutwika ibikomoka kuri peteroli, gutema amashyamba n'ibikorwa bimwe by'inganda n'ubuhinzi bigira uruhare mu kongera iyo myuka.",
+          "Imihindagurikire y'ikirere ishobora kugira ingaruka ku buryo imvura igwa, ubushyuhe, ibidukikije, ubuhinzi, amazi ahari n'ubuzima bw'abantu. Ingaruka ziratandukana bitewe n'akarere, kandi abaturage bashobora guhura n'ibyago bitandukanye.",
+          "Guhangana n'imihindagurikire y'ikirere birimo kugabanya imyuka ihumanya, kurinda amashyamba, gukoresha ingufu neza no gutegura abaturage guhangana n'ingaruka zayo. Amakuru yizewe ya siyansi afasha abantu kumva ibyago no guhitamo ingamba zikwiye."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Weather describes short-term atmospheric conditions.",
+          "Climate describes long-term patterns.",
+          "Human activities are the main cause of recent global warming.",
+          "Climate change can affect water, food systems, ecosystems and health.",
+          "Reducing emissions and preparing for impacts are both important."
+        ],
+        "rw": [
+          "Ibihe by'ikirere bisobanura uko ikirere kimeze mu gihe gito.",
+          "Imiterere y'ikirere isobanura uko ibihe bigenda biba mu gihe kirekire.",
+          "Ibikorwa by'abantu ni byo ahanini bitera ubushyuhe bwiyongera vuba muri iki gihe.",
+          "Imihindagurikire y'ikirere ishobora kugira ingaruka ku mazi, ibiribwa, ibidukikije n'ubuzima.",
+          "Kugabanya imyuka ihumanya no kwitegura guhangana n'ingaruka zayo byombi ni ingenzi."
+        ]
+      },
+      "conclusion": {
+        "en": "Weather and climate describe different time scales. Understanding climate science helps communities prepare for change and protect people and nature.",
+        "rw": "Ibihe by'ikirere n'imiterere y'ikirere bisobanura ibihe bitandukanye. Gusobanukirwa siyansi y'imihindagurikire y'ikirere bifasha abaturage kwitegura impinduka no kurinda abantu na kamere."
+      },
+      "quiz_connection": {
+        "en": "Explain the difference between weather and climate, using one example of each.",
+        "rw": "Sobanura itandukaniro riri hagati y'ibihe by'ikirere n'imiterere y'ikirere, utanga urugero rumwe kuri buri kimwe."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Climate Change",
+            "rw": "Imihindagurikire y'ikirere"
+          },
+          "publisher": "NASA Climate",
+          "url": "https://climate.nasa.gov/"
+        },
+        {
+          "title": {
+            "en": "Climate Change",
+            "rw": "Imihindagurikire y'ikirere"
+          },
+          "publisher": "United Nations",
+          "url": "https://www.un.org/en/climatechange"
+        }
+      ]
     }
   ]
 }
