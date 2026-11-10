@@ -5,33 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08172b">
 
-  <title>Quiz Master 🇷🇼 - Knowledge Quiz</title>
-
-  <meta name="description"
-    content="Quiz Master Rwanda is a bilingual educational quiz covering road safety, Rwanda, Africa, science, geography, history and general knowledge.">
-
+  <title>Quiz Master Rwanda - Knowledge Quiz</title>
+  <meta name="description" content="Quiz Master Rwanda is a bilingual educational quiz covering road safety, Rwanda, Africa, science, geography, history and general knowledge.">
   <meta name="robots" content="index,follow">
+  <meta name="author" content="Quiz Master Rwanda">
 
-  <link rel="canonical"
-    href="https://quizmaster-liard-five.vercel.app/">
-
+  <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon-192-4.png">
   <link rel="apple-touch-icon" href="./icon-192-4.png">
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FP8R0NDZN"></script>
-
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
-      dataLayer.push(arguments);
+      window.dataLayer.push(arguments);
     }
-    gtag('js', new Date());
-    gtag('config', 'G-3FP8R0NDZN');
+    gtag("js", new Date());
+    gtag("config", "G-3FP8R0NDZN");
   </script>
 
-  <!-- Google AdSense -->
+  <!-- Google AdSense: Home page ad unit -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
     crossorigin="anonymous"></script>
@@ -84,9 +79,23 @@
       cursor: not-allowed;
     }
 
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #75b7ff;
+      outline-offset: 3px;
+    }
+
     a {
       color: #91c4ff;
       text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    [hidden] {
+      display: none !important;
     }
 
     .app-header {
@@ -182,6 +191,7 @@
     .menu button:hover,
     .menu a:hover {
       background: rgba(255,255,255,.09);
+      text-decoration: none;
     }
 
     main {
@@ -304,6 +314,7 @@
       display: block;
       margin-top: 4px;
       font-size: 23px;
+      overflow-wrap: anywhere;
     }
 
     .setup-section {
@@ -355,6 +366,7 @@
       border-radius: 11px;
       color: #d8e7f9;
       font-size: 14px;
+      overflow-wrap: anywhere;
     }
 
     .error {
@@ -365,6 +377,43 @@
 
     .success-text {
       color: #72e2ad;
+      font-weight: 700;
+    }
+
+    .wrong-text {
+      color: #ff9299;
+      font-weight: 700;
+    }
+
+    .correct-text {
+      color: #72e2ad;
+      font-weight: 700;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .warning {
+      color: #ffbd5c;
+      font-weight: 700;
+    }
+
+    .review-item {
+      padding: 15px;
+      margin: 14px 0;
+      background: rgba(255,255,255,.045);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .review-item h3 {
+      font-size: 16px;
+      margin: 0 0 12px;
+    }
+
+    .review-item p {
+      overflow-wrap: anywhere;
     }
 
     #confirmSetupBtn {
@@ -385,6 +434,7 @@
       margin: 17px 0 0;
       text-align: center;
       font-size: 13px;
+      overflow-wrap: anywhere;
     }
 
     /* HOME AD ONLY */
@@ -408,7 +458,7 @@
       text-transform: uppercase;
     }
 
-    .ad-container ins {
+    .ad-container ins.adsbygoogle {
       display: block;
       width: 100%;
       min-height: 90px;
@@ -442,6 +492,7 @@
     #questionText {
       margin: 20px 0;
       font-size: 22px;
+      overflow-wrap: anywhere;
     }
 
     .option {
@@ -455,9 +506,10 @@
       border-radius: 11px;
       text-align: left;
       transition: .2s;
+      overflow-wrap: anywhere;
     }
 
-    .option:hover {
+    .option:hover:not(:disabled) {
       background: #20446c;
     }
 
@@ -480,6 +532,7 @@
       max-height: 260px;
       margin: 12px auto;
       border-radius: 10px;
+      object-fit: contain;
     }
 
     .feedback,
@@ -488,6 +541,7 @@
       margin-top: 13px;
       background: rgba(255,255,255,.06);
       border-radius: 11px;
+      overflow-wrap: anywhere;
     }
 
     .button-row {
@@ -590,27 +644,12 @@
       ☰ More
     </button>
 
-    <nav class="menu" id="moreMenu">
-      <button type="button" id="roundsBtn">
-        🏆 My Progress & Quiz Rounds
-      </button>
-
-      <button type="button" id="reviewAnswersBtn">
-        📝 Review Answers
-      </button>
-
-      <button type="button" id="settingsBtn">
-        ⚙️ Settings
-      </button>
-
-      <button type="button" id="shareBtn">
-        📤 Share Quiz Master
-      </button>
-
-      <button type="button" id="musicMenuBtn">
-        🎵 Music Settings
-      </button>
-
+    <nav class="menu" id="moreMenu" aria-label="Main menu">
+      <button type="button" id="roundsBtn">🏆 My Progress & Quiz Rounds</button>
+      <button type="button" id="reviewAnswersBtn">📝 Review Answers</button>
+      <button type="button" id="settingsBtn">⚙️ Settings</button>
+      <button type="button" id="shareBtn">📤 Share Quiz Master</button>
+      <button type="button" id="musicMenuBtn">🎵 Music Settings</button>
       <a href="./articles.html">📚 Learning Centre</a>
       <a href="./about.html">ℹ️ About</a>
       <a href="./contact.html">✉️ Contact & Help</a>
@@ -622,25 +661,18 @@
 
   <!-- HOME SCREEN -->
   <section class="screen active" id="homeScreen">
-
     <div class="panel">
 
       <div class="welcome">
-        <div class="logo-icon">🧠</div>
-
+        <div class="logo-icon" aria-hidden="true">🧠</div>
         <h1>Welcome to Quiz Master 🇷🇼</h1>
-
         <p class="tagline">LEARN • PLAY • IMPROVE</p>
-
         <p class="welcome-description">
           Welcome! Challenge your knowledge, discover new things
           and improve your skills through fun educational quizzes
           in English and Kinyarwanda.
         </p>
-
-        <div class="welcome-badge">
-          🇷🇼 Rwanda Educational Quiz Platform
-        </div>
+        <div class="welcome-badge">🇷🇼 Rwanda Educational Quiz Platform</div>
       </div>
 
       <div class="stats">
@@ -648,12 +680,10 @@
           <span>Current Round</span>
           <strong id="homeRound">1</strong>
         </div>
-
         <div class="stat">
           <span>Best Score</span>
           <strong id="homeScore">0</strong>
         </div>
-
         <div class="stat">
           <span>Stars</span>
           <strong id="homeStars">⭐</strong>
@@ -661,19 +691,15 @@
       </div>
 
       <div class="setup-section">
-
         <h2 class="section-heading">🌐 Choose Your Language</h2>
 
         <div class="choice-grid">
-          <button type="button"
-            class="choice language-btn"
-            data-language="rw">
+          <button type="button" class="choice language-btn"
+            data-language="rw" aria-pressed="false">
             🇷🇼 Ikinyarwanda
           </button>
-
-          <button type="button"
-            class="choice language-btn"
-            data-language="en">
+          <button type="button" class="choice language-btn"
+            data-language="en" aria-pressed="false">
             🇬🇧 English
           </button>
         </div>
@@ -681,74 +707,58 @@
         <h2 class="section-heading">🎯 Choose Your Quiz Category</h2>
 
         <div class="choice-grid">
-          <button type="button"
-            class="choice mode-btn"
-            data-mode="traffic">
+          <button type="button" class="choice mode-btn"
+            data-mode="traffic" aria-pressed="false">
             🚦 Amategeko y'umuhanda
           </button>
-
-          <button type="button"
-            class="choice mode-btn"
-            data-mode="general">
+          <button type="button" class="choice mode-btn"
+            data-mode="general" aria-pressed="false">
             🌍 Ubumenyi rusange
           </button>
         </div>
 
-        <div class="summary" id="selectionSummary">
+        <div class="summary" id="selectionSummary" aria-live="polite">
           Choose your language and quiz category to continue.
         </div>
 
         <div class="error" id="setupError" role="alert"></div>
 
-        <button type="button"
-          class="btn secondary full"
-          id="confirmSetupBtn"
-          disabled>
+        <button type="button" class="btn secondary full"
+          id="confirmSetupBtn" disabled>
           ✓ Emeza ibyo wahisemo
         </button>
 
-        <button type="button"
-          class="btn success full"
-          id="startBtn"
-          disabled>
+        <button type="button" class="btn success full"
+          id="startBtn" disabled>
           ▶ Tangira gukina
         </button>
 
-        <button type="button"
-          class="btn secondary full"
-          id="continueBtn"
-          style="display:none">
+        <button type="button" class="btn secondary full"
+          id="continueBtn" hidden>
           Continue
         </button>
 
-        <p id="homeMessage"
-          class="muted"
-          aria-live="polite">
+        <p id="homeMessage" class="muted" aria-live="polite">
           Loading questions...
         </p>
-
       </div>
     </div>
 
-    <!-- ADSENSE: HOME ONLY, BELOW ALL GAME SETUP BUTTONS -->
+    <!-- ADSENSE: HOME PAGE ONLY -->
     <div class="ad-container" id="homeAdContainer">
       <p class="ad-label">Advertisement</p>
-
       <ins class="adsbygoogle"
         style="display:block"
         data-ad-client="ca-pub-2666698676518429"
         data-ad-slot="9045712897"
         data-ad-format="auto"
-        data-full-width-responsive="true">
-      </ins>
+        data-full-width-responsive="true"></ins>
     </div>
-
   </section>
 
   <!-- QUIZ SCREEN -->
   <section class="screen" id="quizScreen">
     <div class="panel">
-
       <div class="question-meta">
         <span id="roundLabel">Round 1</span>
         <span id="questionCounter">Question 1/10</span>
@@ -760,52 +770,37 @@
         <span id="timerBox">⏱ <span id="timer">30</span>s</span>
       </div>
 
-      <div class="progress-track">
+      <div class="progress-track" role="progressbar"
+        aria-label="Quiz progress" aria-valuemin="0"
+        aria-valuemax="100" aria-valuenow="0" id="progressTrack">
         <div id="progressFill"></div>
       </div>
 
       <img id="questionImage" alt="Question illustration">
 
       <h2 id="questionText">Loading question...</h2>
-
       <div id="optionsContainer"></div>
 
-      <div id="answerFeedback"
-        class="feedback"
-        aria-live="polite"
-        style="display:none">
-      </div>
+      <div id="answerFeedback" class="feedback"
+        aria-live="polite" hidden></div>
 
-      <div id="explanation"
-        class="explanation"
-        style="display:none">
-      </div>
+      <div id="explanation" class="explanation" hidden></div>
 
       <div class="button-row">
-        <button type="button"
-          class="btn"
-          id="submitAnswerBtn">
+        <button type="button" class="btn" id="submitAnswerBtn" disabled>
           Submit Answer
         </button>
-
-        <button type="button"
-          class="btn success"
-          id="nextQuestionBtn"
-          style="display:none">
+        <button type="button" class="btn success"
+          id="nextQuestionBtn" hidden>
           Next Question
         </button>
       </div>
 
       <div class="button-row">
-        <button type="button"
-          class="btn secondary"
-          id="quizReviewBtn">
+        <button type="button" class="btn secondary" id="quizReviewBtn">
           Review Answers
         </button>
-
-        <button type="button"
-          class="btn danger"
-          id="quizHomeBtn">
+        <button type="button" class="btn danger" id="quizHomeBtn">
           Home
         </button>
       </div>
@@ -815,38 +810,22 @@
   <!-- RESULTS SCREEN -->
   <section class="screen" id="resultScreen">
     <div class="panel">
-
       <h1>🏆 Round Results</h1>
-
       <h2 id="resultTitle">Well done!</h2>
-
       <p id="resultScore">Your score: 0</p>
-
       <p id="resultPercentage">0%</p>
-
       <p id="resultMessage"></p>
 
       <div class="button-row">
-
-        <button type="button"
-          class="btn success"
-          id="retryRoundBtn">
+        <button type="button" class="btn success" id="retryRoundBtn">
           🔄 Play Again
         </button>
-
-        <button type="button"
-          class="btn"
-          id="nextRoundBtn"
-          style="display:none">
+        <button type="button" class="btn" id="nextRoundBtn" hidden>
           🔓 Next Round
         </button>
-
-        <button type="button"
-          class="btn secondary"
-          id="resultHomeBtn">
+        <button type="button" class="btn secondary" id="resultHomeBtn">
           🏠 Home
         </button>
-
       </div>
     </div>
   </section>
@@ -855,12 +834,8 @@
   <section class="screen" id="reviewScreen">
     <div class="panel">
       <h1>📝 Review Answers</h1>
-
       <div id="reviewContainer"></div>
-
-      <button type="button"
-        class="btn secondary full"
-        id="reviewHomeBtn">
+      <button type="button" class="btn secondary full" id="reviewHomeBtn">
         Back Home
       </button>
     </div>
@@ -870,12 +845,8 @@
   <section class="screen" id="roundsScreen">
     <div class="panel">
       <h1>🏆 My Progress & Quiz Rounds</h1>
-
       <div id="roundsContainer"></div>
-
-      <button type="button"
-        class="btn secondary full"
-        id="roundsHomeBtn">
+      <button type="button" class="btn secondary full" id="roundsHomeBtn">
         Back Home
       </button>
     </div>
@@ -885,19 +856,12 @@
   <section class="screen" id="settingsScreen">
     <div class="panel">
       <h1>⚙️ Settings</h1>
-
       <p>Music</p>
-
-      <button type="button"
-        class="btn secondary full"
-        id="musicToggleBtn">
+      <button type="button" class="btn secondary full" id="musicToggleBtn">
         Toggle Music
       </button>
-
-      <button type="button"
-        class="btn secondary full"
-        id="settingsHomeBtn"
-        style="margin-top:12px">
+      <button type="button" class="btn secondary full"
+        id="settingsHomeBtn" style="margin-top:12px">
         Back Home
       </button>
     </div>
@@ -908,25 +872,17 @@
 <footer>
   <p><strong>Quiz Master 🇷🇼</strong></p>
   <p>Learn • Play • Improve</p>
-
   <p>
     <a href="./about.html">About</a>
     <a href="./privacy-policy.html">Privacy Policy</a>
     <a href="./terms.html">Terms</a>
     <a href="./contact.html">Contact</a>
   </p>
-
-  <p>
-    © <span id="currentYear"></span>
-    Quiz Master Rwanda
-  </p>
+  <p>© <span id="currentYear"></span> Quiz Master Rwanda</p>
 </footer>
 
-<audio id="backgroundMusic"
-  src="./mythica.mp3"
-  loop
-  preload="none">
-</audio>
+<audio id="backgroundMusic" src="./mythica.mp3"
+  loop preload="none"></audio>
 
 <!-- MUSIC CONTROLLER -->
 <script>
@@ -935,35 +891,60 @@
 
   const audio = document.getElementById("backgroundMusic");
   const toggle = document.getElementById("musicToggleBtn");
+  const storageKey = "quizmasterMusicEnabled";
 
-  let enabled =
-    localStorage.getItem("quizmasterMusicEnabled") === "true";
+  function readSetting() {
+    try {
+      return localStorage.getItem(storageKey) === "true";
+    } catch (error) {
+      console.warn("Could not read music setting:", error);
+      return false;
+    }
+  }
+
+  function saveSetting(value) {
+    try {
+      localStorage.setItem(storageKey, String(value));
+    } catch (error) {
+      console.warn("Could not save music setting:", error);
+    }
+  }
+
+  let enabled = readSetting();
 
   function updateButton() {
     if (toggle) {
       toggle.textContent = enabled ? "🔊 Music On" : "🔇 Music Off";
+      toggle.setAttribute("aria-pressed", String(enabled));
     }
   }
 
   async function setEnabled(value) {
     enabled = Boolean(value);
+    saveSetting(enabled);
 
-    localStorage.setItem(
-      "quizmasterMusicEnabled",
-      String(enabled)
-    );
+    if (!audio) {
+      updateButton();
+      return false;
+    }
 
     if (enabled) {
       try {
         await audio.play();
+        updateButton();
+        return true;
       } catch (error) {
         console.warn("Music playback requires user interaction.", error);
+        enabled = false;
+        saveSetting(false);
+        updateButton();
+        return false;
       }
-    } else {
-      audio.pause();
     }
 
+    audio.pause();
     updateButton();
+    return true;
   }
 
   window.quizMasterMusic = {
@@ -984,7 +965,7 @@
 <!-- QUIZ ENGINE -->
 <script src="./questions.js" defer></script>
 
-<!-- MENU AND SHARE CONTROLLER -->
+<!-- MENU, SHARE AND FOOTER -->
 <script>
 (() => {
   "use strict";
@@ -992,86 +973,89 @@
   const menuButton = document.getElementById("moreMenuBtn");
   const menu = document.getElementById("moreMenu");
 
+  function closeMenu() {
+    if (!menu || !menuButton) return;
+    menu.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+  }
+
   if (menuButton && menu) {
     menuButton.addEventListener("click", () => {
-      const open = menu.classList.toggle("open");
-
-      menuButton.setAttribute(
-        "aria-expanded",
-        String(open)
-      );
+      const open = !menu.classList.contains("open");
+      menu.classList.toggle("open", open);
+      menuButton.setAttribute("aria-expanded", String(open));
     });
 
-    document.addEventListener("click", (event) => {
-      if (
-        !menu.contains(event.target) &&
-        !menuButton.contains(event.target)
-      ) {
-        menu.classList.remove("open");
-
-        menuButton.setAttribute(
-          "aria-expanded",
-          "false"
-        );
+    document.addEventListener("click", event => {
+      if (!menu.contains(event.target) &&
+          !menuButton.contains(event.target)) {
+        closeMenu();
       }
+    });
+
+    menu.addEventListener("click", event => {
+      if (event.target.closest("button, a")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMenu();
     });
   }
 
-  document.getElementById("shareBtn")
-    ?.addEventListener("click", async () => {
+  const shareButton = document.getElementById("shareBtn");
 
+  if (shareButton) {
+    shareButton.addEventListener("click", async () => {
       const shareData = {
-        title: "Quiz Master 🇷🇼",
-        text: "Test your knowledge with Quiz Master!",
-        url: window.location.origin
+        title: "Quiz Master Rwanda",
+        text: "Test your knowledge with Quiz Master Rwanda!",
+        url: window.location.href.split("#")[0]
       };
 
       try {
         if (navigator.share) {
           await navigator.share(shareData);
-        } else {
-          await navigator.clipboard.writeText(shareData.url);
-          alert("✅ Link Copied!");
+          return;
         }
+
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(shareData.url);
+          alert("Quiz Master link copied.");
+          return;
+        }
+
+        window.prompt("Copy this Quiz Master link:", shareData.url);
       } catch (error) {
         if (error.name !== "AbortError") {
-          try {
-            await navigator.clipboard.writeText(shareData.url);
-            alert("✅ Link Copied!");
-          } catch {
-            alert("Please copy this link: " + shareData.url);
-          }
+          window.prompt("Copy this Quiz Master link:", shareData.url);
         }
       }
     });
+  }
 
   const year = document.getElementById("currentYear");
-
-  if (year) {
-    year.textContent = new Date().getFullYear();
-  }
+  if (year) year.textContent = new Date().getFullYear();
 })();
 </script>
 
-<!-- ADSENSE INITIALIZATION: HOME AD -->
+<!-- ADSENSE INITIALIZATION: ONE HOME AD UNIT -->
 <script>
 (() => {
   "use strict";
 
-  const ad = document.querySelector(
-    "#homeAdContainer ins.adsbygoogle"
-  );
+  const ad = document.querySelector("#homeAdContainer ins.adsbygoogle");
 
-  if (!ad || ad.dataset.initialized === "true") {
-    return;
-  }
+  if (!ad || ad.dataset.initialized === "true") return;
 
   ad.dataset.initialized = "true";
 
   try {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   } catch (error) {
-    console.warn("AdSense initialization:", error);
+    console.warn("AdSense initialization failed:", error);
+    ad.dataset.initialized = "false";
   }
 })();
 </script>
@@ -1080,8 +1064,7 @@
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("./service-worker.js")
+    navigator.serviceWorker.register("./service-worker.js")
       .catch(error => {
         console.warn("Service Worker registration failed:", error);
       });
