@@ -22,7 +22,6 @@
   <style>
     :root {
       color-scheme: dark;
-
       --background: #08172b;
       --card: #10233f;
       --card-light: #172f50;
@@ -33,6 +32,7 @@
       --border: rgba(255,255,255,.12);
       --success: #24c78b;
       --danger: #ff6b6b;
+      --warning: #ffbd4a;
     }
 
     * {
@@ -48,18 +48,15 @@
       min-height: 100vh;
       min-height: 100dvh;
       padding: 20px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       background:
         radial-gradient(
           circle at top,
           #142d50 0,
           var(--background) 60%
         );
-
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       text-align: center;
@@ -69,11 +66,9 @@
       width: 100%;
       max-width: 440px;
       padding: 32px 23px;
-
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 20px;
-
       box-shadow: 0 15px 45px rgba(0,0,0,.25);
     }
 
@@ -110,11 +105,9 @@
     .status {
       margin: 22px 0;
       padding: 13px;
-
       border-radius: 11px;
       background: var(--card-light);
       border: 1px solid var(--border);
-
       color: var(--danger);
       font-size: 14px;
       font-weight: bold;
@@ -125,28 +118,27 @@
       color: var(--success);
     }
 
+    .status.checking {
+      color: var(--warning);
+    }
+
     button,
     .home-link {
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 100%;
       min-height: 48px;
       padding: 13px 16px;
       margin-top: 12px;
-
       border: 0;
       border-radius: 11px;
-
       background: var(--primary);
       color: white;
-
       font-size: 15px;
       font-weight: bold;
       text-decoration: none;
       cursor: pointer;
-
       transition:
         opacity .2s ease,
         transform .2s ease,
@@ -216,10 +208,7 @@
 
 <body>
 
-  <main
-    class="offline-container"
-    aria-labelledby="pageTitle"
-  >
+  <main class="offline-container" aria-labelledby="pageTitle">
 
     <img
       class="logo"
@@ -229,16 +218,9 @@
       height="90"
     >
 
-    <h1 id="pageTitle">
-      Quiz Master 🇷🇼
-    </h1>
+    <h1 id="pageTitle">Quiz Master 🇷🇼</h1>
 
-    <div
-      class="offline-icon"
-      aria-hidden="true"
-    >
-      📡
-    </div>
+    <div class="offline-icon" aria-hidden="true">📡</div>
 
     <h2>You are offline</h2>
 
@@ -258,21 +240,16 @@
       id="connectionStatus"
       role="status"
       aria-live="polite"
+      aria-busy="false"
     >
       🔴 Checking connection...
     </div>
 
-    <button
-      type="button"
-      id="retryBtn"
-    >
+    <button type="button" id="retryBtn">
       🔄 Try Again
     </button>
 
-    <a
-      class="home-link"
-      href="./index.html"
-    >
+    <a class="home-link" href="./index.html">
       🏠 Return to Quiz Master
     </a>
 
@@ -302,6 +279,7 @@
         document.getElementById("helpText");
 
       const HOME_URL = "./index.html";
+      const CHECK_TIMEOUT = 8000;
 
       let retrying = false;
 
@@ -310,7 +288,7 @@
           statusElement.textContent =
             "🔴 No internet connection";
 
-          statusElement.classList.remove("online");
+          statusElement.className = "status";
 
           helpText.textContent =
             "Reconnect to the internet before trying again.";
@@ -321,22 +299,32 @@
         statusElement.textContent =
           "🟢 Device reports an internet connection";
 
-        statusElement.classList.add("online");
+        statusElement.className = "status online";
 
         helpText.textContent =
           "Your device is connected. Try opening Quiz Master again.";
       }
 
       async function checkWebsite() {
+        const controller = new AbortController();
+
+        const timeout = setTimeout(
+          () => controller.abort(),
+          CHECK_TIMEOUT
+        );
+
         try {
           const response = await fetch(HOME_URL, {
-            method: "HEAD",
-            cache: "no-store"
+            method: "GET",
+            cache: "no-store",
+            signal: controller.signal
           });
 
           return response.ok;
         } catch (error) {
           return false;
+        } finally {
+          clearTimeout(timeout);
         }
       }
 
@@ -348,32 +336,32 @@
         retryButton.disabled = true;
         retryButton.textContent = "⏳ Checking...";
 
-        updateConnectionStatus();
+        statusElement.setAttribute("aria-busy", "true");
+        statusElement.textContent =
+          "🟡 Checking Quiz Master website...";
+
+        statusElement.className = "status checking";
 
         if (!navigator.onLine) {
           statusElement.textContent =
             "🔴 No internet connection";
 
-          statusElement.classList.remove("online");
+          statusElement.className = "status";
 
           helpText.textContent =
             "Please reconnect to the internet and try again.";
 
-          retryButton.disabled = false;
-          retryButton.textContent = "🔄 Try Again";
-
-          retrying = false;
+          finishRetry();
           return;
         }
-
-        statusElement.textContent =
-          "🟡 Checking Quiz Master website...";
 
         const websiteAvailable = await checkWebsite();
 
         if (websiteAvailable) {
           statusElement.textContent =
             "🟢 Website available. Returning home...";
+
+          statusElement.className = "status online";
 
           helpText.textContent =
             "Quiz Master is reachable. Opening the homepage.";
@@ -385,14 +373,18 @@
         statusElement.textContent =
           "🟠 Website could not be reached";
 
-        statusElement.classList.remove("online");
+        statusElement.className = "status";
 
         helpText.textContent =
           "Your device may be connected, but the website is not responding. Check your connection and try again.";
 
+        finishRetry();
+      }
+
+      function finishRetry() {
         retryButton.disabled = false;
         retryButton.textContent = "🔄 Try Again";
-
+        statusElement.setAttribute("aria-busy", "false");
         retrying = false;
       }
 
