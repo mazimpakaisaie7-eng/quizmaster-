@@ -5,274 +5,189 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08172b">
-
-  <title>Learning Centre | Quiz Master Rwanda</title>
-  <meta name="description" content="Learn road safety, science, geography and general knowledge in English and Kinyarwanda with Quiz Master Rwanda.">
-  <meta name="robots" content="index,follow">
+  <meta name="description" content="Explore bilingual educational lessons on road safety, science, geography, the environment and general knowledge with Quiz Master Rwanda.">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/articles.html">
-
   <link rel="icon" href="./icon-192-4.png">
-  <link rel="manifest" href="./manifest.webmanifest">
+  <title>Learning Centre | Quiz Master Rwanda</title>
 
   <style>
     :root {
-      color-scheme: dark;
       --bg: #08172b;
-      --surface: #10233d;
-      --surface2: #172d49;
-      --primary: #38bdf8;
-      --text: #f1f5f9;
-      --muted: #a9b8ca;
+      --panel: #10243e;
+      --panel2: #142d4b;
+      --text: #edf4ff;
+      --muted: #a9bad0;
+      --accent: #38bdf8;
+      --accent2: #22c55e;
       --border: rgba(255,255,255,.12);
-      --success: #86efac;
       --danger: #fca5a5;
-      --radius: 16px;
-      --max: 1120px;
+      --shadow: 0 12px 35px rgba(0,0,0,.22);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
+    a { color: #7dd3fc; }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button:focus-visible,
-    a:focus-visible,
-    input:focus-visible {
-      outline: 3px solid var(--primary);
-      outline-offset: 3px;
-    }
+    button, input { font: inherit; }
 
     .container {
-      width: min(92%, var(--max));
-      margin-inline: auto;
+      width: min(1100px, 92%);
+      margin: auto;
     }
 
-    .site-header {
+    header {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(8,23,43,.97);
+      background: rgba(8,23,43,.96);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(12px);
     }
 
     .nav {
-      min-height: 70px;
+      min-height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      position: relative;
     }
 
-    .logo {
-      color: var(--text);
-      font-size: 20px;
+    .brand {
+      color: white;
+      font-size: 1.08rem;
       font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      color: var(--primary);
+      text-decoration: none;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
       color: var(--muted);
-      font-size: 14px;
+      text-decoration: none;
+      font-size: .92rem;
     }
 
     .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--primary);
-    }
+    .nav-links a:focus { color: white; }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .language-btn,
-    .menu-btn {
-      color: var(--text);
-      background: var(--surface2);
+    .language-button,
+    .back-button,
+    .filter-button {
       border: 1px solid var(--border);
-      border-radius: 9px;
-      padding: 8px 12px;
+      border-radius: 10px;
+      padding: 9px 13px;
+      color: white;
+      background: var(--panel);
       cursor: pointer;
     }
 
-    .menu-btn {
-      display: none;
+    .language-button:hover,
+    .back-button:hover,
+    .filter-button:hover {
+      border-color: var(--accent);
     }
 
     .hero {
-      padding: 70px 0 55px;
+      padding: 55px 0 35px;
       text-align: center;
-      background:
-        radial-gradient(ellipse at top, rgba(56,189,248,.18), transparent 65%);
     }
 
-    .hero-label {
-      display: inline-block;
-      padding: 5px 13px;
-      color: var(--primary);
-      background: rgba(56,189,248,.1);
-      border: 1px solid rgba(56,189,248,.25);
-      border-radius: 30px;
-      font-size: 13px;
+    .eyebrow {
+      color: var(--accent);
       font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .78rem;
     }
 
-    .hero h1 {
-      max-width: 850px;
-      margin: 18px auto 12px;
-      font-size: clamp(30px, 5vw, 48px);
+    h1 {
+      margin: 10px 0;
+      font-size: clamp(2rem, 6vw, 3.2rem);
       line-height: 1.15;
     }
 
     .hero p {
       max-width: 720px;
-      margin: 0 auto;
+      margin: 12px auto 0;
       color: var(--muted);
-      font-size: 17px;
     }
 
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+    .notice {
+      margin: 20px auto 0;
+      max-width: 850px;
+      padding: 13px 16px;
+      border: 1px solid rgba(56,189,248,.35);
+      border-radius: 12px;
+      background: rgba(56,189,248,.08);
+      color: #d9f2ff;
+      text-align: left;
+      font-size: .9rem;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr auto;
       gap: 12px;
-      margin-top: 25px;
+      margin: 25px 0 18px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #062033;
-      border-color: var(--primary);
-    }
-
-    .btn-secondary {
-      background: var(--surface2);
-      color: var(--text);
-    }
-
-    .section {
-      padding: 38px 0;
-    }
-
-    .section-heading {
-      margin-bottom: 22px;
-    }
-
-    .section-heading h2 {
-      margin: 0 0 5px;
-      font-size: clamp(23px, 4vw, 30px);
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .search-box {
-      margin: 20px 0;
-    }
-
-    .search-box input {
+    .search-input {
       width: 100%;
-      min-height: 48px;
-      padding: 12px 15px;
-      color: var(--text);
-      background: var(--surface);
+      min-width: 0;
+      padding: 13px 15px;
+      color: white;
+      background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 11px;
+      border-radius: 12px;
+      outline: none;
     }
 
-    .search-box input::placeholder {
-      color: #91a4ba;
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56,189,248,.12);
     }
 
-    .categories {
+    .filters {
       display: flex;
       flex-wrap: wrap;
       gap: 9px;
-      margin: 18px 0 22px;
+      margin: 15px 0 25px;
     }
 
-    .category-btn {
-      padding: 9px 14px;
-      color: var(--muted);
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      cursor: pointer;
-    }
-
-    .category-btn.active {
-      color: #062033;
-      background: var(--primary);
-      border-color: var(--primary);
+    .filter-button[aria-pressed="true"] {
+      background: var(--accent);
+      color: #062039;
+      border-color: var(--accent);
       font-weight: 700;
     }
 
-    .status-message {
-      min-height: 25px;
-      color: var(--success);
-      font-size: 14px;
+    .results-line {
+      color: var(--muted);
+      font-size: .9rem;
+      margin: 10px 0 18px;
     }
 
-    .status-message.error {
-      color: var(--danger);
-    }
-
-    .articles-grid {
+    .article-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 17px;
+      padding-bottom: 50px;
     }
 
     .article-card {
@@ -280,243 +195,168 @@
       flex-direction: column;
       min-width: 0;
       padding: 20px;
-      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: 16px;
+      background: linear-gradient(145deg, var(--panel), #0d2038);
+      box-shadow: var(--shadow);
       transition: transform .18s ease, border-color .18s ease;
     }
 
     .article-card:hover {
       transform: translateY(-3px);
-      border-color: rgba(56,189,248,.5);
+      border-color: rgba(56,189,248,.55);
     }
 
     .article-icon {
-      font-size: 30px;
+      font-size: 1.8rem;
       margin-bottom: 8px;
     }
 
-    .article-category {
-      align-self: flex-start;
-      padding: 3px 9px;
-      color: var(--primary);
-      background: rgba(56,189,248,.1);
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
+    .category-label {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: .72rem;
+      letter-spacing: .07em;
+      font-weight: 800;
     }
 
-    .article-card h3 {
-      margin: 12px 0 7px;
-      font-size: 19px;
-      line-height: 1.35;
+    .article-card h2 {
+      font-size: 1.15rem;
+      line-height: 1.4;
+      margin: 8px 0;
     }
 
     .article-card p {
-      flex: 1;
-      margin: 0 0 18px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: .92rem;
+      margin: 0 0 18px;
+      flex: 1;
     }
 
-    .read-more {
-      align-self: flex-start;
-      padding: 8px 13px;
-      color: #062033;
-      background: var(--primary);
+    .read-button {
+      display: inline-block;
+      width: fit-content;
       border: 0;
-      border-radius: 8px;
-      font-weight: 700;
+      border-radius: 9px;
+      padding: 10px 14px;
+      color: #062039;
+      background: var(--accent);
+      text-decoration: none;
+      font-weight: 800;
       cursor: pointer;
     }
 
-    .no-results {
-      grid-column: 1 / -1;
-      padding: 25px;
-      color: var(--muted);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+    .read-button:hover { background: #7dd3fc; }
+
+    .empty-state,
+    .error-state,
+    .loading-state {
+      padding: 30px 18px;
+      margin: 20px 0 45px;
       text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel);
+      color: var(--muted);
     }
+
+    .error-state { color: var(--danger); }
 
     .article-detail {
-      display: none;
-      margin: 30px 0;
+      max-width: 850px;
+      margin: 20px auto 55px;
       padding: clamp(18px, 4vw, 34px);
-      background: var(--surface);
+      background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      scroll-margin-top: 90px;
-    }
-
-    .article-detail.visible {
-      display: block;
-    }
-
-    .back-btn {
-      margin: 0 0 22px;
-      padding: 9px 14px;
-      color: var(--text);
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      cursor: pointer;
+      border-radius: 17px;
+      box-shadow: var(--shadow);
     }
 
     .article-detail h2 {
-      margin: 5px 0 10px;
-      font-size: clamp(25px, 4vw, 34px);
+      font-size: clamp(1.6rem, 5vw, 2.3rem);
       line-height: 1.25;
+      margin: 10px 0;
     }
 
     .article-detail h3 {
-      margin: 25px 0 8px;
-      color: var(--primary);
-      font-size: 19px;
+      margin: 28px 0 8px;
+      color: #7dd3fc;
+      font-size: 1.15rem;
     }
 
-    .article-detail p {
-      color: #d7e2ee;
-      white-space: pre-line;
-    }
-
-    .article-meta {
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
+    .article-detail p { color: #d7e3f3; }
 
     .article-detail li {
-      margin: 8px 0;
-      color: #d7e2ee;
+      margin: 9px 0;
+      color: #d7e3f3;
     }
 
-    .article-sources {
+    .article-detail .definition {
+      padding: 15px;
+      border-left: 4px solid var(--accent);
+      background: rgba(56,189,248,.08);
+      border-radius: 8px;
+    }
+
+    .sources-list a {
       overflow-wrap: anywhere;
     }
 
-    .notice {
+    .back-button { margin-bottom: 18px; }
+
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-top: 25px;
-      padding: 15px;
-      color: var(--muted);
-      background: rgba(56,189,248,.07);
-      border-left: 3px solid var(--primary);
-      border-radius: 8px;
-      font-size: 13px;
-    }
-
-    .learning-section {
-      margin: 45px 0;
-      padding: 30px;
-      text-align: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-
-    .learning-section p {
-      max-width: 750px;
-      margin: 10px auto 20px;
-      color: var(--muted);
     }
 
     footer {
-      margin-top: 50px;
-      padding: 35px 0 20px;
-      background: #061222;
       border-top: 1px solid var(--border);
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 25px;
-    }
-
-    .footer-content h3 {
-      margin-top: 0;
-    }
-
-    .footer-content p,
-    .footer-links a {
+      padding: 28px 0;
       color: var(--muted);
-      font-size: 14px;
-    }
-
-    .footer-links {
-      display: grid;
-      gap: 8px;
-    }
-
-    .copyright {
-      margin-top: 25px;
-      padding-top: 18px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      font-size: 13px;
       text-align: center;
+      font-size: .9rem;
     }
+
+    footer a {
+      display: inline-block;
+      margin: 5px 9px;
+      color: #9bdcff;
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    [hidden] { display: none !important; }
 
     @media (max-width: 850px) {
-      .articles-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
+      .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 600px) {
       .nav {
-        min-height: 64px;
+        align-items: flex-start;
+        padding: 13px 0;
+        flex-direction: column;
       }
 
-      .menu-btn {
-        display: inline-block;
-      }
+      .nav-links { gap: 12px; }
 
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        padding: 16px;
-        background: #0b1d33;
-        border: 1px solid var(--border);
-        border-radius: 0 0 12px 12px;
-      }
+      .hero { padding-top: 38px; }
 
-      .nav-links.open {
-        display: grid;
-        gap: 14px;
-      }
+      .controls { grid-template-columns: 1fr; }
 
-      .articles-grid {
-        grid-template-columns: 1fr;
-      }
+      .article-grid { grid-template-columns: 1fr; }
 
-      .footer-content {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 50px 0 40px;
-      }
+      .article-card { padding: 18px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
         transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
       }
     }
   </style>
@@ -525,8 +365,9 @@
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Quiz Master Rwanda Learning Centre",
-    "description": "Bilingual educational lessons about road safety, science, geography and general knowledge.",
+    "name": "Learning Centre | Quiz Master Rwanda",
+    "description": "Bilingual educational lessons about road safety and general knowledge.",
+    "inLanguage": ["en", "rw"],
     "url": "https://quizmaster-liard-five.vercel.app/articles.html",
     "isPartOf": {
       "@type": "WebSite",
@@ -538,161 +379,86 @@
 </head>
 
 <body>
-  <header class="site-header">
+  <header>
     <div class="container nav">
-      <a class="logo" href="./index.html">Quiz <span>Master 🇷🇼</span></a>
+      <a class="brand" href="./index.html">🇷🇼 Quiz Master Rwanda</a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="./index.html" data-en="Home" data-rw="Ahabanza">Home</a>
-        <a href="./articles.html" class="active" data-en="Learning Centre" data-rw="Amasomo">Learning Centre</a>
-        <a href="./about.html" data-en="About" data-rw="Abo Turibo">About</a>
-        <a href="./contact.html" data-en="Contact" data-rw="Twandikire">Contact</a>
+      <nav class="nav-links" aria-label="Main navigation" id="mainNavigation">
+        <a href="./index.html" data-i18n="home">Home</a>
+        <a href="./about.html" data-i18n="about">About</a>
+        <a href="./contact.html" data-i18n="contact">Contact</a>
+        <button class="language-button" id="languageButton" type="button">
+          Kinyarwanda
+        </button>
       </nav>
-
-      <div class="nav-actions">
-        <button class="language-btn" id="languageBtn" type="button">Kinyarwanda</button>
-        <button class="menu-btn" id="menuBtn" type="button"
-          aria-label="Open navigation menu" aria-expanded="false">☰</button>
-      </div>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <span class="hero-label" data-en="QUIZ MASTER LEARNING CENTRE" data-rw="ISOMERO RYA QUIZ MASTER">
-        QUIZ MASTER LEARNING CENTRE
-      </span>
-
-      <h1 data-en="Learn Something New Every Day"
-          data-rw="Jya Wunguka Ubumenyi Buri Munsi">
-        Learn Something New Every Day
-      </h1>
-
-      <p data-en="Explore clear educational lessons about road safety, science, geography and general knowledge. Learn in English or Kinyarwanda."
-         data-rw="Soma amasomo asobanutse yerekeye umutekano wo mu muhanda, siyansi, ubumenyi bw'isi n'ubumenyi rusange. Hitamo Icyongereza cyangwa Ikinyarwanda.">
-        Explore clear educational lessons about road safety, science, geography and general knowledge. Learn in English or Kinyarwanda.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#articles" class="btn btn-primary"
-           data-en="Explore Lessons" data-rw="Reba Amasomo">Explore Lessons</a>
-        <a href="./index.html" class="btn btn-secondary"
-           data-en="Play Quiz" data-rw="Tangira Gukina">Play Quiz</a>
-      </div>
-    </div>
-  </section>
-
   <main class="container">
-    <section class="section" id="articles">
-      <div class="section-heading">
-        <h2 data-en="Explore Educational Lessons" data-rw="Hitamo Isomo Ushaka Kwiga">
-          Explore Educational Lessons
-        </h2>
-        <p data-en="Search for a lesson or choose a subject below."
-           data-rw="Shakisha isomo cyangwa uhitemo icyiciro gikurikira.">
-          Search for a lesson or choose a subject below.
-        </p>
+    <section class="hero">
+      <div class="eyebrow" data-i18n="eyebrow">Learn something useful every day</div>
+      <h1 data-i18n="pageTitle">Learning Centre</h1>
+      <p data-i18n="heroText">
+        Explore clear educational lessons about road safety, science,
+        geography, the environment and general knowledge.
+      </p>
+      <div class="notice" id="educationalNotice" role="note">
+        Loading educational information...
       </div>
+    </section>
 
-      <div class="search-box">
+    <section aria-label="Find lessons">
+      <div class="controls">
         <input
-          type="search"
+          class="search-input"
           id="searchInput"
+          type="search"
           placeholder="Search lessons..."
           aria-label="Search lessons"
-          autocomplete="off">
+          autocomplete="off"
+        >
       </div>
 
-      <div class="categories" id="categoryButtons" aria-label="Lesson categories">
-        <button class="category-btn active" type="button" data-category="all"
-          data-en="All Lessons" data-rw="Amasomo Yose">All Lessons</button>
-
-        <button class="category-btn" type="button" data-category="traffic"
-          data-en="Road Safety" data-rw="Umutekano wo mu Muhanda">Road Safety</button>
-
-        <button class="category-btn" type="button" data-category="general"
-          data-en="General Knowledge" data-rw="Ubumenyi Rusange">General Knowledge</button>
+      <div class="filters" id="categoryFilters" aria-label="Lesson categories">
+        <button class="filter-button" type="button" data-category="all" aria-pressed="true">
+          All lessons
+        </button>
+        <button class="filter-button" type="button" data-category="traffic" aria-pressed="false">
+          Road Safety
+        </button>
+        <button class="filter-button" type="button" data-category="general" aria-pressed="false">
+          General Knowledge
+        </button>
       </div>
 
-      <p id="loadStatus" class="status-message" role="status" aria-live="polite">
+      <p class="results-line" id="resultsCount" aria-live="polite"></p>
+    </section>
+
+    <section id="listingView" aria-label="Available lessons">
+      <div class="loading-state" id="loadingState" data-i18n="loading">
         Loading lessons...
-      </p>
-
-      <div class="articles-grid" id="articlesGrid"></div>
+      </div>
+      <div class="article-grid" id="articleGrid"></div>
+      <div class="empty-state" id="emptyState" hidden></div>
+      <div class="error-state" id="errorState" hidden></div>
     </section>
 
-    <section class="article-detail" id="articleDetail"
-      aria-live="polite" tabindex="-1">
-
-      <button class="back-btn" id="backBtn" type="button"
-        data-en="← Back to Lessons" data-rw="← Subira ku Masomo">
-        ← Back to Lessons
-      </button>
-
-      <div id="articleContent"></div>
-
-      <div class="notice" id="educationNotice"></div>
-
-      <button class="back-btn" id="backBtnBottom" type="button"
-        data-en="← Back to Lessons" data-rw="← Subira ku Masomo">
-        ← Back to Lessons
-      </button>
-    </section>
-
-    <section class="learning-section">
-      <h2 data-en="Keep Learning with Quiz Master"
-          data-rw="Komeza Kwiga hamwe na Quiz Master">
-        Keep Learning with Quiz Master
-      </h2>
-
-      <p data-en="Reading helps you build knowledge. Test what you have learned by answering educational questions in Quiz Master."
-         data-rw="Gusoma bigufasha kongera ubumenyi. Gerageza ibyo wize usubiza ibibazo biri muri Quiz Master.">
-        Reading helps you build knowledge. Test what you have learned by answering educational questions in Quiz Master.
-      </p>
-
-      <a href="./index.html" class="btn btn-primary"
-        data-en="Start the Quiz" data-rw="Tangira Ikizamini">
-        Start the Quiz
-      </a>
+    <section id="detailView" hidden aria-live="polite">
+      <article class="article-detail" id="articleDetail"></article>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <div class="footer-content">
-        <div>
-          <h3>Quiz Master 🇷🇼</h3>
-          <p data-en="An educational platform supporting learning through quizzes and informative lessons."
-             data-rw="Urubuga rw'uburezi rufasha abantu kwiga binyuze mu bibazo n'amasomo atanga ubumenyi.">
-            An educational platform supporting learning through quizzes and informative lessons.
-          </p>
-        </div>
-
-        <div>
-          <h3 data-en="Quick Links" data-rw="Aho Wanyura">Quick Links</h3>
-          <div class="footer-links">
-            <a href="./index.html" data-en="Home" data-rw="Ahabanza">Home</a>
-            <a href="./articles.html" data-en="Lessons" data-rw="Amasomo">Lessons</a>
-            <a href="./about.html" data-en="About" data-rw="Abo Turibo">About</a>
-            <a href="./contact.html" data-en="Contact" data-rw="Twandikire">Contact</a>
-          </div>
-        </div>
-
-        <div>
-          <h3 data-en="Information" data-rw="Amakuru">Information</h3>
-          <div class="footer-links">
-            <a href="./privacy-policy.html" data-en="Privacy Policy" data-rw="Politiki y'Ibanga">Privacy Policy</a>
-            <a href="./terms.html" data-en="Terms of Use" data-rw="Amabwiriza yo Gukoresha">Terms of Use</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="copyright">
-        © <span id="currentYear"></span> Quiz Master Rwanda.
-        <span data-en="All rights reserved." data-rw="Uburenganzira bwose burubahirizwa.">
-          All rights reserved.
-        </span>
-      </div>
+      <p>© <span id="currentYear"></span> Quiz Master Rwanda</p>
+      <nav aria-label="Footer navigation">
+        <a href="./index.html" data-i18n="home">Home</a>
+        <a href="./about.html" data-i18n="about">About</a>
+        <a href="./contact.html" data-i18n="contact">Contact</a>
+        <a href="./privacy-policy.html" data-i18n="privacy">Privacy Policy</a>
+        <a href="./terms.html" data-i18n="terms">Terms</a>
+      </nav>
+      <p data-i18n="footerText">Learn • Play • Improve</p>
     </div>
   </footer>
 
@@ -700,480 +466,388 @@
   (() => {
     "use strict";
 
-    const DATA_URL = "./articles.json";
+    const ARTICLES_FILE = "./articles.json";
+
+    const translations = {
+      en: {
+        home: "Home",
+        about: "About",
+        contact: "Contact",
+        privacy: "Privacy Policy",
+        terms: "Terms",
+        eyebrow: "Learn something useful every day",
+        pageTitle: "Learning Centre",
+        heroText: "Explore clear educational lessons about road safety, science, geography, the environment and general knowledge.",
+        search: "Search lessons...",
+        all: "All lessons",
+        traffic: "Road Safety",
+        general: "General Knowledge",
+        loading: "Loading lessons...",
+        read: "Read lesson",
+        back: "← Back to lessons",
+        definition: "What does it mean?",
+        lesson: "Lesson",
+        keyPoints: "Key learning points",
+        conclusion: "Conclusion",
+        quizConnection: "Test your knowledge",
+        sources: "Sources and further reading",
+        noResults: "No lessons match your search. Try another word or category.",
+        loadError: "The lessons could not be loaded. Please check your internet connection and try again.",
+        invalidData: "The lesson data could not be read. Please check articles.json.",
+        resultOne: "lesson found",
+        resultMany: "lessons found",
+        footerText: "Learn • Play • Improve",
+        noticeFallback: "These lessons are for educational purposes. For current road rules and official requirements, consult the relevant authorities."
+      },
+      rw: {
+        home: "Ahabanza",
+        about: "Abo turibo",
+        contact: "Twandikire",
+        privacy: "Politiki y'ibanga",
+        terms: "Amabwiriza",
+        eyebrow: "Iga ikintu cy'ingirakamaro buri munsi",
+        pageTitle: "Isomero ry'amasomo",
+        heroText: "Soma amasomo asobanutse yerekeye umutekano wo mu muhanda, siyansi, geografiya, ibidukikije n'ubumenyi rusange.",
+        search: "Shakisha amasomo...",
+        all: "Amasomo yose",
+        traffic: "Umutekano wo mu muhanda",
+        general: "Ubumenyi rusange",
+        loading: "Amasomo arimo gutegurwa...",
+        read: "Soma isomo",
+        back: "← Subira ku masomo",
+        definition: "Bisobanura iki?",
+        lesson: "Isomo",
+        keyPoints: "Ingingo z'ingenzi",
+        conclusion: "Umwanzuro",
+        quizConnection: "Gerageza ubumenyi bwawe",
+        sources: "Amasoko n'ibindi wasoma",
+        noResults: "Nta somo rihuye n'ibyo washakishije. Gerageza irindi jambo cyangwa icyiciro.",
+        loadError: "Amasomo ntiyashoboye gufunguka. Reba internet wongere ugerageze.",
+        invalidData: "Imiterere y'amasomo ntiyasomwe neza. Reba articles.json.",
+        resultOne: "isomo ryabonetse",
+        resultMany: "amasomo yabonetse",
+        footerText: "Iga • Kina • Tera imbere",
+        noticeFallback: "Aya masomo agamije uburezi. Ku mabwiriza agezweho y'umuhanda, genzura amakuru atangwa n'inzego zibifitiye ububasha."
+      }
+    };
 
     const state = {
       language: "en",
       category: "all",
       search: "",
       articles: [],
-      notice: null,
-      globalSources: []
+      currentArticleId: null
     };
 
-    const labels = {
-      en: {
-        loading: "Loading educational lessons...",
-        loaded: count => `${count} lessons loaded successfully.`,
-        failed: "Lessons could not be loaded. Check that articles.json is valid and is deployed beside articles.html.",
-        empty: "No lessons found. Try another search or category.",
-        read: "Read Lesson →",
-        definition: "Definition",
-        keyPoints: "Key Learning Points",
-        conclusion: "Conclusion",
-        quiz: "How this lesson connects to the quiz",
-        sources: "Learning Sources",
-        traffic: "Road Safety",
-        general: "General Knowledge",
-        notice: "Educational Notice",
-        unknown: "Educational Lesson"
-      },
-      rw: {
-        loading: "Turimo gufungura amasomo...",
-        loaded: count => `Amasomo ${count} yafunguwe neza.`,
-        failed: "Amasomo ntiyafungutse. Reba niba articles.json ari yo, ifite JSON yemewe kandi iri kumwe na articles.html.",
-        empty: "Nta somo ribonetse. Gerageza irindi jambo cyangwa ikindi cyiciro.",
-        read: "Soma Isomo →",
-        definition: "Igisobanuro",
-        keyPoints: "Ingingo z'ingenzi zo kwiga",
-        conclusion: "Umusozo",
-        quiz: "Isomo rifitanye irihe sano n'ikizamini?",
-        sources: "Aho amakuru yavuye",
-        traffic: "Umutekano wo mu Muhanda",
-        general: "Ubumenyi Rusange",
-        notice: "Icyitonderwa ku masomo",
-        unknown: "Isomo ry'Ubumenyi"
-      }
+    const elements = {
+      languageButton: document.getElementById("languageButton"),
+      searchInput: document.getElementById("searchInput"),
+      filters: document.getElementById("categoryFilters"),
+      grid: document.getElementById("articleGrid"),
+      results: document.getElementById("resultsCount"),
+      loading: document.getElementById("loadingState"),
+      empty: document.getElementById("emptyState"),
+      error: document.getElementById("errorState"),
+      notice: document.getElementById("educationalNotice"),
+      listing: document.getElementById("listingView"),
+      detailView: document.getElementById("detailView"),
+      detail: document.getElementById("articleDetail")
     };
 
-    const $ = id => document.getElementById(id);
+    const t = key => translations[state.language][key] || key;
 
-    const grid = $("articlesGrid");
-    const detail = $("articleDetail");
-    const articleContent = $("articleContent");
-    const status = $("loadStatus");
-    const searchInput = $("searchInput");
-    const languageBtn = $("languageBtn");
-    const navLinks = $("navLinks");
-    const menuBtn = $("menuBtn");
+    function localize(value) {
+      if (typeof value === "string") return value;
+      if (value && typeof value === "object" && !Array.isArray(value)) {
+        return value[state.language] || value.en || value.rw || "";
+      }
+      return "";
+    }
 
-    function localValue(value, language, fallback = "") {
-      if (value === null || value === undefined) return fallback;
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
 
-      if (typeof value === "string" || typeof value === "number") {
-        return String(value);
+    function safeURL(value) {
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" ? url.href : "";
+      } catch {
+        return "";
+      }
+    }
+
+    function categoryName(category) {
+      if (category === "traffic") return t("traffic");
+      if (category === "general") return t("general");
+      return "";
+    }
+
+    function updateStaticText() {
+      document.documentElement.lang = state.language;
+
+      document.querySelectorAll("[data-i18n]").forEach(node => {
+        const key = node.getAttribute("data-i18n");
+        node.textContent = t(key);
+      });
+
+      elements.searchInput.placeholder = t("search");
+      elements.searchInput.setAttribute("aria-label", t("search"));
+      elements.languageButton.textContent =
+        state.language === "en" ? "Kinyarwanda" : "English";
+
+      elements.filters.querySelectorAll("button").forEach(button => {
+        const category = button.dataset.category;
+        button.textContent = category === "all" ? t("all") : categoryName(category);
+        button.setAttribute(
+          "aria-pressed",
+          String(category === state.category)
+        );
+      });
+
+      elements.notice.textContent =
+        localize(window.articleNotice) || t("noticeFallback");
+    }
+
+    function isValidArticle(article) {
+      if (!article || typeof article !== "object" || Array.isArray(article)) {
+        return false;
       }
 
-      if (Array.isArray(value)) return value;
+      if (typeof article.id !== "string" || !article.id.trim()) return false;
+      if (!["traffic", "general"].includes(article.category)) return false;
+      if (!localize(article.title).trim()) return false;
+      if (!localize(article.description).trim()) return false;
+      if (!localize(article.definition).trim()) return false;
+      if (!article.body || typeof article.body !== "object") return false;
 
-      if (typeof value === "object") {
-        return value[language] ?? value.en ?? value.rw ?? fallback;
+      const paragraphs = article.body[state.language] || article.body.en || article.body.rw;
+      return Array.isArray(paragraphs) && paragraphs.length > 0;
+    }
+
+    function collectSearchText(value) {
+      if (typeof value === "string") return value;
+      if (Array.isArray(value)) return value.map(collectSearchText).join(" ");
+      if (value && typeof value === "object") {
+        return Object.values(value).map(collectSearchText).join(" ");
       }
-
-      return fallback;
+      return "";
     }
 
-    function cleanString(value) {
-      return typeof value === "string" ? value.trim() : "";
-    }
+    function getVisibleArticles() {
+      const query = state.search.trim().toLocaleLowerCase();
 
-    function getCategory(article) {
-      return article.category === "traffic" ? "traffic" : "general";
-    }
-
-    function normalizeArticle(raw, index) {
-      if (!raw || typeof raw !== "object") return null;
-
-      const title = raw.title || {};
-      const titleEn = cleanString(localValue(title, "en"));
-      const titleRw = cleanString(localValue(title, "rw"));
-
-      if (!titleEn && !titleRw) return null;
-
-      return {
-        id: cleanString(raw.id) || `lesson-${index + 1}`,
-        category: getCategory(raw),
-        icon: cleanString(raw.icon) || "📘",
-        title: raw.title || {},
-        description: raw.description || {},
-        definition: raw.definition || {},
-        body: raw.body || raw.content || {},
-        keyPoints: raw.key_points || raw.keyPoints || {},
-        conclusion: raw.conclusion || {},
-        quizConnection: raw.quiz_connection || raw.quizConnection || {},
-        sources: Array.isArray(raw.sources) ? raw.sources : []
-      };
-    }
-
-    function addText(parent, tag, value, className = "") {
-      if (value === null || value === undefined || value === "") return;
-
-      const element = document.createElement(tag);
-
-      if (className) element.className = className;
-
-      element.textContent = String(value);
-      parent.appendChild(element);
-
-      return element;
-    }
-
-    function appendParagraphs(parent, value) {
-      const paragraphs = Array.isArray(value)
-        ? value
-        : String(value || "").split(/\n\s*\n/);
-
-      paragraphs.forEach(paragraph => {
-        const content = String(paragraph || "").trim();
-        if (content) addText(parent, "p", content);
-      });
-    }
-
-    function appendList(parent, heading, values) {
-      if (!Array.isArray(values) || values.length === 0) return;
-
-      addText(parent, "h3", heading);
-
-      const list = document.createElement("ul");
-
-      values.forEach(value => {
-        const item = document.createElement("li");
-        item.textContent = typeof value === "string"
-          ? value
-          : String(value?.text || value?.en || value?.rw || "");
-
-        if (item.textContent.trim()) list.appendChild(item);
-      });
-
-      if (list.children.length) parent.appendChild(list);
-    }
-
-    function renderSources(parent, sources, language) {
-      if (!Array.isArray(sources) || !sources.length) return;
-
-      addText(parent, "h3", labels[language].sources);
-
-      const list = document.createElement("ul");
-      list.className = "article-sources";
-
-      sources.forEach(source => {
-        const item = document.createElement("li");
-
-        if (typeof source === "string") {
-          item.textContent = source;
-        } else if (source && typeof source === "object") {
-          const title = cleanString(source.title) ||
-            cleanString(source.name) ||
-            cleanString(source.publisher) ||
-            cleanString(source.url);
-
-          const url = cleanString(source.url);
-
-          if (url && /^https:\/\/|^http:\/\//i.test(url)) {
-            const link = document.createElement("a");
-            link.href = url;
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
-            link.textContent = title || url;
-            item.appendChild(link);
-          } else {
-            item.textContent = title;
-          }
-        }
-
-        if (item.textContent || item.querySelector("a")) {
-          list.appendChild(item);
-        }
-      });
-
-      if (list.children.length) parent.appendChild(list);
-    }
-
-    function setLanguage(language) {
-      state.language = language;
-      document.documentElement.lang = language;
-
-      document.querySelectorAll("[data-en][data-rw]").forEach(element => {
-        element.textContent = element.dataset[language] || element.dataset.en || "";
-      });
-
-      languageBtn.textContent = language === "en" ? "Kinyarwanda" : "English";
-      searchInput.placeholder = language === "en"
-        ? "Search lessons..."
-        : "Shakisha amasomo...";
-
-      searchInput.setAttribute(
-        "aria-label",
-        language === "en" ? "Search lessons" : "Shakisha amasomo"
-      );
-
-      renderArticles();
-
-      const currentId = detail.dataset.articleId;
-      if (currentId) openArticle(currentId, false);
-    }
-
-    function renderArticles() {
-      grid.replaceChildren();
-
-      const query = state.search.toLocaleLowerCase();
-
-      const filtered = state.articles.filter(article => {
-        const categoryMatches =
+      return state.articles.filter(article => {
+        const matchesCategory =
           state.category === "all" || article.category === state.category;
 
-        const searchable = [
-          article.id,
-          article.category,
-          localValue(article.title, "en"),
-          localValue(article.title, "rw"),
-          localValue(article.description, "en"),
-          localValue(article.description, "rw"),
-          localValue(article.definition, "en"),
-          localValue(article.definition, "rw"),
-          localValue(article.body, "en"),
-          localValue(article.body, "rw")
-        ].join(" ").toLocaleLowerCase();
+        const searchable = collectSearchText(article).toLocaleLowerCase();
+        const matchesSearch = !query || searchable.includes(query);
 
-        return categoryMatches && searchable.includes(query);
+        return matchesCategory && matchesSearch;
       });
+    }
 
-      if (!filtered.length) {
-        addText(grid, "div", labels[state.language].empty, "no-results");
-        return;
+    function renderCards() {
+      const articles = getVisibleArticles();
+      elements.grid.innerHTML = "";
+      elements.empty.hidden = articles.length !== 0;
+
+      if (!articles.length) {
+        elements.empty.textContent = t("noResults");
       }
 
-      filtered.forEach(article => {
+      articles.forEach(article => {
         const card = document.createElement("article");
         card.className = "article-card";
 
-        addText(card, "div", article.icon, "article-icon");
+        const icon = escapeHTML(article.icon || "📘");
+        const title = escapeHTML(localize(article.title));
+        const description = escapeHTML(localize(article.description));
+        const category = escapeHTML(categoryName(article.category));
 
-        addText(
-          card,
-          "span",
-          labels[state.language][article.category],
-          "article-category"
-        );
+        card.innerHTML = `
+          <div class="article-icon" aria-hidden="true">${icon}</div>
+          <div class="category-label">${category}</div>
+          <h2>${title}</h2>
+          <p>${description}</p>
+          <button class="read-button" type="button" data-open-article="${escapeHTML(article.id)}">
+            ${escapeHTML(t("read"))}
+          </button>
+        `;
 
-        addText(
-          card,
-          "h3",
-          localValue(article.title, state.language) ||
-            localValue(article.title, "en") ||
-            labels[state.language].unknown
-        );
-
-        addText(
-          card,
-          "p",
-          localValue(article.description, state.language) ||
-            localValue(article.description, "en")
-        );
-
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "read-more";
-        button.textContent = labels[state.language].read;
-        button.addEventListener("click", () => openArticle(article.id));
-
-        card.appendChild(button);
-        grid.appendChild(card);
+        elements.grid.appendChild(card);
       });
+
+      elements.results.textContent =
+        `${articles.length} ${articles.length === 1 ? t("resultOne") : t("resultMany")}`;
     }
 
-    function openArticle(id, shouldScroll = true) {
-      const article = state.articles.find(item => item.id === id);
+    function renderListItem(value) {
+      return `<li>${escapeHTML(localize(value))}</li>`;
+    }
 
+    function renderParagraph(value) {
+      return `<p>${escapeHTML(localize(value))}</p>`;
+    }
+
+    function renderSources(sources) {
+      if (!Array.isArray(sources) || !sources.length) return "";
+
+      const items = sources.map(source => {
+        const title = escapeHTML(localize(source.title) || source.publisher || "Source");
+        const publisher = escapeHTML(source.publisher || "");
+        const url = safeURL(source.url || "");
+
+        if (!url) return `<li>${title}${publisher ? ` — ${publisher}` : ""}</li>`;
+
+        return `<li><a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${title}</a>${publisher ? ` — ${publisher}` : ""}</li>`;
+      }).join("");
+
+      return `<h3>${escapeHTML(t("sources"))}</h3><ul class="sources-list">${items}</ul>`;
+    }
+
+    function openArticle(id) {
+      const article = state.articles.find(item => item.id === id);
       if (!article) return;
 
-      articleContent.replaceChildren();
+      // Bika ID y'isomo rifunguye kugira ngo ururimi niruhinduka
+      // isomo rimwe rikomeze kugaragara.
+      state.currentArticleId = id;
 
-      const language = state.language;
+      const paragraphs = article.body[state.language] || article.body.en || article.body.rw || [];
+      const points = article.key_points || article.keyPoints || [];
+      const conclusion = localize(article.conclusion);
+      const quizConnection = localize(article.quiz_connection || article.quizConnection);
 
-      addText(
-        articleContent,
-        "div",
-        labels[language][article.category],
-        "article-meta"
-      );
+      const bodyHTML = paragraphs.map(renderParagraph).join("");
+      const pointsHTML = Array.isArray(points) ? points.map(renderListItem).join("") : "";
 
-      addText(
-        articleContent,
-        "h2",
-        localValue(article.title, language) ||
-          localValue(article.title, "en")
-      );
+      elements.detail.innerHTML = `
+        <button class="back-button" id="backToLessons" type="button">${escapeHTML(t("back"))}</button>
+        <div class="article-icon" aria-hidden="true">${escapeHTML(article.icon || "📘")}</div>
+        <div class="category-label">${escapeHTML(categoryName(article.category))}</div>
+        <h2>${escapeHTML(localize(article.title))}</h2>
+        <p>${escapeHTML(localize(article.description))}</p>
 
-      appendParagraphs(
-        articleContent,
-        localValue(article.description, language)
-      );
+        <h3>${escapeHTML(t("definition"))}</h3>
+        <p class="definition">${escapeHTML(localize(article.definition))}</p>
 
-      const definition = localValue(article.definition, language);
+        <h3>${escapeHTML(t("lesson"))}</h3>
+        ${bodyHTML}
 
-      if (definition) {
-        addText(articleContent, "h3", labels[language].definition);
-        appendParagraphs(articleContent, definition);
-      }
+        ${pointsHTML ? `<h3>${escapeHTML(t("keyPoints"))}</h3><ul>${pointsHTML}</ul>` : ""}
 
-      appendParagraphs(
-        articleContent,
-        localValue(article.body, language)
-      );
+        ${conclusion ? `<h3>${escapeHTML(t("conclusion"))}</h3><p>${escapeHTML(conclusion)}</p>` : ""}
 
-      appendList(
-        articleContent,
-        labels[language].keyPoints,
-        localValue(article.keyPoints, language, [])
-      );
+        ${quizConnection ? `<h3>${escapeHTML(t("quizConnection"))}</h3><p>${escapeHTML(quizConnection)}</p>` : ""}
 
-      const quizText = localValue(article.quizConnection, language);
+        ${renderSources(article.sources)}
+      `;
 
-      if (quizText) {
-        addText(articleContent, "h3", labels[language].quiz);
-        appendParagraphs(articleContent, quizText);
-      }
+      elements.listing.hidden = true;
+      elements.detailView.hidden = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
 
-      const conclusion = localValue(article.conclusion, language);
-
-      if (conclusion) {
-        addText(articleContent, "h3", labels[language].conclusion);
-        appendParagraphs(articleContent, conclusion);
-      }
-
-      const sources = article.sources.length
-        ? article.sources
-        : state.globalSources;
-
-      renderSources(articleContent, sources, language);
-
-      $("educationNotice").textContent =
-        labels[language].notice + ": " +
-        localValue(state.notice, language, "");
-
-      detail.dataset.articleId = article.id;
-      detail.classList.add("visible");
-
-      if (shouldScroll) {
-        detail.scrollIntoView({ behavior: "smooth", block: "start" });
-        detail.focus({ preventScroll: true });
-      }
+      document.getElementById("backToLessons").addEventListener("click", showListing);
     }
 
-    function closeArticle() {
-      detail.classList.remove("visible");
-      detail.dataset.articleId = "";
-
-      $("articles").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+    function showListing() {
+      elements.detailView.hidden = true;
+      elements.listing.hidden = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     async function loadArticles() {
-      status.hidden = false;
-      status.classList.remove("error");
-      status.textContent = labels[state.language].loading;
+      elements.loading.hidden = false;
+      elements.error.hidden = true;
 
       try {
-        const response = await fetch(DATA_URL, {
+        const response = await fetch(ARTICLES_FILE, {
           cache: "no-store",
           headers: { "Accept": "application/json" }
         });
 
         if (!response.ok) {
-          throw new Error(`Unable to load articles.json: HTTP ${response.status}`);
+          throw new Error(`HTTP ${response.status}`);
         }
 
         const data = await response.json();
 
-        const records = Array.isArray(data)
-          ? data
-          : Array.isArray(data.articles)
-            ? data.articles
-            : null;
-
-        if (!records) {
-          throw new Error("articles.json must contain an articles array.");
+        if (!data || !Array.isArray(data.articles)) {
+          throw new Error("Invalid articles structure");
         }
 
-        state.articles = records
-          .map((record, index) => normalizeArticle(record, index))
-          .filter(Boolean);
+        window.articleNotice = data.educational_notice || null;
 
-        state.notice = data.educational_notice || data.notice || {};
-        state.globalSources = Array.isArray(data.sources) ? data.sources : [];
+        const seenIDs = new Set();
+        state.articles = data.articles.filter(article => {
+          if (!isValidArticle(article)) return false;
+          if (seenIDs.has(article.id)) return false;
+          seenIDs.add(article.id);
+          return true;
+        });
 
         if (!state.articles.length) {
-          throw new Error("No valid lessons were found.");
+          throw new Error("No valid lessons found");
         }
 
-        status.textContent = labels[state.language].loaded(state.articles.length);
-        renderArticles();
+        updateStaticText();
+        elements.loading.hidden = true;
+        renderCards();
 
       } catch (error) {
-        console.error("Quiz Master Learning Centre:", error);
-
-        status.hidden = false;
-        status.classList.add("error");
-        status.textContent = labels[state.language].failed;
-
-        grid.replaceChildren();
+        console.error("Learning Centre loading error:", error);
+        elements.loading.hidden = true;
+        elements.error.hidden = false;
+        elements.error.textContent = t("loadError") + " " + t("invalidData");
       }
     }
 
-    document.querySelectorAll(".category-btn").forEach(button => {
-      button.addEventListener("click", () => {
-        state.category = button.dataset.category;
+    // LANGUAGE BUTTON — ikosoye kugira ngo isomo rifunguye
+    // rikomeze kugaragara iyo uhinduye English/Kinyarwanda.
+    elements.languageButton.addEventListener("click", () => {
+      state.language = state.language === "en" ? "rw" : "en";
 
-        document.querySelectorAll(".category-btn").forEach(item => {
-          item.classList.toggle("active", item === button);
-        });
+      updateStaticText();
 
-        detail.classList.remove("visible");
-        detail.dataset.articleId = "";
-
-        renderArticles();
-      });
+      if (elements.detailView.hidden) {
+        renderCards();
+      } else if (state.currentArticleId) {
+        openArticle(state.currentArticleId);
+      }
     });
 
-    searchInput.addEventListener("input", () => {
-      state.search = searchInput.value.trim();
-
-      detail.classList.remove("visible");
-      detail.dataset.articleId = "";
-
-      renderArticles();
+    elements.searchInput.addEventListener("input", event => {
+      state.search = event.target.value || "";
+      renderCards();
     });
 
-    languageBtn.addEventListener("click", () => {
-      setLanguage(state.language === "en" ? "rw" : "en");
+    elements.filters.addEventListener("click", event => {
+      const button = event.target.closest("button[data-category]");
+      if (!button) return;
+
+      state.category = button.dataset.category;
+      updateStaticText();
+      renderCards();
     });
 
-    menuBtn.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-
-      menuBtn.setAttribute("aria-expanded", String(isOpen));
-      menuBtn.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-      );
+    elements.grid.addEventListener("click", event => {
+      const button = event.target.closest("[data-open-article]");
+      if (!button) return;
+      openArticle(button.dataset.openArticle);
     });
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
-      });
-    });
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
 
-    $("backBtn").addEventListener("click", closeArticle);
-    $("backBtnBottom").addEventListener("click", closeArticle);
-
-    $("currentYear").textContent = new Date().getFullYear();
-
-    setLanguage("en");
+    updateStaticText();
     loadArticles();
   })();
   </script>
