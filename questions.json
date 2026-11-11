@@ -5897,6 +5897,996 @@
   "explanation": "Article 41 is dedicated to the procedures for investigating road traffic offences.",
   "explanation_rw": "Ingingo ya 41 yihariye ku buryo bwo kugenza ibyaha bihungabanya umutekano wo mu muhanda."
 },
-
+  {
+    "id": "traffic_827",
+    "category": "traffic",
+    "question": "Under Article 2, when is a road traffic accident considered fatal?",
+    "question_rw": "Dukurikije ingingo ya 2, impanuka yo mu muhanda ifatwa nk'impanuka yahitanye umuntu ryari?",
+    "options": [
+      "When at least one person dies at the scene or within 30 days",
+      "Only when three or more people die",
+      "Only when a driver dies",
+      "Only when the vehicle is completely destroyed"
+    ],
+    "options_rw": [
+      "Iyo nibura umuntu umwe apfuye aho impanuka yabereye cyangwa mu minsi 30 ikurikiraho",
+      "Iyo hapfuye abantu nibura batatu gusa",
+      "Iyo umuyobozi w'ikinyabiziga ari we wenyine upfuye",
+      "Iyo ikinyabiziga cyangiritse burundu gusa"
+    ],
+    "answer": "When at least one person dies at the scene or within 30 days",
+    "answer_rw": "Iyo nibura umuntu umwe apfuye aho impanuka yabereye cyangwa mu minsi 30 ikurikiraho",
+    "explanation": "Article 2 defines a fatal road traffic accident as one in which at least one person dies at the scene or within 30 days from the date of the accident.",
+    "explanation_rw": "Ingingo ya 2 isobanura impanuka yahitanye umuntu nk'impanuka yapfiriyemo nibura umuntu umwe aho yabereye cyangwa agapfa mu minsi 30 ibarwa uhereye igihe yabereye."
+  },
+  {
+    "id": "traffic_828",
+    "category": "traffic",
+    "question": "Which of the following is included in the legal definition of a road under Article 2?",
+    "question_rw": "Ni iki muri ibi bikurikira kiri mu bisobanuro byemewe n'amategeko by'umuhanda mu ngingo ya 2?",
+    "options": [
+      "Bridges",
+      "Private living rooms",
+      "Airport passenger lounges",
+      "Railway carriages"
+    ],
+    "options_rw": [
+      "Ibiraro",
+      "Ibyumba byo mu mazu y'abantu",
+      "Ahateganyirijwe abagenzi ku kibuga cy'indege",
+      "Amagare ya gari ya moshi"
+    ],
+    "answer": "Bridges",
+    "answer_rw": "Ibiraro",
+    "explanation": "Article 2 includes bridges among the places covered by the legal definition of a road.",
+    "explanation_rw": "Ingingo ya 2 ivuga ko ibiraro biri mu bice bigize umuhanda mu bisobanuro by'iri tegeko."
+  },
+  {
+    "id": "traffic_829",
+    "category": "traffic",
+    "question": "According to Article 2, who is an authorised officer?",
+    "question_rw": "Dukurikije ingingo ya 2, umukozi ubifitiye ububasha ni nde?",
+    "options": [
+      "A police officer on duty assigned to ensure road safety",
+      "Any private vehicle owner",
+      "Any passenger on a public bus",
+      "Any person who has studied traffic rules"
+    ],
+    "options_rw": [
+      "Umupolisi uri mu kazi ushinzwe kubungabunga umutekano wo mu muhanda",
+      "Nyir'ikinyabiziga wese ku giti cye",
+      "Umugenzi wese uri muri bisi itwara abantu",
+      "Umuntu wese wize amategeko y'umuhanda"
+    ],
+    "answer": "A police officer on duty assigned to ensure road safety",
+    "answer_rw": "Umupolisi uri mu kazi ushinzwe kubungabunga umutekano wo mu muhanda",
+    "explanation": "Article 2 defines an authorised officer as a police officer on duty and assigned to ensure road safety.",
+    "explanation_rw": "Ingingo ya 2 isobanura umukozi ubifitiye ububasha nk'umupolisi uri mu kazi kandi ushinzwe kubungabunga umutekano wo mu muhanda."
+  },
+  {
+    "id": "traffic_830",
+    "category": "traffic",
+    "question": "Which type of route is excluded from the application of Law No. 014/2026 under Article 3?",
+    "question_rw": "Ni ubuhe bwoko bw'inzira butarebwa n'Itegeko N° 014/2026 hakurikijwe ingingo ya 3?",
+    "options": [
+      "Railways and cableways",
+      "Public roads",
+      "Bridges used by vehicles",
+      "Roads used by pedestrians"
+    ],
+    "options_rw": [
+      "Imihanda ya gari ya moshi n'inzira z'imodoka zikoresha insinga",
+      "Imihanda rusange",
+      "Ibiraro bikoreshwa n'ibinyabiziga",
+      "Imihanda ikoreshwa n'abanyamaguru"
+    ],
+    "answer": "Railways and cableways",
+    "answer_rw": "Imihanda ya gari ya moshi n'inzira z'imodoka zikoresha insinga",
+    "explanation": "Article 3 states that the Law applies to road traffic but excludes railways, cableways and other special routes.",
+    "explanation_rw": "Ingingo ya 3 ivuga ko iri tegeko rireba ikoreshwa ry'umuhanda, ariko ntirireba inzira za gari ya moshi, izikoresha insinga cyangwa izindi nzira zihariye."
+  },
+  {
+    "id": "traffic_831",
+    "category": "traffic",
+    "question": "What does Article 7 allow the organ responsible for road safety to use?",
+    "question_rw": "Ingingo ya 7 yemerera urwego rushinzwe umutekano wo mu muhanda gukoresha iki?",
+    "options": [
+      "Special equipment and road-safety information technology",
+      "Only handwritten notebooks",
+      "Private social media accounts",
+      "Unverified personal devices only"
+    ],
+    "options_rw": [
+      "Ibikoresho byabugenewe n'ikoranabuhanga ry'amakuru y'umutekano wo mu muhanda",
+      "Agatabo kandikwamo intoki gusa",
+      "Konti z'imbuga nkoranyambaga z'abantu ku giti cyabo",
+      "Ibikoresho by'umuntu ku giti cye bitagenzuwe gusa"
+    ],
+    "answer": "Special equipment and road-safety information technology",
+    "answer_rw": "Ibikoresho byabugenewe n'ikoranabuhanga ry'amakuru y'umutekano wo mu muhanda",
+    "explanation": "Article 7 provides for the use of special equipment and information technology related to road safety.",
+    "explanation_rw": "Ingingo ya 7 iteganya ko urwego rushinzwe umutekano wo mu muhanda rwifashisha ibikoresho byabugenewe n'ikoranabuhanga ry'amakuru ajyanye n'umutekano wo mu muhanda."
+  },
+  {
+    "id": "traffic_832",
+    "category": "traffic",
+    "question": "Who determines the characteristics and use of equipment and technology mentioned in Article 7?",
+    "question_rw": "Ni nde ugena imiterere n'imikoreshereze y'ibikoresho n'ikoranabuhanga bivugwa mu ngingo ya 7?",
+    "options": [
+      "The Minister through an Order",
+      "Every vehicle owner individually",
+      "Any driving-school student",
+      "A private transport company"
+    ],
+    "options_rw": [
+      "Minisitiri abinyujije mu Iteka",
+      "Buri nyir'ikinyabiziga ku giti cye",
+      "Umunyeshuri wese wiga gutwara ikinyabiziga",
+      "Ikigo cyigenga gitwara abantu"
+    ],
+    "answer": "The Minister through an Order",
+    "answer_rw": "Minisitiri abinyujije mu Iteka",
+    "explanation": "Article 7(2) provides that a Ministerial Order determines the characteristics and use of the equipment and technology.",
+    "explanation_rw": "Ingingo ya 7(2) iteganya ko Iteka rya Minisitiri rigena imiterere n'imikoreshereze y'ibikoresho n'ikoranabuhanga bikoreshwa mu kurinda umutekano wo mu muhanda."
+  },
+  {
+    "id": "traffic_833",
+    "category": "traffic",
+    "question": "What is the subject of Article 8 of Law No. 014/2026?",
+    "question_rw": "Ingingo ya 8 y'Itegeko N° 014/2026 ivuga ku ki?",
+    "options": [
+      "The uniform of an authorised officer",
+      "The colour of private vehicles",
+      "The design of driving licences",
+      "The registration of bicycles"
+    ],
+    "options_rw": [
+      "Impuzankano y'umukozi ubifitiye ububasha",
+      "Ibara ry'ibinyabiziga by'abantu ku giti cyabo",
+      "Imiterere y'impushya zo gutwara ibinyabiziga",
+      "Iyandikwa ry'amagare"
+    ],
+    "answer": "The uniform of an authorised officer",
+    "answer_rw": "Impuzankano y'umukozi ubifitiye ububasha",
+    "explanation": "Article 8 specifically addresses the uniform of an authorised officer.",
+    "explanation_rw": "Ingingo ya 8 yihariye ivuga ku mpuzankano y'umukozi ubifitiye ububasha."
+  },
+  {
+    "id": "traffic_834",
+    "category": "traffic",
+    "question": "Under Article 10, who may administer or order a road user to undergo an alcohol or drug test?",
+    "question_rw": "Dukurikije ingingo ya 10, ni nde ushobora gupima cyangwa gutegeka umuyobozi w'ikinyabiziga kwisuzumisha arukoro cyangwa ibiyobyabwenge?",
+    "options": [
+      "An investigator or an authorised officer",
+      "Any passenger",
+      "A vehicle mechanic",
+      "A private shopkeeper"
+    ],
+    "options_rw": [
+      "Umugenzacyaha cyangwa umukozi ubifitiye ububasha",
+      "Umugenzi uwo ari we wese",
+      "Umukanishi w'ibinyabiziga",
+      "Umucuruzi wo mu iduka ryigenga"
+    ],
+    "answer": "An investigator or an authorised officer",
+    "answer_rw": "Umugenzacyaha cyangwa umukozi ubifitiye ububasha",
+    "explanation": "Article 10(1) gives this authority to an investigator or authorised officer whenever necessary for road safety.",
+    "explanation_rw": "Ingingo ya 10(1) iha ubwo bubasha umugenzacyaha cyangwa umukozi ubifitiye ububasha igihe bibaye ngombwa mu rwego rwo kubungabunga umutekano wo mu muhanda."
+  },
+  {
+    "id": "traffic_835",
+    "category": "traffic",
+    "question": "What should be used when carrying out the tests described in Article 10?",
+    "question_rw": "Ni ibihe bikoresho bigomba gukoreshwa mu bipimo bivugwa mu ngingo ya 10?",
+    "options": [
+      "Appropriate testing equipment",
+      "An ordinary paper notebook",
+      "A vehicle registration plate",
+      "A passenger's personal phone"
+    ],
+    "options_rw": [
+      "Ibikoresho byabugenewe byo gupima",
+      "Agatabo gasanzwe kandikwamo",
+      "Icyapa kiranga ikinyabiziga",
+      "Telefoni y'umugenzi ku giti cye"
+    ],
+    "answer": "Appropriate testing equipment",
+    "answer_rw": "Ibikoresho byabugenewe byo gupima",
+    "explanation": "Article 10(1) requires the use of appropriate equipment when carrying out the tests.",
+    "explanation_rw": "Ingingo ya 10(1) isaba ko ibipimo bikorwa hifashishijwe ibikoresho byabugenewe."
+  },
+  {
+    "id": "traffic_836",
+    "category": "traffic",
+    "question": "If a driver disagrees with the result of a test under Article 10, what may the driver request?",
+    "question_rw": "Iyo umuyobozi w'ikinyabiziga atemeye ibyavuye mu gipimo giteganywa n'ingingo ya 10, ashobora gusaba iki?",
+    "options": [
+      "A test by an authorised laboratory",
+      "Automatic cancellation of the law",
+      "A test by any passenger",
+      "Permission to ignore all future tests"
+    ],
+    "options_rw": [
+      "Ko hakorwa ikindi gipimo na laboratwari yemewe",
+      "Ko itegeko rihita rikurwaho",
+      "Ko umugenzi uwo ari we wese amupima",
+      "Uburenganzira bwo kutazongera gupimwa na rimwe"
+    ],
+    "answer": "A test by an authorised laboratory",
+    "answer_rw": "Ko hakorwa ikindi gipimo na laboratwari yemewe",
+    "explanation": "Article 10(2) allows a driver who disagrees with the test result to request testing by an authorised laboratory.",
+    "explanation_rw": "Ingingo ya 10(2) yemerera umuyobozi w'ikinyabiziga utanyuzwe n'ibyavuye mu gipimo gusaba ko hakorwa ikindi gipimo na laboratwari yemewe."
+  },
+  {
+    "id": "traffic_837",
+    "category": "traffic",
+    "question": "For what main purpose may a vehicle be immobilised under Article 11?",
+    "question_rw": "Ni iyihe mpamvu nyamukuru ishobora gutuma ikinyabiziga kibuzwa kugenda hakurikijwe ingingo ya 11?",
+    "options": [
+      "To safeguard road safety or investigate road-safety offences",
+      "To punish a driver for arriving late",
+      "To reserve a parking space for another person",
+      "To allow a vehicle owner to avoid registration"
+    ],
+    "options_rw": [
+      "Kubungabunga umutekano wo mu muhanda cyangwa kugenza ibyaha biwuhungabanya",
+      "Guhana umuyobozi watinze kugera aho ajya",
+      "Kubikira undi muntu aho aparika",
+      "Gufasha nyir'ikinyabiziga kwirinda kukandikisha"
+    ],
+    "answer": "To safeguard road safety or investigate road-safety offences",
+    "answer_rw": "Kubungabunga umutekano wo mu muhanda cyangwa kugenza ibyaha biwuhungabanya",
+    "explanation": "Article 11 states that immobilisation is intended to safeguard road safety or assist in investigating road-safety offences.",
+    "explanation_rw": "Ingingo ya 11 ivuga ko kubuza ikinyabiziga kugenda bigamije kubungabunga umutekano wo mu muhanda cyangwa gufasha mu kugenza ibyaha biwuhungabanya."
+  },
+  {
+    "id": "traffic_838",
+    "category": "traffic",
+    "question": "What is the maximum period of vehicle immobilisation under Article 11(2)?",
+    "question_rw": "Ni ikihe gihe ntarengwa ikinyabiziga gishobora kumara kibujijwe kugenda hakurikijwe ingingo ya 11(2)?",
+    "options": [
+      "12 hours",
+      "24 hours",
+      "48 hours",
+      "Seven days"
+    ],
+    "options_rw": [
+      "Amasaha 12",
+      "Amasaha 24",
+      Amasaha 48,
+      "Iminsi irindwi"
+    ],
+    "answer": "12 hours",
+    "answer_rw": "Amasaha 12",
+    "explanation": "Article 11(2) sets a maximum immobilisation period of 12 hours from the time the vehicle is immobilised.",
+    "explanation_rw": "Ingingo ya 11(2) igena ko ikinyabiziga gishobora kumara kibujijwe kugenda igihe kitarenze amasaha 12 uhereye igihe cyabujijwe kugenda."
+  },
+  {
+    "id": "traffic_839",
+    "category": "traffic",
+    "question": "Under Article 12, which situation may justify immobilising a vehicle?",
+    "question_rw": "Dukurikije ingingo ya 12, ni ikihe kibazo gishobora gutuma ikinyabiziga kibuzwa kugenda?",
+    "options": [
+      "The driver does not hold a valid driving licence",
+      "The driver is travelling with a friend",
+      "The vehicle is carrying ordinary luggage",
+      "The driver is using a permitted route"
+    ],
+    "options_rw": [
+      "Umuyobozi wacyo adafite uruhushya rwo gutwara rwemewe",
+      "Umuyobozi agendanye n'inshuti",
+      "Ikinyabiziga gitwaye imizigo isanzwe",
+      "Umuyobozi akoresha inzira yemewe"
+    ],
+    "answer": "The driver does not hold a valid driving licence",
+    "answer_rw": "Umuyobozi wacyo adafite uruhushya rwo gutwara rwemewe",
+    "explanation": "Article 12(1)(a) lists the absence of a valid driving licence as a ground for immobilising a vehicle.",
+    "explanation_rw": "Ingingo ya 12(1)(a) ivuga ko kuba umuyobozi w'ikinyabiziga adafite uruhushya rwo gutwara rwemewe ari imwe mu mpamvu zo kukibuza kugenda."
+  },
+  {
+    "id": "traffic_840",
+    "category": "traffic",
+    "question": "What may happen if a vehicle or its load damages the road or its surroundings?",
+    "question_rw": "Byagenda bite iyo ikinyabiziga cyangwa ibyo gitwaye byangiza umuhanda cyangwa ibiwukikije?",
+    "options": [
+      "The vehicle may be immobilised",
+      "The vehicle automatically receives a new registration",
+      "The driver is automatically exempt from all rules",
+      "The road becomes a private parking area"
+    ],
+    "options_rw": [
+      "Ikinyabiziga gishobora kubuzwa kugenda",
+      "Ikinyabiziga gihita gihabwa icyangombwa gishya cyo kukiranga",
+      "Umuyobozi ahita akurirwaho amategeko yose",
+      "Umuhanda uhita uhinduka parikingi y'abikorera"
+    ],
+    "answer": "The vehicle may be immobilised",
+    "answer_rw": "Ikinyabiziga gishobora kubuzwa kugenda",
+    "explanation": "Article 12(1)(b) includes damage caused by a vehicle or its load to the road or its surroundings as a ground for immobilisation.",
+    "explanation_rw": "Ingingo ya 12(1)(b) ivuga ko kwangiza umuhanda cyangwa ibiwukikije bitewe n'ikinyabiziga cyangwa ibyo gitwaye bishobora gutuma icyo kinyabiziga kibuzwa kugenda."
+  },
+  {
+    "id": "traffic_841",
+    "category": "traffic",
+    "question": "Why may a vehicle be immobilised if objects are dumped or scattered on the road?",
+    "question_rw": "Kuki ikinyabiziga gishobora kubuzwa kugenda iyo ibintu bijugunywe cyangwa bisandaguwe mu muhanda?",
+    "options": [
+      "Because they may endanger or obstruct road traffic",
+      "Because every object on a road belongs to the driver",
+      "Because roads may only be used by parked vehicles",
+      "Because passengers must clean every road"
+    ],
+    "options_rw": [
+      "Kubera ko bishobora guteza akaga cyangwa kubangamira urujya n'uruza rw'ibinyabiziga",
+      "Kubera ko ikintu cyose kiri mu muhanda kiba ari icy'umuyobozi",
+      "Kubera ko umuhanda ukoreshwa n'ibinyabiziga bihagaze gusa",
+      "Kubera ko abagenzi bose bagomba gusukura umuhanda"
+    ],
+    "answer": "Because they may endanger or obstruct road traffic",
+    "answer_rw": "Kubera ko bishobora guteza akaga cyangwa kubangamira urujya n'uruza rw'ibinyabiziga",
+    "explanation": "Article 12(1)(c) addresses objects or obstructions placed on the road that compromise or endanger traffic.",
+    "explanation_rw": "Ingingo ya 12(1)(c) ireba ibintu cyangwa inzitizi bishyirwa mu muhanda bikabangamira urujya n'uruza cyangwa bikaba byateza akaga."
+  },
+  {
+    "id": "traffic_842",
+    "category": "traffic",
+    "question": "What is the main responsibility of a driving-school owner under Article 24?",
+    "question_rw": "Ni iyihe nshingano nyamukuru ya nyir'ishuri ryigisha gutwara ibinyabiziga hakurikijwe ingingo ya 24?",
+    "options": [
+      "To obtain authorisation to provide driving instruction",
+      "To issue official driving licences personally",
+      "To register every vehicle in the country",
+      "To determine national road speed limits"
+    ],
+    "options_rw": [
+      "Kubanza kubona uruhushya rwo kwigisha gutwara ibinyabiziga",
+      "Gutanga impushya zo gutwara ibinyabiziga ku giti cye",
+      "Kwiyandikisha ibinyabiziga byose byo mu gihugu",
+      "Gushyiraho umuvuduko ntarengwa w'imihanda yose"
+    ],
+    "answer": "To obtain authorisation to provide driving instruction",
+    "answer_rw": "Kubanza kubona uruhushya rwo kwigisha gutwara ibinyabiziga",
+    "explanation": "Article 24(1) provides that driving instruction is given by a person who owns a driving school and has obtained the required authorisation.",
+    "explanation_rw": "Ingingo ya 24(1) iteganya ko kwigisha gutwara ikinyabiziga bikorwa na nyir'ishuri ryabiherewe uburenganzira."
+  },
+  {
+    "id": "traffic_843",
+    "category": "traffic",
+    "question": "Which organ has exclusive competence to oversee and monitor driving schools under Article 24?",
+    "question_rw": "Ni uruhe rwego rufite ububasha bwihariye bwo kugenzura no gukurikirana amashuri yigisha gutwara ibinyabiziga hakurikijwe ingingo ya 24?",
+    "options": [
+      "The organ in charge of road safety",
+      "Every private driving instructor",
+      "A vehicle insurance company",
+      "A public transport passenger association"
+    ],
+    "options_rw": [
+      "Urwego rushinzwe umutekano wo mu muhanda",
+      "Buri mwarimu wigenga wigisha gutwara",
+      "Ikigo cy'ubwishingizi bw'ibinyabiziga",
+      "Ihuriro ry'abagenzi bakoresha imodoka rusange"
+    ],
+    "answer": "The organ in charge of road safety",
+    "answer_rw": "Urwego rushinzwe umutekano wo mu muhanda",
+    "explanation": "Article 24(2) gives the organ in charge of road safety exclusive competence to oversee and monitor driving schools.",
+    "explanation_rw": "Ingingo ya 24(2) iha urwego rushinzwe umutekano wo mu muhanda ububasha bwihariye bwo kugenzura no gukurikirana amashuri yigisha gutwara ibinyabiziga."
+  },
+  {
+    "id": "traffic_844",
+    "category": "traffic",
+    "question": "Who determines the requirements for establishing and operating a driving school under Article 24(3)?",
+    "question_rw": "Ni nde ugena ibisabwa kugira ngo umuntu ashinge kandi akore ishuri ryigisha gutwara ibinyabiziga hakurikijwe ingingo ya 24(3)?",
+    "options": [
+      "The Minister through an Order",
+      "The students of the driving school",
+      "The vehicle manufacturers",
+      "The school owner without any rules"
+    ],
+    "options_rw": [
+      "Minisitiri abinyujije mu Iteka",
+      "Abanyeshuri b'ishuri ryigisha gutwara",
+      "Abakora ibinyabiziga",
+      "Nyir'ishuri nta mabwiriza agenderaho"
+    ],
+    "answer": "The Minister through an Order",
+    "answer_rw": "Minisitiri abinyujije mu Iteka",
+    "explanation": "Article 24(3) assigns the determination of authorisation requirements and school organisation to a Ministerial Order.",
+    "explanation_rw": "Ingingo ya 24(3) iteganya ko Iteka rya Minisitiri rigena ibisabwa kugira ngo umuntu yemerewe gushinga ishuri ryigisha gutwara n'uko rikorwa."
+  },
+  {
+    "id": "traffic_845",
+    "category": "traffic",
+    "question": "Under Article 29, what identification should a motor vehicle registered in Rwanda have?",
+    "question_rw": "Dukurikije ingingo ya 29, ikinyabiziga kigendeshwa na moteri cyanditswe mu Rwanda kigomba kuba gifite iki kiranga?",
+    "options": [
+      "The identification marks required by law",
+      "Only the owner's first name painted on the door",
+      "A foreign country's registration mark chosen by the driver",
+      "No identification mark at all"
+    ],
+    "options_rw": [
+      "Ibirango bigaragaza ikinyabiziga bisabwa n'amategeko",
+      "Izina rya nyiracyo ryanditse ku rugi gusa",
+      "Icyapa cy'igihugu cy'amahanga umuyobozi yihitiyemo",
+      "Nta kimenyetso na kimwe kiranga ikinyabiziga"
+    ],
+    "answer": "The identification marks required by law",
+    "answer_rw": "Ibirango bigaragaza ikinyabiziga bisabwa n'amategeko",
+    "explanation": "Article 29 provides for identification marks on motor vehicles registered in Rwanda.",
+    "explanation_rw": "Ingingo ya 29 iteganya ko ibinyabiziga bigendeshwa na moteri byanditswe mu Rwanda bigira ibirango bibiranga bisabwa n'amategeko."
+  },
+  {
+    "id": "traffic_846",
+    "category": "traffic",
+    "question": "Which registration marks should a foreign motor vehicle use in Rwanda under Article 29?",
+    "question_rw": "Ikinyabiziga cyo mu mahanga gikoresha ibihe birango by'iyandikwa mu Rwanda hakurikijwe ingingo ya 29?",
+    "options": [
+      "Those of the country where it is registered",
+      "Any number selected by its driver",
+      "The registration marks of the nearest city",
+      "No registration marks"
+    ],
+    "options_rw": [
+      "Ibirango by'igihugu cyanditswemo",
+      "Nimero iyo ari yo yose umuyobozi yihitiyemo",
+      "Ibirango by'umujyi uri hafi yacyo",
+      "Nta birango na kimwe"
+    ],
+    "answer": "Those of the country where it is registered",
+    "answer_rw": "Ibirango by'igihugu cyanditswemo",
+    "explanation": "Article 29 provides that a foreign vehicle uses the registration marks of the country in which it is registered.",
+    "explanation_rw": "Ingingo ya 29 iteganya ko ikinyabiziga cyo mu mahanga gikoresha ibirango by'igihugu cyanditswemo."
+  },
+  {
+    "id": "traffic_847",
+    "category": "traffic",
+    "question": "For how long may a foreign right-hand-drive vehicle generally operate in Rwanda after entry under Article 29?",
+    "question_rw": "Ikinyabiziga cyo mu mahanga gifite volant iri iburyo gishobora kumara igihe kingana iki muri rusange gikora mu Rwanda nyuma yo kwinjira mu gihugu hakurikijwe ingingo ya 29?",
+    "options": [
+      "A maximum of three months",
+      "A maximum of three weeks",
+      "A maximum of one year",
+      "An unlimited period without conditions"
+    ],
+    "options_rw": [
+      "Amezi atarenze atatu",
+      "Ibyumweru bitarenze bitatu",
+      "Umwaka umwe gusa",
+      "Igihe kitagira umupaka kandi nta bisabwa"
+    ],
+    "answer": "A maximum of three months",
+    "answer_rw": "Amezi atarenze atatu",
+    "explanation": "Article 29 allows a foreign right-hand-drive vehicle to operate for a maximum of three months after entering Rwanda, subject to the law's provisions.",
+    "explanation_rw": "Ingingo ya 29 yemerera ikinyabiziga cyo mu mahanga gifite volant iri iburyo gukorera mu Rwanda igihe kitarenze amezi atatu nyuma yo kwinjira mu gihugu, hakurikijwe ibiteganywa n'itegeko."
+  },
+  {
+    "id": "traffic_848",
+    "category": "traffic",
+    "question": "What may be requested regarding the period allowed for a foreign right-hand-drive vehicle under Article 29?",
+    "question_rw": "Ni iki gishobora gusabwa ku bijyanye n'igihe ikinyabiziga cyo mu mahanga gifite volant iri iburyo cyemerewe gukorera mu Rwanda hakurikijwe ingingo ya 29?",
+    "options": [
+      "An extension through a written request",
+      "An automatic permanent exemption",
+      "A change of the vehicle's country of origin",
+      "Permission from any passenger"
+    ],
+    "options_rw": [
+      "Kongerera igihe binyuze mu busabe bwanditse",
+      "Kugihita gikurirwaho amategeko burundu",
+      "Guhindura igihugu ikinyabiziga gikomokamo",
+      "Uruhushya rutanzwe n'umugenzi uwo ari we wese"
+    ],
+    "answer": "An extension through a written request",
+    "answer_rw": "Kongerera igihe binyuze mu busabe bwanditse",
+    "explanation": "Article 29 provides for a possible extension upon a written request, subject to the applicable conditions.",
+    "explanation_rw": "Ingingo ya 29 iteganya ko hashobora gusabwa kongererwa igihe hakoreshejwe ubusabe bwanditse, hakurikijwe ibisabwa n'amategeko."
+  },
+  {
+    "id": "traffic_849",
+    "category": "traffic",
+    "question": "Under Article 33, what type of fault is committed when a road user fails to comply with road traffic regulations?",
+    "question_rw": "Dukurikije ingingo ya 33, ukoresha umuhanda utubahirije amategeko y'ikoreshwa ryawo aba akoze ikosa bwoko ki?",
+    "options": [
+      "An administrative fault",
+      "A vehicle ownership transfer",
+      "A technical inspection",
+      "A driving lesson"
+    ],
+    "options_rw": [
+      "Ikosa ryo mu rwego rw'ubutegetsi",
+      "Ihererekanya ry'ikinyabiziga",
+      "Isuzuma rya tekiniki",
+      "Isomo ryo gutwara ikinyabiziga"
+    ],
+    "answer": "An administrative fault",
+    "answer_rw": "Ikosa ryo mu rwego rw'ubutegetsi",
+    "explanation": "Article 33(1) states that a road user who fails to comply with road traffic regulations commits an administrative fault.",
+    "explanation_rw": "Ingingo ya 33(1) ivuga ko ukoresha umuhanda utubahirije amategeko y'ikoreshwa ryawo aba akoze ikosa ryo mu rwego rw'ubutegetsi."
+  },
+  {
+    "id": "traffic_850",
+    "category": "traffic",
+    "question": "Who determines the list of administrative road traffic faults and their corresponding fines and demerit points under Article 33?",
+    "question_rw": "Ni nde ugena urutonde rw'amakosa yo mu rwego rw'ubutegetsi, ihazabu n'amanota y'imyitwarire bijyanye na yo hakurikijwe ingingo ya 33?",
+    "options": [
+      "The Minister through an Order",
+      "Each driver independently",
+      "The vehicle repair workshops",
+      "The passengers on each bus"
+    ],
+    "options_rw": [
+      "Minisitiri abinyujije mu Iteka",
+      "Buri muyobozi w'ikinyabiziga ku giti cye",
+      "Amagaraji yose akora imodoka",
+      "Abagenzi bari muri buri bisi"
+    ],
+    "answer": "The Minister through an Order",
+    "answer_rw": "Minisitiri abinyujije mu Iteka",
+    "explanation": "Article 33(2) assigns this task to a Ministerial Order, which determines the list of faults, fines and applicable demerit points.",
+    "explanation_rw": "Ingingo ya 33(2) iteganya ko Iteka rya Minisitiri rigena urutonde rw'amakosa, amahazabu ajyanye na yo n'amanota y'imyitwarire akurwa ku wakoze ikosa."
+  },
+  {
+    "id": "traffic_851",
+    "category": "traffic",
+    "question": "How long does a person generally have to pay an administrative road traffic fine after receiving notification under Article 34?",
+    "question_rw": "Dukurikije ingingo ya 34, umuntu afite igihe kingana iki cyo kwishyura ihazabu yo mu rwego rw'ubutegetsi nyuma yo guhabwa imenyesha?",
+    "options": [
+      "30 days",
+      "7 days",
+      "90 days",
+      "One year"
+    ],
+    "options_rw": [
+      "Iminsi 30",
+      "Iminsi 7",
+      "Iminsi 90",
+      "Umwaka umwe"
+    ],
+    "answer": "30 days",
+    "answer_rw": "Iminsi 30",
+    "explanation": "Article 34(1) provides a 30-day period from receipt of the notification to pay the administrative fine.",
+    "explanation_rw": "Ingingo ya 34(1) iteganya ko ihazabu yo mu rwego rw'ubutegetsi yishyurwa mu minsi 30 uhereye igihe umuntu yakiriye imenyesha."
+  },
+  {
+    "id": "traffic_852",
+    "category": "traffic",
+    "question": "What surcharge may be imposed if an administrative road traffic fine is not paid within the initial deadline under Article 34?",
+    "question_rw": "Ni ikihe kiguzi cy'inyongera gishobora kongerwa iyo ihazabu yo mu rwego rw'ubutegetsi itishyuwe mu gihe cyagenwe bwa mbere hakurikijwe ingingo ya 34?",
+    "options": [
+      "30% of the initial fine",
+      "5% of the initial fine",
+      "10% of the initial fine",
+      "100% of the initial fine"
+    ],
+    "options_rw": [
+      "30% by'ihazabu ya mbere",
+      "5% by'ihazabu ya mbere",
+      "10% by'ihazabu ya mbere",
+      "100% by'ihazabu ya mbere"
+    ],
+    "answer": "30% of the initial fine",
+    "answer_rw": "30% by'ihazabu ya mbere",
+    "explanation": "Article 34(2) provides for a surcharge of 30% of the initial fine if the initial payment period expires without payment.",
+    "explanation_rw": "Ingingo ya 34(2) iteganya ko iyo igihe cya mbere cyo kwishyura kirangiye umuntu atarishyura, hongerwaho 30% by'ihazabu ya mbere."
+  },
+  {
+    "id": "traffic_853",
+    "category": "traffic",
+    "question": "Who may sanction a fault that endangers road safety under Article 35?",
+    "question_rw": "Ni nde ushobora guhana ikosa rihungabanya umutekano wo mu muhanda hakurikijwe ingingo ya 35?",
+    "options": [
+      "An investigator or an authorised officer",
+      "Any passenger",
+      "A private vehicle mechanic",
+      "Any shop owner"
+    ],
+    "options_rw": [
+      "Umugenzacyaha cyangwa umukozi ubifitiye ububasha",
+      "Umugenzi uwo ari we wese",
+      "Umukanishi w'ikinyabiziga wigenga",
+      "Nyir'iduka uwo ari we wese"
+    ],
+    "answer": "An investigator or an authorised officer",
+    "answer_rw": "Umugenzacyaha cyangwa umukozi ubifitiye ububasha",
+    "explanation": "Article 35(1) assigns the sanctioning of faults endangering road safety to an investigator or authorised officer.",
+    "explanation_rw": "Ingingo ya 35(1) ivuga ko amakosa ahungabanya umutekano wo mu muhanda ahanwa n'umugenzacyaha cyangwa umukozi ubifitiye ububasha."
+  },
+  {
+    "id": "traffic_854",
+    "category": "traffic",
+    "question": "What information should the electronic document under Article 35(2) contain?",
+    "question_rw": "Ni ayahe makuru inyandiko koranabuhanga ivugwa mu ngingo ya 35(2) igomba kugaragaza?",
+    "options": [
+      "The fault committed and the sanction imposed",
+      "Only the driver's favourite vehicle colour",
+      "The passenger's home address only",
+      "The price of the vehicle"
+    ],
+    "options_rw": [
+      "Ikosa ryakozwe n'igihano cyatanzwe",
+      "Ibara ry'ikinyabiziga umuyobozi akunda gusa",
+      "Aho umugenzi atuye gusa",
+      "Igiciro cy'ikinyabiziga"
+    ],
+    "answer": "The fault committed and the sanction imposed",
+    "answer_rw": "Ikosa ryakozwe n'igihano cyatanzwe",
+    "explanation": "Article 35(2) requires an electronic document showing the fault committed and the sanction imposed.",
+    "explanation_rw": "Ingingo ya 35(2) isaba ko umuyobozi wakoze ikosa ahabwa inyandiko koranabuhanga igaragaza ikosa yakoze n'igihano yahawe."
+  },
+  {
+    "id": "traffic_855",
+    "category": "traffic",
+    "question": "Within how many working days may a driver or vehicle owner request reconsideration of a notified fault under Article 36(1)?",
+    "question_rw": "Mu minsi ingahe y'akazi umuyobozi cyangwa nyir'ikinyabiziga ashobora gusaba ko icyemezo cy'ikosa yamenyeshejwe cyongera gusuzumwa hakurikijwe ingingo ya 36(1)?",
+    "options": [
+      "Three working days",
+      "Ten calendar days",
+      "Thirty working days",
+      "One month"
+    ],
+    "options_rw": [
+      "Iminsi itatu y'akazi",
+      "Iminsi icumi isanzwe",
+      "Iminsi 30 y'akazi",
+      Ukwezi kumwe"
+    ],
+    "answer": "Three working days",
+    "answer_rw": "Iminsi itatu y'akazi",
+    "explanation": "Article 36(1) allows a request for reconsideration within three working days after notification of the fault.",
+    "explanation_rw": "Ingingo ya 36(1) iteganya ko gusaba ko icyemezo cyongera gusuzumwa bikorwa mu minsi itatu y'akazi uhereye igihe umuntu yamenyesherejwe ikosa."
+  },
+  {
+    "id": "traffic_856",
+    "category": "traffic",
+    "question": "Who may request reconsideration of a road traffic fault under Article 36(1)?",
+    "question_rw": "Ni nde ushobora gusaba ko icyemezo ku ikosa ryo mu muhanda cyongera gusuzumwa hakurikijwe ingingo ya 36(1)?",
+    "options": [
+      "The driver, vehicle owner or legally authorised representative",
+      "Only a passenger who witnessed the event",
+      "Only the vehicle mechanic",
+      "Any person with no connection to the case"
+    ],
+    "options_rw": [
+      "Umuyobozi w'ikinyabiziga, nyiracyo cyangwa umuhagarariye wemewe n'amategeko",
+      "Umugenzi wabonye ibyabaye gusa",
+      "Umukanishi w'ikinyabiziga gusa",
+      "Umuntu wese udafitanye isano n'ikibazo"
+    ],
+    "answer": "The driver, vehicle owner or legally authorised representative",
+    "answer_rw": "Umuyobozi w'ikinyabiziga, nyiracyo cyangwa umuhagarariye wemewe n'amategeko",
+    "explanation": "Article 36(1) identifies the driver, vehicle owner or legally authorised representative as persons who may request reconsideration.",
+    "explanation_rw": "Ingingo ya 36(1) ivuga ko umuyobozi w'ikinyabiziga, nyiracyo cyangwa umuhagarariye wemewe n'amategeko bashobora gusaba ko icyemezo cyongera gusuzumwa."
+  },
+  {
+    "id": "traffic_857",
+    "category": "traffic",
+    "question": "How may a request for reconsideration be submitted under Article 36(1)?",
+    "question_rw": "Gusaba ko icyemezo cyongera gusuzumwa bishobora gutangwa mu buhe buryo hakurikijwe ingingo ya 36(1)?",
+    "options": [
+      "In writing or through another convenient means",
+      "Only through a newspaper advertisement",
+      "Only through a passenger's verbal statement",
+      "Only by sending a vehicle to a repair shop"
+    ],
+    "options_rw": [
+      "Mu nyandiko cyangwa mu bundi buryo bworohereza ubisaba",
+      "Binyuze mu itangazo ryo mu kinyamakuru gusa",
+      "Binyuze mu magambo y'umugenzi gusa",
+      "Kohereza ikinyabiziga mu igaraji gusa"
+    ],
+    "answer": "In writing or through another convenient means",
+    "answer_rw": "Mu nyandiko cyangwa mu bundi buryo bworohereza ubisaba",
+    "explanation": "Article 36(1) allows the request to be made in writing or through another means convenient to the applicant.",
+    "explanation_rw": "Ingingo ya 36(1) yemera ko ubusabe butangwa mu nyandiko cyangwa mu bundi buryo bwose bworohereza ubusaba."
+  },
+  {
+    "id": "traffic_858",
+    "category": "traffic",
+    "question": "Within how many working days should a response to a request for reconsideration be provided under Article 36(2)?",
+    "question_rw": "Mu minsi ingahe y'akazi igisubizo ku busabe bwo kongera gusuzuma icyemezo kigomba gutangwa hakurikijwe ingingo ya 36(2)?",
+    "options": [
+      "Three working days",
+      "Seven working days",
+      "Fourteen calendar days",
+      "Thirty calendar days"
+    ],
+    "options_rw": [
+      "Iminsi itatu y'akazi",
+      "Iminsi irindwi y'akazi",
+      "Iminsi 14 isanzwe",
+      "Iminsi 30 isanzwe"
+    ],
+    "answer": "Three working days",
+    "answer_rw": "Iminsi itatu y'akazi",
+    "explanation": "Article 36(2) requires a written response within three working days from the date the request was filed.",
+    "explanation_rw": "Ingingo ya 36(2) isaba ko igisubizo gitangwa mu nyandiko mu minsi itatu y'akazi uhereye igihe ubusabe bwatangiwe."
+  },
+  {
+    "id": "traffic_859",
+    "category": "traffic",
+    "question": "What may a person do if dissatisfied with the response to a request for reconsideration under Article 36(3)?",
+    "question_rw": "Umuntu yakora iki iyo atanyuzwe n'igisubizo yahawe ku busabe bwo kongera gusuzuma icyemezo hakurikijwe ingingo ya 36(3)?",
+    "options": [
+      "File a hierarchical appeal with a higher authority",
+      "Ignore every future official notification",
+      "Transfer ownership of the vehicle automatically",
+      "Cancel the road traffic law"
+    ],
+    "options_rw": [
+      "Kujuririra urwego rwisumbuyeho",
+      "Kwirengagiza imenyesha ryose azajya ahabwa",
+      "Guhita yimurira undi muntu ikinyabiziga",
+      "Gukuraho itegeko rigenga ikoreshwa ry'umuhanda"
+    ],
+    "answer": "File a hierarchical appeal with a higher authority",
+    "answer_rw": "Kujuririra urwego rwisumbuyeho",
+    "explanation": "Article 36(3) allows a person who is dissatisfied with the response to file a hierarchical appeal with the authority above the one that handled the reconsideration.",
+    "explanation_rw": "Ingingo ya 36(3) yemerera umuntu utanyuzwe n'igisubizo kujuririra urwego rwisumbuyeho ku rwo yari yatanzeho ubusabe."
+  },
+  {
+    "id": "traffic_860",
+    "category": "traffic",
+    "question": "What may happen if the required authority does not respond within the time limits set by Article 36?",
+    "question_rw": "Byagenda bite iyo urwego rubifitiye ububasha rutanze igisubizo nyuma y'igihe ntarengwa giteganywa n'ingingo ya 36 kirangiye?",
+    "options": [
+      "The request or appeal is deemed well-founded and the person is cleared of the fault",
+      "The request is automatically treated as a new offence",
+      "The vehicle is automatically sold",
+      "The applicant loses the right to appeal forever"
+    ],
+    "options_rw": [
+      "Ubusabe cyangwa ubujurire bifatwa nk'ibyemewe kandi umuntu agakurirwaho iryo kosa",
+      "Ubusabe buhita bufatwa nk'icyaha gishya",
+      "Ikinyabiziga gihita kigurishwa",
+      "Usaba ahita atakaza burundu uburenganzira bwo kujurira"
+    ],
+    "answer": "The request or appeal is deemed well-founded and the person is cleared of the fault",
+    "answer_rw": "Ubusabe cyangwa ubujurire bifatwa nk'ibyemewe kandi umuntu agakurirwaho iryo kosa",
+    "explanation": "Article 36(4) provides that failure to respond within the prescribed time may cause the request or appeal to be deemed well-founded, clearing the person of the fault.",
+    "explanation_rw": "Ingingo ya 36(4) iteganya ko iyo igisubizo kidatanzwe mu gihe cyagenwe, ubusabe cyangwa ubujurire bifatwa nk'ibyashingiweho, umuntu agakurirwaho ikosa yari yarahanwe."
+  },
+  {
+    "id": "traffic_861",
+    "category": "traffic",
+    "question": "Under Article 37, what is the legal consequence of driving above the permissible blood alcohol concentration?",
+    "question_rw": "Dukurikije ingingo ya 37, ni izihe ngaruka z'amategeko zo gutwara ikinyabiziga umuntu yarengeje igipimo ntarengwa cya arukoro mu maraso?",
+    "options": [
+      "It constitutes a criminal offence",
+      "It is only a vehicle registration issue",
+      "It is automatically treated as a driving lesson",
+      "It has no legal consequence"
+    ],
+    "options_rw": [
+      "Biba ari icyaha",
+      "Biba ikibazo cyo kwandikisha ikinyabiziga gusa",
+      "Bihita bifatwa nk'isomo ryo gutwara ikinyabiziga",
+      "Nta ngaruka n'imwe y'amategeko bigira"
+    ],
+    "answer": "It constitutes a criminal offence",
+    "answer_rw": "Biba ari icyaha",
+    "explanation": "Article 37(1) states that a driver who drives above the permissible blood alcohol concentration commits an offence.",
+    "explanation_rw": "Ingingo ya 37(1) ivuga ko umuyobozi utwara ikinyabiziga yarengeje igipimo ntarengwa cya arukoro mu maraso aba akoze icyaha."
+  },
+  {
+    "id": "traffic_862",
+    "category": "traffic",
+    "question": "Which category of vehicle is specifically mentioned in Article 37 as receiving the higher penalty category for an alcohol-related offence?",
+    "question_rw": "Ni ubuhe bwoko bw'ikinyabiziga buvugwa by'umwihariko mu ngingo ya 37 mu rwego rw'ibihano bikomeye ku cyaha kijyanye na arukoro?",
+    "options": [
+      "A public transport vehicle",
+      "A privately owned bicycle",
+      "A parked shopping trolley",
+      "A vehicle used only on private farmland"
+    ],
+    "options_rw": [
+      "Ikinyabiziga gitwara abantu mu buryo bwa rusange",
+      "Igare ry'umuntu ku giti cye",
+      "Akagare ko mu iduka gahagaze",
+      "Ikinyabiziga gikoreshwa mu murima w'umuntu gusa"
+    ],
+    "answer": "A public transport vehicle",
+    "answer_rw": "Ikinyabiziga gitwara abantu mu buryo bwa rusange",
+    "explanation": "Article 37(1)(a) lists public transport vehicles among the vehicle categories subject to the specified higher penalty range.",
+    "explanation_rw": "Ingingo ya 37(1)(a) ivuga ibinyabiziga bitwara abantu mu buryo bwa rusange mu byiciro bigenerwa ibihano byihariye bikomeye kurushaho."
+  },
+  {
+    "id": "traffic_863",
+    "category": "traffic",
+    "question": "Which other vehicle category is specifically listed in Article 37 alongside public transport vehicles?",
+    "question_rw": "Ni ubuhe bundi bwoko bw'ikinyabiziga buvugwa mu ngingo ya 37 hamwe n'ibinyabiziga bitwara abantu mu buryo bwa rusange?",
+    "options": [
+      "School transport vehicles",
+      "Private garden carts",
+      "Unpowered handcarts",
+      "Vehicles used only inside warehouses"
+    ],
+    "options_rw": [
+      "Ibinyabiziga bitwara abanyeshuri",
+      "Utugarago two mu busitani bw'abantu",
+      "Utugarago dusunikwa n'intoki tudafite moteri",
+      "Ibinyabiziga bikoreshwa mu bubiko gusa"
+    ],
+    "answer": "School transport vehicles",
+    "answer_rw": "Ibinyabiziga bitwara abanyeshuri",
+    "explanation": "Article 37(1)(a) also lists school transport vehicles among the categories covered by the specified penalty range.",
+    "explanation_rw": "Ingingo ya 37(1)(a) inavuga ibinyabiziga bitwara abanyeshuri mu byiciro bigenerwa ibihano byihariye."
+  },
+  {
+    "id": "traffic_864",
+    "category": "traffic",
+    "question": "What offence is committed when a driver refuses to submit to an alcohol test under Article 38?",
+    "question_rw": "Ni ikihe cyaha umuyobozi w'ikinyabiziga aba akoze iyo yanze gupimwa arukoro mu maraso hakurikijwe ingingo ya 38?",
+    "options": [
+      "Refusal to submit to blood alcohol testing",
+      "Failure to transfer vehicle ownership",
+      "Failure to attend a driving lesson",
+      "Failure to replace a vehicle colour"
+    ],
+    "options_rw": [
+      "Kwanga gupimwa arukoro mu maraso",
+      "Kutamura uburenganzira ku kinyabiziga",
+      "Kutitabira isomo ryo gutwara ikinyabiziga",
+      "Kutahindura ibara ry'ikinyabiziga"
+    ],
+    "answer": "Refusal to submit to blood alcohol testing",
+    "answer_rw": "Kwanga gupimwa arukoro mu maraso",
+    "explanation": "Article 38(1) expressly states that a driver who refuses to submit to a blood alcohol concentration test commits an offence.",
+    "explanation_rw": "Ingingo ya 38(1) ivuga ko umuyobozi w'ikinyabiziga wanga gupimwa arukoro mu maraso aba akoze icyaha."
+  },
+  {
+    "id": "traffic_865",
+    "category": "traffic",
+    "question": "Which vehicle category is included in Article 38's higher penalty category for refusing an alcohol test?",
+    "question_rw": "Ni ubuhe bwoko bw'ikinyabiziga buri mu byiciro bivugwa mu ngingo ya 38 bigenerwa ibihano bikomeye iyo umuyobozi yanze gupimwa arukoro?",
+    "options": [
+      "A vehicle transporting tourists",
+      "A parked private bicycle",
+      "A handcart used at home",
+      "A vehicle that is not being used"
+    ],
+    "options_rw": [
+      "Ikinyabiziga gitwara ba mukerarugendo",
+      "Igare ry'umuntu ku giti cye rihagaze",
+      "Akagare ko mu rugo",
+      "Ikinyabiziga kidakoreshwa"
+    ],
+    "answer": "A vehicle transporting tourists",
+    "answer_rw": "Ikinyabiziga gitwara ba mukerarugendo",
+    "explanation": "Article 38(1)(a) includes tourist transport vehicles among the categories covered by the specified higher penalty range.",
+    "explanation_rw": "Ingingo ya 38(1)(a) ivuga ibinyabiziga bitwara ba mukerarugendo mu byiciro bigenerwa ibihano byihariye."
+  },
+  {
+    "id": "traffic_866",
+    "category": "traffic",
+    "question": "What does Article 39 address?",
+    "question_rw": "Ingingo ya 39 ireba iki?",
+    "options": [
+      "Refusing to stop when ordered by an investigator or authorised officer",
+      "Failing to wash a vehicle",
+      "Changing a vehicle's colour",
+      "Buying a new vehicle"
+    ],
+    "options_rw": [
+      "Kwanga guhagarara ubitegetswe n'umugenzacyaha cyangwa umukozi ubifitiye ububasha",
+      "Kutakaraba ikinyabiziga",
+      "Guhindura ibara ry'ikinyabiziga",
+      "Kugura ikinyabiziga gishya"
+    ],
+    "answer": "Refusing to stop when ordered by an investigator or authorised officer",
+    "answer_rw": "Kwanga guhagarara ubitegetswe n'umugenzacyaha cyangwa umukozi ubifitiye ububasha",
+    "explanation": "Article 39 makes it an offence for a driver to refuse to stop after being signalled to do so by an investigator or authorised officer.",
+    "explanation_rw": "Ingingo ya 39 ivuga ko umuyobozi w'ikinyabiziga wanga guhagarara amaze kubisabwa n'umugenzacyaha cyangwa umukozi ubifitiye ububasha aba akoze icyaha."
+  },
+  {
+    "id": "traffic_867",
+    "category": "traffic",
+    "question": "What is the fine range provided by Article 39 for refusing to stop when ordered?",
+    "question_rw": "Ni iyihe ntera y'ihazabu iteganywa n'ingingo ya 39 ku muntu wanze guhagarara abisabwe?",
+    "options": [
+      "FRW 400,000 to FRW 700,000",
+      "FRW 10,000 to FRW 20,000",
+      "FRW 50,000 to FRW 100,000",
+      "FRW 1,000,000 to FRW 2,000,000"
+    ],
+    "options_rw": [
+      "Amafaranga y'u Rwanda 400.000 kugeza kuri 700.000",
+      "Amafaranga y'u Rwanda 10.000 kugeza kuri 20.000",
+      "Amafaranga y'u Rwanda 50.000 kugeza kuri 100.000",
+      "Amafaranga y'u Rwanda 1.000.000 kugeza kuri 2.000.000"
+    ],
+    "answer": "FRW 400,000 to FRW 700,000",
+    "answer_rw": "Amafaranga y'u Rwanda 400.000 kugeza kuri 700.000",
+    "explanation": "Article 39 provides a fine of not less than FRW 400,000 and not more than FRW 700,000 upon conviction.",
+    "explanation_rw": "Ingingo ya 39 iteganya ihazabu itari munsi ya FRW 400.000 ariko itarenze FRW 700.000 iyo umuntu ahamwe n'icyo cyaha."
+  },
+  {
+    "id": "traffic_868",
+    "category": "traffic",
+    "question": "What imprisonment range is provided by Article 39 for refusing to stop when ordered?",
+    "question_rw": "Ni ikihe gihe cy'igifungo giteganywa n'ingingo ya 39 ku muntu wanze guhagarara abisabwe?",
+    "options": [
+      "Three to six months",
+      "One to three days",
+      "Seven to ten years",
+      "One to two weeks"
+    ],
+    "options_rw": [
+      "Amezi atatu kugeza kuri atandatu",
+      "Umunsi umwe kugeza ku minsi itatu",
+      "Imyaka irindwi kugeza ku icumi",
+      "Icyumweru kimwe kugeza kuri bibiri"
+    ],
+    "answer": "Three to six months",
+    "answer_rw": "Amezi atatu kugeza kuri atandatu",
+    "explanation": "Article 39 provides imprisonment for a term of not less than three months and not more than six months.",
+    "explanation_rw": "Ingingo ya 39 iteganya igifungo kitari munsi y'amezi atatu ariko kitarengeje amezi atandatu."
+  },
+  {
+    "id": "traffic_869",
+    "category": "traffic",
+    "question": "Under Article 40, what offence is committed by a person who drives a motor vehicle without a driving licence?",
+    "question_rw": "Dukurikije ingingo ya 40, ni ikihe cyaha umuntu aba akoze iyo atwaye ikinyabiziga kigendeshwa na moteri nta ruhushya rwo kug itwara afite?",
+    "options": [
+      "Driving a motor vehicle without a driving licence",
+      "Driving with a valid licence",
+      "Registering a vehicle correctly",
+      "Attending an authorised driving school"
+    ],
+    "options_rw": [
+      "Gutwara ikinyabiziga kigendeshwa na moteri nta ruhushya rwo kug itwara afite",
+      "Gutwara ikinyabiziga afite uruhushya rwemewe",
+      "Kwandikisha ikinyabiziga mu buryo bukwiye",
+      "Kwiga mu ishuri ryemewe ryigisha gutwara"
+    ],
+    "answer": "Driving a motor vehicle without a driving licence",
+    "answer_rw": "Gutwara ikinyabiziga kigendeshwa na moteri nta ruhushya rwo kug itwara afite",
+    "explanation": "Article 40(1) states that a motor vehicle driver who drives without a driving licence commits an offence.",
+    "explanation_rw": "Ingingo ya 40(1) ivuga ko umuyobozi utwara ikinyabiziga kigendeshwa na moteri nta ruhushya rwo kug itwara afite aba akoze icyaha."
+  },
+  {
+    "id": "traffic_870",
+    "category": "traffic",
+    "question": "Which range of fines is provided by Article 40(2) for driving a motor vehicle without a driving licence?",
+    "question_rw": "Ni iyihe ntera y'ihazabu iteganywa n'ingingo ya 40(2) ku muntu utwaye ikinyabiziga kigendeshwa na moteri nta ruhushya rwo kug itwara afite?",
+    "options": [
+      "FRW 100,000 to FRW 200,000",
+      "FRW 5,000 to FRW 10,000",
+      "FRW 400,000 to FRW 700,000",
+      "FRW 2,000,000 to FRW 3,000,000"
+    ],
+    "options_rw": [
+      "Amafaranga y'u Rwanda 100.000 kugeza kuri 200.000",
+      "Amafaranga y'u Rwanda 5.000 kugeza kuri 10.000",
+      "Amafaranga y'u Rwanda 400.000 kugeza kuri 700.000",
+      "Amafaranga y'u Rwanda 2.000.000 kugeza kuri 3.000.000"
+    ],
+    "answer": "FRW 100,000 to FRW 200,000",
+    "answer_rw": "Amafaranga y'u Rwanda 100.000 kugeza kuri 200.000",
+    "explanation": "Article 40(2) provides a fine ranging from FRW 100,000 to FRW 200,000, together with the imprisonment terms specified in that paragraph, or one of those penalties.",
+    "explanation_rw": "Ingingo ya 40(2) iteganya ihazabu iri hagati ya FRW 100.000 na FRW 200.000, hamwe n'igifungo giteganywa muri iyo ngingo, cyangwa kimwe muri ibyo bihano."
+  },
+  {
+    "id": "traffic_871",
+    "category": "traffic",
+    "question": "Who conducts investigations into road traffic offences under Article 41(1)?",
+    "question_rw": "Ni nde ukora iperereza ku byaha bihungabanya umutekano wo mu muhanda hakurikijwe ingingo ya 41(1)?",
+    "options": [
+      "An investigator",
+      "Any vehicle passenger",
+      "A private driving-school student",
+      "A vehicle salesperson"
+    ],
+    "options_rw": [
+      "Umugenzacyaha",
+      "Umugenzi uwo ari we wese",
+      "Umunyeshuri wigenga w'ishuri ryigisha gutwara",
+      "Umucuruzi w'ibinyabiziga"
+    ],
+    "answer": "An investigator",
+    "answer_rw": "Umugenzacyaha",
+    "explanation": "Article 41(1) states that investigations into road traffic offences are conducted by an investigator.",
+    "explanation_rw": "Ingingo ya 41(1) ivuga ko iperereza ku byaha bihungabanya umutekano wo mu muhanda rikorwa n'umugenzacyaha."
+  }
+]
 
 
