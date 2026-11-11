@@ -872,13 +872,17 @@
         );
       }
 
-      const normalized = [];
-      const seenIds = new Set();
+      
+const normalized = [];
+const seenIds = new Map();
+const seenQuestionTexts = new Map();
 
-      let invalidCount = 0;
-      let duplicateCount = 0;
+let invalidCount = 0;
+let duplicateCount = 0;
+let repeatedTextCount = 0;
 
-      const errors = [];
+const errors = [];
+
 
       rawQuestions.forEach((raw, index) => {
         const result = normalizeQuestion(raw, index);
