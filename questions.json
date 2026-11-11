@@ -3598,12 +3598,12 @@
       "Nine months",
       "Twelve months"
     ],
-    "options_rw": [
-      "Amezi atatu",
-      "Amezi atandatu",
-      Amezi icyenda",
-      "Amezi cumi n’abiri"
-    ],
+"options_rw": [
+  "Amezi atatu",
+  "Amezi atandatu",
+  "Amezi icyenda",
+  "Amezi cumi n'abiri"
+],
     "answer": "Twelve months",
     "answer_rw": "Amezi cumi n’abiri",
     "explanation": "Article 28(2) sets a minimum waiting period of 12 months from the court’s revocation decision.",
