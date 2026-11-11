@@ -6886,7 +6886,160 @@
     "answer_rw": "Umugenzacyaha",
     "explanation": "Article 41(1) states that investigations into road traffic offences are conducted by an investigator.",
     "explanation_rw": "Ingingo ya 41(1) ivuga ko iperereza ku byaha bihungabanya umutekano wo mu muhanda rikorwa n'umugenzacyaha."
-  }
+  },
+ {
+  "id": "traffic_872",
+  "category": "traffic",
+  "question": "Which authority has exclusive competence to oversee and monitor driving schools in Rwanda?",
+  "question_rw": "Ni uruhe rwego rufite ububasha bwihariye bwo kugenzura no gukurikirana amashuri yigisha gutwara ibinyabiziga mu Rwanda?",
+  "options": [
+    "The organ in charge of road safety",
+    "The school owners' association",
+    "The local administrative authorities",
+    "The vehicle inspection centres"
+  ],
+  "options_rw": [
+    "Urwego rushinzwe umutekano wo mu muhanda",
+    "Ihuriro ry'abafite amashuri yigisha gutwara",
+    "Inzego z'ubuyobozi bw'ibanze",
+    "Ibigo bisuzuma ibinyabiziga"
+  ],
+  "answer": "The organ in charge of road safety",
+  "answer_rw": "Urwego rushinzwe umutekano wo mu muhanda",
+  "explanation": "Article 24(2) gives the organ in charge of road safety exclusive competence to oversee and monitor driving schools.",
+  "explanation_rw": "Ingingo ya 24(2) iha urwego rushinzwe umutekano wo mu muhanda ububasha bwihariye bwo kugenzura no gukurikirana amashuri yigisha gutwara ibinyabiziga."
+},
+{
+  "id": "traffic_873",
+  "category": "traffic",
+  "question": "Under Article 25, what is the main purpose of the merit and demerit point system for motor vehicle drivers?",
+  "question_rw": "Dukurikije Ingingo ya 25, ni iyihe ntego nyamukuru y'uburyo bwo gukurikirana abashoferi hakoreshejwe amanota y'imyitwarire?",
+  "options": [
+    "To monitor drivers' road traffic-related behaviour",
+    "To determine the market value of vehicles",
+    "To replace the driving licence examination",
+    "To register vehicle ownership transfers"
+  ],
+  "options_rw": [
+    "Gukurikirana imyitwarire y'abashoferi mu ikoreshwa ry'umuhanda",
+    "Kugena agaciro k'ibinyabiziga ku isoko",
+    "Gusimbura ikizamini cyo kubona uruhushya rwo gutwara",
+    "Kwandika ihererekanya ry'ibinyabiziga"
+  ],
+  "answer": "To monitor drivers' road traffic-related behaviour",
+  "answer_rw": "Gukurikirana imyitwarire y'abashoferi mu ikoreshwa ry'umuhanda",
+  "explanation": "Article 25 establishes a merit and demerit point system used to monitor the road traffic-related behaviour of motor vehicle drivers.",
+  "explanation_rw": "Ingingo ya 25 ishyiraho uburyo bw'amanota meza n'amanota mabi bugamije gukurikirana imyitwarire y'abayobozi b'ibinyabiziga mu ikoreshwa ry'umuhanda."
+},
+{
+  "id": "traffic_874",
+  "category": "traffic",
+  "question": "Under Article 27, what is the consequence of a driving licence being suspended on grounds of the driver's road traffic-related behaviour?",
+  "question_rw": "Dukurikije Ingingo ya 27, bigenda bite iyo uruhushya rwo gutwara ikinyabiziga ruhagaritswe by'agateganyo kubera imyitwarire y'umuyobozi mu muhanda?",
+  "options": [
+    "The driver is not allowed to drive in Rwanda during the suspension",
+    "The driver may drive only outside urban areas",
+    "The driver may continue driving with a foreign licence",
+    "The driver may drive if accompanied by another licence holder"
+  ],
+  "options_rw": [
+    "Umuyobozi ntiyemerewe gutwara ikinyabiziga mu Rwanda mu gihe cy'ihagarikwa",
+    "Umuyobozi yemerewe gutwara gusa hanze y'imijyi",
+    "Umuyobozi yemerewe gukomeza gutwara akoresheje uruhushya rw'amahanga",
+    "Umuyobozi yemerewe gutwara aherekejwe n'undi ufite uruhushya"
+  ],
+  "answer": "The driver is not allowed to drive in Rwanda during the suspension",
+  "answer_rw": "Umuyobozi ntiyemerewe gutwara ikinyabiziga mu Rwanda mu gihe cy'ihagarikwa",
+  "explanation": "Article 27 provides that a driver whose licence is suspended on behavioural grounds cannot drive in Rwanda during the suspension, including by relying on a foreign driving licence.",
+  "explanation_rw": "Ingingo ya 27 iteganya ko umuyobozi wahagarikiwe uruhushya kubera imyitwarire atemerewe gutwara ikinyabiziga mu Rwanda mu gihe cy'ihagarikwa, ndetse n'iyo yaba afite uruhushya rw'amahanga."
+},
+{
+  "id": "traffic_875",
+  "category": "traffic",
+  "question": "After a court revokes a person's driving licence under Article 28, when may that person retake the driving test?",
+  "question_rw": "Iyo urukiko rwatesheje umuntu agaciro uruhushya rwo gutwara ikinyabiziga hakurikijwe Ingingo ya 28, ashobora kongera gukora ikizamini nyuma y'igihe kingana iki?",
+  "options": [
+    "After 3 months",
+    "After 6 months",
+    "After 12 months",
+    "After 24 months"
+  ],
+  "options_rw": [
+    "Nyuma y'amezi 3",
+    "Nyuma y'amezi 6",
+    "Nyuma y'amezi 12",
+    "Nyuma y'amezi 24"
+  ],
+  "answer": "After 12 months",
+  "answer_rw": "Nyuma y'amezi 12",
+  "explanation": "Article 28 provides that a person whose driving licence has been revoked by a court cannot retake the driving test until 12 months have elapsed after the revocation.",
+  "explanation_rw": "Ingingo ya 28 iteganya ko umuntu wambuwe uruhushya rwo gutwara ikinyabiziga n'urukiko atemerewe kongera gukora ikizamini kugeza hashize amezi 12 uruhushya ruteshejwe agaciro."
+},
+{
+  "id": "traffic_876",
+  "category": "traffic",
+  "question": "When a motor vehicle is sold or donated, what must happen to the ownership transfer under Article 30?",
+  "question_rw": "Iyo ikinyabiziga kigendeshwa na moteri kigurishijwe cyangwa gitanzwe nk'impano, ni iki kigomba gukorwa ku ihererekanya ry'uburenganzira bwo kucyegukana hakurikijwe Ingingo ya 30?",
+  "options": [
+    "The transfer must be recorded by the registration authority electronically",
+    "The buyer must keep the previous owner's details permanently",
+    "The vehicle must automatically be registered in another country",
+    "The transfer is valid only after a new driving test"
+  ],
+  "options_rw": [
+    "Ihererekanya rigomba kwandikwa mu buryo bw'ikoranabuhanga n'urwego rushinzwe iyandikisha",
+    "Umuguzi agomba kugumana burundu amakuru ya nyiracyo wa mbere",
+    "Ikinyabiziga kigomba guhita cyandikwa mu kindi gihugu",
+    "Ihererekanya ryemezwa ari uko habanje gukorwa ikizamini gishya cyo gutwara"
+  ],
+  "answer": "The transfer must be recorded by the registration authority electronically",
+  "answer_rw": "Ihererekanya rigomba kwandikwa mu buryo bw'ikoranabuhanga n'urwego rushinzwe iyandikisha",
+  "explanation": "Article 30 provides for the registration authority to record the transfer of motor vehicle ownership electronically.",
+  "explanation_rw": "Ingingo ya 30 iteganya ko urwego rushinzwe iyandikisha ry'ibinyabiziga rwandika ihererekanya ry'uburenganzira bwo kwegukana ikinyabiziga mu buryo bw'ikoranabuhanga."
+},
+{
+  "id": "traffic_877",
+  "category": "traffic",
+  "question": "Who is authorised to carry out the technical inspection of a motor vehicle under Article 31?",
+  "question_rw": "Dukurikije Ingingo ya 31, ni nde wemerewe gukora isuzuma rya tekiniki ry'ikinyabiziga kigendeshwa na moteri?",
+  "options": [
+    "An authorised technical inspection centre",
+    "Any vehicle owner",
+    "Any driving school",
+    "Any vehicle spare-parts shop"
+  ],
+  "options_rw": [
+    "Ikigo cyemerewe gukora isuzuma rya tekiniki",
+    "Nyir'ikinyabiziga wese",
+    "Ishuri iryo ari ryo ryose ryigisha gutwara",
+    "Iduka iryo ari ryo ryose ricuruza ibikoresho by'ibinyabiziga"
+  ],
+  "answer": "An authorised technical inspection centre",
+  "answer_rw": "Ikigo cyemerewe gukora isuzuma rya tekiniki",
+  "explanation": "Article 31 requires technical inspection to be carried out by an authorised centre, with the applicable inspection periods and exemptions determined by a Ministerial Order.",
+  "explanation_rw": "Ingingo ya 31 isaba ko isuzuma rya tekiniki rikorerwa mu kigo kibifitiye uburenganzira. Ibihe isuzuma rikorerwamo n'ibidasabwa kurisuzumwa biteganywa n'Iteka rya Minisitiri."
+},
+{
+  "id": "traffic_878",
+  "category": "traffic",
+  "question": "Under Article 6, what happens when an authorised officer gives a road-safety instruction that conflicts with an existing traffic sign or signal?",
+  "question_rw": "Dukurikije Ingingo ya 6, bigenda bite iyo umukozi ubifitiye ububasha atanze amabwiriza y'umutekano wo mu muhanda anyuranyije n'icyapa cyangwa ikimenyetso gisanzwe kiri aho?",
+  "options": [
+    "The authorised officer's instruction takes precedence in that situation",
+    "The driver may choose whichever instruction is easier",
+    "The existing traffic sign always takes precedence",
+    "All road users must stop until the sign is removed"
+  ],
+  "options_rw": [
+    "Amabwiriza y'umukozi ubifitiye ububasha ni yo akurikizwa muri icyo gihe",
+    "Umuyobozi ashobora guhitamo amabwiriza amworoheye",
+    "Icyapa gisanzwe ni cyo gihora kigomba gukurikizwa",
+    "Abakoresha umuhanda bose bagomba guhagarara kugeza icyapa gikuwemo"
+  ],
+  "answer": "The authorised officer's instruction takes precedence in that situation",
+  "answer_rw": "Amabwiriza y'umukozi ubifitiye ububasha ni yo akurikizwa muri icyo gihe",
+  "explanation": "Article 6(3) provides that instructions issued by an authorised officer for road safety take precedence over traffic signs and signals in that particular situation.",
+  "explanation_rw": "Ingingo ya 6(3) iteganya ko amabwiriza atanzwe n'umukozi ubifitiye ububasha agamije umutekano wo mu muhanda aruta ibyapa n'ibimenyetso bisanzwe muri icyo gihe."
+}
 ]
-
 
