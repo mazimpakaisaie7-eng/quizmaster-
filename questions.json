@@ -3059,5 +3059,886 @@
     "explanation": "Article 22(3) requires the auctioneer to inform the owner or legally authorised representative within five days from the date of the auction.",
     "explanation_rw": "Ingingo ya 22(3) isaba uwagurishije ikinyabiziga mu cyamunara kumenyesha nyiracyo cyangwa umuhagarariye wemewe n'amategeko mu minsi itanu uhereye ku munsi cyamunara yabereyeho."
   },
-  
+  {
+    "id": "traffic_747",
+    "category": "traffic",
+    "question": "A driver holds a valid licence, but it authorises a different vehicle category. What does Article 23 require?",
+    "question_rw": "Umuyobozi afite uruhushya rukiriho, ariko rutamwemerera gutwara icyo cyiciro cy’ikinyabiziga. Ingingo ya 23 imusaba iki?",
+    "options": [
+      "Drive if the owner agrees",
+      "Obtain a licence for that vehicle",
+      "Carry the vehicle registration card",
+      "Request permission from passengers"
+    ],
+    "options_rw": [
+      "Gutwara nyiracyo abyemeye",
+      "Kugira uruhushya rw’icyo kinyabiziga",
+      "Kwitwaza icyemezo cy’iyandikwa",
+      "Gusaba uruhushya abagenzi"
+    ],
+    "answer": "Obtain a licence for that vehicle",
+    "answer_rw": "Kugira uruhushya rw’icyo kinyabiziga",
+    "explanation": "Article 23 requires a licence authorising the specific motor vehicle being driven.",
+    "explanation_rw": "Ingingo ya 23 isaba uruhushya rwemerera umuntu gutwara ubwoko bw’ikinyabiziga arimo gutwara."
+  },
+  {
+    "id": "traffic_748",
+    "category": "traffic",
+    "question": "Who has exclusive authority to conduct motor vehicle driving tests and issue the corresponding licences?",
+    "question_rw": "Ni uruhe rwego rufite ububasha bwihariye bwo gukora ibizamini byo gutwara ibinyabiziga no gutanga impushya zabyo?",
+    "options": [
+      "Registered driving schools",
+      "Local government offices",
+      "The road safety organ",
+      "Private vehicle owners"
+    ],
+    "options_rw": [
+      "Amashuri yigisha gutwara",
+      "Ibiro by’inzego z’ibanze",
+      "Urwego rushinzwe umutekano wo mu muhanda",
+      "Ba nyir’ibinyabiziga ku giti cyabo"
+    ],
+    "answer": "The road safety organ",
+    "answer_rw": "Urwego rushinzwe umutekano wo mu muhanda",
+    "explanation": "Article 23(2) gives this exclusive competence to the organ in charge of road safety.",
+    "explanation_rw": "Ingingo ya 23(2) iha ubwo bubasha bwihariye urwego rushinzwe umutekano wo mu muhanda."
+  },
+  {
+    "id": "traffic_749",
+    "category": "traffic",
+    "question": "A person passes a driving test but asks a private school to issue the official licence. Which rule applies?",
+    "question_rw": "Umuntu atsindiye ikizamini cyo gutwara, ariko agasaba ishuri ryigenga kumuha uruhushya rwemewe. Ni irihe tegeko rikurikizwa?",
+    "options": [
+      "The school may issue it",
+      "The instructor may sign it",
+      "The vehicle owner may issue it",
+      "The road safety organ issues it"
+    ],
+    "options_rw": [
+      "Ishuri rishobora kurutanga",
+      "Umwigisha ashobora kurushyiraho umukono",
+      "Nyir’ikinyabiziga ashobora kurutanga",
+      "Urwego rushinzwe umutekano wo mu muhanda ni rwo rurutanga"
+    ],
+    "answer": "The road safety organ issues it",
+    "answer_rw": "Urwego rushinzwe umutekano wo mu muhanda ni rwo rurutanga",
+    "explanation": "The law assigns the issuance of driving licences to the road safety organ.",
+    "explanation_rw": "Itegeko riha urwego rushinzwe umutekano wo mu muhanda ububasha bwo gutanga impushya."
+  },
+  {
+    "id": "traffic_750",
+    "category": "traffic",
+    "question": "Which instrument determines the driving-test procedure, licence format and issuance procedure?",
+    "question_rw": "Ni iki kigena uburyo ikizamini cyo gutwara gikorwa, imiterere y’uruhushya n’uburyo rutangwa?",
+    "options": [
+      "A ministerial order",
+      "A driving school notice",
+      "A vehicle sale agreement",
+      "A local council decision"
+    ],
+    "options_rw": [
+      "Iteka rya Minisitiri",
+      "Itangazo ry’ishuri ryo gutwara",
+      "Amasezerano yo kugura imodoka",
+      "Icyemezo cy’inama y’umudugudu"
+    ],
+    "answer": "A ministerial order",
+    "answer_rw": "Iteka rya Minisitiri",
+    "explanation": "Article 23(3) assigns these detailed procedures to a Ministerial Order.",
+    "explanation_rw": "Ingingo ya 23(3) ivuga ko ibisobanuro birambuye bigenwa n’iteka rya Minisitiri."
+  },
+  {
+    "id": "traffic_751",
+    "category": "traffic",
+    "question": "A person teaches driving independently without owning an authorised driving school. Which statement matches Article 24?",
+    "question_rw": "Umuntu yigisha gutwara yigenga, adafite ishuri ryigisha gutwara kandi ryahawe uburenganzira. Ni iki gihuye n’ingingo ya 24?",
+    "options": [
+      "Teaching is unrestricted",
+      "Only licensed drivers may teach",
+      "Instruction requires an authorised school owner",
+      "A vehicle owner may authorise any instructor"
+    ],
+    "options_rw": [
+      "Kwigisha nta mbogamizi bigira",
+      "Abafite impushya gusa ni bo bigisha",
+      "Kwigisha bisaba nyiri ishuri wabiherewe uburenganzira",
+      "Nyir’imodoka ashobora kwemerera umwigisha uwo ari we wese"
+    ],
+    "answer": "Instruction requires an authorised school owner",
+    "answer_rw": "Kwigisha bisaba nyiri ishuri wabiherewe uburenganzira",
+    "explanation": "Article 24(1) requires driving instruction to be provided by an authorised driving school owner.",
+    "explanation_rw": "Ingingo ya 24(1) isaba ko kwigisha gutwara bikorwa na nyiri ishuri wabiherewe icyemezo."
+  },
+  {
+    "id": "traffic_752",
+    "category": "traffic",
+    "question": "A driving school has permission to operate. Who is responsible for supervising and monitoring it?",
+    "question_rw": "Ishuri ryigisha gutwara ryahawe uburenganzira bwo gukora. Ni uruhe rwego rishinzwe kurigenzura no kurireberera?",
+    "options": [
+      "The school’s students",
+      "The road safety organ",
+      "The vehicle registration office",
+      "The local transport companies"
+    ],
+    "options_rw": [
+      "Abanyeshuri baryigamo",
+      "Urwego rushinzwe umutekano wo mu muhanda",
+      "Ibiro by’iyandikwa ry’ibinyabiziga",
+      "Ibigo by’ubwikorezi byo mu karere"
+    ],
+    "answer": "The road safety organ",
+    "answer_rw": "Urwego rushinzwe umutekano wo mu muhanda",
+    "explanation": "Article 24(2) gives the road safety organ exclusive competence to oversee and monitor driving schools.",
+    "explanation_rw": "Ingingo ya 24(2) iha urwego rushinzwe umutekano wo mu muhanda ububasha bwo kugenzura amashuri yigisha gutwara."
+  },
+  {
+    "id": "traffic_753",
+    "category": "traffic",
+    "question": "A person wants to establish a driving school. Which legal instrument sets the authorisation requirements and school operations?",
+    "question_rw": "Umuntu ashaka gushinga ishuri ryigisha gutwara. Ni iki kigena ibisabwa kugira ngo ryemererwe n’imikorere yaryo?",
+    "options": [
+      "A Ministerial Order",
+      "A private school contract",
+      "A vehicle inspection report",
+      "A district traffic notice"
+    ],
+    "options_rw": [
+      "Iteka rya Minisitiri",
+      "Amasezerano y’ishuri yigenga",
+      "Raporo y’isuzuma ry’imodoka",
+      "Itangazo ry’akarere ku muhanda"
+    ],
+    "answer": "A Ministerial Order",
+    "answer_rw": "Iteka rya Minisitiri",
+    "explanation": "Article 24(3) assigns these requirements and operational details to a Ministerial Order.",
+    "explanation_rw": "Ingingo ya 24(3) ivuga ko ibisabwa n’imikorere y’ishuri bigenwa n’iteka rya Minisitiri."
+  },
+  {
+    "id": "traffic_754",
+    "category": "traffic",
+    "question": "What is the main purpose of the merit and demerit point system established under Article 25?",
+    "question_rw": "Ni iyihe ntego nyamukuru y’uburyo bw’amanota meza n’amabi yashyizweho n’ingingo ya 25?",
+    "options": [
+      "To rank driving schools",
+      "To assess vehicle market value",
+      "To monitor licensed drivers’ road behaviour",
+      "To determine passenger numbers"
+    ],
+    "options_rw": [
+      "Gushyira amashuri ku rutonde",
+      "Kugena agaciro k’imodoka ku isoko",
+      "Gukurikirana imyitwarire y’abatwaye bafite impushya",
+      "Kugena umubare w’abagenzi"
+    ],
+    "answer": "To monitor licensed drivers’ road behaviour",
+    "answer_rw": "Gukurikirana imyitwarire y’abatwaye bafite impushya",
+    "explanation": "Article 25 establishes the point system to monitor licensed motor vehicle drivers’ road-related behaviour.",
+    "explanation_rw": "Ingingo ya 25 ishyiraho amanota agamije gukurikirana imyitwarire y’abafite impushya zo gutwara."
+  },
+  {
+    "id": "traffic_755",
+    "category": "traffic",
+    "question": "Which drivers are monitored through the merit and demerit point system under Article 25?",
+    "question_rw": "Ni abahe bayobozi b’ibinyabiziga bakurikiranwa hakoreshejwe amanota meza n’amabi ateganywa n’ingingo ya 25?",
+    "options": [
+      "All pedestrians",
+      "Licensed motor vehicle drivers",
+      "All vehicle passengers",
+      "Driving school applicants"
+    ],
+    "options_rw": [
+      "Abanyamaguru bose",
+      "Abafite impushya zo gutwara ibinyabiziga bifite moteri",
+      "Abagenzi bose bari mu modoka",
+      "Abasaba kwiga gutwara"
+    ],
+    "answer": "Licensed motor vehicle drivers",
+    "answer_rw": "Abafite impushya zo gutwara ibinyabiziga bifite moteri",
+    "explanation": "Article 25 specifically concerns licensed motor vehicle drivers.",
+    "explanation_rw": "Ingingo ya 25 ireba by’umwihariko abafite impushya zo gutwara ibinyabiziga bifite moteri."
+  },
+  {
+    "id": "traffic_756",
+    "category": "traffic",
+    "question": "Who monitors a licensed driver’s behaviour through the point system?",
+    "question_rw": "Ni uruhe rwego rukurikirana imyitwarire y’umuntu ufite uruhushya hakoreshejwe uburyo bw’amanota?",
+    "options": [
+      "The driving school",
+      "The vehicle seller",
+      "The road safety organ",
+      "The passenger association"
+    ],
+    "options_rw": [
+      "Ishuri ryigisha gutwara",
+      "Umucuruzi w’imodoka",
+      "Urwego rushinzwe umutekano wo mu muhanda",
+      "Ishyirahamwe ry’abagenzi"
+    ],
+    "answer": "The road safety organ",
+    "answer_rw": "Urwego rushinzwe umutekano wo mu muhanda",
+    "explanation": "Article 25(2) assigns monitoring through merit and demerit points to the road safety organ.",
+    "explanation_rw": "Ingingo ya 25(2) iha urwego rushinzwe umutekano wo mu muhanda inshingano zo gukurikirana ayo manota."
+  },
+  {
+    "id": "traffic_757",
+    "category": "traffic",
+    "question": "The exact method for calculating merit and demerit points is to be determined by which instrument?",
+    "question_rw": "Uburyo nyabwo bwo kubara amanota meza n’amabi bugomba kugenwa n’iki?",
+    "options": [
+      "A Ministerial Order",
+      "A driving school handbook",
+      "A vehicle insurance policy",
+      "A road user agreement"
+    ],
+    "options_rw": [
+      "Iteka rya Minisitiri",
+      "Igitabo cy’ishuri ryo gutwara",
+      "Amasezerano y’ubwishingizi bw’imodoka",
+      "Amasezerano y’abakoresha umuhanda"
+    ],
+    "answer": "A Ministerial Order",
+    "answer_rw": "Iteka rya Minisitiri",
+    "explanation": "Article 25(3) leaves the calculation procedures to a Ministerial Order.",
+    "explanation_rw": "Ingingo ya 25(3) ishyira uburyo bwo kubara amanota mu nshingano z’iteka rya Minisitiri."
+  },
+  {
+    "id": "traffic_758",
+    "category": "traffic",
+    "question": "A driver has poor eyesight that is not corrected by suitable lenses. What may the road safety organ do under Article 26?",
+    "question_rw": "Umuyobozi afite ikibazo cyo kutabona neza kidakosorwa n’indorerwamo ziboneye. Urwego rushinzwe umutekano wo mu muhanda rushobora gukora iki hakurikijwe ingingo ya 26?",
+    "options": [
+      "Automatically issue a new licence",
+      "Ignore the medical condition",
+      "Disqualify the person or suspend the licence",
+      "Transfer the licence to another driver"
+    ],
+    "options_rw": [
+      "Guhita rumuha urundi ruhushya",
+      "Kwirengagiza ikibazo cy’ubuzima",
+      "Kutamwemerera ikizamini cyangwa guhagarika uruhushya",
+      "Kwandika uruhushya ku wundi muntu"
+    ],
+    "answer": "Disqualify the person or suspend the licence",
+    "answer_rw": "Kutamwemerera ikizamini cyangwa guhagarika uruhushya",
+    "explanation": "Article 26(1) includes insufficient vision not corrected with appropriate lenses among the health grounds.",
+    "explanation_rw": "Ingingo ya 26(1) ivuga kutabona bihagije bidakosorwa n’indorerwamo ziboneye nk’impamvu ishobora gutuma umuntu atemererwa ikizamini cyangwa agahagarikirwa uruhushya."
+  },
+  {
+    "id": "traffic_759",
+    "category": "traffic",
+    "question": "Which hearing condition is specifically listed as a possible health ground under Article 26?",
+    "question_rw": "Ni ikihe kibazo cyo kumva kivugwa mu ngingo ya 26 nk’impamvu ishobora gutuma umuntu atemererwa ikizamini cyangwa agahagarikirwa uruhushya?",
+    "options": [
+      "Temporary ear discomfort",
+      "Severe hearing loss in both ears",
+      "Mild noise sensitivity",
+      "Occasional ringing in one ear"
+    ],
+    "options_rw": [
+      "Kubabara ugutwi by’akanya gato",
+      "Kutumva cyangwa kumva buhoro bikabije mu matwi yombi",
+      "Kutihanganira urusaku ruke",
+      "Kumva urusaku mu gutwi kumwe rimwe na rimwe"
+    ],
+    "answer": "Severe hearing loss in both ears",
+    "answer_rw": "Kutumva cyangwa kumva buhoro bikabije mu matwi yombi",
+    "explanation": "Article 26(1)(b) refers to deafness or severe bilateral hearing loss.",
+    "explanation_rw": "Ingingo ya 26(1)(b) ivuga kutumva cyangwa kumva buhoro bikabije mu matwi yombi."
+  },
+  {
+    "id": "traffic_760",
+    "category": "traffic",
+    "question": "A medical condition severely limits the movement of a driver’s body parts. How does Article 26 treat this condition?",
+    "question_rw": "Indwara ibuza cyane umuyobozi w’ikinyabiziga kunyeganyeza ingingo z’umubiri. Ingingo ya 26 ifata ite iki kibazo?",
+    "options": [
+      "It is a possible health ground",
+      "It is only a vehicle defect",
+      "It has no licensing relevance",
+      "It automatically changes vehicle ownership"
+    ],
+    "options_rw": [
+      "Ni impamvu ishobora gushingirwaho ku buzima",
+      "Ni inenge y’ikinyabiziga gusa",
+      "Ntaho ihuriye n’impushya",
+      "Ihita ihindura nyir’ikinyabiziga"
+    ],
+    "answer": "It is a possible health ground",
+    "answer_rw": "Ni impamvu ishobora gushingirwaho ku buzima",
+    "explanation": "Article 26(1)(c) includes a physical condition that severely limits the mobility of body parts.",
+    "explanation_rw": "Ingingo ya 26(1)(c) ivuga indwara ibuza cyane ingingo z’umubiri kuyega neza."
+  },
+  {
+    "id": "traffic_761",
+    "category": "traffic",
+    "question": "Which additional health condition is listed in Article 26 besides vision, hearing and physical mobility problems?",
+    "question_rw": "Uretse ibibazo byo kubona, kumva no kunyeganyeza ingingo z’umubiri, ni ikihe kindi kibazo cy’ubuzima kivugwa mu ngingo ya 26?",
+    "options": [
+      "A skin condition",
+      "A dental condition",
+      "A condition affecting normal brain function",
+      "A temporary stomach illness"
+    ],
+    "options_rw": [
+      "Indwara y’uruhu",
+      "Indwara y’amenyo",
+      "Indwara ihungabanya imikorere isanzwe y’ubwonko",
+      "Indwara y’igifu y’akanya gato"
+    ],
+    "answer": "A condition affecting normal brain function",
+    "answer_rw": "Indwara ihungabanya imikorere isanzwe y’ubwonko",
+    "explanation": "Article 26(1)(d) includes a medical condition that impairs normal brain function.",
+    "explanation_rw": "Ingingo ya 26(1)(d) ivuga uburwayi buhungabanya imikorere isanzwe y’ubwonko."
+  },
+  {
+    "id": "traffic_762",
+    "category": "traffic",
+    "question": "What evidence must support suspension of a driving licence on health grounds under Article 26(2)?",
+    "question_rw": "Ni iki kigomba gushingirwaho mu guhagarika uruhushya rwo gutwara ikinyabiziga kubera impamvu z’ubuzima hakurikijwe ingingo ya 26(2)?",
+    "options": [
+      "A neighbour’s statement",
+      "A recognised doctor’s report",
+      "A driving instructor’s opinion",
+      "A vehicle inspection certificate"
+    ],
+    "options_rw": [
+      "Ubuhamya bw’umuturanyi",
+      "Raporo ya muganga wemewe",
+      "Igitekerezo cy’umwigisha wo gutwara",
+      "Icyemezo cy’isuzuma ry’imodoka"
+    ],
+    "answer": "A recognised doctor’s report",
+    "answer_rw": "Raporo ya muganga wemewe",
+    "explanation": "Article 26(2) requires a report issued by a recognised medical doctor for suspension on health grounds.",
+    "explanation_rw": "Ingingo ya 26(2) isaba raporo yatanzwe na muganga wemewe kugira ngo uruhushya ruhagarikwe kubera impamvu z’ubuzima."
+  },
+  {
+    "id": "traffic_763",
+    "category": "traffic",
+    "question": "A driver’s health condition has been corrected. What document can support restoration of the licence under Article 26(3)?",
+    "question_rw": "Ikibazo cy’ubuzima cyatumye umuyobozi ahagarikirwa uruhushya cyarakosowe. Ni iyihe nyandiko ishobora gutuma asubizwa uburenganzira?",
+    "options": [
+      "A letter from the vehicle owner",
+      "A certificate from a recognised doctor",
+      "A statement from a driving student",
+      "A new vehicle registration card"
+    ],
+    "options_rw": [
+      "Ibaruwa ya nyir’ikinyabiziga",
+      "Icyemezo cya muganga wemewe",
+      "Ubuhamya bw’umunyeshuri wigishwa gutwara",
+      "Icyemezo gishya cy’iyandikwa ry’imodoka"
+    ],
+    "answer": "A certificate from a recognised doctor",
+    "answer_rw": "Icyemezo cya muganga wemewe",
+    "explanation": "Article 26(3) requires medical certification that the condition has been cured or corrected.",
+    "explanation_rw": "Ingingo ya 26(3) isaba icyemezo cya muganga wemewe kigaragaza ko uburwayi bwakize cyangwa bwakosowe."
+  },
+  {
+    "id": "traffic_764",
+    "category": "traffic",
+    "question": "A driver’s licence has been suspended on health grounds. May the driver continue driving while waiting for reinstatement?",
+    "question_rw": "Uruhushya rw’umuyobozi rwahagaritswe kubera impamvu z’ubuzima. Ashobora gukomeza gutwara ategereje ko rusubizwa?",
+    "options": [
+      "Yes, on familiar roads",
+      "Yes, with passengers’ consent",
+      "No, until the suspension is lifted",
+      "Yes, during daylight only"
+    ],
+    "options_rw": [
+      "Yego, mu mihanda asanzwe azi",
+      "Yego, abagenzi babyemeye",
+      "Oya, kugeza igihe ruhagarikwa rikuririweho",
+      "Yego, ku manywa gusa"
+    ],
+    "answer": "No, until the suspension is lifted",
+    "answer_rw": "Oya, kugeza igihe ruhagarikwa rikuririweho",
+    "explanation": "Article 26(5) prohibits driving while the licence remains suspended under that Article.",
+    "explanation_rw": "Ingingo ya 26(5) ibuza gutwara ikinyabiziga igihe uruhushya rugihagaritswe hakurikijwe iyo ngingo."
+  },
+  {
+    "id": "traffic_765",
+    "category": "traffic",
+    "question": "Who determines the procedures and severity levels used for health-based driving-test disqualification or licence suspension?",
+    "question_rw": "Ni nde ugena uburyo n’urwego rw’uburemere bw’ibibazo by’ubuzima bishingirwaho mu kwima ikizamini cyangwa guhagarika uruhushya?",
+    "options": [
+      "The vehicle inspection centre",
+      "A Ministerial Order",
+      "The driving school owner",
+      "The vehicle insurance company"
+    ],
+    "options_rw": [
+      "Ikigo gisuzuma imodoka",
+      "Iteka rya Minisitiri",
+      "Nyiri ishuri ryigisha gutwara",
+      "Ikigo cy’ubwishingizi bw’imodoka"
+    ],
+    "answer": "A Ministerial Order",
+    "answer_rw": "Iteka rya Minisitiri",
+    "explanation": "Article 26(4) assigns these procedures and severity levels to a Ministerial Order.",
+    "explanation_rw": "Ingingo ya 26(4) ivuga ko uburyo n’ibipimo by’uburemere bigenwa n’iteka rya Minisitiri."
+  },
+  {
+    "id": "traffic_766",
+    "category": "traffic",
+    "question": "A driver’s licence is suspended because of road traffic behaviour. Which authority may impose this suspension under Article 27?",
+    "question_rw": "Uruhushya rw’umuyobozi ruhagaritswe kubera imyitwarire ye mu muhanda. Ni uruhe rwego rushobora gufata icyo cyemezo hakurikijwe ingingo ya 27?",
+    "options": [
+      "The road safety organ",
+      "The vehicle dealer",
+      "The driving school",
+      "The passenger association"
+    ],
+    "options_rw": [
+      "Urwego rushinzwe umutekano wo mu muhanda",
+      "Umucuruzi w’ibinyabiziga",
+      "Ishuri ryigisha gutwara",
+      "Ishyirahamwe ry’abagenzi"
+    ],
+    "answer": "The road safety organ",
+    "answer_rw": "Urwego rushinzwe umutekano wo mu muhanda",
+    "explanation": "Article 27(1) authorises the road safety organ to suspend a licence on road-behaviour grounds.",
+    "explanation_rw": "Ingingo ya 27(1) iha urwego rushinzwe umutekano wo mu muhanda ububasha bwo guhagarika uruhushya kubera imyitwarire yo mu muhanda."
+  },
+  {
+    "id": "traffic_767",
+    "category": "traffic",
+    "question": "A driver’s Rwandan licence is suspended for road behaviour, but the driver also holds a foreign licence. May the foreign licence be used in Rwanda during suspension?",
+    "question_rw": "Uruhushya rw’Umunyarwanda ruhagaritswe kubera imyitwarire yo mu muhanda, ariko afite n’uruhushya rwo mu kindi gihugu. Ashobora kurukoresha mu Rwanda igihe uruhushya ruhagaritswe?",
+    "options": [
+      "Yes, if the foreign licence is valid",
+      "Yes, outside the driver’s district",
+      "No, the suspension applies in Rwanda",
+      "Yes, with a passenger present"
+    ],
+    "options_rw": [
+      "Yego, niba urwo mu mahanga rukiriho",
+      "Yego, ari hanze y’akarere atuyemo",
+      "Oya, guhagarikwa kumubuza gutwara mu Rwanda",
+      "Yego, iyo hari umugenzi umuherekeje"
+    ],
+    "answer": "No, the suspension applies in Rwanda",
+    "answer_rw": "Oya, guhagarikwa kumubuza gutwara mu Rwanda",
+    "explanation": "Article 27(2) prohibits driving in Rwanda during this suspension, even with a foreign licence.",
+    "explanation_rw": "Ingingo ya 27(2) ibuza gutwara mu Rwanda igihe uruhushya ruhagaritswe, n’iyo umuntu yaba afite urwo mu kindi gihugu."
+  },
+  {
+    "id": "traffic_768",
+    "category": "traffic",
+    "question": "What happens to a behaviour-based licence suspension when its prescribed period expires?",
+    "question_rw": "Bigenda bite iyo igihe cyagenwe cyo guhagarika uruhushya kubera imyitwarire kirangiye?",
+    "options": [
+      "The licence is reinstated",
+      "The licence is permanently cancelled",
+      "A new test is always required",
+      "The vehicle is automatically impounded"
+    ],
+    "options_rw": [
+      "Uruhushya rwongera gukoreshwa",
+      "Uruhushya ruhita ruteshwa agaciro burundu",
+      "Buri gihe hakorwa ikizamini gishya",
+      "Ikinyabiziga gihita gifungwa"
+    ],
+    "answer": "The licence is reinstated",
+    "answer_rw": "Uruhushya rwongera gukoreshwa",
+    "explanation": "Article 27(3) provides for reinstatement when the suspension period expires.",
+    "explanation_rw": "Ingingo ya 27(3) ivuga ko uruhushya rwongera gukoreshwa igihe cyo guhagarikwa kirangiye."
+  },
+  {
+    "id": "traffic_769",
+    "category": "traffic",
+    "question": "Which instrument determines the grounds and duration of a behaviour-based licence suspension?",
+    "question_rw": "Ni iki kigena impamvu n’igihe uruhushya rushobora guhagarikwa kubera imyitwarire y’umuyobozi mu muhanda?",
+    "options": [
+      "A Ministerial Order",
+      "A vehicle sale document",
+      "A driving school certificate",
+      "A passenger transport contract"
+    ],
+    "options_rw": [
+      "Iteka rya Minisitiri",
+      "Inyandiko yo kugurisha imodoka",
+      "Icyemezo cy’ishuri ryigisha gutwara",
+      "Amasezerano yo gutwara abagenzi"
+    ],
+    "answer": "A Ministerial Order",
+    "answer_rw": "Iteka rya Minisitiri",
+    "explanation": "Article 27(4) assigns the grounds and duration to a Ministerial Order.",
+    "explanation_rw": "Ingingo ya 27(4) ivuga ko impamvu n’igihe cyo guhagarika uruhushya bigenwa n’iteka rya Minisitiri."
+  },
+  {
+    "id": "traffic_770",
+    "category": "traffic",
+    "question": "The road safety organ requests revocation of a driving licence. Who has authority to order the revocation under Article 28?",
+    "question_rw": "Urwego rushinzwe umutekano wo mu muhanda rusabye ko uruhushya rwo gutwara ruteshwa agaciro. Ni nde ufite ububasha bwo gufata icyo cyemezo?",
+    "options": [
+      "The driving school",
+      "The competent court",
+      "The vehicle registration office",
+      "The insurance company"
+    ],
+    "options_rw": [
+      "Ishuri ryigisha gutwara",
+      "Urukiko rubifitiye ububasha",
+      "Ibiro by’iyandikwa ry’ibinyabiziga",
+      "Ikigo cy’ubwishingizi"
+    ],
+    "answer": "The competent court",
+    "answer_rw": "Urukiko rubifitiye ububasha",
+    "explanation": "Article 28(1) states that revocation is ordered by a competent court upon application by the road safety organ.",
+    "explanation_rw": "Ingingo ya 28(1) ivuga ko uruhushya ruteshwa agaciro n’urukiko rubifitiye ububasha rubisabwe n’urwego rushinzwe umutekano wo mu muhanda."
+  },
+  {
+    "id": "traffic_771",
+    "category": "traffic",
+    "question": "A licence has been revoked by a competent court. What is the earliest period before its holder may take another driving test?",
+    "question_rw": "Urukiko rubifitiye ububasha rwatesheje agaciro uruhushya. Ni ikihe gihe nibura nyir’uruhushya agomba gutegereza mbere yo kongera gukora ikizamini?",
+    "options": [
+      "Three months",
+      "Six months",
+      "Nine months",
+      "Twelve months"
+    ],
+    "options_rw": [
+      "Amezi atatu",
+      "Amezi atandatu",
+      Amezi icyenda",
+      "Amezi cumi n’abiri"
+    ],
+    "answer": "Twelve months",
+    "answer_rw": "Amezi cumi n’abiri",
+    "explanation": "Article 28(2) sets a minimum waiting period of 12 months from the court’s revocation decision.",
+    "explanation_rw": "Ingingo ya 28(2) ishyiraho igihe cy’amezi 12 uhereye ku munsi urukiko rwafatiye icyemezo cyo gutesha agaciro uruhushya."
+  },
+  {
+    "id": "traffic_772",
+    "category": "traffic",
+    "question": "From which date is the 12-month waiting period after licence revocation calculated?",
+    "question_rw": "Igihe cy’amezi 12 cyo gutegereza nyuma yo guteshwa agaciro uruhushya kibarwa guhera ryari?",
+    "options": [
+      "The date of the driver’s last trip",
+      "The date of the court’s decision",
+      "The date the vehicle was purchased",
+      "The date the licence was first issued"
+    ],
+    "options_rw": [
+      "Umunsi umuyobozi aheruka gutwara",
+      "Umunsi urukiko rwafatiye icyemezo",
+      "Umunsi ikinyabiziga cyaguriweho",
+      "Umunsi uruhushya rwatangiwe bwa mbere"
+    ],
+    "answer": "The date of the court’s decision",
+    "answer_rw": "Umunsi urukiko rwafatiye icyemezo",
+    "explanation": "Article 28(2) calculates the period from the date of the competent court’s revocation decision.",
+    "explanation_rw": "Ingingo ya 28(2) ibara icyo gihe uhereye ku munsi urukiko rubifitiye ububasha rwafatiyeho icyemezo."
+  },
+  {
+    "id": "traffic_773",
+    "category": "traffic",
+    "question": "Who determines the grounds on which a competent court may revoke a driving licence?",
+    "question_rw": "Ni nde ugena impamvu urukiko rubifitiye ububasha rushobora gushingiraho rutesha agaciro uruhushya rwo gutwara?",
+    "options": [
+      "A Ministerial Order",
+      "A vehicle owner",
+      "A driving instructor",
+      "A road passenger"
+    ],
+    "options_rw": [
+      "Iteka rya Minisitiri",
+      "Nyir’ikinyabiziga",
+      "Umwigisha wo gutwara",
+      "Umugenzi wo mu muhanda"
+    ],
+    "answer": "A Ministerial Order",
+    "answer_rw": "Iteka rya Minisitiri",
+    "explanation": "Article 28(3) provides that a Ministerial Order determines the grounds for revocation.",
+    "explanation_rw": "Ingingo ya 28(3) ivuga ko impamvu zo gutesha agaciro uruhushya zigena n’iteka rya Minisitiri."
+  },
+  {
+    "id": "traffic_774",
+    "category": "traffic",
+    "question": "Which combination meets the general Article 29 requirement for a motor vehicle registered in Rwanda to be authorised for road use?",
+    "question_rw": "Ni ikihe kintu kigomba kuba gihari kugira ngo ikinyabiziga cyanditswe mu Rwanda cyemererwe gukoresha umuhanda hakurikijwe ingingo ya 29?",
+    "options": [
+      "A valid sale agreement only",
+      "Registration and identification marks",
+      "A passenger list and insurance receipt",
+      "A driving school attendance card"
+    ],
+    "options_rw": [
+      "Amasezerano yo kugura gusa",
+      "Iyandikwa n’ibirango bikiranga",
+      "Urutonde rw’abagenzi n’inyemezabwishyu y’ubwishingizi",
+      "Ikarita y’uko umuntu yize gutwara"
+    ],
+    "answer": "Registration and identification marks",
+    "answer_rw": "Iyandikwa n’ibirango bikiranga",
+    "explanation": "Article 29(1) requires a Rwanda-registered vehicle to bear its identification marks.",
+    "explanation_rw": "Ingingo ya 29(1) isaba ikinyabiziga cyanditswe mu Rwanda kuba gifite ibirango bikiranga."
+  },
+  {
+    "id": "traffic_775",
+    "category": "traffic",
+    "question": "A foreign-registered vehicle enters Rwanda with identification marks issued by its country of registration. Which condition does Article 29 recognise?",
+    "question_rw": "Ikinyabiziga cyanditswe mu kindi gihugu cyinjiye mu Rwanda gifite ibirango byatanzwe n’igihugu cyacyanditse. Ni iki ingingo ya 29 yemera?",
+    "options": [
+      "It may qualify for road use",
+      "It must immediately be registered locally",
+      "It may operate without identification marks",
+      "It is automatically exempt from all rules"
+    ],
+    "options_rw": [
+      "Gishobora kwemererwa gukoresha umuhanda",
+      "Kigomba guhita cyandikwa mu Rwanda",
+      "Gishobora kugenda kidafite ibirango",
+      "Gihita gisonerwa amategeko yose"
+    ],
+    "answer": "It may qualify for road use",
+    "answer_rw": "Gishobora kwemererwa gukoresha umuhanda",
+    "explanation": "Article 29(1) recognises foreign-registered vehicles bearing identification marks issued by their country of registration.",
+    "explanation_rw": "Ingingo ya 29(1) yemera ibinyabiziga byanditswe mu kindi gihugu bifite ibirango byatanzwe n’igihugu cyabyanditse."
+  },
+  {
+    "id": "traffic_776",
+    "category": "traffic",
+    "question": "What is the general steering-wheel position required for a car to be registered in Rwanda, subject to the legal exceptions?",
+    "question_rw": "Ubusanzwe, imodoka yandikwa mu Rwanda igomba kuba ifite icyuma kiyobora kiri ku ruhande uruhe, hakurikijwe ibidasanzwe biteganywa n’amategeko?",
+    "options": [
+      "On the right",
+      "In the centre",
+      "On the left",
+      "In either position without exception"
+    ],
+    "options_rw": [
+      "Iburyo",
+      "Hagati",
+      "Ibumoso",
+      "Aho ari ho hose nta kurobanura"
+    ],
+    "answer": "On the left",
+    "answer_rw": "Ibumoso",
+    "explanation": "Article 29(2) establishes left-hand drive as the general rule for cars registered in Rwanda, subject to listed exceptions.",
+    "explanation_rw": "Ingingo ya 29(2) ishyiraho ko imodoka yandikwa mu Rwanda ubusanzwe iba ifite icyuma kiyobora ibumoso, hakurikijwe ibidasanzwe byavuzwe."
+  },
+  {
+    "id": "traffic_777",
+    "category": "traffic",
+    "question": "Which vehicle is expressly listed among the exceptions to the general left-hand-drive registration rule?",
+    "question_rw": "Ni ikihe kinyabiziga kivugwa mu buryo bweruye mu bidasonerwa itegeko rusange ryo kugira icyuma kiyobora ibumoso?",
+    "options": [
+      "Any private family car",
+      "A truck with capacity of at least 20 tonnes",
+      "Any motorcycle used for delivery",
+      "Every second-hand passenger car"
+    ],
+    "options_rw": [
+      "Imodoka iyo ari yo yose y’umuryango",
+      "Ikamyo ifite ubushobozi nibura bwa toni 20",
+      "Moto yose ikoreshwa mu kugeza ibintu",
+      "Imodoka zose zitwara abagenzi zakoreshejwe"
+    ],
+    "answer": "A truck with capacity of at least 20 tonnes",
+    "answer_rw": "Ikamyo ifite ubushobozi nibura bwa toni 20",
+    "explanation": "Article 29(2)(b) lists a transport truck with a carrying capacity of at least 20 tonnes as an exception.",
+    "explanation_rw": "Ingingo ya 29(2)(b) ivuga ikamyo y’ubwikorezi ifite ubushobozi nibura bwo kwikorera toni 20 nk’imwe mu zidasabwa kugira icyuma kiyobora ibumoso."
+  },
+  {
+    "id": "traffic_778",
+    "category": "traffic",
+    "question": "Which passenger-service vehicle is specifically included among the exceptions to the left-hand-drive rule?",
+    "question_rw": "Ni ikihe kinyabiziga gitwara abagenzi kivugwa mu bidasonerwa itegeko ry’uko imodoka yandikwa mu Rwanda igomba kugira icyuma kiyobora ibumoso?",
+    "options": [
+      "A local school bus only",
+      "A private staff shuttle",
+      "A cross-border passenger bus",
+      "Every urban taxi"
+    ],
+    "options_rw": [
+      "Bisi y’ishuri yo mu gihugu gusa",
+      "Imodoka itwara abakozi b’ikigo",
+      "Bisi itwara abagenzi bambuka imipaka",
+      "Tagisi zose zo mu mujyi"
+    ],
+    "answer": "A cross-border passenger bus",
+    "answer_rw": "Bisi itwara abagenzi bambuka imipaka",
+    "explanation": "Article 29(2)(c) includes a bus used for cross-border passenger transport among the exceptions.",
+    "explanation_rw": "Ingingo ya 29(2)(c) ivuga bisi itwara abagenzi bambuka imipaka mu binyabiziga bidasonerwa iryo tegeko."
+  },
+  {
+    "id": "traffic_779",
+    "category": "traffic",
+    "question": "A special-purpose vehicle is used for road construction and loading operations. How does Article 29 treat such vehicles?",
+    "question_rw": "Ikinyabiziga cyihariye gikoreshwa mu kubaka imihanda no gupakira ibintu. Ingingo ya 29 igifata ite?",
+    "options": [
+      "It is among the listed exceptions",
+      "It is prohibited in every case",
+      "It must be registered as a bus",
+      "It is exempt from identification marks"
+    ],
+    "options_rw": [
+      "Kiri mu binyabiziga byavuzwe nk’ibidasanzwe",
+      "Kibujijwe uko byagenda kose",
+      "Kigomba kwandikwa nka bisi",
+      "Gisonewe kugira ibirango bikiranga"
+    ],
+    "answer": "It is among the listed exceptions",
+    "answer_rw": "Kiri mu binyabiziga byavuzwe nk’ibidasanzwe",
+    "explanation": "Article 29(2)(d) lists certain special-purpose vehicles, including those used for road construction and loading operations.",
+    "explanation_rw": "Ingingo ya 29(2)(d) ivuga ibinyabiziga bimwe na bimwe byihariye, birimo ibikoreshwa mu kubaka imihanda no gupakira cyangwa gupakurura."
+  },
+  {
+    "id": "traffic_780",
+    "category": "traffic",
+    "question": "A foreign-registered right-hand-drive car enters Rwanda with valid identification marks. What is the normal maximum period stated in Article 29(3)?",
+    "question_rw": "Imodoka ifite icyuma kiyobora iburyo, yanditswe mu kindi gihugu kandi ifite ibirango byemewe, yinjiye mu Rwanda. Igihe ntarengwa isanzwe yemerewe ni ikihe?",
+    "options": [
+      "One month",
+      "Two months",
+      "Three months",
+      "Six months"
+    ],
+    "options_rw": [
+      "Ukwezi kumwe",
+      "Amezi abiri",
+      "Amezi atatu",
+      "Amezi atandatu"
+    ],
+    "answer": "Three months",
+    "answer_rw": "Amezi atatu",
+    "explanation": "Article 29(3) allows such a foreign-registered vehicle for a period not exceeding three months from entry.",
+    "explanation_rw": "Ingingo ya 29(3) yemera ko imodoka nk’iyo ikoresha umuhanda mu gihe kitarenze amezi atatu uhereye igihe yinjiye mu Rwanda."
+  },
+  {
+    "id": "traffic_781",
+    "category": "traffic",
+    "question": "A foreign right-hand-drive vehicle needs to remain in Rwanda beyond the normal three-month period. What may allow an extension?",
+    "question_rw": "Imodoka yo mu kindi gihugu ifite icyuma kiyobora iburyo irashaka kuguma mu Rwanda nyuma y’amezi atatu asanzwe. Ni iki gishobora gutuma igihe cyongerwa?",
+    "options": [
+      "An oral request to any officer",
+      "A written request to the Minister",
+      "A note from a passenger",
+      "A new driving-school certificate"
+    ],
+    "options_rw": [
+      "Gusaba mu magambo umupolisi uwo ari we wese",
+      "Gusaba Minisitiri mu nyandiko",
+      "Ibaruwa y’umugenzi",
+      "Icyemezo gishya cy’ishuri ryo gutwara"
+    ],
+    "answer": "A written request to the Minister",
+    "answer_rw": "Gusaba Minisitiri mu nyandiko",
+    "explanation": "Article 29(3) allows the Minister to extend the period upon a written request by the owner or authorised representative.",
+    "explanation_rw": "Ingingo ya 29(3) yemerera Minisitiri kongera igihe abisabwe mu nyandiko na nyir’imodoka cyangwa umuhagarariye wemewe."
+  },
+  {
+    "id": "traffic_782",
+    "category": "traffic",
+    "question": "A vehicle is sold, but its ownership transfer is not carried out. Which duty does Article 30 place on the owner?",
+    "question_rw": "Ikinyabiziga kiragurishijwe, ariko ihererekanya rya nyiracyo ntirikozwe. Ni iyihe nshingano ingingo ya 30 ishyira kuri nyiracyo?",
+    "options": [
+      "To effect the ownership transfer",
+      "To cancel its technical inspection",
+      "To surrender the driving licence",
+      "To change its vehicle category"
+    ],
+    "options_rw": [
+      "Gukora ihererekanya rya nyiracyo",
+      "Gutesha agaciro isuzuma rya tekiniki",
+      "Gutanga uruhushya rwo gutwara",
+      "Guhindura icyiciro cy’ikinyabiziga"
+    ],
+    "answer": "To effect the ownership transfer",
+    "answer_rw": "Gukora ihererekanya rya nyiracyo",
+    "explanation": "Article 30(1) requires the owner to effect the transfer when the motor vehicle is sold or donated.",
+    "explanation_rw": "Ingingo ya 30(1) isaba nyir’ikinyabiziga gukora ihererekanya iyo akigurishije cyangwa agitangiye undi."
+  },
+  {
+    "id": "traffic_783",
+    "category": "traffic",
+    "question": "A vehicle is donated rather than sold. Does Article 30 still require ownership transfer?",
+    "question_rw": "Ikinyabiziga nticyagurishijwe ahubwo cyaratanzwe nk’impano. Ese ingingo ya 30 iracyasaba ko nyiracyo ahindurwa mu nyandiko?",
+    "options": [
+      "No, only sales count",
+      "Yes, donations are included",
+      "Only if the vehicle is new",
+      "Only if the recipient is a company"
+    ],
+    "options_rw": [
+      "Oya, kugurisha gusa ni byo bireba",
+      "Yego, no gutanga impano birimo",
+      "Iyo imodoka ari nshya gusa",
+      "Iyo uyiherewe ari ikigo gusa"
+    ],
+    "answer": "Yes, donations are included",
+    "answer_rw": "Yego, no gutanga impano birimo",
+    "explanation": "Article 30(1) applies to both sale and donation of a motor vehicle.",
+    "explanation_rw": "Ingingo ya 30(1) ireba ihererekanya rikorwa haba mu kugurisha cyangwa gutanga ikinyabiziga."
+  },
+  {
+    "id": "traffic_784",
+    "category": "traffic",
+    "question": "Which body records vehicle registration and ownership-transfer information electronically under Article 30?",
+    "question_rw": "Ni uruhe rwego rubika mu buryo bw’ikoranabuhanga amakuru yerekeye iyandikwa n’ihererekanya ry’ibinyabiziga hakurikijwe ingingo ya 30?",
+    "options": [
+      "The organ responsible for motor vehicle registration",
+      "The driving school administration",
+      "The vehicle insurance association",
+      "The road construction authority"
+    ],
+    "options_rw": [
+      "Urwego rushinzwe iyandikwa ry’ibinyabiziga",
+      "Ubuyobozi bw’ishuri ryigisha gutwara",
+      "Ishyirahamwe ry’ubwishingizi bw’imodoka",
+      "Urwego rushinzwe kubaka imihanda"
+    ],
+    "answer": "The organ responsible for motor vehicle registration",
+    "answer_rw": "Urwego rushinzwe iyandikwa ry’ibinyabiziga",
+    "explanation": "Article 30(2) assigns electronic recording to the organ in charge of motor vehicle registration.",
+    "explanation_rw": "Ingingo ya 30(2) iha urwego rushinzwe iyandikwa ry’ibinyabiziga inshingano zo kubika ayo makuru mu buryo bw’ikoranabuhanga."
+  },
+  {
+    "id": "traffic_785",
+    "category": "traffic",
+    "question": "What is the purpose of the electronic information system mentioned in Article 30(2)?",
+    "question_rw": "Ni iyihe ntego y’uburyo bw’ikoranabuhanga bwo kubika amakuru buvugwa mu ngingo ya 30(2)?",
+    "options": [
+      "To hide ownership records",
+      "To make relevant information accessible",
+      "To replace all driving tests",
+      "To determine vehicle fuel prices"
+    ],
+    "options_rw": [
+      "Guhisha amakuru ya ba nyir’ibinyabiziga",
+      "Korohereza abakeneye kugera ku makuru",
+      "Gusimbura ibizamini byose byo gutwara",
+      "Kugena ibiciro bya lisansi"
+    ],
+    "answer": "To make relevant information accessible",
+    "answer_rw": "Korohereza abakeneye kugera ku makuru",
+    "explanation": "Article 30(2) requires a system that enables convenient access to the information, subject to relevant laws.",
+    "explanation_rw": "Ingingo ya 30(2) isaba uburyo bworohereza abakeneye ayo makuru kuyageraho, hakurikijwe amategeko abigenga."
+  },
+  {
+    "id": "traffic_786",
+    "category": "traffic",
+    "question": "A motor vehicle has been inspected by an authorised centre, but no technical inspection certificate has been issued. What does Article 31 generally require before road use?",
+    "question_rw": "Ikinyabiziga cyasuzumwe n’ikigo kibifitiye uburenganzira, ariko nticyahabwa icyemezo cy’isuzuma rya tekiniki. Ingingo ya 31 isaba iki mbere yo kugikoresha mu muhanda?",
+    "options": [
+      "A certificate must be issued",
+      "The owner must change its colour",
+      "The driver must repeat the theory test",
+      "A passenger must approve its condition"
+    ],
+    "options_rw": [
+      "Hagomba gutangwa icyemezo cy’isuzuma",
+      "Nyiracyo agomba guhindura ibara",
+      "Umuyobozi agomba kongera ikizamini cy’amategeko",
+      "Umugenzi agomba kwemeza imiterere yacyo"
+    ],
+    "answer": "A certificate must be issued",
+    "answer_rw": "Hagomba gutangwa icyemezo cy’isuzuma",
+    "explanation": "Article 31(1) generally requires both an inspection by an authorised centre and an issued technical inspection certificate.",
+    "explanation_rw": "Ingingo ya 31(1) isaba ko ikinyabiziga gisuzumwa n’ikigo kibifitiye uburenganzira kandi kigahabwa icyemezo cy’isuzuma rya tekiniki."
+  }
+]
+
 
