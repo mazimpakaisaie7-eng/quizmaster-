@@ -901,20 +901,51 @@ const errors = [];
           return;
         }
 
-        if (seenIds.has(result.question.id)) {
-          duplicateCount++;
+const question = result.question;
+const currentIndex = index + 1;
 
-          errors.push({
-            index: index + 1,
-            id: result.question.id,
-            reasons: ["Duplicate question ID."]
-          });
+if (seenIds.has(question.id)) {
+  duplicateCount++;
 
-          return;
-        }
+  errors.push({
+    index: currentIndex,
+    firstIndex: seenIds.get(question.id),
+    id: question.id,
+    reasons: ["Duplicate question ID."]
+  });
 
-        seenIds.add(result.question.id);
-        normalized.push(result.question);
+  return;
+}
+
+seenIds.set(question.id, currentIndex);
+
+// Check repeated question text even when IDs differ.
+const normalizedText = question.question
+  .toLocaleLowerCase()
+  .replace(/[^\p{L}\p{N}]+/gu, " ")
+  .trim();
+
+const textKey = `${question.category}:${normalizedText}`;
+
+if (seenQuestionTexts.has(textKey)) {
+  repeatedTextCount++;
+
+  errors.push({
+    index: currentIndex,
+    firstIndex: seenQuestionTexts.get(textKey).index,
+    id: question.id,
+    firstId: seenQuestionTexts.get(textKey).id,
+    reasons: ["Repeated question text with a different ID."]
+  });
+} else {
+  seenQuestionTexts.set(textKey, {
+    index: currentIndex,
+    id: question.id
+  });
+}
+
+normalized.push(question);
+
       });
 
       const trafficCount = normalized.filter(
