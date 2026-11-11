@@ -3938,7 +3938,800 @@
     "answer_rw": "Hagomba gutangwa icyemezo cy’isuzuma",
     "explanation": "Article 31(1) generally requires both an inspection by an authorised centre and an issued technical inspection certificate.",
     "explanation_rw": "Ingingo ya 31(1) isaba ko ikinyabiziga gisuzumwa n’ikigo kibifitiye uburenganzira kandi kigahabwa icyemezo cy’isuzuma rya tekiniki."
+  },
+  {
+    "id": "traffic_787",
+    "category": "traffic",
+    "question": "What is the main purpose of Law No. 014/2026 governing road traffic?",
+    "question_rw": "Ni iyihe ntego nyamukuru y'Itegeko No 014/2026 rigenga ikoreshwa ry'umuhanda?",
+    "options": [
+      "To increase vehicle ownership",
+      "To prevent road traffic accidents",
+      "To regulate vehicle prices",
+      "To promote public transport only"
+    ],
+    "options_rw": [
+      "Kongera umubare w'ibinyabiziga",
+      "Gukumira impanuka zo mu muhanda",
+      "Kugena ibiciro by'ibinyabiziga",
+      "Guteza imbere imodoka rusange gusa"
+    ],
+    "answer": "To prevent road traffic accidents",
+    "answer_rw": "Gukumira impanuka zo mu muhanda",
+    "explanation": "Article 1 states that the law governs road traffic with the aim of preventing road traffic accidents.",
+    "explanation_rw": "Ingingo ya 1 ivuga ko iri tegeko rigenga ikoreshwa ry'umuhanda rigamije gukumira impanuka zo mu muhanda."
+  },
+  {
+    "id": "traffic_788",
+    "category": "traffic",
+    "question": "According to Article 4, which side of the road must vehicles use in Rwanda?",
+    "question_rw": "Dukurikije Ingingo ya 4, ibinyabiziga bigomba kugendera ku ruhe ruhande rw'umuhanda mu Rwanda?",
+    "options": [
+      "The left-hand side",
+      "The right-hand side",
+      "Either side freely",
+      "The middle of the road"
+    ],
+    "options_rw": [
+      "Uruhande rw'ibumoso",
+      "Uruhande rw'iburyo",
+      "Uruhande urwo ari rwo rwose",
+      "Hagati mu muhanda"
+    ],
+    "answer": "The right-hand side",
+    "answer_rw": "Uruhande rw'iburyo",
+    "explanation": "Article 4 establishes the right-hand side as the driving side for vehicles on roads in Rwanda.",
+    "explanation_rw": "Ingingo ya 4 ishyiraho uruhande rw'iburyo nk'uruhande ibinyabiziga bigomba kugenderamo mu muhanda."
+  },
+  {
+    "id": "traffic_789",
+    "category": "traffic",
+    "question": "Which subject is expressly included among the road traffic rules in Article 5?",
+    "question_rw": "Ni ikihe kintu kivugwa mu buryo bweruye mu bigize amategeko agenga ikoreshwa ry'umuhanda mu ngingo ya 5?",
+    "options": [
+      "Vehicle colour preferences",
+      "Road traffic signs",
+      "Private vehicle selling prices",
+      "Drivers' personal occupations"
+    ],
+    "options_rw": [
+      "Amabara abantu bakunda ku binyabiziga",
+      "Ibimenyetso bigenga ikoreshwa ry'umuhanda",
+      "Ibiciro by'igurishwa ry'imodoka bwite",
+      "Imyuga bwite y'abatwara ibinyabiziga"
+    ],
+    "answer": "Road traffic signs",
+    "answer_rw": "Ibimenyetso bigenga ikoreshwa ry'umuhanda",
+    "explanation": "Article 5(1)(g) specifically includes road traffic signs among the matters covered by road traffic rules.",
+    "explanation_rw": "Ingingo ya 5, agace ka 1(g), ivuga mu buryo bweruye ko ibimenyetso bigenga ikoreshwa ry'umuhanda biri mu bigize amategeko y'umuhanda."
+  },
+  {
+    "id": "traffic_790",
+    "category": "traffic",
+    "question": "Who is empowered under Article 6 to control road traffic?",
+    "question_rw": "Ni nde ufite ububasha bwo kugenzura ikoreshwa ry'umuhanda hakurikijwe Ingingo ya 6?",
+    "options": [
+      "Any vehicle owner",
+      "An investigator or authorised officer",
+      "Any passenger",
+      "A private driving instructor"
+    ],
+    "options_rw": [
+      "Nyir'ikinyabiziga wese",
+      "Umugenzacyaha cyangwa umukozi ubifitiye ububasha",
+      "Umugenzi uwo ari we wese",
+      "Umwigisha wigenga wo gutwara ibinyabiziga"
+    ],
+    "answer": "An investigator or authorised officer",
+    "answer_rw": "Umugenzacyaha cyangwa umukozi ubifitiye ububasha",
+    "explanation": "Article 6(1) gives the power to control road traffic to an investigator or an authorised officer.",
+    "explanation_rw": "Ingingo ya 6, igika cya 1, iha ububasha bwo kugenzura ikoreshwa ry'umuhanda umugenzacyaha cyangwa umukozi ubifitiye ububasha."
+  },
+  {
+    "id": "traffic_791",
+    "category": "traffic",
+    "question": "What happens when an authorised officer gives a traffic instruction that conflicts with a road sign?",
+    "question_rw": "Bigenda bite iyo umukozi ubifitiye ububasha atanze amabwiriza anyuranye n'icyapa cyo mu muhanda?",
+    "options": [
+      "The road sign always takes priority",
+      "The driver's preference takes priority",
+      "The officer's instruction takes priority",
+      "Both instructions are ignored"
+    ],
+    "options_rw": [
+      "Icyapa ni cyo gihora gifite agaciro kurusha ibindi",
+      "Icyo umuyobozi w'ikinyabiziga ashaka ni cyo kigenderwaho",
+      "Amabwiriza y'umukozi ni yo ahabwa agaciro",
+      "Amabwiriza yombi ntiyitabwaho"
+    ],
+    "answer": "The officer's instruction takes priority",
+    "answer_rw": "Amabwiriza y'umukozi ni yo ahabwa agaciro",
+    "explanation": "Article 6(3) provides that instructions from an investigator or authorised officer supersede road traffic signs or signals in that situation.",
+    "explanation_rw": "Ingingo ya 6, igika cya 3, iteganya ko amabwiriza y'umugenzacyaha cyangwa umukozi ubifitiye ububasha asimbura ibimenyetso byo mu muhanda muri icyo gihe."
+  },
+  {
+    "id": "traffic_792",
+    "category": "traffic",
+    "question": "If a driver disagrees with the result of a road-safety test under Article 10, what may the driver request?",
+    "question_rw": "Iyo umuyobozi w'ikinyabiziga atemeye ibyavuye mu isuzuma rikorwa hagamijwe umutekano wo mu muhanda, Ingingo ya 10 imwemerera gusaba iki?",
+    "options": [
+      "Immediate cancellation of the law",
+      "Testing by an accredited laboratory",
+      "Removal of all road signs",
+      "Automatic restoration of a licence"
+    ],
+    "options_rw": [
+      "Guhita avanaho itegeko",
+      "Gupimwa na laboratwari yemerewe",
+      "Gukuraho ibyapa byose byo mu muhanda",
+      "Gusubizwa uruhushya ako kanya"
+    ],
+    "answer": "Testing by an accredited laboratory",
+    "answer_rw": "Gupimwa na laboratwari yemerewe",
+    "explanation": "Article 10(2) allows a driver who disputes the test results to request testing by an accredited laboratory.",
+    "explanation_rw": "Ingingo ya 10, igika cya 2, yemerera umuyobozi w'ikinyabiziga utishimiye ibyavuye mu isuzuma gusaba ko ryakorwa na laboratwari yemerewe."
+  },
+  {
+    "id": "traffic_793",
+    "category": "traffic",
+    "question": "Which document must a driver hold to drive a vehicle under Article 23?",
+    "question_rw": "Ni iyihe nyandiko umuyobozi w'ikinyabiziga agomba kuba afite kugira ngo atware ikinyabiziga hakurikijwe Ingingo ya 23?",
+    "options": [
+      "A vehicle purchase receipt only",
+      "A driving licence authorising that vehicle",
+      "A passenger identity card",
+      "A road map"
+    ],
+    "options_rw": [
+      "Inyemezabuguzi y'uko yaguze ikinyabiziga gusa",
+      "Uruhushya rwo gutwara rwemerera gutwara icyo kinyabiziga",
+      "Indangamuntu y'umugenzi",
+      "Ikarita yerekana imihanda"
+    ],
+    "answer": "A driving licence authorising that vehicle",
+    "answer_rw": "Uruhushya rwo gutwara rwemerera gutwara icyo kinyabiziga",
+    "explanation": "Article 23 requires a driver to hold a driving licence authorising the vehicle being driven. The licence category therefore matters.",
+    "explanation_rw": "Ingingo ya 23 isaba ko umuyobozi w'ikinyabiziga aba afite uruhushya rumwemerera gutwara ikinyabiziga arimo gutwara. Icyiciro cy'uruhushya ni ingenzi."
+  },
+  {
+    "id": "traffic_794",
+    "category": "traffic",
+    "question": "Who is authorised under Article 24 to provide driving instruction?",
+    "question_rw": "Ni nde wemerewe kwigisha gutwara ibinyabiziga hakurikijwe Ingingo ya 24?",
+    "options": [
+      "Any experienced driver",
+      "An authorised driving-school owner",
+      "Any vehicle passenger",
+      "Any vehicle mechanic"
+    ],
+    "options_rw": [
+      "Umuntu wese umaze igihe atwara",
+      "Nyir'ishuri ryigisha gutwara ibinyabiziga wabyemerewe",
+      "Umugenzi wese uri mu modoka",
+      "Umukanishi wese w'ibinyabiziga"
+    ],
+    "answer": "An authorised driving-school owner",
+    "answer_rw": "Nyir'ishuri ryigisha gutwara ibinyabiziga wabyemerewe",
+    "explanation": "Article 24 provides for driving instruction by an authorised driving-school owner, subject to the applicable rules.",
+    "explanation_rw": "Ingingo ya 24 iteganya ko kwigisha gutwara ikinyabiziga bikorwa na nyir'ishuri ryabyemerewe, hakurikijwe amabwiriza abigenga."
+  },
+  {
+    "id": "traffic_795",
+    "category": "traffic",
+    "question": "What is the purpose of the merit and demerit point system under Article 25?",
+    "question_rw": "Ni iyihe ntego y'uburyo bw'amanota meza n'amabi ateganywa mu ngingo ya 25?",
+    "options": [
+      "To monitor drivers' road behaviour",
+      "To determine vehicle market prices",
+      "To replace vehicle registration",
+      "To select public transport routes"
+    ],
+    "options_rw": [
+      "Gukurikirana imyitwarire y'abayobozi b'ibinyabiziga mu muhanda",
+      "Kugena ibiciro by'ibinyabiziga ku isoko",
+      "Gusimbura iyandikwa ry'ibinyabiziga",
+      "Guhitamo inzira z'imodoka zitwara abantu"
+    ],
+    "answer": "To monitor drivers' road behaviour",
+    "answer_rw": "Gukurikirana imyitwarire y'abayobozi b'ibinyabiziga mu muhanda",
+    "explanation": "Article 25 establishes a merit and demerit point system to monitor the behaviour of motor vehicle drivers.",
+    "explanation_rw": "Ingingo ya 25 ishyiraho uburyo bw'amanota meza n'amabi hagamijwe gukurikirana imyitwarire y'abayobozi b'ibinyabiziga bifite moteri."
+  },
+  {
+    "id": "traffic_796",
+    "category": "traffic",
+    "question": "Under Article 26, what may support a health-based decision affecting a person's driving eligibility?",
+    "question_rw": "Hakurikijwe Ingingo ya 26, ni iki gishobora gushingirwaho mu gufata icyemezo kijyanye no kutemererwa gutwara ikinyabiziga kubera ubuzima?",
+    "options": [
+      "A neighbour's personal opinion",
+      "A report from a recognised medical doctor",
+      "A vehicle sales contract",
+      "A passenger's preference"
+    ],
+    "options_rw": [
+      "Igitekerezo bwite cy'umuturanyi",
+      "Raporo ya muganga wemewe",
+      "Amasezerano yo kugura ikinyabiziga",
+      "Icyifuzo cy'umugenzi"
+    ],
+    "answer": "A report from a recognised medical doctor",
+    "answer_rw": "Raporo ya muganga wemewe",
+    "explanation": "Article 26 provides for health-related disqualification or suspension based on a report from a recognised medical doctor.",
+    "explanation_rw": "Ingingo ya 26 iteganya ko kutemererwa gukora ikizamini cyangwa guhagarika uruhushya kubera ubuzima bishobora gushingira kuri raporo ya muganga wemewe."
+  },
+  {
+    "id": "traffic_797",
+    "category": "traffic",
+    "question": "What is the effect of a driving-licence suspension under Article 27?",
+    "question_rw": "Ni izihe ngaruka zo guhagarikwa by'agateganyo k'uruhushya rwo gutwara ikinyabiziga hakurikijwe Ingingo ya 27?",
+    "options": [
+      "The driver may drive only at night",
+      "The driver may drive with any foreign licence",
+      "The driver must not drive in Rwanda during the suspension",
+      "The driver may drive only outside towns"
+    ],
+    "options_rw": [
+      "Umuyobozi yemerewe gutwara nijoro gusa",
+      "Umuyobozi yemerewe gutwara afite uruhushya urwo ari rwo rwose rwo mu mahanga",
+      "Umuyobozi ntiyemerewe gutwara mu Rwanda mu gihe uruhushya rwe ruhagaritswe",
+      "Umuyobozi yemerewe gutwara hanze y'imijyi gusa"
+    ],
+    "answer": "The driver must not drive in Rwanda during the suspension",
+    "answer_rw": "Umuyobozi ntiyemerewe gutwara mu Rwanda mu gihe uruhushya rwe ruhagaritswe",
+    "explanation": "Article 27 states that a driver whose licence is suspended on road-behaviour grounds cannot drive in Rwanda during the suspension, even with a foreign licence.",
+    "explanation_rw": "Ingingo ya 27 ivuga ko umuyobozi wahagarikiwe uruhushya kubera imyitwarire yo mu muhanda atemerewe gutwara mu Rwanda mu gihe cy'ihagarikwa, nubwo yaba afite uruhushya rwo mu mahanga."
+  },
+  {
+    "id": "traffic_798",
+    "category": "traffic",
+    "question": "After a competent court revokes a driving licence under Article 28, when may the person retake the driving test?",
+    "question_rw": "Iyo urukiko rubifitiye ububasha rutesheje agaciro uruhushya rwo gutwara ikinyabiziga hakurikijwe Ingingo ya 28, nyir'uruhushya ashobora kongera gukora ikizamini ryari?",
+    "options": [
+      "Immediately after the decision",
+      "After three months",
+      "Before twelve months have passed",
+      "After twelve months from the revocation"
+    ],
+    "options_rw": [
+      "Ako kanya nyuma y'icyemezo",
+      "Nyuma y'amezi atatu",
+      "Mbere y'uko amezi cumi n'abiri ashira",
+      "Nyuma y'amezi cumi n'abiri uhereye igihe ryatesherejwe agaciro"
+    ],
+    "answer": "After twelve months from the revocation",
+    "answer_rw": "Nyuma y'amezi cumi n'abiri uhereye igihe ryatesherejwe agaciro",
+    "explanation": "Article 28 provides that a person cannot retake the driving test before twelve months have elapsed from the court's revocation of the licence.",
+    "explanation_rw": "Ingingo ya 28 iteganya ko umuntu adashobora kongera gukora ikizamini cyo gutwara ikinyabiziga hatarashira amezi cumi n'abiri uhereye igihe urukiko rwateshereje agaciro uruhushya."
+  },
+  {
+    "id": "traffic_799",
+    "category": "traffic",
+    "question": "What is required before a motor vehicle may operate on the road under Article 31?",
+    "question_rw": "Ni iki gisabwa mbere y'uko ikinyabiziga gifite moteri cyemererwa kugendera mu muhanda hakurikijwe Ingingo ya 31?",
+    "options": [
+      "A technical inspection and the required certificate",
+      "A new paint colour",
+      "A passenger's written approval",
+      "A private driving lesson"
+    ],
+    "options_rw": [
+      "Isuzuma rya tekiniki n'icyemezo kibisabwa",
+      "Guhindura irangi ry'ikinyabiziga",
+      "Uruhushya rwanditse rw'umugenzi",
+      "Isomo ryihariye ryo gutwara"
+    ],
+    "answer": "A technical inspection and the required certificate",
+    "answer_rw": "Isuzuma rya tekiniki n'icyemezo kibisabwa",
+    "explanation": "Article 31 requires a motor vehicle to undergo technical inspection at an authorised centre and to have the required technical inspection certificate.",
+    "explanation_rw": "Ingingo ya 31 isaba ko ikinyabiziga gifite moteri gisuzumwa na tekinisiye mu kigo kibifitiye uburenganzira kandi kikagira icyemezo cy'isuzuma rya tekiniki gisabwa."
+  },
+  {
+    "id": "traffic_800",
+    "category": "traffic",
+    "question": "What may happen to a motor vehicle that has irreparable defects under Article 32?",
+    "question_rw": "Ni iki gishobora gukorerwa ikinyabiziga gifite inenge zidashobora gusanwa hakurikijwe Ingingo ya 32?",
+    "options": [
+      "It automatically receives a new licence",
+      "It may lose the right to operate on the road",
+      "It may ignore technical inspections",
+      "It becomes exempt from registration"
+    ],
+    "options_rw": [
+      "Gihita gihabwa uruhushya rushya",
+      "Gishobora kwamburwa uburenganzira bwo kugendera mu muhanda",
+      "Gishobora kutongera gukorerwa isuzuma rya tekiniki",
+      "Gihita gikurirwaho kwandikwa"
+    ],
+    "answer": "It may lose the right to operate on the road",
+    "answer_rw": "Gishobora kwamburwa uburenganzira bwo kugendera mu muhanda",
+    "explanation": "Article 32 provides for withdrawal of the right to operate a motor vehicle on the road where the vehicle has irreparable defects or is unfit for use.",
+    "explanation_rw": "Ingingo ya 32 iteganya kwambura ikinyabiziga uburenganzira bwo kugendera mu muhanda iyo gifite inenge zidashobora gusanwa cyangwa kitagifite ubushobozi bwo gukoreshwa."
+  },
+  {
+    "id": "traffic_801",
+    "category": "traffic",
+    "question": "Who is responsible for effecting the ownership transfer of a motor vehicle after a sale or donation under Article 30?",
+    "question_rw": "Nyuma yo kugurisha cyangwa gutanga ikinyabiziga nk'impano, ni nde ushinzwe gukora ihererekanya ry'ub ownership hakurikijwe Ingingo ya 30?",
+    "options": [
+      "The former owner",
+      "The nearest pedestrian",
+      "The vehicle's passenger",
+      "The road sign manufacturer"
+    ],
+    "options_rw": [
+      "Nyir'ikinyabiziga wa mbere",
+      "Umunyamaguru uri hafi",
+      "Umugenzi uri mu kinyabiziga",
+      "Uruganda rukora ibyapa"
+    ],
+    "answer": "The former owner",
+    "answer_rw": "Nyir'ikinyabiziga wa mbere",
+    "explanation": "Article 30 places the responsibility for effecting the ownership transfer upon the owner in the event of sale or donation; the registration authority records the transfer.",
+    "explanation_rw": "Ingingo ya 30 ishyira inshingano zo gukora ihererekanya kuri nyir'ikinyabiziga igihe akigurishije cyangwa agitangiye nk'impano; urwego rushinzwe iyandikwa rukandika iryo hinduka."
+  },
+  {
+    "id": "traffic_802",
+    "category": "traffic",
+    "question": "What does a red octagonal STOP sign require a driver to do?",
+    "question_rw": "Icyapa gitukura gifite impande umunani cyanditseho STOP gisaba umuyobozi w'ikinyabiziga gukora iki?",
+    "options": [
+      "Slow down without stopping",
+      "Stop completely before proceeding when safe",
+      "Sound the horn and continue",
+      "Give way only to large vehicles"
+    ],
+    "options_rw": [
+      "Kugabanya umuvuduko ariko ntahagarare",
+      "Guhagarara burundu mbere yo gukomeza igihe ari umutekano",
+      "Kuvuza ihoni agakomeza",
+      "Guha inzira ibinyabiziga binini gusa"
+    ],
+    "answer": "Stop completely before proceeding when safe",
+    "answer_rw": "Guhagarara burundu mbere yo gukomeza igihe ari umutekano",
+    "explanation": "A STOP sign requires a complete stop. The driver should check the road users and proceed only when it is safe.",
+    "explanation_rw": "Icyapa cya STOP gisaba guhagarara burundu. Umuyobozi agenzura abandi bakoresha umuhanda, agakomeza ari uko abonye ko nta kaga."
+  },
+  {
+    "id": "traffic_803",
+    "category": "traffic",
+    "question": "What should a driver do when approaching a GIVE WAY sign?",
+    "question_rw": "Umuyobozi w'ikinyabiziga agomba gukora iki ageze hafi y'icyapa cya GIVE WAY?",
+    "options": [
+      "Accelerate to enter first",
+      "Give priority to traffic on the road being joined",
+      "Stop permanently at the junction",
+      "Ignore traffic from the right"
+    ],
+    "options_rw": [
+      "Kongera umuvuduko kugira ngo abe uwa mbere",
+      "Guha inzira ibinyabiziga biri mu muhanda agiye kwinjiramo",
+      "Guhagarara burundu ku isangano",
+      "Kwirengagiza ibinyabiziga biva iburyo"
+    ],
+    "answer": "Give priority to traffic on the road being joined",
+    "answer_rw": "Guha inzira ibinyabiziga biri mu muhanda agiye kwinjiramo",
+    "explanation": "The GIVE WAY sign requires a driver to yield to traffic with priority. The driver must stop if necessary to allow safe passage.",
+    "explanation_rw": "Icyapa cya GIVE WAY gisaba umuyobozi guha inzira ibinyabiziga bifite uburenganzira bwo kubanza. Agomba guhagarara igihe bibaye ngombwa kugira ngo abandi banyure mu mutekano."
+  },
+  {
+    "id": "traffic_804",
+    "category": "traffic",
+    "question": "What does a circular red sign with a horizontal white bar mean?",
+    "question_rw": "Icyapa kizengurutse gifite ibara ritukura n'umurongo wera utambitse gisobanura iki?",
+    "options": [
+      "No entry",
+      "One-way traffic",
+      "Pedestrian crossing",
+      "Hospital ahead"
+    ],
+    "options_rw": [
+      "Nta kwinjira",
+      "Umuhanda unyurwamo mu cyerekezo kimwe",
+      "Ahambukirwa n'abanyamaguru",
+      "Ibitaro biri imbere"
+    ],
+    "answer": "No entry",
+    "answer_rw": "Nta kwinjira",
+    "explanation": "This sign prohibits entry from the direction in which it faces. A driver must not enter that road from that side.",
+    "explanation_rw": "Iki cyapa kibuza kwinjira mu muhanda uhereye aho cyerekeje. Umuyobozi ntiyemerewe kuwujyamo aturutse kuri urwo ruhande."
+  },
+  {
+    "id": "traffic_805",
+    "category": "traffic",
+    "question": "A circular sign displays the number 40 with a red border. What does it indicate?",
+    "question_rw": "Icyapa kizengurutse cyerekana umubare 40 gifite umuzenguruko utukura gisobanura iki?",
+    "options": [
+      "A recommended minimum speed of 40 km/h",
+      "A maximum permitted speed of 40 km/h",
+      "A distance of 40 metres",
+      "A road with 40 lanes"
+    ],
+    "options_rw": [
+      "Umuvuduko muto usabwa wa 40 km/h",
+      "Umuvuduko ntarengwa wa 40 km/h",
+      "Intera ya metero 40",
+      "Umuhanda ufite ibisate 40"
+    ],
+    "answer": "A maximum permitted speed of 40 km/h",
+    "answer_rw": "Umuvuduko ntarengwa wa 40 km/h",
+    "explanation": "A red-bordered circular speed-limit sign indicates the maximum speed permitted on the section of road to which it applies.",
+    "explanation_rw": "Icyapa cy'umuvuduko kizengurutswe n'umutuku kigaragaza umuvuduko ntarengwa wemerewe mu gice cy'umuhanda kireba."
+  },
+  {
+    "id": "traffic_806",
+    "category": "traffic",
+    "question": "What does a NO OVERTAKING sign prohibit?",
+    "question_rw": "Icyapa cya NO OVERTAKING kibuza iki?",
+    "options": [
+      "Passing another vehicle",
+      "Using the vehicle's headlights",
+      "Driving in the right lane",
+      "Stopping at a designated stop"
+    ],
+    "options_rw": [
+      "Kunyura ku kindi kinyabiziga ugihita imbere",
+      "Gukoresha amatara y'ikinyabiziga",
+      "Kugendera mu gisate cy'iburyo",
+      "Guhagarara ahagenewe guhagarara"
+    ],
+    "answer": "Passing another vehicle",
+    "answer_rw": "Kunyura ku kindi kinyabiziga ugihita imbere",
+    "explanation": "A NO OVERTAKING sign prohibits overtaking other vehicles in the section where the restriction applies.",
+    "explanation_rw": "Icyapa cya NO OVERTAKING kibuza kunyura ku kindi kinyabiziga ugihita imbere mu gice cy'umuhanda icyo cyapa kireba."
+  },
+  {
+    "id": "traffic_807",
+    "category": "traffic",
+    "question": "What does a NO PARKING sign mean?",
+    "question_rw": "Icyapa cya NO PARKING gisobanura iki?",
+    "options": [
+      "Parking is prohibited in the indicated area",
+      "Only buses may park there",
+      "Parking is compulsory",
+      "Vehicles must reverse there"
+    ],
+    "options_rw": [
+      "Guhagarika ikinyabiziga umwanya munini birabujijwe aho icyapa kireba",
+      "Imodoka zitwara abantu gusa ni zo zihaparika",
+      "Guhagarika ikinyabiziga ni itegeko",
+      "Ibinyabiziga bigomba gusubira inyuma aho"
+    ],
+    "answer": "Parking is prohibited in the indicated area",
+    "answer_rw": "Guhagarika ikinyabiziga umwanya munini birabujijwe aho icyapa kireba",
+    "explanation": "A NO PARKING sign prohibits parking in the area or road section indicated by the sign.",
+    "explanation_rw": "Icyapa cya NO PARKING kibuza guhagarika ikinyabiziga umwanya munini mu gace cyangwa mu gice cy'umuhanda cyerekanwe."
+  },
+  {
+    "id": "traffic_808",
+    "category": "traffic",
+    "question": "What is the correct response to a pedestrian-crossing warning or marking?",
+    "question_rw": "Umuyobozi w'ikinyabiziga agomba kwitwara ate ageze ku kimenyetso cyangwa ahantu hagenewe abanyamaguru kwambukira?",
+    "options": [
+      "Increase speed to pass first",
+      "Watch for pedestrians and give way when required",
+      "Sound the horn continuously",
+      "Stop only when another vehicle stops"
+    ],
+    "options_rw": [
+      "Kongera umuvuduko kugira ngo abe uwa mbere",
+      "Kwitondera abanyamaguru no kubaha inzira igihe bisabwa",
+      "Kuvuza ihoni ubudasiba",
+      "Guhagarara ari uko gusa indi modoka ihagaze"
+    ],
+    "answer": "Watch for pedestrians and give way when required",
+    "answer_rw": "Kwitondera abanyamaguru no kubaha inzira igihe bisabwa",
+    "explanation": "A pedestrian crossing identifies a place where pedestrians may cross. Drivers must approach carefully and give way as required by the applicable rules.",
+    "explanation_rw": "Ahambukirwa n'abanyamaguru hagaragaza ahantu abanyamaguru bashobora kwambukira. Abatwara ibinyabiziga bagomba kuhagera bitonze kandi bakabaha inzira nk'uko amategeko abiteganya."
+  },
+  {
+    "id": "traffic_809",
+    "category": "traffic",
+    "question": "What is the purpose of a SCHOOL AHEAD warning sign?",
+    "question_rw": "Icyapa kiburira SCHOOL AHEAD kiba kigamije iki?",
+    "options": [
+      "To indicate a fuel station",
+      "To warn that a school area is ahead",
+      "To indicate a compulsory bus stop",
+      "To announce the end of a highway"
+    ],
+    "options_rw": [
+      "Kwerekana sitasiyo ya lisansi",
+      "Kumenyesha ko imbere hari agace k'ishuri",
+      "Kwerekana ahategetswe guhagarara bisi",
+      "Kumenyesha ko umuhanda munini urangiye"
+    ],
+    "answer": "To warn that a school area is ahead",
+    "answer_rw": "Kumenyesha ko imbere hari agace k'ishuri",
+    "explanation": "The sign warns drivers that a school area is ahead, where children may be crossing or moving near the road. Drivers should take extra care.",
+    "explanation_rw": "Iki cyapa kiburira umuyobozi ko imbere hari agace k'ishuri, aho abana bashobora kwambukira cyangwa kuba hafi y'umuhanda. Agomba kongera ubwitonzi."
+  },
+  {
+    "id": "traffic_810",
+    "category": "traffic",
+    "question": "What hazard is indicated by a SLIPPERY ROAD warning sign?",
+    "question_rw": "Icyapa kiburira SLIPPERY ROAD kigaragaza akahe kaga?",
+    "options": [
+      "A road surface with reduced grip",
+      "A road with no traffic",
+      "A compulsory stopping area",
+      "A road reserved for bicycles"
+    ],
+    "options_rw": [
+      "Umuhanda ushobora kunyerera kubera kudafata neza amapine",
+      "Umuhanda utarangwamo ibinyabiziga",
+      "Ahantu hategetswe guhagarara",
+      "Umuhanda wagenewe amagare gusa"
+    ],
+    "answer": "A road surface with reduced grip",
+    "answer_rw": "Umuhanda ushobora kunyerera kubera kudafata neza amapine",
+    "explanation": "The sign warns that the road surface may be slippery, reducing tyre grip. Drivers should reduce speed appropriately and avoid sudden manoeuvres.",
+    "explanation_rw": "Iki cyapa kiburira ko ubuso bw'umuhanda bushobora kunyerera, bigatuma amapine adafatana neza n'umuhanda. Umuyobozi agomba kugabanya umuvuduko uko bikwiye kandi akirinda guhindura icyerekezo gitunguranye."
+  },
+  {
+    "id": "traffic_811",
+    "category": "traffic",
+    "question": "A warning sign shows a bend to the right. What should the driver expect?",
+    "question_rw": "Icyapa kiburira kigaragaza umuhanda ugoramye ugana iburyo gisaba umuyobozi kwitegura iki?",
+    "options": [
+      "A right-hand bend ahead",
+      "A compulsory left turn",
+      "The end of all speed restrictions",
+      "A pedestrian-only road"
+    ],
+    "options_rw": [
+      "Umuhanda ugoramye ugana iburyo imbere",
+      "Guhindukira ibumoso ku gahato",
+      "Iherezo ry'ibibujijwe byose ku muvuduko",
+      "Umuhanda w'abanyamaguru gusa"
+    ],
+    "answer": "A right-hand bend ahead",
+    "answer_rw": "Umuhanda ugoramye ugana iburyo imbere",
+    "explanation": "A right-bend warning sign alerts drivers to a curve ahead. They should adjust speed and position safely before entering the bend.",
+    "explanation_rw": "Icyapa kiburira umuhanda ugoramye iburyo kimenyesha umuyobozi ko imbere hari ikorosi. Agomba kugena umuvuduko n'umwanya w'ikinyabiziga mu mutekano mbere yo kurigeramo."
+  },
+  {
+    "id": "traffic_812",
+    "category": "traffic",
+    "question": "What does a TWO-WAY TRAFFIC warning sign indicate?",
+    "question_rw": "Icyapa kiburira TWO-WAY TRAFFIC kigaragaza iki?",
+    "options": [
+      "Traffic moves in both directions",
+      "Traffic moves in one direction only",
+      "The road is closed to all vehicles",
+      "Only emergency vehicles may pass"
+    ],
+    "options_rw": [
+      "Ibinyabiziga bigendera mu byerekezo byombi",
+      "Ibinyabiziga bigendera mu cyerekezo kimwe gusa",
+      "Umuhanda ufunze ku binyabiziga byose",
+      "Ibinyabiziga by'ubutabazi gusa ni byo byemerewe kunyura"
+    ],
+    "answer": "Traffic moves in both directions",
+    "answer_rw": "Ibinyabiziga bigendera mu byerekezo byombi",
+    "explanation": "The sign warns drivers that traffic may approach from the opposite direction. They must remain on their proper side and be alert.",
+    "explanation_rw": "Iki cyapa kiburira ko ibinyabiziga bishobora kuza bivuye mu cyerekezo gitandukanye. Umuyobozi agomba kugendera ku ruhande rwe no gukomeza kuba maso."
+  },
+  {
+    "id": "traffic_813",
+    "category": "traffic",
+    "question": "What does a blue circular sign with a straight arrow generally require?",
+    "question_rw": "Icyapa cy'ubururu kizengurutse kirimo umwambi ugororotse muri rusange gisaba iki?",
+    "options": [
+      "Straight ahead only",
+      "No entry",
+      "Parking is prohibited",
+      "A dangerous bend is ahead"
+    ],
+    "options_rw": [
+      "Gukomeza ugororotse gusa",
+      "Nta kwinjira",
+      "Guhagarika ikinyabiziga birabujijwe",
+      "Imbere hari ikorosi riteje akaga"
+    ],
+    "answer": "Straight ahead only",
+    "answer_rw": "Gukomeza ugororotse gusa",
+    "explanation": "A blue circular mandatory sign with a straight arrow directs traffic to continue straight ahead.",
+    "explanation_rw": "Icyapa cy'ubururu kizengurutse kirimo umwambi ugororotse ni ikimenyetso gitegeka gukomeza ugororotse."
+  },
+  {
+    "id": "traffic_814",
+    "category": "traffic",
+    "question": "What does a compulsory roundabout sign instruct drivers to do?",
+    "question_rw": "Icyapa gitegeka kunyura mu ruziga rw'ihuriro ry'imihanda gisaba abayobozi b'ibinyabiziga gukora iki?",
+    "options": [
+      "Drive straight across the centre",
+      "Follow the direction of circulation around the roundabout",
+      "Reverse before entering",
+      "Stop permanently outside the roundabout"
+    ],
+    "options_rw": [
+      "Kunyura hagati mu ruziga ugororotse",
+      "Gukurikiza icyerekezo cy'ibinyabiziga bizenguruka uruziga",
+      "Gusubira inyuma mbere yo kwinjira",
+      "Guhagarara burundu hanze y'uruziga"
+    ],
+    "answer": "Follow the direction of circulation around the roundabout",
+    "answer_rw": "Gukurikiza icyerekezo cy'ibinyabiziga bizenguruka uruziga",
+    "explanation": "A compulsory roundabout sign directs drivers to follow the prescribed direction around the roundabout and observe priority rules.",
+    "explanation_rw": "Icyapa gitegeka kunyura mu ruziga gisaba umuyobozi gukurikiza icyerekezo cyagenwe cyo kuruzenguruka no kubahiriza amategeko agenga gutambuka mbere."
+  },
+  {
+    "id": "traffic_815",
+    "category": "traffic",
+    "question": "What does a NO U-TURN sign prohibit?",
+    "question_rw": "Icyapa cya NO U-TURN kibuza iki?",
+    "options": [
+      "Turning the vehicle around to travel in the opposite direction",
+      "Turning left into a side road",
+      "Driving straight ahead",
+      "Using the right-hand lane"
+    ],
+    "options_rw": [
+      "Guhindukiza ikinyabiziga ngo gisubire mu cyerekezo cyaturutsemo",
+      "Guhindukira ibumoso winjira mu kandi kayira",
+      "Gukomeza ugororotse",
+      "Gukoresha igisate cy'iburyo"
+    ],
+    "answer": "Turning the vehicle around to travel in the opposite direction",
+    "answer_rw": "Guhindukiza ikinyabiziga ngo gisubire mu cyerekezo cyaturutsemo",
+    "explanation": "A NO U-TURN sign prohibits making a U-turn at the location or section indicated.",
+    "explanation_rw": "Icyapa cya NO U-TURN kibuza guhindukiza ikinyabiziga ngo gisubire mu cyerekezo cyaturutsemo aho icyapa kireba."
+  },
+  {
+    "id": "traffic_816",
+    "category": "traffic",
+    "question": "What should a driver expect when approaching a railway level-crossing warning sign?",
+    "question_rw": "Umuyobozi w'ikinyabiziga agomba kwitegura iki ageze ku cyapa kiburira aho umuhanda wambukiranya inzira ya gari ya moshi ku rwego rumwe?",
+    "options": [
+      "A railway crossing ahead",
+      "A compulsory parking area",
+      "A motorway entrance",
+      "A road reserved for pedestrians"
+    ],
+    "options_rw": [
+      "Aho umuhanda wambukiranya inzira ya gari ya moshi imbere",
+      "Ahantu hategetswe guhagarika ikinyabiziga",
+      "Ahantu hinjirwa mu muhanda wihuta",
+      "Umuhanda wagenewe abanyamaguru"
+    ],
+    "answer": "A railway crossing ahead",
+    "answer_rw": "Aho umuhanda wambukiranya inzira ya gari ya moshi imbere",
+    "explanation": "The warning sign alerts drivers to a railway crossing ahead. They must approach carefully and obey any barrier, signal or instruction.",
+    "explanation_rw": "Iki cyapa kiburira ko imbere hari aho umuhanda wambukiranya inzira ya gari ya moshi. Umuyobozi agomba kuhagera yitonze kandi akubahiriza inzitizi, amatara cyangwa amabwiriza ahari."
+  },
+  {
+    "id": "traffic_817",
+    "category": "traffic",
+    "question": "What does a road-narrows warning sign communicate?",
+    "question_rw": "Icyapa kiburira ko umuhanda ugenda uba muto gisobanura iki?",
+    "options": [
+      "The road becomes narrower ahead",
+      "The road becomes a motorway",
+      "The road is reserved for buses",
+      "The road ends immediately"
+    ],
+    "options_rw": [
+      "Umuhanda ugenda uba muto imbere",
+      "Umuhanda uhinduka umuhanda wihuta",
+      "Umuhanda ugenewe bisi gusa",
+      "Umuhanda uhita urangirira aho"
+    ],
+    "answer": "The road becomes narrower ahead",
+    "answer_rw": "Umuhanda ugenda uba muto imbere",
+    "explanation": "The sign warns that the available road width decreases ahead. Drivers should reduce speed as needed and allow safe passing.",
+    "explanation_rw": "Iki cyapa kiburira ko ubugari bw'umuhanda bugenda bugabanuka imbere. Umuyobozi agomba kugabanya umuvuduko uko bikwiye kandi agaha abandi umwanya wo kunyura mu mutekano."
+  },
+  {
+    "id": "traffic_818",
+    "category": "traffic",
+    "question": "What does a warning sign showing children or a school area tell drivers?",
+    "question_rw": "Icyapa kiburira kigaragaza abana cyangwa agace k'ishuri kiba kibwira iki abatwara ibinyabiziga?",
+    "options": [
+      "Children may be present near or crossing the road",
+      "Children are prohibited from the area",
+      "The road is closed during school hours",
+      "Only school buses may use the road"
+    ],
+    "options_rw": [
+      "Abana bashobora kuba hafi y'umuhanda cyangwa bawambuka",
+      "Abana ntibemerewe kuba muri ako gace",
+      "Umuhanda ufungwa mu masaha y'ishuri",
+      "Bisi z'ishuri gusa ni zo zemewe kuwukoresha"
+    ],
+    "answer": "Children may be present near or crossing the road",
+    "answer_rw": "Abana bashobora kuba hafi y'umuhanda cyangwa bawambuka",
+    "explanation": "The sign warns of possible child movement near the road. Drivers should be especially alert and ready to slow or stop safely.",
+    "explanation_rw": "Iki cyapa kiburira ko abana bashobora kuba hafi y'umuhanda cyangwa bawambuka. Umuyobozi agomba kuba maso cyane kandi yiteguye kugabanya umuvuduko cyangwa guhagarara mu mutekano."
+  },
+  {
+    "id": "traffic_819",
+    "category": "traffic",
+    "question": "What is the meaning of a continuous white centre line where crossing is prohibited?",
+    "question_rw": "Umurongo wera udacikagurika uri hagati mu muhanda aho kwambuka bibujijwe usobanura iki?",
+    "options": [
+      "Drivers may cross whenever they wish",
+      "Drivers must not cross the line",
+      "The line marks a parking area",
+      "The line indicates a pedestrian-only lane"
+    ],
+    "options_rw": [
+      "Abayobozi bashobora kuwambuka igihe bashakiye",
+      "Abayobozi ntibagomba kuwambuka",
+      "Umurongo ugaragaza ahaparikwa imodoka",
+      "Umurongo ugaragaza inzira y'abanyamaguru gusa"
+    ],
+    "answer": "Drivers must not cross the line",
+    "answer_rw": "Abayobozi ntibagomba kuwambuka",
+    "explanation": "A continuous line used as a prohibition marking must not be crossed where the restriction applies.",
+    "explanation_rw": "Umurongo udacikagurika ukoreshwa nk'ikimenyetso kibuzanya ntugomba kwambukwa aho iryo tegeko rikurikizwa."
+  },
+  {
+    "id": "traffic_820",
+    "category": "traffic",
+    "question": "What does a broken white lane line generally allow when it is safe?",
+    "question_rw": "Umurongo wera ucikagurika ugabanya ibisate by'umuhanda muri rusange wemera iki igihe nta kaga gahari?",
+    "options": [
+      "Crossing it when safe and permitted",
+      "Parking directly on the line",
+      "Driving against oncoming traffic",
+      "Ignoring all other road signs"
+    ],
+    "options_rw": [
+      "Kuwambuka igihe ari umutekano kandi byemewe",
+      "Guhagarika ikinyabiziga hejuru y'umurongo",
+      "Kugendera mu cyerekezo kinyuranyije n'icy'abandi",
+      "Kwirengagiza ibyapa byose"
+    ],
+    "answer": "Crossing it when safe and permitted",
+    "answer_rw": "Kuwambuka igihe ari umutekano kandi byemewe",
+    "explanation": "A broken line may be crossed when the manoeuvre is safe and no other sign, marking or traffic rule prohibits it.",
+    "explanation_rw": "Umurongo ucikagurika ushobora kwambukwa igihe kubikora ari umutekano kandi nta kindi cyapa, kimenyetso cyangwa itegeko ribibuza."
+  },
+  {
+    "id": "traffic_821",
+    "category": "traffic",
+    "question": "What does a blue circular sign showing a white arrow pointing left generally require?",
+    "question_rw": "Icyapa cy'ubururu kizengurutse kirimo umwambi wera werekeza ibumoso muri rusange gisaba iki?",
+    "options": [
+      "Turn left only",
+      "No left turn",
+      "Turn right only",
+      "No entry from the left"
+    ],
+    "options_rw": [
+      "Guhindukira ibumoso gusa",
+      "Ntugahindukire ibumoso",
+      "Guhindukira iburyo gusa",
+      "Nta kwinjira uturutse ibumoso"
+    ],
+    "answer": "Turn left only",
+    "answer_rw": "Guhindukira ibumoso gusa",
+    "explanation": "A blue circular mandatory sign with a left-pointing arrow directs drivers to turn left.",
+    "explanation_rw": "Icyapa cy'ubururu kizengurutse kirimo umwambi werekeza ibumoso ni ikimenyetso gitegeka umuyobozi guhindukira ibumoso."
+  },
+  {
+    "id": "traffic_822",
+    "category": "traffic",
+    "question": "What does a sign indicating a hospital ahead primarily warn or inform drivers about?",
+    "question_rw": "Icyapa kigaragaza ko imbere hari ibitaro ahanini kiba kigamije kumenyesha cyangwa kuburira iki abatwara ibinyabiziga?",
+    "options": [
+      "A medical facility is located ahead",
+      "A vehicle inspection centre is ahead",
+      "A compulsory bus terminal is ahead",
+      "The road is closed to pedestrians"
+    ],
+    "options_rw": [
+      "Imbere hari ahantu hatangirwa serivisi z'ubuvuzi",
+      "Imbere hari ikigo gisuzuma ibinyabiziga",
+      "Imbere hari gare ya bisi itegekwa",
+      "Umuhanda ufunze ku banyamaguru"
+    ],
+    "answer": "A medical facility is located ahead",
+    "answer_rw": "Imbere hari ahantu hatangirwa serivisi z'ubuvuzi",
+    "explanation": "A hospital information sign identifies a medical facility. Drivers should remain alert and avoid unnecessary noise or obstruction near the facility.",
+    "explanation_rw": "Icyapa cy'ibitaro kigaragaza ko hafi hari ikigo gitanga serivisi z'ubuvuzi. Abatwara ibinyabiziga bagomba gukomeza kuba maso no kwirinda urusaku cyangwa kubangamira ibikorwa byaho bitari ngombwa."
   }
 ]
+
 
 
