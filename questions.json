@@ -11545,4 +11545,1104 @@
     "explanation": "Checking reliable sources before sharing helps prevent misinformation from spreading and supports informed decisions.",
     "explanation_rw": "Kugenzura amasoko yizewe mbere yo gusangiza abandi amakuru bifasha gukumira ikwirakwizwa ry'amakuru atari yo no gufata ibyemezo bishingiye ku kuri."
   },
-    
+  {
+    "id": "general_751",
+    "category": "general",
+    "question": "Why is pasteurisation used in milk processing?",
+    "question_rw": "Kuki amata anyuzwa mu nzira ya pasteurisation igihe atunganywa?",
+    "options": [
+      "To reduce harmful microorganisms",
+      "To increase the amount of sugar",
+      "To remove all nutrients",
+      "To turn milk into drinking water"
+    ],
+    "options_rw": [
+      "Kugabanya mikorobe zishobora gutera indwara",
+      "Kongera isukari mu mata",
+      "Gukuramo intungamubiri zose",
+      "Guhindura amata amazi yo kunywa"
+    ],
+    "answer": "To reduce harmful microorganisms",
+    "answer_rw": "Kugabanya mikorobe zishobora gutera indwara",
+    "explanation": "Pasteurisation uses controlled heating to reduce harmful microorganisms and make milk safer to consume.",
+    "explanation_rw": "Pasteurisation ikoresha ubushyuhe bugenzuwe kugira ngo igabanye mikorobe zishobora gutera indwara, bityo amata arusheho kuba meza kunyobwa."
+  },
+  {
+    "id": "general_752",
+    "category": "general",
+    "question": "Which nutrient is especially important for building and repairing body tissues?",
+    "question_rw": "Ni iyihe ntungamubiri ifite uruhare rukomeye mu kubaka no gusana uturemangingo tw'umubiri?",
+    "options": [
+      "Protein",
+      "Water only",
+      "Dietary fibre",
+      "Vitamin C only"
+    ],
+    "options_rw": [
+      "Poroteyine",
+      "Amazi gusa",
+      "Fibres zo mu biribwa",
+      "Vitamini C gusa"
+    ],
+    "answer": "Protein",
+    "answer_rw": "Poroteyine",
+    "explanation": "Proteins provide amino acids needed for growth and repair of body tissues and for making many enzymes.",
+    "explanation_rw": "Poroteyine zitanga amino acids zikenerwa mu mikurire no gusana uturemangingo tw'umubiri, ndetse no gukora enzymes nyinshi."
+  },
+  {
+    "id": "general_753",
+    "category": "general",
+    "question": "What is the main purpose of oral rehydration solution (ORS)?",
+    "question_rw": "Umuti wo gusubiza umubiri amazi n'imyunyu (ORS) ukoreshwa cyane mu iki?",
+    "options": [
+      "Replacing water and electrolytes lost through diarrhoea",
+      "Treating every bacterial infection",
+      "Increasing body temperature",
+      "Replacing all meals permanently"
+    ],
+    "options_rw": [
+      "Gusimbura amazi n'imyunyu umubiri watakaje bitewe n'impiswi",
+      "Gukiza indwara zose ziterwa na bagiteri",
+      "Kongera ubushyuhe bw'umubiri",
+      "Gusimbura amafunguro yose burundu"
+    ],
+    "answer": "Replacing water and electrolytes lost through diarrhoea",
+    "answer_rw": "Gusimbura amazi n'imyunyu umubiri watakaje bitewe n'impiswi",
+    "explanation": "ORS helps prevent or treat dehydration by replacing fluids and important salts lost from the body.",
+    "explanation_rw": "ORS ifasha gukumira cyangwa kuvura umwuma isubiza umubiri amazi n'imyunyu y'ingenzi uba watakaje."
+  },
+  {
+    "id": "general_754",
+    "category": "general",
+    "question": "Why is vaccination important in public health?",
+    "question_rw": "Kuki gukingira indwara ari ingenzi mu buzima rusange bw'abaturage?",
+    "options": [
+      "It trains the immune system to recognise specific diseases",
+      "It guarantees that nobody will ever become ill",
+      "It replaces the need for clean water",
+      "It treats every disease after symptoms appear"
+    ],
+    "options_rw": [
+      "Bitegura ubudahangarwa bw'umubiri kumenya indwara zihariye",
+      "Byemeza ko nta muntu uzongera kurwara",
+      "Bisimbura gukoresha amazi meza",
+      "Bivura indwara zose nyuma y'uko ibimenyetso bigaragaye"
+    ],
+    "answer": "It trains the immune system to recognise specific diseases",
+    "answer_rw": "Bitegura ubudahangarwa bw'umubiri kumenya indwara zihariye",
+    "explanation": "Vaccines stimulate immune responses that help the body recognise and respond to particular pathogens.",
+    "explanation_rw": "Inkingo zituma ubudahangarwa bw'umubiri bwiga kumenya no kurwanya mikorobe zihariye zishobora gutera indwara."
+  },
+  {
+    "id": "general_755",
+    "category": "general",
+    "question": "What is the purpose of first aid?",
+    "question_rw": "Intego y'ubutabazi bw'ibanze ni iyihe?",
+    "options": [
+      "To provide immediate initial assistance before professional care is available",
+      "To replace all hospital services",
+      "To diagnose every disease without training",
+      "To delay assistance until the next day"
+    ],
+    "options_rw": [
+      "Gutanga ubufasha bwihuse mbere y'uko ubuvuzi bw'ababigize umwuga buboneka",
+      "Gusimbura serivisi zose z'ibitaro",
+      "Gupima indwara zose nta mahugurwa",
+      "Gutegereza kugeza ku munsi ukurikiyeho mbere yo gufasha"
+    ],
+    "answer": "To provide immediate initial assistance before professional care is available",
+    "answer_rw": "Gutanga ubufasha bwihuse mbere y'uko ubuvuzi bw'ababigize umwuga buboneka",
+    "explanation": "First aid is immediate care given to someone who is injured or suddenly ill while further medical help is arranged.",
+    "explanation_rw": "Ubutabazi bw'ibanze ni ubufasha buhabwa umuntu wakomeretse cyangwa urwaye gitunguranye mu gihe hategurwa ubundi buvuzi bukwiye."
+  },
+  {
+    "id": "general_756",
+    "category": "general",
+    "question": "Which practice helps reduce the spread of respiratory infections?",
+    "question_rw": "Ni ikihe gikorwa gifasha kugabanya ikwirakwira ry'indwara zandurira mu myanya y'ubuhumekero?",
+    "options": [
+      "Covering coughs and sneezes and practising hand hygiene",
+      "Sharing used tissues",
+      "Ignoring ventilation in crowded rooms",
+      "Touching the face with unwashed hands"
+    ],
+    "options_rw": [
+      "Gupfuka umunwa n'amazuru igihe umuntu akorora cyangwa yitsamura no gukaraba intoki",
+      "Gusangira ibitambaro byakoreshejwe",
+      "Kwirengagiza guhumeka neza kw'ibyumba birimo abantu benshi",
+      "Gukora ku maso n'intoki zidakarabye"
+    ],
+    "answer": "Covering coughs and sneezes and practising hand hygiene",
+    "answer_rw": "Gupfuka umunwa n'amazuru igihe umuntu akorora cyangwa yitsamura no gukaraba intoki",
+    "explanation": "Respiratory hygiene and regular handwashing reduce opportunities for infectious particles and germs to spread.",
+    "explanation_rw": "Isuku mu gihe cyo gukorora cyangwa kwitsamura no gukaraba intoki kenshi bigabanya amahirwe yo gukwirakwiza uduce twanduye na mikorobe."
+  },
+  {
+    "id": "general_757",
+    "category": "general",
+    "question": "What does a balanced diet mean?",
+    "question_rw": "Indyo yuzuye isobanura iki?",
+    "options": [
+      "Eating a variety of foods in appropriate proportions to meet nutritional needs",
+      "Eating only one type of food every day",
+      "Avoiding all sources of fat",
+      "Consuming only sweet foods"
+    ],
+    "options_rw": [
+      "Kurya ibiribwa bitandukanye mu rugero rukwiye kugira ngo umubiri ubone intungamubiri ukeneye",
+      "Kurya ubwoko bumwe bw'ibiribwa buri munsi",
+      "Kwirinda ibiribwa byose birimo ibinure",
+      "Kurya ibiryo biryohereye gusa"
+    ],
+    "answer": "Eating a variety of foods in appropriate proportions to meet nutritional needs",
+    "answer_rw": "Kurya ibiribwa bitandukanye mu rugero rukwiye kugira ngo umubiri ubone intungamubiri ukeneye",
+    "explanation": "A balanced diet includes different food groups in suitable amounts to provide energy and essential nutrients.",
+    "explanation_rw": "Indyo yuzuye igizwe n'ibiribwa byo mu matsinda atandukanye mu ngano ikwiye kugira ngo bitange ingufu n'intungamubiri z'ingenzi."
+  },
+  {
+    "id": "general_758",
+    "category": "general",
+    "question": "Which mineral is essential for the formation of haemoglobin in red blood cells?",
+    "question_rw": "Ni uwuhe munyu ngugu ukenerwa mu ikorwa rya haemoglobin iboneka mu turemangingo dutukura tw'amaraso?",
+    "options": [
+      "Iron",
+      "Iodine",
+      "Fluorine",
+      "Sodium"
+    ],
+    "options_rw": [
+      "Ubutare",
+      "Iyode",
+      "Fluorine",
+      "Sodium"
+    ],
+    "answer": "Iron",
+    "answer_rw": "Ubutare",
+    "explanation": "Iron is a key component of haemoglobin, the protein that carries oxygen in red blood cells.",
+    "explanation_rw": "Ubutare ni kimwe mu bigize haemoglobin, poroteyine itwara umwuka wa ogisijeni mu turemangingo dutukura tw'amaraso."
+  },
+  {
+    "id": "general_759",
+    "category": "general",
+    "question": "What is the main role of dietary fibre?",
+    "question_rw": "Ni uwuhe murimo w'ingenzi wa fibres ziboneka mu biribwa?",
+    "options": [
+      "Supporting healthy digestion and bowel function",
+      "Providing all the body's protein",
+      "Replacing the need for water",
+      "Producing oxygen in the blood"
+    ],
+    "options_rw": [
+      "Gufasha igogorwa ry'ibiryo n'imikorere myiza y'amara",
+      "Gutanga poroteyine zose umubiri ukeneye",
+      "Gusimbura amazi umubiri ukeneye",
+      "Gukora ogisijeni mu maraso"
+    ],
+    "answer": "Supporting healthy digestion and bowel function",
+    "answer_rw": "Gufasha igogorwa ry'ibiryo n'imikorere myiza y'amara",
+    "explanation": "Dietary fibre supports digestive health and can help maintain regular bowel movements.",
+    "explanation_rw": "Fibres zo mu biribwa zifasha igogorwa ry'ibiryo kandi zigatuma amara akora neza."
+  },
+  {
+    "id": "general_760",
+    "category": "general",
+    "question": "Why is sleep important for learning and memory?",
+    "question_rw": "Kuki gusinzira ari ingenzi mu kwiga no kubika amakuru mu bwonko?",
+    "options": [
+      "Sleep supports memory consolidation and brain function",
+      "Sleep permanently removes the need to study",
+      "Sleep prevents all mistakes",
+      "Sleep replaces physical activity completely"
+    ],
+    "options_rw": [
+      "Gusinzira bifasha ubwonko gukomeza kubika ibyo bwize no gukora neza",
+      "Gusinzira bituma umuntu atongera gukenera kwiga",
+      "Gusinzira birinda amakosa yose",
+      "Gusinzira bisimbura burundu imyitozo ngororamubiri"
+    ],
+    "answer": "Sleep supports memory consolidation and brain function",
+    "answer_rw": "Gusinzira bifasha ubwonko gukomeza kubika ibyo bwize no gukora neza",
+    "explanation": "Adequate sleep supports attention, learning, memory processing and overall brain health.",
+    "explanation_rw": "Gusinzira bihagije bifasha kwita ku byo umuntu akora, kwiga, gutunganya no kubika amakuru ndetse n'ubuzima bw'ubwonko muri rusange."
+  },
+  {
+    "id": "general_761",
+    "category": "general",
+    "question": "What is the main purpose of crop irrigation?",
+    "question_rw": "Intego nyamukuru yo kuhira imyaka ni iyihe?",
+    "options": [
+      "Supplying water to crops when rainfall is insufficient",
+      "Removing all nutrients from soil",
+      "Increasing soil salinity deliberately",
+      "Preventing plants from absorbing minerals"
+    ],
+    "options_rw": [
+      "Guha imyaka amazi igihe imvura idahagije",
+      "Gukuramo intungamubiri zose mu butaka",
+      "Kongera umunyu mwinshi mu butaka ku bushake",
+      "Kuburizamo ko ibimera bikurura imyunyu ngugu"
+    ],
+    "answer": "Supplying water to crops when rainfall is insufficient",
+    "answer_rw": "Guha imyaka amazi igihe imvura idahagije",
+    "explanation": "Irrigation supplies water to crops to support growth when natural rainfall does not provide enough moisture.",
+    "explanation_rw": "Kuhira biha imyaka amazi akenewe kugira ngo ikure neza igihe imvura isanzwe idatanga amazi ahagije."
+  },
+  {
+    "id": "general_762",
+    "category": "general",
+    "question": "Which farming practice helps prevent soil erosion on steep slopes?",
+    "question_rw": "Ni ubuhe buryo bw'ubuhinzi bufasha kurinda ubutaka gutwarwa n'isuri ahantu hahanamye?",
+    "options": [
+      "Terracing",
+      "Removing all vegetation",
+      "Ploughing directly downhill",
+      "Burning crop residues everywhere"
+    ],
+    "options_rw": [
+      "Gukora amaterasi",
+      "Gukuraho ibimera byose",
+      "Guhinga werekeza hasi y'umusozi",
+      "Gutwika ibisigazwa byose by'ibihingwa ahantu hose"
+    ],
+    "answer": "Terracing",
+    "answer_rw": "Gukora amaterasi",
+    "explanation": "Terraces shorten the slope length and slow water runoff, helping reduce soil erosion.",
+    "explanation_rw": "Amaterasi agabanya uburebure bw'umusozi amazi anyuraho kandi akagabanya umuvuduko wayo, bityo isuri ikagabanuka."
+  },
+  {
+    "id": "general_763",
+    "category": "general",
+    "question": "What is compost mainly made from?",
+    "question_rw": "Ifumbire y'imborera ikorwa ahanini mu biki?",
+    "options": [
+      "Decomposed organic materials",
+      "Pure plastic waste",
+      "Glass fragments",
+      "Metal pieces"
+    ],
+    "options_rw": [
+      "Ibikoresho karemano byaboze",
+      "Imyanda ya pulasitiki gusa",
+      "Uduce tw'ibirahure",
+      "Uduce tw'ibyuma"
+    ],
+    "answer": "Decomposed organic materials",
+    "answer_rw": "Ibikoresho karemano byaboze",
+    "explanation": "Compost is produced by the decomposition of organic materials such as plant residues and suitable food waste.",
+    "explanation_rw": "Ifumbire y'imborera ikorwa n'uko ibikoresho karemano nk'ibisigazwa by'ibimera n'imyanda y'ibiribwa ibora."
+  },
+  {
+    "id": "general_764",
+    "category": "general",
+    "question": "Why are legumes often included in crop rotation systems?",
+    "question_rw": "Kuki ibinyamisogwe bikunze gushyirwa muri gahunda yo guhinduranya ibihingwa?",
+    "options": [
+      "Many legumes form relationships with bacteria that fix atmospheric nitrogen",
+      "All legumes remove every nutrient from soil",
+      "Legumes never need water",
+      "Legumes prevent all weeds from growing"
+    ],
+    "options_rw": [
+      "Ibinyamisogwe byinshi bifatanya na bagiteri zifasha gufata azote yo mu kirere",
+      "Ibinyamisogwe byose bikuramo intungamubiri zose mu butaka",
+      "Ibinyamisogwe ntibikenera amazi",
+      "Ibinyamisogwe birinda ibyatsi bibi byose kumera"
+    ],
+    "answer": "Many legumes form relationships with bacteria that fix atmospheric nitrogen",
+    "answer_rw": "Ibinyamisogwe byinshi bifatanya na bagiteri zifasha gufata azote yo mu kirere",
+    "explanation": "Certain bacteria associated with legume roots convert atmospheric nitrogen into forms that plants can use.",
+    "explanation_rw": "Bagiteri zimwe ziba zifitanye isano n'imizi y'ibinyamisogwe zihindura azote yo mu kirere ikaba uburyo ibimera bishobora gukoresha."
+  },
+  {
+    "id": "general_765",
+    "category": "general",
+    "question": "What is post-harvest loss?",
+    "question_rw": "Igihombo kibaho nyuma yo gusarura imyaka ni iki?",
+    "options": [
+      "Loss of harvested produce during handling, storage, transport or processing",
+      "An increase in crop production before planting",
+      "The natural growth of seeds in the field",
+      "The amount of rainfall during planting"
+    ],
+    "options_rw": [
+      "Kwangirika cyangwa gutakaza umusaruro nyuma yo gusarura mu kuwutwara, kuwubika cyangwa kuwutunganya",
+      "Kongera umusaruro mbere yo gutera",
+      "Imikurire isanzwe y'imbuto mu murima",
+      "Ingano y'imvura igwa mu gihe cyo gutera"
+    ],
+    "answer": "Loss of harvested produce during handling, storage, transport or processing",
+    "answer_rw": "Kwangirika cyangwa gutakaza umusaruro nyuma yo gusarura mu kuwutwara, kuwubika cyangwa kuwutunganya",
+    "explanation": "Post-harvest losses occur when harvested crops are damaged, spoiled or wasted before reaching consumers.",
+    "explanation_rw": "Igihombo nyuma yo gusarura kibaho iyo imyaka yangiritse, iboze cyangwa ipfushijwe ubusa mbere y'uko igera ku bayikoresha."
+  },
+  {
+    "id": "general_766",
+    "category": "general",
+    "question": "What is the main function of a cooperative?",
+    "question_rw": "Umurimo nyamukuru wa koperative ni uwuhe?",
+    "options": [
+      "Allowing members to work together to meet shared economic or social needs",
+      "Giving all decisions to one unrelated company",
+      "Preventing members from participating",
+      "Operating only as a government ministry"
+    ],
+    "options_rw": [
+      "Gufasha abanyamuryango gufatanya mu kuzuza ibyo bahuriyeho mu bukungu cyangwa imibereho",
+      "Guha ububasha bwose ikigo kitari mu banyamuryango",
+      "Kuburizamo uruhare rw'abanyamuryango",
+      "Gukora nk'ishami rya minisiteri gusa"
+    ],
+    "answer": "Allowing members to work together to meet shared economic or social needs",
+    "answer_rw": "Gufasha abanyamuryango gufatanya mu kuzuza ibyo bahuriyeho mu bukungu cyangwa imibereho",
+    "explanation": "A cooperative is an organisation owned and controlled by its members to meet common needs and goals.",
+    "explanation_rw": "Koperative ni umuryango ugengwa kandi ukagira abanyamuryango bawo, bagafatanya mu kuzuza ibyo bahuriyeho no kugera ku ntego zabo."
+  },
+  {
+    "id": "general_767",
+    "category": "general",
+    "question": "What is a supply chain?",
+    "question_rw": "Uruhererekane rw'ibikorwa byo kugeza igicuruzwa ku muguzi ni iki?",
+    "options": [
+      "The network involved in producing and delivering a product to consumers",
+      "A list of school examination results",
+      "A method of measuring rainfall",
+      "A system for classifying stars"
+    ],
+    "options_rw": [
+      "Urusobe rw'ibikorwa byo gukora no kugeza igicuruzwa ku baguzi",
+      "Urutonde rw'amanota y'ibizamini by'amashuri",
+      "Uburyo bwo gupima imvura",
+      "Sisitemu yo gushyira inyenyeri mu byiciro"
+    ],
+    "answer": "The network involved in producing and delivering a product to consumers",
+    "answer_rw": "Urusobe rw'ibikorwa byo gukora no kugeza igicuruzwa ku baguzi",
+    "explanation": "A supply chain includes activities such as sourcing materials, production, storage, transport and distribution.",
+    "explanation_rw": "Uruhererekane rw'ibikorwa byo kugeza igicuruzwa ku muguzi rukubiyemo gushaka ibikoresho fatizo, gukora igicuruzwa, kukibika, kugitwara no kugikwirakwiza."
+  },
+  {
+    "id": "general_768",
+    "category": "general",
+    "question": "What is the purpose of quality control in manufacturing?",
+    "question_rw": "Kugenzura ubuziranenge mu nganda bigamije iki?",
+    "options": [
+      "Checking that products meet specified standards",
+      "Increasing defects in every product",
+      "Avoiding inspection of finished goods",
+      "Making all products identical in price"
+    ],
+    "options_rw": [
+      "Kureba niba ibicuruzwa byujuje ibisabwa ku bwiza",
+      "Kongera inenge muri buri gicuruzwa",
+      "Kwirinda kugenzura ibicuruzwa byarangiye",
+      "Gutuma ibicuruzwa byose bigira igiciro kimwe"
+    ],
+    "answer": "Checking that products meet specified standards",
+    "answer_rw": "Kureba niba ibicuruzwa byujuje ibisabwa ku bwiza",
+    "explanation": "Quality control uses inspection and testing to identify defects and check whether products meet requirements.",
+    "explanation_rw": "Kugenzura ubuziranenge bikoresha igenzura n'ibizamini kugira ngo hamenyekane inenge no kureba niba ibicuruzwa byujuje ibisabwa."
+  },
+  {
+    "id": "general_769",
+    "category": "general",
+    "question": "What does a consumer's right to information mean?",
+    "question_rw": "Uburenganzira bw'umuguzi bwo guhabwa amakuru busobanura iki?",
+    "options": [
+      "Consumers should receive accurate information about goods and services",
+      "Consumers must buy without knowing product details",
+      "Sellers may hide every safety warning",
+      "Only manufacturers may know product prices"
+    ],
+    "options_rw": [
+      "Abaguzi bagomba guhabwa amakuru y'ukuri ku bicuruzwa na serivisi",
+      "Abaguzi bagomba kugura batabanje kumenya ibisobanuro by'igicuruzwa",
+      "Abacuruzi bashobora guhisha imiburo yose y'umutekano",
+      "Abakora ibicuruzwa gusa ni bo bemerewe kumenya ibiciro"
+    ],
+    "answer": "Consumers should receive accurate information about goods and services",
+    "answer_rw": "Abaguzi bagomba guhabwa amakuru y'ukuri ku bicuruzwa na serivisi",
+    "explanation": "Accurate information helps consumers make informed choices about price, quality, use and safety.",
+    "explanation_rw": "Amakuru y'ukuri afasha abaguzi guhitamo neza hashingiwe ku giciro, ubuziranenge, imikoreshereze n'umutekano."
+  },
+  {
+    "id": "general_770",
+    "category": "general",
+    "question": "Why do businesses prepare financial statements?",
+    "question_rw": "Kuki ibigo by'ubucuruzi bikora raporo z'imari?",
+    "options": [
+      "To communicate financial performance and position",
+      "To replace all business records",
+      "To guarantee that expenses disappear",
+      "To avoid accounting"
+    ],
+    "options_rw": [
+      "Kugaragaza uko imari y'ikigo ihagaze n'uko cyitwaye mu by'ubukungu",
+      "Gusimbura inyandiko zose z'ubucuruzi",
+      "Kwemeza ko amafaranga yakoreshejwe azimira",
+      "Kwirinda ibaruramari"
+    ],
+    "answer": "To communicate financial performance and position",
+    "answer_rw": "Kugaragaza uko imari y'ikigo ihagaze n'uko cyitwaye mu by'ubukungu",
+    "explanation": "Financial statements provide structured information about income, expenses, assets, liabilities and financial results.",
+    "explanation_rw": "Raporo z'imari zitanga amakuru atondetse ku mafaranga yinjira, ayasohoka, umutungo, imyenda n'ibyavuye mu bikorwa by'ikigo."
+  },
+  {
+    "id": "general_771",
+    "category": "general",
+    "question": "What is cultural heritage?",
+    "question_rw": "Umurage ndangamuco ni iki?",
+    "options": [
+      "Traditions, objects, places and knowledge passed between generations",
+      "Only newly constructed roads",
+      "Only modern electronic devices",
+      "The daily weather forecast"
+    ],
+    "options_rw": [
+      "Imigenzo, ibintu, ahantu n'ubumenyi biva ku gisekuru bikagera ku kindi",
+      "Imihanda mishya gusa",
+      "Ibikoresho by'ikoranabuhanga bigezweho gusa",
+      "Iteganyagihe rya buri munsi"
+    ],
+    "answer": "Traditions, objects, places and knowledge passed between generations",
+    "answer_rw": "Imigenzo, ibintu, ahantu n'ubumenyi biva ku gisekuru bikagera ku kindi",
+    "explanation": "Cultural heritage includes tangible and intangible elements that communities value and pass on to future generations.",
+    "explanation_rw": "Umurage ndangamuco ukubiyemo ibintu bifatika n'ibidakora ku ntoki abaturage baha agaciro kandi bakabiraga ibisekuru bizaza."
+  },
+  {
+    "id": "general_772",
+    "category": "general",
+    "question": "What is an oral tradition?",
+    "question_rw": "Umurage utambutswa mu mvugo ni iki?",
+    "options": [
+      "Passing knowledge, stories and customs through spoken communication",
+      "Recording only satellite images",
+      "Writing every message in a computer program",
+      "Measuring the height of mountains"
+    ],
+    "options_rw": [
+      "Gutanga ubumenyi, inkuru n'imigenzo binyuze mu mvugo",
+      "Kubika amashusho ya satelite gusa",
+      "Kwandika ubutumwa bwose muri porogaramu ya mudasobwa",
+      "Gupima uburebure bw'imisozi"
+    ],
+    "answer": "Passing knowledge, stories and customs through spoken communication",
+    "answer_rw": "Gutanga ubumenyi, inkuru n'imigenzo binyuze mu mvugo",
+    "explanation": "Oral tradition preserves and transmits cultural knowledge through speech, storytelling, songs and other spoken forms.",
+    "explanation_rw": "Umurage utambutswa mu mvugo urinda kandi ugatanga ubumenyi ndangamuco binyuze mu biganiro, imigani, indirimbo n'ubundi buryo bwo kuvuga."
+  },
+  {
+    "id": "general_773",
+    "category": "general",
+    "question": "What is the main purpose of a museum?",
+    "question_rw": "Intego nyamukuru y'inzu ndangamurage ni iyihe?",
+    "options": [
+      "To preserve, study and present objects and knowledge of cultural or historical value",
+      "To manufacture all household furniture",
+      "To serve only as a sports stadium",
+      "To replace public libraries entirely"
+    ],
+    "options_rw": [
+      "Kubungabunga, kwiga no kwerekana ibintu n'ubumenyi bifite agaciro ndangamuco cyangwa amateka",
+      "Gukora ibikoresho byose byo mu rugo",
+      "Gukora nk'ikibuga cya siporo gusa",
+      "Gusimbura burundu amasomero rusange"
+    ],
+    "answer": "To preserve, study and present objects and knowledge of cultural or historical value",
+    "answer_rw": "Kubungabunga, kwiga no kwerekana ibintu n'ubumenyi bifite agaciro ndangamuco cyangwa amateka",
+    "explanation": "Museums conserve collections and help people learn about history, culture, science and art.",
+    "explanation_rw": "Inzu ndangamurage zibungabunga ibintu by'agaciro kandi zigafasha abantu kumenya amateka, umuco, siyansi n'ubugeni."
+  },
+  {
+    "id": "general_774",
+    "category": "general",
+    "question": "What does linguistic diversity refer to?",
+    "question_rw": "Ubwinshi bw'indimi butandukanye busobanura iki?",
+    "options": [
+      "The presence of different languages within a community or region",
+      "The use of only one alphabet worldwide",
+      "The disappearance of all local languages",
+      "The number of buildings in a village"
+    ],
+    "options_rw": [
+      "Kuba mu muryango cyangwa mu karere haboneka indimi zitandukanye",
+      "Gukoresha inyuguti zimwe gusa ku Isi yose",
+      "Kubura kw'indimi zose z'iwabo",
+      "Umubare w'inyubako mu mudugudu"
+    ],
+    "answer": "The presence of different languages within a community or region",
+    "answer_rw": "Kuba mu muryango cyangwa mu karere haboneka indimi zitandukanye",
+    "explanation": "Linguistic diversity describes the range of languages spoken by people in a particular place or across the world.",
+    "explanation_rw": "Ubwinshi bw'indimi busobanura amoko y'indimi avugwa n'abantu ahantu runaka cyangwa ku Isi hose."
+  },
+  {
+    "id": "general_775",
+    "category": "general",
+    "question": "Why are proverbs important in many cultures?",
+    "question_rw": "Kuki imigani migufi ifite inyigisho ifite akamaro mu mico myinshi?",
+    "options": [
+      "They communicate shared wisdom and moral lessons",
+      "They replace all scientific research",
+      "They provide exact weather measurements",
+      "They are used only for counting money"
+    ],
+    "options_rw": [
+      "Itanga ubwenge n'inyigisho z'imyitwarire abantu bahuriyeho",
+      "Isimbura ubushakashatsi bwose bwa siyansi",
+      "Itanga ibipimo nyakuri by'iteganyagihe",
+      "Ikoreshwa gusa mu kubara amafaranga"
+    ],
+    "answer": "They communicate shared wisdom and moral lessons",
+    "answer_rw": "Itanga ubwenge n'inyigisho z'imyitwarire abantu bahuriyeho",
+    "explanation": "Proverbs express lessons and observations developed through experience and passed from one generation to another.",
+    "explanation_rw": "Imigani migufi igaragaza inyigisho n'ibitekerezo byakomotse ku bunararibonye kandi bigahererekanywa hagati y'ibisekuru."
+  },
+  {
+    "id": "general_776",
+    "category": "general",
+    "question": "What is the purpose of a public library?",
+    "question_rw": "Intego y'isomero rusange ni iyihe?",
+    "options": [
+      "Providing access to information, reading materials and learning resources",
+      "Selling only construction materials",
+      "Restricting all public access to knowledge",
+      "Replacing every school classroom"
+    ],
+    "options_rw": [
+      "Gutanga uburyo bwo kubona amakuru, ibitabo n'ibikoresho bifasha kwiga",
+      "Kugurisha ibikoresho byo kubaka gusa",
+      "Kuburizamo uburyo abaturage bagera ku bumenyi",
+      "Gusimbura ibyumba by'amashuri byose"
+    ],
+    "answer": "Providing access to information, reading materials and learning resources",
+    "answer_rw": "Gutanga uburyo bwo kubona amakuru, ibitabo n'ibikoresho bifasha kwiga",
+    "explanation": "Public libraries support education and lifelong learning by making information resources available to communities.",
+    "explanation_rw": "Amasomero rusange afasha uburezi no gukomeza kwiga ubuzima bwose, atuma abaturage babona ibikoresho by'amakuru n'ubumenyi."
+  },
+  {
+    "id": "general_777",
+    "category": "general",
+    "question": "What is a demographic transition?",
+    "question_rw": "Impinduka mu miterere y'ubwiyongere bw'abaturage (demographic transition) ni iki?",
+    "options": [
+      "A change over time in birth rates and death rates as a society develops",
+      "A daily change in ocean tides",
+      "The movement of clouds across mountains",
+      "A change in the chemical composition of rocks"
+    ],
+    "options_rw": [
+      "Impinduka zibaho uko igihe gihita ku gipimo cy'abavuka n'abapfa uko umuryango utera imbere",
+      "Impinduka za buri munsi mu kuzamuka no kumanuka kw'inyanja",
+      "Kwimuka kw'ibicu hejuru y'imisozi",
+      "Impinduka mu bigize imiterere y'amabuye"
+    ],
+    "answer": "A change over time in birth rates and death rates as a society develops",
+    "answer_rw": "Impinduka zibaho uko igihe gihita ku gipimo cy'abavuka n'abapfa uko umuryango utera imbere",
+    "explanation": "Demographic transition describes long-term changes in fertility and mortality patterns as countries develop socially and economically.",
+    "explanation_rw": "Demographic transition isobanura impinduka z'igihe kirekire mu kuvuka no gupfa kw'abaturage uko ibihugu bitera imbere mu mibereho no mu bukungu."
+  },
+  {
+    "id": "general_778",
+    "category": "general",
+    "question": "What is urbanisation?",
+    "question_rw": "Urbanisation ni iki?",
+    "options": [
+      "The increasing proportion of people living in urban areas",
+      "The complete disappearance of rural communities",
+      "The movement of rivers into the sea",
+      "The growth of forests in deserts"
+    ],
+    "options_rw": [
+      "Kwiyongera k'umubare cyangwa igipimo cy'abantu batuye mu mijyi",
+      "Kubura burundu kw'abaturage bo mu byaro",
+      "Kujya kw'imigezi mu nyanja",
+      "Kongera kw'amashyamba mu butayu"
+    ],
+    "answer": "The increasing proportion of people living in urban areas",
+    "answer_rw": "Kwiyongera k'umubare cyangwa igipimo cy'abantu batuye mu mijyi",
+    "explanation": "Urbanisation occurs when a growing share of a population lives in towns and cities.",
+    "explanation_rw": "Urbanisation ibaho igihe igipimo cy'abaturage batuye mu mijyi no mu nsisiro kigenda cyiyongera."
+  },
+  {
+    "id": "general_779",
+    "category": "general",
+    "question": "What is migration?",
+    "question_rw": "Kwimuka kw'abaturage (migration) ni iki?",
+    "options": [
+      "The movement of people from one place to another to live temporarily or permanently",
+      "The daily rotation of Earth",
+      "The growth of a plant towards light",
+      "The movement of ocean waves"
+    ],
+    "options_rw": [
+      "Kuva ahantu hamwe ukajya ahandi ugamije kuhaba by'igihe gito cyangwa burundu",
+      "Kuzenguruka kwa Isi buri munsi",
+      "Gukura kw'igihingwa cyerekeza ku rumuri",
+      "Kugenda kw'imiraba yo mu nyanja"
+    ],
+    "answer": "The movement of people from one place to another to live temporarily or permanently",
+    "answer_rw": "Kuva ahantu hamwe ukajya ahandi ugamije kuhaba by'igihe gito cyangwa burundu",
+    "explanation": "Migration may occur within a country or across international borders for reasons such as work, education, family or safety.",
+    "explanation_rw": "Kwimuka bishobora kuba mu gihugu kimwe cyangwa hagati y'ibihugu, bitewe n'impamvu nk'akazi, uburezi, umuryango cyangwa umutekano."
+  },
+  {
+    "id": "general_780",
+    "category": "general",
+    "question": "What does social inclusion aim to achieve?",
+    "question_rw": "Kwimakaza uruhare rwa buri wese mu muryango bigamije iki?",
+    "options": [
+      "Ensuring that people have opportunities to participate in society",
+      "Excluding people because of their background",
+      "Limiting access to education",
+      "Giving public services to only one group"
+    ],
+    "options_rw": [
+      "Kugira ngo abantu bose babone amahirwe yo kugira uruhare mu muryango",
+      "Gukumira abantu kubera inkomoko yabo",
+      "Kugabanya uburyo bwo kubona uburezi",
+      "Guha serivisi rusange itsinda rimwe gusa"
+    ],
+    "answer": "Ensuring that people have opportunities to participate in society",
+    "answer_rw": "Kugira ngo abantu bose babone amahirwe yo kugira uruhare mu muryango",
+    "explanation": "Social inclusion promotes fair opportunities and participation for people from different backgrounds.",
+    "explanation_rw": "Kwimakaza uruhare rwa buri wese biteza imbere amahirwe aringanira abantu bafite imimerere n'inkomoko bitandukanye."
+  },
+  {
+    "id": "general_781",
+    "category": "general",
+    "question": "What is a renewable natural resource?",
+    "question_rw": "Umutungo kamere ushobora kongera kuboneka ni iki?",
+    "options": [
+      "A resource that can naturally replenish over time under suitable conditions",
+      "A resource that can never be replaced",
+      "A material created only in factories",
+      "A substance that has no practical use"
+    ],
+    "options_rw": [
+      "Umutungo ushobora kongera kuboneka mu buryo karemano uko igihe gihita iyo urinzwe neza",
+      "Umutungo udashobora na rimwe kongera kuboneka",
+      "Ikintu gikorerwa mu nganda gusa",
+      "Ikintu kidafite icyo gishobora gukoreshwa"
+    ],
+    "answer": "A resource that can naturally replenish over time under suitable conditions",
+    "answer_rw": "Umutungo ushobora kongera kuboneka mu buryo karemano uko igihe gihita iyo urinzwe neza",
+    "explanation": "Renewable resources can be replenished naturally, although some may be depleted if used faster than they recover.",
+    "explanation_rw": "Umutungo ushobora kongera kuboneka mu buryo karemano, ariko ushobora gushira iyo ukoreshwa vuba kurusha uko wongera kuboneka."
+  },
+  {
+    "id": "general_782",
+    "category": "general",
+    "question": "Which instrument is used to measure atmospheric pressure?",
+    "question_rw": "Ni ikihe gikoresho gikoreshwa mu gupima umuvuduko w'umwuka wo mu kirere?",
+    "options": [
+      "Barometer",
+      "Thermometer",
+      "Hygrometer",
+      "Anemometer"
+    ],
+    "options_rw": [
+      "Barometer",
+      "Thermometer",
+      "Hygrometer",
+      "Anemometer"
+    ],
+    "answer": "Barometer",
+    "answer_rw": "Barometer",
+    "explanation": "A barometer measures atmospheric pressure and is used in meteorology to monitor weather patterns.",
+    "explanation_rw": "Barometer ipima umuvuduko w'umwuka wo mu kirere kandi ikoreshwa mu bumenyi bw'iteganyagihe kugira ngo hakurikiranwe uko ikirere gihinduka."
+  },
+  {
+    "id": "general_783",
+    "category": "general",
+    "question": "Which instrument measures the speed of wind?",
+    "question_rw": "Ni ikihe gikoresho gipima umuvuduko w'umuyaga?",
+    "options": [
+      "Anemometer",
+      "Barometer",
+      "Rain gauge",
+      "Seismometer"
+    ],
+    "options_rw": [
+      "Anemometer",
+      "Barometer",
+      "Igikoresho gipima imvura",
+      "Seismometer"
+    ],
+    "answer": "Anemometer",
+    "answer_rw": "Anemometer",
+    "explanation": "An anemometer is a weather instrument designed to measure wind speed.",
+    "explanation_rw": "Anemometer ni igikoresho cyifashishwa mu bumenyi bw'ikirere gipima umuvuduko w'umuyaga."
+  },
+  {
+    "id": "general_784",
+    "category": "general",
+    "question": "What does a seismometer detect?",
+    "question_rw": "Seismometer imenya cyangwa ipima iki?",
+    "options": [
+      "Ground motion caused by seismic waves",
+      "The amount of salt in seawater",
+      "The speed of sound in the atmosphere",
+      "The brightness of stars"
+    ],
+    "options_rw": [
+      "Kunyeganyega kw'ubutaka guterwa n'imivumba y'imitingito",
+      "Ingano y'umunyu mu mazi y'inyanja",
+      "Umuvuduko w'ijwi mu kirere",
+      "Urumuri rw'inyenyeri"
+    ],
+    "answer": "Ground motion caused by seismic waves",
+    "answer_rw": "Kunyeganyega kw'ubutaka guterwa n'imivumba y'imitingito",
+    "explanation": "Seismometers record ground movements and help scientists study earthquakes and other seismic events.",
+    "explanation_rw": "Seismometer yandika uko ubutaka bunyeganyega, igafasha abahanga kwiga imitingito n'ibindi biba bifitanye isano na yo."
+  },
+  {
+    "id": "general_785",
+    "category": "general",
+    "question": "What is the main reason that mountains can influence local rainfall?",
+    "question_rw": "Ni iyihe mpamvu nyamukuru ituma imisozi ishobora kugira uruhare ku mvura igwa mu karere?",
+    "options": [
+      "Air forced to rise over mountains can cool and form clouds",
+      "Mountains produce all atmospheric water",
+      "Mountains stop the Earth's rotation",
+      "Mountain rocks turn sunlight directly into rain"
+    ],
+    "options_rw": [
+      "Umwuka uzamuka hejuru y'imisozi ushobora gukonja maze ugakora ibicu",
+      "Imisozi ni yo ikora amazi yose yo mu kirere",
+      "Imisozi ihagarika kuzenguruka kwa Isi",
+      "Amabuye yo ku misozi ahindura urumuri rw'izuba imvura"
+    ],
+    "answer": "Air forced to rise over mountains can cool and form clouds",
+    "answer_rw": "Umwuka uzamuka hejuru y'imisozi ushobora gukonja maze ugakora ibicu",
+    "explanation": "As moist air rises over mountains, it expands and cools, which can lead to condensation and orographic rainfall.",
+    "explanation_rw": "Iyo umwuka urimo ubuhehere uzamutse hejuru y'imisozi, uraguka ugakonja, bigatuma amazi awurimo yegerana agakora ibicu n'imvura."
+  },
+  {
+    "id": "general_786",
+    "category": "general",
+    "question": "What is the main purpose of a map scale?",
+    "question_rw": "Igipimo cy'ikarita gifasha iki?",
+    "options": [
+      "Showing the relationship between map distance and actual ground distance",
+      "Showing the age of every building",
+      "Indicating the temperature of every country",
+      "Displaying the population of every animal species"
+    ],
+    "options_rw": [
+      "Kugaragaza isano iri hagati y'intera iri ku ikarita n'intera nyayo iri ku butaka",
+      "Kugaragaza imyaka buri nyubako imaze",
+      "Kugaragaza ubushyuhe bwa buri gihugu",
+      "Kugaragaza umubare wa buri bwoko bw'inyamaswa"
+    ],
+    "answer": "Showing the relationship between map distance and actual ground distance",
+    "answer_rw": "Kugaragaza isano iri hagati y'intera iri ku ikarita n'intera nyayo iri ku butaka",
+    "explanation": "A map scale allows users to calculate real-world distances from measurements taken on a map.",
+    "explanation_rw": "Igipimo cy'ikarita gifasha kubara intera nyayo iri ku butaka uhereye ku bipimo byafatiwe ku ikarita."
+  },
+  {
+    "id": "general_787",
+    "category": "general",
+    "question": "What is a watershed?",
+    "question_rw": "Agace k'ubutaka gatuma amazi yerekeza mu mugezi cyangwa ikiyaga runaka ni iki?",
+    "options": [
+      "An area of land that drains water into a common river, lake or other outlet",
+      "A place where all rainwater disappears into space",
+      "A deep underground volcanic chamber",
+      "A region with no connection to water systems"
+    ],
+    "options_rw": [
+      "Agace k'ubutaka amazi y'imvura anyuramo akerekeza mu mugezi, ikiyaga cyangwa ahandi hamwe",
+      "Ahantu amazi yose y'imvura aburira mu kirere",
+      "Urwobo rwimbitse rw'ikirunga ruri munsi y'ubutaka",
+      "Agace kadahuriye na sisitemu iyo ari yo yose y'amazi"
+    ],
+    "answer": "An area of land that drains water into a common river, lake or other outlet",
+    "answer_rw": "Agace k'ubutaka amazi y'imvura anyuramo akerekeza mu mugezi, ikiyaga cyangwa ahandi hamwe",
+    "explanation": "A watershed is a drainage area in which water flows towards a shared river system, lake or other outlet.",
+    "explanation_rw": "Agace k'ubutaka gakurura amazi ni ahantu amazi aturuka mu mvura anyura akerekeza mu mugezi umwe, mu kiyaga cyangwa ahandi hamwe."
+  },
+  {
+    "id": "general_788",
+    "category": "general",
+    "question": "What is the purpose of a compass in navigation?",
+    "question_rw": "Kompas ikoreshwa iki mu kumenya icyerekezo?",
+    "options": [
+      "To indicate direction relative to Earth's magnetic field",
+      "To measure the depth of a lake",
+      "To calculate the mass of a vehicle",
+      "To measure atmospheric humidity"
+    ],
+    "options_rw": [
+      "Kwerekana icyerekezo hashingiwe ku murima wa rukuruzi w'Isi",
+      "Gupima ubujyakuzimu bw'ikiyaga",
+      "Kubara uburemere bw'ikinyabiziga",
+      "Gupima ubuhehere bw'umwuka"
+    ],
+    "answer": "To indicate direction relative to Earth's magnetic field",
+    "answer_rw": "Kwerekana icyerekezo hashingiwe ku murima wa rukuruzi w'Isi",
+    "explanation": "A magnetic compass uses a magnetised needle that aligns approximately with Earth's magnetic field.",
+    "explanation_rw": "Kompas ikoresha urushinge rukururwa na rukuruzi, rugahagarara hafi y'icyerekezo cy'umurima wa rukuruzi w'Isi."
+  },
+  {
+    "id": "general_789",
+    "category": "general",
+    "question": "Which geological process turns loose sediments into sedimentary rock?",
+    "question_rw": "Ni ikihe gikorwa cya geologiya gihindura ibitaka n'uduce tw'amabuye byegeranye bikaba urutare rw'ibisigazwa?",
+    "options": [
+      "Compaction and cementation",
+      "Photosynthesis and respiration",
+      "Evaporation and transpiration",
+      "Melting and immediate freezing only"
+    ],
+    "options_rw": [
+      "Gufatana kw'uduce kubera igitutu no gufatishwa n'ibinyabutabire karemano",
+      "Fotosinteze na respirisiyo",
+      "Guhinduka umwuka kw'amazi no gusohora umwuka w'amazi mu bimera",
+      "Gushonga no guhita bikonja gusa"
+    ],
+    "answer": "Compaction and cementation",
+    "answer_rw": "Gufatana kw'uduce kubera igitutu no gufatishwa n'ibinyabutabire karemano",
+    "explanation": "Sedimentary rocks commonly form when sediments are compressed and cemented together over time.",
+    "explanation_rw": "Amabuye y'ibisigazwa akunda kubaho iyo uduce tw'ubutaka n'amabuye dukandamijwe kandi tugafatanywa n'ibintu bifatisha uko igihe gihita."
+  },
+  {
+    "id": "general_790",
+    "category": "general",
+    "question": "What is the difference between weather and climate?",
+    "question_rw": "Ni irihe tandukaniro riri hagati y'imiterere y'ikirere ya buri gihe n'imiterere y'ikirere y'igihe kirekire?",
+    "options": [
+      "Weather describes short-term atmospheric conditions, while climate describes long-term patterns",
+      "Weather and climate mean exactly the same thing",
+      "Climate changes every minute, while weather never changes",
+      "Weather applies only to oceans"
+    ],
+    "options_rw": [
+      "Weather isobanura uko ikirere kimeze mu gihe gito, naho climate ikavuga uko ikirere cyagiye kimera mu gihe kirekire",
+      "Weather na climate bisobanura ikintu kimwe neza neza",
+      "Climate ihinduka buri munota, naho weather ntihinduka",
+      "Weather ikoreshwa ku nyanja gusa"
+    ],
+    "answer": "Weather describes short-term atmospheric conditions, while climate describes long-term patterns",
+    "answer_rw": "Weather isobanura uko ikirere kimeze mu gihe gito, naho climate ikavuga uko ikirere cyagiye kimera mu gihe kirekire",
+    "explanation": "Weather refers to conditions such as temperature and rainfall over short periods. Climate summarises typical patterns over many years.",
+    "explanation_rw": "Weather ireba uko ubushyuhe n'imvura bimeze mu gihe gito. Climate isobanura imiterere y'ikirere isanzwe igaragara mu myaka myinshi."
+  },
+  {
+    "id": "general_791",
+    "category": "general",
+    "question": "What does the term 'latitude' describe in geography?",
+    "question_rw": "Ijambo latitude risobanura iki mu bumenyi bw'isi?",
+    "options": [
+      "Angular distance north or south of the Equator",
+      "Distance east or west of the Prime Meridian",
+      "Height above sea level",
+      "Depth below the ocean surface"
+    ],
+    "options_rw": [
+      "Intera ipimwa mu mfuruka mu majyaruguru cyangwa mu majyepfo uvuye kuri Ekwateri",
+      "Intera mu burasirazuba cyangwa mu burengerazuba uvuye ku murongo wa mbere w'uburebure bw'isi",
+      "Ubuhagarike bw'ahantu uhereye ku rwego rw'inyanja",
+      "Ubujyakuzimu munsi y'amazi yo mu nyanja"
+    ],
+    "answer": "Angular distance north or south of the Equator",
+    "answer_rw": "Intera ipimwa mu mfuruka mu majyaruguru cyangwa mu majyepfo uvuye kuri Ekwateri",
+    "explanation": "Latitude measures how far a location lies north or south of the Equator in degrees.",
+    "explanation_rw": "Latitude ipima intera y'ahantu mu majyaruguru cyangwa mu majyepfo uvuye kuri Ekwateri, ikoresheje dogere."
+  },
+  {
+    "id": "general_792",
+    "category": "general",
+    "question": "Which type of rock forms when existing rock is changed by heat, pressure or chemically active fluids?",
+    "question_rw": "Ni ubuhe bwoko bw'urutare bubaho iyo urutare rwari rusanzwe ruhinduwe n'ubushyuhe, igitutu cyangwa amazi arimo ibinyabutabire bikora?",
+    "options": [
+      "Metamorphic rock",
+      "Sedimentary rock",
+      "Igneous rock",
+      "Unconsolidated soil"
+    ],
+    "options_rw": [
+      "Urutare rwahinduwe n'ubushyuhe n'igitutu",
+      "Urutare rw'ibisigazwa",
+      "Urutare rukomoka ku mazi y'urutare rwashonze",
+      "Ubutaka butafatanye"
+    ],
+    "answer": "Metamorphic rock",
+    "answer_rw": "Urutare rwahinduwe n'ubushyuhe n'igitutu",
+    "explanation": "Metamorphic rocks form when existing rocks are altered by heat, pressure or chemically active fluids without completely melting.",
+    "explanation_rw": "Urutare rwahinduwe n'ubushyuhe n'igitutu rubaho iyo urutare rwari rusanzwe ruhindutse bitewe n'ubushyuhe, igitutu cyangwa amazi arimo ibinyabutabire, rutabanje gushonga rwose."
+  },
+  {
+    "id": "general_793",
+    "category": "general",
+    "question": "What is the main role of pollinators in flowering plants?",
+    "question_rw": "Ni uwuhe murimo nyamukuru ukorwa n'ibinyabuzima bifasha mu kwanduza indabo z'ibimera?",
+    "options": [
+      "Moving pollen from anthers to receptive parts of flowers",
+      "Producing roots for every plant",
+      "Turning leaves into soil immediately",
+      "Preventing seeds from forming"
+    ],
+    "options_rw": [
+      "Kujyana intanga-ngabo z'indabo ku bice by'indabo bishobora kuzakira",
+      "Gukorera ibimera byose imizi",
+      "Guhita bihindura amababi ubutaka",
+      "Kuburizamo ko imbuto zibaho"
+    ],
+    "answer": "Moving pollen from anthers to receptive parts of flowers",
+    "answer_rw": "Kujyana intanga-ngabo z'indabo ku bice by'indabo bishobora kuzakira",
+    "explanation": "Pollination transfers pollen to the stigma of a compatible flower, enabling fertilisation in many flowering plants.",
+    "explanation_rw": "Kwambukiranya intanga z'indabo ni ugushyira intanga-ngabo ku gice cy'indabo cyitwa stigma, bigafasha ko habaho gusama mu bimera byinshi by'indabo."
+  },
+  {
+    "id": "general_794",
+    "category": "general",
+    "question": "What is the main function of the ozone layer?",
+    "question_rw": "Umurimo w'ingenzi w'agace ka ozone ko mu kirere ni uwuhe?",
+    "options": [
+      "Absorbing much of the Sun's harmful ultraviolet radiation",
+      "Producing all the oxygen needed by animals",
+      "Creating Earth's magnetic field",
+      "Preventing all clouds from forming"
+    ],
+    "options_rw": [
+      "Kumira igice kinini cy'imirasire ya ultraviolet y'izuba ishobora kwangiza",
+      "Gukora ogisijeni yose inyamaswa zikenera",
+      "Gukora umurima wa rukuruzi w'Isi",
+      "Kuburizamo ko ibicu byose bibaho"
+    ],
+    "answer": "Absorbing much of the Sun's harmful ultraviolet radiation",
+    "answer_rw": "Kumira igice kinini cy'imirasire ya ultraviolet y'izuba ishobora kwangiza",
+    "explanation": "Stratospheric ozone absorbs much of the Sun's harmful ultraviolet radiation, helping protect life on Earth.",
+    "explanation_rw": "Ozone yo mu gice cyo hejuru cy'ikirere imira igice kinini cy'imirasire ya ultraviolet ishobora kwangiza, igafasha kurinda ubuzima ku Isi."
+  },
+  {
+    "id": "general_795",
+    "category": "general",
+    "question": "Why are mangrove forests important to coastal ecosystems?",
+    "question_rw": "Kuki amashyamba ya mangrove afite akamaro ku rusobe rw'ibinyabuzima byo ku nkombe z'inyanja?",
+    "options": [
+      "They provide habitats and help protect shorelines from erosion",
+      "They stop all ocean currents",
+      "They prevent every storm from forming",
+      "They remove all salt from the ocean"
+    ],
+    "options_rw": [
+      "Atanga ubuturo ku binyabuzima kandi agafasha kurinda inkombe isuri",
+      "Ahagarika imigezi yose yo mu nyanja",
+      "Akuraho ibihuhusi byose mbere y'uko bibaho",
+      "Akura umunyu wose mu nyanja"
+    ],
+    "answer": "They provide habitats and help protect shorelines from erosion",
+    "answer_rw": "Atanga ubuturo ku binyabuzima kandi agafasha kurinda inkombe isuri",
+    "explanation": "Mangroves support coastal biodiversity, trap sediments and reduce some wave impacts on shorelines.",
+    "explanation_rw": "Amashyamba ya mangrove afasha ibinyabuzima byo ku nkombe, agafata ubutaka butwarwa n'amazi kandi akagabanya zimwe mu ngaruka z'imiraba ku nkombe."
+  },
+  {
+    "id": "general_796",
+    "category": "general",
+    "question": "What is the main purpose of environmental impact assessment?",
+    "question_rw": "Intego nyamukuru yo gusuzuma ingaruka umushinga ushobora kugira ku bidukikije ni iyihe?",
+    "options": [
+      "To identify and evaluate likely environmental effects before a project proceeds",
+      "To guarantee that a project has no costs",
+      "To replace every engineering design",
+      "To measure only the number of workers"
+    ],
+    "options_rw": [
+      "Kumenya no gusuzuma ingaruka umushinga ushobora kugira ku bidukikije mbere y'uko utangira",
+      "Kwemeza ko umushinga nta kiguzi ugira",
+      "Gusimbura ibishushanyo mbonera byose by'ubwubatsi",
+      "Kubara abakozi gusa"
+    ],
+    "answer": "To identify and evaluate likely environmental effects before a project proceeds",
+    "answer_rw": "Kumenya no gusuzuma ingaruka umushinga ushobora kugira ku bidukikije mbere y'uko utangira",
+    "explanation": "Environmental impact assessment helps decision-makers understand possible effects and consider measures to avoid or reduce harm.",
+    "explanation_rw": "Isuzuma ry'ingaruka ku bidukikije rifasha abafata ibyemezo gusobanukirwa ingaruka zishoboka no guteganya uburyo bwo kuzirinda cyangwa kuzigabanya."
+  },
+  {
+    "id": "general_797",
+    "category": "general",
+    "question": "What is the purpose of a wildlife protected area?",
+    "question_rw": "Agace kagenewe kubungabunga inyamaswa n'ibimera byo mu gasozi kagamije iki?",
+    "options": [
+      "Conserving habitats, species and ecological processes",
+      "Converting all natural habitats into factories",
+      "Preventing scientific study of nature",
+      "Removing all native species"
+    ],
+    "options_rw": [
+      "Kubungabunga ubuturo, amoko y'ibinyabuzima n'imikorere karemano y'urusobe rwabyo",
+      "Guhindura ubuturo karemano bwose inganda",
+      "Kuburizamo ubushakashatsi ku bidukikije",
+      "Kurandura amoko yose y'ibinyabuzima kavukire"
+    ],
+    "answer": "Conserving habitats, species and ecological processes",
+    "answer_rw": "Kubungabunga ubuturo, amoko y'ibinyabuzima n'imikorere karemano y'urusobe rwabyo",
+    "explanation": "Protected areas help conserve biodiversity and maintain natural processes such as breeding, migration and ecosystem interactions.",
+    "explanation_rw": "Uturere turinzwe dufasha kubungabunga ibinyabuzima bitandukanye no gukomeza imikorere karemano nko kororoka, kwimuka no gukorana kw'ibinyabuzima."
+  },
+  {
+    "id": "general_798",
+    "category": "general",
+    "question": "What does sustainable development seek to balance?",
+    "question_rw": "Iterambere rirambye rigamije kuringaniza ibihe?",
+    "options": [
+      "Economic progress, social well-being and environmental protection",
+      "Only industrial production and advertising",
+      "Only population growth and road construction",
+      "The interests of one generation alone"
+    ],
+    "options_rw": [
+      "Iterambere ry'ubukungu, imibereho myiza y'abaturage no kurengera ibidukikije",
+      "Umusaruro w'inganda no kwamamaza gusa",
+      "Ubwiyongere bw'abaturage no kubaka imihanda gusa",
+      "Inyungu z'igisekuru kimwe gusa"
+    ],
+    "answer": "Economic progress, social well-being and environmental protection",
+    "answer_rw": "Iterambere ry'ubukungu, imibereho myiza y'abaturage no kurengera ibidukikije",
+    "explanation": "Sustainable development aims to meet present needs while protecting the ability of future generations to meet theirs.",
+    "explanation_rw": "Iterambere rirambye rigamije kuzuza ibikenewe ubu ariko ntirihungabanye ubushobozi bw'ibisekuru bizaza bwo kuzuza ibyabyo."
+  },
+  {
+    "id": "general_799",
+    "category": "general",
+    "question": "What is the main purpose of a disaster preparedness plan?",
+    "question_rw": "Gahunda yo kwitegura ibiza igamije iki?",
+    "options": [
+      "Helping people and institutions prepare for and respond to emergencies",
+      "Ensuring that natural hazards never occur",
+      "Replacing all health and education services",
+      "Preventing communities from receiving warnings"
+    ],
+    "options_rw": [
+      "Gufasha abantu n'inzego kwitegura no guhangana n'ibihe byihutirwa",
+      "Kwemeza ko ibiza bitazigera bibaho",
+      "Gusimbura serivisi zose z'ubuzima n'uburezi",
+      "Kuburizamo ko abaturage bahabwa imiburo"
+    ],
+    "answer": "Helping people and institutions prepare for and respond to emergencies",
+    "answer_rw": "Gufasha abantu n'inzego kwitegura no guhangana n'ibihe byihutirwa",
+    "explanation": "Preparedness plans identify responsibilities, communication methods, resources and actions to reduce harm during emergencies.",
+    "explanation_rw": "Gahunda zo kwitegura ibiza zigaragaza inshingano, uburyo bwo gutanga amakuru, ibikoresho n'ibikorwa bigamije kugabanya ingaruka z'ibihe byihutirwa."
+  },
+  {
+    "id": "general_800",
+    "category": "general",
+    "question": "Why is community participation important in local development projects?",
+    "question_rw": "Kuki uruhare rw'abaturage ari ingenzi mu mishinga y'iterambere ry'aho batuye?",
+    "options": [
+      "It helps ensure that projects reflect local needs and priorities",
+      "It guarantees that every project will cost nothing",
+      "It removes the need for planning",
+      "It prevents residents from expressing concerns"
+    ],
+    "options_rw": [
+      "Bifasha gutuma imishinga ijyana n'ibikenewe n'ibyihutirwa mu baturage",
+      "Byemeza ko buri mushinga utazagira ikiguzi",
+      "Bikuraho akamaro ko gutegura",
+      "Birinda abaturage gutanga ibitekerezo n'impungenge"
+    ],
+    "answer": "It helps ensure that projects reflect local needs and priorities",
+    "answer_rw": "Bifasha gutuma imishinga ijyana n'ibikenewe n'ibyihutirwa mu baturage",
+    "explanation": "Community participation helps identify real needs, improve accountability and encourage local ownership of development projects.",
+    "explanation_rw": "Uruhare rw'abaturage rufasha kumenya ibikenewe koko, kongera kubazwa inshingano no gutuma abaturage bagira uruhare mu mishinga y'iterambere ryabo."
+  },
+     
