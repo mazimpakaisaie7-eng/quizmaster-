@@ -10444,5 +10444,1105 @@
     "answer_rw": "Gutanga icyo kugereranyaho kugira ngo hamenyekane ingaruka z'ikintu kiri kugeragezwa",
     "explanation": "A control group provides a baseline for comparison so researchers can better identify the effect of the independent variable.",
     "explanation_rw": "Itsinda rigenzura ritanga igipimo fatizo cyo kugereranyaho, bigafasha abashakashatsi kumenya ingaruka z'ikintu bahinduye mu igerageza."
-  }
-]
+  },
+  {
+    "id": "general_701",
+    "category": "general",
+    "question": "Why is crop rotation important in sustainable agriculture?",
+    "question_rw": "Kuki guhinduranya ibihingwa bihingwa mu murima ari ingenzi mu buhinzi burambye?",
+    "options": [
+      "It helps maintain soil fertility and can reduce pest build-up",
+      "It makes rainfall unnecessary",
+      "It prevents all plant diseases",
+      "It removes the need for irrigation"
+    ],
+    "options_rw": [
+      "Bifasha kubungabunga uburumbuke bw'ubutaka no kugabanya ubwiyongere bw'udukoko twangiza imyaka",
+      "Bituma imvura itaba ngombwa",
+      "Birinda indwara zose z'ibihingwa",
+      "Bituma kuhira bitaba ngombwa"
+    ],
+    "answer": "It helps maintain soil fertility and can reduce pest build-up",
+    "answer_rw": "Bifasha kubungabunga uburumbuke bw'ubutaka no kugabanya ubwiyongere bw'udukoko twangiza imyaka",
+    "explanation": "Different crops use and return different nutrients to the soil. Rotation can improve soil health and interrupt some pest and disease cycles.",
+    "explanation_rw": "Ibihingwa bitandukanye bikoresha kandi bigasubiza mu butaka intungamubiri zitandukanye. Kubihinduranya bifasha ubutaka gukomeza kugira ubuzima bwiza no guca intege ikwirakwira ry'udukoko n'indwara zimwe na zimwe."
+  },
+  {
+    "id": "general_702",
+    "category": "general",
+    "question": "What is the primary role of decomposers in an ecosystem?",
+    "question_rw": "Ni uwuhe murimo w'ingenzi ukorwa n'ibinyabuzima bibora ibisigazwa mu rusobe rw'ibinyabuzima?",
+    "options": [
+      "Breaking down dead matter and recycling nutrients",
+      "Producing sunlight",
+      "Stopping all plant growth",
+      "Creating new chemical elements"
+    ],
+    "options_rw": [
+      "Kubora ibisigazwa by'ibinyabuzima no gusubiza intungamubiri mu bidukikije",
+      "Gukora urumuri rw'izuba",
+      "Guhagarika imikurire y'ibimera byose",
+      "Gukora ibinyabutabire bishya"
+    ],
+    "answer": "Breaking down dead matter and recycling nutrients",
+    "answer_rw": "Kubora ibisigazwa by'ibinyabuzima no gusubiza intungamubiri mu bidukikije",
+    "explanation": "Decomposers such as bacteria and fungi break down dead organisms and return nutrients to the environment.",
+    "explanation_rw": "Ibinyabuzima nka bagiteri n'ibihumyo bibora ibisigazwa by'ibindi binyabuzima, bigasubiza intungamubiri mu bidukikije."
+  },
+  {
+    "id": "general_703",
+    "category": "general",
+    "question": "Which economic concept describes the value of the next best alternative given up when making a choice?",
+    "question_rw": "Ni ikihe gitekerezo mu bukungu gisobanura agaciro k'ikintu cyiza kurusha ibindi umuntu yigomwe igihe ahisemo ikindi?",
+    "options": [
+      "Opportunity cost",
+      "Gross profit",
+      "Market price",
+      "National income"
+    ],
+    "options_rw": [
+      "Ikiguzi cy'amahirwe yigomwe",
+      "Inyungu rusange",
+      "Igiciro cyo ku isoko",
+      "Umusaruro rusange w'igihugu"
+    ],
+    "answer": "Opportunity cost",
+    "answer_rw": "Ikiguzi cy'amahirwe yigomwe",
+    "explanation": "Opportunity cost is the value of the best alternative that is not chosen when a decision is made.",
+    "explanation_rw": "Ikiguzi cy'amahirwe yigomwe ni agaciro k'uburyo bwiza kurusha ubundi umuntu atahisemo kubera ko yafashe ikindi cyemezo."
+  },
+  {
+    "id": "general_704",
+    "category": "general",
+    "question": "What does the term 'entrepreneurship' mainly involve?",
+    "question_rw": "Ijambo 'kwihangira imirimo' risobanura ahanini iki?",
+    "options": [
+      "Identifying opportunities and organising resources to create value",
+      "Avoiding every form of responsibility",
+      "Only working for government institutions",
+      "Spending money without planning"
+    ],
+    "options_rw": [
+      "Kumenya amahirwe no guhuza umutungo kugira ngo habeho igikorwa gifite akamaro",
+      "Kwirinda inshingano zose",
+      "Gukorera inzego za Leta gusa",
+      "Gukoresha amafaranga nta gahunda"
+    ],
+    "answer": "Identifying opportunities and organising resources to create value",
+    "answer_rw": "Kumenya amahirwe no guhuza umutungo kugira ngo habeho igikorwa gifite akamaro",
+    "explanation": "Entrepreneurship involves developing ideas, taking calculated risks and organising resources to provide goods or services.",
+    "explanation_rw": "Kwihangira imirimo bikubiyemo guteza imbere ibitekerezo, gufata ibyemezo bipimye no guhuza umutungo kugira ngo hatangwe ibicuruzwa cyangwa serivisi."
+  },
+  {
+    "id": "general_705",
+    "category": "general",
+    "question": "Which institution is primarily responsible for making laws in a democratic state?",
+    "question_rw": "Ni uruhe rwego ahanini rushinzwe gushyiraho amategeko mu gihugu kigendera kuri demokarasi?",
+    "options": [
+      "The legislature or parliament",
+      "The national hospital",
+      "The central bank",
+      "The national museum"
+    ],
+    "options_rw": [
+      "Urwego rw'ubutegetsi rushinzwe amategeko cyangwa Inteko Ishinga Amategeko",
+      "Ibitaro bikuru by'igihugu",
+      "Banki Nkuru y'igihugu",
+      "Inzu ndangamurage y'igihugu"
+    ],
+    "answer": "The legislature or parliament",
+    "answer_rw": "Urwego rw'ubutegetsi rushinzwe amategeko cyangwa Inteko Ishinga Amategeko",
+    "explanation": "In democratic systems, the legislature debates, makes and reviews laws, subject to the country's constitution.",
+    "explanation_rw": "Mu miyoborere ya demokarasi, urwego rushinzwe amategeko ruyiga, rukayemeza kandi rukayavugurura hakurikijwe Itegeko Nshinga ry'igihugu."
+  },
+  {
+    "id": "general_706",
+    "category": "general",
+    "question": "What is the main purpose of a national census?",
+    "question_rw": "Intego nyamukuru y'ibarura rusange ry'abaturage ni iyihe?",
+    "options": [
+      "To collect information about the population and its characteristics",
+      "To determine the price of every product",
+      "To replace national elections",
+      "To identify every person's private password"
+    ],
+    "options_rw": [
+      "Gukusanya amakuru ku mubare w'abaturage n'ibiranga imibereho yabo",
+      "Kugena igiciro cya buri gicuruzwa",
+      "Gusimbura amatora y'igihugu",
+      "Kumenya ijambo ry'ibanga rya buri muntu"
+    ],
+    "answer": "To collect information about the population and its characteristics",
+    "answer_rw": "Gukusanya amakuru ku mubare w'abaturage n'ibiranga imibereho yabo",
+    "explanation": "A census provides population data that helps governments plan schools, hospitals, housing and public services.",
+    "explanation_rw": "Ibarura ritanga amakuru afasha Leta gutegura amashuri, ibitaro, imiturire n'izindi serivisi rusange."
+  },
+  {
+    "id": "general_707",
+    "category": "general",
+    "question": "Which principle means that everyone, including public officials, must obey the law?",
+    "question_rw": "Ni irihe hame risobanura ko buri wese, harimo n'abayobozi, agomba kubahiriza amategeko?",
+    "options": [
+      "Rule of law",
+      "Rule of wealth",
+      "Personal privilege",
+      "Absolute secrecy"
+    ],
+    "options_rw": [
+      "Ihame ry'ubutegetsi bugendera ku mategeko",
+      "Ubutegetsi bw'abakire",
+      "Uburenganzira bwihariye bw'umuntu",
+      "Ibanga ridashobora kumenyekana"
+    ],
+    "answer": "Rule of law",
+    "answer_rw": "Ihame ry'ubutegetsi bugendera ku mategeko",
+    "explanation": "The rule of law requires laws to apply fairly and equally, including to people who hold public office.",
+    "explanation_rw": "Ihame ry'ubutegetsi bugendera ku mategeko risaba ko amategeko akurikizwa mu buryo bungana kandi butabogamye, harimo no ku bayobozi."
+  },
+  {
+    "id": "general_708",
+    "category": "general",
+    "question": "What is the purpose of separating powers among branches of government?",
+    "question_rw": "Kuki ububasha bwa Leta bugabanywa mu nzego zitandukanye?",
+    "options": [
+      "To prevent excessive concentration of power and support accountability",
+      "To allow one person to control every institution",
+      "To remove the need for laws",
+      "To prevent citizens from receiving public services"
+    ],
+    "options_rw": [
+      "Kwirinda ko ububasha bwose bwiharirwa n'urwego rumwe no guteza imbere kubazwa inshingano",
+      "Kugira ngo umuntu umwe ayobore inzego zose",
+      "Gukuraho akamaro k'amategeko",
+      "Kuburizamo ko abaturage bahabwa serivisi"
+    ],
+    "answer": "To prevent excessive concentration of power and support accountability",
+    "answer_rw": "Kwirinda ko ububasha bwose bwiharirwa n'urwego rumwe no guteza imbere kubazwa inshingano",
+    "explanation": "Separation of powers distributes responsibilities and creates checks that help prevent abuse of authority.",
+    "explanation_rw": "Kugabanya ububasha mu nzego bituma inshingano zitandukana kandi hakabaho uburyo bwo kugenzurana no gukumira ikoreshwa nabi ry'ububasha."
+  },
+  {
+    "id": "general_709",
+    "category": "general",
+    "question": "What is the main function of a constitution?",
+    "question_rw": "Ni uwuhe murimo w'ingenzi w'Itegeko Nshinga ry'igihugu?",
+    "options": [
+      "To establish the basic framework of government and fundamental rights",
+      "To list the prices of goods in shops",
+      "To describe only the history of the country",
+      "To replace every ordinary law"
+    ],
+    "options_rw": [
+      "Gushyiraho imiterere y'ubutegetsi n'uburenganzira bw'ibanze",
+      "Kugaragaza ibiciro by'ibicuruzwa mu maduka",
+      "Kuvuga amateka y'igihugu gusa",
+      "Gusimbura amategeko yose asanzwe"
+    ],
+    "answer": "To establish the basic framework of government and fundamental rights",
+    "answer_rw": "Gushyiraho imiterere y'ubutegetsi n'uburenganzira bw'ibanze",
+    "explanation": "A constitution sets out the organisation and powers of government and often protects fundamental rights.",
+    "explanation_rw": "Itegeko Nshinga rigena imiterere n'ububasha bw'inzego za Leta kandi rikagena uburenganzira bw'ibanze bw'abaturage."
+  },
+  {
+    "id": "general_710",
+    "category": "general",
+    "question": "What is the main purpose of a budget?",
+    "question_rw": "Intego nyamukuru y'ingengo y'imari ni iyihe?",
+    "options": [
+      "To plan expected income and expenditure",
+      "To record only past birthdays",
+      "To guarantee unlimited money",
+      "To eliminate the need for financial decisions"
+    ],
+    "options_rw": [
+      "Guteganya amafaranga azinjira n'azakoreshwa",
+      "Kwandika gusa iminsi mikuru yashize",
+      "Kwemeza ko amafaranga atazigera ashira",
+      "Gukuraho akamaro ko gufata ibyemezo by'imari"
+    ],
+    "answer": "To plan expected income and expenditure",
+    "answer_rw": "Guteganya amafaranga azinjira n'azakoreshwa",
+    "explanation": "A budget helps individuals or institutions plan how available resources will be collected and spent.",
+    "explanation_rw": "Ingengo y'imari ifasha umuntu cyangwa urwego guteganya uko umutungo uhari uzaboneka n'uko uzakoreshwa."
+  },
+  {
+    "id": "general_711",
+    "category": "general",
+    "question": "Which of the following best describes inflation?",
+    "question_rw": "Ni ikihe gisobanuro gihuye neza n'izamuka ry'ibiciro muri rusange?",
+    "options": [
+      "A sustained increase in the general price level",
+      "A fall in the number of schools",
+      "An increase in rainfall every year",
+      "A reduction in the size of a country's land area"
+    ],
+    "options_rw": [
+      "Izamuka rikomeza ry'ibiciro by'ibintu na serivisi muri rusange",
+      "Kugabanuka kw'umubare w'amashuri",
+      "Kongera kw'imvura buri mwaka",
+      "Kugabanuka k'ubuso bw'igihugu"
+    ],
+    "answer": "A sustained increase in the general price level",
+    "answer_rw": "Izamuka rikomeza ry'ibiciro by'ibintu na serivisi muri rusange",
+    "explanation": "Inflation is a sustained rise in the general price level, which reduces the purchasing power of money.",
+    "explanation_rw": "Izamuka ry'ibiciro ni ukwiyongera gukomeza kw'ibiciro muri rusange, bigatuma ubushobozi bw'amafaranga bwo kugura bugabanuka."
+  },
+  {
+    "id": "general_712",
+    "category": "general",
+    "question": "What does financial literacy help a person do?",
+    "question_rw": "Ubumenyi mu micungire y'imari bufasha umuntu gukora iki?",
+    "options": [
+      "Make informed decisions about saving, spending and borrowing",
+      "Avoid understanding income",
+      "Spend all money immediately",
+      "Guarantee profit from every investment"
+    ],
+    "options_rw": [
+      "Gufata ibyemezo bifite ishingiro ku kuzigama, gukoresha no kugurizwa amafaranga",
+      "Kwirinda kumenya amafaranga yinjira",
+      "Gukoresha amafaranga yose ako kanya",
+      "Kwizezwa inyungu kuri buri shoramari"
+    ],
+    "answer": "Make informed decisions about saving, spending and borrowing",
+    "answer_rw": "Gufata ibyemezo bifite ishingiro ku kuzigama, gukoresha no kugurizwa amafaranga",
+    "explanation": "Financial literacy helps people understand money management, financial risks and long-term planning.",
+    "explanation_rw": "Ubumenyi mu micungire y'imari bufasha abantu kumenya uko bayobora amafaranga, gusobanukirwa ibyago by'imari no gutegura ejo hazaza."
+  },
+  {
+    "id": "general_713",
+    "category": "general",
+    "question": "Which mathematical concept describes the average found by adding values and dividing by their number?",
+    "question_rw": "Ni ikihe gipimo cy'imibare kiboneka hateranyijwe imibare yose hanyuma igiteranyo kikagabanywa n'umubare w'ibyo bipimo?",
+    "options": [
+      "Arithmetic mean",
+      "Range",
+      "Mode",
+      "Median"
+    ],
+    "options_rw": [
+      "Impuzandengo",
+      "Intera hagati y'agaciro kanini n'agato",
+      "Umubare ugaruka kenshi",
+      "Agaciro kari hagati"
+    ],
+    "answer": "Arithmetic mean",
+    "answer_rw": "Impuzandengo",
+    "explanation": "The arithmetic mean is calculated by adding all values and dividing by the total number of values.",
+    "explanation_rw": "Impuzandengo iboneka hateranyijwe agaciro kose hanyuma igiteranyo kikagabanywa n'umubare w'agaciro bwose."
+  },
+  {
+    "id": "general_714",
+    "category": "general",
+    "question": "If a number increases from 80 to 100, what is the percentage increase?",
+    "question_rw": "Niba umubare uvuye kuri 80 ukagera kuri 100, wariyongereyeho ijanisha ringana iki?",
+    "options": [
+      "25%",
+      "20%",
+      "15%",
+      "10%"
+    ],
+    "options_rw": [
+      "25%",
+      "20%",
+      "15%",
+      "10%"
+    ],
+    "answer": "25%",
+    "answer_rw": "25%",
+    "explanation": "The increase is 20. Dividing 20 by the original value of 80 and multiplying by 100 gives 25%.",
+    "explanation_rw": "Ubwiyongere ni 20. Iyo tugabanyije 20 na 80 yari umubare wa mbere, tukubye na 100, tubona 25%."
+  },
+  {
+    "id": "general_715",
+    "category": "general",
+    "question": "What is the probability of getting an even number when rolling a fair six-sided die once?",
+    "question_rw": "Amahirwe yo kubona umubare ugabanyika na kabiri iyo utereye icyarimwe agakarita k'imibare gafite impande esheshatu angana iki?",
+    "options": [
+      "1/2",
+      "1/3",
+      "1/6",
+      "2/3"
+    ],
+    "options_rw": [
+      "1/2",
+      "1/3",
+      "1/6",
+      "2/3"
+    ],
+    "answer": "1/2",
+    "answer_rw": "1/2",
+    "explanation": "The even outcomes are 2, 4 and 6. There are three favourable outcomes out of six equally likely outcomes, so the probability is 3/6 or 1/2.",
+    "explanation_rw": "Imibare igabanyika na kabiri ni 2, 4 na 6. Hari ibisubizo bitatu bishoboka muri bitandatu bifite amahirwe angana, bityo amahirwe akaba 3/6 cyangwa 1/2."
+  },
+  {
+    "id": "general_716",
+    "category": "general",
+    "question": "What is the sum of the interior angles of a triangle in Euclidean geometry?",
+    "question_rw": "Igiteranyo cy'inguni zo imbere zose za mpandeshatu mu mibare ya Euclide kingana iki?",
+    "options": [
+      "180 degrees",
+      "90 degrees",
+      "270 degrees",
+      "360 degrees"
+    ],
+    "options_rw": [
+      "Dogere 180",
+      "Dogere 90",
+      "Dogere 270",
+      "Dogere 360"
+    ],
+    "answer": "180 degrees",
+    "answer_rw": "Dogere 180",
+    "explanation": "In ordinary Euclidean plane geometry, the three interior angles of every triangle add up to 180 degrees.",
+    "explanation_rw": "Mu mibare isanzwe ya Euclide ikorerwa ku buso bugororotse, inguni eshatu zo imbere za mpandeshatu zose ziteranyije zingana na dogere 180."
+  },
+  {
+    "id": "general_717",
+    "category": "general",
+    "question": "Which number is both a square number and a cube number?",
+    "question_rw": "Ni uwuhe mubare ushobora kuba umubare ukomoka ku kwikuba kw'undi mubare kabiri ndetse no kuwikuba gatatu?",
+    "options": [
+      "64",
+      "36",
+      "48",
+      "72"
+    ],
+    "options_rw": [
+      "64",
+      "36",
+      "48",
+      "72"
+    ],
+    "answer": "64",
+    "answer_rw": "64",
+    "explanation": "64 is a square because 8 × 8 = 64, and it is a cube because 4 × 4 × 4 = 64.",
+    "explanation_rw": "64 ni umubare ukomoka ku kwikuba kabiri kuko 8 × 8 = 64, kandi ni umubare ukomoka ku kwikuba gatatu kuko 4 × 4 × 4 = 64."
+  },
+  {
+    "id": "general_718",
+    "category": "general",
+    "question": "In statistics, what does the median represent?",
+    "question_rw": "Mu mibare ishingiye ku ikusanyamakuru, median isobanura iki?",
+    "options": [
+      "The middle value in an ordered data set",
+      "The most frequently occurring value",
+      "The sum of all values",
+      "The difference between the largest and smallest values"
+    ],
+    "options_rw": [
+      "Agaciro kari hagati mu mibare itondetse",
+      "Agaciro kagaruka kenshi kurusha utundi",
+      "Igiteranyo cy'agaciro kose",
+      "Itandukaniro hagati y'agaciro kanini n'agato"
+    ],
+    "answer": "The middle value in an ordered data set",
+    "answer_rw": "Agaciro kari hagati mu mibare itondetse",
+    "explanation": "The median is the central value after data have been arranged in order. If there are two middle values, their average is used.",
+    "explanation_rw": "Median ni agaciro kari hagati nyuma yo gutondeka imibare. Iyo hari imibare ibiri yo hagati, hakoreshwa impuzandengo yayo."
+  },
+  {
+    "id": "general_719",
+    "category": "general",
+    "question": "Which branch of mathematics uses variables and symbols to represent unknown quantities?",
+    "question_rw": "Ni ikihe gice cy'imibare gikoresha inyuguti n'ibimenyetso mu kugaragaza imibare itazwi?",
+    "options": [
+      "Algebra",
+      "Geometry",
+      "Trigonometry",
+      "Statistics"
+    ],
+    "options_rw": [
+      "Alijebure",
+      "Jewometiri",
+      "Trigonometeri",
+      "Sitatisitiki"
+    ],
+    "answer": "Algebra",
+    "answer_rw": "Alijebure",
+    "explanation": "Algebra uses symbols and variables to express relationships and solve problems involving unknown values.",
+    "explanation_rw": "Alijebure ikoresha ibimenyetso n'inyuguti mu kugaragaza isano iri hagati y'imibare no gukemura ibibazo birimo agaciro kitazwi."
+  },
+  {
+    "id": "general_720",
+    "category": "general",
+    "question": "What does a negative exponent indicate in the expression a⁻², where a is not zero?",
+    "question_rw": "Mu mibare, icyerekana ingufu mbi muri a⁻², aho a itangana na zeru, gisobanura iki?",
+    "options": [
+      "The reciprocal of a²",
+      "The square root of a",
+      "Twice the value of a",
+      "The negative of a itself"
+    ],
+    "options_rw": [
+      "Umubare ungana na 1 ugabanyijwe na a²",
+      "Umuzi wa kabiri wa a",
+      "Inshuro ebyiri z'agaciro ka a",
+      "Agaciro ka a gahinduwe ikimenyetso kikaba kibi"
+    ],
+    "answer": "The reciprocal of a²",
+    "answer_rw": "Umubare ungana na 1 ugabanyijwe na a²",
+    "explanation": "A negative exponent means taking the reciprocal: a⁻² = 1/a², provided a is not zero.",
+    "explanation_rw": "Ingufu mbi zisobanura gufata umubare ungana na 1 ugabanyijwe n'uwo mubare uzamuwe kuri izo ngufu: a⁻² = 1/a², igihe a itangana na zeru."
+  },
+  {
+    "id": "general_721",
+    "category": "general",
+    "question": "Which scientific method step involves proposing a testable explanation for an observation?",
+    "question_rw": "Ni ikihe cyiciro mu buryo bwa siyansi bwo gukora ubushakashatsi gikubiyemo gutanga igitekerezo gishobora kugeragezwa kugira ngo gisobanure ibyo wabonye?",
+    "options": [
+      "Formulating a hypothesis",
+      "Publishing the final report",
+      "Ignoring the observations",
+      "Choosing a conclusion before testing"
+    ],
+    "options_rw": [
+      "Gutanga inyumvire y'ibanze ishobora kugeragezwa",
+      "Gushyira ahagaragara raporo ya nyuma",
+      "Kwirengagiza ibyo wabonye",
+      "Gufata umwanzuro mbere yo kugerageza"
+    ],
+    "answer": "Formulating a hypothesis",
+    "answer_rw": "Gutanga inyumvire y'ibanze ishobora kugeragezwa",
+    "explanation": "A hypothesis is a proposed explanation that can be tested through observation or experiment.",
+    "explanation_rw": "Inyumvire y'ibanze ni igitekerezo gisobanura ikintu kandi gishobora kugenzurwa hakoreshejwe kwitegereza cyangwa igerageza."
+  },
+  {
+    "id": "general_722",
+    "category": "general",
+    "question": "Why is a control group used in a scientific experiment?",
+    "question_rw": "Kuki mu igerageza rya siyansi hakoreshwa itsinda rigenzura?",
+    "options": [
+      "To provide a comparison for evaluating the effect of the tested variable",
+      "To guarantee the expected result",
+      "To make the experiment longer without purpose",
+      "To remove the need to record observations"
+    ],
+    "options_rw": [
+      "Kugira ngo haboneke icyo kugereranyaho harebwa ingaruka z'ikintu kiri kugeragezwa",
+      "Kwemeza ko igisubizo cyitezwe kiboneka",
+      "Kongera igihe cy'igerageza nta mpamvu",
+      "Gukuraho akamaro ko kwandika ibyo wabonye"
+    ],
+    "answer": "To provide a comparison for evaluating the effect of the tested variable",
+    "answer_rw": "Kugira ngo haboneke icyo kugereranyaho harebwa ingaruka z'ikintu kiri kugeragezwa",
+    "explanation": "A control group helps researchers compare results and determine whether the tested variable may have caused an observed effect.",
+    "explanation_rw": "Itsinda rigenzura rifasha abashakashatsi kugereranya ibisubizo no kumenya niba ikintu kiri kugeragezwa gishobora kuba ari cyo cyateye impinduka yabonetse."
+  },
+  {
+    "id": "general_723",
+    "category": "general",
+    "question": "What is biodiversity?",
+    "question_rw": "Ibinyabuzima bitandukanye (biodiversity) bisobanura iki?",
+    "options": [
+      "The variety of living organisms in an area or on Earth",
+      "The number of buildings in a city",
+      "The amount of rainfall in one month",
+      "The total number of roads in a country"
+    ],
+    "options_rw": [
+      "Ubwoko bwinshi butandukanye bw'ibinyabuzima biri ahantu runaka cyangwa ku Isi",
+      "Umubare w'inyubako mu mujyi",
+      "Ingano y'imvura yaguye mu kwezi kumwe",
+      "Umubare w'imihanda yose mu gihugu"
+    ],
+    "answer": "The variety of living organisms in an area or on Earth",
+    "answer_rw": "Ubwoko bwinshi butandukanye bw'ibinyabuzima biri ahantu runaka cyangwa ku Isi",
+    "explanation": "Biodiversity includes variation among species, within species and among ecosystems.",
+    "explanation_rw": "Biodiversity ikubiyemo itandukaniro hagati y'ubwoko bw'ibinyabuzima, hagati y'ibinyabuzima byo mu bwoko bumwe no hagati y'urusobe rw'ibinyabuzima."
+  },
+  {
+    "id": "general_724",
+    "category": "general",
+    "question": "What is the main environmental benefit of wetlands?",
+    "question_rw": "Ni akahe kamaro gakomeye ibishanga bigirira ibidukikije?",
+    "options": [
+      "They can store water, filter pollutants and provide habitats",
+      "They prevent every natural disaster",
+      "They produce all the oxygen on Earth",
+      "They stop all rivers from flowing"
+    ],
+    "options_rw": [
+      "Bishobora kubika amazi, kuyungurura imyanda no kuba ubuturo bw'ibinyabuzima",
+      "Birinda ibiza byose",
+      "Nibyo bitanga ogisijeni yose yo ku Isi",
+      "Bihagarika imigezi yose"
+    ],
+    "answer": "They can store water, filter pollutants and provide habitats",
+    "answer_rw": "Bishobora kubika amazi, kuyungurura imyanda no kuba ubuturo bw'ibinyabuzima",
+    "explanation": "Wetlands help regulate water, trap some pollutants and support many plant and animal species.",
+    "explanation_rw": "Ibishanga bifasha kuringaniza amazi, gufata imyanda imwe n'imwe no gutunga amoko menshi y'ibimera n'inyamaswa."
+  },
+  {
+    "id": "general_725",
+    "category": "general",
+    "question": "What is the main cause of ocean tides?",
+    "question_rw": "Ni ikihe kintu nyamukuru gitera amazi yo mu nyanja kuzamuka no kumanuka bitewe n'igihe?",
+    "options": [
+      "The gravitational pull of the Moon and the Sun",
+      "The colour of ocean water",
+      "The rotation of fish",
+      "The temperature of desert sand"
+    ],
+    "options_rw": [
+      "Imbaraga rukuruzi z'Ukwezi n'iz'Izuba",
+      "Ibara ry'amazi yo mu nyanja",
+      "Kuzenguruka kw'amafi",
+      "Ubushyuhe bw'umucanga wo mu butayu"
+    ],
+    "answer": "The gravitational pull of the Moon and the Sun",
+    "answer_rw": "Imbaraga rukuruzi z'Ukwezi n'iz'Izuba",
+    "explanation": "Tides are mainly caused by gravitational forces from the Moon and, to a lesser extent, the Sun acting on Earth's oceans.",
+    "explanation_rw": "Amazi yo mu nyanja azamuka akanamanuka ahanini bitewe n'imbaraga rukuruzi z'Ukwezi, ndetse n'iz'Izuba ku rugero ruto ugereranyije."
+  },
+  {
+    "id": "general_726",
+    "category": "general",
+    "question": "Which process describes the movement of water from the atmosphere back to Earth's surface as rain, snow or hail?",
+    "question_rw": "Ni ikihe gikorwa gisobanura uko amazi ava mu kirere akagaruka ku buso bw'Isi ari imvura, urubura cyangwa amahindu?",
+    "options": [
+      "Precipitation",
+      "Evaporation",
+      "Condensation",
+      "Infiltration"
+    ],
+    "options_rw": [
+      "Imvura cyangwa ibindi biva mu kirere bikagwa ku butaka",
+      "Kuzamuka kw'amazi ahinduka umwuka",
+      "Guhinduka kw'umwuka w'amazi ukaba ibitonyanga",
+      "Kwinjira kw'amazi mu butaka"
+    ],
+    "answer": "Precipitation",
+    "answer_rw": "Imvura cyangwa ibindi biva mu kirere bikagwa ku butaka",
+    "explanation": "Precipitation occurs when water falls from clouds to Earth's surface in forms such as rain, snow or hail.",
+    "explanation_rw": "Ibi bibaho iyo amazi ari mu bicu aguye ku buso bw'Isi ari imvura, urubura cyangwa amahindu."
+  },
+  {
+    "id": "general_727",
+    "category": "general",
+    "question": "What is the purpose of a wildlife corridor?",
+    "question_rw": "Koridoro y'inyamaswa zo mu gasozi igamije iki?",
+    "options": [
+      "To connect habitats so wildlife can move between them",
+      "To prevent animals from finding food",
+      "To replace all national parks",
+      "To increase habitat fragmentation"
+    ],
+    "options_rw": [
+      "Guhuza ubuturo bw'inyamaswa kugira ngo zishobore kwimuka hagati yabwo",
+      "Kuburizamo ko inyamaswa zibona ibyo zirya",
+      "Gusimbura za pariki zose z'igihugu",
+      "Kongera gucikamo ibice kw'ubuturo bw'inyamaswa"
+    ],
+    "answer": "To connect habitats so wildlife can move between them",
+    "answer_rw": "Guhuza ubuturo bw'inyamaswa kugira ngo zishobore kwimuka hagati yabwo",
+    "explanation": "Wildlife corridors connect separated habitats, helping animals move, find resources and maintain genetic exchange.",
+    "explanation_rw": "Koridoro z'inyamaswa zihuza ubuturo bwacitsemo ibice, zigafasha inyamaswa kwimuka, kubona ibyo zikeneye no gukomeza guhererekanya uturemangingo ndangasano."
+  },
+  {
+    "id": "general_728",
+    "category": "general",
+    "question": "Which renewable energy source uses moving air to generate electricity?",
+    "question_rw": "Ni iyihe soko y'ingufu zishobora kongera kuboneka ikoresha umuyaga ugenda kugira ngo hakorwe amashanyarazi?",
+    "options": [
+      "Wind energy",
+      "Coal energy",
+      "Petroleum energy",
+      "Natural gas energy"
+    ],
+    "options_rw": [
+      "Ingufu z'umuyaga",
+      "Ingufu z'amakara",
+      "Ingufu za peteroli",
+      "Ingufu za gaze kamere"
+    ],
+    "answer": "Wind energy",
+    "answer_rw": "Ingufu z'umuyaga",
+    "explanation": "Wind turbines convert the kinetic energy of moving air into electrical energy.",
+    "explanation_rw": "Imashini zikoresha umuyaga zihindura ingufu z'uko umwuka ugenda mo ingufu z'amashanyarazi."
+  },
+  {
+    "id": "general_729",
+    "category": "general",
+    "question": "What is the main purpose of recycling materials such as paper, glass and metal?",
+    "question_rw": "Intego nyamukuru yo kongera gukoresha ibikoresho nk'impapuro, ibirahure n'ibyuma ni iyihe?",
+    "options": [
+      "To reduce waste and the need for some raw materials",
+      "To increase pollution deliberately",
+      "To make all products disposable",
+      "To prevent materials from being used again"
+    ],
+    "options_rw": [
+      "Kugabanya imyanda no kugabanya gukenera bimwe mu bikoresho fatizo",
+      "Kongera umwanda ku bushake",
+      "Guhindura ibicuruzwa byose ibikoreshwa rimwe gusa",
+      "Kuburizamo ko ibikoresho byongera gukoreshwa"
+    ],
+    "answer": "To reduce waste and the need for some raw materials",
+    "answer_rw": "Kugabanya imyanda no kugabanya gukenera bimwe mu bikoresho fatizo",
+    "explanation": "Recycling allows some materials to be processed into new products, reducing waste and demand for virgin resources.",
+    "explanation_rw": "Kongera gukoresha ibikoresho bituma bimwe bishobora gutunganywa bikavamo ibicuruzwa bishya, bityo imyanda n'ibikenerwa mu mimerere yabyo ya mbere bikagabanuka."
+  },
+  {
+    "id": "general_730",
+    "category": "general",
+    "question": "Which layer of the atmosphere contains most of the weather phenomena experienced on Earth?",
+    "question_rw": "Ni ikihe gice cy'ikirere kibamo ibyinshi mu bintu bigize imiterere y'ikirere tubona ku Isi?",
+    "options": [
+      "Troposphere",
+      "Thermosphere",
+      "Exosphere",
+      "Mesosphere"
+    ],
+    "options_rw": [
+      "Troposiferi",
+      "Terimosiferi",
+      "Ekizosiferi",
+      "Mezosiferi"
+    ],
+    "answer": "Troposphere",
+    "answer_rw": "Troposiferi",
+    "explanation": "The troposphere is the lowest atmospheric layer and contains most of the air's water vapour and clouds.",
+    "explanation_rw": "Troposiferi ni igice cyo hasi cyane cy'ikirere kandi kirimo igice kinini cy'umwuka w'amazi n'ibicu."
+  },
+  {
+    "id": "general_731",
+    "category": "general",
+    "question": "Which ancient civilisation developed a writing system known as cuneiform?",
+    "question_rw": "Ni iyihe mico ya kera yateje imbere uburyo bwo kwandika buzwi nka cuneiform?",
+    "options": [
+      "The Sumerian civilisation",
+      "The Inca civilisation",
+      "The Aztec civilisation",
+      "The Polynesian civilisation"
+    ],
+    "options_rw": [
+      "Umuco w'Abasumeriya",
+      "Umuco w'Abinka",
+      "Umuco w'Abaziteki",
+      "Umuco w'Abapolineziya"
+    ],
+    "answer": "The Sumerian civilisation",
+    "answer_rw": "Umuco w'Abasumeriya",
+    "explanation": "The Sumerians of ancient Mesopotamia developed one of the earliest known writing systems, cuneiform.",
+    "explanation_rw": "Abasumeriya bo muri Mezopotamiya ya kera bateje imbere bumwe mu buryo bwa mbere buzwi bwo kwandika, bwitwa cuneiform."
+  },
+  {
+    "id": "general_732",
+    "category": "general",
+    "question": "Which historical trade network connected parts of East Asia with the Middle East and Europe?",
+    "question_rw": "Ni uwuhe muyoboro w'ubucuruzi wa kera wahuzaga uduce twa Aziya y'Iburasirazuba n'Uburasirazuba bwo Hagati ndetse n'Uburayi?",
+    "options": [
+      "The Silk Road",
+      "The Trans-Siberian Railway",
+      "The Panama Canal",
+      "The Atlantic Wall"
+    ],
+    "options_rw": [
+      "Inzira y'Ubucuruzi bw'Ubudodo",
+      "Gari ya moshi ya Trans-Siberian",
+      "Umuyoboro wa Panama",
+      "Urukuta rwa Atlantika"
+    ],
+    "answer": "The Silk Road",
+    "answer_rw": "Inzira y'Ubucuruzi bw'Ubudodo",
+    "explanation": "The Silk Road was a network of trade routes through which goods, ideas and technologies moved across regions.",
+    "explanation_rw": "Inzira y'Ubucuruzi bw'Ubudodo yari urusobe rw'inzira abacuruzi banyuragamo, hagahererekanywa ibicuruzwa, ibitekerezo n'ikoranabuhanga hagati y'uturere."
+  },
+  {
+    "id": "general_733",
+    "category": "general",
+    "question": "What was a major effect of the invention of the printing press in Europe?",
+    "question_rw": "Ni iyihe ngaruka ikomeye yazanywe no kuvumbura imashini icapa ibitabo mu Burayi?",
+    "options": [
+      "It made written information easier to reproduce and distribute",
+      "It ended the use of all spoken languages",
+      "It stopped people from learning to read",
+      "It replaced all forms of education"
+    ],
+    "options_rw": [
+      "Yatumye amakuru yanditse yoroshye gukopororwa no gukwirakwizwa",
+      "Yahagaritse ikoreshwa ry'indimi zivugwa",
+      "Yabujije abantu kwiga gusoma",
+      "Yasimbuye uburyo bwose bw'uburezi"
+    ],
+    "answer": "It made written information easier to reproduce and distribute",
+    "answer_rw": "Yatumye amakuru yanditse yoroshye gukopororwa no gukwirakwizwa",
+    "explanation": "Printing technology allowed books and other texts to be produced in larger numbers and distributed more widely.",
+    "explanation_rw": "Ikoranabuhanga ryo gucapa ryatumye ibitabo n'izindi nyandiko bikorwa ari byinshi kandi bigakwirakwizwa ahantu henshi."
+  },
+  {
+    "id": "general_734",
+    "category": "general",
+    "question": "Which ancient civilisation built the city of Machu Picchu?",
+    "question_rw": "Ni iyihe mico ya kera yubatse umujyi wa Machu Picchu?",
+    "options": [
+      "The Inca civilisation",
+      "The Roman civilisation",
+      "The Egyptian civilisation",
+      "The Phoenician civilisation"
+    ],
+    "options_rw": [
+      "Umuco w'Abinka",
+      "Umuco w'Abaroma",
+      "Umuco w'Abanyamisiri",
+      "Umuco w'Abanyafenisiya"
+    ],
+    "answer": "The Inca civilisation",
+    "answer_rw": "Umuco w'Abinka",
+    "explanation": "Machu Picchu is an archaeological site in Peru associated with the Inca civilisation.",
+    "explanation_rw": "Machu Picchu ni ahantu ndangamateka n'ubucukumbuzi bw'amateka muri Peru, hazwiho kuba harubatswe n'Abinka."
+  },
+  {
+    "id": "general_735",
+    "category": "general",
+    "question": "What was the main purpose of the Berlin Conference of 1884–1885?",
+    "question_rw": "Intego nyamukuru y'Inama ya Berlin yo mu 1884–1885 yari iyihe?",
+    "options": [
+      "To establish rules among European powers for their claims and activities in Africa",
+      "To create the African Union",
+      "To grant independence to every African country",
+      "To establish the United Nations"
+    ],
+    "options_rw": [
+      "Gushyiraho amabwiriza hagati y'ibihugu by'i Burayi ku birego n'ibikorwa byabyo muri Afurika",
+      "Gushinga Umuryango wa Afurika Yunze Ubumwe",
+      "Guha ibihugu byose bya Afurika ubwigenge",
+      "Gushinga Umuryango w'Abibumbye"
+    ],
+    "answer": "To establish rules among European powers for their claims and activities in Africa",
+    "answer_rw": "Gushyiraho amabwiriza hagati y'ibihugu by'i Burayi ku birego n'ibikorwa byabyo muri Afurika",
+    "explanation": "The conference set rules for European claims in Africa and contributed to the formalisation of colonial partition.",
+    "explanation_rw": "Iyo nama yashyizeho amabwiriza agenga ibyo ibihugu by'i Burayi byavugaga ko bifiteho uburenganzira muri Afurika, inagira uruhare mu gushyiraho imipaka y'ubukoloni."
+  },
+  {
+    "id": "general_736",
+    "category": "general",
+    "question": "Which organisation was established in 1945 to promote international peace and cooperation?",
+    "question_rw": "Ni uwuhe muryango washinzwe mu 1945 ugamije guteza imbere amahoro n'ubufatanye mpuzamahanga?",
+    "options": [
+      "The United Nations",
+      "The European Union",
+      "The African Union",
+      "The World Trade Organization"
+    ],
+    "options_rw": [
+      "Umuryango w'Abibumbye",
+      "Umuryango w'Ubumwe bw'u Burayi",
+      "Umuryango wa Afurika Yunze Ubumwe",
+      "Umuryango Mpuzamahanga w'Ubucuruzi"
+    ],
+    "answer": "The United Nations",
+    "answer_rw": "Umuryango w'Abibumbye",
+    "explanation": "The United Nations was founded in 1945 after the Second World War to support peace, security and international cooperation.",
+    "explanation_rw": "Umuryango w'Abibumbye washinzwe mu 1945 nyuma y'Intambara ya Kabiri y'Isi kugira ngo uteze imbere amahoro, umutekano n'ubufatanye hagati y'ibihugu."
+  },
+  {
+    "id": "general_737",
+    "category": "general",
+    "question": "Which African organisation was officially launched in 2002 as the successor to the Organisation of African Unity?",
+    "question_rw": "Ni uwuhe muryango wo muri Afurika watangijwe ku mugaragaro mu 2002 usimbura Umuryango w'Ubumwe bw'Afurika?",
+    "options": [
+      "The African Union",
+      "The East African Community",
+      "The Southern African Development Community",
+      "The Economic Community of West African States"
+    ],
+    "options_rw": [
+      "Umuryango wa Afurika Yunze Ubumwe",
+      "Umuryango wa Afurika y'Iburasirazuba",
+      "Umuryango w'Iterambere ry'Afurika y'Amajyepfo",
+      "Umuryango w'Ubukungu w'Ibihugu byo muri Afurika y'Iburengerazuba"
+    ],
+    "answer": "The African Union",
+    "answer_rw": "Umuryango wa Afurika Yunze Ubumwe",
+    "explanation": "The African Union was officially launched in 2002, succeeding the Organisation of African Unity.",
+    "explanation_rw": "Umuryango wa Afurika Yunze Ubumwe watangijwe ku mugaragaro mu 2002, usimbura Umuryango w'Ubumwe bw'Afurika."
+  },
+  {
+    "id": "general_738",
+    "category": "general",
+    "question": "Which country is home to the ancient rock-hewn churches of Lalibela?",
+    "question_rw": "Ni ikihe gihugu kibonekamo insengero za kera za Lalibela zicukuwe mu rutare?",
+    "options": [
+      "Ethiopia",
+      "Ghana",
+      "Morocco",
+      "Namibia"
+    ],
+    "options_rw": [
+      "Etiyopiya",
+      "Gana",
+      "Maroke",
+      "Namibiya"
+    ],
+    "answer": "Ethiopia",
+    "answer_rw": "Etiyopiya",
+    "explanation": "Lalibela in Ethiopia is famous for its medieval churches carved directly into rock.",
+    "explanation_rw": "Lalibela muri Etiyopiya izwiho insengero zo mu gihe cyo hagati zicukuwe mu rutare."
+  },
+  {
+    "id": "general_739",
+    "category": "general",
+    "question": "What is the main purpose of the East African Community?",
+    "question_rw": "Intego rusange y'Umuryango wa Afurika y'Iburasirazuba ni iyihe?",
+    "options": [
+      "To promote regional integration and cooperation among partner states",
+      "To replace every national government",
+      "To manage all world oceans",
+      "To create one language for the entire world"
+    ],
+    "options_rw": [
+      "Guteza imbere kwishyira hamwe n'ubufatanye hagati y'ibihugu biwugize",
+      "Gusimbura Leta z'ibihugu byose",
+      "Gucunga inyanja zose zo ku Isi",
+      "Gushyiraho ururimi rumwe rw'Isi yose"
+    ],
+    "answer": "To promote regional integration and cooperation among partner states",
+    "answer_rw": "Guteza imbere kwishyira hamwe n'ubufatanye hagati y'ibihugu biwugize",
+    "explanation": "The East African Community promotes cooperation in areas such as trade, infrastructure, movement and regional development.",
+    "explanation_rw": "Umuryango wa Afurika y'Iburasirazuba uteza imbere ubufatanye mu bucuruzi, ibikorwa remezo, urujya n'uruza n'iterambere ry'akarere."
+  },
+  {
+    "id": "general_740",
+    "category": "general",
+    "question": "Which ocean borders the eastern coast of Africa?",
+    "question_rw": "Ni iyihe nyanja iherereye ku nkombe y'iburasirazuba bwa Afurika?",
+    "options": [
+      "Indian Ocean",
+      "Pacific Ocean",
+      "Arctic Ocean",
+      "Southern Ocean"
+    ],
+    "options_rw": [
+      "Inyanja y'Abahinde",
+      "Inyanja ya Pasifika",
+      "Inyanja ya Arikitika",
+      "Inyanja y'Amajyepfo"
+    ],
+    "answer": "Indian Ocean",
+    "answer_rw": "Inyanja y'Abahinde",
+    "explanation": "The Indian Ocean borders much of eastern Africa, including the coastlines of countries such as Kenya, Tanzania and Mozambique.",
+    "explanation_rw": "Inyanja y'Abahinde ihana imbibi n'igice kinini cy'iburasirazuba bwa Afurika, harimo inkombe z'ibihugu nka Kenya, Tanzania na Mozambique."
+  },
+  {
+    "id": "general_741",
+    "category": "general",
+    "question": "What is a peninsula?",
+    "question_rw": "Igice cy'ubutaka cyitwa peninsula ni iki?",
+    "options": [
+      "Land surrounded by water on three sides and connected to a larger landmass",
+      "Land completely surrounded by water",
+      "A deep part of the ocean",
+      "A high area of permanently frozen snow"
+    ],
+    "options_rw": [
+      "Ubutaka bukikijwe n'amazi ku mpande eshatu ariko bugafatana n'ubundi butaka bunini",
+      "Ubutaka bukikijwe n'amazi impande zose",
+      "Igice cyimbitse cyo mu nyanja",
+      "Ahantu hirengeye hahora urubura"
+    ],
+    "answer": "Land surrounded by water on three sides and connected to a larger landmass",
+    "answer_rw": "Ubutaka bukikijwe n'amazi ku mpande eshatu ariko bugafatana n'ubundi butaka bunini",
+    "explanation": "A peninsula is a piece of land that extends into water and remains connected to a larger land area.",
+    "explanation_rw": "Peninsula ni igice cy'ubutaka kinjira mu mazi ku mpande nyinshi ariko kigakomeza gufatana n'ubundi butaka bunini."
+  },
+  {
+    "id": "general_742",
+    "category": "general",
+    "question": "What is the International Date Line mainly used to indicate?",
+    "question_rw": "Umurongo Mpuzamahanga Ugaragaza Itariki ukoreshwa cyane mu kugaragaza iki?",
+    "options": [
+      "The approximate boundary where the calendar date changes",
+      "The boundary between day and night at every moment",
+      "The exact centre of every continent",
+      "The location of the Earth's magnetic poles"
+    ],
+    "options_rw": [
+      "Umupaka ugereranyije aho itariki yo kuri kalendari ihindukira",
+      "Umupaka utandukanya amanywa n'ijoro buri kanya",
+      "Hagati nyakuri ya buri mugabane",
+      "Aho inkingi z'imbaraga za rukuruzi z'Isi ziherereye"
+    ],
+    "answer": "The approximate boundary where the calendar date changes",
+    "answer_rw": "Umupaka ugereranyije aho itariki yo kuri kalendari ihindukira",
+    "explanation": "The International Date Line is an agreed line near 180 degrees longitude where the calendar date generally changes.",
+    "explanation_rw": "Umurongo Mpuzamahanga Ugaragaza Itariki ni umurongo wumvikanyweho uri hafi ya dogere 180 z'uburebure bw'isi, aho itariki yo kuri kalendari ihindukira muri rusange."
+  },
+  {
+    "id": "general_743",
+    "category": "general",
+    "question": "What is the main function of a computer operating system?",
+    "question_rw": "Ni uwuhe murimo w'ingenzi wa operating system muri mudasobwa?",
+    "options": [
+      "Managing hardware and software resources",
+      "Manufacturing electricity for the building",
+      "Replacing every computer application",
+      "Guaranteeing that no computer error can occur"
+    ],
+    "options_rw": [
+      "Gucunga ibikoresho bya mudasobwa na porogaramu ziyikorerwamo",
+      "Gukora amashanyarazi y'inyubako",
+      "Gusimbura porogaramu zose za mudasobwa",
+      "Kwemeza ko nta kosa na rimwe rishobora kubaho muri mudasobwa"
+    ],
+    "answer": "Managing hardware and software resources",
+    "answer_rw": "Gucunga ibikoresho bya mudasobwa na porogaramu ziyikorerwamo",
+    "explanation": "An operating system manages computer resources and provides services that allow applications to run.",
+    "explanation_rw": "Operating system icunga umutungo wa mudasobwa kandi igatanga serivisi zituma izindi porogaramu zishobora gukora."
+  },
+  {
+    "id": "general_744",
+    "category": "general",
+    "question": "What does two-factor authentication add to an online account?",
+    "question_rw": "Two-factor authentication yongerera iki konti ikoreshwa kuri interineti?",
+    "options": [
+      "An additional verification step beyond the password",
+      "An unlimited amount of storage",
+      "A guarantee that the internet will never disconnect",
+      "Automatic deletion of all old messages"
+    ],
+    "options_rw": [
+      "Intambwe y'inyongera yo kugenzura nyirayo irenze ijambo ry'ibanga",
+      "Ububiko butagira umupaka",
+      "Kwemeza ko interineti itazigera icika",
+      "Gusiba ubutumwa bwose bwa kera byikora"
+    ],
+    "answer": "An additional verification step beyond the password",
+    "answer_rw": "Intambwe y'inyongera yo kugenzura nyirayo irenze ijambo ry'ibanga",
+    "explanation": "Two-factor authentication requires a second form of verification, making unauthorised access more difficult if a password is stolen.",
+    "explanation_rw": "Two-factor authentication isaba ikimenyetso cya kabiri cyemeza nyir'iyo konti, bigatuma kuyinjiramo mu buryo butemewe bigorana nubwo ijambo ry'ibanga ryaba ryibwe."
+  },
+  {
+    "id": "general_745",
+    "category": "general",
+    "question": "What is phishing in cybersecurity?",
+    "question_rw": "Phishing mu mutekano w'ikoranabuhanga ni iki?",
+    "options": [
+      "A deceptive attempt to obtain sensitive information by pretending to be trustworthy",
+      "A method of improving computer screen brightness",
+      "A legal way to increase internet speed",
+      "A system for repairing damaged keyboards"
+    ],
+    "options_rw": [
+      "Uburyo bwo gushuka umuntu hagamijwe kumwaka amakuru y'ibanga wiyitirira uwo yizera",
+      "Uburyo bwo kongera urumuri rwa ecran ya mudasobwa",
+      "Uburyo bwemewe bwo kongera umuvuduko wa interineti",
+      "Sisitemu yo gusana clavier yangiritse"
+    ],
+    "answer": "A deceptive attempt to obtain sensitive information by pretending to be trustworthy",
+    "answer_rw": "Uburyo bwo gushuka umuntu hagamijwe kumwaka amakuru y'ibanga wiyitirira uwo yizera",
+    "explanation": "Phishing uses deceptive messages or websites to trick people into revealing passwords, financial details or other private information.",
+    "explanation_rw": "Phishing ikoresha ubutumwa cyangwa imbuga zishukana kugira ngo abantu batange amagambo y'ibanga, amakuru y'imari cyangwa andi makuru bwite."
+  },
+  {
+    "id": "general_746",
+    "category": "general",
+    "question": "What is cloud computing?",
+    "question_rw": "Cloud computing ni iki?",
+    "options": [
+      "Using remote internet-based servers to store, manage or process data",
+      "Predicting the weather by looking at clouds",
+      "Storing every file only on paper",
+      "Connecting computers without any software"
+    ],
+    "options_rw": [
+      "Gukoresha seriveri zo kuri interineti ziri ahandi mu kubika, gucunga cyangwa gutunganya amakuru",
+      "Kumenya uko ikirere kizaba kimeze witegereje ibicu",
+      "Kubika inyandiko zose ku mpapuro gusa",
+      "Guhuza mudasobwa nta porogaramu"
+    ],
+    "answer": "Using remote internet-based servers to store, manage or process data",
+    "answer_rw": "Gukoresha seriveri zo kuri interineti ziri ahandi mu kubika, gucunga cyangwa gutunganya amakuru",
+    "explanation": "Cloud computing provides computing services through remote servers accessed over a network, commonly the internet.",
+    "explanation_rw": "Cloud computing itanga serivisi zo kubara no gutunganya amakuru hifashishijwe seriveri ziri ahandi umuntu ageraho akoresheje umuyoboro, akenshi interineti."
+  },
+  {
+    "id": "general_747",
+    "category": "general",
+    "question": "Which technology allows devices to exchange data over short distances without physical cables?",
+    "question_rw": "Ni irihe koranabuhanga rituma ibikoresho bihana amakuru biri hafi bitifashishije insinga?",
+    "options": [
+      "Bluetooth",
+      "Ethernet cable",
+      "Fibre-optic cable",
+      "USB cable"
+    ],
+    "options_rw": [
+      "Bluetooth",
+      "Umugozi wa Ethernet",
+      "Umugozi wa fibre optique",
+      "Umugozi wa USB"
+    ],
+    "answer": "Bluetooth",
+    "answer_rw": "Bluetooth",
+    "explanation": "Bluetooth is a short-range wireless technology used to exchange data between compatible devices.",
+    "explanation_rw": "Bluetooth ni ikoranabuhanga ridakoresha insinga, rikoreshwa mu guhererekanya amakuru hagati y'ibikoresho bihuye biri hafi."
+  },
+  {
+    "id": "general_748",
+    "category": "general",
+    "question": "What is the main purpose of data encryption?",
+    "question_rw": "Intego nyamukuru yo kubika amakuru mu buryo bwabitswe (encryption) ni iyihe?",
+    "options": [
+      "To make information unreadable to unauthorised people without the proper key",
+      "To make every file larger",
+      "To delete information permanently",
+      "To make a computer operate without electricity"
+    ],
+    "options_rw": [
+      "Gutuma amakuru adasomwa n'abatabyemerewe badafite urufunguzo rukwiye",
+      "Kongera ingano ya buri dosiye",
+      "Gusiba amakuru burundu",
+      "Gutuma mudasobwa ikora idafite amashanyarazi"
+    ],
+    "answer": "To make information unreadable to unauthorised people without the proper key",
+    "answer_rw": "Gutuma amakuru adasomwa n'abatabyemerewe badafite urufunguzo rukwiye",
+    "explanation": "Encryption transforms readable information into coded information that requires the correct key to recover.",
+    "explanation_rw": "Encryption ihindura amakuru asanzwe asomeka ikayagira amakuru yanditse mu buryo bwihariye, asubizwa mu buryo busomeka hakoreshejwe urufunguzo rukwiye."
+  },
+  {
+    "id": "general_749",
+    "category": "general",
+    "question": "What is artificial intelligence mainly concerned with?",
+    "question_rw": "Ubwenge buhangano (Artificial Intelligence) bwibanda cyane ku ki?",
+    "options": [
+      "Creating computer systems that perform tasks associated with human intelligence",
+      "Making all machines work without power",
+      "Replacing every form of human communication",
+      "Turning physical objects into living organisms"
+    ],
+    "options_rw": [
+      "Gukora sisitemu za mudasobwa zishobora gukora imirimo isaba ubushobozi busanzwe bufitwe n'ubwenge bw'umuntu",
+      "Gutuma imashini zose zikora nta ngufu",
+      "Gusimbura uburyo bwose abantu bavuganamo",
+      "Guhindura ibintu bidafite ubuzima bikaba ibinyabuzima"
+    ],
+    "answer": "Creating computer systems that perform tasks associated with human intelligence",
+    "answer_rw": "Gukora sisitemu za mudasobwa zishobora gukora imirimo isaba ubushobozi busanzwe bufitwe n'ubwenge bw'umuntu",
+    "explanation": "Artificial intelligence involves systems designed to perform tasks such as recognising patterns, understanding language and making predictions.",
+    "explanation_rw": "Ubwenge buhangano bukubiyemo sisitemu zakozwe kugira ngo zikore imirimo nko kumenya imiterere y'ibintu, gusobanukirwa ururimi no guteganya ibishobora kuba."
+  },
+  {
+    "id": "general_750",
+    "category": "general",
+    "question": "Why is it important to verify information before sharing it online?",
+    "question_rw": "Kuki ari ngombwa kugenzura ukuri kw'amakuru mbere yo kuyasangiza abandi kuri interineti?",
+    "options": [
+      "To reduce the spread of misinformation and harmful rumours",
+      "To make every message go viral",
+      "To ensure that opinions become facts",
+      "To avoid reading reliable sources"
+    ],
+    "options_rw": [
+      "Kugabanya ikwirakwizwa ry'amakuru atari ukuri n'ibihuha bishobora guteza ingaruka mbi",
+      "Kugira ngo ubutumwa bwose bukwirakwizwe cyane",
+      "Kwemeza ko ibitekerezo bihinduka ukuri",
+      "Kwirinda gusoma amasoko yizewe"
+    ],
+    "answer": "To reduce the spread of misinformation and harmful rumours",
+    "answer_rw": "Kugabanya ikwirakwizwa ry'amakuru atari ukuri n'ibihuha bishobora guteza ingaruka mbi",
+    "explanation": "Checking reliable sources before sharing helps prevent misinformation from spreading and supports informed decisions.",
+    "explanation_rw": "Kugenzura amasoko yizewe mbere yo gusangiza abandi amakuru bifasha gukumira ikwirakwizwa ry'amakuru atari yo no gufata ibyemezo bishingiye ku kuri."
+  },
+    
