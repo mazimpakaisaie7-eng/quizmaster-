@@ -1,6 +1,7 @@
+
 /* =========================================================
    🇷🇼 QUIZ MASTER — COMPLETE QUIZ ENGINE
-   Version: 4.3.0
+   Version: 4.3.1
 
    Compatible with the supplied index.html
 
@@ -17,6 +18,7 @@
    Features:
    - Robust JSON loading and validation
    - Question diagnostics
+   - Duplicate ID and repeated-question detection
    - English and Kinyarwanda questions/options
    - Randomized questions and options
    - 10 questions per round (or fewer if fewer remain)
@@ -102,6 +104,7 @@
       valid: 0,
       invalid: 0,
       duplicates: 0,
+      repeatedTextCount: 0,
       traffic: 0,
       general: 0,
       errors: []
@@ -733,9 +736,7 @@
       errors.push("Options contain duplicate choices.");
     }
 
-    if (
-      rwOptions.length !== 4
-    ) {
+    if (rwOptions.length !== 4) {
       errors.push("Kinyarwanda options must contain exactly 4 choices.");
     }
 
@@ -872,17 +873,15 @@
         );
       }
 
-      
-const normalized = [];
-const seenIds = new Map();
-const seenQuestionTexts = new Map();
+      const normalized = [];
+      const seenIds = new Map();
+      const seenQuestionTexts = new Map();
 
-let invalidCount = 0;
-let duplicateCount = 0;
-let repeatedTextCount = 0;
+      let invalidCount = 0;
+      let duplicateCount = 0;
+      let repeatedTextCount = 0;
 
-const errors = [];
-
+      const errors = [];
 
       rawQuestions.forEach((raw, index) => {
         const result = normalizeQuestion(raw, index);
@@ -901,51 +900,66 @@ const errors = [];
           return;
         }
 
-const question = result.question;
-const currentIndex = index + 1;
+        const question = result.question;
+        const currentIndex = index + 1;
 
-if (seenIds.has(question.id)) {
-  duplicateCount++;
+        /*
+          Reject duplicate question IDs.
+          Keep the first valid occurrence.
+        */
 
-  errors.push({
-    index: currentIndex,
-    firstIndex: seenIds.get(question.id),
-    id: question.id,
-    reasons: ["Duplicate question ID."]
-  });
+        if (seenIds.has(question.id)) {
+          duplicateCount++;
 
-  return;
-}
+          errors.push({
+            index: currentIndex,
+            firstIndex: seenIds.get(question.id),
+            id: question.id,
+            reasons: ["Duplicate question ID."]
+          });
 
-seenIds.set(question.id, currentIndex);
+          return;
+        }
 
-// Check repeated question text even when IDs differ.
-const normalizedText = question.question
-  .toLocaleLowerCase()
-  .replace(/[^\p{L}\p{N}]+/gu, " ")
-  .trim();
+        seenIds.set(question.id, currentIndex);
 
-const textKey = `${question.category}:${normalizedText}`;
+        /*
+          Detect repeated question text within the same category.
+          Differences in punctuation and letter case are ignored.
+          Keep the first occurrence and skip later repetitions.
+        */
 
-if (seenQuestionTexts.has(textKey)) {
-  repeatedTextCount++;
+        const normalizedText = question.question
+          .toLocaleLowerCase()
+          .replace(/[^\p{L}\p{N}]+/gu, " ")
+          .trim();
 
-  errors.push({
-    index: currentIndex,
-    firstIndex: seenQuestionTexts.get(textKey).index,
-    id: question.id,
-    firstId: seenQuestionTexts.get(textKey).id,
-    reasons: ["Repeated question text with a different ID."]
-  });
-} else {
-  seenQuestionTexts.set(textKey, {
-    index: currentIndex,
-    id: question.id
-  });
-}
+        const textKey = `${question.category}:${normalizedText}`;
 
-normalized.push(question);
+        if (seenQuestionTexts.has(textKey)) {
+          repeatedTextCount++;
 
+          const firstQuestion = seenQuestionTexts.get(textKey);
+
+          errors.push({
+            index: currentIndex,
+            firstIndex: firstQuestion.index,
+            id: question.id,
+            firstId: firstQuestion.id,
+            reasons: [
+              "Repeated question text with a different ID."
+            ]
+          });
+
+          return;
+        }
+
+        seenQuestionTexts.set(textKey, {
+          index: currentIndex,
+          id: question.id
+        });
+
+        normalized.push(question);
       });
 
       const trafficCount = normalized.filter(
@@ -961,6 +975,7 @@ normalized.push(question);
         valid: normalized.length,
         invalid: invalidCount,
         duplicates: duplicateCount,
+        repeatedTextCount,
         traffic: trafficCount,
         general: generalCount,
         errors
@@ -973,7 +988,7 @@ normalized.push(question);
         );
 
         throw new Error(
-          `No valid questions found. Invalid: ${invalidCount}. Duplicates: ${duplicateCount}. Check the question format and correct answers.`
+          `No valid questions found. Invalid: ${invalidCount}. Duplicate IDs: ${duplicateCount}. Repeated questions: ${repeatedTextCount}. Check the question format and correct answers.`
         );
       }
 
@@ -1022,10 +1037,11 @@ normalized.push(question);
 
       showMessage(loadedMessage);
 
-      if (invalidCount || duplicateCount) {
-        showError(
-          `${invalidCount} invalid and ${duplicateCount} duplicate questions were skipped. ${normalized.length} valid questions loaded. See browser Console for details.`
-        );
+      if (invalidCount || duplicateCount || repeatedTextCount) {
+        const warningMessage =
+          `${invalidCount} invalid, ${duplicateCount} duplicate IDs, and ${repeatedTextCount} repeated questions were skipped. ${normalized.length} valid questions loaded.`;
+
+        showError(warningMessage);
 
         console.warn(
           "Skipped questions:",
