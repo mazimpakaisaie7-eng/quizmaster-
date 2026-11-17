@@ -1,29 +1,22 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER — COMPLETE QUIZ ENGINE
-   Version: 4.3.1
+   Version: 4.3.2
 
-   Compatible with the supplied index.html
-
-   Files:
-   - ./index.html
-   - ./questions.js
-   - ./questions.json
-   - ./mythica.mp3
-   - ./service-worker.js
+   Compatible with the existing index.html
+   Questions file: ./questions.json
 
    Categories: traffic, general
    Languages: English, Kinyarwanda
 
    Features:
    - Robust JSON loading and validation
-   - Question diagnostics
+   - Required question IDs
    - Duplicate ID and repeated-question detection
    - English and Kinyarwanda questions/options
    - Randomized questions and options
    - 10 questions per round (or fewer if fewer remain)
    - No repeated questions within a cycle
-   - Automatic new cycle after all rounds
    - Separate progress for each category
    - Traffic timer: 60 seconds
    - General timer: 30 seconds
@@ -50,7 +43,7 @@
     GENERAL_TIME: 30,
     POINTS_PER_CORRECT: 10,
     PASS_PERCENTAGE: 70,
-    SESSION_VERSION: 4,
+    SESSION_VERSION: 5,
 
     STORAGE: {
       LANGUAGE: "quizmasterLanguage",
@@ -191,6 +184,14 @@
 
   function isValidCategory(value) {
     return CATEGORIES.includes(value);
+  }
+
+  function normalizeQuestionText(value) {
+    return String(value || "")
+      .toLocaleLowerCase()
+      .normalize("NFC")
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
+      .trim();
   }
 
   /* =====================================================
@@ -346,7 +347,10 @@
 
       result[category].usedQuestionIds =
         Array.isArray(source.usedQuestionIds)
-          ? [...new Set(source.usedQuestionIds.map(String))]
+          ? [...new Set(
+              source.usedQuestionIds
+                .filter(id => typeof id === "string")
+            )]
           : [];
     });
 
@@ -379,8 +383,7 @@
 
     /*
       Migrate older single-category score values.
-      The legacy values are only used for the category
-      that was selected when this app loads.
+      The legacy values belong to the previously selected category.
     */
 
     const category = state.mode;
@@ -401,7 +404,8 @@
       state.progress[category].usedQuestionIds = [
         ...new Set([
           ...state.progress[category].usedQuestionIds,
-          ...legacyUsed.map(String)
+          ...legacyUsed
+            .filter(id => typeof id === "string")
         ])
       ];
     }
@@ -502,38 +506,56 @@
   }
 
   function normalizeOptionArray(value) {
-    if (Array.isArray(value)) {
-      return value.map(option => String(option ?? "").trim());
-    }
+    let options = [];
 
-    if (
+    if (Array.isArray(value)) {
+      options = value.map(option => String(option ?? "").trim());
+    } else if (
       value &&
       typeof value === "object" &&
       !Array.isArray(value)
     ) {
-      return Object.keys(value)
+      options = Object.keys(value)
         .sort((a, b) =>
-          a.localeCompare(b, undefined, { numeric: true })
+          a.localeCompare(a, undefined, { numeric: true })
         )
         .map(key => String(value[key] ?? "").trim());
     }
 
-    return [];
+    return options;
   }
 
   function getOptions(raw, language) {
     const candidates = language === "rw"
       ? [
           raw.options_rw,
-          raw.options_kinyarwanda,
-          raw.options
+          raw.options_kinyarwanda
         ]
       : [
           raw.options,
-          raw.options_en,
-          raw.options_rw,
-          raw.options_kinyarwanda
+          raw.options_en
         ];
+
+    /*
+      Prefer the first complete four-option array.
+      A malformed first field must not hide a valid second field.
+    */
+
+    for (const candidate of candidates) {
+      const options = normalizeOptionArray(candidate);
+
+      if (
+        options.length === 4 &&
+        options.every(option => option.length > 0)
+      ) {
+        return options;
+      }
+    }
+
+    /*
+      Return the first supplied candidate if no complete
+      candidate exists. Validation will report the problem.
+    */
 
     for (const candidate of candidates) {
       const options = normalizeOptionArray(candidate);
@@ -587,21 +609,13 @@
 
     const normalized = text.toLocaleLowerCase();
 
-    const allOptions = [
-      ...englishOptions,
-      ...rwOptions
-    ];
-
-    const foundIndex = allOptions.findIndex(option =>
-      String(option).trim().toLocaleLowerCase() === normalized
-    );
-
-    if (foundIndex >= 0 && foundIndex < englishOptions.length) {
-      return foundIndex;
-    }
-
-    if (foundIndex >= englishOptions.length) {
-      return foundIndex - englishOptions.length;
+    for (let index = 0; index < 4; index++) {
+      if (
+        englishOptions[index]?.trim().toLocaleLowerCase() === normalized ||
+        rwOptions[index]?.trim().toLocaleLowerCase() === normalized
+      ) {
+        return index;
+      }
     }
 
     return -1;
@@ -609,7 +623,7 @@
 
   function findAnswerIndex(raw, englishOptions, rwOptions) {
     /*
-      Explicit zero-based answer index fields take priority.
+      Explicit zero-based index fields take priority.
     */
 
     for (const value of [
@@ -631,14 +645,6 @@
         return number;
       }
     }
-
-    /*
-      The answer field may be:
-      - Correct answer text
-      - A, B, C or D
-      - 1, 2, 3 or 4
-      - A zero-based number when stored in answerIndex
-    */
 
     const answerFields = [
       raw.answer,
@@ -666,7 +672,7 @@
      8. NORMALIZE AND VALIDATE QUESTIONS
   ===================================================== */
 
-  function normalizeQuestion(raw, index) {
+  function normalizeQuestion(raw) {
     const errors = [];
 
     if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
@@ -676,11 +682,17 @@
       };
     }
 
-    const id = String(
-      raw.id ?? `question_${index + 1}`
-    ).trim();
+    /*
+      IDs are required. Do not silently invent question IDs.
+    */
 
-    if (!id) errors.push("Missing question ID.");
+    const id = typeof raw.id === "string"
+      ? raw.id.trim()
+      : "";
+
+    if (!id) {
+      errors.push("Missing or invalid question ID.");
+    }
 
     const category = normalizeMode(
       raw.category ?? raw.mode ?? raw.type
@@ -701,22 +713,30 @@
     let rwOptions = getOptions(raw, "rw");
 
     /*
-      If only one language's options exist, use them as
-      the fallback for the other language. This prevents
-      valid questions from being discarded unnecessarily.
+      If a language is completely absent, use the available
+      four-option language as fallback.
+      If a language has malformed options, do not hide that error.
     */
 
-    if (!englishOptions.length && rwOptions.length === 4) {
+    if (
+      !englishOptions.length &&
+      rwOptions.length === 4 &&
+      rwOptions.every(option => option)
+    ) {
       englishOptions = [...rwOptions];
     }
 
-    if (!rwOptions.length && englishOptions.length === 4) {
+    if (
+      !rwOptions.length &&
+      englishOptions.length === 4 &&
+      englishOptions.every(option => option)
+    ) {
       rwOptions = [...englishOptions];
     }
 
     if (englishOptions.length !== 4) {
       errors.push(
-        `Options must contain exactly 4 choices; found ${englishOptions.length}.`
+        `English options must contain exactly 4 choices; found ${englishOptions.length}.`
       );
     }
 
@@ -724,7 +744,7 @@
       englishOptions.length === 4 &&
       englishOptions.some(option => !option)
     ) {
-      errors.push("Options contain an empty choice.");
+      errors.push("English options contain an empty choice.");
     }
 
     if (
@@ -733,11 +753,13 @@
         englishOptions.map(option => option.toLocaleLowerCase())
       ).size !== 4
     ) {
-      errors.push("Options contain duplicate choices.");
+      errors.push("English options contain duplicate choices.");
     }
 
     if (rwOptions.length !== 4) {
-      errors.push("Kinyarwanda options must contain exactly 4 choices.");
+      errors.push(
+        `Kinyarwanda options must contain exactly 4 choices; found ${rwOptions.length}.`
+      );
     }
 
     if (
@@ -884,7 +906,7 @@
       const errors = [];
 
       rawQuestions.forEach((raw, index) => {
-        const result = normalizeQuestion(raw, index);
+        const result = normalizeQuestion(raw);
 
         if (!result.question) {
           invalidCount++;
@@ -893,7 +915,7 @@
             index: index + 1,
             id: raw && raw.id
               ? String(raw.id)
-              : "Unknown ID",
+              : "Missing ID",
             reasons: result.errors
           });
 
@@ -904,7 +926,7 @@
         const currentIndex = index + 1;
 
         /*
-          Reject duplicate question IDs.
+          Reject duplicate IDs.
           Keep the first valid occurrence.
         */
 
@@ -924,22 +946,25 @@
         seenIds.set(question.id, currentIndex);
 
         /*
-          Detect repeated question text within the same category.
-          Differences in punctuation and letter case are ignored.
-          Keep the first occurrence and skip later repetitions.
+          Detect repeated question text in both languages.
+          Punctuation and letter case do not affect comparison.
         */
 
-        const normalizedText = question.question
-          .toLocaleLowerCase()
-          .replace(/[^\p{L}\p{N}]+/gu, " ")
-          .trim();
+        const textKeys = [
+          normalizeQuestionText(question.question),
+          normalizeQuestionText(question.question_rw)
+        ]
+          .filter(Boolean)
+          .map(text => `${question.category}:${text}`);
 
-        const textKey = `${question.category}:${normalizedText}`;
+        const repeatedMatch = textKeys.find(key =>
+          seenQuestionTexts.has(key)
+        );
 
-        if (seenQuestionTexts.has(textKey)) {
+        if (repeatedMatch) {
           repeatedTextCount++;
 
-          const firstQuestion = seenQuestionTexts.get(textKey);
+          const firstQuestion = seenQuestionTexts.get(repeatedMatch);
 
           errors.push({
             index: currentIndex,
@@ -947,16 +972,18 @@
             id: question.id,
             firstId: firstQuestion.id,
             reasons: [
-              "Repeated question text with a different ID."
+              "Repeated question text in English or Kinyarwanda."
             ]
           });
 
           return;
         }
 
-        seenQuestionTexts.set(textKey, {
-          index: currentIndex,
-          id: question.id
+        textKeys.forEach(key => {
+          seenQuestionTexts.set(key, {
+            index: currentIndex,
+            id: question.id
+          });
         });
 
         normalized.push(question);
@@ -988,7 +1015,7 @@
         );
 
         throw new Error(
-          `No valid questions found. Invalid: ${invalidCount}. Duplicate IDs: ${duplicateCount}. Repeated questions: ${repeatedTextCount}. Check the question format and correct answers.`
+          `No valid questions found. Invalid: ${invalidCount}. Duplicate IDs: ${duplicateCount}. Repeated questions: ${repeatedTextCount}. Check questions.json.`
         );
       }
 
@@ -996,8 +1023,8 @@
       state.loaded = true;
 
       /*
-        Remove saved question IDs that no longer exist
-        in the current questions.json.
+        Remove saved IDs that no longer exist.
+        Keep valid progress and scores.
       */
 
       CATEGORIES.forEach(category => {
@@ -1038,10 +1065,9 @@
       showMessage(loadedMessage);
 
       if (invalidCount || duplicateCount || repeatedTextCount) {
-        const warningMessage =
-          `${invalidCount} invalid, ${duplicateCount} duplicate IDs, and ${repeatedTextCount} repeated questions were skipped. ${normalized.length} valid questions loaded.`;
-
-        showError(warningMessage);
+        showError(
+          `${invalidCount} invalid, ${duplicateCount} duplicate IDs, and ${repeatedTextCount} repeated questions were skipped. ${normalized.length} valid questions loaded.`
+        );
 
         console.warn(
           "Skipped questions:",
@@ -1319,10 +1345,8 @@
     const session = readJSON(CONFIG.STORAGE.SESSION, null);
 
     const hasSession =
-      session &&
-      session.category === category &&
-      Array.isArray(session.questions) &&
-      session.questions.length > 0;
+      validateSavedSession(session) &&
+      session.category === category;
 
     if (hasSession) {
       showElement("continueBtn", "block");
@@ -1376,14 +1400,73 @@
       return false;
     }
 
+    if (
+      session.questions.length > CONFIG.QUESTIONS_PER_ROUND ||
+      !Number.isInteger(Number(session.round)) ||
+      Number(session.round) < 1
+    ) {
+      return false;
+    }
+
+    const currentQuestions = getCategoryQuestions(session.category);
+
     const currentIds = new Set(
-      state.questions.map(question => question.id)
+      currentQuestions.map(question => question.id)
     );
 
-    return session.questions.every(question =>
-      question &&
-      currentIds.has(String(question.id))
+    const savedIds = session.questions.map(question =>
+      String(question?.id || "")
     );
+
+    if (
+      savedIds.some(id => !id || !currentIds.has(id)) ||
+      new Set(savedIds).size !== savedIds.length
+    ) {
+      return false;
+    }
+
+    const index = Number(session.currentQuestionIndex);
+
+    if (
+      !Number.isInteger(index) ||
+      index < 0 ||
+      index >= session.questions.length
+    ) {
+      return false;
+    }
+
+    const selected = session.selectedOption;
+
+    if (
+      selected !== null &&
+      (!Number.isInteger(selected) || selected < -1 || selected > 3)
+    ) {
+      return false;
+    }
+
+    if (
+      !Number.isFinite(Number(session.timer)) ||
+      Number(session.timer) < 0 ||
+      Number(session.timer) > (
+        session.category === "traffic"
+          ? CONFIG.TRAFFIC_TIME
+          : CONFIG.GENERAL_TIME
+      )
+    ) {
+      return false;
+    }
+
+    if (
+      !Array.isArray(session.answers) ||
+      !Number.isFinite(Number(session.score)) ||
+      Number(session.score) < 0 ||
+      !Number.isFinite(Number(session.correctAnswers)) ||
+      Number(session.correctAnswers) < 0
+    ) {
+      return false;
+    }
+
+    return true;
   }
 
   function restoreSession() {
@@ -1391,14 +1474,10 @@
 
     if (!validateSavedSession(session)) {
       if (session) clearSession();
+
       updateHome();
       return;
     }
-
-    /*
-      The session is kept for the Continue button.
-      The actual quiz state is restored when Continue is pressed.
-    */
 
     updateHome();
   }
@@ -1422,8 +1501,12 @@
       ).size === 4
     ) {
       restored._displayOptions = savedOptions.map(option => ({
-        en: String(option.en ?? currentQuestion.options[option.originalIndex]),
-        rw: String(option.rw ?? currentQuestion.options_rw[option.originalIndex]),
+        en: String(
+          option.en ?? currentQuestion.options[option.originalIndex]
+        ),
+        rw: String(
+          option.rw ?? currentQuestion.options_rw[option.originalIndex]
+        ),
         originalIndex: option.originalIndex
       }));
     }
@@ -1501,20 +1584,14 @@
       )
     );
 
-    const selected = session.selectedOption;
+    state.selectedOption = session.selectedOption;
 
-    state.selectedOption =
-      Number.isInteger(selected) &&
-      selected >= -1 &&
-      selected <= 3
-        ? selected
-        : null;
-
-    state.answers = Array.isArray(session.answers)
-      ? session.answers.filter(answer =>
-          answer && typeof answer === "object"
-        )
-      : [];
+    state.answers = session.answers.filter(answer =>
+      answer &&
+      typeof answer === "object" &&
+      typeof answer.id === "string" &&
+      answer.category === state.mode
+    );
 
     state.score = Math.max(
       0,
@@ -1572,8 +1649,8 @@
     );
 
     /*
-      If every question has been used, begin a fresh
-      question cycle without deleting best or total score.
+      Start a fresh cycle only when all questions
+      in this category have been used.
     */
 
     if (!available.length) {
@@ -1587,16 +1664,43 @@
     );
 
     selected.forEach(question => {
-      progress.usedQuestionIds.push(question.id);
+      if (!progress.usedQuestionIds.includes(question.id)) {
+        progress.usedQuestionIds.push(question.id);
+      }
     });
-
-    progress.usedQuestionIds = [
-      ...new Set(progress.usedQuestionIds)
-    ];
 
     saveProgress();
 
     return selected;
+  }
+
+  function markQuestionsUsed(questions, category = state.mode) {
+    const progress = state.progress[category];
+
+    const ids = new Set(progress.usedQuestionIds);
+
+    questions.forEach(question => {
+      if (question?.id) ids.add(question.id);
+    });
+
+    progress.usedQuestionIds = [...ids];
+
+    saveProgress();
+  }
+
+  function releaseQuestions(questions, category = state.mode) {
+    const progress = state.progress[category];
+
+    const releasedIds = new Set(
+      questions.map(question => question.id)
+    );
+
+    progress.usedQuestionIds =
+      progress.usedQuestionIds.filter(
+        id => !releasedIds.has(id)
+      );
+
+    saveProgress();
   }
 
   /* =====================================================
@@ -1664,6 +1768,16 @@
     state.currentQuestions = questions.map(question => ({
       ...question
     }));
+
+    /*
+      Retried questions must remain marked as used.
+      This prevents them from appearing in another round
+      before the retry is completed.
+    */
+
+    if (retryQuestions) {
+      markQuestionsUsed(state.currentQuestions);
+    }
 
     state.currentQuestionIndex = 0;
     state.selectedOption = null;
@@ -2234,6 +2348,14 @@
         progress.completedRounds.push(state.currentRound);
         progress.completedRounds.sort((a, b) => a - b);
       }
+    } else {
+      /*
+        Failed rounds release their question IDs.
+        The player can retry without consuming another set
+        of questions from the next round.
+      */
+
+      releaseQuestions(state.currentQuestions, category);
     }
 
     progress.bestScore = Math.max(
@@ -2242,11 +2364,15 @@
     );
 
     /*
-      Total Score is cumulative and includes each completed
-      attempt. Best Score is the highest single-round score.
+      Total Score includes every completed attempt.
+      Best Score stores the highest single-round score.
     */
 
     progress.totalScore += state.score;
+
+    /*
+      Only a completed round becomes the latest review.
+    */
 
     state.latestReview[category] = [...state.answers];
 
@@ -2398,7 +2524,6 @@
       /*
         Start a new cycle.
         Best Score and Total Score are preserved.
-        Only round completion and used question IDs reset.
       */
 
       progress.completedRounds = [];
@@ -2470,9 +2595,7 @@
     const unlockedRound = getUnlockedRound(state.mode);
 
     /*
-      If all rounds were completed, the Home Start button
-      begins a new cycle instead of trying to open an invalid
-      round number.
+      If all rounds were completed, Start begins a new cycle.
     */
 
     if (unlockedRound > totalRounds) {
@@ -2495,14 +2618,10 @@
   ===================================================== */
 
   function getReviewAnswers() {
-    if (
-      state.answers.length &&
-      state.answers.some(answer => answer.category === state.mode)
-    ) {
-      return state.answers.filter(
-        answer => answer.category === state.mode
-      );
-    }
+    /*
+      Review only the latest completed round.
+      An unfinished session must not replace that review.
+    */
 
     return state.latestReview[state.mode] || [];
   }
@@ -2521,7 +2640,7 @@
       const message = document.createElement("p");
 
       message.textContent = state.language === "rw"
-        ? "Nta bisubizo byo gusubiramo biraboneka. Banza ukine round."
+        ? "Nta bisubizo byo gusubiramo biraboneka. Banza urangize round."
         : "No answers to review yet. Complete a quiz round first.";
 
       container.appendChild(message);
@@ -2631,7 +2750,6 @@
     if (!button) return;
 
     const hasAnswers =
-      state.answers.some(answer => answer.category === state.mode) ||
       (state.latestReview[state.mode] || []).length > 0;
 
     button.hidden = !hasAnswers;
@@ -2909,6 +3027,11 @@
       "click",
       openSettings
     );
+
+    /*
+      Timer pauses while the app is hidden.
+      It resumes with the remaining time when visible again.
+    */
 
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
