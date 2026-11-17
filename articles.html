@@ -11,11 +11,10 @@
   <link rel="icon" href="./icon-192-4.png">
   <title>Learning Centre | Quiz Master Rwanda</title>
 
-  <!-- Google AdSense loader: Learning Centre article pages only -->
+  <!-- Google AdSense Auto ads: Google chooses eligible in-page placements. -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
     crossorigin="anonymous"></script>
-
 
   <style>
     :root {
@@ -44,7 +43,6 @@
     }
 
     a { color: #7dd3fc; }
-
     button, input { font: inherit; }
 
     .container {
@@ -109,6 +107,13 @@
       border-color: var(--accent);
     }
 
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     .hero {
       padding: 55px 0 35px;
       text-align: center;
@@ -148,7 +153,7 @@
 
     .controls {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr;
       gap: 12px;
       margin: 25px 0 18px;
     }
@@ -304,18 +309,9 @@
       border-radius: 8px;
     }
 
-    .sources-list a {
-      overflow-wrap: anywhere;
-    }
+    .sources-list a { overflow-wrap: anywhere; }
 
     .back-button { margin-bottom: 18px; }
-
-    .detail-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 25px;
-    }
 
     footer {
       border-top: 1px solid var(--border);
@@ -337,7 +333,9 @@
     [hidden] { display: none !important; }
 
     @media (max-width: 850px) {
-      .article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .article-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 600px) {
@@ -348,57 +346,19 @@
       }
 
       .nav-links { gap: 12px; }
-
       .hero { padding-top: 38px; }
-
-      .controls { grid-template-columns: 1fr; }
-
       .article-grid { grid-template-columns: 1fr; }
-
       .article-card { padding: 18px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+
       *, *::before, *::after {
         transition-duration: .01ms !important;
         animation-duration: .01ms !important;
       }
     }
-
-    /* AdSense: shown only after a full educational lesson */
-    .article-ad-container {
-      width: 100%;
-      max-width: 900px;
-      margin: 34px auto 12px;
-      padding: 24px 0 18px;
-      border-top: 1px solid var(--border);
-      clear: both;
-      text-align: center;
-    }
-
-    .article-ad-label {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .article-ad-container ins.adsbygoogle {
-      display: block;
-      width: 100%;
-      min-height: 100px;
-    }
-
-    @media (max-width: 600px) {
-      .article-ad-container {
-        margin-top: 28px;
-        padding-top: 20px;
-      }
-    }
-
-
   </style>
 
   <script type="application/ld+json">
@@ -436,12 +396,17 @@
 
   <main class="container">
     <section class="hero">
-      <div class="eyebrow" data-i18n="eyebrow">Learn something useful every day</div>
+      <div class="eyebrow" data-i18n="eyebrow">
+        Learn something useful every day
+      </div>
+
       <h1 data-i18n="pageTitle">Learning Centre</h1>
+
       <p data-i18n="heroText">
         Explore clear educational lessons about road safety, science,
         geography, the environment and general knowledge.
       </p>
+
       <div class="notice" id="educationalNotice" role="note">
         Loading educational information...
       </div>
@@ -460,13 +425,30 @@
       </div>
 
       <div class="filters" id="categoryFilters" aria-label="Lesson categories">
-        <button class="filter-button" type="button" data-category="all" aria-pressed="true">
+        <button
+          class="filter-button"
+          type="button"
+          data-category="all"
+          aria-pressed="true"
+        >
           All lessons
         </button>
-        <button class="filter-button" type="button" data-category="traffic" aria-pressed="false">
+
+        <button
+          class="filter-button"
+          type="button"
+          data-category="traffic"
+          aria-pressed="false"
+        >
           Road Safety
         </button>
-        <button class="filter-button" type="button" data-category="general" aria-pressed="false">
+
+        <button
+          class="filter-button"
+          type="button"
+          data-category="general"
+          aria-pressed="false"
+        >
           General Knowledge
         </button>
       </div>
@@ -478,6 +460,7 @@
       <div class="loading-state" id="loadingState" data-i18n="loading">
         Loading lessons...
       </div>
+
       <div class="article-grid" id="articleGrid"></div>
       <div class="empty-state" id="emptyState" hidden></div>
       <div class="error-state" id="errorState" hidden></div>
@@ -485,21 +468,13 @@
 
     <section id="detailView" hidden aria-live="polite">
       <article class="article-detail" id="articleDetail"></article>
-      <section class="article-ad-container" id="articleAdContainer" hidden aria-label="Advertisements">
-        <p class="article-ad-label">Advertisements</p>
-        <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-2666698676518429"
-          data-ad-slot="9045712897"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      </section>
     </section>
   </main>
 
   <footer>
     <div class="container">
       <p>© <span id="currentYear"></span> Quiz Master Rwanda</p>
+
       <nav aria-label="Footer navigation">
         <a href="./index.html" data-i18n="home">Home</a>
         <a href="./about.html" data-i18n="about">About</a>
@@ -507,6 +482,7 @@
         <a href="./privacy-policy.html" data-i18n="privacy">Privacy Policy</a>
         <a href="./terms.html" data-i18n="terms">Terms</a>
       </nav>
+
       <p data-i18n="footerText">Learn • Play • Improve</p>
     </div>
   </footer>
@@ -516,6 +492,7 @@
     "use strict";
 
     const ARTICLES_FILE = "./articles.json";
+    const LANGUAGE_STORAGE_KEY = "quizmasterLanguage";
 
     const translations = {
       en: {
@@ -548,6 +525,7 @@
         footerText: "Learn • Play • Improve",
         noticeFallback: "These lessons are for educational purposes. For current road rules and official requirements, consult the relevant authorities."
       },
+
       rw: {
         home: "Ahabanza",
         about: "Abo turibo",
@@ -581,7 +559,7 @@
     };
 
     const state = {
-      language: "en",
+      language: getInitialLanguage(),
       category: "all",
       search: "",
       articles: [],
@@ -600,18 +578,60 @@
       notice: document.getElementById("educationalNotice"),
       listing: document.getElementById("listingView"),
       detailView: document.getElementById("detailView"),
-      detail: document.getElementById("articleDetail"),
-      articleAd: document.getElementById("articleAdContainer")
+      detail: document.getElementById("articleDetail")
     };
 
-    const t = key => translations[state.language][key] || key;
+    function getInitialLanguage() {
+      try {
+        const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+        return savedLanguage === "rw" ? "rw" : "en";
+      } catch (error) {
+        return "en";
+      }
+    }
+
+    const t = key =>
+      translations[state.language][key] || key;
 
     function localize(value) {
       if (typeof value === "string") return value;
-      if (value && typeof value === "object" && !Array.isArray(value)) {
-        return value[state.language] || value.en || value.rw || "";
+
+      if (
+        value &&
+        typeof value === "object" &&
+        !Array.isArray(value)
+      ) {
+        const selected = value[state.language];
+
+        if (typeof selected === "string") return selected;
+        if (typeof selected === "number") return String(selected);
+
+        const english = value.en;
+        if (typeof english === "string") return english;
+
+        const kinyarwanda = value.rw;
+        if (typeof kinyarwanda === "string") return kinyarwanda;
       }
+
       return "";
+    }
+
+    function localizedArray(value) {
+      if (Array.isArray(value)) return value;
+
+      if (
+        value &&
+        typeof value === "object" &&
+        !Array.isArray(value)
+      ) {
+        const selected = value[state.language];
+
+        if (Array.isArray(selected)) return selected;
+        if (Array.isArray(value.en)) return value.en;
+        if (Array.isArray(value.rw)) return value.rw;
+      }
+
+      return [];
     }
 
     function escapeHTML(value) {
@@ -627,8 +647,13 @@
     function safeURL(value) {
       try {
         const url = new URL(value);
-        return url.protocol === "https:" ? url.href : "";
-      } catch {
+
+        if (url.protocol === "https:") {
+          return url.href;
+        }
+
+        return "";
+      } catch (error) {
         return "";
       }
     }
@@ -649,44 +674,78 @@
 
       elements.searchInput.placeholder = t("search");
       elements.searchInput.setAttribute("aria-label", t("search"));
+
       elements.languageButton.textContent =
         state.language === "en" ? "Kinyarwanda" : "English";
 
       elements.filters.querySelectorAll("button").forEach(button => {
         const category = button.dataset.category;
-        button.textContent = category === "all" ? t("all") : categoryName(category);
+
+        button.textContent =
+          category === "all" ? t("all") : categoryName(category);
+
         button.setAttribute(
           "aria-pressed",
           String(category === state.category)
         );
       });
 
+      const notice = window.articleNotice;
       elements.notice.textContent =
-        localize(window.articleNotice) || t("noticeFallback");
+        localize(notice) || t("noticeFallback");
     }
 
     function isValidArticle(article) {
-      if (!article || typeof article !== "object" || Array.isArray(article)) {
+      if (
+        !article ||
+        typeof article !== "object" ||
+        Array.isArray(article)
+      ) {
         return false;
       }
 
-      if (typeof article.id !== "string" || !article.id.trim()) return false;
-      if (!["traffic", "general"].includes(article.category)) return false;
+      if (
+        typeof article.id !== "string" ||
+        !article.id.trim()
+      ) {
+        return false;
+      }
+
+      if (!["traffic", "general"].includes(article.category)) {
+        return false;
+      }
+
       if (!localize(article.title).trim()) return false;
       if (!localize(article.description).trim()) return false;
       if (!localize(article.definition).trim()) return false;
-      if (!article.body || typeof article.body !== "object") return false;
 
-      const paragraphs = article.body[state.language] || article.body.en || article.body.rw;
-      return Array.isArray(paragraphs) && paragraphs.length > 0;
+      if (
+        !article.body ||
+        typeof article.body !== "object" ||
+        Array.isArray(article.body)
+      ) {
+        return false;
+      }
+
+      const paragraphs = localizedArray(article.body);
+
+      return paragraphs.length > 0 &&
+        paragraphs.some(item => localize(item).trim());
     }
 
     function collectSearchText(value) {
       if (typeof value === "string") return value;
-      if (Array.isArray(value)) return value.map(collectSearchText).join(" ");
-      if (value && typeof value === "object") {
-        return Object.values(value).map(collectSearchText).join(" ");
+
+      if (Array.isArray(value)) {
+        return value.map(collectSearchText).join(" ");
       }
+
+      if (value && typeof value === "object") {
+        return Object.values(value)
+          .map(collectSearchText)
+          .join(" ");
+      }
+
       return "";
     }
 
@@ -695,10 +754,14 @@
 
       return state.articles.filter(article => {
         const matchesCategory =
-          state.category === "all" || article.category === state.category;
+          state.category === "all" ||
+          article.category === state.category;
 
-        const searchable = collectSearchText(article).toLocaleLowerCase();
-        const matchesSearch = !query || searchable.includes(query);
+        const searchable =
+          collectSearchText(article).toLocaleLowerCase();
+
+        const matchesSearch =
+          !query || searchable.includes(query);
 
         return matchesCategory && matchesSearch;
       });
@@ -706,6 +769,7 @@
 
     function renderCards() {
       const articles = getVisibleArticles();
+
       elements.grid.innerHTML = "";
       elements.empty.hidden = articles.length !== 0;
 
@@ -721,13 +785,18 @@
         const title = escapeHTML(localize(article.title));
         const description = escapeHTML(localize(article.description));
         const category = escapeHTML(categoryName(article.category));
+        const articleId = escapeHTML(article.id);
 
         card.innerHTML = `
           <div class="article-icon" aria-hidden="true">${icon}</div>
           <div class="category-label">${category}</div>
           <h2>${title}</h2>
           <p>${description}</p>
-          <button class="read-button" type="button" data-open-article="${escapeHTML(article.id)}">
+          <button
+            class="read-button"
+            type="button"
+            data-open-article="${articleId}"
+          >
             ${escapeHTML(t("read"))}
           </button>
         `;
@@ -736,95 +805,219 @@
       });
 
       elements.results.textContent =
-        `${articles.length} ${articles.length === 1 ? t("resultOne") : t("resultMany")}`;
+        `${articles.length} ${
+          articles.length === 1
+            ? t("resultOne")
+            : t("resultMany")
+        }`;
     }
 
     function renderListItem(value) {
-      return `<li>${escapeHTML(localize(value))}</li>`;
+      const text = escapeHTML(localize(value));
+
+      if (!text) return "";
+
+      return `<li>${text}</li>`;
     }
 
     function renderParagraph(value) {
-      return `<p>${escapeHTML(localize(value))}</p>`;
+      const text = escapeHTML(localize(value));
+
+      if (!text) return "";
+
+      return `<p>${text}</p>`;
     }
 
     function renderSources(sources) {
-      if (!Array.isArray(sources) || !sources.length) return "";
+      if (!Array.isArray(sources) || !sources.length) {
+        return "";
+      }
 
       const items = sources.map(source => {
-        const title = escapeHTML(localize(source.title) || source.publisher || "Source");
+        if (!source || typeof source !== "object") {
+          return "";
+        }
+
+        const title = escapeHTML(
+          localize(source.title) ||
+          source.publisher ||
+          "Source"
+        );
+
         const publisher = escapeHTML(source.publisher || "");
         const url = safeURL(source.url || "");
 
-        if (!url) return `<li>${title}${publisher ? ` — ${publisher}` : ""}</li>`;
+        if (!url) {
+          return `<li>${title}${
+            publisher ? ` — ${publisher}` : ""
+          }</li>`;
+        }
 
-        return `<li><a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer">${title}</a>${publisher ? ` — ${publisher}` : ""}</li>`;
-      }).join("");
+        return `
+          <li>
+            <a
+              href="${escapeHTML(url)}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >${title}</a>
+            ${publisher ? ` — ${publisher}` : ""}
+          </li>
+        `;
+      }).filter(Boolean).join("");
 
-      return `<h3>${escapeHTML(t("sources"))}</h3><ul class="sources-list">${items}</ul>`;
+      if (!items) return "";
+
+      return `
+        <h3>${escapeHTML(t("sources"))}</h3>
+        <ul class="sources-list">${items}</ul>
+      `;
     }
 
-    function openArticle(id) {
+    function getArticleFromHash() {
+      const hash = window.location.hash;
+
+      if (!hash.startsWith("#article=")) {
+        return null;
+      }
+
+      try {
+        return decodeURIComponent(hash.slice(9));
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function openArticle(id, updateHistory = true) {
       const article = state.articles.find(item => item.id === id);
+
       if (!article) return;
 
-      // Bika ID y'isomo rifunguye kugira ngo ururimi niruhinduka
-      // isomo rimwe rikomeze kugaragara.
       state.currentArticleId = id;
 
-      const paragraphs = article.body[state.language] || article.body.en || article.body.rw || [];
-      const points = article.key_points || article.keyPoints || [];
-      const conclusion = localize(article.conclusion);
-      const quizConnection = localize(article.quiz_connection || article.quizConnection);
+      if (updateHistory) {
+        const newURL =
+          `${window.location.pathname}${window.location.search}` +
+          `#article=${encodeURIComponent(id)}`;
 
-      const bodyHTML = paragraphs.map(renderParagraph).join("");
-      const pointsHTML = Array.isArray(points) ? points.map(renderListItem).join("") : "";
+        window.history.pushState(
+          { articleId: id },
+          "",
+          newURL
+        );
+      }
+
+      const paragraphs = localizedArray(article.body);
+
+      const points = localizedArray(
+        article.key_points || article.keyPoints
+      );
+
+      const conclusion = localize(article.conclusion);
+
+      const quizConnection = localize(
+        article.quiz_connection || article.quizConnection
+      );
+
+      const bodyHTML = paragraphs
+        .map(renderParagraph)
+        .filter(Boolean)
+        .join("");
+
+      const pointsHTML = points
+        .map(renderListItem)
+        .filter(Boolean)
+        .join("");
 
       elements.detail.innerHTML = `
-        <button class="back-button" id="backToLessons" type="button">${escapeHTML(t("back"))}</button>
-        <div class="article-icon" aria-hidden="true">${escapeHTML(article.icon || "📘")}</div>
-        <div class="category-label">${escapeHTML(categoryName(article.category))}</div>
+        <button
+          class="back-button"
+          id="backToLessons"
+          type="button"
+        >${escapeHTML(t("back"))}</button>
+
+        <div class="article-icon" aria-hidden="true">
+          ${escapeHTML(article.icon || "📘")}
+        </div>
+
+        <div class="category-label">
+          ${escapeHTML(categoryName(article.category))}
+        </div>
+
         <h2>${escapeHTML(localize(article.title))}</h2>
+
         <p>${escapeHTML(localize(article.description))}</p>
 
         <h3>${escapeHTML(t("definition"))}</h3>
-        <p class="definition">${escapeHTML(localize(article.definition))}</p>
+
+        <p class="definition">
+          ${escapeHTML(localize(article.definition))}
+        </p>
 
         <h3>${escapeHTML(t("lesson"))}</h3>
+
         ${bodyHTML}
 
-        ${pointsHTML ? `<h3>${escapeHTML(t("keyPoints"))}</h3><ul>${pointsHTML}</ul>` : ""}
+        ${
+          pointsHTML
+            ? `
+              <h3>${escapeHTML(t("keyPoints"))}</h3>
+              <ul>${pointsHTML}</ul>
+            `
+            : ""
+        }
 
-        ${conclusion ? `<h3>${escapeHTML(t("conclusion"))}</h3><p>${escapeHTML(conclusion)}</p>` : ""}
+        ${
+          conclusion
+            ? `
+              <h3>${escapeHTML(t("conclusion"))}</h3>
+              <p>${escapeHTML(conclusion)}</p>
+            `
+            : ""
+        }
 
-        ${quizConnection ? `<h3>${escapeHTML(t("quizConnection"))}</h3><p>${escapeHTML(quizConnection)}</p>` : ""}
+        ${
+          quizConnection
+            ? `
+              <h3>${escapeHTML(t("quizConnection"))}</h3>
+              <p>${escapeHTML(quizConnection)}</p>
+            `
+            : ""
+        }
 
         ${renderSources(article.sources)}
       `;
 
       elements.listing.hidden = true;
       elements.detailView.hidden = false;
-      elements.articleAd.hidden = false;
 
-      const articleAd = elements.articleAd.querySelector("ins.adsbygoogle");
-      if (articleAd && articleAd.dataset.initialized !== "true") {
-        articleAd.dataset.initialized = "true";
-        try {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (error) {
-          console.warn("AdSense initialization failed:", error);
-          articleAd.dataset.initialized = "false";
-        }
-      }
+      document
+        .getElementById("backToLessons")
+        .addEventListener("click", showListing);
+
       window.scrollTo({ top: 0, behavior: "smooth" });
-
-      document.getElementById("backToLessons").addEventListener("click", showListing);
     }
 
-    function showListing() {
+    function showListing(updateHistory = true) {
+      if (updateHistory && window.location.hash.startsWith("#article=")) {
+        window.history.pushState(
+          { articleId: null },
+          "",
+          `${window.location.pathname}${window.location.search}`
+        );
+      }
+
+      state.currentArticleId = null;
+
       elements.detailView.hidden = true;
-      elements.articleAd.hidden = true;
       elements.listing.hidden = false;
+
       window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showLoadError(message) {
+      elements.loading.hidden = true;
+      elements.error.hidden = false;
+      elements.error.textContent = message;
     }
 
     async function loadArticles() {
@@ -834,56 +1027,106 @@
       try {
         const response = await fetch(ARTICLES_FILE, {
           cache: "no-store",
-          headers: { "Accept": "application/json" }
+          headers: {
+            "Accept": "application/json"
+          }
         });
 
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
+          throw new Error("NETWORK_ERROR");
         }
 
-        const data = await response.json();
+        let data;
 
-        if (!data || !Array.isArray(data.articles)) {
-          throw new Error("Invalid articles structure");
+        try {
+          data = await response.json();
+        } catch (error) {
+          throw new Error("INVALID_JSON");
         }
 
-        window.articleNotice = data.educational_notice || null;
+        if (
+          !data ||
+          !Array.isArray(data.articles)
+        ) {
+          throw new Error("INVALID_STRUCTURE");
+        }
+
+        window.articleNotice =
+          data.educational_notice || null;
 
         const seenIDs = new Set();
+
         state.articles = data.articles.filter(article => {
           if (!isValidArticle(article)) return false;
+
           if (seenIDs.has(article.id)) return false;
+
           seenIDs.add(article.id);
           return true;
         });
 
         if (!state.articles.length) {
-          throw new Error("No valid lessons found");
+          throw new Error("NO_VALID_ARTICLES");
         }
 
         updateStaticText();
+
         elements.loading.hidden = true;
+
         renderCards();
+
+        const requestedArticle = getArticleFromHash();
+
+        if (requestedArticle) {
+          const exists = state.articles.some(
+            article => article.id === requestedArticle
+          );
+
+          if (exists) {
+            openArticle(requestedArticle, false);
+          }
+        }
 
       } catch (error) {
         console.error("Learning Centre loading error:", error);
-        elements.loading.hidden = true;
-        elements.error.hidden = false;
-        elements.error.textContent = t("loadError") + " " + t("invalidData");
+
+        if (
+          error.message === "INVALID_JSON" ||
+          error.message === "INVALID_STRUCTURE" ||
+          error.message === "NO_VALID_ARTICLES"
+        ) {
+          showLoadError(t("invalidData"));
+        } else {
+          showLoadError(t("loadError"));
+        }
       }
     }
 
-    // LANGUAGE BUTTON — ikosoye kugira ngo isomo rifunguye
-    // rikomeze kugaragara iyo uhinduye English/Kinyarwanda.
     elements.languageButton.addEventListener("click", () => {
-      state.language = state.language === "en" ? "rw" : "en";
+      const previousScrollPosition = window.scrollY;
+
+      state.language =
+        state.language === "en" ? "rw" : "en";
+
+      try {
+        localStorage.setItem(
+          LANGUAGE_STORAGE_KEY,
+          state.language
+        );
+      } catch (error) {
+        console.warn("Language preference could not be saved.");
+      }
 
       updateStaticText();
 
       if (elements.detailView.hidden) {
         renderCards();
       } else if (state.currentArticleId) {
-        openArticle(state.currentArticleId);
+        openArticle(state.currentArticleId, false);
+
+        requestAnimationFrame(() => {
+          window.scrollTo(0, previousScrollPosition);
+        });
       }
     });
 
@@ -893,18 +1136,36 @@
     });
 
     elements.filters.addEventListener("click", event => {
-      const button = event.target.closest("button[data-category]");
+      const button = event.target.closest(
+        "button[data-category]"
+      );
+
       if (!button) return;
 
       state.category = button.dataset.category;
+
       updateStaticText();
       renderCards();
     });
 
     elements.grid.addEventListener("click", event => {
-      const button = event.target.closest("[data-open-article]");
+      const button = event.target.closest(
+        "[data-open-article]"
+      );
+
       if (!button) return;
+
       openArticle(button.dataset.openArticle);
+    });
+
+    window.addEventListener("popstate", () => {
+      const articleId = getArticleFromHash();
+
+      if (articleId) {
+        openArticle(articleId, false);
+      } else {
+        showListing(false);
+      }
     });
 
     document.getElementById("currentYear").textContent =
