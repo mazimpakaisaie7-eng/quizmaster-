@@ -1,7 +1,10 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER RWANDA
-   SERVICE WORKER — VERSION 4.3.0
+   SERVICE WORKER — VERSION 4.3.1
+
+   Compatible with:
+   - questions.js VERSION 4.3.1
 
    Features:
    - Reliable cache management
@@ -13,6 +16,7 @@
    - Cache-first images, audio and static assets
    - Safe old-cache cleanup
    - Safe handling of external and API requests
+   - Protection against caching failed responses
    ========================================================= */
 
 "use strict";
@@ -22,11 +26,12 @@
    ========================================================= */
 
 const CACHE_PREFIX = "quizmaster-cache-";
-const CACHE_VERSION = "4.3.0";
+const CACHE_VERSION = "4.3.1";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 
 /* =========================================================
    2. APP FILES TO PRE-CACHE
+
    Missing files will not prevent installation.
    ========================================================= */
 
@@ -67,7 +72,7 @@ function getAppURL(path) {
 }
 
 function isCacheableResponse(response) {
-  return (
+  return Boolean(
     response &&
     response.ok &&
     response.type === "basic"
@@ -75,20 +80,39 @@ function isCacheableResponse(response) {
 }
 
 async function saveToCache(cache, request, response) {
-  if (isCacheableResponse(response)) {
-    try {
-      await cache.put(request, response.clone());
-    } catch (error) {
-      console.warn(
-        "[Quiz Master] Cache save failed:",
-        request.url || request
-      );
-    }
+  if (!isCacheableResponse(response)) {
+    return;
   }
+
+  try {
+    await cache.put(request, response.clone());
+  } catch (error) {
+    console.warn(
+      "[Quiz Master] Cache save failed:",
+      request.url || request,
+      error
+    );
+  }
+}
+
+function isInsideAppScope(url) {
+  return url.href.startsWith(self.registration.scope);
+}
+
+function isApiRequest(url) {
+  const apiURL = new URL("api/", self.registration.scope);
+
+  return (
+    url.pathname === apiURL.pathname.replace(/\/$/, "") ||
+    url.pathname.startsWith(apiURL.pathname)
+  );
 }
 
 /* =========================================================
    4. INSTALL
+
+   Pre-cache essential app files.
+   Missing files do not block installation.
    ========================================================= */
 
 self.addEventListener("install", (event) => {
@@ -117,7 +141,8 @@ self.addEventListener("install", (event) => {
           } catch (error) {
             console.warn(
               "[Quiz Master] Could not cache:",
-              file
+              file,
+              error
             );
           }
         })
@@ -135,7 +160,9 @@ self.addEventListener("install", (event) => {
 
 /* =========================================================
    5. ACTIVATE
+
    Delete only old Quiz Master caches.
+   Do not delete unrelated website caches.
    ========================================================= */
 
 self.addEventListener("activate", (event) => {
@@ -171,7 +198,15 @@ self.addEventListener("activate", (event) => {
 
 /* =========================================================
    6. NETWORK-FIRST STRATEGY
-   HTML, JSON, JavaScript and CSS.
+
+   Used for:
+   - HTML
+   - JSON
+   - JavaScript
+   - CSS
+
+   Online: fetch the latest server response.
+   Offline: use the cached response when available.
    ========================================================= */
 
 async function networkFirst(request) {
@@ -185,7 +220,7 @@ async function networkFirst(request) {
       return response;
     }
 
-    // Use a cached copy if the server temporarily fails.
+    // Use cached content for temporary server errors.
     if (response.status >= 500) {
       const cachedResponse = await cache.match(request);
 
@@ -194,6 +229,7 @@ async function networkFirst(request) {
       }
     }
 
+    // Preserve real responses such as 404.
     return response;
 
   } catch (error) {
@@ -209,7 +245,15 @@ async function networkFirst(request) {
 
 /* =========================================================
    7. CACHE-FIRST STRATEGY
-   Images, audio, fonts and other static assets.
+
+   Used for:
+   - Images
+   - Audio
+   - Fonts
+   - Other static assets
+
+   Existing cached files are returned immediately.
+   New files are fetched and cached.
    ========================================================= */
 
 async function cacheFirst(request) {
@@ -218,21 +262,12 @@ async function cacheFirst(request) {
   const cachedResponse = await cache.match(request);
 
   if (cachedResponse) {
-    // Refresh the cached file in the background.
-    fetch(request)
-      .then(async (response) => {
-        await saveToCache(cache, request, response);
-      })
-      .catch(() => {
-        // Keep using the existing cached copy.
-      });
-
     return cachedResponse;
   }
 
   const networkResponse = await fetch(request);
 
-  if (networkResponse.ok) {
+  if (isCacheableResponse(networkResponse)) {
     await saveToCache(cache, request, networkResponse);
   }
 
@@ -274,11 +309,14 @@ async function offlineFallback() {
           font-family: Arial, sans-serif;
           text-align: center;
         }
+
         main {
           max-width: 420px;
           padding: 30px;
         }
+
         button {
+          min-height: 44px;
           padding: 12px 22px;
           border: 0;
           border-radius: 8px;
@@ -315,7 +353,7 @@ async function offlineFallback() {
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
-  // Handle only GET requests.
+  // Only handle GET requests.
   if (request.method !== "GET") {
     return;
   }
@@ -327,16 +365,18 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
 
-  // Only handle requests from this website.
+  // Ignore requests from other websites.
   if (url.origin !== self.location.origin) {
     return;
   }
 
-  // Leave API requests to the network.
-  if (
-    url.pathname === "/api" ||
-    url.pathname.startsWith("/api/")
-  ) {
+  // Handle only files inside this app's scope.
+  if (!isInsideAppScope(url)) {
+    return;
+  }
+
+  // Leave API requests to the normal network handling.
+  if (isApiRequest(url)) {
     return;
   }
 
@@ -350,7 +390,12 @@ self.addEventListener("fetch", (event) => {
         try {
           return await networkFirst(request);
         } catch (error) {
-          return await offlineFallback();
+          console.warn(
+            "[Quiz Master] Navigation offline:",
+            request.url
+          );
+
+          return offlineFallback();
         }
       })()
     );
@@ -378,6 +423,11 @@ self.addEventListener("fetch", (event) => {
         try {
           return await networkFirst(request);
         } catch (error) {
+          console.warn(
+            "[Quiz Master] JSON unavailable:",
+            request.url
+          );
+
           return new Response(
             JSON.stringify({
               error: "offline",
@@ -413,6 +463,11 @@ self.addEventListener("fetch", (event) => {
         try {
           return await networkFirst(request);
         } catch (error) {
+          console.warn(
+            "[Quiz Master] Code asset unavailable:",
+            request.url
+          );
+
           return new Response(
             "Application code is not available offline.",
             {
@@ -439,6 +494,11 @@ self.addEventListener("fetch", (event) => {
       try {
         return await cacheFirst(request);
       } catch (error) {
+        console.warn(
+          "[Quiz Master] Static resource unavailable:",
+          request.url
+        );
+
         return new Response(
           "This resource is currently unavailable.",
           {
