@@ -11,6 +11,12 @@
   <link rel="icon" href="./icon-192-4.png">
   <title>Learning Centre | Quiz Master Rwanda</title>
 
+  <!-- Google AdSense loader: Learning Centre article pages only -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
+    crossorigin="anonymous"></script>
+
+
   <style>
     :root {
       --bg: #08172b;
@@ -359,6 +365,40 @@
         animation-duration: .01ms !important;
       }
     }
+
+    /* AdSense: shown only after a full educational lesson */
+    .article-ad-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 34px auto 12px;
+      padding: 24px 0 18px;
+      border-top: 1px solid var(--border);
+      clear: both;
+      text-align: center;
+    }
+
+    .article-ad-label {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .article-ad-container ins.adsbygoogle {
+      display: block;
+      width: 100%;
+      min-height: 100px;
+    }
+
+    @media (max-width: 600px) {
+      .article-ad-container {
+        margin-top: 28px;
+        padding-top: 20px;
+      }
+    }
+
+
   </style>
 
   <script type="application/ld+json">
@@ -445,6 +485,15 @@
 
     <section id="detailView" hidden aria-live="polite">
       <article class="article-detail" id="articleDetail"></article>
+      <section class="article-ad-container" id="articleAdContainer" hidden aria-label="Advertisements">
+        <p class="article-ad-label">Advertisements</p>
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-2666698676518429"
+          data-ad-slot="9045712897"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      </section>
     </section>
   </main>
 
@@ -551,7 +600,8 @@
       notice: document.getElementById("educationalNotice"),
       listing: document.getElementById("listingView"),
       detailView: document.getElementById("detailView"),
-      detail: document.getElementById("articleDetail")
+      detail: document.getElementById("articleDetail"),
+      articleAd: document.getElementById("articleAdContainer")
     };
 
     const t = key => translations[state.language][key] || key;
@@ -753,6 +803,18 @@
 
       elements.listing.hidden = true;
       elements.detailView.hidden = false;
+      elements.articleAd.hidden = false;
+
+      const articleAd = elements.articleAd.querySelector("ins.adsbygoogle");
+      if (articleAd && articleAd.dataset.initialized !== "true") {
+        articleAd.dataset.initialized = "true";
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (error) {
+          console.warn("AdSense initialization failed:", error);
+          articleAd.dataset.initialized = "false";
+        }
+      }
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       document.getElementById("backToLessons").addEventListener("click", showListing);
@@ -760,6 +822,7 @@
 
     function showListing() {
       elements.detailView.hidden = true;
+      elements.articleAd.hidden = true;
       elements.listing.hidden = false;
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
