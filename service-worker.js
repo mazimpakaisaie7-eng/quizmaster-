@@ -1,7 +1,7 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER RWANDA
-   SERVICE WORKER — VERSION 4.1.0
+   SERVICE WORKER — VERSION 4.3.0
 
    Features:
    - Reliable cache management
@@ -22,7 +22,7 @@
    ========================================================= */
 
 const CACHE_PREFIX = "quizmaster-cache-";
-const CACHE_VERSION = "4.1.0";
+const CACHE_VERSION = "4.3.0";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 
 /* =========================================================
