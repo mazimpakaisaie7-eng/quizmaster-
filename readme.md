@@ -108,7 +108,6 @@ File| Description
 "sitemap.xml"| Website sitemap
 "ads.txt"| Advertising authorization file
 "CREDITS.TXT"| Credits and acknowledgements
-"validation-key.txt"| Verification-related file
 
 Other files may be present in the repository.
 
@@ -162,13 +161,13 @@ Search engine indexing and ranking depend on search engine policies and decision
 
 6. Analytics and Advertising
 
-The website uses Google Analytics.
+Google Analytics is installed on the homepage and the public content pages.
 
 Measurement ID: "G-3FP8R0NDZN"
 
-Google AdSense is intended for the homepage only. Advertising should not interfere with quiz questions, answer options, navigation, or the learning experience.
+Google AdSense Auto ads code is included on the public content pages. The homepage intentionally does not load the AdSense script, keeping the quiz setup screen clear. Google decides whether and where eligible ads appear on pages where the code is installed.
 
-Ad placement and approval remain subject to Google's policies and review.
+The AdSense publisher file is `ads.txt`. The publisher ID and account/site approval must still be verified in the AdSense account. Adding code does not guarantee approval or ad serving.
 
 ---
 
@@ -220,3 +219,18 @@ The project encourages continuous learning, road safety awareness, and the devel
 Learn. Practice. Improve.
 
 Made with dedication in Rwanda 🇷🇼
+
+
+---
+
+11. Audit and release notes
+
+- Preserved the existing quiz engine, question bank, article content, icons, audio, legal pages and PWA features.
+- Refreshed the homepage with a light, high-contrast interface and mobile-friendly styling.
+- Kept AdSense Auto ads code off the homepage and enabled it on the public content pages; Google controls eligible ad placements there.
+- Added the same Google Analytics measurement tag to the public content pages.
+- Aligned the Service Worker cache version with the quiz engine version to trigger a clean update.
+- Updated the PWA theme colors and explicitly allowed Google's AdSense crawler in robots.txt.
+- The offline page remains excluded from indexing and analytics.
+
+Google approval, crawler access, analytics collection and ad serving must be confirmed in the corresponding Google accounts after deployment.

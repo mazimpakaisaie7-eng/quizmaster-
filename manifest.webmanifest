@@ -1,4 +1,3 @@
-
 {
   "id": "/",
   "name": "Quiz Master 🇷🇼 - Knowledge Quiz",
@@ -14,8 +13,8 @@
     "minimal-ui"
   ],
   "orientation": "portrait",
-  "background_color": "#071426",
-  "theme_color": "#08172b",
+  "background_color": "#f5f7ff",
+  "theme_color": "#f5f7ff",
   "categories": [
     "education",
     "games"

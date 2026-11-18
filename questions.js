@@ -1,7 +1,7 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER — COMPLETE QUIZ ENGINE
-   Version: 4.3.2
+   Version: 4.3.3
 
    Compatible with the existing index.html
    Questions file: ./questions.json

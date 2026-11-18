@@ -1,10 +1,10 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER RWANDA
-   SERVICE WORKER — VERSION 4.3.1
+   SERVICE WORKER — VERSION 4.3.3
 
    Compatible with:
-   - questions.js VERSION 4.3.1
+   - questions.js VERSION 4.3.3
 
    Features:
    - Reliable cache management
@@ -26,13 +26,15 @@
    ========================================================= */
 
 const CACHE_PREFIX = "quizmaster-cache-";
-const CACHE_VERSION = "4.3.1";
+const CACHE_VERSION = "4.3.3";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 
 /* =========================================================
    2. APP FILES TO PRE-CACHE
 
    Missing files will not prevent installation.
+   The optional music file is fetched and cached only when requested,
+   avoiding a large audio download during the first app installation.
    ========================================================= */
 
 const APP_SHELL = [
@@ -56,7 +58,6 @@ const APP_SHELL = [
   "./icon-192-4.png",
   "./icon-512-3.png",
 
-  "./mythica.mp3",
 
   "./robots.txt",
   "./sitemap.xml",
