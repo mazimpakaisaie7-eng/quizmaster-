@@ -165,7 +165,9 @@ Google Analytics is installed on the homepage and the public content pages.
 
 Measurement ID: "G-3FP8R0NDZN"
 
-Google AdSense Auto ads code is included on the public content pages. The homepage intentionally does not load the AdSense script, keeping the quiz setup screen clear. Google decides whether and where eligible ads appear on pages where the code is installed.
+Google AdSense Auto ads code is enabled on these pages: `about.html`, `articles.html`, `contact.html`, `privacy-policy.html` and `terms.html`. The homepage (`index.html`) intentionally does not load the AdSense script, keeping the quiz setup screen clear.
+
+The website does not intentionally use manually created ad units or fixed manual ad placements. Google determines whether eligible Auto ads appear and where they are placed on pages where the AdSense script is enabled.
 
 The AdSense publisher file is `ads.txt`. The publisher ID and account/site approval must still be verified in the AdSense account. Adding code does not guarantee approval or ad serving.
 
