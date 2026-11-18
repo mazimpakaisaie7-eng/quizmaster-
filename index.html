@@ -15,16 +15,16 @@
   <link rel="icon" href="./icon-192-4.png">
   <link rel="apple-touch-icon" href="./icon-192-4.png">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3FP8R0NDZN"></script>
+  <!-- Google Tag Manager -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-3FP8R0NDZN");
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KQJCNKFL');
   </script>
+  <!-- End Google Tag Manager -->
+
 <style>
     :root {
       --bg: #071426;
@@ -431,8 +431,6 @@
       overflow-wrap: anywhere;
     }
 
-    
-
     /* QUIZ */
     .question-meta {
       display: flex;
@@ -596,7 +594,7 @@
         transition-duration: .01ms !important;
       }
     }
-  
+
     /* QUIZ MASTER — CLEAN LIGHT UI REFRESH (visual-only overrides) */
     :root {
       color-scheme: light;
@@ -614,81 +612,129 @@
       --border: rgba(35, 48, 83, .12);
       --shadow: 0 16px 42px rgba(31, 41, 88, .09);
     }
+
     body {
       background: radial-gradient(ellipse at 50% -10%, rgba(99,102,241,.14), transparent 48%),
                   linear-gradient(180deg, #f8f9ff 0%, #f1f4ff 100%);
       color: var(--text);
     }
+
     .app-header {
       background: rgba(255,255,255,.94);
       border-bottom-color: rgba(35,48,83,.10);
       box-shadow: 0 4px 20px rgba(31,41,88,.04);
     }
+
     .brand { color: #20294a; }
+
     .btn.secondary { background: #e9edff; color: #343b78; }
+
     .btn.secondary:hover:not(:disabled) { background: #dfe5ff; }
+
     .menu {
       background: #ffffff;
       border-color: rgba(35,48,83,.12);
       box-shadow: 0 18px 40px rgba(31,41,88,.14);
     }
+
     .menu button, .menu a { color: #273252; }
+
     .menu button:hover, .menu a:hover { background: #f0f2ff; }
+
     .panel {
       background: rgba(255,255,255,.97);
       border: 1px solid rgba(71,85,150,.12);
       box-shadow: 0 18px 48px rgba(45,55,115,.09);
     }
+
     #homeScreen .panel { overflow: hidden; position: relative; }
+
     #homeScreen .welcome { padding: 30px 12px 24px; }
+
     #homeScreen .logo-icon {
       background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 58%, #0ea5e9 100%);
       box-shadow: 0 14px 30px rgba(79,70,229,.22);
     }
+
     #homeScreen h1 { color: #17213b; letter-spacing: -.8px; }
+
     .tagline { color: #4f46e5; }
+
     .welcome-description { color: #64748b; }
+
     .welcome-badge { color: #4338ca; background: #eef0ff; border-color: #dfe3ff; }
+
     .stat { background: linear-gradient(180deg, #ffffff, #f7f8ff); border-color: rgba(71,85,150,.12); }
+
     .stat span { color: #64748b; }
+
     .stat strong { color: #20294a; }
+
     .section-heading { color: #20294a; }
+
     .choice { color: #303a5b; background: #f4f6ff; border-color: #e2e7f5; }
+
     .choice:hover { color: #3730a3; background: #eef0ff; border-color: #c7ceff; }
+
     .choice.selected {
       color: #3730a3; background: #e9eaff; border-color: #6366f1;
       box-shadow: 0 0 0 3px rgba(99,102,241,.10);
     }
+
     .summary { color: #46516f; background: #f7f8ff; border-color: #e5e9f7; }
+
     .muted { color: #64748b; }
+
     .success-text, .correct-text { color: #047857; }
+
     .wrong-text, .error { color: #be123c; }
+
     .question-meta { color: #64748b; }
+
     .progress-track { background: #e7eaf5; }
+
     #progressFill { background: linear-gradient(90deg, #4f46e5, #0ea5e9); }
+
     #questionText { color: #17213b; }
+
     .option { color: #283452; background: #f7f8ff; border-color: #e2e7f5; }
+
     .option:hover:not(:disabled) { color: #3730a3; background: #eef0ff; }
+
     .option.selected { color: #3730a3; background: #e9eaff; border-color: #6366f1; }
+
     .option.correct { border-color: #059669; }
+
     .option.wrong { border-color: #dc4655; }
+
     .feedback, .explanation, .review-item {
       color: #33415f; background: #f7f8ff; border: 1px solid #e5e9f7;
     }
+
     .review-item h3 { color: #20294a; }
+
     footer { color: #64748b; background: rgba(255,255,255,.76); border-top-color: rgba(35,48,83,.10); }
+
     footer a { color: #4f46e5; }
+
     button:focus-visible, a:focus-visible { outline-color: #6366f1; }
+
     @media (max-width: 520px) {
       #homeScreen .welcome { padding: 22px 4px 18px; }
       #homeScreen .stats { margin-top: 18px; }
       .panel { box-shadow: 0 12px 30px rgba(45,55,115,.07); }
     }
-
-  </style>
+</style>
 </head>
 
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQJCNKFL"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header class="app-header">
   <div class="brand">🧠 Quiz Master 🇷🇼</div>
@@ -801,7 +847,7 @@
         </p>
       </div>
     </div>
-</section>
+  </section>
 
   <!-- QUIZ SCREEN -->
   <section class="screen" id="quizScreen">
@@ -1086,6 +1132,7 @@
   if (year) year.textContent = new Date().getFullYear();
 })();
 </script>
+
 <!-- SERVICE WORKER -->
 <script>
 if ("serviceWorker" in navigator) {
