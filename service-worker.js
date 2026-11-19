@@ -4,7 +4,7 @@
    SERVICE WORKER — VERSION 4.3.5
 
    Compatible with:
-   - questions.js VERSION 4.3.5
+   - questions.js VERSION 4.3.3
 
    Features:
    - Reliable cache management
@@ -57,9 +57,9 @@ const APP_SHELL = [
 
   "./icon-192-4.png",
   "./icon-512-3.png",
-  "./priority-road.svg",
-  "./give-way.svg",
-  "./stop.svg",
+  "./images/traffic-signs/priority-road.svg",
+  "./images/traffic-signs/give-way.svg",
+  "./images/traffic-signs/stop.svg",
 
   "./robots.txt",
   "./sitemap.xml",

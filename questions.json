@@ -152,7 +152,7 @@
     "answer_rw": "Ibinyabiziga biva mu mihanda iyinjiramo bigomba gutanga inzira nk'uko ibyapa bibiteganya",
     "explanation": "A priority-road sign indicates priority over traffic entering from side roads, but you must still obey signals and drive carefully.",
     "explanation_rw": "Icyapa cy'umuhanda ufite uburenganzira bwo kubanza kigaragaza ko ufite inzira imbere y'ibiva mu mihanda iyinjiramo, ariko ugomba gukomeza kubahiriza ibimenyetso no gutwara witonze.",
-    "image": "./priority-road.svg"
+    "image": "./images/traffic-signs/priority-road.svg"
   },
   {
     "id": "traffic_670",
@@ -175,7 +175,7 @@
     "answer_rw": "Guha inzira ibinyabiziga biri mu muhanda ugiye kwinjiramo",
     "explanation": "The inverted triangle is a priority sign requiring you to give way to traffic on the road you are approaching.",
     "explanation_rw": "Iyo mpandeshatu ihinditse ni icyapa kigusaba guha inzira ibinyabiziga biri mu muhanda ugiye kwinjiramo.",
-    "image": "./give-way.svg"
+    "image": "./images/traffic-signs/give-way.svg"
   },
   {
     "id": "traffic_671",
@@ -198,7 +198,7 @@
     "answer_rw": "Guhagarara burundu mbere yo gukomeza",
     "explanation": "The STOP requirement applies even when the road appears empty.",
     "explanation_rw": "Itegeko ryo guhagarara kuri STOP rirakurikizwa nubwo umuhanda usa n'aho nta kinyabiziga kirimo.",
-    "image": "./stop.svg"
+    "image": "./images/traffic-signs/stop.svg"
   },
   {
     "id": "traffic_672",
