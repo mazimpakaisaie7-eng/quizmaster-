@@ -253,13 +253,3 @@ Google approval, crawler access, analytics collection and ad serving must be con
 The included question bank contains 625 validated bilingual records: 297 Road Safety and 328 General Knowledge. The current question and interface languages are English and Kinyarwanda. Three vector road-sign illustrations (priority road, give way, and stop) are connected to their matching questions. The Learning Centre contains 11 articles. This release does not claim to contain 10,000 questions, seven translated question banks, automatic AI content generation, or a complete international legal database. Those features require verified source material, professional translation/review, and a separate content release process.
 
 Road-sign illustrations are not yet mapped to the current question records; do not treat this release as a complete illustrated road-sign examination bank.
-
-
-## 4.3.5 Home Page Refresh
-
-- Reworked the Home screen into a cleaner, responsive setup flow.
-- Added the requested Kinyarwanda welcome heading and “Learn • Think • Succeed” tagline.
-- Kept the existing English/Kinyarwanda language selection, Road Safety/General Knowledge categories, confirmation, start and continue controls.
-- Preserved the existing quiz engine and browser progress storage.
-- Kept the existing AdSense unit below the setup controls; ad serving and approval must still be verified in the live AdSense account.
-- Updated the service-worker cache version to 4.3.5 so returning users can receive the refreshed Home page.
