@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f7ff">
+  <meta name="theme-color" content="#ffffff">
 
   <title>Quiz Master Rwanda | Learn, Practise & Grow</title>
   <meta name="description" content="Learn with Quiz Master Rwanda through interactive road-safety and general-knowledge quizzes, clear explanations, progress tracking and bilingual learning in English and Kinyarwanda.">
@@ -15,7 +15,7 @@
   <link rel="icon" href="./icon-192-4.png">
   <link rel="apple-touch-icon" href="./icon-192-4.png">
 
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="light">
   <meta name="application-name" content="Quiz Master Rwanda">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -604,481 +604,150 @@
       }
     }
 
-    /* QUIZ MASTER — CLEAN LIGHT UI REFRESH (visual-only overrides) */
+
+    /* QUIZ MASTER RWANDA 4.3.5 — clean blue-and-white responsive design */
     :root {
       color-scheme: light;
-      --bg: #f4f6ff;
+      --bg: #f3f7ff;
       --header: #ffffff;
       --panel: #ffffff;
-      --panel-light: #f1f4ff;
-      --blue: #4f46e5;
-      --blue-light: #6366f1;
-      --green: #059669;
-      --red: #dc4655;
-      --white: #ffffff;
-      --text: #17213b;
-      --muted: #64748b;
-      --border: rgba(35, 48, 83, .12);
-      --shadow: 0 16px 42px rgba(31, 41, 88, .09);
+      --panel-light: #eef4ff;
+      --blue: #0759d8;
+      --blue-light: #1677ff;
+      --green: #087e62;
+      --red: #c93448;
+      --text: #102b59;
+      --muted: #526783;
+      --border: #d8e5f8;
+      --shadow: 0 12px 32px rgba(15, 55, 120, .10);
     }
-
     body {
-      background: radial-gradient(ellipse at 50% -10%, rgba(99,102,241,.14), transparent 48%),
-                  linear-gradient(180deg, #f8f9ff 0%, #f1f4ff 100%);
       color: var(--text);
+      background: linear-gradient(180deg, #f7faff 0%, #edf4ff 100%);
     }
-
     .app-header {
-      background: rgba(255,255,255,.94);
-      border-bottom-color: rgba(35,48,83,.10);
-      box-shadow: 0 4px 20px rgba(31,41,88,.04);
-    }
-
-    .brand { color: #20294a; }
-
-    .btn.secondary { background: #e9edff; color: #343b78; }
-
-    .btn.secondary:hover:not(:disabled) { background: #dfe5ff; }
-
-    .menu {
-      background: #ffffff;
-      border-color: rgba(35,48,83,.12);
-      box-shadow: 0 18px 40px rgba(31,41,88,.14);
-    }
-
-    .menu button, .menu a { color: #273252; }
-
-    .menu button:hover, .menu a:hover { background: #f0f2ff; }
-
-    .panel {
       background: rgba(255,255,255,.97);
-      border: 1px solid rgba(71,85,150,.12);
-      box-shadow: 0 18px 48px rgba(45,55,115,.09);
+      border-bottom: 1px solid #dce8f8;
+      box-shadow: 0 4px 18px rgba(15,55,120,.06);
     }
-
-    #homeScreen .panel { overflow: hidden; position: relative; }
-
-    #homeScreen .welcome { padding: 30px 12px 24px; }
-
-    #homeScreen .logo-icon {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 58%, #0ea5e9 100%);
-      box-shadow: 0 14px 30px rgba(79,70,229,.22);
-    }
-
-    #homeScreen h1 { color: #17213b; letter-spacing: -.8px; }
-
-    .tagline { color: #4f46e5; }
-
-    .welcome-description { color: #64748b; }
-
-    .welcome-badge { color: #4338ca; background: #eef0ff; border-color: #dfe3ff; }
-
-    .stat { background: linear-gradient(180deg, #ffffff, #f7f8ff); border-color: rgba(71,85,150,.12); }
-
-    .stat span { color: #64748b; }
-
-    .stat strong { color: #20294a; }
-
-    .section-heading { color: #20294a; }
-
-    .choice { color: #303a5b; background: #f4f6ff; border-color: #e2e7f5; }
-
-    .choice:hover { color: #3730a3; background: #eef0ff; border-color: #c7ceff; }
-
-    .choice.selected {
-      color: #3730a3; background: #e9eaff; border-color: #6366f1;
-      box-shadow: 0 0 0 3px rgba(99,102,241,.10);
-    }
-
-    .summary { color: #46516f; background: #f7f8ff; border-color: #e5e9f7; }
-
-    .muted { color: #64748b; }
-
-    .success-text, .correct-text { color: #047857; }
-
-    .wrong-text, .error { color: #be123c; }
-
-    .question-meta { color: #64748b; }
-
-    .progress-track { background: #e7eaf5; }
-
-    #progressFill { background: linear-gradient(90deg, #4f46e5, #0ea5e9); }
-
-    #questionText { color: #17213b; }
-
-    .option { color: #283452; background: #f7f8ff; border-color: #e2e7f5; }
-
-    .option:hover:not(:disabled) { color: #3730a3; background: #eef0ff; }
-
-    .option.selected { color: #3730a3; background: #e9eaff; border-color: #6366f1; }
-
-    .option.correct { border-color: #059669; }
-
-    .option.wrong { border-color: #dc4655; }
-
-    .feedback, .explanation, .review-item {
-      color: #33415f; background: #f7f8ff; border: 1px solid #e5e9f7;
-    }
-
-    .review-item h3 { color: #20294a; }
-
-    footer { color: #64748b; background: rgba(255,255,255,.76); border-top-color: rgba(35,48,83,.10); }
-
-    footer a { color: #4f46e5; }
-
-    button:focus-visible, a:focus-visible { outline-color: #6366f1; }
-
-    @media (max-width: 520px) {
-      #homeScreen .welcome { padding: 22px 4px 18px; }
-      #homeScreen .stats { margin-top: 18px; }
-      .panel { box-shadow: 0 12px 30px rgba(45,55,115,.07); }
-    }
-
-
-    /* Quiz Master Rwanda 4.3.4 — responsive visual refinement */
-    :root {
-      --blue: #3978f6;
-      --blue-light: #65a3ff;
-      --green: #13b981;
-      --panel: #102744;
-      --panel-light: #173858;
-      --border: rgba(173, 205, 255, .17);
-      --shadow: 0 22px 60px rgba(0, 0, 0, .28);
-    }
-    body {
-      background:
-        radial-gradient(ellipse at 12% 4%, rgba(41, 112, 220, .25), transparent 34rem),
-        radial-gradient(ellipse at 88% 20%, rgba(18, 185, 129, .13), transparent 30rem),
-        linear-gradient(145deg, #061326 0%, #0a1b32 52%, #071426 100%);
-    }
-    .app-header {
-      padding: 14px clamp(14px, 4vw, 42px);
-      background: rgba(5, 18, 35, .88);
-      border-bottom-color: rgba(160, 196, 255, .16);
-    }
-    .brand { letter-spacing: -.7px; }
-    .app-header .btn { border: 1px solid rgba(255,255,255,.12); }
+    .brand { display:flex; align-items:center; gap:10px; color:#102b59; font-size:20px; }
+    .brand strong { color:#0759d8; }
+    .brand-trophy { font-size:27px; }
+    .btn { background:linear-gradient(110deg,#0759d8,#1680ff); color:#fff; border-radius:14px; }
+    .btn.secondary { background:#e9f1ff; color:#12417e; border:1px solid #d3e3fb; }
+    .btn.success { background:linear-gradient(110deg,#087e62,#0ca77b); color:#fff; }
+    .btn.danger { background:#c93448; color:#fff; }
+    .menu { background:#fff; border:1px solid #d8e5f8; box-shadow:0 16px 40px rgba(15,55,120,.16); }
+    .menu button,.menu a { color:#17365f; }
+    .menu button:hover,.menu a:hover { background:#edf4ff; }
+    main { margin-top:22px; }
     #homeScreen .panel {
-      overflow: hidden;
-      position: relative;
-      padding: clamp(22px, 5vw, 48px);
-      border: 1px solid rgba(157, 197, 255, .2);
-      border-radius: 28px;
-      background: linear-gradient(145deg, rgba(18, 47, 79, .97), rgba(9, 28, 51, .98));
-      box-shadow: var(--shadow);
+      padding:clamp(14px,3vw,28px);
+      overflow:hidden;
+      border:1px solid #dce8f8;
+      border-radius:25px;
+      background:#fff;
+      box-shadow:0 14px 40px rgba(15,55,120,.10);
     }
-    #homeScreen .welcome {
-      position: relative;
-      padding: 16px 8px 30px;
-      text-align: center;
+    #homeScreen .welcome { padding:0 0 22px; text-align:center; }
+    #homeScreen .hero-banner {
+      display:block; width:100%; height:clamp(125px,27vw,245px);
+      object-fit:cover; object-position:center 52%;
+      border-radius:19px; border:1px solid #dce8f8;
+      box-shadow:0 8px 22px rgba(15,55,120,.12);
+      background:#eaf3ff;
     }
-    #homeScreen .logo-icon {
-      display: grid;
-      place-items: center;
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 18px;
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 24px;
-      background: linear-gradient(145deg, #3978f6, #16a879);
-      box-shadow: 0 12px 34px rgba(38, 112, 226, .3);
-      font-size: 38px;
-    }
+    #homeScreen .logo-icon { display:none; }
     #homeScreen .welcome h1 {
-      max-width: 760px;
-      margin: 0 auto 10px;
-      font-size: clamp(2rem, 5.4vw, 3.6rem);
-      line-height: 1.1;
-      letter-spacing: -1.6px;
+      margin:19px 0 5px; color:#102b59;
+      font-size:clamp(1.75rem,4.6vw,2.7rem); line-height:1.16; letter-spacing:-.8px;
     }
-    #homeScreen .tagline {
-      color: #81b7ff;
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .2em;
-    }
-    #homeScreen .welcome-description {
-      max-width: 650px;
-      margin: 14px auto 18px;
-      color: #c3d5eb;
-      font-size: clamp(.98rem, 2vw, 1.12rem);
-    }
-    #homeScreen .welcome-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid rgba(107, 174, 255, .3);
-      border-radius: 999px;
-      background: rgba(50, 119, 207, .13);
-      color: #cce2ff;
-      font-size: .86rem;
-      font-weight: 700;
-    }
-    #homeScreen .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin: 12px 0 32px;
-    }
-    #homeScreen .stat {
-      padding: 16px 10px;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      background: rgba(255,255,255,.045);
-      text-align: center;
-    }
-    #homeScreen .stat span { display:block; color:#a9bfd9; font-size:.82rem; }
-    #homeScreen .stat strong { display:block; margin-top:3px; font-size:1.55rem; }
+    #homeScreen .tagline { margin:7px 0 8px; color:#0759d8; font-size:clamp(.95rem,2.5vw,1.15rem); font-weight:850; letter-spacing:.04em; }
+    #homeScreen .tagline span { color:#e5a900; }
+    #homeScreen .welcome-description { color:#526783; font-size:1rem; }
+    #homeScreen .welcome-badge { display:none; }
+    #homeScreen .stats { display:none; }
     #homeScreen .setup-section {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: clamp(18px, 3vw, 30px);
-      border: 1px solid rgba(165, 198, 239, .15);
-      border-radius: 22px;
-      background: rgba(4, 17, 33, .35);
+      max-width:900px; margin:0 auto; padding:clamp(15px,3vw,27px);
+      border:1px solid #dce8f8; border-radius:21px;
+      background:#f8fbff;
     }
     #homeScreen .section-heading {
-      margin: 8px 0 14px;
-      font-size: 1.08rem;
-      letter-spacing: -.2px;
+      display:flex; align-items:center; gap:11px;
+      margin:7px 0 13px; color:#102b59;
+      font-size:clamp(1.05rem,2.6vw,1.28rem); font-weight:850; line-height:1.35;
     }
-    #homeScreen .choice-grid { gap: 12px; margin-bottom: 24px; }
+    .step-number {
+      display:inline-grid; place-items:center; flex:0 0 36px; width:36px; height:36px;
+      border-radius:50%; color:#fff; background:#0759d8; font-weight:900;
+    }
+    #homeScreen .choice-grid { gap:12px; margin-bottom:22px; }
     #homeScreen .choice {
-      min-height: 58px;
-      border: 1px solid rgba(157, 191, 231, .25);
-      border-radius: 15px;
-      background: rgba(255,255,255,.055);
-      color: #edf5ff;
-      font-weight: 750;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      min-height:70px; padding:13px 15px; display:flex; align-items:center; justify-content:center; gap:12px;
+      border:2px solid #d9e6f8; border-radius:16px;
+      color:#153765; background:#fff; font-size:clamp(.98rem,2.6vw,1.13rem); font-weight:800;
+      box-shadow:0 4px 12px rgba(15,55,120,.05);
     }
-    #homeScreen .choice:hover { transform: translateY(-2px); border-color:#72aaff; }
+    #homeScreen .choice:hover { color:#0759d8; background:#f0f6ff; border-color:#8bb9ff; }
     #homeScreen .choice[aria-pressed="true"] {
-      border-color: #66a5ff;
-      background: linear-gradient(135deg, rgba(48, 117, 232, .32), rgba(18, 185, 129, .16));
-      box-shadow: inset 0 0 0 1px rgba(102,165,255,.18);
+      color:#fff; border-color:#0759d8; background:linear-gradient(120deg,#0759d8,#167cff);
+      box-shadow:0 7px 18px rgba(7,89,216,.2);
     }
-    #homeScreen .btn {
-      min-height: 52px;
-      margin-top: 11px;
-      border-radius: 14px;
-      font-weight: 800;
-      letter-spacing: .1px;
+    .choice-flag { font-size:1.8rem; line-height:1; }
+    #homeScreen .category-choice { min-height:126px; justify-content:flex-start; text-align:left; padding:17px; color:#fff; border:0; background:linear-gradient(145deg,#0d4eae,#082b68); }
+    #homeScreen .category-choice:hover { color:#fff; background:linear-gradient(145deg,#1267d9,#09377f); }
+    #homeScreen .category-choice[aria-pressed="true"] { background:linear-gradient(145deg,#0876f9,#073c91); outline:3px solid #8bb9ff; outline-offset:2px; }
+    .category-symbol { display:grid; place-items:center; flex:0 0 54px; width:54px; height:54px; border-radius:15px; background:rgba(255,255,255,.15); font-size:2rem; }
+    .category-copy { display:grid; gap:3px; }
+    .category-copy strong { font-size:clamp(1rem,2.7vw,1.2rem); }
+    .category-copy small { color:#dceaff; font-size:.9rem; font-weight:600; }
+    #homeScreen .summary { color:#29486f; background:#eef5ff; border:1px solid #d7e6fb; }
+    #homeScreen #confirmSetupBtn { background:#0d4eae; }
+    #homeScreen #startBtn { background:linear-gradient(110deg,#0759d8,#1680ff); }
+    #homeScreen .btn { min-height:55px; border-radius:15px; font-size:1.05rem; }
+    #homeScreen #continueBtn { background:#087e62; color:#fff; }
+    #homeScreen #homeMessage { color:#526783; }
+    /* Quiz, results, review, progress and settings retain their existing IDs and logic. */
+    .panel { background:#fff; border:1px solid #dce8f8; box-shadow:var(--shadow); }
+    .question-meta { color:#526783; }
+    .progress-track { background:#e3edfb; }
+    #progressFill { background:linear-gradient(90deg,#0759d8,#20a2ff); }
+    #questionText { color:#102b59; }
+    .option { color:#17365f; background:#f6f9ff; border:1px solid #d8e5f8; }
+    .option:hover:not(:disabled),.option.selected { color:#0759d8; background:#eaf3ff; border-color:#4b91f3; }
+    .feedback,.explanation,.review-item { color:#29486f; background:#f6f9ff; border:1px solid #dce8f8; }
+    .review-item h3 { color:#102b59; }
+    .muted,.question-meta { color:#526783; }
+    .success-text,.correct-text { color:#087e62; }
+    .wrong-text,.error { color:#b4233a; }
+    footer { color:#526783; background:#fff; border-top:1px solid #dce8f8; }
+    footer a { color:#0759d8; }
+    button:focus-visible,a:focus-visible { outline:3px solid #167cff; outline-offset:3px; }
+    @media(max-width:600px) {
+      main { width:calc(100% - 18px); margin-top:12px; }
+      #homeScreen .panel { padding:11px; border-radius:19px; }
+      #homeScreen .hero-banner { height:clamp(120px,39vw,185px); border-radius:14px; }
+      #homeScreen .welcome { padding-bottom:15px; }
+      #homeScreen .welcome h1 { margin-top:15px; }
+      #homeScreen .setup-section { padding:14px 11px; border-radius:17px; }
+      #homeScreen .choice-grid { gap:9px; }
+      #homeScreen .language-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      #homeScreen .choice { min-width:0; padding:10px 7px; font-size:.94rem; }
+      #homeScreen .category-choice { min-height:100px; padding:12px 10px; gap:9px; }
+      .category-symbol { flex-basis:42px; width:42px; height:42px; font-size:1.6rem; }
+      .category-copy small { font-size:.78rem; }
+      .step-number { flex-basis:32px; width:32px; height:32px; }
+      .brand { font-size:16px; }
+      .brand-trophy { font-size:23px; }
     }
-    #homeScreen #startBtn { background: linear-gradient(100deg, #168d69, #16b783); }
-    #homeScreen #confirmSetupBtn { background: #284a70; }
-    #homeScreen .summary { border-radius: 13px; }
-    #homeScreen .home-ad {
-      max-width: 760px;
-      min-height: 90px;
-      margin: 22px auto 0;
-      padding: 12px;
-      border: 1px solid rgba(157, 191, 231, .12);
-      border-radius: 15px;
-      background: rgba(4, 17, 33, .24);
-      overflow: hidden;
+    @media(max-width:360px) {
+      #homeScreen .language-grid { grid-template-columns:1fr; }
+      #homeScreen .category-choice { min-height:88px; }
     }
-    footer {
-      width: min(100% - 28px, 1040px);
-      margin: 24px auto 0;
-      padding: 24px 12px 34px;
-      border-top: 1px solid rgba(173,205,255,.14);
-      color: #a9bfd9;
-      text-align: center;
-    }
-    footer a { display:inline-block; margin: 4px 8px; }
-    @media (max-width: 600px) {
-      main { width: min(100% - 18px, 1040px); margin-top: 14px; }
-      #homeScreen .panel { padding: 18px 12px; border-radius: 21px; }
-      #homeScreen .welcome { padding: 10px 4px 22px; }
-      #homeScreen .stats { gap: 7px; margin-bottom: 22px; }
-      #homeScreen .stat { padding: 12px 5px; }
-      #homeScreen .stat span { font-size: .72rem; }
-      #homeScreen .stat strong { font-size: 1.3rem; }
-      #homeScreen .setup-section { padding: 16px 12px; }
-      #homeScreen .choice-grid { grid-template-columns: 1fr; }
-      .app-header { padding: 11px 12px; }
-      .brand { font-size: 16px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    @media(prefers-reduced-motion:reduce) {
+      *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; }
     }
 
-
-    /* HOME PAGE: clean black, navy and bright-blue layout matching the user's reference */
-    body {
-      background: #000000 !important;
-      color: #ffffff;
-    }
-    .app-header {
-      background: #000000 !important;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: none;
-    }
-    #homeScreen .panel {
-      max-width: 760px;
-      margin: 0 auto 20px;
-      padding: clamp(18px, 4vw, 30px);
-      background: #000000;
-      border: 0;
-      border-radius: 0;
-      box-shadow: none;
-    }
-    #homeScreen .welcome {
-      padding: 8px 0 24px;
-      text-align: left;
-    }
-    #homeScreen .logo-icon,
-    #homeScreen .welcome-description,
-    #homeScreen .welcome-badge,
-    #homeScreen .stats {
-      display: none !important;
-    }
-    #homeScreen .welcome h1 {
-      margin: 0 0 8px;
-      color: #ffffff;
-      font-size: clamp(1.65rem, 5vw, 2.35rem);
-      line-height: 1.2;
-      letter-spacing: -.5px;
-    }
-    #homeScreen .tagline {
-      margin: 0;
-      color: #ffffff;
-      font-size: clamp(1.05rem, 3vw, 1.3rem);
-      font-weight: 700;
-      letter-spacing: .02em;
-    }
-    #homeScreen .setup-section {
-      max-width: none;
-      padding: 0;
-      margin: 0;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-    }
-    #homeScreen .section-heading {
-      margin: 22px 0 16px;
-      color: #ffffff;
-      font-size: clamp(1.25rem, 4vw, 1.65rem);
-      font-weight: 800;
-      line-height: 1.45;
-      letter-spacing: 0;
-    }
-    #homeScreen .choice-grid {
-      gap: 14px;
-      margin: 0 0 20px;
-    }
-    #homeScreen .choice-grid:first-of-type {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    #homeScreen .language-btn {
-      min-height: 142px;
-      padding: 20px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: #1b3d60;
-      border: 1px solid #254d73;
-      border-radius: 22px;
-      color: #ffffff;
-      font-size: clamp(1.2rem, 4vw, 1.65rem);
-      font-weight: 800;
-    }
-    #homeScreen .setup-section > .choice-grid:nth-of-type(2) {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-    #homeScreen .mode-btn {
-      min-height: 142px;
-      padding: 20px 22px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 5px;
-      text-align: left;
-      background: #122d48;
-      border: 1px solid #1c3e5e;
-      border-radius: 22px;
-      color: #ffffff;
-    }
-    #homeScreen .choice-title {
-      display: block;
-      font-size: clamp(1.2rem, 4vw, 1.65rem);
-      font-weight: 800;
-      line-height: 1.35;
-    }
-    #homeScreen .choice-description {
-      display: block;
-      color: #f2f6fb;
-      font-size: clamp(1.05rem, 3.6vw, 1.45rem);
-      font-weight: 400;
-      line-height: 1.4;
-    }
-    #homeScreen .choice:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.12);
-      border-color: #4b9cff;
-    }
-    #homeScreen .choice[aria-pressed="true"] {
-      background: #1b4e7d;
-      border: 2px solid #58a5ff;
-      box-shadow: 0 0 0 3px rgba(36,126,235,.16);
-    }
-    #homeScreen #confirmSetupBtn,
-    #homeScreen #startBtn,
-    #homeScreen #continueBtn {
-      min-height: 106px;
-      margin-top: 12px;
-      padding: 18px;
-      border: 0;
-      border-radius: 22px;
-      background: #1769e8;
-      color: #ffffff;
-      font-size: clamp(1.2rem, 4vw, 1.65rem);
-      font-weight: 800;
-      line-height: 1.3;
-      box-shadow: none;
-    }
-    #homeScreen #confirmSetupBtn:hover:not(:disabled),
-    #homeScreen #startBtn:hover:not(:disabled),
-    #homeScreen #continueBtn:hover:not(:disabled) {
-      background: #287cf4;
-      transform: translateY(-1px);
-    }
-    #homeScreen #confirmSetupBtn:disabled,
-    #homeScreen #startBtn:disabled {
-      opacity: .62;
-    }
-    #homeScreen .summary { display: none; }
-    #homeScreen #homeMessage {
-      color: #c8d8ea;
-      text-align: center;
-    }
-    #homeScreen .home-ad {
-      max-width: 760px;
-      margin: 24px auto 0;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-    }
-    @media (max-width: 600px) {
-      main { width: min(100% - 30px, 760px); margin-top: 10px; }
-      #homeScreen .panel { padding: 12px 0 20px; }
-      #homeScreen .welcome { padding: 6px 0 18px; }
-      #homeScreen .section-heading { margin-top: 18px; }
-      #homeScreen .language-btn { min-height: 142px; padding: 16px 10px; }
-      #homeScreen .mode-btn { min-height: 142px; padding: 18px 20px; }
-      #homeScreen #confirmSetupBtn,
-      #homeScreen #startBtn,
-      #homeScreen #continueBtn { min-height: 106px; }
-    }
-    @media (max-width: 360px) {
-      main { width: min(100% - 22px, 760px); }
-      #homeScreen .language-btn { font-size: 1.08rem; }
-    }
 
 </style>
 </head>
@@ -1093,7 +762,7 @@
 <!-- End Google Tag Manager (noscript) -->
 
 <header class="app-header">
-  <div class="brand">🧠 Quiz Master 🇷🇼</div>
+  <div class="brand"><span class="brand-trophy" aria-hidden="true">🏆</span><span>Quiz Master <strong>Rwanda</strong></span></div>
 
   <div class="menu-wrap">
     <button class="btn secondary"
@@ -1101,7 +770,7 @@
       type="button"
       aria-expanded="false"
       aria-controls="moreMenu">
-      ☰ More
+      ☰ Menu
     </button>
 
     <nav class="menu" id="moreMenu" aria-label="Main menu">
@@ -1124,9 +793,12 @@
     <div class="panel">
 
       <div class="welcome">
-        <div class="logo-icon" aria-hidden="true">🧠</div>
+        <img class="hero-banner" src="./images/quizmaster-kigali-hero.webp"
+          alt="The Rwanda flag and Kigali city skyline" width="1440" height="253"
+          fetchpriority="high" decoding="async">
         <h1>Ikaze muri Quiz Master Rwanda!</h1>
-        <p class="tagline">Learn • Think • Succeed</p>
+        <p class="tagline">Learn <span>•</span> Think <span>•</span> Succeed</p>
+        <p class="welcome-description">Hitamo ururimi n'ubwoko bw'ibibazo, wige kandi ugerageze ubumenyi bwawe.</p>
       </div>
 
       <div class="stats">
@@ -1145,31 +817,31 @@
       </div>
 
       <div class="setup-section">
-        <h2 class="section-heading">1. Hitamo ururimi ushaka gukinamo</h2>
+        <h2 class="section-heading"><span class="step-number">1</span> Hitamo ururimi ushaka gukinamo</h2>
 
-        <div class="choice-grid">
+        <div class="choice-grid language-grid">
           <button type="button" class="choice language-btn"
             data-language="en" aria-pressed="false">
-            🇬🇧 English
+            <span class="choice-flag" aria-hidden="true">🇬🇧</span><span>English</span>
           </button>
           <button type="button" class="choice language-btn"
             data-language="rw" aria-pressed="false">
-            🇷🇼 Kinyarwanda
+            <span class="choice-flag" aria-hidden="true">🇷🇼</span><span>Kinyarwanda</span>
           </button>
         </div>
 
-        <h2 class="section-heading">2. Hitamo ubwoko bw’ibibazo ushaka gukina</h2>
+        <h2 class="section-heading"><span class="step-number">2</span> Hitamo ubwoko bw’ibibazo ushaka gukina</h2>
 
-        <div class="choice-grid">
-          <button type="button" class="choice mode-btn"
+        <div class="choice-grid category-grid">
+          <button type="button" class="choice mode-btn category-choice"
             data-mode="traffic" aria-pressed="false">
-            <span class="choice-title">🚦 Road Safety</span>
-            <span class="choice-description">Amategeko y’umuhanda</span>
+            <span class="category-symbol" aria-hidden="true">🚦</span>
+            <span class="category-copy"><strong>Road Safety</strong><small>Amategeko y'umuhanda</small></span>
           </button>
-          <button type="button" class="choice mode-btn"
+          <button type="button" class="choice mode-btn category-choice"
             data-mode="general" aria-pressed="false">
-            <span class="choice-title">🌍 General Knowledge</span>
-            <span class="choice-description">Ubumenyi rusange</span>
+            <span class="category-symbol" aria-hidden="true">🌍</span>
+            <span class="category-copy"><strong>General Knowledge</strong><small>Ubumenyi rusange</small></span>
           </button>
         </div>
 
@@ -1199,18 +871,7 @@
         </p>
       </div>
 
-      <!-- Google AdSense: one responsive placement, below all setup controls -->
-      <div class="home-ad" aria-label="Advertisement">
-        <ins class="adsbygoogle"
-          style="display:block; min-height:90px;"
-          data-ad-client="ca-pub-2666698676518429"
-          data-ad-slot="9045712897"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      </div>
-      <script>
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <!-- AdSense Auto ads are controlled from the AdSense account; no manual unit is placed beside game controls. -->
     </div>
   </section>
 

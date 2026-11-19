@@ -238,7 +238,7 @@ Made with dedication in Rwanda 🇷🇼
 Google approval, crawler access, analytics collection and ad serving must be confirmed in the corresponding Google accounts after deployment.
 
 
-## 4.3.4 Update Notes
+## 4.3.5 Update Notes
 
 - Refreshed the Home page with a responsive, accessible visual layout while preserving the existing quiz-engine element IDs and workflows.
 - Expanded the main content layout for desktop and retained a single-column, touch-friendly mobile layout.
@@ -246,10 +246,30 @@ Google approval, crawler access, analytics collection and ad serving must be con
 - Removed AdSense loader scripts from About, Learning Centre, Contact, Privacy Policy and Terms pages.
 - Updated Privacy Policy and Terms advertising descriptions to match the current code placement.
 - Kept the existing Google Tag Manager container `GTM-KQJCNKFL` on the Home page and the existing Analytics measurement ID `G-3FP8R0NDZN` on informational pages. Confirm that the GA4 tag is correctly published inside the GTM container before relying on Home page analytics.
-- Aligned the quiz-engine and service-worker cache versions at 4.3.4 to trigger an update for returning visitors.
+- Aligned the quiz-engine and service-worker cache versions at 4.3.5 to trigger an update for returning visitors.
 
 ## Current Content Scope and Roadmap
 
 The included question bank contains 625 validated bilingual records: 297 Road Safety and 328 General Knowledge. The current question and interface languages are English and Kinyarwanda. Three vector road-sign illustrations (priority road, give way, and stop) are connected to their matching questions. The Learning Centre contains 11 articles. This release does not claim to contain 10,000 questions, seven translated question banks, automatic AI content generation, or a complete international legal database. Those features require verified source material, professional translation/review, and a separate content release process.
 
 Road-sign illustrations are not yet mapped to the current question records; do not treat this release as a complete illustrated road-sign examination bank.
+
+
+---
+
+## Release 4.3.5 — Home refresh and Google setup notes
+
+- Updated the home screen to a clean white, navy and bright-blue layout.
+- Added a lightweight Kigali/Rwanda-flag hero banner with no people.
+- Preserved the existing quiz engine, question data, progress, review, settings, menu and music controls.
+- Kept the existing AdSense publisher loader on the home page and removed the fixed manual ad unit. If Auto ads are enabled in the AdSense account, Google can decide whether and where eligible ads appear. No ad placement or approval is guaranteed by the source code alone.
+- Standardized the existing Google Tag Manager container GTM-KQJCNKFL across the home, Learning Centre, About, Contact, Privacy and Terms pages. Configure/publish a GA4 Google tag for measurement ID G-3FP8R0NDZN inside that GTM container; do not add a separate hard-coded GA4 tag as that can duplicate page_view events.
+- Aligned the quiz-engine and Service Worker cache version at 4.3.5 and added the hero image to the app shell.
+
+### AdSense and analytics verification before review
+
+1. Confirm Auto ads are enabled for the verified site in AdSense and review the Ad settings preview on phone and desktop.
+2. Exclude the interactive quiz controls and any areas where an ad could be confused with a play, answer, menu or navigation control. Google prohibits placements that may cause accidental clicks.
+3. In the existing GTM container GTM-KQJCNKFL, confirm a published Google tag / GA4 configuration for G-3FP8R0NDZN. Then use Tag Assistant and GA4 Realtime/DebugView to verify one page_view per page load across all pages.
+4. Never click live ads while testing.
+5. Approval, ad serving, and policy status are decided by Google after it reviews the live deployed site.
