@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f7ff">
+  <meta name="theme-color" content="#071426">
 
   <title>Quiz Master Rwanda | Learn, Practise & Grow</title>
   <meta name="description" content="Learn with Quiz Master Rwanda through interactive road-safety and general-knowledge quizzes, clear explanations, progress tracking and bilingual learning in English and Kinyarwanda.">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Quiz Master Rwanda">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Quiz Master Rwanda | Learn, Practise & Grow">
+  <meta property="og:description" content="Interactive road-safety and general-knowledge quizzes with bilingual learning and progress tracking.">
+  <meta property="og:url" content="https://quizmaster-liard-five.vercel.app/">
+  <meta name="twitter:card" content="summary">
 
   <link rel="canonical" href="https://quizmaster-liard-five.vercel.app/">
   <link rel="manifest" href="./manifest.webmanifest">
@@ -735,7 +740,7 @@
     }
 
 
-    /* Quiz Master Rwanda 4.3.4 — responsive visual refinement */
+    /* Quiz Master Rwanda 4.3.5 — responsive visual refinement */
     :root {
       --blue: #3978f6;
       --blue-light: #65a3ff;
@@ -869,40 +874,25 @@
     #homeScreen #startBtn { background: linear-gradient(100deg, #168d69, #16b783); }
     #homeScreen #confirmSetupBtn { background: #284a70; }
     #homeScreen .summary { border-radius: 13px; }
-    #homeScreen .home-ad {
-      max-width: 760px;
-      min-height: 90px;
-      margin: 22px auto 0;
-      padding: 12px;
-      border: 1px solid rgba(157, 191, 231, .12);
-      border-radius: 15px;
-      background: rgba(4, 17, 33, .24);
-      overflow: hidden;
-    }
-    footer {
-      width: min(100% - 28px, 1040px);
-      margin: 24px auto 0;
-      padding: 24px 12px 34px;
-      border-top: 1px solid rgba(173,205,255,.14);
-      color: #a9bfd9;
-      text-align: center;
-    }
-    footer a { display:inline-block; margin: 4px 8px; }
+    .menu { background: #102744; border-color: rgba(173,205,255,.18); }
+    .menu button, .menu a { color: #eef5ff; }
+    .menu button:hover, .menu a:hover { background: #1b3b61; }
+    .option, .choice { min-height: 54px; }
+    a { color: #8dbdff; }
+    footer { color: #aebed2; }
+    footer a { color: #8dbdff; }
     @media (max-width: 600px) {
-      main { width: min(100% - 18px, 1040px); margin-top: 14px; }
-      #homeScreen .panel { padding: 18px 12px; border-radius: 21px; }
-      #homeScreen .welcome { padding: 10px 4px 22px; }
-      #homeScreen .stats { gap: 7px; margin-bottom: 22px; }
-      #homeScreen .stat { padding: 12px 5px; }
-      #homeScreen .stat span { font-size: .72rem; }
-      #homeScreen .stat strong { font-size: 1.3rem; }
-      #homeScreen .setup-section { padding: 16px 12px; }
+      #homeScreen .choice-grid { grid-template-columns: 1fr 1fr; }
+      #homeScreen .home-ad { margin-top: 26px; padding-inline: 4px; }
+      #homeScreen .welcome-description { font-size: .96rem; }
+      .app-header { gap: 8px; }
+    }
+    @media (max-width: 360px) {
       #homeScreen .choice-grid { grid-template-columns: 1fr; }
-      .app-header { padding: 11px 12px; }
-      .brand { font-size: 16px; }
+      .brand { font-size: 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
 
 </style>
@@ -953,9 +943,7 @@
         <h1>Welcome to Quiz Master 🇷🇼</h1>
         <p class="tagline">LEARN • PLAY • IMPROVE</p>
         <p class="welcome-description">
-          Welcome! Challenge your knowledge, discover new things
-          and improve your skills through fun educational quizzes
-          in English and Kinyarwanda.
+          Build practical knowledge through focused quizzes on road safety and general knowledge. Learn at your own pace, review clear explanations and track your progress in English or Kinyarwanda.
         </p>
         <div class="welcome-badge">🇷🇼 Rwanda Educational Quiz Platform</div>
       </div>
@@ -1027,19 +1015,7 @@
           Loading questions...
         </p>
       </div>
-
-      <!-- Google AdSense: one responsive placement, below all setup controls -->
-      <div class="home-ad" aria-label="Advertisement">
-        <ins class="adsbygoogle"
-          style="display:block; min-height:90px;"
-          data-ad-client="ca-pub-2666698676518429"
-          data-ad-slot="9045712897"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      </div>
-      <script>
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+      <!-- Google AdSense Auto ads: Google controls eligible placement on the homepage. -->
     </div>
   </section>
 

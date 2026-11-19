@@ -1,6 +1,6 @@
 🇷🇼 Quiz Master Rwanda
 
-Responsive Bilingual Educational Quiz Application
+Responsive Bilingual Educational Quiz Application\n\nApplication version: 4.3.5
 
 Quiz Master Rwanda is an educational web application that helps users improve their knowledge through interactive quizzes and learning materials.
 
@@ -161,15 +161,17 @@ Search engine indexing and ranking depend on search engine policies and decision
 
 6. Analytics and Advertising
 
-Google Analytics is installed on the homepage and the public content pages.
+Google Tag Manager container: `GTM-KQJCNKFL`
 
-Measurement ID: "G-3FP8R0NDZN"
+Google Analytics 4 measurement destination to configure in that GTM container: `G-3FP8R0NDZN`.
 
-Google AdSense Auto ads code is enabled on these pages: `about.html`, `articles.html`, `contact.html`, `privacy-policy.html` and `terms.html`. The homepage (`index.html`) intentionally does not load the AdSense script, keeping the quiz setup screen clear.
+The same Google Tag Manager container snippet is installed on the main public HTML pages. To collect Analytics data, the GTM container must contain a published Google tag configured with `G-3FP8R0NDZN`. Verify the live site with Google Tag Assistant and confirm page_view events in GA4 Realtime. The source code alone cannot verify the settings or publication state inside the Google Tag Manager account.
 
-The website does not intentionally use manually created ad units or fixed manual ad placements. Google determines whether eligible Auto ads appear and where they are placed on pages where the AdSense script is enabled.
+Google AdSense publisher ID: `ca-pub-2666698676518429`.
 
-The AdSense publisher file is `ads.txt`. The publisher ID and account/site approval must still be verified in the AdSense account. Adding code does not guarantee approval or ad serving.
+The AdSense loader is included on the homepage only. No manually positioned ad unit or ad slot is hard-coded; Auto ads placement and formats are controlled in the AdSense account. Review Auto ads settings before enabling formats that could cover controls or interrupt quiz use. The `ads.txt` file authorizes the publisher record but does not guarantee approval or ad serving.
+
+Ad placement must remain clearly distinguishable from site controls and must not encourage accidental clicks. Never click the site's own ads or ask visitors to click them.
 
 ---
 
@@ -238,7 +240,7 @@ Made with dedication in Rwanda 🇷🇼
 Google approval, crawler access, analytics collection and ad serving must be confirmed in the corresponding Google accounts after deployment.
 
 
-## 4.3.4 Update Notes
+## 4.3.5 Update Notes
 
 - Refreshed the Home page with a responsive, accessible visual layout while preserving the existing quiz-engine element IDs and workflows.
 - Expanded the main content layout for desktop and retained a single-column, touch-friendly mobile layout.
@@ -246,7 +248,7 @@ Google approval, crawler access, analytics collection and ad serving must be con
 - Removed AdSense loader scripts from About, Learning Centre, Contact, Privacy Policy and Terms pages.
 - Updated Privacy Policy and Terms advertising descriptions to match the current code placement.
 - Kept the existing Google Tag Manager container `GTM-KQJCNKFL` on the Home page and the existing Analytics measurement ID `G-3FP8R0NDZN` on informational pages. Confirm that the GA4 tag is correctly published inside the GTM container before relying on Home page analytics.
-- Aligned the quiz-engine and service-worker cache versions at 4.3.4 to trigger an update for returning visitors.
+- Aligned the quiz-engine and service-worker cache versions at 4.3.5 to trigger an update for returning visitors.
 
 ## Current Content Scope and Roadmap
 
