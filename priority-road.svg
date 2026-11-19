@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+<title id="title">Priority road sign illustration</title><desc id="desc">Yellow diamond road sign with a white border on a blue-grey background.</desc>
+<rect width="640" height="420" rx="28" fill="#eaf1f8"/>
+<path d="M320 55 515 210 320 365 125 210Z" fill="#fff" stroke="#26384b" stroke-width="18" stroke-linejoin="round"/>
+<path d="M320 79 484 210 320 341 156 210Z" fill="#f5c842" stroke="#d5a91d" stroke-width="5" stroke-linejoin="round"/>
+</svg>

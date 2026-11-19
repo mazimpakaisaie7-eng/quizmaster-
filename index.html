@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7ff">
 
-  <title>Quiz Master Rwanda - Knowledge Quiz</title>
-  <meta name="description" content="Quiz Master Rwanda is a bilingual educational quiz covering road safety, Rwanda, Africa, science, geography, history and general knowledge.">
+  <title>Quiz Master Rwanda | Learn, Practise & Grow</title>
+  <meta name="description" content="Learn with Quiz Master Rwanda through interactive road-safety and general-knowledge quizzes, clear explanations, progress tracking and bilingual learning in English and Kinyarwanda.">
   <meta name="robots" content="index,follow">
   <meta name="author" content="Quiz Master Rwanda">
 
@@ -14,6 +14,15 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon-192-4.png">
   <link rel="apple-touch-icon" href="./icon-192-4.png">
+
+  <meta name="color-scheme" content="dark light">
+  <meta name="application-name" content="Quiz Master Rwanda">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Google AdSense: homepage placement only -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2666698676518429"
+    crossorigin="anonymous"></script>
 
   <!-- Google Tag Manager -->
   <script>
@@ -189,8 +198,8 @@
     }
 
     main {
-      width: min(100% - 28px, 760px);
-      margin: 28px auto 20px;
+      width: min(100% - 28px, 1040px);
+      margin: 34px auto 28px;
     }
 
     .screen {
@@ -724,6 +733,178 @@
       #homeScreen .stats { margin-top: 18px; }
       .panel { box-shadow: 0 12px 30px rgba(45,55,115,.07); }
     }
+
+
+    /* Quiz Master Rwanda 4.3.4 — responsive visual refinement */
+    :root {
+      --blue: #3978f6;
+      --blue-light: #65a3ff;
+      --green: #13b981;
+      --panel: #102744;
+      --panel-light: #173858;
+      --border: rgba(173, 205, 255, .17);
+      --shadow: 0 22px 60px rgba(0, 0, 0, .28);
+    }
+    body {
+      background:
+        radial-gradient(ellipse at 12% 4%, rgba(41, 112, 220, .25), transparent 34rem),
+        radial-gradient(ellipse at 88% 20%, rgba(18, 185, 129, .13), transparent 30rem),
+        linear-gradient(145deg, #061326 0%, #0a1b32 52%, #071426 100%);
+    }
+    .app-header {
+      padding: 14px clamp(14px, 4vw, 42px);
+      background: rgba(5, 18, 35, .88);
+      border-bottom-color: rgba(160, 196, 255, .16);
+    }
+    .brand { letter-spacing: -.7px; }
+    .app-header .btn { border: 1px solid rgba(255,255,255,.12); }
+    #homeScreen .panel {
+      overflow: hidden;
+      position: relative;
+      padding: clamp(22px, 5vw, 48px);
+      border: 1px solid rgba(157, 197, 255, .2);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(18, 47, 79, .97), rgba(9, 28, 51, .98));
+      box-shadow: var(--shadow);
+    }
+    #homeScreen .welcome {
+      position: relative;
+      padding: 16px 8px 30px;
+      text-align: center;
+    }
+    #homeScreen .logo-icon {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 18px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 24px;
+      background: linear-gradient(145deg, #3978f6, #16a879);
+      box-shadow: 0 12px 34px rgba(38, 112, 226, .3);
+      font-size: 38px;
+    }
+    #homeScreen .welcome h1 {
+      max-width: 760px;
+      margin: 0 auto 10px;
+      font-size: clamp(2rem, 5.4vw, 3.6rem);
+      line-height: 1.1;
+      letter-spacing: -1.6px;
+    }
+    #homeScreen .tagline {
+      color: #81b7ff;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .2em;
+    }
+    #homeScreen .welcome-description {
+      max-width: 650px;
+      margin: 14px auto 18px;
+      color: #c3d5eb;
+      font-size: clamp(.98rem, 2vw, 1.12rem);
+    }
+    #homeScreen .welcome-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid rgba(107, 174, 255, .3);
+      border-radius: 999px;
+      background: rgba(50, 119, 207, .13);
+      color: #cce2ff;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+    #homeScreen .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 12px 0 32px;
+    }
+    #homeScreen .stat {
+      padding: 16px 10px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: rgba(255,255,255,.045);
+      text-align: center;
+    }
+    #homeScreen .stat span { display:block; color:#a9bfd9; font-size:.82rem; }
+    #homeScreen .stat strong { display:block; margin-top:3px; font-size:1.55rem; }
+    #homeScreen .setup-section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: clamp(18px, 3vw, 30px);
+      border: 1px solid rgba(165, 198, 239, .15);
+      border-radius: 22px;
+      background: rgba(4, 17, 33, .35);
+    }
+    #homeScreen .section-heading {
+      margin: 8px 0 14px;
+      font-size: 1.08rem;
+      letter-spacing: -.2px;
+    }
+    #homeScreen .choice-grid { gap: 12px; margin-bottom: 24px; }
+    #homeScreen .choice {
+      min-height: 58px;
+      border: 1px solid rgba(157, 191, 231, .25);
+      border-radius: 15px;
+      background: rgba(255,255,255,.055);
+      color: #edf5ff;
+      font-weight: 750;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    #homeScreen .choice:hover { transform: translateY(-2px); border-color:#72aaff; }
+    #homeScreen .choice[aria-pressed="true"] {
+      border-color: #66a5ff;
+      background: linear-gradient(135deg, rgba(48, 117, 232, .32), rgba(18, 185, 129, .16));
+      box-shadow: inset 0 0 0 1px rgba(102,165,255,.18);
+    }
+    #homeScreen .btn {
+      min-height: 52px;
+      margin-top: 11px;
+      border-radius: 14px;
+      font-weight: 800;
+      letter-spacing: .1px;
+    }
+    #homeScreen #startBtn { background: linear-gradient(100deg, #168d69, #16b783); }
+    #homeScreen #confirmSetupBtn { background: #284a70; }
+    #homeScreen .summary { border-radius: 13px; }
+    #homeScreen .home-ad {
+      max-width: 760px;
+      min-height: 90px;
+      margin: 22px auto 0;
+      padding: 12px;
+      border: 1px solid rgba(157, 191, 231, .12);
+      border-radius: 15px;
+      background: rgba(4, 17, 33, .24);
+      overflow: hidden;
+    }
+    footer {
+      width: min(100% - 28px, 1040px);
+      margin: 24px auto 0;
+      padding: 24px 12px 34px;
+      border-top: 1px solid rgba(173,205,255,.14);
+      color: #a9bfd9;
+      text-align: center;
+    }
+    footer a { display:inline-block; margin: 4px 8px; }
+    @media (max-width: 600px) {
+      main { width: min(100% - 18px, 1040px); margin-top: 14px; }
+      #homeScreen .panel { padding: 18px 12px; border-radius: 21px; }
+      #homeScreen .welcome { padding: 10px 4px 22px; }
+      #homeScreen .stats { gap: 7px; margin-bottom: 22px; }
+      #homeScreen .stat { padding: 12px 5px; }
+      #homeScreen .stat span { font-size: .72rem; }
+      #homeScreen .stat strong { font-size: 1.3rem; }
+      #homeScreen .setup-section { padding: 16px 12px; }
+      #homeScreen .choice-grid { grid-template-columns: 1fr; }
+      .app-header { padding: 11px 12px; }
+      .brand { font-size: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
 </style>
 </head>
 
@@ -846,6 +1027,19 @@
           Loading questions...
         </p>
       </div>
+
+      <!-- Google AdSense: one responsive placement, below all setup controls -->
+      <div class="home-ad" aria-label="Advertisement">
+        <ins class="adsbygoogle"
+          style="display:block; min-height:90px;"
+          data-ad-client="ca-pub-2666698676518429"
+          data-ad-slot="9045712897"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      </div>
+      <script>
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
   </section>
 

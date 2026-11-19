@@ -1,6 +1,6 @@
 🇷🇼 Quiz Master Rwanda
 
-Bilingual Educational Quiz Application
+Responsive Bilingual Educational Quiz Application
 
 Quiz Master Rwanda is an educational web application that helps users improve their knowledge through interactive quizzes and learning materials.
 
@@ -11,7 +11,7 @@ The application supports two languages:
 
 It provides two main quiz categories:
 
-- Road Safety – Learn about road safety rules, traffic signs, and responsible road use.
+- Road Safety – Learn about road safety rules, selected illustrated signs, and responsible road use.
 - General Knowledge – Improve general knowledge through educational questions.
 
 Live Website: https://quizmaster-liard-five.vercel.app/
@@ -236,3 +236,20 @@ Made with dedication in Rwanda 🇷🇼
 - The offline page remains excluded from indexing and analytics.
 
 Google approval, crawler access, analytics collection and ad serving must be confirmed in the corresponding Google accounts after deployment.
+
+
+## 4.3.4 Update Notes
+
+- Refreshed the Home page with a responsive, accessible visual layout while preserving the existing quiz-engine element IDs and workflows.
+- Expanded the main content layout for desktop and retained a single-column, touch-friendly mobile layout.
+- Configured the existing AdSense publisher and Home ad slot on the Home page only, below the language/category selection and game controls.
+- Removed AdSense loader scripts from About, Learning Centre, Contact, Privacy Policy and Terms pages.
+- Updated Privacy Policy and Terms advertising descriptions to match the current code placement.
+- Kept the existing Google Tag Manager container `GTM-KQJCNKFL` on the Home page and the existing Analytics measurement ID `G-3FP8R0NDZN` on informational pages. Confirm that the GA4 tag is correctly published inside the GTM container before relying on Home page analytics.
+- Aligned the quiz-engine and service-worker cache versions at 4.3.4 to trigger an update for returning visitors.
+
+## Current Content Scope and Roadmap
+
+The included question bank contains 625 validated bilingual records: 297 Road Safety and 328 General Knowledge. The current question and interface languages are English and Kinyarwanda. Three vector road-sign illustrations (priority road, give way, and stop) are connected to their matching questions. The Learning Centre contains 11 articles. This release does not claim to contain 10,000 questions, seven translated question banks, automatic AI content generation, or a complete international legal database. Those features require verified source material, professional translation/review, and a separate content release process.
+
+Road-sign illustrations are not yet mapped to the current question records; do not treat this release as a complete illustrated road-sign examination bank.
