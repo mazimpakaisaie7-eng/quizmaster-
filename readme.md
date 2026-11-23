@@ -2,6 +2,8 @@
 
 Responsive Bilingual Educational Quiz Application
 
+Application release: 4.3.6
+
 Quiz Master Rwanda is an educational web application that helps users improve their knowledge through interactive quizzes and learning materials.
 
 The application supports two languages:
@@ -42,12 +44,13 @@ Interactive Quizzes
 
 Scoring System
 
-Setting| Value
-Questions per round| Up to 10
-Road Safety time| 60 seconds
-General Knowledge time| 30 seconds
-Correct answer| 10 points
-Passing score| 70%
+| Setting | Value |
+|---|---|
+| Questions per round | Up to 10 |
+| Road Safety time | 60 seconds |
+| General Knowledge time | 30 seconds |
+| Correct answer | 10 points |
+| Passing score | 70% |
 
 The final round can contain fewer than 10 questions when fewer questions remain.
 
@@ -88,26 +91,27 @@ The application is designed for mobile phones, tablets, and desktop browsers.
 
 The repository contains the following main application files:
 
-File| Description
-"index.html"| Main application interface
-"questions.js"| Quiz engine and application logic
-"questions.json"| Quiz questions and answers
-"articles.html"| Learning Centre page
-"articles.json"| Educational articles
-"about.html"| About the application
-"contact.html"| Contact information
-"privacy-policy.html"| Privacy Policy
-"terms.html"| Terms and Conditions
-"offline.html"| Offline fallback page
-"service-worker.js"| Application caching and updates
-"manifest.webmanifest"| PWA configuration
-"icon-192-4.png"| Application icon
-"icon-512-3.png"| Large application icon
-"mythica.mp3"| Application audio file
-"robots.txt"| Search engine crawling instructions
-"sitemap.xml"| Website sitemap
-"ads.txt"| Advertising authorization file
-"CREDITS.TXT"| Credits and acknowledgements
+| File | Description |
+|---|---|
+| "index.html" | Main application interface |
+| "questions.js" | Quiz engine and application logic |
+| "questions.json" | Quiz questions and answers |
+| "articles.html" | Learning Centre page |
+| "articles.json" | Educational articles |
+| "about.html" | About the application |
+| "contact.html" | Contact information |
+| "privacy-policy.html" | Privacy Policy |
+| "terms.html" | Terms and Conditions |
+| "offline.html" | Offline fallback page |
+| "service-worker.js" | Application caching and updates |
+| "manifest.webmanifest" | PWA configuration |
+| "icon-192-4.png" | Application icon |
+| "icon-512-3.png" | Large application icon |
+| "mythica.mp3" | Application audio file |
+| "robots.txt" | Search engine crawling instructions |
+| "sitemap.xml" | Website sitemap |
+| "ads.txt" | Advertising authorization file |
+| "CREDITS.TXT" | Credits and acknowledgements |
 
 Other files may be present in the repository.
 
@@ -161,15 +165,11 @@ Search engine indexing and ranking depend on search engine policies and decision
 
 6. Analytics and Advertising
 
-Google Analytics is installed on the homepage and the public content pages.
+Google Tag Manager is loaded on the homepage and public content pages using container `GTM-KQJCNKFL`. The Google Analytics 4 measurement ID intended for the site is `G-3FP8R0NDZN`; confirm inside the Google Tag Manager container that the GA4 tag uses this ID and that page views are not duplicated.
 
-Measurement ID: "G-3FP8R0NDZN"
+Google AdSense code is intentionally loaded on the homepage (`index.html`) only. Other pages do not load the AdSense script. The homepage ad setup is intended to keep advertising separate from the quiz setup controls; review the live layout on mobile and desktop to ensure ads do not overlap controls or content.
 
-Google AdSense Auto ads code is enabled on these pages: `about.html`, `articles.html`, `contact.html`, `privacy-policy.html` and `terms.html`. The homepage (`index.html`) intentionally does not load the AdSense script, keeping the quiz setup screen clear.
-
-The website does not intentionally use manually created ad units or fixed manual ad placements. Google determines whether eligible Auto ads appear and where they are placed on pages where the AdSense script is enabled.
-
-The AdSense publisher file is `ads.txt`. The publisher ID and account/site approval must still be verified in the AdSense account. Adding code does not guarantee approval or ad serving.
+The `ads.txt` file authorizes publisher `pub-2666698676518429`. Confirm the ads.txt status, site ownership, payment setup and review status inside the AdSense account. Code and file correctness do not guarantee approval or ad serving.
 
 ---
 
