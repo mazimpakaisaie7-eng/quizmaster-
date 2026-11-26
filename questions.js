@@ -1,7 +1,7 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER — COMPLETE QUIZ ENGINE
-   Version: 4.3.6
+   Version: 4.4.0
 
    Compatible with the existing index.html
    Questions file: ./questions.json
@@ -845,10 +845,13 @@
     state.loading = true;
     state.loaded = false;
 
+    const retryButton = $("retryQuestionsBtn");
+    if (retryButton) retryButton.hidden = true;
+
     showMessage(
       state.language === "rw"
-        ? "Ibibazo birimo gupakirwa..."
-        : "Loading questions..."
+        ? "Ibibazo birimo gufunguka. Tegereza akanya..."
+        : "Preparing your questions. This usually takes a moment..."
     );
 
     clearError();
@@ -857,13 +860,20 @@
     setDisabled("confirmSetupBtn", true);
 
     try {
-      const response = await fetch(CONFIG.QUESTIONS_FILE, {
-        method: "GET",
-        cache: "no-store",
-        headers: {
-          Accept: "application/json"
-        }
-      });
+      const controller = new AbortController();
+      const requestTimeout = setTimeout(() => controller.abort(), 15000);
+      let response;
+
+      try {
+        response = await fetch(CONFIG.QUESTIONS_FILE, {
+          method: "GET",
+          cache: "no-store",
+          signal: controller.signal,
+          headers: { Accept: "application/json" }
+        });
+      } finally {
+        clearTimeout(requestTimeout);
+      }
 
       if (!response.ok) {
         throw new Error(
@@ -1021,6 +1031,7 @@
 
       state.questions = normalized;
       state.loaded = true;
+      if (retryButton) retryButton.hidden = true;
 
       /*
         Remove saved IDs that no longer exist.
@@ -1094,9 +1105,14 @@
           : "Questions could not be loaded."
       );
 
-      showError(
-        error.message || "Unknown question loading error."
-      );
+      const friendlyError = error && error.name === "AbortError"
+        ? (state.language === "rw"
+            ? "Gufungura ibibazo byarengeje igihe. Reba internet wongere ugerageze."
+            : "Loading timed out. Check your connection and try again.")
+        : (error.message || "Unknown question loading error.");
+
+      showError(friendlyError);
+      if (retryButton) retryButton.hidden = false;
 
       updateHome();
       updateSetupButtons();
@@ -2950,6 +2966,10 @@
   ===================================================== */
 
   function bindEvents() {
+    $("retryQuestionsBtn")?.addEventListener("click", () => {
+      if (!state.loading) loadQuestions();
+    });
+
     document.querySelectorAll(".language-btn").forEach(button => {
       button.addEventListener("click", () => {
         chooseLanguage(button.dataset.language);

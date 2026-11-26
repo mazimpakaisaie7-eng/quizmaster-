@@ -1,6 +1,9 @@
 {
-  "version": "4.0.0",
-  "language": ["en", "rw"],
+  "version": "4.4.0",
+  "language": [
+    "en",
+    "rw"
+  ],
   "educational_notice": {
     "en": "Quiz Master Rwanda provides educational information to support learning. Road safety lessons are general guidance and do not replace current Rwandan laws, official instructions, professional training or advice from relevant authorities. Always check official sources for current requirements.",
     "rw": "Quiz Master Rwanda itanga amakuru agamije uburezi no gufasha abantu kwiga. Amasomo y'umutekano wo mu muhanda ni inyigisho rusange; ntasimbura amategeko y'u Rwanda agezweho, amabwiriza y'inzego zibifitiye ububasha, amahugurwa y'umwuga cyangwa inama z'ababishinzwe. Buri gihe genzura amakuru atangwa n'inzego zemewe."
@@ -77,7 +80,34 @@
           "publisher": "Rwanda National Police",
           "url": "https://police.gov.rw/"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Observe how different road users share space and identify one way to make a journey safer.",
+        "rw": "Reba uko abantu batandukanye basangira umuhanda, ugaragaze uburyo bumwe bwo gutuma urugendo rurushaho kugira umutekano."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "traffic-pedestrian-safety",
@@ -150,7 +180,34 @@
           "publisher": "Rwanda National Police",
           "url": "https://police.gov.rw/"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Walk a familiar route with a responsible adult and identify safe crossing places and visibility hazards.",
+        "rw": "Hamwe n'umuntu mukuru ubishinzwe, genda mu nzira usanzwe uzi ugaragaze ahantu hatekanye ho kwambukira n'ibintu bishobora kubuza kubona neza."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "traffic-seatbelts-helmets",
@@ -223,7 +280,34 @@
           "publisher": "World Health Organization",
           "url": "https://www.who.int/health-topics/road-safety"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Inspect safety information for a vehicle or helmet with a responsible adult; do not use damaged protective equipment.",
+        "rw": "Hamwe n'umuntu mukuru ubishinzwe, reba amakuru y'umutekano ku mukandara w'ikinyabiziga cyangwa ingofero; ntukoreshe ibikoresho birinda byangiritse."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "traffic-distraction-speed",
@@ -296,7 +380,34 @@
           "publisher": "Rwanda National Police",
           "url": "https://police.gov.rw/"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "List distractions that can occur before and during a journey and suggest how to prevent them.",
+        "rw": "Andika ibirangaza bishobora kubaho mbere no mu gihe cy'urugendo, utange uburyo bwo kubyirinda."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "traffic-signs-road-markings",
@@ -369,7 +480,34 @@
           "publisher": "World Health Organization",
           "url": "https://www.who.int/health-topics/road-safety"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "On a supervised walk, note road signs and markings and discuss what official instructions they communicate.",
+        "rw": "Mu rugendo rugenzurwa n'umuntu mukuru, reba ibyapa n'imirongo yo mu muhanda muganire ku mabwiriza bitanga."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "general-scientific-method",
@@ -444,7 +582,34 @@
           "publisher": "UNESCO",
           "url": "https://www.unesco.org/en/education/science"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Choose a simple everyday question and plan how to observe it fairly without putting anyone at risk.",
+        "rw": "Hitamo ikibazo cyoroshye cyo mu buzima bwa buri munsi, utegure uko wagisuzuma mu buryo buboneye budashyira umuntu mu kaga."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "general-water-cycle",
@@ -519,7 +684,34 @@
           "publisher": "US Geological Survey",
           "url": "https://www.usgs.gov/special-topics/water-science-school/science/water-cycle"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Draw the water cycle and label where evaporation, condensation, precipitation and runoff occur.",
+        "rw": "Shushanya uruziga rw'amazi werekane aho guhinduka umwuka, kurema ibicu, kugwa kw'imvura no gutemba kw'amazi bibera."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "general-biodiversity-ecosystems",
@@ -594,7 +786,34 @@
           "publisher": "Convention on Biological Diversity",
           "url": "https://www.cbd.int/"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Observe a nearby green space and record different living things without disturbing them.",
+        "rw": "Reba ahantu hari ibimera hafi yawe wandike ibinyabuzima bitandukanye utabangamiye aho bituye."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "general-geography-maps",
@@ -669,7 +888,34 @@
           "publisher": "United States Geological Survey",
           "url": "https://www.usgs.gov/"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Use a map to identify your district, a nearby service and a safe route; verify details with a trusted source.",
+        "rw": "Koresha ikarita umenye akarere kawe, serivisi iri hafi n'inzira itekanye; genzura amakuru ukoresheje isoko yizewe."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "general-media-information-literacy",
@@ -744,7 +990,34 @@
           "publisher": "UNICEF",
           "url": "https://www.unicef.org/end-violence/how-to-stop-cyberbullying"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Compare two reports about the same event and list what each source verifies and leaves uncertain.",
+        "rw": "Gereranya inkuru ebyiri zivuga ku kintu kimwe wandike ibyo buri soko ryemeza n'ibyo ridashobora kwemeza."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
     },
     {
       "id": "general-climate-weather",
@@ -819,7 +1092,1097 @@
           "publisher": "United Nations",
           "url": "https://www.un.org/en/climatechange"
         }
-      ]
+      ],
+      "learning_objectives": {
+        "en": [
+          "Explain the main ideas in this lesson using your own words.",
+          "Identify how the topic affects everyday decisions.",
+          "Use reliable information to support a conclusion."
+        ],
+        "rw": [
+          "Sobanura ibitekerezo by'ingenzi byo muri iri somo ukoresheje amagambo yawe.",
+          "Garagaza uko iyi ngingo igira ingaruka ku byemezo bya buri munsi.",
+          "Koresha amakuru yizewe ushyigikire umwanzuro."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Compare a daily forecast with observed conditions for several days and discuss why forecasts are updated.",
+        "rw": "Gereranya iteganyagihe rya buri munsi n'uko ikirere cyagenze mu minsi myinshi, muganire ku mpamvu iteganyagihe rivugururwa."
+      },
+      "reflection_questions": {
+        "en": [
+          "Which idea in this lesson is most useful in daily life, and why?",
+          "What additional information would help you make a better decision?"
+        ],
+        "rw": [
+          "Ni ikihe gitekerezo cyo muri iri somo gifite akamaro cyane mu buzima bwa buri munsi, kandi kuki?",
+          "Ni ayahe makuru y'inyongera yagufasha gufata icyemezo cyiza kurushaho?"
+        ]
+      },
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "traffic-safe-speed-and-following-distance",
+      "category": "traffic",
+      "icon": "🚗",
+      "title": {
+        "en": "Speed, Space and Safe Following Distance",
+        "rw": "Umuvuduko, intera n'umutekano wo gukurikira ikindi kinyabiziga"
+      },
+      "description": {
+        "en": "Learn how speed changes stopping distance and why leaving space gives road users time to respond.",
+        "rw": "Menya uko umuvuduko uhindura intera yo guhagarara n'impamvu gusiga umwanya bifasha abakoresha umuhanda kwitwara neza."
+      },
+      "definition": {
+        "en": "Safe speed is a speed that allows a road user to remain in control and respond to the road, traffic, visibility and weather conditions, while obeying the applicable speed limits.",
+        "rw": "Umuvuduko utekanye ni uwufasha ukoresha umuhanda kugumana ubushobozi bwo kugenzura ikinyabiziga no kwitwara ku miterere y'umuhanda, urujya n'uruza, uko hagaragara n'ikirere, yubahiriza n'umuvuduko ntarengwa wemewe."
+      },
+      "learning_objectives": {
+        "en": [
+          "Explain why the posted limit may be unsafe in some conditions.",
+          "Identify situations that require a larger following gap."
+        ],
+        "rw": [
+          "Sobanura impamvu umuvuduko wanditse ku cyapa ushobora kutaba utekanye mu bihe bimwe.",
+          "Garagaza ibihe bisaba kongera intera yo gukurikira ikindi kinyabiziga."
+        ]
+      },
+      "body": {
+        "en": [
+          "A posted speed limit is a legal maximum for the stated conditions, not a promise that travelling at that speed is always safe. Rain, poor visibility, road works, curves, pedestrians and heavy traffic may require a lower speed.",
+          "A moving vehicle needs distance and time to respond. The driver first notices a hazard, decides what to do and then brakes. Higher speed generally increases the distance travelled during each part of this process and the distance needed to stop.",
+          "Following too closely reduces the time available to notice a sudden change in front. Leave a generous gap and increase it when the road is wet, visibility is poor, the vehicle is heavily loaded or the vehicle ahead is large.",
+          "Avoid trying to calculate a single perfect gap while distracted. Choose a clear reference point, watch when the vehicle ahead passes it, and ensure your own vehicle reaches it only after a comfortable interval. Follow local training and official guidance for the recommended interval.",
+          "If another vehicle follows too closely, avoid sudden braking or aggressive gestures. Keep a steady, lawful speed, create space ahead where possible and let the vehicle pass safely when conditions allow."
+        ],
+        "rw": [
+          "Umuvuduko ntarengwa werekanywe n'icyapa ni wo ntarengwa wemewe mu bihe byavuzwe, ariko ntibivuga ko buri gihe kugendera kuri uwo muvuduko biba bitekanye. Imvura, kutabona neza, imirimo yo mu muhanda, imihanda igoramye, abanyamaguru n'uruja n'uruza bishobora gusaba kugabanya umuvuduko.",
+          "Ikinyabiziga kigenda gikenera igihe n'intera kugira ngo gihagarare. Umushoferi abanza kubona icyago, agatekereza icyo gukora, hanyuma agafata feri. Uko umuvuduko wiyongera, ni ko muri rusange intera ikinyabiziga kigenda muri ibyo bihe n'intera yo guhagarara byiyongera.",
+          "Gukurikira ikinyabiziga uri hafi cyane bigabanya igihe cyo kubona impinduka itunguranye imbere. Siga intera ihagije kandi uyongere iyo umuhanda utose, utabona neza, ikinyabiziga kiremereye cyangwa ikikuri imbere ari kinini.",
+          "Ntugerageze kubara intera imwe y'itegeko uri kurangaye. Hitamo ikimenyetso gihamye ku muhanda, urebe igihe ikinyabiziga kiri imbere kikinyuraho, maze urebe ko icyawe kigeze aho nyuma y'igihe gihagije. Kurikiza amahugurwa n'amabwiriza y'inzego zibifitiye ububasha ku ntera isabwa.",
+          "Iyo hari ikinyabiziga kikugendaho hafi cyane, irinde gufata feri mu buryo butunguranye cyangwa gukora ibimenyetso by'uburakari. Gumana umuvuduko utekanye kandi wemewe, wongere umwanya imbere yawe igihe bishoboka, maze ugitandukanye na cyo mu buryo butekanye igihe inzira ibikwemerera."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "A speed limit is a maximum, not a target in every condition.",
+          "Stopping distance increases as speed rises.",
+          "Leave more space in rain, poor visibility and heavy traffic.",
+          "Stay calm when another driver follows too closely."
+        ],
+        "rw": [
+          "Umuvuduko ntarengwa ni igipimo cyo hejuru, si intego muri buri mimerere.",
+          "Intera yo guhagarara yiyongera uko umuvuduko wiyongera.",
+          "Siga intera nini mu mvura, ahatagaragara neza no mu muhanda urimo abantu benshi.",
+          "Witware utuje iyo undi mushoferi akwegereye cyane."
+        ]
+      },
+      "real_world_activity": {
+        "en": "As a passenger, observe a journey and list three conditions that should make a driver slow down or leave more space. Do not distract the driver.",
+        "rw": "Nk'umugenzi, reba urugendo wandike ibintu bitatu byatuma umushoferi agabanya umuvuduko cyangwa akongerera intera. Ntukarangaze umushoferi."
+      },
+      "reflection_questions": {
+        "en": [
+          "Why is a legal speed limit not always the safest speed?",
+          "How does a wet road change the decisions a driver should make?"
+        ],
+        "rw": [
+          "Kuki umuvuduko wemewe n'amategeko utaba buri gihe ari wo utekanye kurusha iyindi?",
+          "Umuhanda utose uhindura ute ibyemezo umushoferi agomba gufata?"
+        ]
+      },
+      "conclusion": {
+        "en": "A safe journey depends on choosing a speed for the real conditions and preserving enough space to respond calmly.",
+        "rw": "Urugendo rutekanye rushingira ku guhitamo umuvuduko ukwiranye n'imiterere nyayo no gusiga intera ihagije yo kwitwara utuje."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Road traffic injuries",
+            "rw": "Impanuka zo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
+        },
+        {
+          "title": {
+            "en": "Rwandan road traffic law (Official Gazette)",
+            "rw": "Itegeko ry'u Rwanda rigenga ikoreshwa ry'umuhanda (Igazeti ya Leta)"
+          },
+          "publisher": "Republic of Rwanda",
+          "url": "https://police.gov.rw/uploads/tx_download/OG_n___Special_of_10.03.2026__Ikoreshwa_ry_umuhanda.pdf"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "traffic-blind-spots-and-mirrors",
+      "category": "traffic",
+      "icon": "🪞",
+      "title": {
+        "en": "Blind Spots, Mirrors and Sharing the Road",
+        "rw": "Ahantu hatagaragara mu ndorerwamo no gusangira umuhanda"
+      },
+      "description": {
+        "en": "Understand blind spots around vehicles and how road users can make themselves easier to see.",
+        "rw": "Sobanukirwa ahantu hatagaragara mu ndorerwamo z'ibinyabiziga n'uko abakoresha umuhanda bagaragara neza."
+      },
+      "definition": {
+        "en": "A blind spot is an area around a vehicle that the driver cannot see clearly using the normal field of view, mirrors or windows.",
+        "rw": "Ahantu hatagaragara ni igice kiri hafi y'ikinyabiziga umushoferi adashobora kubona neza akoresheje uko areba bisanzwe, indorerwamo cyangwa amadirishya."
+      },
+      "learning_objectives": {
+        "en": [
+          "Why should a cyclist avoid staying beside a large vehicle?",
+          "What should a driver do before moving sideways?"
+        ],
+        "rw": [
+          "Kuki umunyamagare agomba kwirinda kuguma iruhande rw'ikinyabiziga kinini?",
+          "Umushoferi agomba gukora iki mbere yo kwimukira ku ruhande?"
+        ]
+      },
+      "body": {
+        "en": [
+          "Every vehicle has areas that are difficult to see from the driver's seat. Their size and position vary with vehicle design, mirrors, seating position and nearby objects. Large vehicles often have larger areas that are hidden from the driver.",
+          "Mirrors help drivers monitor traffic behind and beside them, but mirrors do not show every direction. Before changing direction or moving sideways, a driver should check mirrors, signal in good time and make an appropriate direct observation when safe.",
+          "Pedestrians and cyclists should not assume that a driver has seen them. Avoid lingering close beside large vehicles, especially near their front corners and sides. If you cannot see the driver's face in a mirror, the driver may not be able to see you either.",
+          "At junctions, driveways and parking areas, slow down and look carefully for people who may be hidden by parked vehicles, walls or vegetation. Children and shorter pedestrians can be especially difficult to notice.",
+          "A signal communicates an intention; it does not give automatic priority. Drivers must still check that the movement can be completed safely and yield where required."
+        ],
+        "rw": [
+          "Buri kinyabiziga kigira ahantu bigorana kubona uri ku ntebe y'umushoferi. Ingano n'aho hantu biterwa n'uko ikinyabiziga cyakozwe, indorerwamo, uko umushoferi yicaye n'ibintu biri hafi. Ibinyabiziga binini akenshi bigira ahantu hanini hatagaragara neza.",
+          "Indorerwamo zifasha umushoferi gukurikirana ibiri inyuma no ku mpande, ariko ntizigaragaza buri cyerekezo. Mbere yo guhindura icyerekezo cyangwa kwimukira ku ruhande, umushoferi agomba kureba mu ndorerwamo, gutanga ikimenyetso hakiri kare no kureba mu buryo butaziguye igihe bitekanye.",
+          "Abanyamaguru n'abanyamagare ntibagomba kwemeza ko umushoferi yababonye. Irinde kuguma hafi y'ibinyabiziga binini, cyane cyane ku mfuruka z'imbere no ku mpande zabyo. Iyo utabona mu ndorerwamo isura y'umushoferi, na we ashobora kuba atakubona.",
+          "Ku masangano, mu marembo y'ingo no muri parikingi, gabanya umuvuduko urebe neza abantu bashobora kuba bahishe n'ibinyabiziga bihagaze, inkuta cyangwa ibimera. Abana n'abanyamaguru bagufi bashobora kutagaragara byoroshye.",
+          "Gutanga ikimenyetso bigaragaza umugambi; ntibihita biha umuntu uburenganzira bwo kubanza. Umushoferi agomba gukomeza kugenzura ko ashobora kurangiza igikorwa mu mutekano no gutanga inzira aho bisabwa."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Blind spots differ between vehicles.",
+          "Mirrors do not replace careful observation.",
+          "Large vehicles need extra space and caution.",
+          "A turn signal does not guarantee priority."
+        ],
+        "rw": [
+          "Ahantu hatagaragara hatandukana bitewe n'ikinyabiziga.",
+          "Indorerwamo ntizisimbura kureba witonze.",
+          "Ibinyabiziga binini bisaba umwanya n'ubwitonzi byiyongereye.",
+          "Ikimenyetso cyo guhindura icyerekezo ntigitanga uburenganzira bwo kubanza."
+        ]
+      },
+      "real_world_activity": {
+        "en": "A safe road user tries to be visible, but also assumes that others may not have noticed them.",
+        "rw": "Umukoresha umuhanda witwararika agerageza kugaragara neza, ariko akanatekereza ko abandi bashobora kuba batamubonye."
+      },
+      "reflection_questions": {
+        "en": [
+          "Explain one limitation of mirrors.",
+          "Name two places where pedestrians can be hidden from drivers."
+        ],
+        "rw": [
+          "Sobanura imbogamizi imwe y'indorerwamo.",
+          "Vuga ahantu habiri abanyamaguru bashobora guhishwa abashoferi."
+        ]
+      },
+      "conclusion": {
+        "en": "From a safe pedestrian position, identify places where parked vehicles or walls hide people from approaching drivers.",
+        "rw": "Uhereye ahantu h'abanyamaguru hatekanye, garagaza ahantu ibinyabiziga bihagaze cyangwa inkuta bishobora guhisha abantu ku bashoferi baza."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Road traffic injuries",
+            "rw": "Impanuka zo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
+        },
+        {
+          "title": {
+            "en": "Road safety information",
+            "rw": "Amakuru y'umutekano wo mu muhanda"
+          },
+          "publisher": "Rwanda National Police",
+          "url": "https://police.gov.rw/"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "traffic-rain-night-driving",
+      "category": "traffic",
+      "icon": "🌧️",
+      "title": {
+        "en": "Driving in Rain, Darkness and Poor Visibility",
+        "rw": "Gutwara mu mvura, nijoro no ahatagaragara neza"
+      },
+      "description": {
+        "en": "Learn how weather and visibility affect road decisions and the safety of every road user.",
+        "rw": "Menya uko ikirere n'uko hagaragara bigira ingaruka ku byemezo byo mu muhanda no ku mutekano wa bose."
+      },
+      "definition": {
+        "en": "Poor-visibility driving is travel in conditions where a driver has less time or ability to see the road, other vehicles, signs and people ahead.",
+        "rw": "Gutwara ikinyabiziga ahatagaragara neza ni ukugenda mu bihe bituma umushoferi agira igihe gito cyangwa ubushobozi buke bwo kubona umuhanda, ibindi binyabiziga, ibyapa n'abantu bari imbere."
+      },
+      "learning_objectives": {
+        "en": [
+          "Identify three ways rain can change road conditions.",
+          "Explain why entering unknown floodwater is unsafe."
+        ],
+        "rw": [
+          "Garagaza uburyo butatu imvura ishobora guhindura imiterere y'umuhanda.",
+          "Sobanura impamvu kwinjira mu mazi utazi uko angana bidatekanye."
+        ]
+      },
+      "body": {
+        "en": [
+          "Rain can reduce tyre grip, hide road markings under water and make it harder to see pedestrians and cyclists. Water may collect in low places, and a road that looks shallow may be unsafe. Never enter floodwater when its depth or current is uncertain.",
+          "At night, people and objects may be harder to recognize. Use vehicle lights correctly, keep windows and mirrors clear, and reduce speed so that you can stop within the distance you can see to be clear.",
+          "Fog, smoke and heavy rain shorten the distance at which hazards can be noticed. Avoid high beams in fog when they reflect light back toward the driver. Follow the vehicle handbook and local road rules for correct lighting.",
+          "Wet roads require smoother actions. Sudden steering, harsh braking and rapid acceleration can reduce control. Increase the gap from the vehicle ahead and avoid unnecessary overtaking.",
+          "If conditions become too difficult to continue safely, stop at a legal, safe place away from moving traffic and wait for visibility or weather to improve. Do not stop in a live lane unless an emergency makes it unavoidable."
+        ],
+        "rw": [
+          "Imvura ishobora kugabanya uko amapine afata umuhanda, igahisha imirongo y'umuhanda mu mazi kandi igatuma kubona abanyamaguru n'abanyamagare bigorana. Amazi ashobora kwegerana ahantu hasi, kandi umuhanda usa n'udafite amazi menshi ushobora kuba utameze neza. Ntukinjire mu mazi yuzuye umuhanda igihe utazi ubujyakuzimu cyangwa imbaraga zayo.",
+          "Nijoro abantu n'ibintu bishobora kutamenyekana vuba. Koresha amatara y'ikinyabiziga neza, sukura ibirahuri n'indorerwamo, kandi ugabanye umuvuduko kugira ngo ubashe guhagarara mu ntera ubona ko nta kibazo kirimo.",
+          "Igihu, umwotsi n'imvura nyinshi bigabanya intera umuntu aboneramo ibyago. Mu gihu, irinde amatara maremare ashobora kugaruka mu maso y'umushoferi. Kurikiza igitabo cy'ikinyabiziga n'amategeko y'aho uri ku ikoreshwa ry'amatara.",
+          "Umuhanda utose usaba ibikorwa bitunganye kandi bituje. Guhindura icyerekezo mu buryo butunguranye, gufata feri bikabije no kwihutisha ikinyabiziga vuba bishobora gutuma kitagengwa neza. Ongera intera y'ikikuri imbere kandi wirinde kurenga ibindi bidakenewe.",
+          "Iyo ibihe bibaye bibi cyane ku buryo gukomeza urugendo bitakiri umutekano, hagarara ahantu hemewe kandi hatekanye kure y'ibinyabiziga bigenda, utegereze ko hagaragara neza cyangwa ikirere kigahinduka. Ntuhagarare mu murongo w'ibinyabiziga bigenda keretse habaye ikibazo cyihutirwa kibigusabye."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Reduce speed when visibility or grip is reduced.",
+          "Never guess the depth or strength of floodwater.",
+          "Keep lights, windows and mirrors clear.",
+          "Increase following distance and avoid risky overtaking."
+        ],
+        "rw": [
+          "Gabanya umuvuduko iyo kubona neza cyangwa gufata umuhanda bigabanutse.",
+          "Ntukeke ubujyakuzimu cyangwa imbaraga z'amazi yuzuye umuhanda.",
+          "Komeza amatara, ibirahuri n'indorerwamo bisukuye.",
+          "Ongera intera yo gukurikira kandi wirinde kurenga mu buryo bushobora guteza ibyago."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Look at a weather forecast before a journey and discuss what changes may be needed if heavy rain is expected.",
+        "rw": "Mbere y'urugendo, reba iteganyagihe uganire ku mpinduka zikenewe mu gihe hateganyijwe imvura nyinshi."
+      },
+      "reflection_questions": {
+        "en": [
+          "How does poor visibility affect stopping decisions?",
+          "Why should drivers leave more space on wet roads?"
+        ],
+        "rw": [
+          "Kutabona neza bigira izihe ngaruka ku cyemezo cyo guhagarara?",
+          "Kuki abashoferi bagomba gusiga intera nini ku mihanda itose?"
+        ]
+      },
+      "conclusion": {
+        "en": "Plan journeys with weather in mind and be prepared to delay a trip when conditions are unsafe.",
+        "rw": "Tegura ingendo uzirikana ikirere kandi witegure gusubika urugendo igihe ibihe bidatekanye."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Road traffic injuries",
+            "rw": "Impanuka zo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
+        },
+        {
+          "title": {
+            "en": "Road safety information",
+            "rw": "Amakuru y'umutekano wo mu muhanda"
+          },
+          "publisher": "Rwanda National Police",
+          "url": "https://police.gov.rw/"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "traffic-fatigue-and-focus",
+      "category": "traffic",
+      "icon": "🧠",
+      "title": {
+        "en": "Driver Attention, Fatigue and Distraction",
+        "rw": "Kwitwararika, umunaniro no kurangara ku bashoferi"
+      },
+      "description": {
+        "en": "Explore how attention affects safe decisions and why a driver must not multitask.",
+        "rw": "Sobanukirwa uko kwitwararika bigira ingaruka ku byemezo bitekanye n'impamvu umushoferi atagomba gukora ibintu byinshi icyarimwe."
+      },
+      "definition": {
+        "en": "Driver attention is the mental focus needed to observe the road, understand changing conditions and respond safely.",
+        "rw": "Kwitwararika k'umushoferi ni ubushobozi bwo gushyira ibitekerezo ku muhanda, gusobanukirwa n'impinduka zawo no kuzitwaraho mu mutekano."
+      },
+      "learning_objectives": {
+        "en": [
+          "Give an example of visual, manual and cognitive distraction.",
+          "What is a safe response when a driver feels sleepy?"
+        ],
+        "rw": [
+          "Tanga urugero rwo kurangara mu kureba, mu gukoresha intoki no mu bitekerezo.",
+          "Ni ikihe cyemezo gitekanye iyo umushoferi yumva asinziriye?"
+        ]
+      },
+      "body": {
+        "en": [
+          "Driving requires continuous observation and decision-making. A distraction can be visual (looking away), manual (taking a hand from vehicle controls) or cognitive (thinking about something unrelated). A single activity may involve more than one type.",
+          "Reading or sending messages, handling a phone, adjusting complex controls or turning to talk can take attention away from the road. Even hands-free conversations can occupy thinking and reduce awareness of changing traffic.",
+          "Fatigue can slow reactions and make it harder to maintain attention. Long journeys, insufficient rest, illness and demanding schedules can increase tiredness. A driver who feels sleepy should not try to overcome it by speeding, opening a window or relying on loud music.",
+          "Plan breaks before becoming exhausted. Share driving only with a properly licensed and fit driver. If tiredness appears, stop at a safe and permitted place and rest; do not continue just to meet a timetable.",
+          "Passengers can support safety by keeping conversation calm, helping with navigation before the trip where possible and avoiding requests that distract the driver. Everyone in the vehicle contributes to a safer journey."
+        ],
+        "rw": [
+          "Gutwara ikinyabiziga bisaba guhora ureba no gufata ibyemezo. Ikintu kirangaza gishobora kuba icyo kureba ahandi, icyo gukoresha intoki ku kindi kintu, cyangwa ibitekerezo biri ku kindi kintu kitari umuhanda. Igikorwa kimwe gishobora kuba kirimo ubu buryo bwinshi bwo kurangara.",
+          "Gusoma cyangwa kohereza ubutumwa, gukoresha telefoni, guhindura ibikoresho byinshi cyangwa guhindukira uvugana n'umuntu bishobora gukura ibitekerezo ku muhanda. Ndetse no kuganira ukoresheje ibikoresho bidafata intoki bishobora gutwara ibitekerezo no kugabanya kumenya impinduka z'uruja n'uruza.",
+          "Umunaniro ushobora gutinza uko umuntu yitwara no gutuma gukomeza kwitwararika bigorana. Ingendo ndende, kudasinzira bihagije, uburwayi n'imirimo myinshi bishobora kongera umunaniro. Umushoferi wumva asinziriye ntagomba kugerageza kubirwanya yihutisha ikinyabiziga, afungura ikirahuri cyangwa yumva umuziki uranguruye.",
+          "Teganya kuruhuka mbere y'uko unanirwa cyane. Mwasimburana gutwara gusa n'umushoferi ufite uruhushya rukwiye kandi ushoboye gutwara. Iyo umunaniro ugaragaye, hagarara ahantu hatekanye kandi hemewe uruhuke; ntukomeze gusa kugira ngo ugere ku gihe wateganyije.",
+          "Abagenzi bashobora gufasha umutekano baganira mu ituze, bagafasha gutegura inzira mbere y'urugendo igihe bishoboka kandi bakirinda gusaba umushoferi ibintu bimurangaza. Buri wese uri mu kinyabiziga agira uruhare mu rugendo rufite umutekano."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Driving needs full attention.",
+          "Phone use can create several kinds of distraction.",
+          "Rest before fatigue becomes dangerous.",
+          "Passengers should help the driver stay focused."
+        ],
+        "rw": [
+          "Gutwara bisaba kwitwararika byuzuye.",
+          "Gukoresha telefoni bishobora guteza uburyo bwinshi bwo kurangara.",
+          "Ruhuka mbere y'uko umunaniro uteza ibyago.",
+          "Abagenzi bagomba gufasha umushoferi gukomeza kwibanda ku muhanda."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Attention is a safety resource: protect it by planning, resting and avoiding distractions.",
+        "rw": "Kwitwararika ni kimwe mu birinda impanuka: bikomeze binyuze mu gutegura urugendo, kuruhuka no kwirinda ibirangaza."
+      },
+      "reflection_questions": {
+        "en": [
+          "Why can a conversation distract even when a phone is not being held?",
+          "How can passengers help reduce distraction?"
+        ],
+        "rw": [
+          "Kuki ikiganiro gishobora kurangaza nubwo telefoni itari mu ntoki?",
+          "Abagenzi bafasha bate kugabanya ibirangaza?"
+        ]
+      },
+      "conclusion": {
+        "en": "Create a simple pre-trip agreement: phones away, route planned and rest breaks considered before departure.",
+        "rw": "Mbere y'urugendo, mwumvikane ku bintu by'ibanze: telefoni zishyirwe ku ruhande, inzira itegurwe kandi ibihe byo kuruhuka bitegurwe."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Motorists reminded to observe traffic regulations",
+            "rw": "Abatwara ibinyabiziga bibukijwe kubahiriza amategeko y'umuhanda"
+          },
+          "publisher": "Rwanda National Police",
+          "url": "https://police.gov.rw/index.php?L=1&cHash=8b664bff34f5590e1ecfd469522aa8ff&id=51&tx_news_pi1%5Bnews%5D=20871"
+        },
+        {
+          "title": {
+            "en": "Road traffic injuries",
+            "rw": "Impanuka zo mu muhanda"
+          },
+          "publisher": "World Health Organization",
+          "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "general-energy-electricity",
+      "category": "general",
+      "icon": "⚡",
+      "title": {
+        "en": "Energy, Electricity and Everyday Technology",
+        "rw": "Ingufu, amashanyarazi n'ikoranabuhanga rya buri munsi"
+      },
+      "description": {
+        "en": "Understand energy forms, transformations and practical ways to think about efficient use.",
+        "rw": "Sobanukirwa ubwoko bw'ingufu, uko zihinduka n'uburyo bwo kuzikoresha neza."
+      },
+      "definition": {
+        "en": "Energy is the capacity to cause change or do work. It appears in different forms and can be transferred or transformed from one form to another.",
+        "rw": "Ingufu ni ubushobozi bwo gutuma ikintu gihinduka cyangwa gukora umurimo. Zigaragara mu buryo butandukanye kandi zishobora kwimurwa cyangwa guhinduka ziva mu bwoko bumwe zijya mu bundi."
+      },
+      "learning_objectives": {
+        "en": [
+          "Identify the main energy transformation in a lamp.",
+          "Explain what efficiency means in everyday language."
+        ],
+        "rw": [
+          "Garagaza ihinduka ry'ingenzi ry'ingufu ribera mu itara.",
+          "Sobanura mu magambo yoroshye icyo imikorere inoze isobanura."
+        ]
+      },
+      "body": {
+        "en": [
+          "Common forms include movement (kinetic) energy, stored (potential) energy, thermal energy, chemical energy, electrical energy, sound and light. A moving bicycle has kinetic energy; food stores chemical energy; a warm object has thermal energy.",
+          "Energy transformations happen in ordinary devices. A lamp changes electrical energy mainly into light and heat. A speaker changes electrical energy into sound. A phone battery stores chemical energy that is converted into electrical energy when the phone operates.",
+          "Energy is not created from nothing or simply destroyed in ordinary physical processes; it is transferred or transformed. Some energy often spreads into the surroundings as heat, making a process less useful for its intended purpose.",
+          "Efficiency describes how much of the input energy becomes useful output for a particular task. Switching off unused lights, choosing efficient appliances and reducing unnecessary heating or cooling can lower energy use without reducing essential services.",
+          "Electricity is useful but must be treated carefully. Do not touch damaged wires, exposed electrical parts or wet electrical equipment. Report hazards to a responsible adult or qualified professional rather than attempting repairs yourself."
+        ],
+        "rw": [
+          "Ingufu zisanzwe zirimo iz'imigendere, izibitse, iz'ubushyuhe, iz'imiti, iz'amashanyarazi, amajwi n'urumuri. Igare rigenda rifite ingufu z'imigendere; ibiryo bibika ingufu z'imiti; ikintu gishyushye kiba gifite ingufu z'ubushyuhe.",
+          "Guhinduka kw'ingufu biboneka mu bikoresho bya buri munsi. Itara rihindura amashanyarazi cyane cyane urumuri n'ubushyuhe. Indangururamajwi ihindura amashanyarazi amajwi. Bateri ya telefoni ibika ingufu z'imiti zihinduka amashanyarazi igihe telefoni ikora.",
+          "Mu mikorere isanzwe y'ibintu, ingufu ntizivuka mu busa cyangwa ngo zishire burundu; zirimurwa cyangwa zigahinduka. Akenshi igice cy'ingufu gikwira mu bidukikije ari ubushyuhe, bigatuma igikorwa kidakoresha ingufu zose mu cyo cyari kigamije.",
+          "Imikorere inoze isobanura ingano y'ingufu zinjira zihinduka izifashishwa mu murimo runaka. Kuzimya amatara adakenewe, guhitamo ibikoresho bikoresha ingufu neza no kugabanya gushyushya cyangwa gukonjesha bidakenewe bishobora kugabanya ikoreshwa ry'ingufu hatagize serivisi z'ingenzi zibura.",
+          "Amashanyarazi ni ingirakamaro ariko agomba kwitonderwa. Ntukore ku nsinga zangiritse, ku bice by'amashanyarazi bigaragara cyangwa ku bikoresho by'amashanyarazi bitose. Menyesha umuntu mukuru ubishinzwe cyangwa umukozi w'umwuga aho kugerageza kubisana wenyine."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Energy changes form; it is not simply lost.",
+          "Devices transform energy to provide useful services.",
+          "Efficiency compares useful output with energy input.",
+          "Damaged electrical equipment should be handled by qualified people."
+        ],
+        "rw": [
+          "Ingufu zihindura ubwoko; ntizishira gusa.",
+          "Ibikoresho bihindura ingufu kugira ngo bitange serivisi.",
+          "Imikorere inoze igereranya ingufu zinjira n'izikoreshwa mu murimo.",
+          "Ibikoresho by'amashanyarazi byangiritse bigomba kureberwa n'ababifitiye ubumenyi."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Understanding energy helps people make informed choices about technology, costs and environmental impact.",
+        "rw": "Gusobanukirwa ingufu bifasha abantu gufata ibyemezo bishingiye ku bumenyi ku ikoranabuhanga, ikiguzi n'ingaruka ku bidukikije."
+      },
+      "reflection_questions": {
+        "en": [
+          "Why does a lamp also produce heat?",
+          "Name two safe ways to reduce unnecessary electricity use."
+        ],
+        "rw": [
+          "Kuki itara rinatanga n'ubushyuhe?",
+          "Vuga uburyo bubiri butekanye bwo kugabanya amashanyarazi akoreshwa bidakenewe."
+        ]
+      },
+      "conclusion": {
+        "en": "Choose one household device and draw a simple diagram showing its energy input, useful output and any energy that spreads into the surroundings.",
+        "rw": "Hitamo igikoresho kimwe cyo mu rugo ushushanye uko ingufu zinjiramo, icyo zibyazwamo n'ingufu zisakara mu bidukikije."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Energy",
+            "rw": "Ingufu"
+          },
+          "publisher": "U.S. Energy Information Administration",
+          "url": "https://www.eia.gov/energyexplained/"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "general-digital-safety-and-privacy",
+      "category": "general",
+      "icon": "🔐",
+      "title": {
+        "en": "Digital Safety, Privacy and Responsible Technology",
+        "rw": "Umutekano wa murandasi, ubuzima bwite n'ikoranabuhanga rikoreshwa neza"
+      },
+      "description": {
+        "en": "Build habits for protecting personal information, recognizing suspicious messages and using digital tools responsibly.",
+        "rw": "Shyiraho ingeso zo kurinda amakuru bwite, kumenya ubutumwa buteye amakenga no gukoresha ikoranabuhanga neza."
+      },
+      "definition": {
+        "en": "Digital safety is the set of habits and safeguards that help people protect accounts, devices, personal information and wellbeing when using connected technologies.",
+        "rw": "Umutekano wa murandasi ni ingeso n'ingamba bifasha abantu kurinda konti, ibikoresho, amakuru bwite n'imibereho myiza igihe bakoresha ikoranabuhanga rihujwe na murandasi."
+      },
+      "learning_objectives": {
+        "en": [
+          "List three warning signs of a phishing message.",
+          "Why should AI-generated information be checked?"
+        ],
+        "rw": [
+          "Vuga ibimenyetso bitatu by'ubutumwa bw'uburiganya.",
+          "Kuki amakuru yakozwe n'ubwenge buhangano agomba kugenzurwa?"
+        ]
+      },
+      "body": {
+        "en": [
+          "Personal information includes details that identify or describe a person, such as a full name, address, phone number, school, account credentials or private photographs. Share only what is necessary and understand who can see it.",
+          "Use long, unique passwords for important accounts. A password manager can help an adult or user manage them securely. Where available, turn on multi-factor authentication so a password alone is not enough to access an account.",
+          "Phishing messages try to trick people into revealing information, opening unsafe files or visiting imitation websites. Be cautious when a message creates urgency, asks for a password or verification code, offers an unexpected prize or contains an unfamiliar link.",
+          "Check a website address carefully and reach important services through their official app or a trusted bookmark. Do not share one-time verification codes with anyone who contacts you unexpectedly, even if they claim to be support staff.",
+          "Think before posting. Digital content can be copied, forwarded and saved. Treat other people's information respectfully, ask permission before sharing their images and use reporting or blocking tools when content is abusive or threatening.",
+          "Artificial intelligence tools can produce convincing text, images and audio that may contain mistakes. Verify important claims with reliable sources and do not upload sensitive personal information into tools unless you understand their privacy terms."
+        ],
+        "rw": [
+          "Amakuru bwite arimo ibintu bishobora kumenya cyangwa gusobanura umuntu, nk'amazina ye, aho atuye, nimero ya telefoni, ishuri, amakuru yo kwinjira muri konti cyangwa amafoto yihariye. Sangiza abandi gusa ibikenewe kandi umenye abazabona ayo makuru.",
+          "Koresha amagambo banga maremare kandi atandukanye kuri konti z'ingenzi. Porogaramu ibika amagambo banga ishobora gufasha umuntu kuyacunga mu mutekano. Iyo bishoboka, koresha n'uburyo bwo kwemeza umwirondoro mu byiciro byinshi kugira ngo ijambo banga ryonyine ridahagije kwinjira muri konti.",
+          "Ubutumwa bw'uburiganya bugerageza gushuka abantu ngo batange amakuru, bafungure amadosiye ateye amakenga cyangwa basure imbuga z'impimbano. Witondere ubutumwa bugushyiraho igitutu, busaba ijambo banga cyangwa kode yo kwemeza, bugusezeranya igihembo utiteze cyangwa bufite umurongo utamenyereye.",
+          "Genza neza aderesi y'urubuga kandi ugere kuri serivisi z'ingenzi ukoresheje porogaramu yazo yemewe cyangwa umurongo wizeye. Ntugahe umuntu kode yo kwemeza ikoreshwa rimwe uguhamagaye cyangwa ukwandikiye utari umwiteze, n'iyo yakwiyita umukozi ushinzwe ubufasha.",
+          "Banza utekereze mbere yo gushyira amakuru kuri murandasi. Ibyashyizweho bishobora gukopororwa, koherezwa no kubikwa. Wubahe amakuru y'abandi, saba uruhushya mbere yo gusangiza abandi amafoto yabo kandi ukoreshe uburyo bwo gutanga raporo cyangwa guhagarika umuntu igihe ibikubiyemo bibangamira cyangwa bigutera ubwoba.",
+          "Ibikoresho by'ubwenge buhangano bishobora gukora inyandiko, amashusho n'amajwi bisa n'iby'ukuri ariko birimo amakosa. Genza amakuru y'ingenzi ukoresheje amasoko yizewe kandi ntushyiremo amakuru bwite akomeye mu bikoresho utarasobanukirwa n'amabwiriza yabyo yo kurinda amakuru."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Share the minimum personal information needed.",
+          "Use unique passwords and extra account protection.",
+          "Pause and verify unexpected requests and links.",
+          "AI-generated content still needs fact-checking.",
+          "Respect other people's privacy and images."
+        ],
+        "rw": [
+          "Sangiza abandi amakuru bwite make akenewe gusa.",
+          "Koresha amagambo banga atandukanye n'ubundi buryo bwo kurinda konti.",
+          "Banza uhagarare ugenzure ubutumwa n'imirongo utari witeze.",
+          "Ibikozwe n'ubwenge buhangano na byo bigomba kugenzurwa.",
+          "Wubahe ubuzima bwite n'amafoto by'abandi."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Digital confidence comes from combining curiosity with caution, respect and verification.",
+        "rw": "Kugira icyizere mu ikoranabuhanga bisaba guhuza amatsiko no kwitonda, kubaha abandi no kugenzura amakuru."
+      },
+      "reflection_questions": {
+        "en": [
+          "What should you do before clicking an unexpected link?",
+          "Why is it harmful to share another person's photo without permission?"
+        ],
+        "rw": [
+          "Wakora iki mbere yo gukanda umurongo utari witeze?",
+          "Kuki ari bibi gusangiza abandi ifoto y'umuntu utabanje kumusaba uruhushya?"
+        ]
+      },
+      "conclusion": {
+        "en": "Review the privacy settings of one account with a trusted adult and identify what information is public, private or shared with selected people.",
+        "rw": "Hamwe n'umuntu mukuru wizeye, genzura igenamiterere ry'ubuzima bwite kuri konti imwe, umenye amakuru agaragara kuri bose, ayihariye n'ayasangizwa abantu watoranyije."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Media and Information Literacy",
+            "rw": "Ubumenyi mu itangazamakuru no mu makuru"
+          },
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/communication-information/priorities/media-information-literacy"
+        },
+        {
+          "title": {
+            "en": "Stay Safe Online",
+            "rw": "Koresha murandasi mu mutekano"
+          },
+          "publisher": "Cybersecurity & Infrastructure Security Agency",
+          "url": "https://www.cisa.gov/secure-our-world"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "general-critical-thinking-evidence",
+      "category": "general",
+      "icon": "🔎",
+      "title": {
+        "en": "Critical Thinking, Evidence and Good Questions",
+        "rw": "Gutekereza byimbitse, ibimenyetso n'ibibazo byiza"
+      },
+      "description": {
+        "en": "Learn to separate claims from evidence, compare explanations and make careful conclusions.",
+        "rw": "Menya gutandukanya ibivugwa n'ibimenyetso, kugereranya ibisobanuro no gufata imyanzuro witonze."
+      },
+      "definition": {
+        "en": "Critical thinking is the disciplined process of asking questions, examining evidence, identifying assumptions and reaching conclusions that match the available information.",
+        "rw": "Gutekereza byimbitse ni uburyo bwo kubaza ibibazo, gusuzuma ibimenyetso, kumenya ibyo umuntu afata nk'ukuri no gufata imyanzuro ijyanye n'amakuru ahari."
+      },
+      "learning_objectives": {
+        "en": [
+          "Explain the difference between a claim and evidence.",
+          "Why is correlation not proof of cause?"
+        ],
+        "rw": [
+          "Sobanura itandukaniro riri hagati y'ikivugwa n'ikimenyetso.",
+          "Kuki guhurirana atari gihamya y'impamvu yateye ikintu?"
+        ]
+      },
+      "body": {
+        "en": [
+          "A claim is a statement that can be examined. Evidence is information used to support or challenge that claim. A strong explanation connects reliable evidence to the conclusion and makes its reasoning clear.",
+          "Ask who produced the information, when it was published, what evidence is provided and whether other independent sources agree. A source may be useful for one topic but not qualified to answer every question.",
+          "Correlation means two things change together; it does not automatically prove that one caused the other. For example, two trends may rise at the same time because of a third factor or coincidence.",
+          "Look for alternative explanations and ask what information would change your mind. Notice missing details, emotionally loaded language, selective examples and numbers presented without context.",
+          "When evidence is incomplete, say so. A careful conclusion may be provisional and can change when better information becomes available. Admitting uncertainty is a strength of responsible reasoning, not a failure."
+        ],
+        "rw": [
+          "Ikivugwa ni interuro ishobora gusuzumwa. Ibimenyetso ni amakuru akoreshwa mu gushyigikira cyangwa kuvuguruza icyo kivugwa. Ibisobanuro bikomeye bihuza ibimenyetso byizewe n'umwanzuro kandi bikerekana neza uko byatekerejweho.",
+          "Baza uwakoze ayo makuru, igihe yasohokeye, ibimenyetso yatanzemo n'uko andi masoko yigenga abyemeza. Isoko rishobora kuba ingirakamaro ku ngingo imwe ariko ntiribe rifite ubumenyi bwo gusubiza ibibazo byose.",
+          "Guhurirana bivuga ko ibintu bibiri bihinduka mu gihe kimwe; ntibihita bigaragaza ko kimwe cyateye ikindi. Urugero, ibintu bibiri bishobora kwiyongera icyarimwe bitewe n'ikindi kintu cya gatatu cyangwa bikaba ari impanuka gusa.",
+          "Shakisha ibindi bisobanuro bishoboka kandi wibaze amakuru ashobora gutuma uhindura igitekerezo. Witondere amakuru yabuze, amagambo akangura amarangamutima, ingero zatoranyijwe n'imibare itagaragaza imiterere yayo.",
+          "Iyo ibimenyetso bituzuye, bivuge. Umwanzuro witonze ushobora kuba uw'agateganyo kandi ugahinduka igihe habonetse amakuru meza. Kwemera ko hari ibyo utazi ni ikimenyetso cy'ubushishozi, si intege nke."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Separate claims from evidence.",
+          "Check source expertise, date and supporting material.",
+          "Correlation does not automatically mean causation.",
+          "State uncertainty when the evidence is incomplete."
+        ],
+        "rw": [
+          "Tandukanya ibivugwa n'ibimenyetso.",
+          "Genza ubumenyi bw'isoko, itariki n'ibimenyetso rishingiraho.",
+          "Guhurirana ntibihita bivuga ko kimwe cyateye ikindi.",
+          "Vuga ko utizeye neza igihe ibimenyetso bituzuye."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Good thinking is not about winning an argument; it is about getting closer to what the evidence supports.",
+        "rw": "Gutekereza neza si ugutsinda impaka; ni ukwegera ukuri gushyigikiwe n'ibimenyetso."
+      },
+      "reflection_questions": {
+        "en": [
+          "What questions help you judge whether a source is reliable?",
+          "When is it responsible to say 'I do not know yet'?"
+        ],
+        "rw": [
+          "Ni ibihe bibazo bigufasha kumenya niba isoko ry'amakuru ryizewe?",
+          "Ni ryari ari byiza kuvuga uti 'sinshobora kubyemeza kugeza ubu'?"
+        ]
+      },
+      "conclusion": {
+        "en": "Choose a claim from a news story or advertisement and make a two-column list: evidence provided and questions still unanswered.",
+        "rw": "Hitamo ikivugwa mu nkuru y'amakuru cyangwa mu kwamamaza, ukore urutonde rw'inkingi ebyiri: ibimenyetso byatanzwe n'ibibazo bitarasubizwa."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Media and Information Literacy",
+            "rw": "Ubumenyi mu itangazamakuru no mu makuru"
+          },
+          "publisher": "UNESCO",
+          "url": "https://www.unesco.org/en/communication-information/priorities/media-information-literacy"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "general-climate-adaptation",
+      "category": "general",
+      "icon": "🌍",
+      "title": {
+        "en": "Climate, Weather and Community Resilience",
+        "rw": "Imihindagurikire y'ikirere, iteganyagihe n'ubushobozi bw'abaturage bwo guhangana n'ingaruka"
+      },
+      "description": {
+        "en": "Understand the difference between weather and climate and how communities prepare for changing risks.",
+        "rw": "Sobanukirwa itandukaniro ry'ikirere cya buri munsi n'imiterere y'ikirere y'igihe kirekire n'uko abaturage bitegura ibyago bihinduka."
+      },
+      "definition": {
+        "en": "Weather describes short-term atmospheric conditions, while climate describes patterns and averages of weather over longer periods.",
+        "rw": "Iteganyagihe risobanura uko ikirere kimeze mu gihe gito, mu gihe imiterere y'ikirere isobanura uko ikirere cyagiye kimeze n'impuzandengo yacyo mu gihe kirekire."
+      },
+      "learning_objectives": {
+        "en": [
+          "Distinguish weather from climate.",
+          "Give one example of adaptation and one of resilience."
+        ],
+        "rw": [
+          "Tandukanya iteganyagihe n'imiterere y'ikirere.",
+          "Tanga urugero rumwe rwo kumenyera imihindagurikire y'ikirere n'urwo guhangana n'ingaruka."
+        ]
+      },
+      "body": {
+        "en": [
+          "Weather can change from hour to hour or day to day. Climate is studied using long records and patterns, including temperature, rainfall, wind and seasonal changes. One cold day does not disprove long-term warming, just as one hot day does not prove it.",
+          "Climate change can affect water availability, farming, ecosystems, health and infrastructure. The effects differ by place and depend on exposure, sensitivity and the resources available to prepare and respond.",
+          "Adaptation means adjusting decisions and systems to reduce harm from actual or expected climate impacts. Examples include protecting wetlands, improving drainage where appropriate, using reliable weather information and planning for heat or heavy rainfall.",
+          "Resilience is the ability of people and systems to prepare for, cope with and recover from difficult conditions. It can be strengthened through reliable information, community cooperation, well-maintained services and plans that include people who may need extra support.",
+          "Climate information is most useful when it is local, timely and understood. Check trusted meteorological and public safety sources, and follow official advice during severe weather. Avoid sharing unverified warnings that may cause confusion."
+        ],
+        "rw": [
+          "Iteganyagihe rishobora guhinduka kuva ku isaha imwe rijya ku yindi cyangwa umunsi ku wundi. Imiterere y'ikirere isuzumwa hifashishijwe amakuru y'igihe kirekire, harimo ubushyuhe, imvura, umuyaga n'impinduka z'ibihe. Umunsi umwe ukonje ntuhakana izamuka ry'ubushyuhe ry'igihe kirekire, nk'uko umunsi umwe ushyushye na wo utabihamya.",
+          "Imihindagurikire y'ikirere ishobora kugira ingaruka ku mazi aboneka, ubuhinzi, urusobe rw'ibinyabuzima, ubuzima n'ibikorwa remezo. Ingaruka ziratandukana bitewe n'ahantu, ibyago bihari, uko abaturage babangamirwa n'ubushobozi bwo kwitegura no kubyitwaramo.",
+          "Kumenyera imihindagurikire y'ikirere ni uguhindura ibyemezo n'imikorere kugira ngo hagabanuke ingaruka zayo zigaragara cyangwa ziteganyijwe. Ingero zirimo kurinda ibishanga, kunoza uburyo amazi atemba aho bikwiye, gukoresha amakuru y'iteganyagihe yizewe no gutegura uko abantu bazitwara mu bushyuhe cyangwa imvura nyinshi.",
+          "Ubushobozi bwo guhangana n'ingaruka ni ubushobozi bw'abantu n'ibikorwa remezo bwo kwitegura, guhangana n'ibihe bikomeye no kongera kwisuganya. Bwakongerwa n'amakuru yizewe, ubufatanye bw'abaturage, serivisi zibungabunzwe neza n'imigambi yita ku bantu bashobora gukenera ubufasha bwiyongereye.",
+          "Amakuru y'ikirere agira akamaro cyane iyo ajyanye n'ahantu, agezweho kandi asobanutse. Reba amasoko yizewe y'iteganyagihe n'umutekano rusange, kandi ukurikize amabwiriza y'inzego zibishinzwe mu bihe bibi. Irinde gusangiza abandi imiburo itagenzuwe ishobora guteza urujijo."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Weather is short-term; climate is a long-term pattern.",
+          "Climate impacts differ across communities.",
+          "Adaptation reduces exposure and vulnerability.",
+          "Use trusted local forecasts and official alerts."
+        ],
+        "rw": [
+          "Iteganyagihe ni iry'igihe gito; imiterere y'ikirere ni iy'igihe kirekire.",
+          "Ingaruka z'imihindagurikire y'ikirere zirahinduka bitewe n'abaturage n'ahantu.",
+          "Kumenyera ikirere bigabanya ibyago no kuba abantu bahura n'ingaruka.",
+          "Koresha iteganyagihe ryo mu karere n'imiburo y'inzego zizewe."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Prepared communities use reliable information and cooperate before, during and after difficult weather.",
+        "rw": "Abaturage biteguye neza bakoresha amakuru yizewe kandi bagafatanya mbere, mu gihe na nyuma y'ikirere gikomeye."
+      },
+      "reflection_questions": {
+        "en": [
+          "Why should a climate claim use long-term evidence?",
+          "Where should people check urgent weather warnings?"
+        ],
+        "rw": [
+          "Kuki ikivugwa ku mihindagurikire y'ikirere kigomba gushingira ku bimenyetso by'igihe kirekire?",
+          "Abantu bakwiye kugenzura he imiburo yihutirwa y'ikirere?"
+        ]
+      },
+      "conclusion": {
+        "en": "Ask your household or class to identify one weather-related risk in the area and one safe, realistic preparation step based on official guidance.",
+        "rw": "Saba abo mu rugo cyangwa abo mwigana kugaragaza icyago kimwe kijyanye n'ikirere gishobora kuboneka aho mutuye n'intambwe imwe itekanye kandi ishoboka yo kwitegura ishingiye ku mabwiriza yemewe."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Climate Change",
+            "rw": "Imihindagurikire y'ikirere"
+          },
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/climate-change/"
+        },
+        {
+          "title": {
+            "en": "Weather and climate",
+            "rw": "Iteganyagihe n'imiterere y'ikirere"
+          },
+          "publisher": "World Meteorological Organization",
+          "url": "https://wmo.int/"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "general-water-health-and-conservation",
+      "category": "general",
+      "icon": "💧",
+      "title": {
+        "en": "Fresh Water, Water Quality and Conservation",
+        "rw": "Amazi meza, ubwiza bwayo no kuyabungabunga"
+      },
+      "description": {
+        "en": "Explore where fresh water is found, why water quality matters and how communities can conserve it.",
+        "rw": "Sobanukirwa aho amazi meza aboneka, impamvu ubwiza bwayo ari ingenzi n'uko abaturage bayabungabunga."
+      },
+      "definition": {
+        "en": "Fresh water is water with low concentrations of dissolved salts that can support people, agriculture and ecosystems when it is safe and available.",
+        "rw": "Amazi meza ni amazi arimo umunyu ushongeshejwe muke ashobora gufasha abantu, ubuhinzi n'urusobe rw'ibinyabuzima iyo aboneka kandi afite umutekano."
+      },
+      "learning_objectives": {
+        "en": [
+          "Name three places where fresh water is stored.",
+          "Why can clear water still be unsafe?"
+        ],
+        "rw": [
+          "Vuga ahantu hatatu amazi meza abikwa.",
+          "Kuki amazi asa neza ashobora kuba atari meza kunyobwa?"
+        ]
+      },
+      "body": {
+        "en": [
+          "Most of Earth's water is salty ocean water. Fresh water is stored in glaciers and ice, underground aquifers, lakes, rivers, wetlands, soil and the atmosphere. Only a portion is easily accessible for everyday human use.",
+          "The water cycle moves water through evaporation, condensation, precipitation, infiltration, runoff and plant transpiration. These processes connect the atmosphere, land, rivers, lakes and underground water stores.",
+          "Water quality can be affected by sewage, chemicals, waste, soil erosion and harmful microorganisms. Clear-looking water is not necessarily safe to drink. Use water treatment and safety advice from qualified local health authorities.",
+          "Protecting water sources includes keeping waste and chemicals away from streams, maintaining sanitation, protecting wetlands and vegetation, and preventing soil from washing into rivers. Communities and institutions share responsibility for safe water systems.",
+          "Conservation means using water thoughtfully and reducing avoidable waste. Repairing leaks through qualified help, collecting rainwater where safe and permitted, and using only the water needed for household tasks can help. Do not compromise handwashing or safe drinking-water needs to save water."
+        ],
+        "rw": [
+          "Amazi menshi yo ku isi ni amazi y'inyanja arimo umunyu. Amazi meza abikwa mu rubura, mu butaka bwimbitse burimo amazi, mu biyaga, imigezi, ibishanga, ubutaka no mu kirere. Amazi make gusa ni yo ashobora kuboneka byoroshye mu buzima bwa buri munsi.",
+          "Uruziga rw'amazi ruyanyuza mu guhinduka umwuka, kwirema kw'ibicu, kugwa kw'imvura, kwinjira mu butaka, gutemba ku buso bw'ubutaka no gusohoka mu bimera. Ibi bihuza ikirere, ubutaka, imigezi, ibiyaga n'amazi abitswe munsi y'ubutaka.",
+          "Ubwiza bw'amazi bushobora kwangizwa n'imyanda yo mu bwiherero, imiti, imyanda isanzwe, isuri n'udukoko dutera indwara. Amazi asa neza si ko buri gihe aba meza kunyobwa. Koresha uburyo bwo kuyatunganya n'inama z'inzego z'ubuzima zibifitiye ubumenyi.",
+          "Kurinda amasoko y'amazi birimo kutajugunya imyanda n'imiti hafi y'imigezi, kubungabunga isuku, kurinda ibishanga n'ibimera no gukumira isuri ijyana ubutaka mu migezi. Abaturage n'inzego zitandukanye basangiye inshingano zo kugira amazi meza.",
+          "Kubungabunga amazi ni ukuyakoresha neza no kugabanya ayapfa ubusa. Gusana imiyoboro itemba hifashishijwe ababifitiye ubumenyi, gukusanya amazi y'imvura aho bitekanye kandi byemewe, no gukoresha amazi akenewe gusa mu mirimo yo mu rugo birafasha. Ntukagabanye gukaraba intoki cyangwa amazi meza yo kunywa mu rwego rwo kuzigama."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Fresh water is limited and unevenly distributed.",
+          "The water cycle links land, air and living systems.",
+          "Clear water is not automatically safe to drink.",
+          "Protect water sources and avoid unnecessary waste."
+        ],
+        "rw": [
+          "Amazi meza ni make kandi ntiyigabanyije kimwe ku isi.",
+          "Uruziga rw'amazi ruhuza ubutaka, ikirere n'ibinyabuzima.",
+          "Amazi asa neza si ko buri gihe aba meza kunyobwa.",
+          "Rinda amasoko y'amazi kandi wirinde kuyapfusha ubusa."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Water security depends on science, safe services, responsible use and protection of natural ecosystems.",
+        "rw": "Kugira amazi ahagije kandi meza bishingira ku bumenyi, serivisi zitekanye, kuyakoresha neza no kurinda urusobe rw'ibinyabuzima."
+      },
+      "reflection_questions": {
+        "en": [
+          "How does vegetation help protect water sources?",
+          "What is one way to reduce water waste without reducing hygiene?"
+        ],
+        "rw": [
+          "Ibimera bifasha bite kurinda amasoko y'amazi?",
+          "Ni ubuhe buryo bumwe bwo kugabanya amazi apfa ubusa utagabanyije isuku?"
+        ]
+      },
+      "conclusion": {
+        "en": "Map the water sources used by your community and identify one realistic way to protect each source.",
+        "rw": "Shushanya ikarita y'amasoko y'amazi akoreshwa n'abaturage bawe, ugaragaze uburyo bumwe bushoboka bwo kurinda buri soko."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "The water cycle",
+            "rw": "Uruziga rw'amazi"
+          },
+          "publisher": "NOAA",
+          "url": "https://www.noaa.gov/education/resource-collections/freshwater/water-cycle"
+        },
+        {
+          "title": {
+            "en": "What Is the Water Cycle?",
+            "rw": "Uruziga rw'amazi ni iki?"
+          },
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/kids/earth/what-is-the-water-cycle/"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "general-rwanda-geography-landscape",
+      "category": "general",
+      "icon": "🗺️",
+      "title": {
+        "en": "Rwanda's Geography, Landscapes and Human Activity",
+        "rw": "Imiterere y'u Rwanda, ubutaka n'ibikorwa by'abaturage"
+      },
+      "description": {
+        "en": "Connect physical geography with settlement, transport, farming, water and environmental care in Rwanda.",
+        "rw": "Huza imiterere y'ubutaka n'imiturire, ubwikorezi, ubuhinzi, amazi no kubungabunga ibidukikije mu Rwanda."
+      },
+      "definition": {
+        "en": "Geography studies places, physical environments, people and the relationships between them.",
+        "rw": "Ubumenyi bw'isi busuzuma ahantu, imiterere y'ibidukikije, abantu n'isano iri hagati yabyo."
+      },
+      "learning_objectives": {
+        "en": [
+          "Explain one way elevation affects human activity.",
+          "What information makes a map easier to interpret?"
+        ],
+        "rw": [
+          "Sobanura uburyo bumwe uburebure bw'ahantu bugira ingaruka ku bikorwa by'abantu.",
+          "Ni ayahe makuru atuma gusoma ikarita byoroha?"
+        ]
+      },
+      "body": {
+        "en": [
+          "Rwanda is a landlocked country in East-Central Africa. Its landscape includes highlands, hills, valleys, lakes and areas of volcanic mountains in the west. Elevation and terrain influence local temperature, rainfall, farming and transport.",
+          "The country's drainage is connected to two major river-basin systems: the Nile basin and the Congo basin. Lakes, wetlands and rivers support communities, biodiversity, fishing, agriculture and other livelihoods, but they need protection from pollution and poorly managed land use.",
+          "Population and economic activities are not spread evenly. Towns often develop around transport routes, services, markets and institutions. Rural settlement patterns are influenced by land, water, soil, slope and access to roads and public services.",
+          "Maps help people understand location, direction, distance and relationships between places. A map should include a title, legend, scale and orientation where appropriate. Digital maps can be useful, but their information may be incomplete or outdated.",
+          "Geography is practical: understanding slopes can help explain erosion; knowing drainage patterns can help communities plan for heavy rainfall; and understanding land use can support decisions that protect water, soil and habitats."
+        ],
+        "rw": [
+          "U Rwanda ni igihugu kitagira inkombe z'inyanja giherereye mu burasirazuba bwo hagati bwa Afurika. Imiterere yacyo irimo imisozi miremire, udusozi, ibibaya, ibiyaga n'udusozi tw'ibirunga mu burengerazuba. Uburebure bw'ahantu n'imiterere y'ubutaka bigira ingaruka ku bushyuhe, imvura, ubuhinzi n'ubwikorezi.",
+          "Amazi y'imigezi yo mu Rwanda ajya mu byogogo bibiri bikuru: icy'uruzi rwa Nil n'icy'uruzi rwa Kongo. Ibiyaga, ibishanga n'imigezi bifasha abaturage, urusobe rw'ibinyabuzima, uburobyi, ubuhinzi n'ibindi bitunga abantu, ariko bigomba kurindwa umwanda n'imikoreshereze mibi y'ubutaka.",
+          "Abaturage n'ibikorwa by'ubukungu ntibikwirakwiye kimwe. Imijyi ikunda gukura hafi y'imihanda, serivisi, amasoko n'inzego z'ubuyobozi. Imiturire yo mu cyaro iterwa n'ubutaka, amazi, ubwiza bw'ubutaka, ubuhaname n'uko abantu bagera ku mihanda na serivisi rusange.",
+          "Ikarita ifasha gusobanukirwa aho ahantu riherereye, icyerekezo, intera n'isano iri hagati y'ahantu. Ikarita ikwiye kugira umutwe, ibisobanuro by'ibimenyetso, igipimo n'icyerekezo igihe bikenewe. Ikarita zo kuri telefoni zirafasha, ariko amakuru yazo ashobora kuba atuzuye cyangwa ataravugururwa.",
+          "Ubumenyi bw'isi bufite akamaro mu buzima: gusobanukirwa ahantu hahanamye bifasha gusobanura isuri; kumenya aho amazi atembera bifasha gutegura imvura nyinshi; naho gusobanukirwa imikoreshereze y'ubutaka bigafasha kurinda amazi, ubutaka n'aho ibinyabuzima bituye."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Rwanda's terrain influences climate, farming and transport.",
+          "Water basins connect communities and ecosystems.",
+          "Maps need clear symbols, scale and orientation.",
+          "Land-use choices affect soil, water and habitats."
+        ],
+        "rw": [
+          "Imiterere y'ubutaka bw'u Rwanda igira ingaruka ku kirere, ubuhinzi n'ubwikorezi.",
+          "Ibyogogo by'amazi bihuza abaturage n'urusobe rw'ibinyabuzima.",
+          "Ikarita ikenera ibimenyetso bisobanutse, igipimo n'icyerekezo.",
+          "Imikoreshereze y'ubutaka igira ingaruka ku butaka, amazi n'aho ibinyabuzima bituye."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Geography helps communities make better decisions because places, people and natural systems are connected.",
+        "rw": "Ubumenyi bw'isi bufasha abaturage gufata ibyemezo byiza kuko ahantu, abantu n'ibidukikije bifitanye isano."
+      },
+      "reflection_questions": {
+        "en": [
+          "Why are wetlands important to communities?",
+          "How can a map help plan a safe journey?"
+        ],
+        "rw": [
+          "Kuki ibishanga ari ingenzi ku baturage?",
+          "Ikarita yafasha ite gutegura urugendo rufite umutekano?"
+        ]
+      },
+      "conclusion": {
+        "en": "Draw a simple map of your area showing a road, a water feature, a public service and one place that should be protected.",
+        "rw": "Shushanya ikarita yoroshye y'aho utuye igaragaza umuhanda, isoko y'amazi, serivisi rusange n'ahantu hakwiye kurindwa."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Rwanda",
+            "rw": "U Rwanda"
+          },
+          "publisher": "Encyclopaedia Britannica",
+          "url": "https://www.britannica.com/place/Rwanda"
+        },
+        {
+          "title": {
+            "en": "Rwanda country profile",
+            "rw": "Umwirondoro w'u Rwanda"
+          },
+          "publisher": "World Bank",
+          "url": "https://www.worldbank.org/en/country/rwanda"
+        }
+      ],
+      "reading_time_minutes": 2
+    },
+    {
+      "id": "general-money-and-budgeting-basics",
+      "category": "general",
+      "icon": "💡",
+      "title": {
+        "en": "Everyday Money Skills: Needs, Wants and Planning",
+        "rw": "Ubumenyi bw'amafaranga: ibikenewe, ibyifuzo no guteganya"
+      },
+      "description": {
+        "en": "Learn basic financial decision-making through needs, wants, saving and simple budgets.",
+        "rw": "Menya gufata ibyemezo by'ibanze ku mafaranga ukoresheje ibikenewe, ibyifuzo, kuzigama na bije yoroshye."
+      },
+      "definition": {
+        "en": "Financial literacy is the ability to understand basic money concepts and use them to make informed everyday decisions.",
+        "rw": "Ubumenyi mu micungire y'amafaranga ni ubushobozi bwo gusobanukirwa ibitekerezo by'ibanze by'amafaranga no kubikoresha mu gufata ibyemezo bya buri munsi bishingiye ku makuru."
+      },
+      "learning_objectives": {
+        "en": [
+          "Explain the difference between a need and a want.",
+          "What information should be compared before a purchase?"
+        ],
+        "rw": [
+          "Sobanura itandukaniro riri hagati y'igikenewe n'icyifuzo.",
+          "Ni ayahe makuru agomba kugereranywa mbere yo kugura?"
+        ]
+      },
+      "body": {
+        "en": [
+          "A need is something important for health, safety or daily living, while a want is something a person would like but can often manage without. The difference can depend on circumstances: reliable transport may be essential for one person and optional for another.",
+          "A budget is a plan for how money will be received and used over a period. A simple budget lists expected income, essential costs, optional spending and an amount to save if possible. A budget is a guide that can be adjusted when circumstances change.",
+          "Saving means setting aside part of available money for a future purpose or unexpected cost. Saving goals should be realistic and should not replace essential needs such as food, safe housing, education or healthcare.",
+          "Before buying something, compare the total cost, quality, usefulness and whether the seller is trustworthy. Be careful with pressure to buy immediately, unrealistic promises of quick profit or requests to send money to claim a prize.",
+          "Financial decisions should be age-appropriate. Young people can practise planning with small, supervised examples and ask a trusted adult before making online payments, sharing financial details or agreeing to contracts."
+        ],
+        "rw": [
+          "Igikenewe ni ikintu cy'ingenzi ku buzima, umutekano cyangwa imibereho ya buri munsi, mu gihe icyifuzo ari ikintu umuntu yakwifuza ariko ashobora kubaho atagifite. Itandukaniro rishobora guterwa n'imiterere: ubwikorezi bwizewe bushobora kuba ngombwa ku muntu umwe ariko bukaba atari ngombwa ku wundi.",
+          "Bije ni umugambi w'uko amafaranga azaboneka n'uko azakoreshwa mu gihe runaka. Bije yoroshye igaragaza amafaranga ateganyijwe kwinjira, ibiciro by'ibikenewe, amafaranga y'ibindi byifuzo n'ayo kuzigama igihe bishoboka. Bije ni umurongo ngenderwaho ushobora guhindurwa uko ibintu bihinduka.",
+          "Kuzigama ni ukubika igice cy'amafaranga ahari kugira ngo azakoreshwe mu gihe kizaza cyangwa mu kibazo umuntu atari yiteze. Intego yo kuzigama ikwiye kuba ishoboka kandi ntisimbure ibikenewe nk'ibiryo, aho kuba hatekanye, uburezi cyangwa ubuvuzi.",
+          "Mbere yo kugura ikintu, gereranya igiciro cyose, ubwiza, akamaro n'uko umucuruzi yizewe. Witondere igitutu cyo kugura ako kanya, amasezerano adashoboka y'inyungu yihuse cyangwa umuntu ugusaba kohereza amafaranga kugira ngo uhabwe igihembo.",
+          "Ibyemezo by'amafaranga bigomba kuba bijyanye n'imyaka y'umuntu. Abakiri bato bashobora kwimenyereza guteganya bakoresheje ingero nto zigenzurwa, kandi bakabaza umuntu mukuru bizeye mbere yo kwishyura kuri murandasi, gutanga amakuru y'imari cyangwa kwemera amasezerano."
+        ]
+      },
+      "key_points": {
+        "en": [
+          "Separate essential needs from optional wants.",
+          "A budget is a plan, not a guarantee.",
+          "Set realistic saving goals without neglecting essentials.",
+          "Be cautious of pressure, prize and quick-profit scams."
+        ],
+        "rw": [
+          "Tandukanya ibikenewe n'ibyifuzo bidakenewe.",
+          "Bije ni umugambi, si isezerano ko byose bizagenda uko biteganyijwe.",
+          "Shyiraho intego zifatika zo kuzigama utirengagije ibikenewe.",
+          "Witondere uburiganya bukoresha igitutu, ibihembo cyangwa inyungu zihuse."
+        ]
+      },
+      "real_world_activity": {
+        "en": "Good money habits begin with clear priorities, realistic plans and careful decisions.",
+        "rw": "Ingeso nziza zo gukoresha amafaranga zitangirira ku gushyira imbere ibikenewe, imigambi ishoboka no gufata ibyemezo witonze."
+      },
+      "reflection_questions": {
+        "en": [
+          "Why should a budget include a small allowance for unexpected costs?",
+          "Why should young people ask a trusted adult before online payments?"
+        ],
+        "rw": [
+          "Kuki bije ikwiye kugira amafaranga make y'ibintu bitunguranye?",
+          "Kuki abakiri bato bagomba kubaza umuntu mukuru bizeye mbere yo kwishyura kuri murandasi?"
+        ]
+      },
+      "conclusion": {
+        "en": "Use a pretend monthly amount to create a practice budget with categories for essentials, optional spending and savings. Do not share real family financial details.",
+        "rw": "Koresha amafaranga y'igereranya y'ukwezi ukore bije y'imyitozo igaragaza ibikenewe, ibindi byifuzo no kuzigama. Ntugasangize abandi amakuru nyakuri y'amafaranga y'umuryango wawe."
+      },
+      "quiz_connection": {
+        "en": "Use the questions in this lesson to explain your reasoning, not only to memorize an answer.",
+        "rw": "Koresha ibibazo byo muri iri somo usobanure impamvu y'igisubizo, aho gufata mu mutwe igisubizo gusa."
+      },
+      "sources": [
+        {
+          "title": {
+            "en": "Financial education",
+            "rw": "Uburezi mu by'imari"
+          },
+          "publisher": "OECD",
+          "url": "https://www.oecd.org/financial/education/"
+        }
+      ],
+      "reading_time_minutes": 2
     }
-  ]
+  ],
+  "content_note": {
+    "en": "Lessons are original educational explanations prepared for general learning. They are not a substitute for current laws, official instructions, professional training or expert advice. Sources are provided for further reading; check the latest official guidance before acting.",
+    "rw": "Amasomo ni ibisobanuro by'umwimerere byateguwe hagamijwe kwiga muri rusange. Ntibisimbura amategeko agezweho, amabwiriza y'inzego zibifitiye ububasha, amahugurwa y'umwuga cyangwa inama z'abahanga. Amasoko yatanzwe kugira ngo urusheho gusoma; genzura amabwiriza agezweho mbere yo kugira icyo ukora."
+  },
+  "last_updated": "2026-11-26"
 }

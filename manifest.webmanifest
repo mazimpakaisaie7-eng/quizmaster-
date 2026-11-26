@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Quiz Master Rwanda | Learn, Think, Succeed",
-  "short_name": "Quiz Master Rwanda",
-  "description": "Responsive bilingual educational quizzes in road safety and general knowledge, with learning articles and progress tracking in English and Kinyarwanda.",
+  "name": "Quiz Master Rwanda – Learn, Practice and Improve",
+  "short_name": "Quiz Master",
+  "description": "Bilingual learning and quiz platform for road safety, science, geography and general knowledge in English and Kinyarwanda.",
   "lang": "en",
   "dir": "ltr",
   "start_url": "/",
@@ -13,8 +13,8 @@
     "minimal-ui"
   ],
   "orientation": "portrait",
-  "background_color": "#ffffff",
-  "theme_color": "#ffffff",
+  "background_color": "#f3f7ff",
+  "theme_color": "#0759d8",
   "categories": [
     "education",
     "games"

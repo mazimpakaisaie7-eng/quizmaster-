@@ -1,64 +1,115 @@
-# Quiz Master Rwanda — Technical Audit Report
+# Quiz Master Rwanda — Deep Technical and Content Audit
 
-**Audited archive:** `quizmaster--main (4).zip`  
-**Corrected release:** 4.3.6  
-**Audit date:** 2026-11-23
+**Input archive:** `quizmaster--main.zip`  
+**Updated release:** `4.4.0`  
+**Audit/update date:** 26 November 2026
 
-## Summary
+## Executive summary
 
-The archive contains the complete static website and quiz application. The main data files parsed successfully. The 625 quiz records passed structural checks: unique IDs, four English and four Kinyarwanda options, and both answer fields matching an option. The 11 Learning Centre articles have bilingual fields and source entries.
+The supplied archive contains a static bilingual learning and quiz website. This update preserves the existing quiz bank, quiz scoring/progress logic, existing public pages, audio and artwork, Google Tag Manager container, AdSense publisher ID, and the homepage-only AdSense loader. It adds a substantial set of bilingual Learning Centre lessons and improves data-loading recovery and public-page content visibility.
 
-## Defects found and corrected
+This is a code and content-structure audit of the supplied ZIP. It is not a live Google account audit and cannot guarantee AdSense approval.
 
-1. **Homepage hero image path was broken.** `index.html` referred to `./images/quizmaster-kigali-hero.webp`, but the image is stored in the project root. Updated the reference to `./quizmaster-kigali-hero.webp`.
-2. **Three road-sign image paths were broken.** The relevant records in `questions.json` pointed into a non-existent `images/traffic-signs/` directory. Updated them to the existing root-level SVG files: `priority-road.svg`, `give-way.svg`, and `stop.svg`.
-3. **Service-worker precache paths were broken.** `service-worker.js` referenced the same non-existent image directories. Corrected all four asset paths so the real files can be precached.
-4. **Service-worker cache version was not updated for the asset-path correction.** Bumped the app/engine and service-worker release labels to `4.3.6`, and the cache name now changes to `quizmaster-cache-4.3.6`, prompting clients to replace the old cache.
-5. **README advertising description contradicted the actual code.** It claimed AdSense was enabled on several secondary pages and disabled on the homepage. Corrected it: the AdSense script is in `index.html` only; the other audited pages do not load it.
-6. **README tables and analytics notes were clarified.** The README now documents the installed GTM container and the intended GA4 measurement ID, while explicitly noting that the GA4 tag must be verified inside Tag Manager.
+## Verified project inventory
 
-## Validation results
+- 625 quiz records: 297 Road Safety and 328 General Knowledge.
+- 22 bilingual Learning Centre articles: 9 Road Safety and 13 General Knowledge.
+- Learning Centre content now includes definitions, explanatory paragraphs, key learning points, learning objectives, practical activities, reflection questions, conclusions and further-reading sources.
+- Main languages: English and Kinyarwanda.
+- Quiz categories: Road Safety and General Knowledge.
 
-- `questions.json`, `articles.json`, and `manifest.webmanifest`: valid JSON.
-- `sitemap.xml`: valid XML.
-- `questions.js` and `service-worker.js`: passed Node.js syntax checks.
-- Inline JavaScript on all seven HTML pages: passed syntax checks.
-- JSON-LD structured data on the applicable pages: valid JSON.
-- Local asset references in HTML, quiz data, and service-worker precache list: no missing local files after corrections.
-- Quiz records: 625 total; 297 Road Safety and 328 General Knowledge; no duplicate IDs or structural answer/option mismatches.
-- Learning Centre: 11 bilingual articles; no duplicate article IDs or missing required bilingual fields detected.
-- `ads.txt`: contains the publisher record `google.com, pub-2666698676518429, DIRECT, f08c47fec0942fa0`.
+## Changes made in release 4.4.0
 
-## AdSense assessment — important limitations
+### 1. Learning Centre
+- Expanded the article collection from 11 to 22 original bilingual lessons.
+- Added detailed lessons on speed and following distance, blind spots, poor visibility, driver attention, energy, digital safety, critical thinking, climate adaptation, water quality, Rwanda's geography and basic financial literacy.
+- Added structured learning objectives, practical activities and reflection questions to the new lessons.
+- Added those learning sections to the article renderer.
+- Added estimated reading-time labels to lesson cards.
+- Added a light, high-contrast visual theme to improve reading on mobile and desktop.
+- Added server-rendered English lesson summaries to the HTML as an initial content fallback. This reduces dependence on a successful JavaScript data request for the first visible lesson list.
+- Added a retry control and a 12-second request timeout for failed Learning Centre data loading.
+- Kept source links for further reading. Road-law content is framed as general education and directs readers to official sources for current requirements.
 
-The archive can be checked for implementation and content signals, but it cannot reveal the exact reason shown in the private AdSense account. The ZIP does not contain the AdSense Policy Center, site-review result, payment profile, account verification, crawler diagnostics, or Search Console data.
+### 2. Quiz loading and recovery
+- Added a 15-second timeout to the `questions.json` request.
+- Added a visible retry button after question-data loading fails.
+- Added clearer loading and timeout messages.
+- Replaced the initial hidden-screen placeholder “Loading question...” with a neutral message explaining that a question appears when a round begins.
+- Preserved question IDs, quiz options, answer data, category logic, scoring, round timing, local progress, Continue and answer-review behavior.
 
-The code-level review confirms:
-- AdSense code is present on the homepage only.
-- The `ads.txt` publisher record matches the publisher ID used by the homepage AdSense script.
-- Public About, Contact, Privacy Policy, Terms, and Learning Centre pages exist.
-- The Learning Centre has 11 bilingual articles, and the quiz bank has 625 bilingual records.
+### 3. Home page and navigation
+- Added quick links from the homepage to the Learning Centre and About page.
+- Improved the explanatory text spacing and mobile layout for the homepage.
+- Preserved the existing home screen controls and their IDs so the quiz engine continues to bind to the same elements.
+- Added social metadata and website structured data.
 
-**Remaining approval risk:** Google evaluates whether the website provides enough original, useful content and a good user experience. A quiz application can still be judged as having insufficient or low-value content if the public pages do not offer enough substantial, distinctive material. The quiz bank is useful to visitors, but it is not a guarantee that Google will count it as sufficient publicly accessible editorial content. Continue expanding the Learning Centre with genuinely useful, carefully checked lessons, and ensure users can reach them easily. Do not add mass-generated or repetitive articles merely to increase word count.
+### 4. SEO, PWA and documentation
+- Added CollectionPage/ItemList structured data for the Learning Centre.
+- Added static lesson summaries to the Learning Centre HTML.
+- Updated the web app manifest description and theme colours.
+- Updated sitemap dates and priorities for the six public pages.
+- Bumped the service-worker cache version to `4.4.0` so returning visitors can receive the updated files.
+- Updated About, Privacy Policy and Terms dates and corrected advertising wording so it reflects the current homepage-only loader implementation.
+- Rewrote README to document the actual current project rather than contradictory earlier release notes.
+- Preserved `robots.txt`, `ads.txt`, artwork, music and credits.
 
-Also verify in the AdSense account:
-1. Complete any outstanding payment/profile and identity tasks shown in the account.
-2. Open **Sites** and read the exact issue shown for the domain.
-3. Open **Policy Center** and check for policy, crawler, or ad-serving issues.
-4. Check the site's `ads.txt` status in AdSense.
-5. Confirm the site is reachable publicly over HTTPS and that Google can crawl it.
-6. After making the account/site changes, request another review from the Sites page if AdSense offers that action.
+## Google identifiers and advertising code preserved
 
-Google's review decision is made by Google. This ZIP cannot guarantee approval or remove an account-level "Needs attention" status by itself.
+The following values were checked against the input archive and retained:
+
+- Google Tag Manager container: `GTM-KQJCNKFL`.
+- Intended GA4 measurement ID documented for the GTM configuration: `G-3FP8R0NDZN`.
+- AdSense publisher ID: `ca-pub-2666698676518429`.
+- AdSense loader remains in `index.html` only.
+- No AdSense loader was added to Learning Centre, About, Contact, Privacy Policy, Terms or Offline.
+- `ads.txt` retains: `google.com, pub-2666698676518429, DIRECT, f08c47fec0942fa0`.
+
+The archive cannot inspect the private Google Tag Manager workspace, so the actual GA4 tag, trigger configuration, consent settings and publication status must be checked inside that account. The archive also cannot confirm whether Auto ads or particular ad formats are enabled in the AdSense account.
+
+## Automated checks run
+
+- `questions.json`, `articles.json` and `manifest.webmanifest` parse as valid JSON.
+- `sitemap.xml` parses as valid XML.
+- `questions.js` and `service-worker.js` pass Node.js syntax checks.
+- Inline executable JavaScript on the HTML pages passes syntax checks.
+- JSON-LD blocks parse as valid JSON.
+- The quiz bank has 625 records, no duplicate IDs, four English and four Kinyarwanda options per record, and answer values matching their respective option arrays.
+- All 22 articles have unique IDs, supported categories, English/Kinyarwanda titles, descriptions, definitions and lesson bodies.
+- All service-worker precache paths resolve to files in the supplied project.
+- Local HTML references were checked; one templated URL inside JavaScript was excluded from the local-file check because it is generated at runtime.
+- The AdSense publisher ID and GTM container IDs were compared with the input archive and retained.
+
+These are automated structural checks. They do not replace manual browser testing on real Android devices, screen readers, or live deployment.
+
+## Remaining work outside the ZIP
+
+1. Deploy the archive to the existing GitHub repository and wait for Vercel to finish.
+2. Open the live `questions.json` and `articles.json` URLs and confirm the deployed responses show the new content.
+3. Test both quiz categories, both languages, answer submission, timers, Continue, progress, review and retry.
+4. Test the Learning Centre search, category filters, lesson detail, language switch, browser Back button and retry state.
+5. Check the new service worker is active and old cached versions are replaced.
+6. Verify the live `ads.txt` URL and the AdSense Sites status.
+7. In Google Tag Manager, confirm the published GA4 tag uses `G-3FP8R0NDZN` and check that page views are not duplicated.
+8. Check consent requirements and Google-certified consent-management configuration if the site serves visitors in regions where Google requires it.
+9. Review the AdSense Policy Center and Search Console for account-specific, crawler, indexing or policy issues.
+
+## AdSense readiness — important limits
+
+Google assesses the live site, its original value, completeness, navigation, user experience, traffic quality, account setup and policy compliance. A larger article count alone does not guarantee approval. The new lessons are written as original educational explanations, but factual accuracy, translations and future updates should continue to be reviewed against authoritative sources. The Rwanda road-safety lessons do not replace the current Official Gazette, Rwanda National Police instructions or professional driver training.
+
+The application contains interactive quiz features. Google must decide whether the public content and the site's overall experience meet its monetization requirements. In particular, ensure advertising is not confused with quiz controls, navigation, buttons or lesson content. Do not encourage ad clicks, purchase traffic, use traffic-exchange schemes or create artificial engagement.
+
+The AdSense account message said review attempts are available again from **26 November 2026**. The ZIP cannot lift that account-side limit. After deployment and live testing, use the AdSense Sites page when the review action becomes available. Google makes the final decision.
 
 ## Official Google guidance
 
-- AdSense site not ready / insufficient unique content and user experience: https://support.google.com/adsense/answer/12176698
-- Common site content and navigation issues: https://support.google.com/adsense/answer/81904
-- Preparing site pages for AdSense: https://support.google.com/adsense/answer/7299563
-- Publisher policies: https://support.google.com/publisherpolicies/answer/10502938
-- AdSense site status definitions: https://support.google.com/adsense/answer/12170222
+- https://support.google.com/adsense/answer/12176698
+- https://support.google.com/adsense/answer/81904
+- https://support.google.com/adsense/answer/7299563
+- https://support.google.com/publisherpolicies/answer/48182
+- https://support.google.com/adsense/answer/12170222
 
-## Files intentionally not rewritten
+## Files intentionally preserved
 
-The quiz questions, translations, article text, policy text, legal wording, music, icons, and credits were not wholesale rewritten. They passed the structural checks available in this audit, and changing substantive content without verifying the underlying legal/educational sources could introduce new errors. Copyright ownership and the factual accuracy of every educational claim still require human/source verification.
+The existing 625 question records and their translations, music, artwork, road-sign SVG files and attribution file were preserved rather than rewritten without a separate factual and licensing review. Structural validity does not by itself prove every answer is factually correct or every asset licence has been independently re-confirmed.

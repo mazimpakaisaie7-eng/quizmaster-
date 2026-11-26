@@ -1,10 +1,10 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER RWANDA
-   SERVICE WORKER — VERSION 4.3.6
+   SERVICE WORKER — VERSION 4.4.0
 
    Compatible with:
-   - questions.js VERSION 4.3.6
+   - questions.js VERSION 4.4.0
 
    Features:
    - Reliable cache management
@@ -26,7 +26,7 @@
    ========================================================= */
 
 const CACHE_PREFIX = "quizmaster-cache-";
-const CACHE_VERSION = "4.3.6";
+const CACHE_VERSION = "4.4.0";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 
 /* =========================================================
