@@ -45,9 +45,9 @@ Quiz Master Rwanda is a bilingual educational website for learning and practisin
 
 | Resource | Current contents |
 |---|---:|
-| Quiz questions | 625 |
+| Quiz questions | 623 |
 | Road Safety questions | 297 |
-| General Knowledge questions | 328 |
+| General Knowledge questions | 326 |
 | Learning Centre articles | 22 |
 | Learning languages | English and Kinyarwanda |
 | Quiz categories | Road Safety and General Knowledge |
@@ -82,7 +82,7 @@ Other supplied assets include the site icons, road-sign SVG illustrations, hero 
 This release preserves the existing Google identifiers and implementation:
 
 - Google Tag Manager container: `GTM-KQJCNKFL`
-- Intended GA4 measurement ID configured through Tag Manager: `G-3FP8R0NDZN`
+- Intended GA4 measurement ID: `G-3FP8R0NDZN` (the live tag configuration must be verified inside Google Tag Manager; this repository only contains the GTM container loader)
 - AdSense publisher ID: `ca-pub-2666698676518429`
 - AdSense loader: retained on `index.html` only
 - `ads.txt`: retains the matching publisher declaration
