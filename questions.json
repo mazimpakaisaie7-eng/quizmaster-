@@ -8583,28 +8583,6 @@
     "explanation_rw": "Udushami duto two ku mizi twongera ubuso bufasha gukurura amazi n'imyunyu ngugu."
   },
   {
-    "id": "general_616",
-    "category": "general",
-    "question": "In computing, what does CPU stand for?",
-    "question_rw": "Mu ikoranabuhanga rya mudasobwa, CPU bisobanura iki?",
-    "options": [
-      "Central Processing Unit",
-      "Computer Personal Utility",
-      "Central Program Upload",
-      "Control Power Unit"
-    ],
-    "options_rw": [
-      "Igice nyamukuru gitunganya amakuru",
-      "Igikoresho cyihariye cya mudasobwa",
-      "Kohereza porogaramu hagati",
-      "Igice kigenzura ingufu"
-    ],
-    "answer": "Central Processing Unit",
-    "answer_rw": "Igice nyamukuru gitunganya amakuru",
-    "explanation": "The CPU executes instructions and coordinates many operations of a computer.",
-    "explanation_rw": "CPU ishyira mu bikorwa amabwiriza kandi igahuza ibikorwa byinshi bya mudasobwa."
-  },
-  {
     "id": "general_617",
     "category": "general",
     "question": "Which historical event began in France in 1789?",
