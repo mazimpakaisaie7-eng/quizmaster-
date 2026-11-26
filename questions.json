@@ -10233,28 +10233,6 @@
     "explanation_rw": "Uturemangingo tw'amaraso twera turi mu rwego rw'ubwirinzi bw'umubiri kandi dufasha kumenya no kurwanya ibitera indwara."
   },
   {
-    "id": "general_698",
-    "category": "general",
-    "question": "Which ocean is the largest on Earth?",
-    "question_rw": "Ni iyihe nyanja nini kurusha izindi ku Isi?",
-    "options": [
-      "Pacific Ocean",
-      "Atlantic Ocean",
-      "Indian Ocean",
-      "Arctic Ocean"
-    ],
-    "options_rw": [
-      "Inyanja ya Pasifika",
-      "Inyanja ya Atlantika",
-      "Inyanja y'Abahinde",
-      "Inyanja ya Arctique"
-    ],
-    "answer": "Pacific Ocean",
-    "answer_rw": "Inyanja ya Pasifika",
-    "explanation": "The Pacific Ocean is the largest and deepest ocean basin on Earth.",
-    "explanation_rw": "Inyanja ya Pasifika ni yo nini kandi ifite ibice birebire cyane mu bujyakuzimu kurusha izindi nyanja."
-  },
-  {
     "id": "general_699",
     "category": "general",
     "question": "Which economic indicator measures the total value of final goods and services produced within a country in a given period?",
