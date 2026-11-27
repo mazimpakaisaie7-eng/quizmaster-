@@ -1,7 +1,7 @@
 
 /* =========================================================
    🇷🇼 QUIZ MASTER RWANDA
-   SERVICE WORKER — VERSION 4.4.0
+   SERVICE WORKER — VERSION 4.5.0
 
    Compatible with:
    - questions.js VERSION 4.4.0
@@ -26,7 +26,7 @@
    ========================================================= */
 
 const CACHE_PREFIX = "quizmaster-cache-";
-const CACHE_VERSION = "4.4.0";
+const CACHE_VERSION = "4.5.0";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 
 /* =========================================================
@@ -44,6 +44,7 @@ const APP_SHELL = [
   "./offline.html",
 
   "./questions.js",
+  "./pi-auth.js",
   "./questions.json",
 
   "./articles.html",

@@ -816,7 +816,40 @@
       .home-quick-links a { min-height: 58px; }
     }
 
+  
+    /* Pi Network sign-in panel */
+    .pi-auth-panel {
+      width: min(100% - 28px, 980px);
+      margin: 14px auto 18px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      border: 1px solid #d5e2f4;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #f7faff, #eef5ff);
+      color: #172b4d;
+    }
+    .pi-auth-copy { min-width: 190px; flex: 1; }
+    .pi-auth-copy strong { display: block; margin-bottom: 4px; }
+    .pi-auth-copy p { margin: 0; font-size: .9rem; line-height: 1.5; color: #52627a; }
+    #piLoginBtn {
+      border: 0; border-radius: 10px; padding: 11px 16px;
+      background: #155eef; color: #fff; font-weight: 700;
+      min-height: 44px; cursor: pointer;
+    }
+    #piLoginBtn:disabled { opacity: .72; cursor: default; }
+    #piAuthStatus { flex-basis: 100%; font-size: .88rem; line-height: 1.45; }
+    #piAuthStatus[data-state="success"] { color: #087443; }
+    #piAuthStatus[data-state="error"] { color: #b42318; }
+    #piAuthStatus[data-state="notice"] { color: #805b00; }
+    #piAccountName { font-weight: 700; }
+
   </style>
+  <!-- Official Pi Network SDK -->
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
 
 <body>
@@ -852,6 +885,17 @@
     </nav>
   </div>
 </header>
+
+<section class="pi-auth-panel" aria-label="Pi Network account">
+  <div class="pi-auth-copy">
+    <strong>Pi Network sign-in</strong>
+    <p>Verify your Pioneer account securely in Pi Browser. Basic quiz access remains available without signing in.</p>
+    <span id="piAccountName" aria-live="polite"></span>
+  </div>
+  <button id="piLoginBtn" type="button">Sign in with Pi</button>
+  <div id="piAuthStatus" role="status" aria-live="polite">Open Quiz Master in Pi Browser to use Pi sign-in.</div>
+</section>
+
 
 <main>
 
@@ -1157,6 +1201,7 @@
 
 <!-- QUIZ ENGINE -->
 <script src="./questions.js" defer></script>
+<script src="./pi-auth.js" defer></script>
 
 <!-- MENU, SHARE AND FOOTER -->
 <script>

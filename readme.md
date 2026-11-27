@@ -1,6 +1,6 @@
 # Quiz Master Rwanda 🇷🇼
 
-**Release:** 4.4.0  
+**Release:** 4.5.0  
 **Live website:** https://quizmaster-liard-five.vercel.app/  
 **GitHub:** https://github.com/mazimpakaisaie7-eng/quizmaster-
 
@@ -60,6 +60,8 @@ The question bank is checked for JSON validity, unique IDs, answer-option consis
 |---|---|
 | `index.html` | Home page, quiz interface, SEO metadata, AdSense loader and Google Tag Manager container |
 | `questions.js` | Quiz engine, validation, progress, scoring and recovery |
+| `pi-auth.js` | Optional Pi SDK sign-in and secure server verification handoff |
+| `api/pi/verify.js` | Vercel serverless endpoint for Pi account verification |
 | `questions.json` | Bilingual question bank |
 | `articles.html` | Learning Centre interface, search, filters and lesson rendering |
 | `articles.json` | Bilingual educational lessons and sources |
@@ -124,3 +126,21 @@ Email: mazimpakaisaie7@gmail.com
 Website: https://quizmaster-liard-five.vercel.app/
 
 **Learn • Practise • Improve**
+
+
+## Pi Network integration — release 4.5.0
+
+This release adds an optional Pi Browser sign-in flow:
+
+- Official Pi SDK (`https://sdk.minepi.com/pi-sdk.js`) is initialized for Mainnet.
+- Authentication requests the `username` scope.
+- `api/pi/verify.js` verifies the Pioneer access token against Pi's official `/v2/me` endpoint.
+- Access tokens are not intentionally stored in browser storage or the app database.
+- Basic quiz access remains available without Pi sign-in.
+- No paid quiz feature or Pi payment flow is currently offered; payment integration is therefore not fabricated or enabled.
+
+See `PI_INTEGRATION.md` for deployment, security, Developer Portal and listing checklist instructions.
+
+### Pi Developer Portal actions still required
+
+The developer must use their own Pi account to confirm KYC, registered app URL, Mainnet configuration, app information, repository/license declarations and Ecosystem Listing submission. A code archive cannot complete those account-level actions or guarantee review approval.
